@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="QuestData" type="cinematic" version="0.14" >
+		<record alias="alias" type="String" />
+		<record alias="cinema-name" type="String" />
+		<record alias="cinema-resource-name" type="String" />
+		<record alias="teen-cinema-name" type="String" />
+		<record alias="teen-cinema-resource-name" type="String" />
+		<record alias="costume" ref="Item" />
+		<record alias="skippable" type="Seq" >
+		    <case alias="none" default="y" />
+		    <case alias="skip" />
+		    <case alias="party-skip" />
+			<case alias="team-skip" />
+		   <!-- 2022年新增非首次可跳过功能 <case alias="" /> -->	
+		</record>
+		<record alias="point-camera" type="Bool" />
+	</list>
+</table>

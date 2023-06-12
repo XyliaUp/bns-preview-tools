@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="ZoneData0" type="ZoneEnv2Spawn" version="0.9" >
+		<record alias="zone" type="Int32" key="y" />
+		<record alias="id" type="Int16" key="y" />
+		<record alias="alias" type="String" />
+		<record alias="env2" ref="ZoneEnv2" />
+		<record alias="env2place" ref="ZoneEnv2Place" />
+		<record alias="env2spawnrandomgroup" ref="ZoneEnv2SpawnRandomGroup" />
+		<record alias="required-env2" ref="ZoneEnv2" />
+		<record alias="mapunit-map-depth" type="Int8" default="2" />
+		<record alias="mapunit-arena-dungeon-map-depth" type="Int8" default="2" />
+	</list>
+</table>

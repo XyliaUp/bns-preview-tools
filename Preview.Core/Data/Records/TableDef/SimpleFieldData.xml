@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<table side="data" version="1.02">
+	<list module="ZoneData0" type="simple-field" version="0.5" >
+		<record alias="id" type="Int32" key="y" />
+		<record alias="alias" type="String" />
+		<record alias="zone" ref="Zone" type="Int32" />
+		<record alias="max-pc-count" type="Int16" />
+		<record alias="required-level" type="Int8" />
+		<record alias="required-mastery-level" type="Int8" />
+		<record alias="required-preceding-quest-1" ref="Quest" />
+		<record alias="required-preceding-quest-2" ref="Quest" />
+		<record alias="required-preceding-quest-3" ref="Quest" />
+		<record alias="required-preceding-quest-check" type="Seq" >
+             <case alias="and" default="y" />
+             <case alias="or" />
+        </record>
+		<record alias="group" ref="AttractionGroup" type="Int32" />
+		<record alias="recommend-attack-power" type="Int16" server="n" />
+		<record alias="standard-gear-weapon" ref="Item" server="n" />
+		<record alias="simple-field-name2" ref="Text" />
+		<record alias="simple-field-desc" ref="Text" />
+		<record alias="reward-summary" ref="AttractionRewardSummary" server="n" />
+		<record alias="ui-text-grade" type="Int8" server="n" />
+		<record alias="tactic" ref="Text" />
+		<record alias="recommend-alias" ref="ContentsJournalRecommendItem" server="n" />
+		<record alias="recommend-level-min" type="Int8" server="n" />
+		<record alias="recommend-level-max" type="Int8" server="n" />
+		<record alias="recommend-mastery-level-min" type="Int8" server="n" />
+		<record alias="recommend-mastery-level-max" type="Int8" server="n" />
+	</list>
+</table>

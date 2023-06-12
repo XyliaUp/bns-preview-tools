@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="ItemData" type="CustomizingPreset" version="0.7" side="client" >
+		<record alias="race" key="y" type="Seq" seq="race" />
+		<record alias="sex" key="y" type="Seq" seq="sex" />
+		<record alias="part-type" key="y" type="Seq" >
+			<case alias="none" default="y" />
+			<case alias="face" />
+			<case alias="body" />
+			<case alias="beard" />
+        </record>
+		<record alias="part-value" key="y" type="Int8" />
+
+
+		<record alias="icon-texture" ref="IconTexture" />
+		<record alias="icon-index" type="Int16" />
+		<record alias="param8" type="Int8" repeat="92" />
+		<record alias="desc" ref="Text" />
+	</list>
+</table>

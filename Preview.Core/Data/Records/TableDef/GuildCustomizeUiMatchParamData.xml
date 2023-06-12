@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="ItemData" type="GuildCustomizeUiMatchParam" version="0.1" >
+		<record alias="ui-index" key="y" type="Int16" />
+		<record alias="sub-name" ref="Text" />
+		<record alias="param-index" type="Int8" default="-1" />
+	</list>
+</table>

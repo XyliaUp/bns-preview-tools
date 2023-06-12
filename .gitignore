@@ -1,0 +1,5 @@
+bin
+obj
+.vs
+/Preview.Tests/*.xml
+/Preview.Tests/DatTool

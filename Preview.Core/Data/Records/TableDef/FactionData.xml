@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="ItemData" type="faction" version="0.2" >
+		<record alias="id" type="Int32" key="y" />
+		<record alias="alias" type="String" />
+		<record alias="hostile-faction" ref="this" />
+		<record alias="category" type="Seq" apply="must" >
+			<case alias="gang" default="y" />
+			<case alias="main" />
+			<case alias="second" />
+		</record>
+		<record alias="name2" ref="Text" />
+		<record alias="tag-name" ref="Text" />
+		<record alias="icon" type="Icon" />
+		<record alias="activated-icon" type="Icon" />
+		<record alias="activated-desc" ref="Text" />
+		<record alias="level-up-show" type="String" />
+		<record alias="text" ref="Text" />
+		<record alias="join-confirm-msg" ref="Text" />
+		<record alias="join-confirm-input" ref="Text" />
+		<record alias="transfer-confirm-msg" ref="Text" />
+		<record alias="transfer-confirm-input" ref="Text" />
+		<record alias="grade-name" ref="Text" />
+		<record alias="grade-image" ref="Text" />
+		<record alias="grade-type" type="Int8" />
+		<record alias="grade-icon" type="Icon" />
+		<record alias="grade-tooltip" ref="Text" />
+		<record alias="hide-name" ref="Text" />
+		<record alias="hide-summoned-name" ref="Text" />
+		<record alias="guild-battle-field-teleport" ref="Teleport" type="Int32" />
+		<record alias="main-faction" type="Bool" client="n" />
+	</list>
+</table>

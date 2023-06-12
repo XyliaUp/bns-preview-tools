@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="CombatData" type="sealed-dungeon-gimmick" version="0.10" >
+		<record alias="alias" type="String" />
+		<record alias="name" ref="Text" />
+		<record alias="icon-name" ref="Text" />
+		<record alias="icon-tooltip" ref="Text" />
+		<record alias="icon" type="Icon" />			
+	</list>
+</table>

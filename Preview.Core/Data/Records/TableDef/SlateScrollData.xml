@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="ItemData" type="SlateScroll" version="0.4" >
+		<record alias="alias" type="String" />
+		<record alias="ingredient-item" ref="Item" repeat="5" />
+		<record alias="ingredient-count" type="Int16" repeat="5" />
+		<record alias="secondary-cash-enable" type="Bool" default="" />
+		<record alias="ingredient-money" type="Int32" min="0" max="2000000000" />
+		<record alias="secondary-cash" ref="Item" />
+	</list>
+</table>

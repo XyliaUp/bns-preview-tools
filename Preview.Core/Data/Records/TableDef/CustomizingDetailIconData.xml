@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="ItemData" type="CustomizingDetailIcon" version="0.1" >
+		<record alias="race" key="y" type="Seq" seq="race" />
+		<record alias="sex" key="y" type="Seq" seq="sex" />
+		<record alias="param-index" key="y" type="Int8" showzero="y" />
+		<record alias="order" key="y" type="Int8" />
+
+		<record alias="param-value" type="Int8" />
+		<record alias="icon" type="Icon" />
+		<record alias="desc" ref="Text" />
+	</list>
+</table>

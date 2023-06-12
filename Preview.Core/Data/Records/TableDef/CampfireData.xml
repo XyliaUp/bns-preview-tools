@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="ZoneData0" type="campfire" version="0.7" >
+		<record alias="alias" type="String" />
+		<record alias="additional-heal-percent" type="Int16" />
+		<record alias="remain-duration" type="Msec" showzero="y" />
+		<record alias="mesh-id" type="String" />
+		<record alias="animset-name" type="String" />
+		<record alias="anim-show" type="String" />
+		<record alias="despawn-show" type="String" />
+		<record alias="party-match" ref="PartyMatch" />
+		<record alias="map-tooltip" ref="Text" />		
+	</list>
+</table>

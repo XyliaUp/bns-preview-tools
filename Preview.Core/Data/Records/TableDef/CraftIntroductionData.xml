@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="ItemData" type="craft-introduction" version="0.1" >
+	    <record alias="category" key="y" seq="production-type" type="Seq" />
+		
+		<record alias="title-icon" type="Icon" />
+		<record alias="normal-icon" type="Icon" />
+		<record alias="slogan" ref="Text" />
+		<record alias="introduction-description" ref="Text" />
+		<record alias="associated-craft" type="Seq" seq="production-type" repeat="2" />
+		<record alias="representative-product-item" ref="Item" repeat="8" />
+		<record alias="representative-product-label" ref="Text" repeat="8" />
+		<record alias="special-product-item" ref="Item" repeat="4" />
+		<record alias="special-product-label" ref="Text" repeat="4" />
+	</list>
+</table>

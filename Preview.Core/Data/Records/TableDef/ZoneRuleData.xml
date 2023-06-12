@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="ZoneData0" type="ZoneRule" version="0.16" >
+		<record alias="zone" type="Int32" key="y" />
+		
+		<record alias="enable-infinite-hyper-energy" type="Bool" />
+		<record alias="enable-reset-combat-mode" type="Bool" />
+		<record alias="reset-combat-mode-recycle-duration" type="Msec" />		
+		<record alias="enable-co-ownership-pouch" type="Bool" />
+		<record alias="enable-pvp" type="Bool" name="启用PVP功能" />
+		<record alias="unk-" type="Bool" />
+		<record alias="required_inactivated_main_faction" type="Bool" />
+		<record alias="apply-content-ban-id" type="Seq" >	
+			<case alias="invalid" default="y" />
+			<case alias="duel" />
+			<case alias="faction battle field" />
+			<case alias="dungeon" />
+			<case alias="attendance" />
+			<case alias="jumping character" />
+			<case alias="duel bot challenge" />
+			<case alias="fraud" />
+			<case alias="zone rule group" />
+		</record>
+		<record alias="allow-invite-party-in-arena" type="Bool" name="跨服中允许邀请队伍 (PublicRaid 地图)" />		
+		<record alias="required-available-weekly-time" ref="WeeklyTimeTable" name="开放时间" />			
+		<record alias="town" type="Bool" />	
+		<record alias="reentrance-pcspawn-check-later-when-enterworld" type="Bool" />	
+		<record alias="infinite-durability" type="Bool" name="无限耐久" input="n" />	
+		<record alias="enable-auto-mode" type="Bool" server="n" name="启用自动战斗模式" />
+		<record alias="auto-mode-type" type="Seq" name="自动战斗模式" server="n" >		
+			<case alias="disallow" name="不使用" default="y" />
+			<case alias="basic" name="基础模式" />
+			<case alias="advanced" name="高级模式" />
+		</record>
+		<record alias="enable-auto-item-support" type="Bool" name="开启自动战斗物品支持" server="n" />
+		<record alias="activate-vehicle" type="Bool" />
+		<record alias="unk-" type="Bool" default="y" />
+		<record alias="unk-" type="Bool" />
+        <!-- ================================================================ -->
+		<record alias="is-immediately-dead" type="Bool" client="n" />
+		<record alias="enable-party-auction" type="Bool" client="n" default="y" />	
+		<record alias="max-persistent-channel-count" type="Int8" client="n" />
+	</list>
+</table>

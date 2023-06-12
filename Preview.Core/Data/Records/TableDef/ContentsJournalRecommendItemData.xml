@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<table>
+  <list module="LocalizationData" version="0.2" type="contentsjournalrecommenditem" > 
+		<record alias="alias" type="String" />
+		<record alias="weapon-recommend-score" type="Int32" />	
+		<record alias="necklace-recommend-score" type="Int32" />
+		<record alias="earring-recommend-score" type="Int32" />
+		<record alias="ring-recommend-score" type="Int32" />
+		<record alias="bracelet-recommend-score" type="Int32" />
+		<record alias="belt-recommend-score" type="Int32" />
+		<record alias="gloves-recommend-score" type="Int32" />
+		<record alias="soul-1-recommend-score" type="Int32" />
+		<record alias="soul-2-recommend-score" type="Int32" />
+		<record alias="pet-recommend-score" type="Int32" />
+		<record alias="rune-1-recommend-score" type="Int32" />
+		<record alias="rune-2-recommend-score" type="Int32" />
+		<record alias="nova-recommend-score" type="Int32" />
+		<record alias="skill-stone-1-recommend-score" type="Int32" />
+		<record alias="skill-stone-2-recommend-score" type="Int32" />
+  </list>
+</table>

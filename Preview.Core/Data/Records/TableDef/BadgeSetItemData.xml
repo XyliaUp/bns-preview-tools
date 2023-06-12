@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="ItemData" type="badge-set-item" version="0.1" >
+		<record alias="score" type="Int32" key="y" />
+		<record alias="alias" type="String" />
+		<record alias="effect" ref="Effect" repeat="3" />
+	</list>
+</table>

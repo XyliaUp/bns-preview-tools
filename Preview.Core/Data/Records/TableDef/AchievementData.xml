@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table>
+
+	<list module="ItemData" type="achievement" version="1.1" rule="cpl">
+		<record alias="id"  type="Int16" key="y" />
+		<record alias="step" type="Int16" key="y" />
+		<record alias="job" type="Seq" seq="job" apply="must" key="y" />
+		
+		
+		<record alias="alias" type="String" />
+		<record alias="deprecated" type="Bool" />
+		<record alias="complete-from-client" type="Bool" />
+		<record alias="register-ref" ref="AchievementRegister" repeat="5" />
+		<record alias="register-type" type="Seq" repeat="5" >
+             <case alias="none" default="y" />
+             <case alias="above" />	 
+             <case alias="below" />
+             <case alias="bits-on" />
+        </record>	
+		<record alias="register-value" type="Int32" repeat="5" />
+		<record alias="progress-show" type="Bool" />
+		<record alias="step-complete-reward-item" ref="Item" repeat="5" />
+		<record alias="step-complete-reward-item-count" type="Int16" repeat="5" />
+		<record alias="step-complete-reward-game-cash" type="Int64" />
+		<record alias="step-complete-reward-skill-build-up-point" type="Int16" />
+		<record alias="step-complete-reward-type" type="Seq" server="n" >	
+             <case alias="invalid" default="y" />
+             <case alias="item" />	 
+             <case alias="game-Cache" />
+             <case alias="skill-build-up-point" />
+        </record>		
+		<record alias="step-complete-reward-final-item" ref="Item" repeat="5" />
+		<record alias="step-complete-reward-final-item-count" type="Int16" repeat="5" />
+		<record alias="current-step-score" type="Int16" showzero="y" />
+		<record alias="ability" type="Seq" >	
+			<case alias="none" default="y" />
+			<case alias="attack-power-creature-min-max" />
+			<case alias="attack-hit-value" />
+			<case alias="attack-pierce-value" />
+			<case alias="attack-damage-modify-diff" />
+			<case alias="max-hp" />
+			<case alias="defend-power-creature-value" />
+			<case alias="defend-dodge-value" />
+			<case alias="defend-parry-value" />
+			<case alias="defend-damage-modify-diff" />
+        </record>		
+		<record alias="ability-value" type="Int16" />
+		<record alias="completed-effect" ref="Effect" />
+		<record alias="completed-effect-category" type="Int8" server="n" />
+		<record alias="completed-effect-order" type="Int16" server="n" />
+		<record alias="title-fontset" type="String" server="n" />		
+		<record alias="title-background-image" type="String" server="n" />		
+		<record alias="title-background-image-pos-x" type="Float32" server="n" />
+		<record alias="title-background-image-pos-y" type="Float32" server="n" />	
+		<record alias="category-1" type="Seq" server="n" >	
+			<case alias="none" default="y" />
+			<case alias="growth" />
+			<case alias="item" />
+			<case alias="combat" />
+			<case alias="economy" />
+			<case alias="community" />
+        </record>					
+		<record alias="category-2" type="Seq" server="n" >	
+			<case alias="none" default="y" />
+			<case alias="level-up" />
+			<case alias="quest" />
+			<case alias="acquire-skill" />
+			<case alias="consumable" />
+			<case alias="collect" />
+			<case alias="growth" />
+			<case alias="decompose" />
+			<case alias="repair" />
+			<case alias="equip-gem" />
+			<case alias="attach-gem" />
+			<case alias="dungeon" />
+			<case alias="faction" />
+			<case alias="etc" />
+			<case alias="auction" />
+			<case alias="production" />
+			<case alias="social-action" />
+			<case alias="picture" />
+			<case alias="event" />
+        </record>	
+		<record alias="map-group-1" ref="MapGroup1" server="n" />		
+		<record alias="picture" type="Icon" />
+		<record alias="name" ref="Text" />
+		<record alias="description2" ref="Text" />
+		<record alias="title-name" ref="Text" />
+		<record alias="title-image-text" ref="Text" />
+		<record alias="title-thumbnail-icon-text" ref="Text" />
+		<record alias="sort-no" type="Int16" server="n" />
+		<record alias="completed-game-message" ref="GameMessage" server="n" />
+		<record alias="talk-social" ref="TalkSocial" server="n" />
+		<record alias="title-chat-ui-icon" type="Icon" />
+		<record alias="title-thumbnail-frame-fx" type="String" server="n" />		
+		<record alias="title-grade" type="Int8" server="n" />		
+	</list>
+</table>

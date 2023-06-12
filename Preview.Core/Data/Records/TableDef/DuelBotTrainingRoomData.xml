@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="ItemData" type="duel-bot-training-room" version="0.10" >
+		<record alias="id" type="Int32" key="y" />
+		
+		<record alias="zone" ref="Zone" />
+		<record alias="alias" type="String" />
+		<record alias="group" ref="AttractionGroup" />
+		<record alias="required-level" type="Int8" />
+		<record alias="required-mastery-level" type="Int8" />
+		<record alias="required-preceding-quest" ref="Quest" repeat="3" />
+		<record alias="required-preceding-quest-check" type="Seq" >
+			<case alias="and" default="y" />
+			<case alias="or" />
+		</record>
+		<record alias="match-select-delay-duration" type="Msec" />
+		<record alias="spawn-kismet-delay-duration" type="Msec" />
+		<record alias="finish-delay-duration" type="Msec" />
+		<record alias="blade-master-spawn-kismet-name" type="String" />
+		<record alias="kung-fu-fighter-spawn-kismet-name" type="String" />
+		<record alias="force-master-spawn-kismet-name" type="String" />
+		<record alias="destroyer-spawn-kismet-name" type="String" />
+		<record alias="summoner-spawn-kismet-name" type="String" />
+		<record alias="assassin-spawn-kismet-name" type="String" />
+		<record alias="sword-master-spawn-kismet-name" type="String" />
+		<record alias="warlock-spawn-kismet-name" type="String" />
+		<record alias="soul-fighter-spawn-kismet-name" type="String" />
+		<record alias="shooter-spawn-kismet-name" type="String" />
+		<record alias="warrior-spawn-kismet-name" type="String" />
+		<record alias="archer-spawn-kismet-name" type="String" />
+		<record alias="spear-master-spawn-kismet-name" type="String" />
+		<record alias="thunderer-spawn-kismet-name" type="String" />
+		<record alias="timeout-duration-second" type="Int16" />
+		<record alias="achievement-time-limit-second" type="Int16" repeat="2" />
+		<record alias="ui-text-grade" type="Int8" />
+		<record alias="dungeon-name2" ref="Text" />
+		<record alias="dungeon-desc" ref="Text" />
+		<record alias="arena-minimap" type="String" />
+		<record alias="reward-summary" ref="AttractionRewardSummary" />
+		<record alias="recommand-level-min" type="Int8" />
+		<record alias="recommand-level-max" type="Int8" />
+		<record alias="recommand-mastery-level-min" type="Int8" />
+		<record alias="recommand-mastery-level-max" type="Int8" />
+		<record alias="recommend-attack-power" type="Int16" />
+		<record alias="standard-gear-weapon" ref="Item" />
+		<record alias="display-quests" ref="Quest" repeat="12" />
+		<record alias="tactic" ref="Text" />
+		<record alias="recommend-alias" ref="ContentsJournalRecommendItem" />
+	</list>
+</table>

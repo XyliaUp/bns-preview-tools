@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="ItemData" type="condition-event" version="2.0" >
+		<record alias="id" type="Int16" key="y" />
+		<record alias="score" type="Int16" key="y" />
+		<record alias="alias" type="String" />
+		<record alias="name" ref="Text" />
+		<record alias="recycle-group-duration" type="Msec" />
+		<record alias="tooltip-arg-type" type="dictionary" name="">
+			<case alias="none" default="y" />
+			<case alias="time" />
+			<case alias="stack-count" />
+			<case alias="percent" />
+			<case alias="counter" />
+			<case alias="distance" />
+			<case alias="number" />
+		</record>
+		<record alias="tooltip-text-1" ref="Text" />
+		<record alias="tooltip-arg-type-1" type="Seq" seq="tooltip-arg-type" repeat="4" />
+		<record alias="tooltip-arg-1" type="Int32" repeat="4" />
+		<record alias="tooltip-text-2" ref="Text" />
+		<record alias="tooltip-arg-type-2" type="Seq" seq="tooltip-arg-type" repeat="4" />
+		<record alias="tooltip-arg-2" type="Int32" repeat="4" />
+		<record alias="tooltip-text-3" ref="Text" />
+		<record alias="tooltip-arg-type-3" type="Seq" seq="tooltip-arg-type" repeat="4" />
+		<record alias="tooltip-arg-3" type="Int32" repeat="4" />
+		<record alias="tooltip-text-4" ref="Text" />
+		<record alias="tooltip-arg-type-4" type="Seq" seq="tooltip-arg-type" repeat="4" />
+		<record alias="tooltip-arg-4" type="Int32" repeat="4" />
+	</list>
+</table>

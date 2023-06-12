@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="CombatData" type="skill-combo-2" version="0.4" >
+		<record alias="alias" type="String" />
+		<record alias="group" type="Seq" >
+			<case alias="none" />
+			<case alias="target-down" />
+			<case alias="target-stun" />
+			<case alias="target-kneel" />
+			<case alias="target-midair-1" />
+			<case alias="target-midair-2" />
+			<case alias="target-back" />
+			<case alias="target-hit-critical" />
+			<case alias="player-down" />
+			<case alias="player-sprint-jump" />
+			<case alias="player-gliding" />
+			<case alias="player-dodge" />
+			<case alias="player-parry" />
+			<case alias="r-combo" />
+			<case alias="success-skill-counter" />
+			<case alias="success-skill-triplekick" />
+			<case alias="success-skill-slidestep" />
+			<case alias="success-skill-right" />
+			<case alias="success-skill-takedown" />
+        </record>
+		<record alias="sort-no" type="Int16" />
+		<record alias="name2" ref="Text" />
+		<record alias="action-desc" ref="Text" />
+		<record alias="combo-desc" ref="Text" />
+		<record alias="video" type="String" />
+		<record alias="skill" type="Int32" repeat="5" />
+		<record alias="skill-slot-type" type="Seq" repeat="5" >
+			<case alias="none" default="y" />
+			<case alias="skill-start" />
+			<case alias="combo" />
+        </record>
+	</list>
+</table>

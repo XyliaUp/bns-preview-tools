@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="CombatData" type="battlemessage" version="0.1" >
+		<record alias="object-type" type="Seq" key="y" >
+			<case alias="player-attack" />
+			<case alias="player-attacked" />
+			<case alias="other" />
+			<case alias="none-caster" />
+		</record>
+		<record alias="skill-result-type" type="Seq" key="y" >
+			<case alias="hit" />
+			<case alias="cri" />
+			<case alias="parry" />
+			<case alias="pparry" />
+			<case alias="counter" />
+			<case alias="miss" />
+			<case alias="dodge" />
+			<case alias="bounce" />
+			<case alias="none-skill" />
+		</record>	
+		<record alias="effect-type" type="Seq" key="y" >
+			<case alias="none-effect" />
+			<case alias="instant-damage" />
+			<case alias="attach-damage" />
+			<case alias="interval-damage" />
+			<case alias="attach-fail-damage" />
+			<case alias="detach-damage" />
+			<case alias="wall-damage" />
+			<case alias="instant-hp" />
+			<case alias="interval-hp" />
+			<case alias="instant-sp" />
+			<case alias="interval-sp" />
+			<case alias="instant-sp-damage" />
+			<case alias="interval-sp-damage" />
+			<case alias="instant-hp-drain" />
+			<case alias="instant-sp-drain" />
+			<case alias="instant-hp-sp-drain" />
+			<case alias="attach" />
+			<case alias="attach-fail" />
+			<case alias="interval" />
+			<case alias="detach" />
+			<case alias="exhaustion" />
+			<case alias="dead" />
+		</record>
+		<record alias="game-message" ref="GameMessage" />
+	</list>
+</table>

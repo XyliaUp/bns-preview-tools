@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="ItemData" type="ArenaPortal" version="0.1" >
+		<record alias="type" type="type" >
+			<case alias="duel" />
+			<case alias="dungeon" />
+			<case alias="public-raid" />	
+	    </record>
+
+		<record alias="alias" type="String" />
+		<record alias="faction" ref="Faction" />
+		<record alias="required-quest-check" type="Seq" >
+			<case alias="and" default="y" />
+			<case alias="or" />
+	    </record>
+		<record alias="required-quest" ref="Quest" repeat="6" />
+		<record alias="required-min-level" type="Int8" />
+		<record alias="required-min-faction-level" type="Int16" />
+		<record alias="zone" ref="Zone" />
+		<record alias="position-x" type="Float32" />
+		<record alias="position-y" type="Float32" />
+		<!-- ====================================================== -->
+		<record alias="death-match-1vs1" ref="Duel" filter="Duel" repeat="4" />
+		<record alias="death-match-unrated" ref="Duel" filter="Duel" repeat="4" />		
+		<record alias="tag-match-3vs3" ref="Duel" filter="Duel" repeat="4" />
+		<record alias="tag-match-unrated" ref="Duel" filter="Duel" repeat="4" />		
+		<!-- ====================================================== -->
+		<record alias="public-raid-mode" type="Seq" filter="public-raid" >
+			<case alias="public-raid-1" />
+			<case alias="public-raid-2" />
+			<case alias="public-raid-2-party-mode" />
+			<case alias="public-raid-2-championship" />
+			<case alias="public-raid-2-party-mode-championship" />
+			<case alias="public-raid-3" />
+	    </record>
+		<!-- ====================================================== -->
+	</list>
+</table>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="ZoneData0" type="raid-dungeon" version="6.12" >
+		<record alias="id" type="Int32" key="y" />
+		<record alias="alias" type="String" />
+		<record alias="name2" ref="Text" />
+		<record alias="dungeon-type" type="Seq" >
+			<case alias="unbind" default="y" />
+			<case alias="bind" />
+		</record>
+		<record alias="group" ref="AttractionGroup" />
+		<record alias="max-unbind-count" type="Int8" />
+		<record alias="reset-money" type="Int32" />
+		<record alias="reset-item" ref="Item" repeat="4" />
+		<record alias="reset-item-count" type="Int8" repeat="4" />
+		<record alias="use-personal-binding" type="Bool" />
+		<record alias="personal-binding-slot" type="Seq" >
+			<case alias="none" default="y" />
+			<case alias="slot-1" />
+			<case alias="slot-2" />
+			<case alias="slot-3" />
+		</record>
+		<record alias="pc-max" type="Int16" />
+		<record alias="required-level" type="Int8" />
+		<record alias="required-mastery-level" type="Int8" />
+		<record alias="required-preceding-quest" ref="Quest" repeat="3" />
+		<record alias="required-preceding-quest-check" type="Seq" >
+			<case alias="and" default="y" />
+			<case alias="or" />
+		</record>
+		<record alias="attraction-quest" server="n" ref="Quest" repeat="10" />
+		<record alias="enable-heart-count" type="Bool" />
+		<record alias="max-instant-heart-count" type="Int8" />
+		<record alias="effect" ref="Effect" repeat="3" />
+		<record alias="step-count" type="Int8" />
+		<record alias="zone" ref="Zone" repeat="9" />
+		<record alias="boss-npc" ref="Npc" repeat="9" />
+		<record alias="zone-index" type="Int8" repeat="9" />
+		<record alias="dungeon-tap-name2" ref="Text" />
+		<record alias="step-name2" ref="Text" repeat="9" />
+		<record alias="step-image" type="String" repeat="9" />
+		<record alias="arena-minimap" type="String" />
+		<record alias="raid-dungeon-desc" ref="Text" />
+		<record alias="ui-text-grade" type="Int8" />
+		<record alias="reward-summary" ref="AttractionRewardSummary" />
+		<record alias="recommand-level-min" type="Int8" />
+		<record alias="recommand-level-max" type="Int8" />
+		<record alias="recommand-mastery-level-min" type="Int8" />
+		<record alias="recommand-mastery-level-max" type="Int8" />
+		<record alias="recommend-attack-power" type="Int16" />
+		<record alias="standard-gear-weapon" ref="Item" />
+		<record alias="display-quests" ref="Quest" repeat="12" />
+		<record alias="tactic" ref="Text" />
+		<record alias="recommend-alias" ref="ContentsJournalRecommendItem" />
+		<record alias="contents-reset" ref="ContentsReset" error-type="Suggestion" />
+		<!-- ================================================================ -->
+		<record alias="max-leave-count-after-combat" type="Int8" client="n" />
+	</list>
+</table>

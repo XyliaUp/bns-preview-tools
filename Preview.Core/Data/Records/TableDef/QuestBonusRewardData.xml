@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="QuestData" type="QuestBonusReward" version="0.1" >
+		<record alias="id" type="Int32" key="y" />
+		<record alias="alias" type="String" />
+		
+		<record alias="normal-bonus-reward-total-count" type="Int8" />
+		<record alias="fixed-item" ref="Item" repeat="4" />
+		<record alias="fixed-item-count" type="Int16" repeat="4" />
+		<record alias="fixed-item-total-count" type="Int8" />
+		<record alias="random-item" ref="Item" repeat="120" />
+		<record alias="random-item-stack-count-min" type="Int16" repeat="120" />
+		<record alias="random-item-stack-count-max" type="Int16" repeat="120" />
+		<record alias="random-item-selected-count" type="Int8" max="4" min="0" />
+		<record alias="random-item-total-input-count" type="Int8" />
+		<record alias="random-item-tooltip-text" ref="Text" />
+
+		<record alias="paid-bonus-reward-total-count" type="Int8" max="4" min="0" />
+		<record alias="paid-item-cost" type="Int32" />
+		<record alias="paid-fixed-item" ref="Item" repeat="4" />
+		<record alias="paid-fixed-item-count" type="Int16" repeat="4" />
+		<record alias="paid-fixed-item-total-count" type="Int8" />
+		<record alias="paid-random-item" ref="Item" repeat="120" />
+		<record alias="paid-random-item-stack-count-min" type="Int16" repeat="120" />
+		<record alias="paid-random-item-stack-count-max" type="Int16" repeat="120" />
+		<record alias="paid-random-item-selected-count" type="Int8" max="4" min="0" />
+		<record alias="paid-random-item-total-input-count" type="Int8" />
+		<record alias="paid-random-item-tooltip-text" ref="Text" />
+	</list>
+</table>

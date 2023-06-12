@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="LocalizationData" type="indicator-idle" version="0.1" >
+		<record alias="alias" type="String" />
+		<record alias="master-idle" ref="NpcIndicatorMoveAnim" />
+		<record alias="npc" ref="Npc" repeat="5" />
+		<record alias="idle" ref="NpcIndicatorMoveAnim" repeat="5" />
+	</list>
+</table>

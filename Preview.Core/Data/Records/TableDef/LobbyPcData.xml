@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="AIData" type="lobby-pc" version="0.7" >
+		<record alias="race" key="y" type="Seq" seq="race" />
+		<record alias="job" key="y" type="Seq" seq="job" />
+		<record alias="sex" key="y" type="Seq" seq="sex" />		
+		<record alias="category" key="y" type="Seq" >
+			<case alias="none" />
+			<case alias="lobby" />
+			<case alias="guild" />
+		</record>
+		
+		<record alias="anim-set" type="String" />
+		<record alias="appearance" ref="CreatureAppearance" />
+		<record alias="select-anim" type="String" />
+		<record alias="idle-anim" type="String" />
+		<record alias="equip_hand" ref="Item" />
+		<record alias="pc-pos" type="String" />
+		<record alias="camera-pos" type="String" />
+		<record alias="camera-target" type="String" />
+		<record alias="select-lobby-show" type="String" />
+		<record alias="create-lobby-show" type="String" />
+		<record alias="duel-lobby-show" type="String" />
+		<record alias="duel-lobby-other-show" type="String" />
+		<record alias="customize-lobby-idle-anim" type="String" />
+		<record alias="customize-lobby-event-show-time" type="Int32" />
+		<record alias="customize-lobby-event-show1" type="String" />
+		<record alias="customize-lobby-event-show2" type="String" />
+		<record alias="customize-lobby-event-show3" type="String" />
+		<record alias="preview-world-cam-height-transition" type="Float32" default="180" />
+		<record alias="preview-world-cam-middle-transition" type="Float32" default="180" />
+		<record alias="preview-world-cam-far-limit-min" type="Float32" default="300" />
+		<record alias="preview-world-cam-far-limit-max" type="Float32" default="700" />
+		<record alias="preview-world-cam-far-height" type="Float32" default="72" />
+		<record alias="preview-world-cam-middle-height" type="Float32" default="72" />
+		<record alias="preview-world-cam-near-height" type="Float32" default="70" />
+		<record alias="preview-world-cam-modulate-factor" type="Float32" default="70" />
+	</list>
+</table>

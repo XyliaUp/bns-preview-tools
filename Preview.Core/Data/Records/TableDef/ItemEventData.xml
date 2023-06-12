@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="ItemData" type="item-event" version="0.2" >
+		<record alias="alias" type="String" />
+		<record alias="event-expiration-time" type="Time64" />
+		<record alias="name2" ref="Text" />
+	</list>
+</table>

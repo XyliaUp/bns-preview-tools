@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="CombatData" type="auto-combat-skill" version="0.1" rule="unsort" >
+		<record alias="parent-skill-id" type="Int32" key="y" />
+		<record alias="variation-id" type="Int8" key="y" />
+		<record alias="name" type="String" />
+		<record alias="priority" type="Int8" />
+		<record alias="cast-condition" ref="AutoCombatSkillCastCondition" repeat="2" />	
+		<record alias="cast-condition-op" type="Seq" >
+			<case alias="or" default="y" />
+			<case alias="and" />
+		</record>
+	</list>
+</table>

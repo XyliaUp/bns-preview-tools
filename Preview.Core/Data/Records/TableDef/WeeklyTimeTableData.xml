@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="LocalizationData" type="WeeklyTimeTable" version="0.4" >
+		<record alias="alias" type="String" />
+		<record alias="enable" type="Bool" showzero="y" />
+		<record alias="sun-start-hour" type="Int8" default="-1" repeat="12" />
+		<record alias="sun-end-hour" type="Int8" default="-1" repeat="12" />
+		<record alias="mon-start-hour" type="Int8" default="-1" repeat="12" />
+		<record alias="mon-end-hour" type="Int8" default="-1" repeat="12" />
+		<record alias="tue-start-hour" type="Int8" default="-1" repeat="12" />
+		<record alias="tue-end-hour" type="Int8" default="-1" repeat="12" />
+		<record alias="wed-start-hour" type="Int8" default="-1" repeat="12" />
+		<record alias="wed-end-hour" type="Int8" default="-1" repeat="12" />		
+		<record alias="thu-start-hour" type="Int8" default="-1" repeat="12" />
+		<record alias="thu-end-hour" type="Int8" default="-1" repeat="12" />	
+		<record alias="fri-start-hour" type="Int8" default="-1" repeat="12" />
+		<record alias="fri-end-hour" type="Int8" default="-1" repeat="12" />	
+		<record alias="sat-start-hour" type="Int8" default="-1" repeat="12" />
+		<record alias="sat-end-hour" type="Int8" default="-1" repeat="12" />
+		<record alias="start-minute" type="Int8" default="-1" />
+		<record alias="end-minute" type="Int8" default="-1" />
+	</list>
+</table>

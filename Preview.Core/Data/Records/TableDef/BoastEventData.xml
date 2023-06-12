@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="ItemData" type="boast-event" version="4.0" check-version="y" >
+		<record alias="type" type="type" >
+			<case alias="transform-item" />
+			<case alias="transform-item-convert" />
+			<case alias="buy-random-store-item" />
+			<case alias="acquire-item-reward" />
+			<case alias="awakening-item" />
+			<case alias="complete-acheivement" />
+			<case alias="acquire-env-reward" />
+			<case alias="acquire-npc-reward" />
+			<case alias="growth-item" />
+			<case alias="process-item-fusion" />
+			<case alias="treasureboard-season-reward" />
+			<case alias="treasureboard-reward" />
+			<case alias="improve-item" />
+		</record>
+
+		<record alias="alias" type="String" />
+		<record alias="broadcast" type="Seq" >
+			<case alias="guild" />
+			<case alias="world" />
+		</record>
+
+
+		<!-- ========================= transform-item ======================= -->
+		<record alias="boast-from-recipe" filter="transform-item" ref="ItemTransformRecipe" />
+		<record alias="boast-item" filter="transform-item" ref="Item" />
+		<!-- ================================================================ -->
+
+		<!-- ====================== transform-item-convert ================== -->
+		<record alias="boast-from-recipe" filter="transform-item-convert" ref="ItemTransformRecipe" />
+		<record alias="boast-item" filter="transform-item-convert" ref="Item" />
+		<!-- ================================================================ -->
+
+		<!-- ====================== buy-random-store-item ================== -->
+		<record alias="boast-from-random-store" filter="buy-random-store-item" ref="RandomStore" />
+		<record alias="boast-item" filter="buy-random-store-item" ref="Item" />
+		<!-- ================================================================ -->
+
+		<!-- ======================= acquire-item-reward =================== -->
+		<record alias="boast-from-decomposed-item" filter="acquire-item-reward" ref="Item" />
+		<record alias="boast-item" filter="acquire-item-reward" ref="Item" />
+		<!-- ================================================================ -->
+
+		<!-- ======================== awakening-item ======================== -->
+		<record alias="boast-item" filter="awakening-item" ref="Item" />
+		<!-- ================================================================ -->
+
+		<!-- ====================== complete-acheivement ==================== -->
+		<record alias="boast-achievement" filter="complete-acheivement" ref="achievement" />
+		<!-- ================================================================ -->
+
+		<!-- ====================== acquire-env-reward ====================== -->
+		<record alias="boast-from-env" filter="acquire-env-reward" ref="ZoneEnv2" />
+		<record alias="boast-item" filter="acquire-env-reward" ref="Item" />
+		<!-- ================================================================ -->
+
+		<!-- ====================== acquire-npc-reward ===================== -->
+		<record alias="item-grade" filter="acquire-npc-reward" type="Int8" />
+		<!-- ================================================================ -->
+
+		<!-- ========================= growth-item ========================== -->
+		<record alias="item-grade" filter="growth-item" type="Int8" />
+		<!-- ================================================================ -->
+
+		<!-- ====================== process-item-fusion ===================== -->
+		<record alias="item-grade" filter="process-item-fusion" type="Int8" />
+		<!-- ================================================================ -->
+
+		<!-- =================== treasureboard-season-reward ================ -->
+		<record alias="boast-item" filter="treasureboard-season-reward" ref="Item" />
+		<!-- ================================================================ -->
+
+		<!-- ====================== treasureboard-reward =================== -->
+		<record alias="boast-item" filter="treasureboard-reward" ref="Item" />
+		<!-- ================================================================ -->
+
+		<!-- ======================== improve-item ========================= -->
+		<record alias="improve-id" type="Int32" filter="improve-item" />
+		<record alias="improve-level" type="Int8" filter="improve-item" />
+		<!-- ================================================================ -->
+	</list>
+</table>

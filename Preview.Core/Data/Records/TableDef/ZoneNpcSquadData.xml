@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="ZoneData0" type="ZoneNpcSquad" version="0.11" side="server" >
+		<record alias="zone" ref="Zone" key="y" />
+		<record alias="id" type="Int16" key="y" />
+		<record alias="alias" type="String" />
+		<record alias="hate-share-distance" type="Distance" />
+		<record alias="enable-damage-transfer-to-leader" type="Bool" />
+		<record alias="combat-start-hate-share" type="Distance" />
+		<record alias="npc-bleeding-one-hate-share" type="Distance" />
+		<record alias="npc-bleeding-two-hate-shar" type="Distance" />
+		<record alias="npc-bleeding-three-hate-shar" type="Distance" />
+		<record alias="combat-pattern" type="Ref" ref="" />
+		<record alias="leader" type="Int8" />
+		<record alias="group-move" type="Bool" />
+		<record alias="spawn" type="Ref" ref="" repeat="20" />
+	</list>
+</table>

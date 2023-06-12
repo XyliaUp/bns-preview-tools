@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="ItemData" type="item-random-ability-section" version="0.1" >
+		<record alias="alias" type="String" />
+		<record alias="variation-value-min" type="Int32" />
+		<record alias="variation-value-max" type="Int32" />
+		<record alias="variation-value-with-special-item-min" type="Int32" />
+		<record alias="variation-value-with-special-item-max" type="Int32" />
+		<!-- ======================================================================= -->
+		<record alias="distribution-type" ref="RandomDistribution" default="Normal_0001" client="n" apply="must" />		
+	</list>
+</table>

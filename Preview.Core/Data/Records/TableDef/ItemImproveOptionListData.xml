@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list type="item-improve-option-list" module="ItemData" version="5.0" >
+		<record alias="id" type="Int32" key="y" />
+		<record alias="job" seq="job" type="Seq" key="y" />
+		<record alias="option" ref="ItemImproveOption" repeat="50" />
+		<record alias="option-prob-weight" type="Int16" repeat="50" />
+		<record alias="option-prob-max" type="Int16" />
+		<record alias="draw-cost-money" type="Int32" repeat="4" />
+		<record alias="draw-cost-main-item" ref="Item" repeat="4" />
+		<record alias="draw-cost-main-item-count" type="Int16" repeat="4" />
+		<record alias="draw-cost-sub-item-1" ref="Item" repeat="6" />
+		<record alias="draw-cost-sub-item-count-1" type="Int16" repeat="6" max="30000" min="0" />
+		<record alias="draw-cost-sub-item-2" ref="Item" repeat="6" />
+		<record alias="draw-cost-sub-item-count-2" type="Int16" repeat="6" max="30000" min="0" />
+		<record alias="draw-cost-sub-item-3" ref="Item" repeat="6" />
+		<record alias="draw-cost-sub-item-count-3" type="Int16" repeat="6" max="30000" min="0" />
+		<record alias="draw-cost-sub-item-4" ref="Item" repeat="6" />
+		<record alias="draw-cost-sub-item-count-4" type="Int16" repeat="6" max="30000" min="0" />
+	</list>
+</table>

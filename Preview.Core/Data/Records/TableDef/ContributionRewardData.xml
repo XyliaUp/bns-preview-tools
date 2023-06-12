@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="ItemData" type="ContributionReward" version="0.12" >
+		<record alias="alias" type="String" />
+		<record alias="contribution-type" type="Seq" >
+		     <case alias="normal" default="y" />
+		     <case alias="faction" />
+		     <case alias="guild" />
+		     <case alias="probability" />			 
+        </record>
+		<record alias="minimum-group-item" ref="Item" input="n" />
+        <!-- =================================================================== -->
+		<record alias="minimum-group-item-count" type="Int8" client="n" />
+		<record alias="killer-item" ref="Item" client="n" />
+		<record alias="killer-item-count" type="Int8" client="n" />
+		<record alias="group-damage-hp-per-ten-thousand" type="Int16" repeat="10" client="n" />
+		<record alias="group-item" ref="Item" repeat="10" client="n" />		
+		<record alias="group-item-count" type="Int8" repeat="10" client="n" />	
+		<record alias="guild-reward" ref="Reward" client="n" />		
+	</list>
+</table>

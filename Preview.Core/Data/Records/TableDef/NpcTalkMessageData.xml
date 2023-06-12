@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="AIData" type="NpcTalkMessage" version="0.60" side="client" >
+		<record alias="type" type="type" >
+			<case alias="branch" />
+			<case alias="questmessage" />
+			<case alias="teleport" />
+			<case alias="craft" />
+			<case alias="faction-coin-exchange" />
+			<case alias="store" />
+			<case alias="warehouse" />
+			<case alias="auction" />
+			<case alias="delivery" />
+			<case alias="make-summoned" />
+			<case alias="summoned-beauty-shop" />
+			<case alias="summoned-name-change" />
+			<case alias="create-guild" />
+			<case alias="join-faction" />
+			<case alias="transfer-faction" />
+			<case alias="contribute-guild-reputation" />
+			<case alias="dungeon-progress" />
+			<case alias="select-join-faction" />
+			<case alias="guild-customize" />
+		</record>
+
+		<record alias="alias" type="String" />
+		<record alias="name2" ref="Text" />
+		<record alias="required-faction" ref="Faction" />
+		<record alias="required-complete-quest" ref="Quest" />
+		<record alias="step-text" ref="Text" repeat="30" />	
+		<record alias="step-subtext" ref="Text" repeat="30" />
+		<record alias="step-next" ref="Text" repeat="30" />
+		<record alias="step-kismet" type="String" repeat="30" />
+		<record alias="step-cinematic" ref="Cinematic" repeat="30" />
+		<record alias="step-show" type="String" repeat="30" />
+		<record alias="step-camera-show" type="String" repeat="30" />
+		<record alias="function-step" type="Int8" />
+		<record alias="end-talk-social" ref="Social" />
+		<record alias="end-talk-sound" type="String" />
+		<!-- ==================================================================================== -->
+		<record alias="initial-branch" type="Bool" filter="branch" />
+		<record alias="branch-msg" filter="branch" ref="NpcTalkMessage" repeat="4" />
+		<!-- ==================================================================================== -->
+		
+		<!-- ==================================================================================== -->
+		<record alias="end-talk-social-quest-ok" filter="questmessage" ref="Social" />
+		<record alias="end-talk-sound-quest-ok" type="String" filter="questmessage" />
+		<!-- ==================================================================================== -->
+			
+		<!-- ==================================================================================== -->
+		<record alias="craft-message-type" type="Seq" filter="craft" >
+			<case alias="none" defaut="y" />
+			<case alias="join" />
+			<case alias="ask" />
+			<case alias="busy" />
+			<case alias="receive" />
+			<case alias="need-level" />
+			<case alias="full-craft" />
+        </record>
+		<!-- ==================================================================================== -->
+			
+		<!-- ==================================================================================== -->
+		<record alias="store-message-type" type="Seq" filter="store" repeat="2" >
+			<case alias="sale" defaut="y" />
+			<case alias="NotAuthority" />
+        </record>
+		<!-- ==================================================================================== -->
+			
+		<!-- ==================================================================================== -->
+		<record alias="end-talk-social-ok" filter="make-summoned" ref="Social" />
+		<!-- ==================================================================================== -->
+			
+		<!-- ==================================================================================== -->
+		<record alias="end-talk-show-ok" type="String" filter="summoned-name-change" />
+		<record alias="end-talk-sound-ok" type="String" filter="summoned-name-change" />		
+		<!-- ==================================================================================== -->
+			
+		<!-- ==================================================================================== -->
+		<record alias="end-talk-social-ok" type="Int32" filter="create-guild" ref="Social" />
+		<record alias="end-talk-sound-ok" type="String" filter="create-guild" />		
+		<!-- ==================================================================================== -->
+			
+		<!-- ==================================================================================== -->
+		<record alias="population-statistics" type="Seq" filter="join-faction | transfer-faction" >
+			<case alias="none" />
+			<case alias="faction-1-high" />
+			<case alias="equal" default="y" />
+			<case alias="faction-1-low" />
+			<case alias="joined-guild" />
+			<case alias="transfer-cooltime" />
+		</record>
+		<record alias="end-talk-social-ok" filter="join-faction | transfer-faction" ref="Social" />
+		<record alias="fail-population-message" filter="join-faction | transfer-faction" ref="NpcTalkMessage"/>		
+		<!-- ==================================================================================== -->
+			
+		<!-- ==================================================================================== -->
+		<record alias="dungeon" filter="dungeon-progress" ref="Dungeon" />
+		<!-- ==================================================================================== -->
+
+		<!-- ==================================================================================== -->
+		<record alias="population-statistics" type="Seq" filter="select-join-faction" >
+			<case alias="none" />
+			<case alias="faction-1-high" />
+			<case alias="equal" default="y" />
+			<case alias="faction-1-low" />
+			<case alias="joined-guild" />
+			<case alias="transfer-cooltime" />
+		</record>
+		<record alias="msg" filter="select-join-faction" ref="GameMessage" repeat="2" />
+		<record alias="faction" filter="select-join-faction" ref="Faction" repeat="2" />
+		<!-- ==================================================================================== -->	
+		
+		<!-- ==================================================================================== -->
+		<record alias="guild-customize-message-type" type="Seq" filter="guild-customize" >
+			<case alias="none" />
+			<case alias="EnterCustomize" default="y" />
+			<case alias="NotAuthority" />
+			<case alias="ActivateFaction" />
+			<case alias="WaitingArena" />
+		</record>
+		<!-- ==================================================================================== -->
+	</list>
+</table>

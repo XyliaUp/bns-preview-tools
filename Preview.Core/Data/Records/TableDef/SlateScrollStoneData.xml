@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="ItemData" type="SlateScrollStone" version="0.1" >
+		<record alias="scroll" ref="SlateScroll" />
+		<record alias="stone" ref="SlateStone" />
+		<record alias="tooltip" type="Bool" server="n" />
+	</list>
+</table>

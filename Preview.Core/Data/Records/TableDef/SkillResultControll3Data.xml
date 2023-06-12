@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="CombatData" type="SkillResultControll3" version="1.0" >
+		<record alias="alias" type="String" />
+		<record alias="immune-target-counter-skill" type="Bool" repeat="5" />
+		<record alias="immune-target-parry-skill" type="Bool" repeat="5" />
+		<record alias="immune-target-perfect-parry-skill" type="Bool" repeat="5" />
+		<record alias="immune-target-bounce-skill" type="Bool" repeat="5" />
+		<record alias="immune-target-dodge-skill" type="Bool" repeat="5" />
+		<record alias="immune-miss-result" type="Bool" repeat="5" />
+		<!-- ============================================== -->
+		<record alias="immune-caster-casting-bounce" type="Bool" client="n" />
+		<record alias="immune-caster-casting-dodge" type="Bool" client="n" />
+		<record alias="immune-caster-casting-parry" type="Bool" client="n" />
+		<record alias="immune-caster-casting-perfect-parry" type="Bool" client="n" />
+		<record alias="immune-caster-casting-immune" type="Bool" client="n" />
+		<record alias="immune-caster-flying-bounce" type="Bool" repeat="5" client="n" />
+		<record alias="immune-caster-flying-dodge" type="Bool" repeat="5" client="n" />
+		<record alias="immune-caster-flying-parry" type="Bool" repeat="5" client="n" />
+		<record alias="immune-caster-flying-perfect-parry" type="Bool" repeat="5" client="n" />
+		<record alias="immune-caster-flying-immune" type="Bool" repeat="5" client="n" />
+	</list>
+</table>

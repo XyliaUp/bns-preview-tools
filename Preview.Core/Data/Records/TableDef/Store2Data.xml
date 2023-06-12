@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<table>
+  <list module="ItemData" type="store2" version="1.0">
+    <record alias="id" type="Int32" key="y" />
+    <record alias="alias" type="String" />
+    <record alias="name2" name="商店名" server="n" ref="Text" />
+    <record alias="icon" name="商店前景图片" server="n" type="Icon" />
+    <record alias="none-selected-icon" name="商店后景图片" server="n" type="Icon" />
+    <record alias="faction" ref="Faction" />
+    <record alias="item" ref="Item" repeat="127" />
+    <record alias="buy-price" ref="ItemBuyPrice" repeat="127" />
+  </list>
+</table>

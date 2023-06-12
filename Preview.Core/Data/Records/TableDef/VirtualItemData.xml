@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="ItemData" type="virtual-item" version="0.2" >
+		<record alias="alias" type="String" />
+		<record alias="icon" type="Icon" />
+		<record alias="name2" ref="Text" />		
+		<record alias="talkable" type="Bool" />
+		<record alias="talk-mesh" type="String" />
+		<record alias="talk-animset" type="String" />
+		<record alias="message" ref="NpcTalkMessage" repeat="9" />
+	</list>
+</table>

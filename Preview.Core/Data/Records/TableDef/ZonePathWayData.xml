@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="ZoneData1" type="ZonePathway" version="1.52" >
+		<record alias="zone" type="Int32" key="y" />
+		<record alias="id" type="Int16" key="y" />
+		<record alias="waypoint" type="Int16" />
+		<record alias="alias" type="String" />
+		<record alias="pos" type="Vector32" />
+		<record alias="move-type" type="Seq" >
+			<case alias="walk" />
+			<case alias="run" />
+			<case alias="warp" />
+			<case alias="sprint" />
+         </record>
+		<record alias="warp-social" ref="Social" />
+		<record alias="description" type="String" />
+		<record alias="sync" type="Int16" />
+	</list>
+</table>

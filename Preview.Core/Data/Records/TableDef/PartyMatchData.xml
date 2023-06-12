@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="ZoneData0" type="partymatch" version="0.6" >
+		<record alias="alias" type="String" />
+		<record alias="name" ref="Text" />
+		<record alias="faction" ref="Faction" />
+		<record alias="level" type="Int16" server="n" />
+		<record alias="party-chat-channel" ref="PartyChatChannel" server="n" />
+	</list>
+</table>

@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="CombatData" type="DuelMemberDisplaySkill" version="0.2" side="server">
+		<record alias="pc-job" type="Seq" seq="job" key="y" />
+		<record alias="job-style" type="Seq" seq="job-style" key="y" />
+		<record alias="skill-id" type="Int32" repeat="4" />
+	</list>
+</table>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="AIData" type="soul-npc-skill" version="0.1" >
+		<record alias="alias" type="String" />
+		<record alias="skill3" ref="Skill3" repeat="10" />
+		<record alias="soul-particle" type="String" />
+		<record alias="target-ui-imageset" type="String" />	
+		<record alias="soul-tooltip" ref="Text" />	
+	</list>
+</table>

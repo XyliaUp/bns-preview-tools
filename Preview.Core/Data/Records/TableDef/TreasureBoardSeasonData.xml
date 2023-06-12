@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="ItemData" type="treasure-board-season" version="0.2" >
+		<record alias="id" type="Int32" key="y" />
+
+		<record alias="season-enable" type="Bool" />
+		<record alias="treasure-board-page" type="Ref" ref="TreasureBoardPage" repeat="10" />
+		<record alias="season-reward-item" type="Ref" ref="TreasureBoardReward" />
+		<record alias="season-reward-item-count" type="Int16" />
+		<record alias="season-name" ref="Text" />
+		<record alias="season-end-time" type="Time64" />
+		<record alias="season-board-symbol-on" type="String" />
+		<record alias="season-board-symbol-off" type="String" />
+	</list>
+</table>

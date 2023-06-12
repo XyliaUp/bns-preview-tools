@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<table>
+	
+	<list module="CombatData" type="SkillTooltip" version="0.15" >
+        <record alias="skill" ref="Skill3" error-type="Suggestion" />
+		<record alias="tooltip-group" type="Seq" >
+			<case alias="M1" />
+			<case alias="M2" />
+			<case alias="SUB" />
+			<case alias="STANCE" />
+			<case alias="CONDITION" />
+		</record>
+
+		<record alias="ect-order" type="dictionary" >
+			<case alias="CTE" default="y" />
+			<case alias="CET" />
+			<case alias="TCE" />
+			<case alias="TEC" />
+			<case alias="ECT" />
+			<case alias="ETC" />
+		</record>
+		<record alias="ect-order" type="Seq" seq="ect-order" />
+		<record alias="ect-order-english" type="Seq" seq="ect-order" />
+		<record alias="ect-order-french" type="Seq" seq="ect-order" />
+		<record alias="ect-order-german" type="Seq" seq="ect-order" />
+		<record alias="ect-order-russian" type="Seq" seq="ect-order" />
+		<record alias="ect-order-bportuguese" type="Seq" seq="ect-order" />
+		<record alias="effect-attribute" ref="SkillTooltipAttribute" />
+		<record alias="effect-arg" type="String" repeat="4" />
+		<record alias="condition-attribute" ref="SkillTooltipAttribute" />
+		<record alias="condition-arg" type="String" repeat="2" />
+		<record alias="target-attribute" ref="SkillTooltipAttribute" />
+		<record alias="before-stance-attribute" ref="SkillTooltipAttribute" />
+		<record alias="after-stance-attribute" ref="SkillTooltipAttribute" />	
+		<record alias="default-text" ref="Text" />
+		<record alias="attribute-color-text" ref="Text" />		
+		<record alias="skill-modify-diff-repeat-count" type="Int8" default="1" />	
+		<record alias="skill-attack-attribute-coefficient-percent" type="Int16" />		
+		<record alias="item-default-text" ref="Text" />	
+		<record alias="item-replace-text" ref="Text" />	
+	</list>
+</table>

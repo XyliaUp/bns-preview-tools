@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="CombatData" type="SkillSystematizationGroup" version="0.15" >
+		<record alias="alias" type="String" />
+        <record alias="name" type="String" />
+		<record alias="name2" ref="Text" />
+		<record alias="description" ref="Text" />
+		<record alias="sort-no" type="Int8" />
+		<record alias="use-bookmark" type="Bool" />
+		<record alias="bookmark-description" ref="Text" />
+        <record alias="category-icon-text-1" type="String" />
+        <record alias="category-icon-text-2" type="String" />
+        <record alias="train-icon-text-1" type="String" />
+        <record alias="train-icon-text-2" type="String" />
+		<record alias="icon" type="Icon" />
+        <record alias="tooltip-description" ref="Text" />			
+	</list>
+</table>

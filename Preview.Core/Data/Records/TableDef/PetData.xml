@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="ItemData" type="pet" version="0.1" >
+		<record alias="alias" type="String" />
+		<record alias="mesh-name" type="String" />
+		<record alias="mesh-scale" type="Float32" default="1.0" />
+		<record alias="material-name-1" type="String" />
+		<record alias="material-name-2" type="String" />
+		<record alias="material-name-3" type="String" />	
+		<record alias="anim-set-name" type="String" />
+		<record alias="anim-tree-name" type="String" />
+		<record alias="caster-spawn-show" type="String" />
+		<record alias="caster-despawn-show" type="String" />
+		<record alias="idle-anim" type="String" />
+		<record alias="combat-idle-anim" type="String" />
+		<record alias="spawn-show" type="String" />
+		<record alias="effect-show" type="String" />
+		<record alias="despawn-show" type="String" />
+		<record alias="food-show" type="String" />
+	</list>
+</table>

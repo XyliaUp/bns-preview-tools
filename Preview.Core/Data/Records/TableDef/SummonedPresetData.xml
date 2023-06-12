@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="CombatData" type="SummonedPreset" version="0.3" >
+		<record alias="race" type="Seq" seq="race" key="y" />
+		<record alias="part-type" type="Seq" key="y" >
+			<case alias="none" />
+			<case alias="face" />
+			<case alias="body" />
+			<case alias="eye-color" />
+			<case alias="eye" />
+			<case alias="body-color" />
+			<case alias="body-shape" />
+			<case alias="decal" />
+        </record>
+		<record alias="part-value" type="Int8" key="y" />
+
+		<record alias="alias" type="String" />
+		<record alias="price" type="Int32" />
+		<record alias="icon-texture" ref="IconTexture" />
+		<record alias="icon-index" type="Int16" />
+		<record alias="desc" ref="Text" />
+		<record alias="param8" type="Int8" repeat="92" />
+	</list>
+</table>

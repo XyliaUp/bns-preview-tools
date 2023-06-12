@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="ItemData" type="item-buy-price" version="3.0" >
+		<record alias="alias" type="String" />
+		<record alias="money" type="Int32" />
+		<record alias="required-itembrand" ref="item-brand" type="Int32" />
+		<record alias="required-itembrand-condition-type" out-cond="Exist: required-itembrand" seq="condition-type" type="Seq" />
+		<record alias="required-item" ref="Item" repeat="4" />
+		<record alias="required-item-count" type="Int16" repeat="4" />
+		<record alias="required-faction-score" type="Int32" />
+		<record alias="required-duel-point" type="Int32" />
+		<record alias="required-party-battle-point" type="Int32" />
+		<record alias="required-field-play-point" type="Int32" />
+		<record alias="required-life-contents-point" type="Int32" />
+		<record alias="required-achievement-score" type="Int32" />
+		<record alias="required-achievement-id" type="Int32" />
+		<record alias="required-achievement-step-min" type="Int16" />
+		<record alias="faction-level" type="Int16" />
+		<record alias="check-solo-duel-grade" type="Int8" />
+		<record alias="check-team-duel-grade" type="Int8" />
+		<record alias="check-battle-field-grade-occupation-war" type="Int8" />
+		<record alias="check-battle-field-grade-capture-the-flag" type="Int8" />
+		<record alias="check-battle-field-grade-lead-the-ball" type="Int8" />
+		<record alias="check-closet-collecting-grade" type="Int8" />
+		<record alias="check-content-quota" ref="ContentQuota" />
+		<record alias="check-soul-boost-season-bm" type="Int32" />
+		<record alias="required-level" type="Int8" default="1" />
+		<record alias="required-mastery-level" type="Int8" />
+		<record alias="required-account-level" type="Int16" />
+	</list>
+</table>

@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list type="item-improve-set-bonus" module="ItemData" version="2.0" >
+		<record alias="id" type="Int32" key="y" />
+		<record alias="alias" type="String" />
+		<record alias="name" ref="Text" />
+		<record alias="target-item" repeat="12" type="TRef" />
+		<record alias="target-item-condition-type" type="Seq" seq="condition-type" repeat="12" />
+		<record alias="target-equip-pos" type="Seq" repeat="12" >
+			<case alias="none" default="y" />
+			<case alias="hand" />
+			<case alias="body" />
+			<case alias="ear" />
+			<case alias="eye" />
+			<case alias="head" />
+			<case alias="finger" />
+			<case alias="neck" />
+			<case alias="gem-1" />
+			<case alias="gem-2" />
+			<case alias="gem-3" />
+			<case alias="gem-4" />
+			<case alias="gem-5" />
+			<case alias="gem-6" />
+			<case alias="gem-7" />
+			<case alias="gem-8" />
+			<case alias="wrist" />
+			<case alias="waist" />
+			<case alias="body-attach" />
+			<case alias="summoned-body" />
+			<case alias="summoned-head" />
+			<case alias="summoned-attach" />
+			<case alias="soul" />
+			<case alias="preset-gem-1" />
+			<case alias="preset-gem-2" />
+			<case alias="preset-gem-3" />
+			<case alias="preset-gem-4" />
+			<case alias="preset-gem-5" />
+			<case alias="preset-gem-6" />
+			<case alias="preset-gem-7" />
+			<case alias="preset-gem-8" />
+			<case alias="soul-2" />
+			<case alias="gloves" />
+			<case alias="pet-1" />
+			<case alias="pet-2" />
+			<case alias="rune-1" />
+			<case alias="rune-2" />
+			<case alias="nova" />
+			<case alias="vehicle" />
+			<case alias="preset-hand" />
+			<case alias="preset-ear" />
+			<case alias="preset-finger" />
+			<case alias="preset-neck" />
+			<case alias="preset-wrist" />
+			<case alias="preset-waist" />
+			<case alias="preset-soul" />
+			<case alias="preset-soul-2" />
+			<case alias="preset-gloves" />
+			<case alias="preset-pet-1" />
+			<case alias="preset-pet-2" />
+			<case alias="preset-rune-1" />
+			<case alias="preset-rune-2" />
+			<case alias="preset-nova" />
+			<case alias="preset-vehicle" />
+		</record>
+		<record alias="target-equip-pos-icon" repeat="12" type="Icon" />
+		<record alias="min-item-grade" type="Int8" max="8" min="0" />
+		<record alias="total-improve-level" type="Int16" repeat="30" />	
+		<record alias="total-improve-level-effect" ref="Effect" repeat="30" />	
+		<record alias="total-improve-level-effect-description" ref="Text" repeat="30" />	
+		<record alias="total-improve-level-ability" type="Seq" seq="attach-ability" repeat="30" />
+		<record alias="total-improve-level-ability-value" type="Int32" repeat="30" />	
+		<record alias="total-improve-level-condition-event" ref="ConditionEvent" repeat="30" />	
+		<record alias="min-improve-level" type="Int16" repeat="30" />	
+		<record alias="min-improve-level-effect" ref="Effect" repeat="30" />	
+		<record alias="min-improve-level-effect-description" ref="Text" repeat="30" />	
+		<record alias="min-improve-level-ability" type="Seq" seq="attach-ability" repeat="30" />
+		<record alias="min-improve-level-ability-value" type="Int32" repeat="30" />	
+		<record alias="min-improve-level-condition-event" ref="ConditionEvent" repeat="30" />	
+	</list>
+</table>

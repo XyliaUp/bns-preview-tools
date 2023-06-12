@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="CombatData" type="race" version="0.7" >
+		<record alias="race" type="Seq" seq="race" key="y" />
+		<record alias="name2" ref="Text" />
+		<record alias="lobby-race-imageset" type="String" />
+		<record alias="character-info-race-imageset" type="String" />
+		<record alias="desc" ref="Text" />
+		<record alias="male-customize-zoomcamera-add-height" type="Int8" />
+		<record alias="female-customize-zoomcamera-add-height" type="Int8" />
+		<record alias="lobby-race-bgm" type="String" />
+	</list>
+</table>

@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="ItemData" type="craft-case-recipe" version="0.4" >
+		<record alias="id" type="Int32" key="y" />
+		<record alias="alias" type="String" />
+		<record alias="group-alias" ref="CraftGroupRecipe" />		
+		<record alias="case-option" type="Int8" server="n" />		
+		<record alias="craft-duration" type="Msec" />			
+		<record alias="use-state" type="Seq" >
+			<case alias="invalid-state" />
+			<case alias="no-more-use" />
+			<case alias="in-use" default="y" />			
+		</record>	
+		<record alias="name" ref="Text" />		
+		<record alias="desc" ref="Text" />		
+		<record alias="requirement-name" ref="Text" />		
+		<record alias="location-desc" ref="Text" />		
+		<record alias="required-craft-exp" type="Int16" />
+		<record alias="required-achievement-id" type="Int32" />			
+		<record alias="required-achievement-step-min" type="Int8" />		
+		<record alias="cost-money" type="Int32" />	
+		<record alias="cost-material" type="TRef" repeat="8" />
+		<record alias="cost-material-condition-type" type="Seq" seq="condition-type" repeat="8" />
+		<record alias="cost-material-amount" type="Int16" repeat="8" />
+		<record alias="reward-craft-exp" type="Int16" />
+		<record alias="half-craft-exp-step" type="Int16" />
+		<record alias="zero-craft-exp-step" type="Int16" />
+		<record alias="reward-craft-bonus-exp" type="Int16" />
+		<record alias="half-craft-bonus-exp-step" type="Int16" />
+		<record alias="zero-craft-bonus-exp-step" type="Int16" />
+		<record alias="reward-item" ref="Item" repeat="5" />
+		<record alias="reward-item-min" type="Int32" repeat="5" />
+		<record alias="reward-item-max" type="Int32" repeat="5" />
+		<record alias="reward-item-reference" type="Int32" repeat="5" />
+		<!-- ======================================================= -->
+		<record alias="reward-item-random-distribution" client="n" default="Craft_0001" apply="must" ref="RandomDistribution" out-cond="Exist: reward-item-*" repeat="5" />
+		<!-- ======================================================= -->
+	</list>
+</table>

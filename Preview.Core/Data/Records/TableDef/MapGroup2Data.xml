@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="ZoneData0" type="map-group-2" version="0.1" >
+		<record alias="alias" type="String" />	
+		<record alias="quest-filtering-type" type="Seq" >
+			<case alias="default" default="y" />
+			<case alias="current-group-only" />
+		</record>
+	</list>
+</table>

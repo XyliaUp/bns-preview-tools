@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list type="vehicle" module="ItemData" version="4.0" >
+		<record alias="id" type="Int32" key="y" />
+		<record alias="alias" type="String" />
+		<record alias="vehicle-speed" type="Int16" />
+		<record alias="sprint-speed" type="Int32" />
+		<record alias="glide-speed" type="Int32" />
+		<record alias="boost-speed" type="Int32" />
+		<record alias="turn-rate" type="Int32" />
+		<record alias="jump-height" type="Int32" />
+		<record alias="jump-run-height" type="Int32" />
+		<record alias="jump-sprint-height" type="Int32" />
+		<record alias="riding-action-duration" type="Int32" />
+		<record alias="appearance" ref="CreatureAppearance" />
+		<record alias="context-script" ref="ContextScript" />
+		<record alias="disable-move-type" type="Seq" >
+			<case alias="hyper" name="" />
+			<case alias="sprint" name="" />
+			<case alias="drift" name="" />
+			<case alias="boost" name="" />
+			<case alias="dive" name="" />
+			<case alias="wall-move" name="" />
+			<case alias="event-jump" name="" />
+			<case alias="rocket-jump" name="" />
+			<case alias="glide" name="" />
+			<case alias="none" name="" default="y" />
+		</record>
+		<record alias="group" type="Int32" />
+		<record alias="level" type="Int32" />
+		<record alias="item" ref="Item" />
+	</list>
+</table>

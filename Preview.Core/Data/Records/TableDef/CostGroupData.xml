@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="ItemData" type="cost-group" version="0.14" >
+		<record alias="id" type="Int32" key="y" />
+		<record alias="alias" type="String" />
+		<record alias="item" ref="Item" repeat="8" />
+		<record alias="item-amount" type="Int16" repeat="8" />
+		<record alias="money" type="Int64" />
+	</list>
+</table>

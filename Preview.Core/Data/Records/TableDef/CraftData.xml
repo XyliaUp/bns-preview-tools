@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="ItemData" type="craft" version="0.1" >
+	    <record alias="category" seq="production-type" type="Seq" key="y" />
+		
+		<record alias="name" ref="Text" />
+		<record alias="icon" type="Icon" />
+		<record alias="none-selected-icon" type="Icon" />
+		<record alias="join-msg" ref="GameMessage" />
+		<record alias="level-up-msg" ref="GameMessage" />
+		<record alias="max-level-msg" ref="GameMessage" />
+		<record alias="need-exp-for-level" type="Int32" default="-1" repeat="100" />
+	</list>
+</table>

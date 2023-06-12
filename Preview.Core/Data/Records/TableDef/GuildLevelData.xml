@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="ItemData" type="guildlevel" version="1.11" >
+		<record alias="level" key="y" type="Int8" />
+		<record alias="guild-type" key="y" type="Int8" />
+		<record alias="money" type="Int32" />
+		<record alias="required-item" ref="Item" repeat="5" />
+		<record alias="required-item-count" type="Int32" repeat="5" />
+		<record alias="required-guild-point" type="Int32" />
+		<record alias="reputation" type="Int32" />
+		<record alias="min-member-count" type="Int32" />
+		<record alias="max-member-count" type="Int32" />
+		<record alias="min-enable-member-count" type="Int32" />
+		<record alias="guild-discount" ref="GuildDiscount" />
+		<record alias="level-skill-imageset" type="String" server="n" repeat="10" />
+		<record alias="level-skill-name" ref="Text" repeat="10" />
+		<record alias="level-skill-description" ref="Text" repeat="10" />
+		<record alias="display-basic-skill-imageset" type="String" server="n" repeat="10" />
+		<record alias="display-basic-skill-name" ref="Text" repeat="10" />
+		<record alias="display-basic-skill-description" ref="Text" repeat="10" />
+		<record alias="display-add-skill-imageset" type="String" server="n" repeat="10" />
+		<record alias="display-add-skill-name" ref="Text" repeat="10" />
+		<record alias="display-add-skill-description" ref="Text" repeat="10" />
+		<record alias="guildcraft-small-usable-count" type="Int8" />
+		<record alias="guildcraft-small-rentable-count" type="Int8" />
+		<record alias="guildcraft-big-usable-count" type="Int8" />
+		<record alias="guildcraft-big-rentable-count" type="Int8" />
+		<record alias="levelup-text" ref="Text" />
+	</list>
+</table>

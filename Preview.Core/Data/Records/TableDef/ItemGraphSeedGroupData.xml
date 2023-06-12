@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="ItemData" type="item-graph-seed-group" version="0.2" >
+		<record alias="alias" type="String" />
+	</list>
+</table>

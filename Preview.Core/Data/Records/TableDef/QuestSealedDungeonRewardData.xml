@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="QuestData" type="quest-sealed-dungeon-reward" version="1.0" >
+		<record alias="id" type="Int32" key="y" />
+		<record alias="level" type="Int8" key="y" />
+		<record alias="alias" type="String" />
+		<record alias="reward-item" ref="Item" repeat="4" />
+		<record alias="reward-item-count" type="Int16" repeat="4" />
+	</list>
+</table>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="CombatData" type="job-style" version="0.14" >
+		<record alias="job" type="prop_seq" seq="job" key="y" />
+		<record alias="job-style" type="Seq" seq="job-style" key="y" />
+		<record alias="alias" type="String" />
+		<record alias="introduce-job-style-icon" type="String" />
+		<record alias="introduce-job-style-name" ref="Text" />
+		<record alias="introduce-job-style-play-desc" ref="Text" />
+		<record alias="introduce-job-style-specialization" ref="JobStyleSpecialization" repeat="5" />
+		<record alias="unk-" type="Int32" />
+		<record alias="unk-" type="Int32" />
+		<record alias="combat-start-fx-show" type="String" />
+		<record alias="combat-end-fx-show" type="String" />
+		<record alias="right-weapon-particle-ref" type="String" />
+		<record alias="right-weapon-particle-socket" type="String" />
+		<record alias="left-weapon-particle-ref" type="String" />
+		<record alias="left-weapon-particle-socket" type="String" />
+		<record alias="phantom-weapon-ribbon-particle-ref" type="String" />
+		<record alias="auto-combat-attack-distance" type="Distance" />
+		<record alias="auto-combat-converted-distance-attacker-enemy" type="Distance" />
+		<record alias="auto-combat-converted-distance-pouch" type="Distance" />
+		<record alias="auto-combat-converted-distance-enemy" type="Distance" />
+		<record alias="enable-job-style-gauge-ui" type="Bool" />
+		<record alias="job-style-gauge-unit" type="Int8" />		
+		<record alias="job-style-gauge-full-charge-icon" type="Bool" />		
+		<record alias="job-style-gauge-full-charge-particle-ref" type="String" />
+		<record alias="job-style-gauge-full-charge-particle-scale" type="Float32" />	
+	</list>
+</table>

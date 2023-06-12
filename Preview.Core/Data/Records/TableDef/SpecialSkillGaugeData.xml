@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="CombatData" type="special-skill-gauge" version="0.1" >
+		<record alias="job" key="y" type="Seq" seq="job" />
+		<record alias="gauge-increase-per-sec" type="Int16" />
+	</list>
+</table>

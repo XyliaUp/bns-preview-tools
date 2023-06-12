@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<table>
+  <list module="AIData" type="ZoneTriggerEventStage" version="0.11" > 
+<!--
+total-duration-minute-1/2 分别对应各自的 next-cond-1/2 条件, 注意两者之间并不互斥
+如果同时设置为时间类型, 又不设置对应的持续时间。就会出现事件刚结束就立即再次触发的问题。
+
+Event结束时刻为触发时刻+总时长+1分钟（因为触发时刻的那一分钟不会参与计算）
+因此如果需要特定时间点结束, 必须对总时长减去1
+-->
+    <record alias="type" type="type" >
+		<case alias="stage-stand-by-classic-field" />
+		<case alias="stage-stand-by-guild-battle-field-entrance" />
+		<case alias="stage-stand-by-persistant-zone" />
+		<case alias="stage-stand-by-instant-zone" />
+		<case alias="stage" />
+    </record>
+
+	  
+    <record alias="zone" type="Int32" key="y" />
+    <record alias="zone-mode-set-id" type="Int8" key="y" />
+    <record alias="zone-mode" type="Int8" />
+    <record alias="branch-id" type="Int8" />
+    <record alias="alias" type="String" />	
+    <record alias="next-cond-1" ref="ZoneTriggerEventCond" />	
+    <record alias="next-cond-2" ref="ZoneTriggerEventCond" />
+    <record alias="next-cond-branch-id-1" type="Int8" default="1" />
+    <record alias="next-cond-branch-id-2" type="Int8" default="1" />
+    <record alias="broadcast-context" type="Seq" >	
+		<case alias="none" default="y" />
+		<case alias="timeout-time" />
+		<case alias="boss-challenge-attraction-round" />
+	</record>
+    <record alias="start-stage-kismet" type="String" />
+	<record alias="end-stage-kismet" type="String" />
+	<!-- ===================================================================== -->
+    <record alias="channel-entry-min-level" type="Int8" client="n" />
+    <record alias="channel-entry-max-level" type="Int8" client="n" />
+	<record alias="next-stage-setup" ref="NpcResetStage" client="n" repeat="2" />
+	<record alias="fail-stage-setup" ref="NpcResetStage" client="n" />
+    <record alias="timeout-duration-minute" type="Int16" client="n" />
+    <record alias="timeout-duration-second" type="Int16" client="n" />
+	<!-- ===================================================================== -->
+	
+
+	
+	<!-- ===================================================================== -->
+    <record alias="min-growing-channel" type="Int8" filter="stage-stand-by-guild-battle-field-entrance" />	
+    <record alias="total-duration-minute-1" type="Int16" filter="stage-stand-by-guild-battle-field-entrance" />	
+	<record alias="total-duration-minute-2" type="Int16" filter="stage-stand-by-guild-battle-field-entrance" />	
+	<!-- ===================================================================== -->
+	
+	<!-- ===================================================================== -->
+    <record alias="fail-cond" ref="ZoneTriggerEventCond" filter="stage" repeat="3" />
+	<record alias="clear-score" type="Bool" filter="stage" client="n" />
+	<record alias="fail-stage-add-timeout-duration-minute" type="Int32" filter="stage" client="n" />
+	<!-- ===================================================================== -->
+	
+	<!-- ===================================================================== -->
+    <record alias="all-channel" type="Bool" filter="stage-stand-by-persistant-zone" />	
+    <record alias="max-channel" type="Int8" filter="stage-stand-by-persistant-zone" />
+    <record alias="max-event-channel" type="Int8" filter="stage-stand-by-persistant-zone" />
+    <record alias="min-growing-channel" type="Int8" filter="stage-stand-by-persistant-zone" />
+    <record alias="total-duration-minute" type="Int16" filter="stage-stand-by-persistant-zone" repeat="2" />
+	<record alias="persistant-zone-subtype" type="Seq" filter="stage-stand-by-persistant-zone" >	
+			<case alias="none" default="y" />
+			<case alias="invade-town" />
+			<case alias="faction-stage" />
+	</record>
+    <record alias="event-channel-text" ref="Text" filter="stage-stand-by-persistant-zone" server="n" />
+	<record alias="event-notify-diff-zone" ref="Zone" filter="stage-stand-by-persistant-zone" server="n" repeat="6" />	
+	<record alias="event-notify-diff-zone-msg" ref="GameMessage" filter="stage-stand-by-persistant-zone" server="n" />
+	<record alias="event-notify-diff-channel-msg" ref="GameMessage" filter="stage-stand-by-persistant-zone" server="n" />
+	<record alias="event-notify-msg" ref="GameMessage" filter="stage-stand-by-persistant-zone" server="n" />
+	<!-- ===================================================================== -->
+  </list>
+</table>
+

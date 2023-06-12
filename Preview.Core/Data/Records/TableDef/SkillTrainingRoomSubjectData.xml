@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="ZoneData0" type="skill-training-room-subject" version="0.11" >
+		<record alias="type" type="type" >
+			<case alias="class-training" />
+			<case alias="boss-training" />
+		</record>
+	
+		<record alias="id" type="Int32" key="y" />
+		<record alias="subject-name" ref="Text" />
+		<record alias="group-data-id" ref="SkillTrainingRoomGroup" server="n" />
+		<record alias="system-msg" ref="GameMessage" server="n" />
+		<record alias="start-kismet-name" type="String" server="n" repeat="2" />
+		<record alias="end-kismet-name" type="String" server="n" repeat="2" />
+		<record alias="sort-number" type="Int16" server="n" />
+		<record alias="subject-stage" ref="this" client="n" />
+		<record alias="support-npc" ref="Npc" client="n" />
+		<record alias="pc-effect" ref="Effect" client="n" repeat="4" />
+		<!-- =========================================================================== -->
+		<record alias="boss-npc" ref="Npc" filter="boss-training" server="n" />
+		<record alias="boss-desc" ref="Text" filter="boss-training" server="n" />
+		<record alias="boss-combat-desc" ref="Text" filter="boss-training" server="n" />
+		<record alias="boss-combat-tips-desc" ref="Text" filter="boss-training" server="n" />
+		<record alias="boss-image" type="String" filter="boss-training" server="n" />
+		<record alias="dungeon-name" ref="Text" filter="boss-training" server="n" />
+		<record alias="dungeon-group" type="Seq" filter="boss-training" server="n" >
+			<case alias="none" default="y" />
+			<case alias="party" />
+			<case alias="team" />
+		</record>
+		<!-- =========================================================================== -->
+
+		<!-- =========================================================================== -->
+		<record alias="main-skill" ref="Skill3" filter="class-training" server="n" />
+		<record alias="skill-combo-desc" ref="Text" filter="class-training" server="n" />
+		<record alias="skill-combo-tips-main" ref="Text" filter="class-training" server="n" />
+		<record alias="skill-combo-tips-desc" ref="Text" filter="class-training" server="n" />
+		<record alias="skill-training-sequence" ref="SkillTrainingSequence" filter="class-training" server="n" />
+		<record alias="guide-text" ref="Text" filter="class-training" server="n" />
+		<record alias="base-job-style" type="Seq" seq="job-style" filter="class-training" server="n" />
+		<record alias="advanced-job-style" type="Seq" seq="job-style" filter="class-training" server="n" />
+		<record alias="advanced-tier-variation" type="Int8" filter="class-training" server="n" repeat="5" />
+		<record alias="advanced-tier-variation-flag-op-1" type="Seq" filter="class-training" server="n" repeat="5" >
+			<case alias="equal" default="y" />
+			<case alias="not" />
+		</record>
+		<!-- =========================================================================== -->
+	</list>
+</table>

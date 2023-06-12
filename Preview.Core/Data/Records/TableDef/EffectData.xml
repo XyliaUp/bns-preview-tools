@@ -1,0 +1,1465 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="CombatData" type="effect" version="28.2" >
+		<record alias="type" type="type" seq="type-seq" >
+			<case alias="none" default="y" />
+			<case alias="accumulated-damage-to-anyone" />
+			<case alias="accumulated-damage-from-1" />
+			<case alias="accumulated-damage-from-2" />
+			<case alias="accumulated-damage-from-3" />
+			<case alias="melee-physical-attack" />
+			<case alias="melee-physical-attack-hate" />
+			<case alias="melee-physical-attack-drain" />
+			<case alias="force-attack-hp-drain" />
+			<case alias="force-attack-sp-drain" />
+			<case alias="melee-physical-attack-sp-drain" />
+			<case alias="melee-physical-attack-hp-sp-drain" />
+			<case alias="force-attack-hp-sp-drain" />
+			<case alias="range-physical-attack" />
+			<case alias="force-attack" />
+			<case alias="force-attack-hate" />
+			<case alias="speed-physical-attack" />
+			<case alias="part-attack" />
+			<case alias="stance" />
+			<case alias="hp-heal" />
+			<case alias="hp-heal-attack-power" />
+			<case alias="hp-damage" />
+			<case alias="hp-set-fixed-value" />
+			<case alias="hp-set-max-hp-fixed-percent" />
+			<case alias="guard-gauge-heal" />
+			<case alias="guard-gauge-damage" />
+			<case alias="food-interval-hp-heal" />
+			<case alias="set-immune-breaker" />
+			<case alias="sp-heal" />
+			<case alias="sp-damage" />
+			<case alias="desire-increase" />
+			<case alias="set-min-hate" />
+			<case alias="set-max-hate" />
+			<case alias="ruin-phantom" />
+			<case alias="shout-physical-attack" />
+			<case alias="resurrection" />
+			<case alias="hp-drain" />
+			<case alias="hp-transfer" />
+			<case alias="cast-cancel" />
+			<case alias="unlink" />
+			<case alias="extend-link" />
+			<case alias="extend-effect" />
+			<case alias="fluctuation-time-effect" />
+			<case alias="dispel-type" />
+			<case alias="dispel-attribute" />
+			<case alias="dispel-buff" />
+			<case alias="dispel-debuff" />
+			<case alias="transit" />
+			<case alias="return" />
+			<case alias="return-to-basecamp" />
+			<case alias="return-sim-skill" />
+			<case alias="instantaneous-death" />
+			<case alias="internal-force-attack" />
+			<case alias="refill-vitality" />
+			<case alias="recovery-content-quota" />
+			<case alias="increase-special-skill-gauge" />
+			<case alias="increase-caster-special-skill-gauge" />
+			<case alias="modify-break-gauge" />
+			<case alias="unk-" />
+			<case alias="bound" />
+			<case alias="link" />
+			<case alias="knockback" />
+			<case alias="tumbling" />
+			<case alias="detection" />
+			<case alias="put-in-sword" />
+			<case alias="bind-phantom" />
+			<case alias="bleeding" />
+			<case alias="buff-max-hp" />
+			<case alias="buff-max-sp" />
+			<case alias="additional-hp" />
+			<case alias="stun" />
+			<case alias="unk-" />
+			<case alias="unk-" />
+			<case alias="immune-attribute" />
+			<case alias="immune-debuff" />
+			<case alias="invincible" />
+			<case alias="silent" />
+			<case alias="seal-military-arts" />
+			<case alias="provocation" />
+			<case alias="increase-defence-power" />
+			<case alias="interval-hp-heal" />
+			<case alias="interval-hp-heal-2" />
+			<case alias="interval-hp-heal-3" />
+			<case alias="item-interval-hp-heal" />
+			<case alias="item-interval-hp-heal-2" />
+			<case alias="item-interval-hp-heal-3" />
+			<case alias="interval-hp-damage" />
+			<case alias="interval-hp-damage-2" />
+			<case alias="interval-hp-damage-3" />
+			<case alias="interval-sp-heal" />
+			<case alias="interval-sp-heal-2" />
+			<case alias="interval-sp-heal-3" />
+			<case alias="interval-sp-heal-4" />
+			<case alias="item-interval-sp-heal-1" />
+			<case alias="item-interval-sp-heal-2" />
+			<case alias="item-interval-sp-heal-3" />
+			<case alias="item-interval-sp-heal-4" />
+			<case alias="interval-sp-damage" />
+			<case alias="interval-guard-gauge-heal" />
+			<case alias="stagger" />
+			<case alias="flash" />
+			<case alias="internal-injury" />
+			<case alias="midair-1" />
+			<case alias="midair-2" />
+			<case alias="midair-3" />
+			<case alias="down" />
+			<case alias="swoon" />
+			<case alias="kneel" />
+			<case alias="knob-attack" />
+			<case alias="buff-parry" />
+			<case alias="buff-bounce" />
+			<case alias="opening-eyes" />
+			<case alias="immediately-exec" />
+			<case alias="increase-force-damage" />
+			<case alias="increase-heal" />
+			<case alias="force-amplification" />
+			<case alias="concentration" />
+			<case alias="special-deification" />
+			<case alias="marking" />
+			<case alias="vital-attacked" />
+			<case alias="infinity-shot" />
+			<case alias="external-injury" />
+			<case alias="external-injury-damage" />
+			<case alias="embers" />
+			<case alias="embers-explosion" />
+			<case alias="force-seed" />
+			<case alias="frostbite" />
+			<case alias="frostbite-drain" />
+			<case alias="magnetic-seal" />
+			<case alias="fast-freezing" />
+			<case alias="rupture" />
+			<case alias="impregnability" />
+			<case alias="prickblood" />
+			<case alias="defence" />
+			<case alias="wildfire-1" />
+			<case alias="wildfire-2" />
+			<case alias="wildfire-3" />
+			<case alias="wildfire-1-explosion" />
+			<case alias="wildfire-2-explosion" />
+			<case alias="wildfire-3-explosion" />
+			<case alias="hide" />
+			<case alias="burrow" />
+			<case alias="burrow-scan" />
+			<case alias="smokescreen" />
+			<case alias="detect-hiding" />
+			<case alias="poison-fog" />
+			<case alias="struggle" />
+			<case alias="Modify-Ability-1" />
+			<case alias="Modify-Ability-2" />
+			<case alias="Modify-Ability-3" />
+			<case alias="Modify-Ability-4" />
+			<case alias="Modify-Ability-5" />
+			<case alias="Modify-Ability-6" />
+			<case alias="Modify-Ability-7" />
+			<case alias="Modify-Ability-8" />
+			<case alias="Modify-Ability-9" />
+			<case alias="Modify-Ability-10" />
+			<case alias="Modify-Ability-11" />
+			<case alias="Modify-Ability-12" />
+			<case alias="Modify-Ability-13" />
+			<case alias="Modify-Ability-14" />
+			<case alias="Modify-Ability-15" />
+			<case alias="Modify-Ability-16" />
+			<case alias="Modify-Ability-17" />
+			<case alias="Modify-Ability-18" />
+			<case alias="Modify-Ability-19" />
+			<case alias="Modify-Ability-20" />
+			<case alias="Modify-Ability-21" />
+			<case alias="Modify-Ability-22" />
+			<case alias="Modify-Ability-23" />
+			<case alias="Modify-Ability-24" />
+			<case alias="Modify-Ability-25" />
+			<case alias="Modify-Ability-26" />
+			<case alias="Modify-Ability-27" />
+			<case alias="Modify-Ability-28" />
+			<case alias="Modify-Ability-29" />
+			<case alias="Modify-Ability-30" />
+			<case alias="Modify-Ability-31" />
+			<case alias="Modify-Ability-32" />
+			<case alias="Modify-Ability-33" />
+			<case alias="Modify-Ability-34" />
+			<case alias="Modify-Ability-35" />
+			<case alias="Modify-Ability-36" />
+			<case alias="Modify-Ability-37" />
+			<case alias="Modify-Ability-38" />
+			<case alias="Modify-Ability-39" />
+			<case alias="Modify-Ability-40" />
+			<case alias="Modify-Ability-41" />
+			<case alias="Modify-Ability-42" />
+			<case alias="Modify-Ability-43" />
+			<case alias="Modify-Ability-44" />
+			<case alias="Modify-Ability-45" />
+			<case alias="Modify-Ability-46" />
+			<case alias="Modify-Ability-47" />
+			<case alias="Modify-Ability-48" />
+			<case alias="Modify-Ability-49" />
+			<case alias="Modify-Ability-50" />
+			<case alias="Modify-Ability-51" />
+			<case alias="Modify-Ability-52" />
+			<case alias="Modify-Ability-53" />
+			<case alias="Modify-Ability-54" />
+			<case alias="Modify-Ability-55" />
+			<case alias="Modify-Ability-56" />
+			<case alias="Modify-Ability-57" />
+			<case alias="Modify-Ability-58" />
+			<case alias="Modify-Ability-59" />
+			<case alias="Modify-Ability-60" />
+			<case alias="Modify-Ability-61" />
+			<case alias="Modify-Ability-62" />
+			<case alias="Modify-Ability-63" />
+			<case alias="Modify-Ability-64" />
+			<case alias="Modify-Ability-65" />
+			<case alias="Modify-Ability-66" />
+			<case alias="Modify-Ability-67" />
+			<case alias="Modify-Ability-68" />
+			<case alias="Modify-Ability-69" />
+			<case alias="Modify-Ability-70" />
+			<case alias="Modify-Ability-71" />
+			<case alias="Modify-Ability-72" />
+			<case alias="Modify-Ability-73" />
+			<case alias="Modify-Ability-74" />
+			<case alias="Modify-Ability-75" />
+			<case alias="Modify-Ability-76" />
+			<case alias="Modify-Ability-77" />
+			<case alias="Modify-Ability-78" />
+			<case alias="Modify-Ability-79" />
+			<case alias="Modify-Ability-80" />
+			<case alias="Modify-Ability-81" />
+			<case alias="Modify-Ability-82" />
+			<case alias="Modify-Ability-83" />
+			<case alias="Modify-Ability-84" />
+			<case alias="Modify-Ability-85" />
+			<case alias="Modify-Ability-86" />
+			<case alias="Modify-Ability-87" />
+			<case alias="Modify-Ability-88" />
+			<case alias="Modify-Ability-89" />
+			<case alias="Modify-Ability-90" />
+			<case alias="Modify-Ability-91" />
+			<case alias="Modify-Ability-92" />
+			<case alias="Modify-Ability-93" />
+			<case alias="Modify-Ability-94" />
+			<case alias="Modify-Ability-95" />
+			<case alias="Modify-Ability-96" />
+			<case alias="Modify-Ability-97" />
+			<case alias="Modify-Ability-98" />
+			<case alias="Modify-Ability-99" />
+			<case alias="Modify-Ability-100" />
+			<case alias="Modify-Ability-101" />
+			<case alias="Modify-Ability-102" />
+			<case alias="Modify-Ability-103" />
+			<case alias="Modify-Ability-104" />
+			<case alias="Modify-Ability-105" />
+			<case alias="Modify-Ability-106" />
+			<case alias="Modify-Ability-107" />
+			<case alias="Modify-Ability-108" />
+			<case alias="Modify-Ability-109" />
+			<case alias="Modify-Ability-110" />
+			<case alias="Modify-Ability-111" />
+			<case alias="Modify-Ability-112" />
+			<case alias="Modify-Ability-113" />
+			<case alias="Modify-Ability-114" />
+			<case alias="Modify-Ability-115" />
+			<case alias="Modify-Ability-116" />
+			<case alias="Modify-Ability-117" />
+			<case alias="Modify-Ability-118" />
+			<case alias="Modify-Ability-119" />
+			<case alias="Modify-Ability-120" />
+			<case alias="Modify-Ability-121" />
+			<case alias="Modify-Ability-122" />
+			<case alias="Modify-Ability-123" />
+			<case alias="Modify-Ability-124" />
+			<case alias="Modify-Ability-125" />
+			<case alias="Modify-Ability-126" />
+			<case alias="Modify-Ability-127" />
+			<case alias="Modify-Ability-128" />
+			<case alias="Modify-Ability-129" />
+			<case alias="Modify-Ability-130" />
+			<case alias="Modify-Ability-131" />
+			<case alias="Modify-Ability-132" />
+			<case alias="Modify-Ability-133" />
+			<case alias="Modify-Ability-134" />
+			<case alias="Modify-Ability-135" />
+			<case alias="Modify-Ability-136" />
+			<case alias="Modify-Ability-137" />
+			<case alias="Modify-Ability-138" />
+			<case alias="Modify-Ability-139" />
+			<case alias="Modify-Ability-140" />
+			<case alias="Modify-Ability-141" />
+			<case alias="Modify-Ability-142" />
+			<case alias="Modify-Ability-143" />
+			<case alias="Modify-Ability-144" />
+			<case alias="Modify-Ability-145" />
+			<case alias="Modify-Ability-146" />
+			<case alias="Modify-Ability-147" />
+			<case alias="Modify-Ability-148" />
+			<case alias="Modify-Ability-149" />
+			<case alias="Modify-Ability-150" />
+			<case alias="Modify-Ability-151" />
+			<case alias="Modify-Ability-152" />
+			<case alias="Modify-Ability-153" />
+			<case alias="Modify-Ability-154" />
+			<case alias="Modify-Ability-155" />
+			<case alias="Modify-Ability-156" />
+			<case alias="Modify-Ability-157" />
+			<case alias="Modify-Ability-158" />
+			<case alias="Modify-Ability-159" />
+			<case alias="Modify-Ability-160" />
+			<case alias="Modify-Ability-161" />
+			<case alias="Modify-Ability-162" />
+			<case alias="Modify-Ability-163" />
+			<case alias="Modify-Ability-164" />
+			<case alias="Modify-Ability-165" />
+			<case alias="Modify-Ability-166" />
+			<case alias="Modify-Ability-167" />
+			<case alias="Modify-Ability-168" />
+			<case alias="Modify-Ability-169" />
+			<case alias="Modify-Ability-170" />
+			<case alias="Modify-Ability-171" />
+			<case alias="Modify-Ability-172" />
+			<case alias="Modify-Ability-173" />
+			<case alias="Modify-Ability-174" />
+			<case alias="Modify-Ability-175" />
+			<case alias="Modify-Ability-176" />
+			<case alias="Modify-Ability-177" />
+			<case alias="Modify-Ability-178" />
+			<case alias="Modify-Ability-179" />
+			<case alias="Modify-Ability-180" />
+			<case alias="Modify-Ability-181" />
+			<case alias="Modify-Ability-182" />
+			<case alias="Modify-Ability-183" />
+			<case alias="Modify-Ability-184" />
+			<case alias="Modify-Ability-185" />
+			<case alias="Modify-Ability-186" />
+			<case alias="Modify-Ability-187" />
+			<case alias="Modify-Ability-188" />
+			<case alias="Modify-Ability-189" />
+			<case alias="Modify-Ability-190" />
+			<case alias="Modify-Ability-191" />
+			<case alias="Modify-Ability-192" />
+			<case alias="Modify-Ability-193" />
+			<case alias="Modify-Ability-194" />
+			<case alias="Modify-Ability-195" />
+			<case alias="Modify-Ability-196" />
+			<case alias="Modify-Ability-197" />
+			<case alias="Modify-Ability-198" />
+			<case alias="Modify-Ability-199" />
+			<case alias="Modify-Ability-200" />
+			<case alias="Modify-Ability-201" />
+			<case alias="Modify-Ability-202" />
+			<case alias="Modify-Ability-203" />
+			<case alias="Modify-Ability-204" />
+			<case alias="Modify-Ability-205" />
+			<case alias="Modify-Ability-206" />
+			<case alias="Modify-Ability-207" />
+			<case alias="Modify-Ability-208" />
+			<case alias="Modify-Ability-209" />
+			<case alias="Modify-Ability-210" />
+			<case alias="Modify-Ability-211" />
+			<case alias="Modify-Ability-212" />
+			<case alias="Modify-Ability-213" />
+			<case alias="Modify-Ability-214" />
+			<case alias="Modify-Ability-215" />
+			<case alias="Modify-Ability-216" />
+			<case alias="Modify-Ability-217" />
+			<case alias="Modify-Ability-218" />
+			<case alias="Modify-Ability-219" />
+			<case alias="Modify-Ability-220" />
+			<case alias="Modify-Ability-221" />
+			<case alias="Modify-Ability-222" />
+			<case alias="Modify-Ability-223" />
+			<case alias="Modify-Ability-224" />
+			<case alias="Modify-Ability-225" />
+			<case alias="Modify-Ability-226" />
+			<case alias="Modify-Ability-227" />
+			<case alias="Modify-Ability-228" />
+			<case alias="Modify-Ability-229" />
+			<case alias="Modify-Ability-230" />
+			<case alias="Modify-Ability-231" />
+			<case alias="Modify-Ability-232" />
+			<case alias="Modify-Ability-233" />
+			<case alias="Modify-Ability-234" />
+			<case alias="Modify-Ability-235" />
+			<case alias="Modify-Ability-236" />
+			<case alias="Modify-Ability-237" />
+			<case alias="Modify-Ability-238" />
+			<case alias="Modify-Ability-239" />
+			<case alias="Modify-Ability-240" />
+			<case alias="Modify-Ability-241" />
+			<case alias="Modify-Ability-242" />
+			<case alias="Modify-Ability-243" />
+			<case alias="Modify-Ability-244" />
+			<case alias="Modify-Ability-245" />
+			<case alias="Modify-Ability-246" />
+			<case alias="Modify-Ability-247" />
+			<case alias="Modify-Ability-248" />
+			<case alias="Modify-Ability-249" />
+			<case alias="Modify-Ability-250" />
+			<case alias="Modify-Ability-251" />
+			<case alias="Modify-Ability-252" />
+			<case alias="Modify-Ability-253" />
+			<case alias="Modify-Ability-254" />
+			<case alias="Modify-Ability-255" />
+			<case alias="Modify-Ability-256" />
+			<case alias="Modify-Ability-257" />
+			<case alias="Modify-Ability-258" />
+			<case alias="Modify-Ability-259" />
+			<case alias="Modify-Ability-260" />
+			<case alias="Modify-Ability-261" />
+			<case alias="Modify-Ability-262" />
+			<case alias="Modify-Ability-263" />
+			<case alias="Modify-Ability-264" />
+			<case alias="Modify-Ability-265" />
+			<case alias="Modify-Ability-266" />
+			<case alias="Modify-Ability-267" />
+			<case alias="Modify-Ability-268" />
+			<case alias="Modify-Ability-269" />
+			<case alias="Modify-Ability-270" />
+			<case alias="Modify-Ability-271" />
+			<case alias="Modify-Ability-272" />
+			<case alias="Modify-Ability-273" />
+			<case alias="Modify-Ability-274" />
+			<case alias="Modify-Ability-275" />
+			<case alias="Modify-Ability-276" />
+			<case alias="Modify-Ability-277" />
+			<case alias="Modify-Ability-278" />
+			<case alias="Modify-Ability-279" />
+			<case alias="Modify-Ability-280" />
+			<case alias="Modify-Ability-281" />
+			<case alias="Modify-Ability-282" />
+			<case alias="Modify-Ability-283" />
+			<case alias="Modify-Ability-284" />
+			<case alias="Modify-Ability-285" />
+			<case alias="Modify-Ability-286" />
+			<case alias="Modify-Ability-287" />
+			<case alias="Modify-Ability-288" />
+			<case alias="Modify-Ability-289" />
+			<case alias="Modify-Ability-290" />
+			<case alias="Modify-Ability-291" />
+			<case alias="Modify-Ability-292" />
+			<case alias="Modify-Ability-293" />
+			<case alias="Modify-Ability-294" />
+			<case alias="Modify-Ability-295" />
+			<case alias="Modify-Ability-296" />
+			<case alias="Modify-Ability-297" />
+			<case alias="Modify-Ability-298" />
+			<case alias="Modify-Ability-299" />
+			<case alias="Modify-Ability-300" />
+			<case alias="Modify-Ability-301" />
+			<case alias="Modify-Ability-302" />
+			<case alias="Modify-Ability-303" />
+			<case alias="Modify-Ability-304" />
+			<case alias="Modify-Ability-305" />
+			<case alias="Modify-Ability-306" />
+			<case alias="Modify-Ability-307" />
+			<case alias="Modify-Ability-308" />
+			<case alias="Modify-Ability-309" />
+			<case alias="Modify-Ability-310" />
+			<case alias="Modify-Ability-311" />
+			<case alias="Modify-Ability-312" />
+			<case alias="Modify-Ability-313" />
+			<case alias="Modify-Ability-314" />
+			<case alias="Modify-Ability-315" />
+			<case alias="Modify-Ability-316" />
+			<case alias="Modify-Ability-317" />
+			<case alias="Modify-Ability-318" />
+			<case alias="Modify-Ability-319" />
+			<case alias="Modify-Ability-320" />
+			<case alias="Modify-Ability-321" />
+			<case alias="Modify-Ability-322" />
+			<case alias="Modify-Ability-323" />
+			<case alias="Modify-Ability-324" />
+			<case alias="Modify-Ability-325" />
+			<case alias="Modify-Ability-326" />
+			<case alias="Modify-Ability-327" />
+			<case alias="Modify-Ability-328" />
+			<case alias="Modify-Ability-329" />
+			<case alias="Modify-Ability-330" />
+			<case alias="Modify-Ability-331" />
+			<case alias="Modify-Ability-332" />
+			<case alias="Modify-Ability-333" />
+			<case alias="Modify-Ability-334" />
+			<case alias="Modify-Ability-335" />
+			<case alias="Modify-Ability-336" />
+			<case alias="Modify-Ability-337" />
+			<case alias="Modify-Ability-338" />
+			<case alias="Modify-Ability-339" />
+			<case alias="Modify-Ability-340" />
+			<case alias="Modify-Ability-341" />
+			<case alias="Modify-Ability-342" />
+			<case alias="Modify-Ability-343" />
+			<case alias="Modify-Ability-344" />
+			<case alias="Modify-Ability-345" />
+			<case alias="Modify-Ability-346" />
+			<case alias="Modify-Ability-347" />
+			<case alias="Modify-Ability-348" />
+			<case alias="Modify-Ability-349" />
+			<case alias="Modify-Ability-350" />
+			<case alias="Modify-Ability-351" />
+			<case alias="Modify-Ability-352" />
+			<case alias="Modify-Ability-353" />
+			<case alias="Modify-Ability-354" />
+			<case alias="Modify-Ability-355" />
+			<case alias="Modify-Ability-356" />
+			<case alias="Modify-Ability-357" />
+			<case alias="Modify-Ability-358" />
+			<case alias="Modify-Ability-359" />
+			<case alias="Modify-Ability-360" />
+			<case alias="Modify-Ability-361" />
+			<case alias="Modify-Ability-362" />
+			<case alias="Modify-Ability-363" />
+			<case alias="Modify-Ability-364" />
+			<case alias="Modify-Ability-365" />
+			<case alias="Modify-Ability-366" />
+			<case alias="Modify-Ability-367" />
+			<case alias="Modify-Ability-368" />
+			<case alias="Modify-Ability-369" />
+			<case alias="Modify-Ability-370" />
+			<case alias="Modify-Ability-371" />
+			<case alias="Modify-Ability-372" />
+			<case alias="Modify-Ability-373" />
+			<case alias="Modify-Ability-374" />
+			<case alias="Modify-Ability-375" />
+			<case alias="Modify-Ability-376" />
+			<case alias="Modify-Ability-377" />
+			<case alias="Modify-Ability-378" />
+			<case alias="Modify-Ability-379" />
+			<case alias="Modify-Ability-380" />
+			<case alias="Modify-Ability-381" />
+			<case alias="Modify-Ability-382" />
+			<case alias="Modify-Ability-383" />
+			<case alias="Modify-Ability-384" />
+			<case alias="Modify-Ability-385" />
+			<case alias="Modify-Ability-386" />
+			<case alias="Modify-Ability-387" />
+			<case alias="Modify-Ability-388" />
+			<case alias="Modify-Ability-389" />
+			<case alias="Modify-Ability-390" />
+			<case alias="Modify-Ability-391" />
+			<case alias="Modify-Ability-392" />
+			<case alias="Modify-Ability-393" />
+			<case alias="Modify-Ability-394" />
+			<case alias="Modify-Ability-395" />
+			<case alias="Modify-Ability-396" />
+			<case alias="Modify-Ability-397" />
+			<case alias="Modify-Ability-398" />
+			<case alias="Modify-Ability-399" />
+			<case alias="Modify-Ability-400" />
+			<case alias="Modify-Ability-401" />
+			<case alias="Modify-Ability-402" />
+			<case alias="Modify-Ability-403" />
+			<case alias="Modify-Ability-404" />
+			<case alias="Modify-Ability-405" />
+			<case alias="Modify-Ability-406" />
+			<case alias="Modify-Ability-407" />
+			<case alias="Modify-Ability-408" />
+			<case alias="Modify-Ability-409" />
+			<case alias="Modify-Ability-410" />
+			<case alias="Modify-Ability-411" />
+			<case alias="Modify-Ability-412" />
+			<case alias="Modify-Ability-413" />
+			<case alias="Modify-Ability-414" />
+			<case alias="Modify-Ability-415" />
+			<case alias="Modify-Ability-416" />
+			<case alias="Modify-Ability-417" />
+			<case alias="Modify-Ability-418" />
+			<case alias="Modify-Ability-419" />
+			<case alias="Modify-Ability-420" />
+			<case alias="Modify-Ability-421" />
+			<case alias="Modify-Ability-422" />
+			<case alias="Modify-Ability-423" />
+			<case alias="Modify-Ability-424" />
+			<case alias="Modify-Ability-425" />
+			<case alias="Modify-Ability-426" />
+			<case alias="Modify-Ability-427" />
+			<case alias="Modify-Ability-428" />
+			<case alias="Modify-Ability-429" />
+			<case alias="Modify-Ability-430" />
+			<case alias="Modify-Ability-431" />
+			<case alias="Modify-Ability-432" />
+			<case alias="Modify-Ability-433" />
+			<case alias="Modify-Ability-434" />
+			<case alias="Modify-Ability-435" />
+			<case alias="Modify-Ability-436" />
+			<case alias="Modify-Ability-437" />
+			<case alias="Modify-Ability-438" />
+			<case alias="Modify-Ability-439" />
+			<case alias="Modify-Ability-440" />
+			<case alias="Modify-Ability-441" />
+			<case alias="Modify-Ability-442" />
+			<case alias="Modify-Ability-443" />
+			<case alias="Modify-Ability-444" />
+			<case alias="Modify-Ability-445" />
+			<case alias="Modify-Ability-446" />
+			<case alias="Modify-Ability-447" />
+			<case alias="Modify-Ability-448" />
+			<case alias="Modify-Ability-449" />
+			<case alias="Modify-Ability-450" />
+			<case alias="Modify-Ability-451" />
+			<case alias="Modify-Ability-452" />
+			<case alias="Modify-Ability-453" />
+			<case alias="Modify-Ability-454" />
+			<case alias="Modify-Ability-455" />
+			<case alias="Modify-Ability-456" />
+			<case alias="Modify-Ability-457" />
+			<case alias="Modify-Ability-458" />
+			<case alias="Modify-Ability-459" />
+			<case alias="Modify-Ability-460" />
+			<case alias="Modify-Ability-461" />
+			<case alias="Modify-Ability-462" />
+			<case alias="Modify-Ability-463" />
+			<case alias="Modify-Ability-464" />
+			<case alias="Modify-Ability-465" />
+			<case alias="Modify-Ability-466" />
+			<case alias="Modify-Ability-467" />
+			<case alias="Modify-Ability-468" />
+			<case alias="Modify-Ability-469" />
+			<case alias="Modify-Ability-470" />
+			<case alias="Modify-Ability-471" />
+			<case alias="Modify-Ability-472" />
+			<case alias="Modify-Ability-473" />
+			<case alias="Modify-Ability-474" />
+			<case alias="Modify-Ability-475" />
+			<case alias="Modify-Ability-476" />
+			<case alias="Modify-Ability-477" />
+			<case alias="Modify-Ability-478" />
+			<case alias="Modify-Ability-479" />
+			<case alias="Modify-Ability-480" />
+			<case alias="Modify-Ability-481" />
+			<case alias="Modify-Ability-482" />
+			<case alias="Modify-Ability-483" />
+			<case alias="Modify-Ability-484" />
+			<case alias="Modify-Ability-485" />
+			<case alias="Modify-Ability-486" />
+			<case alias="Modify-Ability-487" />
+			<case alias="Modify-Ability-488" />
+			<case alias="Modify-Ability-489" />
+			<case alias="Modify-Ability-490" />
+			<case alias="Modify-Ability-491" />
+			<case alias="Modify-Ability-492" />
+			<case alias="Modify-Ability-493" />
+			<case alias="Modify-Ability-494" />
+			<case alias="Modify-Ability-495" />
+			<case alias="Modify-Ability-496" />
+			<case alias="Modify-Ability-497" />
+			<case alias="Modify-Ability-498" />
+			<case alias="Modify-Ability-499" />
+			<case alias="Modify-Ability-500" />
+			<case alias="Modify-Ability-501" />
+			<case alias="Modify-Ability-502" />
+			<case alias="Modify-Ability-503" />
+			<case alias="Modify-Ability-504" />
+			<case alias="Modify-Ability-505" />
+			<case alias="Modify-Ability-506" />
+			<case alias="Modify-Ability-507" />
+			<case alias="Modify-Ability-508" />
+			<case alias="Modify-Ability-509" />
+			<case alias="Modify-Ability-510" />
+			<case alias="Modify-Ability-511" />
+			<case alias="Modify-Ability-512" />
+			<case alias="Modify-Ability-513" />
+			<case alias="Modify-Ability-514" />
+			<case alias="Modify-Ability-515" />
+			<case alias="Modify-Ability-516" />
+			<case alias="Modify-Ability-517" />
+			<case alias="Modify-Ability-518" />
+			<case alias="Modify-Ability-519" />
+			<case alias="Modify-Ability-520" />
+			<case alias="Modify-Ability-521" />
+			<case alias="Modify-Ability-522" />
+			<case alias="Modify-Ability-523" />
+			<case alias="Modify-Ability-524" />
+			<case alias="Modify-Ability-525" />
+			<case alias="Modify-Ability-526" />
+			<case alias="Modify-Ability-527" />
+			<case alias="Modify-Ability-528" />
+			<case alias="Modify-Ability-529" />
+			<case alias="Modify-Ability-530" />
+			<case alias="Modify-Ability-531" />
+			<case alias="Modify-Ability-532" />
+			<case alias="Modify-Ability-533" />
+			<case alias="Modify-Ability-534" />
+			<case alias="Modify-Ability-535" />
+			<case alias="Modify-Ability-536" />
+			<case alias="Modify-Ability-537" />
+			<case alias="Modify-Ability-538" />
+			<case alias="Modify-Ability-539" />
+			<case alias="Modify-Ability-540" />
+			<case alias="glyph-condition-event-1" />
+			<case alias="glyph-condition-event-2" />
+			<case alias="glyph-condition-event-3" />
+			<case alias="glyph-condition-event-4" />
+			<case alias="glyph-condition-event-5" />
+			<case alias="glyph-condition-event-6" />
+			<case alias="glyph-condition-event-7" />
+			<case alias="glyph-condition-event-8" />
+			<case alias="glyph-condition-event-9" />
+			<case alias="glyph-condition-event-10" />
+			<case alias="glyph-condition-event-11" />
+			<case alias="glyph-condition-event-12" />
+			<case alias="glyph-condition-event-13" />
+			<case alias="glyph-condition-event-14" />
+			<case alias="glyph-condition-event-15" />
+			<case alias="glyph-condition-event-16" />
+			<case alias="glyph-condition-event-17" />
+			<case alias="glyph-condition-event-18" />
+			<case alias="glyph-condition-event-19" />
+			<case alias="glyph-condition-event-20" />
+			<case alias="glyph-condition-event-21" />
+			<case alias="glyph-condition-event-22" />
+			<case alias="glyph-condition-event-23" />
+			<case alias="glyph-condition-event-24" />
+			<case alias="glyph-condition-event-25" />
+			<case alias="glyph-condition-event-26" />
+			<case alias="glyph-condition-event-27" />
+			<case alias="glyph-condition-event-28" />
+			<case alias="glyph-condition-event-29" />
+			<case alias="glyph-condition-event-30" />
+			<case alias="glyph-condition-event-31" />
+			<case alias="glyph-condition-event-32" />
+			<case alias="glyph-condition-event-33" />
+			<case alias="glyph-condition-event-34" />
+			<case alias="glyph-condition-event-35" />
+			<case alias="glyph-condition-event-36" />
+			<case alias="glyph-condition-event-37" />
+			<case alias="glyph-condition-event-38" />
+			<case alias="glyph-condition-event-39" />
+			<case alias="glyph-condition-event-40" />
+			<case alias="glyph-condition-event-41" />
+			<case alias="glyph-condition-event-42" />
+			<case alias="glyph-condition-event-43" />
+			<case alias="glyph-condition-event-44" />
+			<case alias="glyph-condition-event-45" />
+			<case alias="glyph-condition-event-46" />
+			<case alias="glyph-condition-event-47" />
+			<case alias="glyph-condition-event-48" />
+			<case alias="glyph-condition-event-49" />
+			<case alias="glyph-condition-event-50" />
+			<case alias="glyph-condition-event-51" />
+			<case alias="glyph-condition-event-52" />
+			<case alias="glyph-condition-event-53" />
+			<case alias="glyph-condition-event-54" />
+			<case alias="glyph-condition-event-55" />
+			<case alias="glyph-condition-event-56" />
+			<case alias="glyph-condition-event-57" />
+			<case alias="glyph-condition-event-58" />
+			<case alias="glyph-condition-event-59" />
+			<case alias="glyph-condition-event-60" />
+			<case alias="common-condition-event-1" />
+			<case alias="common-condition-event-2" />
+			<case alias="common-condition-event-3" />
+			<case alias="common-condition-event-4" />
+			<case alias="common-condition-event-5" />
+			<case alias="common-condition-event-6" />
+			<case alias="common-condition-event-7" />
+			<case alias="common-condition-event-8" />
+			<case alias="common-condition-event-9" />
+			<case alias="common-condition-event-10" />
+			<case alias="common-condition-event-11" />
+			<case alias="common-condition-event-12" />
+			<case alias="common-condition-event-13" />
+			<case alias="common-condition-event-14" />
+			<case alias="common-condition-event-15" />
+			<case alias="common-condition-event-16" />
+			<case alias="common-condition-event-17" />
+			<case alias="common-condition-event-18" />
+			<case alias="common-condition-event-19" />
+			<case alias="common-condition-event-20" />
+			<case alias="common-condition-event-21" />
+			<case alias="common-condition-event-22" />
+			<case alias="common-condition-event-23" />
+			<case alias="common-condition-event-24" />
+			<case alias="common-condition-event-25" />
+			<case alias="common-condition-event-26" />
+			<case alias="common-condition-event-27" />
+			<case alias="common-condition-event-28" />
+			<case alias="common-condition-event-29" />
+			<case alias="common-condition-event-30" />
+			<case alias="common-condition-event-31" />
+			<case alias="common-condition-event-32" />
+			<case alias="common-condition-event-33" />
+			<case alias="common-condition-event-34" />
+			<case alias="common-condition-event-35" />
+			<case alias="common-condition-event-36" />
+			<case alias="common-condition-event-37" />
+			<case alias="common-condition-event-38" />
+			<case alias="common-condition-event-39" />
+			<case alias="common-condition-event-40" />
+			<case alias="common-condition-event-41" />
+			<case alias="common-condition-event-42" />
+			<case alias="common-condition-event-43" />
+			<case alias="common-condition-event-44" />
+			<case alias="common-condition-event-45" />
+			<case alias="common-condition-event-46" />
+			<case alias="common-condition-event-47" />
+			<case alias="common-condition-event-48" />
+			<case alias="common-condition-event-49" />
+			<case alias="common-condition-event-50" />
+			<case alias="common-condition-event-51" />
+			<case alias="common-condition-event-52" />
+			<case alias="common-condition-event-53" />
+			<case alias="common-condition-event-54" />
+			<case alias="common-condition-event-55" />
+			<case alias="common-condition-event-56" />
+			<case alias="common-condition-event-57" />
+			<case alias="common-condition-event-58" />
+			<case alias="common-condition-event-59" />
+			<case alias="common-condition-event-60" />
+			<case alias="equip" />
+			<case alias="modify-move-speed" />
+			<case alias="modify-cast-speed" />
+			<case alias="dull" />
+			<case alias="initialize-recycle-group" />
+			<case alias="modify-recycle-time" />
+			<case alias="set-recycle-time" />
+			<case alias="initialize-condition-event-recycle-group" />
+			<case alias="interval-melee-physical-damage" />
+			<case alias="interval-range-physical-damage" />
+			<case alias="interval-force-damage" />
+			<case alias="burn" />
+			<case alias="binding-skill-step" />
+			<case alias="recall-to-caster" />
+			<case alias="recall-to-position" />
+			<case alias="embers-explosion-timer" />
+			<case alias="replace-position" />
+			<case alias="poison" />
+			<case alias="poison2" />
+			<case alias="poison-explosion" />
+			<case alias="poison2-explosion" />
+			<case alias="applied-poison" />
+			<case alias="spider-web" />
+			<case alias="time-bomb" />
+			<case alias="defence-block" />
+			<case alias="dash-block" />
+			<case alias="dexterity" />
+			<case alias="help-restoration" />
+			<case alias="grade" />
+			<case alias="recharge-heart-count" />
+			<case alias="safety-area" />
+			<case alias="recharge-guild-battle-field" />
+			<case alias="enable-guild-battle-field" />
+			<case alias="debuff-guild-battle-field" />
+			<case alias="duel-interference" />
+			<case alias="break-state" />
+			<case alias="break-gauge-block" />
+			<case alias="unknown1" />
+			<case alias="dash" />
+			<case alias="fall-damage" />
+			<case alias="airdash" />
+			<case alias="exhaustion" />
+			<case alias="revive-except-rule" />
+			<case alias="use-heart-count" />
+			<case alias="item-ability" />
+			<case alias="achievement-ability" />
+			<case alias="completed-achievement" />
+			<case alias="changed-property" />
+			<case alias="oceanic" />
+			<case alias="fall-death" />
+			<case alias="air-knockback" />
+			<case alias="set-ghost-type" />
+			<case alias="duel-fighter-change" />
+			<case alias="duel-fighter-time-limit" />
+			<case alias="mastery-stat-equip" />
+			<case alias="shooter-lock-on" />
+			<case alias="attack-glide" />
+			<case alias="second-gauge-point" />
+			<case alias="interval-second-gauge-point" />
+			<case alias="stop-second-gauge-point" />
+			<case alias="set-second-gauge-point" />
+			<case alias="particle-socket" />
+			<case alias="set-appearance" />
+			<case alias="boutique-free" />
+			<case alias="difficulty-type-dispel-attribute-hp-damage" />
+			<case alias="sealed-dungeon-dispel-attribute-hp-damage" />
+			<case alias="soul-mask-1" />
+			<case alias="soul-mask-2" />
+			<case alias="npc-change-appearance" />
+		</record>
+		
+		<record alias="id" type="Int32" key="y" />
+		<record alias="alias" type="String" />
+		<record alias="name2" ref="Text" />
+		<record alias="name3" ref="Text" />
+		<record alias="level" type="Int16" />
+		<record alias="show-icon" type="Bool" />
+		<record alias="show-left-time" type="Bool" />
+		<record alias="show-linkbar" type="Bool" />
+		<record alias="target-indicator-icon" type="String" />
+		<record alias="target-indicator-show" type="Bool" />
+		<record alias="show-job-indicator" type="Bool" />
+		<record alias="save-db" type="Bool" />
+		<record alias="miss-probability" type="Int8" showzero="n" max="100" min="0" />
+		<record alias="passive-duration" type="Msec" />
+		<record alias="passive-interval" type="Msec" />
+		<record alias="expiration-duration-sec" type="Int32" />
+		<record alias="stack-amount" type="Int8"  />
+		<record alias="stack-count" type="Int8" default="1" />
+		<record alias="reattach-effect-after-changing-stack-count" type="Bool" default="y" />
+		<record alias="transform-effect" ref="Effect" />
+		<record alias="buff-type" type="Seq" >
+			<case alias="instant" />
+			<case alias="buff" />
+			<case alias="debuff" />
+			<case alias="binding-skill-step" />
+			<case alias="faction-score" />
+			<case alias="static-count-buff" />
+			<case alias="soul-mask" />
+		</record>
+		<record alias="binding-skill-step-type" type="Seq" >
+			<case alias="execute" default="y" />
+			<case alias="skill" />
+		</record>
+		<record alias="immune-breaker-attribute" type="Seq16" seq="effect-attribute" />
+		<record alias="attribute" type="Seq16" seq="effect-attribute" repeat="8" />
+		<record alias="attribute-value" type="Int64" />
+		<record alias="attribute-value-2" type="Int64" />
+		<record alias="attribute-value-3" type="Int64" />
+		<record alias="immune-attribute" type="Seq16" seq="effect-attribute" repeat="8" />
+		<record alias="immune-attribute-value" type="Int64" />
+		<record alias="immune-attribute-value-2" type="Int64" />
+		<record alias="immune-attribute-value-3" type="Int64" />
+		<record alias="flag" type="Seq16" seq="flag" repeat="4" />
+		<record alias="max-stack-flag" type="Seq16" seq="flag" />
+		<record alias="function" type="Seq" seq="function" repeat="10" />
+		<record alias="drop-field-item" type="Bool" />
+		<record alias="drop-weapon-field-item" type="Bool" />
+		<record alias="detach-count" type="Int8" />
+		<record alias="detach-slot" type="Seq" repeat="4" >
+			<case alias="none" default="y" />
+			<case alias="other" />
+			<case alias="attack-hit" />
+			<case alias="attack-miss" />
+			<case alias="attack-dodge" />
+			<case alias="attack-parry" />
+			<case alias="attack-perfect-parry" />
+			<case alias="attack-bounce" />
+			<case alias="attack-critical" />
+			<case alias="attack-counter" />
+			<case alias="attacked-hit" />
+			<case alias="attacked-miss" />
+			<case alias="attacked-dodge" />
+			<case alias="attacked-parry" />
+			<case alias="attacked-perfect-parry" />
+			<case alias="attacked-bounce" />
+			<case alias="attacked-critical" />
+			<case alias="attacked-counter" />
+			<case alias="casting-start" />
+			<case alias="casting-end" />
+			<case alias="attack-perfect-dodge" />
+			<case alias="attacked-perfect-dodge" />
+		</record>
+		<record alias="apply-duration-formula" type="Bool" />
+		<record alias="change-default-stance-by-detach-timeout" type="Bool" />
+		<record alias="target-combat-mode" type="Bool" />
+		<record alias="aoe-damage" type="Bool" />
+		<record alias="attack-attribute-coefficient-percent" type="Int16" />
+		<record alias="inhalation-linker" type="Seq" seq="link" />
+		<record alias="inhalation-linked" type="Seq" seq="link" />
+		<record alias="mount-linker" type="Seq" seq="link" />
+		<record alias="mount-linked" type="Seq" seq="link" />
+		<record alias="catch-linker" type="Seq" seq="link" />
+		<record alias="catch-linked" type="Seq" seq="link" />
+		<record alias="faction-score-min" type="Int32" />
+		<record alias="faction-score-max" type="Int32" />
+		<record alias="leave-zone-detach" type="Bool" />
+		<record alias="not-dead-to-exhaustion-detach" type="Bool" default="y" />
+		<record alias="effect-region-leaved-detach" type="Bool" />
+		<record alias="invoked-by-effect" type="Bool" />
+		<record alias="event-effect-target" type="Seq" seq="effect-target-type" repeat="4" />
+		<record alias="event-effect" ref="Effect" repeat="4" input="n" />
+		<record alias="second-slot-event-effect-target" type="Seq" seq="effect-target-type" repeat="4" />
+		<record alias="second-slot-event-effect" ref="Effect" repeat="4" input="n" />
+		<record alias="third-slot-event-effect-target" type="Seq" seq="effect-target-type" repeat="4" />
+		<record alias="third-slot-event-effect" ref="Effect" repeat="4" input="n" />
+		<record alias="fourth-slot-event-effect-target" type="Seq" seq="effect-target-type" repeat="4" />
+		<record alias="fourth-slot-event-effect" ref="Effect" repeat="4" input="n" />
+		<record alias="modify-ability" type="Seq16" seq="creature_field" repeat="8" />
+		<record alias="modify-ability-diff" type="Int64" repeat="8" />
+		<record alias="modify-ability-percent" type="Int16" repeat="8" />
+		<record alias="passive-moveanim-idle" type="Seq" >
+			<case alias="normal" default="y" />
+			<case alias="dead" />
+			<case alias="dead-hide" />
+			<case alias="dead-back" />
+			<case alias="dead-front" />
+			<case alias="dead-swim-area" />
+			<case alias="exhaustion" />
+			<case alias="mount-linker" />
+			<case alias="mount-linkee" />
+			<case alias="inhalation_linker" />
+			<case alias="inhalation_linkee" />
+			<case alias="stun" />
+			<case alias="stagger" />
+			<case alias="down" />
+			<case alias="block" />
+			<case alias="air" />
+			<case alias="air2" />
+			<case alias="air3" />
+			<case alias="kneel" />
+			<case alias="magnetic" />
+			<case alias="stiff" />
+			<case alias="front_down" />
+			<case alias="block2" />
+			<case alias="flee" />
+			<case alias="knockback-stand" />
+			<case alias="knockback-kneel" />
+			<case alias="knockback-frontdown" />
+			<case alias="knockback-down" />
+			<case alias="picking" />
+			<case alias="fast-freezing" />
+			<case alias="impregnability" />
+			<case alias="hide" />
+			<case alias="burrow" />
+			<case alias="restoration" />
+			<case alias="block3" />
+			<case alias="landing-shock" />
+			<case alias="catch" />
+			<case alias="catched" />
+			<case alias="catch-none-human" />
+			<case alias="catched-none-human" />
+			<case alias="catch-friend" />
+			<case alias="catched-friend" />
+			<case alias="catch-inhalation" />
+			<case alias="catched-inhalation" />
+			<case alias="npc-block" />
+			<case alias="sit-down" />
+			<case alias="silver-wep" />
+			<case alias="ironfotess" />
+			<case alias="presentation-linke" />
+			<case alias="spider-web" />
+			<case alias="state-social" />
+			<case alias="block4" />
+			<case alias="dead-duel" />
+		</record>
+		<record alias="pause-auto-targeting" type="Bool" />
+		<record alias="not-targetable" type="Bool" />
+		<record alias="is-dot-effect" type="Bool" />
+		<record alias="no-critical-hit" type="Bool" />
+		<record alias="party-broadcast" type="Bool" />
+		<record alias="ui-slot" type="Seq" >
+			<case alias="none" default="y" />
+			<case alias="buff" />
+			<case alias="debuff" />
+			<case alias="system" />
+			<case alias="long-term" />
+			<case alias="buff-disable" />
+		</record>
+		<record alias="ui-category" type="Seq" >
+			<case alias="none" default="y" />
+			<case alias="attraction" />
+			<case alias="item-event" />
+			<case alias="combat-common" />
+			<case alias="combat-class" />
+			<case alias="skill" />
+		</record>
+
+		<record alias="use-extra-skill-stack-count" type="Bool" />
+		<record alias="combat-job" type="Seq" seq="job" repeat="2" />
+		<record alias="ui-difficult" type="Bool" />
+		<record alias="is-transform-effect" type="Bool" />
+		<record alias="is-reuse-standby-effect" type="Bool" />
+		<record alias="item-type" type="Seq" >
+			<case alias="none" default="y" />
+			<case alias="soul" />
+			<case alias="weapon" />
+			<case alias="bracelet" />
+			<case alias="nova" />
+			<case alias="soul2" />
+			<case alias="guardian-attack" />
+			<case alias="guardian-defend" />
+			<case alias="ring" />
+			<case alias="earring" />
+			<case alias="necklace" />
+			<case alias="glove" />
+			<case alias="belt" />
+		</record>
+
+		<record alias="is-powergauge-effect" type="Bool" />
+		<record alias="ignore-hide-buff-graph-effect" type="Bool" default="y" />
+		<record alias="is-battle-royal-field-pc-info" type="Bool" />
+		<record alias="battle-royal-field-effect-pouch-group" type="Int8" />
+		<record alias="grocery-effect-type" type="Seq" >
+			<case alias="heal-potion" />
+			<case alias="sp-potion" />
+			<case alias="buff-item-01" />
+			<case alias="buff-item-02" />
+			<case alias="buff-item-03" />
+			<case alias="buff-item-04" />
+			<case alias="buff-item-05" />
+			<case alias="buff-item-06" />
+			<case alias="buff-item-07" />
+			<case alias="buff-item-08" />
+			<case alias="buff-item-09" />
+			<case alias="buff-item-10" />
+			<case alias="buff-item-11" />
+			<case alias="buff-item-12" />
+			<case alias="buff-item-13" />
+			<case alias="buff-item-14" />
+			<case alias="buff-item-15" />
+			<case alias="buff-item-16" />
+			<case alias="buff-item-17" />
+			<case alias="buff-item-18" />
+			<case alias="buff-item-19" />
+			<case alias="buff-item-20" />
+			<case alias="etc" default="y" />
+		</record>
+
+		<record alias="grocery-effect-level" type="Int16" />
+		<record alias="knockback-jump" type="Bool" />
+		<record alias="idleanimpriority" type="Int8" />
+		<record alias="normal-component" type="String" />
+		<record alias="critical-component" type="String" />
+		<record alias="back-normal-component" type="String" />
+		<record alias="back-critical-component" type="String" />
+		<record alias="buff-continuance-component" type="String" />
+		<record alias="immune-buff-component" type="String" />
+		<record alias="detach-show" type="String" />
+		<record alias="dispel-show" type="String" />
+		<record alias="play-detach-show-hide" type="Bool" />
+		<record alias="die-show" type="String" />
+		<record alias="additional-die-show" type="String" />
+		<record alias="exhaustion-show" type="String" />
+		<record alias="immuned-show" type="String" />
+		<record alias="caster-show" type="String" />
+		<record alias="fire-show" type="String" />
+		<record alias="animation-freeze" type="Bool" />
+		<record alias="icon-texture" ref="IconTexture" />
+		<record alias="icon-index" type="Int16" />
+		<record alias="icon" type="Icon" />
+		<record alias="description2" ref="Text" />
+		<record alias="description3" ref="Text" />
+		<record alias="description4" ref="Text" />
+		<record alias="description5" ref="Text" />
+		
+		
+		<record alias="description2-arg-type" type="Seq" server="n" repeat="4" >
+			<case alias="none" default="y" />
+			<case alias="r-integer-percent" />
+			<case alias="r-integer-diff" />
+			<case alias="r-support-percent" />
+			<case alias="r-support-diff" />
+		</record>
+		<record alias="description2-arg-value" type="String" server="n" repeat="4" />
+		<record alias="mount-attach-duration" type="Msec" />
+		<record alias="mount-detach-duration" type="Msec" />
+		<record alias="linker-abnormal" ref="LinkMoveAnim" server="n" />
+		<record alias="linkee-abnormal" ref="LinkMoveAnim" server="n" />
+		<record alias="link-attach-duration" type="Msec" />
+		<record alias="link-detach-duration" type="Msec" />
+		<record alias="catch-legs-physics" type="Bool" />
+		<record alias="catch-arms-physics" type="Bool" />
+		<record alias="catch-body-physics" type="Bool" />
+		<record alias="camera-block" type="Bool" />
+		<record alias="battle-message-type" type="Seq" server="n" >
+			<case alias="no-all-message" />
+			<case alias="attach" />
+			<case alias="interval" />
+			<case alias="attach-interval" />
+			<case alias="detach" />
+			<case alias="attach-detach" />
+			<case alias="interval-detach" />
+			<case alias="all-message" default="y" />
+		</record>
+		<record alias="flash-sound-mode" type="String" server="n" />
+		<record alias="skillresultpriority" type="Int8" />
+		<record alias="hit-show" type="String" server="n" />
+		<record alias="miss-show" type="String" server="n" />
+		<record alias="dodge-show" type="String" server="n" />
+		<record alias="parry-show" type="String" server="n" />
+		<record alias="perfect-parry-show" type="String" server="n" />
+		<record alias="bounce-show" type="String" server="n" />
+		<record alias="conter-show" type="String" server="n" />
+		<record alias="critical-hit-show" type="String" server="n" />
+		<record alias="damagesignal" type="Bool" />
+		<record alias="play-despawn-show" type="Bool" server="n" />
+		<record alias="play-transit" type="Bool" />
+		<record alias="transit-time" type="Int32" />
+		<record alias="duel-warp" type="Seq" >
+			<case alias="none" default="y" />
+			<case alias="wait-zone" />
+			<case alias="battle-zone" />
+		</record>
+		<record alias="attach-notify-message" ref="GameMessage" server="n" />
+
+
+		
+		
+		
+		<!-- ====================================== 服务端Fields ====================================== -->
+		<record alias="broadcast-type" type="Seq" client="n" apply="must" >
+			<case alias="normal" default="y" />
+			<case alias="self" />
+		</record>
+		<record alias="detach-by-rule-effect" client="n" ref="Effect" repeat="4" />
+		<record alias="detach-by-timeout-effect" client="n" ref="Effect" repeat="4" />
+		<record alias="detach-by-dispel-effect" client="n" ref="Effect" repeat="4" />
+		<!-- ======================================================================================== -->
+
+		<!-- 专用Fields -->
+		<!-- ======================================================================================== -->
+		<record alias="max-accumulate-damage" filter="accumulated-damage-to-anyone|accumulated-damage-from-1|accumulated-damage-from-2|accumulated-damage-from-3" type="Int64" />
+		<record alias="accumulated-damage-type" type="Seq" client="n" filter="accumulated-damage-to-anyone|accumulated-damage-from-1|accumulated-damage-from-2|accumulated-damage-from-3" />
+		<record alias="accumulated-damage-explosion-use-type" type="Seq" client="n" filter="accumulated-damage-to-anyone|accumulated-damage-from-1|accumulated-damage-from-2|accumulated-damage-from-3" />
+		<record alias="accumulated-damage-explosion-subject-type" type="Seq" client="n" filter="accumulated-damage-to-anyone|accumulated-damage-from-1|accumulated-damage-from-2|accumulated-damage-from-3" />
+		<record alias="accumulated-damage-explosion-target-slot" type="Seq" client="n" filter="accumulated-damage-to-anyone|accumulated-damage-from-1|accumulated-damage-from-2|accumulated-damage-from-3" />
+		<record alias="fall-through-use-percent" type="Seq" client="n" filter="accumulated-damage-to-anyone|accumulated-damage-from-1|accumulated-damage-from-2|accumulated-damage-from-3" />
+		<record alias="fall-through-use-type" type="Seq" client="n" filter="accumulated-damage-to-anyone|accumulated-damage-from-1|accumulated-damage-from-2|accumulated-damage-from-3" />
+		<!-- ======================================================================================== -->
+		<record alias="hate-multiply-value" filter="melee-physical-attack-hate|force-attack-hate" type="Int32" />
+		<record alias="hate-diff-value" filter="melee-physical-attack-hate|force-attack-hate" type="Int32" />
+		<!-- ======================================================================================== -->
+		<record alias="stance" filter="stance" type="Seq16" seq="stance" />
+		<!-- ======================================================================================== -->
+		<record alias="hp-diff" filter="hp-heal|food-interval-hp-heal|resurrection|bleeding|additional-hp|interval-hp-heal|interval-hp-heal-2|interval-hp-heal-3|item-interval-hp-heal|item-interval-hp-heal-2|item-interval-hp-heal-3|interval-hp-damage|interval-hp-damage-2|interval-hp-damage-3|poison-fog" type="Int32" />
+		<record alias="hp-percent" filter="hp-heal|food-interval-hp-heal|resurrection|bleeding|additional-hp|interval-hp-heal|interval-hp-heal-2|interval-hp-heal-3|item-interval-hp-heal|item-interval-hp-heal-2|item-interval-hp-heal-3|interval-hp-damage|interval-hp-damage-2|interval-hp-damage-3|poison-fog" type="Int16" />
+		<!-- ======================================================================================== -->
+		<record alias="hp-diff" filter="hp-damage|hp-drain" type="Int32" />
+		<record alias="hp-percent" filter="hp-damage|hp-drain" type="Int16" />
+		<record alias="pve-boss-level-npc-hp-diff" filter="hp-damage|hp-drain" type="Int32" />
+		<record alias="pve-boss-level-npc-hp-percent" filter="hp-damage|hp-drain" type="Int16" />
+		<record alias="pvp-hp-diff" filter="hp-damage|hp-drain" type="Int32" />
+		<record alias="pvp-hp-percent" filter="hp-damage|hp-drain" type="Int16" />
+		<!-- ======================================================================================== -->
+		<record alias="guard-gauge-diff" filter="guard-gauge-heal|guard-gauge-damage" type="Int32" />
+		<record alias="guard-gauge-percent" filter="guard-gauge-heal|guard-gauge-damage" type="Int16" />
+		<!-- ======================================================================================== -->
+		<record alias="hate-diff" filter="desire-increase" type="Int32" />
+		<record alias="shout-power-percent" filter="shout-physical-attack" type="Int16" />
+		<!-- ======================================================================================== -->
+		<record alias="extend-duration" filter="extend-link" type="Msec" />
+		<!-- ======================================================================================== -->
+		<record alias="effect-type" filter="extend-effect" type="Seq16" seq="type-seq" />
+		<record alias="extend-duration" filter="extend-effect" type="Msec" />
+		<!-- ======================================================================================== -->
+		<record alias="effect-type" filter="fluctuation-time-effect" type="Seq16" seq="type-seq" />
+		<record alias="fluctuation-time-effect-duration" filter="fluctuation-time-effect" type="Msec" />
+		<record alias="effect-duration-fluctuation-max" filter="fluctuation-time-effect" type="Int32" />
+		<!-- ======================================================================================== -->
+		<!-- ======================================================================================== -->
+		<record alias="zone-id" filter="transit" type="Int64" />
+		<!-- ======================================================================================== -->
+		<record alias="basecamp" filter="return-to-basecamp" ref="ZoneBaseCamp" />
+		<!-- ======================================================================================== -->
+		<record alias="skill" filter="return-sim-skill" ref="Skill3" />
+		<record alias="skill3" filter="return-sim-skill" ref="Skill3" />
+		<record alias="finish" filter="return-sim-skill" type="Bool" />
+		<!-- ======================================================================================== -->
+		<record alias="death-probability" filter="instantaneous-death" type="Int16" />
+		<!-- ======================================================================================== -->
+		<record alias="additional-power-probability" filter="internal-force-attack" type="Int16" default="100" />
+		<record alias="additional-power-percent" filter="internal-force-attack" type="Int16" />
+		<record alias="additional-power-diff" filter="internal-force-attack" type="Int32" />
+		<!-- ======================================================================================== -->
+		<record alias="increase-amount" filter="increase-special-skill-gauge|increase-caster-special-skill-gauge" type="Int32" />
+		<!-- ======================================================================================== -->
+		<record alias="link-type" filter="link" type="Seq" seq="link-type" />
+		<record alias="link-stage" filter="link" type="Seq" seq="link-stage" />
+		<record alias="catch-caster-effect" filter="link" ref="Effect" />
+		<record alias="catch-target-effect" filter="link" ref="Effect" />
+		<record alias="detach-effect" filter="link" ref="Effect" />
+		<record alias="detach-angle-by-dispeled" filter="link" type="Seq" seq="angle" />
+		<record alias="detach-margin-by-dispeled" filter="link" type="Distance" />
+		<record alias="detach-angle-by-timeout" filter="link" type="Seq" seq="angle" />
+		<record alias="detach-margin-by-timeout" filter="link" type="Distance" />
+		<!-- ======================================================================================== -->
+		<record alias="knockback-speed" filter="knockback" type="velocity" />
+		<record alias="caster-dash" filter="knockback" type="Bool" />
+		<record alias="knockback-direction" filter="knockback" type="Seq" >
+			<case alias="push" default="y" />
+			<case alias="pull" />
+			<case alias="left" />
+			<case alias="right" />
+		</record>
+		<record alias="knockback-type" filter="knockback" type="Seq" >
+			<case alias="throw" default="y" />
+			<case alias="roll" />
+		</record>
+		<!-- ======================================================================================== -->
+		<record alias="tumbling-speed" filter="tumbling" type="Velocity" />
+		<record alias="tumbling-direction" filter="tumbling" type="Seq" seq="direction" />
+		<!-- ======================================================================================== -->
+		<record alias="speed-percent" filter="put-in-sword" type="Int16" />
+		<!-- ======================================================================================== -->
+		<record alias="max-hp-diff" filter="buff-max-hp" type="Int64" />
+		<!-- ======================================================================================== -->
+		<record alias="immune-attribute-rep" type="Seq16" filter="immune-attribute" seq="effect-attribute" repeat="3" />
+		<record alias="immune-attribute-value-rep" filter="immune-attribute" type="Int64" />
+		<record alias="immune-attribute-value-2-rep" filter="immune-attribute" type="Int64" />
+		<record alias="immune-attribute-value-3-rep" filter="immune-attribute" type="Int64" />
+		<!-- ======================================================================================== -->
+		<record alias="guard-gauge-diff" filter="interval-guard-gauge-heal" type="Int32" />
+		<record alias="guard-gauge-percent" filter="interval-guard-gauge-heal" type="Int16" />
+		<!-- ======================================================================================== -->
+		<record alias="speed-percent" filter="stagger|marking" type="Int16" />
+		<!-- ======================================================================================== -->
+		<record alias="ability-percent" filter="internal-injury|force-amplification" type="Int16" />
+		<!-- ======================================================================================== -->
+		<record alias="heal-hp-diff" filter="swoon" type="Int32" />
+		<record alias="heal-hp-percent" filter="swoon" type="Int16" />
+		<!-- ======================================================================================== -->
+		<record alias="additional-power-percent" filter="embers" type="Int16" />
+		<!-- ======================================================================================== -->
+		<record alias="speed-percent" filter="modify-move-speed" type="Int16" />
+		<!-- ======================================================================================== -->
+		<record alias="cast-speed-percent" filter="modify-cast-speed" type="Int16" />
+		<!-- ======================================================================================== -->
+		<record alias="move-speed-percent" filter="dull" type="Int16" />
+		<record alias="cast-speed-percent" filter="dull" type="Int16" />
+		<!-- ======================================================================================== -->
+		<record alias="recycle-group" filter="set-recycle-time" type="Seq" seq="recycle-group" />
+		<record alias="recycle-group-id-1" filter="set-recycle-time" type="Int8" />
+		<record alias="recycle-group-id-2" filter="set-recycle-time" type="Int8" />
+		<record alias="recycle-group-set-time-1" filter="set-recycle-time" type="Int32" />
+		<record alias="recycle-group-set-time-2" filter="set-recycle-time" type="Int32" />
+		<!-- ======================================================================================== -->
+		<record alias="initialize-recycle-group-1" filter="initialize-recycle-group" type="Seq" seq="recycle-group" />
+		<record alias="initialize-recycle-group-2" filter="initialize-recycle-group" type="Seq" seq="recycle-group" />
+		<record alias="initialize-recycle-group-id-1" filter="initialize-recycle-group" type="Int8" />
+		<record alias="initialize-recycle-group-id-2" filter="initialize-recycle-group" type="Int8" />
+		<!-- ======================================================================================== -->
+		<record alias="recycle-group-1" filter="modify-recycle-time" type="Seq" seq="recycle-group" />
+		<record alias="recycle-group-2" filter="modify-recycle-time" type="Seq" seq="recycle-group" />
+		<record alias="recycle-group-id-1" filter="modify-recycle-time" type="Int8" />
+		<record alias="recycle-group-id-2" filter="modify-recycle-time" type="Int8" />
+		<record alias="recycle-group-modify-time-1" filter="modify-recycle-time" type="Int32" />
+		<record alias="recycle-group-modify-time-2" filter="modify-recycle-time" type="Int32" />
+		<!-- ======================================================================================== -->
+		<record alias="dispel-attribute" filter="time-bomb" type="Seq16" seq="effect-attribute" repeat="3" />
+		<record alias="dispel-attribute-value" filter="time-bomb" type="Int64" />
+		<record alias="dispel-attribute-value-2" filter="time-bomb" type="Int64" />
+		<record alias="dispel-attribute-value-3" filter="time-bomb" type="Int64" />
+		<!-- ======================================================================================== -->
+		<record alias="instant-heart-count" filter="recharge-heart-count" type="Int8" />
+		<record alias="heart-count" filter="recharge-heart-count" type="Int8" />
+		<!-- ======================================================================================== -->
+		<record alias="hp-diff" filter="debuff-guild-battle-field" type="Int32" />
+		<record alias="hp-percent" filter="debuff-guild-battle-field" type="Int16" />
+		<!-- ======================================================================================== -->
+		<!-- <record alias="attack-power-equip-min" name="最小攻击" type="Int16" filter="item-ability" />
+		<record alias="attack-power-equip-max" name="最大攻击" type="Int16" filter="item-ability" />
+		<record alias="defend-power-equip-value" name="防御" type="Int16" filter="item-ability" />
+		<record alias="defend-resist-power-equip-value" name="抗性" type="Int16" filter="item-ability" />
+		<record alias="attack-hit-base-percent" name="命中率" type="Int16" filter="item-ability" />
+		<record alias="attack-hit-value" type="Int16" filter="item-ability" />
+		<record alias="attack-hit-value-equip" name="命中" type="Int16" filter="item-ability" />
+		<record alias="attack-pierce-base-percent" type="Int16" filter="item-ability" />
+		<record alias="attack-parry-pierce-percent" type="Int16" filter="item-ability" />
+		<record alias="attack-pierce-value" type="Int16" filter="item-ability" />
+		<record alias="attack-pierce-value-equip" name="穿刺" type="Int16" filter="item-ability" />
+		<record alias="attack-critical-base-percent" type="Int16" filter="item-ability" />
+		<record alias="attack-critical-damage-percent" name="暴击伤害率" type="Int16" filter="item-ability" />
+		<record alias="attack-critical-value" name="暴击" type="Int16" filter="item-ability" />
+		<record alias="attack-critical-value-equip" type="Int16" filter="item-ability" />
+		<record alias="attack-critical-damage-value" type="Int16" filter="item-ability" />
+		<record alias="attack-critical-damage-value-equip" type="Int16" filter="item-ability" />
+		<record alias="defend-critical-base-percent" type="Int16" filter="item-ability" />
+		<record alias="defend-critical-damage-percent" name="暴击防御率" type="Int16" filter="item-ability" />
+		<record alias="defend-critical-value" type="Int16" filter="item-ability" />
+		<record alias="defend-critical-value-equip" name="暴击防御" type="Int16" filter="item-ability" />
+		<record alias="defend-dodge-base-percent" name="闪避率" type="Int16" filter="item-ability" />
+		<record alias="defend-dodge-value" type="Int16" filter="item-ability" />
+		<record alias="defend-dodge-value-equip" name="闪避" type="Int16" filter="item-ability" />
+		<record alias="defend-parry-base-percent" name="格挡率" type="Int16" filter="item-ability" />
+		<record alias="defend-parry-value" type="Int16" filter="item-ability" />
+		<record alias="defend-parry-value-equip" name="格挡" type="Int16" filter="item-ability" />
+		<record alias="attack-stiff-duration-base-percent" name="状态异常时间增加（百分比）" type="Int16" filter="item-ability" />
+		<record alias="attack-stiff-duration-value" name="熟练" type="Int16" filter="item-ability" />
+		<record alias="defend-stiff-duration-base-percent" name="状态异常时间减少（百分比）" type="Int16" filter="item-ability" />
+		<record alias="defend-stiff-duration-value" name="韧性" type="Int16" filter="item-ability" />
+		<record alias="cast-duration-base-percent" name="集中率" type="Int16" filter="item-ability" />
+		<record alias="cast-duration-value" name="集中" type="Int16" filter="item-ability" />
+		<record alias="defend-physical-damage-reduce-percent" name="物理伤害减免率" type="Int16" filter="item-ability" />
+		<record alias="defend-force-damage-reduce-percent" name="气功伤害减免率" type="Int16" filter="item-ability" />
+		<record alias="attack-damage-modify-percent" name="额外伤害率" type="Int16" filter="item-ability" />
+		<record alias="attack-damage-modify-diff" name="额外伤害" type="Int16" filter="item-ability" />
+		<record alias="defend-damage-modify-percent" name="伤害减免率" type="Int16" filter="item-ability" />
+		<record alias="defend-damage-modify-diff" name="伤害减免" type="Int16" filter="item-ability" />
+		<record alias="max-hp" type="Int32" filter="item-ability" />
+		<record alias="max-hp-equip" name="生命" type="Int32" filter="item-ability" />
+		<record alias="max-guard-gauge" type="Int32" filter="item-ability" />
+		<record alias="max-guard-gauge-equip" type="Int32" filter="item-ability" />
+		<record alias="hp-regen" name="恢复" type="Int32" filter="item-ability" />
+		<record alias="hp-regen-equip" type="Int32" filter="item-ability" />
+		<record alias="hp-regen-combat" type="Int32" filter="item-ability" />
+		<record alias="hp-regen-combat-equip" name="战斗中恢复生命" type="Int32" filter="item-ability" />
+		<record alias="job-ability-1" type="Int16" filter="item-ability" />
+		<record alias="job-ability-2" type="Int16" filter="item-ability" />
+		<record alias="heal-power-base-percent" type="Int16" filter="item-ability" />
+		<record alias="heal-power-value" type="Int16" filter="item-ability" />
+		<record alias="heal-power-diff" type="Int32" filter="item-ability" />
+		<record alias="aoe-defend-base-percent" type="Int16" filter="item-ability" />
+		<record alias="aoe-defend-power-value" type="Int16" filter="item-ability" />
+		<record alias="abnormal-attack-base-percent" type="Int16" filter="item-ability" />
+		<record alias="abnormal-attack-power-value" type="Int16" filter="item-ability" />
+		<record alias="abnormal-attack-power-value-equip" type="Int16" filter="item-ability" />
+		<record alias="abnormal-defend-base-percent" type="Int16" filter="item-ability" />
+		<record alias="abnormal-defend-power-value" type="Int16" filter="item-ability" />
+		<record alias="hate-power-equip-value" type="Int16" filter="item-ability" />
+		<record alias="additional-exp-diff-by-kill" type="Int16" filter="item-ability" />
+		<record alias="additional-exp-percent-by-kill" type="Int16" filter="item-ability" />
+		<record alias="attack-concentrate-value" type="Int16" filter="item-ability" />
+		<record alias="attack-concentrate-value-equip" type="Int16" filter="item-ability" />
+		<record alias="defend-perfect-parry-reduce-percent" type="Int16" filter="item-ability" />
+		<record alias="defend-counter-reduce-percent" type="Int16" filter="item-ability" />
+		<record alias="attack-attribute-value" type="Int16" filter="item-ability" />
+		<record alias="attack-attribute-value-equip" name="功力" type="Int16" filter="item-ability" />
+		<record alias="attack-attribute-base-percent" name="功力伤害率" type="Int16" filter="item-ability" />
+		<record alias="pve-boss-level-npc-attack-power-equip-min" name="最小降魔攻击力" type="Int16" filter="item-ability" />
+		<record alias="pve-boss-level-npc-attack-power-equip-max" name="最大降魔攻击力" type="Int16" filter="item-ability" />
+		<record alias="pve-boss-level-npc-defend-power-equip-value" name="降魔防御力" type="Int16" filter="item-ability" />
+		<record alias="pvp-attack-power-equip-min" name="最小PVP攻击力" type="Int16" filter="item-ability" />
+		<record alias="pvp-attack-power-equip-max" name="最大PVP攻击力" type="Int16" filter="item-ability" />
+		<record alias="pvp-defend-power-equip-value" name="PVP防御力" type="Int16" filter="item-ability" />
+		<record alias="r-attack-stiff-duration-equip-value" type="Int16" filter="item-ability" />
+		<record alias="r-defend-stiff-duration-equip-value" type="Int16" filter="item-ability" />
+		<record alias="r-aoe-defend-power-value-equip" type="Int16" filter="item-ability" />
+		<record alias="r-heal-power-equip-value" type="Int16" filter="item-ability" />
+		<record alias="r-defend-strength-equip-value" type="Int32" filter="item-ability" />
+		<record alias="r-attack-precise-equip-value" type="Int32" filter="item-ability" />
+		<record alias="r-attack-aoe-pierce-value-equip" type="Int16" filter="item-ability" />
+		<record alias="r-attack-abnormal-hit-equip-value" type="Int16" filter="item-ability" />
+		<record alias="r-defend-abnormal-dodge-equip-value" type="Int16" filter="item-ability" />
+		<record alias="r-support-power-equip-value" type="Int16" filter="item-ability" />
+		<record alias="r-hypermove-power-equip-value" type="Int16" filter="item-ability" />-->
+		<!-- ======================================================================================== -->
+		<record alias="modify-ability-for-mastery" filter="mastery-stat-equip" type="Seq16" seq="creature_field" repeat="16" />
+		<record alias="modify-ability-diff-for-mastery" filter="mastery-stat-equip" type="Int64" repeat="16" />
+		<record alias="modify-ability-percent-for-mastery" filter="mastery-stat-equip" type="Int16" repeat="16" />
+		<!-- ======================================================================================== -->
+		<record alias="lock-on-target-id" filter="shooter-lock-on" type="Int64" />
+		<!-- ======================================================================================== -->
+		<record alias="gp-diff" filter="second-gauge-point|interval-second-gauge-point" type="Int16" />
+		<!-- ======================================================================================== -->
+		<record alias="gp-fix" filter="set-second-gauge-point" type="Int16" />
+		<!-- ======================================================================================== -->
+		<record alias="effect-particle" filter="Particle-socket" type="String" />
+		<record alias="effect-particle2" filter="Particle-socket" type="String" />
+		<record alias="effect-particle3" filter="Particle-socket" type="String" />
+		<record alias="effect-particle4" filter="Particle-socket" type="String" />
+		<record alias="effect-particle5" filter="Particle-socket" type="String" />
+		<record alias="effect-particle-followup-time-min" filter="Particle-socket" type="Int32" />
+		<record alias="effect-particle-followup-time-max" filter="Particle-socket" type="Int32" />
+		<record alias="spawn-show" filter="Particle-socket" type="String" />
+		<record alias="spawn-show2" filter="Particle-socket" type="String" />
+		<record alias="spawn-show3" filter="Particle-socket" type="String" />
+		<record alias="spawn-show4" filter="Particle-socket" type="String" />
+		<record alias="spawn-show5" filter="Particle-socket" type="String" />
+		<record alias="despawn-show" filter="Particle-socket" type="String" />
+		<record alias="despawn-show2" filter="Particle-socket" type="String" />
+		<record alias="despawn-show3" filter="Particle-socket" type="String" />
+		<record alias="despawn-show4" filter="Particle-socket" type="String" />
+		<record alias="despawn-show5" filter="Particle-socket" type="String" />
+		<!-- ======================================================================================== -->
+		<record alias="soul-mask-id" filter="soul-mask-1|soul-mask-2" type="Int32" />
+		<!-- ======================================================================================== -->
+
+		<!-- ======================================================================================== -->
+		<record alias="npc" filter="npc-change-appearance" ref="Npc" />
+		<record alias="weapon" filter="npc-change-appearance" ref="Npc" />
+		<!-- ======================================================================================== -->
+	</list>
+</table>

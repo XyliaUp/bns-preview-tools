@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list id2="135" alias="GuildBattleFieldZone" module="ZoneData0" type="guild-battle-field-zone" version="0.18" >
+		<record alias="alias" type="String" name=""/>
+		<record alias="zone" ref="Zone" />
+		<record alias="group" ref="AttractionGroup" />
+		<record alias="respawn-effect" ref="Effect" />
+		<record alias="respawn-delay" type="Msec" repeat="5" />
+		<record alias="refiner" ref="ZoneEnv2Spawn" repeat="3" />
+		<record alias="respawn-by-refiner" ref="ZoneRespawnData" repeat="3" />
+		<record alias="airdash-1-by-refiner" ref="ZoneEnv2Spawn" repeat="3" />
+		<record alias="airdash-2-by-refiner" ref="ZoneEnv2Spawn" repeat="3" />
+		<record alias="guild-battle-field-zone-name2" ref="Text" />
+		<record alias="guild-battle-field-zone-desc" ref="Text" />
+		<record alias="thumbnail-image" type="String" server="n" />
+		<record alias="reward-summary" ref="AttractionRewardSummary" />
+		<record alias="last-boss" ref="Npc" />
+		<record alias="pc-spawn-id" type="Int16" repeat="6" />
+		<record alias="pc-spawn-id-count" type="Int32" />
+		<record alias="gate-replica" type="Int32" ref="ZoneEnv2Spawn" repeat="6" />
+		<record alias="gate-open-ready-minute" type="Int8" showzero="y" />
+
+		<record alias="timestruct" type="struct" >
+			<record alias="gate-open-hour-1" type="Int8" default="-1" />
+			<record alias="gate-open-hour-2" type="Int8" default="-1" />
+			<record alias="gate-open-hour-3" type="Int8" default="-1" />
+			<record alias="gate-open-hour-4" type="Int8" default="-1" />
+			<record alias="gate-open-hour-5" type="Int8" default="-1" />
+			<record alias="gate-open-hour-6" type="Int8" default="-1" />
+			<record alias="gate-open-hour-7" type="Int8" default="-1" />
+			<record alias="gate-open-hour-8" type="Int8" default="-1" />
+			<record alias="gate-open-hour-9" type="Int8" default="-1" />
+			<record alias="gate-open-hour-10" type="Int8" default="-1" />
+			<record alias="gate-open-hour-11" type="Int8" default="-1" />
+			<record alias="gate-open-hour-12" type="Int8" default="-1" />
+			<record alias="gate-open-minute-1" type="Int8" default="-1" />
+			<record alias="gate-open-minute-2" type="Int8" default="-1" />
+			<record alias="gate-open-minute-3" type="Int8" default="-1" />
+			<record alias="gate-open-minute-4" type="Int8" default="-1" />
+			<record alias="gate-open-minute-5" type="Int8" default="-1" />
+			<record alias="gate-open-minute-6" type="Int8" default="-1" />
+			<record alias="gate-open-minute-7" type="Int8" default="-1" />
+			<record alias="gate-open-minute-8" type="Int8" default="-1" />
+			<record alias="gate-open-minute-9" type="Int8" default="-1" />
+			<record alias="gate-open-minute-10" type="Int8" default="-1" />
+			<record alias="gate-open-minute-11" type="Int8" default="-1" />
+			<record alias="gate-open-minute-12" type="Int8" default="-1" />
+			<record alias="gate-open-duration-1" type="Int16" />
+			<record alias="gate-open-duration-2" type="Int16" />
+			<record alias="gate-open-duration-3" type="Int16" />
+			<record alias="gate-open-duration-4" type="Int16" />
+			<record alias="gate-open-duration-5" type="Int16" />
+			<record alias="gate-open-duration-6" type="Int16" />
+			<record alias="gate-open-duration-7" type="Int16" />
+			<record alias="gate-open-duration-8" type="Int16" />
+			<record alias="gate-open-duration-9" type="Int16" />
+			<record alias="gate-open-duration-10" type="Int16" />
+			<record alias="gate-open-duration-11" type="Int16" />
+			<record alias="gate-open-duration-12" type="Int16" />
+			<record alias="zone-open-hour" type="Int8" default="-1" />
+			<record alias="zone-open-minute" type="Int8" default="-1" />
+			<record alias="zone-close-hour" type="Int8" default="-1" />
+			<record alias="zone-close-minute" type="Int8" default="-1" />
+		</record>
+		<record alias="sun-" struct="timestruct" />
+		<record alias="mon-" struct="timestruct" />
+		<record alias="tue-" struct="timestruct" />
+		<record alias="wed-" struct="timestruct" />
+		<record alias="thu-" struct="timestruct" />
+		<record alias="fri-" struct="timestruct" />
+		<record alias="sat-" struct="timestruct" />
+		<record alias="gate-open-percent" type="Int8" />
+		<record alias="required-level-min" type="Int8" />
+		<record alias="required-level-max" type="Int8" />
+		<record alias="required-faction-score" type="Int16" server="n" />
+
+		<record alias="all-occupied-effect-to-other" type="Bool" client="n" />
+		<record alias="effect-region-by-last-boss" type="Ref" client="n" />
+	</list>
+</table>

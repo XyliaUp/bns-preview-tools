@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="LocalizationData" type="goods-icon" version="0.1" >
+		<record alias="id" type="Int32" key="y" />
+		<record alias="icon" type="Icon" />
+	</list>
+</table>

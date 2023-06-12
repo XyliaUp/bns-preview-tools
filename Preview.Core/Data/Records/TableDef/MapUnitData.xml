@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<!--  -->
+	<list module="ZoneData0" type="mapunit" version="1.78" rule="unsort" >
+
+		<record alias="type" type="type" >
+			<case alias="static" />
+			<case alias="quest" />
+			<case alias="link" />
+			<case alias="npc" />
+			<case alias="boss" />
+			<case alias="airdash" />
+			<case alias="env" />
+			<case alias="attraction" />
+			<case alias="npc-group" />
+			<case alias="guild-battle-field-portal" />
+			<case alias="party-battle-startpoint-alpha" />
+			<case alias="party-battle-startpoint-beta" />
+			<case alias="fishing-field" />			
+		</record>
+
+		<record alias="id" type="Int32" key="y" />
+
+		<record alias="alias" type="String" />
+		<record alias="mapid" type="Int16" />
+		<record alias="zone-id" type="Int32" />
+		<record alias="is-phasing-unit" type="Bool" />
+		<record alias="position-x" type="Float32" />
+		<record alias="position-y" type="Float32" />
+		<record alias="position-z" type="Float32" />
+		<record alias="category" type="Seq" >
+			<case alias="none" default="y" />
+			<case alias="player" />
+			<case alias="party" />
+			<case alias="team" />
+			<case alias="guild" />
+			<case alias="friend" />
+			<case alias="revenge-enemy" />
+			<case alias="faction" />
+			<case alias="duel-enemy" />
+			<case alias="quest" />
+			<case alias="npc" />
+			<case alias="env" />
+			<case alias="teleport" />
+			<case alias="airdash" />
+			<case alias="link" />
+			<case alias="convoy" />
+			<case alias="spawned-env" />
+			<case alias="static" />
+			<case alias="auction" />
+			<case alias="store" />
+			<case alias="camp" />
+			<case alias="party-camp" />
+			<case alias="roulette" />
+			<case alias="field-boss" />
+			<case alias="gather" />
+			<case alias="craft" />
+			<case alias="gather-env" />
+			<case alias="heart" />
+			<case alias="enter-arena" />
+			<case alias="weapon-box" />
+			<case alias="refiner" />
+			<case alias="dungeon-3" />
+			<case alias="dungeon-4" />
+			<case alias="dungeon-5" />
+			<case alias="raid-dungeon" />
+			<case alias="classic-field" />
+			<case alias="faction-battle-field" />
+			<case alias="guild-battle-field" />
+			<case alias="party-battle-startpoint" />
+			<case alias="party-battle-enemy" />
+			<case alias="fishing-field" />
+        </record>
+		<record alias="map-depth" type="Seq" >
+			<case alias="1" default="y" />
+			<case alias="2" />
+			<case alias="3" />
+			<case alias="4" />
+			<case alias="5" />
+		</record>
+		<record alias="arena-dungeon-map-depth" type="Seq" >
+			<case alias="1" default="y" />
+			<case alias="2" />
+			<case alias="3" />
+			<case alias="4" />
+			<case alias="5" />
+		</record>
+		<record alias="zoom" type="Bool" />
+		<record alias="rotate" type="Bool" />		
+		<record alias="click" type="Bool" />			
+		<record alias="front" type="Bool" />			
+		<record alias="show-tooltip" type="Bool" default="y" />	
+		<record alias="name2" ref="Text" />
+		<record alias="opacity" type="Int16" />
+		<record alias="size-x" type="Int16" />
+		<record alias="size-y" type="Int16" />
+		<record alias="oufofsight-size-x" type="Int16" />
+		<record alias="oufofsight-size-y" type="Int16" />
+		<record alias="imageset" type="String" />
+		<record alias="over-imageset" type="String" />
+		<record alias="pressed-imageset" type="String" />
+		<record alias="outofsight-imageset" type="String" />
+		<record alias="outofsight-over-imageset" type="String" />
+		<record alias="outofsight-pressed-imageset" type="String" />
+		<record alias="center-pos-x" type="Float32" default="-1.00" />
+		<record alias="center-pos-y" type="Float32" default="-1.00" />
+		<!-- ========================== 公共区域  结束 ========================== -->
+
+
+		<!-- ============================ [1=] 开始 ============================ -->
+		<record alias="ignore-quest-map-location" type="Bool" filter="quest" />
+		<record alias="force-quest-indicator-map-depth" type="Seq" filter="quest" >
+			<case alias="1" default="y" />
+			<case alias="2" />
+			<case alias="3" />
+			<case alias="4" />
+			<case alias="5" />
+		</record>
+		<record alias="force-tendency-simple-quest-indicator-to-change" type="Bool" filter="quest" />
+		<!-- =================================================================== -->
+
+		<!-- ============================ [2=] 开始 ============================ -->
+		<record alias="link-mapid" type="Int16" filter="link" />
+		<record alias="link-map-location-x" type="Float32" filter="link" />
+		<record alias="link-map-location-y" type="Float32" filter="link" />
+		<!-- =================================================================== -->
+
+		<!-- ============================ [3=] 开始 ============================ -->
+		<record alias="npc" filter="npc" ref="Npc" />
+		<record alias="ignore-object-pos" type="Bool" filter="npc" />
+		<record alias="in-sight-only" type="Bool" filter="npc" />
+		<record alias="many-counts" type="Bool" filter="npc" />
+		<!-- =================================================================== -->
+
+
+		<!-- ========================== [4=] 开始 ========================== -->
+		<record alias="npc" filter="boss" ref="Npc" />
+		<record alias="combat-imageset" type="String" filter="boss" />
+		<record alias="combat-over-imageset" type="String" filter="boss" />
+		<record alias="combat-pressed-imageset" type="String" filter="boss" />
+		<record alias="combat-outofsight-imageset" type="String" filter="boss" />
+		<record alias="combat-outofsight-over-imageset" type="String" filter="boss" />
+		<record alias="combat-outofsight-pressed-imageset" type="String" filter="boss" />
+		<record alias="many-counts" type="Bool" filter="boss" />
+		<!-- =================================================================== -->
+
+		<!-- ========================== 5  开始 ========================== -->
+		<record alias="env2spawn" filter="airdash" ref="ZoneEnv2Spawn" />
+		<!-- =================================================================== -->
+
+		<!-- ========================== 6  开始 ========================== -->
+		<record alias="env2" filter="env" ref="ZoneEnv2" />
+		<!-- =================================================================== -->
+
+		<!-- ======================= [7=content] 开始 ======================= -->
+		<record alias="attraction" filter="attraction" type="TRef" />
+		<record alias="attraction-position-x" type="Float32" filter="attraction" />
+		<record alias="attraction-position-y" type="Float32" filter="attraction" />
+		<!-- =================================================================== -->
+
+		<!-- ======================== [8 =npc] 开始 ======================== -->
+		<record alias="npc" ref="Npc" filter="npc-group" />
+		<!-- =================================================================== -->
+
+		<!-- ======================== [9 =] 开始 ======================== -->
+		<record alias="env2spawn" filter="guild-battle-field-portal" ref="ZoneEnv2Spawn" />
+		<record alias="disable-imageset" type="String" filter="guild-battle-field-portal" />
+		<record alias="disable-over-imageset" type="String" filter="guild-battle-field-portal" />
+		<record alias="disable-pressed-imageset" type="String" filter="guild-battle-field-portal" />
+		<record alias="disable-outofsight-imageset" type="String" filter="guild-battle-field-portal" />
+		<record alias="disable-outofsight-over-imageset" type="String" filter="guild-battle-field-portal" />
+		<record alias="disable-outofsight-pressed-imageset" type="String" filter="guild-battle-field-portal" />	
+		<!-- =================================================================== -->
+
+		<!-- ========================== 10 / 11 ========================== -->
+		<record alias="enemy-side-imageset" type="String" filter="party-battle-startpoint-alpha" />
+		<record alias="enemy-side-imageset" type="String" filter="party-battle-startpoint-beta" />
+		<!-- =================================================================== -->
+		
+		
+		<!-- ========================== 12  开始 ========================== -->
+		<record alias="fishing-point-env" ref="ZoneEnv2" filter="fishing-field" />
+		<!-- =================================================================== -->
+	</list>
+</table>

@@ -1,0 +1,265 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="ZoneData0" type="ZoneEnv2" version="4.1" check-version="y" >
+		<record alias="type" type="type" >
+			<case alias="button" />
+			<case alias="chest" />
+			<case alias="pot" />
+			<case alias="gate" />
+			<case alias="wall" />
+			<case alias="refiner" />
+			<case alias="control-point" />
+			<case alias="portal" />
+			<case alias="portal-list" />
+			<case alias="foot-switch" />
+			<case alias="effect-region" />
+			<case alias="airdash" />
+			<case alias="airdash-leave" />
+			<case alias="oceanic-region" />
+			<case alias="fall-death" />
+			<case alias="multiple-loop" />
+			<case alias="deck" />			
+			<case alias="fishing-point" />
+			<case alias="attraction-popup" />
+			<case alias="enter-arena-dungeonlobby" />
+		</record>
+
+		<record alias="alias" type="String" />
+		<record alias="init-enable" type="Bool" default="y" />
+		<record alias="init-enable-duration" type="Msec" />
+		<record alias="koreaname" type="String" client="n" />
+		<record alias="name2" ref="Text" />
+		<record alias="hide-disable" type="Bool" />
+		<record alias="category" type="Seq" server="n" >	
+			<case alias="collect" />
+			<case alias="manipulate" />
+			<case alias="pick-up" />
+			<case alias="put-down" />
+			<case alias="recharge-heart" />
+			<case alias="default" default="y" />
+		</record>
+		<record alias="required-fielditem" ref="FieldItem" />	
+		<record alias="manipulate-by-item" ref="Item" />			
+		<record alias="manipulate-by-item-count" type="Int16" />
+		<record alias="show-require-manipulate-by-item-message" type="Bool" server="n" />
+		<record alias="consume-item-by-manipulate" type="Bool" default="y" />
+		<record alias="broadcast-manipulate-cinematic" ref="Cinematic" />			
+		<record alias="show-confirm-type" type="Seq" server="n" >	
+			<case alias="none" default="y" />
+			<case alias="manipulate-consume-item" />
+		</record>	
+		<record alias="manipulate-notification-range" type="Seq" server="n" >	
+			<case alias="none" default="y" />
+			<case alias="party" />
+			<case alias="team" />
+		</record>	
+		<record alias="required-faction-score" type="Int32" />	
+		<record alias="required-faction-score-max" type="Int32" />				
+		<record alias="consume-faction-score" type="Bool" default="y" />
+		<record alias="manipulate-duration" type="Msec" />				
+		<record alias="manipulated-effect" ref="Effect" />
+		<record alias="main-faction-effect" ref="Effect" />		
+		<record alias="main-faction-effect-distance" type="Distance" />	
+		<record alias="cannot-manipulate-effect" ref="Effect" />
+		<record alias="cannot-manipulate-in-combat" type="Bool" />	
+		<record alias="cannot-manipulate-in-max-instant-heart-count" type="Bool" />	
+		<record alias="required-joined-main-faction" type="Bool" />	
+		<record alias="required-activated-main-faction" type="Bool" />	
+		<record alias="required-activated-faction" ref="Faction" />		
+		<record alias="respawn-duration" type="Msec" />	
+		<record alias="rollback" type="Bool" />	
+		<record alias="max-hp" type="Int16" />	
+		<record alias="attack-skill" ref="Skill" repeat="4" />
+		<record alias="attack-skill3" ref="Skill3" repeat="4" />
+		<record alias="dice-result-broadcast" type="Bool" />
+		<record alias="save-authorizer" type="Bool" />
+		<record alias="occurrence-event-in-respawn" type="Bool" />
+		<record alias="broadcast-pickup-reward-to-world" type="Bool" />
+		<record alias="acquire-reward-to-inventory" type="Bool" />
+		<record alias="reward-faction-score" type="Int32" />	
+		<record alias="gain-faction-score-showname" type="String" />	
+		<record alias="caster-animname" type="String" />	
+		<record alias="caster-showname" type="String" />	
+		<record alias="caster-picking-animname" type="String" />	
+		<record alias="caster-manipulate-finish-showname" type="String" />	
+		<record alias="env-animname" type="String" />	
+		<record alias="env-sound-name" type="String" />	
+		<record alias="action-name2" ref="Text" />
+		<record alias="action-desc2" ref="Text" />
+		<record alias="hide-close" type="Bool" />
+		<record alias="hide-empty" type="Bool" name="使用后隐藏" />
+		<record alias="tooltip-option" type="Bool" />
+		<record alias="show-quest-indicator" type="Bool" />
+		<record alias="default-indicator-image" type="String" />
+	
+		<record alias="forwarding-types" type="Seq" seq="forwarding-type" server="n" repeat="20" />
+		<record alias="quests" ref="Quest" server="n" repeat="20" />
+		<record alias="missions" type="Int8" server="n" repeat="20" />
+		<record alias="cases" type="Int8" server="n" repeat="20" />
+		<record alias="case-subtypes" type="Int16" server="n" repeat="20" />
+
+		<record alias="loot-forwarding-types" type="Seq" seq="forwarding-type" server="n" repeat="8" />
+		<record alias="loot-quests" ref="Quest" server="n" repeat="8" />
+		<record alias="loot-missions" type="Int8" server="n" repeat="8" />
+		<record alias="loot-cases" type="Int8" server="n" repeat="8" />
+		<record alias="loot-item" ref="Item" server="n" repeat="8" />
+		<record alias="lootable" type="Bool" server="n" />
+
+		<record alias="attraction" server="n" type="TRef" />		
+		<record alias="caster-reaction-attach" type="String" server="n" />
+		<record alias="spawn-mesh" type="String" server="n" />
+		<record alias="spawn-animset" type="String" server="n" />
+		<record alias="image-text" ref="Text" />
+		<record alias="mapunit-image-enable-close-true-imageset" type="String" server="n" />
+		<record alias="mapunit-image-enable-close-true-over-imageset" type="String" server="n" />
+		<record alias="mapunit-image-enable-close-true-size-x" type="Int16" server="n" />
+		<record alias="mapunit-image-enable-close-true-size-y" type="Int16" server="n" />
+		<record alias="mapunit-image-enable-close-false-imageset" type="String" server="n" />
+		<record alias="mapunit-image-enable-close-false-over-imageset" type="String" server="n" />
+		<record alias="mapunit-image-enable-close-false-size-x" type="Int16" server="n" />
+		<record alias="mapunit-image-enable-close-false-size-y" type="Int16" server="n" />
+		<record alias="mapunit-image-enable-open-imageset" type="String" server="n" />
+		<record alias="mapunit-image-enable-open-over-imageset" type="String" server="n" />
+		<record alias="mapunit-image-enable-open-size-x" type="Int16" server="n" />
+		<record alias="mapunit-image-enable-open-size-y" type="Int16" server="n" />
+		<record alias="mapunit-image-disable-imageset" type="String" server="n" />
+		<record alias="mapunit-image-disable-over-imageset" type="String" server="n" />
+		<record alias="mapunit-image-disable-size-x" type="Int16" server="n" />
+		<record alias="mapunit-image-disable-size-y" type="Int16" server="n" />
+		<record alias="mapunit-image-unconfirmed-imageset" type="String" server="n" />
+		<record alias="mapunit-image-unconfirmed-over-imageset" type="String" server="n" />
+		<record alias="mapunit-image-unconfirmed-size-x" type="Int16" server="n" />
+		<record alias="mapunit-image-unconfirmed-size-y" type="Int16" server="n" />
+		
+		<record alias="script" ref="ScriptData" name="AI (服务端专用)" client="n" />
+        <!-- =========================================================================== -->
+		<record alias="enable-create-solo-party" type="Bool" filter="button" />
+        <!-- =========================================================================== -->
+
+        <!-- =========================================================================== -->
+		<record alias="expedition-type" filter="chest" type="Seq" />
+		<record alias="expedition" filter="chest" ref="WorldAccountExpedition" />
+		<record alias="reward" ref="Reward" filter="chest" client="n" />
+        <!-- =========================================================================== -->
+
+        <!-- =========================================================================== -->
+		<record alias="portal-type" type="Seq" filter="portal" >	
+			<case alias="door" default="y" />
+			<case alias="button" />
+		</record>
+		<record alias="transit-zone" filter="portal" ref="Zone" />
+		<record alias="transit-dungeon" filter="portal" ref="Dungeon" />		
+		<record alias="transit-reentrance-pcspawn" type="Bool" filter="portal" />			
+		<record alias="transit-pc-spawn" type="Int16" filter="portal" name="作用未知" />	
+		<record alias="transit-pc-spawn-in-arena" filter="portal" ref="ZonePcSpawn" input="n" />
+		<record alias="transit-leave-cinematic" ref="Cinematic" filter="portal" />	
+		<record alias="transit-enter-cinematic" ref="Cinematic" filter="portal" />	
+		<record alias="effect" ref="Effect" filter="portal" repeat="8" />
+<!--		
+		<record alias="phase-pc-spawn" type="Int16" filter="portal" repeat="15" name="入场后的角色刷新位置编号" />
+		<record alias="phase-zone-leave-cinematic" ref="Cinematic" filter="portal" repeat="15" />
+		<record alias="phase-zone-enter-cinematic" ref="Cinematic" filter="portal" repeat="15" />
+-->
+		<record alias="transit-leave-social" filter="portal" ref="Social" />
+		<record alias="transit-enter-social" filter="portal" ref="Social" />	
+		<record alias="required-level" type="Int8" filter="portal" />			
+        <!-- =========================================================================== -->
+		<record alias="phase-pc-spawn" type="Int16" filter="gate" client="n" repeat="15" />
+        <!-- =========================================================================== -->
+		<record alias="manipulation-required-field-item" filter="control-point" ref="FieldItem" />
+		<record alias="manipulation-drop-field-item" filter="control-point" ref="FieldItemDrop" />
+		<record alias="occupation-zone-score" type="Int16" filter="control-point" />
+		<record alias="occupation-bonus-zone-score-per-sec" type="Int16" filter="control-point" />
+		<record alias="friend-occupation-additive-effect" type="String" filter="control-point" />
+		<record alias="enemy-occupation-additive-effect" type="String" filter="control-point" />
+		<record alias="friend-occupation-additive-sound" type="String" filter="control-point" />
+		<record alias="enemy-occupation-additive-sound" type="String" filter="control-point" />
+        <!-- =========================================================================== -->
+		
+        <!-- =========================================================================== -->
+		<record alias="effect" filter="effect-region" ref="Effect" repeat="4" />
+
+		<record alias="effect-target" filter="effect-region" type="Seq" client="n" >
+			<case alias="pc" />
+        </record>
+		<record alias="enable-toggle-interval" filter="effect-region" type="Msec" client="n" />
+        <!-- =========================================================================== -->
+		
+        <!-- =========================================================================== -->
+		<record alias="airdash-level" type="Int8" filter="airdash" />
+		<record alias="kismet" type="String" filter="airdash" />
+		<record alias="phase-zone-pc-spawn" type="Int16" filter="airdash" client="n" repeat="15" />
+        <!-- =========================================================================== -->
+		
+        <!-- =========================================================================== -->
+		<record alias="airdash-level" type="Int8" filter="airdash-leave" />
+		<record alias="transit-zone" type="Int32" filter="airdash-leave" ref="Zone" />
+		<record alias="transit-pc-spawn" type="Int16" filter="airdash-leave" />	
+		<record alias="transit-leave-social" type="Int32" filter="airdash-leave" ref="Social" />
+		<record alias="transit-enter-social" type="Int32" filter="airdash-leave" ref="Social" />
+
+<!--		
+		<record alias="phase-zone-pc-spawn" type="Int16" filter="airdash-leave" repeat="15" />
+		<record alias="phase-zone-leave-social" filter="airdash-leave" ref="Social" repeat="15" />
+		<record alias="phase-zone-enter-social" filter="airdash-leave" ref="Social" repeat="15" />
+-->
+        <!-- =========================================================================== -->
+		
+        <!-- =========================================================================== -->
+		<record alias="occupation-duration" type="Msec" filter="refiner" />
+		<record alias="try-refining-duration" type="Msec" filter="refiner" />
+		<record alias="base-refining-duration" type="Msec" filter="refiner" />
+		<record alias="accroach-duration" type="Msec" filter="refiner" />
+		<record alias="give-faction-score-duration" type="Msec" filter="refiner" />
+		<record alias="respawn-duration-in-refined" type="Int32" filter="refiner" />
+		<record alias="refine-faction-score" type="Int32" filter="refiner" />
+		<record alias="refined-reward-item" type="Int32" filter="refiner" ref="Item" />		
+		<record alias="refined-reward-item-base-count" type="Int16" filter="refiner" />
+		<record alias="refined-effect" type="Int32" filter="refiner" ref="Effect" />		
+		<record alias="refined-effect-distance" type="Distance" filter="refiner" />
+		<record alias="refining-disable" type="Bool" filter="refiner" />
+		<record alias="occputation-effect" type="Int32" filter="refiner" ref="Effect" />		
+		<record alias="occputation-effect-distance" type="Distance" filter="refiner" />
+		<record alias="occupy-action-icon" type="Icon" filter="refiner" server="n" />
+		<record alias="occupy-action-name" ref="Text" filter="refiner" server="n" />
+		<record alias="occupy-caster-showname" type="String" filter="refiner" server="n" />
+		<record alias="try-refine-action-icon" type="Icon" filter="refiner" server="n" />
+		<record alias="try-refine-action-name" ref="Text" filter="refiner" server="n" />
+		<record alias="try-refine-caster-showname" type="String" filter="refiner" server="n" />
+		<record alias="give-score-action-icon" type="Icon" filter="refiner" server="n" />
+		<record alias="give-score-action-name" ref="Text" filter="refiner" server="n" />
+		<record alias="give-score-social" type="Int32" filter="refiner" ref="Social" server="n" />
+		<record alias="give-score-caster-showname" ref="Text" filter="refiner" server="n" />
+		<record alias="accroach-action-icon" type="Icon" filter="refiner" server="n" />
+		<record alias="accroach-action-name" ref="Text" filter="refiner" server="n" />	
+		<record alias="accroach-caster-showname" type="String" filter="refiner" server="n" />
+		<record alias="accroach-start-kismet" type="String" filter="refiner" server="n" />
+		<record alias="accroach-end-kismet" type="String" filter="refiner" server="n" />
+		<record alias="friend-gate-start-kismet" type="String" filter="refiner" server="n" />
+		<record alias="friend-gate-end-kismet" type="String" filter="refiner" server="n" />
+		<record alias="enemy-gate-start-kismet" type="String" filter="refiner" server="n" />
+		<record alias="enemy-gate-end-kismet" type="String" filter="refiner" server="n" />
+		<record alias="refiner-ui-index" type="Int8" filter="refiner" server="n" default="1" />
+        <!-- =========================================================================== -->
+			
+        <!-- =========================================================================== -->
+		<record alias="portal-id" filter="portal-list" ref="this" />	
+        <!-- =========================================================================== -->
+
+        <!-- =========================================================================== -->
+		<record alias="loop-restricted-effect" filter="multiple-loop" ref="Effect" />	
+        <!-- =========================================================================== -->
+	
+        <!-- =========================================================================== -->
+		<record alias="fishing-field" filter="fishing-point" ref="fishing-field" />	
+        <!-- =========================================================================== -->
+		
+        <!-- =========================================================================== -->
+		<record alias="env-entrance" filter="attraction-popup" ref="EnvEntrance" />	
+        <!-- =========================================================================== -->
+		
+        <!-- =========================================================================== -->
+		<record alias="enter-sealeddungeon" filter="enter-arena-dungeonlobby" type="Int32" />	
+        <!-- =========================================================================== -->
+	</list>
+</table>

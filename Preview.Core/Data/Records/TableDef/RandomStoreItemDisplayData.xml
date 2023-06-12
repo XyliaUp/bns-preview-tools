@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="ItemData" type="random-store-item-display" version="0.3" >
+
+	
+		<record alias="random-store-type" type="Seq" >
+			<case alias="none" default="y" />
+			<case alias="paid" />
+			<case alias="free" />
+		</record>
+		<record alias="display-item" ref="Item" />
+		<record alias="draw-group" type="Seq" >
+			<case alias="none" default="y" />
+			<case alias="premium" />
+			<case alias="normal" />
+		</record>
+		<record alias="probability-group" type="Seq" >
+			<case alias="none" default="y" />
+			<case alias="rare" />
+			<case alias="normal" />
+		</record>
+		<record alias="new-arrival" type="Bool" />
+	</list>
+</table>

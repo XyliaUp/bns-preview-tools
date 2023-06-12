@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="ItemData" type="world-account-museum" version="1.0">
+		<record alias="alias" type="String" />
+		<record alias="collection-card" ref="WorldAccountCard" repeat="8" />
+		<record alias="collection-card-count" type="Int16" repeat="8" />
+		<record alias="start-time" type="Time64" />
+		<record alias="end-time" type="Time64" />
+		<record alias="can-not-used" type="Bool" />
+		<record alias="ability" seq="attach-ability" type="Seq" repeat="3" />
+		<record alias="ability-value" type="Int32" repeat="3" />
+		<record alias="collection-name" ref="Text" />
+		<record alias="collection-category" type="Seq" >
+			<case alias="level-1" default="y" />
+			<case alias="level-2" />
+			<case alias="level-3" />
+			<case alias="level-4" />
+			<case alias="event" />
+			<case alias="favorite" />
+		</record>
+	</list>
+</table>

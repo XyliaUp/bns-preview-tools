@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="ItemData" type="worldaccountexpedition" version="0.10">
+		<record alias="id" type="Int16" key="y" />
+		<record alias="step" type="Int8" key="y" />
+		<record alias="alias" type="String" />
+		<record alias="can-not-used" type="Bool" />
+		<record alias="category" type="Int8" />
+		<record alias="item" type="TRef" repeat="20" />
+		<record alias="item-count" type="Int16" repeat="20" />
+		<record alias="unknown" type="Bool" describe="是否共同计算, 启用时只使用 count1" />
+		<record alias="ability" type="Seq" repeat="5" seq="attach-ability" />
+		<record alias="ability-value" type="Int32" repeat="5"  max="1000000" />
+		<record alias="unk-" type="Int32" />
+		<record alias="unk-" type="Int32" />
+		<record alias="unk-" type="Int32" />
+		<record alias="name" ref="Text" />
+		<record alias="description" ref="Text" />
+		<record alias="story" ref="Text" />
+		<record alias="unk-" ref="0" />
+		<record alias="icon" type="Icon" repeat="5" />
+		<record alias="tooltip" ref="Text" repeat="5" />
+	</list>
+</table>

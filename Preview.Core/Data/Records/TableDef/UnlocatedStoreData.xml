@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="LocalizationData" type="unlocated-store" version="1.0" >
+		<record alias="alias" type="String" />
+		<record alias="store2" ref="Store2" />
+		<record alias="no-more-use" type="Bool" />
+		<record alias="unlocated-store-type" type="Seq" server="n" >
+		    <case alias="unlocated-none" />
+			<case alias="unlocated-store" />
+			<case alias="account-store" />
+			<case alias="soul-boost-store-1" />
+			<case alias="soul-boost-store-2" />
+			<case alias="soul-boost-store-3" />
+			<case alias="soul-boost-store-4" />
+			<case alias="soul-boost-store-5" />
+			<case alias="soul-boost-store-6" />
+		</record>
+	</list>
+</table>

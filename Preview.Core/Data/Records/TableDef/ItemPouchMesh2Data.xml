@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="ItemData" type="itempouchmesh2" version="0.2" side="client" >
+		<record alias="pouch-appearance" key="y" type="Seq" seq="pouch-appearance" />
+		<record alias="npc-grade2" key="y" type="Seq" seq="npc-grade2" />
+		<record alias="private-pouch" key="y" type="Bool" showzero="y" />
+
+		<record alias="skeletal-mesh" type="String" default="00009256.item_0009" />
+		<record alias="anim-set" type="String" default="00006916.DropItem_Anim" />
+		<record alias="physics-asset" type="String" default="00009256.item_0009_Physics" />
+		<record alias="custom-anim" type="String" default="DropItem_Anim" />
+		<record alias="despawn-showdata" type="String" />
+		<record alias="icon" type="icon" />
+		<record alias="owner-particle" type="String" />
+		<record alias="mark-particle" type="String" />
+		<record alias="dropped-pouch-anim-set" type="String" default="00006916.DropItem_Anim" />
+	</list>
+</table>

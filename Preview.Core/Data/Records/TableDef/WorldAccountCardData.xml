@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="ItemData" type="world-account-card" version="0.3">
+		<record alias="alias" type="String" />
+		<record alias="item" ref="Item" />
+		<record alias="disabled" type="Bool" />
+		<record alias="sort-no" type="Int16" />
+		<record alias="card-image" type="String" />
+		<record alias="card-original-image" type="String" repeat="4" />
+		<record alias="card-original-image-desc" ref="Text" repeat="4" />
+		<record alias="set-card-original-image" type="Bool" />
+	</list>
+</table>

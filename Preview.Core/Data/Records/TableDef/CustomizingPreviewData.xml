@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="ItemData" type="CustomizingPreview" version="0.1" >
+		<record alias="type" type="type" >
+		     <case alias="pose" />
+		     <case alias="face-look" />
+		     <case alias="costume" />
+		     <case alias="light" />
+		     <case alias="silhouette" />			 
+		</record>
+		
+		<record alias="preview-type" key="y" type="Seq" >
+			<case alias="none" />
+			<case alias="pose" />
+			<case alias="face-look" />
+			<case alias="costume" />
+			<case alias="light" />
+			<case alias="silhouette" />
+		</record>		
+		<record alias="preview-value" key="y" type="Int8" />
+		<record alias="race" key="y" type="Seq" seq="race" />
+		<record alias="sex" key="y" type="Seq" seq="sex" />
+		<!-- ============================================================== -->
+		<record alias="pose-showname" type="String" filter="pose" />
+		<record alias="pose-show-duration" type="Msec" filter="pose" />
+		<record alias="icon-texture" ref="IconTexture" filter="pose" />
+		<record alias="icon-index" type="Int16" filter="pose" />
+		<!-- ============================================================== -->
+		<record alias="face-look-showname" type="String" filter="face-look" />
+		<record alias="face-look-show-duration" type="Msec" filter="face-look" />
+		<record alias="icon-texture" ref="IconTexture" filter="face-look" />
+		<record alias="icon-index" type="Int16" filter="face-look" />
+		<!-- ============================================================== -->
+		<record alias="costume-item" ref="Item" filter="costume" />
+		<!-- ============================================================== -->
+		<record alias="icon-texture" ref="IconTexture" filter="light" />
+		<record alias="icon-index" type="Int16" filter="light" />
+		<record alias="light-index" type="Int16" filter="light" />	
+		<!-- ============================================================== -->
+		<record alias="silhouette-designer-preset-index" type="Int32" filter="silhouette" />
+		<record alias="silhouette-race" type="Seq" seq="race" filter="silhouette" />
+		<record alias="silhouette-sex" type="Seq" seq="sex" filter="silhouette" />
+		<record alias="icon-texture" ref="IconTexture" filter="silhouette" />
+		<record alias="icon-index" type="Int16" filter="silhouette" />
+		<record alias="desc" ref="Text" filter="silhouette" />		
+		<!-- ============================================================== -->
+	</list>
+</table>

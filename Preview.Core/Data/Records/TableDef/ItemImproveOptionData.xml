@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list type="item-improve-option" module="ItemData" version="4.2" >
+		<record alias="id" type="Int32" key="y" />
+		<record alias="level" type="Int8" key="y" />
+		<record alias="alias" type="String" />
+		<record alias="ability" type="Seq" seq="main-ability" />
+		<record alias="ability-value" type="Int32" />
+		<record alias="effect" ref="Effect" />
+		<record alias="effect-description" ref="Text" />
+		<record alias="skill-modify-info-group" ref="SkillModifyInfoGroup" repeat="10" />
+		<record alias="additional" ref="Text" />
+		<record alias="draw-option-icon" type="Icon" />
+	</list>
+</table>

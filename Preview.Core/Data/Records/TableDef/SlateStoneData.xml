@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="ItemData" type="SlateStone" version="0.5" >
+		<record alias="id" type="Int32" key="y" />
+
+		<record alias="alias" type="String" />
+		<record alias="name" ref="Text" name="" />
+		<record alias="group" type="Int8" name=""/>
+		<record alias="grade" type="Int8" name=""/>
+		<record alias="unk-" type="Int8" name=""/>
+		<record alias="modify-ability" type="Seq" repeat="4" seq="attach-ability" />
+		<record alias="duplication-permission" type="Bool" showzero="y" />
+		<record alias="init-ability-value" type="Int32" name="" repeat="4" />
+		<record alias="unit-ability-value" type="Int32" name="" repeat="4" />
+		<record alias="max-ability-value" type="Int32" name="" repeat="4" />
+		<record alias="icon" type="Icon" />
+		<record alias="icon-case" type="Icon" />
+	</list>
+</table>

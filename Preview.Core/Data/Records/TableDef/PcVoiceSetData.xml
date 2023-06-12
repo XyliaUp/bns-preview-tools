@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="LocalizationData" type="pc-voice-set" version="0.3" >
+		<record alias="id" key="y" type="Int8" />
+		<record alias="job" key="y" type="Seq" seq="job" />
+		<record alias="stance" key="y" type="Seq" seq="stance" />		
+
+		<record alias="voice-set-name" type="String" />
+		<record alias="sample-sound-name" type="String" repeat="6" />
+		<record alias="type1-sample-sound-name" type="String" />
+		<record alias="type2-sample-sound-name" type="String" />
+		<record alias="type3-sample-sound-name" type="String" />
+	</list>
+</table>

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="ZoneData0" type="duel-bot-challenge" version="0.39" >
+		<record alias="type" type="type" >
+			<case alias="time-attack-mode" />
+			<case alias="round-mode" />
+		</record>            
+
+		<record alias="id" type="Int32" key="y" />
+		<record alias="zone" ref="Zone" />
+		<record alias="alias" type="String" />
+		<record alias="group" ref="AttractionGroup" />
+		<record alias="required-level" type="Int8" />
+		<record alias="required-mastery-level" type="Int8" />
+		<record alias="required-preceding-quest" ref="Quest" repeat="3" />
+		<record alias="required-preceding-quest-check" type="Seq" >
+			<case alias="and" default="y" />
+			<case alias="or" />
+		</record>
+		<record alias="recommend-attack-power" type="Int16" />
+		<record alias="standard-gear-weapon" ref="Item" />
+		<record alias="duel-bot-spawn-delay" type="Msec" />
+		<record alias="ready-duration" type="Msec" />
+		<record alias="floor-timeout-duration-second" type="Int16" />
+		<record alias="finish-time-section" type="Int16" repeat="10" />
+		<record alias="finish-time-section-floor-setup" type="Int16" repeat="10" />
+		<record alias="max-floor" type="Int16" />
+		<record alias="card-select-delay-duration" type="Msec" />
+		<record alias="change-floor-delay-duration" type="Msec" />
+		<record alias="change-floor-kismet-name" type="String" repeat="10" />
+		<record alias="change-floor-show-name" type="String" repeat="10" />
+		<record alias="result-show-delay-duration" type="Msec" />
+		<record alias="blade-master-floor-kismet-name" type="String" />
+		<record alias="kung-fu-fighter-floor-kismet-name" type="String" />
+		<record alias="force-master-floor-kismet-name" type="String" />
+		<record alias="destroyer-floor-kismet-name" type="String" />
+		<record alias="summoner-floor-kismet-name" type="String" />
+		<record alias="assassin-floor-kismet-name" type="String" />
+		<record alias="sword-master-floor-kismet-name" type="String" />
+		<record alias="warlock-floor-kismet-name" type="String" />
+		<record alias="soul-fighter-floor-kismet-name" type="String" />
+		<record alias="shooter-floor-kismet-name" type="String" />
+		<record alias="warrior-floor-kismet-name" type="String" />
+		<record alias="archer-floor-kismet-name" type="String" />
+		<record alias="spear-master-floor-kismet-name" type="String" />
+		<record alias="thunderer-floor-kismet-name" type="String" />
+		<record alias="countdown-sound-name" type="String" />
+		<record alias="name2" ref="Text" />
+		<record alias="dungeon-name2" ref="Text" />
+		<record alias="dungeon-desc" ref="Text" />
+		<record alias="arena-minimap" type="String" />
+		<record alias="reward-summary" ref="AttractionRewardSummary" />
+		<record alias="ui-text-grade" type="Int8" />
+		<record alias="recommand-level-min" type="Int8" />
+		<record alias="recommand-level-max" type="Int8" />
+		<record alias="recommand-mastery-level-min" type="Int8" />
+		<record alias="recommand-mastery-level-max" type="Int8" />
+		<record alias="display-quests" ref="Quest" repeat="12" />
+		<record alias="tactic" ref="Text" />
+		<record alias="recommend-alias" ref="ContentsJournalRecommendItem" />
+		<!-- ====================================================================== -->
+		<record alias="total-timeout-duration-second" type="Int16" filter="time-attack-mode" />
+		<!-- ====================================================================== -->
+		<record alias="total-round" type="Int8" filter="round-mode" />
+		<record alias="total-timeout-duration-second" type="Int16" filter="round-mode" />
+		<record alias="duel-bot-spawn-pos" filter="round-mode" client="n" type="Vector32" />
+		<record alias="leave-pc-spawn" filter="round-mode" client="n" ref="PcSpawn" />
+		<record alias="strategic-tool" filter="round-mode" client="n" ref="DuelBotChallengeStrategicTool" repeat="15" />
+		<record alias="resurrection-effect" filter="round-mode" client="n" ref="Effect" repeat="2" />
+		<record alias="duel-bot-tier-effect-1" filter="round-mode" client="n" ref="Effect" repeat="2" />
+		<record alias="duel-bot-tier-effect-2" filter="round-mode" client="n" ref="Effect" repeat="2" />
+		<record alias="duel-bot-tier-effect-3" filter="round-mode" client="n" ref="Effect" repeat="2" />
+		<record alias="duel-bot-tier-effect-4" filter="round-mode" client="n" ref="Effect" repeat="2" />
+		<record alias="duel-bot-tier-effect-5" filter="round-mode" client="n" ref="Effect" repeat="2" />
+		<!-- ====================================================================== -->
+		<record alias="dispel-effect-type" type="Seq" repeat="100" client="n" seq="type_Effect"/>
+		<record alias="duel-bot-tier-group" ref="DuelBotTierGroup" repeat="20" client="n" />
+	</list>
+</table>

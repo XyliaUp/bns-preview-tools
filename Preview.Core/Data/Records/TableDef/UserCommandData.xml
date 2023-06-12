@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list id="395" module="LocalizationData" type="user-command" version="0.41" check-version="y" >
+		<record alias="type" type="type" >	
+			<case alias="command" />
+			<case alias="social" />
+			<case alias="system-social" />
+			<case alias="emoticon" />			
+		</record>
+		<record alias="text" ref="Text" />
+
+		<!-- ========================================================= -->
+		<record alias="command" type="Seq" filter="command" >
+			<case alias="none" default="y" />
+			<case alias="chat-sight" />
+			<case alias="chat-party" />
+			<case alias="chat-whisper" />
+			<case alias="chat-in-domain" />
+			<case alias="chat-world" />
+			<case alias="chat-guild" />
+			<case alias="chat-guild-manager" />
+			<case alias="chat-faction" />
+			<case alias="chat-party-search" />
+			<case alias="chat-field-dungeon" />
+			<case alias="chat-qq" />
+			<case alias="chat-team" />
+			<case alias="chat-watch" />
+			<case alias="party-invite" />
+			<case alias="duel-invite" />
+			<case alias="dungeon-invite" />
+			<case alias="unrated-duel-invite" />
+			<case alias="party-suggest-join" />
+			<case alias="party-leave" />
+			<case alias="guild-invite" />
+			<case alias="banish-guild-member" />
+			<case alias="game-time-info" />
+			<case alias="trade-invite" />
+			<case alias="blacklist-add" />
+			<case alias="link-to-join-party" />
+			<case alias="link-to-suggest-join-party" />
+			<case alias="enter-party-search-channel" />
+			<case alias="leave-party-search-channel" />
+			<case alias="social-following" />
+			<case alias="help" />
+			<case alias="sit-down" />
+			<case alias="power-book" />
+			<case alias="character-info" />
+			<case alias="diff-character-info" />
+			<case alias="sns" />
+			<case alias="nshop" />
+			<case alias="market" />
+			<case alias="skill-power-book" />
+			<case alias="add-friend" />
+			<case alias="postbox" />
+			<case alias="tgos" />
+			<case alias="message-by-item-district" />
+			<case alias="message-by-item-all" />
+			<case alias="warp-to-guildmember" />
+			<case alias="call-guildmember" />
+			<case alias="warp-to-guild-call-area" />
+			<case alias="report-bot" />
+			<case alias="report-spammer" />
+			<case alias="dice" />
+			<case alias="challengeparty-invite" />
+			<case alias="challengeparty-leave" />
+			<case alias="challengeparty-banish" />
+			<case alias="guild-apply" />
+		</record>
+		<!-- ========================================================= -->
+
+		<!-- ========================================================= -->
+		<record alias="social-type" type="Seq" filter="social" >
+			<case alias="command" />
+			<case alias="filter" />
+		</record>
+		<record alias="talk-social" filter="social" ref="TalkSocial" />
+		<record alias="state-social" filter="social" ref="Social" />
+		<!-- ========================================================= -->
+		
+		<!-- ========================================================= -->
+		<record alias="system-social-type" type="Seq" filter="system-social" >
+			<case alias="none" />
+			<case alias="party-match-social" />
+		</record>
+		<record alias="talk-social" filter="system-social" ref="TalkSocial" />
+		<!-- ========================================================= -->
+		
+		<!-- ========================================================= -->
+		<record alias="emoticon" filter="emoticon" ref="emoticon" />
+		<!-- ========================================================= -->
+	</list>
+</table>

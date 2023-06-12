@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+https://go.microsoft.com/fwlink/?LinkID=208121.
+-->
+<Project>
+  <PropertyGroup>
+    <History>True|2023-06-12T07:14:17.3712530Z;False|2023-06-12T15:13:56.0776736+08:00;True|2023-05-19T20:42:58.4651030+08:00;False|2023-05-19T20:42:47.5448972+08:00;True|2023-05-19T20:41:20.5212109+08:00;True|2023-05-19T20:40:41.7121785+08:00;True|2023-05-19T20:37:58.3983135+08:00;True|2023-05-19T20:37:20.8653351+08:00;</History>
+    <LastFailureDetails />
+  </PropertyGroup>
+</Project>

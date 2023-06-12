@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="ItemData" type="collecting" version="0.6" >
+		<record alias="type" type="type" > 
+			<case alias="closet" />
+		</record>
+		<record alias="id" type="Int32" key="y" />
+		<record alias="alias" type="String" />
+		<record alias="name" ref="Text" />
+		<!-- ================================================================ -->
+		<record alias="category" type="Seq" server="n" filter="closet" >
+			<case alias="none" default="y" />
+			<case alias="category1" />
+			<case alias="category2" />
+			<case alias="category3" />
+			<case alias="category4" />
+			<case alias="category5" />
+			<case alias="category6" />
+			<case alias="category7" />
+			<case alias="category8" />
+			<case alias="category9" />
+			<case alias="category10" />
+			<case alias="category-special" />
+		</record>
+		<record alias="collect-closet" ref="ClosetGroup" repeat="8" filter="closet" />
+		<record alias="collect-closet-replace" ref="ClosetGroup" repeat="8" filter="closet" />
+		<record alias="collect-closet-subreplace" ref="ClosetGroup" repeat="8" filter="closet" />
+		<record alias="collect-skill-skin" ref="SkillSkin" repeat="4" filter="closet" />
+		<record alias="reward-item" ref="Item" repeat="6" filter="closet" />
+		<record alias="reward-item-count" type="Int16" repeat="6" filter="closet" />
+		<record alias="reward-money" type="Int32" filter="closet" />
+		<record alias="reward-collecting-score" type="Int32" filter="closet" />
+		<record alias="ability" type="Seq" repeat="3" seq="attach-ability" filter="closet" />
+		<record alias="ability-value" type="Int32" max="1000000" repeat="3" filter="closet" />
+		<record alias="expiration-time" type="Time64" filter="closet" />
+		<record alias="can-not-used" type="Bool" filter="closet" />
+	</list>
+</table>

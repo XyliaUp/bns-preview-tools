@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="CombatData" type="pc-race-sex-job" version="0.7" >
+		<record alias="race" key="y" type="Seq" seq="race" />
+		<record alias="sex" key="y" type="Seq" seq="sex" />
+		<record alias="job" key="y" type="Seq" seq="job" />
+	</list>
+</table>

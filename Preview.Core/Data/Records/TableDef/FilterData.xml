@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="CombatData" type="filter" version="2.0" check-version="y" >
+		<record alias="type" type="type" >
+			<case alias="race" />
+			<case alias="sex" />
+			<case alias="job" />
+			<case alias="job-style" />
+			<case alias="stance" />
+			<case alias="prop" />
+			<case alias="prop-percent" />
+			<case alias="prop-flag" />
+			<case alias="effect-flag" />
+			<case alias="faction" />
+			<case alias="active-faction" />
+			<case alias="deactivated-faction" />
+			<case alias="faction-reputation" />
+			<case alias="faction-level" />
+			<case alias="effect-attribute" />
+			<case alias="pc" />
+			<case alias="weapon-type" />
+			<case alias="party-leader" />
+			<case alias="party-member" />
+			<case alias="inventory" />
+			<case alias="field-item" />
+			<case alias="npc" />
+			<case alias="not-npc" />
+			<case alias="npc-id" />
+			<case alias="npc-convoy" />
+			<case alias="env" />
+			<case alias="env-id" />
+			<case alias="env-state" />	
+			<case alias="env-prestate" />
+			<case alias="env-hp-percent" />
+			<case alias="skill" />
+			<case alias="skill-id" />
+			<case alias="skill3" />
+			<case alias="skill3-id" />
+			<case alias="effect-id" />
+			<case alias="effect-stack-count" />
+			<case alias="quest-complete" />
+			<case alias="quest-not-complete" />
+			<case alias="act-sequence" />
+			<case alias="summoned" />
+			<case alias="not-summoned" />
+			<case alias="link-laser-terminate-reason" />
+			<case alias="content-quota-charge" />			
+			<case alias="cinematic" />			
+		</record>
+		
+		<record alias="id" type="Int32" key="y" />
+		<record alias="alias" type="String" />
+		<record alias="subject" type="Int32" length="20" name="由于类型解析暂不支持, 暂时需要通过此方式配置" />
+		<record alias="target" type="Int32" length="20" />
+		<record alias="subject2" type="Int32" length="20" />
+		<record alias="target2" type="Int32" length="20" />
+		<!-- ================================================================== -->
+
+
+		<!-- ================================================================== -->
+		<record alias="value" type="Seq" seq="race" filter="race" repeat="4" />
+		<record alias="either" type="Bool" default="y" filter="race" />
+		<!-- ================================================================== -->	
+		
+		<!-- ================================================================== -->
+		<record alias="value" type="Seq" seq="sex" filter="sex" repeat="4" />
+		<record alias="either" type="Bool" default="y" filter="sex" />
+		<!-- ================================================================== -->	
+		
+		<!-- ================================================================== -->
+		<record alias="value" type="Seq" seq="job" filter="job" repeat="4" />
+		<record alias="either" type="Bool" default="y" filter="job" />
+		<!-- ================================================================== -->	
+		
+		<!-- ================================================================== -->
+		<record alias="count" type="Int8" filter="job-style" />
+		<record alias="job" type="Seq" seq="job" filter="job-style" repeat="4" />
+		<record alias="job-style" type="Seq" seq="job-style" filter="job-style" repeat="4" />
+		<record alias="either" type="Bool" default="y" filter="job-style" />
+		<!-- ================================================================== -->		
+
+		<!-- ================================================================== -->
+		<record alias="value" type="Seq" seq="stance" filter="stance" repeat="4" />
+		<record alias="either" type="Bool" default="y" filter="stance" />
+		<!-- ================================================================== -->	
+		
+		
+		<!-- ================================================================== -->
+		<record alias="field" type="Seq16" seq="creature_field" filter="prop" />
+		<record alias="op" type="Seq" filter="prop" seq="op2" />
+		<record alias="value" type="Int64" filter="prop" />
+		<!-- ================================================================== -->	
+		
+		<!-- ================================================================== -->
+		<record alias="field" type="Seq16" seq="creature_field" filter="prop-percent" />
+		<record alias="op" type="Seq" filter="prop-percent" seq="op2" />
+		<record alias="value" type="Int8" filter="prop-percent" />
+		<!-- ================================================================== -->	
+		
+		<!-- ================================================================== -->
+		<record alias="field" type="Seq16" seq="creature_field" filter="prop-flag" />
+		<record alias="op" type="Seq" filter="prop-flag" seq="op2" />
+		<record alias="flag" type="Bool" filter="prop-flag" />
+		<!-- ================================================================== -->		
+			
+		<!-- ================================================================== -->
+		<record alias="value" ref="Faction" filter="faction" />
+		<record alias="value" ref="Faction" filter="active-faction" />
+		<!-- ================================================================== -->		
+		
+		<!-- ================================================================== -->
+		<record alias="op" type="Seq" seq="op2" filter="faction-reputation" />
+		<record alias="value" type="Int16" filter="faction-reputation" />		
+		<!-- ================================================================== -->		
+		
+		<!-- ================================================================== -->
+		<record alias="op" type="Seq" seq="op2" filter="faction-level" />
+		<record alias="value" type="Int16" filter="faction-level" />		
+		<!-- ================================================================== -->			
+		
+		<!-- ================================================================== -->
+		<record alias="value" type="Seq16" seq="effect-attribute" filter="effect-attribute" repeat="4" />
+		<record alias="either" type="Bool" default="y" filter="effect-attribute" />
+		<!-- ================================================================== -->	
+		
+		<!-- ================================================================== -->
+		<record alias="weapon-type" type="Seq" seq="weapon-type" filter="weapon-type" repeat="4" />
+		<record alias="either" type="Bool" default="y" filter="weapon-type" />
+		<!-- ================================================================== -->	
+		
+		<!-- ================================================================== -->
+		<record alias="item" ref="Item" filter="inventory" />
+		<record alias="amount" type="Int8" filter="inventory" />		
+		<!-- ================================================================== -->	
+		
+		<!-- ================================================================== -->
+		<record alias="field-item" type="Int32" filter="field-item" ref="FieldItem" />		
+		<!-- ================================================================== -->	
+		
+		<!-- ================================================================== -->
+		<record alias="value" type="Int32" filter="npc-id" ref="Npc" />		
+		<!-- ================================================================== -->		
+		
+		<!-- ================================================================== -->
+		<record alias="convoy" type="Bool" filter="npc-convoy" />		
+		<!-- ================================================================== -->	
+
+		<!-- ================================================================== -->
+		<record alias="env2spawn" ref="Env2Spawn" filter="env-id" />		
+		<!-- ================================================================== -->	
+		
+		<!-- ================================================================== -->
+		<record alias="env-state" type="Seq" filter="env-state" seq="env-state" />
+		<record alias="env-state" type="Seq" filter="env-prestate" seq="env-state" />
+		<!-- ================================================================== -->	
+
+		<!-- ================================================================== -->
+		<record alias="op" type="Seq" filter="env-hp-percent" seq="op2" />
+		<record alias="value" type="Int8" filter="env-hp-percent" />		
+		<!-- ================================================================== -->	
+
+		<!-- ================================================================== -->
+		<record alias="value" ref="Skill" filter="skill | skill-id" />		
+		<!-- ================================================================== -->	
+
+		<!-- ================================================================== -->
+		<record alias="value" ref="Skill" filter="skill3 | skill3-id" />		
+		<!-- ================================================================== -->	
+		
+		<!-- ================================================================== -->
+		<record alias="value" ref="Effect" filter="effect-id" />		
+		<!-- ================================================================== -->	
+		
+		<!-- ================================================================== -->
+		<record alias="flagtype" type="Seq16" filter="effect-flag" seq="flag" />
+		<record alias="flag" type="Bool" filter="effect-flag" />
+		<!-- ================================================================== -->		
+		
+		<!-- ================================================================== -->	
+		<record alias="effect-type" type="Seq16" seq="type-seq" filter="effect-stack-count" />
+		<record alias="effect-slot" type="Seq" filter="effect-stack-count" >
+			<case alias="all" />
+			<case alias="buff" />
+			<case alias="debuff" />
+        </record>
+		<record alias="term-op" type="Seq" filter="effect-stack-count" >
+			<case alias="none" default="y" />
+			<case alias="and" />
+			<case alias="or" />
+        </record>
+		<record alias="op" type="Seq" filter="effect-stack-count" out-cond="Exist: value-" seq="op2" repeat="2" />
+		<record alias="value" type="Int64" filter="effect-stack-count" repeat="2" />
+		<!-- ================================================================== -->	
+		
+		<!-- ================================================================== -->
+		<record alias="quest" ref="Quest" filter="quest-complete" />
+		<record alias="mission-step" type="Int8" filter="quest-complete" />
+		<record alias="count" type="Int16" filter="quest-complete" />
+		<record alias="count-op" type="Seq" filter="quest-complete" seq="op2" />	
+		<!-- ================================================================== -->	
+		
+		<!-- ================================================================== -->
+		<record alias="quest" ref="Quest" filter="quest-not-complete" />
+		<!-- ================================================================== -->	
+		
+		<!-- ================================================================== -->
+		<record alias="content-quota" ref="ContentQuota" filter="content-quota-charge" />
+		<record alias="op" type="Seq" filter="content-quota-charge" seq="op2" />		
+		<record alias="charge-value" type="Int64" filter="content-quota-charge" />	
+		<!-- ================================================================== -->	
+		
+		<!-- ================================================================== -->
+		<record alias="value" ref="cinematic" filter="cinematic" />		
+		<!-- ================================================================== -->	
+	</list>
+</table>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="ZoneData0" type="war-field" version="0.3" >
+		<record alias="id" type="Int32" key="y" />
+		<record alias="alias" type="String" />
+		<record alias="main-zone" ref="Zone" />
+		<record alias="battle-zone" ref="Zone" repeat="10" />
+		<record alias="field-break-zone" ref="Zone" repeat="2" />	
+		<record alias="field-break-boss-zone" ref="Zone" />
+		<record alias="required-level" type="Int8" />
+		<record alias="required-mastery-level" type="Int8" />		
+		<record alias="required-preceding-quest" ref="Quest" repeat="3" />
+		<record alias="required-preceding-quest-check" type="Seq" >
+			<case alias="and" default="y" />
+			<case alias="or" />
+        </record>		
+		<record alias="field-break-zone-imprint-effect" ref="Effect" />
+		<record alias="field-break-zone-imprint-env-1" ref="Env2" />
+		<record alias="field-break-zone-imprint-env-2" ref="Env2" />
+		<record alias="boss-battle-zone-entrance-effect" ref="Effect" />
+		<record alias="group" ref="AttractionGroup" />		
+		<record alias="finish-pc-respawn" ref="ZoneRespawn" />	
+        <!-- ================================================================== -->
+		<record alias="signal-state-duration-minute" type="Msec" client="n" />
+		<record alias="finish-state-duration-minute" type="Msec" client="n" />
+		<record alias="field-break-state-duration-minute" type="Msec" client="n" />
+		<record alias="weekly-time-table-for-signal-state" ref="WeeklyTimeTable" client="n" />
+		<record alias="battle-zone-linked-field-break-zone" ref="Zone" client="n" repeat="10" />
+		<record alias="battle-zone-npc-reset-stage-start-state" ref="NpcResetStage" client="n" repeat="10" />
+		<record alias="battle-zone-npc-reset-stage-finish-state" ref="NpcResetStage" client="n" repeat="10" />
+		<record alias="battle-zone-npc-reset-stage-signal-state-if-successful" ref="NpcResetStage" client="n" repeat="10" />
+		<record alias="battle-zone-npc-reset-stage-signal-state-if-failed" ref="NpcResetStage" client="n" repeat="10" />
+		<record alias="battle-zone-npc-reset-stage-field-break-state-if-successful" ref="NpcResetStage" client="n" repeat="10" />
+		<record alias="battle-zone-npc-reset-stage-field-break-state-if-failed" ref="NpcResetStage" client="n" repeat="10" />
+
+		<record alias="boss-battle-zone-boss" ref="Zone" client="n" />
+		<record alias="boss-battle-zone-npc-reset-stage-field-break-state" ref="NpcResetStage" client="n" />
+		<record alias="boss-battle-zone-npc-reset-stage-signal-state" ref="NpcResetStage" client="n" />
+		<record alias="boss-battle-zone-npc-reset-stage-finish-state" ref="NpcResetStage" client="n" />
+
+		<record alias="field-break-zone-npc-reset-stage-start-state" ref="NpcResetStage" client="n" repeat="2" />
+		<record alias="field-break-zone-npc-reset-stage-finish-state" ref="NpcResetStage" client="n" repeat="2" />
+		<record alias="field-break-zone-npc-reset-stage-signal-state-if-successful-1" ref="NpcResetStage" client="n" />	
+		<record alias="field-break-zone-npc-reset-stage-signal-state-if-successful-2" ref="NpcResetStage" client="n" />	
+		<record alias="field-break-zone-npc-reset-stage-signal-state-if-failed-1" ref="NpcResetStage" client="n" />	
+		<record alias="field-break-zone-npc-reset-stage-signal-state-if-failed-2" ref="NpcResetStage" client="n" />
+		<record alias="field-break-zone-npc-reset-stage-field-break-state-if-successful-1" ref="NpcResetStage" client="n" />
+		<record alias="field-break-zone-npc-reset-stage-field-break-state-if-successful-2" ref="NpcResetStage" client="n" />
+		<record alias="field-break-zone-npc-reset-stage-field-break-state-if-failed-1" ref="NpcResetStage" client="n" />
+		<record alias="field-break-zone-npc-reset-stage-field-break-state-if-failed-2" ref="NpcResetStage" client="n" />		
+	</list>
+</table>

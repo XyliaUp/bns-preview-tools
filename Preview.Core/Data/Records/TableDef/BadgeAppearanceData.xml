@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="ItemData" type="badge-appearance" version="0.3" check-version="y" >
+		<record alias="alias" type="String" />
+		<record alias="apperance-type" type="Seq" >
+			<case alias="Default" default="y" />
+			<case alias="Item" />
+		</record>
+		<record alias="item-alias" ref="Item" />
+		<record alias="set-score" type="Int32" repeat="10" />
+		<record alias="apperance-begin-show" type="String" repeat="10" />
+		<record alias="apperance-end-show" type="String" repeat="10" />
+	</list>
+</table>

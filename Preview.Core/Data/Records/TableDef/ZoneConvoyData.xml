@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="AIData" type="ZoneConvoy" version="0.6" >
+		<record alias="zone" type="Int32" key="y" />
+		<record alias="id" type="Int16" key="y" />
+		<record alias="alias" type="String" />
+
+        <!-- 服务端Fields -->
+		<record alias="convoy" ref="NpcConvoy" client="n" repeat="4" />
+		<record alias="spawn" ref="ZoneNpcSpawn" client="n" repeat="4" />
+		<record alias="move-radius" type="Distance" client="n" />	
+		<record alias="fail-radius" type="Distance" client="n" />	
+	</list>
+</table>

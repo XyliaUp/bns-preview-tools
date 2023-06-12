@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="CombatData" type="duel-bot-challenge-strategic-tool" version="0.7" >
+		<record alias="alias" type="String" />
+		<record alias="pc-effect" ref="Effect" repeat="2" />
+		<record alias="duel-bot-effect" ref="Effect" repeat="2" />
+		<record alias="immune-caster-block-skill" type="Bool" />
+		<record alias="fail-caster-flag" type="Seq16" repeat="4" seq="flag" />
+		<record alias="fail-caster-op" type="Seq" >
+			<case alias="or" default="y" />
+			<case alias="and" />
+		</record>
+		<record alias="fail-caster-effect-attribute" type="Seq16" repeat="4" seq="effect-attribute" />
+		<record alias="fail-caster-effect-attribute-op" type="Seq" >
+			<case alias="or" default="y" />
+			<case alias="and" />
+		</record>
+		<record alias="icon" type="Icon" />
+		<record alias="card-image-set" type="String" />
+		<record alias="card-tooltip" ref="Text" />
+		<record alias="description2" ref="Text" />
+		<record alias="name2" ref="Text" />
+	</list>
+</table>

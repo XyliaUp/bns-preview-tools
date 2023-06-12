@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="CombatData" type="skill-trait" version="0.11" >
+		<record alias="job" type="prop_seq" seq="job" key="y" />
+		<record alias="job-style" type="Seq" seq="job-style" key="y" />
+		<record alias="tier" type="Int8" showzero="y" apply="must" key="y" />
+		<record alias="tier-variation" type="Int8" key="y" />
+		<record alias="alias" type="String" />
+		<record alias="enable" type="Bool" default="y" />
+		<record alias="fixed-skill3-id" type="Int32" repeat="64" />
+		<record alias="variable-skill3-id" type="Int32" repeat="32" />
+		<record alias="variable-skill3-variation-id" type="Int8" repeat="32" />
+		<record alias="name2" ref="Text" />
+		<record alias="icon" type="Icon" />
+		<record alias="trait-symbol" type="Icon" />
+		<record alias="tooltip-train-name" ref="Text" />
+		<record alias="tooltip-train-description" ref="Text" />
+		<record alias="tooltip-effect-description" ref="Text" />
+		<record alias="tooltip-skill-systematization-group" ref="SkillSystematization" server="n" repeat="6" />
+		<record alias="tooltip-acquire-skill-list-skill3-id" type="Int32" server="n" repeat="6" />
+		<record alias="tooltip-acquire-skill-list-skill3-description" ref="Text" repeat="6" />
+		<record alias="tooltip-variable-skill-list-skill3-id" type="Int32" server="n" repeat="6" />
+		<record alias="variable-tooltip-skill3-variation-id" type="Int8" server="n" repeat="6" />
+		<record alias="tooltip-variable-skill-list-skill3-description" ref="Text" repeat="6" />
+	</list>
+</table>

@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="ZoneData0" type="ZoneEnv2SpawnRandomGroup" version="0.2" >
+		<record alias="zone" type="Int32" key="y" />
+		<record alias="id" type="Int16" key="y" />
+		<record alias="alias" type="String" />
+	</list>
+</table>

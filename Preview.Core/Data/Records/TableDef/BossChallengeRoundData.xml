@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="AIData" version="0.2" type="boss-challenge-round" >
+		<record alias="id" type="Int32" key="y" />
+		<record alias="round" type="Int8" key="y" />
+		<record alias="alias" type="String" />
+		<record alias="spawn-effect" ref="Effect" repeat="2" />
+		<record alias="boss-spawn-delay" type="Msec" />
+		<!-- ============================================= -->
+		<record alias="boss-npc" ref="Npc" client="n" />
+		<record alias="prob-weight-by-npc-killed-group1" ref="ZoneNpcSquad" client="n" repeat="2" />
+		<record alias="prob-weight-by-npc-killed-group2" ref="ZoneNpcSquad" client="n" repeat="2" />
+		<record alias="prob-weight-by-npc-killed-group3" ref="ZoneNpcSquad" client="n" repeat="2" />
+		<record alias="effect-by-npc-killed-group1" ref="Effect" client="n" repeat="2" />
+		<record alias="effect-by-npc-killed-group2" ref="Effect" client="n" repeat="2" />
+		<record alias="effect-by-npc-killed-group3" ref="Effect" client="n" repeat="2" />
+		<!-- ============================================= -->
+	</list>
+</table>

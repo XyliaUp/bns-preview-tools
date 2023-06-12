@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="AIData" type="appearance" version="0.6" >
+		<record alias="alias" type="String" />
+		<record alias="race" type="Seq" seq="race" />
+		<record alias="sex" type="Seq" seq="sex" />
+		<record alias="face-anim-set-name" type="String" />
+		<record alias="anim-tree-name" type="String" />
+		<record alias="face-mesh-name" type="String" />
+		<record alias="body-mesh-name" type="String" />
+		<record alias="voice-set-name" type="String" />
+		<record alias="npc-dialogue-set" type="String" />
+		<record alias="attach-effect" type="String" />
+		<record alias="body-material-name" type="String" />
+		<record alias="face-material-name" type="String" />
+		<record alias="npcattach1" type="String" />
+		<record alias="npcattach2" type="String" />
+		<record alias="npcattach-material1" type="String" />
+		<record alias="npcattach-material2" type="String" />
+		<record alias="enable-physbrst" type="Bool" default="y" />
+		<record alias="unique-soundcue" type="String" />
+		<record alias="unique-soundculldist" type="Float32" />
+		<record alias="unique-soundfadetime" type="Float32" />
+		<record alias="sound-attenuation-scale" type="Float32" default="1.0"/>
+		<record alias="sound-volume-scale" type="Float32" default="1.0" />
+		<record alias="param8" type="Int8" repeat="92" />
+		<record alias="decal-radius" type="Float32" default="1.0" />
+		<!-- ======================================== -->
+		<record alias="pc-customize" name="2022年新增" type="Bool" />
+	</list>
+</table>

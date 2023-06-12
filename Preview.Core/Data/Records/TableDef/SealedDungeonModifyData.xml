@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<table>
+	
+	<list module="CombatData" type="sealed-dungeon-modify" version="0.10" >
+		<record alias="id" type="Int16" key="y" />
+		<record alias="sealed-level" type="Int8" key="y" />
+		<record alias="alias" type="String" />
+		<record alias="modify-npc-exp-percent" type="Int16" />
+		<record alias="modify-npc-sealed-dungeon-exp-percent" type="Int16" />	
+		<record alias="modify-clear-sealed-dungeon-exp-percent" type="Int32" />		
+		<record alias="modify-npc-immune-breaker-count" type="Int8" />
+		<record alias="modify-npc-immune-breaker-init-duration" type="Msec" />
+		<record alias="modify-skill-duration" type="Int16" />
+		<record alias="gimmick-option-fixed" ref="SealedDungeonGimmick" repeat="5" />
+		<record alias="gimmick-option-week-1" ref="SealedDungeonGimmick" repeat="2" />
+		<record alias="gimmick-option-week-2" ref="SealedDungeonGimmick" repeat="2" />
+		<record alias="gimmick-option-week-3" ref="SealedDungeonGimmick" repeat="2" />
+		<record alias="gimmick-option-week-4" ref="SealedDungeonGimmick" repeat="2" />
+		<record alias="gimmick-option-week-5" ref="SealedDungeonGimmick" repeat="2" />
+		<record alias="contents-reset" ref="ContentsReset" />
+		<record alias="use-level-first-clear" type="Bool" />
+		<record alias="use-level-first-clear-next-level" type="Int8" />
+		<record alias="dungeon-id" ref="Dungeon" />
+		<record alias="reward-summary" ref="RewardSummary" />
+		<record alias="scroll-boss-imageset" type="String" />
+		<record alias="scroll-boss-back-imageset" type="String" />
+		<record alias="recommend-attack-power-sealed-dungeon" type="Int16" />
+		<record alias="recommend-alias-sealed-dungeon" ref="ContentsJournal" />
+	</list>
+</table>

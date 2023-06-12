@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="LocalizationData" type="mastery-stat-point" version="0.5" >
+		<record alias="stat-point-attribute" key="y" type="Seq" >
+			<case alias="attacker" />
+			<case alias="defender" />
+		</record>
+		<record alias="stat-point" key="y" type="Int16" />
+
+		<record alias="stat-effect" ref="Effect" />
+		<record alias="event-effect" ref="Effect" repeat="4" />
+		<record alias="description" ref="Text" />
+	</list>
+</table>

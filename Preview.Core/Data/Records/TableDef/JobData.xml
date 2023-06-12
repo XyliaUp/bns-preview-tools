@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="CombatData" type="job" version="0.60" >
+		<record alias="job" type="prop_seq" seq="job" key="y" />
+
+		<record alias="name2" ref="Text" />
+		<record alias="icon" type="Icon" />
+		<record alias="desc" ref="Text" />
+		<record alias="lobby-job-imageset" type="String" server="n" />
+		<record alias="character-info-job-imageset" type="String" server="n" />
+		<record alias="character-info-job-imageset2" type="String" server="n" />
+		<record alias="item-map-job-icon" ref="Text" />
+		<record alias="item-map-job-style-icon" ref="Text" repeat="3" />
+		<record alias="unk-job-imageset" type="String" server="n" />
+		<record alias="stance" type="Seq" seq="stance" server="n" repeat="3" />
+		<record alias="skillmap-backimageset" type="String" server="n" />
+		<record alias="skillmap-backimageset-width" type="Int16" server="n" />
+		<record alias="skillmap-backimageset-height" type="Int16" server="n" />
+		<record alias="lobby-slot-job-icon-texture" ref="IconTexture" server="n" />
+		<record alias="lobby-slot-job-icon-index" type="Int16" server="n" />
+		<record alias="unk-" type="String" server="n" />
+		<record alias="unk-" ref="0" server="n" />
+		<record alias="unk-" ref="0" server="n" />
+		<record alias="unk-" ref="0" server="n" />
+		<record alias="play-style-desc" ref="Text" />
+		<record alias="play-style-imageset" type="String" server="n" />
+		<record alias="play-difficulty" type="Int8" default="1" server="n" />
+		<record alias="play-difficulty-desc" ref="Text" />
+		<record alias="unk-" type="String" server="n" />
+		<record alias="action-key" type="Seq16" seq="key-command" server="n" />
+		<record alias="bns-action-key" type="Seq16" seq="key-command" server="n" />
+		<record alias="training-desc-default" ref="Text" />
+		<record alias="training-desc-attack" ref="Text" />
+		<record alias="training-desc-defence" ref="Text" />
+		<record alias="training-desc-maze" ref="Text" />
+		<record alias="training-desc-protect" ref="Text" />
+		<record alias="training-desc-control" ref="Text" />
+		<record alias="training-desc-distance" ref="Text" />
+		<record alias="training-chart-value-attack" type="Int16" server="n" />
+		<record alias="training-chart-value-defence" type="Int16" server="n" />
+		<record alias="training-chart-value-maze" type="Int16" server="n" />
+		<record alias="training-chart-value-protect" type="Int16" server="n" />
+		<record alias="training-chart-value-control" type="Int16" server="n" />
+		<record alias="training-chart-value-distance" type="Int16" server="n" />
+		<record alias="train-background-imageset" type="String" server="n" />
+		<record alias="lobby-chart-value-protection" type="Int16" server="n" />
+		<record alias="lobby-chart-value-control" type="Int16" server="n" />
+		<record alias="lobby-chart-value-distance" type="Int16" server="n" />
+		<record alias="lobby-chart-value-simplecontrols" type="Int16" server="n" />
+		<record alias="lobby-chart-value-defense" type="Int16" server="n" />
+		<record alias="lobby-chart-value-melee" type="Int16" server="n" />
+		<record alias="lobby-play-bink" type="String" server="n" />
+		<record alias="filter-name" type="String" server="n" repeat="3" />
+		<record alias="highlight-font" type="String" server="n" />
+		<record alias="unk-" type="Int32" />
+		<record alias="unk-" type="Int32" />
+		<record alias="damage-show-split-percent" type="Int16" server="n" />
+		<record alias="job-style-name" ref="Text" repeat="10" />
+		<!-- ===================================================================== -->
+		<record alias="skill-train-ui-job-style-name" ref="Text" repeat="10" />
+		<record alias="skill-train-ui-job-style-imageset" type="String" server="n" repeat="10" />
+		<record alias="skill-train-ui-trait-open-button-text" ref="Text" repeat="10" />
+		<record alias="skill-train-ui-page-job-style-name" ref="Text" repeat="10" />
+		<record alias="skill-train-ui-page-job-style-imageset" type="String" server="n" repeat="10" />
+		<record alias="skill-trainingroom-ui-job-style-imageset" type="String" server="n" repeat="10" />
+		<record alias="use-guard-gauge" type="Bool" server="n" />
+		<!-- ===================================================================== -->
+		<record alias="guard-gauge-effect" ref="Effect" repeat="2" client="n" />
+	</list>
+</table>

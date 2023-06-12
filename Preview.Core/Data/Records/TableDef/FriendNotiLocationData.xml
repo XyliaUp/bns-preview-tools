@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="ZoneData0" type="friend-noti-location" version="0.3" >
+		<record alias="id" key="y" type="Int16" />
+		<record alias="alias" type="String" />
+		<record alias="zone1" ref="Zone" repeat="127" />
+		<record alias="zone2" ref="Zone" repeat="127" />
+		<record alias="name" ref="Text" />
+	</list>
+</table>

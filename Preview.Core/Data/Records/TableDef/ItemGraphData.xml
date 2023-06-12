@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="ItemData" type="item-graph" version="1.16" rule="extra | sort-id" >
+        <record alias="type" type="type" >
+		   <case alias="seed" />
+		   <case alias="edge" />
+		</record>
+		
+        <record alias="seed-item-sub-group" type="dictionary" >
+		   <case alias="sub-group-1" default="y" />
+		   <case alias="sub-group-2" />
+		</record>
+		
+        <!-- ========================================================================= -->
+		<record alias="seed-item" filter="seed" ref="Item" repeat="42" error-type="Dispose" />
+		<record alias="seed-item-group" filter="seed" ref="ItemGraphSeedGroup" />
+		<record alias="seed-item-sub-group" type="Seq" filter="seed" seq="seed-item-sub-group" repeat="42" />
+		<record alias="node-type" type="Seq" filter="seed" >
+			<case alias="seed-normal" />
+			<case alias="seed-black-sky" />
+		</record>
+		<record alias="attribute-group" type="Seq" filter="seed" >
+			<case alias="none" default="y" />
+			<case alias="attribute-group-1" />
+			<case alias="attribute-group-2" />
+		</record>
+		<record alias="item-equip-type" type="Seq" filter="seed" seq="equip-type" />
+		<record alias="growth-category" type="Seq" filter="seed" >
+			<case alias="none" default="y" />
+			<case alias="dungeon" name="副本" />
+			<case alias="raid" name="挑战" />
+			<case alias="pvp" name="PVP" />
+			<case alias="attribute" name="系列" />
+			<case alias="etc1" name="成长" />
+			<case alias="etc2" name="竞争" />
+		</record>
+		<record alias="row" type="Int16" filter="seed" />		
+		<record alias="column" type="Int16" filter="seed" />	
+        <!-- ========================================================================= -->
+
+        <!-- ========================================================================= -->
+        <record alias="orientation" type="dictionary" showzero="y" >
+		   <case alias="vertical" default="y" name="垂直线" />
+		   <case alias="horizontal" />
+		</record>		
+
+		<record alias="edge-type" type="Seq" filter="edge" >
+			<case alias="growth" />
+			<case alias="awaken" />
+			<case alias="transform" />
+			<case alias="jump-transform" />
+			<case alias="purification" />
+		</record>
+		<record alias="attribute-group" type="Seq" filter="edge" >
+			<case alias="none" default="y" />
+			<case alias="attribute-group-1" />
+			<case alias="attribute-group-2" />
+		</record>
+		<record alias="seed-item-sub-group" type="Seq" filter="edge" seq="seed-item-sub-group" />
+		<record alias="feed-item" filter="edge" ref="Item" />
+		<record alias="feed-recipe" filter="edge" ref="ItemTransformRecipe" error-type="Dispose" />
+		<record alias="start-item" filter="edge" ref="Item" error-type="Dispose" />
+		<record alias="start-orientation" type="Seq" filter="edge" seq="orientation" />
+		<record alias="end-item" filter="edge" ref="Item" error-type="Dispose" />
+		<record alias="end-orientation" type="Seq" filter="edge" seq="orientation" />
+		<record alias="success-probability" type="Seq" filter="edge" showzero="y" >
+		   <case alias="definite" default="y" name="必成" />
+		   <case alias="stochastic" />
+		</record>
+		<record alias="has-arrow" type="Bool" filter="edge" default="y" />
+        <!-- ========================================================= -->
+	</list>
+</table>

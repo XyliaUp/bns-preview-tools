@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<table>
+	
+	<list module="CombatData" type="SkillTooltipAttribute" version="0.10" >
+		<record alias="alias" type="String" />
+		<record alias="arg-type" type="Seq" seq="arg-type" repeat="4" >
+			<case alias="none" default="y" />
+			<case alias="damage-percent-min-max" />
+			<case alias="damage-percent" />
+			<case alias="time" />
+			<case alias="stack-count" />
+			<case alias="effect" />
+			<case alias="heal-percent" />
+			<case alias="drain-percent" />
+			<case alias="skill" />
+			<case alias="consume-percent" />
+			<case alias="probability-percent" />
+			<case alias="stance-type" />
+			<case alias="percent" />
+			<case alias="counter" />
+			<case alias="distance" />
+			<case alias="key-command" />
+			<case alias="number" />
+			<case alias="text-alias" />
+			<case alias="r-hypermove" />
+			<case alias="r-heal-percent" />
+			<case alias="r-heal-diff" />
+			<case alias="r-shield-percent" />
+			<case alias="r-shield-diff" />
+			<case alias="r-support-percent" />
+			<case alias="r-support-diff" />
+		</record>
+		<record alias="text" ref="Text" />
+		<record alias="icon" type="Icon" />
+		<record alias="skill-modify-type" type="Seq" >
+			<case alias="none" default="y" />
+			<case alias="recycle-duration" />
+			<case alias="sp-consume" />
+			<case alias="damage" />
+			<case alias="hp-drain" />
+			<case alias="heal-percent" />
+		</record>
+	</list>
+</table>

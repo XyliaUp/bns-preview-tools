@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list alias="GuildUniformComponent" module="ItemData" type="GuildUniformComponent" version="0.8" >
+		<record alias="param-type" type="Int32" key="y" />
+		<record alias="param-value" type="Int32" key="y" />
+		<record alias="param-type-category" type="Seq" key="y" >
+			<case alias="none" />
+			<case alias="style" />
+			<case alias="top" />
+			<case alias="bottoms" />
+			<case alias="point-color" />
+			<case alias="face" />
+			<case alias="head" />
+		</record>
+
+		
+		<record alias="name" ref="Text" />
+		<record alias="icon-texture" ref="IconTexture" />
+		<record alias="icon-index" type="Int16" />
+		<record alias="desc" ref="Text" />
+		<record alias="order" type="Int32" />
+		<record alias="required-guild-level" type="Int8" />
+		<record alias="usable" type="Bool" default="y" />
+		<record alias="recipe-id" ref="GuildUniformRecipe" />
+	</list>
+</table>

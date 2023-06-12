@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="ItemData" type="glyph-page" version="0.1" >
+		<record alias="page" type="Int8" key="y" />
+		
+		<record alias="name" ref="Text" />
+		<record alias="cost-money" type="Int32" />
+		<record alias="cost-item" ref="Item" repeat="4" />
+		<record alias="cost-item-count" type="Int16" max="30000" min="0" />
+	</list>
+</table>

@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="ItemData" type="battle-field-grade" version="0.3" >
+		<record alias="season-type" type="Seq" key="y" >
+			<case alias="invalid" />
+			<case alias="duel-death-match-1vs1" />
+			<case alias="duel-death-match-3vs3" />
+			<case alias="duel-tag-match-3vs3" />
+			<case alias="party-battle-occupation-war" />
+			<case alias="solo-dungeon-1-best-record" />
+			<case alias="infinite-tower-best-record" />
+			<case alias="party-battle-capture-the-flag" />
+			<case alias="guild-combat" />
+			<case alias="solo-dungeon-2-best-record" />
+			<case alias="ingame-championship-duel-death-match-1vs1" />
+			<case alias="ingame-championship-duel-tag-match-3vs3" />
+			<case alias="party-battle-lead-the-ball" />
+			<case alias="challenge-party-best-record" />
+			<case alias="battle-royal-free-for-all" />
+			<case alias="battle-royal-free-for-all-party" />
+			<case alias="mastery-exp-best-record" />
+		</record>
+		<record alias="grade" type="Int8" key="y" />
+
+		
+		<record alias="score" type="Int32" showzero="y" />
+		<record alias="point-bonus-percent" type="Int16" showzero="y" />
+		<record alias="name2" ref="Text" />
+		<record alias="icon" type="Icon" />
+		<record alias="medium-icon" type="Icon" />
+		<record alias="small-icon" type="Icon" />
+		<record alias="extrasmall-icon" type="Icon" />
+		<record alias="grade-level-up-message" ref="GameMessage" />
+		<record alias="grade-level-down-message" ref="GameMessage" />
+	</list>
+</table>

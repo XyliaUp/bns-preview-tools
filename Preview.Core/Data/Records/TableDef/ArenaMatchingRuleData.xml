@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="ItemData" type="ArenaMatchingRule" version="0.1" side="server" >
+		<record alias="game-mode" type="Seq" />
+		<record alias="level" type="Int16" />
+		<record alias="rating-revise" type="Int16" />
+	</list>
+</table>

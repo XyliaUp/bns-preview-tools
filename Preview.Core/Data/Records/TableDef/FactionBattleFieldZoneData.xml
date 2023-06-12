@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="ZoneData0" type="faction-battle-field-zone" version="0.14" >
+		<record alias="id" type="Int32" key="y" />
+
+		<record alias="alias" type="String" />
+		<record alias="zone" ref="Zone" />
+		<record alias="group" ref="AttractionGroup" />
+		<record alias="ui-filter-attraction-quest-only" type="Bool" server="n" />
+		<record alias="respawn-confirm-text" ref="Text" />
+		<record alias="attraction-quest" ref="Quest" server="n" repeat="10" />
+		<record alias="required-level" type="Int8" />
+		<record alias="required-faction-level" type="Int8" />
+		<record alias="faction-battle-field-zone-name2" ref="Text" />
+		<record alias="faction-battle-field-zone-desc" ref="Text" />
+		<record alias="thumbnail-image" type="String" server="n" />
+		<record alias="reward-summary" ref="AttractionRewardSummary" server="n" />
+	</list>
+</table>

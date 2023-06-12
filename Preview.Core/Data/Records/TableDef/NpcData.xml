@@ -1,0 +1,378 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="AIData" type="npc" version="2.12" >
+		<record alias="alias" type="String" />
+		<record alias="name" type="String" server="n" />
+		<record alias="title" type="String" server="n" />			
+		<record alias="name2" ref="Text" />
+		<record alias="title2" ref="Text" />		
+		<record alias="boss-npc" ref="BossNpc" />	
+		<record alias="soul-npc" type="Bool" />
+		<record alias="big-boss-npc" type="Bool" />
+		<record alias="write-combat-log" type="Bool" />
+		<record alias="radius" type="distance" />
+		<record alias="scale" type="Int16" default="1000" server="n" />
+		<record alias="walk-speed" type="velocity" />
+		<record alias="run-speed" type="velocity" />
+		<record alias="neutral-hostile" type="Seq" >
+		     <case alias="offensive" />
+		     <case alias="fightback" default="y" />
+		     <case alias="neutral" />			 
+        </record>
+		<record alias="offensive" type="Bool" />
+		<record alias="immune-skill-attribute" type="Seq" seq="skill-attribute" repeat="8" />
+		<record alias="immune-effect-attribute" type="Seq16" seq="effect-attribute" repeat="20" />
+		<record alias="immune-breaker-attribute" type="Seq16" seq="effect-attribute" repeat="8" />
+		<record alias="immune-breaker-count" type="Int8" />
+        <record alias="immune-breaker-init-duration" type="Msec" />
+		<record alias="immune-breaker-show" type="String" server="n" repeat="8" />
+        <record alias="store" ref="Store" />	
+        <record alias="store-by-item" ref="StoreByItem" />		
+		<record alias="store2" ref="Store2" repeat="6" />
+		<record alias="teleport" ref="Teleport" />
+		<record alias="repairer" type="Bool" />
+		<record alias="production" type="Seq" seq="production-type" />		
+		<record alias="market" type="Bool" />		
+		<record alias="post-office" type="Bool" />	
+		<record alias="exchange-faction-score" type="Bool" />
+        <record alias="exchange-faction-score-max-faction-level" type="Int16" />	
+		<record alias="exchange-faction-score-multiply-value" type="Int8" default="1" />
+		<record alias="join-leave-faction" type="Bool" />
+		<record alias="transfer-faction" type="Bool" />
+		<record alias="depot" type="Bool" />
+		<record alias="guild" type="Bool" />
+		<record alias="max-faction-score" type="Int32" default="999" />
+		<record alias="enable-co-ownership-pouch" type="Bool" />
+		<record alias="reward-faction-score" type="Int32" />
+		<record alias="peaktime-reward-sun-start-hour" type="Int8" default="-1" />
+		<record alias="peaktime-reward-sun-end-hour" type="Int8" default="-1" />
+		<record alias="peaktime-reward-mon-start-hour" type="Int8" default="-1" />
+		<record alias="peaktime-reward-mon-end-hour" type="Int8" default="-1" />
+		<record alias="peaktime-reward-tue-start-hour" type="Int8" default="-1" />
+		<record alias="peaktime-reward-tue-end-hour" type="Int8" default="-1" />
+		<record alias="peaktime-reward-wed-start-hour" type="Int8" default="-1" />
+		<record alias="peaktime-reward-wed-end-hour" type="Int8" default="-1" />	
+		<record alias="peaktime-reward-thu-start-hour" type="Int8" default="-1" />
+		<record alias="peaktime-reward-thu-end-hour" type="Int8" default="-1" />
+		<record alias="peaktime-reward-fri-start-hour" type="Int8" default="-1" />
+		<record alias="peaktime-reward-fri-end-hour" type="Int8" default="-1" />	
+		<record alias="peaktime-reward-sat-start-hour" type="Int8" default="-1" />
+		<record alias="peaktime-reward-sat-end-hour" type="Int8" default="-1" />	
+        <record alias="contribution-reward" ref="ContributionReward" />
+		<record alias="contribution-day-reward-sun" ref="ContributionReward" />
+		<record alias="contribution-day-reward-mon" ref="ContributionReward" />
+		<record alias="contribution-day-reward-tue" ref="ContributionReward" />
+		<record alias="contribution-day-reward-wed" ref="ContributionReward" />
+		<record alias="contribution-day-reward-thu" ref="ContributionReward" />
+		<record alias="contribution-day-reward-fri" ref="ContributionReward" />
+		<record alias="contribution-day-reward-sat" ref="ContributionReward" />
+		<record alias="contribution-peaktime-reward-sun-start-hour" type="Int8" default="-1" />
+		<record alias="contribution-peaktime-reward-sun-end-hour" type="Int8" default="-1" />
+		<record alias="contribution-peaktime-reward-mon-start-hour" type="Int8" default="-1" />
+		<record alias="contribution-peaktime-reward-mon-end-hour" type="Int8" default="-1" />
+		<record alias="contribution-peaktime-reward-tue-start-hour" type="Int8" default="-1" />
+		<record alias="contribution-peaktime-reward-tue-end-hour" type="Int8" default="-1" />		
+		<record alias="contribution-peaktime-reward-wed-start-hour" type="Int8" default="-1" />
+		<record alias="contribution-peaktime-reward-wed-end-hour" type="Int8" default="-1" />
+		<record alias="contribution-peaktime-reward-thu-start-hour" type="Int8" default="-1" />
+		<record alias="contribution-peaktime-reward-thu-end-hour" type="Int8" default="-1" />
+		<record alias="contribution-peaktime-reward-fri-start-hour" type="Int8" default="-1" />
+		<record alias="contribution-peaktime-reward-fri-end-hour" type="Int8" default="-1" />		
+		<record alias="contribution-peaktime-reward-sat-start-hour" type="Int8" default="-1" />
+		<record alias="contribution-peaktime-reward-sat-end-hour" type="Int8" default="-1" />	
+
+		<record alias="personal-dropped-pouch-reward" ref="Reward" />
+		<record alias="reward-sealed-dungeon" ref="SealedDungeonReward" />
+		<record alias="fielditemdrop" ref="FieldItemDrop" />
+
+        <record alias="deadbody-fielditemdrop" ref="FieldItemDrop" />
+		<record alias="deadbody-pickup-duration" type="Msec" />
+
+		<record alias="burrow" type="Bool" server="n" />		
+		<record alias="manipulate-duration" type="Msec" />
+		<record alias="caster-manipulate-animname" type="String" server="n" />
+		<record alias="target-manipulate-animname" type="String" server="n" />
+		<record alias="caster-manipulate-show" type="String" server="n" />
+		<record alias="target-manipulate-show" type="String" server="n" />
+		<record alias="action-name" ref="Text" />
+		<record alias="action-desc" ref="Text" />
+        <record alias="manipulate-transit-zone" ref="Zone" />
+		<record alias="forwarding-types" type="Seq" seq="forwarding-type" server="n" repeat="80" />
+		<record alias="quests" ref="Quest" server="n" repeat="80" />
+		<record alias="missions" type="Int8" server="n" repeat="80" />
+		<record alias="cases" type="Int8" server="n" repeat="80" />
+		<record alias="case-subtypes" type="Int16" server="n" repeat="80" />
+
+		<record alias="loot-forwarding-types" type="Seq" seq="forwarding-type" server="n" repeat="8" />
+		<record alias="loot-quests" ref="Quest" server="n" repeat="8" />
+		<record alias="loot-missions" type="Int8" server="n" repeat="8" />
+		<record alias="loot-cases" type="Int8" server="n" repeat="8" />
+		<record alias="loot-item" ref="Item" server="n" repeat="8" />
+		<record alias="finish-blow-forwarding-types" type="Seq" seq="forwarding-type" server="n" repeat="21" />
+		<record alias="finish-blow-quests" ref="Quest" server="n" repeat="21" />
+		<record alias="finish-blow-missions" type="Int8" server="n" repeat="21" />
+		<record alias="finish-blow-cases" type="Int8" server="n" repeat="21" />
+	
+		<record alias="walk-ratescale" type="Float32" default="1.00" server="n" />
+		<record alias="run-ratescale" type="Float32" default="1.00" server="n" />
+		<record alias="appearance" ref="CreatureAppearance" server="n" />
+        <record alias="body" type="String" server="n" />
+		<record alias="body-col" type="String" server="n" />
+		<record alias="animset" type="String" server="n" />
+		<record alias="hair" type="String" server="n" />
+		<record alias="hair-col" type="String" server="n" />
+		<record alias="face" type="String" server="n" />
+		<record alias="face-col" type="String" server="n" />
+		<record alias="face-animset" type="String" server="n" />
+        <record alias="talk" type="Bool" server="n" />
+        <record alias="iconindex" type="Int8" server="n" />
+		<record alias="mesh-scale" type="Float32" default="1.00" server="n" />
+        <record alias="p-radius" type="Int8" />
+        <record alias="name-pos-diff" type="Int16" server="n" />
+        <record alias="name-pos-stand" type="Int16" server="n" />
+        <record alias="name-pos-sit" type="Int16" server="n" />
+        <record alias="name-pos-dead" type="Int16" server="n" />
+		<record alias="start-talk-action" type="String" server="n" />
+		<record alias="end-talk-action" type="String" server="n" />
+		<record alias="spawn-production" type="String" server="n" />
+		<record alias="dead-production" type="String" server="n" />
+        <record alias="four-leg" type="Bool" server="n" />
+		<record alias="despawn-showdata" type="String" server="n" />
+        <record alias="race" seq="race" type="Seq" server="n" />
+        <record alias="sex" seq="sex" type="Seq" server="n" />
+        <record alias="job" seq="job" type="Seq" server="n" />
+        <record alias="stance" seq="stance" type="Seq" default="npc기본자세" />
+        <record alias="level" type="Int8" />
+        <record alias="mastery-level" type="Int8" />
+        <record alias="faction" ref="Faction" />
+        <record alias="attackable" type="Bool" default="y" />
+        <record alias="detect-hiding" type="Bool" />
+        <record alias="default-idle" ref="NpcMoveAnim" server="n" />
+        <record alias="warfare-boss" type="Bool" />	
+		<record alias="max-hp" type="Int64" input="n" />
+		<record alias="max-sp" type="Int16" input="n" />
+		<record alias="modify-cast-speed-percent" type="Int16" />		
+		<record alias="hp-regen" type="Int32" input="n" />
+		<record alias="hp-regen-combat" type="Int32" input="n" />
+		<record alias="attack-hit-base-percent" name="命中率" type="Int16" />
+		<record alias="attack-hit-value" type="Int16" />
+		<record alias="attack-pierce-base-percent" type="Int16" />
+		<record alias="attack-parry-pierce-percent" type="Int16" />
+		<record alias="attack-pierce-value" type="Int16" />
+		<record alias="attack-concentrate-value" type="Int16" />
+		<record alias="attack-critical-base-percent" type="Int16" input="n" />
+		<record alias="attack-critical-damage-percent" type="Int16" input="n" />
+		<record alias="attack-critical-value" type="Int32" input="n" />
+		<record alias="attack-critical-damage-value" type="Int32" input="n" />
+		<record alias="defend-critical-base-percent" type="Int16" />
+		<record alias="defend-critical-damage-percent" name="暴击防御率" type="Int16" />
+		<record alias="defend-critical-value" type="Int16" />
+		<record alias="defend-bounce-percent" type="Int16" />
+		<record alias="defend-dodge-base-percent" type="Int16" />
+		<record alias="defend-dodge-value" type="Int16" />
+		<record alias="defend-parry-base-percent" name="格挡率" type="Int16" />
+		<record alias="defend-parry-value" type="Int16" />
+		<record alias="defend-parry-reduce-percent" type="Int16" />		
+		<record alias="defend-parry-reduce-diff" type="Int16" />		
+		<record alias="defend-perfect-parry-base-percent" type="Int16" />		
+		<record alias="defend-perfect-parry-reduce-percent" type="Int16" />		
+		<record alias="defend-counter-reduce-percent" type="Int16" />		
+		<record alias="defend-immune-base-percent" type="Int16" />		
+		<record alias="attack-power-creature-min" type="Int32" input="n" />
+		<record alias="attack-power-creature-max" type="Int32" input="n" />										
+		<record alias="attack-power-equip-min" type="Int16" input="n" />
+		<record alias="attack-power-equip-max" type="Int16" input="n" />						
+		<record alias="defend-power-creature-value" type="Int32" input="n" />
+		<record alias="defend-power-equip-value" type="Int32" input="n" />
+		<record alias="defend-resist-power-creature-value" type="Int16" input="n" />
+		<record alias="defend-resist-power-equip-value" type="Int16" input="n" />
+		<record alias="defend-physical-damage-reduce-percent" type="Int16" input="n" />
+		<record alias="defend-force-damage-reduce-percent" type="Int16" input="n" />
+		<record alias="attack-damage-modify-percent" type="Int16" input="n" />
+		<record alias="attack-damage-modify-diff" type="Int32" />
+		<record alias="defend-damage-modify-percent" type="Int16" />
+		<record alias="defend-damage-modify-diff" type="Int32" />
+		<record alias="defend-miss-base-percent" type="Int16" />
+		<record alias="attack-stiff-duration-base-percent" type="Int16" />
+		<record alias="attack-stiff-duration-value" type="Int16" />
+		<record alias="defend-stiff-duration-base-percent" type="Int16" />
+		<record alias="defend-stiff-duration-value" type="Int16" />
+		<record alias="cast-duration-base-percent" type="Int16" />
+		<record alias="cast-duration-value" type="Int16" />
+		<record alias="job-ability-1" type="Int32" input="n" />
+		<record alias="job-ability-2" type="Int32" input="n" />
+		<record alias="heal-power-base-percent" type="Int16" />
+		<record alias="aoe-defend-base-percent" type="Int16" />
+		<record alias="aoe-defend-power-value" type="Int16" />
+		<record alias="hate-base-percent" type="Int16" />
+		<record alias="hate-power-creature-value" type="Int16" />
+		<record alias="abnormal-attack-power-value" type="Int16" input="n" />
+		<record alias="abnormal-attack-base-percent" type="Int16" input="n" />
+		<record alias="abnormal-defend-power-value" type="Int16" input="n" />
+		<record alias="abnormal-defend-base-percent" type="Int16" input="n" />
+		<record alias="abnormal-attack-power-modify" type="Int16" input="n" />
+		<record alias="abnormal-defend-power-modify" type="Int16" input="n" />
+		<record alias="hate-power-modify" type="Int16" input="n" />
+		<record alias="heal-power-modify" type="Int16" input="n" />
+		<record alias="aoe-defend-power-modify" type="Int16" input="n" />
+		<record alias="attack-hit-value-modify" type="Int16" input="n" />
+		<record alias="attack-critical-value-modify" type="Int16" input="n" />
+		<record alias="defend-critical-value-modify" type="Int16" />
+		<record alias="defend-dodge-value-modify" type="Int16" />
+		<record alias="defend-parry-value-modify" type="Int16" />
+		<record alias="defend-physical-value-modify" type="Int16" />
+		<record alias="defend-force-value-modify" type="Int16" />
+		<record alias="attack-stiff-duration-value-modify" type="Int16" />
+		<record alias="defend-stiff-duration-value-modify" type="Int16" />
+		<record alias="cast-duration-value-modify" type="Int16" input="n" />
+		<record alias="attack-critical-damage-modify" type="Int16" input="n" />
+		<record alias="defend-critical-damage-modify" type="Int16" input="n" />
+		<record alias="attack-pierce-modify" type="Int16" input="n" />
+		<record alias="attack-parry-pierce-modify" type="Int16" input="n" />
+		<record alias="defend-parry-reduce-modify" type="Int16" input="n" />
+		<record alias="attack-perfect-parry-damage-modify" type="Int16" input="n" />
+		<record alias="defend-perfect-parry-reduce-modify" type="Int16" />
+		<record alias="attack-counter-damage-modify" type="Int16" input="n" />
+		<record alias="defend-counter-reduce-modify" type="Int16" />
+		<record alias="grade2" type="Seq" >		
+			<case alias="none" default="y" />
+			<case alias="boss" />
+			<case alias="champion" />
+			<case alias="normal" />
+			<case alias="follower" />
+			<case alias="tool" />
+			<case alias="weakest" />
+			<case alias="weak" />
+			<case alias="regular" />
+			<case alias="strong" />
+		</record>
+		<record alias="grade-imageset" type="String" server="n" />
+     	<record alias="grade-tooltip-text" ref="Text" />
+		<record alias="boss-ui-type" type="Seq" server="n" >	
+			<case alias="target" default="y" />
+			<case alias="list" />
+		</record>
+     	<record alias="boss-group-id" type="Int8" server="n" />
+		<record alias="boss-slot" type="Seq" server="n" >	
+			<case alias="none" default="y" />
+			<case alias="boss1" />
+			<case alias="boss2" />
+			<case alias="boss3" />
+			<case alias="boss4" />
+		</record>
+		<record alias="boss-kill-hide-slot" type="Bool" server="n" />
+        <record alias="boss-spawn-message" ref="GameMessage" server="n" />
+        <record alias="boss-icon" type="Icon" />
+        <record alias="boss-aggro-icon" type="Icon" />
+		<record alias="boss-aggro-indicator" type="String" server="n" />			
+		<record alias="boss-aggro-twin-indicator" type="String" server="n" />			
+		<record alias="end-talk-sound" type="String" server="n" />
+        <record alias="end-talk-social" ref="Social" server="n" />
+		<record alias="burrow-scaned-mark" type="String" server="n" />
+		<record alias="burrow-visual-effect" type="String" server="n" />
+     	<record alias="use-foot-print" type="Bool" default="y" server="n" />		
+     	<record alias="use-water-print" type="Bool" default="y" server="n" />		
+     	<record alias="default-visible" type="Bool" default="y" server="n" />		
+		<record alias="move-type" type="Seq" server="n" >	
+			<case alias="none" default="y" />
+			<case alias="static" />
+			<case alias="ground" />
+			<case alias="float" />
+		</record>
+		<record alias="size-type" type="Seq" server="n" >	
+			<case alias="none" default="y" />
+			<case alias="small" />
+			<case alias="regular" />
+			<case alias="huge" />
+		</record>	
+		<record alias="description" type="String" server="n" />
+		<record alias="description2" ref="Text" />		
+		<record alias="dying-message" ref="Text" />		
+		<record alias="role-type" type="Seq" server="n" >	
+			<case alias="none" default="y" />
+			<case alias="keeper-inn" />
+			<case alias="shop-grocery" />
+			<case alias="shop-weapon" />
+			<case alias="shop-cloth" />
+			<case alias="shop-acc" />
+			<case alias="shop-by-item" />
+			<case alias="shop-achievement" />
+			<case alias="keeper-warp" />
+			<case alias="guardian" />
+			<case alias="distribution" />
+			<case alias="gather-digger" />
+			<case alias="gather-farmer" />
+			<case alias="gather-fisherman" />
+			<case alias="gather-hunter" />
+			<case alias="gather-miner" />
+			<case alias="gather-gemcolletor" />
+			<case alias="gather-lumberjack" />
+			<case alias="produce-blacksmith" />
+			<case alias="produce-shaman" />
+			<case alias="produce-gemmaker" />
+			<case alias="produce-accmaker" />
+			<case alias="produce-potionmaker" />
+			<case alias="produce-cook" />
+			<case alias="produce-chinamaker" />
+			<case alias="coinshop" />
+			<case alias="factionshop" />
+			<case alias="faction-exchange" />
+			<case alias="broker" />
+			<case alias="shop-food" />
+			<case alias="shop-beauty" />
+			<case alias="depot" />
+			<case alias="event" />
+		</record>			
+		<record alias="die-shout" ref="Text" />	
+		<record alias="race-type" type="Seq" server="n" >	
+			<case alias="etc" default="y" />
+			<case alias="jin" />
+			<case alias="kun" />
+			<case alias="gon" />
+			<case alias="lyn" />
+		</record>			
+		<record alias="indicator" ref="IndicatorSocial" server="n" />	
+		<record alias="neutral-faction-nameplate-enemy" type="Bool" />
+		<record alias="banned-response-1" ref="NpcResponse" server="n" />
+		<record alias="banned-response-2" ref="NpcResponse" server="n" />
+		<record alias="response" ref="NpcResponse" server="n" repeat="7" />
+		<record alias="stand-social" ref="Social" server="n" repeat="3" />
+		<record alias="stand-social-rate" type="Int16" server="n" repeat="3" />
+		<record alias="die-knockback" type="Bool" default="y" />	
+		<record alias="invoke-fx-msg" type="Bool" server="n" />
+		<record alias="disable-name-spawn" type="Bool" server="n" />
+		<record alias="play-additional-die" type="Bool" default="y" server="n" />
+		<record alias="summoned-beauty-shop" ref="SummonedBeautyShop" />
+		<record alias="boast" ref="Boast" server="n" />
+		<record alias="always-show-hp" type="Bool" server="n" />	
+		<record alias="use-map-unit-group" type="Bool" server="n" />
+		<record alias="map-unit-1" ref="MapUnit" server="n" />
+		<record alias="map-unit-2" ref="MapUnit" server="n" />
+		<record alias="use-immediate-load" type="Bool" server="n" />
+		<record alias="ghost-type" type="Seq" seq="ghost-type" />
+		<record alias="ghostmode-beyond-start-show" type="String" />
+		<record alias="ghostmode-beyond-end-show" type="String" />
+		<record alias="soul-npc-skill-level" type="Int8" />
+		<record alias="boss-challenge-attraction-score" type="Int16" />
+		<record alias="is-mysterious-store" type="Bool" />	
+		<record alias="newbiecare" ref="NewbieCare" server="n" />
+		<record alias="attack-attribute-value" type="Int32" />
+		<record alias="attack-attribute-base-percent" type="Int16" />
+		<record alias="attack-attribute-modify" type="Int16" />
+		<record alias="hide-nameplate" type="Bool" server="n" />		
+		<record alias="attack-aoe-pierce-value" type="Int16" />
+		<record alias="attack-abnormal-hit-base-percent" type="Int16" />
+		<record alias="attack-abnormal-hit-value" type="Int16" />
+		<record alias="defend-abnormal-dodge-base-percent" type="Int16" />
+		<record alias="defend-abnormal-dodge-value" type="Int16" />
+		<record alias="support-power-base-percent" type="Int16" />
+		<record alias="support-power-value" type="Int16" />
+		<record alias="heal-power-value" type="Int16" />
+		<record alias="hypermove-power-value" type="Int16" />
+		<record alias="r-attack-aoe-pierce-modify" type="Int16" />
+		<record alias="r-attack-abnormal-hit-modify" type="Int16" />
+		<record alias="r-defend-abnormal-dodge-modify" type="Int16" />
+		<record alias="r-support-power-modify" type="Int16" />
+		<record alias="unk-" type="Int32" />
+	</list>
+</table>

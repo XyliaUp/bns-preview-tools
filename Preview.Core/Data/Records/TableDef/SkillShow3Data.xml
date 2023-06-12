@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="CombatData" type="SkillShow3" version="0.4" >
+		<record alias="id" type="Int32" key="y" />
+		<record alias="variation-id" type="Int8" key="y" />
+		<record alias="skillskin-id" type="Int16" key="y" />
+
+		<record alias="play-player-show" type="Bool" />
+		<record alias="force-play-hit-show" type="Bool" />
+		<record alias="player-cast-show" type="String" />
+		<record alias="player-exec-show" type="String" repeat="5" />
+		<record alias="player-fire-show" type="String" repeat="5" />
+		<record alias="player-stop-show" type="String" />
+		<record alias="chain-type" type="Seq" >
+			<case alias="none-chain" default="y" />
+			<case alias="chain" />
+			<case alias="chain-loop" />
+		</record>
+		<record alias="create-phantom-type" type="Seq" >
+			<case alias="none" default="y" />
+			<case alias="cast-start-stance" />
+			<case alias="fire-start-stance" />
+			<case alias="cast-start-instance" />
+			<case alias="fire-start-instance" />
+		</record>
+		<record alias="phantom-shoot-type" type="Seq" >
+			<case alias="phantom-shoot-right" default="y" />
+			<case alias="phantom-shoot-left" />
+			<case alias="phantom-shoot-double-side" />
+			<case alias="phantom-shoot-bit-flags-index" />
+		</record>
+
+		<record alias="lyn-phantom-count" type="Int8" />
+		<record alias="succession-next-skill" type="Bool" />
+		<record alias="show-key-result-damage-signal" type="Bool" />
+		<record alias="weapon-prefix" type="String" />
+		<record alias="cast-duration-zero-show-off" type="Bool" />
+		<record alias="range-decal" type="Bool" />
+		<record alias="use-berserk-range-decal" type="Bool" />
+		<record alias="cast-show" type="String" />
+		<record alias="exec-show-play-end" type="Bool" />
+		<record alias="decal-show-1" type="String" />
+		<record alias="fire-show-1" type="String" />
+		<record alias="fire-miss-show-1" type="String" />
+		<record alias="exec-show-1" type="String" />
+		<record alias="exec-hit-show-1" type="String" />
+		<record alias="exec-immune-show-1" type="String" />
+		<record alias="exec-dodge-show-1" type="String" />
+		<record alias="exec-parry-show-1" type="String" />
+		<record alias="exec-bounce-show-1" type="String" />
+		<record alias="exec-bounce-caster-show-1" type="String" />
+		<record alias="exec-counter-show-1" type="String" />
+		<record alias="exec-critical-show-1" type="String" />
+		<record alias="return-show-1" type="String" />
+		<record alias="decal-show-2" type="String" />
+		<record alias="fire-show-2" type="String" />
+		<record alias="fire-miss-show-2" type="String" />
+		<record alias="exec-show-2" type="String" />
+		<record alias="exec-hit-show-2" type="String" />
+		<record alias="exec-immune-show-2" type="String" />
+		<record alias="exec-dodge-show-2" type="String" />
+		<record alias="exec-parry-show-2" type="String" />
+		<record alias="exec-bounce-show-2" type="String" />
+		<record alias="exec-bounce-caster-show-2" type="String" />
+		<record alias="exec-counter-show-2" type="String" />
+		<record alias="exec-critical-show-2" type="String" />
+		<record alias="return-show-2" type="String" />
+		<record alias="decal-show-3" type="String" />
+		<record alias="fire-show-3" type="String" />
+		<record alias="fire-miss-show-3" type="String" />
+		<record alias="exec-show-3" type="String" />
+		<record alias="exec-hit-show-3" type="String" />
+		<record alias="exec-immune-show-3" type="String" />
+		<record alias="exec-dodge-show-3" type="String" />
+		<record alias="exec-parry-show-3" type="String" />
+		<record alias="exec-bounce-show-3" type="String" />
+		<record alias="exec-bounce-caster-show-3" type="String" />
+		<record alias="exec-counter-show-3" type="String" />
+		<record alias="exec-critical-show-3" type="String" />
+		<record alias="return-show-3" type="String" />
+		<record alias="decal-show-4" type="String" />
+		<record alias="fire-show-4" type="String" />
+		<record alias="fire-miss-show-4" type="String" />
+		<record alias="exec-show-4" type="String" />
+		<record alias="exec-hit-show-4" type="String" />
+		<record alias="exec-immune-show-4" type="String" />
+		<record alias="exec-dodge-show-4" type="String" />
+		<record alias="exec-parry-show-4" type="String" />
+		<record alias="exec-bounce-show-4" type="String" />
+		<record alias="exec-bounce-caster-show-4" type="String" />
+		<record alias="exec-counter-show-4" type="String" />
+		<record alias="exec-critical-show-4" type="String" />
+		<record alias="return-show-4" type="String" />
+		<record alias="decal-show-5" type="String" />
+		<record alias="fire-show-5" type="String" />
+		<record alias="fire-miss-show-5" type="String" />
+		<record alias="exec-show-5" type="String" />
+		<record alias="exec-hit-show-5" type="String" />
+		<record alias="exec-immune-show-5" type="String" />
+		<record alias="exec-dodge-show-5" type="String" />
+		<record alias="exec-parry-show-5" type="String" />
+		<record alias="exec-bounce-show-5" type="String" />
+		<record alias="exec-bounce-caster-show-5" type="String" />
+		<record alias="exec-counter-show-5" type="String" />
+		<record alias="exec-critical-show-5" type="String" />
+		<record alias="return-show-5" type="String" />
+		<record alias="finish-show" type="String" />
+		<record alias="bomb-show" type="String" />
+		<record alias="cancel-show" type="String" />
+		<record alias="stop-show" type="String" />
+		<record alias="triggered-show" type="String" />
+		<record alias="trigger-cast-show" type="String" />
+		<record alias="triggered-enemy-show" type="String" />
+		<record alias="trigger-show" type="String" />
+		<record alias="trigger-hit-show" type="String" />
+		<record alias="trigger-immune-show" type="String" />
+		<record alias="trigger-dodge-show" type="String" />
+		<record alias="trigger-parry-show" type="String" />
+		<record alias="trigger-bounce-show" type="String" />
+		<record alias="trigger-counter-show" type="String" />
+		<record alias="trigger-critical-show" type="String" />
+		<record alias="skill-skin-desc" type="String" />
+	</list>
+</table>

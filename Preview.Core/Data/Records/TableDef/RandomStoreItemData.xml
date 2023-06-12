@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="ItemData" type="random-store-item" version="0.2">
+		<record alias="alias" type="String" />
+		<record alias="item" ref="Item" />
+		<record alias="item-count" type="Int32" />
+		<record alias="item-price-money" type="Int32" />
+		<record alias="item-price-item" ref="Item" />
+		<record alias="item-price-item-amount" type="Int16" />
+	</list>
+</table>

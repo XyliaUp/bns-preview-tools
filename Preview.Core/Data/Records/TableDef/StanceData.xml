@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="CombatData" type="stance" version="0.26" >
+		<record alias="stance-type" key="y" type="Seq" seq="stance" />
+		<record alias="name2" ref="Text" />
+		<record alias="initialize" type="Bool" default="y" />
+		<record alias="default-sp" type="Int16" />
+		<record alias="max-sp" type="Int16" />
+		<record alias="effect" ref="Effect" repeat="4"/>
+		<record alias="impossible-equip" type="Bool" />
+		<record alias="clone-weapon-appearance-to-left" type="Bool" />
+		<record alias="target-angle" type="Float32" default="16" repeat="4"/>
+		<record alias="target-beam-width" type="Float32" default="1.4" repeat="4"/>
+		<record alias="target-band-first" type="Float32" default="5.0" repeat="4"/>
+		<record alias="target-band-second" type="Float32" default="15.0" repeat="4"/>
+		<record alias="band-check-limit" type="Int16" default="3" repeat="4"/>
+		<record alias="target-change-delay" type="Float32" default="1.0" repeat="4"/>
+		<record alias="threshold-min" type="Float32" repeat="4"/>
+		<record alias="threshold-max" type="Float32" repeat="4"/>
+		<record alias="empty-delay" type="Float32" default="1.0" repeat="4"/>
+		<record alias="target-gather-angle" type="Float32" default="30" />
+		<record alias="stun-delay" type="Float32" default="1.0" />
+		<record alias="kneel-delay" type="Float32" default="1.0" />
+		<record alias="down-delay" type="Float32" default="1.0" />
+		<record alias="mid-air-delay" type="Float32" default="1.0" />
+		<record alias="swoon-delay" type="Float32" default="1.0" />
+		<record alias="secondgauge-name" type="Seq" >
+			<case alias="none" default="y" />
+			<case alias="blade" />
+			<case alias="soul" />
+			<case alias="fighting-spirit" />
+			<case alias="force-energy" />
+			<case alias="fury" />
+			<case alias="chakra" />
+		</record>
+		<record alias="secondgauge-use-type" type="Seq" >
+			<case alias="none" default="y" />
+			<case alias="use-sp" />
+			<case alias="use-fp" />
+		</record>
+		<record alias="combat-mode-show" type="String" />
+		<record alias="soul-fighter-weapon-show" type="String" />
+		<record alias="soul-fighter-buff-show" type="String" />
+		<record alias="phantom-not-combat-mode-show" type="String" />
+		<record alias="kungfu-fighter-contact-stance-weapon-mesh-id" type="String" />
+		<record alias="kungfu-fighter-contact-stance-weapon-mesh-col" type="String" repeat="3"/>
+		<record alias="kungfu-fighter-contact-stance-weapon-show" type="String" />
+	</list>
+</table>

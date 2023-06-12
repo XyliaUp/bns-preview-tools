@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<table>
+  <list module="AIData" version="0.2" type="boss-challenge" > 
+    <record alias="id" type="Int32" key="y" />
+    <record alias="zone" ref="Zone" />
+    <record alias="require-score" type="Int16" />
+    <record alias="last-round" type="Int16" />	
+    <record alias="alias" type="String" />	
+	<record alias="group" ref="AttractionGroup" />
+    <record alias="attraction-quest" ref="Quest" repeat="5" server="n" />
+	<record alias="enable-heart-count" type="Bool" />
+	<record alias="max-instant-heart-count" type="Int8" />
+	<record alias="required-level" type="Int8" />
+	<record alias="required-mastery-level" type="Int8" />
+	<record alias="required-preceding-quest" ref="Quest" repeat="3" />
+	<record alias="required-preceding-quest-check" type="Seq" >
+		<case alias="and" default="y" />
+		<case alias="or" />
+	</record>
+    <record alias="boss-challenge-name2" ref="Text" />
+	<record alias="boss-challenge-desc" ref="Text" />
+	<record alias="ui-text-grade" type="Int8" server="n" />
+	<record alias="reward-summary" ref="AttractionRewardSummary" server="n" />
+	<record alias="recommand-level-min" type="Int8" server="n" />
+	<record alias="recommand-level-max" type="Int8" server="n" />
+	<record alias="recommand-mastery-level-min" type="Int8" server="n" />
+	<record alias="recommand-mastery-level-max" type="Int8" server="n" />
+	<record alias="recommend-attack-power" type="Int16" server="n" />
+	<record alias="standard-gear-weapon" ref="Item" server="n" />
+	<record alias="display-quests" ref="Quest" repeat="12" server="n" />
+	<record alias="enable-infinite-hyper-energy" type="Bool" />
+	<record alias="tactic" ref="Text" />
+	<record alias="recommend-alias" ref="ContentsJournalRecommendItem" server="n" />
+	<!-- ==================================================================== -->
+	<record alias="effect-npc-group1" ref="ZoneNpcSpawn" repeat="3" client="n" />
+	<record alias="effect-npc-group2" ref="ZoneNpcSpawn" repeat="3" client="n" />
+	<record alias="effect-npc-group3" ref="ZoneNpcSpawn" repeat="3" client="n" />
+  </list>
+</table>

@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="ItemData" type="DuelMatchingRule" version="0.1" side="server" >
+		<record alias="game-mode" type="Seq" key="y" />
+		<record alias="level" type="Int8" key="y" />
+		<record alias="rating-revise" type="Int32" />
+	</list>
+</table>

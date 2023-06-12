@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="LocalizationData" version="0.2" type="contents-guide" check-version="n">
+		<record alias="type" type="type" >
+			<case alias="boss-monster" />
+		</record>
+
+		<record alias="category" type="Seq" >
+			<case alias="none" default="y" />
+			<case alias="boss-monster" />
+			<case alias="craft" />
+			<case alias="achievement" />
+			<case alias="daily-quest" />
+			<case alias="faction-battle" />
+			<case alias="arena-match" />
+		</record>
+		<record alias="min-level" type="Int8" default="1" />
+		<record alias="max-level" type="Int8" default="1" />
+		<record alias="title" ref="Text" />
+		<record alias="description" ref="Text" />
+
+		<record alias="boss-id" ref="Npc" filter="boss-monster" />
+		<record alias="linked-boss-id" ref="Npc" filter="boss-monster" />
+		<record alias="boss-description" ref="Text" filter="boss-monster" />
+		<record alias="boss-position-description" ref="Text" filter="boss-monster" />
+		<record alias="reward-summary" ref="AttractionRewardSummary" filter="boss-monster" />
+	</list>
+</table>

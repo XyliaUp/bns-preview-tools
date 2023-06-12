@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="ItemData" type="GuildUniformRegistrationQuota" version="0.2" >
+		<record alias="increase-step" type="Int32" key="y" />
+		<record alias="payment-item" ref="Item" />
+		<record alias="payment-item-count" type="Int32" />
+	</list>
+</table>

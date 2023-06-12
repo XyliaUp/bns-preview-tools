@@ -1,0 +1,134 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list alias="PcData" module="LocalizationData" type="pc" version="0.57" >
+		<record alias="race" key="y" type="Seq" seq="race" />
+        <record alias="job" key="y" type="Seq" seq="job" />
+		<record alias="level" key="y" type="Int8" />
+		<record alias="contents-type" key="y" type="Seq" >
+			<case alias="invalid" />
+			<case alias="normal" />
+			<case alias="duel" />
+			<case alias="dungeon" /> 
+			<case alias="battle-royal" />
+		</record>
+		
+		<record alias="id" type="Int64" />
+		<record alias="unk-" type="Bool" default="y" output="n" />
+		<record alias="radius" type="distance" output="n" />
+		<record alias="skill" ref="Skill" output="n" repeat="40" />
+		<record alias="skill3" ref="skill3" output="n" repeat="40" />
+		<record alias="pc-skill3" ref="PcSkill3" input="n" repeat="2" />
+		<record alias="pc-job-style-skill3" ref="PcSkill3" input="n" repeat="10" /> 
+		<record alias="skill-build-up-level-max" type="Int8" output="n" />
+		<record alias="skill-build-up-point" type="Int16" showzero="y" output="n" />
+		<record alias="max-hp" type="Int64" output="n" />
+		<record alias="speed" type="Velocity" output="n" />	
+		<record alias="modify-cast-speed-percent" type="Int16" output="n" />
+		<record alias="hp-regen" type="Int32" output="n" />
+		<record alias="hp-regen-equip" type="Int32" output="n" />
+		<record alias="attack-hit-base-percent" type="Int16" output="n" />
+		<record alias="attack-hit-value" type="Int16" output="n" />
+		<record alias="attack-pierce-value" type="Int16" output="n" />
+		<record alias="attack-concentrate-value" type="Int16" output="n" />
+		<record alias="attack-critical-base-percent" type="Int16" output="n" />
+		<record alias="attack-critical-damage-percent" type="Int16" output="n" />
+		<record alias="attack-critical-value" type="Int16" output="n" />
+		<record alias="attack-critical-damage-value" type="Int16" output="n" />
+		<record alias="defend-critical-base-percent" type="Int16" output="n" />
+		<record alias="defend-critical-value" type="Int16" output="n" />
+		<record alias="defend-bounce-percent" type="Int16" output="n" />
+		<record alias="defend-dodge-base-percent" type="Int16" output="n" />
+		<record alias="defend-dodge-value" type="Int16" output="n" />
+		<record alias="defend-parry-base-percent" type="Int16" output="n" />
+		<record alias="defend-parry-value" type="Int16" output="n" />
+		<record alias="defend-parry-reduce-percent" type="Int16" output="n" />
+		<record alias="defend-parry-reduce-diff" type="Int16" output="n" />
+		<record alias="defend-perfect-parry-base-percent" type="Int16" output="n" />
+		<record alias="defend-perfect-parry-reduce-percent" type="Int16" output="n" />
+		<record alias="defend-counter-reduce-percent" type="Int16" output="n" />
+		<record alias="defend-immune-base-percent" type="Int16" output="n" />
+		<record alias="attack-power-creature-min" type="Int32" output="n" />
+		<record alias="attack-power-creature-max" type="Int32" output="n" />
+		<record alias="attack-power-equip-min" type="Int16" output="n" />
+		<record alias="attack-power-equip-max" type="Int16" output="n" />
+		<record alias="defend-power-creature-value" type="Int32" output="n" />
+		<record alias="defend-power-equip-value" type="Int32" output="n" />
+		<record alias="defend-resist-power-creature-value" type="Int16" output="n" />
+		<record alias="defend-resist-power-equip-value" type="Int16" output="n" />
+		<record alias="defend-physical-damage-reduce-percent" type="Int16" output="n" />
+		<record alias="defend-force-damage-reduce-percent" type="Int16" output="n" />
+		<record alias="attack-damage-modify-percent" type="Int16" output="n" />
+		<record alias="attack-damage-modify-diff" type="Int32" output="n" />
+		<record alias="defend-damage-modify-percent" type="Int16" output="n" />
+		<record alias="defend-damage-modify-diff" type="Int32" output="n" />
+		<record alias="defend-miss-base-percent" type="Int16" output="n" />
+		<record alias="attack-stiff-duration-base-percent" type="Int16" output="n" />
+		<record alias="attack-stiff-duration-value" type="Int16" output="n" />
+		<record alias="defend-stiff-duration-base-percent" type="Int16" output="n" />
+		<record alias="defend-stiff-duration-value" type="Int16" output="n" />
+		<record alias="cast-duration-base-percent" type="Int16" output="n" />
+		<record alias="cast-duration-value" type="Int16" output="n" />
+		<record alias="job-ability-1" type="Int32" output="n" />
+		<record alias="job-ability-2" type="Int32" output="n" />
+		<record alias="heal-power-base-percent" type="Int16" output="n" />
+		<record alias="aoe-defend-base-percent" type="Int16" output="n" />
+		<record alias="aoe-defend-power-value" type="Int16" output="n" />
+		<record alias="hate-base-percent" type="Int16" output="n" />
+		<record alias="hate-power-creature-value" type="Int16" output="n" />
+		<record alias="abnormal-attack-power-value" type="Int16" output="n" />
+		<record alias="abnormal-attack-base-percent" type="Int16" output="n" />
+		<record alias="abnormal-defend-power-value" type="Int16" output="n" />
+		<record alias="abnormal-defend-base-percent" type="Int16" output="n" />
+		<record alias="abnormal-attack-power-modify" type="Int16" output="n" />
+		<record alias="abnormal-defend-power-modify" type="Int16" output="n" />
+		<record alias="hate-power-modify" type="Int16" output="n" />
+		<record alias="heal-power-modify" type="Int16" output="n" />
+		<record alias="aoe-defend-power-modify" type="Int16" output="n" />
+		<record alias="attack-hit-value-modify" type="Int16" output="n" />
+		<record alias="attack-critical-value-modify" type="Int16" output="n" />
+		<record alias="defend-critical-value-modify" type="Int16" output="n" />
+		<record alias="defend-dodge-value-modify" type="Int16" output="n" />
+		<record alias="defend-parry-value-modify" type="Int16" output="n" />
+		<record alias="defend-physical-value-modify" type="Int16" output="n" />
+		<record alias="defend-force-value-modify" type="Int16" output="n" />
+		<record alias="attack-stiff-duration-value-modify" type="Int16" output="n" />
+		<record alias="defend-stiff-duration-value-modify" type="Int16" output="n" />
+		<record alias="cast-duration-value-modify" type="Int16" output="n" />
+		<record alias="attack-critical-damage-modify" type="Int16" output="n" />
+		<record alias="defend-critical-damage-modify" type="Int16" output="n" />
+		<record alias="attack-pierce-modify" type="Int16" output="n" />
+		<record alias="attack-parry-pierce-modify" type="Int16" output="n" />
+		<record alias="defend-parry-reduce-modify" type="Int16" output="n" />
+		<record alias="attack-perfect-parry-damage-modify" type="Int16" output="n" />
+		<record alias="defend-perfect-parry-reduce-modify" type="Int16" output="n" />
+		<record alias="attack-counter-damage-modify" type="Int16" output="n" />
+		<record alias="defend-counter-reduce-modify" type="Int16" output="n" />
+		<record alias="attack-attribute-value" type="Int16" output="n" />
+		<record alias="attack-attribute-base-percent" type="Int16" output="n" />
+		<record alias="attack-attribute-modify" type="Int16" output="n" />
+		<record alias="attack-pierce-base-percent" type="Int16" output="n" />
+		<record alias="defend-critical-damage-percent" type="Int16" output="n" />
+		<record alias="defend-strength-creature-value" type="Int32" output="n" />
+		<record alias="attack-precise-creature-value" type="Int32" output="n" />
+		<record alias="attack-aoe-pierce-value" type="Int16" output="n" />
+		<record alias="attack-abnormal-hit-base-percent" type="Int16" output="n" />
+		<record alias="attack-abnormal-hit-value" type="Int16" output="n" />
+		<record alias="defend-abnormal-dodge-base-percent" type="Int16" output="n" />
+		<record alias="defend-abnormal-dodge-value" type="Int16" output="n" />
+		<record alias="support-power-base-percent" type="Int16" output="n" />
+		<record alias="support-power-value" type="Int16" output="n" />
+		<record alias="heal-power-value" type="Int16" output="n" />
+		<record alias="hypermove-power-value" type="Int16" output="n" />
+		<record alias="r-attack-aoe-pierce-modify" type="Int16" output="n" />
+		<record alias="r-attack-abnormal-hit-modify" type="Int16" output="n" />
+		<record alias="r-defend-abnormal-dodge-modify" type="Int16" output="n" />
+		<record alias="r-support-power-modify" type="Int16" output="n" />
+
+
+		<record alias="max-guard-gauge" type="Int16" client="n" output="n" />
+		<record alias="max-sp" type="Int16" client="n" output="n" />
+		<record alias="ability-rate-max-guard-gauge-equip" type="Int16" client="n" output="n" />
+		<record alias="sp-regen" type="Int16" client="n" output="n" />
+		<record alias="sex" type="Seq" client="n" seq="sex" output="n" />
+	</list>
+</table>

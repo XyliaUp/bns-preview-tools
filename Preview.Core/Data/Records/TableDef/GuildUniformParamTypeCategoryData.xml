@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="ItemData" type="GuildUniformParamTypeCategory" version="0.4" >
+		<record alias="param-type-category" type="Seq" key="y" >
+			<case alias="none" />
+			<case alias="style" />
+			<case alias="top" />
+			<case alias="bottoms" />
+			<case alias="point-color" />
+			<case alias="face" />
+			<case alias="head" />
+		</record>
+		
+		<record alias="param-type" type="Int32" repeat="28" />
+		<record alias="master-param-type" type="Int32" />
+		<record alias="category-name" ref="Text" />
+		<record alias="payment-type" type="Seq" >
+		     <case alias="none" />
+		     <case alias="selective" />			 
+		</record>
+	</list>
+</table>

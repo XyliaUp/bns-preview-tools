@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="AIData" type="pc-appearance" version="0.7" >
+		<record alias="race" key="y" type="Seq" seq="race" />
+		<record alias="job" key="y" type="Seq" seq="job" />
+		<record alias="sex" key="y" type="Seq" seq="sex" />
+
+		<record alias="anim-set-name" type="String" />
+		<record alias="appearance" ref="CreatureAppearance" />
+	</list>
+</table>

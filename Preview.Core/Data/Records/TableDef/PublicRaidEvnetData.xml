@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="ZoneData0" type="public-raid-event" version="0.3" check-version="y" >
+		<record alias="id" type="Int32" key="y" />
+		<record alias="type" type="type" >
+             <case alias="score-event" />
+        </record>		
+		
+		<record alias="alias" type="String" />
+		<record alias="event-duration" type="Msec" />
+		<record alias="event-type" type="Seq" >
+			<case alias="none" default="y" />
+			<case alias="clash" />
+			<case alias="escape" />
+		</record>
+        <!-- ====================================================================== -->
+		<record alias="start-score-amount" type="Int16" filter="score-event" />
+		<record alias="add-score-amount" type="Int16" filter="score-event" />
+		<record alias="reduce-score-amount" type="Int16" filter="score-event" />
+		<record alias="final-score" type="Int16" filter="score-event" repeat="6" />
+		<record alias="add-score-recycle-duration" type="Msec" filter="score-event" />
+	</list>
+</table>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="ZoneData0" type="skill-training-room-group" version="0.2" >
+		<record alias="id" type="Int32" key="y" />
+		<record alias="group-name" ref="Text" />
+		<record alias="group-desc" ref="Text" />
+		<record alias="job" type="Seq" seq="job" />
+		<record alias="has-reward" type="Bool" />
+		<record alias="group-required-level" type="Int8" />
+		<record alias="group-required-mastery-level" type="Int8" />
+		<record alias="group-level-text" ref="Text" />
+		<record alias="subject-id" ref="SkillTrainingRoomSubject" repeat="8" />
+		<record alias="job-style" type="Seq" seq="job-style" />
+		<record alias="sort-number" type="Int16" />
+		<record alias="achievement" ref="Achievement" server="n" />
+	</list>
+</table>

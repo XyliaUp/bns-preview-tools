@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="LocalizationData" type="faction-level" version="0.4" >
+		<record alias="level" type="Int8" key="y" />
+		<record alias="reputation" type="Int32" />	
+		<record alias="grade-name" ref="Text" repeat="2" />	
+		<record alias="max-faction-score" type="Int32" />			
+	</list>
+</table>

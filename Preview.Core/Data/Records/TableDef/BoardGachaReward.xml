@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="ItemData" type="board-gacha-reward" version="0.1" >
+		<record alias="reward-type" type="Seq" >
+		     <case alias="none" />
+		     <case alias="rank" /> 
+		     <case alias="line" />	
+		     <case alias="lucky" />	
+		     <case alias="participation" />				 
+		</record>
+		<record alias="rank-min" type="Int16" />
+		<record alias="rank-max" type="Int16" />		
+		<record alias="participation-count" type="Int16" />	
+		<record alias="reward-item" ref="Item" />
+		<record alias="reward-item-count" type="Int16" />	
+		<!-- ========================================================== -->
+		<record alias="lucky-reward-item" ref="Item" repeat="5" />
+		<record alias="lucky-reward-item-count" type="Int16" repeat="5" />
+		<record alias="lucky-reward-represent-item" ref="Item" server="n" />		
+		<record alias="lucky-reward-prop-weight" ref="Item" repeat="5" client="n" />
+	</list>
+</table>

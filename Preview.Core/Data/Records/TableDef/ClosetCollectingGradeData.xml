@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="ItemData" type="closet-collecting-grade" version="0.14" >
+		<record alias="grade" type="Int8" key="y" />
+		<record alias="score" type="Int32" />
+		<record alias="name" ref="Text" name=""/>	
+	</list>
+</table>

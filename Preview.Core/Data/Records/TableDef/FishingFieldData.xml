@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="ItemData" type="fishing-field" version="0.9" >
+		<record alias="alias" type="String" />
+		<record alias="grade-ss-fish" ref="Fish" repeat="20" />
+		<record alias="grade-s-fish" ref="Fish" repeat="20" />
+		<record alias="grade-a-fish" ref="Fish" repeat="20" />
+		<record alias="grade-b-fish" ref="Fish" repeat="20" />
+		<record alias="grade-c-fish" ref="Fish" repeat="20" />
+		<record alias="bonus-time" ref="WeeklyTimeTable" />
+		<record alias="fishing-field-group" ref="FishingFieldGroup" server="n" />
+		<record alias="bonus-time-effect" type="String" server="n" />
+	</list>
+</table>

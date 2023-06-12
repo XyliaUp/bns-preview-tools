@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="ItemData" type="guild-member-grade-authority" version="0.11" >
+		<record alias="authority" type="Seq" key="y" >
+			<case alias="none" />
+			<case alias="change-guildmember-grade-by-permission" />
+			<case alias="banish-guildmember" />
+			<case alias="change-guildmember-grade" />
+			<case alias="edit-guild-notification-message" />
+			<case alias="invite-guildmember" />
+			<case alias="guild-level-up" />
+			<case alias="control-small-craft" />
+			<case alias="control-big-craft" />
+			<case alias="warp-to-guildmember" />
+			<case alias="call-guildmember" />
+			<case alias="officer-chat" />
+			<case alias="voice-chat-1" />
+			<case alias="voice-chat-2" />
+			<case alias="uniform-designer" />
+			<case alias="edit-flag-bearer" />
+			<case alias="guild-pr" />
+			<case alias="accept-guildmember" />
+			<case alias="purchase-guild-benefit" />
+		</record>
+		<record alias="guild-type" type="Int8" key="y" />
+		
+		<record alias="editable" type="Bool" repeat="5" />
+		<record alias="initial-value" type="Bool" repeat="5" />
+	</list>
+</table>

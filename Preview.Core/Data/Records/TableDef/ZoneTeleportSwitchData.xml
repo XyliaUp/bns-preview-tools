@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="ZoneData2" type="ZoneTeleportSwitch" version="0.6" rule="unsort" >
+		<record alias="zone" type="Int32" key="y" />
+		<record alias="id" type="Int16" key="y" />
+		<record alias="alias" name="alias" type="String" />
+		<record alias="position" type="Vector32" />
+		<record alias="activate-radius" type="Int32" />	
+		<record alias="activate-teleport" ref="Teleport" />
+		<record alias="description" type="String" client="n" />
+	</list>
+</table>

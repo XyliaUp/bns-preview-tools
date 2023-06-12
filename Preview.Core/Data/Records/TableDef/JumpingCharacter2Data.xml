@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="CombatData" type="JumpingCharacter2" version="0.1" >
+		<record alias="required-level" type="Int8" />
+		<record alias="required-preceding-epic-quest" ref="Quest" />	
+		<record alias="last-epic-quest-to-complete" ref="Quest" />	
+		<record alias="quest-to-complete" ref="Quest" server="n" repeat="20" />
+		<record alias="warp-to-pcspawn" ref="ZonePcSpawn" />
+		<record alias="faction1-item" ref="Item" />
+		<record alias="faction2-item" ref="Item" />
+		<record alias="reward-exp" type="Int32" />
+		<record alias="reward-money" type="Int32" />	
+		<record alias="reward-item" ref="Item" repeat="4" />
+		<record alias="reward-item-count" type="Int16" repeat="4" />
+	</list>
+</table>

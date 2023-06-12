@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="ZoneData0" type="attraction-group" version="0.1" >
+		<record alias="alias" type="String" />
+	</list>
+</table>

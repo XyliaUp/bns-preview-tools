@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="LocalizationData" type="account-level" version="0.20" >
+		<record alias="level" type="Int16" key="y" />
+		<record alias="name" ref="Text" />
+		<record alias="exp" type="Int64" default="" />
+		<record alias="ability" type="Seq" seq="attach-ability" repeat="8" />
+		<record alias="ability-value" type="Int32" repeat="8" />
+		<record alias="badge-slot-quota-category1-premium" type="Int8" />
+		<record alias="badge-slot-quota-category1-normal" type="Int8" />
+		<record alias="badge-slot-quota-category2-premium" type="Int8" />
+		<record alias="badge-slot-quota-category2-normal" type="Int8" />
+		<record alias="badge-slot-quota-category3-premium" type="Int8" />
+		<record alias="badge-slot-quota-category3-normal" type="Int8" />
+		<record alias="badge-page" type="Int8" />
+		<record alias="badge-inventory-size" type="Int8" />
+	</list>
+</table>

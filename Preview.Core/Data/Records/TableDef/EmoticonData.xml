@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<table>
+  <list module="LocalizationData" version="0.5" type="emoticon" side="client" > 
+	    <record alias="type" type="type" >
+	        <case alias="emoticon" />
+	        <case alias="profile" />
+	    </record>
+
+		<record alias="alias" type="String" />
+		<record alias="index" type="Int32" />
+		
+		<!-- ==================================================== -->
+		<record alias="tip" ref="Text" filter="emoticon" />
+		<record alias="name2" ref="Text" filter="emoticon" />
+		<record alias="candidate-name" ref="Text" filter="emoticon" />
+		<record alias="single-name" ref="Text" filter="emoticon" />
+		<!-- ==================================================== -->
+		<record alias="profile-image-set-path" type="String" filter="profile" />	
+		<!-- ==================================================== -->		
+  </list>
+</table>

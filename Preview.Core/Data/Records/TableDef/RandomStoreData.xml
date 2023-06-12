@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="ItemData" type="RandomStore" version="0.8">
+		<record alias="random-store-number" type="Seq" extra="id">
+			<case alias="invalid-number" />
+			<case alias="random-store-1" />
+			<case alias="random-store-2" />
+		</record>
+		<record alias="alias" type="String" />
+		<record alias="limit-level" type="Int8" />
+		<record alias="free-draw-enable" type="bool" />
+		<record alias="item-draw-enable" type="bool" />
+		<record alias="money-draw-enable" type="bool" />
+		<record alias="instant-payment-draw-enable" type="bool" />
+		<record alias="charge-of-item-draw" ref="Item" />
+		<record alias="charge-of-money-draw" type="Int64" />
+		<record alias="charge-of-item-instant-payment-draw" ref="Item" />
+		<record alias="charge-of-item-five-times-draw " ref="Item" />
+		<record alias="charge-of-item-count-five-times-draw" type="Int32" />
+		<record alias="charge-of-money-five-times-draw" type="Int64" />
+		<record alias="charge-of-item-instant-payment-five-times-draw" ref="Item" />
+		<record alias="free-reward-draw-enable" length="4" type="Bool" />
+		<record alias="free-reward-draw-add-value" type="Int32" />
+		<record alias="premium-reward-draw-enable" length="2" type="Bool" />
+		<record alias="premium-reward-draw-premium-draw-count" type="Int16" />
+		<record alias="acquire-draw-reward-set-repeat-count" type="Int32" />
+		<!-- ============================================================== -->
+		<record alias="default-prob-group" type="Int32" client="n" />
+		<record alias="default-slot-count" type="Int8" client="n" />
+		<record alias="free-draw-count-for-sun" type="Int32" client="n" />
+		<record alias="free-draw-count-for-mon" type="Int32" client="n" />
+		<record alias="free-draw-count-for-tue" type="Int32" client="n" />
+		<record alias="free-draw-count-for-wed" type="Int32" client="n" />
+		<record alias="free-draw-count-for-thu" type="Int32" client="n" />
+		<record alias="free-draw-count-for-fri" type="Int32" client="n" />
+		<record alias="free-draw-count-for-sat" type="Int32" client="n" />
+		<record alias="premium-reward-draw-prob" type="Int32" client="n" />
+		<record alias="premium-reward-draw-add-value" name="幸运气息" type="Int32" client="n" repeat="5" />
+		<record alias="premium-reward-draw-add-prob" type="Int32" client="n" repeat="5" />
+	</list>
+</table>

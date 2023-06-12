@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="CombatData" type="SkillTargetFilter3" version="0.15" >
+		<record alias="alias" type="String" />
+	</list>
+</table>

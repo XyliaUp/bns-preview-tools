@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="ItemData" type="item-random-ability-slot" version="0.1" >
+		<record alias="alias" type="String" />
+		<record alias="ability" type="Seq" seq="main-ability" />
+		<record alias="value-min" type="Int32" />
+		<record alias="value-max" type="Int32" />
+		<record alias="initial-value-max" type="Int32" />
+		<record alias="item-ability-section-percent" type="Int8" repeat="3" />
+		<record alias="item-ability-section" ref="ItemRandomAbilitySection" repeat="3" />
+	</list>
+</table>

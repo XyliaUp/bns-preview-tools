@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="CombatData" type="SkillCastCondition3" version="7.0" >
+		<record alias="alias" type="String" />
+		<record alias="stance" type="Seq" seq="stance" />
+		<record alias="summoned-stance" type="Seq" seq="stance" name="鬼剑姿态判断" />
+		<record alias="summoned-use-only" type="bool" />
+		<record alias="summoned-dead-state" type="Seq" seq="dead-state" />
+		<record alias="required-weapon-type" type="Seq" seq="weapon-type" />
+		<record alias="link-type" type="Seq" seq="link-type" />
+		<record alias="link-state" type="Seq" seq="link-state"/>
+		<record alias="link-stage" type="Seq" seq="link-stage"/>
+		<record alias="immune-caster-block-skill" type="Bool" />
+		<record alias="unnecessary-acquired" type="Bool" />
+		<record alias="target-type" type="Seq" seq="target-type" />
+		<record alias="success-caster-combat-mode" type="Seq" >
+			<case alias="all" default="y" />
+			<case alias="combat-mode" />
+			<case alias="not-combat-mode" />
+		</record>
+
+		<record alias="success-caster-flag" type="Seq16" seq="flag" repeat="4" />
+		<record alias="success-caster-op" type="Seq" seq="op" out-cond="Exist: success-caster-flag-2" default="or" apply="must" />
+		<record alias="fail-caster-flag" type="Seq16" seq="flag" repeat="4" />
+		<record alias="fail-caster-op" type="Seq" seq="op" out-cond="Exist: fail-caster-flag-2" apply="must" />
+
+		<record alias="unk-" type="Int32" />
+		<record alias="unk-" type="Int32" />
+		<record alias="unk-" type="Int32" />
+		<record alias="unk-" type="Int32" />
+		<record alias="unk-" type="Int32" />
+		
+		
+		<record alias="success-caster-effect-attribute" type="Seq16" seq="effect-attribute" repeat="4" /> 64
+		<record alias="success-caster-effect-attribute-op" type="Seq" seq="op" out-cond="Exist: success-caster-effect-attribute-2" apply="must" />
+		<record alias="fail-caster-effect-attribute" type="Seq16" seq="effect-attribute" repeat="4" />  73
+		<record alias="fail-caster-effect-attribute-op" type="Seq" seq="op" out-cond="Exist: fail-caster-effect-attribute-2" apply="must" />
+		
+		<record alias="success-caster-filter" ref="FilterData" repeat="2" />
+		<record alias="success-caster-filter-op" type="Seq" seq="op" out-cond="Exist: success-caster-filter-2" apply="must" />
+		<record alias="fail-caster-filter" ref="FilterData" repeat="2" />
+		<record alias="fail-caster-filter-op" type="Seq" seq="op" out-cond="Exist: fail-caster-filter-2" apply="must" />
+		
+		<record alias="success-target-dead-state" type="Seq" seq="dead-state" />
+		<record alias="success-target-flag" type="Seq16" seq="flag" repeat="4" />
+		<record alias="success-target-flag-op" type="Seq" seq="op" out-cond="Exist: success-target-flag-2" apply="must" />
+		<record alias="fail-target-flag" type="Seq16" seq="flag" repeat="4" />
+		<record alias="fail-target-flag-op" type="Seq" seq="op" out-cond="Exist: fail-target-flag-2" />
+		
+		<record alias="success-target-effect-attribute" type="Seq16" seq="effect-attribute" repeat="4" />
+		<record alias="success-target-effect-attribute-op" type="Seq" seq="op" out-cond="Exist: success-target-effect-attribute-2" />
+		<record alias="fail-target-effect-attribute" type="Seq16" seq="effect-attribute" repeat="4" />
+		<record alias="fail-target-effect-attribute-op" type="Seq" seq="op" out-cond="Exist: fail-target-effect-attribute-2" />
+		
+		<record alias="success-target-filter" ref="FilterData" repeat="2" />
+		<record alias="success-target-filter-op" type="Seq" seq="op" out-cond="Exist: success-target-filter-2" />
+		<record alias="fail-target-filter" ref="FilterData" repeat="2" />
+		<record alias="fail-target-filter-op" type="Seq" seq="op"  out-cond="Exist: fail-target-filter-2" />
+
+		<record alias="fail-target-mount-linker" type="Bool" />
+		<record alias="fail-target-mount-linked" type="Bool" />
+		<record alias="fail-target-inhalation-linker" type="Bool" />
+		<record alias="fail-target-inhalation-linked" type="Bool" />
+		<record alias="fail-target-catch-linker" type="Bool" />
+		<record alias="fail-target-catch-linked" type="Bool" />
+		<record alias="gather-range" ref="SkillGatherRange3"  server="n" />
+		<record alias="check-style-score" type="Int16" />
+		<record alias="check-hp-value" type="Int16" />
+		<record alias="check-hp-type" type="Seq" seq="consume-type" />
+		<record alias="check-sp-value" type="Int16" repeat="2" />
+		<record alias="check-sp-type" type="Seq" seq="consume-type" repeat="2" />
+		<record alias="check-summoned-hp-value" type="Int16" />
+		<record alias="check-summoned-hp-type" type="Seq" seq="consume-type" />
+
+		<record alias="success-caster-move-state" type="Seq" seq="move-state" server="n" repeat="9" />
+		<record alias="fail-caster-move-state" type="Seq" seq="move-state" server="n" repeat="9" />
+
+
+		<record alias="move-type" type="Seq" >
+			<case alias="free" />
+			<case alias="cast-block" />
+			<case alias="whole-block" />
+		</record>
+		<record alias="prev-combo-id" type="Int32" repeat="4" />
+		<record alias="prev-combo-event-type" type="Seq" seq="event-type" repeat="4" />
+		<record alias="prev-combo-check-point" type="Seq" seq="combo-check-point" repeat="4"  >
+			<case alias="exec-first" default="y" />
+			<case alias="exec-last" />
+			<case alias="fire" />
+		</record>
+
+		<record alias="prev-combo-result" type="Int16" repeat="4" />
+		<record alias="prev-combo-1-result" type="Seq" seq="skill-result" out-cond="Exist: prev-combo-id-1" repeat="8" />
+		<record alias="prev-combo-2-result" type="Seq" seq="skill-result" out-cond="Exist: prev-combo-id-2" repeat="8" />
+		<record alias="prev-combo-3-result" type="Seq" seq="skill-result" out-cond="Exist: prev-combo-id-3" repeat="8" />
+		<record alias="prev-combo-4-result" type="Seq" seq="skill-result" out-cond="Exist: prev-combo-id-4" repeat="8" />
+		<record alias="last-event-type" type="Seq" seq="event-type" repeat="2" />
+		<record alias="last-event-result" type="Int16" server="n" repeat="2" />
+		<record alias="last-event-1-result" type="Seq" seq="skill-result" out-cond="Exist: last-event-result-1" repeat="8" />
+		<record alias="last-event-2-result" type="Seq" seq="skill-result" out-cond="Exist: last-event-result-2" repeat="8" />
+		<record alias="success-recycle-group" type="Seq" seq="recycle-group" repeat="4" />
+		<record alias="success-recycle-group-id" type="Int8" repeat="4" />
+		<record alias="success-recycle-group-op" type="Seq" seq="op" out-cond="Exist: success-recycle-group-id-2" />
+		<record alias="fail-recycle-group" type="Seq" seq="recycle-group" server="n" repeat="4" />
+		<record alias="fail-recycle-group-id" type="Int8" repeat="4" />
+		<record alias="fail-recycle-group-op" type="Seq" seq="op" out-cond="Exist: fail-recycle-group-2" default="or" apply="must" />
+		<record alias="soul-mask" ref="SoulMaskSet" repeat="2" />
+		<record alias="fail-soulmask-except-normal" type="Bool" default="y" />
+		<record alias="is-special-skill" type="Bool" />
+		<record alias="lockon-skill-type" type="Seq" server="n" >
+			<case alias="none" default="y" />
+			<case alias="only-target" />
+			<case alias="target-pawn-rotate" />
+			<case alias="full-lock-on" />
+		</record>
+		<record alias="is-ground-pitch-dash-skill" type="Bool" />
+		<record alias="simple-context-success-caster-flag" type="Seq16" seq="flag" server="n" repeat="4" />
+		<record alias="simple-context-success-caster-op" type="Seq" seq="op" server="n" out-cond="Exist: simple-context-success-caster-flag-2" apply="must" />
+		<record alias="simple-context-fail-caster-flag" type="Seq16" seq="flag" server="n" repeat="4" />
+		<record alias="simple-context-fail-caster-op" type="Seq" seq="op" server="n" out-cond="Exist: simple-context-fail-caster-flag-2" apply="must" />
+		<record alias="simple-context-success-caster-effect-attribute" type="Seq16" seq="effect-attribute" server="n" repeat="4" />
+		<record alias="simple-context-success-caster-effect-attribute-op" type="Seq" seq="op" server="n" out-cond="Exist: simple-context-success-caster-effect-attribute-2" apply="must" />
+		<record alias="simple-context-fail-caster-effect-attribute" type="Seq16" seq="effect-attribute" server="n" repeat="4" />
+		<record alias="simple-context-fail-caster-effect-attribute-op" type="Seq" seq="op" server="n" out-cond="Exist: simple-context-fail-caster-effect-attribute-2" />
+		<record alias="simple-context-success-target-flag" type="Seq16" seq="flag" server="n" repeat="4" />
+		<record alias="simple-context-success-target-op" type="Seq" seq="op" server="n" out-cond="Exist: simple-context-success-target-flag-2" />
+		<record alias="simple-context-fail-target-flag" type="Seq16" seq="flag" server="n" repeat="4" />
+		<record alias="simple-context-fail-target-op" type="Seq" seq="op" server="n" out-cond="Exist: simple-context-fail-target-flag-2" />
+		<record alias="simple-context-success-target-effect-attribute" type="Seq16" seq="effect-attribute" server="n" repeat="4" />
+		<record alias="simple-context-success-target-effect-attribute-op" type="Seq" seq="op" server="n" out-cond="Exist: simple-context-success-target-effect-attribute-2" />
+		<record alias="simple-context-fail-target-effect-attribute" type="Seq16" seq="effect-attribute" server="n" repeat="4" />
+		<record alias="simple-context-fail-target-effect-attribute-op" type="Seq" seq="op" server="n" out-cond="Exist: simple-context-fail-target-effect-attribute-2" />
+		<record alias="simple-context-check-sp-value" type="Int16" server="n" repeat="2" />
+		<record alias="simple-context-check-sp-type" type="Seq" seq="consume-type" server="n" repeat="2" />
+		<record alias="simple-context-success-recycle-group" type="Seq" seq="recycle-group" server="n" repeat="4" />
+		<record alias="simple-context-success-recycle-group-id" type="Int8" server="n" repeat="4" />
+		<record alias="simple-context-success-recycle-group-op" type="Seq" seq="op" server="n" out-cond="Exist: simple-context-success-recycle-group-id-2" />
+		<record alias="simple-context-fail-recycle-group" type="Seq" seq="recycle-group" server="n" repeat="4" />
+		<record alias="simple-context-fail-recycle-group-id" type="Int8" server="n" repeat="4" />
+		<record alias="simple-context-fail-recycle-group-op" type="Seq" seq="op" server="n" out-cond="Exist: simple-context-fail-recycle-group-id-2" />
+	</list>
+</table>

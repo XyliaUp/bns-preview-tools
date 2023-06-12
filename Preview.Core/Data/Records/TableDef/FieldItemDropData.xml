@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="AIData" type="FielditemDrop" version="0.9" >
+		<record alias="type" type="type" >
+			<case alias="npc" />
+			<case alias="env" />			
+			<case alias="quest" />
+			<case alias="npc-deadbody" />
+		</record>
+	
+		<record alias="alias" type="String" />
+		<record alias="fielditem" ref="FieldItem" repeat="3" />
+		<record alias="prob" type="Int8" default="100" repeat="3" />
+		<!-- ================================================================== -->
+		<record alias="drop-place" type="Seq" filter="quest" >
+			<case alias="none" default="y" />
+			<case alias="front-npc" />
+			<case alias="area" />
+			<case alias="hand" />
+		</record>
+		<record alias="area" filter="quest" ref="ZoneArea" />
+		<!-- ================================================================== -->
+			
+		<!-- ================================================================== -->
+		<record alias="drop-case" type="Seq" filter="env" >
+			<case alias="none" default="y" />
+			<case alias="manipulated" />
+			<case alias="killed" />
+		</record>
+		<record alias="drop-place" type="Seq" filter="env" >
+			<case alias="none" default="y" />
+			<case alias="area" />
+			<case alias="hand" />
+		</record>
+		<record alias="area" filter="env" ref="ZoneArea" input="n" />
+		<!-- ================================================================== -->		
+
+		<!-- ================================================================== -->
+		<record alias="drop-case" type="Seq" filter="npc" >
+			<case alias="none" default="y" />
+			<case alias="effect" />
+			<case alias="bleeding" />
+			<case alias="effect-and-bleeding" />
+			<case alias="killed" />
+		</record>
+		<record alias="effect-attribute" type="Seq16" seq="effect-attribute" filter="npc" repeat="4" />
+		<record alias="effect-attribute-value" type="Int64" filter="npc" />
+		<record alias="effect-attribute-value-2" type="Int64" filter="npc" />
+		<record alias="effect-attribute-value-3" type="Int64" filter="npc" />
+		<record alias="hp-percent" type="Int8" default="100" filter="npc" />		
+		<!-- ================================================================== -->	
+		
+		<!-- ================================================================== -->
+		<record alias="quest-id" type="Int16" filter="npc-deadbody" />
+		<record alias="quest-mission-step" type="Int8" filter="npc-deadbody" />
+		<!-- ================================================================== -->
+	</list>
+</table>

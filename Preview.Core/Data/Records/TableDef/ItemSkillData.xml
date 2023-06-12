@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="ItemData" type="ItemSkill" version="0.13" >
+		<record alias="alias" type="String" />
+		<record alias="skill-id" type="Int32" />
+		<record alias="skill-variation-id" type="Int8" repeat="8" />
+		<record alias="include-inheritance-skill" type="Bool" show-zero="y" />
+		<record alias="item-sim-skill" ref="Skill3" error-type="Single" input="n" />
+		<record alias="name2" ref="Text" />
+		<record alias="describe2" ref="Text" />
+		<record alias="item-skill-tooltip" ref="Text" />
+		<!-- =============================================================== -->
+		<record alias="check-effect-flag" type="Seq16" client="n" seq="flag" repeat="2" />
+		<record alias="check-effect-flag-op" type="Seq" client="n" seq="op" out-cond="Exist: check-effect-flag-2" />	
+		<record alias="check-skill-result" type="Seq16" client="n" seq="skill-result" />	
+		<record alias="item-sim-skill-target" type="Seq16" client="n" seq="skill-target" />		
+		<record alias="item-skill-effect" client="n" ref="EffectGroup" repeat="7" />	
+		<record alias="target-skill-step" type="Seq16" client="n" seq="skill-step" />	
+		<record alias="use-exec-caster-effect" type="Bool" client="n" />		
+		<!-- =============================================================== -->	
+	</list>
+</table>

@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list type="item-improve-succession" module="ItemData" version="2.0" >
+		<record alias="alias" type="String" />
+		<record alias="feed-item-improve-id" type="Int32" />
+		<record alias="feed-item-improve-level" type="Int8" />
+		<record alias="result-item-improve-id" type="Int32" />
+		<record alias="result-item-improve-level" type="Int8" />
+		<record alias="seed-item-improve-id" type="Int32" />
+		<record alias="seed-item-improve-level" type="Int8" />
+		
+		<record alias="unk-" type="Int32" start-show="48" />
+		<record alias="unk-" type="Int32" start-show="52" />
+		<record alias="unk-" type="Int32" start-show="56" />
+		<record alias="cost-sub-item" ref="Item" repeat="8" />
+		<record alias="cost-sub-item-count" type="Int16" repeat="8" />
+		<record alias="cost-money" type="Int32" />
+		<record alias="unk-" type="Int32" start-show="144" />
+		<record alias="unk-" type="Int32" start-show="148" />
+		<record alias="unk-" type="Int32" start-show="152" />
+	</list>
+</table>

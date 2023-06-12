@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="CombatData" type="SkillDashAttribute3" version="0.3" >
+		<record alias="alias" type="String" />
+		<record alias="dash-type" type="Seq" >
+			<case alias="none" default="y" />
+			<case alias="dash" />
+			<case alias="rear-dash" />
+			<case alias="left-dash" />
+			<case alias="right-dash" />
+			<case alias="zero-point-dash" />
+			<case alias="position-dash" />
+        </record>		
+		<record alias="dash-margin" type="Distance" showzero="y" />
+		<record alias="calculate-dash-position-include-radius" type="Bool" default="y" />		
+	</list>
+</table>

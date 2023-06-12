@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="ItemData" type="npc-sealed-dungeon-reward" version="0.1" >
+		<record alias="id" type="Int32" key="y" />
+		<record alias="sealed-level" type="Int8" key="y" />
+		<record alias="alias" type="String" />	
+		<record alias="reward-default" ref="RewardData" />
+		<record alias="reward-event" ref="RewardData" />
+		<record alias="reward-personal-dropped-pouch" ref="RewardData" />
+	</list>
+</table>

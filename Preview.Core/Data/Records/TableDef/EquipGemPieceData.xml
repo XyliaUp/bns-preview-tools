@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="ItemData" type="equip-gem-piece" version="0.2" >
+		<record alias="id" type="Int32" key="y" />
+		<record alias="alias" type="String" />
+		<record alias="item-ability" type="Seq" seq="attach-ability" />
+		<record alias="value" type="Int16" />		
+	</list>
+</table>

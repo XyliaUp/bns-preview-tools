@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="ItemData" type="fishing-field-group" version="0.1" side="client" >
+		<record alias="alias" type="String" />
+		<record alias="name2" ref="Text" />
+		<record alias="desc" ref="Text" />
+		<record alias="fishing-field" ref="FishingField" repeat="10" />
+		<record alias="fishing-field-count" type="Int16" />
+	</list>
+</table>

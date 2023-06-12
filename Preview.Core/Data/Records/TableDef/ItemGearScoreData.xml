@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="ItemData" type="itemgearscore" version="0.2" >
+		<record alias="level" key="y" type="Int8" />
+		<record alias="mastery-level" key="y" type="Int8" />
+
+		<record alias="alias" type="String" />
+		<record alias="weapon-min" type="Int32" />
+		<record alias="weapon-max" type="Int32" />
+		<record alias="ring-min" type="Int32" />
+		<record alias="ring-max" type="Int32" />
+		<record alias="earring-min" type="Int32" />
+		<record alias="earring-max" type="Int32" />
+		<record alias="necklace-min" type="Int32" />
+		<record alias="necklace-max" type="Int32" />
+		<record alias="bracelet-min" type="Int32" />
+		<record alias="bracelet-max" type="Int32" />
+		<record alias="belt-min" type="Int32" />
+		<record alias="belt-max" type="Int32" />
+		<record alias="soul-min" type="Int32" />
+		<record alias="soul-max" type="Int32" />
+		<record alias="soul-2-min" type="Int32" />
+		<record alias="soul-2-max" type="Int32" />
+		<record alias="pet-1-min" type="Int32" />
+		<record alias="pet-1-max" type="Int32" />
+		<record alias="rune-1-min" type="Int32" />
+		<record alias="rune-1-max" type="Int32" />
+		<record alias="rune-2-min" type="Int32" />
+		<record alias="rune-2-max" type="Int32" />
+		<record alias="gloves-min" type="Int32" />
+		<record alias="gloves-max" type="Int32" />
+		<record alias="nova-min" type="Int32" />
+		<record alias="nova-max" type="Int32" />
+	</list>
+</table>

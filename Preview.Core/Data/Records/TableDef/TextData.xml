@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table data-type="local">
+	<list module="LocalizationData" type="Text" version="0.6">
+		<record alias="alias" type="String" />
+		<record alias="text" type="Native" />
+	</list>
+</table>

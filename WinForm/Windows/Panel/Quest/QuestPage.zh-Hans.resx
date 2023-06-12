@@ -1,0 +1,120 @@
+﻿<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="Btn_QusetEpic.BtnImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6
+        JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAB3RJTUUH5AIRBhwi5P7wpQAAA4hJREFU
+        SEuVlmlIVFEYhi9FQWhEWFYE/cnoT39arR+RlUaTY0WGZhqoLTM6LqOTlRvigqbOjHsugZK5EFOOGUmh
+        aG7jjkRGmGFF0IIalgWF6en9hnuHO3dGBw88cO75vu997zlz7jnDLdUO+iilrOKxGl92kwqANUAG6nio
+        T2NWeQ6btACsBedAExgEaTx9oAGcBZRjVWfTpAlgPQgCz0EviAPbgBCXucuVE/u9Fd8PyJXN6AdgjGrE
+        GnbFXcE10A46gQpsBkJ8N8Ty9p1S9J3wVxmqy5JKywoSpjz9wucw1gWuIIc0LJpCZwuIBCTaCkKAC6DY
+        CnAIb1oKgX55YET9k5oU/SdTdouxOuVHpCaWKaJi2J28BBaqUk/hBTqQT1qkaTZwAo/APMgHgjDtlmMQ
+        rsJSmHyDIytfNKTp3nfd7qitSP5NohGxsazpfgqbHs6dZB/ySzqNaYdphqgjLdJ0IiES7AHPQD+oAsEQ
+        roVwZ5AiumSoOUM71p7VW1GY+BdvyTQ3NazVkMpmX2pnIFw1M5Lr4eEb7on8Sl6DtEjTRTCgNT8KdgId
+        3mLSLzSqYrQ1U/uqJXO4UBc/FxymZonJcczUlM7+vNbNQvjBt4EcuZdf+BksXT3qhkE2r0FapGllcATQ
+        80YU9GC6NW0P0/7JAlTsfEgk625MZ/Nj+l8Qfoz1v4DxQOQZkT8AUoAbX0+Q1qIGm1DYDcFG7BKGmdCP
+        uBATp2FF+njD6UsRYYg3u/soTci9DsTbV8CxQVdjuvFeadJCTtYtNjWcM31Zpc7aI1OMYPlGkRMOxNtX
+        imMDrHUDZrCQDQP2Tv+V/SzejvFcxPV8ngVx48eWNHDFbhgqL0wcKslLMM+AjcPgc8EOGNCPSCY2wkLj
+        Y0sarMYyqL0DI8bxUTFdto2Bls/jJa0bH1vSgCvSxXN1d5P3FusTqgefZnzhDdwcGQjjwMaAjojjgC/0
+        4lJTb3CMta9kH/N3sbf6AMbKnTAzWh4bA+FZBGmRptnAGRhAG/AH6wB3wFvJsYk8DuJmLl6NplwStxjY
+        gWpJg7RI01kI0MGkBvR5C4fdBiAuJhYzoFyqoVrSIC3LYSfG3nFtTuShJbLsIkAxyqFcqqFa6+N6kTW0
+        d+FsBYIB9WmMYpRDufYvHHGTJgDxlUnX5Bse6tMYxRxfmdImLQB0wZ8EwqVP/eVf+tImFQDL/NvCcf8B
+        XJ7Faz95YkgAAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="Btn_QusetEpic.Text" xml:space="preserve">
+    <value>红尘往事</value>
+  </data>
+  <data name="Btn_QuestList.BtnImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6
+        JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAB3RJTUUH5AIRBhwi5P7wpQAAA4hJREFU
+        SEuVlmlIVFEYhi9FQWhEWFYE/cnoT39arR+RlUaTY0WGZhqoLTM6LqOTlRvigqbOjHsugZK5EFOOGUmh
+        aG7jjkRGmGFF0IIalgWF6en9hnuHO3dGBw88cO75vu997zlz7jnDLdUO+iilrOKxGl92kwqANUAG6nio
+        T2NWeQ6btACsBedAExgEaTx9oAGcBZRjVWfTpAlgPQgCz0EviAPbgBCXucuVE/u9Fd8PyJXN6AdgjGrE
+        GnbFXcE10A46gQpsBkJ8N8Ty9p1S9J3wVxmqy5JKywoSpjz9wucw1gWuIIc0LJpCZwuIBCTaCkKAC6DY
+        CnAIb1oKgX55YET9k5oU/SdTdouxOuVHpCaWKaJi2J28BBaqUk/hBTqQT1qkaTZwAo/APMgHgjDtlmMQ
+        rsJSmHyDIytfNKTp3nfd7qitSP5NohGxsazpfgqbHs6dZB/ySzqNaYdphqgjLdJ0IiES7AHPQD+oAsEQ
+        roVwZ5AiumSoOUM71p7VW1GY+BdvyTQ3NazVkMpmX2pnIFw1M5Lr4eEb7on8Sl6DtEjTRTCgNT8KdgId
+        3mLSLzSqYrQ1U/uqJXO4UBc/FxymZonJcczUlM7+vNbNQvjBt4EcuZdf+BksXT3qhkE2r0FapGllcATQ
+        80YU9GC6NW0P0/7JAlTsfEgk625MZ/Nj+l8Qfoz1v4DxQOQZkT8AUoAbX0+Q1qIGm1DYDcFG7BKGmdCP
+        uBATp2FF+njD6UsRYYg3u/soTci9DsTbV8CxQVdjuvFeadJCTtYtNjWcM31Zpc7aI1OMYPlGkRMOxNtX
+        imMDrHUDZrCQDQP2Tv+V/SzejvFcxPV8ngVx48eWNHDFbhgqL0wcKslLMM+AjcPgc8EOGNCPSCY2wkLj
+        Y0sarMYyqL0DI8bxUTFdto2Bls/jJa0bH1vSgCvSxXN1d5P3FusTqgefZnzhDdwcGQjjwMaAjojjgC/0
+        4lJTb3CMta9kH/N3sbf6AMbKnTAzWh4bA+FZBGmRptnAGRhAG/AH6wB3wFvJsYk8DuJmLl6NplwStxjY
+        gWpJg7RI01kI0MGkBvR5C4fdBiAuJhYzoFyqoVrSIC3LYSfG3nFtTuShJbLsIkAxyqFcqqFa6+N6kTW0
+        d+FsBYIB9WmMYpRDufYvHHGTJgDxlUnX5Bse6tMYxRxfmdImLQB0wZ8EwqVP/eVf+tImFQDL/NvCcf8B
+        XJ7Faz95YkgAAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="Btn_QuestList.Text" xml:space="preserve">
+    <value>任务列表</value>
+  </data>
+  <data name="Button1.Text" xml:space="preserve">
+    <value>载入</value>
+  </data>
+  <data name="Output_QuestList.Text" xml:space="preserve">
+    <value>输出任务列表</value>
+  </data>
+  <data name="Output_EpicList.Text" xml:space="preserve">
+    <value>输出主线列表</value>
+  </data>
+</root>

@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="ItemData" type="GuildUniformRecipe" version="0.1" >
+		<record alias="recipe-id" type="Int32" key="y" />
+		<record alias="required-item" ref="Item" repeat="2" />
+		<record alias="required-item-count" type="Int32" repeat="2" />
+		<record alias="required-item-is-bm" type="Bool" repeat="2" />
+		<record alias="bank-money" type="Int32" />
+		<record alias="bank-required-item" ref="Item" repeat="5" />
+		<record alias="bank-required-item-count" type="Int32" repeat="5" />
+	</list>
+</table>

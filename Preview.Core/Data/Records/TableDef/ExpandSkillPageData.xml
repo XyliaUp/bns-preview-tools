@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="ItemData" type="expand-skill-page" version="0.1" >
+		<record alias="skill-page" type="Int32" key="y" />
+		
+		<record alias="money" type="Int32" />	
+		<record alias="charge-type" type="Seq" >
+		    <case alias="item" />
+		    <case alias="money" />
+		    <case alias="item-or-money" default="y" />		
+		</record>
+		<record alias="required-item" ref="Item" repeat="4" />
+		<record alias="required-item-count" type="Int8" out-cond="Exist: required-item-*" repeat="4" />
+	</list>
+</table>

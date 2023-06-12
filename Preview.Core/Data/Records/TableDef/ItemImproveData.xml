@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list type="item-improve" module="ItemData" version="6.1" >
+		<record alias="id" type="Int32" key="y" />
+		<record alias="level" type="Int8" key="y" />
+		<record alias="cost-main-item" ref="Item" repeat="5" />
+		<record alias="cost-main-item-count" type="Int16" repeat="5" max="30000" min="0" />
+		<record alias="cost-sub-item-1" ref="Item" repeat="8" />
+		<record alias="cost-sub-item-count-1" type="Int16" repeat="8" max="30000" min="0" />
+		<record alias="cost-sub-item-2" ref="Item" repeat="8" />
+		<record alias="cost-sub-item-count-2" type="Int16" repeat="8" max="30000" min="0" />
+		<record alias="cost-sub-item-3" ref="Item" repeat="8" />
+		<record alias="cost-sub-item-count-3" type="Int16" repeat="8" max="30000" min="0" />
+		<record alias="cost-sub-item-4" ref="Item" repeat="8" />
+		<record alias="cost-sub-item-count-4" type="Int16" repeat="8" max="30000" min="0" />
+		<record alias="cost-sub-item-5" ref="Item" repeat="8" />
+		<record alias="cost-sub-item-count-5" type="Int16" repeat="8" max="30000" min="0" />
+		<record alias="cost-money" type="Int32" repeat="5" />
+		<record alias="success-probability" type="Int16" name="成功率提示" repeat="5" />
+		<record alias="use-success-probability" type="Bool" repeat="5" />
+		<record alias="unk-" type="Bool" />
+		<record alias="random-failure-mileage-save" type="Bool" repeat="5" />
+		<record alias="random-failure-mileage" type="Int8" repeat="5" />
+		<record alias="unk-" type="Bool" />
+		<record alias="success-option-list-id" type="Int32" />
+		<record alias="unk-" type="Int8" />
+		<record alias="fail-level-diff" type="Int8" repeat="5" />
+	</list>
+</table>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="ZoneData0" type="public-raid" version="5.3" >
+		<record alias="id" type="Int32" key="y" />
+		<record alias="type" type="type" >
+			<case alias="public-raid-1" />
+			<case alias="public-raid-2" />
+			<case alias="public-raid-3" />
+			<case alias="public-raid-4" />
+		</record>
+
+		<record alias="alias" type="String" />
+		<record alias="zone" ref="Zone" />
+		<record alias="max-pc-count" type="Int8" />
+		<record alias="max-party-count" type="Int8" />
+		<record alias="round-id" type="Int8" />
+		<record alias="required-level" type="Int8" />
+		<record alias="required-mastery-level" type="Int8" />
+		<record alias="required-preceding-quest" ref="Quest" repeat="3" />
+		<record alias="required-preceding-quest-check" type="Seq" >
+			<case alias="and" default="y" />
+			<case alias="or" />
+		</record>
+		<record alias="required-available-weekly-time" ref="WeeklyTimeTable" />
+		<record alias="start-weekly-time" ref="WeeklyTimeTable" />
+		<record alias="stand-by-duration-second" type="Int16" />
+		<record alias="group" ref="AttractionGroup" />
+		<record alias="arena-entrance-zone" ref="Zone" />
+		<record alias="enter-pc-spawn" ref="ZonePcSpawn" />
+		<record alias="publicraid-name2" ref="Text" />
+		<record alias="publicraid-desc" ref="Text" />
+		<record alias="reward-summary" ref="AttractionRewardSummary" />
+		<record alias="publicraid-icon" type="String" server="n" />
+		<record alias="publicraid-image" type="String" server="n" />
+		<record alias="enable-reset-combat-mode" type="Bool" />
+		<record alias="reset-combat-mode-recycle-duration" type="Msec" />
+		<record alias="public-raid-kismet-name" type="String" server="n" repeat="30" />
+		<record alias="public-raid-npc-for-kismet" ref="Npc" repeat="30" />
+		<record alias="enable-custom-pouch-drop-position" type="Bool" server="n" />
+		<record alias="pouch-pos-x" type="Float32" server="n" />
+		<record alias="pouch-pos-y" type="Float32" server="n" />
+		<record alias="pouch-pos-z" type="Float32" server="n" />
+		<record alias="exit-env-name" type="String" server="n" />
+		<!-- ================================================================= -->
+		<record alias="radius" type="Int32" client="n" />
+		<record alias="bottom" type="Int32" client="n" />
+		<record alias="center-x" type="Int32" client="n" />
+		<record alias="center-y" type="Int32" client="n" />
+		<record alias="center-z" type="Int32" client="n" />
+		<record alias="change-state-env-by-start" type="Seq" seq="env-state" client="n" />
+		<record alias="target-npc-to-finish-state" ref="Npc" client="n" />
+		<!-- ================================================================= -->
+		<record alias="enable-public-raid-event" type="Bool" filter="public-raid-1" showzero="y" />
+		<!-- ================================================================= -->
+		<record alias="raid-dungeon" ref="RaidDungeon" filter="public-raid-4" />
+	</list>
+</table>

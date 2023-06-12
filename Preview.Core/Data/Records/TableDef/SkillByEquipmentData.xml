@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="CombatData" type="skill-by-equipment" version="0.10" >
+		<record alias="alias" type="String" />
+		<record alias="skill3-id" type="Int32" repeat="4" />
+		<record alias="block-skill3-id" type="Int32" server="n" repeat="4" />
+		<record alias="skill-tree-id" type="Int32" server="n" repeat="4" />
+		<record alias="context-script" ref="ContextScript" server="n" repeat="4" />
+		<record alias="tooltip-text" ref="Text" repeat="4" />
+		<record alias="skill-attack-power-min-param1-slot" type="Int32" server="n" repeat="4" />
+		<record alias="skill-attack-power-max-param1-slot" type="Int32" server="n" repeat="4" />
+		<record alias="skill-attack-power-min-param2-slot" type="Int32" server="n" repeat="4" />
+		<record alias="skill-attack-power-max-param2-slot" type="Int32" server="n" repeat="4" />
+		<record alias="skill-attack-power-min-param3-slot" type="Int32" server="n" repeat="4" />
+		<record alias="skill-attack-power-max-param3-slot" type="Int32" server="n" repeat="4" />
+		<record alias="skill-attack-power-min-param4-slot" type="Int32" server="n" repeat="4" />
+		<record alias="skill-attack-power-max-param4-slot" type="Int32" server="n" repeat="4" />
+	</list>	
+</table>

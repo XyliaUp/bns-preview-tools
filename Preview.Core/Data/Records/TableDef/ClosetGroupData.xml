@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="ItemData" type="closet-group" version="0.4" >
+		<record alias="id" type="Int32" key="y" />
+		<record alias="category" type="Seq" >
+			<case alias="none" default="y" />
+			<case alias="custom" />
+			<case alias="jeryoung" />
+			<case alias="daesanak" />
+			<case alias="suwal" />
+			<case alias="baekchung" />
+			<case alias="geonwon" />
+			<case alias="seorock" />
+			<case alias="seongye" />
+			<case alias="npc-trade" />
+			<case alias="transform" />
+			<case alias="event" />
+			<case alias="shop" />
+			<case alias="faction" />
+			<case alias="etc" />
+			<case alias="cashshop" />
+			<case alias="ingameshop" />
+			<case alias="yongyuenshop" />
+			<case alias="fashionista" />
+			<case alias="unusable" />
+			<case alias="northland-east" />
+		</record>
+		<record alias="sort-no" type="Int16" />
+		<record alias="charge-of-item-for-instant-payment" ref="Item" />
+		<record alias="item-to-be-paid" ref="Item" />
+		<record alias="check-equip-characteristics" type="Bool" default="y" />
+	</list>
+</table>

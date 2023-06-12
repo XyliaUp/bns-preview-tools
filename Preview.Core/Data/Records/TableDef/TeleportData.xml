@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="ZoneData0" type="teleport" version="0.23" >
+		<record alias="id" type="Int32" key="y" />
+		<record alias="alias" type="String" />
+		<record alias="retired" type="Bool" />
+		<record alias="name2" ref="Text" sever="n" />
+		<record alias="teleport-position" ref="ZoneTeleportPosition" />
+		<record alias="distance-from-start-teleport" type="Distance" server="n" />
+		<record alias="price-percent" type="Int32" />
+		<record alias="description2" ref="Text" sever="n" />
+		<record alias="activated-faction" ref="Faction" />	
+		<record alias="joined-faction" type="Bool" />
+		<record alias="required-pc-level" type="Int8" />		
+		<record alias="required-pc-mastery-level" type="Int8" />	
+		<record alias="required-faction-level" type="Int8" />	
+		<record alias="ui-preceding-quest" ref="Quest" />
+	</list>
+</table>

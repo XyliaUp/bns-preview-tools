@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="CombatData" type="skill-modify-info" version="0.3" >
+		<record alias="type" type="type" >
+		    <case alias="normal" />
+		    <case alias="skill" />
+		    <case alias="SkillSystematization" />			
+		</record>
+		
+		<record alias="alias" type="String" />
+		<record alias="recycle-duration-modify-percent" type="Int16" />
+		<record alias="recycle-duration-modify-diff" type="Msec" />
+		<record alias="sp-consume-modify-diff" type="Int16" repeat="2" />
+		<record alias="damage-power-percent-modify-percent" type="Int16" />
+		<record alias="damage-power-percent-modify-diff" type="Int32" />
+		<record alias="hp-drain-percent-modify-percent" type="Int16" />
+		<record alias="hp-drain-percent-modify-diff" type="Int32" />
+		<record alias="heal-percent-modify-percent" type="Int16" />
+		<record alias="heal-percent-modify-diff" type="Int32" />
+		<record alias="description" ref="Text" />
+		<!-- ================================================================ -->
+		<record alias="parent-skill3-id" filter="skill" type="Int32" repeat="4" />
+		<!-- ================================================================ -->
+		<record alias="systematization" filter="SkillSystematization" ref="SkillSystematization" />
+	</list>
+</table>

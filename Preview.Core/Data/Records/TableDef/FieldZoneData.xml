@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="ZoneData0" type="field-zone" version="0.16" >
+		<record alias="type" type="type" >
+		     <case alias="normal" />
+			 <case alias="guild-battle-field-entrance" />
+		</record>
+
+		<record alias="id" type="Int32" key="y" />
+		<record alias="alias" type="String" />
+		<record alias="zone" ref="Zone" repeat="30" />
+		<record alias="group" ref="AttractionGroup" />
+		<record alias="attraction-quest" ref="Quest" server="n" repeat="5" />
+		<record alias="ui-filter-attraction-quest-only" type="Bool" server="n" />
+		<record alias="respawn-confirm-text" ref="Text" />
+		<record alias="name2" ref="Text" />
+		<record alias="desc" ref="Text" />
+		<record alias="ui-text-grade" type="Int8" server="n" />
+		<record alias="reward-summary" ref="AttractionRewardSummary" server="n" />	
+		<record alias="guild-battle-field-zone" filter="guild-battle-field-entrance" ref="GuildBattleFieldZone" />
+		<record alias="min-fixed-channel" type="Int32" filter="guild-battle-field-entrance" />
+	</list>
+</table>

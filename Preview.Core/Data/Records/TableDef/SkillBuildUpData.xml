@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="CombatData" type="skill-build-up" version="1.0" >
+		<record alias="parent-skill3-id" type="Int32" key="y" />
+		<record alias="alias" type="String" />
+		<record alias="max-level" type="Int8" />
+		<record alias="required-build-up-point" type="Int8" repeat="20" />
+		<record alias="required-build-up-point-level" type="Int16" repeat="20" />
+		<record alias="skill-modify-info" ref="SkillModifyInfo" repeat="20" />
+	</list>
+</table>

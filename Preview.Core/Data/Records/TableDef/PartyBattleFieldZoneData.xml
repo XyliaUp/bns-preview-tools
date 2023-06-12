@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="ZoneData0" type="party-battle-field-zone" version="1.22" >
+		<record alias="type" type="type" >
+			<case alias="occupation-war" />
+			<case alias="capture-the-flag" />
+			<case alias="lead-the-ball" />
+		</record>
+		<record alias="id" key="y" type="Int16" />
+		<record alias="alias" type="String" />
+		<record alias="zone" ref="Zone" />
+		<record alias="unk-" type="Int8" />
+		<record alias="unk-" type="Int8" />
+		<record alias="required-level" type="Int8" />
+		<record alias="required-mastery-level" type="Int8" />
+		<record alias="enable-team-matching" type="Bool" />
+		<record alias="enable-unrated-matching" type="Bool" />
+		<record alias="enable-unrated-join" type="Bool" />
+		<record alias="required-member-count-team-matching" type="Int8" default="6" />
+		<record alias="available-solo-matching-weekly-time" ref="WeeklyTimeTable" />
+		<record alias="available-team-matching-weekly-time" ref="WeeklyTimeTable" />
+		<record alias="available-random-matching-weekly-time" ref="WeeklyTimeTable" />
+		<record alias="disable-calc-rating-score-weekly-time" ref="WeeklyTimeTable" />
+		<record alias="unk-" ref="WeeklyTimeTable" />
+		<record alias="unk-" ref="Text" />
+		<record alias="ready-duration-second" type="Int16" default="80" />
+		<record alias="play-duration-second" type="Int16" default="600" />
+		<record alias="no-game-decision-duration-second" type="Int16" default="300" />
+		<record alias="enter-alpha-side-pc-spawn" ref="ZonePcSpawn" input="n" />
+		<record alias="enter-beta-side-pc-spawn" ref="ZonePcSpawn" input="n" />
+		<record alias="start-alpha-side-pc-spawn" ref="ZonePcSpawn" input="n" />
+		<record alias="start-beta-side-pc-spawn" ref="ZonePcSpawn" input="n" />
+		<record alias="respawn-delay" type="Msec" />
+		<record alias="alpha-side-respawn" ref="ZonePcRespawn" input="n" />
+		<record alias="beta-side-respawn" ref="ZonePcRespawn" input="n" />
+		<record alias="set-env-time" type="Int16" repeat="10" />
+		<record alias="set-env2-target" ref="ZoneEnv2Spawn" repeat="10" />
+		<record alias="set-env-operation" type="Seq" seq="env-operation" repeat="10" />
+		<record alias="set-env-operation-message" ref="GameMessage" />
+		<record alias="group" ref="AttractionGroup" />
+		<record alias="zone-name2" ref="Text" />
+		<record alias="zone-desc" ref="Text" />
+		<record alias="arena-minimap" type="String" />
+		<record alias="kill-score" type="Int16" />
+		<record alias="goal-score" type="Int16" />
+		<record alias="enable-infinite-hyper-energy" type="Bool" />
+		<record alias="reward-summary" ref="AttractionRewardSummary" />
+		<record alias="ui-filter-attraction-quest-only" type="Bool" />
+		<record alias="zone-sub-desc" ref="Text" />
+		<record alias="weekly-time-table-for-added-reward" ref="WeeklyTimeTable" repeat="2" />
+		<record alias="bonus-point-percent" type="Int32" repeat="2" />
+		<record alias="bonus-exp-percent" type="Int32" repeat="2" />
+		<record alias="vote-duration-second" type="Int16" />
+		<record alias="vote-reward-point" type="Int32" />
+		<record alias="vote-reward-exp" type="Int32" />
+		<record alias="zone-enter-kismet-sequence-name" type="String" repeat="3" />
+		<record alias="result-kismet-sequence-name" type="String" />
+		<record alias="notify-msg-score-value" type="Int16" repeat="3" />
+		<record alias="add-point-lose" type="Int32" client="n" />
+		<record alias="add-point-win" type="Int32" client="n" />
+		<record alias="add-point-rate-lose" type="Int32" client="n" />
+		<record alias="add-point-rate-win" type="Int32" client="n" />
+		<!-- ====================================================================================== -->
+		<record alias="control-point" ref="ZoneEnv2Spawn" filter="occupation-war" repeat="5" />
+		<record alias="whole-occupation-bonus-score" type="Int16" filter="occupation-war" />
+		<record alias="occupation-effect" ref="Effect" filter="occupation-war" client="n" repeat="3" />
+		<!-- ====================================================================================== -->
+		<record alias="flag-spawn-env" ref="ZoneEnv2Spawn" filter="capture-the-flag" />
+		<record alias="flag-spawn-env-respawn-duration-second" type="Int16" filter="capture-the-flag" repeat="5" />
+		<record alias="flag-spawn-limit-count" type="Int8" filter="capture-the-flag" />
+		<record alias="alpha-control-point" ref="ZoneEnv2Spawn" filter="capture-the-flag" repeat="3" />
+		<record alias="beta-control-point" ref="ZoneEnv2Spawn" filter="capture-the-flag" repeat="3" />
+		<record alias="double-occupation-bonus-score" type="Int16" filter="capture-the-flag" />
+		<record alias="vote-delay-second" type="Int16" filter="capture-the-flag" />
+		<record alias="steal-flag-effect" ref="Effect" filter="capture-the-flag" client="n" repeat="3" />
+		<!-- ====================================================================================== -->
+		<record alias="arrow-control-point" ref="ZoneEnv2Spawn" filter="lead-the-ball" repeat="6" />
+		<record alias="opening-tip-off-control-point" ref="ZoneEnv2Spawn" filter="lead-the-ball" />
+		<record alias="alpha-goal-post" ref="ZoneEnv2Spawn" filter="lead-the-ball" />
+		<record alias="beta-goal-post" ref="ZoneEnv2Spawn" filter="lead-the-ball" />
+		<record alias="goal-post-enable-delay-second" type="Int16" filter="lead-the-ball" />
+		<record alias="ball-spawn-max-count" type="Int8" filter="lead-the-ball" />
+		<record alias="init-ball-spawn-delay-second" type="Int16" filter="lead-the-ball" />
+		<record alias="ball-npc-id" ref="Npc" filter="lead-the-ball" />
+		<record alias="play-section-duration-second-1" type="Int16" filter="lead-the-ball" />
+		<record alias="play-section-duration-second-2" type="Int16" filter="lead-the-ball" />
+		<record alias="ball-spawn-interval-second" type="Int16" filter="lead-the-ball" repeat="3" />
+		<record alias="ball-speed-effect" ref="Effect" filter="lead-the-ball" repeat="3" />
+		<record alias="goal-in-score" type="Int16" filter="lead-the-ball" repeat="3" />
+		<record alias="consecutive-goal-bonus" type="Int16" filter="lead-the-ball" repeat="3" />
+		<record alias="consecutive-goal-bonus-duration-second" type="Int16" filter="lead-the-ball" />
+		<record alias="goal-in-effect-1" ref="Effect" filter="lead-the-ball" />
+		<record alias="goal-in-effect-2" ref="Effect" filter="lead-the-ball" />
+		<record alias="friend-goal-in-kismet-name" type="String" filter="lead-the-ball" />
+		<record alias="enemy-goal-in-kismet-name" type="String" filter="lead-the-ball" />
+		<record alias="friend-alpha-goal-post-kismet-name" type="String" filter="lead-the-ball" />
+		<record alias="friend-beta-goal-post-kismet-name" type="String" filter="lead-the-ball" />
+		<record alias="enemy-alpha-goal-post-kismet-name" type="String" filter="lead-the-ball" />
+		<record alias="enemy-beta-goal-post-kismet-name" type="String" filter="lead-the-ball" />
+		<record alias="friend-alpha-goal-post-goal-in-kismet-name" type="String" filter="lead-the-ball" />
+		<record alias="friend-beta-goal-post-goal-in-kismet-name" type="String" filter="lead-the-ball" />
+		<record alias="enemy-alpha-goal-post-goal-in-kismet-name" type="String" filter="lead-the-ball" />
+		<record alias="enemy-beta-goal-post-goal-in-kismet-name" type="String" filter="lead-the-ball" />
+		<record alias="ball-npc" ref="Npc" filter="lead-the-ball" client="n" repeat="20" />
+		<record alias="arrow-control-point-enable-delay-second" type="Int32" filter="lead-the-ball" client="n" repeat="5" />
+	</list>
+</table>

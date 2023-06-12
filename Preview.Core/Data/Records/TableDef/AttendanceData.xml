@@ -1,0 +1,130 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="LocalizationData" type="Attendance" version="0.12" >
+		<record alias="type" type="type" >
+		     <case alias="board-game" />
+		     <case alias="continual-board-game" />		 
+        </record>
+		<record alias="id" type="Int32" key="y"/>
+		
+		<record alias="alias" type="String" />
+		<record alias="background-texture" type="String" />
+		<record alias="background-sub-texture" type="String" />
+		<record alias="background-texture-width" type="Int16" />
+		<record alias="background-texture-height" type="Int16" />
+		<record alias="slot-index" type="Int16" repeat="120" />
+		<record alias="slot-offset-x" type="Float32" />
+		<record alias="slot-offset-y" type="Float32" />
+		<record alias="slot-column-count" type="Int16" default="1" />
+		<record alias="slot-gap-x" type="Float32" />
+		<record alias="slot-gap-y" type="Float32" />
+		<record alias="player-unit-imageset" type="String" />
+		<record alias="player-unit-show-duration" type="Float32" />
+		<record alias="player-unit-hide-duration" type="Float32" />
+		<record alias="reward-alpha-animation-show-duration" type="Float32" />
+		<record alias="reward-alpha-animation-hide-duration" type="Float32" />
+		<record alias="reward-show-duration" type="Float32" />
+		<record alias="reward-hide-duration" type="Float32" />
+		<record alias="reward-show-sound-ref" type="String" />
+		<record alias="reward-show-icon-fore-particle-ref" type="String" />
+		<record alias="reward-show-icon-fore-particle-scale" type="Float32" />
+		<record alias="reward-show-icon-back-particle-ref" type="String" />
+		<record alias="reward-show-icon-back-particle-scale" type="Float32" />
+		<record alias="reward-chance-ui-action-ref" type="String" />
+		<record alias="reward-chance-ui-action-duration" type="Float32" />
+		<record alias="reward-chance-result-icon-particle-ref" type="String" />
+		<record alias="reward-chance-result-show-duration" type="Float32" />
+		<record alias="reward-chance-result-sound-ref" type="String" />
+		<record alias="finish-reward-show-duration" type="Float32" />
+		<record alias="finish-reward-hide-duration" type="Float32" />
+		<record alias="finish-reward-show-sound-ref" type="String" />
+		<record alias="finish-reward-show-icon-fore-particle-ref" type="String" />
+		<record alias="finish-reward-show-icon-fore-particle-scale" type="Float32" />
+		<record alias="finish-reward-show-icon-back-particle-ref" type="String" />
+		<record alias="finish-reward-show-icon-back-particle-scale" type="Float32" />
+		<record alias="can-attend-particle-ref" type="String" />
+		<record alias="can-attend-particle-scale" type="Float32" />
+		<record alias="goal-icon-front-particle-ref" type="String" />
+		<record alias="goal-icon-back-particle-ref" type="String" />
+		<record alias="background-particle-ref" type="String" />
+		<record alias="background-particle-scale" type="Float32" />
+		<record alias="dice-board-background-imageset" type="String" />
+		<record alias="roll-dice-1-particle-ref" type="String" />
+		<record alias="roll-dice-2-particle-ref" type="String" />
+		<record alias="roll-dice-3-particle-ref" type="String" />
+		<record alias="roll-dice-4-particle-ref" type="String" />
+		<record alias="roll-dice-5-particle-ref" type="String" />
+		<record alias="roll-dice-6-particle-ref" type="String" />
+		<record alias="roll-dice-7-particle-ref" type="String" />
+		<record alias="roll-dice-8-particle-ref" type="String" />
+		<record alias="roll-dice-9-particle-ref" type="String" />
+		<record alias="roll-dice-10-particle-ref" type="String" />
+		<record alias="roll-dice-particle-scale" type="Float32" />
+		<record alias="roll-dice-particle-duration" type="Float32" />
+		<record alias="roll-dice-particle-offset-x" type="Float32" />
+		<record alias="roll-dice-particle-offset-y" type="Float32" />
+		<record alias="roll-dice-1-sound-ref" type="String" />
+		<record alias="roll-dice-2-sound-ref" type="String" />
+		<record alias="roll-dice-3-sound-ref" type="String" />
+		<record alias="roll-dice-4-sound-ref" type="String" />
+		<record alias="roll-dice-5-sound-ref" type="String" />
+		<record alias="roll-dice-6-sound-ref" type="String" />
+		<record alias="roll-dice-7-sound-ref" type="String" />
+		<record alias="roll-dice-8-sound-ref" type="String" />
+		<record alias="roll-dice-9-sound-ref" type="String" />
+		<record alias="roll-dice-10-sound-ref" type="String" />
+		<record alias="result-dice-1-particle-ref" type="String" />
+		<record alias="result-dice-2-particle-ref" type="String" />
+		<record alias="result-dice-3-particle-ref" type="String" />
+		<record alias="result-dice-4-particle-ref" type="String" />
+		<record alias="result-dice-5-particle-ref" type="String" />
+		<record alias="result-dice-6-particle-ref" type="String" />
+		<record alias="result-dice-7-particle-ref" type="String" />
+		<record alias="result-dice-8-particle-ref" type="String" />
+		<record alias="result-dice-9-particle-ref" type="String" />
+		<record alias="result-dice-10-particle-ref" type="String" />
+		<record alias="result-dice-particle-scale" type="Float32" />
+		<record alias="result-dice-particle-start-delay" type="Float32" />
+		<record alias="result-dice-1-sound-ref" type="String" />
+		<record alias="result-dice-2-sound-ref" type="String" />
+		<record alias="result-dice-3-sound-ref" type="String" />
+		<record alias="result-dice-4-sound-ref" type="String" />
+		<record alias="result-dice-5-sound-ref" type="String" />
+		<record alias="result-dice-6-sound-ref" type="String" />
+		<record alias="result-dice-7-sound-ref" type="String" />
+		<record alias="result-dice-8-sound-ref" type="String" />
+		<record alias="result-dice-9-sound-ref" type="String" />
+		<record alias="result-dice-10-sound-ref" type="String" />
+		<record alias="move-particle-ref" type="String" />
+		<record alias="move-particle-scale" type="Float32" />
+		<record alias="move-particle-duration" type="Float32" />
+		<record alias="move-sound-ref" type="String" />
+		<record alias="move-start-delay" type="Float32" />
+		<record alias="move-start-particle-ref" type="String" />
+		<record alias="move-start-particle-scale" type="Float32" />
+		<record alias="move-start-particle-duration" type="Float32" />
+		<record alias="move-start-sound-ref" type="String" />
+		<record alias="arrive-particle-ref" type="String" />
+		<record alias="arrive-particle-scale" type="Float32" />
+		<record alias="arrive-particle-duration" type="Float32" />
+		<record alias="arrive-sound-ref" type="String" />
+		<!-- ================================================================================ -->	
+		<record alias="arrive-goal-particle-ref" type="String" filter="board-game" />
+		<record alias="arrive-goal-particle-scale" type="Float32" filter="board-game" />
+		<record alias="arrive-goal-particle-duration" type="Float32" filter="board-game" />
+		<record alias="arrive-goal-sound-ref" type="String" filter="board-game" />
+		<record alias="icon-start-imageset" type="String" filter="board-game" />
+		<record alias="icon-goal-imageset" type="String" filter="board-game" />
+		<record alias="icon-empty-imageset" type="String" filter="board-game" />
+		<record alias="icon-empty-passed-imageset" type="String" filter="board-game" />
+		<record alias="icon-reward-acquired-imageset" type="String" filter="board-game" />
+		<record alias="icon-reward-failed-imageset" type="String" filter="board-game" />
+		<!-- ================================================================================ -->
+		<record alias="icon-start-imageset" type="String" filter="continual-board-game" />
+		<record alias="icon-empty-imageset" type="String" filter="continual-board-game" />
+		<record alias="icon-empty-passed-imageset" type="String" filter="continual-board-game" />
+		<record alias="icon-reward-acquired-imageset" type="String" filter="continual-board-game" />
+		<record alias="icon-reward-failed-imageset" type="String" filter="continual-board-game" />
+		<record alias="is-calendar-style" type="Bool" filter="continual-board-game" />
+	</list>
+</table>

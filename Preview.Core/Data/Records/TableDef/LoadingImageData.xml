@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="ZoneData0" type="LoadingImage" version="0.1" side="client" >
+		<record alias="alias" type="String" />
+		<record alias="zone-id" type="Int32" />
+		<record alias="zone-attraction" type="TRef"  />
+		<record alias="level-min" type="Int8" default="1" />
+		<record alias="level-max" type="Int8" default="100" />
+		<record alias="job" type="Seq" seq="job" />
+		<record alias="back-ground" type="String" />
+		<record alias="count-back-ground" type="Int8" default="1" />
+		<record alias="editable" type="Bool" default="y" />
+		<record alias="guide-text-ref" type="String" />
+		<record alias="guide-text-count" type="Int16" />
+	</list>
+</table>

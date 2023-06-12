@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="CombatData" type="effect-group" version="0.2" >
+		<record alias="alias" type="String" />
+		<record alias="effect" ref="Effect" repeat="8" input="n" />
+
+		<!-- =============================================================== -->
+		<record alias="target" type="Seq" client="n" >
+		     <case alias="caster" name="施展者" />
+		     <case alias="first-target" name="目标为 my-party 时指施展者" />
+		     <case alias="second-target" name="目标为 my-party 时指除施展者外对象" />
+		     <case alias="first-second-target" name="所有目标 ???" />
+		</record>	
+		<record alias="target-state" type="Seq" client="n" >
+		     <case alias="all" />
+		     <case alias="enemy" />
+		     <case alias="friend" />
+		     <case alias="my-party" />
+		</record>
+		<record alias="caster-state-first-filter" type="Ref" client="n" ref="Filter" />
+		<record alias="caster-state-second-filter" type="Ref" client="n" ref="Filter" />
+		<record alias="target-state-first-filter" type="Int32" client="n" ref="Filter" />
+		<record alias="target-state-second-filter" type="Int32" client="n" ref="Filter" />
+		<record alias="change-check-state-target" type="Bool" client="n" />	
+		<record alias="individual-probability" type="Bool" client="n" />	
+		<record alias="probability" type="Int16" client="n" repeat="6" />
+		<record alias="skill-result" type="Seq" seq="skill-result" client="n" />
+		<!-- =============================================================== -->
+	</list>
+</table>

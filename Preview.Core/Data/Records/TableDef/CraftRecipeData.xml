@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="ItemData" type="craft-recipe" version="0.1" >
+		<record alias="id" type="Int32" key="y" />
+		
+		<record alias="alias" type="String" />
+		<record alias="name" ref="Text" />
+		<record alias="desc" ref="Text" />
+		<record alias="requirement-name" ref="Text" />
+		<record alias="location-desc" ref="Text" />
+		<record alias="category" type="Seq" >
+			<case alias="none" default="y" />
+			<case alias="production-type-1" />
+			<case alias="production-type-2" />
+			<case alias="production-type-3" />
+			<case alias="production-type-4" />
+			<case alias="production-type-5" />
+			<case alias="production-type-6" />
+			<case alias="production-type-7" />
+			<case alias="gathering-type-1" />
+			<case alias="gathering-type-2" />
+			<case alias="gathering-type-3" />
+			<case alias="gathering-type-4" />
+			<case alias="gathering-type-5" />
+			<case alias="gathering-type-6" />
+			<case alias="gathering-type-7" />
+		</record>
+		<record alias="inner-category" type="Int32" />
+		<record alias="money-cost" type="Int32" />
+		<record alias="material" ref="Item" repeat="5" />
+		<record alias="material-amount" type="Int16" repeat="5" />
+		<record alias="brand-material" ref="ItemBrand" repeat="5" />
+		<record alias="brand-material-condition-type" type="Seq" seq="condition-type" out-cond="Exist: brand-material-*" repeat="5" />
+		<record alias="brand-material-amount" type="Int16" repeat="5" />
+		<record alias="limit-production-exp" type="Int16" />
+		<record alias="complete-quest" ref="Quest" />
+		<record alias="reward-production-exp" type="Int16" />
+		<record alias="reward-production-exp-bonus" type="Int16" />
+		<record alias="half-production-exp-step" type="Int16" />
+		<record alias="zero-production-exp-step" type="Int16" />
+		<record alias="customizable" type="Bool" />
+		<record alias="delivery-method" type="Seq" >
+			<case alias="free" default="y" />
+			<case alias="post-box" />
+			<case alias="account-warehouse" />
+		</record>
+		<record alias="step" ref="CraftRecipeStep" repeat="4" />
+		<record alias="recipe-type" type="Seq" >
+			<case alias="normal" default="y" />
+			<case alias="quicl" />
+			<case alias="massive" />
+		</record>
+		<record alias="use-state" type="Seq" >
+			<case alias="invalid-state" />
+			<case alias="no-more-use" />
+			<case alias="in-use" default="y" />
+		</record>
+	</list>
+</table>

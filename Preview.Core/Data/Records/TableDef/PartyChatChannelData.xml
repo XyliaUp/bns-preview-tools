@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="ZoneData0" type="partychatchannel" version="0.6" side="client" >
+		<record alias="type" type="type" >
+			<case alias="normal" />
+			<case alias="main-faction" />
+		</record>
+		<record alias="id" key="y" type="Int16" />
+		<record alias="alias" type="String" />
+		<record alias="chnnelid" type="Seq" >
+			<case alias="none" />
+			<case alias="1" />
+			<case alias="2" />
+			<case alias="3" />
+			<case alias="4" />
+			<case alias="5" />
+			<case alias="6" />
+		</record>
+		<record alias="name" ref="Text" />
+		<record alias="name-party-number" ref="Text" />		
+		<record alias="district" ref="District" />
+		<record alias="map-group-1" ref="MapGroup1" />
+		<record alias="arrange-type" type="Seq" >
+			<case alias="district" default="y" />
+			<case alias="group-name" />
+		</record>
+		<record alias="group-name" ref="Text" />
+		<record alias="grade" type="Int8" />
+		<record alias="auto-recruittime" type="Int16" default="10" />
+		<record alias="use-team-type" type="Bool" />
+		<record alias="use-difficulty-type" type="Bool" repeat="3" />
+		<record alias="interdungeon" ref="InterDungeonList" />
+		<record alias="party-match" ref="PartyMatch" />
+		<record alias="faction-1-party-match" ref="PartyMatch" filter="main-faction" />
+		<record alias="faction-2-party-match" ref="PartyMatch" filter="main-faction" />
+	</list>
+</table>

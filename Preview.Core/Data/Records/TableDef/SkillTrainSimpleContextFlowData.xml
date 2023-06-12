@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="CombatData" type="skill-train-simple-context-flow" version="0.5" >
+		<record alias="job" type="Seq" seq="job" key="y" />
+		<record alias="job-style" type="Seq" seq="job-style" key="y" />
+		<record alias="key-command" type="Seq16" seq="key-command" key="y" />
+		<record alias="function-id" type="Int8" key="y" />
+		<record alias="key-index" type="Int8" />
+		<record alias="equip-item-rune-1" ref="Item" />
+		<record alias="equip-item-rune-2" ref="Item" />
+		<record alias="equip-item-bracelet" ref="Item" />
+	    <record alias="key-text" ref="Text" />
+	    <record alias="function-name" ref="Text" />		
+		<record alias="skill-id" type="Int32" repeat="30" />
+		<record alias="variation-id" type="Int8" repeat="30" />
+		<record alias="condition-icon-normal-text" ref="Text" repeat="30" />
+		<record alias="condition-icon-over-text" ref="Text" repeat="30" />
+		<record alias="condition-tooltip-text" ref="Text" repeat="30" />
+	</list>
+</table>

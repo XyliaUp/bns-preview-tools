@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list id="118" module="ItemData" version="0.1" type="118" >
+		<record alias="item" ref="182" />
+		<record alias="unk-" type="Int32" />
+		<record alias="unk-" ref="117" />
+	</list>
+</table>

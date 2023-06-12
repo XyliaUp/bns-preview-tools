@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="ItemData" type="expand-random-store" version="0.3" >
+		<record alias="random-store-number" key="y" type="Seq" >
+			<case alias="none" />
+			<case alias="random-store-1" />
+		    <case alias="random-store-2" />
+		</record>
+		
+		<record alias="slot-index" key="y" type="Int8" />
+		<record alias="required-item" ref="Item" />			
+		<record alias="required-item-count" type="Int8" />		
+		<record alias="required-item-for-instant-payment" ref="Item" />
+	</list>
+</table>

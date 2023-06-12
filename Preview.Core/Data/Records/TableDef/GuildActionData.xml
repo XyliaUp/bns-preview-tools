@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="ItemData" type="guild-action" version="0.4" side="server" >
+         <record alias="action" type="Seq" >
+		 
+		 </record>
+         <record alias="exclusive-enable" name="竞争门派使用" type="Bool" />
+         <record alias="open-enable" name="开放门派使用" type="Bool" />
+	</list>
+</table>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="CombatData" type="SummonedDesignerPreset" version="0.3" >
+		<record alias="index" type="Int32" key="y" />
+		<record alias="race" type="Seq" seq="race" />
+		<record alias="alias" type="String" />
+		<record alias="icon-texture" ref="IconTexture" />
+		<record alias="icon-index" type="Int16" />
+		<record alias="face" type="Int8" />
+		<record alias="body" type="Int8" />
+		<record alias="eye-color" type="Int8" />
+		<record alias="eye" type="Int8" />
+		<record alias="body-color" type="Int8" />
+		<record alias="body-shape" type="Int8" />
+		<record alias="decal" type="Int8" />
+	</list>
+</table>

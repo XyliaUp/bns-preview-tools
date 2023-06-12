@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="LocalizationData" type="mastery-stat-point-pick" version="0.5" >
+		<record alias="stat-point-pick-attribute" key="y" type="Seq" >
+			<case alias="slot1" />
+			<case alias="slot2" />
+			<case alias="slot3" />
+			<case alias="slot4" />
+			<case alias="slot5" />
+		</record>
+		<record alias="stat-point-tier" key="y" type="Int8" />
+		<record alias="stat-point-job" key="y" type="Seq" seq="job" />	
+		
+		<record alias="required-stat-point" type="Int16" showzero="y" />
+		<record alias="effect" ref="Effect" />		
+		<record alias="description" ref="Text" />			
+	</list>
+</table>

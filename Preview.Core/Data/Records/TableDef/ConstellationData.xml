@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="CombatData" type="constellation" version="2.2" >
+		<record alias="alias" type="String" />
+		<record alias="name" ref="Text" />
+		<record alias="describe" ref="Text" />
+		<record alias="star-count" type="Int8" />
+		<record alias="widget" type="String" />
+	</list>
+</table>

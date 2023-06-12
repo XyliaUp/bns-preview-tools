@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="ItemData" type="reward" version="1.40" check-version="y" >
+		<record alias="id" type="Int32" key="y" not-rule-dispel="y" />
+		<record alias="alias" type="String" not-rule-dispel="y" />
+		<record alias="fixed-item" name="固定奖励" ref="item" repeat="8" />
+		<record alias="fixed-item-min" type="Int16" repeat="8" default="1" />
+		<record alias="fixed-item-max" type="Int16" repeat="8" default="1" />
+		<record alias="random-main-item" ref="Item" repeat="28" />
+		<record alias="selected-item" name="选择奖励" ref="Item" repeat="64" />
+		<record alias="selected-item-count" type="Int16" repeat="64" />
+		<record alias="selected-item-assured-count" name="可选择几项" type="Int32" />
+		<record alias="random-item" ref="Item" repeat="90" error-type="Jump" children-1="group-1-item" children-2="group-2-item" children-3="group-3-item" children-4="rare-item" />
+ 	</list>
+</table>

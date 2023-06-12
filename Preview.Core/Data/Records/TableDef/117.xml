@@ -1,0 +1,198 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list id="117" module="ItemData" version="0.1" type="117" >
+		<record alias="id" type="Int32" key="y" />
+		
+		<record alias="unk-" type="Int32" start-show="16" />
+		<record alias="unk-" type="Int32" start-show="20" />
+		<record alias="unk-" type="Int32" start-show="24" />
+		<record alias="unk-" type="Int32" start-show="28" />
+		<record alias="unk-" ref="Item" />
+		<record alias="unk-" type="Int32" start-show="40" />
+		<record alias="unk-" type="Int32" start-show="44" />
+		<record alias="unk-" type="Int32" start-show="48" />
+		<record alias="unk-" type="Int32" start-show="52" />
+		<record alias="unk-" type="Int32" start-show="56" />
+		<record alias="unk-" type="Int32" start-show="60" />
+		<record alias="unk-" ref="Item" />
+		<record alias="unk-" ref="Item" />
+		<record alias="unk-" ref="Item" />
+		<record alias="unk-" ref="Item" />
+		<record alias="unk-" type="Int32" start-show="96" />
+		<record alias="unk-" type="Int32" start-show="100" />
+		<record alias="unk-" type="Int32" start-show="104" />
+		<record alias="unk-" type="Int32" start-show="108" />
+		<record alias="unk-" type="Int32" start-show="112" />
+		<record alias="unk-" type="Int32" start-show="116" />
+		<record alias="unk-" type="Int32" start-show="120" />
+		<record alias="unk-" type="Int32" start-show="124" />
+		<record alias="unk-" type="Int32" start-show="128" />
+		<record alias="unk-" type="Int32" start-show="132" />
+		<record alias="unk-" type="Int32" start-show="136" />
+		<record alias="unk-" type="Int32" start-show="140" />
+		<record alias="unk-" type="Int32" start-show="144" />
+		<record alias="unk-" type="Int32" start-show="148" />
+		<record alias="unk-" type="Int32" start-show="152" />
+		<record alias="unk-" type="Int32" start-show="156" />
+		<record alias="unk-" type="Int32" start-show="160" />
+		<record alias="unk-" type="Int32" start-show="164" />
+		<record alias="unk-" type="Int32" start-show="168" />
+		<record alias="unk-" type="Int32" start-show="172" />
+		<record alias="unk-" type="Int32" start-show="176" />
+		<record alias="unk-" type="Int32" start-show="180" />
+		<record alias="unk184" ref="Item" />
+		<record alias="unk192" ref="Item" />
+		<record alias="unk200" ref="Item" />
+		<record alias="unk208" ref="Item" />
+		<record alias="unk216" ref="Item" />
+		<record alias="unk224" ref="Item" />
+		<record alias="unk232" ref="Item" />
+		<record alias="unk-" type="Int32" start-show="216" />
+		<record alias="unk-" type="Int32" start-show="220" />
+		<record alias="unk-" type="Int32" start-show="224" />
+		<record alias="unk-" type="Int32" start-show="228" />
+		<record alias="unk-" type="Int32" start-show="232" />
+		<record alias="unk-" type="Int32" start-show="236" />
+		<record alias="unk-" type="Int32" start-show="240" />
+		<record alias="unk-" type="Int32" start-show="244" />
+		<record alias="unk-" type="Int32" start-show="248" />
+		<record alias="unk-" type="Int32" start-show="252" />
+		<record alias="unk-" type="Int32" start-show="256" />
+		<record alias="unk-" type="Int32" start-show="260" />
+		<record alias="unk-" type="Int32" start-show="264" />
+		<record alias="unk-" type="Int32" start-show="268" />
+		<record alias="unk-" type="Int32" start-show="272" />
+		<record alias="unk-" type="Int32" start-show="276" />
+		<record alias="unk-" type="Int32" start-show="280" />
+		<record alias="unk-" type="Int32" start-show="284" />
+		<record alias="unk-" type="Int32" start-show="288" />
+		<record alias="unk-" type="Int32" start-show="292" />
+		<record alias="unk-" type="Int32" start-show="296" />
+		<record alias="unk-" type="Int32" start-show="300" />
+		<record alias="unk-" ref="Item" />
+		<record alias="unk-" ref="Item" />
+		<record alias="unk-" ref="Item" />
+		<record alias="unk-" ref="Item" />
+		<record alias="unk-" ref="Item" />
+		<record alias="unk-" type="Int32" start-show="344" />
+		<record alias="unk-" type="Int32" start-show="348" />
+		<record alias="unk-" type="Int32" start-show="352" />
+		<record alias="unk-" type="Int32" start-show="356" />
+		<record alias="unk-" type="Int32" start-show="360" />
+		<record alias="unk-" type="Int32" start-show="364" />
+		<record alias="unk-" type="Int32" start-show="368" />
+		<record alias="unk-" type="Int32" start-show="372" />
+		<record alias="unk-" type="Int32" start-show="376" />
+		<record alias="unk-" type="Int32" start-show="380" />
+		<record alias="unk-" type="Int32" start-show="384" />
+		<record alias="unk-" type="Int32" start-show="388" />
+		<record alias="unk-" type="Int32" start-show="392" />
+		<record alias="unk-" type="Int32" start-show="396" />
+		<record alias="unk-" type="Int32" start-show="400" />
+		<record alias="unk-" type="Int32" start-show="404" />
+		<record alias="unk-" type="Int32" start-show="408" />
+		<record alias="unk-" type="Int32" start-show="412" />
+		<record alias="unk-" type="Int32" start-show="416" />
+		<record alias="unk-" type="Int32" start-show="420" />
+		<record alias="unk-" type="Int32" start-show="424" />
+		<record alias="unk-" type="Int32" start-show="428" />
+		<record alias="unk-" type="Int32" start-show="432" />
+		<record alias="unk-" type="Int32" start-show="436" />
+		<record alias="unk-" type="Int32" start-show="440" />
+		<record alias="unk-" type="Int32" start-show="444" />
+		<record alias="unk-" type="Int32" start-show="448" />
+		<record alias="unk-" type="Int32" start-show="452" />
+		<record alias="unk-" type="Int32" start-show="456" />
+		<record alias="unk-" type="Int32" start-show="460" />
+		<record alias="unk-" type="Int32" start-show="464" />
+		<record alias="unk-" type="Int32" start-show="468" />
+		<record alias="unk-" type="Int32" start-show="472" />
+		<record alias="unk-" type="Int32" start-show="476" />
+		<record alias="unk-" type="Int32" start-show="480" />
+		<record alias="unk-" type="Int32" start-show="484" />
+		<record alias="unk-" type="Int32" start-show="488" />
+		<record alias="unk-" type="Int32" start-show="492" />
+		<record alias="unk-" type="Int32" start-show="496" />
+		<record alias="unk-" type="Int32" start-show="500" />
+		<record alias="unk-" type="Int32" start-show="504" />
+		<record alias="unk-" type="Int32" start-show="508" />
+		<record alias="unk-" type="Int32" start-show="512" />
+		<record alias="unk-" type="Int32" start-show="516" />
+		<record alias="unk-" type="Int32" start-show="520" />
+		<record alias="unk-" type="Int32" start-show="524" />
+		<record alias="unk-" type="Int32" start-show="528" />
+		<record alias="unk-" type="Int32" start-show="532" />
+		<record alias="unk-" type="Int32" start-show="536" />
+		<record alias="unk-" type="Int32" start-show="540" />
+		<record alias="unk-" type="Int32" start-show="544" />
+		<record alias="unk-" type="Int32" start-show="548" />
+		<record alias="unk-" type="Int32" start-show="552" />
+		<record alias="unk-" type="Int32" start-show="556" />
+		<record alias="unk-" type="Int32" start-show="560" />
+		<record alias="unk-" type="Int32" start-show="564" />
+		<record alias="unk-" type="Int32" start-show="568" />
+		<record alias="unk-" type="Int32" start-show="572" />
+		<record alias="unk-" type="Int32" start-show="576" />
+		<record alias="unk-" type="Int32" start-show="580" />
+		<record alias="unk-" type="Int32" start-show="584" />
+		<record alias="unk-" type="Int32" start-show="588" />
+		<record alias="unk-" type="Int32" start-show="592" />
+		<record alias="unk-" type="Int32" start-show="596" />
+		<record alias="unk-" type="Int32" start-show="600" />
+		<record alias="unk-" type="Int32" start-show="604" />
+		<record alias="unk-" type="Int32" start-show="608" />
+		<record alias="unk-" type="Int32" start-show="612" />
+		<record alias="unk-" type="Int32" start-show="616" />
+		<record alias="unk-" type="Int32" start-show="620" />
+		<record alias="unk-" type="Int32" start-show="624" />
+		<record alias="unk-" type="Int32" start-show="628" />
+		<record alias="unk-" type="Int32" start-show="632" />
+		<record alias="unk-" type="Int32" start-show="636" />
+		<record alias="unk-" type="Int32" start-show="640" />
+		<record alias="unk-" type="Int32" start-show="644" />
+		<record alias="unk-" type="Int32" start-show="648" />
+		<record alias="unk-" type="Int32" start-show="652" />
+		<record alias="unk-" type="Int32" start-show="656" />
+		<record alias="unk-" type="Int32" start-show="660" />
+		<record alias="unk-" type="Int32" start-show="664" />
+		<record alias="unk-" type="Int32" start-show="668" />
+		<record alias="unk-" type="Int32" start-show="672" />
+		<record alias="unk-" type="Int32" start-show="676" />
+		<record alias="unk-" type="Int32" start-show="680" />
+		<record alias="unk-" type="Int32" start-show="684" />
+		<record alias="unk-" type="Int32" start-show="688" />
+		<record alias="unk-" type="Int32" start-show="692" />
+		<record alias="unk-" type="Int32" start-show="696" />
+		<record alias="unk-" type="Int32" start-show="700" />
+		<record alias="unk-" type="Int32" start-show="704" />
+		<record alias="unk-" type="Int32" start-show="708" />
+		<record alias="unk-" type="Int32" start-show="712" />
+		<record alias="unk-" type="Int32" start-show="716" />
+		<record alias="unk-" type="Int32" start-show="720" />
+		<record alias="unk-" type="Int32" start-show="724" />
+		<record alias="unk-" type="Int32" start-show="728" />
+		<record alias="unk-" type="Int32" start-show="732" />
+		<record alias="unk-" type="Int32" start-show="736" />
+		<record alias="unk-" type="Int32" start-show="740" />
+		<record alias="unk-" type="Int32" start-show="744" />
+		<record alias="unk-" type="Int32" start-show="748" />
+		<record alias="unk-" type="Int32" start-show="752" />
+		<record alias="unk-" type="Int32" start-show="756" />
+		<record alias="unk-" type="Int32" start-show="760" />
+		<record alias="unk-" type="Int32" start-show="764" />
+		<record alias="unk-" type="Int32" start-show="768" />
+		<record alias="unk-" type="Int32" start-show="772" />
+		<record alias="unk-" type="Int32" start-show="776" />
+		<record alias="unk-" type="Int32" start-show="780" />
+		<record alias="unk-" type="Int32" start-show="784" />
+		<record alias="unk-" type="Int32" start-show="788" />
+		<record alias="unk-" type="Int32" start-show="792" />
+		<record alias="unk-" type="Int32" start-show="796" />
+		<record alias="unk-" type="Int32" start-show="800" />
+		<record alias="unk-" type="Int32" start-show="804" />
+		<record alias="unk-" type="Int32" start-show="808" />
+		<record alias="unk-" type="Int32" start-show="812" />
+		<record alias="unk-" type="Int32" start-show="816" />
+		<record alias="unk-" type="Int32" start-show="820" />
+	</list>
+</table>

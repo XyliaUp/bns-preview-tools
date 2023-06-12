@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="ZoneData0" type="map-area" version="0.2" >
+		<record alias="alias" type="String" />	
+		<record alias="name2" ref="Text" />			
+	</list>
+</table>

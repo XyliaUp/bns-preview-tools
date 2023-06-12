@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<table>
+  <list module="LocalizationData" version="0.2" type="contentsjournal2noti" check-version="y"> 
+		<record alias="alias" type="String" />
+		<record alias="description" ref="Text" />
+		<record alias="noti-quest-id" ref="Quest" />
+		<record alias="noti-level" type="Int8" />
+		<record alias="noti-mastery-level" type="Int8" />
+		<record alias="cave" ref="Cave2" />
+		<record alias="dungeon" ref="Dungeon" />
+		<record alias="raid-dungeon" ref="RaidDungeon" />
+		<record alias="boss-challenge" ref="BossChallenge" />
+		<record alias="duel-bot-challenge" ref="DuelBotChallenge" />
+		<record alias="duel-bot-training-room" ref="DuelBotChallengeTrainingRoom" />
+		<record alias="tendency-field" ref="TendencyField" />
+		<record alias="event" type="Bool" />		
+		<record alias="simple-field" ref="SimpleField" />
+		<record alias="classic-field-zone" ref="ClassicFieldZone" />
+  </list>
+</table>

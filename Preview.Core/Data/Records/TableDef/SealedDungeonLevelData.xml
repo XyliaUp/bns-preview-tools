@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="CombatData" type="sealed-dungeon-level" version="0.10" >
+		<record alias="sealed-level" type="Int8" key="y" />
+		<record alias="sealed-exp" type="Int64" default="-1" />
+		<record alias="scroll-level-font" type="String" />	
+	</list>
+</table>

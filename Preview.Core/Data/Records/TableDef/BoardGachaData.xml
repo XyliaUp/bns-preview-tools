@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="ItemData" type="board-gacha" version="0.1" >
+		<record alias="square-matrix-n" type="Int8" />
+		<record alias="round-duration" type="Int16" />
+		<record alias="select-position-enable" type="Bool" showzero="y" />			
+		<record alias="participation-count-per-character" type="Int16" />		
+		<record alias="result-top-rank-count" type="Int8" />
+		<record alias="top-rank-history-count" type="Int8" />
+		<record alias="cost-item" ref="Item" />		
+		<record alias="cost-item-count" type="Int16" />
+		<record alias="instant-payment-enable" type="Bool" showzero="y" />	
+		<record alias="instant-payment-item" ref="Item" />	
+		<record alias="board-image-player" type="String" server="n" output="n" default="00047888.BordGacha_Disable" />	
+		<record alias="board-image-other-pc" type="String" server="n" output="n" default="00047888.BordGacha_Disable" />	
+		<record alias="board-image-special" type="String" server="n" output="n" default="00047888.BordGacha_Disable" />	
+		<record alias="board-image-first" type="String" server="n" output="n" default="00047888.BordGacha_Disable" />	
+		<record alias="board-image-second" type="String" server="n" output="n" default="00047888.BordGacha_Disable" />	
+		<record alias="board-image-third" type="String" server="n" output="n" default="00047888.BordGacha_Disable" />	
+		<record alias="board-image-lucky-line" type="String" server="n" output="n" default="00047888.BordGacha_Disable" />	
+		<record alias="effect-number-select" type="String" server="n" output="n" default="00027869.UI_BoardGarcha_smallbox" />	
+		<record alias="effect-number-recieve" type="String" server="n" output="n" default="00027869.UI_BoardGarcha_Loop" />	
+		<record alias="effect-time-end" type="String" server="n" output="n" default="00027869.UI_BoardGarcha_timebox" />
+		<record alias="effect-result-confirm-button" type="String" server="n" output="n" default="00027869.UI_BoardGarcha_checkbox"/>
+		<record alias="effect-result-recieve-reward-window" type="String" server="n" output="n" default="00027869.UI_BoardGarcha_ItemGet"/>		
+		<record alias="effect-result-reward-lucky" type="String" server="n" output="n" default="00027869.UI_BoardGarcha_Luckyloop" />
+		<record alias="effect-result-reward-special" type="String" server="n" output="n" default="00027869.UI_BoardGarcha_Luckyloop" />
+		<record alias="effect-result-reward-first" type="String" server="n" output="n" default="00027869.UI_BoardGarcha_Luckyloop" />
+		<record alias="effect-result-reward-second" type="String" server="n" output="n" default="00027869.UI_BoardGarcha_Luckyloop" />
+		<record alias="effect-result-reward-third" type="String" server="n" output="n" default="00027869.UI_BoardGarcha_Luckyloop" />
+		<record alias="effect-progress-bar-edge" type="String" server="n" output="n" default="00027869.UI_BoardGarcha_Luckyloop" />
+		<record alias="effect-progress-bar-end" type="String" server="n" output="n" default="00027869.UI_BoardGarcha_Luckyloop" />
+		<record alias="font-first-list-my-name" type="String" server="n" output="n" default="00008130.UI.Over_14" />
+		<record alias="font-first-list-other-name" type="String" server="n" output="n" default="00008130.UI.Over_14" />
+		<record alias="font-draw-reward-list-item-name" type="String" server="n" output="n" default="00008130.UI.Over_14" />
+     	<record alias="font-recieve-reward-list-item-name" type="String" server="n" output="n" default="00008130.UI.Over_14" />
+	</list>
+</table>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="ItemData" type="Fish" version="0.15" >
+		<record alias="alias" type="String" />
+		<record alias="fish-grade" type="Int8" default="1" />
+		<record alias="size-min" type="Int32" />
+		<record alias="size-max" type="Int32" />
+		<record alias="acquire-life-contents-point" type="Int16" />
+		<record alias="reduce-life-contents-cq-amount" type="Int8" />
+		<record alias="name" ref="Text" />
+		<record alias="mesh" type="String" server="n" />
+		<record alias="icon" type="Icon" />
+		<record alias="col" type="String" server="n" />
+		<record alias="desc" type="String" server="n" />
+		<record alias="sort-num" type="Int16" server="n" />
+		<record alias="hide" type="Bool" server="n" />
+		<record alias="fishing-field-group" ref="FishingFieldGroup" repeat="20" server="n" />
+        <!-- ====================================================================== -->
+		<record alias="hookset-available-time-min" type="Msec" client="n" />
+		<record alias="hookset-available-time-max" type="Msec" client="n" />
+		<record alias="distribution-type" default="Fish_0001" apply="must" ref="RandomDistribution" client="n" />
+	</list>
+</table>

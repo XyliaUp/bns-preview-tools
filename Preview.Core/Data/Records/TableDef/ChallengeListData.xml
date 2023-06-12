@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="ItemData" type="ChallengeList" version="0.8">
+		<record alias="type" name="类型" type="type"  >
+			<case alias="dayofweek" />
+			<case alias="week" />
+		</record>
+
+		<record alias="challenge-type" type="Seq" key="y" >
+			<case alias="none" default="y" />
+			<case alias="sun" />
+			<case alias="mon" />
+			<case alias="tue" />
+			<case alias="wed" />
+			<case alias="thu" />
+			<case alias="fri" />
+			<case alias="sat" />
+			<case alias="week1" />
+			<case alias="week2" />
+			<case alias="week3" />
+			<case alias="week4" />
+			<case alias="week5" />
+			<case alias="week6" />
+			<case alias="week7" />
+			<case alias="week8" />
+			<case alias="week9" />
+			<case alias="week10" />
+		</record>
+		<record alias="required-level" type="Int8" />
+		<record alias="required-mastery-level" type="Int8" />
+		<record alias="challenge-quest-basic" name="任务挑战" ref="Quest" repeat="20" />
+		<record alias="challenge-quest-expansion" ref="Quest" repeat="20" />
+		<record alias="challenge-quest-grade" type="Seq" server="n" repeat="20" >
+			<case alias="none" default="y" />
+			<case alias="grade1" />
+			<case alias="grade2" />
+			<case alias="grade3" />
+		</record>
+		<record alias="challenge-quest-complete-count" type="Int8" server="n" />
+		<record alias="challenge-quest-attraction" type="TRef" server="n" repeat="20" />
+		<record alias="challenge-quest-count" type="Int8" server="n" />
+		<record alias="challenge-npc-difficulty" name="挑战副本课题模式" seq="difficulty-type" type="Seq" out-cond="Exist: challenge-npc-kill-*" apply="must" repeat="20" />
+		<record alias="challenge-npc-kill" ref="Npc" repeat="20" />
+		<record alias="challenge-npc-attraction" type="TRef" server="n" repeat="20" />
+		<record alias="challenge-npc-grade" type="Seq" server="n" repeat="20" >
+			<case alias="none" default="y" />
+			<case alias="grade1" />
+			<case alias="grade2" />
+			<case alias="grade3" />
+		</record>
+		<record alias="challenge-npc-quest" name="副本挑战关联任务" ref="Quest" server="n" repeat="20" />
+		<record alias="challenge-npc-total-count" type="Int8" server="n" />
+		<record alias="challenge-reward-total-count" type="Int8" server="n" />
+		<record alias="challenge-count-for-reward" name="阶段需要完成课题数量" type="Int8" repeat="20" />
+		<record alias="reward" name="阶段奖励" ref="ChallengeListReward" repeat="20" />
+		<record alias="week-start-date-time" type="Time64" filter="week" />
+	</list>
+</table>

@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="ItemData" type="item-brand-tooltip" version="0.8">
+		<record alias="brand-id" type="Int32" key="y" />
+		<record alias="item-condition-type" seq="condition-type" type="Seq" key="y" />
+		
+		<record alias="name2" ref="Text" />
+		<record alias="game-category-3" type="Seq16" seq="game-category-3" />
+		<record alias="item-grade" type="Int8" />
+		<record alias="equip-level" type="Int8" />
+		<record alias="equip-mastery-level" type="Int8" />
+		<record alias="equip-job-check" seq="job" type="Seq" repeat="4" />
+		<record alias="equip-sex" type="Seq" >
+			<case alias="sex-none" />
+			<case alias="all" default="y" />
+			<case alias="male" />
+			<case alias="female" />
+		</record>
+		<record alias="equip-race" type="Seq" >
+			<case alias="race-none" />
+			<case alias="all" default="y" />
+			<case alias="jin" />
+			<case alias="gon" />
+			<case alias="lyn" />
+			<case alias="kun" />
+			<case alias="summoned-all" />
+			<case alias="summoned-cat" />
+		</record>
+		<record alias="equip-solo-duel-grade" type="Int8" />
+		<record alias="equip-team-duel-grade" type="Int8" />
+		<record alias="icon"  type="Icon" />
+		<record alias="tag-icon" type="Icon" />
+		<record alias="tag-icon-grade" type="Icon" />
+		<record alias="main-info" ref="Text" />
+		<record alias="sub-info" ref="Text" />
+		<record alias="description2" ref="Text" />
+		<record alias="description4-title" ref="Text" />
+		<record alias="description5-title" ref="Text" />
+		<record alias="description6-title" ref="Text" />
+		<record alias="description4" ref="Text" />
+		<record alias="description5" ref="Text" />
+		<record alias="description6" ref="Text" />
+		<record alias="store-description" ref="Text" />
+		<record alias="title-item" ref="Item" />
+	</list>
+</table>

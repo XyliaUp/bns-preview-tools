@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="ZoneData0" type="ZoneNpcSpawn" version="0.18" side="server" >
+		<record alias="zone" ref="Zone" key="y" />
+		<record alias="id" type="Int16" key="y" />
+		
+		<record alias="alias" type="String" />
+		<record alias="npc" ref="Npc" />	
+		<record alias="area" ref="ZoneArea" />
+		<record alias="yaw-max" type="Int16" />		
+		<record alias="yaw-min" type="Int16" />
+		<record alias="init-spawn" type="Bool" />
+		<record alias="respawn" type="Bool" />	
+		<record alias="respawn-delay-max" type="Msec" max="30000" />			
+		<record alias="respawn-delay-min" type="Msec" max="50000" />		
+		<record alias="despawn-delay" type="Msec" />
+		<record alias="act-sequence" ref="ActSequence" />
+		<record alias="act-detect" type="Seq" repeat="2" >
+			<case alias="none" />
+			<case alias="pc-360" />
+			<case alias="npc-360" />
+			<case alias="both-360" />
+		</record>
+		<record alias="act-area" ref="ZoneArea" repeat="2" />
+		<record alias="act-pathway" ref="ZonePathway" repeat="2" />
+		<record alias="act-social" ref="Social" repeat="2" />
+	</list>
+</table>

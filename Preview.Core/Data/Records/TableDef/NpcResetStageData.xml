@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table>
+    <!--  -->
+	<list module="AIData" type="npc-reset-stage" version="0.25" side="server" >
+		<record alias="alias" type="String" />
+		<record alias="clear-npc-reg" type="Bool" />
+		<record alias="clear-party-reg" type="Bool" />
+
+		<record alias="spawn-delay" type="Msec" repeat="10" />
+		<record alias="spawn-my-party" type="Bool" />
+		<record alias="spawn-npc-group" type="Ref" ref="ZoneNpcSquadData" repeat="10" />
+		<record alias="spawn-npc-min-id" type="Int16" />
+		<record alias="spawn-npc-max-id" type="Int16" />
+
+		<record alias="despawn-force" type="Bool" repeat="10" />
+		<record alias="despawn-my-party" type="Bool" />
+		<record alias="despawn-npc-group" type="Ref" ref="ZoneNpcSquadData" repeat="10" />
+		<record alias="despawn-npc-min-id" type="Int16" />
+		<record alias="despawn-npc-max-id" type="Int16" />
+		<record alias="respawn-after-despawn" type="Bool" repeat="10" />
+		<record alias="set-env-operation" type="Seq" seq="env-operation" repeat="40" />
+		<record alias="set-env2-target" type="Ref" ref="ZoneEnv2" repeat="40" />
+	</list>
+</table>

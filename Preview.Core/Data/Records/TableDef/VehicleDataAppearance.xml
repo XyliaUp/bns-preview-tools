@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list type="vehicle-appearance" module="ItemData" version="0.5" autokey="y" >
+		<record alias="alias" type="String" />
+		<record alias="anim-set-name" type="XUnknown2" />
+		<record alias="anim-tree-name" type="XUnknown2" />
+		<record alias="mesh-name" type="XUnknown2" />
+		<record alias="material-name" type="XUnknown2" repeat="3" />
+		<record alias="physic-asset" type="XUnknown2" />
+		<record alias="ride-show-name" type="XUnknown2" />
+		<record alias="getoff-show-name" type="XUnknown2" />
+		<record alias="cancel-show-name" type="XUnknown2" />
+		<record alias="move-vehicle-idle" type="String" />
+		<record alias="attach-rider-bone" type="String" />
+		<record alias="attach-vehicle-socket" type="String" />
+		<record alias="stand-idle" type="Ref" ref="341" />
+		<record alias="effect-show" type="XUnknown2" />
+		<record alias="foot-print-type" type="Seq">
+  		    <case alias="none" default="y" />
+            <case alias="two-legged" />
+            <case alias="four-legged" />
+        </record>
+	</list>
+</table>

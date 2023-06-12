@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="CombatData" type="jobstylestandidle" version="0.1" side="client" >
+		<record alias="job" type="prop_seq" seq="job" key="y" />
+		<record alias="job-style" type="Seq" seq="job-style" key="y" />
+		<record alias="index" type="Int32" key="y" />
+		<record alias="group-index" type="Int32" key="y" />
+		<record alias="job-style-stand-idle-show" type="String" />		
+		<record alias="event-time" type="Msec" default="25000" />	
+	</list>
+</table>

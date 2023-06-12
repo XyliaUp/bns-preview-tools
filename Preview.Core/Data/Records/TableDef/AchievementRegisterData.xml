@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="ItemData" side="achievement" type="achievement-register" version="0.20" >
+		<record alias="type" type="type" >
+			<case alias="null" />
+			<case alias="kill-boss-npc" />
+			<case alias="kill-npc" />
+			<case alias="kill-pc" />
+			<case alias="equip-item-brand-n" />
+			<case alias="equip-item-n" />
+			<case alias="use-grocery" />
+			<case alias="use-grocery-n" />
+			<case alias="use-grocery-brand-n" />
+			<case alias="time" />
+			<case alias="use-skill-to-npc" />
+			<case alias="defend-npc-skill" />
+			<case alias="pc-exhaustion" />
+			<case alias="pc-dead" />
+			<case alias="use-gadget-to-npc" />
+			<case alias="quest-complete" />
+			<case alias="quest-complete-count" />
+			<case alias="tendency-quest-complete-count" />
+			<case alias="duel-win-count" />
+			<case alias="duel-grade" />
+			<case alias="manipulate-env" />
+			<case alias="exchange-faction-score-count" />
+			<case alias="teleport-count" />
+			<case alias="help-restoration" />
+			<case alias="help-resurrect" />
+			<case alias="get-contribution-count" />
+			<case alias="get-contribution-score" />
+			<case alias="give-faction-score-to-refiner" />
+			<case alias="duel-bot-challenge-finished-floor" />
+			<case alias="accumulate-field-play-point-by-simple-tendency-quest" />
+			<case alias="accumulate-faction-score" />
+			<case alias="growth-item" />
+			<case alias="attach-equip-gem-piece" />
+			<case alias="decompose-item" />
+			<case alias="decompose-item-n" />
+			<case alias="decompose-item-equip-type-n" />
+			<case alias="decompose-item-weapon-gem-level-n" />
+			<case alias="attach-gem-to-weapon" />
+			<case alias="attach-gem-to-weapon-n" />
+			<case alias="awakening-item" />
+			<case alias="transform-item-brand" />
+			<case alias="transform-item" />
+			<case alias="zero-durability" />
+			<case alias="repair-item" />
+			<case alias="detach-post-attachment-count" />
+			<case alias="detach-post-attachment-money" />
+			<case alias="detach-post-attachment-item" />
+			<case alias="detach-post-attachment-item-n" />
+			<case alias="take-craft-count" />
+			<case alias="take-craft-item" />
+			<case alias="take-craft-item-n" />
+			<case alias="inventory-size" />
+			<case alias="wardrobe-size" />
+			<case alias="depot-size" />
+			<case alias="pc-level" />
+			<case alias="pc-mastery-level" />
+			<case alias="client-only" />
+			<case alias="party-battle-win-count" />
+			<case alias="party-battle-challenge-count" />
+			<case alias="party-battle-grade" />
+			<case alias="lead-the-ball-goal-in-count" />
+			<case alias="skill-training-subject-complete" />
+			<case alias="dispose-item-buy-price-required-point" />
+			<case alias="acquire-fish-count" />
+			<case alias="acquire-specific-fish-count" />
+			<case alias="acquire-fish-size-count" />
+			<case alias="acquire-fish-grade-count" />
+			<case alias="acquire-fish-size-grade-count" />
+			<case alias="accumulate-life-contents-point-by-fishing" />
+		</record>
+		
+		<record alias="id" type="Int16" key="y" />
+		<record alias="job" type="Seq" seq="job" apply="must" key="y" />
+		<!-- ================================================================ -->
+		<record alias="alias" type="String" />
+		<record alias="version" type="Int16" />
+		<record alias="max-value" type="Int32" apply="must" showzero="y" default="0" />	
+		<record alias="for-newbie-care" type="Bool" />
+		<record alias="persistant" type="Bool" />
+		<record alias="increment-from-client" type="Bool" />
+		<record alias="achievement" ref="Achievement" server="n" repeat="8" />
+		<record alias="register-name" ref="Text" />													
+		<record alias="zone" repeat="4" ref="Zone" client="n" />
+		<!-- ================================================================ -->
+		<record alias="max-combat-sec" type="Int32" filter="kill-boss-npc" client="n" />
+		<record alias="boss-npc" filter="kill-boss-npc" ref="Npc" />
+		<record alias="first-attacker" type="Bool" filter="kill-boss-npc" />		
+		<record alias="last-attacker" type="Bool" filter="kill-boss-npc" />	
+		<record alias="max-level" type="Int8" filter="kill-boss-npc" />	
+		<record alias="team-broadcast" type="Bool" filter="kill-boss-npc" />	
+		<record alias="difficulty-type" type="Seq" filter="kill-boss-npc" seq="difficulty-type" default="none" />	
+		<record alias="party-member-min-count" type="Int8" filter="kill-boss-npc" />	
+		<record alias="party-member-max-count" type="Int8" filter="kill-boss-npc" />	
+		<record alias="party-same-job" type="Bool" filter="kill-boss-npc" />														
+		<!-- ================================================================ -->	
+		
+		<!-- ================================================================ -->
+		<record alias="npc" filter="kill-npc" ref="Npc" repeat="8" />
+		<record alias="faction" filter="kill-npc" ref="Faction" />
+		<!-- ================================================================ -->	
+		
+		<!-- ================================================================ -->
+		<record alias="faction" filter="kill-pc" ref="Faction" />
+		<record alias="race" type="Seq" filter="kill-pc" seq="race" />
+		<record alias="target-job" type="Seq" filter="kill-pc" seq="job" />	
+		<record alias="above-level" type="Int8" filter="kill-pc" />
+		<record alias="below-level" type="Int8" filter="kill-pc" />		
+		<!-- ================================================================ -->	
+		
+		<!-- ================================================================ -->
+		<record alias="item-brand" ref="ItemBrand" repeat="8" filter="equip-item-brand-n" />
+		<record alias="equip-type" type="Seq" seq="equip-type" repeat="8" filter="equip-item-brand-n" />
+		<record alias="item-min-level" type="Int8" repeat="8" filter="equip-item-brand-n" />
+		<record alias="slot-name" ref="Text" repeat="8" filter="equip-item-brand-n" />
+		<!-- ================================================================ -->	
+		
+		<!-- ================================================================ -->
+		<record alias="item" filter="equip-item-n" ref="Item" repeat="8" />
+		<record alias="slot-name" ref="Text" filter="equip-item-n" server="n" repeat="8" />
+		<!-- ================================================================ -->	
+		
+		<!-- ================================================================ -->
+		<record alias="item" filter="use-grocery" ref="Item" repeat="8" />
+		<!-- ================================================================ -->	
+		
+		<!-- ================================================================ -->
+		<record alias="item" filter="use-grocery-n" ref="Item" repeat="8" />
+		<record alias="slot-name" ref="Text" filter="use-grocery-n" server="n" repeat="8" />
+		<!-- ================================================================ -->	
+		
+		<!-- ================================================================ -->
+		<record alias="skill-id" type="Int32" repeat="8" filter="use-skill-to-npc" />
+		<record alias="npc" ref="Npc" repeat="4" filter="use-skill-to-npc" />
+		<!-- ================================================================ -->
+
+		<!-- ================================================================ -->
+		<record alias="restoration" type="Bool" filter="pc-dead" client="n" />
+		<record alias="timeout" type="Bool" filter="pc-dead" client="n" />
+		<!-- ================================================================ -->
+
+		<!-- ================================================================ -->
+		<record alias="gadget" filter="use-gadget-to-npc" ref="FieldItem" />
+		<record alias="npc" filter="use-gadget-to-npc" ref="Npc" />
+		<!-- ================================================================ -->
+
+		<!-- ================================================================ -->
+		<record alias="quest" ref="Quest" filter="quest-complete" />
+		<!-- ================================================================ -->	
+		
+		<!-- ================================================================ -->
+		<record alias="reset-type" type="Seq" filter="quest-complete-count" seq="reset-type" />
+		<record alias="reset-by-acquire-time" type="Seq" filter="quest-complete-count" >
+		     <case alias="none" defauly="y" />
+		     <case alias="daily" />			 
+		     <case alias="weekly" />			 
+		</record>
+		<!-- ================================================================ -->	
+		<record alias="required-attraction" type="TRef" filter="tendency-quest-complete-count" />
+		<record alias="tendency-id" type="Int8" filter="tendency-quest-complete-count" />
+		<!-- ================================================================ -->	
+		<record alias="duel-type" type="Seq" filter="duel-win-count | duel-grade" >
+		     <case alias="none" />
+		     <case alias="solo" />			 
+		     <case alias="team" />			 
+		</record>
+		<!-- ================================================================ -->
+		<record alias="env2" ref="ZoneEnv2" repeat="8" filter="manipulate-env" />
+		<record alias="env2-state" type="Seq" seq="env-state" repeat="8" filter="manipulate-env" />
+		<!-- ================================================================ -->
+		<record alias="npc" filter="exchange-faction-score-count" ref="Npc" />
+		<record alias="min-exchange-score" type="Int8" filter="exchange-faction-score-count" />
+		<!-- ================================================================ -->
+		<record alias="teleport" filter="teleport-count" ref="Teleport" />
+		<!-- ================================================================ -->				
+		<record alias="npc" filter="get-contribution-count" ref="Npc" repeat="8" />
+		<!-- ================================================================ -->						
+		<record alias="seed-item-brand" ref="ItemBrand" filter="growth-item" />
+		<record alias="feed-item-brand" ref="ItemBrand" filter="growth-item" />
+		<record alias="seed-item-before-level" type="Int8" filter="growth-item" />
+		<record alias="seed-item-growth-level" type="Int8" filter="growth-item" />						
+		<record alias="feed-item-level" type="Int8" filter="growth-item" />				
+		<!-- ================================================================ -->			
+		<record alias="primary-item-brand" filter="attach-equip-gem-piece" ref="ItemBrand" />
+		<record alias="secondary-item-brand" filter="attach-equip-gem-piece" ref="ItemBrand" />
+		<record alias="primary-item-grade" type="Int8" filter="attach-equip-gem-piece" />	
+		<record alias="secondary-item-grade" type="Int8" filter="attach-equip-gem-piece" />	
+		<!-- ================================================================ -->				
+		<record alias="item-brand" filter="decompose-item" ref="ItemBrand" />
+		<record alias="item-grade" type="Int8" filter="decompose-item" />
+		<record alias="item-level" type="Int8" filter="decompose-item" />
+		<record alias="equip-type" type="Seq" filter="decompose-item" seq="equip-type" />
+		<record alias="equip-gem-only" type="Bool" filter="decompose-item" />
+		<record alias="weapon-gem-level" type="Int8" filter="decompose-item" />
+		<!-- ================================================================ -->				
+		<record alias="item-brand" filter="decompose-item-equip-type-n" ref="ItemBrand" />
+		<record alias="item-grade" type="Int8" filter="decompose-item-equip-type-n" />
+		<record alias="item-level" type="Int8" filter="decompose-item-equip-type-n" />
+		<record alias="equip-type" type="Seq" seq="equip-type" repeat="8" filter="decompose-item-equip-type-n" />
+		<record alias="slot-name" ref="Text" repeat="8" filter="decompose-item-equip-type-n" />
+		<!-- ================================================================ -->
+		<record alias="weapon-gem-brand" ref="ItemBrand" filter="decompose-item-weapon-gem-level-n" />	
+		<record alias="weapon-gem-grade" type="Int8" filter="decompose-item-weapon-gem-level-n" />
+		<record alias="weapon-gem-level" type="Int8" repeat="8" filter="decompose-item-weapon-gem-level-n" />
+		<record alias="slot-name" ref="Text" repeat="8" filter="decompose-item-weapon-gem-level-n" />
+		<!-- ================================================================ -->
+		<record alias="weapon-brand" ref="ItemBrand" filter="attach-gem-to-weapon" />	
+		<record alias="weapon-grade" type="Int8" filter="attach-gem-to-weapon" />
+		<record alias="weapon-gem-brand" ref="ItemBrand" filter="attach-gem-to-weapon" />
+		<record alias="weapon-gem-grade" type="Int8" filter="attach-gem-to-weapon" />
+		<record alias="weapon-gem-level" type="Int8" filter="attach-gem-to-weapon" />
+		<!-- ================================================================ -->
+		<record alias="weapon-brand" ref="ItemBrand" filter="attach-gem-to-weapon-n" />	
+		<record alias="weapon-grade" type="Int8" filter="attach-gem-to-weapon-n" />
+		<record alias="weapon-gem" ref="Item" repeat="8" filter="attach-gem-to-weapon-n" />
+		<record alias="slot-name" ref="Text" repeat="8" filter="attach-gem-to-weapon-n" />
+		<!-- ================================================================ -->
+		<record alias="item-brand" ref="ItemBrand" filter="awakening-item" />		
+		<record alias="equip-type" type="Seq" filter="awakening-item" seq="equip-type" />	
+		<!-- ================================================================ -->
+		<record alias="item-brand" filter="transform-item-brand" ref="ItemBrand" />		
+		<record alias="item-grade" type="Int8" filter="transform-item-brand" />			
+		<record alias="equip-type" type="Seq" filter="transform-item-brand" seq="equip-type" />
+		<record alias="result" type="Seq" filter="transform-item-brand" >	
+			<case alias="none" default="y" />
+			<case alias="blank" />
+			<case alias="normal" />
+			<case alias="rare" />
+			<case alias="premium" />
+		</record>
+		<!-- ================================================================ -->
+		<record alias="item-brand" filter="zero-durability|repair-item" ref="ItemBrand" />		
+		<record alias="item-grade" type="Int8" filter="zero-durability|repair-item" />			
+		<!-- ================================================================ -->
+		<record alias="item" filter="detach-post-attachment-item" ref="Item" />					
+		<!-- ================================================================ -->
+		<record alias="item" ref="Item" filter="detach-post-attachment-item-n" repeat="8" />
+		<record alias="slot-name" ref="Text" filter="detach-post-attachment-item-n" server="n" repeat="8" />
+		<!-- ================================================================ -->
+		<record alias="item" ref="Item" filter="take-craft-item-n" repeat="8" />
+		<record alias="slot-name" ref="Text" filter="take-craft-item-n" server="n" repeat="8" />
+		<!-- ================================================================ -->
+		<record alias="party-battle-type " type="Seq" filter="party-battle-win-count|party-battle-challenge-count|party-battle-grade" >
+			<case alias="none" default="y" />
+			<case alias="occupation-war" />
+			<case alias="capture-the-flag" />
+			<case alias="lead-the-ball" />
+		</record>
+		<!-- ================================================================ -->
+		<record alias="skill-training-room-group" filter="skill-training-subject-complete" ref="SkillTrainingRoomGroup" />
+		<!-- ================================================================ -->
+		<record alias="fish" filter="acquire-specific-fish-count" ref="Fish" />
+		<!-- ================================================================ -->
+		<record alias="fish-size" type="Int32" filter="acquire-fish-size-count" />
+		<!-- ================================================================ -->
+		<record alias="fish-grade" type="Int8" filter="acquire-fish-grade-count" />
+		<!-- ================================================================ -->
+		<record alias="fish-size-grade" type="Seq" filter="acquire-fish-size-grade-count" >
+			<case alias="fish-grade-1" />
+			<case alias="fish-grade-2" />
+			<case alias="fish-grade-3" />
+			<case alias="fish-grade-4" />
+			<case alias="fish-grade-5" />
+			<case alias="fish-grade-6" />
+			<case alias="fish-grade-7" />
+			<case alias="fish-grade-8" />
+			<case alias="fish-grade-9" />
+			<case alias="fish-grade-10" />
+		</record>
+		<!-- ================================================================ -->
+		<record alias="reason" type="Seq" filter="detach-post-attachment-count | detach-post-attachment-item | detach-post-attachment-item-n | detach-post-attachment-money" client="n" >
+			<case alias="sale-success" name="出售成功" />
+			<case alias="sale-timeout" name="出售超时" />
+			<case alias="sale-abandonment" />
+
+			<case alias="purchase-success" name="购买成功" />
+			<case alias="purchase-from-market" />
+
+			<case alias="bid-winner" name="投标成功" />
+			<case alias="bid-loser" name="投标失败" />
+			<case alias="bid-abandonment" />
+
+			<case alias="production" name="制作" />
+			<case alias="gathering" name="采集" />
+		</record>
+
+		<record alias="min-received-money" type="Int32" filter="" client="n" />
+		<record alias="item-buy-price-required-point-type" type="Seq" filter="dispose-item-buy-price-required-point" client="n" >
+			<case alias="life-contents-point" name="珍珠" />
+		</record>
+		<!-- ================================================================ -->
+	</list>
+</table>

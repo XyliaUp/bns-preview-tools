@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="ZoneData1" type="ZonePcSpawn" version="0.49" >
+		<record alias="zone" type="Int32" key="y" />
+		<record alias="id" type="Int16" key="y" />
+		<record alias="alias" type="String" />
+		<record alias="pos" type="Vector32" />
+		<record alias="summon-pos" type="Vector32" />
+		<record alias="yaw" type="Int16" />
+		<record alias="description" type="String" server="n" input="n" />
+	</list>
+</table>

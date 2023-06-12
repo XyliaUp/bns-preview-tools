@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="ItemData" type="acquire-route" version="0.10" >
+		<record alias="alias" type="String" />
+		<record alias="category" type="Seq" >
+			<case alias="None" />
+			<case alias="NormalQuest" />
+			<case alias="FactionQuest" />
+			<case alias="EpicQuest" />
+			<case alias="JobQuest" />
+			<case alias="NormalDailyQuest" />
+			<case alias="NormalWeeklyQuest" />
+			<case alias="FactionDailyQuest" />
+			<case alias="FactionWeeklyQuest" />
+			<case alias="AttractionQuest" />
+			<case alias="Production" />
+			<case alias="GuildCraft" />
+			<case alias="PieceTransform" />
+			<case alias="MysteriousStore" />
+			<case alias="DuelBotChallenge" />
+			<case alias="SpecialTransform" />
+			<case alias="WeaponGemTransform" />
+			<case alias="MaterialTransform" />
+			<case alias="CostumeTransform" />
+			<case alias="PetLegendTransform" />
+			<case alias="ChallengeToday" />
+			<case alias="FieldStore" />
+			<case alias="AttractionStore" />
+			<case alias="DungeonStore" />
+			<case alias="Store" />
+			<case alias="RefinerEnv" />
+			<case alias="FieldEnv" />
+			<case alias="RankingReward" />
+			<case alias="FieldNpc" />
+			<case alias="DungeonNpc" />
+			<case alias="RaidNpc" />
+			<case alias="LegendaryBox" />
+			<case alias="Deduction_Attraction" />
+			<case alias="Deduction_Dungeon" />
+			<case alias="Deduction_Field" />
+			<case alias="Deduction_Worldmap" />
+		</record>
+		<record alias="route-text" ref="Text" repeat="5" />
+		<record alias="route-ref" type="TRef" repeat="5" />
+	</list>
+</table>

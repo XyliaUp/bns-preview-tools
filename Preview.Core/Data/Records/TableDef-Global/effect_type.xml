@@ -1,0 +1,1555 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<public name="Effect.Type" >
+		<record alias="type-seq_20" version="20200101">
+			<case key="0" alias="none" default="y" />		
+			<case key="1" alias="accumulated-damage-to-anyone" />
+			<case key="2" alias="accumulated-damage-from-1" />
+			<case key="3" alias="accumulated-damage-from-2" />
+			<case key="4" alias="accumulated-damage-from-3" />
+			<case key="5" alias="melee-physical-attack" />
+			<case key="6" alias="melee-physical-attack-hate" />
+			<case key="7" alias="melee-physical-attack-drain" />
+			<case key="8" alias="force-attack-hp-drain" />
+			<case key="9" alias="force-attack-sp-drain" />
+			<case key="10" alias="melee-physical-attack-sp-drain" />
+			<case key="11" alias="melee-physical-attack-hp-sp-drain" />
+			<case key="12" alias="force-attack-hp-sp-drain" />
+			<case key="13" alias="range-physical-attack" />
+			<case key="14" alias="force-attack" />
+			<case key="15" alias="force-attack-hate" />
+			<case key="16" alias="speed-physical-attack" />
+			<case key="17" alias="part-attack" />
+			<case key="18" alias="stance" />
+			<case key="19" alias="hp-heal" />
+			<case key="20" alias="hp-heal-attack-power" />
+			<case key="21" alias="hp-damage" />
+			<case key="22" alias="guard-gauge-heal" />
+			<case key="23" alias="guard-gauge-damage" />
+			<case key="24" alias="food-interval-hp-heal" />
+			<case key="25" alias="set-immune-breaker" />
+			<case key="26" alias="sp-heal" />
+			<case key="27" alias="sp-damage" />
+			<case key="28" alias="desire-increase" />
+			<case key="29" alias="set-min-hate" />
+			<case key="30" alias="set-max-hate" />
+			<case key="31" alias="ruin-phantom" />
+			<case key="32" alias="shout-physical-attack" />
+			<case key="33" alias="resurrection" />
+			<case key="34" alias="hp-drain" />
+			<case key="35" alias="hp-transfer" />
+			<case key="36" alias="cast-cancel" />
+			<case key="37" alias="unlink" />
+			<case key="38" alias="extend-link" />
+			<case key="39" alias="extend-effect" />
+			<case key="40" alias="dispel-type" />
+			<case key="41" alias="dispel-attribute" />
+			<case key="42" alias="dispel-buff" />
+			<case key="43" alias="dispel-debuff" />
+			<case key="44" alias="transit" />
+			<case key="45" alias="return" />
+			<case key="46" alias="return-to-basecamp" />
+			<case key="47" alias="return-sim-skill" />
+			<case key="48" alias="instantaneous-death" />
+			<case key="49" alias="internal-force-attack" />
+			<case key="50" alias="refill-vitality" />
+			<case key="51" alias="recovery-content-quota" />
+			<case key="52" alias="increase-special-skill-gauge" />
+			<case key="53" alias="increase-caster-special-skill-gauge" />
+			<case key="54" alias="bound" />
+			<case key="55" alias="link" />
+			<case key="56" alias="knockback" />
+			<case key="57" alias="tumbling" />
+			<case key="58" alias="detection" />
+			<case key="59" alias="put-in-sword" />
+			<case key="60" alias="bind-phantom" />
+			<case key="61" alias="bleeding" />
+			<case key="62" alias="buff-max-hp" />
+			<case key="63" alias="buff-max-sp" />
+			<case key="64" alias="additional-hp" />
+			<case key="65" alias="stun" />
+			<case key="66" alias="immune-attribute" />
+			<case key="67" alias="immune-debuff" />
+			<case key="68" alias="invincible" />
+			<case key="69" alias="silent" />
+			<case key="70" alias="seal-military-arts" />
+			<case key="71" alias="provocation" />
+			<case key="72" alias="increase-defence-power" />
+			<case key="73" alias="interval-hp-heal" />
+			<case key="74" alias="interval-hp-heal-2" />
+			<case key="75" alias="interval-hp-heal-3" />
+			<case key="76" alias="item-interval-hp-heal" />
+			<case key="77" alias="item-interval-hp-heal-2" />
+			<case key="78" alias="item-interval-hp-heal-3" />
+			<case key="79" alias="interval-hp-damage" />
+			<case key="80" alias="interval-hp-damage-2" />
+			<case key="81" alias="interval-hp-damage-3" />
+			<case key="82" alias="interval-sp-heal" />
+			<case key="83" alias="interval-sp-heal-2" />
+			<case key="84" alias="interval-sp-heal-3" />
+			<case key="85" alias="interval-sp-heal-4" />
+			<case key="86" alias="item-interval-sp-heal-1" />
+			<case key="87" alias="item-interval-sp-heal-2" />
+			<case key="88" alias="item-interval-sp-heal-3" />
+			<case key="89" alias="item-interval-sp-heal-4" />
+			<case key="90" alias="interval-sp-damage" />
+			<case key="91" alias="interval-guard-gauge-heal" />
+			<case key="92" alias="stagger" />
+			<case key="93" alias="flash" />
+			<case key="94" alias="internal-injury" />
+			<case key="95" alias="midair-1" />
+			<case key="96" alias="midair-2" />
+			<case key="97" alias="midair-3" />
+			<case key="98" alias="down" />
+			<case key="99" alias="swoon" />
+			<case key="100" alias="kneel" />
+			<case key="101" alias="knob-attack" />
+			<case key="102" alias="buff-parry" />
+			<case key="103" alias="buff-bounce" />
+			<case key="104" alias="opening-eyes" />
+			<case key="105" alias="immediately-exec" />
+			<case key="106" alias="increase-force-damage" />
+			<case key="107" alias="increase-heal" />
+			<case key="108" alias="force-amplification" />
+			<case key="109" alias="concentration" />
+			<case key="110" alias="special-deification" />
+			<case key="111" alias="marking" />
+			<case key="112" alias="vital-attacked" />
+			<case key="113" alias="infinity-shot" />
+			<case key="114" alias="external-injury" />
+			<case key="115" alias="external-injury-damage" />
+			<case key="116" alias="embers" />
+			<case key="117" alias="embers-explosion" />
+			<case key="118" alias="force-seed" />
+			<case key="119" alias="frostbite" />
+			<case key="120" alias="frostbite-drain" />
+			<case key="121" alias="magnetic-seal" />
+			<case key="122" alias="fast-freezing" />
+			<case key="123" alias="rupture" />
+			<case key="124" alias="impregnability" />
+			<case key="125" alias="prickblood" />
+			<case key="126" alias="defence" />
+			<case key="127" alias="wildfire-1" />
+			<case key="128" alias="wildfire-2" />
+			<case key="129" alias="wildfire-3" />
+			<case key="130" alias="wildfire-1-explosion" />
+			<case key="131" alias="wildfire-2-explosion" />
+			<case key="132" alias="wildfire-3-explosion" />
+			<case key="133" alias="hide" />
+			<case key="134" alias="burrow" />
+			<case key="135" alias="burrow-scan" />
+			<case key="136" alias="smokescreen" />
+			<case key="137" alias="detect-hiding" />
+			<case key="138" alias="poison-fog" />
+			<case key="139" alias="Modify-Ability-1" />
+			<case key="140" alias="Modify-Ability-2" />
+			<case key="141" alias="Modify-Ability-3" />
+			<case key="142" alias="Modify-Ability-4" />
+			<case key="143" alias="Modify-Ability-5" />
+			<case key="144" alias="Modify-Ability-6" />
+			<case key="145" alias="Modify-Ability-7" />
+			<case key="146" alias="Modify-Ability-8" />
+			<case key="147" alias="Modify-Ability-9" />
+			<case key="148" alias="Modify-Ability-10" />
+			<case key="149" alias="Modify-Ability-11" />
+			<case key="150" alias="Modify-Ability-12" />
+			<case key="151" alias="Modify-Ability-13" />
+			<case key="152" alias="Modify-Ability-14" />
+			<case key="153" alias="Modify-Ability-15" />
+			<case key="154" alias="Modify-Ability-16" />
+			<case key="155" alias="Modify-Ability-17" />
+			<case key="156" alias="Modify-Ability-18" />
+			<case key="157" alias="Modify-Ability-19" />
+			<case key="158" alias="Modify-Ability-20" />
+			<case key="159" alias="Modify-Ability-21" />
+			<case key="160" alias="Modify-Ability-22" />
+			<case key="161" alias="Modify-Ability-23" />
+			<case key="162" alias="Modify-Ability-24" />
+			<case key="163" alias="Modify-Ability-25" />
+			<case key="164" alias="Modify-Ability-26" />
+			<case key="165" alias="Modify-Ability-27" />
+			<case key="166" alias="Modify-Ability-28" />
+			<case key="167" alias="Modify-Ability-29" />
+			<case key="168" alias="Modify-Ability-30" />
+			<case key="169" alias="Modify-Ability-31" />
+			<case key="170" alias="Modify-Ability-32" />
+			<case key="171" alias="Modify-Ability-33" />
+			<case key="172" alias="Modify-Ability-34" />
+			<case key="173" alias="Modify-Ability-35" />
+			<case key="174" alias="Modify-Ability-36" />
+			<case key="175" alias="Modify-Ability-37" />
+			<case key="176" alias="Modify-Ability-38" />
+			<case key="177" alias="Modify-Ability-39" />
+			<case key="178" alias="Modify-Ability-40" />
+			<case key="179" alias="Modify-Ability-41" />
+			<case key="180" alias="Modify-Ability-42" />
+			<case key="181" alias="Modify-Ability-43" />
+			<case key="182" alias="Modify-Ability-44" />
+			<case key="183" alias="Modify-Ability-45" />
+			<case key="184" alias="Modify-Ability-46" />
+			<case key="185" alias="Modify-Ability-47" />
+			<case key="186" alias="Modify-Ability-48" />
+			<case key="187" alias="Modify-Ability-49" />
+			<case key="188" alias="Modify-Ability-50" />
+			<case key="189" alias="Modify-Ability-51" />
+			<case key="190" alias="Modify-Ability-52" />
+			<case key="191" alias="Modify-Ability-53" />
+			<case key="192" alias="Modify-Ability-54" />
+			<case key="193" alias="Modify-Ability-55" />
+			<case key="194" alias="Modify-Ability-56" />
+			<case key="195" alias="Modify-Ability-57" />
+			<case key="196" alias="Modify-Ability-58" />
+			<case key="197" alias="Modify-Ability-59" />
+			<case key="198" alias="Modify-Ability-60" />
+			<case key="199" alias="Modify-Ability-61" />
+			<case key="200" alias="Modify-Ability-62" />
+			<case key="201" alias="Modify-Ability-63" />
+			<case key="202" alias="Modify-Ability-64" />
+			<case key="203" alias="Modify-Ability-65" />
+			<case key="204" alias="Modify-Ability-66" />
+			<case key="205" alias="Modify-Ability-67" />
+			<case key="206" alias="Modify-Ability-68" />
+			<case key="207" alias="Modify-Ability-69" />
+			<case key="208" alias="Modify-Ability-70" />
+			<case key="209" alias="Modify-Ability-71" />
+			<case key="210" alias="Modify-Ability-72" />
+			<case key="211" alias="Modify-Ability-73" />
+			<case key="212" alias="Modify-Ability-74" />
+			<case key="213" alias="Modify-Ability-75" />
+			<case key="214" alias="Modify-Ability-76" />
+			<case key="215" alias="Modify-Ability-77" />
+			<case key="216" alias="Modify-Ability-78" />
+			<case key="217" alias="Modify-Ability-79" />
+			<case key="218" alias="Modify-Ability-80" />
+			<case key="219" alias="Modify-Ability-81" />
+			<case key="220" alias="Modify-Ability-82" />
+			<case key="221" alias="Modify-Ability-83" />
+			<case key="222" alias="Modify-Ability-84" />
+			<case key="223" alias="Modify-Ability-85" />
+			<case key="224" alias="Modify-Ability-86" />
+			<case key="225" alias="Modify-Ability-87" />
+			<case key="226" alias="Modify-Ability-88" />
+			<case key="227" alias="Modify-Ability-89" />
+			<case key="228" alias="Modify-Ability-90" />
+			<case key="229" alias="Modify-Ability-91" />
+			<case key="230" alias="Modify-Ability-92" />
+			<case key="231" alias="Modify-Ability-93" />
+			<case key="232" alias="Modify-Ability-94" />
+			<case key="233" alias="Modify-Ability-95" />
+			<case key="234" alias="Modify-Ability-96" />
+			<case key="235" alias="Modify-Ability-97" />
+			<case key="236" alias="Modify-Ability-98" />
+			<case key="237" alias="Modify-Ability-99" />
+			<case key="238" alias="Modify-Ability-100" />
+			<case key="239" alias="Modify-Ability-101" />
+			<case key="240" alias="Modify-Ability-102" />
+			<case key="241" alias="Modify-Ability-103" />
+			<case key="242" alias="Modify-Ability-104" />
+			<case key="243" alias="Modify-Ability-105" />
+			<case key="244" alias="Modify-Ability-106" />
+			<case key="245" alias="Modify-Ability-107" />
+			<case key="246" alias="Modify-Ability-108" />
+			<case key="247" alias="Modify-Ability-109" />
+			<case key="248" alias="Modify-Ability-110" />
+			<case key="249" alias="Modify-Ability-111" />
+			<case key="250" alias="Modify-Ability-112" />
+			<case key="251" alias="Modify-Ability-113" />
+			<case key="252" alias="Modify-Ability-114" />
+			<case key="253" alias="Modify-Ability-115" />
+			<case key="254" alias="Modify-Ability-116" />
+			<case key="255" alias="Modify-Ability-117" />
+			<case key="256" alias="Modify-Ability-118" />
+			<case key="257" alias="Modify-Ability-119" />
+			<case key="258" alias="Modify-Ability-120" />
+			<case key="259" alias="Modify-Ability-121" />
+			<case key="260" alias="Modify-Ability-122" />
+			<case key="261" alias="Modify-Ability-123" />
+			<case key="262" alias="Modify-Ability-124" />
+			<case key="263" alias="Modify-Ability-125" />
+			<case key="264" alias="Modify-Ability-126" />
+			<case key="265" alias="Modify-Ability-127" />
+			<case key="266" alias="Modify-Ability-128" />
+			<case key="267" alias="Modify-Ability-129" />
+			<case key="268" alias="Modify-Ability-130" />
+			<case key="269" alias="Modify-Ability-131" />
+			<case key="270" alias="Modify-Ability-132" />
+			<case key="271" alias="Modify-Ability-133" />
+			<case key="272" alias="Modify-Ability-134" />
+			<case key="273" alias="Modify-Ability-135" />
+			<case key="274" alias="Modify-Ability-136" />
+			<case key="275" alias="Modify-Ability-137" />
+			<case key="276" alias="Modify-Ability-138" />
+			<case key="277" alias="Modify-Ability-139" />
+			<case key="278" alias="Modify-Ability-140" />
+			<case key="279" alias="Modify-Ability-141" />
+			<case key="280" alias="Modify-Ability-142" />
+			<case key="281" alias="Modify-Ability-143" />
+			<case key="282" alias="Modify-Ability-144" />
+			<case key="283" alias="Modify-Ability-145" />
+			<case key="284" alias="Modify-Ability-146" />
+			<case key="285" alias="Modify-Ability-147" />
+			<case key="286" alias="Modify-Ability-148" />
+			<case key="287" alias="Modify-Ability-149" />
+			<case key="288" alias="Modify-Ability-150" />
+			<case key="289" alias="Modify-Ability-151" />
+			<case key="290" alias="Modify-Ability-152" />
+			<case key="291" alias="Modify-Ability-153" />
+			<case key="292" alias="Modify-Ability-154" />
+			<case key="293" alias="Modify-Ability-155" />
+			<case key="294" alias="Modify-Ability-156" />
+			<case key="295" alias="Modify-Ability-157" />
+			<case key="296" alias="Modify-Ability-158" />
+			<case key="297" alias="Modify-Ability-159" />
+			<case key="298" alias="Modify-Ability-160" />
+			<case key="299" alias="Modify-Ability-161" />
+			<case key="300" alias="Modify-Ability-162" />
+			<case key="301" alias="Modify-Ability-163" />
+			<case key="302" alias="Modify-Ability-164" />
+			<case key="303" alias="Modify-Ability-165" />
+			<case key="304" alias="Modify-Ability-166" />
+			<case key="305" alias="Modify-Ability-167" />
+			<case key="306" alias="Modify-Ability-168" />
+			<case key="307" alias="Modify-Ability-169" />
+			<case key="308" alias="Modify-Ability-170" />
+			<case key="309" alias="Modify-Ability-171" />
+			<case key="310" alias="Modify-Ability-172" />
+			<case key="311" alias="Modify-Ability-173" />
+			<case key="312" alias="Modify-Ability-174" />
+			<case key="313" alias="Modify-Ability-175" />
+			<case key="314" alias="Modify-Ability-176" />
+			<case key="315" alias="Modify-Ability-177" />
+			<case key="316" alias="Modify-Ability-178" />
+			<case key="317" alias="Modify-Ability-179" />
+			<case key="318" alias="Modify-Ability-180" />
+			<case key="319" alias="Modify-Ability-181" />
+			<case key="320" alias="Modify-Ability-182" />
+			<case key="321" alias="Modify-Ability-183" />
+			<case key="322" alias="Modify-Ability-184" />
+			<case key="323" alias="Modify-Ability-185" />
+			<case key="324" alias="Modify-Ability-186" />
+			<case key="325" alias="Modify-Ability-187" />
+			<case key="326" alias="Modify-Ability-188" />
+			<case key="327" alias="Modify-Ability-189" />
+			<case key="328" alias="Modify-Ability-190" />
+			<case key="329" alias="Modify-Ability-191" />
+			<case key="330" alias="Modify-Ability-192" />
+			<case key="331" alias="Modify-Ability-193" />
+			<case key="332" alias="Modify-Ability-194" />
+			<case key="333" alias="Modify-Ability-195" />
+			<case key="334" alias="Modify-Ability-196" />
+			<case key="335" alias="Modify-Ability-197" />
+			<case key="336" alias="Modify-Ability-198" />
+			<case key="337" alias="Modify-Ability-199" />
+			<case key="338" alias="Modify-Ability-200" />
+			<case key="339" alias="Modify-Ability-201" />
+			<case key="340" alias="Modify-Ability-202" />
+			<case key="341" alias="Modify-Ability-203" />
+			<case key="342" alias="Modify-Ability-204" />
+			<case key="343" alias="Modify-Ability-205" />
+			<case key="344" alias="Modify-Ability-206" />
+			<case key="345" alias="Modify-Ability-207" />
+			<case key="346" alias="Modify-Ability-208" />
+			<case key="347" alias="Modify-Ability-209" />
+			<case key="348" alias="Modify-Ability-210" />
+			<case key="349" alias="Modify-Ability-211" />
+			<case key="350" alias="Modify-Ability-212" />
+			<case key="351" alias="Modify-Ability-213" />
+			<case key="352" alias="Modify-Ability-214" />
+			<case key="353" alias="Modify-Ability-215" />
+			<case key="354" alias="Modify-Ability-216" />
+			<case key="355" alias="Modify-Ability-217" />
+			<case key="356" alias="Modify-Ability-218" />
+			<case key="357" alias="Modify-Ability-219" />
+			<case key="358" alias="Modify-Ability-220" />
+			<case key="359" alias="Modify-Ability-221" />
+			<case key="360" alias="Modify-Ability-222" />
+			<case key="361" alias="Modify-Ability-223" />
+			<case key="362" alias="Modify-Ability-224" />
+			<case key="363" alias="Modify-Ability-225" />
+			<case key="364" alias="Modify-Ability-226" />
+			<case key="365" alias="Modify-Ability-227" />
+			<case key="366" alias="Modify-Ability-228" />
+			<case key="367" alias="Modify-Ability-229" />
+			<case key="368" alias="Modify-Ability-230" />
+			<case key="369" alias="Modify-Ability-231" />
+			<case key="370" alias="Modify-Ability-232" />
+			<case key="371" alias="Modify-Ability-233" />
+			<case key="372" alias="Modify-Ability-234" />
+			<case key="373" alias="Modify-Ability-235" />
+			<case key="374" alias="Modify-Ability-236" />
+			<case key="375" alias="Modify-Ability-237" />
+			<case key="376" alias="Modify-Ability-238" />
+			<case key="377" alias="Modify-Ability-239" />
+			<case key="378" alias="Modify-Ability-240" />
+			<case key="379" alias="Modify-Ability-241" />
+			<case key="380" alias="Modify-Ability-242" />
+			<case key="381" alias="Modify-Ability-243" />
+			<case key="382" alias="Modify-Ability-244" />
+			<case key="383" alias="Modify-Ability-245" />
+			<case key="384" alias="Modify-Ability-246" />
+			<case key="385" alias="Modify-Ability-247" />
+			<case key="386" alias="Modify-Ability-248" />
+			<case key="387" alias="Modify-Ability-249" />
+			<case key="388" alias="Modify-Ability-250" />
+			<case key="389" alias="Modify-Ability-251" />
+			<case key="390" alias="Modify-Ability-252" />
+			<case key="391" alias="Modify-Ability-253" />
+			<case key="392" alias="Modify-Ability-254" />
+			<case key="393" alias="Modify-Ability-255" />
+			<case key="394" alias="Modify-Ability-256" />
+			<case key="395" alias="Modify-Ability-257" />
+			<case key="396" alias="Modify-Ability-258" />
+			<case key="397" alias="Modify-Ability-259" />
+			<case key="398" alias="Modify-Ability-260" />
+			<case key="399" alias="Modify-Ability-261" />
+			<case key="400" alias="Modify-Ability-262" />
+			<case key="401" alias="Modify-Ability-263" />
+			<case key="402" alias="Modify-Ability-264" />
+			<case key="403" alias="Modify-Ability-265" />
+			<case key="404" alias="Modify-Ability-266" />
+			<case key="405" alias="Modify-Ability-267" />
+			<case key="406" alias="Modify-Ability-268" />
+			<case key="407" alias="Modify-Ability-269" />
+			<case key="408" alias="Modify-Ability-270" />
+			<case key="409" alias="Modify-Ability-271" />
+			<case key="410" alias="Modify-Ability-272" />
+			<case key="411" alias="Modify-Ability-273" />
+			<case key="412" alias="Modify-Ability-274" />
+			<case key="413" alias="Modify-Ability-275" />
+			<case key="414" alias="Modify-Ability-276" />
+			<case key="415" alias="Modify-Ability-277" />
+			<case key="416" alias="Modify-Ability-278" />
+			<case key="417" alias="Modify-Ability-279" />
+			<case key="418" alias="Modify-Ability-280" />
+			<case key="419" alias="Modify-Ability-281" />
+			<case key="420" alias="Modify-Ability-282" />
+			<case key="421" alias="Modify-Ability-283" />
+			<case key="422" alias="Modify-Ability-284" />
+			<case key="423" alias="Modify-Ability-285" />
+			<case key="424" alias="Modify-Ability-286" />
+			<case key="425" alias="Modify-Ability-287" />
+			<case key="426" alias="Modify-Ability-288" />
+			<case key="427" alias="Modify-Ability-289" />
+			<case key="428" alias="Modify-Ability-290" />
+			<case key="429" alias="Modify-Ability-291" />
+			<case key="430" alias="Modify-Ability-292" />
+			<case key="431" alias="Modify-Ability-293" />
+			<case key="432" alias="Modify-Ability-294" />
+			<case key="433" alias="Modify-Ability-295" />
+			<case key="434" alias="Modify-Ability-296" />
+			<case key="435" alias="Modify-Ability-297" />
+			<case key="436" alias="Modify-Ability-298" />
+			<case key="437" alias="Modify-Ability-299" />
+			<case key="438" alias="Modify-Ability-300" />
+			<case key="439" alias="Modify-Ability-301" />
+			<case key="440" alias="Modify-Ability-302" />
+			<case key="441" alias="Modify-Ability-303" />
+			<case key="442" alias="Modify-Ability-304" />
+			<case key="443" alias="Modify-Ability-305" />
+			<case key="444" alias="Modify-Ability-306" />
+			<case key="445" alias="Modify-Ability-307" />
+			<case key="446" alias="Modify-Ability-308" />
+			<case key="447" alias="Modify-Ability-309" />
+			<case key="448" alias="Modify-Ability-310" />
+			<case key="449" alias="Modify-Ability-311" />
+			<case key="450" alias="Modify-Ability-312" />
+			<case key="451" alias="Modify-Ability-313" />
+			<case key="452" alias="Modify-Ability-314" />
+			<case key="453" alias="Modify-Ability-315" />
+			<case key="454" alias="Modify-Ability-316" />
+			<case key="455" alias="Modify-Ability-317" />
+			<case key="456" alias="Modify-Ability-318" />
+			<case key="457" alias="Modify-Ability-319" />
+			<case key="458" alias="Modify-Ability-320" />
+			<case key="459" alias="Modify-Ability-321" />
+			<case key="460" alias="Modify-Ability-322" />
+			<case key="461" alias="Modify-Ability-323" />
+			<case key="462" alias="Modify-Ability-324" />
+			<case key="463" alias="Modify-Ability-325" />
+			<case key="464" alias="Modify-Ability-326" />
+			<case key="465" alias="Modify-Ability-327" />
+			<case key="466" alias="Modify-Ability-328" />
+			<case key="467" alias="Modify-Ability-329" />
+			<case key="468" alias="Modify-Ability-330" />
+			<case key="469" alias="Modify-Ability-331" />
+			<case key="470" alias="Modify-Ability-332" />
+			<case key="471" alias="Modify-Ability-333" />
+			<case key="472" alias="Modify-Ability-334" />
+			<case key="473" alias="Modify-Ability-335" />
+			<case key="474" alias="Modify-Ability-336" />
+			<case key="475" alias="Modify-Ability-337" />
+			<case key="476" alias="Modify-Ability-338" />
+			<case key="477" alias="Modify-Ability-339" />
+			<case key="478" alias="Modify-Ability-340" />
+			<case key="479" alias="Modify-Ability-341" />
+			<case key="480" alias="Modify-Ability-342" />
+			<case key="481" alias="Modify-Ability-343" />
+			<case key="482" alias="Modify-Ability-344" />
+			<case key="483" alias="Modify-Ability-345" />
+			<case key="484" alias="Modify-Ability-346" />
+			<case key="485" alias="Modify-Ability-347" />
+			<case key="486" alias="Modify-Ability-348" />
+			<case key="487" alias="Modify-Ability-349" />
+			<case key="488" alias="Modify-Ability-350" />
+			<case key="489" alias="Modify-Ability-351" />
+			<case key="490" alias="Modify-Ability-352" />
+			<case key="491" alias="Modify-Ability-353" />
+			<case key="492" alias="Modify-Ability-354" />
+			<case key="493" alias="Modify-Ability-355" />
+			<case key="494" alias="Modify-Ability-356" />
+			<case key="495" alias="Modify-Ability-357" />
+			<case key="496" alias="Modify-Ability-358" />
+			<case key="497" alias="Modify-Ability-359" />
+			<case key="498" alias="Modify-Ability-360" />
+			<case key="499" alias="Modify-Ability-361" />
+			<case key="500" alias="Modify-Ability-362" />
+			<case key="501" alias="Modify-Ability-363" />
+			<case key="502" alias="Modify-Ability-364" />
+			<case key="503" alias="Modify-Ability-365" />
+			<case key="504" alias="Modify-Ability-366" />
+			<case key="505" alias="Modify-Ability-367" />
+			<case key="506" alias="Modify-Ability-368" />
+			<case key="507" alias="Modify-Ability-369" />
+			<case key="508" alias="Modify-Ability-370" />
+			<case key="509" alias="Modify-Ability-371" />
+			<case key="510" alias="Modify-Ability-372" />
+			<case key="511" alias="Modify-Ability-373" />
+			<case key="512" alias="Modify-Ability-374" />
+			<case key="513" alias="Modify-Ability-375" />
+			<case key="514" alias="Modify-Ability-376" />
+			<case key="515" alias="Modify-Ability-377" />
+			<case key="516" alias="Modify-Ability-378" />
+			<case key="517" alias="Modify-Ability-379" />
+			<case key="518" alias="Modify-Ability-380" />
+			<case key="519" alias="Modify-Ability-381" />
+			<case key="520" alias="Modify-Ability-382" />
+			<case key="521" alias="Modify-Ability-383" />
+			<case key="522" alias="Modify-Ability-384" />
+			<case key="523" alias="Modify-Ability-385" />
+			<case key="524" alias="Modify-Ability-386" />
+			<case key="525" alias="Modify-Ability-387" />
+			<case key="526" alias="Modify-Ability-388" />
+			<case key="527" alias="Modify-Ability-389" />
+			<case key="528" alias="Modify-Ability-390" />
+			<case key="529" alias="Modify-Ability-391" />
+			<case key="530" alias="Modify-Ability-392" />
+			<case key="531" alias="Modify-Ability-393" />
+			<case key="532" alias="Modify-Ability-394" />
+			<case key="533" alias="Modify-Ability-395" />
+			<case key="534" alias="Modify-Ability-396" />
+			<case key="535" alias="Modify-Ability-397" />
+			<case key="536" alias="Modify-Ability-398" />
+			<case key="537" alias="Modify-Ability-399" />
+			<case key="538" alias="Modify-Ability-400" />
+			<case key="539" alias="Modify-Ability-401" />
+			<case key="540" alias="Modify-Ability-402" />
+			<case key="541" alias="Modify-Ability-403" />
+			<case key="542" alias="Modify-Ability-404" />
+			<case key="543" alias="Modify-Ability-405" />
+			<case key="544" alias="Modify-Ability-406" />
+			<case key="545" alias="Modify-Ability-407" />
+			<case key="546" alias="Modify-Ability-408" />
+			<case key="547" alias="Modify-Ability-409" />
+			<case key="548" alias="Modify-Ability-410" />
+			<case key="549" alias="Modify-Ability-411" />
+			<case key="550" alias="Modify-Ability-412" />
+			<case key="551" alias="Modify-Ability-413" />
+			<case key="552" alias="Modify-Ability-414" />
+			<case key="553" alias="Modify-Ability-415" />
+			<case key="554" alias="Modify-Ability-416" />
+			<case key="555" alias="Modify-Ability-417" />
+			<case key="556" alias="Modify-Ability-418" />
+			<case key="557" alias="Modify-Ability-419" />
+			<case key="558" alias="Modify-Ability-420" />
+			<case key="559" alias="Modify-Ability-421" />
+			<case key="560" alias="Modify-Ability-422" />
+			<case key="561" alias="Modify-Ability-423" />
+			<case key="562" alias="Modify-Ability-424" />
+			<case key="563" alias="Modify-Ability-425" />
+			<case key="564" alias="Modify-Ability-426" />
+			<case key="565" alias="Modify-Ability-427" />
+			<case key="566" alias="Modify-Ability-428" />
+			<case key="567" alias="Modify-Ability-429" />
+			<case key="568" alias="Modify-Ability-430" />
+			<case key="569" alias="Modify-Ability-431" />
+			<case key="570" alias="Modify-Ability-432" />
+			<case key="571" alias="Modify-Ability-433" />
+			<case key="572" alias="Modify-Ability-434" />
+			<case key="573" alias="Modify-Ability-435" />
+			<case key="574" alias="Modify-Ability-436" />
+			<case key="575" alias="Modify-Ability-437" />
+			<case key="576" alias="Modify-Ability-438" />
+			<case key="577" alias="Modify-Ability-439" />
+			<case key="578" alias="Modify-Ability-440" />
+			<case key="579" alias="Modify-Ability-441" />
+			<case key="580" alias="Modify-Ability-442" />
+			<case key="581" alias="Modify-Ability-443" />
+			<case key="582" alias="Modify-Ability-444" />
+			<case key="583" alias="Modify-Ability-445" />
+			<case key="584" alias="Modify-Ability-446" />
+			<case key="585" alias="Modify-Ability-447" />
+			<case key="586" alias="Modify-Ability-448" />
+			<case key="587" alias="Modify-Ability-449" />
+			<case key="588" alias="Modify-Ability-450" />
+			<case key="589" alias="Modify-Ability-451" />
+			<case key="590" alias="Modify-Ability-452" />
+			<case key="591" alias="Modify-Ability-453" />
+			<case key="592" alias="Modify-Ability-454" />
+			<case key="593" alias="Modify-Ability-455" />
+			<case key="594" alias="Modify-Ability-456" />
+			<case key="595" alias="Modify-Ability-457" />
+			<case key="596" alias="Modify-Ability-458" />
+			<case key="597" alias="Modify-Ability-459" />
+			<case key="598" alias="Modify-Ability-460" />
+			<case key="599" alias="Modify-Ability-461" />
+			<case key="600" alias="Modify-Ability-462" />
+			<case key="601" alias="Modify-Ability-463" />
+			<case key="602" alias="Modify-Ability-464" />
+			<case key="603" alias="Modify-Ability-465" />
+			<case key="604" alias="Modify-Ability-466" />
+			<case key="605" alias="Modify-Ability-467" />
+			<case key="606" alias="Modify-Ability-468" />
+			<case key="607" alias="Modify-Ability-469" />
+			<case key="608" alias="Modify-Ability-470" />
+			<case key="609" alias="equip" />
+			<case key="610" alias="modify-move-speed" />
+			<case key="611" alias="modify-cast-speed" />
+			<case key="612" alias="dull" />
+			<case key="613" alias="initialize-recycle-group" />
+			<case key="614" alias="modify-recycle-time" />
+			<case key="615" alias="interval-melee-physical-damage" />
+			<case key="616" alias="interval-range-physical-damage" />
+			<case key="617" alias="interval-force-damage" />
+			<case key="618" alias="burn" />
+			<case key="619" alias="binding-skill-step" />
+			<case key="620" alias="recall-to-caster" />
+			<case key="621" alias="recall-to-position" />
+			<case key="622" alias="embers-explosion-timer" />
+			<case key="623" alias="replace-position" />
+			<case key="624" alias="poison" />
+			<case key="625" alias="poison2" />
+			<case key="626" alias="poison-explosion" />
+			<case key="627" alias="poison2-explosion" />
+			<case key="628" alias="applied-poison" />
+			<case key="629" alias="spider-web" />
+			<case key="630" alias="time-bomb" />
+			<case key="631" alias="defence-block" />
+			<case key="632" alias="dash-block" />
+			<case key="633" alias="dexterity" />
+			<case key="634" alias="help-restoration" />
+			<case key="635" alias="grade" />
+			<case key="636" alias="recharge-heart-count" />
+			<case key="637" alias="safety-area" />
+			<case key="638" alias="recharge-guild-battle-field" />
+			<case key="639" alias="enable-guild-battle-field" />
+			<case key="640" alias="debuff-guild-battle-field" />
+			<case key="641" alias="duel-interference" />
+			<case key="642" alias="dash" />
+			<case key="643" alias="fall-damage" />
+			<case key="644" alias="airdash" />
+			<case key="645" alias="exhaustion" />
+			<case key="646" alias="revive-except-rule" />
+			<case key="647" alias="use-heart-count" />
+			<case key="648" alias="item-ability" />
+			<case key="649" alias="achievement-ability" />
+			<case key="650" alias="completed-achievement" />
+			<case key="651" alias="changed-property" />
+			<case key="652" alias="oceanic" />
+			<case key="653" alias="fall-death" />
+			<case key="654" alias="air-knockback" />
+			<case key="655" alias="set-ghost-type" />
+			<case key="656" alias="duel-fighter-change" />
+			<case key="657" alias="duel-fighter-time-limit" />
+			<case key="658" alias="mastery-stat-equip" />
+			<case key="659" alias="shooter-lock-on" />
+			<case key="660" alias="attack-glide" />
+			<case key="661" alias="second-gauge-point" />
+			<case key="662" alias="interval-second-gauge-point" />
+			<case key="663" alias="stop-second-gauge-point" />
+			<case key="664" alias="set-second-gauge-point" />
+			<case key="665" alias="Particle-socket" />
+			<case key="666" alias="set-appearance" />
+			<case key="667" alias="boutique-free" />
+			<case key="668" alias="difficulty-type-dispel-attribute-hp-damage" />
+			<case key="669" alias="soul-mask-1" />
+			<case key="670" alias="soul-mask-2" />
+			<case key="671" alias="npc-change-appearance" />
+		</record>
+
+		<record alias="type-seq" version="20220301">
+			<case alias="none" default="y" />
+			<case alias="accumulated-damage-to-anyone" />
+			<case alias="accumulated-damage-from-1" />
+			<case alias="accumulated-damage-from-2" />
+			<case alias="accumulated-damage-from-3" />
+			<case alias="melee-physical-attack" />
+			<case alias="melee-physical-attack-hate" />
+			<case alias="melee-physical-attack-drain" />
+			<case alias="force-attack-hp-drain" />
+			<case alias="force-attack-sp-drain" />
+			<case alias="melee-physical-attack-sp-drain" />
+			<case alias="melee-physical-attack-hp-sp-drain" />
+			<case alias="force-attack-hp-sp-drain" />
+			<case alias="range-physical-attack" />
+			<case alias="force-attack" />
+			<case alias="force-attack-hate" />
+			<case alias="speed-physical-attack" />
+			<case alias="part-attack" />
+			<case alias="stance" />
+			<case alias="hp-heal" />
+			<case alias="hp-heal-attack-power" />
+			<case alias="hp-damage" />
+			<case alias="hp-set-fixed-value" />
+			<case alias="hp-set-max-hp-fixed-percent" />
+			<case alias="guard-gauge-heal" />
+			<case alias="guard-gauge-damage" />
+			<case alias="food-interval-hp-heal" />
+			<case alias="set-immune-breaker" />
+			<case alias="sp-heal" />
+			<case alias="sp-damage" />
+			<case alias="desire-increase" />
+			<case alias="set-min-hate" />
+			<case alias="set-max-hate" />
+			<case alias="ruin-phantom" />
+			<case alias="shout-physical-attack" />
+			<case alias="resurrection" />
+			<case alias="hp-drain" />
+			<case alias="hp-transfer" />
+			<case alias="cast-cancel" />
+			<case alias="unlink" />
+			<case alias="extend-link" />
+			<case alias="extend-effect" />
+			<case alias="fluctuation-time-effect" />
+			<case alias="dispel-type" />
+			<case alias="dispel-attribute" />
+			<case alias="dispel-buff" />
+			<case alias="dispel-debuff" />
+			<case alias="transit" />
+			<case alias="return" />
+			<case alias="return-to-basecamp" />
+			<case alias="return-sim-skill" />
+			<case alias="instantaneous-death" />
+			<case alias="internal-force-attack" />
+			<case alias="refill-vitality" />
+			<case alias="recovery-content-quota" />
+			<case alias="increase-special-skill-gauge" />
+			<case alias="increase-caster-special-skill-gauge" />
+			<case alias="modify-break-gauge" />
+			<case alias="bound" />
+			<case alias="link" />
+			<case alias="knockback" />
+			<case alias="tumbling" />
+			<case alias="detection" />
+			<case alias="put-in-sword" />
+			<case alias="bind-phantom" />
+			<case alias="bleeding" />
+			<case alias="buff-max-hp" />
+			<case alias="buff-max-sp" />
+			<case alias="additional-hp" />
+			<case alias="stun" />
+			<case alias="immune-attribute" />
+			<case alias="immune-debuff" />
+			<case alias="invincible" />
+			<case alias="silent" />
+			<case alias="seal-military-arts" />
+			<case alias="provocation" />
+			<case alias="increase-defence-power" />
+			<case alias="interval-hp-heal" />
+			<case alias="interval-hp-heal-2" />
+			<case alias="interval-hp-heal-3" />
+			<case alias="item-interval-hp-heal" />
+			<case alias="item-interval-hp-heal-2" />
+			<case alias="item-interval-hp-heal-3" />
+			<case alias="interval-hp-damage" />
+			<case alias="interval-hp-damage-2" />
+			<case alias="interval-hp-damage-3" />
+			<case alias="interval-sp-heal" />
+			<case alias="interval-sp-heal-2" />
+			<case alias="interval-sp-heal-3" />
+			<case alias="interval-sp-heal-4" />
+			<case alias="item-interval-sp-heal-1" />
+			<case alias="item-interval-sp-heal-2" />
+			<case alias="item-interval-sp-heal-3" />
+			<case alias="item-interval-sp-heal-4" />
+			<case alias="interval-sp-damage" />
+			<case alias="interval-guard-gauge-heal" />
+			<case alias="stagger" />
+			<case alias="flash" />
+			<case alias="internal-injury" />
+			<case alias="midair-1" />
+			<case alias="midair-2" />
+			<case alias="midair-3" />
+			<case alias="down" />
+			<case alias="swoon" />
+			<case alias="kneel" />
+			<case alias="knob-attack" />
+			<case alias="buff-parry" />
+			<case alias="buff-bounce" />
+			<case alias="opening-eyes" />
+			<case alias="immediately-exec" />
+			<case alias="increase-force-damage" />
+			<case alias="increase-heal" />
+			<case alias="force-amplification" />
+			<case alias="concentration" />
+			<case alias="special-deification" />
+			<case alias="marking" />
+			<case alias="vital-attacked" />
+			<case alias="infinity-shot" />
+			<case alias="external-injury" />
+			<case alias="external-injury-damage" />
+			<case alias="embers" />
+			<case alias="embers-explosion" />
+			<case alias="force-seed" />
+			<case alias="frostbite" />
+			<case alias="frostbite-drain" />
+			<case alias="magnetic-seal" />
+			<case alias="fast-freezing" />
+			<case alias="rupture" />
+			<case alias="impregnability" />
+			<case alias="prickblood" />
+			<case alias="defence" />
+			<case alias="wildfire-1" />
+			<case alias="wildfire-2" />
+			<case alias="wildfire-3" />
+			<case alias="wildfire-1-explosion" />
+			<case alias="wildfire-2-explosion" />
+			<case alias="wildfire-3-explosion" />
+			<case alias="hide" />
+			<case alias="burrow" />
+			<case alias="burrow-scan" />
+			<case alias="smokescreen" />
+			<case alias="detect-hiding" />
+			<case alias="poison-fog" />
+			<case alias="struggle" />
+			<case alias="Modify-Ability-1" />
+			<case alias="Modify-Ability-2" />
+			<case alias="Modify-Ability-3" />
+			<case alias="Modify-Ability-4" />
+			<case alias="Modify-Ability-5" />
+			<case alias="Modify-Ability-6" />
+			<case alias="Modify-Ability-7" />
+			<case alias="Modify-Ability-8" />
+			<case alias="Modify-Ability-9" />
+			<case alias="Modify-Ability-10" />
+			<case alias="Modify-Ability-11" />
+			<case alias="Modify-Ability-12" />
+			<case alias="Modify-Ability-13" />
+			<case alias="Modify-Ability-14" />
+			<case alias="Modify-Ability-15" />
+			<case alias="Modify-Ability-16" />
+			<case alias="Modify-Ability-17" />
+			<case alias="Modify-Ability-18" />
+			<case alias="Modify-Ability-19" />
+			<case alias="Modify-Ability-20" />
+			<case alias="Modify-Ability-21" />
+			<case alias="Modify-Ability-22" />
+			<case alias="Modify-Ability-23" />
+			<case alias="Modify-Ability-24" />
+			<case alias="Modify-Ability-25" />
+			<case alias="Modify-Ability-26" />
+			<case alias="Modify-Ability-27" />
+			<case alias="Modify-Ability-28" />
+			<case alias="Modify-Ability-29" />
+			<case alias="Modify-Ability-30" />
+			<case alias="Modify-Ability-31" />
+			<case alias="Modify-Ability-32" />
+			<case alias="Modify-Ability-33" />
+			<case alias="Modify-Ability-34" />
+			<case alias="Modify-Ability-35" />
+			<case alias="Modify-Ability-36" />
+			<case alias="Modify-Ability-37" />
+			<case alias="Modify-Ability-38" />
+			<case alias="Modify-Ability-39" />
+			<case alias="Modify-Ability-40" />
+			<case alias="Modify-Ability-41" />
+			<case alias="Modify-Ability-42" />
+			<case alias="Modify-Ability-43" />
+			<case alias="Modify-Ability-44" />
+			<case alias="Modify-Ability-45" />
+			<case alias="Modify-Ability-46" />
+			<case alias="Modify-Ability-47" />
+			<case alias="Modify-Ability-48" />
+			<case alias="Modify-Ability-49" />
+			<case alias="Modify-Ability-50" />
+			<case alias="Modify-Ability-51" />
+			<case alias="Modify-Ability-52" />
+			<case alias="Modify-Ability-53" />
+			<case alias="Modify-Ability-54" />
+			<case alias="Modify-Ability-55" />
+			<case alias="Modify-Ability-56" />
+			<case alias="Modify-Ability-57" />
+			<case alias="Modify-Ability-58" />
+			<case alias="Modify-Ability-59" />
+			<case alias="Modify-Ability-60" />
+			<case alias="Modify-Ability-61" />
+			<case alias="Modify-Ability-62" />
+			<case alias="Modify-Ability-63" />
+			<case alias="Modify-Ability-64" />
+			<case alias="Modify-Ability-65" />
+			<case alias="Modify-Ability-66" />
+			<case alias="Modify-Ability-67" />
+			<case alias="Modify-Ability-68" />
+			<case alias="Modify-Ability-69" />
+			<case alias="Modify-Ability-70" />
+			<case alias="Modify-Ability-71" />
+			<case alias="Modify-Ability-72" />
+			<case alias="Modify-Ability-73" />
+			<case alias="Modify-Ability-74" />
+			<case alias="Modify-Ability-75" />
+			<case alias="Modify-Ability-76" />
+			<case alias="Modify-Ability-77" />
+			<case alias="Modify-Ability-78" />
+			<case alias="Modify-Ability-79" />
+			<case alias="Modify-Ability-80" />
+			<case alias="Modify-Ability-81" />
+			<case alias="Modify-Ability-82" />
+			<case alias="Modify-Ability-83" />
+			<case alias="Modify-Ability-84" />
+			<case alias="Modify-Ability-85" />
+			<case alias="Modify-Ability-86" />
+			<case alias="Modify-Ability-87" />
+			<case alias="Modify-Ability-88" />
+			<case alias="Modify-Ability-89" />
+			<case alias="Modify-Ability-90" />
+			<case alias="Modify-Ability-91" />
+			<case alias="Modify-Ability-92" />
+			<case alias="Modify-Ability-93" />
+			<case alias="Modify-Ability-94" />
+			<case alias="Modify-Ability-95" />
+			<case alias="Modify-Ability-96" />
+			<case alias="Modify-Ability-97" />
+			<case alias="Modify-Ability-98" />
+			<case alias="Modify-Ability-99" />
+			<case alias="Modify-Ability-100" />
+			<case alias="Modify-Ability-101" />
+			<case alias="Modify-Ability-102" />
+			<case alias="Modify-Ability-103" />
+			<case alias="Modify-Ability-104" />
+			<case alias="Modify-Ability-105" />
+			<case alias="Modify-Ability-106" />
+			<case alias="Modify-Ability-107" />
+			<case alias="Modify-Ability-108" />
+			<case alias="Modify-Ability-109" />
+			<case alias="Modify-Ability-110" />
+			<case alias="Modify-Ability-111" />
+			<case alias="Modify-Ability-112" />
+			<case alias="Modify-Ability-113" />
+			<case alias="Modify-Ability-114" />
+			<case alias="Modify-Ability-115" />
+			<case alias="Modify-Ability-116" />
+			<case alias="Modify-Ability-117" />
+			<case alias="Modify-Ability-118" />
+			<case alias="Modify-Ability-119" />
+			<case alias="Modify-Ability-120" />
+			<case alias="Modify-Ability-121" />
+			<case alias="Modify-Ability-122" />
+			<case alias="Modify-Ability-123" />
+			<case alias="Modify-Ability-124" />
+			<case alias="Modify-Ability-125" />
+			<case alias="Modify-Ability-126" />
+			<case alias="Modify-Ability-127" />
+			<case alias="Modify-Ability-128" />
+			<case alias="Modify-Ability-129" />
+			<case alias="Modify-Ability-130" />
+			<case alias="Modify-Ability-131" />
+			<case alias="Modify-Ability-132" />
+			<case alias="Modify-Ability-133" />
+			<case alias="Modify-Ability-134" />
+			<case alias="Modify-Ability-135" />
+			<case alias="Modify-Ability-136" />
+			<case alias="Modify-Ability-137" />
+			<case alias="Modify-Ability-138" />
+			<case alias="Modify-Ability-139" />
+			<case alias="Modify-Ability-140" />
+			<case alias="Modify-Ability-141" />
+			<case alias="Modify-Ability-142" />
+			<case alias="Modify-Ability-143" />
+			<case alias="Modify-Ability-144" />
+			<case alias="Modify-Ability-145" />
+			<case alias="Modify-Ability-146" />
+			<case alias="Modify-Ability-147" />
+			<case alias="Modify-Ability-148" />
+			<case alias="Modify-Ability-149" />
+			<case alias="Modify-Ability-150" />
+			<case alias="Modify-Ability-151" />
+			<case alias="Modify-Ability-152" />
+			<case alias="Modify-Ability-153" />
+			<case alias="Modify-Ability-154" />
+			<case alias="Modify-Ability-155" />
+			<case alias="Modify-Ability-156" />
+			<case alias="Modify-Ability-157" />
+			<case alias="Modify-Ability-158" />
+			<case alias="Modify-Ability-159" />
+			<case alias="Modify-Ability-160" />
+			<case alias="Modify-Ability-161" />
+			<case alias="Modify-Ability-162" />
+			<case alias="Modify-Ability-163" />
+			<case alias="Modify-Ability-164" />
+			<case alias="Modify-Ability-165" />
+			<case alias="Modify-Ability-166" />
+			<case alias="Modify-Ability-167" />
+			<case alias="Modify-Ability-168" />
+			<case alias="Modify-Ability-169" />
+			<case alias="Modify-Ability-170" />
+			<case alias="Modify-Ability-171" />
+			<case alias="Modify-Ability-172" />
+			<case alias="Modify-Ability-173" />
+			<case alias="Modify-Ability-174" />
+			<case alias="Modify-Ability-175" />
+			<case alias="Modify-Ability-176" />
+			<case alias="Modify-Ability-177" />
+			<case alias="Modify-Ability-178" />
+			<case alias="Modify-Ability-179" />
+			<case alias="Modify-Ability-180" />
+			<case alias="Modify-Ability-181" />
+			<case alias="Modify-Ability-182" />
+			<case alias="Modify-Ability-183" />
+			<case alias="Modify-Ability-184" />
+			<case alias="Modify-Ability-185" />
+			<case alias="Modify-Ability-186" />
+			<case alias="Modify-Ability-187" />
+			<case alias="Modify-Ability-188" />
+			<case alias="Modify-Ability-189" />
+			<case alias="Modify-Ability-190" />
+			<case alias="Modify-Ability-191" />
+			<case alias="Modify-Ability-192" />
+			<case alias="Modify-Ability-193" />
+			<case alias="Modify-Ability-194" />
+			<case alias="Modify-Ability-195" />
+			<case alias="Modify-Ability-196" />
+			<case alias="Modify-Ability-197" />
+			<case alias="Modify-Ability-198" />
+			<case alias="Modify-Ability-199" />
+			<case alias="Modify-Ability-200" />
+			<case alias="Modify-Ability-201" />
+			<case alias="Modify-Ability-202" />
+			<case alias="Modify-Ability-203" />
+			<case alias="Modify-Ability-204" />
+			<case alias="Modify-Ability-205" />
+			<case alias="Modify-Ability-206" />
+			<case alias="Modify-Ability-207" />
+			<case alias="Modify-Ability-208" />
+			<case alias="Modify-Ability-209" />
+			<case alias="Modify-Ability-210" />
+			<case alias="Modify-Ability-211" />
+			<case alias="Modify-Ability-212" />
+			<case alias="Modify-Ability-213" />
+			<case alias="Modify-Ability-214" />
+			<case alias="Modify-Ability-215" />
+			<case alias="Modify-Ability-216" />
+			<case alias="Modify-Ability-217" />
+			<case alias="Modify-Ability-218" />
+			<case alias="Modify-Ability-219" />
+			<case alias="Modify-Ability-220" />
+			<case alias="Modify-Ability-221" />
+			<case alias="Modify-Ability-222" />
+			<case alias="Modify-Ability-223" />
+			<case alias="Modify-Ability-224" />
+			<case alias="Modify-Ability-225" />
+			<case alias="Modify-Ability-226" />
+			<case alias="Modify-Ability-227" />
+			<case alias="Modify-Ability-228" />
+			<case alias="Modify-Ability-229" />
+			<case alias="Modify-Ability-230" />
+			<case alias="Modify-Ability-231" />
+			<case alias="Modify-Ability-232" />
+			<case alias="Modify-Ability-233" />
+			<case alias="Modify-Ability-234" />
+			<case alias="Modify-Ability-235" />
+			<case alias="Modify-Ability-236" />
+			<case alias="Modify-Ability-237" />
+			<case alias="Modify-Ability-238" />
+			<case alias="Modify-Ability-239" />
+			<case alias="Modify-Ability-240" />
+			<case alias="Modify-Ability-241" />
+			<case alias="Modify-Ability-242" />
+			<case alias="Modify-Ability-243" />
+			<case alias="Modify-Ability-244" />
+			<case alias="Modify-Ability-245" />
+			<case alias="Modify-Ability-246" />
+			<case alias="Modify-Ability-247" />
+			<case alias="Modify-Ability-248" />
+			<case alias="Modify-Ability-249" />
+			<case alias="Modify-Ability-250" />
+			<case alias="Modify-Ability-251" />
+			<case alias="Modify-Ability-252" />
+			<case alias="Modify-Ability-253" />
+			<case alias="Modify-Ability-254" />
+			<case alias="Modify-Ability-255" />
+			<case alias="Modify-Ability-256" />
+			<case alias="Modify-Ability-257" />
+			<case alias="Modify-Ability-258" />
+			<case alias="Modify-Ability-259" />
+			<case alias="Modify-Ability-260" />
+			<case alias="Modify-Ability-261" />
+			<case alias="Modify-Ability-262" />
+			<case alias="Modify-Ability-263" />
+			<case alias="Modify-Ability-264" />
+			<case alias="Modify-Ability-265" />
+			<case alias="Modify-Ability-266" />
+			<case alias="Modify-Ability-267" />
+			<case alias="Modify-Ability-268" />
+			<case alias="Modify-Ability-269" />
+			<case alias="Modify-Ability-270" />
+			<case alias="Modify-Ability-271" />
+			<case alias="Modify-Ability-272" />
+			<case alias="Modify-Ability-273" />
+			<case alias="Modify-Ability-274" />
+			<case alias="Modify-Ability-275" />
+			<case alias="Modify-Ability-276" />
+			<case alias="Modify-Ability-277" />
+			<case alias="Modify-Ability-278" />
+			<case alias="Modify-Ability-279" />
+			<case alias="Modify-Ability-280" />
+			<case alias="Modify-Ability-281" />
+			<case alias="Modify-Ability-282" />
+			<case alias="Modify-Ability-283" />
+			<case alias="Modify-Ability-284" />
+			<case alias="Modify-Ability-285" />
+			<case alias="Modify-Ability-286" />
+			<case alias="Modify-Ability-287" />
+			<case alias="Modify-Ability-288" />
+			<case alias="Modify-Ability-289" />
+			<case alias="Modify-Ability-290" />
+			<case alias="Modify-Ability-291" />
+			<case alias="Modify-Ability-292" />
+			<case alias="Modify-Ability-293" />
+			<case alias="Modify-Ability-294" />
+			<case alias="Modify-Ability-295" />
+			<case alias="Modify-Ability-296" />
+			<case alias="Modify-Ability-297" />
+			<case alias="Modify-Ability-298" />
+			<case alias="Modify-Ability-299" />
+			<case alias="Modify-Ability-300" />
+			<case alias="Modify-Ability-301" />
+			<case alias="Modify-Ability-302" />
+			<case alias="Modify-Ability-303" />
+			<case alias="Modify-Ability-304" />
+			<case alias="Modify-Ability-305" />
+			<case alias="Modify-Ability-306" />
+			<case alias="Modify-Ability-307" />
+			<case alias="Modify-Ability-308" />
+			<case alias="Modify-Ability-309" />
+			<case alias="Modify-Ability-310" />
+			<case alias="Modify-Ability-311" />
+			<case alias="Modify-Ability-312" />
+			<case alias="Modify-Ability-313" />
+			<case alias="Modify-Ability-314" />
+			<case alias="Modify-Ability-315" />
+			<case alias="Modify-Ability-316" />
+			<case alias="Modify-Ability-317" />
+			<case alias="Modify-Ability-318" />
+			<case alias="Modify-Ability-319" />
+			<case alias="Modify-Ability-320" />
+			<case alias="Modify-Ability-321" />
+			<case alias="Modify-Ability-322" />
+			<case alias="Modify-Ability-323" />
+			<case alias="Modify-Ability-324" />
+			<case alias="Modify-Ability-325" />
+			<case alias="Modify-Ability-326" />
+			<case alias="Modify-Ability-327" />
+			<case alias="Modify-Ability-328" />
+			<case alias="Modify-Ability-329" />
+			<case alias="Modify-Ability-330" />
+			<case alias="Modify-Ability-331" />
+			<case alias="Modify-Ability-332" />
+			<case alias="Modify-Ability-333" />
+			<case alias="Modify-Ability-334" />
+			<case alias="Modify-Ability-335" />
+			<case alias="Modify-Ability-336" />
+			<case alias="Modify-Ability-337" />
+			<case alias="Modify-Ability-338" />
+			<case alias="Modify-Ability-339" />
+			<case alias="Modify-Ability-340" />
+			<case alias="Modify-Ability-341" />
+			<case alias="Modify-Ability-342" />
+			<case alias="Modify-Ability-343" />
+			<case alias="Modify-Ability-344" />
+			<case alias="Modify-Ability-345" />
+			<case alias="Modify-Ability-346" />
+			<case alias="Modify-Ability-347" />
+			<case alias="Modify-Ability-348" />
+			<case alias="Modify-Ability-349" />
+			<case alias="Modify-Ability-350" />
+			<case alias="Modify-Ability-351" />
+			<case alias="Modify-Ability-352" />
+			<case alias="Modify-Ability-353" />
+			<case alias="Modify-Ability-354" />
+			<case alias="Modify-Ability-355" />
+			<case alias="Modify-Ability-356" />
+			<case alias="Modify-Ability-357" />
+			<case alias="Modify-Ability-358" />
+			<case alias="Modify-Ability-359" />
+			<case alias="Modify-Ability-360" />
+			<case alias="Modify-Ability-361" />
+			<case alias="Modify-Ability-362" />
+			<case alias="Modify-Ability-363" />
+			<case alias="Modify-Ability-364" />
+			<case alias="Modify-Ability-365" />
+			<case alias="Modify-Ability-366" />
+			<case alias="Modify-Ability-367" />
+			<case alias="Modify-Ability-368" />
+			<case alias="Modify-Ability-369" />
+			<case alias="Modify-Ability-370" />
+			<case alias="Modify-Ability-371" />
+			<case alias="Modify-Ability-372" />
+			<case alias="Modify-Ability-373" />
+			<case alias="Modify-Ability-374" />
+			<case alias="Modify-Ability-375" />
+			<case alias="Modify-Ability-376" />
+			<case alias="Modify-Ability-377" />
+			<case alias="Modify-Ability-378" />
+			<case alias="Modify-Ability-379" />
+			<case alias="Modify-Ability-380" />
+			<case alias="Modify-Ability-381" />
+			<case alias="Modify-Ability-382" />
+			<case alias="Modify-Ability-383" />
+			<case alias="Modify-Ability-384" />
+			<case alias="Modify-Ability-385" />
+			<case alias="Modify-Ability-386" />
+			<case alias="Modify-Ability-387" />
+			<case alias="Modify-Ability-388" />
+			<case alias="Modify-Ability-389" />
+			<case alias="Modify-Ability-390" />
+			<case alias="Modify-Ability-391" />
+			<case alias="Modify-Ability-392" />
+			<case alias="Modify-Ability-393" />
+			<case alias="Modify-Ability-394" />
+			<case alias="Modify-Ability-395" />
+			<case alias="Modify-Ability-396" />
+			<case alias="Modify-Ability-397" />
+			<case alias="Modify-Ability-398" />
+			<case alias="Modify-Ability-399" />
+			<case alias="Modify-Ability-400" />
+			<case alias="Modify-Ability-401" />
+			<case alias="Modify-Ability-402" />
+			<case alias="Modify-Ability-403" />
+			<case alias="Modify-Ability-404" />
+			<case alias="Modify-Ability-405" />
+			<case alias="Modify-Ability-406" />
+			<case alias="Modify-Ability-407" />
+			<case alias="Modify-Ability-408" />
+			<case alias="Modify-Ability-409" />
+			<case alias="Modify-Ability-410" />
+			<case alias="Modify-Ability-411" />
+			<case alias="Modify-Ability-412" />
+			<case alias="Modify-Ability-413" />
+			<case alias="Modify-Ability-414" />
+			<case alias="Modify-Ability-415" />
+			<case alias="Modify-Ability-416" />
+			<case alias="Modify-Ability-417" />
+			<case alias="Modify-Ability-418" />
+			<case alias="Modify-Ability-419" />
+			<case alias="Modify-Ability-420" />
+			<case alias="Modify-Ability-421" />
+			<case alias="Modify-Ability-422" />
+			<case alias="Modify-Ability-423" />
+			<case alias="Modify-Ability-424" />
+			<case alias="Modify-Ability-425" />
+			<case alias="Modify-Ability-426" />
+			<case alias="Modify-Ability-427" />
+			<case alias="Modify-Ability-428" />
+			<case alias="Modify-Ability-429" />
+			<case alias="Modify-Ability-430" />
+			<case alias="Modify-Ability-431" />
+			<case alias="Modify-Ability-432" />
+			<case alias="Modify-Ability-433" />
+			<case alias="Modify-Ability-434" />
+			<case alias="Modify-Ability-435" />
+			<case alias="Modify-Ability-436" />
+			<case alias="Modify-Ability-437" />
+			<case alias="Modify-Ability-438" />
+			<case alias="Modify-Ability-439" />
+			<case alias="Modify-Ability-440" />
+			<case alias="Modify-Ability-441" />
+			<case alias="Modify-Ability-442" />
+			<case alias="Modify-Ability-443" />
+			<case alias="Modify-Ability-444" />
+			<case alias="Modify-Ability-445" />
+			<case alias="Modify-Ability-446" />
+			<case alias="Modify-Ability-447" />
+			<case alias="Modify-Ability-448" />
+			<case alias="Modify-Ability-449" />
+			<case alias="Modify-Ability-450" />
+			<case alias="Modify-Ability-451" />
+			<case alias="Modify-Ability-452" />
+			<case alias="Modify-Ability-453" />
+			<case alias="Modify-Ability-454" />
+			<case alias="Modify-Ability-455" />
+			<case alias="Modify-Ability-456" />
+			<case alias="Modify-Ability-457" />
+			<case alias="Modify-Ability-458" />
+			<case alias="Modify-Ability-459" />
+			<case alias="Modify-Ability-460" />
+			<case alias="Modify-Ability-461" />
+			<case alias="Modify-Ability-462" />
+			<case alias="Modify-Ability-463" />
+			<case alias="Modify-Ability-464" />
+			<case alias="Modify-Ability-465" />
+			<case alias="Modify-Ability-466" />
+			<case alias="Modify-Ability-467" />
+			<case alias="Modify-Ability-468" />
+			<case alias="Modify-Ability-469" />
+			<case alias="Modify-Ability-470" />
+			<case alias="Modify-Ability-471" />
+			<case alias="Modify-Ability-472" />
+			<case alias="Modify-Ability-473" />
+			<case alias="Modify-Ability-474" />
+			<case alias="Modify-Ability-475" />
+			<case alias="Modify-Ability-476" />
+			<case alias="Modify-Ability-477" />
+			<case alias="Modify-Ability-478" />
+			<case alias="Modify-Ability-479" />
+			<case alias="Modify-Ability-480" />
+			<case alias="Modify-Ability-481" />
+			<case alias="Modify-Ability-482" />
+			<case alias="Modify-Ability-483" />
+			<case alias="Modify-Ability-484" />
+			<case alias="Modify-Ability-485" />
+			<case alias="Modify-Ability-486" />
+			<case alias="Modify-Ability-487" />
+			<case alias="Modify-Ability-488" />
+			<case alias="Modify-Ability-489" />
+			<case alias="Modify-Ability-490" />
+			<case alias="Modify-Ability-491" />
+			<case alias="Modify-Ability-492" />
+			<case alias="Modify-Ability-493" />
+			<case alias="Modify-Ability-494" />
+			<case alias="Modify-Ability-495" />
+			<case alias="Modify-Ability-496" />
+			<case alias="Modify-Ability-497" />
+			<case alias="Modify-Ability-498" />
+			<case alias="Modify-Ability-499" />
+			<case alias="Modify-Ability-500" />
+			<case alias="Modify-Ability-501" />
+			<case alias="Modify-Ability-502" />
+			<case alias="Modify-Ability-503" />
+			<case alias="Modify-Ability-504" />
+			<case alias="Modify-Ability-505" />
+			<case alias="Modify-Ability-506" />
+			<case alias="Modify-Ability-507" />
+			<case alias="Modify-Ability-508" />
+			<case alias="Modify-Ability-509" />
+			<case alias="Modify-Ability-510" />
+			<case alias="Modify-Ability-511" />
+			<case alias="Modify-Ability-512" />
+			<case alias="Modify-Ability-513" />
+			<case alias="Modify-Ability-514" />
+			<case alias="Modify-Ability-515" />
+			<case alias="Modify-Ability-516" />
+			<case alias="Modify-Ability-517" />
+			<case alias="Modify-Ability-518" />
+			<case alias="Modify-Ability-519" />
+			<case alias="Modify-Ability-520" />
+			<case alias="Modify-Ability-521" />
+			<case alias="Modify-Ability-522" />
+			<case alias="Modify-Ability-523" />
+			<case alias="Modify-Ability-524" />
+			<case alias="Modify-Ability-525" />
+			<case alias="Modify-Ability-526" />
+			<case alias="Modify-Ability-527" />
+			<case alias="Modify-Ability-528" />
+			<case alias="Modify-Ability-529" />
+			<case alias="Modify-Ability-530" />
+			<case alias="Modify-Ability-531" />
+			<case alias="Modify-Ability-532" />
+			<case alias="Modify-Ability-533" />
+			<case alias="Modify-Ability-534" />
+			<case alias="Modify-Ability-535" />
+			<case alias="Modify-Ability-536" />
+			<case alias="Modify-Ability-537" />
+			<case alias="Modify-Ability-538" />
+			<case alias="Modify-Ability-539" />
+			<case alias="Modify-Ability-540" />
+			<case alias="glyph-condition-event-1" />
+			<case alias="glyph-condition-event-2" />
+			<case alias="glyph-condition-event-3" />
+			<case alias="glyph-condition-event-4" />
+			<case alias="glyph-condition-event-5" />
+			<case alias="glyph-condition-event-6" />
+			<case alias="glyph-condition-event-7" />
+			<case alias="glyph-condition-event-8" />
+			<case alias="glyph-condition-event-9" />
+			<case alias="glyph-condition-event-10" />
+			<case alias="glyph-condition-event-11" />
+			<case alias="glyph-condition-event-12" />
+			<case alias="glyph-condition-event-13" />
+			<case alias="glyph-condition-event-14" />
+			<case alias="glyph-condition-event-15" />
+			<case alias="glyph-condition-event-16" />
+			<case alias="glyph-condition-event-17" />
+			<case alias="glyph-condition-event-18" />
+			<case alias="glyph-condition-event-19" />
+			<case alias="glyph-condition-event-20" />
+			<case alias="glyph-condition-event-21" />
+			<case alias="glyph-condition-event-22" />
+			<case alias="glyph-condition-event-23" />
+			<case alias="glyph-condition-event-24" />
+			<case alias="glyph-condition-event-25" />
+			<case alias="glyph-condition-event-26" />
+			<case alias="glyph-condition-event-27" />
+			<case alias="glyph-condition-event-28" />
+			<case alias="glyph-condition-event-29" />
+			<case alias="glyph-condition-event-30" />
+			<case alias="glyph-condition-event-31" />
+			<case alias="glyph-condition-event-32" />
+			<case alias="glyph-condition-event-33" />
+			<case alias="glyph-condition-event-34" />
+			<case alias="glyph-condition-event-35" />
+			<case alias="glyph-condition-event-36" />
+			<case alias="glyph-condition-event-37" />
+			<case alias="glyph-condition-event-38" />
+			<case alias="glyph-condition-event-39" />
+			<case alias="glyph-condition-event-40" />
+			<case alias="glyph-condition-event-41" />
+			<case alias="glyph-condition-event-42" />
+			<case alias="glyph-condition-event-43" />
+			<case alias="glyph-condition-event-44" />
+			<case alias="glyph-condition-event-45" />
+			<case alias="glyph-condition-event-46" />
+			<case alias="glyph-condition-event-47" />
+			<case alias="glyph-condition-event-48" />
+			<case alias="glyph-condition-event-49" />
+			<case alias="glyph-condition-event-50" />
+			<case alias="glyph-condition-event-51" />
+			<case alias="glyph-condition-event-52" />
+			<case alias="glyph-condition-event-53" />
+			<case alias="glyph-condition-event-54" />
+			<case alias="glyph-condition-event-55" />
+			<case alias="glyph-condition-event-56" />
+			<case alias="glyph-condition-event-57" />
+			<case alias="glyph-condition-event-58" />
+			<case alias="glyph-condition-event-59" />
+			<case alias="glyph-condition-event-60" />
+			<case alias="common-condition-event-1" />
+			<case alias="common-condition-event-2" />
+			<case alias="common-condition-event-3" />
+			<case alias="common-condition-event-4" />
+			<case alias="common-condition-event-5" />
+			<case alias="common-condition-event-6" />
+			<case alias="common-condition-event-7" />
+			<case alias="common-condition-event-8" />
+			<case alias="common-condition-event-9" />
+			<case alias="common-condition-event-10" />
+			<case alias="common-condition-event-11" />
+			<case alias="common-condition-event-12" />
+			<case alias="common-condition-event-13" />
+			<case alias="common-condition-event-14" />
+			<case alias="common-condition-event-15" />
+			<case alias="common-condition-event-16" />
+			<case alias="common-condition-event-17" />
+			<case alias="common-condition-event-18" />
+			<case alias="common-condition-event-19" />
+			<case alias="common-condition-event-20" />
+			<case alias="common-condition-event-21" />
+			<case alias="common-condition-event-22" />
+			<case alias="common-condition-event-23" />
+			<case alias="common-condition-event-24" />
+			<case alias="common-condition-event-25" />
+			<case alias="common-condition-event-26" />
+			<case alias="common-condition-event-27" />
+			<case alias="common-condition-event-28" />
+			<case alias="common-condition-event-29" />
+			<case alias="common-condition-event-30" />
+			<case alias="common-condition-event-31" />
+			<case alias="common-condition-event-32" />
+			<case alias="common-condition-event-33" />
+			<case alias="common-condition-event-34" />
+			<case alias="common-condition-event-35" />
+			<case alias="common-condition-event-36" />
+			<case alias="common-condition-event-37" />
+			<case alias="common-condition-event-38" />
+			<case alias="common-condition-event-39" />
+			<case alias="common-condition-event-40" />
+			<case alias="common-condition-event-41" />
+			<case alias="common-condition-event-42" />
+			<case alias="common-condition-event-43" />
+			<case alias="common-condition-event-44" />
+			<case alias="common-condition-event-45" />
+			<case alias="common-condition-event-46" />
+			<case alias="common-condition-event-47" />
+			<case alias="common-condition-event-48" />
+			<case alias="common-condition-event-49" />
+			<case alias="common-condition-event-50" />
+			<case alias="common-condition-event-51" />
+			<case alias="common-condition-event-52" />
+			<case alias="common-condition-event-53" />
+			<case alias="common-condition-event-54" />
+			<case alias="common-condition-event-55" />
+			<case alias="common-condition-event-56" />
+			<case alias="common-condition-event-57" />
+			<case alias="common-condition-event-58" />
+			<case alias="common-condition-event-59" />
+			<case alias="common-condition-event-60" />
+			<case alias="equip" />
+			<case alias="modify-move-speed" />
+			<case alias="modify-cast-speed" />
+			<case alias="dull" />
+			<case alias="initialize-recycle-group" />
+			<case alias="modify-recycle-time" />
+			<case alias="set-recycle-time" />
+			<case alias="initialize-condition-event-recycle-group" />
+			<case alias="interval-melee-physical-damage" />
+			<case alias="interval-range-physical-damage" />
+			<case alias="interval-force-damage" />
+			<case alias="burn" />
+			<case alias="binding-skill-step" />
+			<case alias="recall-to-caster" />
+			<case alias="recall-to-position" />
+			<case alias="embers-explosion-timer" />
+			<case alias="replace-position" />
+			<case alias="poison" />
+			<case alias="poison2" />
+			<case alias="poison-explosion" />
+			<case alias="poison2-explosion" />
+			<case alias="applied-poison" />
+			<case alias="spider-web" />
+			<case alias="time-bomb" />
+			<case alias="defence-block" />
+			<case alias="dash-block" />
+			<case alias="dexterity" />
+			<case alias="help-restoration" />
+			<case alias="grade" />
+			<case alias="recharge-heart-count" />
+			<case alias="safety-area" />
+			<case alias="recharge-guild-battle-field" />
+			<case alias="enable-guild-battle-field" />
+			<case alias="debuff-guild-battle-field" />
+			<case alias="duel-interference" />
+			<case alias="break-state" />
+			<case alias="break-gauge-block" />
+			<case alias="unknown1" />		
+			<case alias="dash" />
+			<case alias="fall-damage" />
+			<case alias="airdash" />
+			<case alias="exhaustion" />
+			<case alias="revive-except-rule" />
+			<case alias="use-heart-count" />
+			<case alias="item-ability" />
+			<case alias="achievement-ability" />
+			<case alias="completed-achievement" />
+			<case alias="changed-property" />
+			<case alias="oceanic" />
+			<case alias="fall-death" />
+			<case alias="air-knockback" />
+			<case alias="set-ghost-type" />
+			<case alias="duel-fighter-change" />
+			<case alias="duel-fighter-time-limit" />
+			<case alias="mastery-stat-equip" />
+			<case alias="shooter-lock-on" />
+			<case alias="attack-glide" />
+			<case alias="second-gauge-point" />
+			<case alias="interval-second-gauge-point" />
+			<case alias="stop-second-gauge-point" />
+			<case alias="set-second-gauge-point" />
+			<case alias="particle-socket" />
+			<case alias="set-appearance" />
+			<case alias="boutique-free" />
+			<case alias="difficulty-type-dispel-attribute-hp-damage" />
+			<case alias="sealed-dungeon-dispel-attribute-hp-damage" />
+			<case alias="soul-mask-1" />
+			<case alias="soul-mask-2" />
+			<case alias="npc-change-appearance" />
+		</record>
+	</public>
+</table>

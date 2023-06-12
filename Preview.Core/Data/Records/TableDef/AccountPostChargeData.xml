@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="ItemData" type="account-post-charge" version="0.1" >
+		<record alias="alias" type="String" />
+		<record alias="charge-money" type="Int32" />
+		<record alias="charge-item" ref="Item" repeat="2" />
+		<record alias="charge-item-amount" type="Int32" repeat="2" />
+	</list>
+</table>

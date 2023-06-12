@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<table data-type="local" >
+	<list module="LocalizationData" type="survey" version="0.5" >
+		<record alias="id" type="Int32" key="y" />
+		<record alias="survey-question" ref="0" server="n" />
+		<record alias="job" type="Seq" seq="job" />
+		<record alias="race" type="Seq" seq="race" />
+		<record alias="level" type="Int8" />
+		<record alias="completed-quest" ref="Quest" />
+		<record alias="start-year" type="Int16" />
+		<record alias="start-month" type="Int8" />
+		<record alias="start-day" type="Int8" />
+		<record alias="start-hour" type="Int8" default="-1" />
+		<record alias="end-year" type="Int16" />
+		<record alias="end-month" type="Int8" />
+		<record alias="end-day" type="Int8" />
+		<record alias="end-hour" type="Int8" default="-1" />
+		<record alias="need-item" ref="Item" />
+		<record alias="fixed-reward-item" ref="Item" repeat="4" />
+		<record alias="fixed-reward-item-count" type="Int8" repeat="4" />
+		<record alias="optional-reward-item" ref="Item" repeat="4" />
+		<record alias="optional-reward-item-count" type="Int8" repeat="4" />
+	</list>
+</table>

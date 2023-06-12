@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="ZoneData0" type="map-group-1" version="0.6" >
+		<record alias="alias" type="String" />	
+		<record alias="name2" ref="Text" />
+		<record alias="expedition" ref="MapGroup1Expedition" />
+		<record alias="talk-to-self-quests" ref="Quest" repeat="127" />
+		<record alias="talk-to-self-quests2" ref="Quest" repeat="127" />
+	</list>
+</table>

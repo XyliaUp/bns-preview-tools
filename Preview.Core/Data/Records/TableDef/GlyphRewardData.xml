@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table>
+
+	<list module="ItemData" type="glyph-reward" version="0.1" >
+		<record alias="id" type="Int32" key="y" />
+		<record alias="alias" type="String" />
+		<record alias="name" ref="Text" />
+		<record alias="shuffle-reward-icon" type="Icon" />
+		<record alias="shuffle-reward-tooltip" ref="Text" />
+		<record alias="upgrade-reward-preview" type="Seq" >
+			<case alias="fixed-score" default="y" />
+			<case alias="random-score" />
+		</record>
+		<record alias="upgrade-reward-warning-message" type="Bool" />
+		<record alias="reward-type" type="Seq" >
+			<case alias="acquire" />
+		    <case alias="upgrade" />
+			<case alias="shuffle" />
+		</record>
+		<record alias="grade" type="Int8" default="1" max="8" min="0" />
+		<record alias="color" type="Seq" >
+			<case alias="none" default="y" />
+			<case alias="red" />
+			<case alias="yellow" />
+			<case alias="blue" />			
+		</record>
+		<record alias="cost-money" type="Int32" />
+		<record alias="cost-item" ref="Item" repeat="4" />
+		<record alias="cost-item-count" type="Int16" max="30000" min="0" />
+	</list>
+</table>

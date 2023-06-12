@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="ItemData" type="guild-bank-item" version="0.2" >
+		<record alias="bank-item-type" type="Seq" >
+			<case alias="none" />
+			<case alias="gemstone" />
+			<case alias="moonstone" />
+			<case alias="tokeniron" />
+			<case alias="tokensilver" />
+			<case alias="tokengold" />
+        </record>
+		<record alias="bank-item" ref="Item" />
+		<record alias="bank-item-round-lot" type="Int16" default="1" />
+		<record alias="bank-item-max-count" type="Int64" />
+	</list>
+</table>

@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<table>
+  <list module="AIData" type="jackpot-boss-zone" version="0.5">
+    <record alias="id" type="Int32" key="y" />
+    <record alias="alias" type="String" />
+    <record alias="zone" ref="Zone" />
+    <record alias="group" ref="AttractionGroup" />
+    <record alias="transfer-jackpot-percent" type="Int16" />
+    <record alias="boss-max-faction-score" type="Int32" />
+    <record alias="spawn-boss-faction-score" type="Int32" />
+    <record alias="boss-npc-faction" ref="Npc" repeat="2" />
+    <record alias="despawn-force-faction-1" default="y" type="Bool" input="n" />
+    <record alias="respawn-after-despawn-faction-1" type="Bool" input="n" />
+    <record alias="spawn-delay-faction-1" type="Msec" input="n" />
+    <record alias="despawn-force-faction-2" default="y" type="Bool" input="n" />
+    <record alias="respawn-after-despawn-faction-2" type="Bool" input="n" />
+    <record alias="spawn-delay-faction-2" type="Msec" input="n" />
+    <record alias="attraction-quest" ref="Quest" repeat="5" />
+    <record alias="ui-filter-attraction-quest-only" type="Bool" />
+    <record alias="name2" ref="Text" />
+    <record alias="desc" ref="Text" />
+    <record alias="ui-text-grade" type="Int8" />
+    <record alias="reward-summary" ref="AttractionRewardSummary" />
+	<!-- ================================================================= -->
+    <record alias="despawn-npc-group-faction" ref="ZoneNpcSquad" repeat="2" client="n" />
+    <record alias="spawn-npc-group-faction" ref="ZoneNpcSquad" repeat="2" client="n" />
+	<!-- ================================================================= -->
+  </list>
+</table>

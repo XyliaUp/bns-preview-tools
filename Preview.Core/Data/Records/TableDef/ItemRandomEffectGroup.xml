@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="ItemData" type="item-random-effect-group" version="0.1">
+		<record alias="id" type="Int32" key="y" />	
+		<record alias="alias" type="String" />
+		<record alias="r-effect" ref="Effect" repeat="5" />
+		<record alias="r-effect-grade" type="Int8" repeat="5" />
+	</list>
+</table>

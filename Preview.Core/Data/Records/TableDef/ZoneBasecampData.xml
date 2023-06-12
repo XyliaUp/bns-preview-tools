@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="ZoneData1" type="ZoneBaseCamp" version="0.5" >
+		<record alias="zone" type="Int32" key="y" />
+		<record alias="id" type="Int16" key="y" />
+		<record alias="alias" type="String" />
+		<record alias="area" ref="ZoneArea" />
+		<record alias="center" type="Vector32" />
+	</list>
+</table>

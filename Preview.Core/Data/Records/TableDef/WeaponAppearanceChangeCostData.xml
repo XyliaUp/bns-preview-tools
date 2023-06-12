@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="ItemData" type="weapon-appearance-change-cost" version="1.0" >
+		<record alias="item-grade" key="y" type="Int8" />
+		<record alias="growth-efficient-level" key="y" type="Int8" />		
+		<record alias="weapon-cost-type" key="y" type="Seq" >	
+             <case alias="weapon" />
+             <case alias="pet-1" />			 
+             <case alias="pet-2" />			 
+        </record>		
+		<record alias="cost-apply-item" ref="Item" repeat="2" />
+		<record alias="cost-apply-item-amount" type="Int16" repeat="2" />
+		<record alias="cost-apply-money" type="Int32" />
+		
+		<record alias="cost-remove-separable" type="Bool" />		
+		<record alias="cost-remove-item" ref="Item" repeat="2" />	
+		<record alias="cost-remove-item-amount" type="Int16" repeat="2" />
+		<record alias="cost-remove-money" type="Int32" />
+	</list>
+</table>

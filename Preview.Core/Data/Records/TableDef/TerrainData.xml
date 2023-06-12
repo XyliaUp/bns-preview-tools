@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table>
+	
+	<list module="ZoneData2" type="Terrain" version="0.8" >
+		<!-- 将根据id进行分类 -->
+		<record alias="id" type="Int32" key="y" />
+		<record alias="alias" type="String" name="alias" />
+		<record alias="umap-name" type="String" name="umap-name" server="n" />
+		<record alias="terrain-start-x" type="Int16" />
+		<record alias="terrain-start-y" type="Int16" />
+		<record alias="count-x" type="Int16" />
+		<record alias="count-y" type="Int16" />
+		<record alias="terrain-origin-x" type="Int32" />
+		<record alias="terrain-origin-y" type="Int32" />
+		<record alias="description" server="n" type="String" />
+	</list>
+</table>

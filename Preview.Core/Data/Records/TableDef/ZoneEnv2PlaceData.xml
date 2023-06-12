@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="ZoneData0" type="ZoneEnv2Place" version="0.2" check-version="y" >
+    <record alias="type" type="type" >
+        <case alias="button" />
+        <case alias="chest" />
+        <case alias="pot" />
+        <case alias="gate" />
+        <case alias="wall" />
+        <case alias="refiner" />
+        <case alias="control-point" />
+        <case alias="portal" />
+        <case alias="foot-switch" />
+        <case alias="effect-region" />
+        <case alias="airdash" />
+        <case alias="airdash-leave" />	
+        <case alias="oceanic-region" />
+        <case alias="fall-death" />
+        <case alias="multiple-loop" />
+        <case alias="deck" />
+        <case alias="fishing-point" />
+        <case alias="attraction-popup" />
+        <case alias="enter-arena-dungeonlobby" /> 	
+    </record>
+    <record alias="alias" type="String" />	
+    <record alias="region-point-1" type="Vector32" />
+    <record alias="region-point-2" type="Vector32" />
+    <record alias="region-point-3" type="Vector32" />
+    <record alias="region-point-4" type="Vector32" />
+    <record alias="height" type="Int16" />	
+    <record alias="action-point" type="Vector32" />	
+    <record alias="action-radius" type="Int16" showzero="y" />
+    <record alias="use-manipulation-point" type="Bool" />
+    <record alias="manipulation-point" type="Vector32" />	
+    <record alias="manipulation-radius" type="Int16" />
+    <record alias="manipulation-height-upper" type="Int16" />	
+    <record alias="manipulation-height-lower" type="Int16" />
+    <record alias="env-actorname" type="String" />	
+    <record alias="spawn-env" type="Bool" />
+    <!-- ============================================================= -->
+    <record alias="duration" type="Msec" filter="airdash" />
+    <record alias="end-pos" type="Vector32" filter="airdash" />
+    <record alias="summon-end-pos" type="Vector32" filter="airdash" />
+    <!-- ============================================================= -->
+
+    <!-- ============================================================= -->	
+	<record alias="tool-zone" type="Ref" client="n" repeat="20" />
+    <!-- ============================================================= -->		
+	</list>
+</table>

@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="LocalizationData" type="pc-voice" version="0.3" >
+		<record alias="id" key="y" type="Int8" />
+		<record alias="sex" key="y" type="Seq" seq="sex" />
+		<record alias="pc-voice-set-id" type="Int8" />
+		<record alias="usable-race" type="Seq" seq="race" repeat="4" />
+		<record alias="default-race" type="Seq" seq="race" repeat="4" />
+		<record alias="name" ref="Text" />
+		<record alias="desc" ref="Text" />
+	</list>
+</table>

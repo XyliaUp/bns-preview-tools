@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="CombatData" type="feedback-bossnpc" version="0.2" >
+		<record alias="alias" type="String" />
+		<record alias="npc" ref="Npc" />
+		<record alias="score" ref="FeedBackSkillScore" repeat="8" />
+	</list>
+</table>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="ItemData" type="treasure-board-reward" version="0.8" >
+		<record alias="id" type="Int32" key="y" />
+		<record alias="alias" type="String" />
+		<record alias="reward-grade" type="Int16" />
+		<record alias="reward-item" ref="Item" />
+		<record alias="reward-item-count" type="Int16" />
+		<record alias="max-draw-count" type="Int16" max="1000" />
+	</list>
+</table>

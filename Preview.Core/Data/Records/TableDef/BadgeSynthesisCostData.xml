@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="ItemData" type="badge-synthesis-cost" version="0.1" >
+		<record alias="score" type="Int32" key="y" />
+		<record alias="alias" type="String" />
+		<record alias="required-item" ref="item" repeat="8" />
+		<record alias="required-item-count" type="Int16" repeat="8" />
+		<record alias="money-cost" type="Int32" />
+	</list>
+</table>

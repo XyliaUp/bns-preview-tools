@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="AIData" type="WantedMission" version="0.1" >
+		<record alias="alias" type="String" />
+		<record alias="npc" ref="Npc" />
+		<record alias="reward-item" ref="Item" repeat="5" />
+		<record alias="reward-item-count" type="Int16" repeat="5" />
+		<record alias="describe2" ref="Text" />
+
+		<record alias="unk18" type="Int32" start-show="80" />
+		<record alias="unk19" type="Int32" start-show="84" />
+		<record alias="unk20" type="Int32" start-show="88" />
+		<record alias="unk21" type="Float32" />
+		<record alias="unk1" type="String" />
+		<record alias="unk2" type="String" />
+		<record alias="anim-tree-name" type="String" />
+		<record alias="unk28" type="Int32" start-show="120" />
+		<record alias="unk29" type="Int32" start-show="124" />
+	</list>
+</table>

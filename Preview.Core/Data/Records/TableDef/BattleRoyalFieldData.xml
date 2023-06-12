@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="ZoneData0" type="battle-royal-field" version="0.1" >
+		<record alias="id" type="Int32" key="y" />
+		<record alias="alias" type="String" />
+		<record alias="zone" ref="Zone" />
+		<record alias="public-raid" ref="PublicRaid" />
+		<record alias="required-level" type="Int8" />
+		<record alias="required-mastery-level" type="Int8" />
+		<record alias="required-member-count-party-mode-matching" type="Int8" default="3" />
+		<record alias="required-party-count-party-mode-matching" type="Int8" default="20" />
+		<record alias="available-party-mode-matching-weekly-time" ref="WeeklyTimeTable" />
+		<record alias="waiting-duration-second" type="Int16" default="80" />
+		<record alias="stand-by-duration" type="Msec" />
+		<record alias="waiting-time-before-combat" type="Msec" />
+		<record alias="group" ref="AttractionGroup" />
+		<record alias="waiting-time-before-move" type="Msec" />
+		<record alias="enter-pc-spawn" ref="ZonePcSpawn" input="n" />
+		<record alias="enable-infinite-hyper-energy" type="Bool" />
+		<record alias="waiting-time-before-start" type="Msec" />
+		<record alias="camera-max-distance" type="Float32" />
+		<record alias="start-condition-guide-timer-delay" type="Float32" default="20000" />
+		<record alias="survivor-escape-delay" type="Float32" default="10000" />
+		<record alias="name2" ref="Text" />
+		<record alias="desc" ref="Text" />
+		<record alias="reward-summary" ref="AttractionRewardSummary" />
+		<record alias="change-state-env-by-start" ref="ZoneEnv2Spawn" client="n" />		
+		<record alias="event-alias" ref="BattleRoyalFieldEvent" client="n" />		
+		<record alias="finish-pc-respawn" ref="ZonePcSpawn" client="n" />
+		<record alias="pc-kill-effect" ref="Effect" client="n" repeat="4" />
+	</list>
+</table>

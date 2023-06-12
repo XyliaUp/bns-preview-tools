@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="ItemData" type="BadgeSynthesisRecipe" version="0.5" >
+		<record alias="category" type="Seq" seq="condition-type" key="y" />
+		<record alias="score" type="Int32" key="y" />
+		<record alias="alias" type="String" />
+		<record alias="result-item" ref="Item" repeat="40" client="n" />
+	</list>
+</table>

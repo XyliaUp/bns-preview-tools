@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="LocalizationData" type="icontexture" version="0.8" use-alias-info="n" auto-start="1000" >
+		<record alias="alias" name="别名" type="String" />
+		<record alias="icon-texture" name="资源设置" type="String" />
+		<record alias="icon-width" type="Int16" />
+		<record alias="icon-height" type="Int16" />
+		<record alias="texture-width" type="Int16" />
+		<record alias="texture-height" type="Int16" />
+	</list>
+</table>

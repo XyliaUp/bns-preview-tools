@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="ItemData" type="pet-food-recovery" version="0.1" >
+		<record alias="alias" type="String" />
+		<record alias="item-grade" type="Int8" repeat="4" />
+		<record alias="recovery-amount" type="Int16" repeat="4" />
+	</list>
+</table>

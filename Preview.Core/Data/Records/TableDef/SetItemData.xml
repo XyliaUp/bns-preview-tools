@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="ItemData" type="set-item" version="0.19" >
+		<record alias="alias" type="String" />
+		<record alias="count-1-effect" ref="Effect" repeat="2" />
+		<record alias="count-2-effect" ref="Effect" repeat="2" />
+		<record alias="count-3-effect" ref="Effect" repeat="2" />
+		<record alias="count-4-effect" ref="Effect" repeat="2" />
+		<record alias="count-5-effect" ref="Effect" repeat="2" />
+		<record alias="count-6-effect" ref="Effect" repeat="2" />
+		<record alias="count-7-effect" ref="Effect" repeat="2" />
+		<record alias="count-8-effect" ref="Effect" repeat="2" />
+		<record alias="count-9-effect" ref="Effect" repeat="2" />
+		<record alias="count-10-effect" ref="Effect" repeat="2" />
+		<record alias="count-1-skill-modify-info-group" ref="SkillModifyInfoGroup" repeat="10" />
+		<record alias="count-2-skill-modify-info-group" ref="SkillModifyInfoGroup" repeat="10" />
+		<record alias="count-3-skill-modify-info-group" ref="SkillModifyInfoGroup" repeat="10" />
+		<record alias="count-4-skill-modify-info-group" ref="SkillModifyInfoGroup" repeat="10" />
+		<record alias="count-5-skill-modify-info-group" ref="SkillModifyInfoGroup" repeat="10" />
+		<record alias="count-6-skill-modify-info-group" ref="SkillModifyInfoGroup" repeat="10" />
+		<record alias="count-7-skill-modify-info-group" ref="SkillModifyInfoGroup" repeat="10" />
+		<record alias="count-8-skill-modify-info-group" ref="SkillModifyInfoGroup" repeat="10" />
+		<record alias="count-9-skill-modify-info-group" ref="SkillModifyInfoGroup" repeat="10" />
+		<record alias="count-10-skill-modify-info-group" ref="SkillModifyInfoGroup" repeat="10" />
+		<record alias="count-1-tooltip" type="Bool" server="n" repeat="2" />
+		<record alias="count-2-tooltip" type="Bool" server="n" repeat="2" />
+		<record alias="count-3-tooltip" type="Bool" server="n" repeat="2" />
+		<record alias="count-4-tooltip" type="Bool" server="n" repeat="2" />
+		<record alias="count-5-tooltip" type="Bool" server="n" repeat="2" />
+		<record alias="count-6-tooltip" type="Bool" server="n" repeat="2" />
+		<record alias="count-7-tooltip" type="Bool" server="n" repeat="2" />
+		<record alias="count-8-tooltip" type="Bool" server="n" repeat="2" />
+		<record alias="count-9-tooltip" type="Bool" server="n" repeat="2" />
+		<record alias="count-10-tooltip" type="Bool" server="n" repeat="2" />
+		<record alias="count-1-talksocial" ref="TalkSocial" server="n" repeat="8" />
+		<record alias="count-2-talksocial" ref="TalkSocial" server="n" repeat="8" />
+		<record alias="count-3-talksocial" ref="TalkSocial" server="n" repeat="8" />
+		<record alias="count-4-talksocial" ref="TalkSocial" server="n" repeat="8" />
+		<record alias="count-5-talksocial" ref="TalkSocial" server="n" repeat="8" />
+		<record alias="count-6-talksocial" ref="TalkSocial" server="n" repeat="8" />
+		<record alias="count-7-talksocial" ref="TalkSocial" server="n" repeat="8" />
+		<record alias="count-8-talksocial" ref="TalkSocial" server="n" repeat="8" />
+		<record alias="count-9-talksocial" ref="TalkSocial" server="n" repeat="8" />
+		<record alias="count-10-talksocial" ref="TalkSocial" server="n" repeat="8" />
+		<record alias="count-1-skill-skin" ref="SkillSkin" server="n" />
+		<record alias="count-2-skill-skin" ref="SkillSkin" server="n" />
+		<record alias="count-3-skill-skin" ref="SkillSkin" server="n" />
+		<record alias="count-4-skill-skin" ref="SkillSkin" server="n" />
+		<record alias="count-5-skill-skin" ref="SkillSkin" server="n" />
+		<record alias="count-6-skill-skin" ref="SkillSkin" server="n" />
+		<record alias="count-7-skill-skin" ref="SkillSkin" server="n" />
+		<record alias="count-8-skill-skin" ref="SkillSkin" server="n" />
+		<record alias="count-9-skill-skin" ref="SkillSkin" server="n" />
+		<record alias="count-10-skill-skin" ref="SkillSkin" server="n" />
+
+		
+		<record alias="name2" ref="Text" />
+		<record alias="slot-name" ref="Text" repeat="10" />
+		<record alias="slot-tag-icon" type="Icon" repeat="10" />
+		<record alias="slot-equip-type" seq="equip-type" type="Seq" server="n" repeat="10" />
+	</list>
+</table>

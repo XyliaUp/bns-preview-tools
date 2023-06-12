@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="ItemData" type="static-chat-channel" version="0.1" >
+		<record alias="alias" type="String" />
+		<record alias="name2" ref="Text" />
+		<record alias="partychanneltype" type="Seq" >
+			<case alias="none" default="y" />
+			<case alias="1" />
+			<case alias="2" />
+			<case alias="3" />
+			<case alias="4" />
+			<case alias="5" />
+			<case alias="6" />
+		</record>
+	</list>
+</table>

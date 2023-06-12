@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="ItemData" type="itemtransformupgradeitem" version="0.1" >
+		<record alias="alias" type="String" />
+		<record alias="upgrade-type" type="Seq" >
+			<case alias="premium-item-transform" />
+			<case alias="add-rare-item-probability-bonus" />
+		</record>
+		<record alias="upgrade-item" ref="Item" repeat="4" />
+		<record alias="upgrade-item-stack-count" type="Int8" repeat="4" />
+		<!-- ======================================= -->
+		<record alias="unk" type="Bool" client="n" />
+		<!-- ======================================= -->
+	</list>
+</table>

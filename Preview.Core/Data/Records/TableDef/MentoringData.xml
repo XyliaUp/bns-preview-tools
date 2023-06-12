@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="ItemData" type="Mentoring" version="0.2" >
+		<record alias="version" key="y" type="Int16" />
+
+		<record alias="alias" type="String" />
+		<record alias="enable" type="Bool" showzero="y" />
+		<record alias="name" ref="Text" />
+		<record alias="text" ref="Text" />
+		<record alias="max-mentee-count" type="Int8" />
+		<record alias="first-quest-id" ref="Quest" />
+		<record alias="last-quest-id" ref="Quest" />
+		<record alias="limit-finish-count" type="Int8" />
+		<record alias="mentor-level" type="Int8" />
+		<record alias="mentor-mastery-level" type="Int8" />
+		<record alias="mentor-completed-quest" ref="Quest" />
+		<record alias="mentor-completed-achievement" ref="Achievement" />
+		<record alias="mentee-level" type="Int8" />
+		<record alias="mentee-mastery-level" type="Int8" />
+		<record alias="mentee-completed-quest" ref="Quest" />
+		<record alias="mentee-completed-achievement" ref="Achievement" />
+	</list>
+</table>

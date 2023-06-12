@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="CombatData" type="SoulMaskSet" version="0.5" check-version="y" >
+		<record alias="soul-mask-id-1" type="Int8" key="y" default="" />
+		<record alias="soul-mask-id-2" type="Int8" key="y" default="" />
+		<record alias="alias" type="String" />
+		<record alias="run-speed" type="Int16" max="200" min="0" />
+		<record alias="use-vehicle" type="Bool"  server="n" />
+		<record alias="soulmask-type" type="Seq" >
+			<case alias="normal" default="y" />
+			<case alias="transform" />
+		</record>
+		<record alias="kun-mesh" type="String" server="n" />
+		<record alias="gon-male-mesh" type="String" server="n" />
+		<record alias="gon-female-mesh" type="String" server="n" />
+		<record alias="lyn-male-mesh" type="String" server="n" />
+		<record alias="lyn-female-mesh" type="String" server="n" />
+		<record alias="jin-male-mesh" type="String" server="n" />
+		<record alias="jin-female-mesh" type="String" server="n" />
+		<record alias="kun-mesh-col" type="String" server="n" repeat="3" />
+		<record alias="gon-male-mesh-col" type="String" server="n" repeat="3" />
+		<record alias="gon-female-mesh-col" type="String" server="n" repeat="3" />
+		<record alias="lyn-male-mesh-col" type="String" server="n" repeat="3" />
+		<record alias="lyn-female-mesh-col" type="String" server="n" repeat="3" />
+		<record alias="jin-male-mesh-col" type="String" server="n" repeat="3" />
+		<record alias="jin-female-mesh-col" type="String" server="n" repeat="3" />
+		<record alias="kun-accessory-mesh" type="String" server="n" />
+		<record alias="gon-male-accessory-mesh" type="String" server="n" />
+		<record alias="gon-female-accessory-mesh" type="String" server="n" />
+		<record alias="lyn-male-accessory-mesh" type="String" server="n" />
+		<record alias="lyn-female-accessory-mesh" type="String" server="n" />
+		<record alias="jin-male-accessory-mesh" type="String" server="n" />
+		<record alias="jin-female-accessory-mesh" type="String" server="n" />
+		<record alias="kun-accessory-mesh-col" type="String" server="n" repeat="3" />
+		<record alias="gon-male-accessory-mesh-col" type="String" server="n" repeat="3" />
+		<record alias="gon-female-accessory-mesh-col" type="String" server="n" repeat="3" />
+		<record alias="lyn-male-accessory-mesh-col" type="String" server="n" repeat="3" />
+		<record alias="lyn-female-accessory-mesh-col" type="String" server="n" repeat="3" />
+		<record alias="jin-male-accessory-mesh-col" type="String" server="n" repeat="3" />
+		<record alias="jin-female-accessory-mesh-col" type="String" server="n" repeat="3" />
+		<record alias="is-accessory-skel-hair" type="Bool" server="n" />
+		<record alias="context-script" ref="ContextScript" server="n" />
+		<record alias="transform-appearance" ref="CreatureAppearance" server="n" />
+		<record alias="transform-animset" type="String" server="n" />
+		<record alias="transform-equip_hand_appearance" ref="Item" server="n" />
+		<record alias="transform-job" type="Seq" seq="job" server="n" />
+		<record alias="transform-weapon-type" type="Seq" seq="weapon-type" server="n" />
+		<record alias="transform-stance" type="Seq" seq="stance" server="n" />
+		<record alias="ui-show-job-target-indicator" type="Bool" server="n" />
+		<record alias="ui-show-job-style-gauge" type="Bool" server="n" />
+		<record alias="transform-appearance-jin" ref="CreatureAppearance" server="n" />
+		<record alias="transform-appearance-gon" ref="CreatureAppearance" server="n" />
+		<record alias="transform-appearance-kun" ref="CreatureAppearance" server="n" />
+		<record alias="is-race-transform-appearance" type="Bool" server="n" />
+		<record alias="is-use-grocery" type="Bool" default="y" server="n" />
+		<record alias="is-use-equiped-skill" type="Bool" default="y" server="n" />
+		<record alias="is-show-pet" type="Bool" default="y" server="n" />
+		<record alias="is-use-env" type="Bool" default="y" server="n" />
+		<record alias="is-use-field-item" type="Bool" default="y" server="n" />
+		<record alias="hide-hair" type="Bool" server="n" />
+	</list>
+</table>

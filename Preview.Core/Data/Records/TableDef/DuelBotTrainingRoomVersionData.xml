@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="ItemData" type="duel-bot-training-room-version" version="0.2" >
+		<record alias="alias" type="String" />
+		<record alias="version" type="Int16" />
+		<record alias="tooltip-info" ref="Text" />
+	</list>
+</table>

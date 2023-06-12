@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="ItemData" type="key-command" version="1.1" >
+		<record alias="key-command" type="Seq16" seq="key-command" key="y"/>
+		<record alias="pc-job" type="Seq" seq="job" key="y"/>
+		
+		<record alias="category" type="Seq" >
+			<case alias="none" />
+			<case alias="movement" />
+			<case alias="panel" />
+			<case alias="function" />
+			<case alias="skill" />
+			<case alias="social" />
+			<case alias="mark" />
+			<case alias="bns-mode" />
+			<case alias="joypad" />
+			<case alias="spectate" />
+		</record>
+		<record alias="joypad-category" type="Seq" >
+			<case alias="none" default="y" />
+			<case alias="joypad-movement" />
+			<case alias="joypad-skill" />
+			<case alias="joypad-panel-and-function" />
+			<case alias="joypad-social" />
+			<case alias="joypad-mark" />
+			<case alias="joypad-special-function" />
+			<case alias="joypad-spectate" />
+		</record>
+		<record alias="name" ref="Text" />
+		<record alias="default-keycap" type="String" />
+		<record alias="modifier-enabled" type="Bool" />
+		<record alias="sort-no" type="Int8" />
+		<record alias="layer" type="Int8" />
+		<record alias="option-sort-no" type="Int16" />
+		<record alias="usable-joypad-mode" type="Seq" >
+			<case alias="none" default="y" />
+			<case alias="any" />
+			<case alias="ui" />
+			<case alias="action" />
+		</record>
+		<record alias="joypad-customize-enabled" type="Bool" />
+	</list>
+</table>

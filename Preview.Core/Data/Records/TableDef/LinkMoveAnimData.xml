@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="CombatData" type="linkmoveanim" version="1.12" >
+		<record alias="alias" type="String" />
+		<record alias="pose-type" type="Seq" >
+			<case alias="standing" />
+			<case alias="dead" />
+			<case alias="dead-back" />
+			<case alias="dead-front" />
+			<case alias="stagger" />
+			<case alias="down" />
+			<case alias="front_down" />
+			<case alias="air" />
+			<case alias="air-back" />
+			<case alias="kneel" />
+			<case alias="burrow" />
+			<case alias="picking" />
+			<case alias="mount-linker" />
+			<case alias="mount-linkee" />
+			<case alias="catch" />
+			<case alias="catched" />
+			<case alias="catch-nonehuman" />
+			<case alias="catched-nonehuman" />
+			<case alias="catch-friend" />
+			<case alias="catched-friend" />
+			<case alias="hardwall" />
+			<case alias="ironfotess" />
+			<case alias="sit" />
+			<case alias="bomb-kneel" />
+			<case alias="inhalation-catch-sword" />
+			<case alias="inhalation-catch-nonehuman-sword" />
+		</record>
+
+		<record alias="die-anim" type="String" />
+		<record alias="dead-abnomal-idle" type="Seq" >
+			<case alias="normal" />
+			<case alias="dead" />
+			<case alias="dead-hide" />
+			<case alias="dead-back" />
+			<case alias="dead-front" />
+			<case alias="dead-swim-area" />
+			<case alias="exhaustion" />
+			<case alias="mount-linker" />
+			<case alias="mount-linkee" />
+			<case alias="inhalation_linker" />
+			<case alias="inhalation_linkee" />
+			<case alias="stun" />
+			<case alias="stagger" />
+			<case alias="down" />
+			<case alias="block" />
+			<case alias="air" />
+			<case alias="air2" />
+			<case alias="air3" />
+			<case alias="kneel" />
+			<case alias="magnetic" />
+			<case alias="stiff" />
+			<case alias="front_down" />
+			<case alias="block2" />
+			<case alias="flee" />
+			<case alias="knockback-stand" />
+			<case alias="knockback-kneel" />
+			<case alias="knockback-frontdown" />
+			<case alias="knockback-down" />
+			<case alias="picking" />
+			<case alias="fast-freezing" />
+			<case alias="impregnability" />
+			<case alias="hide" />
+			<case alias="burrow" />
+			<case alias="restoration" />
+			<case alias="block3" />
+			<case alias="landing-shock" />
+			<case alias="catch" />
+			<case alias="catched" />
+			<case alias="catch-none-human" />
+			<case alias="catched-none-human" />
+			<case alias="catch-friend" />
+			<case alias="catched-friend" />
+			<case alias="catch-inhalation" />
+			<case alias="catched-inhalation" />
+			<case alias="npc-block" />
+			<case alias="sit-down" />
+			<case alias="silver-wep" />
+			<case alias="ironfotess" />
+			<case alias="presentation-linke" />
+			<case alias="spider-web" />
+			<case alias="state-social" />
+			<case alias="block4" />
+			<case alias="dead-duel" />
+		</record>
+
+		<record alias="exhaustion-anim" type="String" />
+		<record alias="upper-idle" type="String" />
+		<record alias="lower-idle" type="String" />
+		<record alias="upper-walk-front" type="String" />
+		<record alias="lower-walk-front" type="String" />
+		<record alias="upper-walk-back" type="String" />
+		<record alias="lower-walk-back" type="String" />
+		<record alias="upper-walk-left" type="String" />
+		<record alias="lower-walk-left" type="String" />
+		<record alias="upper-walk-right" type="String" />
+		<record alias="lower-walk-right" type="String" />
+		<record alias="upper-walk-leftback" type="String" />
+		<record alias="lower-walk-leftback" type="String" />
+		<record alias="upper-walk-rightback" type="String" />
+		<record alias="lower-walk-rightback" type="String" />
+		<record alias="upper-run-front" type="String" />
+		<record alias="lower-run-front" type="String" />
+		<record alias="upper-run-back" type="String" />
+		<record alias="lower-run-back" type="String" />
+		<record alias="upper-run-left" type="String" />
+		<record alias="lower-run-left" type="String" />
+		<record alias="upper-run-right" type="String" />
+		<record alias="lower-run-right" type="String" />
+		<record alias="upper-run-leftback" type="String" />
+		<record alias="lower-run-leftback" type="String" />
+		<record alias="upper-run-rightback" type="String" />
+		<record alias="lower-run-rightback" type="String" />
+		<record alias="upper-jump-front" type="String" />
+		<record alias="lower-jump-front" type="String" />
+		<record alias="upper-jump-left" type="String" />
+		<record alias="lower-jump-left" type="String" />
+		<record alias="upper-jump-right" type="String" />
+		<record alias="lower-jump-right" type="String" />
+		<record alias="upper-turn-left" type="String" />
+		<record alias="lower-turn-left" type="String" />
+		<record alias="upper-turn-right" type="String" />
+		<record alias="lower-turn-right" type="String" />
+		<record alias="upper-jtoi" type="String" />
+		<record alias="lower-jtoi" type="String" />
+		<record alias="upper-jtomfront" type="String" />
+		<record alias="lower-jtomfront" type="String" />
+		<record alias="upper-jtomleft" type="String" />
+		<record alias="lower-jtomleft" type="String" />
+		<record alias="upper-jtomright" type="String" />
+		<record alias="lower-jtomright" type="String" />
+		<record alias="upper-jtomback" type="String" />
+		<record alias="lower-jtomback" type="String" />
+		<record alias="upper-mtojfront" type="String" />
+		<record alias="lower-mtojfront" type="String" />
+		<record alias="upper-mtojleft" type="String" />
+		<record alias="lower-mtojleft" type="String" />
+		<record alias="upper-mtojright" type="String" />
+		<record alias="lower-mtojright" type="String" />
+		<record alias="upper-mtoi" type="String" />
+		<record alias="lower-mtoi" type="String" />
+		<record alias="upper-ltor" type="String" />
+		<record alias="lower-ltor" type="String" />
+		<record alias="upper-rtol" type="String" />
+		<record alias="lower-rtol" type="String" />
+	</list>
+</table>

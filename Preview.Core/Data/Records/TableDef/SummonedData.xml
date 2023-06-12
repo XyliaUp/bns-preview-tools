@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="AIData" type="summoned" version="0.24" check-verison="y" >
+		<record alias="race" type="Seq" seq="race" key="y" />
+		<record alias="job" type="Seq" seq="job" key="y" />
+
+		<record alias="id" type="Int64" />
+		<record alias="sex" type="Seq" seq="sex" />
+		<record alias="summoned-type" type="Seq" >
+			<case alias="normal" default="y" />
+			<case alias="ethereal" />
+        </record>
+		<record alias="brain-type" type="Seq" >
+			<case alias="normal" default="y" />
+			<case alias="combat-follow" />
+			<case alias="fixed" />
+        </record>
+		<record alias="combat-follow-distance" type="Distance" default="200" />
+		<record alias="far-event-distance" type="Distance" />
+		<record alias="far-event-action-type" type="Seq" >
+			<case alias="none" default="y" />
+			<case alias="recall" />
+			<case alias="despawn" />
+        </record>
+		<record alias="radius" type="Distance" />
+		<record alias="trace-master-skill-target" type="Int8" />
+		<record alias="summoned-sequence" ref="SummonedSequence" />
+		<record alias="seq-skill" type="Int32" server="n" repeat="10" />
+		<record alias="spawn-skill-id" type="Int32" server="n" />
+		<record alias="immune-skill-attribute" type="Seq" seq="skill-attribute" repeat="4" />
+		<record alias="immune-effect-attribute" type="Seq16" seq="effect-attribute" repeat="8" />
+		<record alias="stance" type="Seq16" seq="stance" />
+		<record alias="lifetime-duration" type="Msec" />
+		<record alias="max-speed-near-master" type="Velocity" />
+		<record alias="min-distance-to-lerp-speed" type="Distance" />
+		<record alias="max-distance-to-lerp-speed" type="Distance" />
+		<record alias="speed" type="Velocity" />
+		<record alias="use-customized-appearance" type="Bool" />
+		<record alias="appearance" ref="CreatureAppearance" />
+		<record alias="animset" type="String" />
+		<record alias="moveanim" ref="MoveAnim" client="n" />
+		<record alias="spawn-social" ref="Social" />
+		<record alias="dead-social" ref="Social" client="n" />
+		<record alias="despawn-social" ref="Social" client="n" />
+		<record alias="respawn-in-social" ref="Social" />
+		<record alias="respawn-out-social" ref="Social" />
+		<record alias="spawn-show" type="String" />
+		<record alias="despawn-show" type="String" />
+		<record alias="combat-side-player-continuance-show" type="String" />
+		<record alias="combat-side-friend-continuance-show" type="String" />
+		<record alias="combat-side-enemy-continuance-show" type="String" />
+		<record alias="icon" type="Icon" />
+		<record alias="ui-show-buff-list" type="Bool" />
+		<record alias="ui-show-nameplate" type="Bool" />
+		<record alias="ui-show-summoned-stat" type="Bool" />
+		<record alias="ui-enable-pc-tooltip" type="Bool" />
+		<record alias="mapunit-width" type="Float32" />
+		<record alias="mapunit-height" type="Float32" />
+		<record alias="mapunit-imageset" type="String" />
+		<record alias="mapunit-outsight-width" type="Float32" />
+		<record alias="mapunit-outsight-height" type="Float32" />
+		<record alias="mapunit-outsight-imageset" type="String" />
+		<record alias="fixed-name" ref="Text" />
+		<record alias="nameplate-title-state-normal" ref="Text" />
+		<record alias="nameplate-title-state-duel-other-team" ref="Text" />
+		<record alias="nameplate-name-state-anonymity" ref="Text" />
+		<record alias="nameplate-name-state-duel-other-team" ref="Text" />
+		<record alias="term-sequence-range-sim-check" type="Float32" />
+	</list>
+</table>

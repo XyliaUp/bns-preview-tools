@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="ZoneData0" type="map-group-1-expedition" version="0.5" >
+		<record alias="group" ref="MapGroup1" />
+		<record alias="describe" ref="Text" />
+		<record alias="image" type="String" />	
+	</list>
+</table>

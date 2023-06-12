@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="ItemData" type="ItemTransformRecipe" version="3.0" >
+		<record alias="alias" type="String" name="别名" />
+		<record alias="upgrade-grocery" ref="ItemTransformUpgradeItem" />
+		<record alias="required-inven-capacity" type="Int32" default="1" apply="must" />
+		<record alias="money-cost" type="Int32" />
+		<record alias="main-ingredient" type="TRef" />
+		<record alias="main-ingredient-condition-type" type="Seq" seq="condition-type" />
+		<record alias="main-ingredient-min-level" type="Int8" default="1" />
+		<record alias="main-ingredient-stack-count" type="Int16" />
+		<record alias="main-ingredient-title-name" ref="Text" />
+		<record alias="main-ingredient-title-item" type="Int32" name="用于显示的物品" ref="Item" server="n" />
+		<record alias="keep-main-ingredient-weapon-gem-slot" type="Bool" />
+		<record alias="keep-main-ingredient-weapon-appearance" type="Bool" />
+		<record alias="keep-main-ingredient-spirit" type="Bool" />
+		<record alias="consume-main-ingredient" type="Bool" />		
+		<record alias="sub-ingredient" type="TRef" repeat="7" />
+		<record alias="sub-ingredient-condition-type" type="Seq" out-cond="Exist:sub-ingredient-*" seq="condition-type" repeat="7" />
+		<record alias="sub-ingredient-min-level" type="Int8" default="1" out-cond="Exist:sub-ingredient-*" repeat="7" />
+		<record alias="sub-ingredient-stack-count" type="Int16" repeat="7" />
+		<record alias="sub-ingredient-title-name" ref="Text" repeat="7" />
+		<record alias="sub-ingredient-title-item" ref="Item" server="n" repeat="7" />
+		<record alias="consume-sub-ingredient" type="Bool" />
+		<!-- =========================== 固定材料  ===========================  -->
+		<record alias="fixed-ingredient" ref="Item" repeat="8" />
+		<record alias="fixed-ingredient-stack-count" type="Int16" repeat="8" />
+		<record alias="consume-fixed-ingredient" type="Bool" default="y" showzero="y" />
+		<record alias="special-fixed-index" type="Int8" server="n" />
+		<record alias="unk-" type="Bool" server="n" />
+		<record alias="unk-" type="Bool" server="n" />
+		<record alias="unk-" type="Bool" server="n" />
+		<record alias="rare-item" type="TRef" repeat="12" />
+		<record alias="normal-item" type="TRef" repeat="12" />
+		<record alias="premium-item" type="TRef" repeat="12" />	
+		<record alias="random-item" type="TRef" repeat="10" />
+		<record alias="unk-" type="Int32" />
+		<record alias="unk-" type="Int32" />
+		<record alias="unk-" type="Int32" />
+		<record alias="unk-" type="Int32" />
+		<record alias="unk-" type="Int32" />
+		<!-- ===============================================================  -->		
+		<record alias="random-failure-mileage-save" type="Bool" />
+		<record alias="random-failure-mileage-influence-recipe-1" ref="this" />
+		<record alias="random-failure-mileage-influence-recipe-2" ref="this" />
+		<record alias="random-retry-cost" ref="item-transform-retry-cost" />
+		<record alias="main-ingredient-weapon-gem-type" type="Seq" seq="weapon-gem-type" />
+		<record alias="main-ingredient-weapon-gem-level" type="Int16" />
+		<record alias="main-ingredient-weapon-gem-grade" type="Int8" />
+		<record alias="sub-ingredient-weapon-gem-type" type="Seq" seq="weapon-gem-type" repeat="7" />
+		<record alias="sub-ingredient-weapon-gem-level" type="Int16" repeat="7" />
+		<record alias="sub-ingredient-weapon-gem-grade" type="Int8" repeat="7" />
+		<record alias="title-item" ref="Item" />
+		<record alias="title-name" ref="Text" />
+		<record alias="title-reward" ref="RandomboxPreview" server="n" />
+		<record alias="category2" type="Seq" >
+			<case alias="none" default="y" />
+		</record>
+		<record alias="category" type="Seq" >
+			<case alias="none" default="y" />
+			<case alias="event" />
+			<case alias="material" />
+			<case alias="costume" />
+			<case alias="weapon" />
+			<case alias="legendary-weapon" />
+			<case alias="accessory" />
+			<case alias="weapon-gem-adder" />
+			<case alias="weapon-gem2" />
+			<case alias="piece" />
+			<case alias="purification" />
+			<case alias="special" />
+			<case alias="pet" />
+			<case alias="pet-legend" />
+			<case alias="pet-change" />
+			<case alias="taiji-gem" />
+			<case alias="division" />
+			<case alias="weapon-enchant-gem" />
+			<case alias="sewing" />
+			<case alias="weapon-transform" />
+			<case alias="accessory-transform" />
+			<case alias="equip-gem" />
+		</record>
+		<record alias="use-random" type="Bool" />
+		<record alias="fail-effect" ref="Effect" />
+		<record alias="quest" ref="Quest" server="n" />
+		<record alias="bm-ingredient-recipe" type="Bool" />
+		<record alias="warning" type="Seq" server="n" >
+			<case alias="none" default="y" />
+			<case alias="fail" />
+			<case alias="stuck" />
+			<case alias="gemslotreset" />
+			<case alias="fail-gemslotreset" />
+			<case alias="stuck-gemslotreset" />
+			<case alias="change" />
+			<case alias="lower" />
+			<case alias="lower-gemslotreset" />
+			<case alias="partialfail" />
+			<case alias="tradeimpossible" />
+			<case alias="delete-particle" />
+			<case alias="delete-design" />
+			<case alias="spiritreset" />
+			<case alias="fail-spiritreset" />
+			<case alias="gemslotreset-spiritreset" />
+			<case alias="fail-gemslotreset-spiritreset" />
+			<case alias="lower-spiritreset" />
+			<case alias="lower-gemslotreset-spiritreset" />
+			<case alias="partialfail-spiritreset" />
+			<case alias="cannot-division" />
+			<case alias="fail-cannot-division" />
+		</record>
+		<record alias="event-index" type="Int8" server="n" />
+		<record alias="recipe-score" type="Int32" server="n" />
+		<record alias="recipe-series" type="Seq" server="n" >
+			<case alias="none" default="y" />
+			<case alias="normal-1" />
+			<case alias="normal-2" />
+			<case alias="normal-3" />
+			<case alias="normal-4" />
+			<case alias="normal-5" />
+			<case alias="normal-6" />
+			<case alias="normal-7" />
+			<case alias="normal-8" />
+			<case alias="normal-9" />
+			<case alias="normal-11" />
+			<case alias="normal-12" />
+			<case alias="normal-13" />
+			<case alias="normal-14" />
+			<case alias="normal-15" />
+			<case alias="normal-16" />
+			<case alias="normal-17" />
+			<case alias="normal-18" />
+			<case alias="normal-19" />
+			<case alias="normal-20" />
+			<case alias="bm-1" />
+			<case alias="bm-2" />
+			<case alias="bm-3" />
+			<case alias="bm-4" />
+			<case alias="bm-5" />
+			<case alias="bm-6" />
+			<case alias="bm-7" />
+			<case alias="bm-8" />
+			<case alias="bm-9" />
+			<case alias="bm-11" />
+			<case alias="bm-12" />
+			<case alias="bm-13" />
+			<case alias="bm-14" />
+			<case alias="bm-15" />
+			<case alias="bm-16" />
+			<case alias="bm-17" />
+			<case alias="bm-18" />
+			<case alias="bm-19" />
+			<case alias="bm-20" />
+		</record>
+		<record alias="definite-discount-minimum-value" type="Int8" />
+	</list>
+</table>

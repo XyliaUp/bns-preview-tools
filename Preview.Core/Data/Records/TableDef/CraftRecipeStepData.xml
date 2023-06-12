@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="ItemData" type="craft-recipe-step" version="0.1" >
+		<record alias="alias" type="String" />
+		<record alias="time-cost" type="Msec" />
+		<record alias="output-id" type="Int64" repeat="3" />
+		<record alias="output-amount" type="Int16" repeat="3" />	
+		<record alias="output-customizable" type="Bool" repeat="3" />	
+	</list>
+</table>

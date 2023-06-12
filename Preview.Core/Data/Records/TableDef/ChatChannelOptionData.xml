@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="LocalizationData" type="chat-channel-option" version="0.1" >
+		<record alias="id" type="Int32" key="y" />
+		<record alias="category" type="Seq" >
+		    <case alias="none" default="y" />
+			<case alias="chat-sight" />
+			<case alias="chat-party" />
+			<case alias="chat-team" />
+			<case alias="chat-team-leader" />
+			<case alias="chat-one" />
+			<case alias="chat-in-domain" />
+			<case alias="chat-faction" />
+			<case alias="chat-guild" />
+			<case alias="chat-guild-manager" />
+			<case alias="chat-party-search" />
+			<case alias="chat-npc" />
+			<case alias="chat-godsay-normal" />
+			<case alias="chat-godsay-campaign" />
+			<case alias="chat-godsay-emergency" />
+			<case alias="chat-field-dungeon" />
+			<case alias="chat-qq-c2c" />
+			<case alias="chat-qq-group" />
+			<case alias="chat-guild-search" />
+			<case alias="chat-watch" />
+			<case alias="chat-world" />
+
+			<case alias="default" />
+			<case alias="warning" />
+			<case alias="info" />
+			<case alias="party" />
+			<case alias="party-match" />
+			<case alias="team" />
+			<case alias="faction" />
+			<case alias="guild" />
+			<case alias="guild-match" />
+			<case alias="exhaustion" />
+			<case alias="exhaustion-pc" />
+			<case alias="exp-acquisition" />
+			<case alias="exp-loss" />
+			<case alias="levelup" />
+			<case alias="money-acquisition" />
+			<case alias="money-loss" />
+			<case alias="item-acquisition" />
+			<case alias="item-loss" />
+			<case alias="skill-build-up-point-acquisition" />
+			<case alias="quest-acquisition" />
+			<case alias="quest-complete" />
+			<case alias="talk-social" />
+			<case alias="field-dungeon" />
+			<case alias="qq" />
+			<case alias="combat-normal" />
+			<case alias="combat-critical" />
+			<case alias="combat-heal" />
+			<case alias="combat-defend" />
+			<case alias="combat-parry" />
+			<case alias="combat-abnormal" />
+			<case alias="combat-attacked-normal" />
+			<case alias="combat-attacked-critical" />
+			<case alias="combat-target-heal" />
+			<case alias="combat-target-defend" />
+			<case alias="combat-target-abnormal" />
+			<case alias="combat-other-normal" />
+			<case alias="combat-other-critical" />
+			<case alias="combat-other-heal" />
+			<case alias="combat-other-defend" />
+			<case alias="combat-other-abnormal" />
+			<case alias="combat-party-normal" />
+			<case alias="combat-party-critical" />
+			<case alias="combat-party-heal" />
+			<case alias="combat-party-defend" />
+			<case alias="combat-party-abnormal" />
+			<case alias="combat-party-attacked-normal" />
+			<case alias="combat-party-attacked-critical" />
+			<case alias="combat-party-target-defend" />
+			<case alias="mentoring" />
+			<case alias="skill" />
+		</record>
+		<record alias="font-color-index" type="Int8" />
+		<record alias="group" type="Seq" >
+		    <case alias="none" default="y" />
+		    <case alias="chat" />
+		    <case alias="system" />
+		    <case alias="combat" />
+		</record>
+		<record alias="modifiable" type="Bool" />
+	</list>
+</table>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="CombatData" type="skillSystematization" version="0.15" >
+		<record alias="id" type="Int32" key="y" />
+		<record alias="alias" type="String" />
+		<record alias="systematization" type="Seq" >
+			<case alias="none" />
+			<case alias="kneel" />
+			<case alias="stun" />
+			<case alias="knockback" />
+			<case alias="down" />
+			<case alias="catch" />
+			<case alias="mount" />
+			<case alias="inhalation" />
+			<case alias="speeddown" />
+			<case alias="midair" />
+			<case alias="freezing" />
+			<case alias="stiff" />
+			<case alias="pull" />
+			<case alias="internal-injury" />
+			<case alias="flash" />
+			<case alias="block-move" />
+			<case alias="bleeding" />
+			<case alias="swoon" />
+			<case alias="immune-projectile" />
+			<case alias="immune-CC" />
+			<case alias="immune-damage" />
+			<case alias="party-buff" />
+			<case alias="party-protect" />
+			<case alias="perfect-parry" />
+			<case alias="counter" />
+			<case alias="bounce" />
+			<case alias="protect" />
+			<case alias="sp-heal" />
+			<case alias="hp-heal" />
+			<case alias="attackdefence-block" />
+			<case alias="defence-block" />
+			<case alias="dash-block" />
+			<case alias="escape" />
+			<case alias="speedup" />
+			<case alias="hyper" />
+			<case alias="tumbling" />
+			<case alias="dash" />
+			<case alias="soulmask" />
+			<case alias="provocation" />
+			<case alias="hate" />
+			<case alias="passive" />
+			<case alias="summoned" />
+			<case alias="projectile" />
+			<case alias="defence-pierce" />
+			<case alias="bounce-pierce" />
+			<case alias="defense-crush" />
+			<case alias="union" />
+			<case alias="link" />
+			<case alias="defence" />
+			<case alias="attackdefence" />
+			<case alias="single-target" />
+			<case alias="aoe-target" />
+			<case alias="team-buff" />
+			<case alias="team-protect" />
+		</record>
+		<record alias="name" type="String" />
+		<record alias="name2" ref="Text" />
+		<record alias="description" ref="Text" />
+		<record alias="sort-no" type="Int8" />
+		<record alias="group" ref="SkillSystematizationGroup" />		
+	</list>
+</table>

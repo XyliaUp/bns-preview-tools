@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="ZoneData2" type="ZoneCellAttribute" version="0.3" >
+		<record alias="id" type="Int32" key="y" />
+		<record alias="alias" type="String" />
+		<record alias="zone" ref="Zone" />
+		<record alias="pos-count" type="Int8" />
+		<record alias="pos-x" type="Int32" repeat="20" />
+		<record alias="pos-y" type="Int32" repeat="20" />
+		<record alias="pos-z-start" type="Int32" />
+		<record alias="pos-z-end" type="Int32" />
+		<record alias="cell-attribute" type="Seq" >
+			<case alias="invalid" />
+			<case alias="safe" />
+        </record>
+	</list>
+</table>

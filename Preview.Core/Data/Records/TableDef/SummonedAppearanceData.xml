@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="AIData" type="summoned-appearance" version="0.7" check-version="y" >
+		<record alias="race" key="y" type="Seq" seq="race" />
+		<record alias="animset" type="String" />	
+		<record alias="moveanim" ref="SummonedMoveAnim" />	
+		<record alias="appearance" ref="CreatureAppearance" />			
+		<record alias="sword" type="String" />	
+		<record alias="glove-r" type="String" />	
+		<record alias="glove-l" type="String" />	
+		<record alias="hammer" type="String" />	
+		<record alias="gun-r" type="String" />	
+		<record alias="gun-l" type="String" />
+	</list>
+</table>

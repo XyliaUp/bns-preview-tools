@@ -1,0 +1,114 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<!-- 
+    编辑者：    Xylia 
+	内容说明：
+	更新时间：
+	版本说明：               
+-->
+	<list module="ZoneData1" type="zone" version="5.0" check-version="y" >
+		<record alias="id" type="Int32" key="y" />
+		<record alias="alias" name="alias" type="String" />
+		<record alias="deprecated-zone" type="Bool" />
+		<record alias="transfer-pcspawn-by-deprecated" ref="ZonePcSpawnData" />
+		<record alias="chat-channel" ref="StaticChatChannel" />
+		<record alias="zone-type" type="Seq" client="n" >
+			<case alias="none" />
+			<case alias="persistant" />
+			<case alias="single" />
+			<case alias="instant" />
+			<case alias="dungeon" />
+			<case alias="arena" />
+			<case alias="single-dungeon" />
+			<case alias="duel" />
+		</record>
+		<record alias="zone-type2" type="Seq" >
+			<case alias="none" />
+			<case alias="persistent" />
+			<case alias="single" />
+			<case alias="instant" />
+		</record>
+		<record alias="attraction" server="n" type="TRef" />
+		<record alias="district" ref="district" />
+		<record alias="sector-xmin" type="Int16" />
+		<record alias="sector-xmax" type="Int16" />
+		<record alias="sector-ymin" type="Int16" />
+		<record alias="sector-ymax" type="Int16" />
+		<record alias="pc-max" type="Int16" />
+		<record alias="pc-max-by-main-faction" type="Int16" />
+		<record alias="recommend-pc-count" type="Int16" />
+		<record alias="npc-max" type="Int16" />
+		<record alias="cube-xysize" type="Int16" client="n" default="y" />
+		<record alias="sight-cube" type="Bool" default="y" />
+		<record alias="terrain" type="Int16" />
+		<record alias="region" type="Int16" />
+
+		<record alias="respawn" ref="ZoneRespawn" type="Int32" />
+		<record alias="respawn-by-activated-faction-required-faction-1" ref="Faction" />
+		<record alias="respawn-by-activated-faction-required-faction-2" ref="Faction" />
+		<record alias="respawn-by-activated-faction-1" ref="ZoneRespawn" />
+		<record alias="respawn-by-activated-faction-2" ref="ZoneRespawn" />
+		<record alias="basecamp" ref="ZoneBasecamp" type="Int32" />
+		<record alias="description2" ref="Text" />
+		<record alias="kismet-name" type="String" />
+		<record alias="enter-kismet-name" type="String" />
+		<record alias="leave-kismet-name" type="String" />
+		<record alias="aiid" type="String" />
+
+		<record alias="reentrance-pcspawn" ref="ZonePcSpawn" />
+		<record alias="reentrance-pcspawn-in-arena" ref="ZonePcSpawn" />
+		<record alias="reentrance-pcspawn-in-arena-sealed" ref="ZonePcSpawn" />
+
+		<record alias="map" ref="MapInfo" />
+		<record alias="area" ref="MapArea" />
+		<record alias="effect-link-type" type="Seq">
+			<case alias="effect-persistant" default="y" />
+			<case alias="effect-single" />
+			<case alias="effect-instant" />
+			<case alias="effect-conflictarea" />
+			<case alias="effect-dungeon-wayin" />
+			<case alias="effect-dungeon" />
+			<case alias="effect-blocked" />
+			<case alias="effect-single-normal" />
+			<case alias="effect-single-higher" />
+			<case alias="effect-single-veryhigher" />
+			<case alias="effect-single-hero" />
+			<case alias="effect-instant-normal" />
+			<case alias="effect-instant-higher" />
+			<case alias="effect-instant-veryhigher" />
+			<case alias="effect-raid-dungeon" />
+		</record>
+		<record alias="tutorial" type="Bool" />
+		<record alias="sharable-combatmode" type="Bool" />
+		<record alias="use-perfmon" type="Bool" />
+		<record alias="recharge-exp-boost" type="Bool" />
+		<record alias="available-sextet-party" type="Bool" />
+		<record alias="write-equipinfo-log" type="Bool" />
+		<record alias="phase-quest-count" server="n" type="Int8" />
+		<record alias="phase-quest" server="n" ref="Quest" repeat="40" />
+		<record alias="phase-id" server="n" type="Int8" repeat="40" />
+		<record alias="phase-zone" ref="this" repeat="17" />
+		<record alias="phase-zone-disable-in-arena" server="n" type="Int8" repeat="17" />
+		<record alias="default-phase-zone" default="y" type="Bool" />
+		<record alias="phase-main-zone" ref="this" server="n" />
+		<record alias="default-phase-pc-spawn-id" type="Int16" />
+		<record alias="dungeon-step" server="n" type="Int8" />
+		<record alias="is-arena-entrance" type="Bool" />
+		<record alias="enable-ghost-mode" type="Seq">
+			<case alias="none" default="y" />
+			<case alias="basic" />
+			<case alias="phase" />
+		</record>
+
+
+		<record alias="arena-return-area" ref="ZoneArea" client="n" repeat="2" />
+		<record alias="district" ref="District" client="n" />
+		<record alias="download-level" type="Int8" client="n" />
+		<record alias="enable-in-out-detector" type="Bool" client="n" />
+		<record alias="min-channel" type="Int8" client="n" />
+		<record alias="max-channel" type="Int8" client="n" />
+		<record alias="light-client-enable" type="Bool" client="n" />
+		<record alias="script" ref="Script" client="n" />
+		<record alias="loadingscene" ref="LoadingImage" client="n" />
+	</list>
+</table>

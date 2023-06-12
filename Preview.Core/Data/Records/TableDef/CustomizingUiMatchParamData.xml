@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="ItemData" type="CustomizingUiMatchParam" version="0.1" side="client" >
+		<record alias="ui-index" key="y" type="Int16" />
+		<record alias="race" key="y" type="Seq" seq="race" />
+		<record alias="sex" key="y" type="Seq" seq="sex" />
+		
+		<record alias="sub-name" ref="Text" />
+		<record alias="param-index" type="Int8" default="-1" />	
+	</list>
+</table>

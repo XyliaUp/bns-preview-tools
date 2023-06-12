@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="ItemData" type="Fishing-Paste" version="0.4" >
+		<record alias="alias" type="String" />
+		<record alias="item" ref="Item" />
+		<record alias="use-auto-fishing" type="bool" server="n" />
+		<record alias="additional-fish-grade-selection-value" type="Int32" client="n" />
+	</list>
+</table>

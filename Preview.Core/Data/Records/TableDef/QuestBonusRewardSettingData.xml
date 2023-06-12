@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="QuestData" type="QuestBonusRewardSetting" version="3.0" >
+		<record alias="type" type="type" >
+			<case alias="sealed-level" />
+			<case alias="difficulty-type" />
+			<case alias="ignore-difficulty" />			
+		</record>
+		
+		<record alias="id" type="Int32" key="y" />
+		<record alias="alias" type="String" />
+		<record alias="quest" ref="Quest" />
+		<record alias="reward" ref="QuestBonusReward" />
+		<record alias="basic-quota" ref="ContentQuota" />
+		<record alias="contents-reset" ref="ContentsReset" repeat="10" />
+		<!-- ==================================================================== -->
+		<record alias="sealed-level" type="Int8" filter="sealed-level" />
+		<!-- ==================================================================== -->
+		<record alias="difficulty-type" type="Seq" seq="difficulty-type" filter="difficulty-type" />
+		<!-- ==================================================================== -->
+	</list>
+</table>

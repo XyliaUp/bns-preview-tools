@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="AIData" type="BossNpc" version="3.0" check-version="y" >
+		<record alias="alias" type="String" />
+		<record alias="sp-point" type="Int16" repeat="3" />
+		<record alias="sp-show" type="String" repeat="3" />
+		<record alias="immune-breaker-disabale-show" type="String" />
+		<record alias="berserk-sequence-invoke-time" type="Int32" />
+		<record alias="difficulty-type-modify" ref="DifficultyTypeModify" />
+		<record alias="use-second-gauge" type="Bool" />
+		<record alias="default-gp" type="Int16" />
+		<record alias="gp-section" type="Int16" repeat="11" />
+		<record alias="gp-section-cnt" type="Int8" default="3" />
+		<record alias="ui-style" type="Seq" >
+			<case alias="none" default="y" />
+			<case alias="fury" />
+			<case alias="absorb-level" />
+			<case alias="double-sided" />
+		</record>
+		<record alias="ui-tooltip" ref="Text" />
+		<record alias="ui-double-sided-left-imageset" type="String" />
+		<record alias="ui-double-sided-right-imageset" type="String" />
+		<record alias="ui-double-sided-left-color-r" type="Int16" />
+		<record alias="ui-double-sided-left-color-g" type="Int16" />
+		<record alias="ui-double-sided-left-color-b" type="Int16" />
+		<record alias="ui-double-sided-left-color-a" type="Int16" />
+		<record alias="ui-double-sided-right-color-r" type="Int16" />
+		<record alias="ui-double-sided-right-color-g" type="Int16" />
+		<record alias="ui-double-sided-right-color-b" type="Int16" />
+		<record alias="ui-double-sided-right-color-a" type="Int16" />
+		<record alias="ui-fury-color-r" type="Int16" repeat="3" />
+		<record alias="ui-fury-color-g" type="Int16" repeat="3" />
+		<record alias="ui-fury-color-b" type="Int16" repeat="3" />
+		<record alias="ui-fury-color-a" type="Int16" repeat="3" />
+
+		<!-- 2021年08月新增 -->
+		<record alias="use-break" type="Bool" />
+		<record alias="break-gauge-limit" type="Int16" default="1" />
+		<record alias="break-gauge-limit-increase-value" type="Int16" />
+		<record alias="max-break-count" type="Int8" default="5" />
+
+		<!-- ================================================================== -->
+		<record alias="berserk-sequence" name="狂暴化技能序列" ref="CombatSequence" client="n" />
+		<record alias="use-bleeding" type="Bool" client="n" />
+		<record alias="use-hp-zone-broadcast" type="Bool" client="n" />
+		<record alias="disable-contribution-reward-range-check" type="Bool" client="n" />
+
+		<record alias="boss-brain-type" type="Seq" client="n" >
+			<case alias="none" default="y" />
+			<case alias="citizen" />			
+			<case alias="monster" />
+			<case alias="boss" />
+			<case alias="follower" />
+		</record>
+		<record alias="skill-spawn-attack-target" type="Seq" client="n" />
+		<record alias="skill-spawn-group" ref="ZoneNpcSquad" client="n" repeat="8" />
+
+		raid-dungeon-step
+
+		<record alias="rising-attack-skill3" name="击倒起身后使用技能" ref="Skill3" client="n" />
+		<record alias="rising-attack-invoke-time" name="击倒起身时间" type="Msec" client="n" />
+		<record alias="wakeup-attack-skill3" name="眩晕解除技能" ref="Skill3" client="n" />
+		<record alias="wakeup-attack-invoke-time" name="眩晕解除技能" type="Msec" client="n" />
+	</list>
+</table>

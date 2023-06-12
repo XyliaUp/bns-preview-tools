@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="ItemData" type="treasure-board-page" version="1.0" >
+		<record alias="alias" type="String" />
+		<record alias="one-time-draw-item" ref="Item" />
+		<record alias="one-time-draw-item-count" type="Int16" />
+		<record alias="five-times-draw-item" ref="Item" />
+		<record alias="five-times-draw-item-count" type="Int16" />
+		<record alias="reset-condition" type="Seq" >
+			<case alias="normal" default="y" />
+			<case alias="draw-all" />
+		</record>
+		<record alias="reset-price-type" type="Seq" >
+			<case alias="free" default="y" />
+			<case alias="item" />
+		</record>
+		<record alias="reset-price-item" ref="Item" />
+		<record alias="reset-price-item-count" type="Int16" />
+		<record alias="quota" ref="ContentQuota" />
+		<record alias="treasure-board-reward" ref="TreasureBoardReward" repeat="59" />
+		<record alias="treasure-board-name" ref="Text" />
+		<record alias="treasure-board-symbol-on" type="String" />
+		<record alias="treasure-board-symbol-off" type="String" />
+	</list>
+</table>

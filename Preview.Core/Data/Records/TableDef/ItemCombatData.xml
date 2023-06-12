@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="ItemData" type="item-combat" version="2.0">
+		<record alias="alias" type="String" />
+		<record alias="job-style" type="Seq" seq="job-style" />	
+		<record alias="item-skill" ref="ItemSkill" repeat="16" />
+		<record alias="item-skill-second" ref="ItemSkill" repeat="16" />
+		<record alias="item-skill-third" ref="ItemSkill" repeat="16" />
+		<record alias="skill-build-up-parent-skill3-id" type="Int32" repeat="3" />
+		<record alias="skill-build-up-level" type="Int8" default="1" showzero="y" out-cond="Exist: skill-build-up-parent-skill3-id-*" repeat="3" />
+		<record alias="skill-modify-info-group" ref="SkillModifyInfoGroup" />
+	</list>
+</table>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table>
+
+	<list module="ItemData" side="" type="randombox-preview" version="0.20" >
+		<record alias="condition" type="dictionary" >
+			<case alias="none" default="y" />
+			<case alias="variation-1" />
+			<case alias="variation-2" />
+			<case alias="variation-3" />
+			<case alias="variation-4" />
+			<case alias="variation-5" />
+			<case alias="variation-6" />
+			<case alias="variation-7" />
+			<case alias="variation-8" />
+			<case alias="jump" />
+			<case alias="change-group" />
+			<case alias="exchange" />
+			<case alias="black-sky" />
+			<case alias="down" />
+			<case alias="hide-line" />
+			<case alias="hide-line-and-tooltip" />
+			<case alias="hide-tooltip" />
+		</record>
+
+		<record alias="alias" type="String" />
+		<record alias="fixed-item" type="TRef" repeat="8" />
+		<record alias="fixed-item-condition" type="Seq" seq="condition" repeat="8" />
+		<record alias="selected-item" type="TRef" repeat="20" />
+		<record alias="selected-item-condition" type="Seq" seq="condition" repeat="20" />
+		<record alias="random-item" type="TRef" repeat="20" />
+		<record alias="random-item-condition" type="Seq" seq="condition" repeat="20" />
+		<record alias="description" ref="Text" />		
+		<!-- ================================================================ -->
+	</list>
+</table>

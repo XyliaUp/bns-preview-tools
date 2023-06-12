@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="ItemData" type="custom-dress-design-type-info" version="0.3" >
+		<record alias="item-type" key="y" type="Seq" >
+			<case alias="none" />
+			<case alias="costume" />
+			<case alias="costume-attach" />
+			<case alias="head-attach" />
+			<case alias="face-attach" />
+		</record>
+		<record alias="customize-id" key="y" type="Int8" />
+		<record alias="alias" type="String" />
+		<record alias="design-type" type="Seq" >
+			<case alias="none" />
+			<case alias="color" default="y" />
+			<case alias="pattern" />
+			<case alias="saturation" />
+		</record>
+		<record alias="customize-category" type="Seq" >
+			<case alias="none" />
+			<case alias="center" default="y" />
+			<case alias="sub" />
+			<case alias="leg" />
+			<case alias="dressline" />
+			<case alias="hair" />
+		</record>
+		<record alias="price-ref" ref="this" />
+		<record alias="min-value" type="Int8" />
+		<record alias="max-value" type="Int8" />
+		<record alias="name" ref="Text" />
+		<record alias="desc" ref="Text" />
+	</list>
+</table>

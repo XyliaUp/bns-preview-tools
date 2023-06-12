@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="ItemData" type="ItemSpirit" version="0.6">
+		<record alias="id" type="Int32" key="y" />	
+		<record alias="level" type="Int8" key="y" />
+		<record alias="alias" type="String" />
+		<record alias="main-ingredient" ref="Item" />
+		<record alias="applicable-part" seq="equip-type" type="Seq" repeat="4" />
+		<record alias="use-random-ability-value" type="Bool" showzero="y" />
+		<record alias="success-probability" type="Int8" default="100" apply="must" />
+		<record alias="money-cost" type="Int32" />
+		<record alias="unk-" type="Int32" />
+		<record alias="unk-" type="Int32" />		
+		<record alias="fixed-ingredient" ref="Item" repeat="8" />
+		<record alias="fixed-ingredient-stack-count" type="Int16" repeat="8" />
+		<record alias="attach-ability" seq="main-ability" type="Seq" repeat="2" />
+		<record alias="ability-min" type="Int32" repeat="2" />
+		<record alias="ability-max" type="Int32" repeat="2" />
+		<record alias="once-attach-ability-min" type="Int32" repeat="2" />
+		<record alias="once-attach-ability-max" type="Int32" repeat="2" />
+		<record alias="warning" type="Seq" server="n" >
+		     <case alias="none" default="y" />
+			 <case alias="fail" />
+		</record>
+		<!-- ======================================================= -->
+		<record alias="distribution-type" default="Spirit_0001" apply="must" client="n" ref="RandomDistribution" />
+		<record alias="attach-distribution-bundle" type="Bool" client="n" />
+	</list>
+</table>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="CombatData" type="skill-message" version="0.4" >
+		<record alias="skill3-id" type="Int32" key="y" />
+		<record alias="variation-id" type="Int8" />
+
+		<record alias="alias" type="String" />
+		<record alias="message" ref="GameMessage" repeat="4" />
+		<record alias="probability" type="Int16" repeat="4" />
+	</list>
+</table>

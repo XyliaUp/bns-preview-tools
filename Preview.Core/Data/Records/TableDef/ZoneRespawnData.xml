@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="ZoneData1" type="ZoneRespawn" version="0.46" >
+		<record alias="zone" type="Int32" key="y" />
+		<record alias="id" type="Int16" key="y" />
+		<record alias="alias" type="String" />
+		<record alias="area" ref="ZoneArea" />
+		<record alias="center" type="Vector32" />
+		<record alias="activated-faction" ref="Faction" repeat="4" />
+	</list>
+</table>

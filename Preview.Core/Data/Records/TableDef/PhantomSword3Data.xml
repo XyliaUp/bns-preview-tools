@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<table side="data" version="1.02">
+	<list module="CombatData" type="phantomsword3" version="0.5" >
+		<record alias="id" type="Int32" key="y" />
+		<record alias="variation-id" type="Int8" key="y" />
+		
+		<record alias="fly-type" type="Seq" >
+			<case alias="none" />
+			<case alias="bone" default="y" />
+			<case alias="bone-pos-only" />
+			<case alias="force-caster-bone" />
+			<case alias="force-caster-bone-pos-only" />
+			<case alias="ground" />
+			<case alias="laser" />
+			<case alias="ninecurve" />
+		</record>
+		<record alias="force-caster-fly-attach-time" type="Int32" />
+		<record alias="start-bone" type="String" />
+		<record alias="start-target-bone" type="String" client="n" />	
+		<record alias="attack-bone" type="String" />
+		<record alias="fire-arrival-x" type="Int8" repeat="6" />
+		<record alias="fire-arrival-y" type="Int8" repeat="6" />
+		<record alias="fire-angle" type="Int32" default="-1" repeat="6" />
+		<record alias="cast-show" type="String" repeat="6" />
+		<record alias="fire-show-1" type="String" repeat="6" />
+		<record alias="exec-show-1" type="String" repeat="6" />
+		<record alias="return-show-1" type="String" repeat="6" />
+		<record alias="return-ani-1" type="String" repeat="6" />
+		<record alias="fire-show-2" type="String" repeat="6" />
+		<record alias="exec-show-2" type="String" repeat="6" />
+		<record alias="return-show-2" type="String" repeat="6" />
+		<record alias="return-ani-2" type="String" repeat="6" />
+		<record alias="fire-show-3" type="String" repeat="6" />
+		<record alias="exec-show-3" type="String" repeat="6" />
+		<record alias="return-show-3" type="String" repeat="6" />
+		<record alias="return-ani-3" type="String" repeat="6" />
+		<record alias="fire-show-4" type="String" repeat="6" />
+		<record alias="exec-show-4" type="String" repeat="6" />
+		<record alias="return-show-4" type="String" repeat="6" />
+		<record alias="return-ani-4" type="String" repeat="6" />
+		<record alias="fire-show-5" type="String" repeat="6" />
+		<record alias="exec-show-5" type="String" repeat="6" />
+		<record alias="return-show-5" type="String" repeat="6" />
+		<record alias="return-ani-5" type="String" repeat="6" />
+		<record alias="despawn-show" type="String" repeat="6" />
+		<record alias="delay-respawn-time" type="Int32" />				
+		<record alias="delay-respawn-show" type="String" />
+	</list>
+</table>

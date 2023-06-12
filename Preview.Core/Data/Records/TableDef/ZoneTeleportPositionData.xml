@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="ZoneData2" type="ZoneTeleportPosition" version="0.2" >	
+		<record alias="alias" name="alias" type="String" />
+		<record alias="zone" type="Int32" sort-by="n" />
+		<record alias="position" type="Vector32" />
+		<record alias="yaw" type="Int16" showzero="y" />		
+	</list>
+</table>

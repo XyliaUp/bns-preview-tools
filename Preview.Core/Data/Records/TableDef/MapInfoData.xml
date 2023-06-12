@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="ZoneData0" type="MapInfo" version="1.41" >
+		<record alias="id" type="Int32" key="y" />
+		<record alias="alias" type="String" />
+		<record alias="group-id" type="Int16" />
+		<record alias="floor" type="Int16" />		
+		<record alias="name2" ref="Text" />
+		<record alias="parent-mapinfo" ref="this" />
+		<record alias="scale" type="Float32" />	
+		<record alias="district" ref="District" />
+		<record alias="map-group-1" ref="MapGroup1" />
+		<record alias="map-group-2" ref="MapGroup2" />
+		<record alias="local-axis-x" type="Float32" />
+		<record alias="local-axis-y" type="Float32" />
+		<record alias="image-size" type="Int16" default="1" />
+		<record alias="imageset" type="String" />
+		<record alias="imageset-alphamap" type="String" />
+		<record alias="use-quest" type="Bool" />
+		<record alias="quest" ref="Quest" />
+		<record alias="quest-imageset" type="String" />
+		<record alias="quest-imageset-alphamap" type="String" />
+		<record alias="overlay" ref="MapOverlay" repeat="30" />
+		<record alias="use-pos-in-parent" type="Bool" />
+		<record alias="pos-in-parent-x" type="Float32" />
+		<record alias="pos-in-parent-y" type="Float32" />
+		<record alias="terrain" ref="Terrain" />
+		<record alias="zoom" type="Float32" default="1" />
+		<record alias="sort-no" type="Int16" />	
+		<record alias="show-navigaion-list" type="Bool" default="y" />
+		<record alias="arena-dungeon-parent-mapinfo" ref="this" />
+		<record alias="arena-dungeon-use-pos-in-parent" type="Bool" />
+		<record alias="arena-dungeon-pos-in-parent-x" type="Float32" />
+		<record alias="arena-dungeon-pos-in-parent-y" type="Float32" />
+	</list>
+</table>

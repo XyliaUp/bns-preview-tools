@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<table>
+  <list module="AIData" type="ZoneTriggerEventCond" version="0.11" > 
+    <record type="type" alias="type" >	
+        <case alias="weekly-event" />
+		<case alias="timeout-event" />
+		<case alias="npc-killed-event" />
+		<case alias="npc-killed-event2" />
+		<case alias="npc-survived-score-decision-timeout-event" />
+		<case alias="npc-survived-timeout-event" />
+		<case alias="boss-challenge-timeout-event" />
+		<case alias="boss-challenge-round-score-event" />
+		<case alias="boss-challenge-boss-npc-killed-event" />
+    </record>
+
+    <record alias="alias" type="String" />	
+    <record alias="cond-contents-type" type="Seq" >
+	    <case alias="none" default="y" />
+	    <case alias="faction-stage-faction-1-win" />
+		<case alias="faction-stage-faction-2-win" />
+	</record>
+    <record alias="cond-event-message" ref="GameMessage" server="n" />
+	<!-- =================================================================== -->
+    <record alias="event-day-of-week" type="Seq" filter="weekly-event" >	
+			<case alias="sun" />
+			<case alias="mon" />
+			<case alias="tue" />
+			<case alias="wed" />
+			<case alias="thu" />
+			<case alias="fri" />
+			<case alias="sat" />
+			<case alias="thu-fri" />
+			<case alias="weekday" />
+			<case alias="fri-sat-sun" />
+			<case alias="weekend" />
+			<case alias="entire-week" />
+    </record>
+    <record alias="event-hour" default="-1" type="Int8" filter="weekly-event" repeat="12" />
+    <record alias="event-minute" default="-1" type="Int8" filter="weekly-event" repeat="12" />
+	<!-- ==================================================================================== -->
+    <record alias="kill-count" type="Int16" client="n"/>
+    <record alias="target-npc" ref="Npc" client="n" repeat="3" />
+    <record alias="target-npc-spawn" ref="ZoneNpcSpawn" client="n" repeat="3" />
+    <record alias="survived-count" type="Int16" client="n"/>	
+    <record alias="acquisition-score" type="Int16" client="n"/>	
+    <record alias="goal-score" type="Int16" client="n"/>
+    <record alias="win-score-type" type="Seq" client="n"/>		
+    <record alias="goal-score-type" type="Seq" client="n"/>		
+    <record alias="acquisition-score-type" type="Seq" client="n"/>	
+	<record alias="op" type="Seq" seq="Op" client="n"/>
+  </list>
+</table>
+

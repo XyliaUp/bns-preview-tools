@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="ItemData" type="expand-inventory" version="0.14" >
+		<record alias="inventory-type" key="y" type="Seq" >
+		    <case alias="inventory" />
+		    <case alias="depository" />
+		    <case alias="wardrobe" />
+		    <case alias="premium-depository" />
+		</record>
+		<record alias="inventory-size" key="y" type="Int8" showzero="y" />
+		<record alias="level" type="Int8" />	
+		<record alias="desirable-expand-level" type="Int8" />		
+		<record alias="money" type="Int32" showzero="y" />			
+		<record alias="charge-type" type="Seq" >
+		    <case alias="item" />
+		    <case alias="money" />
+		    <case alias="item-or-money" />		
+		</record>
+		<record alias="expand-size" type="Int8" />	
+		<record alias="required-item" ref="Item" />			
+		<record alias="required-item-count" type="Int8" />			
+	</list>
+</table>

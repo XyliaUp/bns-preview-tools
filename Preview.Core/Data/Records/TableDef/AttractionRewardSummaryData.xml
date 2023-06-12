@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="ItemData" type="attractionrewardsummary" version="1.9" check-version="y" >
+		<record alias="alias" type="String" />
+		<record alias="category" type="dictionary" >
+			<case alias="none" default="y" />
+			<case alias="costume" />
+			<case alias="weapon" />
+			<case alias="equip-gem" />
+			<case alias="accessory" />
+			<case alias="etc" />
+		</record>
+		
+		<record alias="reward-item" type="TRef" repeat="24" client="n" />
+		<record alias="reward-item-category" type="Seq" seq="category" repeat="24" client="n" />
+		<record alias="reward-item-condition-type" type="Seq" seq="condition-type" repeat="24" client="n" />
+		<record alias="reward-item-common" type="TRef" repeat="24" />
+		<record alias="reward-item-common-category" type="Seq" seq="category" repeat="24" />
+		<record alias="reward-item-common-condition-type" type="Seq" seq="condition-type" repeat="24" />
+		<record alias="reward-item-normal" type="TRef" repeat="24" />
+		<record alias="reward-item-normal-category" type="Seq" seq="category" repeat="24" />
+		<record alias="reward-item-normal-condition-type" type="Seq" seq="condition-type" repeat="24" />
+		<record alias="reward-item-hard" type="TRef" repeat="24" />
+		<record alias="reward-item-hard-category" type="Seq" seq="category" repeat="24" />
+		<record alias="reward-item-hard-condition-type" type="Seq" seq="condition-type" repeat="24" />
+		<record alias="reward-item-easy" type="TRef" repeat="24" />
+		<record alias="reward-item-easy-category" type="Seq" seq="category" repeat="24" />
+		<record alias="reward-item-easy-condition-type" type="Seq" seq="condition-type" repeat="24" />
+		<record alias="main-reward-item-normal" type="TRef" repeat="5" />
+		<record alias="main-reward-item-hard" type="TRef" repeat="5" />
+		<record alias="main-reward-item-easy" type="TRef" repeat="5" />
+		<record alias="additional-reward-item" type="TRef" repeat="24" />
+		<record alias="additional-reward-item-category" type="Seq" seq="category" repeat="24" />
+		<record alias="additional-reward-item-condition-type" type="Seq" seq="condition-type" repeat="24" />
+	
+		<!-- 2021年8月 新增 -->
+		<record alias="bonus-reward-item-common" type="TRef" repeat="24" />
+		<record alias="bonus-reward-item-common-category" type="Seq" seq="category" repeat="24" />
+		<record alias="bonus-reward-item-common-condition-type" type="Seq" seq="condition-type" repeat="24" />
+		<record alias="bonus-reward-item-easy" type="TRef" repeat="24" />
+		<record alias="bonus-reward-item-easy-category" type="Seq" seq="category" repeat="24" />
+		<record alias="bonus-reward-item-easy-condition-type" type="Seq" seq="condition-type" repeat="24" />
+		<record alias="bonus-reward-item-normal" type="TRef" repeat="24" />
+		<record alias="bonus-reward-item-normal-category" type="Seq" seq="category" repeat="24" />
+		<record alias="bonus-reward-item-normal-condition-type" type="Seq" seq="condition-type" repeat="24" />
+		<record alias="bonus-reward-item-hard" type="TRef" repeat="24" />
+		<record alias="bonus-reward-item-hard-category" type="Seq" seq="category" repeat="24" />
+		<record alias="bonus-reward-item-hard-condition-type" type="Seq" seq="condition-type" repeat="24" />
+		<record alias="bonus-reward-difficulty-type" type="Seq" seq="difficulty-type" repeat="3" />
+		<record alias="bonus-reward-quota" ref="ContentQuota" repeat="3" />
+	</list>
+</table>

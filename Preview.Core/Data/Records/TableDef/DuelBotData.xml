@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="CombatData" type="duel-bot" version="0.22" >
+		<record alias="alias" type="String" />
+
+		<record alias="race" type="Seq" seq="race" />
+		<record alias="sex" type="Seq" seq="sex" />
+		<record alias="job" type="Seq" seq="job" />
+		<record alias="level" type="Int8" />
+		<record alias="mastery-level" type="Int8" />
+		<record alias="faction" ref="Faction" />
+		<record alias="speed" type="Velocity" />
+		<record alias="radius" type="Distance" />
+		<record alias="scale" type="Int16" default="1000" />
+		<record alias="name2" ref="Text" />
+		<record alias="appearance" ref="CreatureAppearance" />
+		<record alias="animset" type="String" />
+		<record alias="summoned-name2" ref="Text" />
+		<record alias="summoned-appearance" ref="CreatureAppearance" />
+		<record alias="summoned-animset" type="String" />
+		<!-- ================================================================= -->
+		<record alias="ability" ref="DuelBotAbility" client="n" />
+		<record alias="equipped-item" ref="DuelBotEquippedItem" client="n" />
+		<record alias="yaw" type="Int8" client="n" />
+		<record alias="ai-level" type="Int8" client="n" />
+		<record alias="job-style" type="Seq" seq="job-style" client="n" />
+		<record alias="spawn-social" ref="Social" client="n" />
+		<record alias="despawn-social" ref="Social" client="n" />
+		<record alias="none-override-skill-ignore-tick" type="Int8" client="n" />
+		<record alias="base-move-ignore-tick" type="Int8" client="n" />
+		<record alias="move-block-effect-skill-ignore-tick" type="Int8" client="n" />
+		<record alias="whole-block-move-ignore-tick" type="Int8" client="n" />
+		<record alias="effect-flag-skill-ignore-tick" type="Int8" client="n" />
+		<record alias="trained-skill-set-vs-archer" ref="TrainedSkillSet" client="n" />
+		<record alias="trained-skill-set-vs-assassin" ref="TrainedSkillSet" client="n" />
+		<record alias="trained-skill-set-vs-blade-master" ref="TrainedSkillSet" client="n" />
+		<record alias="trained-skill-set-vs-destroyer" ref="TrainedSkillSet" client="n" />
+		<record alias="trained-skill-set-vs-force-master" ref="TrainedSkillSet" client="n" />
+		<record alias="trained-skill-set-vs-kung-fu-fighter" ref="TrainedSkillSet" client="n" />
+		<record alias="trained-skill-set-vs-shooter" ref="TrainedSkillSet" client="n" />
+		<record alias="trained-skill-set-vs-soul-fighter" ref="TrainedSkillSet" client="n" />
+		<record alias="trained-skill-set-vs-summoner" ref="TrainedSkillSet" client="n" />
+		<record alias="trained-skill-set-vs-sword-master" ref="TrainedSkillSet" client="n" />
+		<record alias="trained-skill-set-vs-warlock" ref="TrainedSkillSet" client="n" />
+		<record alias="trained-skill-set-vs-warrior" ref="TrainedSkillSet" client="n" />
+		<!-- ================================================================= -->
+	</list>
+</table>

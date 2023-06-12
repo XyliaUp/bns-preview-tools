@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="CombatData" type="npcmoveanim" version="1.12" >
+		<record alias="alias" type="String" />
+		<record alias="upper-idle" type="String" />
+		<record alias="lower-idle" type="String" />
+		<record alias="upper-walk-front" type="String" />
+		<record alias="lower-walk-front" type="String" />
+		<record alias="upper-walk-back" type="String" />
+		<record alias="lower-walk-back" type="String" />
+		<record alias="upper-walk-left" type="String" />
+		<record alias="lower-walk-left" type="String" />
+		<record alias="upper-walk-right" type="String" />
+		<record alias="lower-walk-right" type="String" />
+		<record alias="upper-walk-leftback" type="String" />
+		<record alias="lower-walk-leftback" type="String" />
+		<record alias="upper-walk-rightback" type="String" />
+		<record alias="lower-walk-rightback" type="String" />
+		<record alias="upper-run-front" type="String" />
+		<record alias="lower-run-front" type="String" />
+		<record alias="upper-run-back" type="String" />
+		<record alias="lower-run-back" type="String" />
+		<record alias="upper-run-left" type="String" />
+		<record alias="lower-run-left" type="String" />
+		<record alias="upper-run-right" type="String" />
+		<record alias="lower-run-right" type="String" />
+		<record alias="upper-run-leftback" type="String" />
+		<record alias="lower-run-leftback" type="String" />
+		<record alias="upper-run-rightback" type="String" />
+		<record alias="lower-run-rightback" type="String" />
+		<record alias="upper-jump-front" type="String" />
+		<record alias="lower-jump-front" type="String" />
+		<record alias="upper-jump-left" type="String" />
+		<record alias="lower-jump-left" type="String" />
+		<record alias="upper-jump-right" type="String" />
+		<record alias="lower-jump-right" type="String" />
+		<record alias="pullout-weapon" type="String" />
+		<record alias="putin-weapon" type="String" />
+		<record alias="putin-bare-hand" type="String" />
+		<record alias="upper-turn-left" type="String" />
+		<record alias="lower-turn-left" type="String" />
+		<record alias="upper-turn-right" type="String" />
+		<record alias="lower-turn-right" type="String" />
+		<record alias="upper-jtoi" type="String" />
+		<record alias="lower-jtoi" type="String" />
+		<record alias="upper-jtomfront" type="String" />
+		<record alias="lower-jtomfront" type="String" />
+		<record alias="upper-jtomleft" type="String" />
+		<record alias="lower-jtomleft" type="String" />
+		<record alias="upper-jtomright" type="String" />
+		<record alias="lower-jtomright" type="String" />
+		<record alias="upper-jtomback" type="String" />
+		<record alias="lower-jtomback" type="String" />
+		<record alias="upper-mtojfront" type="String" />
+		<record alias="lower-mtojfront" type="String" />
+		<record alias="upper-mtojleft" type="String" />
+		<record alias="lower-mtojleft" type="String" />
+		<record alias="upper-mtojright" type="String" />
+		<record alias="lower-mtojright" type="String" />
+		<record alias="upper-mtoi" type="String" />
+		<record alias="lower-mtoi" type="String" />
+		<record alias="upper-ltor" type="String" />
+		<record alias="lower-ltor" type="String" />
+		<record alias="upper-rtol" type="String" />
+		<record alias="lower-rtol" type="String" />
+	</list>
+</table>

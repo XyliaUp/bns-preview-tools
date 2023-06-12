@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="AIData" type="NpcResponse" version="0.5" side="client" >
+		<record alias="alias" type="String" />
+		<record alias="faction-check-type" type="Seq" >
+			<case alias="is" default="y" />
+			<case alias="is-not" />
+			<case alias="is-none" />
+		</record>
+		<record alias="faction-1" ref="Faction" />
+		<record alias="faction-2" ref="Faction" />		
+		<record alias="required-complete-quest" ref="Quest" />	
+		<record alias="faction-level-check-type" type="Seq" >
+			<case alias="none" default="y" />
+			<case alias="check-for-success" />
+			<case alias="check-for-fail" />
+		</record>
+		<record alias="talk-message" ref="NpcTalkMessage" />
+		<record alias="indicator-social" ref="IndicatorSocial" />
+		<record alias="approach-social" ref="Social" />		
+		<record alias="idle" ref="IndicatorSocial" />		
+		<record alias="idle-visible" type="Bool" default="y" />
+		<record alias="idle-start" ref="Social" />
+		<record alias="idle-end" ref="Social" />		
+	</list>
+</table>

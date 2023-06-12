@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="ItemData" type="duel-bot-training-room-reward" version="0.4" >
+		<record alias="job" key="y" type="Seq" seq="job" />
+		<record alias="grade" key="y" type="Int16" />
+		<record alias="achievement" type="Int8" key="y" />		
+		
+		<record alias="reward-item" ref="Item" repeat="3" />
+		<record alias="reward-item-count" type="Int8" repeat="3" />
+		<record alias="reward-exp" type="Int32" />	
+	</list>
+</table>

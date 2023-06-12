@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<table>
+  <list module="AIData" type="NpcConvoy" version="0.8" side="server" >
+    <record alias="alias" type="String" />
+    <record alias="start-act-seq" ref="ActSequence" />
+    <record alias="start-attackable" type="Bool" />
+    <record alias="start-brain" type="Seq" seq="npc-brain" />
+    <record alias="start-hate-on" type="Bool" />
+
+    <record alias="arrived-act-seq" ref="ActSequence" />
+    <record alias="arrived-attackable" type="Bool" />	
+    <record alias="arrived-brain" type="Seq" seq="npc-brain" />
+    <record alias="arrived-hate-on" type="Bool" />
+
+    <record alias="failed-act-seq" ref="ActSequence" />
+    <record alias="failed-attackable" type="Bool" />	
+    <record alias="failed-brain" type="Seq" seq="npc-brain" />
+    <record alias="failed-hate-on" type="Bool" />
+	  
+    <record alias="follow-detect" type="Seq" seq="detect" />
+	  
+	  
+    <record alias="combat-assist" type="Bool" />
+    <record alias="destination-env2" ref="ZoneEnv2Spawn" repeat="2" />
+    <record alias="next-stop-social-max" type="Int8" />
+    <record alias="next-stop-social-min" type="Int8" />
+    <record alias="stop-social" ref="Social" repeat="4" />
+  </list>
+</table>

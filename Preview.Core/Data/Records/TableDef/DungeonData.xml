@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="ZoneData0" type="Dungeon" version="9.11" >
+		<record alias="type" type="type" >
+			<case alias="default" />
+			<case alias="normal" />
+			<case alias="sealed" />
+			<case alias="wave-dungeon" />
+		</record>
+
+		<record alias="id" type="Int32" key="y" />
+		<record alias="alias" type="String" />
+		<record alias="dungeon-type" type="Seq" >
+			<case alias="unbind" />
+			<case alias="bind" />
+		</record>
+		<record alias="group" ref="AttractionGroup" />
+		<record alias="zone-neutral" ref="Zone" repeat="2" />
+		<record alias="zone" ref="Zone" repeat="9" />
+		<record alias="zone-mission-step" type="Int8" repeat="9" />
+		<record alias="feedback" ref="Feedback" />
+		<record alias="arena-entrance-zone" ref="Zone" />
+		<record alias="required-level" type="Int8" />
+		<record alias="required-mastery-level" type="Int8" />
+		<record alias="required-preceding-quest" ref="Quest" repeat="3" />
+		<record alias="required-preceding-quest-check" type="Seq" >
+			<case alias="and" default="y" />
+			<case alias="or" />
+		</record>
+		<record alias="enable-heart-count" show-zero="y" type="bool" />
+		<record alias="max-instant-heart-count-difficulty-type" type="Int8" repeat="3" />
+		<record alias="gs-item-blade-master" ref="Item" server="n" />
+		<record alias="gs-item-blade-master-hard" ref="Item" server="n" />
+		<record alias="gs-item-blade-master-easy" ref="Item" server="n" />
+		<record alias="gs-item-kung-fu-fighter" ref="Item" server="n" />
+		<record alias="gs-item-kung-fu-fighter-hard" ref="Item" server="n" />
+		<record alias="gs-item-kung-fu-fighter-easy" ref="Item" server="n" />
+		<record alias="gs-item-force-master" ref="Item" server="n" />
+		<record alias="gs-item-force-master-hard" ref="Item" server="n" />
+		<record alias="gs-item-force-master-easy" ref="Item" server="n" />
+		<record alias="gs-item-destroyer" ref="Item" server="n" />
+		<record alias="gs-item-destroyer-hard" ref="Item" server="n" />
+		<record alias="gs-item-destroyer-easy" ref="Item" server="n" />
+		<record alias="gs-item-summoner" ref="Item" server="n" />
+		<record alias="gs-item-summoner-hard" ref="Item" server="n" />
+		<record alias="gs-item-summoner-easy" ref="Item" server="n" />
+		<record alias="gs-item-assassin" ref="Item" server="n" />
+		<record alias="gs-item-assassin-hard" ref="Item" server="n" />
+		<record alias="gs-item-assassin-easy" ref="Item" server="n" />
+		<record alias="gs-item-sword-master" ref="Item" server="n" />
+		<record alias="gs-item-sword-master-hard" ref="Item" server="n" />
+		<record alias="gs-item-sword-master-easy" ref="Item" server="n" />
+		<record alias="gs-item-warlock" ref="Item" server="n" />
+		<record alias="gs-item-warlock-hard" ref="Item" server="n" />
+		<record alias="gs-item-warlock-easy" ref="Item" server="n" />
+		<record alias="gs-item-soul-fighter" ref="Item" server="n" />
+		<record alias="gs-item-soul-fighter-hard" ref="Item" server="n" />
+		<record alias="gs-item-soul-fighter-easy" ref="Item" server="n" />
+		<record alias="gs-item-shooter" ref="Item" server="n" />
+		<record alias="gs-item-shooter-hard" ref="Item" server="n" />
+		<record alias="gs-item-shooter-easy" ref="Item" server="n" />
+		<record alias="gs-item-warrior" ref="Item" server="n" />
+		<record alias="gs-item-warrior-hard" ref="Item" server="n" />
+		<record alias="gs-item-warrior-easy" ref="Item" server="n" />
+		<record alias="gs-item-archer" ref="Item" server="n" />
+		<record alias="gs-item-archer-hard" ref="Item" server="n" />
+		<record alias="gs-item-archer-easy" ref="Item" server="n" />
+		<record alias="gs-item-spear-master" ref="Item" server="n" />
+		<record alias="gs-item-spear-master-hard" ref="Item" server="n" />
+		<record alias="gs-item-spear-master-easy" ref="Item" server="n" />
+		<record alias="gs-item-thunderer" ref="Item" server="n" />
+		<record alias="gs-item-thunderer-hard" ref="Item" server="n" />
+		<record alias="gs-item-thunderer-easy" ref="Item" server="n" />
+		<record alias="gs-item-dual-blader" ref="Item" server="n" />
+		<record alias="gs-item-dual-blader-hard" ref="Item" server="n" />
+		<record alias="gs-item-dual-blader-easy" ref="Item" server="n" />
+		<record alias="gs-item-bard" ref="Item" server="n" />
+		<record alias="gs-item-bard-hard" ref="Item" server="n" />
+		<record alias="gs-item-bard-easy" ref="Item" server="n" />
+		<record alias="apply-contents-ban-id" show-zero="y" type="Int8" />
+		<record alias="pc-max" type="Int16" />
+		<record alias="ignore-party-difficulty-type" type="Bool" />
+		<record alias="npc-for-step" ref="Npc" repeat="9" />
+		<record alias="pc-spawn-for-step" type="Int16" repeat="9" />
+		<record alias="money-for-step" type="Int32" repeat="9" />
+		<record alias="item-for-step" ref="Item" repeat="9" />
+		<record alias="item-count-for-step" type="Int16" repeat="9" />
+		<record alias="quest-for-step" ref="Quest" repeat="9" />
+		<record alias="quest" server="n" ref="Quest" />
+		<record alias="dungeon-quest-difficulty-type" ref="Quest" repeat="3" />
+		<record alias="effect-pc-difficulty-type" ref="Effect" repeat="3" />
+		<record alias="effect-npc-difficulty-type" ref="Effect" repeat="3" />
+		<record alias="enable-skill-score" type="Bool" />
+		<record alias="skill-score-recommend-gear-score" type="Int32" />
+		<record alias="skill-score-recommend-clear-time-step" type="Msec" repeat="5" />
+		<record alias="skill-score-recommend-clear-time-bonus" type="Int16" repeat="5" />
+		<record alias="skill-score-recommand-party-member-count-bonus-difficulty-type-1" type="Int16" />
+		<record alias="skill-score-recommand-party-member-count-bonus-difficulty-type-2" type="Int16" />
+		<record alias="skill-score-recommand-party-member-count-bonus-difficulty-type-3" type="Int16" />
+		<record alias="skill-score-recommend-hp-step" type="Int32" repeat="5" />
+		<record alias="skill-score-recommend-hp-bonus" type="Int16" repeat="5" />
+		<record alias="skill-score-recommend-use-heart-count" type="Int16" />
+		<record alias="skill-score-recommend-use-heart-count-bonus" type="Int32" />
+		<record alias="skill-score-recommend-use-item-points" type="Int32" />
+		<record alias="skill-score-recommend-use-item-bonus" type="Int32" />
+		<record alias="skill-score-boss-npc" ref="Npc" />
+		<record alias="skill-score-boss-npc-bonus" type="Int32" />
+		<record alias="attraction-quest" server="n" ref="Quest" repeat="10" />
+		<record alias="ui-filter-attraction-quest-only" server="n" type="Bool" />
+		<record alias="respawn-confirm-text" server="n" ref="Text" />
+		<record alias="escape-cave-confirm-text" server="n" ref="Text" />
+		<record alias="ui-text-grade" server="n" type="Int8" />
+		<record alias="dungeon-name2" server="n" ref="Text" />
+		<record alias="dungeon-desc" server="n" ref="Text" />
+		<record alias="faction-battle-field" type="Bool" />
+		<record alias="arena-minimap" server="n" type="String" />
+		<record alias="recommend-attack-power-easy" server="n" type="Int16" />
+		<record alias="recommend-attack-power-normal" server="n" type="Int16" />
+		<record alias="recommend-attack-power-hard" server="n" type="Int16" />
+		<record alias="standard-gear-weapon-easy" ref="Item" server="n" />
+		<record alias="standard-gear-weapon-normal" ref="Item" server="n" />
+		<record alias="standard-gear-weapon-hard" ref="Item" server="n" />
+		<record alias="use-difficulty-normal" type="Bool" server="n" />
+		<record alias="use-difficulty-hard" type="Bool" server="n" />
+		<record alias="reward-summary" ref="AttractionRewardSummary" server="n" />
+		<record alias="recommand-level-min" type="Int8" />
+		<record alias="recommand-level-max" type="Int8" />
+		<record alias="recommand-mastery-level-min" type="Int8" />
+		<record alias="recommand-mastery-level-max" type="Int8" />
+		<record alias="display-quests" server="n" ref="Quest" repeat="12" />
+		<record alias="tactic-normal" ref="Text" />
+		<record alias="tactic-hard" ref="Text" />
+		<record alias="tactic-easy" ref="Text" />
+		<record alias="recommend-alias-normal" ref="ContentsJournalRecommendItem" server="n" />
+		<record alias="recommend-alias-hard" ref="ContentsJournalRecommendItem" server="n" />
+		<record alias="recommend-alias-easy" ref="ContentsJournalRecommendItem" server="n" />
+		<record alias="boss-ui-extend-distance" type="Bool" />
+		<!-- ====================================================================================== -->
+
+		<!-- ================================== 封魔副本专用部分 ================================== -->
+		<record alias="max-sealed-level" type="Int32" filter="sealed" />
+		<record alias="modify-data" filter="sealed" ref="SealedDungeonModify" />
+		<record alias="bind-quota" filter="sealed" ref="ContentQuota" />
+		<record alias="theme-version" type="Int16" filter="sealed" />
+		<record alias="theme-arena-entrance-zone" filter="sealed" ref="Zone" />
+		<record alias="gimmick-week-start-date-time" type="Time64" filter="sealed" />
+		<record alias="unk-" name="封魔录编号" type="Int8" filter="sealed" />
+		<!-- ====================================================================================== -->
+
+		<!-- ================================== 罗汉岛专用部分 ================================== -->
+		<record alias="unk-" type="Int32" filter="wave-dungeon" />
+		<record alias="unk-" type="Int32" filter="wave-dungeon" />
+		<record alias="unk-" type="Int32" filter="wave-dungeon" />
+		<record alias="unk-" type="Int32" filter="wave-dungeon" />
+		<record alias="unk-" type="Int32" filter="wave-dungeon" />
+		<record alias="unk-" type="Int32" filter="wave-dungeon" />
+		<!-- ====================================================================================== -->
+	</list>
+</table>

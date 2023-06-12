@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="LocalizationData" type="indicator-social" version="0.17" >
+		<record alias="alias" type="String" />
+		<record alias="interval" type="Msec" />
+		<record alias="duration2" type="Msec" />
+		<record alias="begine-time2" type="Msec" repeat="10" />
+		<record alias="balloon-text2" ref="Text" repeat="10" />
+		<record alias="balloon-text2-duration" type="Msec" default="3000" repeat="10" />
+		<record alias="voice-sync" type="Bool" repeat="10" />
+		<record alias="show2" type="String" repeat="10" />
+		<record alias="rotate2" type="Seq" seq="rotate" repeat="10" />
+		<record alias="sub-npc2" ref="Npc" repeat="10" />
+		<record alias="sub-indicator-social2" ref="this" repeat="10" />
+	</list>
+</table>

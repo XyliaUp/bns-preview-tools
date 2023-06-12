@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="ZoneData0" type="skill-training-room" version="0.2" >
+		<record alias="id" type="Int32" key="y" />
+		<record alias="alias" type="String" />
+		<record alias="zone" ref="Zone" />
+		<record alias="required-level" type="Int8" />
+		<record alias="required-mastery-level" type="Int8" />
+		<record alias="required-preceding-quest" ref="Quest" repeat="3" />
+		<record alias="required-preceding-quest-check" type="Seq" >
+             <case alias="and" default="y" />
+             <case alias="or" />
+        </record>
+		<record alias="group" ref="AttractionGroup" />
+		<record alias="skill-training-room-name2" ref="Text" />
+		<record alias="start-default-kismet-name-1" type="String" />
+		<record alias="start-default-kismet-name-2" type="String" />
+		<record alias="end-default-kismet-name-1" type="String" />
+		<record alias="end-default-kismet-name-2" type="String" />
+		<record alias="stage-change-show" type="String" />
+		
+		<!-- ============================================================ -->
+		<record alias="enter-pc-spawn" ref="ZonePcSpawn" client="n" />
+		<record alias="support-effect" ref="Effect" client="n" repeat="2" />
+		<record alias="remain-effect-type" type="prop_field" client="n" seq="type-seq" repeat="60" />
+	</list>
+</table>

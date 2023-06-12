@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="ItemData" type="attraction-shortcut" version="0.35" >
+		<record alias="type" type="type" >
+			<case alias="dungeon" />
+
+			<case alias="raid-dungeon" />
+		</record>
+
+		<record alias="alias" type="String" />
+		<record filter="dungeon" alias="dungeon" ref="Dungeon" />
+		<record filter="raid-dungeon" alias="raid-dungeon" ref="RaidDungeon" />
+	</list>
+</table>

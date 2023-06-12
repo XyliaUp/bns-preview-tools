@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="LocalizationData" type="level" version="0.1" side="client" >
+		<record alias="level" key="y" type="Int8" />
+		<record alias="exp" type="Int32" />
+		<record alias="exp-boost-1" type="Int32" />
+		<record alias="exp-boost-2" type="Int32" />	
+		<record alias="exp-boost-3" type="Int32" />	
+		<record alias="exp-boost-recharge-time-1" type="Int32" />
+		<record alias="exp-boost-recharge-time-2" type="Int32" />		
+		<record alias="exp-boost-recharge-time-3" type="Int32" />		
+		<record alias="default-faction-score-acquire-level" type="Int8" />
+		<record alias="half-faction-score-acquire-level" type="Int8" />
+		<record alias="duel-death-match-1vs1-win-exp" type="Int32" />
+		<record alias="duel-death-match-1vs1-lose-draw-exp" type="Int32" />
+		<record alias="duel-death-match-1vs1-win-duel-point" type="Int32" />
+		<record alias="duel-death-match-1vs1-lose-draw-duel-point" type="Int32" />
+		<record alias="duel-tag-match-3vs3-win-exp" type="Int32" />
+		<record alias="duel-tag-match-3vs3-lose-draw-exp" type="Int32" />
+		<record alias="duel-tag-match-3vs3-win-duel-point" type="Int32" />
+		<record alias="duel-tag-match-3vs3-lose-draw-duel-point" type="Int32" />
+		<record alias="party-battle-occupation-war-win-exp" type="Int32" />
+		<record alias="party-battle-occupation-war-lose-draw-exp" type="Int32" />
+		<record alias="party-battle-occupation-war-win-party-battle-point" type="Int32" />
+		<record alias="party-battle-occupation-war-lose-draw-party-battle-point" type="Int32" />
+		<record alias="party-battle-capture-the-flag-win-exp" type="Int32" />
+		<record alias="party-battle-capture-the-flag-lose-draw-exp" type="Int32" />
+		<record alias="party-battle-capture-the-flag-win-party-battle-point" type="Int32" />
+		<record alias="party-battle-capture-the-flag-lose-draw-party-battle-point" type="Int32" />
+		<record alias="party-battle-lead-the-ball-win-exp" type="Int32" />
+		<record alias="party-battle-lead-the-ball-lose-draw-exp" type="Int32" />
+		<record alias="party-battle-lead-the-ball-win-party-battle-point" type="Int32" />
+		<record alias="party-battle-lead-the-ball-lose-draw-party-battle-point" type="Int32" />
+		<record alias="exp-boost-sum-1" type="Int32" />
+		<record alias="exp-boost-sum-2" type="Int32" />
+		<record alias="exp-boost-sum-3" type="Int32" />
+		<record alias="express-cost" type="Int32" />
+		<record alias="tencent-vitality-max-1" type="Int32" />
+		<record alias="tencent-vitality-max-2" type="Int32" />
+		<record alias="tencent-vitality-max-3" type="Int32" />
+		<record alias="tencent-vitality-max-4" type="Int32" />
+		<record alias="level-guide-path" type="String" />
+		<record alias="exceed-level-quest" ref="Quest" />
+		<record alias="exceed-level-next-level" type="Int8" />
+	</list>
+</table>

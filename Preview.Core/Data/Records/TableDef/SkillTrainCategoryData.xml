@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list type="skill-train-category" module="CombatData" version="0.37" >
+		<record alias="job" type="Seq" seq="job" key="y" />
+		<record alias="view-skill-id" type="Int32" key="y" />
+		
+		<record alias="tree-id" type="Int32" server="n" />
+		<record alias="pc-level" type="Int16" server="n" />
+		<record alias="pc-mastery-level" type="Int16" server="n" />
+		<record alias="complete-quest" ref="Quest" server="n" />
+		<record alias="jumping-pc-complete-quest" ref="Quest" server="n" />
+		<record alias="consumed-tp" type="Int32" server="n" />
+		<record alias="sort-id" type="Int8" server="n" />
+		<record alias="ui-invisible" type="Bool" server="n" />	
+		<record alias="context-lock-disable" type="Bool" server="n" />
+	</list>
+</table>

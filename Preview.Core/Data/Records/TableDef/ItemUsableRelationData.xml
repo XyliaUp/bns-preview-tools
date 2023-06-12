@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="ItemData" type="ItemUsableRelation" version="0.3" >
+		<record alias="alias" type="String" />
+		<record alias="attraction-group" ref="AttractionGroup"  />
+		<record alias="all" type="Bool" showzero="y" />
+		<record alias="default" type="Bool" showzero="y" />
+		<record alias="duel" type="Bool" showzero="y" />
+		<record alias="unusable" type="Bool" showzero="y" />
+		<record alias="jeryoungrim" type="Bool" showzero="y" />
+		<record alias="deasamak" type="Bool" showzero="y" />
+		<record alias="suwal" type="Bool" showzero="y" />
+		<record alias="beakchung" type="Bool" showzero="y" />
+		<record alias="gunwon" type="Bool" showzero="y" />
+		<record alias="epichigh" type="Bool" showzero="y" />
+		<record alias="pacheonseongdo" type="Bool" showzero="y" />
+		<record alias="musin1-15" type="Bool" showzero="y" />
+		<record alias="cave-dungeon" type="Bool" showzero="y" />
+		<record alias="potion" type="Bool" showzero="y" />
+		<record alias="talisman" type="Bool" showzero="y" />
+
+<!--
+不支持的新Fields
+		<record alias="techeonwangreung" type="Bool" showzero="y" />
+		<record alias="event1" type="Bool" showzero="y" />
+		<record alias="event2" type="Bool" showzero="y" />
+		<record alias="special-potion" type="Bool" showzero="y" />
+-->
+	</list>
+</table>

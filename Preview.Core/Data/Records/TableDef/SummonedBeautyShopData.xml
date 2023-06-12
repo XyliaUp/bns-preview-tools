@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="ItemData" type="SummonedBeautyShop" version="0.1" >
+		<record alias="alias" type="String" />
+		<record alias="beauty-item" ref="SummonedPreset" repeat="120" />
+		<record alias="sell-rate" type="Int16" />
+	</list>
+</table>

@@ -1,0 +1,410 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<TargetFramework>net6.0-windows</TargetFramework>
+		<LangVersion>11.0</LangVersion>
+		<PlatformTarget>x64</PlatformTarget>
+		<OutputType>Library</OutputType>
+		<PublishUrl>publish\</PublishUrl>
+		<Deterministic>False</Deterministic>
+		<Install>true</Install>
+		<EnableDefaultCompileItems>true</EnableDefaultCompileItems>
+		<InstallFrom>Disk</InstallFrom>
+		<UpdateRequired>false</UpdateRequired>
+		<MapFileExtensions>true</MapFileExtensions>
+		<ApplicationRevision>0</ApplicationRevision>
+		<IsWebBootstrapper>false</IsWebBootstrapper>
+		<UseApplicationTrust>false</UseApplicationTrust>
+		<BootstrapperEnabled>true</BootstrapperEnabled>
+		<ImportWindowsDesktopTargets>true</ImportWindowsDesktopTargets>
+		<AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+		<UseWindowsForms>true</UseWindowsForms>
+
+
+		<SignAssembly>false</SignAssembly>
+		<NeutralLanguage>zh</NeutralLanguage>
+		<BaseIntermediateOutputPath />
+		<PackageId></PackageId>
+		<RootNamespace>Xylia.Preview</RootNamespace>
+		<Product>Xylia.Preview</Product>
+		<Authors>Xylia</Authors>
+		<AssemblyVersion>1.0.4.*</AssemblyVersion>
+		<FileVersion>1.0.4.0</FileVersion>
+		<DebugType>none</DebugType>
+	</PropertyGroup>
+	<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+		<PlatformTarget>x64</PlatformTarget>
+		<DebugSymbols>false</DebugSymbols>
+		<DefineConstants>$(DefineConstants)</DefineConstants>
+	</PropertyGroup>
+	<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+		<GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
+		<Deterministic>False</Deterministic>
+		<DefineConstants>$(DefineConstants)</DefineConstants>
+	</PropertyGroup>
+	<ItemGroup>
+		<BootstrapperPackage Include=".NETFramework,Version=v4.8">
+			<Visible>False</Visible>
+			<ProductName>Microsoft .NET Framework 4.8 %28x86 和 x64%29</ProductName>
+			<Install>true</Install>
+		</BootstrapperPackage>
+		<BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+			<Visible>False</Visible>
+			<ProductName>.NET Framework 3.5 SP1</ProductName>
+			<Install>false</Install>
+		</BootstrapperPackage>
+	</ItemGroup>
+	<ItemGroup>
+	  <EmbeddedResource Include="Data\Records\TableDef-Global\creature_field.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef-Global\default.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef-Global\effect_type.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\AccountLevelData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\AccountPostChargeData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\AchievementData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\AchievementRegisterData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\AcquireRouteData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\AcquireRouteListData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\ArenaMatchingRuleData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\ArenaPortalData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\AttendanceData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\AttractionGroupData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\AttractionRewardData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\AttractionRewardSummaryData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\AttractionShortcutData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\AutoCombatSkillCastConditionData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\AutoCombatSkillData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\AutoTargetParameterData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\BadgeAppearanceData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\BadgeSetItemData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\BadgeSynthesisCostData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\BadgeSynthesisRecipeData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\BattleFieldGradeData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\BattleMessageData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\BattleRoyalFieldData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\BoardGachaData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\BoardGachaReward.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\BoastData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\BoastEventData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\BossChallengeData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\BossChallengeRoundData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\BossNpcData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\CampfireData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\Cave2Data.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\CaveData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\ChallengeListData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\ChallengeListRewardData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\ChatChannelOptionData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\CinematicData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\ClassicFieldZoneData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\ClosetCollectingGradeData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\ClosetGroupData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\CollectingData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\ConditionEventData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\ConstellationData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\ConstellationStarData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\ConstellationStarOptionData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\ContentQuotaData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\ContentsGuideData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\ContentsJournal2NotiData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\ContentsJournalData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\ContentsJournalRecommendItemData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\ContentsResetData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\ContributionRewardData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\CostGroupData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\Craft2Data.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\CraftCaseRecipeData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\CraftData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\CraftGroupRecipeData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\CraftIntroductionData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\CraftRecipeData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\CraftRecipeStepData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\CreatureAppearanceData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\CustomDressDesignCostData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\CustomDressDesignTypeInfoData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\CustomizingDesignerPresetData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\CustomizingDetailIconData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\CustomizingPresetData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\CustomizingPreviewData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\CustomizingUiMatchParamData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\DifficultyTypeModifyData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\DuelBotChallengeData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\DuelBotChallengeStrategicToolData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\DuelBotData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\DuelBotTrainingRoomData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\DuelBotTrainingRoomRewardData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\DuelBotTrainingRoomVersionData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\DuelData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\DuelGradeData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\DuelMatchingRuleData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\DuelMemberDisplaySkillData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\DungeonData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\EffectData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\EffectGroupData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\EmoticonData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\EquipGemPieceData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\ExpandInventoryData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\ExpandRandomStoreData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\ExpandSkillPageData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\FactionBattleFieldZoneData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\FactionData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\FactionLevelData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\FeedBack.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\FeedBackBossNpc.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\FeedBackSkillScore.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\FieldItemData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\FieldItemDropData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\FieldZoneData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\FilterData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\FishData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\FishGradeData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\FishingFieldData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\FishingFieldGroupData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\FishingPasteData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\FriendNotiLocationData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\GameMessageData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\GlyphData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\GlyphPageData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\GlyphRewardData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\GoodsIconData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\GradeBenefitsData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\GuildActionData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\GuildBandItemData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\GuildBattleFieldZoneData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\GuildCraftRecipeData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\GuildCustomizeUiMatchParamData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\GuildDiscountData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\GuildLevelData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\GuildMemberGradeAuthorityData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\GuildUniformComponentData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\GuildUniformParamTypeCategoryData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\GuildUniformPresetData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\GuildUniformRecipeData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\GuildUniformRegistrationQuotaData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\GuildUniformSliderData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\IconTextureData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\IndicatorIdleData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\IndicatorSocialData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\InterDungeonListData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\ItemBrandData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\ItemBrandTooltipData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\ItemBuyPriceData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\ItemCombatData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\ItemData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\ItemEventData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\ItemExchangeData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\ItemGearScoreData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\ItemGraphData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\ItemGraphSeedGroupData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\ItemImproveData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\ItemImproveOptionData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\ItemImproveOptionListData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\ItemImproveSetBonusData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\ItemImproveSuccessionData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\ItemPouchMesh2Data.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\ItemPouchMeshData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\ItemRandomAbilitySectionData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\ItemRandomAbilitySlotData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\ItemRandomEffectGroup.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\ItemRandomOptionData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\ItemRandomOptionGroupData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\ItemSkillData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\ItemSpiritData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\ItemTransformRecipeData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\ItemTransformUpgradeItemData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\ItemUsableGroupData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\ItemUsableRelationData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\JackpotBossZoneData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\JobData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\JobQuestData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\JobStyleData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\JobStyleStandIdleData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\JumpingCharacter2Data.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\JumpingCharacterData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\JumpingQuest2Data.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\JumpingQuestData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\JumpingTeleport2Data.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\JumpingTeleportData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\KeyCapData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\KeyCommandData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\LevelData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\LinkMoveAnimData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\LoadingImageData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\LobbyPcData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\MapAreaData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\MapGroup1Data.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\MapGroup1ExpeditionData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\MapGroup2Data.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\MapInfoData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\MapUnitData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\MasteryLevelData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\MasteryStatPointData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\MasteryStatPointPickData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\MentoringData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\MoveAnimData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\NewbieCareData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\NpcBrainParamtersData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\NpcCombatMoveAnimData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\NpcConvoyData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\NpcData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\NpcIndicatorMoveAnimData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\NpcMoveAnimData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\NpcResetStageData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\NpcResponseData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\NpcSealedDungeonReward.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\NpcTalkMessageData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\PartyBattleFieldZoneData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\PartyChatChannelData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\PartyMatchData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\PcAppearanceData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\PcData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\PcRaceSexJobData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\PcSkill3Data.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\PcVoiceData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\PcVoiceSetData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\PetData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\PetFoodRecoveryData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\PhantomSword3Data.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\PhantomSwordData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\PublicRaidData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\PublicRaidEvnetData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\QuestBonusRewardData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\QuestBonusRewardSettingData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\QuestRewardData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\QuestSealedDungeonRewardData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\RaceData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\RaidDungeonData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\RandomboxPreviewData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\RandomStoreData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\RandomStoreDrawRewardData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\RandomStoreItemData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\RandomStoreItemDisplayData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\RandomStoreItemGroupData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\RankingRewardData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\RankingRewardGroupData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\RewardData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\SealedDungeonGimmickData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\SealedDungeonLevelData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\SealedDungeonModifyData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\SetItemData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\SimpleFieldData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\Skill3Data.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\SkillBuildUpData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\SkillByEquipmentData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\SkillCastCondition3.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\SkillCombo2Data.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\SkillDashAttribute3Data.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\SkillGatherRange3Data.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\SkillInheritanceData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\SkillMessageData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\SkillModifyInfoData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\SkillModifyInfoGroupData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\SkillResultControll3Data.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\SkillShow3Data.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\SkillSkinData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\SkillSystematizationData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\SkillSystematizationGroupData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\SkillTargetFilter3Data.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\SkillTooltipAttributeData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\SkillTooltipData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\SkillTrainCategoryData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\SkillTrainComboActionData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\SkillTrainingRoomData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\SkillTrainingRoomGroupData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\SkillTrainingRoomSubjectData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\SkillTrainSimpleContextFlowData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\SkillTraitData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\SlateScrollData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\SlateScrollStoneData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\SlateStoneData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\SocialData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\SoulMaskSetData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\SoulNpcSkillData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\SpecialSkillGaugeData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\StanceData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\StaticChatChannelData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\Store2Data.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\StoreByItemData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\StoreData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\SummonedAppearanceData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\SummonedBeautyShopData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\SummonedData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\SummonedDesignerPresetData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\SummonedPresetData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\SurveyData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\TalkSocialData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\TeleportData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\TendencyFieldData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\TerrainData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\TextData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\TimeLimitFieldZoneData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\TreasureBoardPageData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\TreasureBoardRewardData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\TreasureBoardSeasonData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\UiCommandData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\UnlocatedStoreData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\UserCommandData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\VehicleData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\VehicleDataAppearance.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\VirtualItemData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\WantedMissionData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\WarFieldData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\WeaponAppearanceChangeCostData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\WeeklyTimeTableData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\WorldAccountCardData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\WorldAccountExpeditionData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\WorldAccountMuseumData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\ZoneAreaData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\ZoneBasecampData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\ZoneCampfireData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\ZoneCellAttributeData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\ZoneConvoyData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\ZoneData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\ZoneEnv2Data.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\ZoneEnv2PlaceData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\ZoneEnv2SpawnData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\ZoneEnv2SpawnRandomGroupData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\ZoneNpcSpawnData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\ZoneNpcSquadData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\ZonePathWayData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\ZonePcSpawnData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\ZoneRespawnData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\ZoneRuleData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\ZoneTeleportPositionData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\ZoneTeleportSwitchData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\ZoneTriggerEventCondData.xml" />
+	  <EmbeddedResource Include="Data\Records\TableDef\ZoneTriggerEventStageData.xml" />
+	</ItemGroup>
+	<ItemGroup>
+		<WCFMetadata Include="Connected Services\" />
+	</ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="CUE4Parse-Conversion" Version="1.0.9" />
+		<PackageReference Include="HtmlAgilityPack" Version="1.11.46" />
+		<PackageReference Include="Xylia" Version="1.0.3.15" />
+	</ItemGroup>
+	<ItemGroup>
+	  <Reference Include="BnsBinTool.Core">
+	    <HintPath>..\BNSBIN\Src\BnsBinTool.Core\bin\Debug\net6.0\win-x64\BnsBinTool.Core.dll</HintPath>
+	  </Reference>
+	</ItemGroup>
+	<ItemGroup>
+		<Compile Update="Properties\Resource.Designer.cs">
+		  <DesignTime>True</DesignTime>
+		  <AutoGen>True</AutoGen>
+		  <DependentUpon>Resource.resx</DependentUpon>
+		</Compile>
+	</ItemGroup>
+	<ItemGroup>
+		<EmbeddedResource Update="Properties\Resource.resx">
+		  <Generator>ResXFileCodeGenerator</Generator>
+		  <LastGenOutput>Resource.Designer.cs</LastGenOutput>
+		</EmbeddedResource>
+	</ItemGroup>
+	<ItemGroup>
+		<None Update="isalib.dll">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<None Update="oo2core_9_win64.dll">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+	</ItemGroup>
+</Project>

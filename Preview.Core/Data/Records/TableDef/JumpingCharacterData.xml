@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<list module="CombatData" type="JumpingCharacter" version="0.5" >
+		<record alias="job" key="y" type="Seq" seq="job" />
+		<record alias="condition-level" key="y" type="Int8" />
+		
+		<record alias="alias" type="String" />
+		<record alias="jumping-level" type="Int8" />
+		<record alias="tutorial-zone" ref="Zone" repeat="4" />
+		<record alias="train-quest" ref="Quest" />
+		<record alias="skip-msg-achievement" ref="Achievement" />
+		<record alias="creation-enable" type="Bool" showzero="y" />
+		<record alias="equip-costume" ref="Item" client="n" />
+		<record alias="equip-weapon" ref="Item" client="n" />
+	</list>
+</table>
