@@ -99,7 +99,7 @@ namespace Xylia.Match.Windows.Panel.TextInfo
 
 			try
 			{
-				HtmlDocument doc = new();
+				HtmlAgilityPack.HtmlDocument doc = new();
 				doc.LoadHtml(Text);
 
 				string Result = null;
@@ -126,7 +126,7 @@ namespace Xylia.Match.Windows.Panel.TextInfo
 
 				case "p":
 				{
-					return $@"<p style='text-align:{  Node.Attributes["horizontalalignment"]?.Value }; '>";
+					return $@"<p style='text-align:{Node.Attributes["horizontalalignment"]?.Value}; '>";
 				}
 
 				case "arg":
@@ -146,7 +146,7 @@ namespace Xylia.Match.Windows.Panel.TextInfo
 						Content = p.Replace("id:", null) + "." + Temp[1] ?? Temp[0];
 					}
 
-					return $@"<span>{ Content }</span>";
+					return $@"<span>{Content}</span>";
 					#endregion
 				}
 
@@ -173,7 +173,7 @@ namespace Xylia.Match.Windows.Panel.TextInfo
 					{
 						string FileName = Temp[0] + @"\" + Temp[1] + ".png";
 
-						return $@"<img src='file://{  Xylia.Configure.PathDefine.MainFolder }Resources\Package\{ FileName }'>";
+						return $@"<img src='file://{Xylia.Configure.PathDefine.MainFolder}Resources\Package\{FileName}'>";
 					}
 					#endregion
 				}
@@ -191,7 +191,7 @@ namespace Xylia.Match.Windows.Panel.TextInfo
 						if (FontName.Contains('.')) FontName = FontName.Replace(FontName.Split('.')[0] + ".", null);
 					}
 
-					return $"<span class=\"{ FontName?.Replace(".", "_") }\">{  Node.InnerText }</span>";
+					return $"<span class=\"{FontName?.Replace(".", "_")}\">{Node.InnerText}</span>";
 				}
 			}
 

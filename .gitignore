@@ -3,3 +3,4 @@ obj
 .vs
 /Preview.Tests/*.xml
 /Preview.Tests/DatTool
+/WinForm/Properties/PublishProfiles/FolderProfile.pubxml.user

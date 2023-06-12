@@ -1,5 +1,4 @@
-﻿using System;
-using System.Windows;
+﻿using System.Windows;
 using System.Xml;
 
 using AutoUpdaterDotNET;
@@ -72,17 +71,17 @@ namespace Xylia.Match.Util
 				{
 					if (AutoUpdater.DownloadUpdate(args))
 					{
-						Application.Current.Shutdown();
+						System.Windows.Application.Current.Shutdown();
 					}
 				}
 				catch (Exception exception)
 				{
-					MessageBox.Show(exception.Message, exception.GetType().ToString(), MessageBoxButton.OK, MessageBoxImage.Error);
+					System.Windows.MessageBox.Show(exception.Message, exception.GetType().ToString(), MessageBoxButton.OK, MessageBoxImage.Error);
 				}
 			}
 			else
 			{
-				MessageBox.Show(
+				System.Windows.MessageBox.Show(
 					"There is a problem reaching the update server, please check your internet connection or try again later.",
 					"Update Check Failed", MessageBoxButton.OK, MessageBoxImage.Error);
 			}

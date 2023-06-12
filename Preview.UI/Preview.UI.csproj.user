@@ -1,6 +1,45 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
+    <Compile Update="Art\GameUI\Scene\Game_ChallengeToday\Game_ChallengeTodayScene\ChallengeListRewardPreview.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Art\GameUI\Scene\Game_ItemGrowth2\Game_ItemGrowth2Scene\FixedIngredientPreview.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="Art\GameUI\Scene\Game_ItemGrowth2\Game_ItemGrowth2Scene\ResultWeaponPreview.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Art\GameUI\Scene\Game_ItemGrowth2\Game_ItemGrowth2Scene\SubIngredientPreview.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="Art\GameUI\Scene\Game_ItemStore\Game_ItemStoreScene\BuyPriceCell.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="Art\GameUI\Scene\Game_QuestJournal\Game_QuestJournalScene\Group\Task\Mission\CaseInfoPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Art\GameUI\Scene\Game_RandomStore\Game_RandomStoreExhibitionScene\DrawRewardCell.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Art\GameUI\Scene\Game_ToolTip\Game_ToolTipScene\ItemTooltipPanel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Art\GameUI\Scene\Game_ToolTip\Game_ToolTipScene\ItemTooltipPanel\DataGridScene.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Art\GameUI\Scene\Game_ToolTip\Game_ToolTipScene\ItemTooltipPanel\Preview\Exchange\ProcessComparisonCell.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Art\GameUI\Scene\Game_ToolTip\Game_ToolTipScene\ItemTooltipPanel\Preview\JobStyleSelect.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Art\GameUI\Scene\Game_ToolTip\Game_ToolTipScene\ItemTooltipPanel\UserOperPanel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Art\GameUI\Scene\Game_ToolTip\Game_ToolTipScene\Skill3ToolTipPanel_1\SkillPreview\SkillPreview.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Update="CustomUI\Controls\ContentPanel\ContentPanel.cs">
       <SubType>Component</SubType>
     </Compile>

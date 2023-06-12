@@ -31,7 +31,7 @@
 		<PublishTrimmed>false</PublishTrimmed>
 		<GenerateManifests>false</GenerateManifests>
 		<Nullable>annotations</Nullable>
-		<ImplicitUsings>disable</ImplicitUsings>
+		<ImplicitUsings>enable</ImplicitUsings>
 		<IsPublishable>True</IsPublishable>
 		<PackageIcon>Query.ico</PackageIcon>
 		<DebugType>none</DebugType>
@@ -58,16 +58,6 @@
 		<GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
 		<CheckForOverflowUnderflow>False</CheckForOverflowUnderflow>
 	</PropertyGroup>
-
-	
-	<ItemGroup>
-		<Reference Include="BnsBinTool.Core">
-		  <HintPath>..\BNSBIN\Src\BnsBinTool.Core\bin\Debug\net6.0\win-x64\BnsBinTool.Core.dll</HintPath>
-		</Reference>
-		<Reference Include="Xylia.bns">
-		  <HintPath>..\BNSDAT\BnsDatTool\bin\Debug\net6.0-windows\Xylia.bns.dll</HintPath>
-		</Reference>
-	</ItemGroup>
 	<ItemGroup>
 		<Compile Update="Properties\Resources.Designer.cs">
 			<DesignTime>True</DesignTime>
@@ -115,6 +105,7 @@
 		<PackageReference Include="Xylia" Version="1.0.3.15" />
 	</ItemGroup>
 	<ItemGroup>
+		<ProjectReference Include="..\BNSBIN\Src\BnsBinTool.Core\BnsBinTool.Core.csproj" />
 		<ProjectReference Include="..\Preview.Core\Preview.Core.csproj" />
 		<ProjectReference Include="..\Preview.UI\Preview.UI.csproj" />
 	</ItemGroup>

@@ -114,9 +114,7 @@
 	  <Compile Update="Art\GameUI\Scene\Game_ChallengeToday\Game_ChallengeTodayScene\ChallengeCell.cs">
 	    <SubType>UserControl</SubType>
 	  </Compile>
-	  <Compile Update="Art\GameUI\Scene\Game_ChallengeToday\Game_ChallengeTodayScene\ChallengeListRewardPreview.cs">
-	    <SubType>UserControl</SubType>
-	  </Compile>
+	  <Compile Update="Art\GameUI\Scene\Game_ChallengeToday\Game_ChallengeTodayScene\ChallengeListRewardPreview.cs" />
 	  <Compile Update="Art\GameUI\Scene\Game_Intension\Game_IntensionScene\OptionList.cs">
 	    <SubType>Component</SubType>
 	  </Compile>
@@ -138,18 +136,12 @@
 	  <Compile Update="Art\GameUI\Scene\Game_ItemGrowth2\Game_ItemGrowth2Scene\FeedItemIconCell.cs">
 	    <SubType>Component</SubType>
 	  </Compile>
-	  <Compile Update="Art\GameUI\Scene\Game_ItemGrowth2\Game_ItemGrowth2Scene\FixedIngredientPreview.cs">
-	    <SubType>Component</SubType>
-	  </Compile>
+	  <Compile Update="Art\GameUI\Scene\Game_ItemGrowth2\Game_ItemGrowth2Scene\FixedIngredientPreview.cs" />
 	  <Compile Update="Art\GameUI\Scene\Game_ItemGrowth2\Game_ItemGrowth2Scene\MoneyCostPreview.cs">
 	    <SubType>UserControl</SubType>
 	  </Compile>
-	  <Compile Update="Art\GameUI\Scene\Game_ItemGrowth2\Game_ItemGrowth2Scene\ResultWeaponPreview.cs">
-	    <SubType>UserControl</SubType>
-	  </Compile>
-	  <Compile Update="Art\GameUI\Scene\Game_ItemGrowth2\Game_ItemGrowth2Scene\SubIngredientPreview.cs">
-	    <SubType>Component</SubType>
-	  </Compile>
+	  <Compile Update="Art\GameUI\Scene\Game_ItemGrowth2\Game_ItemGrowth2Scene\ResultWeaponPreview.cs" />
+	  <Compile Update="Art\GameUI\Scene\Game_ItemGrowth2\Game_ItemGrowth2Scene\SubIngredientPreview.cs" />
 	  <Compile Update="Art\GameUI\Scene\Game_ItemGrowth2\Game_ItemGrowth2Scene\WarningPreview.cs">
 	    <SubType>UserControl</SubType>
 	  </Compile>
@@ -162,9 +154,7 @@
 	  <Compile Update="Art\GameUI\Scene\Game_ItemStore\Game_ItemStoreScene.cs">
 	    <SubType>Form</SubType>
 	  </Compile>
-	  <Compile Update="Art\GameUI\Scene\Game_ItemStore\Game_ItemStoreScene\BuyPriceCell.cs">
-	    <SubType>Component</SubType>
-	  </Compile>
+	  <Compile Update="Art\GameUI\Scene\Game_ItemStore\Game_ItemStoreScene\BuyPriceCell.cs" />
 	  <Compile Update="Art\GameUI\Scene\Game_ItemStore\Game_ItemStoreScene\Store2ItemCell.cs">
 	    <SubType>UserControl</SubType>
 	  </Compile>
@@ -210,9 +200,7 @@
 	  <Compile Update="Art\GameUI\Scene\Game_QuestJournal\Game_QuestJournalScene\Group\Reward\RewardPanel.cs">
 	    <SubType>UserControl</SubType>
 	  </Compile>
-	  <Compile Update="Art\GameUI\Scene\Game_QuestJournal\Game_QuestJournalScene\Group\Task\Mission\CaseInfoPanel.cs">
-	    <SubType>UserControl</SubType>
-	  </Compile>
+	  <Compile Update="Art\GameUI\Scene\Game_QuestJournal\Game_QuestJournalScene\Group\Task\Mission\CaseInfoPanel.cs" />
 	  <Compile Update="Art\GameUI\Scene\Game_QuestJournal\Game_QuestJournalScene\Group\Task\Mission\MissionPanel.cs">
 	    <SubType>UserControl</SubType>
 	  </Compile>
@@ -225,9 +213,7 @@
 	  <Compile Update="Art\GameUI\Scene\Game_RandomStore\Game_RandomStoreExhibitionScene.cs">
 	    <SubType>Form</SubType>
 	  </Compile>
-	  <Compile Update="Art\GameUI\Scene\Game_RandomStore\Game_RandomStoreExhibitionScene\DrawRewardCell.cs">
-	    <SubType>UserControl</SubType>
-	  </Compile>
+	  <Compile Update="Art\GameUI\Scene\Game_RandomStore\Game_RandomStoreExhibitionScene\DrawRewardCell.cs" />
 	  <Compile Update="Art\GameUI\Scene\Game_RandomStore\Game_RandomStoreExhibitionScene\DrawRewardPreview.cs">
 	    <SubType>UserControl</SubType>
 	  </Compile>
@@ -237,12 +223,8 @@
 	  <Compile Update="Art\GameUI\Scene\Game_RandomStore\Game_RandomStoreScene.cs">
 	    <SubType>Form</SubType>
 	  </Compile>
-	  <Compile Update="Art\GameUI\Scene\Game_ToolTip\Game_ToolTipScene\ItemTooltipPanel.cs">
-	    <SubType>Form</SubType>
-	  </Compile>
-	  <Compile Update="Art\GameUI\Scene\Game_ToolTip\Game_ToolTipScene\ItemTooltipPanel\DataGridScene.cs">
-	    <SubType>Form</SubType>
-	  </Compile>
+	  <Compile Update="Art\GameUI\Scene\Game_ToolTip\Game_ToolTipScene\ItemTooltipPanel.cs" />
+	  <Compile Update="Art\GameUI\Scene\Game_ToolTip\Game_ToolTipScene\ItemTooltipPanel\DataGridScene.cs" />
 	  <Compile Update="Art\GameUI\Scene\Game_ToolTip\Game_ToolTipScene\ItemTooltipPanel\Preview\Base\TitleContentPanel.cs">
 	    <SubType>UserControl</SubType>
 	  </Compile>
@@ -258,18 +240,14 @@
 	  <Compile Update="Art\GameUI\Scene\Game_ToolTip\Game_ToolTipScene\ItemTooltipPanel\Preview\Exchange\ExchangePreview.cs">
 	    <SubType>UserControl</SubType>
 	  </Compile>
-	  <Compile Update="Art\GameUI\Scene\Game_ToolTip\Game_ToolTipScene\ItemTooltipPanel\Preview\Exchange\ProcessComparisonCell.cs">
-	    <SubType>UserControl</SubType>
-	  </Compile>
+	  <Compile Update="Art\GameUI\Scene\Game_ToolTip\Game_ToolTipScene\ItemTooltipPanel\Preview\Exchange\ProcessComparisonCell.cs" />
 	  <Compile Update="Art\GameUI\Scene\Game_ToolTip\Game_ToolTipScene\ItemTooltipPanel\Preview\GemAbility\AttributeInfoCell.cs">
 	    <SubType>UserControl</SubType>
 	  </Compile>
 	  <Compile Update="Art\GameUI\Scene\Game_ToolTip\Game_ToolTipScene\ItemTooltipPanel\Preview\GemAbility\AttributePreview.cs">
 	    <SubType>UserControl</SubType>
 	  </Compile>
-	  <Compile Update="Art\GameUI\Scene\Game_ToolTip\Game_ToolTipScene\ItemTooltipPanel\Preview\JobStyleSelect.cs">
-	    <SubType>UserControl</SubType>
-	  </Compile>
+	  <Compile Update="Art\GameUI\Scene\Game_ToolTip\Game_ToolTipScene\ItemTooltipPanel\Preview\JobStyleSelect.cs" />
 	  <Compile Update="Art\GameUI\Scene\Game_ToolTip\Game_ToolTipScene\ItemTooltipPanel\Preview\Reward\RewardCell.cs">
 	    <SubType>UserControl</SubType>
 	  </Compile>
@@ -306,15 +284,11 @@
 	  <Compile Update="Art\GameUI\Scene\Game_ToolTip\Game_ToolTipScene\ItemTooltipPanel\Preview\SlateScroll\SlateScrollTooltip.cs">
 	    <SubType>UserControl</SubType>
 	  </Compile>
-	  <Compile Update="Art\GameUI\Scene\Game_ToolTip\Game_ToolTipScene\ItemTooltipPanel\UserOperPanel.cs">
-	    <SubType>Form</SubType>
-	  </Compile>
+	  <Compile Update="Art\GameUI\Scene\Game_ToolTip\Game_ToolTipScene\ItemTooltipPanel\UserOperPanel.cs" />
 	  <Compile Update="Art\GameUI\Scene\Game_ToolTip\Game_ToolTipScene\Skill3ToolTipPanel_1\SkillPreview\SkillFrm.cs">
 	    <SubType>Form</SubType>
 	  </Compile>
-	  <Compile Update="Art\GameUI\Scene\Game_ToolTip\Game_ToolTipScene\Skill3ToolTipPanel_1\SkillPreview\SkillPreview.cs">
-	    <SubType>UserControl</SubType>
-	  </Compile>
+	  <Compile Update="Art\GameUI\Scene\Game_ToolTip\Game_ToolTipScene\Skill3ToolTipPanel_1\SkillPreview\SkillPreview.cs" />
 	  <Compile Update="Art\GameUI\Scene\Game_ToolTip\Game_ToolTipScene\Skill3ToolTipPanel_1\SkillPreview\SkillTooltipPanel.cs">
 	    <SubType>Component</SubType>
 	  </Compile>

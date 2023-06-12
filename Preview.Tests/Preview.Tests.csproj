@@ -4,6 +4,7 @@
 		<Nullable>enable</Nullable>
 		<IsPackable>false</IsPackable>
 		<UseWindowsForms>true</UseWindowsForms>
+		<ImplicitUsings>enable</ImplicitUsings>
 	</PropertyGroup>
 
 
@@ -18,13 +19,8 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<ProjectReference Include="..\BNSBIN\Src\BnsBinTool.Core\BnsBinTool.Core.csproj" />
 		<ProjectReference Include="..\Preview.Core\Preview.Core.csproj" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <Reference Include="BnsBinTool.Core">
-	    <HintPath>..\BNSBIN\Src\BnsBinTool.Core\bin\Debug\net6.0\win-x64\BnsBinTool.Core.dll</HintPath>
-	  </Reference>
 	</ItemGroup>
 
 
