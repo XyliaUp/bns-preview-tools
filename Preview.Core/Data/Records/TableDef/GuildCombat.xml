@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table name="guild-combat" version="0.1" autokey="false" module="70">
+  <el name="table" child="1" />
+  <el name="record">
+    <record name="alias" type="String" required="y" max="70" />
+    <record name="season-type" type="Seq" key="y" required="y">
+      <case name="invalid" />
+      <case name="duel-death-match-1vs1" />
+      <case name="duel-death-match-3vs3" />
+      <case name="duel-tag-match-3vs3" />
+      <case name="party-battle-occupation-war" />
+      <case name="solo-dungeon-1-best-record" />
+      <case name="infinite-tower-best-record" />
+      <case name="party-battle-capture-the-flag" />
+      <case name="guild-combat" />
+      <case name="solo-dungeon-2-best-record" />
+      <case name="ingame-championship-duel-death-match-1vs1" />
+      <case name="ingame-championship-duel-tag-match-3vs3" />
+      <case name="party-battle-lead-the-ball" />
+      <case name="challenge-party-best-record" />
+      <case name="battle-royal-free-for-all" />
+      <case name="battle-royal-free-for-all-party" />
+      <case name="mastery-exp-best-record" />
+    </record>
+    <record name="required-level" type="Int8" required="y" min="0" />
+    <record name="required-mastery-level" type="Int16" required="y" min="0" />
+    <record name="available-matching-weekly-time" type="Ref" ref="weeklytimetable" />
+    <record name="party-battle-point-bonus-rate" type="Int16" default="0" min="0" max="1000" />
+  </el>
+</table>

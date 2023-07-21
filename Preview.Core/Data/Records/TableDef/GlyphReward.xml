@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table name="glyph-reward" version="3.7" autokey="false" module="6" maxid="30000">
+  <el name="table" child="1" />
+  <el name="record">
+    <record name="id" type="Int16" key="y" required="y" min="1" max="30000" />
+    <record name="alias" type="String" required="y" max="70" />
+    <record name="name" type="Ref" ref="text" />
+    <record name="shuffle-reward-icon" type="Icon" max="32767" />
+    <record name="shuffle-reward-tooltip" type="Ref" ref="text" />
+    <record name="upgrade-reward-preview" type="Seq">
+      <case name="fixed-score" default="y" />
+      <case name="random-score" />
+    </record>
+    <record name="upgrade-reward-warning-message" type="Bool" />
+    <record name="reward-type" type="Seq" required="y">
+      <case name="acquire" />
+      <case name="upgrade" />
+      <case name="shuffle" />
+    </record>
+    <record name="grade" type="Int8" default="1" min="1" max="8" />
+    <record name="color" type="Seq">
+      <case name="none" default="y" />
+      <case name="red" />
+      <case name="yellow" />
+      <case name="blue" />
+    </record>
+    <record name="cost-money" type="Int32" default="0" min="0" />
+    <record name="cost-item" type="Ref" ref="item" repeat="4" />
+    <record name="cost-item-count" type="Int16" default="0" repeat="4" min="0" max="30000" />
+  </el>
+</table>

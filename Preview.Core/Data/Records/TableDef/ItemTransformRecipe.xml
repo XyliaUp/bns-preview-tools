@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table name="ItemTransformRecipe" version="3.0" autokey="true" module="262">
+  <el name="table" child="1" />
+  <el name="record">
+    <record name="alias" type="String" required="y" max="70" />
+    <record name="upgrade-grocery" type="Ref" ref="itemtransformupgradeitem" />
+    <record name="required-inven-capacity" type="Int8" default="1" min="1" max="4" />
+    <record name="money-cost" type="Int32" default="0" min="0" max="2000000000" />
+    <record name="main-ingredient" type="TRef" />
+    <record name="main-ingredient-condition-type" type="Seq" seq="condition-type" default="all" />
+    <record name="main-ingredient-min-level" type="Int8" default="1" min="1" max="100" />
+    <record name="main-ingredient-stack-count" type="Int16" default="0" min="0" max="10000" />
+    <record name="main-ingredient-title-name" type="Ref" ref="text" />
+    <record name="main-ingredient-title-item" type="Ref" ref="item" />
+    <record name="keep-main-ingredient-weapon-gem-slot" type="Bool" />
+    <record name="keep-main-ingredient-weapon-appearance" type="Bool" />
+    <record name="keep-main-ingredient-spirit" type="Bool" />
+    <record name="consume-main-ingredient" type="Bool" />
+    <record name="sub-ingredient" type="TRef" repeat="7" />
+    <record name="sub-ingredient-condition-type" type="Seq" seq="condition-type" default="all" repeat="7" />
+    <record name="sub-ingredient-min-level" type="Int8" default="1" repeat="7" min="1" max="100" />
+    <record name="sub-ingredient-stack-count" type="Int16" default="0" repeat="7" min="0" max="10000" />
+    <record name="sub-ingredient-title-name" type="Ref" ref="text" repeat="7" />
+    <record name="sub-ingredient-title-item" type="Ref" ref="item" repeat="7" />
+    <record name="consume-sub-ingredient" type="Bool" />
+    <record name="fixed-ingredient" type="Ref" ref="item" repeat="8" />
+    <record name="fixed-ingredient-stack-count" type="Int16" default="0" repeat="8" min="0" max="10000" />
+    <record name="consume-fixed-ingredient" type="Bool" default="y" />
+    <record name="special-fixed-index" type="Int8" default="0" />
+    <record name="unk-" type="Bool" />
+    <record name="unk-" type="Bool" />
+    <record name="unk-" type="Bool" />
+    <record name="rare-item" type="TRef" repeat="12" />
+    <record name="normal-item" type="TRef" repeat="12" />
+    <record name="premium-item" type="TRef" repeat="12" />
+    <record name="random-item" type="TRef" repeat="10" />
+    <record name="unk-" type="Int32" default="0" />
+    <record name="unk-" type="Int32" default="0" />
+    <record name="unk-" type="Int32" default="0" />
+    <record name="unk-" type="Int32" default="0" />
+    <record name="unk-" type="Int32" default="0" />
+    <record name="random-failure-mileage-save" type="Bool" />
+    <record name="random-failure-mileage-influence-recipe" type="Ref" ref="ItemTransformRecipe" repeat="2" />
+    <record name="random-retry-cost" type="Ref" ref="item-transform-retry-cost" />
+    <record name="main-ingredient-weapon-gem-type" type="Seq" seq="weapon-gem-type" default="none" />
+    <record name="main-ingredient-weapon-gem-level" type="Int16" default="0" />
+    <record name="main-ingredient-weapon-gem-grade" type="Int8" default="0" />
+    <record name="sub-ingredient-weapon-gem-type" type="Seq" seq="weapon-gem-type" default="none" repeat="7" />
+    <record name="sub-ingredient-weapon-gem-level" type="Int16" default="0" repeat="7" />
+    <record name="sub-ingredient-weapon-gem-grade" type="Int8" default="0" repeat="7" />
+    <record name="title-item" type="Ref" ref="item" />
+    <record name="title-name" type="Ref" ref="text" />
+    <record name="title-reward" type="Ref" ref="randombox-preview" />
+    <record name="category2" type="Seq">
+      <case name="none" default="y" />
+    </record>
+    <record name="category" type="Seq">
+      <case name="none" default="y" />
+      <case name="event" />
+      <case name="material" />
+      <case name="costume" />
+      <case name="weapon" />
+      <case name="legendary-weapon" />
+      <case name="accessory" />
+      <case name="weapon-gem-adder" />
+      <case name="weapon-gem2" />
+      <case name="piece" />
+      <case name="purification" />
+      <case name="special" />
+      <case name="pet" />
+      <case name="pet-legend" />
+      <case name="pet-change" />
+      <case name="taiji-gem" />
+      <case name="division" />
+      <case name="weapon-enchant-gem" />
+      <case name="sewing" />
+      <case name="weapon-transform" />
+      <case name="accessory-transform" />
+      <case name="equip-gem" />
+    </record>
+    <record name="use-random" type="Bool" />
+    <record name="fail-effect" type="Ref" ref="effect" />
+    <record name="quest" type="Ref" ref="quest" />
+    <record name="bm-ingredient-recipe" type="Bool" />
+    <record name="warning" type="Seq">
+      <case name="none" default="y" />
+      <case name="fail" />
+      <case name="stuck" />
+      <case name="gemslotreset" />
+      <case name="fail-gemslotreset" />
+      <case name="stuck-gemslotreset" />
+      <case name="change" />
+      <case name="lower" />
+      <case name="lower-gemslotreset" />
+      <case name="partialfail" />
+      <case name="tradeimpossible" />
+      <case name="delete-particle" />
+      <case name="delete-design" />
+      <case name="spiritreset" />
+      <case name="fail-spiritreset" />
+      <case name="gemslotreset-spiritreset" />
+      <case name="fail-gemslotreset-spiritreset" />
+      <case name="lower-spiritreset" />
+      <case name="lower-gemslotreset-spiritreset" />
+      <case name="partialfail-spiritreset" />
+      <case name="cannot-division" />
+      <case name="fail-cannot-division" />
+    </record>
+    <record name="event-index" type="Int8" default="0" />
+    <record name="recipe-score" type="Int32" default="0" min="0" max="200000" />
+    <record name="recipe-series" type="Seq">
+      <case name="none" default="y" />
+      <case name="normal-1" />
+      <case name="normal-2" />
+      <case name="normal-3" />
+      <case name="normal-4" />
+      <case name="normal-5" />
+      <case name="normal-6" />
+      <case name="normal-7" />
+      <case name="normal-8" />
+      <case name="normal-9" />
+      <case name="normal-11" />
+      <case name="normal-12" />
+      <case name="normal-13" />
+      <case name="normal-14" />
+      <case name="normal-15" />
+      <case name="normal-16" />
+      <case name="normal-17" />
+      <case name="normal-18" />
+      <case name="normal-19" />
+      <case name="normal-20" />
+      <case name="bm-1" />
+      <case name="bm-2" />
+      <case name="bm-3" />
+      <case name="bm-4" />
+      <case name="bm-5" />
+      <case name="bm-6" />
+      <case name="bm-7" />
+      <case name="bm-8" />
+      <case name="bm-9" />
+      <case name="bm-11" />
+      <case name="bm-12" />
+      <case name="bm-13" />
+      <case name="bm-14" />
+      <case name="bm-15" />
+      <case name="bm-16" />
+      <case name="bm-17" />
+      <case name="bm-18" />
+      <case name="bm-19" />
+      <case name="bm-20" />
+    </record>
+    <record name="definite-discount-minimum-value" type="Int8" default="0" min="0" max="100" />
+  </el>
+</table>

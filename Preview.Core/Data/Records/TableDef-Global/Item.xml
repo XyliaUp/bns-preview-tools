@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<record name="condition-type">
+		<case name="none" />
+		<case name="all" default="y" />
+		<case name="weapon" />
+		<case name="sword" />
+		<case name="blade-master-sword" />
+		<case name="lyn-sword" />
+		<case name="gauntlet" />
+		<case name="staff" />
+		<case name="aura-bangle" />
+		<case name="dagger" />
+		<case name="axe" />
+		<case name="accessory" />
+		<case name="ring" />
+		<case name="earring" />
+		<case name="necklace" />
+		<case name="belt" />
+		<case name="bracelet" />
+		<case name="soul" />
+		<case name="assassin-dagger" />
+		<case name="warlock-dagger" />
+		<case name="gem-1" />
+		<case name="gem-2" />
+		<case name="gem-3" />
+		<case name="gem-4" />
+		<case name="gem-5" />
+		<case name="gem-6" />
+		<case name="gem-7" />
+		<case name="gem-8" />
+		<case name="soul-2" />
+		<case name="gloves" />
+		<case name="pet-1" />
+		<case name="pet-2" />
+		<case name="kung-fu-fighter-gauntlet" />
+		<case name="soul-fighter-gauntlet" />
+		<case name="shooter-gun" />
+		<case name="rune-1" />
+		<case name="rune-2" />
+		<case name="weapon-enchant-gem" />
+		<case name="weapon-enchant-gem-1" />
+		<case name="weapon-enchant-gem-2" />
+		<case name="great-sword" />
+		<case name="long-bow" />
+		<case name="spear" />
+		<case name="orb" />
+		<case name="dual-blade" />
+		<case name="nova" />
+		<case name="badge-1" />
+		<case name="badge-2" />
+		<case name="badge-3" />
+		<case name="badge-appearance" />
+		<case name="vehicle" />
+	</record>
+
+	<record name="equip-type">
+		<case name="none" default="y" />
+		<case name="weapon" />
+		<case name="costume" />
+		<case name="earring" />
+		<case name="eyeglass" />
+		<case name="hat" />
+		<case name="ring" />
+		<case name="necklace" />
+		<case name="Gem-1" />
+		<case name="Gem-2" />
+		<case name="Gem-3" />
+		<case name="Gem-4" />
+		<case name="Gem-5" />
+		<case name="Gem-6" />
+		<case name="Gem-7" />
+		<case name="Gem-8" />
+		<case name="attach" />
+		<case name="belt" />
+		<case name="bracelet" />
+		<case name="soul" />
+		<case name="soul-2" />
+		<case name="Gloves" />
+		<case name="pet-1" />
+		<case name="pet-2" />
+		<case name="rune-1" />
+		<case name="rune-2" />
+		<case name="nova" />
+		<case name="badge-1-premium" />
+		<case name="badge-2-premium" />
+		<case name="badge-3-premium" />
+		<case name="badge-1-normal" />
+		<case name="badge-2-normal" />
+		<case name="badge-3-normal" />
+		<case name="badge-appearance" />
+		<case name="vehicle" />
+		<case name="appearance-normal-state" />
+		<case name="appearance-idle-state" />
+		<case name="appearance-chatting" />
+		<case name="appearance-portrait" />
+		<case name="appearance-hypermove" />
+		<case name="appearance-name-plate" />
+		<case name="appearance-speech-bubble" />
+	</record>
+
+	<record name="pouch-appearance" >
+		<case name="none" default="y" />
+		<case name="money" desc="money" />
+		<case name="effect" desc="effect" />
+		<case name="distribution-pouch" desc="distribution-pouch" />
+		<case name="Normal-Pouch-Grade1" desc="(10)" />
+		<case name="Normal-Pouch-Grade2" desc="(190)" />
+		<case name="Normal-Pouch-Grade3" desc="(370)" />
+		<case name="Normal-Pouch-Grade4" desc="(550)" />
+		<case name="Normal-Pouch-Grade5" desc="(730)" />
+		<case name="Quality-Pouch-Grade1" desc="(30)" />
+		<case name="Quality-Pouch-Grade2" desc="(210)" />
+		<case name="Quality-Pouch-Grade3" desc="(390)" />
+		<case name="Quality-Pouch-Grade4" desc="(570)" />
+		<case name="Quality-Pouch-Grade5" desc="(750)" />
+		<case name="High-Quality-Pouch-Grade1" desc="(50)" />
+		<case name="High-Quality-Pouch-Grade2" desc="(230)" />
+		<case name="High-Quality-Pouch-Grade3" desc="(410)" />
+		<case name="High-Quality-Pouch-Grade4" desc="(590)" />
+		<case name="High-Quality-Pouch-Grade5" desc="(770)" />
+		<case name="Normal-Box-Grade1" desc="(70)" />
+		<case name="Normal-Box-Grade2" desc="(250)" />
+		<case name="Normal-Box-Grade3" desc="(430)" />
+		<case name="Normal-Box-Grade4" desc="(610)" />
+		<case name="Normal-Box-Grade5" desc="(790)" />
+		<case name="Quality-Box-Grade1" desc="(90)" />
+		<case name="Quality-Box-Grade2" desc="(270)" />
+		<case name="Quality-Box-Grade3" desc="(450)" />
+		<case name="Quality-Box-Grade4" desc="(630)" />
+		<case name="Quality-Box-Grade5" desc="(810)" />
+		<case name="High-Quality-Box-Grade1" desc="(110)" />
+		<case name="High-Quality-Box-Grade2" desc="(290)" />
+		<case name="High-Quality-Box-Grade3" desc="(470)" />
+		<case name="High-Quality-Box-Grade4" desc="(650)" />
+		<case name="High-Quality-Box-Grade5" desc="(830)" />
+		<case name="Normal-GemBox-Grade1" />
+		<case name="Normal-GemBox-Grade2" />
+		<case name="Normal-GemBox-Grade3" />
+		<case name="Normal-GemBox-Grade4" />
+		<case name="Normal-GemBox-Grade5" />
+		<case name="Quality-Gembox-Grade1" />
+		<case name="Quality-Gembox-Grade2" />
+		<case name="Quality-Gembox-Grade3" />
+		<case name="Quality-Gembox-Grade4" />
+		<case name="Quality-Gembox-Grade5" />
+		<case name="High-Quality-Gembox-Grade1" />
+		<case name="High-Quality-Gembox-Grade2" />
+		<case name="High-Quality-Gembox-Grade3" />
+		<case name="High-Quality-Gembox-Grade4" />
+		<case name="High-Quality-Gembox-Grade5" />
+	</record>
+
+	<record name="weapon-type">
+		<case name="none" default="y" />
+		<case name="bare-hand" />
+		<case name="sword" />
+		<case name="gauntlet" />
+		<case name="aura-bangle" />
+		<case name="pistol" />
+		<case name="rifle" />
+		<case name="two-handed-axe" />
+		<case name="bow" />
+		<case name="staff" />
+		<case name="dagger" />
+		<case name="pet-1" />
+		<case name="pet-2" />
+		<case name="gun" />
+		<case name="great-sword" />
+		<case name="long-bow" />
+		<case name="spear" />
+		<case name="orb" />
+		<case name="dual-blade" />
+	</record>
+
+	<record name="weapon-gem-type">
+		<case name="none" default="y" />
+		<case name="ruby" desc="红玉" />
+		<case name="topaz" desc="黄玉" />
+		<case name="sapphire" desc="青玉" />
+		<case name="jade" desc="翡翠" />
+		<case name="amethyst" desc="紫水晶" />
+		<case name="emerald" desc="绿柱石" />
+		<case name="diamond" />
+		<case name="obsidian" />
+		<case name="amber" />
+		<case name="garnet" />
+		<case name="aquamarine" />
+		<case name="ruby-topaz" />
+		<case name="ruby-sapphire" />
+		<case name="ruby-jade" />
+		<case name="ruby-amethyst" />
+		<case name="ruby-emerald" />
+		<case name="ruby-diamond" />
+		<case name="topaz-sapphire" />
+		<case name="topaz-jade" />
+		<case name="topaz-amethyst" />
+		<case name="topaz-emerald" />
+		<case name="topaz-diamond" />
+		<case name="sapphire-jade" />
+		<case name="sapphire-amethyst" />
+		<case name="sapphire-emerald" />
+		<case name="sapphire-diamond" />
+		<case name="jade-amethyst" />
+		<case name="jade-emerald" />
+		<case name="jade-diamond" />
+		<case name="amethyst-emerald" />
+		<case name="amethyst-diamond" />
+		<case name="emerald-diamond" />
+		<case name="aquamarine-diamond" />
+		<case name="amber-diamond" />
+		<case name="obsidian-garnet" />
+		<case name="corundum-white" />
+		<case name="corundum-black" />
+		<case name="corundum-pink" />
+		<case name="corundum-yellow" />
+		<case name="corundum-bluegreen" />
+		<case name="corundum-blue" />
+		<case name="corundum-aquamarine" />
+		<case name="corundum-amber" />
+		<case name="corundum-red" />
+	</record>
+</table>

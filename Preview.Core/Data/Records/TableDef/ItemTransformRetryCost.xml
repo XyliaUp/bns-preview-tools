@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table name="item-transform-retry-cost" version="0.1" autokey="true" module="6">
+  <el name="table" child="1" />
+  <el name="record">
+    <record name="alias" type="String" required="y" max="70" />
+    <record name="required-item-for-instant-payment" type="Ref" ref="item" repeat="5" />
+    <record name="mileage-range-max" type="Int16" default="0" repeat="5" min="0" max="1000" />
+  </el>
+</table>

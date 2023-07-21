@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table name="battle-royal-field-item-spawn-position" version="0.2" autokey="false" module="6">
+  <el name="table" child="1" />
+  <el name="record">
+    <record name="id" type="Int16" key="y" required="y" min="1" />
+    <record name="alias" type="String" required="y" max="70" />
+  </el>
+</table>

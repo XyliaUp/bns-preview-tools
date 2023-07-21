@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<record type="critical" k="97" μ="" Φ="" >
+		<level key="60" value="7937.55" />
+	</record>
+	<record type="attribute" c="100" k="291" μ="" Φ="" >
+		<level key="60" value="12002.79" />
+	</record>
+	<record type="critical-damage" c="125" k="291" >
+		<level key="60" value="7201.28" />
+	</record>
+	<record type="abnormal-attack" c="100" k="291" >
+		<level key="60" value="12744.27" />
+	</record>
+	<record type="hit" c="85" k="96" >
+		<level key="60" value="6081.99" />
+	</record>
+	<record type="heal" c="100" k="54" >
+		<level key="60" value="2796.48" />
+	</record>
+	<record type="defence" category="Category_Defence" k="95" μ="87.9321646429675" Φ="0.0796572674823757" />
+	<record type="pierce1" category="Category_Pierce" k="95" μ="87.7627795879303" Φ="0.0796897978783624" />
+	<record type="pierce2" category="Category_Pierce" k="95" >
+		<level key="60" value="20963.86" />
+	</record>
+	<record type="dodge1" category="Category_Dodge" k="95" >
+		<level key="60" value="10464.33" />
+	</record>
+	<record type="dodge2" category="Category_Dodge" k="285" >
+		<level key="60" value="9835.18" />
+	</record>
+	<record type="parry1" category="Category_Parry" c="30" k="98" >
+		<level key="60" value="21701.77" />
+	</record>
+	<record type="parry2" category="Category_Parry" k="291" >
+		<level key="60" value="10042.45" />
+	</record>
+	<record type="parry3" category="Category_Parry" k="97" >
+		<level key="60" value="5239.02" />
+	</record>
+	<record type="critical-defence" category="Category_CriticalDefence" k="25" >
+		<level key="60" value="-19.47" />
+	</record>
+	<record type="critical-Defence2" category="Category_CriticalDefence" k="291" >
+		<level key="60" value="2374.28" />
+	</record>
+	<!--
+	<record type="Hate" k="" />
+	<record type="CastDukn" k="" />
+	<record type="AttackStiff" k="" />
+	<record type="Resist" k="" />
+	-->
+	
+	<category alias="Category_Defence" text="基本" />
+	<category alias="Category_Pierce" text="穿刺类" />
+	<category alias="Category_Dodge" text="闪避类" />
+	<category alias="Category_Parry" text="格挡类" />
+	<category alias="Category_CriticalDefence" text="暴击防御类" />
+</table>

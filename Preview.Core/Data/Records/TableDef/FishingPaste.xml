@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table name="fishing-paste" version="0.4" autokey="false" module="6">
+  <el name="table" child="1" />
+  <el name="record">
+    <record name="id" type="Int16" key="y" required="y" min="1" />
+    <record name="alias" type="String" required="y" max="70" />
+    <record name="item" type="Ref" ref="item" required="y" />
+    <record name="use-auto-fishing" type="Bool" />
+  </el>
+</table>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table name="guilduniformcomponent" version="0.8" autokey="false" module="6">
+  <el name="table" child="1" />
+  <el name="record">
+    <record name="param-type" type="Int32" key="y" required="y" />
+    <record name="param-value" type="Int32" key="y" required="y" />
+    <record name="param-type-category" type="Seq" hidden="y">
+      <case name="none" />
+      <case name="style" />
+      <case name="top" />
+      <case name="bottoms" />
+      <case name="point-color" />
+      <case name="face" />
+      <case name="head" />
+    </record>
+    <record name="name" type="Ref" ref="text" />
+    <record name="icon-texture" type="Ref" ref="icontexture" />
+    <record name="icon-index" type="Int16" default="0" />
+    <record name="desc" type="Ref" ref="text" />
+    <record name="order" type="Int32" required="y" />
+    <record name="required-guild-level" type="Int8" default="1" min="1" max="50" />
+    <record name="usable" type="Bool" default="y" />
+    <record name="recipe-id" type="Ref" ref="guilduniformrecipe" required="y" />
+  </el>
+</table>

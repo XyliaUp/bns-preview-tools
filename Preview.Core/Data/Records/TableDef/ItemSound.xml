@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table name="itemsound" version="0.2" autokey="false" module="4">
+  <el name="table" child="1" />
+  <el name="record">
+    <record name="id" type="Int64" key="y" required="y" />
+    <record name="item-id" type="Int32" default="0" min="0" max="2000000" />
+    <record name="name" type="String" max="50" />
+    <record name="item-type" type="Seq">
+      <case name="weapon" />
+      <case name="gem" />
+      <case name="costume" />
+      <case name="grocery" />
+      <case name="fielditem" />
+    </record>
+    <record name="item-drop-sound" type="String" max="50" />
+    <record name="item-move-sound" type="String" max="50" />
+    <record name="item-equip-sound" type="String" max="50" />
+    <record name="item-use-sound" type="String" max="50" />
+    <record name="item-get-sound" type="String" max="50" />
+    <record name="fielditem-drop-sound" type="String" max="50" />
+  </el>
+</table>

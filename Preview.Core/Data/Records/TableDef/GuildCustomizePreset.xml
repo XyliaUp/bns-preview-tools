@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table name="guildcustomizepreset" version="0.2" autokey="true" module="28">
+  <el name="table" child="1" />
+  <el name="record">
+    <record name="alias" type="String" required="y" max="128" />
+    <record name="customize-factor" type="Int8" default="1" repeat="28" />
+  </el>
+</table>

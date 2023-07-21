@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table name="skill-combo-2" version="0.5" autokey="true" module="4">
+  <el name="table" child="1" />
+  <el name="record">
+    <record name="alias" type="String" required="y" max="70" />
+    <record name="group" type="Seq" required="y">
+      <case name="none" />
+      <case name="target-down" />
+      <case name="target-stun" />
+      <case name="target-kneel" />
+      <case name="target-midair-1" />
+      <case name="target-midair-2" />
+      <case name="target-back" />
+      <case name="target-hit-critical" />
+      <case name="player-down" />
+      <case name="player-sprint-jump" />
+      <case name="player-gliding" />
+      <case name="player-dodge" />
+      <case name="player-parry" />
+      <case name="r-combo" />
+      <case name="success-skill-counter" />
+      <case name="success-skill-triplekick" />
+      <case name="success-skill-slidestep" />
+      <case name="success-skill-right" />
+      <case name="success-skill-takedown" />
+    </record>
+    <record name="sort-no" type="Int16" default="0" />
+    <record name="name" type="String" deprecated="y" max="70" />
+    <record name="name2" type="Ref" ref="text" />
+    <record name="action-desc" type="Ref" ref="text" />
+    <record name="combo-desc" type="Ref" ref="text" />
+    <record name="video" type="String" max="70" />
+    <record name="skill" type="Int32" default="0" repeat="5" />
+    <record name="skill-slot-type" type="Seq" repeat="5">
+      <case name="none" default="y" />
+      <case name="skill-start" />
+      <case name="combo" />
+    </record>
+    <record name="skill-key" type="Seq16" seq="key-command" default="none" repeat="5" deprecated="y" />
+  </el>
+</table>

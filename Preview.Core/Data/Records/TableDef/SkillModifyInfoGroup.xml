@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table name="skill-modify-info-group" version="0.4" autokey="true" module="2054">
+  <el name="table" child="1" />
+  <el name="record">
+    <record name="alias" type="String" required="y" max="70" />
+    <record name="job-style" type="Seq" seq="job-style" default="base-1" />
+    <record name="skill-modify-info" type="Ref" ref="skill-modify-info" repeat="4" />
+  </el>
+</table>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table name="itemgearscore" version="0.4" autokey="false" module="4">
+  <el name="table" child="1" />
+  <el name="record">
+    <record name="level" type="Int8" key="y" required="y" />
+    <record name="mastery-level" type="Int8" key="y" required="y" />
+    <record name="alias" type="String" required="y" max="70" />
+    <record name="weapon-min" type="Int32" default="0" />
+    <record name="weapon-max" type="Int32" default="0" />
+    <record name="ring-min" type="Int32" default="0" />
+    <record name="ring-max" type="Int32" default="0" />
+    <record name="earring-min" type="Int32" default="0" />
+    <record name="earring-max" type="Int32" default="0" />
+    <record name="necklace-min" type="Int32" default="0" />
+    <record name="necklace-max" type="Int32" default="0" />
+    <record name="bracelet-min" type="Int32" default="0" />
+    <record name="bracelet-max" type="Int32" default="0" />
+    <record name="belt-min" type="Int32" default="0" />
+    <record name="belt-max" type="Int32" default="0" />
+    <record name="soul-min" type="Int32" default="0" />
+    <record name="soul-max" type="Int32" default="0" />
+    <record name="soul-2-min" type="Int32" default="0" />
+    <record name="soul-2-max" type="Int32" default="0" />
+    <record name="pet-1-min" type="Int32" default="0" />
+    <record name="pet-1-max" type="Int32" default="0" />
+    <record name="rune-1-min" type="Int32" default="0" />
+    <record name="rune-1-max" type="Int32" default="0" />
+    <record name="rune-2-min" type="Int32" default="0" />
+    <record name="rune-2-max" type="Int32" default="0" />
+    <record name="gloves-min" type="Int32" default="0" />
+    <record name="gloves-max" type="Int32" default="0" />
+    <record name="nova-min" type="Int32" default="0" />
+    <record name="nova-max" type="Int32" default="0" />
+  </el>
+</table>

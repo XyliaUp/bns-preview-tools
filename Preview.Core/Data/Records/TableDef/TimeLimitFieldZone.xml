@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table name="time-limit-field-zone" version="0.2" autokey="false" module="6">
+  <el name="table" child="1" />
+  <el name="record">
+    <record name="alias" type="String" required="y" max="70" />
+    <record name="zone" type="Int32" key="y" required="y" />
+    <record name="time-limit-quota" type="Ref" ref="content-quota" required="y" />
+    <record name="required-level" type="Int8" default="0" min="0" max="100" />
+    <record name="required-mastery-level" type="Int8" default="0" min="0" max="100" />
+    <record name="required-cost" type="Ref" ref="cost-group" />
+    <record name="time-limit-field-zone-name2" type="Ref" ref="text" />
+    <record name="time-limit-field-zone-desc" type="Ref" ref="text" />
+    <record name="ui-text-grade" type="Int8" default="0" max="8" />
+    <record name="reward-summary" type="Ref" ref="attractionrewardsummary" />
+  </el>
+</table>

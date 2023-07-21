@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table name="mapinfo" version="1.30" autokey="false" module="12">
+  <el name="table" child="1" />
+  <el name="record">
+    <record name="id" type="Int16" key="y" required="y" />
+    <record name="alias" type="String" required="y" max="70" />
+    <record name="group-id" type="Int16" default="0" />
+    <record name="floor" type="Int16" default="0" />
+    <record name="name2" type="Ref" ref="text" />
+    <record name="parent-mapinfo" type="Ref" ref="mapinfo" />
+    <record name="scale" type="Float32" default="0" />
+    <record name="district" type="Ref" ref="district" />
+    <record name="map-group-1" type="Ref" ref="map-group-1" />
+    <record name="map-group-2" type="Ref" ref="map-group-2" />
+    <record name="origin-x" type="Int32" default="0" deprecated="y" />
+    <record name="origin-y" type="Int32" default="0" deprecated="y" />
+    <record name="local-axis-x" type="Float32" default="0" />
+    <record name="local-axis-y" type="Float32" default="0" />
+    <record name="offset-x" type="Int16" default="0" deprecated="y" />
+    <record name="offset-y" type="Int16" default="0" deprecated="y" />
+    <record name="image-size" type="Int16" default="1" />
+    <record name="imageset" type="String" max="128" />
+    <record name="imageset-alphamap" type="String" max="128" />
+    <record name="overlay" type="Ref" ref="mapoverlay" repeat="30" />
+    <record name="use-pos-in-parent" type="Bool" />
+    <record name="pos-in-parent-x" type="Float32" default="0" />
+    <record name="pos-in-parent-y" type="Float32" default="0" />
+    <record name="terrain" type="Ref" ref="terrain" />
+    <record name="world-coord-x" type="Float32" default="0" deprecated="y" />
+    <record name="world-coord-y" type="Float32" default="0" deprecated="y" />
+    <record name="zoom" type="Float32" default="1.0" />
+    <record name="sort-no" type="Int16" default="0" max="30000" />
+    <record name="show-navigaion-list" type="Bool" default="true" />
+    <record name="arena-dungeon-parent-mapinfo" type="Ref" ref="mapinfo" />
+    <record name="arena-dungeon-use-pos-in-parent" type="Bool" />
+    <record name="arena-dungeon-pos-in-parent-x" type="Float32" default="0" />
+    <record name="arena-dungeon-pos-in-parent-y" type="Float32" default="0" />
+  </el>
+</table>

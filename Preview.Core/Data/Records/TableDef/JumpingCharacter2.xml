@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table name="jumpingcharacter2" version="0.1" autokey="true" module="6">
+  <el name="table" child="1" />
+  <el name="record">
+    <record name="required-level" type="Int16" required="y" min="0" />
+    <record name="required-preceding-epic-quest" type="Ref" ref="quest" required="y" />
+    <record name="last-epic-quest-to-complete" type="Ref" ref="quest" required="y" />
+    <record name="quest-to-complete" type="Ref" ref="quest" repeat="20" />
+    <record name="warp-to-pcspawn" type="Ref" ref="zonepcspawn" />
+    <record name="faction1-item" type="Ref" ref="item" />
+    <record name="faction2-item" type="Ref" ref="item" />
+    <record name="reward-exp" type="Int32" default="0" />
+    <record name="reward-money" type="Int32" default="0" />
+    <record name="reward-item" type="Ref" ref="item" repeat="4" />
+    <record name="reward-item-count" type="Int16" default="0" repeat="4" />
+  </el>
+</table>

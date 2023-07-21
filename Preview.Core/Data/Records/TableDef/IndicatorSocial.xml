@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table name="indicator-social" version="0.18" autokey="true" module="4">
+  <el name="table" child="1" />
+  <el name="record">
+    <record name="alias" type="String" required="y" max="70" />
+    <record name="balloon-text" type="Ref" ref="text" deprecated="y" />
+    <record name="show" type="XUnknown2" deprecated="y" />
+    <record name="interval" type="Msec" default="0" min="0" max="600000" />
+    <record name="rotate" type="Seq" deprecated="y">
+      <case name="keep" default="y" />
+      <case name="server-yaw" />
+      <case name="toplayer" />
+    </record>
+    <record name="look-player" type="Bool" deprecated="y" />
+    <record name="duration2" type="Msec" default="0" min="0" max="600000" />
+    <record name="begine-time2" type="Msec" default="0" repeat="10" min="0" max="60000" />
+    <record name="balloon-text2" type="Ref" ref="text" repeat="10" />
+    <record name="balloon-text2-loop" type="Bool" default="y" repeat="10" deprecated="y" />
+    <record name="balloon-text2-duration" type="Msec" default="3000" repeat="10" />
+    <record name="voice-sync" type="Bool" repeat="10" />
+    <record name="show2" type="XUnknown2" repeat="10" />
+    <record name="rotate2" type="Seq" repeat="10">
+      <case name="keep" default="y" />
+      <case name="server-yaw" />
+      <case name="toplayer" />
+    </record>
+    <record name="look-player2" type="Bool" repeat="10" deprecated="y" />
+    <record name="sub-npc2" type="Ref" ref="npc" repeat="10" />
+    <record name="sub-indicator-social2" type="Ref" ref="indicator-social" repeat="10" />
+  </el>
+</table>

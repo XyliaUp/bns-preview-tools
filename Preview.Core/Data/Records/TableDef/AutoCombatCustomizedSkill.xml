@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table name="auto-combat-customized-skill" version="0.2" autokey="false" module="4">
+  <el name="table" child="1" />
+  <el name="record">
+    <record name="parent-skill-id" type="Int32" key="y" required="y" />
+    <record name="variation-id" type="Int8" key="y" required="y" />
+    <record name="name" type="String" max="70" />
+    <record name="sort-id" type="Int8" default="0" min="0" max="255" />
+    <record name="recommend-setting-slot-index" type="Int8" default="0" min="0" max="5" />
+    <record name="recommend-setting-cast-condition" type="Ref" ref="auto-combat-customized-skill-cast-condition" repeat="2" />
+    <record name="recommend-setting-cast-condition-op" type="Seq" seq="op" default="or" />
+  </el>
+</table>

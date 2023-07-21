@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table name="fielditem" version="0.58" autokey="false" module="270" maxid="65535">
+  <el name="table" child="1" />
+  <el name="record">
+    <record name="id" type="Int32" key="y" required="y" max="65535" />
+    <record name="alias" type="String" required="y" max="70" />
+    <record name="remain-duration" type="Msec" required="y" min="0" />
+    <record name="pickup-radius" type="Distance" default="0" min="0" max="5000" />
+    <record name="pickup-duration" type="Msec" required="y" min="0" />
+    <record name="putdown-duration" type="Msec" required="y" min="0" />
+    <record name="equip-effect" type="Ref" ref="effect" repeat="4" />
+    <record name="not-change-create-pos" type="Bool" />
+    <record name="parry-event" type="Seq">
+      <case name="none" default="y" />
+      <case name="decrease-use-count" />
+    </record>
+    <record name="acquire-quest" type="Ref" ref="quest" hidden="y" />
+    <record name="forwarding-types" type="Seq" hidden="y">
+      <case name="progress-mission" />
+      <case name="acquire-quest" />
+      <case name="skill-target" />
+      <case name="mission-step-rollback" />
+    </record>
+    <record name="quests" type="Ref" ref="quest" hidden="y" />
+    <record name="missions" type="Int8" hidden="y" />
+    <record name="cases" type="Int8" hidden="y" />
+    <record name="case-subtypes" type="Int16" hidden="y" />
+    <record name="use-count" type="Int16" default="1" min="1" max="10000" />
+    <record name="use-skill" type="Ref" ref="skill" repeat="4" />
+    <record name="use-skill3" type="Ref" ref="skill3" repeat="4" />
+    <record name="consume-use-count" type="Int16" default="1" repeat="4" min="1" max="10000" />
+    <record name="throw-skill" type="Ref" ref="skill" required="y" />
+    <record name="throw-skill3" type="Ref" ref="skill3" required="y" />
+    <record name="init-activated" type="Bool" />
+    <record name="explosion-time" type="Msec" required="y" min="0" />
+    <record name="target-radius" type="Distance" required="y" min="0" max="320000" />
+    <record name="target-decal" type="XUnknown2" />
+    <record name="target-state" type="Seq">
+      <case name="all" default="y" />
+      <case name="friend" />
+      <case name="enemy" />
+      <case name="my-party" />
+      <case name="my-team" />
+    </record>
+    <record name="invoke-effect" type="Ref" ref="effect" repeat="4" />
+    <record name="change-activator-by-killer" type="Bool" />
+    <record name="target-first-filter" type="Ref" ref="filter" repeat="4" />
+    <record name="target-second-filter" type="Ref" ref="filter" repeat="4" />
+    <record name="first-effect" type="Ref" ref="effect" repeat="4" />
+    <record name="second-effect" type="Ref" ref="effect" repeat="4" />
+    <record name="activated-effect" type="Bool" hidden="y" />
+    <record name="activate-show" type="XUnknown2" repeat="3" />
+    <record name="activate-particle" type="XUnknown2" />
+    <record name="activate-particle-duration" type="Msec" required="y" min="0" />
+    <record name="activate-particle-attatch-bone" type="String" max="50" />
+    <record name="throw-target" type="Bool" />
+    <record name="koreaname" type="String" deprecated="y" max="50" />
+    <record name="name2" type="Ref" ref="text" />
+    <record name="mesh-id" type="XUnknown2" />
+    <record name="mesh-col" type="XUnknown2" />
+    <record name="animset-name" type="XUnknown2" />
+    <record name="moveanim" type="Ref" ref="field-item-move-anim" />
+    <record name="anim-idle" type="String" deprecated="y" max="50" />
+    <record name="anim-pick-up" type="String" deprecated="y" max="50" />
+    <record name="anim-put-down" type="String" deprecated="y" max="50" />
+    <record name="upper-mov-anim-walkfront" type="String" deprecated="y" max="50" />
+    <record name="upper-mov-anim-walkback" type="String" deprecated="y" max="50" />
+    <record name="upper-mov-anim-walkleft" type="String" deprecated="y" max="50" />
+    <record name="upper-mov-anim-walkright" type="String" deprecated="y" max="50" />
+    <record name="upper-mov-anim-walkleftback" type="String" deprecated="y" max="50" />
+    <record name="upper-mov-anim-walkrightback" type="String" deprecated="y" max="50" />
+    <record name="upper-mov-anim-runfront" type="String" deprecated="y" max="50" />
+    <record name="upper-mov-anim-runback" type="String" deprecated="y" max="50" />
+    <record name="upper-mov-anim-runleft" type="String" deprecated="y" max="50" />
+    <record name="upper-mov-anim-runright" type="String" deprecated="y" max="50" />
+    <record name="upper-mov-anim-runleftback" type="String" deprecated="y" max="50" />
+    <record name="upper-mov-anim-runrightback" type="String" deprecated="y" max="50" />
+    <record name="exec-particle" type="XUnknown2" deprecated="y" />
+    <record name="exec-sound" type="XUnknown2" deprecated="y" />
+    <record name="drop-sound" type="XUnknown2" deprecated="y" />
+    <record name="grab-bone" type="String" max="50" />
+    <record name="pick-up" type="String" max="60" />
+    <record name="put-down" type="String" max="60" />
+    <record name="use-item" type="String" deprecated="y" max="60" />
+    <record name="throw-item" type="String" max="60" />
+    <record name="attach-time" type="Msec" default="1000" min="0" max="10000" />
+    <record name="detach-time" type="Msec" default="1000" min="0" max="10000" />
+    <record name="throw-detach-time" type="Msec" default="100" min="0" max="10000" />
+    <record name="throw-bone" type="String" max="50" />
+    <record name="randing" type="Bool" />
+    <record name="throw-straight" type="Bool" />
+    <record name="gadget-stay" type="String" max="60" />
+    <record name="gadget-pickup-idle" type="String" max="60" />
+    <record name="gadget-putdown-start" type="String" max="60" />
+    <record name="gadget-pickup-start" type="String" max="60" />
+    <record name="gadget-thrown-start" type="String" max="60" />
+    <record name="gadget-thrown-particle" type="String" max="60" />
+    <record name="gadget-thrown-endstay" type="String" deprecated="y" max="60" />
+    <record name="gadget-landing" type="String" max="60" />
+    <record name="action-name" type="String" deprecated="y" max="50" />
+    <record name="action-desc" type="String" deprecated="y" max="100" />
+    <record name="action-name2" type="Ref" ref="text" />
+    <record name="action-desc2" type="Ref" ref="text" />
+    <record name="drop-action-name" type="Ref" ref="text" />
+    <record name="drop-action-desc" type="Ref" ref="text" />
+    <record name="description2" type="Ref" ref="text" />
+    <record name="gadget-dropanim" type="String" max="60" />
+    <record name="gadget-putdown-show" type="XUnknown2" />
+    <record name="throw-presentation" type="Bool" default="y" />
+    <record name="prefix" type="String" max="60" />
+    <record name="gadget-decompose-showdata" type="XUnknown2" />
+    <record name="gadget-consume-showdata" type="XUnknown2" />
+    <record name="gadget-consume-in-hand-showdata" type="XUnknown2" />
+    <record name="ghost-mode" type="Bool" />
+  </el>
+</table>

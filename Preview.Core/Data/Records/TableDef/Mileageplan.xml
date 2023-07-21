@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table name="mileageplan" version="0.1" autokey="false" module="6">
+  <el name="table" child="1" />
+  <el name="record">
+    <record name="mileage-plan-id" type="Int16" key="y" required="y" />
+    <record name="usable" type="Bool" default="y" />
+    <record name="gemstone" type="Ref" ref="item" required="y" />
+    <record name="gemstone-amount" type="Int16" default="10" min="1" />
+    <record name="abrasive" type="Ref" ref="item" required="y" />
+    <record name="abrasive-amount" type="Int16" default="1" min="1" max="1" />
+    <record name="base-mileage" type="Int32" default="0" min="0" max="2000000000" />
+    <record name="bonus-mileage-min" type="Int16" default="0" min="0" max="32000" />
+    <record name="bonus-mileage-max" type="Int16" default="0" min="0" max="32000" />
+    <record name="bonus-mileage-scale" type="Int16" default="1" min="1" max="10000" />
+  </el>
+</table>

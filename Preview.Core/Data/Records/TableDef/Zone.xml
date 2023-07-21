@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table name="zone" version="3.0" autokey="false" module="526" maxid="30000">
+  <el name="table" child="1" />
+  <el name="record">
+    <record name="id" type="Int32" key="y" required="y" max="30000" />
+    <record name="alias" type="String" required="y" max="70" />
+    <record name="domain-id" type="Int8" default="1" deprecated="y" min="1" max="20" />
+    <record name="deprecated-zone" type="Bool" />
+    <record name="transfer-pcspawn-by-deprecated" type="Ref" ref="zonepcspawn" />
+    <record name="chat-channel" type="Ref" ref="static-chat-channel" />
+    <record name="zone-type" type="Seq" required="y" deprecated="y">
+      <case name="none" />
+      <case name="persistant" />
+      <case name="single" />
+      <case name="instant" />
+      <case name="dungeon" />
+      <case name="arena" />
+      <case name="single-dungeon" />
+      <case name="duel" />
+    </record>
+    <record name="zone-type2" type="Seq" required="y">
+      <case name="none" />
+      <case name="persistent" />
+      <case name="single" />
+      <case name="instant" />
+    </record>
+    <record name="attraction" type="TRef" hidden="y" />
+    <record name="district" type="Ref" ref="district" />
+    <record name="sector-xmin" type="Int16" required="y" min="-32000" max="31999" />
+    <record name="sector-xmax" type="Int16" required="y" min="-32000" max="31999" />
+    <record name="sector-ymin" type="Int16" required="y" min="-32000" max="31999" />
+    <record name="sector-ymax" type="Int16" required="y" min="-32000" max="31999" />
+    <record name="pc-max" type="Int16" hidden="y" min="50" max="1500" />
+    <record name="pc-max-by-main-faction" type="Int16" default="0" hidden="y" min="0" max="1500" />
+    <record name="recommend-pc-count" type="Int16" required="y" min="24" max="1000" />
+    <record name="npc-max" type="Int16" default="64" min="0" max="700" />
+    <record name="cube-xysize" type="Int16" default="0" deprecated="y" min="0" />
+    <record name="sight-cube" type="Bool" default="y" />
+    <record name="terrain" type="Int16" required="y" />
+    <record name="region" type="Int16" required="y" />
+    <record name="respawn" type="Ref" ref="zonerespawn" />
+    <record name="respawn-by-activated-faction-required-faction" type="Ref" ref="faction" repeat="2" />
+    <record name="respawn-by-activated-faction" type="Ref" ref="zonerespawn" repeat="2" />
+    <record name="basecamp" type="Ref" ref="zonebasecamp" />
+    <record name="description2" type="Ref" ref="text" />
+    <record name="kismet-name" type="String" max="50" />
+    <record name="enter-kismet-name" type="String" max="50" />
+    <record name="leave-kismet-name" type="String" max="50" />
+    <record name="aiid" type="String" max="50" />
+    <record name="reentrance-pcspawn" type="Ref" ref="zonepcspawn" />
+    <record name="reentrance-pcspawn-in-arena" type="Ref" ref="zonepcspawn" />
+    <record name="map" type="Ref" ref="mapinfo" />
+    <record name="area" type="Ref" ref="map-area" />
+    <record name="effect-link-type" type="Seq">
+      <case name="effect-persistant" default="y" />
+      <case name="effect-single" />
+      <case name="effect-instant" />
+      <case name="effect-conflictarea" />
+      <case name="effect-dungeon-wayin" />
+      <case name="effect-dungeon" />
+      <case name="effect-blocked" />
+      <case name="effect-single-normal" />
+      <case name="effect-single-higher" />
+      <case name="effect-single-veryhigher" />
+      <case name="effect-single-hero" />
+      <case name="effect-instant-normal" />
+      <case name="effect-instant-higher" />
+      <case name="effect-instant-veryhigher" />
+      <case name="effect-raid-dungeon" />
+    </record>
+    <record name="tutorial" type="Bool" />
+    <record name="sharable-combatmode" type="Bool" />
+    <record name="use-perfmon" type="Bool" />
+    <record name="recharge-exp-boost" type="Bool" />
+    <record name="available-sextet-party" type="Bool" />
+    <record name="write-equipinfo-log" type="Bool" />
+    <record name="phase-quest-count" type="Int8" default="0" hidden="y" />
+    <record name="phase-quest" type="Ref" ref="quest" default="0" repeat="40" hidden="y" />
+    <record name="phase-id" type="Int8" default="0" repeat="40" hidden="y" />
+    <record name="phase-zone" type="Ref" ref="zone" repeat="16" />
+    <record name="phase-zone-disable-in-arena" type="Bool" repeat="16" hidden="y" />
+    <record name="default-phase-zone" type="Bool" default="y" />
+    <record name="phase-main-zone" type="Ref" ref="zone" hidden="y" />
+    <record name="default-phase-pc-spawn-id" type="Int16" default="0" />
+    <record name="dungeon-step" type="Int8" default="0" hidden="y" min="0" max="16" />
+    <record name="loadingscene" type="Ref" ref="loadingimage" default="default-loading" deprecated="y" />
+    <record name="is-arena-entrance" type="Bool" />
+    <record name="light-client-enable" type="Bool" deprecated="y" />
+    <record name="download-level" type="Int8" default="0" deprecated="y" />
+    <record name="enable-ghost-mode" type="Seq">
+      <case name="none" default="y" />
+      <case name="basic" />
+      <case name="phase" />
+    </record>
+  </el>
+</table>

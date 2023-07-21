@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table name="soul-boost-mission-step" version="6.0" autokey="false" module="6">
+  <el name="table" child="1" />
+  <el name="record">
+    <record name="id" type="Int32" key="y" required="y" min="1" />
+    <record name="alias" type="String" required="y" max="70" />
+    <record name="event" type="Ref" ref="soul-boost-event" />
+    <record name="step-number" type="Int8" default="0" min="1" max="40" />
+    <record name="open-condition-type" type="Seq">
+      <case name="none" default="y" />
+      <case name="free" />
+      <case name="season" />
+      <case name="participate-character" />
+      <case name="newbie-event" />
+      <case name="mission-task-count" />
+      <case name="character-level" />
+      <case name="character-mastery-level" />
+    </record>
+    <record name="open-condition-value" type="Int16" default="0" />
+    <record name="viewable-type" type="Seq">
+      <case name="none" default="y" />
+      <case name="before-open" />
+      <case name="after-open" />
+    </record>
+    <record name="mission-task" type="Ref" ref="soul-boost-mission-task" repeat="50" />
+    <record name="mission-step-reward-item" type="Ref" ref="item" repeat="4" />
+    <record name="mission-step-reward-item-count" type="Int16" default="0" repeat="4" />
+    <record name="name" type="String" max="16" />
+    <record name="description" type="String" max="128" />
+  </el>
+</table>

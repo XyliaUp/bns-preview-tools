@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table name="item-random-ability-section" version="0.2" autokey="true" module="6">
+  <el name="table" child="1" />
+  <el name="record">
+    <record name="alias" type="String" required="y" max="70" />
+    <record name="variation-value-min" type="Int32" default="0" />
+    <record name="variation-value-max" type="Int32" default="0" />
+    <record name="variation-value-with-special-item-min" type="Int32" default="0" />
+    <record name="variation-value-with-special-item-max" type="Int32" default="0" />
+  </el>
+</table>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table name="duel-bot-challenge-strategic-tool" version="0.7" autokey="true" module="6">
+  <el name="table" child="1" />
+  <el name="record">
+    <record name="alias" type="String" required="y" max="70" />
+    <record name="pc-effect" type="Ref" ref="effect" repeat="2" />
+    <record name="duel-bot-effect" type="Ref" ref="effect" repeat="2" />
+    <record name="immune-caster-block-skill" type="Bool" />
+    <record name="fail-caster-flag" type="Seq16" seq="flag" default="none" repeat="4" />
+    <record name="fail-caster-op" type="Seq" seq="op" default="or" />
+    <record name="fail-caster-effect-attribute" type="Seq16" seq="effect-attribute" default="none" repeat="4" />
+    <record name="fail-caster-effect-attribute-op" type="Seq" seq="op" default="or" />
+    <record name="icon-texture" type="Ref" ref="icontexture" />
+    <record name="icon-index" type="Int16" default="0" />
+    <record name="card-image-set" type="String" max="150" />
+    <record name="card-tooltip" type="Ref" ref="text" />
+    <record name="description2" type="Ref" ref="text" />
+    <record name="name2" type="Ref" ref="text" />
+  </el>
+</table>

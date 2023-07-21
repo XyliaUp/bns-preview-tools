@@ -1,0 +1,1085 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="MainPage.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 36</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="MainPage.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
+  </data>
+  <data name="MainPage.Size" type="System.Drawing.Size, System.Drawing">
+    <value>846, 453</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="MainPage.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="MainPage.Text" xml:space="preserve">
+    <value>ItemList</value>
+  </data>
+  <data name="MainPage.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="PreviewPage_Item.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 36</value>
+  </data>
+  <data name="PreviewPage_Item.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
+  </data>
+  <data name="PreviewPage_Item.Size" type="System.Drawing.Size, System.Drawing">
+    <value>846, 453</value>
+  </data>
+  <data name="PreviewPage_Item.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="PreviewPage_Item.Text" xml:space="preserve">
+    <value>Preview Item</value>
+  </data>
+  <data name="PreviewPage_Item.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="btn_SetOutput.Font" type="System.Drawing.Font, System.Drawing">
+    <value>微软雅黑, 15px</value>
+  </data>
+  <data name="btn_SetOutput.Location" type="System.Drawing.Point, System.Drawing">
+    <value>399, 357</value>
+  </data>
+  <data name="btn_SetOutput.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="btn_SetOutput.Size" type="System.Drawing.Size, System.Drawing">
+    <value>112, 50</value>
+  </data>
+  <data name="btn_SetOutput.TabIndex" type="System.Int32, mscorlib">
+    <value>132</value>
+  </data>
+  <data name="btn_SetOutput.Text" xml:space="preserve">
+    <value>Custom</value>
+  </data>
+  <data name="ucBtnExt4.Font" type="System.Drawing.Font, System.Drawing">
+    <value>微软雅黑, 15px</value>
+  </data>
+  <data name="ucBtnExt4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>153, 45</value>
+  </data>
+  <data name="ucBtnExt4.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="ucBtnExt4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>112, 48</value>
+  </data>
+  <data name="ucBtnExt4.TabIndex" type="System.Int32, mscorlib">
+    <value>127</value>
+  </data>
+  <data name="ucBtnExt4.Text" xml:space="preserve">
+    <value>Npc</value>
+  </data>
+  <data name="ucBtnExt11.Font" type="System.Drawing.Font, System.Drawing">
+    <value>微软雅黑, 15px</value>
+  </data>
+  <data name="ucBtnExt11.Location" type="System.Drawing.Point, System.Drawing">
+    <value>16, 45</value>
+  </data>
+  <data name="ucBtnExt11.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="ucBtnExt11.Size" type="System.Drawing.Size, System.Drawing">
+    <value>112, 48</value>
+  </data>
+  <data name="ucBtnExt11.TabIndex" type="System.Int32, mscorlib">
+    <value>112</value>
+  </data>
+  <data name="ucBtnExt11.Text" xml:space="preserve">
+    <value>NpcShop</value>
+  </data>
+  <data name="ucBtnExt1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>微软雅黑, 15px</value>
+  </data>
+  <data name="ucBtnExt1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>16, 109</value>
+  </data>
+  <data name="ucBtnExt1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="ucBtnExt1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>112, 48</value>
+  </data>
+  <data name="ucBtnExt1.TabIndex" type="System.Int32, mscorlib">
+    <value>113</value>
+  </data>
+  <data name="ucBtnExt1.Text" xml:space="preserve">
+    <value>RandomStore Reward</value>
+  </data>
+  <data name="ucBtnExt20.Font" type="System.Drawing.Font, System.Drawing">
+    <value>微软雅黑, 15px</value>
+  </data>
+  <data name="ucBtnExt20.Location" type="System.Drawing.Point, System.Drawing">
+    <value>16, 237</value>
+  </data>
+  <data name="ucBtnExt20.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="ucBtnExt20.Size" type="System.Drawing.Size, System.Drawing">
+    <value>112, 48</value>
+  </data>
+  <data name="ucBtnExt20.TabIndex" type="System.Int32, mscorlib">
+    <value>126</value>
+  </data>
+  <data name="ucBtnExt20.Text" xml:space="preserve">
+    <value>Skill</value>
+  </data>
+  <data name="ucBtnExt9.Font" type="System.Drawing.Font, System.Drawing">
+    <value>微软雅黑, 15px</value>
+  </data>
+  <data name="ucBtnExt9.Location" type="System.Drawing.Point, System.Drawing">
+    <value>153, 173</value>
+  </data>
+  <data name="ucBtnExt9.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="ucBtnExt9.Size" type="System.Drawing.Size, System.Drawing">
+    <value>112, 48</value>
+  </data>
+  <data name="ucBtnExt9.TabIndex" type="System.Int32, mscorlib">
+    <value>123</value>
+  </data>
+  <data name="ucBtnExt9.Text" xml:space="preserve">
+    <value>Today Challenge</value>
+  </data>
+  <data name="ucBtnExt8.Font" type="System.Drawing.Font, System.Drawing">
+    <value>微软雅黑, 15px</value>
+  </data>
+  <data name="ucBtnExt8.Location" type="System.Drawing.Point, System.Drawing">
+    <value>153, 109</value>
+  </data>
+  <data name="ucBtnExt8.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="ucBtnExt8.Size" type="System.Drawing.Size, System.Drawing">
+    <value>112, 48</value>
+  </data>
+  <data name="ucBtnExt8.TabIndex" type="System.Int32, mscorlib">
+    <value>114</value>
+  </data>
+  <data name="ucBtnExt8.Text" xml:space="preserve">
+    <value>RandomStore Item</value>
+  </data>
+  <data name="ucBtnExt13.Font" type="System.Drawing.Font, System.Drawing">
+    <value>微软雅黑, 15px</value>
+  </data>
+  <data name="ucBtnExt13.Location" type="System.Drawing.Point, System.Drawing">
+    <value>16, 173</value>
+  </data>
+  <data name="ucBtnExt13.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="ucBtnExt13.Size" type="System.Drawing.Size, System.Drawing">
+    <value>112, 48</value>
+  </data>
+  <data name="ucBtnExt13.TabIndex" type="System.Int32, mscorlib">
+    <value>119</value>
+  </data>
+  <data name="ucBtnExt13.Text" xml:space="preserve">
+    <value>Map</value>
+  </data>
+  <data name="groupBox2.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft YaHei UI, 10pt</value>
+  </data>
+  <data name="groupBox2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 14</value>
+  </data>
+  <data name="groupBox2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
+  </data>
+  <data name="groupBox2.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
+  </data>
+  <data name="groupBox2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>337, 319</value>
+  </data>
+  <data name="groupBox2.TabIndex" type="System.Int32, mscorlib">
+    <value>125</value>
+  </data>
+  <data name="groupBox2.Text" xml:space="preserve">
+    <value>preview</value>
+  </data>
+  <data name="groupBox1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft YaHei UI, 10pt</value>
+  </data>
+  <data name="groupBox1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>384, 14</value>
+  </data>
+  <data name="groupBox1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
+  </data>
+  <data name="groupBox1.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
+  </data>
+  <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>407, 319</value>
+  </data>
+  <data name="groupBox1.TabIndex" type="System.Int32, mscorlib">
+    <value>124</value>
+  </data>
+  <data name="groupBox1.Text" xml:space="preserve">
+    <value>output data</value>
+  </data>
+  <data name="PreviewPage_Else.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 36</value>
+  </data>
+  <data name="PreviewPage_Else.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
+  </data>
+  <data name="PreviewPage_Else.Size" type="System.Drawing.Size, System.Drawing">
+    <value>846, 453</value>
+  </data>
+  <data name="PreviewPage_Else.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="PreviewPage_Else.Text" xml:space="preserve">
+    <value>Preview Else</value>
+  </data>
+  <data name="TabControl.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="TabControl.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="TabControl.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
+  </data>
+  <data name="TabControl.Padding" type="System.Drawing.Point, System.Drawing">
+    <value>6, 8</value>
+  </data>
+  <data name="TabControl.Size" type="System.Drawing.Size, System.Drawing">
+    <value>854, 493</value>
+  </data>
+  <data name="TabControl.TabIndex" type="System.Int32, mscorlib">
+    <value>106</value>
+  </data>
+  <data name="&gt;&gt;TabControl.Name" xml:space="preserve">
+    <value>TabControl</value>
+  </data>
+  <data name="&gt;&gt;TabControl.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabControl, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;TabControl.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;TabControl.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="TimeInfo.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="TimeInfo.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft YaHei UI, 12pt</value>
+  </data>
+  <data name="TimeInfo.Location" type="System.Drawing.Point, System.Drawing">
+    <value>13, 347</value>
+  </data>
+  <data name="TimeInfo.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 0, 4, 0</value>
+  </data>
+  <data name="TimeInfo.Size" type="System.Drawing.Size, System.Drawing">
+    <value>78, 21</value>
+  </data>
+  <data name="TimeInfo.TabIndex" type="System.Int32, mscorlib">
+    <value>105</value>
+  </data>
+  <data name="TimeInfo.Text" xml:space="preserve">
+    <value>TimeInfo</value>
+  </data>
+  <data name="TimeInfo.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;TimeInfo.Name" xml:space="preserve">
+    <value>TimeInfo</value>
+  </data>
+  <data name="&gt;&gt;TimeInfo.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;TimeInfo.Parent" xml:space="preserve">
+    <value>MainPage</value>
+  </data>
+  <data name="&gt;&gt;TimeInfo.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="Step1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft YaHei UI, 10pt</value>
+  </data>
+  <data name="Step1.ImgCompleted" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAK9JREFUSEvt
+        ktENgzAMRDNCR+hoHaEjMEI3KBswSkdK78gZkQhFrXH7gXjSSZZjvwAinRyLnPNVZTyQj8gLuagVh+RG
+        3CUUIROtDYNG/EBCOZ+2ZdSIH0j8cgx1vx/PEb8c4fJTrYrVectXcoP18jas1Wu5a6QPBocyXzFfomzJ
+        b1r/DCys/2eD4v1yA4uPst/FJzcoKJ5N9skNioqvIkZuUFi8M7Fyg+KfyU/+QEpvWnW1kRgi/AQAAAAA
+        SUVORK5CYII=
+</value>
+  </data>
+  <data name="Step1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>13, 252</value>
+  </data>
+  <data name="Step1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
+  </data>
+  <data name="Step1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>805, 91</value>
+  </data>
+  <data name="Step1.TabIndex" type="System.Int32, mscorlib">
+    <value>96</value>
+  </data>
+  <data name="&gt;&gt;Step1.Name" xml:space="preserve">
+    <value>Step1</value>
+  </data>
+  <data name="&gt;&gt;Step1.Type" xml:space="preserve">
+    <value>HZH_Controls.Controls.UCStep, HZH_Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;Step1.Parent" xml:space="preserve">
+    <value>MainPage</value>
+  </data>
+  <data name="&gt;&gt;Step1.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="Chv_Path.Location" type="System.Drawing.Point, System.Drawing">
+    <value>18, 111</value>
+  </data>
+  <data name="Chv_Path.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
+  </data>
+  <data name="Chv_Path.Size" type="System.Drawing.Size, System.Drawing">
+    <value>521, 23</value>
+  </data>
+  <data name="Chv_Path.TabIndex" type="System.Int32, mscorlib">
+    <value>102</value>
+  </data>
+  <data name="&gt;&gt;Chv_Path.Name" xml:space="preserve">
+    <value>Chv_Path</value>
+  </data>
+  <data name="&gt;&gt;Chv_Path.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Chv_Path.Parent" xml:space="preserve">
+    <value>MainPage</value>
+  </data>
+  <data name="&gt;&gt;Chv_Path.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="Note_GRoot.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="Note_GRoot.Location" type="System.Drawing.Point, System.Drawing">
+    <value>18, 17</value>
+  </data>
+  <data name="Note_GRoot.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 0, 4, 0</value>
+  </data>
+  <data name="Note_GRoot.Size" type="System.Drawing.Size, System.Drawing">
+    <value>83, 17</value>
+  </data>
+  <data name="Note_GRoot.TabIndex" type="System.Int32, mscorlib">
+    <value>89</value>
+  </data>
+  <data name="Note_GRoot.Text" xml:space="preserve">
+    <value>Game Folder</value>
+  </data>
+  <data name="&gt;&gt;Note_GRoot.Name" xml:space="preserve">
+    <value>Note_GRoot</value>
+  </data>
+  <data name="&gt;&gt;Note_GRoot.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Note_GRoot.Parent" xml:space="preserve">
+    <value>MainPage</value>
+  </data>
+  <data name="&gt;&gt;Note_GRoot.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="Btn_StartMatch.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft YaHei UI, 15px</value>
+  </data>
+  <data name="Btn_StartMatch.Location" type="System.Drawing.Point, System.Drawing">
+    <value>676, 71</value>
+  </data>
+  <data name="Btn_StartMatch.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="Btn_StartMatch.Size" type="System.Drawing.Size, System.Drawing">
+    <value>108, 48</value>
+  </data>
+  <data name="Btn_StartMatch.TabIndex" type="System.Int32, mscorlib">
+    <value>99</value>
+  </data>
+  <data name="Btn_StartMatch.Text" xml:space="preserve">
+    <value>Run</value>
+  </data>
+  <data name="&gt;&gt;Btn_StartMatch.Name" xml:space="preserve">
+    <value>Btn_StartMatch</value>
+  </data>
+  <data name="&gt;&gt;Btn_StartMatch.Type" xml:space="preserve">
+    <value>HZH_Controls.Controls.UCBtnExt, HZH_Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;Btn_StartMatch.Parent" xml:space="preserve">
+    <value>MainPage</value>
+  </data>
+  <data name="&gt;&gt;Btn_StartMatch.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="GRoot_Path.Location" type="System.Drawing.Point, System.Drawing">
+    <value>16, 46</value>
+  </data>
+  <data name="GRoot_Path.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
+  </data>
+  <data name="GRoot_Path.Size" type="System.Drawing.Size, System.Drawing">
+    <value>523, 23</value>
+  </data>
+  <data name="GRoot_Path.TabIndex" type="System.Int32, mscorlib">
+    <value>87</value>
+  </data>
+  <data name="&gt;&gt;GRoot_Path.Name" xml:space="preserve">
+    <value>GRoot_Path</value>
+  </data>
+  <data name="&gt;&gt;GRoot_Path.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;GRoot_Path.Parent" xml:space="preserve">
+    <value>MainPage</value>
+  </data>
+  <data name="&gt;&gt;GRoot_Path.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="Note_Chv.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="Note_Chv.Location" type="System.Drawing.Point, System.Drawing">
+    <value>18, 88</value>
+  </data>
+  <data name="Note_Chv.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 0, 4, 0</value>
+  </data>
+  <data name="Note_Chv.Size" type="System.Drawing.Size, System.Drawing">
+    <value>297, 17</value>
+  </data>
+  <data name="Note_Chv.TabIndex" type="System.Int32, mscorlib">
+    <value>90</value>
+  </data>
+  <data name="Note_Chv.Text" xml:space="preserve">
+    <value>Select old item list （or uncheck &lt;only update&gt;）</value>
+  </data>
+  <data name="&gt;&gt;Note_Chv.Name" xml:space="preserve">
+    <value>Note_Chv</value>
+  </data>
+  <data name="&gt;&gt;Note_Chv.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Note_Chv.Parent" xml:space="preserve">
+    <value>MainPage</value>
+  </data>
+  <data name="&gt;&gt;Note_Chv.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="Chk_OnlyNew.Location" type="System.Drawing.Point, System.Drawing">
+    <value>18, 152</value>
+  </data>
+  <data name="Chk_OnlyNew.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
+  </data>
+  <data name="Chk_OnlyNew.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 44</value>
+  </data>
+  <data name="Chk_OnlyNew.TabIndex" type="System.Int32, mscorlib">
+    <value>98</value>
+  </data>
+  <data name="&gt;&gt;Chk_OnlyNew.Name" xml:space="preserve">
+    <value>Chk_OnlyNew</value>
+  </data>
+  <data name="&gt;&gt;Chk_OnlyNew.Type" xml:space="preserve">
+    <value>HZH_Controls.Controls.UCSwitch, HZH_Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;Chk_OnlyNew.Parent" xml:space="preserve">
+    <value>MainPage</value>
+  </data>
+  <data name="&gt;&gt;Chk_OnlyNew.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="Switch_64Bit.Location" type="System.Drawing.Point, System.Drawing">
+    <value>153, 152</value>
+  </data>
+  <data name="Switch_64Bit.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
+  </data>
+  <data name="Switch_64Bit.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 44</value>
+  </data>
+  <data name="Switch_64Bit.TabIndex" type="System.Int32, mscorlib">
+    <value>97</value>
+  </data>
+  <data name="&gt;&gt;Switch_64Bit.Name" xml:space="preserve">
+    <value>Switch_64Bit</value>
+  </data>
+  <data name="&gt;&gt;Switch_64Bit.Type" xml:space="preserve">
+    <value>HZH_Controls.Controls.UCSwitch, HZH_Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;Switch_64Bit.Parent" xml:space="preserve">
+    <value>MainPage</value>
+  </data>
+  <data name="&gt;&gt;Switch_64Bit.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="File_Searcher.BtnImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABkAAAAfCAYAAAASsGZ+AAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6
+        JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAB3RJTUUH4wEJAzk5T6seXQAAA3RJREFU
+        SEu1ll1TElEYx/eiqU9QF9V36b7ruqi7bvoCXTQ1TTfNWFNZlllmr1ZXTqM2Wo1lCokgLPsCy9suYYKr
+        vEMqaCD27znLSmBUgHaG3yxzePb58Zx9zgEuFp7+LzQMc/IM8ZR4vAvY/aeJP0oGCewBD4g/Sp4RFGSB
+        HplpidgX604B4x7xd4k+b0M6EUAmGfon+oIbqvK+MwlLkE1pfyWXDpNEgOQaQcjbINo7SbZOIjmH60X/
+        RyKSRHING0sX1aZ6ScihHDKzm2MvJFXRCHzi2FBI+XDAK45zXmHcNNDoRFL/TLYlJhuSa/QyCfYHPBNc
+        RJ3pXGJUEhUgu99A5kcJdq3xXRHfXlxccO/bnYRIJ4KIL3qao3vDqWX/YaJ9SS6tIc/IMMLGsmVTzdAi
+        xFGiPQkTLMZCkDwKbA4ZgqQguhA05nO/x7cnYQmScRWTFgk9j+zoecyj/5WMO0/duDVgx/gHAct6yJDV
+        3deeJEWC12M8JXdD9CWxWiihvLmFQrEMv5ZB36CIwSEnidT6ilqXsG/3eVbGrUc8lhJrqI4f9CLMkc1v
+        4N5zEe8+CvXVtC5JLKvoe+7ALL+ETCqCiGonHFiIuFEqFU0NoITSuE1LGYvWlq01CQvWtAC6B+aQzBRR
+        LORof0QN8lkdlcqmqQDWCmXcecJDpqZg3deyhAUrPh89CxdW1kqU6ge2tio1mKRSKRvvS+UK+l9K4AWv
+        0d4tS1gl4XC1kniqYHSY6rdCC/xCJaK0dLn8GnqoEo/ia68SBkvc/8IBi2MRpe+rWMnHiUQdcawXcxC8
+        carYDp32kdlhrUtYNQ6XBzcfOvE1tlJ9ADtGIl002vsj7aOOuouRTmoYnxAM0YxLRzq7jvWNTeS+bcAl
+        swp4XLpuxcSUVH9fU4nxb6WZhMFEtjmP0c7dA07aFwLtHSfuPrFj6rOEWfrsWp8Nk9aaqKnkRCw8dXU5
+        6hzKptQtM7ABthSJJRXBkN84v/wBf+04YczxXkP0iaQUH6ED9CjNN0i4hC5xdIIep4Cmkm1YQtZB7Lpz
+        nomu37fh3aQ4Tw1wRJQV7twV+r3fllAg4xihEEEi0C4kClhscvDSDevS+S7LWeqLqmR7UBDjAHGoU6jC
+        Q6VC5OCFa5aTlNxHnGom2RXsGQSCfq6rd4ZVcNzENOzhYEkbmeZ+AmQhGDNTe5AGAAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="File_Searcher.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft YaHei UI, 15px</value>
+  </data>
+  <data name="File_Searcher.Location" type="System.Drawing.Point, System.Drawing">
+    <value>554, 108</value>
+  </data>
+  <data name="File_Searcher.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>5, 7, 5, 7</value>
+  </data>
+  <data name="File_Searcher.Size" type="System.Drawing.Size, System.Drawing">
+    <value>96, 37</value>
+  </data>
+  <data name="File_Searcher.TabIndex" type="System.Int32, mscorlib">
+    <value>93</value>
+  </data>
+  <data name="File_Searcher.Text" xml:space="preserve">
+    <value>Select</value>
+  </data>
+  <data name="&gt;&gt;File_Searcher.Name" xml:space="preserve">
+    <value>File_Searcher</value>
+  </data>
+  <data name="&gt;&gt;File_Searcher.Type" xml:space="preserve">
+    <value>HZH_Controls.Controls.UCBtnFillet, HZH_Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;File_Searcher.Parent" xml:space="preserve">
+    <value>MainPage</value>
+  </data>
+  <data name="&gt;&gt;File_Searcher.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="ucBtnFillet1.BtnImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABQAAAAXCAYAAAALHW+jAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6
+        JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAB3RJTUUH4wEJBAMYIyTG/wAAAn1JREFU
+        SEudlUtrE1EUgCc73bjytbDgTtGdXfr4Af4AaZsaWwSpGlOMiIhQ3ehGigvJpj4CXYq6EjdZCUVFEAQp
+        JhGT5tE855XJZCbzyvGcm5uaFplMcsmXE5IzX8459w4jDJai2UQIOYRMIcdGMCWp1lEACP0uKMKvnMRN
+        fGECcQLZQDJIegSZhmz+yGzJs6WazoS7pJhAnEdMBIJQl0xI52URReEsVolybsOFCcQ5RB9cMAouBBSK
+        6bwU3qpoIa6bTCi1LKiJBlSbBsVcU+me5LrJhHtoINNc5y+k1sp1HXD4sI0RN2PX7xwSnuG6/wvxWECx
+        1oZCtc1aayomi4WKxuQytjzIRfyFcsuGIooqjQ6Ylge9HgC+wMM3w3R3KqZcjr+wJhlMaFoutDsWw7Jd
+        0DC6bo9JqdKh9v2F9O+U7GFJkmowdMMGUTGYmL6n9mmmlI/4C6k6mpHjetCU6Vh0diApVUkzLeGMKR8J
+        WCEOj9rsmDY0JNplDcyuM36FlNyfoccEtuOCqplYXQc/e2B0x5ih2nZY0p+SCttDu0yLIsmoskC7jDK9
+        XGtBNt/Ee1SEXLnFKq3jrotKl1U+8hzOR5YFFAk4prOb6aKeWHsDH1LfocwH/u9OabPoe6eQbDYcFZ4n
+        1oWXybcXH6ysmjdij+Bj6hs73Hsu8qMvnJm7KYQvx4S5+VunIgu3Py9FV2Dt9TsoVRQYzDIgfSGKiNOR
+        xfhXquxF8j2Uq+q4MmIgjB65shj/dD36EJ4+S26izJlARojItHBpZukAtpmIxR+/2vjy80JLd4I+U4bJ
+        IinkuHD12j3h7v3Vfct3nuznx+cwEuSpNwzlH1Q0O/QXHePJlGY6/JEAAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="ucBtnFillet1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft YaHei UI, 15px</value>
+  </data>
+  <data name="ucBtnFillet1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>554, 44</value>
+  </data>
+  <data name="ucBtnFillet1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>5, 7, 5, 7</value>
+  </data>
+  <data name="ucBtnFillet1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>94, 37</value>
+  </data>
+  <data name="ucBtnFillet1.TabIndex" type="System.Int32, mscorlib">
+    <value>94</value>
+  </data>
+  <data name="ucBtnFillet1.Text" xml:space="preserve">
+    <value>Select</value>
+  </data>
+  <data name="&gt;&gt;ucBtnFillet1.Name" xml:space="preserve">
+    <value>ucBtnFillet1</value>
+  </data>
+  <data name="&gt;&gt;ucBtnFillet1.Type" xml:space="preserve">
+    <value>HZH_Controls.Controls.UCBtnFillet, HZH_Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;ucBtnFillet1.Parent" xml:space="preserve">
+    <value>MainPage</value>
+  </data>
+  <data name="&gt;&gt;ucBtnFillet1.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="ItemPreview_Search.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft YaHei UI, 13px</value>
+  </data>
+  <data name="ItemPreview_Search.Location" type="System.Drawing.Point, System.Drawing">
+    <value>382, 51</value>
+  </data>
+  <data name="ItemPreview_Search.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>5, 7, 5, 7</value>
+  </data>
+  <data name="ItemPreview_Search.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>6, 7, 6, 7</value>
+  </data>
+  <data name="ItemPreview_Search.Size" type="System.Drawing.Size, System.Drawing">
+    <value>426, 55</value>
+  </data>
+  <data name="ItemPreview_Search.TabIndex" type="System.Int32, mscorlib">
+    <value>115</value>
+  </data>
+  <data name="&gt;&gt;ItemPreview_Search.Name" xml:space="preserve">
+    <value>ItemPreview_Search</value>
+  </data>
+  <data name="&gt;&gt;ItemPreview_Search.Type" xml:space="preserve">
+    <value>HZH_Controls.Controls.UCTextBoxEx, HZH_Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;ItemPreview_Search.Parent" xml:space="preserve">
+    <value>PreviewPage_Item</value>
+  </data>
+  <data name="&gt;&gt;ItemPreview_Search.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="ucBtnExt5.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft YaHei UI, 15px</value>
+  </data>
+  <data name="ucBtnExt5.Location" type="System.Drawing.Point, System.Drawing">
+    <value>19, 14</value>
+  </data>
+  <data name="ucBtnExt5.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="ucBtnExt5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>102, 50</value>
+  </data>
+  <data name="ucBtnExt5.TabIndex" type="System.Int32, mscorlib">
+    <value>109</value>
+  </data>
+  <data name="ucBtnExt5.Text" xml:space="preserve">
+    <value>Refresh cache</value>
+  </data>
+  <data name="&gt;&gt;ucBtnExt5.Name" xml:space="preserve">
+    <value>ucBtnExt5</value>
+  </data>
+  <data name="&gt;&gt;ucBtnExt5.Type" xml:space="preserve">
+    <value>HZH_Controls.Controls.UCBtnExt, HZH_Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;ucBtnExt5.Parent" xml:space="preserve">
+    <value>PreviewPage_Item</value>
+  </data>
+  <data name="&gt;&gt;ucBtnExt5.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="label1.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft YaHei UI, 12pt</value>
+  </data>
+  <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>384, 14</value>
+  </data>
+  <data name="label1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 0, 4, 0</value>
+  </data>
+  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>324, 21</value>
+  </data>
+  <data name="label1.TabIndex" type="System.Int32, mscorlib">
+    <value>107</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Search rule (Advance mode when empty)</value>
+  </data>
+  <data name="&gt;&gt;label1.Name" xml:space="preserve">
+    <value>label1</value>
+  </data>
+  <data name="&gt;&gt;label1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label1.Parent" xml:space="preserve">
+    <value>PreviewPage_Item</value>
+  </data>
+  <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="ucBtnExt3.Font" type="System.Drawing.Font, System.Drawing">
+    <value>微软雅黑, 15px</value>
+  </data>
+  <data name="ucBtnExt3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>15, 252</value>
+  </data>
+  <data name="ucBtnExt3.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="ucBtnExt3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>112, 48</value>
+  </data>
+  <data name="ucBtnExt3.TabIndex" type="System.Int32, mscorlib">
+    <value>128</value>
+  </data>
+  <data name="ucBtnExt3.Text" xml:space="preserve">
+    <value>Collection</value>
+  </data>
+  <data name="&gt;&gt;ucBtnExt3.Name" xml:space="preserve">
+    <value>ucBtnExt3</value>
+  </data>
+  <data name="&gt;&gt;ucBtnExt3.Type" xml:space="preserve">
+    <value>HZH_Controls.Controls.UCBtnExt, HZH_Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;ucBtnExt3.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;ucBtnExt3.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="ucBtnExt2.Font" type="System.Drawing.Font, System.Drawing">
+    <value>微软雅黑, 15px</value>
+  </data>
+  <data name="ucBtnExt2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>151, 193</value>
+  </data>
+  <data name="ucBtnExt2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="ucBtnExt2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>112, 48</value>
+  </data>
+  <data name="ucBtnExt2.TabIndex" type="System.Int32, mscorlib">
+    <value>128</value>
+  </data>
+  <data name="ucBtnExt2.Text" xml:space="preserve">
+    <value>Art Gallery</value>
+  </data>
+  <data name="&gt;&gt;ucBtnExt2.Name" xml:space="preserve">
+    <value>ucBtnExt2</value>
+  </data>
+  <data name="&gt;&gt;ucBtnExt2.Type" xml:space="preserve">
+    <value>HZH_Controls.Controls.UCBtnExt, HZH_Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;ucBtnExt2.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;ucBtnExt2.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="ucBtnExt10.Font" type="System.Drawing.Font, System.Drawing">
+    <value>微软雅黑, 15px</value>
+  </data>
+  <data name="ucBtnExt10.Location" type="System.Drawing.Point, System.Drawing">
+    <value>15, 193</value>
+  </data>
+  <data name="ucBtnExt10.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="ucBtnExt10.Size" type="System.Drawing.Size, System.Drawing">
+    <value>112, 48</value>
+  </data>
+  <data name="ucBtnExt10.TabIndex" type="System.Int32, mscorlib">
+    <value>127</value>
+  </data>
+  <data name="ucBtnExt10.Text" xml:space="preserve">
+    <value>探险日志</value>
+  </data>
+  <data name="&gt;&gt;ucBtnExt10.Name" xml:space="preserve">
+    <value>ucBtnExt10</value>
+  </data>
+  <data name="&gt;&gt;ucBtnExt10.Type" xml:space="preserve">
+    <value>HZH_Controls.Controls.UCBtnExt, HZH_Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;ucBtnExt10.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;ucBtnExt10.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="ucBtnExt18.Font" type="System.Drawing.Font, System.Drawing">
+    <value>微软雅黑, 15px</value>
+  </data>
+  <data name="ucBtnExt18.Location" type="System.Drawing.Point, System.Drawing">
+    <value>151, 109</value>
+  </data>
+  <data name="ucBtnExt18.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="ucBtnExt18.Size" type="System.Drawing.Size, System.Drawing">
+    <value>112, 48</value>
+  </data>
+  <data name="ucBtnExt18.TabIndex" type="System.Int32, mscorlib">
+    <value>126</value>
+  </data>
+  <data name="ucBtnExt18.Text" xml:space="preserve">
+    <value>Closet</value>
+  </data>
+  <data name="&gt;&gt;ucBtnExt18.Name" xml:space="preserve">
+    <value>ucBtnExt18</value>
+  </data>
+  <data name="&gt;&gt;ucBtnExt18.Type" xml:space="preserve">
+    <value>HZH_Controls.Controls.UCBtnExt, HZH_Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;ucBtnExt18.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;ucBtnExt18.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="ucBtnExt12.Font" type="System.Drawing.Font, System.Drawing">
+    <value>微软雅黑, 15px</value>
+  </data>
+  <data name="ucBtnExt12.Location" type="System.Drawing.Point, System.Drawing">
+    <value>15, 109</value>
+  </data>
+  <data name="ucBtnExt12.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="ucBtnExt12.Size" type="System.Drawing.Size, System.Drawing">
+    <value>112, 48</value>
+  </data>
+  <data name="ucBtnExt12.TabIndex" type="System.Int32, mscorlib">
+    <value>121</value>
+  </data>
+  <data name="ucBtnExt12.Text" xml:space="preserve">
+    <value>Closet (Old)</value>
+  </data>
+  <data name="&gt;&gt;ucBtnExt12.Name" xml:space="preserve">
+    <value>ucBtnExt12</value>
+  </data>
+  <data name="&gt;&gt;ucBtnExt12.Type" xml:space="preserve">
+    <value>HZH_Controls.Controls.UCBtnExt, HZH_Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;ucBtnExt12.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;ucBtnExt12.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="ucBtnExt14.Font" type="System.Drawing.Font, System.Drawing">
+    <value>微软雅黑, 15px</value>
+  </data>
+  <data name="ucBtnExt14.Location" type="System.Drawing.Point, System.Drawing">
+    <value>15, 45</value>
+  </data>
+  <data name="ucBtnExt14.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="ucBtnExt14.Size" type="System.Drawing.Size, System.Drawing">
+    <value>112, 48</value>
+  </data>
+  <data name="ucBtnExt14.TabIndex" type="System.Int32, mscorlib">
+    <value>120</value>
+  </data>
+  <data name="ucBtnExt14.Text" xml:space="preserve">
+    <value>BuyPrice</value>
+  </data>
+  <data name="&gt;&gt;ucBtnExt14.Name" xml:space="preserve">
+    <value>ucBtnExt14</value>
+  </data>
+  <data name="&gt;&gt;ucBtnExt14.Type" xml:space="preserve">
+    <value>HZH_Controls.Controls.UCBtnExt, HZH_Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;ucBtnExt14.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;ucBtnExt14.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="ucBtnExt16.Font" type="System.Drawing.Font, System.Drawing">
+    <value>微软雅黑, 15px</value>
+  </data>
+  <data name="ucBtnExt16.Location" type="System.Drawing.Point, System.Drawing">
+    <value>151, 45</value>
+  </data>
+  <data name="ucBtnExt16.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="ucBtnExt16.Size" type="System.Drawing.Size, System.Drawing">
+    <value>112, 48</value>
+  </data>
+  <data name="ucBtnExt16.TabIndex" type="System.Int32, mscorlib">
+    <value>122</value>
+  </data>
+  <data name="ucBtnExt16.Text" xml:space="preserve">
+    <value>Transform</value>
+  </data>
+  <data name="&gt;&gt;ucBtnExt16.Name" xml:space="preserve">
+    <value>ucBtnExt16</value>
+  </data>
+  <data name="&gt;&gt;ucBtnExt16.Type" xml:space="preserve">
+    <value>HZH_Controls.Controls.UCBtnExt, HZH_Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;ucBtnExt16.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;ucBtnExt16.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="Timer.TrayLocation" type="System.Drawing.Point, System.Drawing">
+    <value>99, 16</value>
+  </data>
+  <data name="Open.TrayLocation" type="System.Drawing.Point, System.Drawing">
+    <value>15, 16</value>
+  </data>
+  <data name="$this.Localizable" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>7, 17</value>
+  </data>
+  <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
+  </data>
+  <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
+    <value>854, 493</value>
+  </data>
+  <data name="&gt;&gt;Timer.Name" xml:space="preserve">
+    <value>Timer</value>
+  </data>
+  <data name="&gt;&gt;Timer.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Timer, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Open.Name" xml:space="preserve">
+    <value>Open</value>
+  </data>
+  <data name="&gt;&gt;Open.Type" xml:space="preserve">
+    <value>System.Windows.Forms.OpenFileDialog, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>ItemPage</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.UserControl, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+</root>

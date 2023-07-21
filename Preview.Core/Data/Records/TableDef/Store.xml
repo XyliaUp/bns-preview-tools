@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table name="store" version="0.8" autokey="false" module="6">
+  <el name="table" child="1" />
+  <el name="record">
+    <record name="id" type="Int64" key="y" required="y" />
+    <record name="alias" type="String" required="y" max="70" />
+    <record name="faction" type="Ref" ref="faction" />
+    <record name="sell-rate" type="Int16" required="y" min="1" max="10000" />
+    <record name="buy-rate" type="Int16" required="y" min="1" max="10000" />
+    <record name="resell-rate" type="Int16" required="y" min="1" max="10000" />
+    <record name="item" type="Ref" ref="item" repeat="100" />
+    <record name="faction-reputation" type="Int16" default="0" repeat="100" />
+    <record name="faction-level" type="Int16" default="0" repeat="100" />
+  </el>
+</table>

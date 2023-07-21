@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table name="abnormalcamera" version="0.3" autokey="false" module="4">
+  <el name="table" child="1" />
+  <el name="record">
+    <record name="idle-type" type="Seq" seq="idle-type" key="y" required="y" />
+    <record name="camera-type" type="Seq" required="y">
+      <case name="forcibly-pose" />
+      <case name="zoom-near-far" />
+    </record>
+    <record name="location-x" type="Float32" required="y" />
+    <record name="location-y" type="Float32" required="y" />
+    <record name="location-z" type="Float32" required="y" />
+    <record name="target-x" type="Float32" required="y" />
+    <record name="target-y" type="Float32" required="y" />
+    <record name="target-z" type="Float32" required="y" />
+    <record name="enter-duration" type="Float32" default="0" />
+    <record name="leave-smooth" type="Bool" />
+    <record name="leave-duration" type="Float32" default="0" />
+    <record name="height-far" type="Float32" default="0" />
+    <record name="height-middle" type="Float32" default="0" />
+    <record name="height-near" type="Float32" default="0" />
+  </el>
+</table>

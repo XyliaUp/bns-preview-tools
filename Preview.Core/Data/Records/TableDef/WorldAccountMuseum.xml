@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table name="world-account-museum" version="1.0" autokey="false" module="6" maxid="1000">
+  <el name="table" child="1" />
+  <el name="record">
+    <record name="id" type="Int16" key="y" required="y" min="1" max="1000" />
+    <record name="alias" type="String" required="y" max="70" />
+    <record name="collection-card" type="Ref" ref="world-account-card" repeat="8" />
+    <record name="collection-card-count" type="Int16" default="0" repeat="8" />
+    <record name="start-time" type="XUnknown1" />
+    <record name="end-time" type="XUnknown1" />
+    <record name="can-not-used" type="Bool" />
+    <record name="ability" type="Seq" seq="attach-ability" default="none" repeat="3" />
+    <record name="ability-value" type="Int32" default="0" repeat="3" min="0" max="1000000" />
+    <record name="collection-name" type="Ref" ref="text" />
+    <record name="collection-category" type="Seq">
+      <case name="level-1" default="y" />
+      <case name="level-2" />
+      <case name="level-3" />
+      <case name="level-4" />
+      <case name="event" />
+      <case name="favorite" />
+    </record>
+  </el>
+</table>

@@ -1,0 +1,1 @@
+..\bin\Release\Match64.exe -command=output -path=Zone.xml

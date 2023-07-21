@@ -1,0 +1,1205 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table name="quest" version="2.0" autokey="false" module="262" maxid="32001">
+  <el name="table" child="1" />
+  <el name="quest">
+    <record name="id" type="Int16" key="y" required="y" min="1" max="32001" />
+    <record name="alias" type="String" required="y" max="70" />
+    <record name="max-repeat" type="Int8" default="1" min="-1" max="100" />
+    <record name="name" type="String" deprecated="y" max="50" />
+    <record name="name2" type="Ref" ref="text" />
+    <record name="district" type="Ref" ref="district" repeat="2" deprecated="y" />
+    <record name="map-group-1" type="Ref" ref="map-group-1" repeat="2" />
+    <record name="group" type="String" deprecated="y" max="50" />
+    <record name="group2" type="Ref" ref="text" />
+    <record name="desc" type="Ref" ref="text" />
+    <record name="completed-desc" type="Ref" ref="text" />
+    <record name="category" type="Seq" required="y">
+      <case name="epic" />
+      <case name="normal" />
+      <case name="job" />
+      <case name="dungeon" />
+      <case name="attraction" />
+      <case name="tendency-simple" />
+      <case name="tendency-tendency" />
+      <case name="mentoring" />
+      <case name="hunting" />
+    </record>
+    <record name="completed-list" type="Bool" />
+    <record name="grade" type="Seq">
+      <case name="1" default="y" />
+      <case name="2" />
+      <case name="3" />
+      <case name="4" />
+      <case name="5" />
+      <case name="6" />
+      <case name="7" />
+      <case name="8" />
+      <case name="9" />
+      <case name="10" />
+      <case name="11" />
+      <case name="12" />
+      <case name="13" />
+      <case name="14" />
+      <case name="15" />
+      <case name="16" />
+      <case name="17" />
+      <case name="18" />
+      <case name="19" />
+      <case name="20" />
+      <case name="21" />
+      <case name="22" />
+      <case name="23" />
+      <case name="24" />
+      <case name="25" />
+      <case name="26" />
+      <case name="27" />
+    </record>
+    <record name="tutorial" type="Bool" default="false" />
+    <record name="show-tutorial-tag" type="Bool" default="false" />
+    <record name="last-mission-step" type="Int8" hidden="y" />
+    <record name="effect-exist" type="Bool" hidden="y" />
+    <record name="day-of-week" type="Seq">
+      <case name="none" default="y" />
+      <case name="daily" />
+      <case name="weekly" />
+      <case name="monthly" />
+      <case name="mon" />
+      <case name="tue" />
+      <case name="wed" />
+      <case name="the" />
+      <case name="fri" />
+      <case name="sat" />
+      <case name="sun" />
+      <case name="sat-sun" />
+      <case name="fri-sat-sun" />
+    </record>
+    <record name="reset-type" type="Seq">
+      <case name="none" default="y" />
+      <case name="daily" />
+      <case name="weekly" />
+      <case name="monthly" />
+    </record>
+    <record name="reset-by-acquire-time" type="Seq">
+      <case name="none" default="y" />
+      <case name="daily" />
+      <case name="weekly" />
+    </record>
+    <record name="reset-day-of-week" type="Seq" hidden="y">
+      <case name="sun" default="y" />
+      <case name="mon" />
+      <case name="tue" />
+      <case name="wed" />
+      <case name="thu" />
+      <case name="fri" />
+      <case name="sat" />
+    </record>
+    <record name="reset-day-of-month" type="Int8" default="1" hidden="y" min="1" max="28" />
+    <record name="activated-faction" type="Ref" ref="faction" deprecated="y" />
+    <record name="main-faction" type="Ref" ref="faction" />
+    <record name="production" type="Seq" seq="production-type" default="none" />
+    <record name="save-type" type="Seq">
+      <case name="all" default="y" />
+      <case name="except-completion" />
+      <case name="nothing" />
+      <case name="except-completion-and-logout-save" />
+    </record>
+    <record name="invoke-fx-msg" type="Bool" />
+    <record name="dungeon" type="Ref" ref="dungeon" />
+    <record name="dungeon-type" type="Seq" hidden="y">
+      <case name="unbind" default="y" />
+      <case name="bind" />
+    </record>
+    <record name="craft-type" type="Seq" deprecated="y">
+      <case name="none" default="y" />
+      <case name="gather" />
+      <case name="production" />
+    </record>
+    <record name="content-type" type="Seq">
+      <case name="none" default="y" />
+      <case name="gather" />
+      <case name="production" />
+      <case name="pvp-reward" />
+      <case name="festival" />
+      <case name="elite-skill" />
+      <case name="duel" />
+      <case name="party-battle" />
+      <case name="special" />
+      <case name="side-episode" />
+    </record>
+    <record name="retired" type="Bool" />
+    <record name="progress-difficulty-type" type="Bool" default="y" repeat="3" />
+    <record name="progress-difficulty-type-always" type="Bool" hidden="y" />
+    <record name="attraction" type="TRef" repeat="4" />
+    <record name="attraction-info" type="TRef" />
+    <record name="reset-enable" type="Bool" default="false" />
+    <record name="reset-money" type="Int32" default="0" min="0" />
+    <record name="reset-item" type="Ref" ref="item" repeat="4" />
+    <record name="reset-item-count" type="Int8" default="0" repeat="4" min="0" />
+    <record name="acquire-talksocial" type="Ref" ref="talksocial" />
+    <record name="acquire-talksocial-delay" type="Float32" default="0.0" />
+    <record name="complete-talksocial" type="Ref" ref="talksocial" />
+    <record name="complete-talksocial-delay" type="Float32" default="0.0" />
+    <record name="check-vitality" type="Bool" default="y" hidden="y" />
+    <record name="valid-date-start-year" type="Int16" default="0" min="0" />
+    <record name="valid-date-start-month" type="Int8" default="0" min="0" max="12" />
+    <record name="valid-date-start-day" type="Int8" default="0" min="0" max="31" />
+    <record name="valid-date-end-year" type="Int16" default="0" min="0" />
+    <record name="valid-date-end-month" type="Int8" default="0" min="0" max="12" />
+    <record name="valid-date-end-day" type="Int8" default="0" min="0" max="31" />
+    <record name="valid-time-start-hour" type="Int8" default="-1" min="-1" max="23" />
+    <record name="valid-time-end-hour" type="Int8" default="-1" min="-1" max="24" />
+    <record name="valid-dayofweek-sun" type="Bool" />
+    <record name="valid-dayofweek-mon" type="Bool" />
+    <record name="valid-dayofweek-tue" type="Bool" />
+    <record name="valid-dayofweek-wed" type="Bool" />
+    <record name="valid-dayofweek-thu" type="Bool" />
+    <record name="valid-dayofweek-fri" type="Bool" />
+    <record name="valid-dayofweek-sat" type="Bool" />
+    <record name="replay-epic-original" type="Ref" ref="quest" deprecated="y" />
+    <record name="replay-epic-start-point" type="Bool" />
+    <record name="replay-epic-pcspawn" type="Ref" ref="zonepcspawn" />
+    <record name="dungeon2" type="Ref" ref="dungeon" hidden="y" />
+    <record name="duel-mission-steps" type="Int8" default="0" repeat="16" hidden="y" min="0" max="16" />
+    <record name="duel-missions" type="Int8" default="0" repeat="16" hidden="y" min="0" max="16" />
+    <record name="duel-cases" type="Int8" default="0" repeat="16" hidden="y" min="0" />
+    <record name="duel-case-subtypes" type="Int16" repeat="16" hidden="y" />
+    <record name="exceed-level-next-level" type="Int8" default="0" hidden="y" />
+    <record name="contents-reset" type="Ref" ref="contents-reset" hidden="y" />
+  </el>
+  <el name="filter">
+    <record name="id" type="Int64" key="y" required="y" />
+    <record name="alias" type="String" required="y" max="70" />
+    <record name="subject" type="Script_obj" />
+    <record name="target" type="Script_obj" />
+    <record name="subject2" type="Script_obj" />
+    <record name="target2" type="Script_obj" />
+    <sub name="race">
+      <record name="value" type="Prop_seq" seq="race" default="race-none" repeat="4" />
+      <record name="either" type="Bool" default="y" />
+    </sub>
+    <sub name="sex">
+      <record name="value" type="Prop_seq" seq="sex" default="sex-none" repeat="4" />
+      <record name="either" type="Bool" default="y" />
+    </sub>
+    <sub name="job">
+      <record name="value" type="Prop_seq" seq="job" default="job-none" repeat="4" />
+      <record name="either" type="Bool" default="y" />
+    </sub>
+    <sub name="job-style">
+      <record name="count" type="Int8" default="1" min="1" max="4" />
+      <record name="job" type="Prop_seq" seq="job" default="job-none" repeat="4" />
+      <record name="job-style" type="Seq" seq="job-style" default="base-1" repeat="4" />
+      <record name="either" type="Bool" default="y" />
+    </sub>
+    <sub name="stance">
+      <record name="value" type="Prop_seq" seq="stance" default="stance-none" repeat="4" />
+      <record name="either" type="Bool" default="y" />
+    </sub>
+    <sub name="prop">
+      <record name="field" type="Prop_field" seq="creature_field" required="y" />
+      <record name="op" type="Seq" seq="op2" required="y" />
+      <record name="value" type="Int64" required="y" />
+    </sub>
+    <sub name="prop-percent">
+      <record name="field" type="Prop_field" seq="creature_field" required="y" />
+      <record name="op" type="Seq" seq="op2" required="y" />
+      <record name="value" type="Int8" required="y" min="0" max="100" />
+    </sub>
+    <sub name="prop-flag">
+      <record name="field" type="Prop_field" seq="creature_field" required="y" />
+      <record name="flag" type="Bool" required="y" />
+    </sub>
+    <sub name="effect-flag">
+      <record name="flagtype" type="Seq16" seq="flag" required="y" />
+      <record name="flag" type="Bool" required="y" />
+    </sub>
+    <sub name="faction">
+      <record name="value" type="Ref" ref="faction" required="y" />
+    </sub>
+    <sub name="active-faction">
+      <record name="value" type="Ref" ref="faction" required="y" />
+    </sub>
+    <sub name="deactivated-faction" />
+    <sub name="faction-reputation">
+      <record name="op" type="Seq" seq="op2" required="y" />
+      <record name="value" type="Int16" required="y" />
+    </sub>
+    <sub name="faction-level">
+      <record name="op" type="Seq" seq="op2" required="y" />
+      <record name="value" type="Int16" required="y" />
+    </sub>
+    <sub name="effect-attribute">
+      <record name="value" type="Seq16" seq="effect-attribute" default="none" repeat="4" />
+      <record name="either" type="Bool" default="y" />
+    </sub>
+    <sub name="pc" />
+    <sub name="weapon-type">
+      <record name="weapon-type" type="Seq" seq="weapon-type" default="none" repeat="4" />
+      <record name="either" type="Bool" default="y" />
+    </sub>
+    <sub name="party-leader" />
+    <sub name="party-member" />
+    <sub name="inventory">
+      <record name="item" type="Ref" ref="item" required="y" />
+      <record name="amount" type="Int8" default="1" min="1" max="100" />
+    </sub>
+    <sub name="field-item">
+      <record name="field-item" type="Ref" ref="fielditem" required="y" />
+    </sub>
+    <sub name="npc" />
+    <sub name="not-npc" />
+    <sub name="npc-id">
+      <record name="value" type="Ref" ref="npc" required="y" />
+    </sub>
+    <sub name="npc-convoy">
+      <record name="convoy" type="Bool" required="y" />
+    </sub>
+    <sub name="env" />
+    <sub name="env-id">
+      <record name="env2spawn" type="Ref" ref="zoneenv2spawn" required="y" />
+    </sub>
+    <sub name="env-state">
+      <record name="env2-state" type="Seq" seq="env-state" required="y" />
+    </sub>
+    <sub name="env-prestate">
+      <record name="env2-state" type="Seq" seq="env-state" required="y" />
+    </sub>
+    <sub name="env-hp-percent">
+      <record name="op" type="Seq" seq="op2" required="y" />
+      <record name="value" type="Int8" required="y" min="0" max="100" />
+    </sub>
+    <sub name="skill">
+      <record name="value" type="Ref" ref="skill" required="y" />
+    </sub>
+    <sub name="skill-id">
+      <record name="value" type="Ref" ref="skill" required="y" />
+    </sub>
+    <sub name="skill3">
+      <record name="value" type="Ref" ref="skill3" required="y" />
+    </sub>
+    <sub name="skill3-id">
+      <record name="value" type="Ref" ref="skill3" required="y" />
+    </sub>
+    <sub name="effect-id">
+      <record name="value" type="Ref" ref="effect" required="y" />
+    </sub>
+    <sub name="effect-stack-count">
+      <record name="effect-type" type="Sub" required="y" />
+      <record name="effect-slot" type="Seq" required="y">
+        <case name="all" />
+        <case name="buff" />
+        <case name="debuff" />
+      </record>
+      <record name="term-op" type="Seq">
+        <case name="none" default="y" />
+        <case name="and" />
+        <case name="or" />
+      </record>
+      <record name="op" type="Seq" seq="op2" default="eq" repeat="2" />
+      <record name="value" type="Int64" default="0" repeat="2" />
+    </sub>
+    <sub name="quest-complete">
+      <record name="quest" type="Ref" ref="quest" required="y" />
+      <record name="mission-step" type="Int8" default="0" min="0" max="16" />
+      <record name="count" type="Int16" default="1" min="0" max="100" />
+      <record name="count-op" type="Seq" seq="op2" default="ge" />
+    </sub>
+    <sub name="quest-not-complete">
+      <record name="quest" type="Ref" ref="quest" required="y" />
+    </sub>
+    <sub name="act-sequence" />
+    <sub name="summoned" />
+    <sub name="not-summoned" />
+    <sub name="link-laser-terminate-reason" />
+    <sub name="content-quota-charge">
+      <record name="content-quota" type="Ref" ref="content-quota" required="y" />
+      <record name="op" type="Seq" seq="op2" required="y" />
+      <record name="charge-value" type="Int64" required="y" />
+    </sub>
+    <sub name="cinematic">
+      <record name="value" type="Ref" ref="cinematic" required="y" />
+    </sub>
+  </el>
+  <el name="filter-set">
+    <record name="name" type="String" default="noname" max="15" />
+  </el>
+  <el name="reaction-set">
+    <record name="probability" type="Int8" default="100" min="0" max="100" />
+    <record name="name" type="String" default="noname" max="15" />
+  </el>
+  <el name="acquisition-loss">
+    <record name="faction" type="Ref" ref="faction" />
+    <record name="job" type="Prop_seq" seq="job" default="job-none" repeat="15" />
+    <record name="sex" type="Prop_seq" seq="sex" default="sex-none" repeat="4" />
+    <record name="race" type="Prop_seq" seq="race" default="race-none" repeat="4" />
+    <record name="money" type="Int32" default="0" />
+    <record name="item" type="Ref" ref="item" repeat="2" />
+    <record name="item-count" type="Int8" default="0" repeat="2" />
+  </el>
+  <el name="acquisition">
+    <record name="npc" type="Ref" ref="npc" deprecated="y" />
+    <record name="msg" type="Ref" ref="npctalkmessage" deprecated="y" />
+    <record name="name2" type="Ref" ref="text" />
+    <record name="level" type="Int8" default="1" min="1" />
+    <record name="mastery-level" type="Int8" default="0" min="0" max="50" />
+    <record name="mastery-level-open-state" type="Seq">
+      <case name="dont-care" default="y" />
+      <case name="close" />
+      <case name="open" />
+    </record>
+    <record name="recommended-level" type="Int8" default="1" min="1" />
+    <record name="preceding-quest" type="Ref" ref="quest" repeat="15" />
+    <record name="preceding-quest-retired" type="Ref" ref="quest" repeat="15" />
+    <record name="preceding-quest-mission-step" type="Int8" default="0" repeat="15" min="0" max="16" />
+    <record name="preceding-quest-count" type="Int8" default="1" repeat="15" min="0" max="100" />
+    <record name="preceding-quest-check" type="Seq" seq="check" default="and" />
+    <record name="faction" type="Ref" ref="faction" deprecated="y" />
+    <record name="job" type="Prop_seq" seq="job" default="job-none" repeat="15" />
+    <record name="sort-no" type="Int16" default="0" />
+    <record name="production-id" type="Seq" seq="production-type" default="none" />
+    <record name="production-exp" type="Int16" default="0" min="0" />
+    <record name="faction-level" type="Int16" default="0" min="0" />
+    <record name="faction-level-max" type="Int16" default="0" min="0" />
+    <record name="valid-dayofweek-start-day" type="Seq" repeat="7">
+      <case name="none" default="y" />
+      <case name="mon" />
+      <case name="tue" />
+      <case name="wed" />
+      <case name="thu" />
+      <case name="fri" />
+      <case name="sat" />
+      <case name="sun" />
+    </record>
+    <record name="valid-dayofweek-start-hour" type="Int8" default="-1" repeat="7" min="-1" max="23" />
+    <record name="valid-dayofweek-end-day" type="Seq" repeat="7">
+      <case name="none" default="y" />
+      <case name="mon" />
+      <case name="tue" />
+      <case name="wed" />
+      <case name="thu" />
+      <case name="fri" />
+      <case name="sat" />
+      <case name="sun" />
+    </record>
+    <record name="valid-dayofweek-end-hour" type="Int8" default="-1" repeat="7" min="-1" max="23" />
+    <record name="reward" type="Ref" ref="questreward" repeat="3" />
+    <record name="check-tencent-vitality" type="Bool" default="y" deprecated="y" />
+    <record name="talk-to-self-guide-msg" type="Ref" ref="game-message" />
+  </el>
+  <el name="mission-step">
+    <record name="id" type="Int8" required="y" min="1" max="16" />
+    <record name="completion-type" type="Seq" seq="check" default="and" />
+    <record name="mission-mask" type="Int16" hidden="y" deprecated="y" />
+    <record name="mission-list" type="Int8" default="0" repeat="16" hidden="y" />
+    <record name="mission-map-type" type="Seq">
+      <case name="location" />
+      <case name="mapunit" default="y" />
+    </record>
+    <record name="map" type="Ref" ref="mapinfo" />
+    <record name="location-x" type="Float32" default="0.0" />
+    <record name="location-y" type="Float32" default="0.0" />
+    <record name="location-z" type="Float32" default="0.0" />
+    <record name="use-auto-navigation" type="Bool" />
+    <record name="enable-navigation" type="Bool" default="y" />
+    <record name="map-zoom-rate" type="Seq">
+      <case name="none" default="y" />
+      <case name="min" />
+      <case name="max" />
+    </record>
+    <record name="desc" type="Ref" ref="text" />
+    <record name="guide-message" type="Ref" ref="text" />
+    <record name="guide-message-zone" type="Ref" ref="zone" repeat="2" />
+    <record name="guide-message-category" type="Seq">
+      <case name="guide" default="y" />
+      <case name="situation" />
+    </record>
+    <record name="effect" type="Ref" ref="effect" />
+    <record name="time-limit-type" type="Seq">
+      <case name="none" default="y" />
+      <case name="until" />
+    </record>
+    <record name="time-limit" type="Int32" default="0" min="0" />
+    <record name="hide" type="Bool" />
+    <record name="progress-talksocial" type="Ref" ref="talksocial" />
+    <record name="progress-talksocial-delay" type="Float32" default="0.0" />
+    <record name="retired" type="Bool" />
+    <record name="skip-dest-mission-step" type="Int8" default="0" min="0" max="16" />
+    <record name="giveup-zone" type="Ref" ref="zone" repeat="3" />
+    <record name="giveup-warp-to-pcspawn" type="Ref" ref="zonepcspawn" />
+  </el>
+  <el name="case">
+    <record name="prob" type="Int8" default="100" min="0" max="100" />
+    <record name="mapunit" type="Ref" ref="mapunit" repeat="10" />
+    <record name="range-min" type="Int16" default="-1" min="-1" max="10000" />
+    <record name="range-max" type="Int16" default="-1" min="-1" max="10000" />
+    <record name="progress-mission" type="Seq">
+      <case name="y" />
+      <case name="reaction-only" />
+      <case name="n" default="y" />
+    </record>
+    <record name="progress-value" type="Int8" default="1" min="1" max="100" />
+    <record name="acquire-quest" type="Bool" />
+    <record name="gadget-required" type="Seq">
+      <case name="dont-care" default="y" />
+      <case name="carry-and-remove" />
+      <case name="carry" />
+      <case name="empty" />
+      <case name="not-A" />
+    </record>
+    <record name="gadget" type="Ref" ref="fielditem" />
+    <record name="unload-map-navigation-object" type="TRef" />
+    <record name="valid-zone" type="Ref" ref="zone" repeat="2" />
+    <record name="completion-count" type="Int8" default="0" min="0" max="100" />
+    <record name="completion-count-op" type="Seq" seq="op2" default="ge" />
+    <record name="indicator" type="Seq16">
+      <case name="default" default="y" />
+      <case name="quest-epic-can-complete" />
+      <case name="quest-epic-can-acquire" />
+      <case name="quest-epic-can-progress" />
+      <case name="quest-epic-next-acquire" />
+      <case name="quest-epic-completed" />
+      <case name="quest-job-can-complete" />
+      <case name="quest-job-can-acquire" />
+      <case name="quest-job-can-progress" />
+      <case name="quest-job-next-acquire" />
+      <case name="quest-job-completed" />
+      <case name="quest-normal-can-complete" />
+      <case name="quest-normal-can-acquire" />
+      <case name="quest-normal-can-progress" />
+      <case name="quest-normal-next-acquire" />
+      <case name="quest-normal-completed" />
+      <case name="quest-faction-can-complete" />
+      <case name="quest-faction-can-acquire" />
+      <case name="quest-faction-can-progress" />
+      <case name="quest-faction-next-acquire" />
+      <case name="quest-faction-not-progress" />
+      <case name="quest-faction-completed" />
+      <case name="quest-festival-can-complete" />
+      <case name="quest-festival-can-acquire" />
+      <case name="quest-festival-can-progress" />
+      <case name="quest-festival-next-acquire" />
+      <case name="quest-festival-completed" />
+      <case name="quest-special-can-complete" />
+      <case name="quest-special-can-acquire" />
+      <case name="quest-special-can-progress" />
+      <case name="quest-special-next-acquire" />
+      <case name="quest-special-completed" />
+      <case name="quest-side-episode-can-complete" />
+      <case name="quest-side-episode-can-acquire" />
+      <case name="quest-side-episode-can-progress" />
+      <case name="quest-side-episode-next-acquire" />
+      <case name="quest-side-episode-completed" />
+      <case name="quest-challenge-today-can-complete" />
+      <case name="quest-challenge-today-can-acquire" />
+      <case name="quest-challenge-today-can-progress" />
+      <case name="quest-challenge-today-next-acquire" />
+      <case name="quest-challenge-today-completed" />
+      <case name="quest-normal-repeat-can-complete" />
+      <case name="quest-normal-repeat-can-acquire" />
+      <case name="quest-normal-repeat-can-progress" />
+      <case name="quest-normal-repeat-next-acquire" />
+      <case name="quest-normal-repeat-completed" />
+      <case name="quest-faction-repeat-can-complete" />
+      <case name="quest-faction-repeat-can-acquire" />
+      <case name="quest-faction-repeat-can-progress" />
+      <case name="quest-faction-repeat-next-acquire" />
+      <case name="quest-faction-repeat-not-progress" />
+      <case name="quest-faction-repeat-completed" />
+      <case name="quest-festival-repeat-can-complete" />
+      <case name="quest-festival-repeat-can-acquire" />
+      <case name="quest-festival-repeat-can-progress" />
+      <case name="quest-festival-repeat-next-acquire" />
+      <case name="quest-festival-repeat-completed" />
+      <case name="quest-side-episode-repeat-can-complete" />
+      <case name="quest-side-episode-repeat-can-acquire" />
+      <case name="quest-side-episode-repeat-can-progress" />
+      <case name="quest-side-episode-repeat-next-acquire" />
+      <case name="quest-side-episode-repeat-completed" />
+      <case name="quest-normal-dayofweek-can-complete" />
+      <case name="quest-normal-dayofweek-can-acquire" />
+      <case name="quest-normal-dayofweek-can-progress" />
+      <case name="quest-normal-dayofweek-next-acquire" />
+      <case name="quest-normal-dayofweek-completed" />
+      <case name="quest-faction-dayofweek-can-complete" />
+      <case name="quest-faction-dayofweek-can-acquire" />
+      <case name="quest-faction-dayofweek-can-progress" />
+      <case name="quest-faction-dayofweek-next-acquire" />
+      <case name="quest-faction-dayofweek-not-progress" />
+      <case name="quest-faction-dayofweek-completed" />
+      <case name="quest-festival-dayofweek-can-complete" />
+      <case name="quest-festival-dayofweek-can-acquire" />
+      <case name="quest-festival-dayofweek-can-progress" />
+      <case name="quest-festival-dayofweek-next-acquire" />
+      <case name="quest-festival-dayofweek-completed" />
+      <case name="quest-side-episode-dayofweek-can-complete" />
+      <case name="quest-side-episode-dayofweek-can-acquire" />
+      <case name="quest-side-episode-dayofweek-can-progress" />
+      <case name="quest-side-episode-dayofweek-next-acquire" />
+      <case name="quest-side-episode-dayofweek-completed" />
+      <case name="quest-attraction-can-complete" />
+      <case name="quest-attraction-can-acquire" />
+      <case name="quest-attraction-can-progress" />
+      <case name="quest-attraction-next-acquire" />
+      <case name="quest-attraction-not-progress" />
+      <case name="quest-attraction-completed" />
+      <case name="quest-retired" />
+      <case name="convoy" />
+      <case name="mark-1" />
+      <case name="mark-2" />
+      <case name="mark-3" />
+      <case name="mark-4" />
+      <case name="mark-5" />
+      <case name="mark-6" />
+      <case name="mark-7" />
+      <case name="mark-8" />
+      <case name="mark-timer-0" />
+      <case name="mark-timer-1" />
+      <case name="mark-timer-2" />
+      <case name="mark-timer-3" />
+      <case name="mark-timer-4" />
+      <case name="mark-timer-5" />
+      <case name="mark-timer-6" />
+      <case name="mark-timer-7" />
+      <case name="mark-timer-8" />
+      <case name="mark-timer-9" />
+      <case name="mark-timer-10" />
+      <case name="guild-mark-1" />
+      <case name="guild-mark-2" />
+      <case name="guild-mark-3" />
+      <case name="guild-mark-4" />
+      <case name="guild-mark-5" />
+      <case name="axe" />
+      <case name="coin" />
+      <case name="quest-gadget-drop" />
+      <case name="quest-gadget-required" />
+      <case name="quest-board-start" />
+      <case name="quest-vsboard-start" />
+      <case name="quest-vsboard-end" />
+      <case name="quest-vsboard-repeat-start" />
+      <case name="quest-factionboard-start" />
+      <case name="quest-factionboard-end" />
+      <case name="quest-factionboard-repeat-start" />
+      <case name="attack-epic-kill" />
+      <case name="attack-epic-kill-gadget" />
+      <case name="attack-job-kill" />
+      <case name="attack-job-kill-gadget" />
+      <case name="attack-normal-kill" />
+      <case name="attack-normal-kill-gadget" />
+      <case name="attack-faction-kill" />
+      <case name="attack-faction-kill-gadget" />
+      <case name="attack-festival-kill" />
+      <case name="attack-festival-kill-gadget" />
+      <case name="quest-simple-1" />
+      <case name="quest-simple-2" />
+      <case name="quest-simple-3" />
+      <case name="quest-simple-4" />
+      <case name="quest-simple-5" />
+      <case name="quest-tendency-1" />
+      <case name="quest-tendency-2" />
+      <case name="quest-tendency-3" />
+      <case name="quest-faction-challenge-today-can-complete" />
+      <case name="quest-faction-challenge-today-can-acquire" />
+      <case name="quest-faction-challenge-today-can-progress" />
+      <case name="quest-faction-challenge-today-next-acquire" />
+      <case name="quest-faction-challenge-today-not-progress" />
+      <case name="quest-faction-challenge-today-completed" />
+      <case name="quest-mentoring-can-complete" />
+      <case name="quest-mentoring-can-acquire" />
+      <case name="quest-mentoring-can-progress" />
+      <case name="quest-mentoring-completed" />
+      <case name="quest-bind-challenge-today-completed" />
+      <case name="quest-bind-duel-challenge-today-completed" />
+      <case name="quest-bind-festival-challenge-today-completed" />
+      <case name="quest-bind-normal-completed" />
+      <case name="quest-bind-duel-normal-completed" />
+      <case name="quest-bind-festival-normal-completed" />
+      <case name="quest-hunting-can-complete" />
+      <case name="quest-hunting-can-acquire" />
+      <case name="quest-hunting-can-progress" />
+      <case name="quest-hunting-next-acquire" />
+      <case name="quest-hunting-completed" />
+      <case name="quest-hunting-repeat-can-complete" />
+      <case name="quest-hunting-repeat-can-acquire" />
+      <case name="quest-hunting-repeat-can-progress" />
+      <case name="quest-hunting-repeat-next-acquire" />
+      <case name="quest-hunting-repeat-completed" />
+    </record>
+    <record name="show-in-tooltip" type="Bool" />
+    <record name="visible-object" type="Bool" deprecated="y" />
+    <record name="case-talksocial" type="Ref" ref="talksocial" />
+    <record name="case-talksocial-delay" type="Float32" default="0.0" />
+    <sub name="talk">
+      <record name="object" type="TRef" required="y" />
+      <record name="convoy-members" type="Int32" default="0" hidden="y" />
+      <record name="npc-response" type="Ref" ref="npcresponse" required="y" />
+      <record name="msg" type="Ref" ref="npctalkmessage" deprecated="y" />
+      <record name="start-msg" type="Ref" ref="npctalkmessage" deprecated="y" />
+      <record name="indicator-social" type="Ref" ref="indicator-social" deprecated="y" />
+      <record name="indicator-idle" type="Ref" ref="indicator-idle" deprecated="y" />
+      <record name="button-text-accept" type="Ref" ref="text" />
+      <record name="button-text-cancel" type="Ref" ref="text" />
+      <record name="grocery" type="Ref" ref="item" />
+      <record name="grocery-count" type="Int16" default="1" min="1" max="1000" />
+      <record name="remove-grocery" type="Bool" default="y" />
+      <record name="faction-killed-count-min" type="Int8" default="0" min="0" max="100" />
+      <record name="faction-killed-count-max" type="Int8" default="0" min="0" max="100" />
+      <record name="duel-type" type="Seq">
+        <case name="none" default="y" />
+        <case name="death-match-1vs1" />
+        <case name="tag-match-3vs3" />
+      </record>
+      <record name="arena-matching-rule-detail" type="Seq">
+        <case name="none" default="y" />
+        <case name="normal" />
+        <case name="guild combat" />
+        <case name="sparring" />
+        <case name="unrated match" />
+        <case name="championship" />
+        <case name="ingame championship" />
+        <case name="random party battle field match" />
+        <case name="battle royal field party mode" />
+        <case name="battle royal field championship" />
+        <case name="battle royal field party mode championship" />
+      </record>
+      <record name="duel-straight-win" type="Int32" default="0" min="0" />
+      <record name="required-money" type="Int32" default="0" min="0" />
+      <record name="required-item-depot" type="Seq">
+        <case name="none" default="y" />
+        <case name="equip" />
+        <case name="equip-bag" />
+        <case name="bag" />
+      </record>
+      <record name="required-item" type="Ref" ref="item" repeat="4" />
+      <record name="required-item-count" type="Int16" default="1" repeat="4" min="1" />
+      <record name="required-item-loss" type="Bool" />
+      <record name="required-item-brand" type="Ref" ref="item-brand" repeat="2" />
+      <record name="required-equip-gem-set" type="Ref" ref="set-item" />
+      <record name="check-inventory-full" type="Bool" />
+      <record name="check-equiped-durability-below" type="Int8" default="-1" min="-1" max="100" />
+      <record name="check-exp-boost-normal-below" type="Int8" default="-1" min="-1" max="100" />
+    </sub>
+    <sub name="talk-to-item">
+      <record name="item" type="Ref" ref="item" required="y" />
+      <record name="npc-response" type="Ref" ref="npcresponse" deprecated="y" />
+      <record name="msg" type="Ref" ref="npctalkmessage" required="y" />
+      <record name="start-msg" type="Ref" ref="npctalkmessage" deprecated="y" />
+      <record name="indicator-social" type="Ref" ref="indicator-social" deprecated="y" />
+      <record name="indicator-idle" type="Ref" ref="indicator-idle" deprecated="y" />
+      <record name="button-text-accept" type="Ref" ref="text" />
+      <record name="button-text-cancel" type="Ref" ref="text" />
+      <record name="grocery" type="Ref" ref="item" />
+      <record name="grocery-count" type="Int16" default="1" min="1" max="1000" />
+      <record name="remove-grocery" type="Bool" default="y" />
+      <record name="required-money" type="Int32" default="0" min="0" />
+      <record name="required-item-depot" type="Seq">
+        <case name="none" default="y" />
+        <case name="equip" />
+        <case name="equip-bag" />
+        <case name="bag" />
+      </record>
+      <record name="required-item" type="Ref" ref="item" repeat="4" />
+      <record name="required-item-count" type="Int16" default="1" repeat="4" min="1" />
+      <record name="required-item-loss" type="Bool" />
+      <record name="required-item-brand" type="Ref" ref="item-brand" repeat="2" />
+      <record name="required-equip-gem-set" type="Ref" ref="set-item" />
+      <record name="check-inventory-full" type="Bool" />
+      <record name="check-equiped-durability-below" type="Int8" default="-1" min="-1" max="100" />
+      <record name="check-exp-boost-normal-below" type="Int8" default="-1" min="-1" max="100" />
+    </sub>
+    <sub name="talk-to-self">
+      <record name="item" type="Ref" ref="virtual-item" required="y" />
+      <record name="msg" type="Ref" ref="npctalkmessage" required="y" />
+      <record name="faction-killed-count-min" type="Int8" default="0" min="0" max="100" />
+      <record name="faction-killed-count-max" type="Int8" default="0" min="0" max="100" />
+      <record name="fee" type="Bool" />
+      <record name="required-money" type="Int32" default="0" min="0" />
+      <record name="required-item-depot" type="Seq">
+        <case name="none" default="y" />
+        <case name="equip" />
+        <case name="equip-bag" />
+        <case name="bag" />
+      </record>
+      <record name="required-item" type="Ref" ref="item" repeat="4" />
+      <record name="required-item-count" type="Int16" default="1" repeat="4" min="1" />
+      <record name="required-item-loss" type="Bool" />
+      <record name="required-item-brand" type="Ref" ref="item-brand" repeat="2" />
+      <record name="required-equip-gem-set" type="Ref" ref="set-item" />
+      <record name="check-inventory-full" type="Bool" />
+      <record name="check-equiped-durability-below" type="Int8" default="-1" min="-1" max="100" />
+      <record name="check-exp-boost-normal-below" type="Int8" default="-1" min="-1" max="100" />
+      <record name="required-jumping-character-state" type="Seq">
+        <case name="dont-care" default="y" />
+        <case name="none" />
+        <case name="trial" />
+        <case name="jumping" />
+      </record>
+    </sub>
+    <sub name="manipulate">
+      <record name="object2" type="TRef" />
+      <record name="multi-object" type="TRef" repeat="16" />
+      <record name="grocery" type="Ref" ref="item" />
+      <record name="grocery-count" type="Int16" default="1" min="1" max="1000" />
+      <record name="remove-grocery" type="Bool" default="y" />
+      <record name="env-looting" type="Ref" ref="virtual-item" />
+      <record name="faction-killed-count-min" type="Int8" default="0" min="0" max="100" />
+      <record name="faction-killed-count-max" type="Int8" default="0" min="0" max="100" />
+      <record name="join-faction2" type="Ref" ref="faction" />
+      <record name="transfer-faction2" type="Ref" ref="faction" />
+      <record name="required-money" type="Int32" default="0" min="0" />
+      <record name="required-item-depot" type="Seq">
+        <case name="none" default="y" />
+        <case name="equip" />
+        <case name="equip-bag" />
+        <case name="bag" />
+      </record>
+      <record name="required-item" type="Ref" ref="item" repeat="4" />
+      <record name="required-item-count" type="Int16" default="1" repeat="4" min="1" />
+      <record name="required-item-loss" type="Bool" />
+      <record name="convoy-members" type="Int32" default="0" hidden="y" />
+    </sub>
+    <sub name="npc-manipulate">
+      <record name="object" type="TRef" />
+      <record name="multi-object" type="TRef" repeat="16" />
+      <record name="npc-response" type="Ref" ref="npcresponse" />
+      <record name="grocery" type="Ref" ref="item" />
+      <record name="grocery-count" type="Int16" default="1" min="1" max="1000" />
+      <record name="remove-grocery" type="Bool" default="y" />
+      <record name="faction-killed-count-min" type="Int8" default="0" min="0" max="100" />
+      <record name="faction-killed-count-max" type="Int8" default="0" min="0" max="100" />
+      <record name="required-money" type="Int32" default="0" min="0" />
+      <record name="required-item-depot" type="Seq">
+        <case name="none" default="y" />
+        <case name="equip" />
+        <case name="equip-bag" />
+        <case name="bag" />
+      </record>
+      <record name="required-item" type="Ref" ref="item" repeat="4" />
+      <record name="required-item-count" type="Int16" default="1" repeat="4" min="1" />
+      <record name="required-item-loss" type="Bool" />
+      <record name="convoy-members" type="Int32" default="0" hidden="y" />
+    </sub>
+    <sub name="approach">
+      <record name="object" type="TRef" required="y" />
+      <record name="npc-response" type="Ref" ref="npcresponse" />
+      <record name="approach-social" type="Ref" ref="social" deprecated="y" />
+      <record name="indicator-social" type="Ref" ref="indicator-social" deprecated="y" />
+      <record name="indicator-idle" type="Ref" ref="indicator-idle" deprecated="y" />
+      <record name="approach-talk" type="Bool" />
+      <record name="grocery" type="Ref" ref="item" />
+      <record name="grocery-count" type="Int16" default="1" min="1" max="1000" />
+      <record name="remove-grocery" type="Bool" default="y" />
+    </sub>
+    <sub name="skill">
+      <record name="npc-response" type="Ref" ref="npcresponse" />
+      <record name="object2" type="TRef" repeat="16" />
+      <record name="skill" type="Ref" ref="skill" required="y" />
+      <record name="skill3" type="Ref" ref="skill3" required="y" />
+    </sub>
+    <sub name="loot">
+      <record name="object2" type="TRef" />
+      <record name="multi-object" type="TRef" repeat="16" />
+      <record name="looting" type="Ref" ref="virtual-item" required="y" />
+      <record name="quest-symbol-drop-prob" type="Int8" default="100" min="0" max="100" />
+      <record name="loot-item" type="Ref" ref="item" />
+    </sub>
+    <sub name="killed">
+      <record name="specify-object-type" type="Seq">
+        <case name="specific-id" default="y" />
+        <case name="pc" />
+        <case name="duelbot" />
+      </record>
+      <record name="object2" type="TRef" />
+      <record name="multi-object" type="TRef" repeat="16" />
+      <record name="killed-difficulty-type" type="Seq">
+        <case name="none" default="y" />
+        <case name="easy" />
+        <case name="normal" />
+        <case name="hard" />
+      </record>
+      <record name="skill3" type="Ref" ref="skill3" repeat="8" deprecated="y" />
+    </sub>
+    <sub name="finish-blow">
+      <record name="npc" type="Ref" ref="npc" required="y" />
+      <record name="skill3-id" type="Int32" default="0" repeat="20" />
+    </sub>
+    <sub name="env-entered">
+      <record name="object2" type="TRef" required="y" />
+      <record name="env-response" type="Ref" ref="envresponse" />
+    </sub>
+    <sub name="enter-zone">
+      <record name="object" type="TRef" required="y" />
+    </sub>
+    <sub name="convoy-arrived">
+      <record name="object" type="TRef" required="y" />
+    </sub>
+    <sub name="convoy-failed">
+      <record name="object" type="TRef" required="y" />
+      <record name="convoy" type="Ref" ref="zoneconvoy" />
+    </sub>
+    <sub name="npc-bleeding-occured">
+      <record name="object" type="TRef" required="y" />
+    </sub>
+    <sub name="enter-portal">
+      <record name="object2" type="TRef" required="y" />
+    </sub>
+    <sub name="acquire-summoned">
+      <record name="object" type="TRef" />
+      <record name="summoned-preset" type="Ref" ref="summoneddesignerpreset" required="y" />
+      <record name="npc-response" type="Ref" ref="npcresponse" />
+      <record name="msg" type="Ref" ref="npctalkmessage" deprecated="y" />
+      <record name="start-msg" type="Ref" ref="npctalkmessage" deprecated="y" />
+      <record name="indicator-social" type="Ref" ref="indicator-social" deprecated="y" />
+      <record name="indicator-idle" type="Ref" ref="indicator-idle" deprecated="y" />
+      <record name="button-text-accept" type="Ref" ref="text" />
+      <record name="button-text-cancel" type="Ref" ref="text" />
+    </sub>
+    <sub name="pc-social">
+      <record name="object2" type="TRef" required="y" />
+      <record name="social" type="Ref" ref="talksocial" />
+      <record name="state-social" type="Ref" ref="statesocial" />
+      <record name="npc-response" type="Ref" ref="npcresponse" />
+    </sub>
+    <sub name="join-faction">
+      <record name="faction" type="Ref" ref="faction" required="y" />
+      <record name="object" type="TRef" />
+      <record name="npc-response" type="Ref" ref="npcresponse" repeat="3" />
+      <record name="start-msg" type="Ref" ref="npctalkmessage" deprecated="y" />
+      <record name="indicator-social" type="Ref" ref="indicator-social" deprecated="y" />
+      <record name="indicator-idle" type="Ref" ref="indicator-idle" deprecated="y" />
+      <record name="button-text-accept" type="Ref" ref="text" />
+      <record name="button-text-cancel" type="Ref" ref="text" />
+      <record name="grocery" type="Ref" ref="item" />
+      <record name="grocery-count" type="Int16" default="1" min="1" max="1000" />
+      <record name="remove-grocery" type="Bool" default="y" />
+    </sub>
+    <sub name="duel-finish">
+      <record name="duel-result" type="Seq">
+        <case name="none" default="y" />
+        <case name="win" />
+        <case name="draw" />
+        <case name="lose" />
+      </record>
+      <record name="duel-type" type="Seq">
+        <case name="none" default="y" />
+        <case name="death-match-1vs1" />
+        <case name="tag-match-3vs3" />
+      </record>
+      <record name="arena-matching-rule-detail" type="Seq">
+        <case name="none" default="y" />
+        <case name="normal" />
+        <case name="guild combat" />
+        <case name="sparring" />
+        <case name="unrated match" />
+        <case name="championship" />
+        <case name="ingame championship" />
+        <case name="random party battle field match" />
+        <case name="battle royal field party mode" />
+        <case name="battle royal field championship" />
+        <case name="battle royal field party mode championship" />
+      </record>
+      <record name="duel-straight-win" type="Int32" default="0" min="0" />
+      <record name="duel-grade" type="Int8" default="0" min="0" />
+    </sub>
+    <sub name="party-battle">
+      <record name="party-battle-type" type="Seq">
+        <case name="none" default="y" />
+        <case name="occupation-war" />
+        <case name="capture-the-flag" />
+        <case name="lead-the-ball" />
+      </record>
+      <record name="party-battle-result" type="Seq">
+        <case name="none" default="y" />
+        <case name="win" />
+        <case name="draw" />
+        <case name="lose" />
+      </record>
+    </sub>
+    <sub name="party-battle-action">
+      <record name="party-battle-type" type="Seq">
+        <case name="none" default="y" />
+        <case name="occupation-war" />
+        <case name="capture-the-flag" />
+        <case name="lead-the-ball" />
+      </record>
+      <record name="party-battle-action-type" type="Seq">
+        <case name="none" default="y" />
+        <case name="occupy" />
+      </record>
+    </sub>
+    <sub name="complete-quest">
+      <record name="complete-quest" type="Ref" ref="quest" required="y" />
+    </sub>
+    <sub name="pick-up-fielditem">
+      <record name="fielditem" type="Ref" ref="fielditem" required="y" />
+    </sub>
+    <sub name="battle-royal">
+      <record name="battle-royal-field" type="Ref" ref="battle-royal-field" required="y" />
+    </sub>
+    <sub name="attraction-popup">
+      <record name="attraction-popup-env" type="Ref" ref="zoneenv2" required="y" />
+    </sub>
+  </el>
+  <el name="tutorial-case">
+    <record name="prob" type="Int8" default="100" min="0" max="100" />
+    <record name="mapunit" type="Ref" ref="mapunit" repeat="10" />
+    <record name="range-min" type="Int16" default="-1" min="-1" max="10000" />
+    <record name="range-max" type="Int16" default="-1" min="-1" max="10000" />
+    <record name="progress-mission" type="Seq">
+      <case name="y" />
+      <case name="reaction-only" />
+      <case name="n" default="y" />
+    </record>
+    <record name="valid-zone" type="Ref" ref="zone" repeat="2" />
+    <sub name="acquire-item">
+      <record name="item" type="Ref" ref="item" required="y" />
+    </sub>
+    <sub name="equip-item">
+      <record name="item-category" type="Seq">
+        <case name="none" default="y" />
+        <case name="weapon" />
+        <case name="accessory" />
+        <case name="dress" />
+        <case name="equip-gem" />
+        <case name="weapon-gem" />
+        <case name="build-up-stone" />
+        <case name="badge" />
+        <case name="medicine" />
+        <case name="food" />
+        <case name="tool" />
+        <case name="talisman" />
+        <case name="equip-material" />
+        <case name="union-material" />
+        <case name="dress-material" />
+        <case name="etc-material" />
+        <case name="coin" />
+        <case name="deed" />
+        <case name="quest" />
+        <case name="etc-change" />
+        <case name="weapon-box" />
+        <case name="accessory-box" />
+        <case name="dress-box" />
+        <case name="equip-gem-box" />
+        <case name="weapon-gem-box" />
+        <case name="material-box" />
+        <case name="booty-box" />
+        <case name="etc-box" />
+      </record>
+      <record name="item" type="Ref" ref="item" required="y" />
+    </sub>
+    <sub name="use-item">
+      <record name="item" type="Ref" ref="item" required="y" />
+    </sub>
+    <sub name="grow-item">
+      <record name="primary-item" type="Ref" ref="item" required="y" />
+      <record name="material-item" type="Ref" ref="item" required="y" />
+    </sub>
+    <sub name="transform-item">
+      <record name="item-transform-recipe" type="Ref" ref="ItemTransformRecipe" required="y" />
+    </sub>
+    <sub name="pick-up-fielditem">
+      <record name="fielditem" type="Ref" ref="fielditem" required="y" />
+    </sub>
+    <sub name="put-down-fielditem">
+      <record name="fielditem" type="Ref" ref="fielditem" required="y" />
+    </sub>
+    <sub name="targeting">
+      <record name="npc" type="Ref" ref="npc" required="y" />
+    </sub>
+    <sub name="talk-start">
+      <record name="npc" type="Ref" ref="npc" required="y" />
+    </sub>
+    <sub name="window-open">
+      <record name="window-type" type="Seq" required="y">
+        <case name="inventory" />
+        <case name="quest-journal" />
+        <case name="skill" />
+        <case name="sandbox" />
+        <case name="auction" />
+        <case name="cash-shop" />
+        <case name="wardrobe" />
+        <case name="account-contents" />
+      </record>
+      <record name="window-open-way" type="Seq">
+        <case name="none" default="y" />
+        <case name="by-npc-seller-button" />
+      </record>
+    </sub>
+    <sub name="complete-self-revival" />
+    <sub name="npc-bleeding">
+      <record name="npc" type="Ref" ref="npc" required="y" />
+      <record name="percent" type="Int8" required="y" min="0" max="100" />
+    </sub>
+    <sub name="pc-bleeding">
+      <record name="percent" type="Int8" required="y" min="0" max="100" />
+    </sub>
+    <sub name="exhausted" />
+    <sub name="attacked" />
+    <sub name="acquire-sp">
+      <record name="sp" type="Int8" required="y" min="0" max="100" />
+    </sub>
+    <sub name="skill">
+      <record name="object2" type="TRef" repeat="16" />
+      <record name="skill-check-type" type="Seq">
+        <case name="skill-key" default="y" />
+        <case name="skill-id" />
+      </record>
+      <record name="skill" type="Ref" ref="skill" required="y" />
+      <record name="skill3" type="Ref" ref="skill3" default="0" />
+      <record name="skill3-id" type="Int32" default="0" />
+      <record name="target-required-effect" type="Ref" ref="effect" default="0" />
+      <record name="target-effect-count" type="Int8" default="0" />
+    </sub>
+    <sub name="skill-sequence">
+      <record name="object2" type="TRef" repeat="16" />
+      <record name="skill-sequence" type="Ref" ref="tutorialskillsequence" required="y" />
+      <record name="check-parent-skill" type="Bool" deprecated="y" />
+    </sub>
+    <sub name="skill-training" />
+    <sub name="quest-tracking-position" />
+    <sub name="repair-with-campfire">
+      <record name="item" type="Ref" ref="item" required="y" />
+    </sub>
+    <sub name="teleport">
+      <record name="item" type="Ref" ref="item" required="y" />
+    </sub>
+    <sub name="expand-inventory" />
+    <sub name="gem-compose">
+      <record name="primary-item" type="Ref" ref="item" required="y" />
+      <record name="material-item" type="Ref" ref="item" required="y" />
+    </sub>
+    <sub name="gem-decompose">
+      <record name="item" type="Ref" ref="item" required="y" />
+    </sub>
+    <sub name="weapon-gem">
+      <record name="weapon" type="Ref" ref="item" required="y" />
+      <record name="gem" type="Ref" ref="item" required="y" />
+    </sub>
+    <sub name="detach-weapon-gem">
+      <record name="weapon" type="Ref" ref="item" required="y" />
+      <record name="gem" type="Ref" ref="item" required="y" />
+    </sub>
+    <sub name="airdash">
+      <record name="object2" type="TRef" required="y" />
+      <record name="env-response" type="Ref" ref="envresponse" />
+    </sub>
+    <sub name="enlarge-mini-map" />
+    <sub name="transparent-mini-map" />
+    <sub name="resurrecting-summoned" />
+    <sub name="move-to-position">
+      <record name="link-npc" type="Ref" ref="npc" required="y" />
+      <record name="location-x" type="Float32" default="0.0" />
+      <record name="location-y" type="Float32" default="0.0" />
+      <record name="approach-range" type="Float32" default="0.0" />
+    </sub>
+    <sub name="use-heart-count" />
+    <sub name="charge-heart-count" />
+    <sub name="teleport-zone">
+      <record name="teleport-id" type="Ref" ref="teleport" required="y" />
+    </sub>
+  </el>
+  <el name="completion-loss">
+    <record name="faction" type="Ref" ref="faction" />
+    <record name="job" type="Prop_seq" seq="job" default="job-none" repeat="15" />
+    <record name="sex" type="Prop_seq" seq="sex" default="sex-none" repeat="4" />
+    <record name="race" type="Prop_seq" seq="race" default="race-none" repeat="4" />
+    <record name="money" type="Int32" default="0" />
+    <record name="item" type="Ref" ref="item" repeat="4" />
+    <record name="item-count" type="Int8" default="0" repeat="4" />
+  </el>
+  <el name="giveup-loss">
+    <record name="faction" type="Ref" ref="faction" />
+    <record name="job" type="Prop_seq" seq="job" default="job-none" repeat="15" />
+    <record name="sex" type="Prop_seq" seq="sex" default="sex-none" repeat="4" />
+    <record name="race" type="Prop_seq" seq="race" default="race-none" repeat="4" />
+    <record name="item" type="Ref" ref="item" repeat="4" />
+    <record name="item-count" type="Int8" default="0" repeat="4" />
+  </el>
+  <el name="basic-reward">
+    <record name="money" type="Int32" default="0" />
+    <record name="exp" type="Int32" default="0" />
+    <record name="production-id" type="Seq" seq="production-type" default="none" />
+    <record name="production-exp" type="Int16" default="0" min="0" />
+    <record name="faction" type="Ref" ref="faction" />
+    <record name="faction-reputation" type="Int16" default="0" min="0" />
+  </el>
+  <el name="fixed-reward">
+    <record name="faction" type="Ref" ref="faction" />
+    <record name="job" type="Prop_seq" seq="job" default="job-none" repeat="15" />
+    <record name="sex" type="Prop_seq" seq="sex" default="sex-none" repeat="4" />
+    <record name="race" type="Prop_seq" seq="race" default="race-none" repeat="4" />
+    <record name="slot" type="TRef" repeat="4" />
+    <record name="item-count" type="Int8" default="1" repeat="4" />
+  </el>
+  <el name="optional-reward">
+    <record name="faction" type="Ref" ref="faction" />
+    <record name="job" type="Prop_seq" seq="job" default="job-none" repeat="15" />
+    <record name="sex" type="Prop_seq" seq="sex" default="sex-none" repeat="4" />
+    <record name="race" type="Prop_seq" seq="race" default="race-none" repeat="4" />
+    <record name="slot" type="TRef" repeat="4" />
+    <record name="item-count" type="Int8" default="1" repeat="4" />
+  </el>
+  <el name="mission">
+    <record name="id" type="Int8" required="y" min="1" max="16" />
+    <record name="name" type="String" deprecated="y" max="50" />
+    <record name="name2" type="Ref" ref="text" />
+    <record name="required-register-value" type="Int16" required="y" min="1" max="10000" />
+    <record name="step" type="Int8" hidden="y" min="1" max="16" />
+    <record name="register-start-bit" type="Int8" hidden="y" deprecated="y" />
+    <record name="register-mask" type="Int64" hidden="y" deprecated="y" />
+    <record name="show-kill-mapunit" type="Bool" />
+    <record name="reward" type="Ref" ref="questreward" repeat="3" />
+    <record name="check-tencent-vitality" type="Bool" default="y" deprecated="y" />
+    <record name="reset-teleport-recycle-time" type="Bool" />
+    <record name="required-attraction" type="TRef" />
+    <record name="tendency-id" type="Int8" default="0" min="0" max="3" />
+    <record name="simple-quest-play-section" type="Seq">
+      <case name="none" default="y" />
+      <case name="our" />
+      <case name="enemy" />
+    </record>
+    <record name="variation-count" type="Int8" hidden="y" />
+    <record name="variation-required-condition-type" type="Seq">
+      <case name="none" default="y" />
+      <case name="field-play-point" />
+      <case name="faction-score" />
+    </record>
+    <record name="variation-required-condition-value" type="Int32" default="0" repeat="8" min="0" max="100000" />
+    <record name="variation-required-field-play-point" type="Int32" default="0" repeat="8" min="0" max="100000" />
+    <record name="variation-required-register-value" type="Int16" default="0" repeat="8" min="0" max="10000" />
+    <record name="variation-reward-field-play-point" type="Int32" default="0" repeat="8" min="0" max="100000" />
+    <record name="variation-reward-faction-score" type="Int16" default="0" repeat="8" min="0" max="10000" />
+    <record name="variation-reward-account-exp" type="Int32" default="0" repeat="8" min="0" />
+    <record name="variation-reward-tendency-score" type="Int32" default="0" repeat="8" min="0" />
+  </el>
+  <el name="mission-step-success" />
+  <el name="mission-step-fail">
+    <record name="rollback-step-id" type="Int8" default="1" min="1" max="16" />
+    <record name="dispose-quest" type="Bool" />
+    <record name="step" type="Int8" hidden="y" min="1" max="16" />
+    <record name="fail-talksocial" type="Ref" ref="talksocial" />
+    <record name="fail-talksocial-delay" type="Float32" default="0.0" />
+  </el>
+  <el name="completion" />
+  <el name="next-quest">
+    <record name="faction" type="Ref" ref="faction" />
+    <record name="job" type="Prop_seq" seq="job" default="job-none" repeat="15" />
+    <record name="quest" type="Ref" ref="quest" required="y" />
+  </el>
+  <el name="transit">
+    <record name="id" type="Int8" required="y" min="1" max="9" />
+    <record name="zone" type="Ref" ref="zone" required="y" />
+  </el>
+  <el name="destination">
+    <record name="mission-step-id" type="Int8" required="y" min="1" max="16" />
+    <record name="zone-index" type="Int8" required="y" min="-1" max="16" />
+    <record name="kismet" type="String" max="50" />
+  </el>
+  <el name="complete">
+    <record name="zone-index" type="Int8" required="y" min="-1" max="16" />
+    <record name="kismet" type="String" max="50" />
+  </el>
+  <el name="not-acquire">
+    <record name="zone-index" type="Int8" required="y" min="-1" max="16" />
+    <record name="kismet" type="String" max="50" />
+  </el>
+</table>

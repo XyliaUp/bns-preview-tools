@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table name="public-raid-event" version="0.3" autokey="false" module="6">
+  <el name="table" child="1" />
+  <el name="record">
+    <record name="id" type="Int32" key="y" required="y" min="1" />
+    <record name="alias" type="String" required="y" max="70" />
+    <record name="event-duration" type="Msec" default="0" min="0" max="600000" />
+    <record name="event-type" type="Seq">
+      <case name="none" default="y" />
+      <case name="clash" />
+      <case name="escape" />
+    </record>
+    <sub name="score-event">
+      <record name="start-score-amount" type="Int16" default="0" min="0" max="10000" />
+      <record name="add-score-amount" type="Int16" default="0" min="0" max="10000" />
+      <record name="reduce-score-amount" type="Int16" default="0" min="0" max="10000" />
+      <record name="final-score" type="Int16" default="0" repeat="6" min="0" max="10000" />
+      <record name="add-score-recycle-duration" type="Msec" default="0" min="0" max="600000" />
+    </sub>
+  </el>
+</table>

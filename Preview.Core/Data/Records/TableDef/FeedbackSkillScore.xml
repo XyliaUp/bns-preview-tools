@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table name="feedback-skill-score" version="1.0" autokey="true" module="6">
+  <el name="table" child="1" />
+  <el name="record">
+    <record name="alias" type="String" required="y" max="70" />
+    <record name="skill" type="Ref" ref="skill3" required="y" />
+    <record name="skill-result" type="Seq" repeat="8">
+      <case name="none" default="y" />
+      <case name="hit" />
+      <case name="miss" />
+      <case name="dodge" />
+      <case name="parry" />
+      <case name="perfect-parry" />
+      <case name="bounce" />
+      <case name="counter" />
+      <case name="critical-hit" />
+      <case name="hit-critical-hit" />
+      <case name="back-hit-critical-hit" />
+      <case name="not-hit" />
+      <case name="all" />
+      <case name="hit-critical-hit-parry" />
+      <case name="parry-perfect-parry" />
+      <case name="front-hit-critical-hit" />
+      <case name="parry-perfect-parry-counter" />
+      <case name="parry-perfect-parry-dodge" />
+      <case name="parry-dodge" />
+    </record>
+  </el>
+</table>

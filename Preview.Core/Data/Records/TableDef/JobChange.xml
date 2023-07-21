@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table name="job-change" version="1.0" autokey="false" module="6">
+  <el name="table" child="1" />
+  <el name="record">
+    <record name="id" type="Int32" key="y" required="y" min="1" />
+    <record name="alias" type="String" required="y" max="70" />
+    <record name="cost-item" type="Ref" ref="item" default="null" required="y" />
+    <record name="required-level" type="Int8" default="0" min="0" max="100" />
+    <record name="required-mastery-level" type="Int8" default="0" min="0" max="100" />
+    <record name="required-quest" type="Ref" ref="quest" repeat="2" />
+    <record name="required-achievement-id" type="Int16" default="0" min="0" />
+    <record name="required-achievement-step" type="Int16" default="0" min="0" />
+  </el>
+</table>

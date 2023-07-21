@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table name="automodereturnteleport" version="0.1" autokey="false" module="4">
+  <el name="table" child="1" />
+  <el name="record">
+    <record name="index" type="Int16" key="y" required="y" />
+    <record name="name" type="String" max="70" />
+    <record name="teleport" type="Ref" ref="teleport" />
+    <record name="npc" type="Ref" ref="npc" />
+  </el>
+</table>

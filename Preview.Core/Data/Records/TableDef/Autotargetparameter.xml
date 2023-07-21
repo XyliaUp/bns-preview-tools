@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table name="autotargetparameter" version="0.1" autokey="false" module="4">
+  <el name="table" child="1" />
+  <el name="record">
+    <record name="stance-type" type="Prop_seq" seq="stance" key="y" required="y" />
+    <record name="sensitivity-level" type="Seq" key="y" required="y">
+      <case name="low" />
+      <case name="medium" />
+      <case name="high" />
+    </record>
+    <record name="target-angle" type="Float32" default="16" repeat="4" min="0.0" max="360.0" />
+    <record name="target-beam-width" type="Float32" default="1.4" repeat="4" />
+    <record name="target-band-first" type="Float32" default="5.0" repeat="4" />
+    <record name="target-band-second" type="Float32" default="15.0" repeat="4" />
+    <record name="band-check-limit" type="Int16" default="3" repeat="4" min="1" max="3" />
+    <record name="target-change-delay" type="Float32" default="1.0" repeat="4" />
+    <record name="threshold-min" type="Float32" default="0.0" repeat="4" />
+    <record name="threshold-max" type="Float32" default="0.0" repeat="4" />
+    <record name="empty-delay" type="Float32" default="1.0" repeat="4" />
+    <record name="target-gather-angle" type="Float32" default="30" min="0.0" max="360.0" />
+    <record name="stun-delay" type="Float32" default="1.0" />
+    <record name="kneel-delay" type="Float32" default="1.0" />
+    <record name="down-delay" type="Float32" default="1.0" />
+    <record name="mid-air-delay" type="Float32" default="1.0" />
+    <record name="swoon-delay" type="Float32" default="1.0" />
+  </el>
+</table>

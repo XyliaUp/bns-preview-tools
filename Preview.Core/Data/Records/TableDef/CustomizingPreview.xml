@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table name="customizingpreview" version="0.5" autokey="false" module="4">
+  <el name="table" child="1" />
+  <el name="record">
+    <record name="preview-type" type="Seq" key="y" required="y">
+      <case name="none" />
+      <case name="pose" />
+      <case name="face-look" />
+      <case name="costume" />
+      <case name="light" />
+      <case name="silhouette" />
+    </record>
+    <record name="preview-value" type="Int8" key="y" required="y" min="1" max="40" />
+    <record name="race" type="Prop_seq" seq="race" key="y" required="y" />
+    <record name="sex" type="Prop_seq" seq="sex" key="y" required="y" />
+    <sub name="pose">
+      <record name="pose-showname" type="String" max="50" />
+      <record name="pose-show-duration" type="Msec" required="y" />
+      <record name="icon-texture" type="Ref" ref="icontexture" />
+      <record name="icon-index" type="Int16" default="0" />
+    </sub>
+    <sub name="face-look">
+      <record name="face-look-showname" type="String" max="50" />
+      <record name="face-look-show-duration" type="Msec" required="y" />
+      <record name="icon-texture" type="Ref" ref="icontexture" />
+      <record name="icon-index" type="Int16" default="0" />
+    </sub>
+    <sub name="costume">
+      <record name="costume-item" type="Ref" ref="item" />
+    </sub>
+    <sub name="light">
+      <record name="icon-texture" type="Ref" ref="icontexture" />
+      <record name="icon-index" type="Int16" default="0" />
+      <record name="light-index" type="Int16" required="y" />
+    </sub>
+    <sub name="silhouette">
+      <record name="silhouette-designer-preset-index" type="Int32" required="y" />
+      <record name="silhouette-race" type="Prop_seq" seq="race" required="y" />
+      <record name="silhouette-sex" type="Prop_seq" seq="sex" required="y" />
+      <record name="icon-texture" type="Ref" ref="icontexture" />
+      <record name="icon-index" type="Int16" default="0" />
+      <record name="desc" type="Ref" ref="text" />
+    </sub>
+  </el>
+</table>

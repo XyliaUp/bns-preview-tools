@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table name="skill-modify-info" version="0.3" autokey="true" module="2054">
+  <el name="table" child="1" />
+  <el name="record">
+    <record name="alias" type="String" required="y" max="70" />
+    <record name="recycle-duration-modify-percent" type="Int16" default="0" min="-30000" max="30000" />
+    <record name="recycle-duration-modify-diff" type="Msec" default="0" min="-6000000" max="6000000" />
+    <record name="sp-consume-modify-diff" type="Int16" default="0" repeat="2" />
+    <record name="damage-power-percent-modify-percent" type="Int16" default="0" min="-30000" max="30000" />
+    <record name="damage-power-percent-modify-diff" type="Int32" default="0" />
+    <record name="hp-drain-percent-modify-percent" type="Int16" default="0" min="-30000" max="30000" />
+    <record name="hp-drain-percent-modify-diff" type="Int32" default="0" />
+    <record name="heal-percent-modify-percent" type="Int16" default="0" min="-30000" max="30000" />
+    <record name="heal-percent-modify-diff" type="Int32" default="0" />
+    <record name="description" type="Ref" ref="text" />
+    <sub name="normal" />
+    <sub name="skill">
+      <record name="parent-skill3-id" type="Int32" default="0" repeat="4" />
+    </sub>
+    <sub name="skillsystematization">
+      <record name="systematization" type="Ref" ref="skillsystematization" required="y" />
+    </sub>
+  </el>
+</table>

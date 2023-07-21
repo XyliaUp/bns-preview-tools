@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table name="treasure-board-season" version="0.2" autokey="false" module="6">
+  <el name="table" child="1" />
+  <el name="record">
+    <record name="id" type="Int32" key="y" required="y" min="1" />
+    <record name="season-enable" type="Bool" />
+    <record name="treasure-board-page" type="Ref" ref="treasure-board-page" repeat="10" />
+    <record name="season-reward-item" type="Ref" ref="item" />
+    <record name="season-reward-item-count" type="Int16" default="1" min="1" max="9999" />
+    <record name="season-name" type="Ref" ref="text" />
+    <record name="season-end-time" type="Time64" />
+    <record name="season-board-symbol-on" type="String" max="70" />
+    <record name="season-board-symbol-off" type="String" max="70" />
+  </el>
+</table>

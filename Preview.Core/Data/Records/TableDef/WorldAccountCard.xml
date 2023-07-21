@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table name="world-account-card" version="0.2" autokey="false" module="6" maxid="30000">
+	<el name="table" child="1" />
+	<el name="record">
+		<record name="id" type="Int16" key="y" required="y" min="1" max="30000" />
+		<record name="alias" type="String" required="y" max="70" />
+		<record name="item" type="Ref" ref="item" required="y" />
+		<record name="disabled" type="Bool" />
+		<record name="sort-no" type="Int16" default="0" />
+		<record name="card-image" type="String" max="128" />
+		<record name="card-original-image" type="String" repeat="4" max="128" />
+		<record name="card-original-image-desc" type="Ref" ref="text" repeat="4" />
+		<record name="set-card-original-image" type="Bool" hidden="y" />
+	</el>
+</table>

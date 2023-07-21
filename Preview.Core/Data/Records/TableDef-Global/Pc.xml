@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<record name="job-style">
+		<case name="base-1" />
+		<case name="base-2" />
+		<case name="base-3" />
+		<case name="base-4" />
+		<case name="base-5" />
+		<case name="advanced-1" />
+		<case name="advanced-2" />
+		<case name="advanced-3" />
+		<case name="advanced-4" />
+		<case name="advanced-5" />
+	</record>
+
+
+
+	<record name="ghost-type">
+		<case name="none" default="y" />
+		<case name="basic" />
+		<case name="beyond" />
+		<case name="phase" />
+	</record>
+
+	<record name="move-state">
+		<case name="none" default="y" />
+		<case name="sprint" />
+		<case name="sprint-jump" />
+		<case name="drift" />
+		<case name="glide" />
+		<case name="swim" />
+		<case name="boost" />
+		<case name="dive" />
+		<case name="wall-run" />
+		<case name="wall-jump" />
+	</record>
+
+	<record name="rotate">
+		<case name="keep" default="y" />
+		<case name="server-yaw" />
+		<case name="toplayer" />
+	</record>
+
+
+
+
+	<record name="job" >
+		<case name="job-none" default="y" />
+		<case name="검사" />
+		<case name="권사" />
+		<case name="기공사" />
+		<case name="격사" />
+		<case name="역사" />
+		<case name="소환사" />
+		<case name="암살자" />
+		<case name="귀검사" />
+		<case name="주술사" />
+		<case name="기권사" />
+		<case name="투사" />
+		<case name="궁사" />
+		<case name="창술사" />
+		<case name="뇌전술사" />
+		<case name="쌍검사" />
+		<case name="악사" />
+		<case name="pc-max" />
+		<case name="소환수-루키" />
+		<case name="소환수-striker" />
+		<case name="소환수-defender" />
+		<case name="소환수-controller" />
+	</record>
+
+	<record name="sex">
+		<case name="sex-none" default="y" />
+		<case name="남" />
+		<case name="여" />
+		<case name="중" />
+	</record>
+
+	<record name="race">
+		<case name="race-none" default="y" />
+		<case name="건" desc="天族" />
+		<case name="곤" desc="龙族" />
+		<case name="린" desc="灵族" />
+		<case name="진" desc="人族" />
+		<case name="나쁜몹" />
+		<case name="더나쁜몹" />
+		<case name="무서운몹" />
+		<case name="더무서운몹" />
+		<case name="더더무서운몹" />
+		<case name="고양이" />
+		<case name="강림체" />
+		<case name="악귀" />
+	</record>
+
+
+
+	<record name="stance" version="20210727">
+		<case name="stance-none" default="y" />
+		<case name="npc기본자세" />
+		<case name="천검세" />
+		<case name="검령세" />
+		<case name="단타" />
+		<case name="연계" />
+		<case name="체술" />
+		<case name="납도" />
+		<case name="경기공" />
+		<case name="연기공" />
+		<case name="강기공" />
+		<case name="스나이퍼모드" />
+		<case name="건너모드" />
+		<case name="파괴" />
+		<case name="보호" />
+		<case name="철벽" />
+		<case name="소환" />
+		<case name="교란" />
+		<case name="은신" />
+		<case name="암살" />
+		<case name="검술" />
+		<case name="어검" />
+		<case name="발도" />
+		<case name="npc자세1" />
+		<case name="npc자세2" />
+		<case name="npc자세3" />
+		<case name="소환수-follow" />
+		<case name="소환수-command-1" />
+		<case name="소환수-flying" />
+		<case name="주술" />
+		<case name="강림" />
+		<case name="유권" />
+		<case name="기공" />
+		<case name="냉정" />
+		<case name="광기" />
+		<case name="장궁" />
+		<case name="정령궁" />
+		<case name="찌르기" />
+		<case name="베기" />
+		<case name="청뢰" />
+		<case name="혈뢰" />
+		<case name="어검세" />
+		<case name="정수" />
+		<case name="역수" />
+		<case name="한손역수" />
+		<case name="쌍월" />
+		<case name="뇌신" />
+		<case name="침식" />
+		<case name="npc주시자세1" />
+		<case name="npc주시자세2" />
+		<case name="npc주시자세3" />
+	</record>
+</table>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table name="summonedpreset" version="0.3" autokey="false" module="6">
+  <el name="table" child="1" />
+  <el name="record">
+    <record name="race" type="Prop_seq" seq="race" key="y" required="y" />
+    <record name="part-type" type="Seq" key="y" required="y">
+      <case name="none" />
+      <case name="face" />
+      <case name="body" />
+      <case name="eye-color" />
+      <case name="eye" />
+      <case name="body-color" />
+      <case name="body-shape" />
+      <case name="decal" />
+    </record>
+    <record name="part-value" type="Int8" key="y" required="y" min="1" max="50" />
+    <record name="alias" type="String" required="y" max="70" />
+    <record name="price" type="Int32" default="0" min="0" />
+    <record name="icon-texture" type="Ref" ref="icontexture" />
+    <record name="icon-index" type="Int16" default="0" />
+    <record name="desc" type="Ref" ref="text" />
+    <record name="param8" type="Int8" default="-128" repeat="92" />
+  </el>
+</table>

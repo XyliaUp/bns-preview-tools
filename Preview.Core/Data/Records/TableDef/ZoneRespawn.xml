@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table name="zonerespawn" version="0.46" autokey="false" module="14" maxid="127">
+  <el name="table" child="1" />
+  <el name="record">
+    <record name="zone" type="Int32" key="y" required="y" />
+    <record name="id" type="Int16" key="y" required="y" max="127" />
+    <record name="alias" type="String" required="y" max="70" />
+    <record name="area" type="Ref" ref="zonearea" />
+    <record name="center" type="Vector32" hidden="y" />
+    <record name="activated-faction" type="Ref" ref="faction" repeat="4" />
+  </el>
+</table>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table name="craft" version="0.5" autokey="false" module="4">
+  <el name="table" child="1" />
+  <el name="record">
+    <record name="category" type="Seq" seq="production-type" key="y" required="y" />
+    <record name="name" type="Ref" ref="text" />
+    <record name="icon-texture" type="Ref" ref="icontexture" />
+    <record name="icon-index" type="Int16" default="0" />
+    <record name="none-selected-icon-texture" type="Ref" ref="icontexture" />
+    <record name="none-selected-icon-index" type="Int16" default="0" />
+    <record name="join-msg" type="Ref" ref="game-message" />
+    <record name="level-up-msg" type="Ref" ref="game-message" />
+    <record name="max-level-msg" type="Ref" ref="game-message" />
+    <record name="need-exp-for-level" type="Int32" default="-1" repeat="100" />
+  </el>
+</table>

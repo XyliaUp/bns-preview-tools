@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table name="effect-group" version="0.7" autokey="true" module="14">
+  <el name="table" child="1" />
+  <el name="record">
+    <record name="alias" type="String" required="y" max="70" />
+    <record name="effect" type="Ref" ref="effect" repeat="8" />
+  </el>
+</table>

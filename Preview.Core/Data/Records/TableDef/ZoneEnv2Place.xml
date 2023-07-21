@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table name="zoneenv2place" version="0.20" autokey="true" module="526">
+  <el name="table" child="1" />
+  <el name="record">
+    <record name="alias" type="String" required="y" max="70" />
+    <record name="region-point" type="Vector32" default="0,0,0" repeat="4" />
+    <record name="height" type="Distance" default="0" />
+    <record name="action-point" type="Vector32" required="y" />
+    <record name="action-radius" type="Distance" required="y" />
+    <record name="use-manipulation-point" type="Bool" required="y" />
+    <record name="manipulation-point" type="Vector32" required="y" />
+    <record name="manipulation-radius" type="Distance" required="y" />
+    <record name="manipulation-height-upper" type="Distance" required="y" />
+    <record name="manipulation-height-lower" type="Distance" required="y" />
+    <record name="env-actorname" type="String" max="70" />
+    <record name="spawn-env" type="Bool" />
+    <sub name="button" />
+    <sub name="chest" />
+    <sub name="pot" />
+    <sub name="gate" />
+    <sub name="wall" />
+    <sub name="refiner" />
+    <sub name="control-point" />
+    <sub name="portal" />
+    <sub name="foot-switch" />
+    <sub name="effect-region" />
+    <sub name="airdash">
+      <record name="duration" type="Msec" default="0" />
+      <record name="end-pos" type="Vector32" required="y" />
+      <record name="summon-end-pos" type="Vector32" default="0,0,0" />
+    </sub>
+    <sub name="airdash-leave" />
+    <sub name="oceanic-region" />
+    <sub name="fall-death" />
+    <sub name="multiple-loop" />
+    <sub name="deck" />
+    <sub name="fishing-point" />
+    <sub name="attraction-popup" />
+    <sub name="enter-arena-dungeonlobby" />
+  </el>
+</table>

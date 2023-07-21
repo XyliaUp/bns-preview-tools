@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table name="skillgatherrange3" version="0.16" autokey="true" module="2062">
+  <el name="table" child="1" />
+  <el name="record">
+    <record name="alias" type="String" required="y" max="70" />
+    <record name="cast-dir-caster" type="Seq">
+      <case name="360" default="y" />
+      <case name="front-180" />
+      <case name="back-180" />
+      <case name="front-90" />
+      <case name="back-90" />
+      <case name="front-15" />
+      <case name="front-30" />
+      <case name="front-45" />
+      <case name="front-60" />
+      <case name="front-120" />
+      <case name="front-270" />
+    </record>
+    <record name="cast-dir-target" type="Seq">
+      <case name="360" default="y" />
+      <case name="front-180" />
+      <case name="back-180" />
+      <case name="front-90" />
+      <case name="back-90" />
+      <case name="front-15" />
+      <case name="front-30" />
+      <case name="front-45" />
+      <case name="front-60" />
+      <case name="front-120" />
+      <case name="front-270" />
+    </record>
+    <record name="range-cast-min" type="Distance" default="0" min="0" max="5000" />
+    <record name="range-cast-max" type="Distance" default="5000" min="0" max="5000" />
+    <record name="range-cast-height" type="Distance" default="5000" min="0" max="5000" />
+    <record name="range-cast-depth" type="Distance" default="5000" min="0" max="5000" />
+    <record name="range-cast-laser-width" type="Distance" default="0" min="0" max="5000" />
+    <record name="gather-radius-min" type="Distance" default="0" repeat="5" min="0" max="5000" />
+    <record name="gather-radius-max" type="Distance" default="0" repeat="5" min="0" max="5000" />
+    <record name="gather-laser-width-min" type="Distance" default="0" repeat="5" min="0" max="5000" />
+    <record name="gather-laser-width-max" type="Distance" default="0" repeat="5" min="0" max="5000" />
+    <record name="gather-laser-front-distance-min" type="Distance" default="0" repeat="5" min="0" max="5000" />
+    <record name="gather-laser-front-distance-max" type="Distance" default="0" repeat="5" min="0" max="5000" />
+    <record name="gather-laser-back-distance-min" type="Distance" default="0" repeat="5" min="0" max="5000" />
+    <record name="gather-laser-back-distance-max" type="Distance" default="0" repeat="5" min="0" max="5000" />
+    <record name="shifting-laser-width-min" type="Distance" default="0" min="0" max="5000" />
+    <record name="shifting-laser-width-max" type="Distance" default="0" min="0" max="5000" />
+    <record name="shifting-laser-distance-min" type="Distance" default="0" min="0" max="5000" />
+    <record name="shifting-laser-distance-max" type="Distance" default="0" min="0" max="5000" />
+    <record name="shifting-laser-height" type="Distance" default="0" min="0" max="5000" />
+    <record name="shifting-laser-depth" type="Distance" default="0" min="0" max="5000" />
+    <record name="shifting-laser-offset" type="Distance" default="0" min="0" max="5000" />
+    <record name="target-z" type="Distance" default="0" repeat="5" min="0" max="5000" />
+    <record name="summon-base-pos-type" type="Seq">
+      <case name="caster" default="y" />
+      <case name="target" />
+    </record>
+    <record name="summon-base-pos-relative-distance" type="Distance" default="44" min="44" max="250" />
+    <record name="summon-base-dir-type" type="Seq">
+      <case name="caster" default="y" />
+      <case name="target" />
+      <case name="caster-to-target" />
+    </record>
+    <record name="summon-base-dir-relative-angle" type="Int16" default="0" min="-360" max="360" />
+  </el>
+</table>

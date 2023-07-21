@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table name="skillshow3" version="2.10" autokey="false" module="12" maxid="200000000">
+  <el name="table" child="1" />
+  <el name="record">
+    <record name="id" type="Int32" key="y" required="y" min="1" max="200000000" />
+    <record name="variation-id" type="Int8" key="y" required="y" />
+    <record name="play-player-show" type="Bool" />
+    <record name="force-play-hit-show" type="Bool" />
+    <record name="player-cast-show" type="XUnknown2" />
+    <record name="player-exec-show-1" type="XUnknown2" />
+    <record name="player-exec-show-2" type="XUnknown2" />
+    <record name="player-exec-show-3" type="XUnknown2" />
+    <record name="player-exec-show-4" type="XUnknown2" />
+    <record name="player-exec-show-5" type="XUnknown2" />
+    <record name="player-fire-show-1" type="XUnknown2" />
+    <record name="player-fire-show-2" type="XUnknown2" />
+    <record name="player-fire-show-3" type="XUnknown2" />
+    <record name="player-fire-show-4" type="XUnknown2" />
+    <record name="player-fire-show-5" type="XUnknown2" />
+    <record name="player-stop-show" type="XUnknown2" />
+    <record name="chain-type" type="Seq">
+      <case name="none-chain" default="y" />
+      <case name="chain" />
+      <case name="chain-loop" />
+    </record>
+    <record name="create-phantom-type" type="Seq">
+      <case name="none" default="y" />
+      <case name="cast-start-stance" />
+      <case name="fire-start-stance" />
+      <case name="cast-start-instance" />
+      <case name="fire-start-instance" />
+    </record>
+    <record name="phantom-shoot-type" type="Seq">
+      <case name="phantom-shoot-right" default="y" />
+      <case name="phantom-shoot-left" />
+      <case name="phantom-shoot-double-side" />
+      <case name="phantom-shoot-bit-flags-index" />
+    </record>
+    <record name="lyn-phantom-count" type="Int8" default="0" />
+    <record name="succession-prev-skill-show" type="Bool" deprecated="y" />
+    <record name="succession-next-skill" type="Bool" />
+    <record name="show-key-result-damage-signal" type="Bool" />
+    <record name="weapon-prefix" type="String" max="60" />
+    <record name="cast-duration-zero-show-off" type="Bool" />
+    <record name="range-decal" type="Bool" />
+    <record name="use-berserk-range-decal" type="Bool" />
+    <record name="cast-show" type="XUnknown2" />
+    <record name="exec-show-play-end" type="Bool" />
+    <record name="decal-show-1" type="XUnknown2" />
+    <record name="fire-show-1" type="XUnknown2" />
+    <record name="fire-miss-show-1" type="XUnknown2" />
+    <record name="exec-show-1" type="XUnknown2" />
+    <record name="exec-hit-show-1" type="XUnknown2" />
+    <record name="exec-immune-show-1" type="XUnknown2" />
+    <record name="exec-miss-show-1" type="XUnknown2" deprecated="y" />
+    <record name="exec-dodge-show-1" type="XUnknown2" />
+    <record name="exec-parry-show-1" type="XUnknown2" />
+    <record name="exec-bounce-show-1" type="XUnknown2" />
+    <record name="exec-bounce-caster-show-1" type="XUnknown2" />
+    <record name="exec-counter-show-1" type="XUnknown2" />
+    <record name="exec-critical-show-1" type="XUnknown2" />
+    <record name="return-show-1" type="XUnknown2" />
+    <record name="decal-show-2" type="XUnknown2" />
+    <record name="fire-show-2" type="XUnknown2" />
+    <record name="fire-miss-show-2" type="XUnknown2" />
+    <record name="exec-show-2" type="XUnknown2" />
+    <record name="exec-hit-show-2" type="XUnknown2" />
+    <record name="exec-immune-show-2" type="XUnknown2" />
+    <record name="exec-miss-show-2" type="XUnknown2" deprecated="y" />
+    <record name="exec-dodge-show-2" type="XUnknown2" />
+    <record name="exec-parry-show-2" type="XUnknown2" />
+    <record name="exec-bounce-show-2" type="XUnknown2" />
+    <record name="exec-bounce-caster-show-2" type="XUnknown2" />
+    <record name="exec-counter-show-2" type="XUnknown2" />
+    <record name="exec-critical-show-2" type="XUnknown2" />
+    <record name="return-show-2" type="XUnknown2" />
+    <record name="decal-show-3" type="XUnknown2" />
+    <record name="fire-show-3" type="XUnknown2" />
+    <record name="fire-miss-show-3" type="XUnknown2" />
+    <record name="exec-show-3" type="XUnknown2" />
+    <record name="exec-hit-show-3" type="XUnknown2" />
+    <record name="exec-immune-show-3" type="XUnknown2" />
+    <record name="exec-miss-show-3" type="XUnknown2" deprecated="y" />
+    <record name="exec-dodge-show-3" type="XUnknown2" />
+    <record name="exec-parry-show-3" type="XUnknown2" />
+    <record name="exec-bounce-show-3" type="XUnknown2" />
+    <record name="exec-bounce-caster-show-3" type="XUnknown2" />
+    <record name="exec-counter-show-3" type="XUnknown2" />
+    <record name="exec-critical-show-3" type="XUnknown2" />
+    <record name="return-show-3" type="XUnknown2" />
+    <record name="decal-show-4" type="XUnknown2" />
+    <record name="fire-show-4" type="XUnknown2" />
+    <record name="fire-miss-show-4" type="XUnknown2" />
+    <record name="exec-show-4" type="XUnknown2" />
+    <record name="exec-hit-show-4" type="XUnknown2" />
+    <record name="exec-immune-show-4" type="XUnknown2" />
+    <record name="exec-miss-show-4" type="XUnknown2" deprecated="y" />
+    <record name="exec-dodge-show-4" type="XUnknown2" />
+    <record name="exec-parry-show-4" type="XUnknown2" />
+    <record name="exec-bounce-show-4" type="XUnknown2" />
+    <record name="exec-bounce-caster-show-4" type="XUnknown2" />
+    <record name="exec-counter-show-4" type="XUnknown2" />
+    <record name="exec-critical-show-4" type="XUnknown2" />
+    <record name="return-show-4" type="XUnknown2" />
+    <record name="decal-show-5" type="XUnknown2" />
+    <record name="fire-show-5" type="XUnknown2" />
+    <record name="fire-miss-show-5" type="XUnknown2" />
+    <record name="exec-show-5" type="XUnknown2" />
+    <record name="exec-hit-show-5" type="XUnknown2" />
+    <record name="exec-immune-show-5" type="XUnknown2" />
+    <record name="exec-miss-show-5" type="XUnknown2" deprecated="y" />
+    <record name="exec-dodge-show-5" type="XUnknown2" />
+    <record name="exec-parry-show-5" type="XUnknown2" />
+    <record name="exec-bounce-show-5" type="XUnknown2" />
+    <record name="exec-bounce-caster-show-5" type="XUnknown2" />
+    <record name="exec-counter-show-5" type="XUnknown2" />
+    <record name="exec-critical-show-5" type="XUnknown2" />
+    <record name="return-show-5" type="XUnknown2" />
+    <record name="finish-show" type="XUnknown2" />
+    <record name="bomb-show" type="XUnknown2" />
+    <record name="cancel-show" type="XUnknown2" />
+    <record name="stop-show" type="XUnknown2" />
+    <record name="triggered-show" type="XUnknown2" />
+    <record name="trigger-cast-show" type="XUnknown2" />
+    <record name="triggered-enemy-show" type="XUnknown2" />
+    <record name="trigger-show" type="XUnknown2" />
+    <record name="trigger-hit-show" type="XUnknown2" />
+    <record name="trigger-immune-show" type="XUnknown2" />
+    <record name="trigger-miss-show" type="XUnknown2" deprecated="y" />
+    <record name="trigger-dodge-show" type="XUnknown2" />
+    <record name="trigger-parry-show" type="XUnknown2" />
+    <record name="trigger-bounce-show" type="XUnknown2" />
+    <record name="trigger-counter-show" type="XUnknown2" />
+    <record name="trigger-critical-show" type="XUnknown2" />
+    <record name="skillskin-id" type="Int16" key="y" required="y" min="0" max="200000000" />
+    <record name="skill-skin-desc" type="String" max="100" />
+  </el>
+</table>

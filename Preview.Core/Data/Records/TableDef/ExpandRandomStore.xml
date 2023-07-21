@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table name="expand-random-store" version="0.3" autokey="false" module="6">
+  <el name="table" child="1" />
+  <el name="record">
+    <record name="random-store-number" type="Seq" key="y" required="y">
+      <case name="invalid-number" />
+      <case name="random-store-1" />
+      <case name="random-store-2" />
+    </record>
+    <record name="slot-index" type="Int8" key="y" required="y" min="3" max="8" />
+    <record name="required-item" type="Ref" ref="item" required="y" />
+    <record name="required-item-count" type="Int8" default="1" min="1" max="100" />
+    <record name="required-item-for-instant-payment" type="Ref" ref="item" />
+  </el>
+</table>

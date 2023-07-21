@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table name="guide-movie" version="0.3" autokey="false" module="4">
+  <el name="table" child="1" />
+  <el name="record">
+    <record name="id" type="Int32" key="y" required="y" />
+    <record name="category" type="Seq">
+      <case name="none" default="y" />
+      <case name="category1" />
+      <case name="category2" />
+      <case name="category3" />
+      <case name="category4" />
+      <case name="category5" />
+      <case name="category6" />
+      <case name="category7" />
+      <case name="category8" />
+      <case name="category9" />
+      <case name="category10" />
+    </record>
+    <record name="title" type="Ref" ref="text" />
+    <record name="activation-level" type="Int8" default="0" min="0" max="100" />
+    <record name="activation-mastery-level" type="Int8" default="0" min="0" max="100" />
+    <record name="use-notice-hud" type="Bool" />
+    <record name="message" type="Ref" ref="game-message" />
+    <record name="movie-url" type="String" max="256" />
+    <sub name="level">
+      <record name="normal-level" type="Int8" default="0" min="0" max="100" />
+      <record name="mastery-level" type="Int8" default="0" min="0" max="100" />
+      <record name="account-level" type="Int8" default="0" min="0" max="100" />
+    </sub>
+    <sub name="quest">
+      <record name="acquire-quest-id" type="Ref" ref="quest" />
+      <record name="complete-quest-id" type="Ref" ref="quest" />
+    </sub>
+    <sub name="enter-zone">
+      <record name="zone" type="Ref" ref="zone" required="y" />
+    </sub>
+    <sub name="dungeon">
+      <record name="cave" type="Ref" ref="cave2" />
+      <record name="dungeon" type="Ref" ref="dungeon" />
+      <record name="dungeon-solo" type="Ref" ref="dungeon" />
+      <record name="raid-dungeon" type="Ref" ref="raid-dungeon" />
+      <record name="boss-challenge" type="Ref" ref="boss-challenge" />
+      <record name="duel-bot-challenge" type="Ref" ref="duel-bot-challenge" />
+      <record name="duel-bot-training-room" type="Ref" ref="duel-bot-training-room" />
+      <record name="tendency-field" type="Ref" ref="tendency-field" />
+      <record name="simple-field" type="Ref" ref="simple-field" />
+    </sub>
+  </el>
+</table>

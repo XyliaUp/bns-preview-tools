@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table name="pet" version="0.7" autokey="true" module="12">
+  <el name="table" child="1" />
+  <el name="record">
+    <record name="alias" type="String" required="y" max="70" />
+    <record name="mesh-name" type="XUnknown2" />
+    <record name="mesh-scale" type="Float32" default="1.0" />
+    <record name="material-name" type="XUnknown2" repeat="3" />
+    <record name="anim-set-name" type="XUnknown2" />
+    <record name="anim-tree-name" type="XUnknown2" />
+    <record name="caster-spawn-show" type="XUnknown2" />
+    <record name="caster-despawn-show" type="XUnknown2" />
+    <record name="idle-anim" type="String" max="128" />
+    <record name="combat-idle-anim" type="String" max="128" />
+    <record name="spawn-show" type="XUnknown2" />
+    <record name="effect-show" type="XUnknown2" />
+    <record name="despawn-show" type="XUnknown2" />
+    <record name="food-show" type="XUnknown2" />
+  </el>
+</table>

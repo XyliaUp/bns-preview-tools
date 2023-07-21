@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table name="soul-npc-skill" version="0.4" autokey="true" module="14" maxid="120">
+  <el name="table" child="1" />
+  <el name="record">
+    <record name="alias" type="String" required="y" max="70" />
+    <record name="skill3" type="Ref" ref="skill3" repeat="10" />
+    <record name="soul-particle" type="String" max="80" />
+    <record name="target-ui-imageset" type="String" max="100" />
+    <record name="soul-tooltip" type="Ref" ref="text" />
+  </el>
+</table>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table name="battle-royal-field-event" version="0.7" autokey="false" module="6">
+  <el name="table" child="1" />
+  <el name="record">
+    <record name="id" type="Int32" key="y" required="y" min="1" />
+    <record name="alias" type="String" required="y" max="70" />
+    <record name="default-event-area-radius" type="Int32" default="0" />
+    <record name="notice-time" type="Int32" default="0" repeat="10" />
+    <record name="start-time" type="Int32" default="0" repeat="10" />
+    <record name="duration" type="Int32" default="0" repeat="10" />
+    <record name="toxic-event-area-radius" type="Int32" default="0" repeat="10" />
+  </el>
+</table>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table name="sealed-dungeon-modify" version="5.1" autokey="false" module="6">
+  <el name="table" child="1" />
+  <el name="record">
+    <record name="id" type="Int16" key="y" required="y" min="1" />
+    <record name="sealed-level" type="Int8" key="y" required="y" min="0" />
+    <record name="alias" type="String" required="y" max="70" />
+    <record name="modify-npc-exp-percent" type="Int16" default="0" min="0" />
+    <record name="modify-npc-sealed-dungeon-exp-percent" type="Int16" default="0" min="0" />
+    <record name="modify-clear-sealed-dungeon-exp-percent" type="Int32" default="0" min="0" />
+    <record name="modify-npc-immune-breaker-count" type="Int8" default="0" min="0" />
+    <record name="modify-npc-immune-breaker-init-duration" type="Msec" default="0" min="0" />
+    <record name="modify-skill-duration" type="Int16" default="100" min="100" />
+    <record name="gimmick-option-fixed" type="Ref" ref="sealed-dungeon-gimmick" repeat="5" />
+    <record name="gimmick-option-week-1" type="Ref" ref="sealed-dungeon-gimmick" repeat="2" />
+    <record name="gimmick-option-week-2" type="Ref" ref="sealed-dungeon-gimmick" repeat="2" />
+    <record name="gimmick-option-week-3" type="Ref" ref="sealed-dungeon-gimmick" repeat="2" />
+    <record name="gimmick-option-week-4" type="Ref" ref="sealed-dungeon-gimmick" repeat="2" />
+    <record name="gimmick-option-week-5" type="Ref" ref="sealed-dungeon-gimmick" repeat="2" />
+    <record name="contents-reset" type="Ref" ref="contents-reset" />
+    <record name="use-level-first-clear" type="Bool" />
+    <record name="use-level-first-clear-next-level" type="Int8" default="0" hidden="y" />
+    <record name="dungeon-id" type="Ref" ref="dungeon" hidden="y" />
+    <record name="reward-summary" type="Ref" ref="attractionrewardsummary" />
+    <record name="scroll-boss-imageset" type="XUnknown2" />
+    <record name="scroll-boss-back-imageset" type="XUnknown2" />
+    <record name="recommend-attack-power-sealed-dungeon" type="Int16" default="0" />
+    <record name="recommend-alias-sealed-dungeon" type="Ref" ref="contentsjournalrecommenditem" />
+  </el>
+</table>

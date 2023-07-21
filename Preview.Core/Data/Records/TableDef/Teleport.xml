@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table name="teleport" version="0.23" autokey="false" module="270" maxid="10000">
+  <el name="table" child="1" />
+  <el name="record">
+    <record name="id" type="Int16" key="y" required="y" min="1" max="10000" />
+    <record name="alias" type="String" required="y" max="70" />
+    <record name="zone" type="Int32" required="y" deprecated="y" />
+    <record name="retired" type="Bool" />
+    <record name="name2" type="Ref" ref="text" />
+    <record name="destination-position" type="Vector32" required="y" deprecated="y" />
+    <record name="teleport-position" type="Ref" ref="zoneteleportposition" />
+    <record name="distance-from-start-teleport" type="Distance" default="0" />
+    <record name="price-percent" type="Int32" default="0" min="0" max="1000000" />
+    <record name="description2" type="Ref" ref="text" />
+    <record name="map" type="Ref" ref="mapinfo" deprecated="y" />
+    <record name="activated-faction" type="Ref" ref="faction" />
+    <record name="joined-faction" type="Bool" />
+    <record name="required-pc-level" type="Int8" default="0" min="0" />
+    <record name="required-pc-mastery-level" type="Int8" default="0" min="0" max="100" />
+    <record name="required-faction-level" type="Int8" default="0" min="0" />
+    <record name="ui-preceding-quest" type="Ref" ref="quest" />
+    <record name="select-destination-msg" type="Ref" ref="text" deprecated="y" />
+    <record name="not-enough-money-msg" type="Ref" ref="text" deprecated="y" />
+    <record name="confirm-msg" type="Ref" ref="text" deprecated="y" />
+    <record name="cancel-msg" type="Ref" ref="text" deprecated="y" />
+  </el>
+</table>

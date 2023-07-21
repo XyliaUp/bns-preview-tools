@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table name="soul-boost-mission-task" version="5.0" autokey="false" module="6">
+  <el name="table" child="1" />
+  <el name="record">
+    <record name="id" type="Int32" key="y" required="y" min="1" />
+    <record name="alias" type="String" required="y" max="70" />
+    <record name="name" type="String" max="128" />
+    <record name="event" type="Ref" ref="soul-boost-event" />
+    <record name="mission-step" type="Ref" ref="soul-boost-mission-step" />
+    <record name="task-number" type="Int8" min="1" max="50" />
+    <record name="mission" type="Ref" ref="soul-boost-mission" />
+    <record name="proceedable-type" type="Seq">
+      <case name="none" default="y" />
+      <case name="before-open" />
+      <case name="after-open" />
+    </record>
+    <record name="actor-type" type="Seq">
+      <case name="none" default="y" />
+      <case name="character" />
+      <case name="account" />
+    </record>
+    <record name="goal-count" type="Int64" default="0" />
+    <record name="mission-point" type="Int32" min="0" max="10000000" />
+    <record name="mission-level" type="Int8" default="1" min="1" max="8" />
+    <record name="description" type="String" max="128" />
+  </el>
+</table>

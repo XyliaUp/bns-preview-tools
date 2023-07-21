@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table name="attraction-reward" version="0.3" autokey="false" module="6">
+  <el name="table" child="1" />
+  <el name="record">
+    <record name="alias" type="String" required="y" max="70" />
+    <record name="reward-contents-type" type="Seq" key="y" required="y">
+      <case name="none" />
+      <case name="battle-royal-field" />
+      <case name="battle-royal-field-for-party" />
+    </record>
+    <record name="id" type="Int16" key="y" required="y" min="1" />
+    <record name="reward-item" type="Ref" ref="item" repeat="3" />
+    <record name="reward-item-count" type="Int8" default="0" repeat="3" />
+    <record name="reward-exp" type="Int32" default="0" min="0" max="2000000000" />
+  </el>
+</table>

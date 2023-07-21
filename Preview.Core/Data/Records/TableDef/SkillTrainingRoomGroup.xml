@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table name="skill-training-room-group" version="0.12" autokey="false" module="262">
+  <el name="table" child="1" />
+  <el name="record">
+    <record name="id" type="Int32" key="y" required="y" min="1" />
+    <record name="group-name" type="Ref" ref="text" />
+    <record name="group-desc" type="Ref" ref="text" />
+    <record name="job" type="Prop_seq" seq="job" default="job-none" max="10" />
+    <record name="has-reward" type="Bool" />
+    <record name="group-required-level" type="Int8" default="0" min="0" max="100" />
+    <record name="group-required-mastery-level" type="Int8" default="0" min="0" max="100" />
+    <record name="group-level-text" type="Ref" ref="text" />
+    <record name="subject-id" type="Ref" ref="skill-training-room-subject" default="0" repeat="8" />
+    <record name="job-style" type="Seq" seq="job-style" default="base-1" />
+    <record name="sort-number" type="Int16" default="0" />
+    <record name="achievement" type="Ref" ref="achievement" hidden="y" />
+  </el>
+</table>

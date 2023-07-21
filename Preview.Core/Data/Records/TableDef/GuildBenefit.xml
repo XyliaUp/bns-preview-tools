@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table name="guildbenefit" version="0.4" autokey="false" module="6">
+  <el name="table" child="1" />
+  <el name="record">
+    <record name="benefit-id" type="Int16" key="y" required="y" min="1" max="3000" />
+    <record name="duration" type="Int32" default="0" key="y" min="0" max="94608000" />
+    <record name="benefit-type" type="Seq">
+      <case name="none" />
+      <case name="ability-set" />
+      <case name="reward-set" />
+    </record>
+    <record name="alias" type="String" required="y" max="70" />
+    <record name="name2" type="Ref" ref="text" />
+    <record name="desc" type="Ref" ref="text" />
+    <record name="icon-texture" type="Ref" ref="icontexture" />
+    <record name="icon-index" type="Int16" default="0" />
+    <record name="order" type="Int16" required="y" />
+    <record name="guild-level" type="Int16" default="0" min="0" max="255" />
+    <record name="money" type="Int32" default="0" min="0" max="20000000000" />
+    <record name="item" type="Ref" ref="item" repeat="5" />
+    <record name="item-count" type="Int32" default="0" repeat="5" />
+    <record name="guild-point" type="Int32" default="0" min="0" max="20000000000" />
+  </el>
+</table>

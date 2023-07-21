@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table name="gradebenefits" version="1.0" autokey="false" module="6">
+  <el name="table" child="1" />
+  <el name="record">
+    <record name="benefit-type" type="Seq" key="y" required="y">
+      <case name="none" />
+      <case name="restoration-time" />
+      <case name="nameplate-icon" />
+      <case name="nameplate-icon2" />
+      <case name="use-nameplate-font" />
+      <case name="use-hypermove-special-effect" />
+      <case name="use-hypermove-special-effect2" />
+      <case name="broadcast-reserved-7" />
+      <case name="broadcast-reserved-8" />
+      <case name="effect-1" />
+      <case name="effect-2" />
+      <case name="effect-3" />
+      <case name="effect-4" />
+      <case name="effect-5" />
+      <case name="effect-6" />
+      <case name="effect-7" />
+      <case name="effect-8" />
+      <case name="achievement-1" />
+      <case name="achievement-2" />
+      <case name="achievement-3" />
+      <case name="achievement-4" />
+      <case name="achievement-5" />
+      <case name="max-vitality2-bonus" />
+      <case name="quest-reward-money-bonus" />
+      <case name="unlocated-store" />
+      <case name="unlocated-warehouse" />
+      <case name="closet" />
+      <case name="auction-escrow" />
+      <case name="concurrent-sale-count-bonus" />
+      <case name="accumulated-sale-count-bonus" />
+      <case name="market-register-amount-tax-discount-rate" />
+      <case name="money-market-concurrent-sale-count-bonus" />
+      <case name="money-market-accumulated-sale-count-bonus" />
+      <case name="weapon-accessory-transform-money-cost-discount-rate" />
+      <case name="weapon-gem-transform-money-cost-discount-rate" />
+      <case name="weapon-repair-item-count-discount-rate" />
+      <case name="item-awakening-money-cost-discount-rate" />
+      <case name="random-store-prob-group" />
+      <case name="npc-looting-money-reward-percent" />
+      <case name="npc-looting-money-reward-percent-bonus" />
+      <case name="detach-weapon-gem-money-cost-discount-rate" />
+      <case name="ingameshop-daily-free-purchase" />
+      <case name="ingameshop-discount" />
+      <case name="purify-item-discount-rate" />
+      <case name="membership-mileage" />
+      <case name="daily-or-attraction-quest-reward-exp-bonus-percent" />
+      <case name="game-mileage-bonus-percent" />
+      <case name="weapon-appearance-change-cost-money-discount-percent" />
+      <case name="production-exp-bonus-percent" />
+      <case name="teleport-limit-time-decrease-second" />
+      <case name="additional-unlocated-store" />
+      <case name="duel-point-bonus-percent" />
+      <case name="party-battle-point-bonus-percent" />
+      <case name="field-play-point-bonus-percent" />
+      <case name="duel-exp-bonus-percent" />
+      <case name="party-battle-exp-bonus-percent" />
+      <case name="daily-game-cash" />
+      <case name="membership-only-product-purchase" />
+      <case name="premium-depository" />
+      <case name="quest-reward-hongmoon" />
+      <case name="quest-reward-membership" />
+      <case name="quest-reward-account-exp-bonus-percent" />
+      <case name="tendency-quest-reward-account-exp-bonus-percent" />
+      <case name="challenge-reward-account-exp-bonus-percent" />
+      <case name="challenge-reward-money-bonus-percent" />
+      <case name="apply-min-energy-point-multiple-value" />
+      <case name="item-improve-money-cost-discount-rate" />
+      <case name="etc-benefits" />
+      <case name="external-daily-membership-mileage" />
+    </record>
+    <record name="level" type="Int8" key="y" required="y" min="1" max="10" />
+    <record name="game-grade-key" type="Int32" required="y" min="1" max="10000000" />
+    <record name="value" type="Int64" default="0" />
+    <record name="effect" type="Ref" ref="effect" />
+    <record name="string-value" type="String" max="150" />
+    <record name="enable-in-arena-duel" type="Bool" default="y" />
+    <record name="achievement" type="Ref" ref="achievement" repeat="4" />
+    <record name="icon-image-set" type="String" max="150" />
+    <record name="name" type="String" max="150" />
+  </el>
+</table>

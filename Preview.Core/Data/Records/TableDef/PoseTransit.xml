@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table name="posetransit" version="0.7" autokey="false" module="12">
+  <el name="table" child="1" />
+  <el name="record">
+    <record name="before-pose" type="Seq" key="y" required="y">
+      <case name="standing" />
+      <case name="dead" />
+      <case name="dead-back" />
+      <case name="dead-front" />
+      <case name="stagger" />
+      <case name="down" />
+      <case name="front_down" />
+      <case name="air" />
+      <case name="air-back" />
+      <case name="kneel" />
+      <case name="burrow" />
+      <case name="picking" />
+      <case name="mount-linker" />
+      <case name="mount-linkee" />
+      <case name="catch" />
+      <case name="catched" />
+      <case name="catch-nonehuman" />
+      <case name="catched-nonehuman" />
+      <case name="catch-friend" />
+      <case name="catched-friend" />
+      <case name="hardwall" />
+      <case name="ironfotess" />
+      <case name="sit" />
+      <case name="bomb-kneel" />
+      <case name="inhalation-catch-sword" />
+      <case name="inhalation-catch-nonehuman-sword" />
+    </record>
+    <record name="after-pose" type="Seq" key="y" required="y">
+      <case name="standing" />
+      <case name="dead" />
+      <case name="dead-back" />
+      <case name="dead-front" />
+      <case name="stagger" />
+      <case name="down" />
+      <case name="front_down" />
+      <case name="air" />
+      <case name="air-back" />
+      <case name="kneel" />
+      <case name="burrow" />
+      <case name="picking" />
+      <case name="mount-linker" />
+      <case name="mount-linkee" />
+      <case name="catch" />
+      <case name="catched" />
+      <case name="catch-nonehuman" />
+      <case name="catched-nonehuman" />
+      <case name="catch-friend" />
+      <case name="catched-friend" />
+      <case name="hardwall" />
+      <case name="ironfotess" />
+      <case name="sit" />
+      <case name="bomb-kneel" />
+      <case name="inhalation-catch-sword" />
+      <case name="inhalation-catch-nonehuman-sword" />
+    </record>
+    <record name="transit-time" type="Msec" default="500" min="0" max="100000" />
+    <record name="on-transit-time" type="Bool" deprecated="y" />
+    <record name="transit-anim-seq" type="String" max="60" />
+    <record name="fade-in" type="Float32" default="0" />
+    <record name="fade-out" type="Float32" default="0" />
+    <record name="moving-blend" type="Float32" default="0" />
+  </el>
+</table>

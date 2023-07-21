@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table name="store-by-item" version="0.4" autokey="false" module="6">
+  <el name="table" child="1" />
+  <el name="record">
+    <record name="id" type="Int64" key="y" required="y" />
+    <record name="alias" type="String" required="y" max="70" />
+    <record name="acquire-item" type="Ref" ref="item" repeat="100" />
+    <record name="dispose-item" type="Ref" ref="item" repeat="100" />
+    <record name="dispose-item-count" type="Int16" default="0" repeat="100" min="0" max="10000" />
+  </el>
+</table>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table name="contentsjournal" version="0.9" autokey="true" module="4">
+  <el name="table" child="1" />
+  <el name="record">
+    <record name="alias" type="String" required="y" max="70" />
+    <record name="cave" type="Ref" ref="cave2" />
+    <record name="dungeon" type="Ref" ref="dungeon" />
+    <record name="dungeon-solo" type="Ref" ref="dungeon" />
+    <record name="raid-dungeon" type="Ref" ref="raid-dungeon" />
+    <record name="sealed-dungeon-modify" type="Ref" ref="sealed-dungeon-modify" />
+    <record name="boss-challenge" type="Ref" ref="boss-challenge" />
+    <record name="duel-bot-challenge" type="Ref" ref="duel-bot-challenge" />
+    <record name="duel-bot-training-room" type="Ref" ref="duel-bot-training-room" />
+    <record name="tendency-field" type="Ref" ref="tendency-field" />
+    <record name="simple-field" type="Ref" ref="simple-field" />
+    <record name="classic-field-zone" type="Ref" ref="classic-field-zone" />
+    <record name="teleport" type="Ref" ref="teleport" />
+    <record name="sort-no" type="Int8" default="0" />
+    <record name="event" type="Bool" />
+  </el>
+</table>

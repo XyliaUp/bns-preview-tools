@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table name="itemtransformupgradeitem" version="0.1" autokey="true" module="6">
+  <el name="table" child="1" />
+  <el name="record">
+    <record name="alias" type="String" required="y" max="70" />
+    <record name="upgrade-type" type="Seq" required="y">
+      <case name="premium-item-transform" />
+      <case name="add-rare-item-probability-bonus" />
+    </record>
+    <record name="upgrade-item" type="Ref" ref="item" repeat="4" />
+    <record name="upgrade-item-stack-count" type="Int8" default="0" repeat="4" min="0" max="100" />
+  </el>
+</table>

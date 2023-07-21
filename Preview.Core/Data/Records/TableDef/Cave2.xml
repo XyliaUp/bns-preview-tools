@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table name="cave2" version="0.34" autokey="true" module="70">
+	<el name="table" child="1" />
+	<el name="record">
+		<record name="id" type="Int16" required="y" min="1" max="31999" />
+		<record name="alias" type="String" required="y" max="70" />
+		<record name="group" type="Ref" ref="attraction-group" />
+		<record name="zone" type="Ref" ref="zone" repeat="16" />
+		<record name="enable-heart-count" type="Bool" />
+		<record name="max-instant-heart-count" type="Int8" default="0" />
+		<record name="enable-skill-score" type="Bool" />
+		<record name="skill-score-recommend-gear-score" type="Int32" default="0" />
+		<record name="skill-score-recommend-clear-time-step" type="Msec" default="0" repeat="5" />
+		<record name="skill-score-recommend-clear-time-bonus" type="Int16" default="0" repeat="5" />
+		<record name="skill-score-recommand-party-member-count-bonus" type="Int16" default="0" />
+		<record name="skill-score-recommend-hp-step" type="Int32" default="0" repeat="5" />
+		<record name="skill-score-recommend-hp-bonus" type="Int16" default="0" repeat="5" />
+		<record name="skill-score-recommend-use-heart-count" type="Int16" default="0" />
+		<record name="skill-score-recommend-use-heart-count-bonus" type="Int16" default="0" />
+		<record name="skill-score-recommend-use-item-point" type="Int32" default="0" />
+		<record name="skill-score-recommend-use-item-bonus" type="Int16" default="0" />
+		<record name="skill-score-boss-npc" type="Ref" ref="npc" />
+		<record name="skill-score-boss-npc-bonus" type="Int16" default="0" />
+		<record name="attraction-quest" type="Ref" ref="quest" repeat="5" hidden="y" />
+		<record name="ui-filter-attraction-quest-only" type="Bool" />
+		<record name="respawn-confirm-text" type="Ref" ref="text" />
+		<record name="escape-cave-confirm-text" type="Ref" ref="text" />
+		<record name="ui-text-grade" type="Int8" default="0" max="8" />
+		<record name="cave2-name2" type="Ref" ref="text" required="y" />
+		<record name="cave2-desc" type="Ref" ref="text" required="y" />
+		<record name="arena-entrance-zone" type="Ref" ref="zone" />
+		<record name="arena-minimap" type="String" max="70" />
+		<record name="arena-disable-zone-phase" type="Bool" />
+		<record name="required-level" type="Int8" default="0" min="0" max="100" />
+		<record name="required-mastery-level" type="Int8" default="0" min="0" max="100" />
+		<record name="quest-for-ignoring-required-level" type="Ref" ref="quest" />
+		<record name="gs-item-blade-master" type="Ref" ref="item" required="y" />
+		<record name="gs-item-kung-fu-fighter" type="Ref" ref="item" required="y" />
+		<record name="gs-item-force-master" type="Ref" ref="item" required="y" />
+		<record name="gs-item-destroyer" type="Ref" ref="item" required="y" />
+		<record name="gs-item-summoner" type="Ref" ref="item" required="y" />
+		<record name="gs-item-assassin" type="Ref" ref="item" required="y" />
+		<record name="gs-item-sword-master" type="Ref" ref="item" required="y" />
+		<record name="gs-item-warlock" type="Ref" ref="item" required="y" />
+		<record name="gs-item-soul-fighter" type="Ref" ref="item" required="y" />
+		<record name="gs-item-shooter" type="Ref" ref="item" required="y" />
+		<record name="gs-item-warrior" type="Ref" ref="item" required="y" />
+		<record name="gs-item-archer" type="Ref" ref="item" required="y" />
+		<record name="gs-item-spear-master" type="Ref" ref="item" required="y" />
+		<record name="gs-item-thunderer" type="Ref" ref="item" required="y" />
+		<record name="gs-item-dual-blader" type="Ref" ref="item" required="y" />
+		<record name="gs-item-bard" type="Ref" ref="item" required="y" />
+		<record name="recommend-attack-power" type="Int16" default="0" min="0" max="9999" />
+		<record name="standard-gear-weapon" type="Ref" ref="item" required="y" />
+		<record name="reward-summary" type="Ref" ref="attractionrewardsummary" />
+		<record name="recommand-level-min" type="Int8" default="0" />
+		<record name="recommand-level-max" type="Int8" default="0" />
+		<record name="recommand-mastery-level-min" type="Int8" default="0" />
+		<record name="recommand-mastery-level-max" type="Int8" default="0" />
+		<record name="display-quests" type="Ref" ref="quest" repeat="12" hidden="y" />
+		<record name="tactic" type="Ref" ref="text" />
+		<record name="recommend-alias" type="Ref" ref="contentsjournalrecommenditem" />
+	</el>
+</table>

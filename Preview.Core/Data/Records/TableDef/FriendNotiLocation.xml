@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table name="friend-noti-location" version="0.3" autokey="false" module="6" maxid="100">
+  <el name="table" child="1" />
+  <el name="record">
+    <record name="id" type="Int16" key="y" required="y" min="1" max="1000" />
+    <record name="alias" type="String" required="y" max="70" />
+    <record name="zone1" type="Ref" ref="zone" repeat="127" />
+    <record name="zone2" type="Ref" ref="zone" repeat="127" />
+    <record name="name" type="Ref" ref="text" />
+  </el>
+</table>

@@ -1,0 +1,119 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<!-- -->
+		<TargetFramework>net6.0-windows</TargetFramework>
+		<LangVersion>11.0</LangVersion>
+		<RuntimeIdentifier>win-x64</RuntimeIdentifier>
+		<NeutralLanguage>zh-Hans</NeutralLanguage>
+		<IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
+
+		<!-- -->
+		<PackageProjectUrl>https://github.com/XyliaUp/bns-preview-tools</PackageProjectUrl>
+
+		<!-- -->
+		<RootNamespace>Xylia.Match</RootNamespace>
+		<AssemblyName>Match64</AssemblyName>
+		<OutputType>WinExe</OutputType>
+		<PlatformTarget>x64</PlatformTarget>
+		<SelfContained>false</SelfContained>
+		<Deterministic>false</Deterministic>
+		<BootstrapperEnabled>true</BootstrapperEnabled>
+		<Install>true</Install>
+		<InstallFrom>Disk</InstallFrom>
+		<MapFileExtensions>true</MapFileExtensions>
+		<ApplicationRevision>0</ApplicationRevision>
+		<UseApplicationTrust>false</UseApplicationTrust>
+		<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+		<UseWindowsForms>true</UseWindowsForms>
+		<Nullable>annotations</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<IsPublishable>True</IsPublishable>
+		<DebugType>none</DebugType>
+		<AssemblyVersion></AssemblyVersion>
+		<FileVersion></FileVersion>
+		<GeneratePackageOnBuild>False</GeneratePackageOnBuild>
+		<ProduceReferenceAssembly>False</ProduceReferenceAssembly>
+		<UseWPF>True</UseWPF>
+		<AutoGenerateBindingRedirects>false</AutoGenerateBindingRedirects>
+		<CheckForOverflowUnderflow>False</CheckForOverflowUnderflow>
+		<Optimize>True</Optimize>
+		<TargetZone>LocalIntranet</TargetZone>
+		<ApplicationIcon>Properties\Query.ico</ApplicationIcon>
+		<ApplicationManifest>Properties\app.manifest</ApplicationManifest>
+	</PropertyGroup>
+	
+	
+	<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+		<DebugSymbols>false</DebugSymbols>
+	</PropertyGroup>
+	<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+		<GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
+	</PropertyGroup>
+	
+
+	
+	<ItemGroup>
+		<Compile Update="Resources\Resources.Designer.cs">
+			<DesignTime>True</DesignTime>
+			<AutoGen>True</AutoGen>
+			<DependentUpon>Resources.resx</DependentUpon>
+		</Compile>
+		<Compile Update="Windows\Panel\Attribute\AttributePage.cs" />
+		<Compile Update="Windows\Panel\Attribute\GetPara.cs">
+		  <SubType>Form</SubType>
+		</Compile>
+		<Compile Update="Windows\Panel\Else\Youdao.cs" />
+		<Compile Update="Windows\Panel\Text\TextPage.cs" />
+		<Compile Update="Windows\Panel\Image\UE4Page.cs" />
+		<Compile Update="Windows\Panel\Main\ItemPage.cs" />
+		<Compile Update="Windows\Panel\Quest\QuestPage.cs" />
+		<Compile Update="Windows\Panel\Image\IconPage.cs" />
+	</ItemGroup>
+	<ItemGroup>
+		<Content Include="Resources\Game.xml" />
+		<Content Include="Properties\Query.ico" />
+		<Content Include="Resources\Tips.xml" />
+	</ItemGroup>
+	<ItemGroup>
+	  <Resource Include="Properties\log4net.config" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Autoupdater.NET.Official" Version="1.8.3" />
+		<PackageReference Include="CUE4Parse-Conversion" Version="1.0.10" />
+		<PackageReference Include="HtmlAgilityPack" Version="1.11.49" />
+		<PackageReference Include="HZH_Controls-lib" Version="2.0.0.5" />
+		<PackageReference Include="log4net" Version="2.0.15" />
+		<PackageReference Include="Xylia" Version="1.0.4.14" />
+
+		<PackageReference Include="LiveCharts" Version="0.9.7">
+			<NoWarn>NU1701;NU1702</NoWarn>
+		</PackageReference>
+		<PackageReference Include="LiveCharts.WinForms" Version="0.9.7.1">
+			<NoWarn>NU1701;NU1702</NoWarn>
+		</PackageReference>
+		<PackageReference Include="LiveCharts.WPF" Version="0.9.7">
+			<NoWarn>NU1701;NU1702</NoWarn>
+		</PackageReference>
+	</ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\BNSBIN\Src\BnsBinTool.Core\BnsBinTool.Core.csproj" />
+		<ProjectReference Include="..\Preview.Core\Preview.Core.csproj" />
+		<ProjectReference Include="..\Preview.UI\Preview.UI.csproj" />
+	</ItemGroup>
+	<ItemGroup>
+		<EmbeddedResource Update="Resources\Resources.resx">
+			<Generator>PublicResXFileCodeGenerator</Generator>
+			<LastGenOutput>Resources.Designer.cs</LastGenOutput>
+		</EmbeddedResource>
+	</ItemGroup>
+	<ItemGroup>
+		<None Update="Properties\Query.ico">
+			<Pack>True</Pack>
+			<PackagePath>\</PackagePath>
+		</None>
+		<None Update="Windows\Panel\Attribute\Attribute.xml">
+		  <Generator></Generator>
+		</None>
+	</ItemGroup>
+</Project>

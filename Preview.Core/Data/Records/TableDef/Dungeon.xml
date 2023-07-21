@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table name="dungeon" version="5.0" autokey="false" module="78" maxid="31999">
+	<el name="table" child="1" />
+	<el name="record">
+		<record name="id" type="Int16" key="y" required="y" min="1" max="31999" />
+		<record name="alias" type="String" required="y" max="70" />
+		<record name="dungeon-type" type="Seq">
+			<case name="unbind" default="y" />
+			<case name="bind" />
+		</record>
+		<record name="group" type="Ref" ref="attraction-group" />
+		<record name="zone-neutral" type="Ref" ref="zone" repeat="2" />
+		<record name="zone" type="Ref" ref="zone" repeat="9" />
+		<record name="zone-mission-step" type="Int8" default="0" repeat="9" min="0" max="16" />
+		<record name="feedback" type="Ref" ref="feedback" />
+		<record name="arena-entrance-zone" type="Ref" ref="zone" />
+		<record name="required-level" type="Int8" default="0" min="0" max="100" />
+		<record name="required-mastery-level" type="Int8" default="0" min="0" max="100" />
+		<record name="required-preceding-quest" type="Ref" ref="quest" repeat="3" />
+		<record name="required-preceding-quest-check" type="Seq" seq="check" default="and" />
+		<record name="enable-heart-count" type="Bool" />
+		<record name="max-instant-heart-count-difficulty-type" type="Int8" default="0" repeat="3" />
+		<record name="gs-item-blade-master" type="Ref" ref="item" required="y" />
+		<record name="gs-item-blade-master-hard" type="Ref" ref="item" required="y" />
+		<record name="gs-item-blade-master-easy" type="Ref" ref="item" required="y" />
+		<record name="gs-item-kung-fu-fighter" type="Ref" ref="item" required="y" />
+		<record name="gs-item-kung-fu-fighter-hard" type="Ref" ref="item" required="y" />
+		<record name="gs-item-kung-fu-fighter-easy" type="Ref" ref="item" required="y" />
+		<record name="gs-item-force-master" type="Ref" ref="item" required="y" />
+		<record name="gs-item-force-master-hard" type="Ref" ref="item" required="y" />
+		<record name="gs-item-force-master-easy" type="Ref" ref="item" required="y" />
+		<record name="gs-item-destroyer" type="Ref" ref="item" required="y" />
+		<record name="gs-item-destroyer-hard" type="Ref" ref="item" required="y" />
+		<record name="gs-item-destroyer-easy" type="Ref" ref="item" required="y" />
+		<record name="gs-item-summoner" type="Ref" ref="item" required="y" />
+		<record name="gs-item-summoner-hard" type="Ref" ref="item" required="y" />
+		<record name="gs-item-summoner-easy" type="Ref" ref="item" required="y" />
+		<record name="gs-item-assassin" type="Ref" ref="item" required="y" />
+		<record name="gs-item-assassin-hard" type="Ref" ref="item" required="y" />
+		<record name="gs-item-assassin-easy" type="Ref" ref="item" required="y" />
+		<record name="gs-item-sword-master" type="Ref" ref="item" required="y" />
+		<record name="gs-item-sword-master-hard" type="Ref" ref="item" required="y" />
+		<record name="gs-item-sword-master-easy" type="Ref" ref="item" required="y" />
+		<record name="gs-item-warlock" type="Ref" ref="item" required="y" />
+		<record name="gs-item-warlock-hard" type="Ref" ref="item" required="y" />
+		<record name="gs-item-warlock-easy" type="Ref" ref="item" required="y" />
+		<record name="gs-item-soul-fighter" type="Ref" ref="item" required="y" />
+		<record name="gs-item-soul-fighter-hard" type="Ref" ref="item" required="y" />
+		<record name="gs-item-soul-fighter-easy" type="Ref" ref="item" required="y" />
+		<record name="gs-item-shooter" type="Ref" ref="item" required="y" />
+		<record name="gs-item-shooter-hard" type="Ref" ref="item" required="y" />
+		<record name="gs-item-shooter-easy" type="Ref" ref="item" required="y" />
+		<record name="gs-item-warrior" type="Ref" ref="item" required="y" />
+		<record name="gs-item-warrior-hard" type="Ref" ref="item" required="y" />
+		<record name="gs-item-warrior-easy" type="Ref" ref="item" required="y" />
+		<record name="gs-item-archer" type="Ref" ref="item" required="y" />
+		<record name="gs-item-archer-hard" type="Ref" ref="item" required="y" />
+		<record name="gs-item-archer-easy" type="Ref" ref="item" required="y" />
+		<record name="gs-item-spear-master" type="Ref" ref="item" required="y" />
+		<record name="gs-item-spear-master-hard" type="Ref" ref="item" required="y" />
+		<record name="gs-item-spear-master-easy" type="Ref" ref="item" required="y" />
+		<record name="gs-item-thunderer" type="Ref" ref="item" required="y" />
+		<record name="gs-item-thunderer-hard" type="Ref" ref="item" required="y" />
+		<record name="gs-item-thunderer-easy" type="Ref" ref="item" required="y" />
+		<record name="gs-item-dual-blader" type="Ref" ref="item" required="y" />
+		<record name="gs-item-dual-blader-hard" type="Ref" ref="item" required="y" />
+		<record name="gs-item-dual-blader-easy" type="Ref" ref="item" required="y" />
+		<record name="gs-item-bard" type="Ref" ref="item" required="y" />
+		<record name="gs-item-bard-hard" type="Ref" ref="item" required="y" />
+		<record name="gs-item-bard-easy" type="Ref" ref="item" required="y" />	
+		<record name="apply-contents-ban-id" type="Int8" default="0" />
+		<record name="pc-max" type="Int16" default="0" min="0" max="6" />
+		<record name="ignore-party-difficulty-type" type="Bool" />
+		<record name="npc-for-step" type="Ref" ref="npc" repeat="9" />
+		<record name="pc-spawn-for-step" type="Int16" default="0" repeat="9" />
+		<record name="money-for-step" type="Int32" default="0" repeat="9" min="0" />
+		<record name="item-for-step" type="Ref" ref="item" repeat="9" />
+		<record name="item-count-for-step" type="Int16" default="0" repeat="9" min="0" max="1000" />
+		<record name="quest-for-step" type="Ref" ref="quest" repeat="9" />
+		<record name="quest" type="Ref" ref="quest" hidden="y" />
+		<record name="dungeon-quest-difficulty-type" type="Ref" ref="quest" repeat="3" />
+		<record name="effect-pc-difficulty-type" type="Ref" ref="effect" repeat="3" />
+		<record name="effect-npc-difficulty-type" type="Ref" ref="effect" repeat="3" />
+		<record name="enable-skill-score" type="Bool" />
+		<record name="skill-score-recommend-gear-score" type="Int32" default="0" />
+		<record name="skill-score-recommend-clear-time-step" type="Msec" default="0" repeat="5" />
+		<record name="skill-score-recommend-clear-time-bonus" type="Int16" default="0" repeat="5" />
+		<record name="skill-score-recommand-party-member-count-bonus-difficulty-type" type="Int16" default="0" repeat="3" />
+		<record name="skill-score-recommend-hp-step" type="Int32" default="0" repeat="5" />
+		<record name="skill-score-recommend-hp-bonus" type="Int16" default="0" repeat="5" />
+		<record name="skill-score-recommend-use-heart-count" type="Int16" default="0" />
+		<record name="skill-score-recommend-use-heart-count-bonus" type="Int16" default="0" />
+		<record name="skill-score-recommend-use-item-point" type="Int32" default="0" />
+		<record name="skill-score-recommend-use-item-bonus" type="Int16" default="0" />
+		<record name="skill-score-boss-npc" type="Ref" ref="npc" />
+		<record name="skill-score-boss-npc-bonus" type="Int16" default="0" />
+		<record name="attraction-quest" type="Ref" ref="quest" repeat="10" hidden="y" />
+		<record name="ui-filter-attraction-quest-only" type="Bool" />
+		<record name="respawn-confirm-text" type="Ref" ref="text" />
+		<record name="escape-cave-confirm-text" type="Ref" ref="text" />
+		<record name="ui-text-grade" type="Int8" default="0" max="8" />
+		<record name="dungeon-name2" type="Ref" ref="text" required="y" />
+		<record name="dungeon-desc" type="Ref" ref="text" required="y" />
+		<record name="faction-battle-field" type="Bool" />
+		<record name="arena-minimap" type="String" max="70" />
+		<record name="recommend-attack-power-easy" type="Int16" default="0" min="0" max="9999" />
+		<record name="recommend-attack-power-normal" type="Int16" default="0" min="0" max="9999" />
+		<record name="recommend-attack-power-hard" type="Int16" default="0" min="0" max="9999" />
+		<record name="standard-gear-weapon-easy" type="Ref" ref="item" required="y" />
+		<record name="standard-gear-weapon-normal" type="Ref" ref="item" required="y" />
+		<record name="standard-gear-weapon-hard" type="Ref" ref="item" required="y" />
+		<record name="use-difficulty-normal" type="Bool" />
+		<record name="use-difficulty-hard" type="Bool" />
+		<record name="reward-summary" type="Ref" ref="attractionrewardsummary" />
+		<record name="recommand-level-min" type="Int8" default="0" />
+		<record name="recommand-level-max" type="Int8" default="0" />
+		<record name="recommand-mastery-level-min" type="Int8" default="0" />
+		<record name="recommand-mastery-level-max" type="Int8" default="0" />
+		<record name="display-quests" type="Ref" ref="quest" repeat="12" hidden="y" />
+		<record name="tactic-normal" type="Ref" ref="text" />
+		<record name="tactic-hard" type="Ref" ref="text" />
+		<record name="tactic-easy" type="Ref" ref="text" />
+		<record name="recommend-alias-normal" type="Ref" ref="contentsjournalrecommenditem" />
+		<record name="recommend-alias-hard" type="Ref" ref="contentsjournalrecommenditem" />
+		<record name="recommend-alias-easy" type="Ref" ref="contentsjournalrecommenditem" />
+		<record name="boss-ui-extend-distance" type="Bool" />
+		<sub name="default" />
+		<sub name="normal" />
+		<sub name="sealed">
+			<record name="max-sealed-level" type="Int8" default="0" />
+			<record name="modify-data" type="Ref" ref="sealed-dungeon-modify" required="y" />
+			<record name="bind-quota" type="Ref" ref="content-quota" />
+			<record name="theme-version" type="Int16" default="0" />
+			<record name="theme-arena-entrance-zone" type="Ref" ref="zone" />
+			<record name="gimmick-week-start-date-time" type="XUnknown1" />
+		</sub>
+		<sub name="wave">
+		</sub>
+	</el>
+</table>

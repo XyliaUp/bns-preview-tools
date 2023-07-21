@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table name="npcindicatormoveanim" version="0.1" autokey="true" module="4">
+  <el name="table" child="1" />
+  <el name="record">
+    <record name="alias" type="String" required="y" max="70" />
+    <record name="upper-idle" type="String" max="60" />
+    <record name="lower-idle" type="String" max="60" />
+    <record name="upper-walk-front" type="String" max="60" />
+    <record name="lower-walk-front" type="String" max="60" />
+    <record name="upper-walk-back" type="String" max="60" />
+    <record name="lower-walk-back" type="String" max="60" />
+    <record name="upper-walk-left" type="String" max="60" />
+    <record name="lower-walk-left" type="String" max="60" />
+    <record name="upper-walk-right" type="String" max="60" />
+    <record name="lower-walk-right" type="String" max="60" />
+    <record name="upper-walk-leftback" type="String" max="60" />
+    <record name="lower-walk-leftback" type="String" max="60" />
+    <record name="upper-walk-rightback" type="String" max="60" />
+    <record name="lower-walk-rightback" type="String" max="60" />
+    <record name="upper-run-front" type="String" max="60" />
+    <record name="lower-run-front" type="String" max="60" />
+    <record name="upper-run-back" type="String" max="60" />
+    <record name="lower-run-back" type="String" max="60" />
+    <record name="upper-run-left" type="String" max="60" />
+    <record name="lower-run-left" type="String" max="60" />
+    <record name="upper-run-right" type="String" max="60" />
+    <record name="lower-run-right" type="String" max="60" />
+    <record name="upper-run-leftback" type="String" max="60" />
+    <record name="lower-run-leftback" type="String" max="60" />
+    <record name="upper-run-rightback" type="String" max="60" />
+    <record name="lower-run-rightback" type="String" max="60" />
+    <record name="upper-jump-front" type="String" max="60" />
+    <record name="lower-jump-front" type="String" max="60" />
+    <record name="upper-jump-left" type="String" max="60" />
+    <record name="lower-jump-left" type="String" max="60" />
+    <record name="upper-jump-right" type="String" max="60" />
+    <record name="lower-jump-right" type="String" max="60" />
+    <record name="pullout-weapon" type="String" max="60" />
+    <record name="putin-weapon" type="String" max="60" />
+    <record name="putin-bare-hand" type="String" max="60" />
+    <record name="upper-turn-left" type="String" max="60" />
+    <record name="lower-turn-left" type="String" max="60" />
+    <record name="upper-turn-right" type="String" max="60" />
+    <record name="lower-turn-right" type="String" max="60" />
+    <record name="upper-jtoi" type="String" max="60" />
+    <record name="lower-jtoi" type="String" max="60" />
+    <record name="upper-jtomfront" type="String" max="60" />
+    <record name="lower-jtomfront" type="String" max="60" />
+    <record name="upper-jtomleft" type="String" max="60" />
+    <record name="lower-jtomleft" type="String" max="60" />
+    <record name="upper-jtomright" type="String" max="60" />
+    <record name="lower-jtomright" type="String" max="60" />
+    <record name="upper-jtomback" type="String" max="60" />
+    <record name="lower-jtomback" type="String" max="60" />
+    <record name="upper-mtojfront" type="String" max="60" />
+    <record name="lower-mtojfront" type="String" max="60" />
+    <record name="upper-mtojleft" type="String" max="60" />
+    <record name="lower-mtojleft" type="String" max="60" />
+    <record name="upper-mtojright" type="String" max="60" />
+    <record name="lower-mtojright" type="String" max="60" />
+    <record name="upper-mtoi" type="String" max="60" />
+    <record name="lower-mtoi" type="String" max="60" />
+    <record name="upper-ltor" type="String" max="60" />
+    <record name="lower-ltor" type="String" max="60" />
+    <record name="upper-rtol" type="String" max="60" />
+    <record name="lower-rtol" type="String" max="60" />
+  </el>
+</table>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table name="account-level" version="1.0" autokey="false" module="6">
+  <el name="table" child="1" />
+  <el name="record">
+    <record name="name" type="Ref" ref="text" />
+    <record name="level" type="Int16" key="y" required="y" min="1" />
+    <record name="exp" type="Int64" required="y" min="0" />
+    <record name="ability" type="Seq" seq="attach-ability" default="none" repeat="8" />
+    <record name="ability-value" type="Int32" default="0" repeat="8" min="0" max="1000000" />
+    <record name="badge-slot-quota-category1-premium" type="Int8" default="0" min="0" max="1" />
+    <record name="badge-slot-quota-category1-normal" type="Int8" default="0" min="0" max="10" />
+    <record name="badge-slot-quota-category2-premium" type="Int8" default="0" min="0" max="1" />
+    <record name="badge-slot-quota-category2-normal" type="Int8" default="0" min="0" max="10" />
+    <record name="badge-slot-quota-category3-premium" type="Int8" default="0" min="0" max="1" />
+    <record name="badge-slot-quota-category3-normal" type="Int8" default="0" min="0" max="10" />
+    <record name="badge-page" type="Int8" default="0" min="0" max="3" />
+    <record name="badge-inventory-size" type="Int8" default="0" min="0" max="48" />
+  </el>
+</table>

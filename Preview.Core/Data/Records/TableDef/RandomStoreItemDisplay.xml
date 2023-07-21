@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table name="random-store-item-display" version="0.3" autokey="false" module="4">
+  <el name="table" child="1" />
+  <el name="record">
+    <record name="id" type="Int32" key="y" required="y" />
+    <record name="random-store-type" type="Seq">
+      <case name="none" default="y" />
+      <case name="paid" />
+      <case name="free" />
+    </record>
+    <record name="display-item" type="Ref" ref="item" />
+    <record name="draw-group" type="Seq">
+      <case name="none" default="y" />
+      <case name="premium" />
+      <case name="normal" />
+    </record>
+    <record name="probability-group" type="Seq">
+      <case name="none" default="y" />
+      <case name="rare" />
+      <case name="normal" />
+    </record>
+    <record name="new-arrival" type="Bool" />
+  </el>
+</table>

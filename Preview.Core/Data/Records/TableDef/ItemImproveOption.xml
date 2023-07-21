@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table name="item-improve-option" version="2.1" autokey="false" module="6">
+  <el name="table" child="1" />
+  <el name="record">
+    <record name="id" type="Int32" key="y" required="y" min="1" />
+    <record name="level" type="Int8" key="y" required="y" min="1" />
+    <record name="alias" type="String" required="y" max="70" />
+    <record name="ability" type="Seq" seq="main-ability" default="none" />
+    <record name="ability-value" type="Int32" default="0" min="0" />
+    <record name="effect" type="Ref" ref="effect" />
+    <record name="effect-description" type="Ref" ref="text" />
+    <record name="skill-modify-info-group" type="Ref" ref="skill-modify-info-group" repeat="10" />
+    <record name="additional" type="Ref" ref="text" />
+    <record name="draw-option-icon" type="Icon" default="none" max="32767" />
+  </el>
+</table>

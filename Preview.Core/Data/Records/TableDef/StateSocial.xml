@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table name="statesocial" version="0.1" autokey="false" module="4" maxid="200000000">
+  <el name="table" child="1" />
+  <el name="record">
+    <record name="id" type="Int32" key="y" required="y" min="1" max="200000000" />
+    <record name="alias" type="String" required="y" max="70" />
+    <record name="sit-state-social" type="Ref" ref="statesocial" />
+    <record name="can-sitdown" type="Bool" />
+    <record name="start-transit" type="String" max="80" />
+    <record name="idle" type="String" max="80" />
+    <record name="end-transit" type="String" max="80" />
+  </el>
+</table>

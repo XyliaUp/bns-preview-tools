@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table name="job" version="0.57" autokey="false" module="14">
+  <el name="table" child="1" />
+  <el name="record">
+    <record name="job" type="Prop_seq" seq="job" key="y" required="y" />
+    <record name="name" type="String" deprecated="y" max="10" />
+    <record name="name2" type="Ref" ref="text" />
+    <record name="icon" type="Icon" max="32767" />
+    <record name="desc" type="Ref" ref="text" />
+    <record name="target-angle" type="Float32" default="120" deprecated="y" min="0.0" max="360.0" />
+    <record name="target-beam-width" type="Float32" default="1.4" deprecated="y" />
+    <record name="target-band" type="Float32" default="0.0" repeat="2" deprecated="y" />
+    <record name="lobby-chart-imageset" type="String" deprecated="y" max="100" />
+    <record name="lobby-job-imageset" type="String" max="100" />
+    <record name="character-info-job-imageset" type="String" max="100" />
+    <record name="character-info-job-imageset2" type="String" max="100" />
+    <record name="item-map-job-icon" type="Ref" ref="text" />
+    <record name="item-map-job-style-icon" type="Ref" ref="text" repeat="3" />
+    <record name="common-job-imageset" type="String" max="100" />
+    <record name="stance" type="Prop_seq" seq="stance" default="stance-none" repeat="3" />
+    <record name="skillmap-backimageset" type="String" max="100" />
+    <record name="skillmap-backimageset-width" type="Int16" default="0" />
+    <record name="skillmap-backimageset-height" type="Int16" default="0" />
+    <record name="lobby-slot-job-icon-texture" type="Ref" ref="icontexture" />
+    <record name="lobby-slot-job-icon-index" type="Int16" default="0" />
+    <record name="lobby-job-symbol-image" type="XUnknown2" />
+    <record name="introduce-job-style" type="Ref" ref="job-style" repeat="3" />
+    <record name="play-style-desc" type="Ref" ref="text" />
+    <record name="play-style-imageset" type="String" max="100" />
+    <record name="play-difficulty" type="Int8" default="1" min="0" max="10" />
+    <record name="play-difficulty-desc" type="Ref" ref="text" />
+    <record name="hud-player-job-imageset" type="String" max="100" />
+    <record name="action-key" type="Seq16" seq="key-command" default="action2" />
+    <record name="bns-action-key" type="Seq16" seq="key-command" default="action2" />
+    <record name="attack-attr-1-simple-branch-group-icon-texture" type="Ref" ref="icontexture" repeat="4" deprecated="y" />
+    <record name="attack-attr-1-simple-branch-group-icon-index" type="Int16" default="0" repeat="4" deprecated="y" />
+    <record name="attack-attr-1-simple-branch-group-desc" type="Ref" ref="text" repeat="4" deprecated="y" />
+    <record name="attack-attr-2-simple-branch-group-icon-texture" type="Ref" ref="icontexture" repeat="4" deprecated="y" />
+    <record name="attack-attr-2-simple-branch-group-icon-index" type="Int16" default="0" repeat="4" deprecated="y" />
+    <record name="attack-attr-2-simple-branch-group-desc" type="Ref" ref="text" repeat="4" deprecated="y" />
+    <record name="simple-branch-group-key-1-icon-texture" type="Ref" ref="icontexture" repeat="10" deprecated="y" />
+    <record name="simple-branch-group-key-1-icon-index" type="Int16" default="0" repeat="10" deprecated="y" />
+    <record name="simple-branch-group-key-1-desc" type="Ref" ref="text" repeat="10" deprecated="y" />
+    <record name="simple-branch-group-key-2-icon-texture" type="Ref" ref="icontexture" repeat="10" deprecated="y" />
+    <record name="simple-branch-group-key-2-icon-index" type="Int16" default="0" repeat="10" deprecated="y" />
+    <record name="simple-branch-group-key-2-desc" type="Ref" ref="text" repeat="10" deprecated="y" />
+    <record name="simple-branch-group-key-3-icon-texture" type="Ref" ref="icontexture" repeat="10" deprecated="y" />
+    <record name="simple-branch-group-key-3-icon-index" type="Int16" default="0" repeat="10" deprecated="y" />
+    <record name="simple-branch-group-key-3-desc" type="Ref" ref="text" repeat="10" deprecated="y" />
+    <record name="simple-branch-group-key-4-icon-texture" type="Ref" ref="icontexture" repeat="10" deprecated="y" />
+    <record name="simple-branch-group-key-4-icon-index" type="Int16" default="0" repeat="10" deprecated="y" />
+    <record name="simple-branch-group-key-4-desc" type="Ref" ref="text" repeat="10" deprecated="y" />
+    <record name="training-desc-default" type="Ref" ref="text" />
+    <record name="training-desc-attack" type="Ref" ref="text" />
+    <record name="training-desc-defence" type="Ref" ref="text" />
+    <record name="training-desc-maze" type="Ref" ref="text" />
+    <record name="training-desc-protect" type="Ref" ref="text" />
+    <record name="training-desc-control" type="Ref" ref="text" />
+    <record name="training-desc-distance" type="Ref" ref="text" />
+    <record name="training-chart-value-attack" type="Int16" default="0" min="0" max="100" />
+    <record name="training-chart-value-defence" type="Int16" default="0" min="0" max="100" />
+    <record name="training-chart-value-maze" type="Int16" default="0" min="0" max="100" />
+    <record name="training-chart-value-protect" type="Int16" default="0" min="0" max="100" />
+    <record name="training-chart-value-control" type="Int16" default="0" min="0" max="100" />
+    <record name="training-chart-value-distance" type="Int16" default="0" min="0" max="100" />
+    <record name="train-background-imageset" type="String" max="100" />
+    <record name="lobby-chart-value-protection" type="Int16" default="0" min="0" max="100" />
+    <record name="lobby-chart-value-control" type="Int16" default="0" min="0" max="100" />
+    <record name="lobby-chart-value-distance" type="Int16" default="0" min="0" max="100" />
+    <record name="lobby-chart-value-simplecontrols" type="Int16" default="0" min="0" max="100" />
+    <record name="lobby-chart-value-defense" type="Int16" default="0" min="0" max="100" />
+    <record name="lobby-chart-value-melee" type="Int16" default="0" min="0" max="100" />
+    <record name="lobby-play-bink" type="String" max="100" />
+    <record name="filter-name" type="String" repeat="3" max="20" />
+    <record name="highlight-font" type="String" max="50" />
+    <record name="job-quest-text" type="Ref" ref="text" />
+    <record name="damage-show-split-percent" type="Int16" default="0" min="0" max="10000" />
+    <record name="job-style-name" type="Ref" ref="text" repeat="10" />
+    <record name="skill-train-ui-job-style-name" type="Ref" ref="text" repeat="10" />
+    <record name="skill-train-ui-job-style-imageset" type="String" repeat="10" max="100" />
+    <record name="skill-train-ui-trait-open-button-text" type="Ref" ref="text" repeat="10" />
+    <record name="skill-train-ui-page-job-style-name" type="Ref" ref="text" repeat="10" />
+    <record name="skill-train-ui-page-job-style-imageset" type="String" repeat="10" max="100" />
+    <record name="skill-trainingroom-ui-job-style-imageset" type="String" repeat="10" max="100" />
+    <record name="use-guard-gauge" type="Bool" />
+    <record name="use-ui-skill-combo" type="Bool" />
+    <record name="use-ui-skill-train-combo-action" type="Int16" default="0" hidden="y" />
+    <record name="contents-journal-job-style-icon" type="Ref" ref="text" repeat="3" />
+    <record name="equip-weapon-scale" type="Float32" default="1.0" min="0.5" max="1.5" />
+    <record name="phantom-weapon-active-type" type="Seq">
+      <case name="none" default="y" />
+      <case name="equip" />
+      <case name="effect-flag" />
+    </record>
+    <record name="phantom-weapon-active-effect-flag-1st" type="Seq16" seq="flag" default="none" />
+    <record name="phantom-weapon-active-effect-flag-2nd" type="Seq16" seq="flag" default="none" />
+    <record name="phantom-weapon-count" type="Int16" default="0" min="0" max="6" />
+    <record name="phantom-weapon-anim-set" type="String" max="100" />
+    <record name="phantom-weapon-start-create-socket" type="Bool" />
+    <record name="phantom-weapon-start-create-height" type="Distance" default="80" min="0" />
+    <record name="phantom-weapon-reload-create-socket" type="Bool" />
+    <record name="phantom-weapon-reload-create-height" type="Distance" default="80" min="0" />
+    <record name="phantom-weapon-customized-attach-scale" type="Bool" />
+    <record name="phantom-weapon-attach-socket-name-1st" type="String" repeat="6" max="100" />
+    <record name="phantom-weapon-attach-socket-name-2nd" type="String" repeat="6" max="100" />
+    <record name="phantom-weapon-spawn-start-bone" type="String" max="100" />
+    <record name="phantom-weapon-spawn-duration-1st" type="Float32" default="2.0" />
+    <record name="phantom-weapon-spawn-duration-2nd" type="Float32" default="2.0" />
+    <record name="phantom-weapon-spawn-attach-duration" type="Float32" default="0.7" />
+    <record name="phantom-weapon-spawn-show-1st" type="String" repeat="6" max="100" />
+    <record name="phantom-weapon-spawn-show-2nd" type="String" repeat="6" max="100" />
+    <record name="phantom-weapon-spawn-end-bone" type="String" max="100" />
+    <record name="phantom-weapon-end-duration" type="Float32" default="2.0" />
+    <record name="phantom-weapon-end-show" type="String" repeat="6" max="100" />
+    <record name="phantom-weapon-exec-end-duration" type="Float32" default="2.0" />
+    <record name="phantom-weapon-exec-end-show" type="String" repeat="6" max="100" />
+    <record name="phantom-weapon-finish-duration" type="Float32" default="2.0" />
+    <record name="phantom-weapon-finish-show" type="String" repeat="6" max="100" />
+    <record name="phantom-weapon-idle-animation-1st" type="String" repeat="6" max="100" />
+    <record name="phantom-weapon-idle-animation-2nd" type="String" repeat="6" max="100" />
+    <record name="phantom-weapon-sync-time" type="Float32" default="1.0" />
+  </el>
+</table>

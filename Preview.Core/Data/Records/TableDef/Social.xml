@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table name="social" version="0.25" autokey="true" module="14">
+  <el name="table" child="1" />
+  <el name="record">
+    <record name="alias" type="String" required="y" max="70" />
+    <record name="duration" type="Msec" default="1000" min="100" max="60000" />
+    <record name="balloon-text" type="Ref" ref="text" />
+    <record name="voice-sync" type="Bool" />
+    <record name="balloon-icon-texture" type="Ref" ref="icontexture" deprecated="y" />
+    <record name="balloon-icon-index" type="Int16" default="0" deprecated="y" />
+    <record name="balloon-icon" type="Icon" deprecated="y" max="32767" />
+    <record name="show" type="XUnknown2" />
+    <record name="balloon-duration" type="Msec" default="0" max="10000" />
+    <record name="anim" type="String" deprecated="y" max="50" />
+    <record name="sound" type="XUnknown2" deprecated="y" />
+    <record name="kismet-start-time" type="Msec" default="0" min="0" max="60000" />
+    <record name="kismet" type="XUnknown2" />
+    <record name="rotate" type="Seq">
+      <case name="keep" default="y" />
+      <case name="server-yaw" />
+      <case name="toplayer" />
+    </record>
+    <record name="spawn-cinematic" type="Ref" ref="cinematic" />
+    <record name="message" type="Ref" ref="game-message" />
+    <record name="message-target-type" type="Seq">
+      <case name="none" default="y" />
+      <case name="activated-faction-1" />
+      <case name="activated-faction-2" />
+    </record>
+    <record name="message-contents-type" type="Seq">
+      <case name="none" default="y" />
+      <case name="faction-stage-in-volume" />
+    </record>
+    <record name="id" type="Int64" key="y" required="y" deprecated="y" />
+    <record name="social-type" type="Seq" deprecated="y">
+      <case name="anim" />
+      <case name="kismet" />
+      <case name="show" default="y" />
+    </record>
+    <record name="social-name" type="String" deprecated="y" max="50" />
+  </el>
+</table>

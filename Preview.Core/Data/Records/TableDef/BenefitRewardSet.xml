@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table name="benefit-reward-set" version="0.2" autokey="false" module="6" maxid="2000">
+  <el name="table" child="1" />
+  <el name="record">
+    <record name="id" type="Int16" key="y" required="y" min="1001" max="2000" />
+    <record name="reward" type="Seq" repeat="4">
+      <case name="none" default="y" />
+      <case name="combat-exp" />
+    </record>
+    <record name="reward-value" type="Int32" default="0" repeat="4" min="0" max="1000" />
+    <record name="name2" type="Ref" ref="text" />
+  </el>
+</table>

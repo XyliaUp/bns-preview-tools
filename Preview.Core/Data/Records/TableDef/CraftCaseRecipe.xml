@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table name="craft-case-recipe" version="0.4" autokey="false" module="6">
+  <el name="table" child="1" />
+  <el name="record">
+    <record name="id" type="Int32" key="y" required="y" />
+    <record name="alias" type="String" required="y" max="50" />
+    <record name="group-alias" type="Ref" ref="craft-group-recipe" />
+    <record name="case-option" type="Int8" default="1" required="y" min="0" max="5" />
+    <record name="craft-duration" type="Int32" default="0" min="0" />
+    <record name="use-state" type="Seq">
+      <case name="invalid-state" />
+      <case name="no-more-use" />
+      <case name="in-use" default="y" />
+    </record>
+    <record name="name" type="Ref" ref="text" required="y" />
+    <record name="desc" type="Ref" ref="text" />
+    <record name="requirement-name" type="Ref" ref="text" />
+    <record name="location-desc" type="Ref" ref="text" />
+    <record name="required-craft-exp" type="Int16" default="0" min="0" />
+    <record name="required-achievement-id" type="Int32" default="0" />
+    <record name="required-achievement-step-min" type="Int16" default="0" />
+    <record name="cost-money" type="Int32" default="0" min="0" />
+    <record name="cost-material" type="TRef" repeat="8" />
+    <record name="cost-material-condition-type" type="Seq" seq="condition-type" default="all" repeat="8" />
+    <record name="cost-material-amount" type="Int16" default="0" repeat="8" />
+    <record name="reward-craft-exp" type="Int16" default="0" min="0" />
+    <record name="half-craft-exp-step" type="Int16" default="0" min="0" />
+    <record name="zero-craft-exp-step" type="Int16" default="0" min="0" />
+    <record name="reward-craft-bonus-exp" type="Int16" default="0" min="0" />
+    <record name="half-craft-bonus-exp-step" type="Int16" default="0" min="0" />
+    <record name="zero-craft-bonus-exp-step" type="Int16" default="0" min="0" />
+    <record name="reward-item" type="Ref" ref="item" repeat="5" />
+    <record name="reward-item-min" type="Int32" default="0" repeat="5" min="0" />
+    <record name="reward-item-max" type="Int32" default="0" repeat="5" min="0" />
+    <record name="reward-item-reference" type="Int32" default="0" repeat="5" min="0" />
+  </el>
+</table>

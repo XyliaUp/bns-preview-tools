@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table name="summoned" version="0.55" autokey="false" module="2062" maxid="65500">
+  <el name="table" child="1" />
+  <el name="record">
+    <record name="race" type="Prop_seq" seq="race" default="race-none" key="y" />
+    <record name="job" type="Prop_seq" seq="job" default="job-none" key="y" />
+    <record name="id" type="Int64" required="y" min="0" max="65500" />
+    <record name="sex" type="Prop_seq" seq="sex" default="sex-none" />
+    <record name="summoned-type" type="Seq">
+      <case name="normal" default="y" />
+      <case name="ethereal" />
+    </record>
+    <record name="brain-type" type="Seq">
+      <case name="normal" default="y" />
+      <case name="combat-follow" />
+      <case name="fixed" />
+    </record>
+    <record name="combat-follow-distance" type="Distance" default="200" min="200" />
+    <record name="far-event-distance" type="Distance" default="0" min="0" />
+    <record name="far-event-action-type" type="Seq">
+      <case name="none" default="y" />
+      <case name="recall" />
+      <case name="despawn" />
+    </record>
+    <record name="radius" type="Distance" default="0" min="0" max="5000" />
+    <record name="trace-master-skill-target" type="Bool" />
+    <record name="summoned-sequence" type="Ref" ref="summoned-sequence" required="y" />
+    <record name="seq-skill" type="Int32" default="0" repeat="10" />
+    <record name="spawn-skill-id" type="Int32" default="0" />
+    <record name="immune-skill-attribute" type="Seq" seq="skill-attribute" default="none" repeat="4" />
+    <record name="immune-effect-attribute" type="Seq16" seq="effect-attribute" default="none" repeat="8" />
+    <record name="stance" type="Prop_seq" seq="stance" default="소환수-follow" />
+    <record name="lifetime-duration" type="Msec" default="0" min="0" max="120000" />
+    <record name="max-speed-near-master" type="Velocity" default="0" min="0" max="8000" />
+    <record name="min-distance-to-lerp-speed" type="Distance" default="50" min="50" />
+    <record name="max-distance-to-lerp-speed" type="Distance" default="50" min="50" />
+    <record name="speed" type="Velocity" default="0" min="0" max="8000" />
+    <record name="use-customized-appearance" type="Bool" />
+    <record name="appearance" type="Ref" ref="creatureappearance" />
+    <record name="animset" type="XUnknown2" />
+    <record name="moveanim" type="Ref" ref="summonedmoveanim" deprecated="y" />
+    <record name="spawn-social" type="Ref" ref="social" />
+    <record name="dead-social" type="Ref" ref="social" deprecated="y" />
+    <record name="despawn-social" type="Ref" ref="social" deprecated="y" />
+    <record name="respawn-in-social" type="Ref" ref="social" />
+    <record name="respawn-out-social" type="Ref" ref="social" />
+    <record name="spawn-show" type="XUnknown2" />
+    <record name="despawn-show" type="XUnknown2" />
+    <record name="combat-side-player-continuance-show" type="XUnknown2" />
+    <record name="combat-side-friend-continuance-show" type="XUnknown2" />
+    <record name="combat-side-enemy-continuance-show" type="XUnknown2" />
+    <record name="icon" type="Icon" max="32767" />
+    <record name="ui-show-buff-list" type="Bool" default="y" />
+    <record name="ui-show-nameplate" type="Bool" default="y" />
+    <record name="ui-show-summoned-stat" type="Bool" default="y" />
+    <record name="ui-enable-pc-tooltip" type="Bool" default="y" />
+    <record name="mapunit-width" type="Float32" default="0.0" />
+    <record name="mapunit-height" type="Float32" default="0.0" />
+    <record name="mapunit-imageset" type="XUnknown2" />
+    <record name="mapunit-outsight-width" type="Float32" default="0.0" />
+    <record name="mapunit-outsight-height" type="Float32" default="0.0" />
+    <record name="mapunit-outsight-imageset" type="XUnknown2" />
+    <record name="fixed-name" type="Ref" ref="text" />
+    <record name="nameplate-title-state-normal" type="Ref" ref="text" />
+    <record name="nameplate-title-state-duel-other-team" type="Ref" ref="text" />
+    <record name="nameplate-name-state-anonymity" type="Ref" ref="text" />
+    <record name="nameplate-name-state-duel-other-team" type="Ref" ref="text" />
+    <record name="term-sequence-range-sim-check" type="Float32" default="0.5" />
+  </el>
+</table>

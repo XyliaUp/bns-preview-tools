@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table name="sealed-dungeon-level" version="1.1" autokey="false" module="6">
+  <el name="table" child="1" />
+  <el name="record">
+    <record name="sealed-level" type="Int8" key="y" required="y" min="1" />
+    <record name="sealed-exp" type="Int64" required="y" min="0" />
+    <record name="scroll-level-font" type="XUnknown2" />
+  </el>
+</table>

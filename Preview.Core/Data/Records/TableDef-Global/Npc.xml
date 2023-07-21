@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<record name="npc-brain" >
+		<case name="none" />
+		<case name="citizen" />
+		<case name="monster" />
+		<case name="boss" />
+		<case name="follower" />
+	</record>
+
+	<record name="npc-grade2">
+		<case name="none" />
+		<case name="boss" />
+		<case name="champion" />
+		<case name="normal" />
+		<case name="follower" />
+		<case name="tool" />
+		<case name="weakest" />
+		<case name="weak" />
+		<case name="regular" />
+		<case name="strong" />
+	</record>
+
+
+	<record name="dead-state">
+		<case name="all" />
+		<case name="not-dead-restoration" default="y" />
+		<case name="not-dead" />
+		<case name="dead" />
+		<case name="exhaustion" />
+		<case name="restoration" />
+		<case name="dead-exhaustion" />
+		<case name="not-dead-restoration-exhaustion" />
+	</record>
+</table>

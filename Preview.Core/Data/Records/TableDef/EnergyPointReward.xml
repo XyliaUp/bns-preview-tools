@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table name="energy-point-reward" version="0.3" autokey="false" module="6" maxid="8">
+  <el name="table" child="1" />
+  <el name="record">
+    <record name="id" type="Int8" key="y" required="y" min="1" max="8" />
+    <record name="require-energy-point" type="Int32" required="y" min="1" max="2000000" />
+    <record name="max-acquire-count" type="Int16" required="y" min="1" max="700" />
+    <record name="reward-type" type="Seq" required="y">
+      <case name="none" />
+      <case name="exp" />
+      <case name="money" />
+      <case name="item" />
+    </record>
+    <record name="exp" type="Int64" required="y" min="1" />
+    <record name="money-min" type="Int32" default="0" min="0" />
+    <record name="money-max" type="Int32" default="0" min="0" />
+    <record name="item" type="Ref" ref="item" repeat="8" />
+    <record name="item-count" type="Int16" default="0" repeat="8" min="0" max="100" />
+    <record name="item-total-weight" type="Int32" hidden="y" />
+    <record name="icon" type="Icon" max="32767" />
+    <record name="name" type="Ref" ref="text" required="y" />
+  </el>
+</table>

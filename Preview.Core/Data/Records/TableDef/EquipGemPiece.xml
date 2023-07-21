@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table name="equip-gem-piece" version="0.2" autokey="false" module="6" maxid="30000">
+  <el name="table" child="1" />
+  <el name="record">
+    <record name="id" type="Int16" key="y" required="y" min="1" max="30000" />
+    <record name="alias" type="String" required="y" max="70" />
+    <record name="item-ability" type="Seq" seq="main-ability" required="y" />
+    <record name="value" type="Int16" default="0" min="0" max="30000" />
+  </el>
+</table>

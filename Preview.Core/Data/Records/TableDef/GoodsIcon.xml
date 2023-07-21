@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table name="goodsicon" version="0.1" autokey="false" module="4" maxid="200000000">
+  <el name="table" child="1" />
+  <el name="record">
+    <record name="id" type="Int32" key="y" required="y" min="1" max="200000000" />
+    <record name="icon" type="Icon" max="32767" />
+  </el>
+</table>

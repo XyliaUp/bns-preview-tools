@@ -1,0 +1,582 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<record name="consume-type">
+		<case name="point" />
+		<case name="point-below" />
+		<case name="point-above" />
+		<case name="base-max-percent" />
+		<case name="total-max-percent" />
+		<case name="current-percent" />
+	</record>
+
+	<record name="detach-slot">
+		<case name="none" default="y" />
+		<case name="other" />
+		<case name="attack-hit" />
+		<case name="attack-miss" />
+		<case name="attack-dodge" />
+		<case name="attack-parry" />
+		<case name="attack-perfect-parry" />
+		<case name="attack-bounce" />
+		<case name="attack-critical" />
+		<case name="attack-counter" />
+		<case name="attacked-hit" />
+		<case name="attacked-miss" />
+		<case name="attacked-dodge" />
+		<case name="attacked-parry" />
+		<case name="attacked-perfect-parry" />
+		<case name="attacked-bounce" />
+		<case name="attacked-critical" />
+		<case name="attacked-counter" />
+		<case name="casting-start" />
+		<case name="casting-end" />
+		<case name="attack-perfect-dodge" />
+		<case name="attacked-perfect-dodge" />
+	</record>
+
+	<record name="direction">
+		<case name="front" />
+		<case name="back" />
+		<case name="left" />
+		<case name="right" />
+		<case name="front-right" />
+		<case name="front-left" />
+		<case name="back-right" />
+		<case name="back-left" />
+	</record>
+
+
+
+
+
+	<record name="effect-target-type">
+		<case name="none" default="y" />
+		<case name="effect-owner" />
+		<case name="effect-eventer" />
+		<case name="effect-giver" />
+		<case name="skill-target" />
+	</record>
+
+	<record name="effect-attribute">
+		<case name="none" default="y" />
+		<case name="회복" />
+		<case name="진드기" />
+		<case name="불" />
+		<case name="은사" />
+		<case name="거미줄" />
+		<case name="독" />
+		<case name="은신" />
+		<case name="투명" />
+		<case name="광기" />
+		<case name="얼음감옥" />
+		<case name="독나방" />
+		<case name="가젯드랍" />
+		<case name="다운" />
+		<case name="넉백대시" />
+		<case name="방어불가" />
+		<case name="도발" />
+		<case name="도망" />
+		<case name="이동불가" />
+		<case name="대시불가" />
+		<case name="감속" />
+		<case name="기절" />
+		<case name="얼어붙음" />
+		<case name="행동불가" />
+		<case name="출혈" />
+		<case name="치유" />
+		<case name="얼음" />
+		<case name="맹독" />
+		<case name="막기" />
+		<case name="속박" />
+		<case name="제압" />
+		<case name="위치바꾸기" />
+		<case name="장악연계" />
+		<case name="무적" />
+		<case name="멍해짐" />
+		<case name="앞차기" />
+		<case name="혼절" />
+		<case name="광폭해짐" />
+		<case name="공중" />
+		<case name="그로기" />
+		<case name="난무" />
+		<case name="넉백" />
+		<case name="흡공" />
+		<case name="퀘스트-1" />
+		<case name="퀘스트-2" />
+		<case name="퀘스트-3" />
+		<case name="퀘스트-4" />
+		<case name="퀘스트-5" />
+		<case name="대상공중" />
+		<case name="보스-1" />
+		<case name="보스-2" />
+		<case name="보스-3" />
+		<case name="보스대쉬" />
+		<case name="그림자" />
+		<case name="중첩불가1" />
+		<case name="중첩불가2" />
+		<case name="조건만족" />
+		<case name="소환사독" />
+		<case name="탱킹장판" />
+		<case name="검막" />
+		<case name="비트" />
+		<case name="홍옥" />
+		<case name="녹주석" />
+		<case name="보스저항-1" />
+		<case name="보스저항-2" />
+		<case name="보스저항-3" />
+		<case name="보스저항-4" />
+		<case name="보스저항-5" />
+		<case name="낙인저항-1" />
+		<case name="낙인저항-2" />
+		<case name="낙인저항-3" />
+		<case name="낙인저항-4" />
+		<case name="마성-1" />
+		<case name="마성-2" />
+		<case name="마성-3" />
+		<case name="마성-4" />
+		<case name="주술체" />
+		<case name="소울" />
+		<case name="부적" />
+		<case name="환마" />
+		<case name="반사" />
+		<case name="NPC-1" />
+		<case name="NPC-2" />
+		<case name="NPC-3" />
+		<case name="NPC-4" />
+		<case name="NPC-5" />
+		<case name="NPC-6" />
+		<case name="NPC-7" />
+		<case name="NPC-8" />
+		<case name="NPC-9" />
+		<case name="NPC-10" />
+		<case name="낙인저항-5" />
+		<case name="낙인저항-6" />
+		<case name="낙인저항-7" />
+		<case name="낙인저항-8" />
+		<case name="클래스-1" />
+		<case name="클래스-2" />
+		<case name="클래스-3" />
+		<case name="클래스-4" />
+		<case name="클래스-5" />
+		<case name="클래스-6" />
+		<case name="클래스-7" />
+		<case name="클래스-8" />
+		<case name="클래스-9" />
+		<case name="클래스-10" />
+		<case name="클래스-11" />
+		<case name="클래스-12" />
+		<case name="클래스-13" />
+		<case name="클래스-14" />
+		<case name="클래스-15" />
+		<case name="클래스-16" />
+		<case name="클래스-17" />
+		<case name="클래스-18" />
+		<case name="클래스-19" />
+		<case name="클래스-20" />
+		<case name="클래스-21" />
+		<case name="클래스-22" />
+		<case name="클래스-23" />
+		<case name="클래스-24" />
+		<case name="클래스-25" />
+		<case name="클래스-26" />
+		<case name="클래스-27" />
+		<case name="클래스-28" />
+		<case name="클래스-29" />
+		<case name="클래스-30" />
+		<case name="클래스-31" />
+		<case name="클래스-32" />
+		<case name="클래스-33" />
+		<case name="클래스-34" />
+		<case name="클래스-35" />
+		<case name="클래스-36" />
+		<case name="클래스-37" />
+		<case name="클래스-38" />
+		<case name="클래스-39" />
+		<case name="클래스-40" />
+		<case name="클래스-41" />
+		<case name="클래스-42" />
+		<case name="클래스-43" />
+		<case name="클래스-44" />
+		<case name="클래스-45" />
+		<case name="클래스-46" />
+		<case name="클래스-47" />
+		<case name="클래스-48" />
+		<case name="클래스-49" />
+		<case name="클래스-50" />
+		<case name="클래스-51" />
+		<case name="클래스-52" />
+		<case name="클래스-53" />
+		<case name="클래스-54" />
+		<case name="클래스-55" />
+		<case name="클래스-56" />
+		<case name="클래스-57" />
+		<case name="클래스-58" />
+		<case name="클래스-59" />
+		<case name="클래스-60" />
+		<case name="아이템조건-1" />
+		<case name="어택글라이드" />
+
+		<!-- 以下为虚幻4版本内容 -->
+		<case name="문양-1" />
+		<case name="문양-2" />
+		<case name="문양-3" />
+		<case name="문양-4" />
+		<case name="문양-5" />
+		<case name="문양-6" />
+		<case name="문양-7" />
+		<case name="문양-8" />
+		<case name="문양-9" />
+		<case name="문양-10" />
+		<case name="문양-11" />
+		<case name="문양-12" />
+		<case name="문양-13" />
+		<case name="문양-14" />
+		<case name="문양-15" />
+		<case name="문양-16" />
+		<case name="문양-17" />
+		<case name="문양-18" />
+		<case name="문양-19" />
+		<case name="문양-20" />
+		<case name="기믹-1" />
+		<case name="기믹-2" />
+		<case name="기믹-3" />
+		<case name="기믹-4" />
+		<case name="기믹-5" />
+		<case name="던전보스-1" />
+	</record>
+
+
+	<record name="grocery-effect-type" >
+		<case name="heal-potion" />
+		<case name="sp-potion" />
+		<case name="buff-item-01" />
+		<case name="buff-item-02" />
+		<case name="buff-item-03" />
+		<case name="buff-item-04" />
+		<case name="buff-item-05" />
+		<case name="buff-item-06" />
+		<case name="buff-item-07" />
+		<case name="buff-item-08" />
+		<case name="buff-item-09" />
+		<case name="buff-item-10" />
+		<case name="buff-item-11" />
+		<case name="buff-item-12" />
+		<case name="buff-item-13" />
+		<case name="buff-item-14" />
+		<case name="buff-item-15" />
+		<case name="buff-item-16" />
+		<case name="buff-item-17" />
+		<case name="buff-item-18" />
+		<case name="buff-item-19" />
+		<case name="buff-item-20" />
+		<case name="etc" default="y" />
+	</record>
+
+
+
+
+
+	<record name="flag">
+		<case name="none" default="y" />
+		<case name="stun" />
+		<case name="airdash" />
+		<case name="knockback" />
+		<case name="bind-phantom" />
+		<case name="link" />
+		<case name="detection" />
+		<case name="internal-injury" />
+		<case name="immediately-exec" />
+		<case name="concentration" />
+		<case name="infinity-shot" />
+		<case name="down" />
+		<case name="swoon" />
+		<case name="defence" />
+		<case name="kneel" />
+		<case name="provocation" />
+		<case name="midair-1" />
+		<case name="midair-2" />
+		<case name="midair-3" />
+		<case name="frostbite" />
+		<case name="magnetic-seal" />
+		<case name="fast-freezing" />
+		<case name="rupture" />
+		<case name="impregnability" />
+		<case name="prickblood" />
+		<case name="wildfire-1" />
+		<case name="wildfire-2" />
+		<case name="wildfire-3" />
+		<case name="hide" />
+		<case name="burrow" />
+		<case name="smokescreen" />
+		<case name="embers" />
+		<case name="poison" />
+		<case name="applied-poison" />
+		<case name="spider-web" />
+		<case name="time-bomb" />
+		<case name="defence-block" />
+		<case name="dash-block" />
+		<case name="dexterity" />
+		<case name="soulblade-1" />
+		<case name="soulblade-2" />
+		<case name="soulblade-3" />
+		<case name="joint" />
+		<case name="flydragon" />
+		<case name="landdragon" />
+		<case name="silverweb-1" />
+		<case name="silverweb-2" />
+		<case name="justguard" />
+		<case name="force-flag-1" />
+		<case name="force-flag-2" />
+		<case name="force-flag-3" />
+		<case name="catchshield" />
+		<case name="poundshort" />
+		<case name="axechopshort" />
+		<case name="swingstrikeshort" />
+		<case name="chilblain" />
+		<case name="frontdown" />
+		<case name="bleeding" />
+		<case name="npc-state-1" />
+		<case name="npc-state-2" />
+		<case name="npc-state-3" />
+		<case name="npc-state-4" />
+		<case name="npc-state-5" />
+		<case name="npc-state-6" />
+		<case name="npc-state-7" />
+		<case name="npc-state-8" />
+		<case name="hardwall-break" />
+		<case name="react-link" />
+		<case name="Counter" />
+		<case name="Shadow" />
+		<case name="Shuriken" />
+		<case name="Instantkick" />
+		<case name="Hyperkick" />
+		<case name="Saver" />
+		<case name="HeartStab" />
+		<case name="LeafDodge" />
+		<case name="DragonKick" />
+		<case name="BurstBlow" />
+		<case name="Blood" />
+		<case name="BloodFullStack" />
+		<case name="Poison2" />
+		<case name="Poison2FullStack" />
+		<case name="TankingDrain" />
+		<case name="EmberFullStack" />
+		<case name="PoisonFullStack" />
+		<case name="FireBit" />
+		<case name="FireBitFullStack" />
+		<case name="IceBit" />
+		<case name="Hole" />
+		<case name="HoleFullStack" />
+		<case name="Bubble" />
+		<case name="Swallow" />
+		<case name="FireBit2" />
+		<case name="IceBit2" />
+		<case name="IceBitFullStack" />
+		<case name="FireWall1" />
+		<case name="FireWall2" />
+		<case name="FireWall3" />
+		<case name="FireWall4" />
+		<case name="HighKick" />
+		<case name="Abdomen" />
+		<case name="ShortBurst" />
+		<case name="MartialFullHit" />
+		<case name="Smash" />
+		<case name="Hole1" />
+		<case name="Hole2" />
+		<case name="Hole3" />
+		<case name="TargetHole1" />
+		<case name="TargetHole2" />
+		<case name="TargetHole3" />
+		<case name="Hornet" />
+		<case name="MorningGlory" />
+		<case name="cannot-resurrect" />
+		<case name="enable-guild-battle-field" />
+		<case name="Immune-link" />
+		<case name="GhostX0" />
+		<case name="GhostX1" />
+		<case name="GhostX2" />
+		<case name="GhostX3" />
+		<case name="Thornbus" />
+		<case name="BloodBurst" />
+		<case name="AdventMark1" />
+		<case name="AdventMark2" />
+		<case name="HyperMove" />
+		<case name="Talisman" />
+		<case name="Spector01" />
+		<case name="Spector02" />
+		<case name="Spector03" />
+		<case name="Phantomsoul" />
+		<case name="Bluesky" />
+		<case name="EgoAutoParry" />
+		<case name="Pierce" />
+		<case name="burn" />
+		<case name="AttackGlide" />
+		<case name="SecondGaugeStopped" />
+		<case name="BigBossJump" />
+		<case name="bigbossstate-1" />
+		<case name="JobSkillFlag-1" />
+		<case name="JobSkillFlag-2" />
+		<case name="JobSkillFlag-3" />
+		<case name="JobSkillFlag-4" />
+		<case name="JobSkillFlag-5" />
+		<case name="JobSkillFlag-6" />
+		<case name="JobSkillFlag-7" />
+		<case name="JobSkillFlag-8" />
+		<case name="JobSkillFlag-9" />
+		<case name="JobSkillFlag-10" />
+		<case name="JobSkillFlag-11" />
+		<case name="JobSkillFlag-12" />
+		<case name="JobSkillFlag-13" />
+		<case name="JobSkillFlag-14" />
+		<case name="JobSkillFlag-15" />
+		<case name="JobSkillFlag-16" />
+		<case name="JobSkillFlag-17" />
+		<case name="JobSkillFlag-18" />
+		<case name="JobSkillFlag-19" />
+		<case name="JobSkillFlag-20" />
+		<case name="JobSkillFlag-21" />
+		<case name="JobSkillFlag-22" />
+		<case name="JobSkillFlag-23" />
+		<case name="JobSkillFlag-24" />
+		<case name="JobSkillFlag-25" />
+		<case name="JobSkillFlag-26" />
+		<case name="JobSkillFlag-27" />
+		<case name="JobSkillFlag-28" />
+		<case name="JobSkillFlag-29" />
+		<case name="JobSkillFlag-30" />
+		<case name="JobSkillFlag-31" />
+		<case name="JobSkillFlag-32" />
+		<case name="JobSkillFlag-33" />
+		<case name="JobSkillFlag-34" />
+		<case name="JobSkillFlag-35" />
+		<case name="JobSkillFlag-36" />
+		<case name="JobSkillFlag-37" />
+		<case name="JobSkillFlag-38" />
+		<case name="JobSkillFlag-39" />
+		<case name="JobSkillFlag-40" />
+		<case name="JobSkillFlag-41" />
+		<case name="JobSkillFlag-42" />
+		<case name="JobSkillFlag-43" />
+		<case name="JobSkillFlag-44" />
+		<case name="JobSkillFlag-45" />
+		<case name="JobSkillFlag-46" />
+		<case name="npc-skill-1" />
+		<case name="npc-skill-2" />
+		<case name="npc-skill-3" />
+		<case name="npc-skill-4" />
+		<case name="npc-skill-5" />
+		<case name="npc-skill-6" />
+		<case name="npc-skill-7" />
+		<case name="npc-skill-8" />
+		<case name="npc-skill-9" />
+		<case name="npc-skill-10" />
+		<case name="npc-skill-11" />
+		<case name="npc-skill-12" />
+		<case name="stun-miss" />
+		<case name="down-miss" />
+		<case name="Struggle" />
+		<case name="boutiquefree" />
+		<case name="tumbling-block" />
+		<case name="PeaceArea" />
+		<case name="perfect-dodged" />
+
+		<!-- 之后的均为虚幻4版本内容 -->
+		<case name="kneel-miss" />
+		<case name="glyph-1" />
+		<case name="glyph-2" />
+		<case name="glyph-3" />
+		<case name="glyph-4" />
+		<case name="glyph-5" />
+		<case name="glyph-6" />
+		<case name="glyph-7" />
+		<case name="glyph-8" />
+		<case name="glyph-9" />
+		<case name="glyph-10" />
+		<case name="glyph-11" />
+		<case name="glyph-12" />
+		<case name="glyph-13" />
+		<case name="glyph-14" />
+		<case name="glyph-15" />
+		<case name="glyph-16" />
+		<case name="glyph-17" />
+		<case name="glyph-18" />
+		<case name="glyph-19" />
+		<case name="glyph-20" />
+		<case name="Break-1" />
+		<case name="Break-2" />
+		<case name="Break-3" />
+		<case name="condition-event-1" />
+		<case name="condition-event-2" />
+		<case name="condition-event-3" />
+		<case name="condition-event-4" />
+		<case name="condition-event-5" />
+		<case name="condition-event-6" />
+		<case name="condition-event-7" />
+		<case name="condition-event-8" />
+		<case name="condition-event-9" />
+		<case name="condition-event-10" />
+	</record>
+
+	<record name="function" >
+		<case name="none" default="y" />
+		<case name="block-move" desc="阻止移动" />
+		<case name="block-rotate" desc="阻止旋转" />
+		<case name="block-skill" desc="阻止技能" />
+		<case name="block-physical-skill" desc="阻止物理技能" />
+		<case name="block-force-skill" desc="阻止强制技能" />
+		<case name="immune-damage" desc="免疫伤害" />
+		<case name="immune-death" desc="免疫死亡" />
+		<case name="immune-debuff" desc="免疫负面效果" />
+		<case name="immune-casting-delay" desc="免疫执行延迟" />
+		<case name="block-dodge" />
+		<case name="block-bounce" />
+		<case name="block-parry" />
+		<case name="block-perfect-parry" />
+		<case name="block-jump" />
+		<case name="block-hyper" />
+		<case name="front-perfect-parry" />
+		<case name="back-perfect-parry" />
+		<case name="front-bounce" />
+		<case name="back-bounce" />
+	</record>
+
+
+
+	<record name="link">
+		<case name="attach" default="y" />
+		<case name="not-attach" />
+		<case name="dispel" />
+	</record>
+
+	<record name="link-stage">
+		<case name="none" default="y" />
+		<case name="stage-1" />
+		<case name="stage-2" />
+	</record>
+
+	<record name="link-state">
+		<case name="none" default="y" />
+		<case name="link" />
+		<case name="linked" />
+	</record>
+
+	<record name="link-type">
+		<case name="none" default="y" />
+		<case name="mount" />
+		<case name="inhalation" />
+		<case name="slugfest" />
+		<case name="catch" />
+		<case name="catch-none-human" />
+		<case name="catch-friend" />
+		<case name="inhalation-catch" />
+	</record>
+
+
+	<record name="target-type">
+		<case name="all" />
+		<case name="friend" />
+		<case name="enemy" />
+		<case name="my-party" />
+		<case name="my-team" />
+	</record>
+</table>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table name="job-style" version="0.13" autokey="false" module="14">
+  <el name="table" child="1" />
+  <el name="record">
+    <record name="job" type="Prop_seq" seq="job" key="y" required="y" />
+    <record name="job-style" type="Seq" seq="job-style" key="y" required="y" />
+    <record name="alias" type="String" required="y" max="70" />
+    <record name="introduce-job-style-icon" type="XUnknown2" />
+    <record name="introduce-job-style-name" type="Ref" ref="text" />
+    <record name="introduce-job-style-play-desc" type="Ref" ref="text" />
+    <record name="introduce-job-style-specialization" type="Ref" ref="job-style-specialization" repeat="5" />
+    <record name="unk-" type="Int64" min="0" max="0" />
+    <record name="unk-" type="Int64" min="0" max="0" />
+    <record name="combat-start-fx-show" type="XUnknown2" />
+    <record name="combat-end-fx-show" type="XUnknown2" />
+    <record name="right-weapon-particle-ref" type="XUnknown2" />
+    <record name="right-weapon-particle-socket" type="XUnknown2" />
+    <record name="left-weapon-particle-ref" type="XUnknown2" />
+    <record name="left-weapon-particle-socket" type="XUnknown2" />
+    <record name="phantom-weapon-ribbon-particle-ref" type="XUnknown2" />
+    <record name="auto-combat-attack-distance" type="Distance" default="50" min="50" />
+    <record name="auto-combat-converted-distance-attacker-enemy" type="Distance" default="0" min="0" />
+    <record name="auto-combat-converted-distance-pouch" type="Distance" default="0" min="0" />
+    <record name="auto-combat-converted-distance-enemy" type="Distance" default="0" min="0" />
+    <record name="enable-job-style-gauge-ui" type="Bool" />
+    <record name="job-style-gauge-unit" type="Int8" default="1" min="1" max="100" />
+    <record name="job-style-gauge-full-charge-icon" type="Bool" />
+    <record name="job-style-gauge-full-charge-particle-ref" type="XUnknown2" />
+    <record name="job-style-gauge-full-charge-particle-scale" type="Float32" default="1.0" />
+  </el>
+</table>

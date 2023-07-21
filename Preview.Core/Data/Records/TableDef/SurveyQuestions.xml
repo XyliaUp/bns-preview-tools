@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table name="surveyquestions" version="0.1" autokey="true" module="4">
+  <el name="table" child="1" />
+  <el name="surveyquestion">
+    <record name="alias" type="String" required="y" max="70" />
+    <record name="title" type="String" max="256" />
+    <record name="greeting" type="String" max="256" />
+  </el>
+  <el name="question">
+    <record name="num" type="Int8" required="y" min="1" max="20" />
+    <record name="question-type" type="Seq">
+      <case name="single-selection-question" default="y" />
+      <case name="multiple-selection-question" />
+      <case name="subjective-question" />
+    </record>
+    <record name="desc" type="String" max="256" />
+  </el>
+  <el name="questionexample">
+    <record name="num" type="Int8" required="y" min="1" max="9" />
+    <record name="desc" type="String" max="256" />
+    <record name="gotoquestionnum" type="Int8" default="0" />
+  </el>
+</table>

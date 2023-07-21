@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table name="glyph-slot" version="5.0" autokey="false" module="6">
+  <el name="table" child="1" />
+  <el name="record">
+    <record name="slot" type="Int8" key="y" required="y" min="1" max="30" />
+    <record name="slot-type" type="Seq" required="y">
+      <case name="none" />
+      <case name="normal" />
+      <case name="special" />
+      <case name="material" />
+    </record>
+    <record name="slot-color" type="Seq">
+      <case name="none" default="y" />
+      <case name="red" />
+      <case name="yellow" />
+      <case name="blue" />
+    </record>
+    <record name="required-level" type="Int32" default="0" min="0" max="100" />
+    <record name="required-mastery-level" type="Int32" default="0" min="0" max="100" />
+    <record name="required-sealed-dungeon" type="Ref" ref="dungeon" />
+    <record name="required-sealed-level" type="Int16" default="0" min="0" />
+    <record name="required-quest-id" type="Int16" default="0" min="0" max="32001" />
+    <record name="required-achievement-id" type="Int16" default="0" min="0" max="11000" />
+    <record name="required-achievement-step" type="Int16" default="0" min="0" max="8" />
+    <record name="cost-money" type="Int32" default="0" min="0" />
+    <record name="cost-item" type="Ref" ref="item" repeat="4" />
+    <record name="cost-item-count" type="Int16" default="0" repeat="4" min="0" max="30000" />
+  </el>
+</table>

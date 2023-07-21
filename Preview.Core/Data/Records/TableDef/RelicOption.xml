@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table name="relic-option" version="4.1" autokey="true" module="6">
+	<el name="table" child="1" />
+	<el name="record">
+		<record name="alias" type="String" required="y" max="70" />
+		<record name="ability" type="Seq" repeat="60" seq="attach-ability" />
+		<record name="base-ability-min" type="Int32" repeat="60" default="1" />
+		<record name="base-ability-max" type="Int32" repeat="60" default="1" />
+		<record name="enhance-ability-min" type="Int32" repeat="60" default="1" />
+		<record name="enhance-ability-max" type="Int32" repeat="60" default="1" />
+	</el>
+</table>

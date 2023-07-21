@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table name="duel-observer-skill-slot" version="0.12" autokey="true" module="4">
+  <el name="table" child="1" />
+  <el name="record">
+    <record name="job" type="Prop_seq" seq="job" required="y" />
+    <record name="slot" type="Int32" required="y" min="0" max="20" />
+    <record name="skill3" type="Ref" ref="skill3" repeat="40" />
+    <record name="ui-action-alias" type="String" repeat="40" max="70" />
+    <record name="ui-view-type" type="Seq">
+      <case name="none" default="y" />
+      <case name="critical" />
+      <case name="main" />
+    </record>
+    <record name="use-ui-context" type="Bool" />
+    <record name="use-observer-only" type="Bool" />
+    <record name="use-ui-defence-skill" type="Bool" default="y" />
+    <record name="condition-check" type="Bool" />
+    <record name="condition-check-flag" type="Seq16" seq="flag" default="none" repeat="4" />
+    <record name="condition-check-flag-op" type="Seq" seq="op" default="or" />
+  </el>
+</table>

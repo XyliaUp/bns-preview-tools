@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table name="challengelist" version="0.8" autokey="false" module="6">
+  <el name="table" child="1" />
+  <el name="record">
+    <record name="challenge-type" type="Seq" key="y" required="y">
+      <case name="none" />
+      <case name="sun" />
+      <case name="mon" />
+      <case name="tue" />
+      <case name="wed" />
+      <case name="thu" />
+      <case name="fri" />
+      <case name="sat" />
+      <case name="week1" />
+      <case name="week2" />
+      <case name="week3" />
+      <case name="week4" />
+      <case name="week5" />
+      <case name="week6" />
+      <case name="week7" />
+      <case name="week8" />
+      <case name="week9" />
+      <case name="week10" />
+    </record>
+    <record name="required-level" type="Int8" default="0" min="0" />
+    <record name="required-mastery-level" type="Int8" default="0" min="0" />
+    <record name="challenge-quest-basic" type="Ref" ref="quest" repeat="20" />
+    <record name="challenge-quest-expansion" type="Ref" ref="quest" repeat="20" />
+    <record name="challenge-quest-grade" type="Seq" repeat="20">
+      <case name="none" default="y" />
+      <case name="grade1" />
+      <case name="grade2" />
+      <case name="grade3" />
+    </record>
+    <record name="challenge-quest-complete-count" type="Int8" default="0" />
+    <record name="challenge-quest-attraction" type="TRef" repeat="20" />
+    <record name="challenge-quest-total-count" type="Int8" default="0" hidden="y" />
+    <record name="challenge-npc-difficulty" type="Seq" repeat="20">
+      <case name="none" default="y" />
+      <case name="easy" />
+      <case name="normal" />
+      <case name="hard" />
+    </record>
+    <record name="challenge-npc-kill" type="Ref" ref="npc" repeat="20" />
+    <record name="challenge-npc-attraction" type="TRef" repeat="20" />
+    <record name="challenge-npc-grade" type="Seq" repeat="20">
+      <case name="none" default="y" />
+      <case name="grade1" />
+      <case name="grade2" />
+      <case name="grade3" />
+    </record>
+    <record name="challenge-npc-quest" type="Ref" ref="quest" repeat="20" />
+    <record name="challenge-npc-total-count" type="Int8" default="0" hidden="y" />
+    <record name="challenge-reward-total-count" type="Int8" default="0" hidden="y" />
+    <record name="challenge-count-for-reward" type="Int8" default="0" repeat="20" min="0" />
+    <record name="reward" type="Ref" ref="challengelistreward" repeat="20" />
+    <sub name="dayofweek" />
+    <sub name="week">
+      <record name="week-start-date-time" type="Time64" />
+    </sub>
+  </el>
+</table>

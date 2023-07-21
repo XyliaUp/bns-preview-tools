@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table name="soul-boost-event" version="5.0" autokey="false" module="6">
+  <el name="table" child="1" />
+  <el name="record">
+    <record name="id" type="Int32" key="y" required="y" min="1" />
+    <record name="alias" type="String" required="y" max="70" />
+    <record name="event-name" type="String" max="32" />
+    <record name="mission-step-name-type" type="Seq">
+      <case name="none" default="y" />
+      <case name="type-1" />
+      <case name="type-2" />
+      <case name="type-3" />
+      <case name="type-4" />
+      <case name="type-5" />
+      <case name="type-6" />
+      <case name="type-7" />
+      <case name="type-8" />
+    </record>
+    <record name="front-imageset" type="XUnknown2" />
+    <record name="back-imageset" type="XUnknown2" />
+    <record name="foot-imageset" type="XUnknown2" />
+    <record name="slot-imageset" type="XUnknown2" />
+    <record name="max-point" type="Int32" default="1" min="1" max="2000000000" />
+    <record name="max-item-point" type="Int32" default="0" min="0" max="100000000" />
+    <record name="grade-point" type="Int32" default="0" repeat="100" min="0" max="10000000" />
+    <record name="grade-reward" type="Ref" ref="soul-boost-grade-reward" repeat="100" />
+    <record name="bm-grade-reward" type="Ref" ref="soul-boost-grade-reward" repeat="100" />
+    <record name="exchange-reward-point" type="Int32" default="0" min="0" max="10000000" />
+    <record name="exchange-reward-item" type="Ref" ref="item" />
+    <record name="exchange-reward-item-count" type="Int16" default="1" min="1" />
+    <record name="bm-exchange-reward-point" type="Int32" default="0" min="0" max="10000000" />
+    <record name="bm-exchange-reward-item" type="Ref" ref="item" />
+    <record name="bm-exchange-reward-item-count" type="Int16" default="1" min="1" />
+    <record name="bm-accumulate-reward-interval-day" type="Int8" default="0" min="0" />
+    <record name="bm-accumulate-reward-item" type="Ref" ref="item" />
+    <record name="bm-accumulate-reward-item-count" type="Int16" default="1" min="1" />
+    <record name="bm-accumulate-reward-start-time-type" type="Seq">
+      <case name="none" />
+      <case name="season-start-time" default="y" />
+      <case name="participation-time" />
+    </record>
+    <record name="bm-activate-item" type="Ref" ref="item" />
+    <record name="bm-activate-item-count" type="Int16" default="1" min="1" />
+    <record name="unlocated-store-type" type="Seq">
+      <case name="unlocated-none" default="y" />
+      <case name="unlocated-store" />
+      <case name="account-store" />
+      <case name="soul-boost-store-1" />
+      <case name="soul-boost-store-2" />
+      <case name="soul-boost-store-3" />
+      <case name="soul-boost-store-4" />
+      <case name="soul-boost-store-5" />
+      <case name="soul-boost-store-6" />
+    </record>
+    <record name="mission-step" type="Ref" ref="soul-boost-mission-step" repeat="40" />
+    <record name="core-reward-item" type="Ref" ref="item" repeat="10" />
+    <record name="purchase-grade" type="Bool" />
+  </el>
+</table>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table name="static-chat-channel" version="0.2" autokey="true" module="12">
+  <el name="table" child="1" />
+  <el name="record">
+    <record name="alias" type="String" required="y" max="70" />
+    <record name="name2" type="Ref" ref="text" />
+    <record name="partychanneltype" type="Seq">
+      <case name="none" default="y" />
+      <case name="1" />
+      <case name="2" />
+      <case name="3" />
+      <case name="4" />
+      <case name="5" />
+      <case name="6" />
+    </record>
+  </el>
+</table>

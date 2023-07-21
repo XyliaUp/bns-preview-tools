@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table name="itemusablerelation" version="0.5" autokey="true" module="6">
+  <el name="table" child="1" />
+  <el name="record">
+    <record name="alias" type="String" required="y" max="70" />
+    <record name="attraction-group" type="Ref" ref="attraction-group" required="y" />
+    <record name="all" type="Bool" />
+    <record name="default" type="Bool" />
+    <record name="duel" type="Bool" />
+    <record name="unusable" type="Bool" />
+    <record name="jeryoungrim" type="Bool" />
+    <record name="deasamak" type="Bool" />
+    <record name="suwal" type="Bool" />
+    <record name="beakchung" type="Bool" />
+    <record name="gunwon" type="Bool" />
+    <record name="epichigh" type="Bool" />
+    <record name="pacheonseongdo" type="Bool" />
+    <record name="musin1-15" type="Bool" />
+    <record name="cave-dungeon" type="Bool" />
+    <record name="potion" type="Bool" />
+    <record name="talisman" type="Bool" />
+    <record name="techeonwangreung" type="Bool" />
+    <record name="event1" type="Bool" />
+    <record name="event2" type="Bool" />
+    <record name="special-potion" type="Bool" />
+  </el>
+</table>

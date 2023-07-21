@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table name="trainskillversion" version="0.1" autokey="false" module="6">
+  <el name="table" child="1" />
+  <el name="record">
+    <record name="job" type="Prop_seq" seq="job" key="y" required="y" />
+    <record name="version" type="Int32" required="y" min="1" />
+  </el>
+</table>

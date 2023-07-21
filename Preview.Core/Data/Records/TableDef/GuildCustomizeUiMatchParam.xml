@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table name="guildcustomizeuimatchparam" version="0.1" autokey="false" module="4">
+  <el name="table" child="1" />
+  <el name="record">
+    <record name="ui-index" type="Int16" key="y" required="y" />
+    <record name="sub-name" type="Ref" ref="text" />
+    <record name="param-index" type="Int8" default="-1" />
+  </el>
+</table>

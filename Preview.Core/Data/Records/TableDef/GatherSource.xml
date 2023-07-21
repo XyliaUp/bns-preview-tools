@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table name="gathersource" version="0.7" autokey="false" module="14">
+  <el name="table" child="1" />
+  <el name="record">
+    <record name="id" type="Int64" key="y" required="y" />
+    <record name="alias" type="String" required="y" max="70" />
+    <record name="gather-type" type="Seq" required="y">
+      <case name="hand-collection" />
+    </record>
+    <record name="required-pc-level" type="Int16" default="1" min="1" max="70" />
+    <record name="required-gather-level" type="Int8" default="1" />
+    <record name="max-range" type="Distance" default="0" />
+    <record name="item" type="Ref" ref="item" repeat="4" />
+    <record name="item-count-min" type="Int8" default="1" repeat="4" min="1" max="100" />
+    <record name="item-count-max" type="Int8" default="1" repeat="4" min="1" max="100" />
+    <record name="item-probability" type="Int8" default="0" repeat="4" min="0" max="100" />
+    <record name="reward-exp" type="Int16" default="0" />
+    <record name="gather-action-duration" type="Msec" default="0" />
+    <record name="respawn-time" type="Msec" default="0" />
+    <record name="mesh-name" type="String" required="y" max="50" />
+    <record name="animset-name" type="String" required="y" max="50" />
+    <record name="gather-start-animname" type="String" required="y" max="50" />
+    <record name="gather-end-animname" type="String" required="y" max="50" />
+    <record name="gather-stay-animname" type="String" required="y" max="50" />
+  </el>
+</table>

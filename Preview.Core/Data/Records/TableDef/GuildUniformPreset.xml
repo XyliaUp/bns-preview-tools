@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table name="guilduniformpreset" version="0.2" autokey="false" module="4">
+  <el name="table" child="1" />
+  <el name="record">
+    <record name="index" type="Int32" key="y" required="y" />
+    <record name="preset-type" type="Seq">
+      <case name="none" default="y" />
+      <case name="costume" />
+      <case name="face" />
+      <case name="head" />
+    </record>
+    <record name="preset" type="Ref" ref="guildcustomizepreset" />
+    <record name="name" type="Ref" ref="text" />
+    <record name="icon-texture" type="Ref" ref="icontexture" />
+    <record name="icon-index" type="Int16" default="0" />
+    <record name="desc" type="Ref" ref="text" />
+    <record name="order" type="Int32" required="y" />
+  </el>
+</table>

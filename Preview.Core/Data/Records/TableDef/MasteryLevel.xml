@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table name="mastery-level" version="1.12" autokey="false" module="6">
+  <el name="table" child="1" />
+  <el name="record">
+    <record name="mastery-level" type="Int8" key="y" required="y" min="1" max="50" />
+    <record name="mastery-exp" type="Int64" required="y" min="0" max="1000000000000" />
+    <record name="skill-build-up-point" type="Int16" default="0" />
+    <record name="cannot-mastery-exp-up-in-min-exp" type="Bool" />
+    <record name="unlock-item" type="Ref" ref="item" />
+    <record name="unlock-item-count" type="Int16" default="0" />
+    <record name="acquire-tp" type="Int8" default="1" min="0" />
+    <record name="current-stat-point" type="Int16" default="0" />
+    <record name="accumulated-acquire-tp" type="Int16" hidden="y" />
+    <record name="level-guide-path" type="String" max="100" />
+    <record name="additional-stat-point-max" type="Int16" default="0" min="0" max="1000" />
+    <record name="stat-point-attacker-max" type="Int16" default="0" min="0" max="1000" />
+    <record name="stat-point-defender-max" type="Int16" default="0" min="0" max="1000" />
+  </el>
+</table>

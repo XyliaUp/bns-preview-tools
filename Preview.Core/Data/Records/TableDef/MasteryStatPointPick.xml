@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table name="mastery-stat-point-pick" version="0.5" autokey="false" module="6">
+  <el name="table" child="1" />
+  <el name="record">
+    <record name="stat-point-pick-attribute" type="Seq" key="y" required="y">
+      <case name="slot1" />
+      <case name="slot2" />
+      <case name="slot3" />
+      <case name="slot4" />
+      <case name="slot5" />
+    </record>
+    <record name="stat-point-tier" type="Int8" key="y" required="y" min="0" max="100" />
+    <record name="stat-point-job" type="Prop_seq" seq="job" key="y" required="y" />
+    <record name="required-stat-point" type="Int16" default="0" />
+    <record name="effect" type="Ref" ref="effect" />
+    <record name="description" type="Ref" ref="text" />
+  </el>
+</table>

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table name="skilltooltip" version="0.15" autokey="true" module="4">
+  <el name="table" child="1" />
+  <el name="record">
+    <record name="skill" type="Ref" ref="skill3" />
+    <record name="tooltip-group" type="Seq" required="y">
+      <case name="M1" />
+      <case name="M2" />
+      <case name="SUB" />
+      <case name="STANCE" />
+      <case name="CONDITION" />
+    </record>
+    <record name="ect-order" type="Seq">
+      <case name="CTE" default="y" />
+      <case name="CET" />
+      <case name="TCE" />
+      <case name="TEC" />
+      <case name="ECT" />
+      <case name="ETC" />
+    </record>
+    <record name="ect-order-english" type="Seq">
+      <case name="CTE" default="y" />
+      <case name="CET" />
+      <case name="TCE" />
+      <case name="TEC" />
+      <case name="ECT" />
+      <case name="ETC" />
+    </record>
+    <record name="ect-order-french" type="Seq">
+      <case name="CTE" default="y" />
+      <case name="CET" />
+      <case name="TCE" />
+      <case name="TEC" />
+      <case name="ECT" />
+      <case name="ETC" />
+    </record>
+    <record name="ect-order-german" type="Seq">
+      <case name="CTE" default="y" />
+      <case name="CET" />
+      <case name="TCE" />
+      <case name="TEC" />
+      <case name="ECT" />
+      <case name="ETC" />
+    </record>
+    <record name="ect-order-russian" type="Seq">
+      <case name="CTE" default="y" />
+      <case name="CET" />
+      <case name="TCE" />
+      <case name="TEC" />
+      <case name="ECT" />
+      <case name="ETC" />
+    </record>
+    <record name="ect-order-bportuguese" type="Seq">
+      <case name="CTE" default="y" />
+      <case name="CET" />
+      <case name="TCE" />
+      <case name="TEC" />
+      <case name="ECT" />
+      <case name="ETC" />
+    </record>
+    <record name="effect-attribute" type="Ref" ref="skilltooltipattribute" />
+    <record name="effect-arg" type="String" repeat="4" max="70" />
+    <record name="condition-attribute" type="Ref" ref="skilltooltipattribute" />
+    <record name="condition-arg" type="String" repeat="2" max="70" />
+    <record name="target-attribute" type="Ref" ref="skilltooltipattribute" />
+    <record name="before-stance-attribute" type="Ref" ref="skilltooltipattribute" />
+    <record name="after-stance-attribute" type="Ref" ref="skilltooltipattribute" />
+    <record name="default-text" type="Ref" ref="text" />
+    <record name="attribute-color-text" type="Ref" ref="text" />
+    <record name="skill-modify-diff-repeat-count" type="Int8" default="1" />
+    <record name="skill-attack-attribute-coefficient-percent" type="Int16" default="0" min="0" max="1000" />
+    <record name="item-default-text" type="Ref" ref="text" />
+    <record name="item-replace-text" type="Ref" ref="text" />
+  </el>
+</table>

@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<record name="angle">
+		<case name="0" />
+		<case name="45" />
+		<case name="90" />
+		<case name="135" />
+		<case name="180" />
+		<case name="225" />
+		<case name="270" />
+		<case name="315" />
+	</record>
+
+	<record name="event-type">
+		<case name="none" default="y" />
+		<case name="attack" />
+		<case name="attacked" />
+	</record>
+
+
+	<record name="gather-type">
+		<case name="target" desc="单一目标" />
+		<case name="target-360" />
+		<case name="target-front-180" />
+		<case name="target-back-180" />
+		<case name="target-front-90" />
+		<case name="target-back-90" />
+		<case name="target-front-15" />
+		<case name="target-front-30" />
+		<case name="target-front-45" />
+		<case name="target-front-60" />
+		<case name="target-front-120" />
+		<case name="target-front-270" />
+		<case name="laser" desc="矩形" />
+		<case name="target-and-link-target" />
+		<case name="shifting-laser" desc="移动矩形" />
+	</record>
+
+	<record name="skill-result">
+		<case name="none" default="y" />
+		<case name="hit" desc="命中 (不包括暴击)" />
+		<case name="miss" />
+		<case name="dodge" desc="闪避" />
+		<case name="parry" desc="格挡" />
+		<case name="perfect-parry" desc="完美格挡" />
+		<case name="bounce" desc="反弹" />
+		<case name="counter" />
+		<case name="critical-hit" desc="暴击命中" />
+		<case name="hit-critical-hit" desc="命中和暴击命中 (命中时一般指这个)" />
+		<case name="back-hit-critical-hit" desc="背后命中" />
+		<case name="not-hit" />
+		<case name="all" />
+		<case name="hit-critical-hit-parry" />
+		<case name="parry-perfect-parry" />
+		<case name="front-hit-critical-hit" />
+		<case name="parry-perfect-parry-counter" desc="反制穿刺" />
+		<case name="parry-perfect-parry-dodge" />
+		<case name="parry-dodge" />
+	</record>
+
+	<record name="skill-stage">
+		<case name="none" default="y" />
+		<case name="cast" />
+		<case name="fire-1" />
+		<case name="exec-1" />
+		<case name="fire-2" />
+		<case name="exec-2" />
+		<case name="fire-3" />
+		<case name="exec-3" />
+		<case name="fire-4" />
+		<case name="exec-4" />
+		<case name="fire-5" />
+		<case name="exec-5" />
+		<case name="finish" />
+	</record>
+
+	<record name="skill-attribute">
+		<case name="none" default="y" />
+		<case name="막기" />
+		<case name="반격" />
+		<case name="튕기기" />
+		<case name="방어행동" />
+		<case name="대쉬" />
+		<case name="이동" />
+		<case name="회피" />
+		<case name="다운" />
+		<case name="넉백" />
+		<case name="기절" />
+		<case name="그로기" />
+		<case name="공중" />
+		<case name="행동불가" />
+		<case name="이동불가" />
+		<case name="다운대응" />
+		<case name="막기조건" />
+		<case name="회피조건" />
+		<case name="치명타조건" />
+		<case name="연계기" />
+		<case name="스탠스" />
+		<case name="회복" />
+		<case name="게이지회복" />
+		<case name="부활" />
+		<case name="지원" />
+		<case name="즉시시전" />
+		<case name="캐스팅" />
+		<case name="가드브레이크" />
+		<case name="발사체" />
+		<case name="발사체2" />
+		<case name="제압" />
+		<case name="관절기" />
+		<case name="장악" />
+		<case name="비인간장악" />
+		<case name="흡공" />
+		<case name="제압대응" />
+		<case name="장악대응" />
+		<case name="흡공대응" />
+		<case name="해제" />
+		<case name="독" />
+		<case name="쿨타임" />
+		<case name="불" />
+		<case name="얼음" />
+		<case name="전기" />
+		<case name="기공" />
+		<case name="트리거" />
+		<case name="워프" />
+		<case name="근거리" />
+		<case name="원거리" />
+		<case name="광역" />
+		<case name="이동가능" />
+		<case name="데미지존" />
+		<case name="상태면역" />
+		<case name="위치바꾸기" />
+		<case name="은사" />
+		<case name="도발" />
+	</record>
+</table>

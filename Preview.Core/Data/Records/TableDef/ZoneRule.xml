@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table name="zonerule" version="2.0" autokey="false" module="6">
+  <el name="table" child="1" />
+  <el name="record">
+    <record name="zone" type="Int32" key="y" required="y" />
+    <record name="enable-infinite-hyper-energy" type="Bool" />
+    <record name="enable-reset-combat-mode" type="Bool" />
+    <record name="reset-combat-mode-recycle-duration" type="Msec" default="0" min="0" max="600000" />
+    <record name="enable-co-ownership-pouch" type="Bool" />
+    <record name="enable-pvp" type="Bool" />
+    <record name="required_inactivated_main_faction" type="Bool" />
+    <record name="apply-content-ban-id" type="Seq">
+      <case name="invalid" />
+      <case name="duel" />
+      <case name="faction battle field" />
+      <case name="dungeon" />
+      <case name="attendance" />
+      <case name="jumping character" />
+      <case name="duel bot challenge" />
+      <case name="fraud" />
+      <case name="zone rule group" />
+    </record>
+    <record name="allow-invite-party-in-arena" type="Bool" />
+    <record name="required-available-weekly-time" type="Ref" ref="weeklytimetable" />
+    <record name="town" type="Bool" />
+    <record name="reentrance-pcspawn-check-later-when-enterworld" type="Bool" />
+    <record name="infinite-durability" type="Bool" />
+    <record name="enable-auto-mode" type="Bool" />
+    <record name="auto-mode-type" type="Seq">
+      <case name="disallow" />
+      <case name="basic" default="y" />
+      <case name="advanced" />
+    </record>
+    <record name="enable-auto-item-support" type="Bool" default="y" />
+    <record name="activate-vehicle" type="Bool" />
+  </el>
+</table>

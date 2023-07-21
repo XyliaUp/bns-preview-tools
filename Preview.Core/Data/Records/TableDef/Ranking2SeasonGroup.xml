@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table name="ranking2-season-group" version="2.0" autokey="false" module="6">
+  <el name="table" child="1" />
+  <el name="record">
+    <record name="id" type="Int32" key="y" required="y" min="1" />
+    <record name="alias" type="String" required="y" max="70" />
+    <record name="contents" type="Ref" ref="ranking2-contents" />
+    <record name="season" type="Ref" ref="ranking2-season" repeat="10" />
+    <record name="main-season" type="Ref" ref="ranking2-season" />
+    <record name="contents-score-type" type="Seq">
+      <case name="invalid" />
+      <case name="contents-single" default="y" />
+      <case name="contents-total" />
+      <case name="tier-total" />
+    </record>
+    <record name="dungeon" type="Ref" ref="dungeon" />
+  </el>
+</table>

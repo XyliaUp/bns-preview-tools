@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table name="fielditemdrop" version="0.9" autokey="true" module="14">
+  <el name="table" child="1" />
+  <el name="record">
+    <record name="alias" type="String" required="y" max="70" />
+    <record name="fielditem" type="Ref" ref="fielditem" repeat="3" />
+    <record name="prob" type="Int8" default="100" repeat="3" min="0" max="100" />
+    <sub name="npc">
+      <record name="drop-case" type="Seq" required="y">
+        <case name="none" />
+        <case name="effect" />
+        <case name="bleeding" />
+        <case name="effect-and-bleeding" />
+        <case name="killed" />
+      </record>
+      <record name="effect-attribute" type="Seq16" seq="effect-attribute" default="none" repeat="4" />
+      <record name="effect-attribute-value" type="Int64" hidden="y" />
+      <record name="effect-attribute-value-2" type="Int64" hidden="y" />
+      <record name="effect-attribute-value-3" type="Int64" hidden="y" />
+      <record name="hp-percent" type="Int8" default="100" min="0" max="100" />
+    </sub>
+    <sub name="env">
+      <record name="drop-case" type="Seq" required="y">
+        <case name="none" />
+        <case name="manipulated" />
+        <case name="killed" />
+      </record>
+      <record name="drop-place" type="Seq" required="y">
+        <case name="none" />
+        <case name="area" />
+        <case name="hand" />
+      </record>
+      <record name="area" type="Ref" ref="zonearea" />
+    </sub>
+    <sub name="quest">
+      <record name="drop-place" type="Seq" required="y">
+        <case name="none" />
+        <case name="front-npc" />
+        <case name="area" />
+        <case name="hand" />
+      </record>
+      <record name="area" type="Ref" ref="zonearea" />
+    </sub>
+    <sub name="npc-deadbody">
+      <record name="quest-id" type="Int16" default="0" min="0" />
+      <record name="quest-mission-step" type="Int8" default="0" min="0" />
+    </sub>
+  </el>
+</table>

@@ -1,0 +1,432 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table name="npc" version="2.5" autokey="true" module="270">
+  <el name="table" child="1" />
+  <el name="record">
+    <record name="alias" type="String" required="y" max="70" />
+    <record name="name" type="String" max="50" />
+    <record name="title" type="String" max="64" />
+    <record name="name2" type="Ref" ref="text" />
+    <record name="title2" type="Ref" ref="text" />
+    <record name="boss-npc" type="Ref" ref="bossnpc" />
+    <record name="soul-npc" type="Bool" />
+    <record name="big-boss-npc" type="Bool" />
+    <record name="write-combat-log" type="Bool" />
+    <record name="radius" type="Distance" default="0" min="0" max="5000" />
+    <record name="scale" type="Int16" default="1000" min="0" max="10000" />
+    <record name="walk-speed" type="Velocity" default="0" min="0" max="8000" />
+    <record name="run-speed" type="Velocity" default="0" min="0" max="8000" />
+    <record name="spawn-cinematic" type="Ref" ref="cinematic" deprecated="y" />
+    <record name="neutral-hostile" type="Seq">
+      <case name="offensive" />
+      <case name="fightback" default="y" />
+      <case name="neutral" />
+    </record>
+    <record name="offensive" type="Bool" />
+    <record name="immune-skill-attribute" type="Seq" seq="skill-attribute" default="none" repeat="8" />
+    <record name="immune-effect-attribute" type="Seq16" seq="effect-attribute" default="none" repeat="20" />
+    <record name="immune-breaker-attribute" type="Seq16" seq="effect-attribute" default="none" repeat="8" />
+    <record name="immune-breaker-count" type="Int8" default="0" />
+    <record name="immune-breaker-init-duration" type="Msec" default="0" />
+    <record name="immune-breaker-show" type="XUnknown2" repeat="8" />
+    <record name="store" type="Ref" ref="store" />
+    <record name="store-by-item" type="Ref" ref="store-by-item" />
+    <record name="store2" type="Ref" ref="store2" repeat="6" />
+    <record name="teleport" type="Ref" ref="teleport" />
+    <record name="repairer" type="Bool" />
+    <record name="production" type="Seq" seq="production-type" default="none" />
+    <record name="market" type="Bool" />
+    <record name="post-office" type="Bool" />
+    <record name="exchange-faction-score" type="Bool" />
+    <record name="exchange-faction-score-max-faction-level" type="Int16" default="0" />
+    <record name="exchange-faction-score-multiply-value" type="Int8" default="1" min="1" max="100" />
+    <record name="join-leave-faction" type="Bool" />
+    <record name="transfer-faction" type="Bool" />
+    <record name="depot" type="Bool" />
+    <record name="guild" type="Bool" />
+    <record name="max-faction-score" type="Int32" default="999" min="0" max="1000000" />
+    <record name="enable-co-ownership-pouch" type="Bool" />
+    <record name="reward-faction-score" type="Int32" default="0" min="0" max="100000" />
+    <record name="peaktime-reward-sun-start-hour" type="Int8" default="-1" min="-1" max="23" />
+    <record name="peaktime-reward-sun-end-hour" type="Int8" default="-1" min="-1" max="24" />
+    <record name="peaktime-reward-mon-start-hour" type="Int8" default="-1" min="-1" max="23" />
+    <record name="peaktime-reward-mon-end-hour" type="Int8" default="-1" min="-1" max="24" />
+    <record name="peaktime-reward-tue-start-hour" type="Int8" default="-1" min="-1" max="23" />
+    <record name="peaktime-reward-tue-end-hour" type="Int8" default="-1" min="-1" max="24" />
+    <record name="peaktime-reward-wed-start-hour" type="Int8" default="-1" min="-1" max="23" />
+    <record name="peaktime-reward-wed-end-hour" type="Int8" default="-1" min="-1" max="24" />
+    <record name="peaktime-reward-thu-start-hour" type="Int8" default="-1" min="-1" max="23" />
+    <record name="peaktime-reward-thu-end-hour" type="Int8" default="-1" min="-1" max="24" />
+    <record name="peaktime-reward-fri-start-hour" type="Int8" default="-1" min="-1" max="23" />
+    <record name="peaktime-reward-fri-end-hour" type="Int8" default="-1" min="-1" max="24" />
+    <record name="peaktime-reward-sat-start-hour" type="Int8" default="-1" min="-1" max="23" />
+    <record name="peaktime-reward-sat-end-hour" type="Int8" default="-1" min="-1" max="24" />
+    <record name="contribution-reward" type="Ref" ref="contributionreward" />
+    <record name="contribution-day-reward-sun" type="Ref" ref="contributionreward" />
+    <record name="contribution-day-reward-mon" type="Ref" ref="contributionreward" />
+    <record name="contribution-day-reward-tue" type="Ref" ref="contributionreward" />
+    <record name="contribution-day-reward-wed" type="Ref" ref="contributionreward" />
+    <record name="contribution-day-reward-thu" type="Ref" ref="contributionreward" />
+    <record name="contribution-day-reward-fri" type="Ref" ref="contributionreward" />
+    <record name="contribution-day-reward-sat" type="Ref" ref="contributionreward" />
+    <record name="contribution-peaktime-reward-sun-start-hour" type="Int8" default="-1" min="-1" max="23" />
+    <record name="contribution-peaktime-reward-sun-end-hour" type="Int8" default="-1" min="-1" max="24" />
+    <record name="contribution-peaktime-reward-mon-start-hour" type="Int8" default="-1" min="-1" max="23" />
+    <record name="contribution-peaktime-reward-mon-end-hour" type="Int8" default="-1" min="-1" max="24" />
+    <record name="contribution-peaktime-reward-tue-start-hour" type="Int8" default="-1" min="-1" max="23" />
+    <record name="contribution-peaktime-reward-tue-end-hour" type="Int8" default="-1" min="-1" max="24" />
+    <record name="contribution-peaktime-reward-wed-start-hour" type="Int8" default="-1" min="-1" max="23" />
+    <record name="contribution-peaktime-reward-wed-end-hour" type="Int8" default="-1" min="-1" max="24" />
+    <record name="contribution-peaktime-reward-thu-start-hour" type="Int8" default="-1" min="-1" max="23" />
+    <record name="contribution-peaktime-reward-thu-end-hour" type="Int8" default="-1" min="-1" max="24" />
+    <record name="contribution-peaktime-reward-fri-start-hour" type="Int8" default="-1" min="-1" max="23" />
+    <record name="contribution-peaktime-reward-fri-end-hour" type="Int8" default="-1" min="-1" max="24" />
+    <record name="contribution-peaktime-reward-sat-start-hour" type="Int8" default="-1" min="-1" max="23" />
+    <record name="contribution-peaktime-reward-sat-end-hour" type="Int8" default="-1" min="-1" max="24" />
+    <record name="personal-dropped-pouch-reward" type="Ref" ref="reward" />
+    <record name="reward-sealed-dungeon" type="Ref" ref="npc-sealed-dungeon-reward" />
+    <record name="fielditemdrop" type="Ref" ref="fielditemdrop" />
+    <record name="deadbody-fielditemdrop" type="Ref" ref="fielditemdrop" />
+    <record name="deadbody-pickup-duration" type="Msec" default="0" />
+    <record name="burrow" type="Bool" />
+    <record name="manipulate-duration" type="Msec" default="0" />
+    <record name="caster-manipulate-animname" type="String" max="50" />
+    <record name="target-manipulate-animname" type="String" max="50" />
+    <record name="caster-manipulate-show" type="XUnknown2" />
+    <record name="target-manipulate-show" type="XUnknown2" />
+    <record name="action-name" type="Ref" ref="text" />
+    <record name="action-desc" type="Ref" ref="text" />
+    <record name="manipulate-transit-zone" type="Ref" ref="zone" />
+    <record name="forwarding-types" type="Seq" repeat="80" hidden="y">
+      <case name="progress-mission" />
+      <case name="acquire-quest" />
+      <case name="skill-target" />
+      <case name="mission-step-rollback" />
+    </record>
+    <record name="quests" type="Ref" ref="quest" repeat="80" hidden="y" />
+    <record name="missions" type="Int8" repeat="80" hidden="y" />
+    <record name="cases" type="Int8" repeat="80" hidden="y" />
+    <record name="case-subtypes" type="Int16" repeat="80" hidden="y" />
+    <record name="loot-forwarding-types" type="Seq" repeat="8" hidden="y">
+      <case name="progress-mission" />
+      <case name="acquire-quest" />
+      <case name="skill-target" />
+      <case name="mission-step-rollback" />
+    </record>
+    <record name="loot-quests" type="Ref" ref="quest" repeat="8" hidden="y" />
+    <record name="loot-missions" type="Int8" repeat="8" hidden="y" />
+    <record name="loot-cases" type="Int8" repeat="8" hidden="y" />
+    <record name="loot-item" type="Ref" ref="item" repeat="8" hidden="y" />
+    <record name="finish-blow-forwarding-types" type="Seq" repeat="21" hidden="y">
+      <case name="progress-mission" />
+      <case name="acquire-quest" />
+      <case name="skill-target" />
+      <case name="mission-step-rollback" />
+    </record>
+    <record name="finish-blow-quests" type="Ref" ref="quest" repeat="21" hidden="y" />
+    <record name="finish-blow-missions" type="Int8" repeat="21" hidden="y" />
+    <record name="finish-blow-cases" type="Int8" repeat="21" hidden="y" />
+    <record name="walk-ratescale" type="Float32" default="1" min="0.0" max="100.0" />
+    <record name="run-ratescale" type="Float32" default="1" min="0.0" max="100.0" />
+    <record name="appearance" type="Ref" ref="creatureappearance" />
+    <record name="body" type="String" max="50" />
+    <record name="body-col" type="String" max="50" />
+    <record name="animset" type="XUnknown2" />
+    <record name="hair" type="String" max="50" />
+    <record name="hair-col" type="String" max="50" />
+    <record name="face" type="String" max="50" />
+    <record name="face-col" type="String" max="50" />
+    <record name="face-animset" type="String" max="50" />
+    <record name="talk" type="Bool" />
+    <record name="iconindex" type="Int8" default="0" min="0" max="255" />
+    <record name="mesh-scale" type="Float32" default="1" min="0.1" max="10.0" />
+    <record name="p-radius" type="Int8" default="0" min="0" max="255" />
+    <record name="name-pos-diff" type="Int16" default="0" min="0" max="1000" />
+    <record name="name-pos-stand" type="Int16" default="0" min="0" max="1000" />
+    <record name="name-pos-sit" type="Int16" default="0" min="0" max="1000" />
+    <record name="name-pos-dead" type="Int16" default="0" min="0" max="1000" />
+    <record name="start-talk-action" type="String" max="50" />
+    <record name="end-talk-action" type="String" max="50" />
+    <record name="spawn-production" type="String" max="50" />
+    <record name="dead-production" type="String" max="50" />
+    <record name="four-leg" type="Bool" />
+    <record name="despawn-showdata" type="XUnknown2" />
+    <record name="race" type="Prop_seq" seq="race" default="race-none" />
+    <record name="sex" type="Prop_seq" seq="sex" default="sex-none" />
+    <record name="job" type="Prop_seq" seq="job" default="job-none" />
+    <record name="stance" type="Prop_seq" seq="stance" default="npc기본자세" />
+    <record name="level" type="Int8" required="y" min="1" max="70" />
+    <record name="mastery-level" type="Int8" required="y" min="0" max="50" />
+    <record name="faction" type="Ref" ref="faction" />
+    <record name="attackable" type="Bool" default="y" />
+    <record name="detect-hiding" type="Bool" />
+    <record name="default-idle" type="Ref" ref="npcmoveanim" />
+    <record name="warfare-boss" type="Bool" hidden="y" />
+    <record name="max-hp" type="Int64" required="y" min="1" max="1000000000000" />
+    <record name="max-sp" type="Int16" required="y" min="0" max="10000" />
+    <record name="modify-cast-speed-percent" type="Int16" required="y" min="-1000" max="1000" />
+    <record name="hp-regen" type="Int32" required="y" min="0" max="2000000000" />
+    <record name="hp-regen-combat" type="Int32" required="y" min="0" max="2000000000" />
+    <record name="attack-hit-base-percent" type="Int16" required="y" min="-1000" max="10000" />
+    <record name="attack-hit-value" type="Int16" required="y" min="-30000" max="30000" />
+    <record name="attack-pierce-base-percent" type="Int16" required="y" min="-1000" max="10000" />
+    <record name="attack-parry-pierce-percent" type="Int16" required="y" min="-1000" max="10000" />
+    <record name="attack-pierce-value" type="Int16" required="y" min="0" max="30000" />
+    <record name="attack-concentrate-value" type="Int16" required="y" min="0" max="30000" />
+    <record name="attack-critical-base-percent" type="Int16" required="y" min="0" max="1000" />
+    <record name="attack-critical-damage-percent" type="Int16" required="y" min="0" max="10000" />
+    <record name="attack-critical-value" type="Int32" required="y" min="0" max="300000" />
+    <record name="attack-critical-damage-value" type="Int32" required="y" min="0" max="300000" />
+    <record name="defend-critical-base-percent" type="Int16" required="y" min="0" max="1000" />
+    <record name="defend-critical-damage-percent" type="Int16" required="y" min="0" max="10000" />
+    <record name="defend-critical-value" type="Int16" required="y" min="0" max="30000" />
+    <record name="defend-bounce-percent" type="Int16" required="y" min="0" max="1000" />
+    <record name="defend-dodge-base-percent" type="Int16" required="y" min="0" max="1000" />
+    <record name="defend-dodge-value" type="Int16" required="y" min="0" max="30000" />
+    <record name="defend-parry-base-percent" type="Int16" required="y" min="0" max="1000" />
+    <record name="defend-parry-value" type="Int16" required="y" min="0" max="30000" />
+    <record name="defend-parry-reduce-percent" type="Int16" required="y" min="0" max="1000" />
+    <record name="defend-parry-reduce-diff" type="Int16" required="y" min="0" max="30000" />
+    <record name="defend-perfect-parry-base-percent" type="Int16" required="y" min="0" max="1000" />
+    <record name="defend-perfect-parry-reduce-percent" type="Int16" required="y" min="0" max="1000" />
+    <record name="defend-counter-reduce-percent" type="Int16" required="y" min="0" max="1000" />
+    <record name="defend-immune-base-percent" type="Int16" required="y" min="0" max="1000" />
+    <record name="attack-power-creature-min" type="Int32" required="y" min="0" max="300000" />
+    <record name="attack-power-creature-max" type="Int32" required="y" min="0" max="300000" />
+    <record name="attack-power-equip-min" type="Int16" required="y" min="0" max="30000" />
+    <record name="attack-power-equip-max" type="Int16" required="y" min="0" max="30000" />
+    <record name="defend-power-creature-value" type="Int32" required="y" min="0" max="300000" />
+    <record name="defend-power-equip-value" type="Int32" required="y" min="0" max="300000" />
+    <record name="defend-resist-power-creature-value" type="Int16" required="y" min="0" max="30000" />
+    <record name="defend-resist-power-equip-value" type="Int16" required="y" min="0" max="30000" />
+    <record name="defend-physical-damage-reduce-percent" type="Int16" required="y" min="-10000" max="1000" />
+    <record name="defend-force-damage-reduce-percent" type="Int16" required="y" min="-10000" max="1000" />
+    <record name="attack-damage-modify-percent" type="Int16" required="y" min="-3000" max="10000" />
+    <record name="attack-damage-modify-diff" type="Int32" required="y" min="-1000000" max="1000000" />
+    <record name="defend-damage-modify-percent" type="Int16" required="y" min="-10000" max="3000" />
+    <record name="defend-damage-modify-diff" type="Int32" required="y" min="-1000000" max="1000000" />
+    <record name="defend-miss-base-percent" type="Int16" required="y" min="0" max="1000" />
+    <record name="attack-stiff-duration-base-percent" type="Int16" required="y" min="-1000" max="10000" />
+    <record name="attack-stiff-duration-value" type="Int16" required="y" min="0" max="30000" />
+    <record name="defend-stiff-duration-base-percent" type="Int16" required="y" min="0" max="1000" />
+    <record name="defend-stiff-duration-value" type="Int16" required="y" min="0" max="30000" />
+    <record name="cast-duration-base-percent" type="Int16" required="y" min="-10000" max="1000" />
+    <record name="cast-duration-value" type="Int16" required="y" min="0" max="30000" />
+    <record name="job-ability-1" type="Int32" required="y" min="0" max="300000" />
+    <record name="job-ability-2" type="Int32" required="y" min="0" max="300000" />
+    <record name="heal-power-base-percent" type="Int16" required="y" min="0" max="10000" />
+    <record name="aoe-defend-base-percent" type="Int16" required="y" min="0" max="10000" />
+    <record name="aoe-defend-power-value" type="Int16" required="y" min="0" max="30000" />
+    <record name="hate-base-percent" type="Int16" required="y" min="0" max="10000" />
+    <record name="hate-power-creature-value" type="Int16" required="y" min="0" max="30000" />
+    <record name="abnormal-attack-power-value" type="Int16" required="y" min="0" max="30000" />
+    <record name="abnormal-attack-base-percent" type="Int16" required="y" min="0" max="10000" />
+    <record name="abnormal-defend-power-value" type="Int16" required="y" min="0" max="30000" />
+    <record name="abnormal-defend-base-percent" type="Int16" required="y" min="0" max="10000" />
+    <record name="abnormal-attack-power-modify" type="Int16" required="y" />
+    <record name="abnormal-defend-power-modify" type="Int16" required="y" />
+    <record name="hate-power-modify" type="Int16" required="y" />
+    <record name="heal-power-modify" type="Int16" required="y" />
+    <record name="aoe-defend-power-modify" type="Int16" required="y" />
+    <record name="attack-hit-value-modify" type="Int16" required="y" />
+    <record name="attack-critical-value-modify" type="Int16" required="y" />
+    <record name="defend-critical-value-modify" type="Int16" required="y" />
+    <record name="defend-dodge-value-modify" type="Int16" required="y" />
+    <record name="defend-parry-value-modify" type="Int16" required="y" />
+    <record name="defend-physical-value-modify" type="Int16" required="y" />
+    <record name="defend-force-value-modify" type="Int16" required="y" />
+    <record name="attack-stiff-duration-value-modify" type="Int16" required="y" />
+    <record name="defend-stiff-duration-value-modify" type="Int16" required="y" />
+    <record name="cast-duration-value-modify" type="Int16" required="y" />
+    <record name="attack-critical-damage-modify" type="Int16" required="y" />
+    <record name="defend-critical-damage-modify" type="Int16" required="y" />
+    <record name="attack-pierce-modify" type="Int16" required="y" />
+    <record name="attack-parry-pierce-modify" type="Int16" required="y" />
+    <record name="defend-parry-reduce-modify" type="Int16" required="y" />
+    <record name="attack-perfect-parry-damage-modify" type="Int16" required="y" />
+    <record name="defend-perfect-parry-reduce-modify" type="Int16" required="y" />
+    <record name="attack-counter-damage-modify" type="Int16" required="y" />
+    <record name="defend-counter-reduce-modify" type="Int16" required="y" />
+    <record name="grade" type="Seq" deprecated="y">
+      <case name="none" default="y" />
+      <case name="weakest" />
+      <case name="weak" />
+      <case name="regular" />
+      <case name="strong" />
+      <case name="elite" />
+      <case name="captain" />
+      <case name="bossn" />
+      <case name="bossf" />
+      <case name="bossp" />
+      <case name="boss" />
+    </record>
+    <record name="grade2" type="Seq" seq="npc-grade2" default="none" />
+    <record name="grade-imageset" type="String" max="100" />
+    <record name="grade-tooltip-text" type="Ref" ref="text" />
+    <record name="boss-ui-type" type="Seq">
+      <case name="target" default="y" />
+      <case name="list" />
+    </record>
+    <record name="boss-group-id" type="Int8" default="0" />
+    <record name="boss-slot" type="Seq">
+      <case name="none" default="y" />
+      <case name="boss1" />
+      <case name="boss2" />
+      <case name="boss3" />
+      <case name="boss4" />
+    </record>
+    <record name="boss-kill-hide-slot" type="Bool" />
+    <record name="boss-spawn-message" type="Ref" ref="game-message" />
+    <record name="boss-icon" type="Icon" max="32767" />
+    <record name="boss-aggro-icon" type="Icon" max="32767" />
+    <record name="boss-aggro-indicator" type="String" max="50" />
+    <record name="boss-aggro-twin-indicator" type="String" max="50" />
+    <record name="end-talk-sound" type="XUnknown2" />
+    <record name="end-talk-social" type="Ref" ref="social" />
+    <record name="burrow-scaned-mark" type="XUnknown2" />
+    <record name="burrow-visual-effect" type="XUnknown2" />
+    <record name="use-foot-print" type="Bool" default="y" />
+    <record name="use-water-print" type="Bool" default="y" />
+    <record name="default-visible" type="Bool" default="y" />
+    <record name="visible-by-quest" type="Bool" deprecated="y" />
+    <record name="visible-on-social" type="Ref" ref="social" deprecated="y" />
+    <record name="visible-off-social" type="Ref" ref="social" deprecated="y" />
+    <record name="message" type="Ref" ref="npctalkmessage" repeat="9" deprecated="y" />
+    <record name="monster-type" type="Seq" deprecated="y">
+      <case name="none" default="y" />
+      <case name="human" />
+      <case name="beastman" />
+      <case name="devils" />
+      <case name="beasts" />
+      <case name="polluted" />
+      <case name="spirits" />
+      <case name="enchanteddoll" />
+      <case name="god" />
+    </record>
+    <record name="move-type" type="Seq">
+      <case name="none" default="y" />
+      <case name="static" />
+      <case name="ground" />
+      <case name="float" />
+    </record>
+    <record name="size-type" type="Seq">
+      <case name="none" default="y" />
+      <case name="small" />
+      <case name="regular" />
+      <case name="huge" />
+    </record>
+    <record name="description" type="String" max="100" />
+    <record name="description2" type="Ref" ref="text" />
+    <record name="dying-message" type="Ref" ref="text" />
+    <record name="role-type" type="Seq">
+      <case name="none" default="y" />
+      <case name="keeper-inn" />
+      <case name="shop-grocery" />
+      <case name="shop-weapon" />
+      <case name="shop-cloth" />
+      <case name="shop-acc" />
+      <case name="shop-by-item" />
+      <case name="shop-achievement" />
+      <case name="keeper-warp" />
+      <case name="guardian" />
+      <case name="distribution" />
+      <case name="gather-digger" />
+      <case name="gather-farmer" />
+      <case name="gather-fisherman" />
+      <case name="gather-hunter" />
+      <case name="gather-miner" />
+      <case name="gather-gemcolletor" />
+      <case name="gather-lumberjack" />
+      <case name="produce-blacksmith" />
+      <case name="produce-shaman" />
+      <case name="produce-gemmaker" />
+      <case name="produce-accmaker" />
+      <case name="produce-potionmaker" />
+      <case name="produce-cook" />
+      <case name="produce-chinamaker" />
+      <case name="coinshop" />
+      <case name="factionshop" />
+      <case name="faction-exchange" />
+      <case name="broker" />
+      <case name="shop-food" />
+      <case name="shop-beauty" />
+      <case name="depot" />
+      <case name="event" />
+    </record>
+    <record name="die-shout" type="Ref" ref="text" />
+    <record name="race-type" type="Seq">
+      <case name="etc" default="y" />
+      <case name="jin" />
+      <case name="kun" />
+      <case name="gon" />
+      <case name="lyn" />
+    </record>
+    <record name="default-indicator" type="Ref" ref="indicator-social" deprecated="y" />
+    <record name="indicator" type="Ref" ref="indicator-social" />
+    <record name="required-faction" type="Ref" ref="faction" repeat="9" deprecated="y" />
+    <record name="required-complete-quest" type="Ref" ref="quest" repeat="9" deprecated="y" />
+    <record name="craft-message-type" type="Seq" repeat="9" deprecated="y">
+      <case name="none" default="y" />
+      <case name="join" />
+      <case name="ask" />
+      <case name="busy" />
+      <case name="receive" />
+      <case name="need-level" />
+      <case name="full-craft" />
+    </record>
+    <record name="talk-message" type="Ref" ref="npctalkmessage" repeat="9" deprecated="y" />
+    <record name="default-indicator-social" type="Ref" ref="indicator-social" repeat="9" deprecated="y" />
+    <record name="relationship-indicator" type="Ref" ref="indicator-social" repeat="9" deprecated="y" />
+    <record name="relationship-idle" type="Ref" ref="indicator-idle" repeat="9" deprecated="y" />
+    <record name="neutral-faction-required-complete-quest" type="Ref" ref="quest" deprecated="y" />
+    <record name="neutral-faction-talk-message" type="Ref" ref="npctalkmessage" deprecated="y" />
+    <record name="neutral-faction-relationship-indicator" type="Ref" ref="indicator-social" deprecated="y" />
+    <record name="neutral-faction-relationship-idle" type="Ref" ref="indicator-idle" deprecated="y" />
+    <record name="neutral-faction-nameplate-enemy" type="Bool" />
+    <record name="banned-response" type="Ref" ref="npcresponse" repeat="2" />
+    <record name="response" type="Ref" ref="npcresponse" repeat="7" />
+    <record name="stand-social" type="Ref" ref="social" repeat="3" />
+    <record name="stand-social-rate" type="Int16" default="0" repeat="3" />
+    <record name="die-knockback" type="Bool" default="y" />
+    <record name="invoke-fx-msg" type="Bool" />
+    <record name="disable-name-spawn" type="Bool" />
+    <record name="play-additional-die" type="Bool" default="y" />
+    <record name="summoned-beauty-shop" type="Ref" ref="summonedbeautyshop" />
+    <record name="boast-contents-id" type="Ref" ref="boast" deprecated="y" />
+    <record name="boast" type="Ref" ref="boast" hidden="y" />
+    <record name="always-show-hp" type="Bool" default="false" />
+    <record name="use-map-unit-group" type="Bool" hidden="y" />
+    <record name="map-unit" type="Ref" ref="mapunit" repeat="2" hidden="y" />
+    <record name="use-immediate-load" type="Bool" />
+    <record name="ghost-type" type="Prop_seq">
+      <case name="none" default="y" />
+      <case name="basic" />
+      <case name="beyond" />
+      <case name="phase" />
+    </record>
+    <record name="ghostmode-beyond-start-show" type="String" max="50" />
+    <record name="ghostmode-beyond-end-show" type="String" max="50" />
+    <record name="soul-npc-skill-level" type="Int8" default="0" min="0" max="10" />
+    <record name="boss-challenge-attraction-score" type="Int16" default="0" min="0" max="30000" />
+    <record name="is-mysterious-store" type="Bool" />
+    <record name="newbiecare" type="Ref" ref="newbie-care" hidden="y" />
+    <record name="attack-attribute-value" type="Int32" required="y" min="0" max="300000" />
+    <record name="attack-attribute-base-percent" type="Int16" required="y" min="0" max="10000" />
+    <record name="attack-attribute-modify" type="Int16" required="y" />
+    <record name="hide-nameplate" type="Bool" />
+    <record name="attack-aoe-pierce-value" type="Int16" required="y" min="0" max="30000" />
+    <record name="attack-abnormal-hit-base-percent" type="Int16" required="y" min="-1000" max="10000" />
+    <record name="attack-abnormal-hit-value" type="Int16" required="y" min="-30000" max="30000" />
+    <record name="defend-abnormal-dodge-base-percent" type="Int16" required="y" min="-1000" max="10000" />
+    <record name="defend-abnormal-dodge-value" type="Int16" required="y" min="-30000" max="30000" />
+    <record name="support-power-base-percent" type="Int16" required="y" min="-1000" max="10000" />
+    <record name="support-power-value" type="Int16" required="y" min="0" max="30000" />
+    <record name="heal-power-value" type="Int16" required="y" min="0" max="30000" />
+    <record name="hypermove-power-value" type="Int16" required="y" min="0" max="30000" />
+    <record name="unk-" type="Int16" min="0" max="30000" />
+    <record name="r-attack-aoe-pierce-modify" type="Int16" required="y" />
+    <record name="r-attack-abnormal-hit-modify" type="Int16" required="y" />
+    <record name="r-defend-abnormal-dodge-modify" type="Int16" required="y" />
+    <record name="r-support-power-modify" type="Int16" required="y" />
+    <record name="unk-" type="Int32" />
+  </el>
+</table>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table name="skillvariation" version="0.2" autokey="false" module="4" maxid="200000000">
+  <el name="table" child="1" />
+  <el name="record">
+    <record name="id" type="Int32" key="y" required="y" min="1" max="200000000" />
+    <record name="variation-level" type="Int8" default="0" repeat="4" min="0" max="250" />
+    <record name="variation-start-bit" type="Int8" repeat="4" hidden="y" />
+    <record name="variation-mask" type="Int8" repeat="4" hidden="y" />
+  </el>
+</table>

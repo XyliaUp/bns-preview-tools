@@ -1,0 +1,128 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<record name="difficulty-type" >
+		<case name="none" default="y" />
+		<case name="easy" />
+		<case name="normal" />
+		<case name="hard" />
+	</record>
+
+	<record name="forwarding-type">
+		<case name="none" default="y" />
+		<case name="acquire-quest" />
+		<case name="skill-target" />
+		<case name="mission-step-rollback" />
+	</record>
+
+
+	<record name="idle-type" >
+		<case name="normal" />
+		<case name="dead" />
+		<case name="dead-hide" />
+		<case name="dead-back" />
+		<case name="dead-front" />
+		<case name="dead-swim-area" />
+		<case name="exhaustion" />
+		<case name="mount-linker" />
+		<case name="mount-linkee" />
+		<case name="inhalation_linker" />
+		<case name="inhalation_linkee" />
+		<case name="stun" />
+		<case name="stagger" />
+		<case name="down" />
+		<case name="block" />
+		<case name="air" />
+		<case name="air2" />
+		<case name="air3" />
+		<case name="kneel" />
+		<case name="magnetic" />
+		<case name="stiff" />
+		<case name="front_down" />
+		<case name="block2" />
+		<case name="flee" />
+		<case name="knockback-stand" />
+		<case name="knockback-kneel" />
+		<case name="knockback-frontdown" />
+		<case name="knockback-down" />
+		<case name="picking" />
+		<case name="fast-freezing" />
+		<case name="impregnability" />
+		<case name="hide" />
+		<case name="burrow" />
+		<case name="restoration" />
+		<case name="block3" />
+		<case name="landing-shock" />
+		<case name="catch" />
+		<case name="catched" />
+		<case name="catch-none-human" />
+		<case name="catched-none-human" />
+		<case name="catch-friend" />
+		<case name="catched-friend" />
+		<case name="catch-inhalation" />
+		<case name="catched-inhalation" />
+		<case name="npc-block" />
+		<case name="sit-down" />
+		<case name="silver-wep" />
+		<case name="ironfotess" />
+		<case name="presentation-linke" />
+		<case name="spider-web" />
+		<case name="state-social" />
+		<case name="block4" />
+		<case name="dead-duel" />
+	</record>
+
+
+	<record name="check">
+		<case name="and" />
+		<case name="or" />
+	</record>
+
+	<record name="op">
+		<case name="or" />
+		<case name="and" />
+	</record>
+
+	<record name="op2">
+		<case name="eq" desc="相等" />
+		<case name="neq" desc="不等" />
+		<case name="gt" desc="大于" />
+		<case name="ge" desc="大于等于" />
+		<case name="lt" desc="小于" />
+		<case name="le" desc="小于等于" />
+	</record>
+
+	<record name="production-type">
+		<case name="none" default="y" />
+		<case name="production-type-1" />
+		<case name="production-type-2" />
+		<case name="production-type-3" />
+		<case name="production-type-4" />
+		<case name="production-type-5" />
+		<case name="production-type-6" />
+		<case name="production-type-7" />
+		<case name="gathering-type-1" />
+		<case name="gathering-type-2" />
+		<case name="gathering-type-3" />
+		<case name="gathering-type-4" />
+		<case name="gathering-type-5" />
+		<case name="gathering-type-6" />
+		<case name="gathering-type-7" />
+	</record>
+
+	<record name="recycle-group">
+		<case name="none" default="y" />
+		<case name="class" />
+		<case name="item-1" />
+		<case name="item-2" />
+		<case name="class-2" />
+		<case name="db" />
+		<case name="gadget" />
+	</record>
+
+	<record name="reset-type">
+		<case name="none" default="y" />
+		<case name="daily" />
+		<case name="weekly" />
+		<case name="monthly" />
+	</record>
+</table>

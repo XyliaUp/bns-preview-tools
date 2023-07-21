@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table name="fishing-field" version="0.9" autokey="false" module="14">
+  <el name="table" child="1" />
+  <el name="record">
+    <record name="id" type="Int16" key="y" required="y" min="1" />
+    <record name="alias" type="String" required="y" max="70" />
+    <record name="grade-ss-fish" type="Ref" ref="fish" repeat="20" />
+    <record name="grade-s-fish" type="Ref" ref="fish" repeat="20" />
+    <record name="grade-a-fish" type="Ref" ref="fish" repeat="20" />
+    <record name="grade-b-fish" type="Ref" ref="fish" repeat="20" />
+    <record name="grade-c-fish" type="Ref" ref="fish" repeat="20" />
+    <record name="bonus-time" type="Ref" ref="weeklytimetable" />
+    <record name="fishing-field-group" type="Ref" ref="fishing-field-group" />
+    <record name="bonus-time-effect" type="String" max="70" />
+  </el>
+</table>

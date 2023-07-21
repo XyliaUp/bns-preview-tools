@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table name="reward" version="1.38" autokey="false" module="14">
+  <el name="table" child="1" />
+  <el name="record">
+    <record name="id" type="Int64" key="y" required="y" />
+    <record name="alias" type="String" required="y" max="70" />
+    <record name="fixed-item" type="Ref" ref="item" repeat="8" />
+    <record name="fixed-item-min" type="Int16" default="1" repeat="8" min="1" max="10000" />
+    <record name="fixed-item-max" type="Int16" default="1" repeat="8" min="1" max="10000" />
+	<record name="random-main-item" type="Ref" ref="item" repeat="28" />
+    <record name="selected-item" type="Ref" ref="item" repeat="64" />
+    <record name="selected-item-count" type="Int16" default="0" repeat="64" min="0" max="10000" />
+    <record name="selected-item-assured-count" type="Int8" default="0" min="0" max="8" />
+    <record name="random-item" type="Ref" ref="item" repeat="76" />
+  </el>
+</table>

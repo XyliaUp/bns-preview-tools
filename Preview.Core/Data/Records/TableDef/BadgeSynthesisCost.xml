@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table name="badge-synthesis-cost" version="0.1" autokey="false" module="6">
+  <el name="table" child="1" />
+  <el name="record">
+    <record name="alias" type="String" required="y" max="70" />
+    <record name="score" type="Int32" key="y" required="y" min="1" max="30000" />
+    <record name="required-item" type="Ref" ref="item" repeat="8" />
+    <record name="required-item-count" type="Int16" default="0" repeat="8" min="0" max="1000" />
+    <record name="money-cost" type="Int32" default="0" min="0" max="2000000000" />
+  </el>
+</table>

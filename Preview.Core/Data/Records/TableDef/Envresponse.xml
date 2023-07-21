@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table name="envresponse" version="0.2" autokey="true" module="4">
+  <el name="table" child="1" />
+  <el name="record">
+    <record name="alias" type="String" required="y" max="70" />
+    <record name="trigger-kismet" type="XUnknown2" />
+    <record name="trigger-bgm" type="XUnknown2" />
+    <record name="trigger-bgm-duration" type="Msec" default="3000" />
+  </el>
+</table>

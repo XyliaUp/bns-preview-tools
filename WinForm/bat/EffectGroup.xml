@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table version="0.1">
+	<type>EffectGroup</type>
+    <!-- attribute -->
+
+	
+    <!-- spilit to sub file -->
+	<file name="" alias="ME_AdamantineMan_None_Area360_E1_01" />
+	<file name="AR" alias="Archer_Common_Dummy_EG" />
+	<file name="AS" alias="Assassin3_Disturb_MistSlash_Lv1_E1_01" />
+	<file name="BM" alias="BladeMaster_Dummy_EffectGroup" />
+	<file name="ClassEvent" alias="Common_Provoke_Tanker_E1_01" />
+	<file name="Common" alias="Common_Resurrection_Action_E1_01" />
+	<file name="DE" alias="Destroyer_Common_MoveBlock_Binding" />
+	<file name="FM" alias="ForceMaster_G_Common_CriticalHit_FireBit1" />
+	<file name="G1_DualBlader" alias="DualBlader_Dummy_EffectGroup" />
+	<file name="G3_Warrior" alias="Warrior_G3_Common_Dummy_EG" />
+	<file name="Gadget" alias="Gadget_BombA_Damage_Lv1_E1_01" />
+	<file name="Glyph" alias="Glyph_revenge_Score1_E1_1" />
+	<file name="GrocerySkill" alias="EG_BattleGround_Common_PoisonArea_Lv1_E1_01" />
+	<file name="Item" alias="Item_Resurrection_Action_E1_01" />
+	<file name="ItemSkill_AR" alias="ItemSkill_AR_S1_Lv1_01_E1" />
+	<file name="ItemSkill_AS" alias="ItemSkill_AS_Mine_S1_Lv1_01_E1" />
+	<file name="ItemSkill_BM" alias="ItemSkill_BM_S1_Lv1_01_E1" />
+	<file name="ItemSkill_DE" alias="ItemSkill_DE_Stomping_BS1_Lv1_01_E1" />
+	<file name="ItemSkill_FM" alias="ItemSkill_FM_energy_bit_missile_S1_Lv1_01_E1" />
+	<file name="ItemSkill_KF" alias="ItemSkill_KF_S1_Lv1_01_E1" />
+	<file name="ItemSkill_PT" alias="ItemSkill_PT_Flame_shot_S1_Lv1_01_E1" />
+	<file name="ItemSkill_SF" alias="ItemSkill_SF_Common_ForceBuff_Lv1_01_E1" />
+	<file name="ItemSkill_SU" alias="ItemSkill_SU_DandelionSeed_S2_Lv1_01_E1" />
+	<file name="ItemSkill_SW" alias="ItemSkill_SW_vertical_cut_B1_Lv1_01_E1" />
+	<file name="ItemSkill_TH" alias="ItemSkill_TH_B1_Lv1_01_E1_01" />
+	<file name="ItemSkill_WA" alias="ItemSkill_WA_S1_Lv1_01_E1" />
+	<file name="ItemSkill_WL" alias="ItemSkill_WL_TargetBeam_B1_Lv1_01_E1" />
+	<file name="KF" alias="KungfuMaster_G1_Counterenemy_counter_Lv1_E1_01" />
+	<file name="Npc2_AutoField" alias="ME_AF_UnbalanceZombie_None_Cut_E1_01" />
+	<file name="Npc2_BeopgiPlant" alias="ME_GWB_B1_MechGorilla_ChainShock_E1_01" />
+	<file name="Npc2_BigBoss_FireDragon" alias="BIG_BOSS_TEST_CASE" />
+	<file name="Npc2_BirdMancliff" alias="SRI_B1_IronFeatherBoss_LinkLaser_Check_EG_01" />
+	<file name="Npc2_BlackSnake" alias="RDL_B1_BlackSnakePosionOldman_PoisonExport_E1_01" />
+	<file name="Npc2_Buyudo" alias="ME_WC_Nucleus_0003_Fire_Lv1_E1_01" />
+	<file name="Npc2_Buyudong" alias="ME_GWA_B1_AncientAdamantineMan_None_TripleAttack_E1_01" />
+	<file name="Npc2_CheonMuGung" alias="SRH_B1_DarkPriest_Swing_E1_01" />
+	<file name="Npc2_CheonSangBunJi" alias="ME_WC_Dummy_0200_CannonAtk_E1_01" />
+	<file name="Npc2_CursedPirateShip" alias="ME_CursedPirateGhostA_None_Smashdown_E1_01" />
+	<file name="Npc2_DarkWind" alias="SWB_N1_Wolf_Bite_Mount_EG" />
+	<file name="Npc2_DollHouse" alias="SRK_N1_DollHouseZombie_None_Watch_E1_01" />
+	<file name="Npc2_DreamForest" alias="GWI_Zombie_None_NAtk1_E1_01" />
+	<file name="Npc2_EastChungGakJiBuA" alias="MH_CH_AssassinBoss_Hide_Mine_Multi_E1_Caster" />
+	<file name="Npc2_EastChungGakJiBuB" alias="ME_SUB_B1_SeaMonsterBoss_None_PosionSpit_E1_01" />
+	<file name="Npc2_Event" alias="ME_TX_Fatman_None_Choke_E1_01" />
+	<file name="Npc2_EventBadabam" alias="MH_SUP_B2_AssassinBoss_Disturb_PoisonBreath_E1_p_Event" />
+	<file name="Npc2_EventHeaSangMudom_Death" alias="ME_BEH_EVENT_FireGorillaA_None_NAtk1_E1_01" />
+	<file name="Npc2_Event_IsLandOfOutlaws" alias="SWA_B1_DongCheonGak_None_ShoulderCharge_E1_01" />
+	<file name="Npc2_HeukRyongGyo" alias="ME_BEF_B1_CrocodileSharkTribeC2_SpellBreath_E1_01" />
+	<file name="Npc2_SecretHall" alias="MH_GWE_N1_SoulFighter_Attack_JusticePunch_E1_01" />
+	<file name="Npc2_SoulNpc" alias="ME_SoulNPC_MultAttack_Lv1_E1_01" />
+	<file name="Npc2_SouthChungGakJiBu" alias="ME_Dummy_None_Cannon_E1_01" />
+	<file name="Npc2_SunDoWon" alias="GWH_N1_SunDoWonNamed_HeavyLightning_E1_01" />
+	<file name="Npc2_TempleOfStorm" alias="ME_HT_NaHanThunder_None_Thunder1_E1_01" />
+	<file name="Npc2_TombOfEmperor1" alias="RDE_R0_RuneMechaYacha5_DoubleHit_E1_01" />
+	<file name="Npc2_TombOfEmperor2" alias="RDE_B2_AncientMechaguardian_Swing_E1_01" />
+	<file name="Npc2_TombOfEmperor3" alias="RDE_B3_AncientMechScorpion_Swing_E1_01" />
+	<file name="Npc2_TombOfEmperor4" alias="RDE_B4_AncientMechaKing_SpearSwing_E1_01" />
+	<file name="Npc2_TreeVill" alias="SRA_R0_AnthroEntA_None_Natk_E1_01" />
+	<file name="Npc2_VortexTemple" alias="GWD_VT_B1_Flazard_Fire_WindyMoonSlash2_E1_01" />
+	<file name="Npc2_WavesOfNightmare" alias="ME_BEE_B1_FireGorillaA_None_Attack_NPC_First" />
+	<file name="Npc2_WindPlainOfNight" alias="ME_BEI_B1_SaintTurtle_Swing_E1_01" />
+	<file name="Npc2_WindPlainOfNightRenewal" alias="WFB_SaintTurtleDaddy_ShootingStar_E1_01" />
+	<file name="Npc2_YetiCave" alias="ME_BEB_B1_SnowManBoss_None_Swing_E1_01" />
+	<file name="PT" alias="Shooter_Right_shot1_E1_Check" />
+	<file name="SF" alias="SoulFighter_Common_Dummy_EG" />
+	<file name="StrategyCard" alias="StrategyCard_AttractiveForce_E1_01" />
+	<file name="SU" alias="Summoner_Summon_Common_Dummy_EG" />
+	<file name="SW" alias="SwordMaster_Common_Dummy_EG" />
+	<file name="TH" alias="Thunderer_G1_Damage_Test_Lv1_E1_01" />
+	<file name="WL" alias="Warlock_Spell_Drain_Soul_Lv11_E1_05" />
+	<file name="WR" alias="Warrior_Common_Dummy_EG" />
+</table>

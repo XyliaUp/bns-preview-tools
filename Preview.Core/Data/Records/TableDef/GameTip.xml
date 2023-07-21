@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table name="game-tip" version="0.9" autokey="true" module="4">
+  <el name="table" child="1" />
+  <el name="record">
+    <record name="not-reveal-gem" type="Bool" />
+    <record name="not-attach-weapongem" type="Bool" />
+    <record name="low-level-item-equiped" type="Bool" />
+    <record name="level-min" type="Int8" default="0" />
+    <record name="level-max" type="Int8" default="0" />
+    <record name="action" type="Seq">
+      <case name="none" default="y" />
+      <case name="open-inventory" />
+      <case name="open-expand-inventory-slot" />
+      <case name="open-inventory-gemcompose" />
+      <case name="open-inventory-weapongem" />
+      <case name="open-skill-book" />
+      <case name="open-skill-tratining" />
+      <case name="open-charactor-status" />
+      <case name="open-survey" />
+      <case name="open-petition" />
+      <case name="open-action-buy" />
+      <case name="open-action-sell" />
+      <case name="open-delivery" />
+      <case name="open-game-tip" />
+      <case name="open-dungeon-tab" />
+      <case name="open-photo-album" />
+      <case name="open-sns" />
+      <case name="open-sns-for-friend-enterworld" />
+      <case name="open-dungeon-enter-guide" />
+      <case name="open-challengeparty-arena-select" />
+      <case name="open-collecting" />
+      <case name="open-contents-journal-2" />
+    </record>
+    <record name="message" type="Ref" ref="text" />
+    <record name="icon" type="Icon" max="32767" />
+    <record name="duplication-check-duration" type="Float32" default="0.0" />
+    <sub name="inventory-full-expandable" />
+    <sub name="inventory-full-not-expandable" />
+    <sub name="level-up" />
+    <sub name="level-up-new-equipable-item" />
+    <sub name="trainable-skill">
+      <record name="tp" type="Int8" default="0" />
+    </sub>
+    <sub name="resurrect" />
+    <sub name="acquire-skill" />
+  </el>
+</table>

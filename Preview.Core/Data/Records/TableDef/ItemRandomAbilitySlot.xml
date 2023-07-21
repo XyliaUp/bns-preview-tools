@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table name="item-random-ability-slot" version="0.3" autokey="false" module="6">
+  <el name="table" child="1" />
+  <el name="record">
+    <record name="id" type="Int32" key="y" required="y" />
+    <record name="alias" type="String" required="y" max="70" />
+    <record name="ability" type="Seq" seq="main-ability" default="none" />
+    <record name="value-min" type="Int32" default="0" />
+    <record name="value-max" type="Int32" default="0" />
+    <record name="initial-value-max" type="Int32" default="0" />
+    <record name="item-ability-section-percent" type="Int8" default="0" repeat="3" />
+    <record name="item-ability-section" type="Ref" ref="item-random-ability-section" repeat="3" />
+  </el>
+</table>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table name="campfire" version="0.8" autokey="true" module="526">
+  <el name="table" child="1" />
+  <el name="record">
+    <record name="alias" type="String" required="y" max="70" />
+    <record name="additional-heal-percent" type="Int16" required="y" min="0" max="1000" />
+    <record name="remain-duration" type="Msec" required="y" min="0" />
+    <record name="mesh-id" type="XUnknown2" />
+    <record name="animset-name" type="XUnknown2" />
+    <record name="anim-show" type="XUnknown2" />
+    <record name="despawn-show" type="XUnknown2" />
+    <record name="party-match" type="Ref" ref="partymatch" />
+    <record name="map-tooltip" type="Ref" ref="text" />
+  </el>
+</table>

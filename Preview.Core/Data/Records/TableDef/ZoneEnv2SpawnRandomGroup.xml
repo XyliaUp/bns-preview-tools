@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<table name="ZoneEnv2SpawnRandomGroup" version="0.2" autokey="false" module="526" maxid="255">
+  <el name="table" child="1" />
+  <el name="record">
+	<record name="zone" type="Int32" key="y" required="y" />
+	<record name="id" type="Int16" key="y" required="y" />
+	<record name="alias" type="String" required="y" />
+  </el>
+</table>

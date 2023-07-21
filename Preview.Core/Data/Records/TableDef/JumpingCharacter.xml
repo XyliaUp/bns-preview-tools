@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table name="jumpingcharacter" version="0.5" autokey="false" module="6">
+  <el name="table" child="1" />
+  <el name="record">
+    <record name="alias" type="String" required="y" max="70" />
+    <record name="job" type="Prop_seq" seq="job" key="y" required="y" />
+    <record name="jumping-level" type="Int16" key="y" required="y" min="1" max="70" />
+    <record name="condition-level" type="Int16" default="45" min="1" max="70" />
+    <record name="tutorial-zone" type="Ref" ref="zone" repeat="4" />
+    <record name="train-quest" type="Ref" ref="quest" required="y" />
+    <record name="skip-msg-achievement" type="Ref" ref="achievement" />
+    <record name="creation-enable" type="Bool" required="y" />
+  </el>
+</table>

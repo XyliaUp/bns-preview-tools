@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table name="zonetriggereventcond" version="0.11" autokey="true" module="6" maxid="10000">
+  <el name="table" child="1" />
+  <el name="record">
+    <record name="alias" type="String" required="y" max="70" />
+    <record name="cond-contents-type" type="Seq">
+      <case name="none" default="y" />
+      <case name="faction-stage-faction-1-win" />
+      <case name="faction-stage-faction-2-win" />
+    </record>
+    <record name="cond-event-message" type="Ref" ref="game-message" />
+    <sub name="weekly-event">
+      <record name="event-day-of-week" type="Seq" required="y">
+        <case name="sun" />
+        <case name="mon" />
+        <case name="tue" />
+        <case name="wed" />
+        <case name="thu" />
+        <case name="fri" />
+        <case name="sat" />
+        <case name="thu-fri" />
+        <case name="weekday" />
+        <case name="fri-sat-sun" />
+        <case name="weekend" />
+        <case name="entire-week" />
+      </record>
+      <record name="event-hour" type="Int8" default="-1" repeat="8" min="-1" max="23" />
+      <record name="event-minute" type="Int8" default="-1" repeat="8" min="-1" max="59" />
+    </sub>
+    <sub name="timeout-event" />
+    <sub name="npc-killed-event" />
+    <sub name="npc-killed-event2" />
+    <sub name="npc-survived-score-decision-timeout-event" />
+    <sub name="npc-survived-timeout-event" />
+    <sub name="boss-challenge-timeout-event" />
+    <sub name="boss-challenge-round-score-event" />
+    <sub name="boss-challenge-boss-npc-killed-event" />
+  </el>
+</table>

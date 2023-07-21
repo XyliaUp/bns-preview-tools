@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table name="soul-boost-mission" version="4.0" autokey="false" module="6">
+  <el name="table" child="1" />
+  <el name="record">
+    <record name="id" type="Int32" key="y" required="y" min="1" />
+    <record name="alias" type="String" required="y" max="70" />
+    <record name="mission-type" type="Seq">
+      <case name="none" default="y" />
+      <case name="pc-login" />
+      <case name="complete-challenge-daily" />
+      <case name="complete-challenge-weekly" />
+      <case name="complete-quest" />
+      <case name="play-time" />
+      <case name="play-time-in-zone" />
+      <case name="time-based-play-reward" />
+      <case name="kill-npc" />
+      <case name="join-party-battle" />
+      <case name="kill-pc-in-party-battle" />
+      <case name="account-level" />
+      <case name="try-transform-equip-item" />
+      <case name="transform-item" />
+      <case name="pc-level" />
+      <case name="pc-mastery-level" />
+      <case name="exchange-item-in-zone" />
+      <case name="loot-item-in-zone" />
+      <case name="purchase-item-from-npc" />
+      <case name="use-item" />
+      <case name="process-glyph-fusion" />
+      <case name="equip-glyph" />
+      <case name="join-guild" />
+      <case name="complete-quest-guild" />
+      <case name="manipulate-env" />
+      <case name="repair-item" />
+      <case name="decompose-item" />
+      <case name="improve-item" />
+      <case name="equip-item" />
+      <case name="sealed-dungeon-clear" />
+      <case name="improve-item-set-bonus-total-level" />
+      <case name="decompose-random-box" />
+      <case name="acquire-quest-reward" />
+      <case name="acquire-quest-bonus-reward" />
+    </record>
+    <record name="entity-type" type="Seq" repeat="10">
+      <case name="none" default="y" />
+      <case name="zone" />
+      <case name="npc" />
+      <case name="item" />
+      <case name="quest" />
+      <case name="party-battle-field-type" />
+      <case name="recipe-category" />
+      <case name="equip-type" />
+      <case name="item-grade" />
+      <case name="glyph-color" />
+      <case name="glyph-grade" />
+      <case name="glyph-reward-type" />
+      <case name="env" />
+      <case name="market-category-2" />
+      <case name="market-category-3" />
+      <case name="item-generation" />
+      <case name="stage-number" />
+      <case name="improve-level" />
+      <case name="item-improve-set-bonus" />
+      <case name="dungeon" />
+      <case name="sealed-dungeon-level" />
+      <case name="value" />
+    </record>
+    <record name="condition" type="Int64" default="0" repeat="10" />
+  </el>
+</table>

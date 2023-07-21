@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table name="survey" version="0.6" autokey="false" module="6" maxid="30">
+  <el name="table" child="1" />
+  <el name="record">
+    <record name="id" type="Int32" key="y" required="y" min="1" max="30" />
+    <record name="survey-question" type="Ref" ref="surveyquestions" required="y" />
+    <record name="job" type="Prop_seq" seq="job" default="job-none" />
+    <record name="race" type="Prop_seq" seq="race" default="race-none" />
+    <record name="level" type="Int32" default="0" />
+    <record name="completed-quest" type="Ref" ref="quest" />
+    <record name="start-year" type="Int16" default="0" />
+    <record name="start-month" type="Int8" default="0" />
+    <record name="start-day" type="Int8" default="0" />
+    <record name="start-hour" type="Int8" default="-1" />
+    <record name="end-year" type="Int16" default="0" />
+    <record name="end-month" type="Int8" default="0" />
+    <record name="end-day" type="Int8" default="0" />
+    <record name="end-hour" type="Int8" default="-1" />
+    <record name="need-item" type="Ref" ref="item" />
+    <record name="fixed-reward-item" type="Ref" ref="item" repeat="4" />
+    <record name="fixed-reward-item-count" type="Int8" default="1" repeat="4" />
+    <record name="optional-reward-item" type="Ref" ref="item" repeat="4" />
+    <record name="optional-reward-item-count" type="Int8" default="1" repeat="4" />
+  </el>
+</table>

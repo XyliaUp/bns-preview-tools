@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table name="custom-dress-design-cost" version="0.3" autokey="false" module="6">
+  <el name="table" child="1" />
+  <el name="record">
+    <record name="alias" type="String" required="y" max="70" />
+    <record name="item-type" type="Seq" key="y" required="y">
+      <case name="none" />
+      <case name="costume" />
+      <case name="costume-attach" />
+      <case name="head-attach" />
+      <case name="face-attach" />
+    </record>
+    <record name="customize-id" type="Int8" key="y" required="y" min="1" />
+    <record name="resource-index" type="Int8" key="y" required="y" min="0" />
+    <record name="icon-texture" type="Ref" ref="icontexture" />
+    <record name="icon-index" type="Int16" default="0" />
+    <record name="name" type="Ref" ref="text" />
+    <record name="desc" type="Ref" ref="text" />
+    <record name="order" type="Int32" required="y" />
+    <record name="usable" type="Bool" default="y" />
+    <record name="reset-design" type="Bool" />
+    <record name="required-item" type="Ref" ref="item" repeat="3" />
+    <record name="required-item-count" type="Int16" default="0" repeat="3" min="0" max="1000" />
+    <record name="required-money-cost" type="Int32" default="0" min="0" max="2000000000" />
+  </el>
+</table>

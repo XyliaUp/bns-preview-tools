@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table name="commonanim" version="0.5" autokey="false" module="4">
+  <el name="table" child="1" />
+  <el name="record">
+    <record name="anim-type" type="Seq" key="y" required="y">
+      <case name="dead" />
+      <case name="die" />
+      <case name="loot" />
+      <case name="mount_linker" />
+      <case name="mount_linkee" />
+      <case name="inhalation_linker" />
+      <case name="inhalation_linkee" />
+    </record>
+    <record name="anim-name" type="String" max="128" />
+  </el>
+</table>

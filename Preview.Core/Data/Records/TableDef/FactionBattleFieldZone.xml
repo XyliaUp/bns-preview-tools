@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table name="faction-battle-field-zone" version="0.14" autokey="false" module="14" maxid="31999">
+  <el name="table" child="1" />
+  <el name="record">
+    <record name="id" type="Int16" key="y" required="y" min="1" max="31999" />
+    <record name="alias" type="String" required="y" max="70" />
+    <record name="zone" type="Ref" ref="zone" required="y" />
+    <record name="group" type="Ref" ref="attraction-group" />
+    <record name="ui-filter-attraction-quest-only" type="Bool" />
+    <record name="respawn-confirm-text" type="Ref" ref="text" />
+    <record name="attraction-quest" type="Ref" ref="quest" repeat="10" hidden="y" />
+    <record name="required-level" type="Int8" default="0" min="0" max="100" />
+    <record name="required-faction-level" type="Int8" default="0" min="0" max="100" />
+    <record name="faction-battle-field-zone-name2" type="Ref" ref="text" />
+    <record name="faction-battle-field-zone-desc" type="Ref" ref="text" />
+    <record name="thumbnail-image" type="String" max="70" />
+    <record name="reward-summary" type="Ref" ref="attractionrewardsummary" />
+  </el>
+</table>

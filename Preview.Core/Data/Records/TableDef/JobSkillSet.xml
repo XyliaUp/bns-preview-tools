@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table name="jobskillset" version="0.3" autokey="false" module="4">
+  <el name="table" child="1" />
+  <el name="record">
+    <record name="job" type="Prop_seq" seq="job" key="y" required="y" />
+    <record name="skill" type="Int32" default="0" repeat="100" />
+    <record name="acquire-type" type="Seq" repeat="100">
+      <case name="none" default="y" />
+      <case name="by-quest" />
+      <case name="by-level-up" />
+      <case name="by-training" />
+    </record>
+    <record name="style-level-2-skill" type="Int32" default="0" repeat="2" />
+    <record name="style-level-3-skill" type="Int32" default="0" repeat="2" />
+    <record name="style-level-4-skill" type="Int32" default="0" repeat="2" />
+    <record name="style-level-5-skill" type="Int32" default="0" repeat="2" />
+  </el>
+</table>

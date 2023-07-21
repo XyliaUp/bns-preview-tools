@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "WinForm": {
+      "commandName": "Project",
+      "nativeDebugging": false
+    }
+  }
+}

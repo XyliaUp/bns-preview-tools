@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table version="0.1">
+	<type>Zone</type>
+
+    <attribute name="id" text="" />
+    <attribute name="alias" text="" />
+    <attribute name="area" text="" ref="MapArea" />
+    <attribute name="terrain" text="" />
+    <attribute name="deprecated-zone" text="" />
+    <attribute name="zone-type2" text="" />
+</table>

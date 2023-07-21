@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table name="craft-recipe" version="0.12" autokey="false" module="38">
+  <el name="table" child="1" />
+  <el name="record">
+    <record name="id" type="Int64" key="y" required="y" />
+    <record name="alias" type="String" required="y" max="50" />
+    <record name="name" type="Ref" ref="text" required="y" />
+    <record name="desc" type="Ref" ref="text" />
+    <record name="requirement-name" type="Ref" ref="text" />
+    <record name="location-desc" type="Ref" ref="text" />
+    <record name="category" type="Seq" seq="production-type" required="y" />
+    <record name="inner-category" type="Int32" required="y" />
+    <record name="money-cost" type="Int32" default="0" min="0" />
+    <record name="material" type="Ref" ref="item" default="0" repeat="5" />
+    <record name="material-amount" type="Int16" default="0" repeat="5" />
+    <record name="brand-material" type="Ref" ref="item-brand" repeat="5" />
+    <record name="brand-material-condition-type" type="Seq" seq="condition-type" default="all" repeat="5" />
+    <record name="brand-material-amount" type="Int16" default="0" repeat="5" />
+    <record name="limit-production-exp" type="Int16" default="0" min="0" />
+    <record name="complete-quest" type="Ref" ref="quest" />
+    <record name="reward-production-exp" type="Int16" default="0" min="0" />
+    <record name="reward-production-exp-bonus" type="Int16" default="0" min="0" />
+    <record name="half-production-exp-step" type="Int16" default="0" min="0" />
+    <record name="zero-production-exp-step" type="Int16" default="0" min="0" />
+    <record name="customizable" type="Bool" />
+    <record name="delivery-method" type="Seq">
+      <case name="free" default="y" />
+      <case name="post-box" />
+      <case name="account-warehouse" />
+    </record>
+    <record name="step" type="Ref" ref="craft-recipe-step" repeat="4" />
+    <record name="recipe-type" type="Seq">
+      <case name="normal" default="y" />
+      <case name="quick" />
+      <case name="massive" />
+    </record>
+    <record name="use-state" type="Seq">
+      <case name="invalid-state" />
+      <case name="no-more-use" />
+      <case name="in-use" default="y" />
+    </record>
+  </el>
+</table>

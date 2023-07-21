@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table name="vehicle-appearance" version="0.5" autokey="true" module="4">
+  <el name="table" child="1" />
+  <el name="record">
+    <record name="alias" type="String" required="y" max="128" />
+    <record name="anim-set-name" type="XUnknown2" />
+    <record name="move-anim-set-name" type="XUnknown2" />
+    <record name="anim-tree-name" type="XUnknown2" />
+    <record name="mesh-name" type="XUnknown2" />
+    <record name="material-name" type="XUnknown2" repeat="3" />
+    <record name="physic-asset" type="XUnknown2" />
+    <record name="ride-show-name" type="XUnknown2" />
+    <record name="getoff-show-name" type="XUnknown2" />
+    <record name="cancel-show-name" type="XUnknown2" />
+    <record name="move-vehicle-idle" type="String" max="60" />
+    <record name="attach-rider-bone" type="String" max="60" />
+    <record name="attach-vehicle-socket" type="String" max="60" />
+    <record name="stand-idle" type="Ref" ref="standidle" />
+    <record name="effect-show" type="XUnknown2" />
+    <record name="foot-print-type" type="Seq">
+      <case name="none" default="y" />
+      <case name="two-legged" />
+      <case name="four-legged" />
+    </record>
+	<record name="unk-" type="Float32" default="2.0" />
+	<record name="unk-" type="Float32" default="60.0" />
+  </el>
+</table>

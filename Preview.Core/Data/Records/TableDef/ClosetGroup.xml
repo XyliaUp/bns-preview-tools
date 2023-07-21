@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table name="closet-group" version="0.14" autokey="false" module="6">
+  <el name="table" child="1" />
+  <el name="record">
+    <record name="id" type="Int32" key="y" required="y" />
+    <record name="category" type="Seq">
+      <case name="none" default="y" />
+      <case name="custom" />
+      <case name="jeryoung" />
+      <case name="daesanak" />
+      <case name="suwal" />
+      <case name="baekchung" />
+      <case name="geonwon" />
+      <case name="seorock" />
+      <case name="seongye" />
+      <case name="npc-trade" />
+      <case name="transform" />
+      <case name="event" />
+      <case name="shop" />
+      <case name="faction" />
+      <case name="etc" />
+      <case name="cashshop" />
+      <case name="ingameshop" />
+      <case name="yongyuenshop" />
+      <case name="fashionista" />
+      <case name="unusable" />
+      <case name="northland-east" />
+    </record>
+    <record name="sort-no" type="Int16" default="0" />
+    <record name="charge-of-item-for-instant-payment" type="Ref" ref="item" />
+    <record name="item-to-be-paid" type="Ref" ref="item" />
+    <record name="title-item" type="Ref" ref="item" repeat="30" hidden="y" />
+    <record name="check-equip-characteristics" type="Bool" default="true" hidden="y" />
+  </el>
+</table>

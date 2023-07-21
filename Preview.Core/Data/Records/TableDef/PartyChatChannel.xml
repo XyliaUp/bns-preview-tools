@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table name="partychatchannel" version="0.98" autokey="false" module="4" maxid="10000">
+  <el name="table" child="1" />
+  <el name="record">
+    <record name="id" type="Int16" key="y" required="y" max="10000" />
+    <record name="alias" type="String" required="y" max="70" />
+    <record name="chnnelid" type="Seq" required="y">
+      <case name="none" />
+      <case name="1" />
+      <case name="2" />
+      <case name="3" />
+      <case name="4" />
+      <case name="5" />
+      <case name="6" />
+    </record>
+    <record name="name" type="Ref" ref="text" required="y" />
+    <record name="name-party-number" type="Ref" ref="text" />
+    <record name="district" type="Ref" ref="district" />
+    <record name="map-group-1" type="Ref" ref="map-group-1" />
+    <record name="arrange-type" type="Seq">
+      <case name="district" default="y" />
+      <case name="group-name" />
+    </record>
+    <record name="group-name" type="Ref" ref="text" />
+    <record name="grade" type="Int8" default="0" max="6" />
+    <record name="auto-recruittime" type="Int16" default="10" min="10" max="360" />
+    <record name="use-team-type" type="Bool" />
+    <record name="use-difficulty-type" type="Bool" repeat="3" />
+    <record name="interdungeon" type="Ref" ref="interdungeonlist" />
+    <record name="party-match" type="Ref" ref="partymatch" />
+    <sub name="normal" />
+    <sub name="main-faction">
+      <record name="faction-1-party-match" type="Ref" ref="partymatch" />
+      <record name="faction-2-party-match" type="Ref" ref="partymatch" />
+    </sub>
+  </el>
+</table>

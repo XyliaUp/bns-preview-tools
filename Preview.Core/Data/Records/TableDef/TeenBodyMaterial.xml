@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table name="teen-body-material" version="0.3" autokey="true" module="4">
+  <el name="table" child="1" />
+  <el name="record">
+    <record name="body-material-name" type="String" required="y" max="70" />
+    <record name="teen-body-material-name" type="String" required="y" max="70" />
+    <record name="body-mesh-name" type="String" required="y" max="70" />
+  </el>
+</table>

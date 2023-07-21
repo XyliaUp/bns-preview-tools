@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table name="pc-voice" version="0.3" autokey="false" module="4">
+  <el name="table" child="1" />
+  <el name="record">
+    <record name="id" type="Int8" key="y" required="y" />
+    <record name="sex" type="Prop_seq" seq="sex" key="y" required="y" />
+    <record name="pc-voice-set-id" type="Int8" required="y" />
+    <record name="usable-race" type="Prop_seq" seq="race" default="race-none" repeat="4" />
+    <record name="default-race" type="Prop_seq" seq="race" default="race-none" repeat="4" />
+    <record name="name" type="Ref" ref="text" />
+    <record name="desc" type="Ref" ref="text" />
+  </el>
+</table>

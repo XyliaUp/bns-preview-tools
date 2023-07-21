@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table name="contentrestriction" version="0.7" autokey="false" module="6">
+  <el name="table" child="1" />
+  <el name="record">
+    <record name="code" type="Seq" key="y" required="y">
+      <case name="invalid" />
+      <case name="nckorea" />
+      <case name="tencent" />
+      <case name="innova" />
+      <case name="ncjapan" />
+      <case name="sea" />
+      <case name="nctaiwan" />
+      <case name="ncwest" />
+      <case name="garena" />
+      <case name="rncs" />
+      <case name="rtx" />
+      <case name="rinv" />
+      <case name="rncj" />
+      <case name="rnct" />
+      <case name="rncw" />
+      <case name="rgrn" />
+    </record>
+    <record name="require-level" type="Int16" default="0" min="0" max="60" />
+    <record name="require-grade" type="Int32" default="0" />
+    <record name="require-level-post-send" type="Int16" default="0" min="0" max="60" />
+    <record name="require-grade-post-send" type="Int32" default="0" />
+    <record name="market-trade" type="Bool" />
+    <record name="post-send" type="Bool" />
+    <record name="account-post-send" type="Bool" />
+    <record name="post-receive" type="Bool" />
+    <record name="personal-trade" type="Bool" />
+    <record name="account-inventory-goods-receive" type="Bool" />
+  </el>
+</table>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table name="randomstore" version="0.8" autokey="false" module="6">
+  <el name="table" child="1" />
+  <el name="record">
+    <record name="random-store-number" type="Seq" key="y" required="y">
+      <case name="invalid-number" />
+      <case name="random-store-1" />
+      <case name="random-store-2" />
+    </record>
+    <record name="alias" type="String" required="y" max="70" />
+    <record name="limit-level" type="Int8" default="16" min="1" />
+    <record name="free-draw-enable" type="Bool" />
+    <record name="item-draw-enable" type="Bool" />
+    <record name="money-draw-enable" type="Bool" />
+    <record name="instant-payment-draw-enable" type="Bool" />
+    <record name="charge-of-item-draw" type="Ref" ref="item" />
+    <record name="charge-of-money-draw" type="Int64" default="0" min="0" max="20000000000" />
+    <record name="charge-of-item-instant-payment-draw" type="Ref" ref="item" />
+    <record name="charge-of-item-five-times-draw" type="Ref" ref="item" />
+    <record name="charge-of-item-count-five-times-draw" type="Int8" default="0" />
+    <record name="charge-of-money-five-times-draw" type="Int64" default="0" min="0" max="20000000000" />
+    <record name="charge-of-item-instant-payment-five-times-draw" type="Ref" ref="item" />
+    <record name="free-reward-draw-enable" type="Bool" />
+    <record name="free-reward-draw-add-value" type="Int32" default="1" min="0" max="10" />
+    <record name="premium-reward-draw-enable" type="Bool" />
+    <record name="premium-reward-draw-premium-draw-count" type="Int16" default="95" />
+    <record name="acquire-draw-reward-set-repeat-count" type="Int32" default="0" min="0" max="30000" />
+  </el>
+</table>

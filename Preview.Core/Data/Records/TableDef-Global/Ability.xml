@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table>
+	<record name="attach-ability">
+		<case name="none" default="y" />
+		<case name="attack-power-creature-min-max" desc="攻击" />
+		<case name="pve-boss-level-npc-attack-power-creature-min-max" desc="降魔攻击力" />
+		<case name="pvp-attack-power-creature-min-max" desc="PVP攻击力" />
+		<case name="attack-hit-value" desc="命中" />
+		<case name="attack-critical-value" desc="暴击" />
+		<case name="attack-critical-damage-value" desc="暴击伤害" />
+		<case name="attack-attribute-value" desc="功力" />
+		<case name="attack-pierce-value" desc="穿刺" />
+		<case name="abnormal-attack-power-value" desc="状态异常伤害" />
+		<case name="race-type-1-defend-damage-modify-percent" />
+		<case name="race-type-2-defend-damage-modify-percent" />
+		<case name="race-type-3-defend-damage-modify-percent" />
+		<case name="race-type-4-defend-damage-modify-percent" />
+		<case name="race-type-5-defend-damage-modify-percent" />
+		<case name="race-type-6-defend-damage-modify-percent" />
+		<case name="race-type-7-defend-damage-modify-percent" />
+		<case name="attribute-type-1-defend-damage-modify-percent" />
+		<case name="attribute-type-2-defend-damage-modify-percent" />
+		<case name="attribute-type-3-defend-damage-modify-percent" />
+		<case name="attribute-type-4-defend-damage-modify-percent" />
+		<case name="attribute-type-5-defend-damage-modify-percent" />
+		<case name="attribute-type-6-defend-damage-modify-percent" />
+		<case name="attribute-type-7-defend-damage-modify-percent" />
+		<case name="attribute-type-8-defend-damage-modify-percent" />
+		<case name="attribute-type-9-defend-damage-modify-percent" />
+		<case name="attribute-type-10-defend-damage-modify-percent" />
+		<case name="attribute-type-11-defend-damage-modify-percent" />
+		<case name="attribute-type-12-defend-damage-modify-percent" />
+		<case name="max-hp" desc="生命" />
+		<case name="defend-power-creature-value" desc="防御" />
+		<case name="pve-boss-level-npc-defend-power-creature-value" desc="降魔防御力" />
+		<case name="pvp-defend-power-creature-value" desc="PVP防御力" />
+		<case name="defend-dodge-value" desc="闪避" />
+		<case name="defend-parry-value" desc="格挡" />
+		<case name="defend-critical-value" desc="暴击防御" />
+		<case name="hp-regen" desc="恢复" />
+		<case name="heal-power-value" desc="治疗" />
+		<case name="abnormal-defend-power-value" desc="状态异常防御力" />
+		<case name="race-type-1-attack-damage-modify-percent" />
+		<case name="race-type-2-attack-damage-modify-percent" />
+		<case name="race-type-3-attack-damage-modify-percent" />
+		<case name="race-type-4-attack-damage-modify-percent" />
+		<case name="race-type-5-attack-damage-modify-percent" />
+		<case name="race-type-6-attack-damage-modify-percent" />
+		<case name="race-type-7-attack-damage-modify-percent" />
+		<case name="attribute-type-1-attack-damage-modify-percent" />
+		<case name="attribute-type-2-attack-damage-modify-percent" />
+		<case name="attribute-type-3-attack-damage-modify-percent" />
+		<case name="attribute-type-4-attack-damage-modify-percent" />
+		<case name="attribute-type-5-attack-damage-modify-percent" />
+		<case name="attribute-type-6-attack-damage-modify-percent" />
+		<case name="attribute-type-7-attack-damage-modify-percent" />
+		<case name="attribute-type-8-attack-damage-modify-percent" />
+		<case name="attribute-type-9-attack-damage-modify-percent" />
+		<case name="attribute-type-10-attack-damage-modify-percent" />
+		<case name="attribute-type-11-attack-damage-modify-percent" />
+		<case name="attribute-type-12-attack-damage-modify-percent" />
+		<case name="r-attack-stiff-duration-value" />
+		<case name="r-defend-stiff-duration-value" />
+		<case name="r-attack-concentrate-value" />
+		<case name="r-aoe-defend-power-value" />
+		<case name="r-defend-strength-creature-value" />
+		<case name="r-attack-precise-creature-value" />
+		<case name="r-attack-aoe-pierce-value" />
+		<case name="r-attack-abnormal-hit-value" />
+		<case name="r-defend-abnormal-dodge-value" />
+		<case name="r-support-power-value" />
+	</record>
+
+	<record name="main-ability" >
+		<case name="none" default="y" />
+		<case name="attack-power-equip-min-and-max" desc="攻击" />
+		<case name="defend-power-equip-value" desc="防御" />
+		<case name="defend-resist-power-equip-value" desc="抗性" />
+		<case name="attack-hit-base-percent" desc="命中率" />
+		<case name="attack-hit-value" desc="命中" />
+		<case name="attack-critical-base-percent" desc="暴击率" />
+		<case name="attack-critical-value" desc="暴击" />
+		<case name="defend-critical-base-percent" desc="暴击防御率" />
+		<case name="defend-critical-value" desc="暴击防御" />
+		<case name="defend-dodge-base-percent" desc="闪避率" />
+		<case name="defend-dodge-value" desc="闪避" />
+		<case name="defend-parry-base-percent" desc="格挡率" />
+		<case name="defend-parry-value" desc="格挡" />
+		<case name="attack-stiff-duration-base-percent" desc="状态异常时间增加" />
+		<case name="attack-stiff-duration-value" desc="熟练" />
+		<case name="defend-stiff-duration-base-percent" desc="状态异常时间减少" />
+		<case name="defend-stiff-duration-value" desc="韧性" />
+		<case name="cast-duration-base-percent" desc="集中率" />
+		<case name="cast-duration-value" desc="集中" />
+		<case name="defend-physical-damage-reduce-percent" desc="物理伤害减免率" />
+		<case name="defend-force-damage-reduce-percent" desc="气功伤害减免率" />
+		<case name="attack-damage-modify-percent" desc="额外伤害率" />
+		<case name="attack-damage-modify-diff" desc="额外伤害" />
+		<case name="defend-damage-modify-percent" desc="额外伤害减免率" />
+		<case name="defend-damage-modify-diff" desc="额外伤害减免" />
+		<case name="max-hp" desc="生命" />
+		<case name="hp-regen" desc="恢复" />
+		<case name="hp-regen-combat" desc="战斗中恢复" />
+		<case name="attack-pierce-value" desc="穿刺" />
+		<case name="attack-concentrate-value" desc="集中" />
+		<case name="defend-perfect-parry-reduce-percent" desc="完全格挡穿刺" />
+		<case name="defend-counter-reduce-percent" desc="反击穿刺" />
+		<case name="attack-critical-damage-percent" desc="暴击伤害率" />
+		<case name="pve-boss-level-npc-attack-power-equip-min-and-max" desc="降魔攻击力" />
+		<case name="pve-boss-level-npc-defend-power-equip-value" desc="降魔防御力" />
+		<case name="pvp-attack-power-equip-min-and-max" desc="PVP攻击力" />
+		<case name="pvp-defend-power-equip-value" desc="PVP防御力" />
+		<case name="attack-critical-damage-value" desc="暴击伤害" />
+		<case name="max-guard-gauge" desc="刚体" />
+		<case name="attack-attribute-value" desc="功力" />
+		<case name="r-attack-stiff-duration-equip-value" />
+		<case name="r-defend-stiff-duration-equip-value" />
+		<case name="r-aoe-defend-power-value-equip" />
+		<case name="r-heal-power-equip-value" />
+		<case name="r-defend-strength-equip-value" />
+		<case name="r-attack-precise-equip-value" />
+		<case name="r-attack-aoe-pierce-value-equip" />
+		<case name="r-attack-abnormal-hit-equip-value" />
+		<case name="r-defend-abnormal-dodge-equip-value" />
+		<case name="r-support-power-equip-value" />
+		<case name="r-hypermove-power-equip-value" />
+		<case name="attack-attribute-base-percent" desc="功力伤害率" />
+		<case name="defend-difficulty-type-damage-reduce-percent" desc="狂暴伤害减免" />
+		<case name="attack-attribute-value-equip" desc="功力" />
+		<case name="abnormal-attack-power-value" desc="状态异常伤害" />
+		<case name="abnormal-defend-power-value" desc="状态异常防御" />
+		<case name="abnormal-attack-base-percent" desc="状态异常伤害率" />
+		<case name="abnormal-defend-base-percent" desc="状态异常防御率" />
+		<case name="attack-pierce-base-percent" desc="穿刺率" />
+	</record>
+</table>
