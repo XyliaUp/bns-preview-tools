@@ -30,8 +30,8 @@
 		{
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SearcherDialog));
 			textBox1 = new TextBox();
-			Confirm = new HZH_Controls.Controls.UCBtnExt();
 			label1 = new Label();
+			Confirm = new HZH_Controls.Controls.UCBtnExt();
 			SuspendLayout();
 			// 
 			// textBox1
@@ -39,8 +39,14 @@
 			resources.ApplyResources(textBox1, "textBox1");
 			textBox1.Name = "textBox1";
 			// 
+			// label1
+			// 
+			resources.ApplyResources(label1, "label1");
+			label1.Name = "label1";
+			// 
 			// Confirm
 			// 
+			resources.ApplyResources(Confirm, "Confirm");
 			Confirm.BtnBackColor = Color.Empty;
 			Confirm.BtnFont = new Font("Microsoft YaHei UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
 			Confirm.BtnForeColor = Color.FromArgb(192, 192, 255);
@@ -49,7 +55,6 @@
 			Confirm.DialogResult = DialogResult.None;
 			Confirm.EnabledMouseEffect = false;
 			Confirm.FillColor = Color.White;
-			resources.ApplyResources(Confirm, "Confirm");
 			Confirm.IsRadius = true;
 			Confirm.IsShowRect = true;
 			Confirm.IsShowTips = false;
@@ -60,11 +65,6 @@
 			Confirm.TipsColor = Color.FromArgb(232, 30, 99);
 			Confirm.TipsText = "";
 			Confirm.Click += Confirm_BtnClick;
-			// 
-			// label1
-			// 
-			resources.ApplyResources(label1, "label1");
-			label1.Name = "label1";
 			// 
 			// SearcherDialog
 			// 
@@ -77,13 +77,14 @@
 			FormBorderStyle = FormBorderStyle.FixedToolWindow;
 			KeyPreview = true;
 			Name = "SearcherDialog";
+			Shown += SearcherDialog_Shown;
 			ResumeLayout(false);
 			PerformLayout();
 		}
 
 		#endregion
 		private HZH_Controls.Controls.UCBtnExt Confirm;
-		public System.Windows.Forms.TextBox textBox1;
+		private System.Windows.Forms.TextBox textBox1;
 		private System.Windows.Forms.Label label1;
 	}
 }

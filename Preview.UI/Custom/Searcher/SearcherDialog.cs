@@ -6,15 +6,32 @@ using Xylia.Preview.Data.Record;
 namespace Xylia.Preview.GameUI.Scene.Searcher;
 public partial class SearcherDialog : Form
 {
-	public IEnumerable<FilterInfo> filters;
+	#region Constructor
+	private List<FilterInfo> filters;
 
-	public SearcherDialog(List<FilterInfo> filters)
+	public SearcherDialog()
 	{
 		InitializeComponent();
+		filters = new();
+	}
+	#endregion
 
-		this.filters = filters;
+	#region Dialog
+	private void Confirm_BtnClick(object sender, EventArgs e)
+	{
+		this.DialogResult = DialogResult.OK;
+	}
 
-		#region CheckBox
+	public override string Text => this.textBox1?.Text;
+
+	public IEnumerable<FilterInfo> ActivateFilter => filters.Where(f => f.Checked);
+	#endregion
+
+
+
+
+	private void SearcherDialog_Shown(object sender, EventArgs e)
+	{
 		int LocX = 30, LocY = this.Confirm.Bottom + 5;
 		foreach (var Filter in filters)
 		{
@@ -22,11 +39,10 @@ public partial class SearcherDialog : Form
 			{
 				Text = Filter.TagName,
 				Checked = Filter.Checked,
-
 				Location = new Point(LocX, LocY),
 			};
-			c.CheckedChanged += new((o, e) => Filter.Checked = c.Checked);
 
+			c.CheckedChanged += new((o, e) => Filter.Checked = c.Checked);
 			this.Controls.Add(c);
 
 
@@ -37,16 +53,12 @@ public partial class SearcherDialog : Form
 				LocY = c.Bottom + 2;
 			}
 		}
-		#endregion
 	}
 
-
-	private void Confirm_BtnClick(object sender, EventArgs e)
+	public void Add(FilterInfo filter)
 	{
-		filters = filters.Where(x => x.Checked);
-		this.DialogResult = DialogResult.OK;
+		filters.Add(filter);
 	}
-
 
 
 	public static List<BaseRecord> Filter(string rule, IEnumerable<FilterInfo> filters)
@@ -63,9 +75,7 @@ public partial class SearcherDialog : Form
 
 		return entity;
 	}
-
 }
-
 
 public class FilterInfo
 {

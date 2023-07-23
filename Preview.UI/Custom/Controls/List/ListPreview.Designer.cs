@@ -39,7 +39,7 @@ partial class ListPreview
 		this.DoubleBuffered = true;
 		this.BackColor = Color.Transparent;
 		this.ForeColor = Color.White;
-		this.Items = new(this);		
+		this.Items = new();		
 
 		this.Controls.Add(_panel);
 	}

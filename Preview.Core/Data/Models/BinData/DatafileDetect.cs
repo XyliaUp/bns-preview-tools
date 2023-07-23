@@ -97,6 +97,7 @@ public sealed class DatafileDetect
 					AddList("pc-voice", table.Type - 1);
 					AddList("pc-voice-set", table.Type);
 				}
+				else if (str1.Contains("00009076.Race_Gun")) AddList("race", table.Type);
 				else if (str1.Contains("76_PCSpawnPoint_1")) AddList("zonepcspawn", table.Type);
 			}
 			#endregion

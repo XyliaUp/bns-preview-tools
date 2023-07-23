@@ -67,5 +67,10 @@ public abstract partial class OutBase
 	#endregion
 
 
-	public static void StartOutput<T>() where T : OutBase, new() => Task.Run(() => new T().Output(msg: msg => PreviewRegister.ShowTip(msg)));
+	public static void StartOutput<T>() where T : OutBase, new()
+	{
+		var thread = new Thread(act => new T().Output(msg: msg => PreviewRegister.ShowTip(msg)));
+		thread.SetApartmentState(ApartmentState.STA);
+		thread.Start();
+	}
 }

@@ -47,7 +47,7 @@ public sealed class ItemCloset_Main : OutBase
             row.AddCell(item.Name2);
             row.AddCell(item.EquipType.GetText());
             row.AddCell(item.EquipSex.GetText());
-            row.AddCell(item.EquipRace.GetText());
+            row.AddCell(item.EquipRace.GetName());
             row.AddCell(item.ClosetGroupId);
 
             if (item.ClosetGroupId != 0)

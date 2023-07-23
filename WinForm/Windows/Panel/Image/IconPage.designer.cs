@@ -1,4 +1,4 @@
-﻿using Xylia.Preview.Common.Extension;
+﻿using Xylia.Match.Util.Paks;
 
 namespace Xylia.Match.Windows.Panel
 {
@@ -32,50 +32,50 @@ namespace Xylia.Match.Windows.Panel
 		{
 			components = new System.ComponentModel.Container();
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(IconPage));
-			Folder = new System.Windows.Forms.FolderBrowserDialog();
-			tabControl1 = new System.Windows.Forms.TabControl();
-			TabPage1 = new System.Windows.Forms.TabPage();
-			groupBox2 = new System.Windows.Forms.GroupBox();
-			Button9 = new System.Windows.Forms.Button();
-			groupBox1 = new System.Windows.Forms.GroupBox();
-			checkBox1 = new System.Windows.Forms.CheckBox();
+			Folder = new FolderBrowserDialog();
+			tabControl1 = new TabControl();
+			TabPage1 = new TabPage();
+			groupBox2 = new GroupBox();
+			Button9 = new Button();
+			groupBox1 = new GroupBox();
+			checkBox1 = new CheckBox();
 			Switch_Mode = new HZH_Controls.Controls.UCSwitch();
-			Label5 = new System.Windows.Forms.Label();
+			Label5 = new Label();
 			FormatSelect = new HZH_Controls.Controls.UCCombox();
-			Button1 = new System.Windows.Forms.Button();
-			Button2 = new System.Windows.Forms.Button();
-			Btn_Search_3 = new System.Windows.Forms.Button();
-			Label3 = new System.Windows.Forms.Label();
-			TextBox1 = new System.Windows.Forms.TextBox();
-			Btn_Search_2 = new System.Windows.Forms.Button();
-			Label2 = new System.Windows.Forms.Label();
-			Path_ResultPath = new System.Windows.Forms.TextBox();
-			Label1 = new System.Windows.Forms.Label();
-			Btn_Search_1 = new System.Windows.Forms.Button();
-			Path_GameFolder = new System.Windows.Forms.TextBox();
+			Button1 = new Button();
+			Button2 = new Button();
+			Btn_Search_3 = new Button();
+			Label3 = new Label();
+			TextBox1 = new TextBox();
+			Btn_Search_2 = new Button();
+			Label2 = new Label();
+			Path_ResultPath = new TextBox();
+			Label1 = new Label();
+			Btn_Search_1 = new Button();
+			Path_GameFolder = new TextBox();
 			Footer = new HZH_Controls.Controls.UCSplitLabel();
-			TabPage2 = new System.Windows.Forms.TabPage();
+			TabPage2 = new TabPage();
 			ComboBox3 = new HZH_Controls.Controls.UCCombox();
 			ComboBox2 = new HZH_Controls.Controls.UCCombox();
 			ComboBox1 = new HZH_Controls.Controls.UCCombox();
 			Radio_128px = new HZH_Controls.Controls.UCRadioButton();
 			Radio_64px = new HZH_Controls.Controls.UCRadioButton();
 			ucCheckBox1 = new HZH_Controls.Controls.UCCheckBox();
-			Label4 = new System.Windows.Forms.Label();
-			Button4 = new System.Windows.Forms.Button();
-			ImageCompose_Reset = new System.Windows.Forms.Button();
-			pictureBox1 = new System.Windows.Forms.PictureBox();
-			GemPage = new System.Windows.Forms.TabPage();
+			Label4 = new Label();
+			Button4 = new Button();
+			ImageCompose_Reset = new Button();
+			pictureBox1 = new PictureBox();
+			GemPage = new TabPage();
 			ucSwitch1 = new HZH_Controls.Controls.UCSwitch();
-			Label6 = new System.Windows.Forms.Label();
-			Button7 = new System.Windows.Forms.Button();
-			Button6 = new System.Windows.Forms.Button();
+			Label6 = new Label();
+			Button7 = new Button();
+			Button6 = new Button();
 			GemCircle = new Preview.GameUI.Scene.Game_ToolTip.ItemTooltipPanel.Cell.GemCircle();
-			Menu = new System.Windows.Forms.ContextMenuStrip(components);
-			DEBUG = new System.Windows.Forms.ToolStripMenuItem();
-			Tip = new System.Windows.Forms.ToolTip(components);
-			SaveFileDialog = new System.Windows.Forms.SaveFileDialog();
-			Open = new System.Windows.Forms.OpenFileDialog();
+			Menu = new ContextMenuStrip(components);
+			DEBUG = new ToolStripMenuItem();
+			Tip = new ToolTip(components);
+			SaveFileDialog = new SaveFileDialog();
+			Open = new OpenFileDialog();
 			tabControl1.SuspendLayout();
 			TabPage1.SuspendLayout();
 			groupBox2.SuspendLayout();
@@ -86,20 +86,25 @@ namespace Xylia.Match.Windows.Panel
 			Menu.SuspendLayout();
 			SuspendLayout();
 			// 
+			// Folder
+			// 
+			resources.ApplyResources(Folder, "Folder");
+			// 
 			// tabControl1
 			// 
+			resources.ApplyResources(tabControl1, "tabControl1");
 			tabControl1.AllowDrop = true;
 			tabControl1.Controls.Add(TabPage1);
 			tabControl1.Controls.Add(TabPage2);
 			tabControl1.Controls.Add(GemPage);
-			resources.ApplyResources(tabControl1, "tabControl1");
 			tabControl1.Name = "tabControl1";
 			tabControl1.SelectedIndex = 0;
 			// 
 			// TabPage1
 			// 
+			resources.ApplyResources(TabPage1, "TabPage1");
 			TabPage1.AllowDrop = true;
-			TabPage1.BackColor = System.Drawing.Color.White;
+			TabPage1.BackColor = Color.White;
 			TabPage1.Controls.Add(groupBox2);
 			TabPage1.Controls.Add(groupBox1);
 			TabPage1.Controls.Add(Btn_Search_3);
@@ -112,16 +117,15 @@ namespace Xylia.Match.Windows.Panel
 			TabPage1.Controls.Add(Btn_Search_1);
 			TabPage1.Controls.Add(Path_GameFolder);
 			TabPage1.Controls.Add(Footer);
-			resources.ApplyResources(TabPage1, "TabPage1");
 			TabPage1.Name = "TabPage1";
 			TabPage1.DragDrop += IconOperator_DragDrop;
 			TabPage1.DragEnter += IconOperator_DragEnter;
 			// 
 			// groupBox2
 			// 
-			groupBox2.BackColor = System.Drawing.Color.Transparent;
-			groupBox2.Controls.Add(Button9);
 			resources.ApplyResources(groupBox2, "groupBox2");
+			groupBox2.BackColor = Color.Transparent;
+			groupBox2.Controls.Add(Button9);
 			groupBox2.Name = "groupBox2";
 			groupBox2.TabStop = false;
 			// 
@@ -133,23 +137,23 @@ namespace Xylia.Match.Windows.Panel
 			// 
 			// groupBox1
 			// 
-			groupBox1.BackColor = System.Drawing.Color.Transparent;
+			resources.ApplyResources(groupBox1, "groupBox1");
+			groupBox1.BackColor = Color.Transparent;
 			groupBox1.Controls.Add(checkBox1);
 			groupBox1.Controls.Add(Switch_Mode);
 			groupBox1.Controls.Add(Label5);
 			groupBox1.Controls.Add(FormatSelect);
 			groupBox1.Controls.Add(Button1);
 			groupBox1.Controls.Add(Button2);
-			resources.ApplyResources(groupBox1, "groupBox1");
 			groupBox1.Name = "groupBox1";
 			groupBox1.TabStop = false;
 			// 
 			// checkBox1
 			// 
 			resources.ApplyResources(checkBox1, "checkBox1");
-			checkBox1.BackColor = System.Drawing.Color.Transparent;
+			checkBox1.BackColor = Color.Transparent;
 			checkBox1.Checked = true;
-			checkBox1.CheckState = System.Windows.Forms.CheckState.Checked;
+			checkBox1.CheckState = CheckState.Checked;
 			checkBox1.Name = "checkBox1";
 			checkBox1.UseVisualStyleBackColor = false;
 			checkBox1.CheckedChanged += checkBox1_CheckedChanged;
@@ -158,17 +162,17 @@ namespace Xylia.Match.Windows.Panel
 			// 
 			// Switch_Mode
 			// 
-			Switch_Mode.BackColor = System.Drawing.Color.Transparent;
-			Switch_Mode.Checked = true;
-			Switch_Mode.FalseColor = System.Drawing.Color.FromArgb(189, 189, 189);
-			Switch_Mode.FalseTextColr = System.Drawing.Color.White;
 			resources.ApplyResources(Switch_Mode, "Switch_Mode");
-			Switch_Mode.ForeColor = System.Drawing.Color.Black;
+			Switch_Mode.BackColor = Color.Transparent;
+			Switch_Mode.Checked = true;
+			Switch_Mode.FalseColor = Color.FromArgb(189, 189, 189);
+			Switch_Mode.FalseTextColr = Color.White;
+			Switch_Mode.ForeColor = Color.Black;
 			Switch_Mode.Name = "Switch_Mode";
 			Switch_Mode.SwitchType = HZH_Controls.Controls.SwitchType.Ellipse;
 			Switch_Mode.Texts = (new string[] { "过滤列表", "按照列表" });
-			Switch_Mode.TrueColor = System.Drawing.Color.FromArgb(255, 192, 192);
-			Switch_Mode.TrueTextColr = System.Drawing.Color.Black;
+			Switch_Mode.TrueColor = Color.FromArgb(255, 192, 192);
+			Switch_Mode.TrueTextColr = Color.Black;
 			Switch_Mode.CheckedChanged += Switch_Mode_CheckedChanged;
 			Switch_Mode.MouseEnter += Switch_Mode_MouseEnter;
 			Switch_Mode.MouseLeave += Switch_HasBG_MouseLeave;
@@ -182,21 +186,21 @@ namespace Xylia.Match.Windows.Panel
 			// 
 			// FormatSelect
 			// 
-			FormatSelect.BackColor = System.Drawing.Color.Transparent;
-			FormatSelect.BoxStyle = System.Windows.Forms.ComboBoxStyle.DropDown;
+			resources.ApplyResources(FormatSelect, "FormatSelect");
+			FormatSelect.BackColor = Color.Transparent;
+			FormatSelect.BoxStyle = ComboBoxStyle.DropDown;
 			FormatSelect.ConerRadius = 10;
 			FormatSelect.DropPanelHeight = -1;
-			resources.ApplyResources(FormatSelect, "FormatSelect");
 			FormatSelect.IsRadius = true;
 			FormatSelect.IsShowRect = true;
 			FormatSelect.ItemWidth = 40;
 			FormatSelect.Name = "FormatSelect";
-			FormatSelect.RectColor = System.Drawing.Color.FromArgb(220, 220, 220);
+			FormatSelect.RectColor = Color.FromArgb(220, 220, 220);
 			FormatSelect.RectWidth = 1;
 			FormatSelect.SelectedIndex = -1;
-			FormatSelect.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+			FormatSelect.TextAlign = HorizontalAlignment.Center;
 			FormatSelect.TextValue = "[id]";
-			FormatSelect.TriangleColor = System.Drawing.Color.FromArgb(255, 128, 128);
+			FormatSelect.TriangleColor = Color.FromArgb(255, 128, 128);
 			FormatSelect.TextChangedEvent += FormatSelect_TextChanged;
 			FormatSelect.MouseEnter += FormatSelect_MouseEnter;
 			FormatSelect.MouseLeave += Switch_HasBG_MouseLeave;
@@ -268,16 +272,17 @@ namespace Xylia.Match.Windows.Panel
 			// 
 			// Footer
 			// 
-			Footer.AutoEllipsis = true;
 			resources.ApplyResources(Footer, "Footer");
-			Footer.BackColor = System.Drawing.Color.Transparent;
-			Footer.LineColor = System.Drawing.Color.White;
+			Footer.AutoEllipsis = true;
+			Footer.BackColor = Color.Transparent;
+			Footer.LineColor = Color.White;
 			Footer.Name = "Footer";
 			// 
 			// TabPage2
 			// 
+			resources.ApplyResources(TabPage2, "TabPage2");
 			TabPage2.AllowDrop = true;
-			TabPage2.BackColor = System.Drawing.Color.White;
+			TabPage2.BackColor = Color.White;
 			TabPage2.Controls.Add(ComboBox3);
 			TabPage2.Controls.Add(ComboBox2);
 			TabPage2.Controls.Add(ComboBox1);
@@ -288,92 +293,91 @@ namespace Xylia.Match.Windows.Panel
 			TabPage2.Controls.Add(Button4);
 			TabPage2.Controls.Add(ImageCompose_Reset);
 			TabPage2.Controls.Add(pictureBox1);
-			resources.ApplyResources(TabPage2, "TabPage2");
 			TabPage2.Name = "TabPage2";
 			TabPage2.DragDrop += IconOperator_DragDrop;
 			TabPage2.DragEnter += IconOperator_DragEnter;
 			// 
 			// ComboBox3
 			// 
-			ComboBox3.BackColor = System.Drawing.Color.Transparent;
-			ComboBox3.BoxStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			resources.ApplyResources(ComboBox3, "ComboBox3");
+			ComboBox3.BackColor = Color.Transparent;
+			ComboBox3.BoxStyle = ComboBoxStyle.DropDownList;
 			ComboBox3.ConerRadius = 10;
 			ComboBox3.DropPanelHeight = -1;
-			resources.ApplyResources(ComboBox3, "ComboBox3");
 			ComboBox3.IsRadius = true;
 			ComboBox3.IsShowRect = true;
 			ComboBox3.ItemWidth = 40;
 			ComboBox3.Name = "ComboBox3";
-			ComboBox3.RectColor = System.Drawing.Color.FromArgb(240, 240, 240);
+			ComboBox3.RectColor = Color.FromArgb(240, 240, 240);
 			ComboBox3.RectWidth = 1;
 			ComboBox3.SelectedIndex = -1;
-			ComboBox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+			ComboBox3.TextAlign = HorizontalAlignment.Center;
 			ComboBox3.TextValue = "";
-			ComboBox3.TriangleColor = System.Drawing.Color.FromArgb(255, 128, 128);
+			ComboBox3.TriangleColor = Color.FromArgb(255, 128, 128);
 			ComboBox3.SelectedChangedEvent += ComboBox3_TextChanged;
 			// 
 			// ComboBox2
 			// 
-			ComboBox2.BackColor = System.Drawing.Color.Transparent;
-			ComboBox2.BoxStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			resources.ApplyResources(ComboBox2, "ComboBox2");
+			ComboBox2.BackColor = Color.Transparent;
+			ComboBox2.BoxStyle = ComboBoxStyle.DropDownList;
 			ComboBox2.ConerRadius = 10;
 			ComboBox2.DropPanelHeight = -1;
-			resources.ApplyResources(ComboBox2, "ComboBox2");
 			ComboBox2.IsRadius = true;
 			ComboBox2.IsShowRect = true;
 			ComboBox2.ItemWidth = 40;
 			ComboBox2.Name = "ComboBox2";
-			ComboBox2.RectColor = System.Drawing.Color.FromArgb(240, 240, 240);
+			ComboBox2.RectColor = Color.FromArgb(240, 240, 240);
 			ComboBox2.RectWidth = 1;
 			ComboBox2.SelectedIndex = -1;
-			ComboBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+			ComboBox2.TextAlign = HorizontalAlignment.Center;
 			ComboBox2.TextValue = "";
-			ComboBox2.TriangleColor = System.Drawing.Color.FromArgb(255, 128, 128);
+			ComboBox2.TriangleColor = Color.FromArgb(255, 128, 128);
 			ComboBox2.SelectedChangedEvent += ComboBox2_TextChanged;
 			// 
 			// ComboBox1
 			// 
-			ComboBox1.BackColor = System.Drawing.Color.Transparent;
-			ComboBox1.BoxStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			resources.ApplyResources(ComboBox1, "ComboBox1");
+			ComboBox1.BackColor = Color.Transparent;
+			ComboBox1.BoxStyle = ComboBoxStyle.DropDownList;
 			ComboBox1.ConerRadius = 10;
 			ComboBox1.DropPanelHeight = -1;
-			resources.ApplyResources(ComboBox1, "ComboBox1");
 			ComboBox1.IsRadius = true;
 			ComboBox1.IsShowRect = true;
 			ComboBox1.ItemWidth = 40;
 			ComboBox1.Name = "ComboBox1";
-			ComboBox1.RectColor = System.Drawing.Color.FromArgb(240, 240, 240);
+			ComboBox1.RectColor = Color.FromArgb(240, 240, 240);
 			ComboBox1.RectWidth = 1;
 			ComboBox1.SelectedIndex = -1;
-			ComboBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+			ComboBox1.TextAlign = HorizontalAlignment.Center;
 			ComboBox1.TextValue = "";
-			ComboBox1.TriangleColor = System.Drawing.Color.FromArgb(255, 128, 128);
+			ComboBox1.TriangleColor = Color.FromArgb(255, 128, 128);
 			ComboBox1.SelectedChangedEvent += ComboBox1_TextChanged;
 			// 
 			// Radio_128px
 			// 
-			Radio_128px.BackColor = System.Drawing.SystemColors.Window;
+			resources.ApplyResources(Radio_128px, "Radio_128px");
+			Radio_128px.BackColor = SystemColors.Window;
 			Radio_128px.Checked = false;
 			Radio_128px.GroupName = null;
-			resources.ApplyResources(Radio_128px, "Radio_128px");
 			Radio_128px.Name = "Radio_128px";
 			Radio_128px.TextValue = "128 px";
 			// 
 			// Radio_64px
 			// 
-			Radio_64px.BackColor = System.Drawing.SystemColors.Window;
+			resources.ApplyResources(Radio_64px, "Radio_64px");
+			Radio_64px.BackColor = SystemColors.Window;
 			Radio_64px.Checked = true;
 			Radio_64px.GroupName = null;
-			resources.ApplyResources(Radio_64px, "Radio_64px");
 			Radio_64px.Name = "Radio_64px";
 			Radio_64px.TextValue = "64   px";
 			Radio_64px.CheckedChangeEvent += Radio_64px_CheckedChangeEvent;
 			// 
 			// ucCheckBox1
 			// 
-			ucCheckBox1.BackColor = System.Drawing.Color.Transparent;
-			ucCheckBox1.Checked = true;
 			resources.ApplyResources(ucCheckBox1, "ucCheckBox1");
+			ucCheckBox1.BackColor = Color.Transparent;
+			ucCheckBox1.Checked = true;
 			ucCheckBox1.Name = "ucCheckBox1";
 			ucCheckBox1.TextValue = "使用新版本背景";
 			ucCheckBox1.CheckedChangeEvent += ComboBox1_TextChanged;
@@ -397,21 +401,21 @@ namespace Xylia.Match.Windows.Panel
 			// 
 			// pictureBox1
 			// 
-			pictureBox1.BackColor = System.Drawing.Color.Transparent;
 			resources.ApplyResources(pictureBox1, "pictureBox1");
+			pictureBox1.BackColor = Color.Transparent;
 			pictureBox1.Name = "pictureBox1";
 			pictureBox1.TabStop = false;
 			// 
 			// GemPage
 			// 
+			resources.ApplyResources(GemPage, "GemPage");
 			GemPage.AllowDrop = true;
-			GemPage.BackColor = System.Drawing.Color.White;
+			GemPage.BackColor = Color.White;
 			GemPage.Controls.Add(ucSwitch1);
 			GemPage.Controls.Add(Label6);
 			GemPage.Controls.Add(Button7);
 			GemPage.Controls.Add(Button6);
 			GemPage.Controls.Add(GemCircle);
-			resources.ApplyResources(GemPage, "GemPage");
 			GemPage.Name = "GemPage";
 			GemPage.Click += GemPage_Click;
 			GemPage.DragDrop += GemPage_DragDrop;
@@ -419,16 +423,16 @@ namespace Xylia.Match.Windows.Panel
 			// 
 			// ucSwitch1
 			// 
-			ucSwitch1.BackColor = System.Drawing.Color.Transparent;
-			ucSwitch1.Checked = true;
-			ucSwitch1.FalseColor = System.Drawing.Color.FromArgb(189, 189, 189);
-			ucSwitch1.FalseTextColr = System.Drawing.Color.White;
 			resources.ApplyResources(ucSwitch1, "ucSwitch1");
+			ucSwitch1.BackColor = Color.Transparent;
+			ucSwitch1.Checked = true;
+			ucSwitch1.FalseColor = Color.FromArgb(189, 189, 189);
+			ucSwitch1.FalseTextColr = Color.White;
 			ucSwitch1.Name = "ucSwitch1";
 			ucSwitch1.SwitchType = HZH_Controls.Controls.SwitchType.Ellipse;
 			ucSwitch1.Texts = (new string[] { "背景 ", "无背景 " });
-			ucSwitch1.TrueColor = System.Drawing.Color.FromArgb(255, 192, 192);
-			ucSwitch1.TrueTextColr = System.Drawing.Color.Black;
+			ucSwitch1.TrueColor = Color.FromArgb(255, 192, 192);
+			ucSwitch1.TrueTextColr = Color.Black;
 			ucSwitch1.CheckedChanged += ucSwitch1_CheckedChanged;
 			// 
 			// Label6
@@ -451,7 +455,7 @@ namespace Xylia.Match.Windows.Panel
 			// GemCircle
 			// 
 			resources.ApplyResources(GemCircle, "GemCircle");
-			GemCircle.BackColor = System.Drawing.Color.Transparent;
+			GemCircle.BackColor = Color.Transparent;
 			GemCircle.Meta1 = null;
 			GemCircle.Meta2 = null;
 			GemCircle.Meta3 = null;
@@ -468,23 +472,31 @@ namespace Xylia.Match.Windows.Panel
 			// 
 			// Menu
 			// 
-			Menu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { DEBUG });
-			Menu.Name = "Menu";
 			resources.ApplyResources(Menu, "Menu");
+			Menu.Items.AddRange(new ToolStripItem[] { DEBUG });
+			Menu.Name = "Menu";
 			// 
 			// DEBUG
 			// 
-			DEBUG.Name = "DEBUG";
 			resources.ApplyResources(DEBUG, "DEBUG");
+			DEBUG.Name = "DEBUG";
+			// 
+			// SaveFileDialog
+			// 
+			resources.ApplyResources(SaveFileDialog, "SaveFileDialog");
+			// 
+			// Open
+			// 
+			resources.ApplyResources(Open, "Open");
 			// 
 			// IconPage
 			// 
+			resources.ApplyResources(this, "$this");
 			AllowDrop = true;
-			AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
-			BackColor = System.Drawing.Color.Transparent;
+			AutoScaleMode = AutoScaleMode.Inherit;
+			BackColor = Color.Transparent;
 			Controls.Add(tabControl1);
 			Name = "IconPage";
-			resources.ApplyResources(this, "$this");
 			Load += IconOperator_Load;
 			DragDrop += IconOperator_DragDrop;
 			DragEnter += IconOperator_DragEnter;
@@ -548,5 +560,9 @@ namespace Xylia.Match.Windows.Panel
 		private HZH_Controls.Controls.UCCombox ComboBox3;
 		private HZH_Controls.Controls.UCCombox ComboBox2;
 		private HZH_Controls.Controls.UCCombox ComboBox1;
+
+
+		private IconTextureMatch ItemIconCreator;
+		private IconTextureMatch GoodsIconCreator;
 	}
 }

@@ -5,7 +5,7 @@ using System.IO;
 using HZH_Controls.Forms;
 
 using Xylia.Configure;
-using Xylia.Match.Util.Paks;
+using Xylia.Match.Util.Paks.Textures;
 using Xylia.Preview.Common.Extension;
 using Xylia.Preview.GameUI.Scene.Game_ToolTip.ItemTooltipPanel.Cell;
 using Xylia.Preview.Properties;
@@ -28,7 +28,7 @@ public partial class IconPage : UserControl
 		IsInitialization = true;
 		InitializeComponent();
 
-		#region Initialize道具Property选择框
+		#region ComboBox
 		ComboBox1.Source = new();
 		ComboBox2.Source = new();
 		ComboBox3.Source = new();
@@ -38,6 +38,14 @@ public partial class IconPage : UserControl
 		foreach (var Item in CombineOption.TRImage) ComboBox3.Source.Add(Item.Name);
 
 		ImageCompose_Reset_Click(null, null);
+		#endregion
+
+		#region IconCreator
+		ItemIconCreator = new();
+		ItemIconCreator.StartEvent += new EventHandler(ItemIconCreator_Start);
+		ItemIconCreator.FinishEvent += new EventHandler(ItemIconCreator_Finish);
+
+		GoodsIconCreator = new();
 		#endregion
 
 
@@ -76,7 +84,9 @@ public partial class IconPage : UserControl
 
 
 
-	#region 输出道具图标
+	#region IconCreator
+	FrmAnchorTips frmAnchor;
+
 	private void FormatSelect_MouseEnter(object sender, EventArgs e)
 	{
 		string Msg = "*可自定义输出格式  特殊规则为 [id]、[name/名称]、[alias/别名]\n（建议使用英文, 英文不区分大小写)";
@@ -90,9 +100,6 @@ public partial class IconPage : UserControl
 	private void TextBox1_TextChanged(object sender, EventArgs e) => Ini.WriteValue(this.GetType(), "CacheList", TextBox1.Text);
 
 	private void Path_GameFolder_TextChanged(object sender, EventArgs e) => CommonPath.GameFolder = ((Control)sender).Text;
-
-
-
 
 	private void Btn_Search_1_Click(object sender, EventArgs e)
 	{
@@ -116,9 +123,6 @@ public partial class IconPage : UserControl
 		}
 	}
 
-
-	FrmAnchorTips frmAnchor;
-
 	private void Switch_HasBG_MouseEnter(object sender, EventArgs e)
 	{
 		string Msg = checkBox1.Checked ? "生成道具图标时\n会附带道具品级" : "只生成出道具的\n透明背景图标";
@@ -137,7 +141,6 @@ public partial class IconPage : UserControl
 		frmAnchor = FrmAnchorTips.ShowTips(Button1, Msg, AnchorTipsLocation.BOTTOM, Color.MediumOrchid, Color.FloralWhite, null, 12, 3500);
 	}
 
-
 	private void Switch_HasBG_MouseLeave(object sender, EventArgs e)
 	{
 		if (frmAnchor == null) return;
@@ -145,7 +148,6 @@ public partial class IconPage : UserControl
 		try { frmAnchor.Hide(); }
 		catch { }
 	}
-
 
 	private void Switch_Mode_CheckedChanged(object sender, EventArgs e)
 	{
@@ -155,7 +157,6 @@ public partial class IconPage : UserControl
 		//FrmAnchorTips.CloseLastTip();
 		Switch_Mode_MouseEnter(null, null);
 	}
-
 
 	private void Button1_Click(object sender, EventArgs e)
 	{
@@ -219,30 +220,27 @@ public partial class IconPage : UserControl
 
 
 
-	private Thread Thread_ItemIcon;
+	private void ItemIconCreator_Start(object sender, EventArgs e)
+	{
+		Button2.Text = "终止";
+		this.FormatSelect.Enabled = this.checkBox1.Enabled = this.Switch_Mode.Enabled = this.pictureBox1.Enabled = false;
+	}
+
+	private void ItemIconCreator_Finish(object sender, EventArgs e)
+	{
+		this.FormatSelect.Enabled = this.checkBox1.Enabled = this.Switch_Mode.Enabled = this.pictureBox1.Enabled = true;
+		Button2.Text = "输出物品图标";
+	}
 
 	private void Button2_Click(object sender, EventArgs e)
 	{
-		// 结束任务 
-		if (Thread_ItemIcon != null)
-		{
-			var result = MessageBox.Show("是否确认强制结束？", "提示信息", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
-			if (result != DialogResult.OK) return;
-
-			Thread_ItemIcon.Interrupt();
-			Thread_ItemIcon = null;
-
-			Footer.Text = $"正在结束任务...";
-			return;
-		}
-
-
+		ItemIconCreator.Cancel();
 
 		#region Initialize
 		string ChvPath = TextBox1.Text;
 		if (!string.IsNullOrWhiteSpace(ChvPath) && !File.Exists(ChvPath))
 		{
-			Xylia.Tip.Message("Chv文件路径错误或不存在, 请重新确认！");
+			Xylia.Tip.Message("缓存文件路径错误或不存在, 请重新确认！");
 			return;
 		}
 
@@ -253,68 +251,24 @@ public partial class IconPage : UserControl
 		}
 		#endregion
 
-		#region 执行
-		var IconTextureMatch = new IconTextureMatch()
+		#region Execute
+		ItemIconCreator.Start(new ItemIcon(Path_GameFolder.Text)
 		{
-			FormatSelect = this.FormatSelect.TextValue,
-			CheckFormat = true,
-
-			Start = (r, t) =>
-			{
-				Button2.Text = "终止";
-				this.FormatSelect.Enabled = this.checkBox1.Enabled = this.Switch_Mode.Enabled = this.pictureBox1.Enabled = false;
-			},
-
-			Finish = (r, t) =>
-			{
-				//委托要求关闭线程
-				this.Invoke(() => Thread_ItemIcon = null);
-
-				this.FormatSelect.Enabled = this.checkBox1.Enabled = this.Switch_Mode.Enabled = this.pictureBox1.Enabled = true;
-				Button2.Text = "输出物品图标";
-			},
-		};
-		IconTextureMatch.StartMatch(new Util.Paks.Textures.ItemIcon(Path_GameFolder.Text)
-		{
-			OutputDirectory = this.Path_ResultPath.Text + @"\物品",
+			OutputDirectory = this.Path_ResultPath.Text + @"\Items",
 			ChvPath = TextBox1.Text,
 			UseBackground = this.checkBox1.Checked,
 			isWhiteList = !Switch_Mode.Checked,
-		}, ref Thread_ItemIcon, act => this.Invoke(() => Footer.Text = act));
+		}, true, this.FormatSelect.TextValue, act => this.Invoke(() => Footer.Text = act));
 		#endregion
 	}
 
-
-
-
-	private Thread Thread_GoodIcon;
-
 	private void Button9_Click(object sender, EventArgs e)
 	{
-		var IconTextureMatch = new IconTextureMatch()
+		GoodsIconCreator.Start(new GoodIcon(Path_GameFolder.Text)
 		{
-			FormatSelect = null,
-			CheckFormat = false,
+			OutputDirectory = this.Path_ResultPath.Text + @"\Goods",
 
-			Start = (r, t) =>
-			{
-				Button9.Text = "终止";
-			},
-
-			Finish = (r, t) =>
-			{
-				Button9.Text = "输出商品图标";
-			},
-		};
-
-
-		IconTextureMatch.StartMatch(new Util.Paks.Textures.GoodIcon(Path_GameFolder.Text)
-		{
-			OutputDirectory = this.Path_ResultPath.Text + @"\商品",
-
-		}, ref Thread_GoodIcon,
-
-		act => this.Invoke(() => Footer.Text = act));
+		}, action: act => this.Invoke(() => Footer.Text = act));
 	}
 	#endregion
 

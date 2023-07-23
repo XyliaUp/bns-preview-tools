@@ -1,5 +1,4 @@
 ﻿using Xylia.Configure;
-using Xylia.Extension;
 
 namespace Xylia.Preview.Properties;
 public static class CommonPath
@@ -25,4 +24,13 @@ public static class CommonPath
 	}
 
 	public static string DataFiles => OutputFolder + @"\data";
+
+
+
+
+	public static string OutputFolder_Resource
+	{
+		get => Ini.ReadValue("Folder", "Output_Resource");
+		set => Ini.WriteValue("Folder", "Output_Resource", value);
+	}
 }

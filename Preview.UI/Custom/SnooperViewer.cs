@@ -77,48 +77,4 @@ public class MyTest
 			});
 		}
 	}
-
-
-
-	public static bool TestModel(string mesh, params string[] cols)
-	{
-		var export = FileCache.PakData.LoadObject<UObject>(mesh);
-
-		var snooper = MyTest.ModelViewer;
-		if (!snooper.TryLoadExport(default, export)) return false;
-
-
-		if (cols.Any())
-		{
-			foreach (var material in cols
-				.Where(o => o != null).SelectMany(o => o.Split(','))
-				.Select(FileCache.PakData.LoadObject<UObject>))
-			{
-				if (material is UMaterialInstance unrealMaterial)
-				{
-					snooper.Renderer.Swap(unrealMaterial);
-				}
-			}
-		}
-
-
-		return true;
-	}
-
-	public static void TestMesh(string mesh, string animset, string material = null)
-	{
-		var Mesh = FileCache.PakData.LoadObject<UObject>(mesh);
-		var AnimSet = FileCache.PakData.LoadObject<UAnimSet>(animset);
-		var Material = FileCache.PakData.LoadObject<UMaterialInstance>(material);
-
-		var snooper = MyTest.ModelViewer;
-		if (snooper.TryLoadExport(default, Mesh))
-		{
-			snooper.AnimSet = AnimSet;
-			if (Material != null)
-				snooper.Renderer.Swap(Material);
-
-			snooper.Run();
-		}
-	}
 }

@@ -51,7 +51,7 @@ public partial class DataGridScene : Form
 		foreach (DataRow row in table.Rows)
 		{
 			var key = (string)row[field1];
-			var value = (string)row[field2];
+			var value = row[field2]?.ToString();
 
 			pairs.Add(new(key, value));
 		}

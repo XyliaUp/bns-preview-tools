@@ -103,17 +103,17 @@ public sealed class RewardGroup
 			var seq = sex.ToEnum<SexSeq>();
 			if (seq == SexSeq.SexNone) break;
 
-			groupName += ((SexSeq2)seq).GetName();
+			groupName += seq.GetText();
 		}
 
 		for (int i = 1; i <= 4; i++)
 		{
-			if (!Attributes.ContainsKey($"{this.GroupKey}-race-{i}", out string race)) break;
+			if (!Attributes.ContainsKey($"{this.GroupKey}-race-{i}", out string value)) break;
 
-			var seq = race.ToEnum<RaceSeq>();
-			if (seq == RaceSeq.RaceNone) break;
+			var race = Race.Get(value.ToEnum<RaceSeq>());
+			if (race is null) break;
 
-			groupName += seq.GetName();
+			groupName += race.GetName();
 		}
 		#endregion
 

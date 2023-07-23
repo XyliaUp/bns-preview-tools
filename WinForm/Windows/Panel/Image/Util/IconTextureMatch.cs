@@ -1,27 +1,20 @@
-﻿using HZH_Controls.Forms;
-
-namespace Xylia.Match.Util.Paks;
+﻿namespace Xylia.Match.Util.Paks;
 public sealed class IconTextureMatch
 {
 	#region Fields
-	public EventHandler Start;
+	public EventHandler StartEvent;
 
-	public EventHandler Finish;
+	public EventHandler FinishEvent;
 
 
-	public bool CheckFormat = true;
-
-	public string FormatSelect;
+	private Thread RunThread;
 	#endregion
 
 
-
 	#region Functions
-	public void StartMatch(Textures.IconOutBase IconOutBase, ref Thread RunThread, Action<string> action)
+	public void Start(Textures.IconOutBase IconOutBase, bool CheckFormat = true, string FormatSelect = null, Action<string> action = null)
 	{
 		#region Initialize
-		FrmTips.ClearTips();
-
 		if (CheckFormat && (string.IsNullOrWhiteSpace(FormatSelect) || !FormatSelect.Contains('[')))
 		{
 			Tip.Message("输出格式必须至少包含一个特殊规则");
@@ -29,10 +22,9 @@ public sealed class IconTextureMatch
 		}
 		#endregion
 
-		#region 执行
-		RunThread = new Thread(o =>
+		RunThread = new Thread(() =>
 		{
-			Start?.Invoke(null, new());
+			StartEvent?.Invoke(null, new());
 
 			try
 			{
@@ -44,28 +36,38 @@ public sealed class IconTextureMatch
 				}
 
 				TimeSpan Ts = DateTime.Now - d1;
-				action($"任务已经全部结束！ 共计 { Ts.Hours }小时 { Ts.Minutes }分 { Ts.Seconds }秒。");
+				action($"任务已经全部结束！ 共计 {Ts.Hours}小时 {Ts.Minutes}分 {Ts.Seconds}秒。");
 			}
 			catch (ThreadInterruptedException)
 			{
 				action("任务已强制结束。");
-				return;
 			}
 			catch (Exception ee)
 			{
 				action("由于发生了错误, 进程已提前结束。");
 
-				Xylia.Tip.Stop(ee.ToString());
+				Tip.Stop(ee.ToString());
 				Console.WriteLine(ee);
 			}
 			finally
 			{
-				Finish?.Invoke(null, null);
+				FinishEvent?.Invoke(null, null);
+				RunThread = null;
+
 				ProcessEx.ClearMemory();
 			}
 		});
 		RunThread.Start();
-		#endregion
+	}
+
+	public void Cancel()
+	{
+		if (RunThread is null) return;
+
+		var result = MessageBox.Show("是否确认强制结束？", "提示信息", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+		if (result != DialogResult.OK) return;
+
+		RunThread.Interrupt();
 	}
 	#endregion
 }

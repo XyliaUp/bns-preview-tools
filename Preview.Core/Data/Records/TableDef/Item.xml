@@ -87,6 +87,8 @@
 			<case name="appearance-hypermove" />
 			<case name="appearance-name-plate" />
 			<case name="appearance-speech-bubble" />
+			<case name="unk-" />
+			
 			<case name="costume" />
 			<case name="head-attach" />
 			<case name="face-attach" />

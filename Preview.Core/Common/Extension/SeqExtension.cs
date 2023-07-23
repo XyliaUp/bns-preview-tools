@@ -2,6 +2,8 @@
 using Xylia.Preview.Common.Seq;
 using Xylia.Preview.Data.Record;
 
+using static Xylia.Preview.Data.Record.Item;
+
 namespace Xylia.Preview.Common.Extension;
 public static partial class SeqExtension
 {
@@ -13,8 +15,8 @@ public static partial class SeqExtension
 		else if (value is ConditionType ConditionType) return ConditionType.GetName();
 		else if (value is DifficultyType DifficultyType) return DifficultyType.GetDescription();
 		else if (value is JobSeq JobSeq) return JobSeq.GetName();
-		else if (value is RaceSeq RaceSeq) return RaceSeq.GetName();
-		else if (value is RaceSeq2 RaceSeq2) return RaceSeq2.GetName();
+		else if (value is RaceSeq RaceSeq) return Race.Get(RaceSeq).GetName();
+		else if (value is SexSeq SexSeq) return ((SexSeq2)SexSeq).GetName();
 		else if (value is SexSeq2 SexSeq2) return SexSeq2.GetName();
 		else if (value is StanceSeq StanceSeq) return StanceSeq.GetDescription();
 

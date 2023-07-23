@@ -46,7 +46,6 @@ public partial class CaseInfoPanel : UserControl
 
 	private async void pictureBox1_Click(object sender, EventArgs e)
 	{
-		cts.Cancel();
 		await Task.Run(() =>
 		{
 			try

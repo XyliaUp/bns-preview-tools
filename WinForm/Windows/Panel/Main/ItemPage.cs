@@ -288,6 +288,4 @@ public partial class ItemPage : UserControl
 		thread.Start();
 	}
 	#endregion
-
-
 }

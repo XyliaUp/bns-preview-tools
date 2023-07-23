@@ -51,7 +51,7 @@ public static class TableDefinitionEx
 
 			message?.Invoke($"[{DateTime.Now}] check field size, \t" +
 				$"table: {def.Name} " +
-				$"{(type.Key == -1 ? string.Empty : "type:" + type.Key)} " +
+				$"{(type.Key == -1 ? string.Empty : "type: " + tableDef.Name)} " +
 				$"size: {size} <> {_size} " +
 				$"block:{block}");
 		}

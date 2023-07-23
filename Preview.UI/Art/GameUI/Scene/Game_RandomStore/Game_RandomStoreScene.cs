@@ -27,7 +27,7 @@ public sealed partial class Game_RandomStoreScene : StoreScene
 			Nodes.Add(seq, TreeNode);
 		}
 
-		_filter.Add(new(typeof(Item), "物品"));
+		SearchFilter.Add(new(typeof(Item), "物品"));
 	}
 	#endregion
 

@@ -34,7 +34,7 @@ public sealed class ItemCloset_Type : OutBase
             && item.UsableDuration == 0))
         {
             var row = CreateRow(item, CostumeSheet);
-            row.AddCell(item.EquipRace.GetText());
+            row.AddCell(item.EquipRace.GetName());
             row.AddCell(item.EquipSex.GetText());
 
 
@@ -68,7 +68,7 @@ public sealed class ItemCloset_Type : OutBase
 			weapon.WeaponAppearanceChangeType == WeaponAppearanceChangeTypeSeq.UsedOnlyAsApplyingWeapon))
         {
             var CurRow = CreateRow(item, WeaponSheet);
-            CurRow.AddCell(item.EquipJobCheck1.GetText());
+            CurRow.AddCell(item.EquipJobCheck[0].GetText());
         }
         #endregion
 

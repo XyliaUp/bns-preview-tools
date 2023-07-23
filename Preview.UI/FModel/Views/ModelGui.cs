@@ -1,27 +1,22 @@
 ﻿using System.Numerics;
 
-using CUE4Parse_Conversion.Animations;
-
-using FModel.Views.Snooper.Models;
-
 using ImGuiNET;
 
 using OpenTK.Windowing.Common;
 
+using Xylia.Preview.CUE4Parse_BNS.Conversion;
+
 namespace FModel.Views.Snooper;
 public partial class ModelGui : SnimGui
 {
-	private Model model;
 	private ModelView view;
-
 	private bool _viewportFocus = true;
+
 
 	public ModelGui(int width, int height) : base(width, height)
 	{
 
 	}
-
-
 
 	public void Render(ModelView s)
 	{
@@ -30,40 +25,37 @@ public partial class ModelGui : SnimGui
 		Controller.SemiBold();
 		DrawDockSpace(s.Size);
 
-
-		model = s.Renderer.Options.Models.First().Value;
-
-		Draw3DViewport(s);
+		Draw3DViewport();
 		DrawNavbar();
 
 		Controller.Render();
 	}
 
 
-	private void Draw3DViewport(ModelView s)
+	private void Draw3DViewport()
 	{
 		ImGui.PushStyleVar(ImGuiStyleVar.WindowPadding, Vector2.Zero);
 		if (ImGui.Begin("3D Viewport", ImGuiWindowFlags.NoScrollbar | ImGuiWindowFlags.NoTitleBar | ImGuiWindowFlags.NoMove | ImGuiWindowFlags.NoResize | ImGuiWindowFlags.NoSavedSettings))
 		{
-			var size = new Vector2(s.Size.X, s.Size.Y - 20);
+			var size = new Vector2(view.Size.X, view.Size.Y - 20);
 			ImGui.SetWindowPos(new Vector2(0, 20));
 			ImGui.SetWindowSize(size);
-			ImGui.Image(s.Framebuffer.GetPointer(), size, new Vector2(0, 1), new Vector2(1, 0), Vector4.One);
+			ImGui.Image(view.Framebuffer.GetPointer(), size, new Vector2(0, 1), new Vector2(1, 0), Vector4.One);
 
 
 			if (ImGui.IsMouseDown(ImGuiMouseButton.Left))
 			{
-				s.CursorState = CursorState.Grabbed;
+				view.CursorState = CursorState.Grabbed;
 			}
 
 			if (ImGui.IsMouseDragging(ImGuiMouseButton.Left) && _viewportFocus)
 			{
-				s.Renderer.CameraOp.Modify(ImGui.GetIO().MouseDelta);
+				view.Renderer.CameraOp.Modify(ImGui.GetIO().MouseDelta);
 			}
 
 			if (ImGui.IsMouseReleased(ImGuiMouseButton.Left))
 			{
-				s.CursorState = CursorState.Normal;
+				view.CursorState = CursorState.Normal;
 			}
 
 
@@ -80,13 +72,14 @@ public partial class ModelGui : SnimGui
 				pos = ImGui.GetCursorPos();
 			}
 
+			var model = view.Renderer.Options.Models.First().Value;
 			SetAttribute("Package", model.Path);
 			SetAttribute("Class", model.Type);
 			SetAttribute("Object", model.Name);
 			pos.Y += 10;
 
 			SetAttribute("Skeleton", model.Skeleton.Name);
-			SetAttribute("LOD", s.Renderer.Options.Models.Count);
+			SetAttribute("LOD", view.Renderer.Options.Models.Count);
 			SetAttribute("UV Set", model.UvCount);
 			SetAttribute("Colors", null);
 			SetAttribute("Bones", model.Skeleton.BoneCount);
@@ -101,8 +94,6 @@ public partial class ModelGui : SnimGui
 				ImGui.Text($"FPS: {framerate:0}");
 			}
 
-
-
 			ImGui.End();
 		}
 
@@ -113,11 +104,34 @@ public partial class ModelGui : SnimGui
 	{
 		if (!ImGui.BeginMainMenuBar()) return;
 
-		if (ImGui.BeginMenu("Anim Sequence") && view.AnimSet != null)
+		#region Model
+		if (view.Models != null && ImGui.BeginMenu("Model"))
 		{
 			_viewportFocus = false;
+			foreach (var model in view.Models)
+			{
+				if (ImGui.MenuItem(model.Name))
+				{
+					view.Renderer.Options = new Options();   //clear model 
+					view.TryLoadExport(default, model);
 
-			foreach (var sequence in view.AnimSet.AnimSequenceMap)
+					view.Renderer.Options.SetupModelsAndLights();
+					view.Transform();
+
+					_viewportFocus = true;
+				}
+			}
+
+			ImGui.EndMenu();
+		}
+		else _viewportFocus = true;
+		#endregion
+
+		#region Anim 
+		if (view.SelectedData.AnimSet != null && ImGui.BeginMenu("Anim Sequence"))
+		{
+			_viewportFocus = false;
+			foreach (var sequence in view.SelectedData.AnimSet.AnimSequenceMap)
 			{
 				if (ImGui.MenuItem(sequence.Key))
 				{
@@ -135,18 +149,23 @@ public partial class ModelGui : SnimGui
 			ImGui.EndMenu();
 		}
 		else _viewportFocus = true;
+		#endregion
 
 
+		#region Settings 
 		if (ImGui.BeginMenu("Settings"))
 		{
 			var ShowFps = view._showFps;
 			if (ImGui.MenuItem("Show FPS", "", ref ShowFps))
 				view.ShowFps = ShowFps;
 
+			if (ImGui.MenuItem("Extract"))
+				Common.Output(view.SelectedData.Export);	
+	
 
 			ImGui.EndMenu();
 		}
-
+		#endregion
 
 		ImGui.EndMainMenuBar();
 	}

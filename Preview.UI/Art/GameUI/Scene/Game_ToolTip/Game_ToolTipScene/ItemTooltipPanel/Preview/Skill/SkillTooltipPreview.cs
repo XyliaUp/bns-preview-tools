@@ -19,7 +19,7 @@ public partial class SkillTooltipPreview : PreviewControl
 		var item = record as Item;
 		if (!(this.Visible = item.ItemCombat[5] != null)) return;
 
-		this.JobStyleSelect.LoadStyleIcon(item.EquipJobCheck1);
+		this.JobStyleSelect.LoadStyleIcon(item.EquipJobCheck[0]);
 		this.JobStyleSelect.JobStyleChanged += new((JobStyle) =>
 		{
 			this.ContentPanel.Text = null;

@@ -16,6 +16,8 @@ public partial class Game_AuctionScene : Form // PreviewFrm
 		InitializeComponent();
 		CheckForIllegalCrossThreadCalls = false;
 
+		ItemList.MaxItemNum = 200;
+
 		#region Category
 		var child = ChildCategory();
 
@@ -124,13 +126,27 @@ public partial class Game_AuctionScene : Form // PreviewFrm
 		data[Item.MarketCategory2Seq.WeaponGem].Add(Item.MarketCategory3Seq.AquamarineDiamond);
 		data[Item.MarketCategory2Seq.WeaponGem].Add(Item.MarketCategory3Seq.AmberDiamond);
 		data[Item.MarketCategory2Seq.WeaponGem].Add(Item.MarketCategory3Seq.ObsidianGarnet);
+		//data[Item.MarketCategory2Seq.WeaponGem].Add(Item.MarketCategory3Seq.Void10);
+		//data[Item.MarketCategory2Seq.WeaponGem].Add(Item.MarketCategory3Seq.Void11);
+		//data[Item.MarketCategory2Seq.WeaponGem].Add(Item.MarketCategory3Seq.Void12);
+		//data[Item.MarketCategory2Seq.WeaponGem].Add(Item.MarketCategory3Seq.Void13);
+		//data[Item.MarketCategory2Seq.WeaponGem].Add(Item.MarketCategory3Seq.Void14);
+		//data[Item.MarketCategory2Seq.WeaponGem].Add(Item.MarketCategory3Seq.Void15);
 		#endregion
 
 		#region	Medicine
-
+		data[Item.MarketCategory2Seq.Medicine].Add(Item.MarketCategory3Seq.RegeneratePotion);
+		data[Item.MarketCategory2Seq.Medicine].Add(Item.MarketCategory3Seq.HealPotion);
+		data[Item.MarketCategory2Seq.Medicine].Add(Item.MarketCategory3Seq.SecretPotion);
+		data[Item.MarketCategory2Seq.Medicine].Add(Item.MarketCategory3Seq.DetoxPotion);
+		data[Item.MarketCategory2Seq.Medicine].Add(Item.MarketCategory3Seq.MagicPotion);
+		data[Item.MarketCategory2Seq.Medicine].Add(Item.MarketCategory3Seq.HwanDan);
 		#endregion
 
 		#region	Food
+		data[Item.MarketCategory2Seq.Food].Add(Item.MarketCategory3Seq.Cook);
+		data[Item.MarketCategory2Seq.Food].Add(Item.MarketCategory3Seq.Alcohol);
+		data[Item.MarketCategory2Seq.Food].Add(Item.MarketCategory3Seq.ExpCook);
 
 		#endregion
 
@@ -139,12 +155,25 @@ public partial class Game_AuctionScene : Form // PreviewFrm
 		data[Item.MarketCategory2Seq.BuildUpStone].Add(Item.MarketCategory3Seq.SkillStone2);
 		#endregion
 
-		#region	Talisman
-
+		#region	Talisman	   			
+		data[Item.MarketCategory2Seq.Talisman].Add(Item.MarketCategory3Seq.ReviveTalisman);
+		data[Item.MarketCategory2Seq.Talisman].Add(Item.MarketCategory3Seq.EscapeTalisman);
+		data[Item.MarketCategory2Seq.Talisman].Add(Item.MarketCategory3Seq.PartyReviveTalisman);
+		data[Item.MarketCategory2Seq.Talisman].Add(Item.MarketCategory3Seq.ResetTalisman);
+		data[Item.MarketCategory2Seq.Talisman].Add(Item.MarketCategory3Seq.GrowthTalisman);
+		data[Item.MarketCategory2Seq.Talisman].Add(Item.MarketCategory3Seq.BuildUpTalisman);
+		data[Item.MarketCategory2Seq.Talisman].Add(Item.MarketCategory3Seq.SealTalisman);
+		data[Item.MarketCategory2Seq.Talisman].Add(Item.MarketCategory3Seq.UnsealTalisman);
 		#endregion
 
 		#region	Tool
-
+		data[Item.MarketCategory2Seq.Tool].Add(Item.MarketCategory3Seq.FestivalTool);
+		data[Item.MarketCategory2Seq.Tool].Add(Item.MarketCategory3Seq.NormalRepairTool);
+		data[Item.MarketCategory2Seq.Tool].Add(Item.MarketCategory3Seq.UrgencyRepairTool);
+		data[Item.MarketCategory2Seq.Tool].Add(Item.MarketCategory3Seq.Key);
+		data[Item.MarketCategory2Seq.Tool].Add(Item.MarketCategory3Seq.WeaponGemMake);
+		data[Item.MarketCategory2Seq.Tool].Add(Item.MarketCategory3Seq.FishingGoods);
+		data[Item.MarketCategory2Seq.Tool].Add(Item.MarketCategory3Seq.Card);
 		#endregion
 
 		#region	EquipMaterial
@@ -193,22 +222,8 @@ public partial class Game_AuctionScene : Form // PreviewFrm
 
 		#endregion
 
-
-
-		//data[Item.MarketCategory2Seq.WeaponGem].Add(Item.MarketCategory3Seq.Void10);
-		//data[Item.MarketCategory2Seq.WeaponGem].Add(Item.MarketCategory3Seq.Void11);
-		//data[Item.MarketCategory2Seq.WeaponGem].Add(Item.MarketCategory3Seq.Void12);
-		//data[Item.MarketCategory2Seq.WeaponGem].Add(Item.MarketCategory3Seq.Void13);
-		//data[Item.MarketCategory2Seq.WeaponGem].Add(Item.MarketCategory3Seq.Void14);
-		//data[Item.MarketCategory2Seq.WeaponGem].Add(Item.MarketCategory3Seq.Void15);
-
-
 		return data;
 	}
-
-
-	//Ini.ReadValue("Preview", "item#search_autoclose").ToBool();
-	//Ini.ReadValue("Preview", "item#search_showextra").ToBool()
 	#endregion
 
 
@@ -251,7 +266,6 @@ public partial class Game_AuctionScene : Form // PreviewFrm
 
 	private async void LoadData(object sender, EventArgs e)
 	{
-		cts.Cancel();
 		loader.Visible = true;
 		await Task.Run(() =>
 		{
@@ -309,5 +323,4 @@ public partial class Game_AuctionScene : Form // PreviewFrm
 
 		loader.Visible = false;
 	}
-
 }

@@ -30,18 +30,35 @@ namespace Xylia.Preview.GameUI.Scene.Searcher
 		/// </summary>
 		private void InitializeComponent()
 		{
+			components = new System.ComponentModel.Container();
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SearcherResult));
 			ListPreview = new ListPreview();
+			Menu = new ContextMenuStrip(components);
+			MenuItem_Filter = new ToolStripMenuItem();
+			Menu.SuspendLayout();
 			SuspendLayout();
 			// 
 			// ListPreview
 			// 
 			resources.ApplyResources(ListPreview, "ListPreview");
 			ListPreview.BackColor = Color.Transparent;
+			ListPreview.ContextMenuStrip = Menu;
 			ListPreview.ForeColor = Color.White;
 			ListPreview.Name = "ListPreview";
 			ListPreview.DrawItem += ListPreview_DrawItem;
 			ListPreview.SelectItem += ListPreview_SelectItem;
+			// 
+			// Menu
+			// 
+			resources.ApplyResources(Menu, "Menu");
+			Menu.Items.AddRange(new ToolStripItem[] { MenuItem_Filter });
+			Menu.Name = "Menu";
+			// 
+			// MenuItem_Filter
+			// 
+			resources.ApplyResources(MenuItem_Filter, "MenuItem_Filter");
+			MenuItem_Filter.Name = "MenuItem_Filter";
+			MenuItem_Filter.Click += MenuItem_Filter_Click;
 			// 
 			// SearcherResult
 			// 
@@ -53,11 +70,14 @@ namespace Xylia.Preview.GameUI.Scene.Searcher
 			MaximizeBox = false;
 			Name = "SearcherResult";
 			Shown += SearcherResult_Shown;
+			Menu.ResumeLayout(false);
 			ResumeLayout(false);
 		}
 
 		#endregion
 
 		public ListPreview ListPreview;
+		private ContextMenuStrip Menu;
+		private ToolStripMenuItem MenuItem_Filter;
 	}
 }

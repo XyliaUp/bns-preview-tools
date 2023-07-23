@@ -1,6 +1,8 @@
 ﻿using Xylia.Preview.Common.Attribute;
 using Xylia.Preview.Common.Seq;
 
+using static Xylia.Preview.Data.Record.Item;
+
 namespace Xylia.Preview.Data.Record;
 public sealed class ItemBrandTooltip : BaseRecord
 {

@@ -290,8 +290,8 @@ public partial class ItemTooltipPanel : Form
 
 		#region Location
 		this.lbl_Category.Location = new Point(Width - this.lbl_Category.Width, this.lbl_Category.Location.Y);
-		this.PricePreview.Location = new Point(Width - this.PricePreview.Width, PosY - 20);
-		this.ClientSize = this.ClientSize with { Height = PosY + 10 }; 
+		this.PricePreview.Location = new Point(Width - this.PricePreview.Width, PosY);
+		this.ClientSize = this.ClientSize with { Height = PosY + 30 };
 		#endregion
 	}
 
@@ -325,9 +325,6 @@ public partial class ItemTooltipPanel : Form
 	#region Controls
 	readonly UserOperPanel UserOperScene;
 
-	/// <summary>
-	/// 控件组
-	/// </summary>
 	readonly List<Control> PreviewList = new();
 
 	readonly List<Control> BottomControl = new();
@@ -435,37 +432,37 @@ public partial class ItemTooltipPanel : Form
 
 	private void LoadAbility()
 	{
-		Dictionary<MainAbility, long> result = new();
+		this.ItemAbility = new();
 
 		#region AttackPower
 		var AttackPowerEquipMin = this.ItemInfo.Attributes["attack-power-equip-min"].ToInt();
 		var AttackPowerEquipMax = this.ItemInfo.Attributes["attack-power-equip-max"].ToInt();
-		result[MainAbility.AttackPowerEquipMinAndMax] = (AttackPowerEquipMin + AttackPowerEquipMax) / 2;
+		ItemAbility[MainAbility.AttackPowerEquipMinAndMax] = (AttackPowerEquipMin + AttackPowerEquipMax) / 2;
 
 		var PveBossLevelNpcAttackPowerEquipMin = this.ItemInfo.Attributes["pve-boss-level-npc-attack-power-equip-min"].ToInt();
 		var PveBossLevelNpcAttackPowerEquipMax = this.ItemInfo.Attributes["pve-boss-level-npc-attack-power-equip-max"].ToInt();
-		result[MainAbility.PveBossLevelNpcAttackPowerEquipMinAndMax] = (PveBossLevelNpcAttackPowerEquipMin + PveBossLevelNpcAttackPowerEquipMax) / 2;
+		ItemAbility[MainAbility.PveBossLevelNpcAttackPowerEquipMinAndMax] = (PveBossLevelNpcAttackPowerEquipMin + PveBossLevelNpcAttackPowerEquipMax) / 2;
 
 		var PvpAttackPowerEquipMin = this.ItemInfo.Attributes["pvp-attack-power-equip-min"].ToInt();
 		var PvpAttackPowerEquipMax = this.ItemInfo.Attributes["pvp-attack-power-equip-max"].ToInt();
-		result[MainAbility.PvpAttackPowerEquipMinAndMax] = (PvpAttackPowerEquipMin + PvpAttackPowerEquipMax) / 2;
+		ItemAbility[MainAbility.PvpAttackPowerEquipMinAndMax] = (PvpAttackPowerEquipMin + PvpAttackPowerEquipMax) / 2;
 		#endregion
 
-		#region Else Power
+		#region Power
 		foreach (var ability in Enum.GetValues<MainAbility>())
 		{
 			if (ability == MainAbility.None) continue;
+			if (ability == MainAbility.AttackAttributeValueEquip) continue;
+
 
 			var signal = ability.GetSignal();
 			var Value = this.ItemInfo.Attributes[signal];
 			var ValueEquip = this.ItemInfo.Attributes[signal + "-equip"];
 
-			if (int.TryParse(Value, out var value)) result[ability] = value;
-			else if (int.TryParse(ValueEquip, out value)) result[ability] = value;
+			if (int.TryParse(Value, out var value) && value > 0) ItemAbility[ability] = value;
+			else if (int.TryParse(ValueEquip, out value) && value > 0) ItemAbility[ability] = value;
 		}
 		#endregion
-
-		this.ItemAbility = result;
 	}
 
 	private void LoadEffectInfo()
@@ -553,34 +550,35 @@ public partial class ItemTooltipPanel : Form
 
 
 
-
+		#region Required 
+		string Required = null;
+		foreach (var job in ItemInfo.EquipJobCheck)
 		{
-			string Required = null;
-			foreach (var job in ItemInfo.EquipJobCheck)
-			{
-				var param = new ContentParams();
-				param[3] = job;
+			if (job == JobSeq.JobNone) continue;
 
-				Required += param.Handle(true ? "Name.Item.Required.Job2" : "Name.Item.Required.Job2.Fail");
-			}
+			var param = new ContentParams();
+			param[3] = job;
 
-			if (ItemInfo.EquipRace != RaceSeq2.All)
-				Required += (true ? "Name.Item.Required.Race" : "Name.Item.Required.Race.Fail").GetText();
-
-			if (ItemInfo.EquipSex != SexSeq2.All)
-				Required += (true ? "Name.Item.Required.Sex" : "Name.Item.Required.Sex.Fail").GetText();
-
-
-
-			if (Required != null)
-				this.LoadBottomControl(new ContentParams(Required).Handle(true ? "Name.Item.Required.Result" : "Name.Item.Required.Result.Fail"));
-			else if (ItemInfo.EquipFactionLevel != 0)
-				this.LoadBottomControl(new ContentParams(null, ItemInfo.EquipFactionLevel).Handle(true ? "Name.Item.Required.FactionRank" : "Name.Item.Required.FactionRank.Fail"));
-			else if (false)
-				this.LoadBottomControl(new ContentParams().Handle(true ? "Name.Item.Required.FactionReputation" : "Name.Item.Required.FactionReputation.Fail"));
-			else if (ItemInfo is Costume or Accessory)
-				this.LoadBottomControl(new ContentParams().Handle("Name.Item.Required.Everyone".GetText()));
+			Required += param.Handle(true ? "Name.Item.Required.Job2" : "Name.Item.Required.Job2.Fail");
 		}
+
+
+		if (ItemInfo.EquipRace != null)
+			Required += (true ? "Name.Item.Required.Race" : "Name.Item.Required.Race.Fail").GetText();
+
+		if (ItemInfo.EquipSex != SexSeq2.All)
+			Required += (true ? "Name.Item.Required.Sex" : "Name.Item.Required.Sex.Fail").GetText();
+
+
+		if (Required != null)
+			this.LoadBottomControl(new ContentParams(Required).Handle(true ? "Name.Item.Required.Result" : "Name.Item.Required.Result.Fail"));
+		else if (ItemInfo.EquipFactionLevel != 0)
+			this.LoadBottomControl(new ContentParams(null, ItemInfo.EquipFactionLevel).Handle(true ? "Name.Item.Required.FactionRank" : "Name.Item.Required.FactionRank.Fail"));
+		else if (false)
+			this.LoadBottomControl(new ContentParams().Handle(true ? "Name.Item.Required.FactionReputation" : "Name.Item.Required.FactionReputation.Fail"));
+		else if (ItemInfo is Costume or Accessory)
+			this.LoadBottomControl(new ContentParams().Handle("Name.Item.Required.Everyone".GetText()));
+		#endregion
 
 
 

@@ -1,4 +1,5 @@
 ﻿using Xylia.Preview.Data.Helper;
+
 using static Xylia.Preview.Data.Record.RandomStoreItemDisplay;
 
 namespace Xylia.Preview.GameUI.Scene.Game_RandomStore;
@@ -18,7 +19,7 @@ public partial class Game_RandomStoreExhibitionScene : Form
 				return;
 
 			RandomStoreItemDisplayList_1.MaxItemNum = 0;
-			RandomStoreItemDisplayList_1.Items.AddRange(GetCells(RandomStoreTypeSeq.Paid));
+			RandomStoreItemDisplayList_1.Items = new(GetCells(RandomStoreTypeSeq.Paid));
 			RandomStoreItemDisplayList_1.RefreshList();
 		}
 		else if (this.TabControl.SelectedTab == this.tabPage2)
@@ -27,7 +28,7 @@ public partial class Game_RandomStoreExhibitionScene : Form
 				return;
 
 			RandomStoreItemDisplayList_2.MaxItemNum = 0;
-			RandomStoreItemDisplayList_2.Items.AddRange(GetCells(RandomStoreTypeSeq.Free));
+			RandomStoreItemDisplayList_2.Items = new(GetCells(RandomStoreTypeSeq.Free));
 			RandomStoreItemDisplayList_2.RefreshList();
 		}
 		else if (this.TabControl.SelectedTab == this.tabPage3)
@@ -37,13 +38,13 @@ public partial class Game_RandomStoreExhibitionScene : Form
 	}
 
 
-	public static ItemDisplayListCell[] GetCells(RandomStoreTypeSeq RandomStoreType)
+	public static List<ItemDisplayListCell> GetCells(RandomStoreTypeSeq RandomStoreType)
 	{
 		var StoreItems = FileCache.Data.RandomStoreItemDisplay
 			.Where(o => o.RandomStoreType == RandomStoreType)
 			.Select(o => new ItemDisplayListCell(o)).ToList();
 
 		StoreItems.Sort();
-		return StoreItems.ToArray();
+		return StoreItems;
 	}
 }

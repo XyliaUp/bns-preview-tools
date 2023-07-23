@@ -45,9 +45,9 @@ public sealed partial class Game_ItemStoreScene : StoreScene
 		#endregion
 
 
-		_filter.Add(new(typeof(Text), resources.GetString("Filter_Text")));
-		_filter.Add(new(typeof(Item), resources.GetString("Filter_Item")));
-		_filter.Add(new(typeof(Npc), resources.GetString("Filter_Npc")));
+		SearchFilter.Add(new(typeof(Text), resources.GetString("Filter_Text")));
+		SearchFilter.Add(new(typeof(Item), resources.GetString("Filter_Item")));
+		SearchFilter.Add(new(typeof(Npc), resources.GetString("Filter_Npc")));
 	}
 	#endregion
 

@@ -1,7 +1,6 @@
 ﻿using System.ComponentModel;
 using System.Runtime.InteropServices;
 
-using CUE4Parse.BNS.Exports;
 using CUE4Parse.UE4.Assets.Exports;
 
 using FModel.Views.Snooper.Buffers;
@@ -20,6 +19,7 @@ using SixLabors.ImageSharp.Advanced;
 
 using Xylia.Configure;
 using Xylia.Preview.Helper;
+using Xylia.Preview.UI.FModel.Views;
 
 using Application = System.Windows.Application;
 using Keys = OpenTK.Windowing.GraphicsLibraryFramework.Keys;
@@ -27,12 +27,14 @@ using Keys = OpenTK.Windowing.GraphicsLibraryFramework.Keys;
 namespace FModel.Views.Snooper;
 public class ModelView : GameWindow
 {
+	public Renderer Renderer;
 	public readonly FramebufferObject Framebuffer;
-	public readonly Renderer Renderer;
-
 	private readonly ModelGui _gui;
-
 	private bool _init;
+
+	public List<ModelData> Models;
+	public ModelData SelectedData;
+
 
 	public ModelView(GameWindowSettings gwSettings, NativeWindowSettings nwSettings) : base(gwSettings, nwSettings)
 	{
@@ -52,6 +54,12 @@ public class ModelView : GameWindow
 	{
 		Renderer.Load(cancellationToken, export);
 		return Renderer.Options.Models.Count > 0;
+	}
+
+	public bool TryLoadExport(CancellationToken cancellationToken, ModelData Model = null)
+	{
+		SelectedData = Model ?? Models.First();
+		return TryLoadExport(cancellationToken, SelectedData.Export);
 	}
 
 	public unsafe void WindowShouldClose(bool value, bool clear)
@@ -76,11 +84,9 @@ public class ModelView : GameWindow
 	{
 		Renderer.Options.SwapMaterial(false);
 		Renderer.Options.AnimateMesh(false);
+		this.Transform();
 
-		Renderer.Options.TryGetModel(out var model);
-		model.Transforms.First().Rotation.Z = 1F;
-
-		Register.Dispatcher.Invoke(delegate
+		Register.Dispatcher.Invoke(() =>
 		{
 			WindowShouldClose(false, false);
 			base.Run();
@@ -142,11 +148,17 @@ public class ModelView : GameWindow
 		_gui.Controller.Update(this, delta);
 		_gui.Render(this);
 
-
 		Framebuffer.Bind(); // switch to viewport background
 		ClearWhatHasBeenDrawn(); // clear viewport background
 
-		Renderer.Render(delta);
+		try
+		{
+			Renderer.Render(delta);
+		}
+		catch
+		{
+
+		}
 
 		Framebuffer.BindMsaa();
 		Framebuffer.Bind(0); // switch to window background
@@ -208,16 +220,16 @@ public class ModelView : GameWindow
 
 
 
+	public void Transform()
+	{
+		Renderer.Options.TryGetModel(out var model);
+		model.Transforms.First().Rotation.Z = 1F;
+	}
 
-
-	public bool mode = false;
-
-
-	public UAnimSet AnimSet;
 
 	public bool _showFps;
-	public bool ShowFps 
-	{ 
+	public bool ShowFps
+	{
 		get => Ini.ReadValue("ModelViewer", "show-fps").ToBool();
 		set => Ini.WriteValue("ModelViewer", "show-fps", _showFps = value);
 	}

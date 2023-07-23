@@ -140,7 +140,7 @@ public partial class SetItemTooltip : PreviewControl
 
 		if (this.JobStyleSelect.Visible)
 		{
-			this.JobStyleSelect.LoadStyleIcon(Item.EquipJobCheck1);
+			this.JobStyleSelect.LoadStyleIcon(Item.EquipJobCheck[0]);
 			this.JobStyleSelect.JobStyleChanged += new JobStyleSelect.JobStyleChangedHandle(e =>
 			{
 				this.Refresh();

@@ -8,7 +8,7 @@ namespace Xylia.Preview.Data.Record;
 [AliasRecord]
 public partial class Item : BaseRecord
 {
-	[Signal("item-combat") , Repeat(10)]
+	[Signal("item-combat"), Repeat(10)]
 	public ItemCombat[] ItemCombat;
 
 	public ItemBrand Brand;
@@ -31,7 +31,6 @@ public partial class Item : BaseRecord
 
 	[Signal("market-category-3")]
 	public MarketCategory3Seq MarketCategory3;
-
 
 
 
@@ -70,31 +69,13 @@ public partial class Item : BaseRecord
 	[Signal("account-used")]
 	public bool AccountUsed;
 
-
-
-
-	[Signal("equip-job-check-1")]
-	public JobSeq EquipJobCheck1;
-
-	[Signal("equip-job-check-2")]
-	public JobSeq EquipJobCheck2;
-
-	[Signal("equip-job-check-3")]
-	public JobSeq EquipJobCheck3;
-
-	[Signal("equip-job-check-4")]
-	public JobSeq EquipJobCheck4;
-
-	[Signal("equip-job-check-5")]
-	public JobSeq EquipJobCheck5;
-
-	public IEnumerable<JobSeq> EquipJobCheck => new JobSeq[] { EquipJobCheck1, EquipJobCheck2, EquipJobCheck3, EquipJobCheck4, EquipJobCheck5 }.Where(o => o != JobSeq.JobNone);
-
+	[Signal("equip-job-check"), Repeat(5)]
+	public JobSeq[] EquipJobCheck;
 
 	public bool CheckEquipJob(JobSeq TargetJob)
 	{
 		if (TargetJob == JobSeq.JobNone) return true;
-		else if (EquipJobCheck1 == JobSeq.JobNone) return true;
+		else if (EquipJobCheck[0] == JobSeq.JobNone) return true;
 
 		foreach (var seq in EquipJobCheck)
 			if (seq == TargetJob)
@@ -103,26 +84,24 @@ public partial class Item : BaseRecord
 		return false;
 	}
 
-	public string JobInfo => EquipJobCheck.Select(t => t.GetDescription()).Aggregate(",");
 
+	[Signal("equip-sex")]
+	public SexSeq2 EquipSex;
 
+	[Signal("equip-race")]
+	public Race EquipRace => Race.Get(this.Attributes["equip-race"].ToEnum<RaceSeq2>());
 
-
-	public SexSeq2 EquipSex => this.Attributes["equip-sex"].ToEnum<SexSeq2>();
-	public RaceSeq2 EquipRace => this.Attributes["equip-race"].ToEnum<RaceSeq2>();
-	public EquipType EquipType => this.Attributes["equip-type"].ToEnum<EquipType>();
-
-
+	[Signal("equip-type")]
+	public EquipType EquipType;
 
 	[Signal("equip-faction")]
 	public Faction EquipFaction;
-	
+
 	[Signal("equip-faction-level")]
 	public short EquipFactionLevel;
 
 	[Signal("item-grade")]
 	public byte ItemGrade;
-
 
 
 

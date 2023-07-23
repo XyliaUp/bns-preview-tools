@@ -96,6 +96,8 @@ public class DataTableSet : IDisposable
 	public DataTable<QuestBonusRewardSetting> QuestBonusRewardSetting { get; } = new();
 	public DataTable<QuestReward> QuestReward { get; } = new();
 	public DataTable<QuestSealedDungeonReward> QuestSealedDungeonReward { get; } = new();
+
+	public DataTable<Race> Race { get; } = new();
 	public DataTable<RaidDungeon> RaidDungeon { get; } = new();
 	public DataTable<RandomStore> RandomStore { get; } = new();
 	public DataTable<RandomStoreDrawReward> RandomStoreDrawReward { get; } = new();

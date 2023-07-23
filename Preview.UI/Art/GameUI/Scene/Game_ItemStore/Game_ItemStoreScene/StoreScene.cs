@@ -18,10 +18,9 @@ public partial class StoreScene : Form
 	#region Fields
 	CancellationTokenSource cts = new();
 
-
 	internal Dictionary<TreeNode, TreeNode> TreeNodes = new();
 
-	public readonly List<FilterInfo> _filter = new();
+	protected readonly SearcherDialog SearchFilter = new();
 	#endregion
 
 
@@ -52,10 +51,10 @@ public partial class StoreScene : Form
 	private void CancelFilter_Click(object sender, EventArgs e) => Filter(null);
 	private void ModifyFilterRule_Click(object sender, EventArgs e)
 	{
-		var Searcher = new SearcherDialog(_filter);
-		if (Searcher.ShowDialog() != DialogResult.OK) return;
-
-		Filter(Searcher.textBox1.Text, Searcher.filters);
+		if (SearchFilter.ShowDialog() == DialogResult.OK)
+		{
+			Filter(SearchFilter.Text, SearchFilter.ActivateFilter);
+		}
 	}
 	#endregion
 

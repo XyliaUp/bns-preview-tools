@@ -29,7 +29,6 @@ public partial class ListPreview : Panel
 	protected override Point ScrollToControl(Control activeControl) => this.AutoScrollPosition;
 	#endregion
 
-
 	#region Event
 	public event PaintEventHandler DrawItem;
 
@@ -38,47 +37,8 @@ public partial class ListPreview : Panel
 
 
 
-
 	#region Items
-	public ObjectCollection Items;
-
-	/// <summary>
-	///  A collection that stores objects.
-	/// </summary>
-	[ListBindable(false)]
-	public class ObjectCollection : List<object>
-	{
-		private readonly ListPreview _owner;
-
-		public ObjectCollection(ListPreview owner)
-		{
-			ArgumentNullException.ThrowIfNull(owner);
-			_owner = owner;
-		}
-
-		/// <summary>
-		///  Initializes a new instance of ListBox.ObjectCollection based on another ListBox.ObjectCollection.
-		/// </summary>
-		public ObjectCollection(ListPreview owner, ObjectCollection value)
-			: this(owner)
-		{
-			ArgumentNullException.ThrowIfNull(value);
-
-			AddRange(value);
-		}
-
-		/// <summary>
-		///  Initializes a new instance of ListBox.ObjectCollection containing any array of objects.
-		/// </summary>
-		public ObjectCollection(ListPreview owner, object[] value)
-			: this(owner)
-		{
-			ArgumentNullException.ThrowIfNull(value);
-
-			AddRange(value);
-		}
-	}
-
+	public List<object> Items;
 
 	public int ItemHeight = 30;
 	#endregion
@@ -97,7 +57,7 @@ public partial class ListPreview : Panel
 		if (PageIndex - 1 <= 0) return;
 
 		PageIndex--;
-		this.RefreshList();
+		this.RefreshList(true);
 	}
 
 	private void NextPage(object sender, EventArgs e)
@@ -105,10 +65,9 @@ public partial class ListPreview : Panel
 		if (PageIndex + 1 > PageCount) return;
 
 		PageIndex++;
-		this.RefreshList();
+		this.RefreshList(true);
 	}
 	#endregion
-
 
 
 	#region OnPaint 
@@ -130,24 +89,25 @@ public partial class ListPreview : Panel
 		}
 	}
 
-	public void RefreshList()
+	public void RefreshList(bool SwitchPage = false)
 	{
 		base.Refresh();
 
 		this.SuspendLayout();
 		this.Controls.Clear();
 
-		//PageIndex = 1;
 		VerticalScroll.Value = 0;
 		tempObj.Clear();
 
 
 		#region data 
+		if (!SwitchPage) PageIndex = 1;
+
 		IEnumerable<object> data = Items;
 		if (MaxItemNum > 0)
 		{
 			data = data.Skip(MaxItemNum * (PageIndex - 1)).Take(MaxItemNum);
-			PageCount = (int)Math.Ceiling((float)Items.Count / MaxItemNum);
+			PageCount = (int)Math.Ceiling((float)Items.Count() / MaxItemNum);
 		}
 		#endregion
 

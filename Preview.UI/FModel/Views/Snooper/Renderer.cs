@@ -53,7 +53,7 @@ public class Renderer : IDisposable
 
 	public Camera CameraOp { get; }
 	public PickingTexture Picking { get; }
-	public Options Options { get; }
+	public Options Options { get; set; }
 
 	public Renderer(int width, int height)
 	{

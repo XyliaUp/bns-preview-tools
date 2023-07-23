@@ -1,5 +1,4 @@
-﻿/// 枚举支持
-using Xylia.Preview.Common.Attribute;
+﻿using Xylia.Preview.Common.Attribute;
 
 namespace Xylia.Preview.Data.Record;
 public partial class Item
@@ -1044,6 +1043,41 @@ public partial class Item
 
 		Instrument,
 	}
+
+
+
+
+
+	public enum RaceSeq2
+	{
+		RaceNone,
+
+		All,
+
+		Jin,
+
+		Gon,
+
+		Lyn,
+
+		Kun,
+
+		SummonedAll,
+
+		SummonedCat,
+	}
+
+	public enum SexSeq2
+	{
+		SexNone,
+
+		All,
+
+		Male,
+
+		Female,
+	}
+
 
 
 

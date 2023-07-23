@@ -1,5 +1,7 @@
 ﻿using System.Drawing.Drawing2D;
 
+using Xylia.Extension;
+using Xylia.Preview.Common.Seq;
 using Xylia.Preview.Data.Record;
 
 namespace Xylia.Preview.UI.Custom.Controls.List;
@@ -31,7 +33,11 @@ public partial class ListItemCell : UserControl
 		{
 			_paint = true;
 
-			job = data.JobInfo;
+			job = data.EquipJobCheck
+				.Where(seq => seq != JobSeq.JobNone)
+				.Select(t => t.GetDescription()).Aggregate(",");
+
+
 			this.ItemShow.LoadData(data, true);
 		}
 
