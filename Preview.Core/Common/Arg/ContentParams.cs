@@ -185,7 +185,7 @@ internal sealed class ArgItem
 
 	public void ValidType(ref object value)
 	{
-		var target = Target?.ToLower()?.Replace("-", null);
+		var target = Target?.ToLower();
 
 		if (value is null) return;
 		if (value is Enum)
@@ -198,7 +198,7 @@ internal sealed class ArgItem
 			value ??= ori;
 			return;
 		}
-
+		
 
 		var type = value.GetType();
 		if (target == "string")
@@ -216,15 +216,25 @@ internal sealed class ArgItem
 			return;
 		}
 		else if (target.Equals("skill") && value is Skill3) return;
-		else if (target.Equals(type.Name, StringComparison.OrdinalIgnoreCase)) return;
-		else if (target.Equals(type.BaseType?.Name, StringComparison.OrdinalIgnoreCase)) return;
+		else if (target.Equals("item-name") && value is Item item)
+		{
+			value = item.ItemName;
+			return;
+		}
 		else if (value is Integer integer && integer.TryGetParam(target, out var temp))
 		{
 			value = temp;
 			return;
 		}
 
-		throw new InvalidCastException($"Valid Failed: {Target} > {type}");
+		else
+		{
+			target = target?.Replace("-", null);
+			if (target.Equals(type.Name, StringComparison.OrdinalIgnoreCase)) return;
+			else if (target.Equals(type.BaseType?.Name, StringComparison.OrdinalIgnoreCase)) return;
+
+			throw new InvalidCastException($"Valid Failed: {Target} > {type}");
+		}
 	}
 
 	public object GetObject(object value)

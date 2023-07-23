@@ -1,11 +1,12 @@
 ﻿using Xylia.Extension;
+using Xylia.Preview.Common.Extension;
 using Xylia.Preview.Common.Interface;
 using Xylia.Preview.Common.Seq;
 using Xylia.Preview.Data.Helper;
 using Xylia.Preview.Data.Models.BinData.Table.Record;
 using Xylia.Preview.Data.Record;
-using Xylia.Preview.UI.Custom.Controls;
 using Xylia.Preview.GameUI.Scene.Game_ToolTip.ItemTooltipPanel.Preview;
+using Xylia.Preview.UI.Custom.Controls;
 
 namespace Xylia.Preview.GameUI.Scene.Game_ToolTip.ItemTooltipPanel;
 public partial class SetItemTooltip : PreviewControl
@@ -36,29 +37,20 @@ public partial class SetItemTooltip : PreviewControl
 			return;
 		}
 
-
 		this.lbl_Title.Text = Record.Attributes["name2"].GetText();
 		var SlotTagIcon1 = Record.Attributes[$"slot-tag-icon-1"];
 		var UseGemPreview = this.GemPreview.Visible = SlotTagIcon1 == "TagIcon_Alpha_01_gray,1";
-
-
-		int Y;
-		if (this.GemPreview.Visible) Y = this.GemPreview.Bottom;
-		else Y = this.lbl_Title.Bottom + 2;
 		#endregion
 
 
 		#region	item
-		for (int idx = 1; idx <= 10; idx++)
+		int ItemIdx = 0;
+		for (ItemIdx = 1; ItemIdx <= 10; ItemIdx++)
 		{
-			var SlotName = Record.Attributes[$"slot-name-{idx}"];
-			var SlotTagIcon = Record.Attributes[$"slot-tag-icon-{idx}"];
-			var SlotEquipType = Record.Attributes[$"slot-equip-type-{idx}"].ToEnum<EquipType>();
-			if (SlotTagIcon is null && SlotEquipType == EquipType.None)
-			{
-				this.lbl_Title.Text += $" ({idx - 1})";
-				break;
-			}
+			var SlotName = Record.Attributes[$"slot-name", ItemIdx];
+			var SlotTagIcon = Record.Attributes[$"slot-tag-icon", ItemIdx];
+			var SlotEquipType = Record.Attributes[$"slot-equip-type", ItemIdx].ToEnum<EquipType>();
+			if (SlotEquipType == EquipType.None) break;
 
 			if (!UseGemPreview)
 			{
@@ -66,27 +58,25 @@ public partial class SetItemTooltip : PreviewControl
 				//"UI.ItemTooltip.SetItem.EmptySlot.IconView"
 				//"UI.ItemTooltip.SetItem.EmptySlot"
 
-				//var slot = new ContentPanel("UI.ItemTooltip.SetItem.EquipedSlot".GetText());
+				Item Equiped = null;
+				Equiped ??= RecordExtension.CreateNew<Item>(
+					new IAttribute("item-grade", "7"),
+					new IAttribute("name2", SlotName),
+					new IAttribute("icon", SlotTagIcon));
 
-				var slot = new ItemShowCell()
-				{
-					ItemIcon = SlotTagIcon.GetIcon(),
-					ItemName = SlotName.GetText(),
-					Scale = 32,
 
-					Location = new Point(7, Y)
-				};
+				var slot = new ContentPanel("UI.ItemTooltip.SetItem.EquipedSlot".GetText()) { Tag = "slot" };
+				slot.Params[2] = Equiped;
+				slot.Params[3] = Equiped;
 
 				this.Controls.Add(slot);
-				Y = slot.Bottom + 1;
 			}
 		}
+
+		this.lbl_Title.Text += $" ({ItemIdx - 1})";
 		#endregion
 
 		#region	effect
-		this.SetItemEffect_Title.Location = new Point(SetItemEffect_Title.Location.X, Y);
-		this.JobStyleSelect.Location = new Point(this.Width - JobStyleSelect.Width, this.SetItemEffect_Title.Top - 10);
-
 		for (int idx = 1; idx <= 10; idx++)
 		{
 			//if (!Record.Attributes[$"count-{idx}-tooltip-1"].ToBool())
@@ -100,12 +90,10 @@ public partial class SetItemTooltip : PreviewControl
 			var SetItemEffect = "UI.ItemTooltip.SetItemEffect.Effect".GetText();
 
 
-			var effect = new ContentPanel(SetItemIndex + SetItemEffect) { Tag = "SetItemEffect" };
-
-
-
-			//FileCache.Data.Effect[Record.Attributes[$"count-{idx}-effect-2"]];
+			var effect = new ContentPanel(SetItemIndex + SetItemEffect) { Tag = "effect" };
 			effect.Params[2] = FileCache.Data.Effect[Record.Attributes[$"count-{idx}-effect-1"]];
+			effect.Params[3] = null;
+
 
 
 			var groups = new Dictionary<JobStyleSeq, SkillModifyInfoGroup>();
@@ -116,8 +104,6 @@ public partial class SetItemTooltip : PreviewControl
 			}
 
 
-
-			//
 			if (effect.Params[2] != null)
 				this.Controls.Add(effect);
 
@@ -137,7 +123,6 @@ public partial class SetItemTooltip : PreviewControl
 			}
 		}
 
-
 		if (this.JobStyleSelect.Visible)
 		{
 			this.JobStyleSelect.LoadStyleIcon(Item.EquipJobCheck[0]);
@@ -148,19 +133,28 @@ public partial class SetItemTooltip : PreviewControl
 			});
 			this.JobStyleSelect.SelectDefault();
 		}
-		else
-		{
-			this.Refresh();
-		}
 		#endregion
 	}
 
 	public override void Refresh()
 	{
-		int y = this.SetItemEffect_Title.Bottom;
-		foreach (var c in this.Controls.OfType<ContentPanel>().Where(o => o.Tag == "SetItemEffect"))
+		int y = this.GemPreview.Visible ? this.GemPreview.Bottom : this.lbl_Title.Bottom + 2;
+		foreach (var c in this.Controls.OfType<ContentPanel>().Where(o => o.Tag == "slot"))
 		{
-			c.Location = new Point(2, y);
+			c.Location = new Point(5, y);
+			c.BringToFront();
+			c.Refresh();
+
+			y = c.Bottom;
+		}
+
+		this.SetItemEffect_Title.Location = new Point(SetItemEffect_Title.Location.X, y); 
+		y = this.SetItemEffect_Title.Bottom;
+		this.JobStyleSelect.Location = new Point(this.Width - JobStyleSelect.Width, this.SetItemEffect_Title.Top - 10);
+
+		foreach (var c in this.Controls.OfType<ContentPanel>().Where(o => o.Tag == "effect"))
+		{
+			c.Location = new Point(5, y);
 			c.Refresh();
 
 			y = c.Bottom + 2;

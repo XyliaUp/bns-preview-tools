@@ -6,6 +6,7 @@ using System.Reflection;
 using OpenTK.Graphics.OpenGL4;
 
 namespace FModel.Views.Snooper.Shading;
+
 public class Shader : IDisposable
 {
     private readonly int _handle;
@@ -36,8 +37,7 @@ public class Shader : IDisposable
     private int LoadShader(ShaderType type, string file)
     {
         var executingAssembly = Assembly.GetExecutingAssembly();
-		using var stream = executingAssembly.GetManifestResourceStream($"Xylia.Preview.UI.Resources.{file}");
-		using var reader = new StreamReader(stream);
+		using var stream = executingAssembly.GetManifestResourceStream($"Xylia.Preview.UI.Resources.{file}"); using var reader = new StreamReader(stream);
         var handle = GL.CreateShader(type);
 
         var content = reader.ReadToEnd();

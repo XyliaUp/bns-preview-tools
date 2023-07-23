@@ -156,7 +156,7 @@ public partial class Item : BaseRecord
 
 
 	public string Name2 => this.Attributes["name2"].GetText();
-	public string ItemName => $"<link id=\"item-name:{this.Ref.Id:X}.1.{9999:X}\"><font name=\"00008130.Program.Fontset_ItemGrade_{this.ItemGrade}\">{this.Name2}</font></link>";
+	public string ItemName => Common.Tag.Link.ItemName.CreateLink(ItemNameOnly , this.Ref);
 	public string ItemNameOnly => $"<font name=\"00008130.Program.Fontset_ItemGrade_{this.ItemGrade}\">{this.Name2}</font>";
 
 

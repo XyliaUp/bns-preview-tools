@@ -5,6 +5,7 @@ using FModel.Views.Snooper.Shading;
 using ImGuiNET;
 
 namespace FModel.Views.Snooper.Animations;
+
 public enum ETrackerType
 {
     Start,

@@ -1,21 +1,21 @@
+using System;
+using System.Collections.Generic;
 using System.IO;
-
+using System.Linq;
+using CUE4Parse_Conversion;
+using CUE4Parse_Conversion.Textures;
 using CUE4Parse.UE4.Assets.Exports;
 using CUE4Parse.UE4.Assets.Exports.Texture;
 using CUE4Parse.UE4.Objects.Core.Misc;
-
-using CUE4Parse_Conversion;
-using CUE4Parse_Conversion.Textures;
-
 using FModel.Settings;
 using FModel.Views.Snooper.Animations;
 using FModel.Views.Snooper.Lights;
 using FModel.Views.Snooper.Models;
 using FModel.Views.Snooper.Shading;
-
 using Xylia.Preview.Data.Helper;
 
 namespace FModel.Views.Snooper;
+
 public class Options
 {
 	public FGuid SelectedModel { get; private set; }
@@ -62,7 +62,7 @@ public class Options
 		};
 
 		_platform = UserSettings.Default.OverridedPlatform;
-		_game = FileCache.PakData.Provider.GameName.ToUpper();
+		_game = FileCache.PakData.Provider.InternalGameName.ToUpper();
 
 		SelectModel(Guid.Empty);
 	}
@@ -183,7 +183,7 @@ public class Options
 		var guid = o.LightingGuid;
 		if (!Textures.TryGetValue(guid, out texture) && o.GetMipByMaxSize(UserSettings.Default.PreviewMaxTextureSize) is { } mip)
 		{
-			TextureDecoder.DecodeTexture(mip, o.Format, o.isNormalMap, _platform, out var data, out _);
+			TextureDecoder.DecodeTexture(mip, o.Format, o.IsNormalMap, _platform, out var data, out _);
 
 			texture = new Texture(data, mip.SizeX, mip.SizeY, o);
 			if (fix) TextureHelper.FixChannels(_game, texture);
@@ -216,12 +216,12 @@ public class Options
 
 	public void SwapMaterial(bool value)
 	{
-		//*Services.ApplicationService.ApplicationView.CUE4Parse.ModelIsOverwritingMaterial = value;
+		//Services.ApplicationService.ApplicationView.CUE4Parse.ModelIsOverwritingMaterial = value;
 	}
 
 	public void AnimateMesh(bool value)
 	{
-		//*Services.ApplicationService.ApplicationView.CUE4Parse.ModelIsWaitingAnimation = value;
+		//Services.ApplicationService.ApplicationView.CUE4Parse.ModelIsWaitingAnimation = value;
 	}
 
 	public bool TrySave(UObject export, out string label, out string savedFilePath)
@@ -233,7 +233,7 @@ public class Options
 			MaterialFormat = UserSettings.Default.MaterialExportFormat,
 			TextureFormat = UserSettings.Default.TextureExportFormat,
 			SocketFormat = UserSettings.Default.SocketExportFormat,
-			Platform = UserSettings.Default.OverridedPlatform,
+			Platform = _platform,
 			ExportMorphTargets = UserSettings.Default.SaveMorphTargets
 		};
 		var toSave = new Exporter(export, exportOptions);

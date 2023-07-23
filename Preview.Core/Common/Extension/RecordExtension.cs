@@ -72,7 +72,6 @@ public static partial class RecordExtension
 	#endregion
 
 
-
 	public static T CreateNew<T>(params IAttribute[] attrs) where T : BaseRecord, new()
 	{
 		var xe = new XElement("record");

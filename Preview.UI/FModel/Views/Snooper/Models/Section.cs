@@ -3,6 +3,7 @@ using System.Numerics;
 using FModel.Views.Snooper.Shading;
 
 namespace FModel.Views.Snooper.Models;
+
 public class Section
 {
     public readonly int MaterialIndex;

@@ -8,6 +8,7 @@ using CUE4Parse.Utils;
 using ImGuiNET;
 
 namespace FModel.Views.Snooper.Animations;
+
 public class Animation : IDisposable
 {
     private readonly UObject _export;

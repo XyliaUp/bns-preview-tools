@@ -49,6 +49,8 @@ public sealed class PakData : IDisposable
 				_provider.Initialize();
 				_provider.SubmitKey(new FGuid(), new FAesKey(_aesKey));
 
+				//_provider.LoadLocalization(ELanguage.English); 
+
 				Debug.WriteLine($"Initialize file provider, rt {(DateTime.Now - dt).Seconds}s");
 
 				// init-load
@@ -86,8 +88,8 @@ public sealed class PakData : IDisposable
 	public string FixPath(string path, bool mode = true)
 	{
 		if (path.Contains("/Content/", StringComparison.OrdinalIgnoreCase)) return path;
-		if (path.StartsWith("Game", StringComparison.OrdinalIgnoreCase)) return string.Concat(Provider.GameName, "/Content", path[4..]);
-		if (path.StartsWith("/Game", StringComparison.OrdinalIgnoreCase)) return string.Concat(Provider.GameName, "/Content", path[5..]);
+		if (path.StartsWith("Game", StringComparison.OrdinalIgnoreCase)) return string.Concat(Provider.InternalGameName, "/Content", path[4..]);
+		if (path.StartsWith("/Game", StringComparison.OrdinalIgnoreCase)) return string.Concat(Provider.InternalGameName, "/Content", path[5..]);
 
 
 

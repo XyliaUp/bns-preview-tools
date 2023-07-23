@@ -4,6 +4,7 @@ using CUE4Parse.UE4.Objects.Core.Math;
 using OpenTK.Graphics.OpenGL4;
 
 namespace FModel.Views.Snooper.Models;
+
 public class Morph : IDisposable
 {
     private int _handle;

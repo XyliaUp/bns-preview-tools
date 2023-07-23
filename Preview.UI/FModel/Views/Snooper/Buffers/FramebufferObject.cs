@@ -3,6 +3,7 @@ using FModel.Views.Snooper.Shading;
 using OpenTK.Graphics.OpenGL4;
 
 namespace FModel.Views.Snooper.Buffers;
+
 public class FramebufferObject : IDisposable
 {
     private int _framebufferHandle;

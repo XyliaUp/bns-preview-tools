@@ -5,6 +5,7 @@ using FModel.Views.Snooper.Shading;
 using OpenTK.Graphics.OpenGL4;
 
 namespace FModel.Views.Snooper.Models;
+
 public class Skybox : IDisposable
 {
     private int _handle;

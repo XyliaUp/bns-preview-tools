@@ -2,6 +2,7 @@
 using OpenTK.Graphics.OpenGL4;
 
 namespace FModel.Views.Snooper.Buffers;
+
 public class BufferObject<TDataType> : IDisposable where TDataType : unmanaged
 {
     private readonly int _handle;

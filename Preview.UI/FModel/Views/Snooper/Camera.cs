@@ -1,17 +1,13 @@
-﻿using System.Numerics;
-
+﻿using System;
+using System.Numerics;
 using CUE4Parse.UE4.Objects.Core.Math;
-
 using FModel.Settings;
-
 using ImGuiNET;
-
 using OpenTK.Windowing.GraphicsLibraryFramework;
-
 using Keys = OpenTK.Windowing.GraphicsLibraryFramework.Keys;
 
-
 namespace FModel.Views.Snooper;
+
 public class Camera
 {
     public enum WorldMode

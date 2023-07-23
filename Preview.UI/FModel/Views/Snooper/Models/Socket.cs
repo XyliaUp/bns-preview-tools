@@ -6,6 +6,7 @@ using CUE4Parse.UE4.Objects.Core.Misc;
 using CUE4Parse.UE4.Objects.UObject;
 
 namespace FModel.Views.Snooper.Models;
+
 public struct SocketAttachementInfo
 {
     public FGuid Guid;

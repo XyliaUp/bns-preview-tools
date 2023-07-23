@@ -7,6 +7,7 @@ using FModel.Views.Snooper.Models;
 using FModel.Views.Snooper.Shading;
 
 namespace FModel.Views.Snooper.Buffers;
+
 public class PickingTexture : IDisposable
 {
     private int _width;

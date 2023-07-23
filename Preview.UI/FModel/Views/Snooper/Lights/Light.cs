@@ -9,6 +9,7 @@ using ImGuiNET;
 using OpenTK.Graphics.OpenGL4;
 
 namespace FModel.Views.Snooper.Lights;
+
 public abstract class Light : IDisposable
 {
     private int _handle;

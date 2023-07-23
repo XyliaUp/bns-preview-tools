@@ -1,6 +1,4 @@
-﻿using Xylia.Preview.Common.Attribute;
-
-namespace Xylia.Preview.Common.Seq;
+﻿namespace Xylia.Preview.Common.Seq;
 public enum LinkType
 {
 	None,
@@ -8,16 +6,8 @@ public enum LinkType
 	Inhalation,
 	Slugfest,
 	Catch,
-
-	[Signal("catch-none-human")]
 	CatchNoneHuman,
-
-	[Signal("catch-friend")]
 	CatchFriend,
-
-	[Signal("inhalation-catch")]
 	InhalationCatch,
-
-	[Signal("range-catch")]
 	RangeCatch,
 }

@@ -14,6 +14,7 @@ using FModel.Views.Snooper.Shading;
 using OpenTK.Graphics.OpenGL4;
 
 namespace FModel.Views.Snooper;
+
 public class Swap
 {
     public string Title;
@@ -108,7 +109,7 @@ public class SnimGui
         Controller.Render();
     }
 
-	private void DrawModals(Snooper s)
+    private void DrawModals(Snooper s)
     {
         Modal(_swapper.Title, _swapper.Value, () =>
         {
@@ -780,7 +781,7 @@ Snooper aims to give an accurate preview of models, materials, skeletal animatio
         ImGui.PopStyleVar();
     }
 
-	public static void Popup(Action content)
+    public static void Popup(Action content)
     {
         ImGui.PushStyleVar(ImGuiStyleVar.WindowPadding, new Vector2(4f));
         if (ImGui.BeginPopupContextItem())

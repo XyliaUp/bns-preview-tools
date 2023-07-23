@@ -1,6 +1,7 @@
 ﻿using Xylia.Extension;
 using Xylia.Preview.Common.Extension;
 using Xylia.Preview.Common.Seq;
+using Xylia.Preview.Common.Tag.Link;
 using Xylia.Preview.Data.Helper;
 using Xylia.Preview.Data.Models.BinData.Table.Record.Attributes;
 using Xylia.Preview.Data.Record;
@@ -122,12 +123,10 @@ internal sealed class RewardPage
 			var c = func2(i);
 			if (c is null) continue;
 
-
-			c.Font = font;
-			c.Text = $"<link mode='1' id='item-name:{item.alias}'>{c.Text.GetText()}</link>";
-			if (Job != JobSeq.JobNone) c.Text += $" ({Job.GetName()})";
-
 			c.Params[2] = item;
+			c.Font = font;
+			c.Text = ItemName.CreateLink(c.Text.GetText(), item.Ref);
+			if (Job != JobSeq.JobNone) c.Text += $" ({Job.GetName()})";
 
 			_preview.Add(c);
 		}

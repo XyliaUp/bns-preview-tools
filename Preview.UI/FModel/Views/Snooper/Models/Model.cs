@@ -1,24 +1,24 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Numerics;
-
+using CUE4Parse.UE4.Assets.Exports.Animation;
+using CUE4Parse.UE4.Objects.UObject;
+using CUE4Parse_Conversion.Meshes.PSK;
 using CUE4Parse.UE4.Assets;
 using CUE4Parse.UE4.Assets.Exports;
-using CUE4Parse.UE4.Assets.Exports.Animation;
 using CUE4Parse.UE4.Assets.Exports.Material;
 using CUE4Parse.UE4.Assets.Exports.SkeletalMesh;
 using CUE4Parse.UE4.Assets.Exports.StaticMesh;
 using CUE4Parse.UE4.Objects.Core.Math;
-using CUE4Parse.UE4.Objects.UObject;
-
-using CUE4Parse_Conversion.Meshes.PSK;
-
 using FModel.Extensions;
 using FModel.Views.Snooper.Animations;
 using FModel.Views.Snooper.Buffers;
 using FModel.Views.Snooper.Shading;
-
 using OpenTK.Graphics.OpenGL4;
 
 namespace FModel.Views.Snooper.Models;
+
 public class VertexAttribute
 {
     public int Size;
@@ -440,10 +440,10 @@ public class Model : IDisposable
 
     public void Dispose()
     {
-        _ebo.Dispose();
-        _vbo.Dispose();
-        _matrixVbo.Dispose();
-        _vao.Dispose();
+        _ebo?.Dispose();
+        _vbo?.Dispose();
+        _matrixVbo?.Dispose();
+        _vao?.Dispose();
         Skeleton?.Dispose();
         for (int socket = 0; socket < Sockets.Count; socket++)
         {

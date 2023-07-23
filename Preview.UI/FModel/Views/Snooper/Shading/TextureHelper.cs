@@ -1,6 +1,7 @@
 ﻿using OpenTK.Graphics.OpenGL4;
 
 namespace FModel.Views.Snooper.Shading;
+
 public static class TextureHelper
 {
     /// <summary>

@@ -4,6 +4,7 @@ using CUE4Parse.Utils;
 using ImGuiNET;
 
 namespace FModel.Views.Snooper.Animations;
+
 public class Sequence
 {
     public readonly string Name;

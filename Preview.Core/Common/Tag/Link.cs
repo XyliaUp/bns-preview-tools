@@ -37,8 +37,6 @@ public sealed class LinkTag	: ITag
 			default: Debug.WriteLine($"link type `{type}` not supported!"); return;
 		}
 
-
-		test._mode = (node.Attributes["mode"]?.Value).ToByte();
 		test.tagData = this;
 		test.Load(new Params<string>(tmp[1]?.Split('.')));
 	}
@@ -52,14 +50,7 @@ public sealed class LinkTag	: ITag
 
 public abstract class LinkId
 {
-	public LinkTag tagData;
+	internal LinkTag tagData;
 
-	public abstract void Load(Params<string> data);
-
-
-
-	/// <summary>
-	/// not real game filed
-	/// </summary>
-	internal byte _mode = 0;
+	internal abstract void Load(Params<string> data);
 }

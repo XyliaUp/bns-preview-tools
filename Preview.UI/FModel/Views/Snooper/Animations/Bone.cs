@@ -1,4 +1,5 @@
 ﻿namespace FModel.Views.Snooper.Animations;
+
 public class Bone
 {
     public readonly int Index;

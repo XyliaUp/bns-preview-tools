@@ -3,6 +3,7 @@ using CUE4Parse.UE4.Objects.Core.Math;
 using ImGuiNET;
 
 namespace FModel.Views.Snooper;
+
 public class Transform
 {
     public static Transform Identity

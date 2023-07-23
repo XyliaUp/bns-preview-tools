@@ -4,6 +4,7 @@ using FModel.Views.Snooper.Shading;
 using ImGuiNET;
 
 namespace FModel.Views.Snooper.Lights;
+
 public class SpotLight : Light
 {
     public float Attenuation;

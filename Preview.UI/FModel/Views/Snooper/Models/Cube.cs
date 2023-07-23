@@ -3,6 +3,7 @@ using CUE4Parse.UE4.Assets.Exports.Material;
 using FModel.Views.Snooper.Shading;
 
 namespace FModel.Views.Snooper.Models;
+
 public class Cube : Model
 {
     public Cube(CStaticMesh mesh, UMaterialInterface unrealMaterial) : base(unrealMaterial)

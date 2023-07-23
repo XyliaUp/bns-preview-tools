@@ -196,10 +196,9 @@ public partial class UserOperPanel : Form
 			}
 		}
 
-
-		// TODO: move to load
-		if (MyTest.ModelViewer.Renderer.Options.Models.Count == 0)
-			ModelViwer.Visible = false;
+		//// TODO: move to load
+		//if (MyTest.ModelViewer.Renderer.Options.Models.Count == 0)
+		//	ModelViwer.Visible = false;
 	}
 	#endregion
 }
