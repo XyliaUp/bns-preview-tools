@@ -2,11 +2,11 @@
 <table name="map-group-1" version="0.6" autokey="false" module="12">
 	<el name="table" child="1" />
 	<el name="record">
-		<record name="id" type="Int32" key="y" required="y" />
-		<record name="alias" type="String" required="y" max="70" />
-		<record name="name2" type="Ref" ref="text" />
-		<record name="expedition" type="Ref" ref="map-group-1-expedition" />
-		<record name="talk-to-self-quests" type="Ref" ref="quest" repeat="127" hidden="y" />
-		<record name="talk-to-self-quests2" type="Ref" ref="quest" repeat="127" hidden="y" />
+		<attribute name="id" type="Int32" key="y" required="y" />
+		<attribute name="alias" type="String" required="y" max="70" />
+		<attribute name="name2" type="Ref" ref="text" />
+		<attribute name="expedition" type="Ref" ref="map-group-1-expedition" />
+		<attribute name="talk-to-self-quests" type="Ref" ref="quest" repeat="127" hidden="y" />
+		<attribute name="talk-to-self-quests2" type="Ref" ref="quest" repeat="127" hidden="y" />
 	</el>
 </table>

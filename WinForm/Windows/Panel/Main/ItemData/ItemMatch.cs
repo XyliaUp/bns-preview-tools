@@ -50,7 +50,7 @@ public sealed class ItemMatch
 	public bool GetData()
 	{
 		#region Initialize
-		DataTableSet set = new();
+		TableSet set = new();
 		set.LoadData();
 
 		CreatedAt = set.CreatedAt;

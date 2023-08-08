@@ -1,0 +1,14 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Xylia.Preview.GameUI.Scene.Game_CharacterInfo"
+	    xmlns:Controls="clr-namespace:Xylia.Preview.UI.Custom.Controls" 
+	    x:Class="Xylia.Preview.GameUI.Scene.Game_CharacterInfo.Game_CharacterInfo_Scene"
+        mc:Ignorable="d"
+        Title="Game_CharacterInfo_Scene" Width="1230" Height="830" ResizeMode="NoResize">
+	<Grid>
+		<Controls:BnsWebBrowser x:Name="WebView" WebBrowserInitialized="WebView_WebBrowserInitialized" PostMessage="WebView_PostMessage" />
+	</Grid>
+</Window>

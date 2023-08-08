@@ -7,7 +7,7 @@ namespace Xylia.Preview.Data.Record.ReactionClass;
 public sealed class SetNpcIndexedAct : Reaction
 {
 	[Signal("seq-idx")]
-	public byte SeqIdx;
+	public sbyte SeqIdx;
 
 	public Script_obj Target;
 }

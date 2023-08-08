@@ -2,29 +2,29 @@
 <table name="auto-combat-customized-skill-cast-condition" version="0.4" autokey="true" module="4">
   <el name="table" child="1" />
   <el name="record">
-    <record name="alias" type="String" required="y" max="70" />
-    <record name="name" type="String" max="70" />
-    <record name="name2" type="Ref" ref="text" />
-    <record name="sort-id" type="Int8" default="0" min="0" max="255" />
-    <record name="unique-group" type="Int8" default="0" min="0" max="255" />
-    <record name="target-type" type="Seq" required="y">
+    <attribute name="alias" type="String" required="y" max="70" />
+    <attribute name="name" type="String" max="70" />
+    <attribute name="name2" type="Ref" ref="text" />
+    <attribute name="sort-id" type="Int8" default="0" min="0" max="255" />
+    <attribute name="unique-group" type="Int8" default="0" min="0" max="255" />
+    <attribute name="target-type" type="Seq" required="y">
       <case name="caster" />
       <case name="target" />
       <case name="summoned" />
-    </record>
-    <record name="check-hp-percent" type="Int16" default="0" min="0" />
-    <record name="check-hp-percent-op" type="Seq" seq="op2" default="eq" />
-    <record name="check-success-effect-attribute" type="Seq16" seq="effect-attribute" default="none" />
-    <record name="check-success-effect-flag" type="Seq16" seq="flag" default="none" />
-    <record name="check-fail-effect-attribute" type="Seq16" seq="effect-attribute" default="none" />
-    <record name="check-fail-effect-flag" type="Seq16" seq="flag" default="none" />
-    <record name="check-npc-grade2" type="Seq" seq="npc-grade2" default="none" />
-    <record name="check-npc-grade2-op" type="Seq" seq="op2" default="eq" />
-    <record name="check-target-distance" type="Distance" default="0" min="0" />
-    <record name="check-target-distance-op" type="Seq" seq="op2" default="eq" />
-    <record name="check-around-enemy-count" type="Int16" default="0" min="0" />
-    <record name="check-around-enemy-targeting" type="Bool" />
-    <record name="check-around-range" type="Distance" default="0" min="0" />
-    <record name="check-around-op" type="Seq" seq="op2" default="eq" />
+    </attribute>
+    <attribute name="check-hp-percent" type="Int16" default="0" min="0" />
+    <attribute name="check-hp-percent-op" type="Seq" seq="op2" default="eq" />
+    <attribute name="check-success-effect-attribute" type="Seq16" seq="effect-attribute" default="none" />
+    <attribute name="check-success-effect-flag" type="Seq16" seq="flag" default="none" />
+    <attribute name="check-fail-effect-attribute" type="Seq16" seq="effect-attribute" default="none" />
+    <attribute name="check-fail-effect-flag" type="Seq16" seq="flag" default="none" />
+    <attribute name="check-npc-grade2" type="Seq" seq="npc-grade2" default="none" />
+    <attribute name="check-npc-grade2-op" type="Seq" seq="op2" default="eq" />
+    <attribute name="check-target-distance" type="Distance" default="0" min="0" />
+    <attribute name="check-target-distance-op" type="Seq" seq="op2" default="eq" />
+    <attribute name="check-around-enemy-count" type="Int16" default="0" min="0" />
+    <attribute name="check-around-enemy-targeting" type="Bool" />
+    <attribute name="check-around-range" type="Distance" default="0" min="0" />
+    <attribute name="check-around-op" type="Seq" seq="op2" default="eq" />
   </el>
 </table>

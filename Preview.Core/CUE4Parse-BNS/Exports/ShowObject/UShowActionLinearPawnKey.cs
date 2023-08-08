@@ -1,2 +1,5 @@
 ﻿namespace CUE4Parse.BNS.Exports;
-public sealed class UShowActionLinearPawnKey : ShowKeyBase{ }
+public sealed class UShowActionLinearPawnKey : UShowActionCatmullromKey
+{
+
+}

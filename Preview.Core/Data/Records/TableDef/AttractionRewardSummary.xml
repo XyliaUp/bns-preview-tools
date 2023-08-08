@@ -2,116 +2,116 @@
 <table name="attractionrewardsummary" version="1.9" autokey="true" module="4">
   <el name="table" child="1" />
   <el name="record">
-    <record name="alias" type="String" required="y" max="70" />
-    <record name="reward-item" type="TRef" repeat="24" deprecated="y" />
-    <record name="reward-item-category" type="Seq" repeat="24" deprecated="y">
+    <attribute name="alias" type="String" required="y" max="70" />
+    <attribute name="reward-item" type="TRef" repeat="24" deprecated="y" />
+    <attribute name="reward-item-category" type="Seq" repeat="24" deprecated="y">
       <case name="none" default="y" />
       <case name="costume" />
       <case name="weapon" />
       <case name="equip-gem" />
       <case name="accessory" />
       <case name="etc" />
-    </record>
-    <record name="reward-item-condition-type" type="Seq" seq="condition-type" default="all" repeat="24" deprecated="y" />
-    <record name="reward-item-common" type="TRef" repeat="24" />
-    <record name="reward-item-common-category" type="Seq" repeat="24">
+    </attribute>
+    <attribute name="reward-item-condition-type" type="Seq" seq="condition-type" default="all" repeat="24" deprecated="y" />
+    <attribute name="reward-item-common" type="TRef" repeat="24" />
+    <attribute name="reward-item-common-category" type="Seq" repeat="24">
       <case name="none" default="y" />
       <case name="costume" />
       <case name="weapon" />
       <case name="equip-gem" />
       <case name="accessory" />
       <case name="etc" />
-    </record>
-    <record name="reward-item-common-condition-type" type="Seq" seq="condition-type" default="all" repeat="24" />
-    <record name="reward-item-normal" type="TRef" repeat="24" />
-    <record name="reward-item-normal-category" type="Seq" repeat="24">
+    </attribute>
+    <attribute name="reward-item-common-condition-type" type="Seq" seq="condition-type" default="all" repeat="24" />
+    <attribute name="reward-item-normal" type="TRef" repeat="24" />
+    <attribute name="reward-item-normal-category" type="Seq" repeat="24">
       <case name="none" default="y" />
       <case name="costume" />
       <case name="weapon" />
       <case name="equip-gem" />
       <case name="accessory" />
       <case name="etc" />
-    </record>
-    <record name="reward-item-normal-condition-type" type="Seq" seq="condition-type" default="all" repeat="24" />
-    <record name="reward-item-hard" type="TRef" repeat="24" />
-    <record name="reward-item-hard-category" type="Seq" repeat="24">
+    </attribute>
+    <attribute name="reward-item-normal-condition-type" type="Seq" seq="condition-type" default="all" repeat="24" />
+    <attribute name="reward-item-hard" type="TRef" repeat="24" />
+    <attribute name="reward-item-hard-category" type="Seq" repeat="24">
       <case name="none" default="y" />
       <case name="costume" />
       <case name="weapon" />
       <case name="equip-gem" />
       <case name="accessory" />
       <case name="etc" />
-    </record>
-    <record name="reward-item-hard-condition-type" type="Seq" seq="condition-type" default="all" repeat="24" />
-    <record name="reward-item-easy" type="TRef" repeat="24" />
-    <record name="reward-item-easy-category" type="Seq" repeat="24">
+    </attribute>
+    <attribute name="reward-item-hard-condition-type" type="Seq" seq="condition-type" default="all" repeat="24" />
+    <attribute name="reward-item-easy" type="TRef" repeat="24" />
+    <attribute name="reward-item-easy-category" type="Seq" repeat="24">
       <case name="none" default="y" />
       <case name="costume" />
       <case name="weapon" />
       <case name="equip-gem" />
       <case name="accessory" />
       <case name="etc" />
-    </record>
-    <record name="reward-item-easy-condition-type" type="Seq" seq="condition-type" default="all" repeat="24" />
-    <record name="main-reward-item-normal" type="TRef" repeat="5" />
-    <record name="main-reward-item-hard" type="TRef" repeat="5" />
-    <record name="main-reward-item-easy" type="TRef" repeat="5" />
-    <record name="additional-reward-item" type="TRef" repeat="24" />
-    <record name="additional-reward-item-category" type="Seq" repeat="24">
+    </attribute>
+    <attribute name="reward-item-easy-condition-type" type="Seq" seq="condition-type" default="all" repeat="24" />
+    <attribute name="main-reward-item-normal" type="TRef" repeat="5" />
+    <attribute name="main-reward-item-hard" type="TRef" repeat="5" />
+    <attribute name="main-reward-item-easy" type="TRef" repeat="5" />
+    <attribute name="additional-reward-item" type="TRef" repeat="24" />
+    <attribute name="additional-reward-item-category" type="Seq" repeat="24">
       <case name="none" default="y" />
       <case name="costume" />
       <case name="weapon" />
       <case name="equip-gem" />
       <case name="accessory" />
       <case name="etc" />
-    </record>
-    <record name="additional-reward-item-condition-type" type="Seq" seq="condition-type" default="all" repeat="24" />
-    <record name="bonus-reward-item-common" type="TRef" repeat="24" />
-    <record name="bonus-reward-item-common-category" type="Seq" repeat="24">
+    </attribute>
+    <attribute name="additional-reward-item-condition-type" type="Seq" seq="condition-type" default="all" repeat="24" />
+    <attribute name="bonus-reward-item-common" type="TRef" repeat="24" />
+    <attribute name="bonus-reward-item-common-category" type="Seq" repeat="24">
       <case name="none" default="y" />
       <case name="costume" />
       <case name="weapon" />
       <case name="equip-gem" />
       <case name="accessory" />
       <case name="etc" />
-    </record>
-    <record name="bonus-reward-item-common-condition-type" type="Seq" seq="condition-type" default="all" repeat="24" />
-    <record name="bonus-reward-item-easy" type="TRef" repeat="24" />
-    <record name="bonus-reward-item-easy-category" type="Seq" repeat="24">
+    </attribute>
+    <attribute name="bonus-reward-item-common-condition-type" type="Seq" seq="condition-type" default="all" repeat="24" />
+    <attribute name="bonus-reward-item-easy" type="TRef" repeat="24" />
+    <attribute name="bonus-reward-item-easy-category" type="Seq" repeat="24">
       <case name="none" default="y" />
       <case name="costume" />
       <case name="weapon" />
       <case name="equip-gem" />
       <case name="accessory" />
       <case name="etc" />
-    </record>
-    <record name="bonus-reward-item-easy-condition-type" type="Seq" seq="condition-type" default="all" repeat="24" />
-    <record name="bonus-reward-item-normal" type="TRef" repeat="24" />
-    <record name="bonus-reward-item-normal-category" type="Seq" repeat="24">
+    </attribute>
+    <attribute name="bonus-reward-item-easy-condition-type" type="Seq" seq="condition-type" default="all" repeat="24" />
+    <attribute name="bonus-reward-item-normal" type="TRef" repeat="24" />
+    <attribute name="bonus-reward-item-normal-category" type="Seq" repeat="24">
       <case name="none" default="y" />
       <case name="costume" />
       <case name="weapon" />
       <case name="equip-gem" />
       <case name="accessory" />
       <case name="etc" />
-    </record>
-    <record name="bonus-reward-item-normal-condition-type" type="Seq" seq="condition-type" default="all" repeat="24" />
-    <record name="bonus-reard-item-hard" type="TRef" repeat="24" />
-    <record name="bonus-reward-item-hard-category" type="Seq" repeat="24">
+    </attribute>
+    <attribute name="bonus-reward-item-normal-condition-type" type="Seq" seq="condition-type" default="all" repeat="24" />
+    <attribute name="bonus-reard-item-hard" type="TRef" repeat="24" />
+    <attribute name="bonus-reward-item-hard-category" type="Seq" repeat="24">
       <case name="none" default="y" />
       <case name="costume" />
       <case name="weapon" />
       <case name="equip-gem" />
       <case name="accessory" />
       <case name="etc" />
-    </record>
-    <record name="bonus-reward-item-hard-condition-type" type="Seq" seq="condition-type" default="all" repeat="24" />
-    <record name="bonus-reward-difficulty-type" type="Seq" repeat="3">
+    </attribute>
+    <attribute name="bonus-reward-item-hard-condition-type" type="Seq" seq="condition-type" default="all" repeat="24" />
+    <attribute name="bonus-reward-difficulty-type" type="Seq" repeat="3">
       <case name="none" default="y" />
       <case name="easy" />
       <case name="normal" />
       <case name="hard" />
-    </record>
-    <record name="bonus-reward-quota" type="Ref" ref="content-quota" repeat="3" />
+    </attribute>
+    <attribute name="bonus-reward-quota" type="Ref" ref="content-quota" repeat="3" />
   </el>
 </table>

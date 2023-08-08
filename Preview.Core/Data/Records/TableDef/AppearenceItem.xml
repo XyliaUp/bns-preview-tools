@@ -2,6 +2,6 @@
 <table name="appearence-item" version="2.0" autokey="true" module="6">
   <el name="table" child="1" />
   <el name="record">
-    <record name="alias" type="String" required="y" max="70" />
+    <attribute name="alias" type="String" required="y" max="70" />
   </el>
 </table>

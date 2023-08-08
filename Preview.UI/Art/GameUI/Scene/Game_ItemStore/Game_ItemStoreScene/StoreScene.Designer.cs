@@ -98,7 +98,6 @@ namespace Xylia.Preview.GameUI.Scene.Game_ItemStore
 			ListPreview.Name = "ListPreview";
 			ListPreview.Size = new Size(489, 803);
 			ListPreview.TabIndex = 0;
-			ListPreview.MaxItemNum = 0;
 			// 
 			// StoreScene
 			// 

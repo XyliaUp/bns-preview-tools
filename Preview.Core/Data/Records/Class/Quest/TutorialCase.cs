@@ -11,7 +11,7 @@ public partial class TutorialCase : BaseRecord
 {
     #region Base
     [DefaultValue(100)]
-    public byte Prob = 100;
+    public sbyte Prob = 100;
 
     [Side(ReleaseSide.Client)]
     [Signal("mapunit"), Repeat(10)]
@@ -160,7 +160,7 @@ public partial class TutorialCase : BaseRecord
     public sealed class PcBleeding : TutorialCase
     {
         [DefaultValue(null)]
-        public byte Percent;
+        public sbyte Percent;
     }
 
     public sealed class Exhausted : TutorialCase

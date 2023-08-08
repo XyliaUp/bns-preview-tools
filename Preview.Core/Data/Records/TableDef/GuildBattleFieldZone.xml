@@ -2,77 +2,77 @@
 <table name="guild-battle-field-zone" version="0.18" autokey="true" module="6">
   <el name="table" child="1" />
   <el name="record">
-    <record name="alias" type="String" required="y" max="70" />
-    <record name="zone" type="Ref" ref="zone" required="y" />
-    <record name="group" type="Ref" ref="attraction-group" />
-    <record name="effect" type="Ref" ref="effect" repeat="2" />
-    <record name="respawn-effect" type="Ref" ref="effect" />
-    <record name="respawn-delay" type="Msec" default="0" />
-    <record name="refiner" type="Ref" ref="zoneenv2spawn" repeat="3" />
-    <record name="respawn-by-refiner" type="Ref" ref="zonerespawn" repeat="3" />
-    <record name="airdash-1-by-refiner" type="Ref" ref="zoneenv2spawn" repeat="3" />
-    <record name="airdash-2-by-refiner" type="Ref" ref="zoneenv2spawn" repeat="3" />
-    <record name="guild-battle-field-zone-name2" type="Ref" ref="text" />
-    <record name="guild-battle-field-zone-desc" type="Ref" ref="text" />
-    <record name="thumbnail-image" type="String" max="70" />
-    <record name="reward-summary" type="Ref" ref="attractionrewardsummary" />
-    <record name="last-boss" type="Ref" ref="npc" />
-    <record name="pc-spawn-id" type="Int16" default="0" repeat="6" />
-    <record name="pc-spawn-id-count" type="Int8" default="0" hidden="y" />
-    <record name="gate-replica" type="Ref" ref="zoneenv2spawn" repeat="6" />
-    <record name="gate-open-ready-minute" type="Int8" default="0" max="59" />
-    <record name="sun-gate-open-hour" type="Int8" default="-1" repeat="12" max="23" />
-    <record name="sun-gate-open-minute" type="Int8" default="-1" repeat="12" max="59" />
-    <record name="sun-gate-open-duration" type="Int16" default="0" repeat="12" min="0" />
-    <record name="sun-zone-open-hour" type="Int8" default="-1" max="23" />
-    <record name="sun-zone-open-minute" type="Int8" default="-1" max="59" />
-    <record name="sun-zone-close-hour" type="Int8" default="-1" max="23" />
-    <record name="sun-zone-close-minute" type="Int8" default="-1" max="59" />
-    <record name="mon-gate-open-hour" type="Int8" default="-1" repeat="12" max="23" />
-    <record name="mon-gate-open-minute" type="Int8" default="-1" repeat="12" max="59" />
-    <record name="mon-gate-open-duration" type="Int16" default="0" repeat="12" min="0" />
-    <record name="mon-zone-open-hour" type="Int8" default="-1" max="23" />
-    <record name="mon-zone-open-minute" type="Int8" default="-1" max="59" />
-    <record name="mon-zone-close-hour" type="Int8" default="-1" max="23" />
-    <record name="mon-zone-close-minute" type="Int8" default="-1" max="59" />
-    <record name="tue-gate-open-hour" type="Int8" default="-1" repeat="12" max="23" />
-    <record name="tue-gate-open-minute" type="Int8" default="-1" repeat="12" max="59" />
-    <record name="tue-gate-open-duration" type="Int16" default="0" repeat="12" min="0" />
-    <record name="tue-zone-open-hour" type="Int8" default="-1" max="23" />
-    <record name="tue-zone-open-minute" type="Int8" default="-1" max="59" />
-    <record name="tue-zone-close-hour" type="Int8" default="-1" max="23" />
-    <record name="tue-zone-close-minute" type="Int8" default="-1" max="59" />
-    <record name="wed-gate-open-hour" type="Int8" default="-1" repeat="12" max="23" />
-    <record name="wed-gate-open-minute" type="Int8" default="-1" repeat="12" max="59" />
-    <record name="wed-gate-open-duration" type="Int16" default="0" repeat="12" min="0" />
-    <record name="wed-zone-open-hour" type="Int8" default="-1" max="23" />
-    <record name="wed-zone-open-minute" type="Int8" default="-1" max="59" />
-    <record name="wed-zone-close-hour" type="Int8" default="-1" max="23" />
-    <record name="wed-zone-close-minute" type="Int8" default="-1" max="59" />
-    <record name="thu-gate-open-hour" type="Int8" default="-1" repeat="12" max="23" />
-    <record name="thu-gate-open-minute" type="Int8" default="-1" repeat="12" max="59" />
-    <record name="thu-gate-open-duration" type="Int16" default="0" repeat="12" min="0" />
-    <record name="thu-zone-open-hour" type="Int8" default="-1" max="23" />
-    <record name="thu-zone-open-minute" type="Int8" default="-1" max="59" />
-    <record name="thu-zone-close-hour" type="Int8" default="-1" max="23" />
-    <record name="thu-zone-close-minute" type="Int8" default="-1" max="59" />
-    <record name="fri-gate-open-hour" type="Int8" default="-1" repeat="12" max="23" />
-    <record name="fri-gate-open-minute" type="Int8" default="-1" repeat="12" max="59" />
-    <record name="fri-gate-open-duration" type="Int16" default="0" repeat="12" min="0" />
-    <record name="fri-zone-open-hour" type="Int8" default="-1" max="23" />
-    <record name="fri-zone-open-minute" type="Int8" default="-1" max="59" />
-    <record name="fri-zone-close-hour" type="Int8" default="-1" max="23" />
-    <record name="fri-zone-close-minute" type="Int8" default="-1" max="59" />
-    <record name="sat-gate-open-hour" type="Int8" default="-1" repeat="12" max="23" />
-    <record name="sat-gate-open-minute" type="Int8" default="-1" repeat="12" max="59" />
-    <record name="sat-gate-open-duration" type="Int16" default="0" repeat="12" min="0" />
-    <record name="sat-zone-open-hour" type="Int8" default="-1" max="23" />
-    <record name="sat-zone-open-minute" type="Int8" default="-1" max="59" />
-    <record name="sat-zone-close-hour" type="Int8" default="-1" max="23" />
-    <record name="sat-zone-close-minute" type="Int8" default="-1" max="59" />
-    <record name="gate-open-percent" type="Int8" default="0" deprecated="y" min="0" max="100" />
-    <record name="required-level-min" type="Int8" default="0" min="0" />
-    <record name="required-level-max" type="Int8" default="0" min="0" />
-    <record name="required-faction-score" type="Int16" default="0" min="0" />
+    <attribute name="alias" type="String" required="y" max="70" />
+    <attribute name="zone" type="Ref" ref="zone" required="y" />
+    <attribute name="group" type="Ref" ref="attraction-group" />
+    <attribute name="effect" type="Ref" ref="effect" repeat="2" />
+    <attribute name="respawn-effect" type="Ref" ref="effect" />
+    <attribute name="respawn-delay" type="Msec" default="0" />
+    <attribute name="refiner" type="Ref" ref="zoneenv2spawn" repeat="3" />
+    <attribute name="respawn-by-refiner" type="Ref" ref="zonerespawn" repeat="3" />
+    <attribute name="airdash-1-by-refiner" type="Ref" ref="zoneenv2spawn" repeat="3" />
+    <attribute name="airdash-2-by-refiner" type="Ref" ref="zoneenv2spawn" repeat="3" />
+    <attribute name="guild-battle-field-zone-name2" type="Ref" ref="text" />
+    <attribute name="guild-battle-field-zone-desc" type="Ref" ref="text" />
+    <attribute name="thumbnail-image" type="String" max="70" />
+    <attribute name="reward-summary" type="Ref" ref="attractionrewardsummary" />
+    <attribute name="last-boss" type="Ref" ref="npc" />
+    <attribute name="pc-spawn-id" type="Int16" default="0" repeat="6" />
+    <attribute name="pc-spawn-id-count" type="Int8" default="0" hidden="y" />
+    <attribute name="gate-replica" type="Ref" ref="zoneenv2spawn" repeat="6" />
+    <attribute name="gate-open-ready-minute" type="Int8" default="0" max="59" />
+    <attribute name="sun-gate-open-hour" type="Int8" default="-1" repeat="12" max="23" />
+    <attribute name="sun-gate-open-minute" type="Int8" default="-1" repeat="12" max="59" />
+    <attribute name="sun-gate-open-duration" type="Int16" default="0" repeat="12" min="0" />
+    <attribute name="sun-zone-open-hour" type="Int8" default="-1" max="23" />
+    <attribute name="sun-zone-open-minute" type="Int8" default="-1" max="59" />
+    <attribute name="sun-zone-close-hour" type="Int8" default="-1" max="23" />
+    <attribute name="sun-zone-close-minute" type="Int8" default="-1" max="59" />
+    <attribute name="mon-gate-open-hour" type="Int8" default="-1" repeat="12" max="23" />
+    <attribute name="mon-gate-open-minute" type="Int8" default="-1" repeat="12" max="59" />
+    <attribute name="mon-gate-open-duration" type="Int16" default="0" repeat="12" min="0" />
+    <attribute name="mon-zone-open-hour" type="Int8" default="-1" max="23" />
+    <attribute name="mon-zone-open-minute" type="Int8" default="-1" max="59" />
+    <attribute name="mon-zone-close-hour" type="Int8" default="-1" max="23" />
+    <attribute name="mon-zone-close-minute" type="Int8" default="-1" max="59" />
+    <attribute name="tue-gate-open-hour" type="Int8" default="-1" repeat="12" max="23" />
+    <attribute name="tue-gate-open-minute" type="Int8" default="-1" repeat="12" max="59" />
+    <attribute name="tue-gate-open-duration" type="Int16" default="0" repeat="12" min="0" />
+    <attribute name="tue-zone-open-hour" type="Int8" default="-1" max="23" />
+    <attribute name="tue-zone-open-minute" type="Int8" default="-1" max="59" />
+    <attribute name="tue-zone-close-hour" type="Int8" default="-1" max="23" />
+    <attribute name="tue-zone-close-minute" type="Int8" default="-1" max="59" />
+    <attribute name="wed-gate-open-hour" type="Int8" default="-1" repeat="12" max="23" />
+    <attribute name="wed-gate-open-minute" type="Int8" default="-1" repeat="12" max="59" />
+    <attribute name="wed-gate-open-duration" type="Int16" default="0" repeat="12" min="0" />
+    <attribute name="wed-zone-open-hour" type="Int8" default="-1" max="23" />
+    <attribute name="wed-zone-open-minute" type="Int8" default="-1" max="59" />
+    <attribute name="wed-zone-close-hour" type="Int8" default="-1" max="23" />
+    <attribute name="wed-zone-close-minute" type="Int8" default="-1" max="59" />
+    <attribute name="thu-gate-open-hour" type="Int8" default="-1" repeat="12" max="23" />
+    <attribute name="thu-gate-open-minute" type="Int8" default="-1" repeat="12" max="59" />
+    <attribute name="thu-gate-open-duration" type="Int16" default="0" repeat="12" min="0" />
+    <attribute name="thu-zone-open-hour" type="Int8" default="-1" max="23" />
+    <attribute name="thu-zone-open-minute" type="Int8" default="-1" max="59" />
+    <attribute name="thu-zone-close-hour" type="Int8" default="-1" max="23" />
+    <attribute name="thu-zone-close-minute" type="Int8" default="-1" max="59" />
+    <attribute name="fri-gate-open-hour" type="Int8" default="-1" repeat="12" max="23" />
+    <attribute name="fri-gate-open-minute" type="Int8" default="-1" repeat="12" max="59" />
+    <attribute name="fri-gate-open-duration" type="Int16" default="0" repeat="12" min="0" />
+    <attribute name="fri-zone-open-hour" type="Int8" default="-1" max="23" />
+    <attribute name="fri-zone-open-minute" type="Int8" default="-1" max="59" />
+    <attribute name="fri-zone-close-hour" type="Int8" default="-1" max="23" />
+    <attribute name="fri-zone-close-minute" type="Int8" default="-1" max="59" />
+    <attribute name="sat-gate-open-hour" type="Int8" default="-1" repeat="12" max="23" />
+    <attribute name="sat-gate-open-minute" type="Int8" default="-1" repeat="12" max="59" />
+    <attribute name="sat-gate-open-duration" type="Int16" default="0" repeat="12" min="0" />
+    <attribute name="sat-zone-open-hour" type="Int8" default="-1" max="23" />
+    <attribute name="sat-zone-open-minute" type="Int8" default="-1" max="59" />
+    <attribute name="sat-zone-close-hour" type="Int8" default="-1" max="23" />
+    <attribute name="sat-zone-close-minute" type="Int8" default="-1" max="59" />
+    <attribute name="gate-open-percent" type="Int8" default="0" deprecated="y" min="0" max="100" />
+    <attribute name="required-level-min" type="Int8" default="0" min="0" />
+    <attribute name="required-level-max" type="Int8" default="0" min="0" />
+    <attribute name="required-faction-score" type="Int16" default="0" min="0" />
   </el>
 </table>

@@ -2,19 +2,19 @@
 <table name="rankingrewardgroup" version="0.6" autokey="false" module="4102">
   <el name="table" child="1" />
   <el name="record">
-    <record name="reward-group-id" type="Int16" key="y" required="y" />
-    <record name="reward-group-alias" type="String" max="70" />
-    <record name="reward-group-top" type="Int32" default="0" repeat="20" min="0" max="100000" />
-    <record name="reward-group-bottom" type="Int32" default="0" repeat="20" min="0" max="100000" />
-    <record name="reward-data" type="Ref" ref="rankingreward" repeat="20" />
-    <record name="default-job-ranking-imageset-large" type="String" max="50" />
-    <record name="default-job-ranking-imageset" type="String" max="50" />
-    <record name="job-ranking-imageset-large" type="String" repeat="20" max="50" />
-    <record name="job-ranking-imageset" type="String" repeat="20" max="50" />
-    <record name="default-total-ranking-imageset-large" type="String" max="50" />
-    <record name="default-total-ranking-imageset" type="String" max="50" />
-    <record name="total-ranking-imageset-large" type="String" repeat="20" max="50" />
-    <record name="total-ranking-imageset" type="String" repeat="20" max="50" />
-    <record name="ranking-buff-imageset" type="String" repeat="20" max="50" />
+    <attribute name="reward-group-id" type="Int16" key="y" required="y" />
+    <attribute name="reward-group-alias" type="String" max="70" />
+    <attribute name="reward-group-top" type="Int32" default="0" repeat="20" min="0" max="100000" />
+    <attribute name="reward-group-bottom" type="Int32" default="0" repeat="20" min="0" max="100000" />
+    <attribute name="reward-data" type="Ref" ref="rankingreward" repeat="20" />
+    <attribute name="default-job-ranking-imageset-large" type="String" max="50" />
+    <attribute name="default-job-ranking-imageset" type="String" max="50" />
+    <attribute name="job-ranking-imageset-large" type="String" repeat="20" max="50" />
+    <attribute name="job-ranking-imageset" type="String" repeat="20" max="50" />
+    <attribute name="default-total-ranking-imageset-large" type="String" max="50" />
+    <attribute name="default-total-ranking-imageset" type="String" max="50" />
+    <attribute name="total-ranking-imageset-large" type="String" repeat="20" max="50" />
+    <attribute name="total-ranking-imageset" type="String" repeat="20" max="50" />
+    <attribute name="ranking-buff-imageset" type="String" repeat="20" max="50" />
   </el>
 </table>

@@ -4,8 +4,10 @@ using Xylia.Extension;
 using Xylia.Preview.Common.Extension;
 using Xylia.Preview.Data.Helper;
 using Xylia.Preview.Data.Record;
+using Xylia.Preview.GameUI.Scene.Game_ItemGrowth2.Game_ItemGrowth2;
 using Xylia.Preview.UI.Custom.Controls;
 using Xylia.Preview.UI.Custom.Controls.Designer;
+using Xylia.Preview.UI.Extension;
 
 namespace Xylia.Preview.GameUI.Scene.Game_ItemGrowth2;
 
@@ -139,24 +141,8 @@ public partial class ResultWeaponPreview : UserControl
 	#endregion
 }
 
-
-
-/// <summary>
-/// 目标物品变更
-/// </summary>
 public class ResultItemChangedEventArgs : EventArgs
 {
-	public ResultItemChangedEventArgs() { }
-
-
 	public IEnumerable<ItemTransformRecipe> Recipes { get; set; }
 	public ResultItemChangedEventArgs(IEnumerable<ItemTransformRecipe> Recipes) => this.Recipes = Recipes;
-
-
-	public ItemImprove ItemImprove;
-	public ResultItemChangedEventArgs(ItemImprove ItemImprove) => this.ItemImprove = ItemImprove;
-
-
-	public ItemSpirit ItemSpirit;
-	public ResultItemChangedEventArgs(ItemSpirit ItemSpirit) => this.ItemSpirit = ItemSpirit;
 }

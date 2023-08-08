@@ -2,32 +2,32 @@
 <table name="boss-challenge" version="0.10" autokey="false" module="6">
   <el name="table" child="1" />
   <el name="record">
-    <record name="zone" type="Ref" ref="zone" required="y" />
-    <record name="id" type="Int32" key="y" required="y" min="1" />
-    <record name="require-score" type="Int16" required="y" />
-    <record name="last-round" type="Int16" hidden="y" />
-    <record name="alias" type="String" required="y" max="70" />
-    <record name="group" type="Ref" ref="attraction-group" />
-    <record name="attraction-quest" type="Ref" ref="quest" repeat="5" hidden="y" />
-    <record name="enable-heart-count" type="Bool" />
-    <record name="max-instant-heart-count" type="Int8" default="0" />
-    <record name="required-level" type="Int8" default="0" min="0" max="100" />
-    <record name="required-mastery-level" type="Int8" default="0" min="0" max="100" />
-    <record name="required-preceding-quest" type="Ref" ref="quest" repeat="3" />
-    <record name="required-preceding-quest-check" type="Seq" seq="check" default="and" />
-    <record name="boss-challenge-name2" type="Ref" ref="text" />
-    <record name="boss-challenge-desc" type="Ref" ref="text" />
-    <record name="ui-text-grade" type="Int8" default="0" max="8" />
-    <record name="reward-summary" type="Ref" ref="attractionrewardsummary" />
-    <record name="recommand-level-min" type="Int8" default="0" />
-    <record name="recommand-level-max" type="Int8" default="0" />
-    <record name="recommand-mastery-level-min" type="Int8" default="0" />
-    <record name="recommand-mastery-level-max" type="Int8" default="0" />
-    <record name="recommend-attack-power" type="Int16" default="0" min="0" max="9999" />
-    <record name="standard-gear-weapon" type="Ref" ref="item" required="y" />
-    <record name="display-quests" type="Ref" ref="quest" repeat="12" hidden="y" />
-    <record name="enable-infinite-hyper-energy" type="Bool" />
-    <record name="tactic" type="Ref" ref="text" />
-    <record name="recommend-alias" type="Ref" ref="contentsjournalrecommenditem" />
+    <attribute name="zone" type="Ref" ref="zone" required="y" />
+    <attribute name="id" type="Int32" key="y" required="y" min="1" />
+    <attribute name="require-score" type="Int16" required="y" />
+    <attribute name="last-round" type="Int16" hidden="y" />
+    <attribute name="alias" type="String" required="y" max="70" />
+    <attribute name="group" type="Ref" ref="attraction-group" />
+    <attribute name="attraction-quest" type="Ref" ref="quest" repeat="5" hidden="y" />
+    <attribute name="enable-heart-count" type="Bool" />
+    <attribute name="max-instant-heart-count" type="Int8" default="0" />
+    <attribute name="required-level" type="Int8" default="0" min="0" max="100" />
+    <attribute name="required-mastery-level" type="Int8" default="0" min="0" max="100" />
+    <attribute name="required-preceding-quest" type="Ref" ref="quest" repeat="3" />
+    <attribute name="required-preceding-quest-check" type="Seq" seq="check" default="and" />
+    <attribute name="boss-challenge-name2" type="Ref" ref="text" />
+    <attribute name="boss-challenge-desc" type="Ref" ref="text" />
+    <attribute name="ui-text-grade" type="Int8" default="0" max="8" />
+    <attribute name="reward-summary" type="Ref" ref="attractionrewardsummary" />
+    <attribute name="recommand-level-min" type="Int8" default="0" />
+    <attribute name="recommand-level-max" type="Int8" default="0" />
+    <attribute name="recommand-mastery-level-min" type="Int8" default="0" />
+    <attribute name="recommand-mastery-level-max" type="Int8" default="0" />
+    <attribute name="recommend-attack-power" type="Int16" default="0" min="0" max="9999" />
+    <attribute name="standard-gear-weapon" type="Ref" ref="item" required="y" />
+    <attribute name="display-quests" type="Ref" ref="quest" repeat="12" hidden="y" />
+    <attribute name="enable-infinite-hyper-energy" type="Bool" />
+    <attribute name="tactic" type="Ref" ref="text" />
+    <attribute name="recommend-alias" type="Ref" ref="contentsjournalrecommenditem" />
   </el>
 </table>

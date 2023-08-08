@@ -20,11 +20,6 @@ public sealed class BNSDat
     public KeyInfo KeyInfo = new();
 
 
-    private BNSDat()
-    {
-
-    }
-
     public BNSDat(string DatPath, bool? Is64 = null, byte[] AES = null)
     {
         if (AES != null) KeyInfo.AES_KEY.Add(AES);
@@ -422,7 +417,6 @@ public sealed class BNSDat
     {
         byte[] output = buffer;
 
-        #region 判断正确密钥
         if (KeyInfo.Correct != null) Callback(buffer, sizeStored, sizeSheared, sizeUnpacked, isEncrypted, isCompressed, KeyInfo.Correct, out output);
         else
         {
@@ -435,7 +429,7 @@ public sealed class BNSDat
                 }
             }
         }
-        #endregion
+
 
         return output;
     }

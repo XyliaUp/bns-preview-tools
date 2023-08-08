@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel;
 
-using Xylia.Preview.Common.Extension;
 using Xylia.Preview.Data.Record;
 using Xylia.Preview.UI.Custom.Controls.Designer;
+using Xylia.Preview.UI.Extension;
 
 namespace Xylia.Preview.UI.Custom.Controls;
 
@@ -68,7 +68,7 @@ public partial class ItemShowCell : UserControl
 	}
 
 	[Category("Data"), Description("物品品质")]
-	public byte ItemGrade
+	public sbyte ItemGrade
 	{
 		get => this.NameCell.ItemGrade;
 		set => this.NameCell.ItemGrade = value;

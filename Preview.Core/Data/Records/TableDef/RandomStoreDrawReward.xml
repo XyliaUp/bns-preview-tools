@@ -2,17 +2,17 @@
 <table name="randomstoredrawreward" version="0.2" autokey="false" module="6">
   <el name="table" child="1" />
   <el name="record">
-    <record name="id" type="Int16" key="y" required="y" min="1" />
-    <record name="alias" type="String" required="y" max="70" />
-    <record name="random-store-number" type="Seq" key="y" required="y">
+    <attribute name="id" type="Int16" key="y" required="y" min="1" />
+    <attribute name="alias" type="String" required="y" max="70" />
+    <attribute name="random-store-number" type="Seq" key="y" required="y">
       <case name="invalid-number" />
       <case name="random-store-1" />
       <case name="random-store-2" />
-    </record>
-    <record name="required-draw-count" type="Int32" key="y" required="y" />
-    <record name="fixed-reward" type="Ref" ref="item" repeat="4" />
-    <record name="fixed-reward-count" type="Int8" default="0" repeat="4" />
-    <record name="optional-reward" type="Ref" ref="item" repeat="8" />
-    <record name="optional-reward-count" type="Int8" default="0" repeat="8" />
+    </attribute>
+    <attribute name="required-draw-count" type="Int32" key="y" required="y" />
+    <attribute name="fixed-reward" type="Ref" ref="item" repeat="4" />
+    <attribute name="fixed-reward-count" type="Int8" default="0" repeat="4" />
+    <attribute name="optional-reward" type="Ref" ref="item" repeat="8" />
+    <attribute name="optional-reward-count" type="Int8" default="0" repeat="8" />
   </el>
 </table>

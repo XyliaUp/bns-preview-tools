@@ -4,13 +4,21 @@ using System.Configuration;
 using System.Data;
 using System.Reflection;
 using System.Xml;
+using System.Xml.Linq;
 
 using BnsBinTool.Core.DataStructs;
+using BnsBinTool.Core.Definitions;
+using BnsBinTool.Core.Helpers;
 
 using Xylia.Extension;
+using Xylia.Extension.Class;
 using Xylia.Preview.Common.Attribute;
+using Xylia.Preview.Common.Cast;
 using Xylia.Preview.Common.Extension;
 using Xylia.Preview.Data.Models.BinData.Table.Record.Attributes;
+using Xylia.Xml;
+
+using RecordModel = BnsBinTool.Core.Models.Record;
 
 namespace Xylia.Preview.Data.Models.BinData.Table.Record;
 public class BaseRecord
@@ -83,12 +91,12 @@ public class BaseRecord
 						Trace.WriteLine($"cast object failed: {type}");
 						continue;
 					}
-					
+
 
 					var Object = (BaseRecord)Activator.CreateInstance(SubType);
 					Object.LoadData(data);
 
-					add.Invoke(records, Object);
+					add.Invoke(records, new object[] { Object });
 				}
 
 				field.SetValue(this, records);
@@ -96,14 +104,12 @@ public class BaseRecord
 			}
 
 
-
-
 			var name = field.GetSignal().ToLower();
 			var repeat = field.GetAttribute<Repeat>()?.Value ?? 1;
 			if (repeat == 1)
 			{
 				_attrs.Add(name);
-				field.SetValue(this, ValueConvert.Construct(memberType, Attributes[name]));
+				field.SetValue(this, ValueConvert.Construct(memberType, Attributes[name], this));
 			}
 			else
 			{
@@ -154,8 +160,6 @@ public class BaseRecord
 	}
 
 
-
-
 	#region Interface
 	public override string ToString() => GetType().Name + ":" + (alias ?? Ref.ToString());
 
@@ -185,21 +189,6 @@ public class BaseRecord
 	#endregion
 
 	#region Static Functions
-	public XmlDocument XmlInfo(ReleaseSide side = default)
-	{
-		var doc = new XmlDocument();
-
-		XmlElement table = doc.CreateElement("table");
-		doc.AppendChild(table);
-		table.SetAttribute("release-module", "");
-		table.SetAttribute("release-side", side.ToString().ToLower());
-		table.SetAttribute("type", "");
-		table.SetAttribute("version", $"");
-		table.AppendChild(Serialize(this, doc));
-
-		return doc;
-	}
-
 	public static List<T> LoadChildren<T>(XmlElement xe, string NodeName = null) where T : BaseRecord, new()
 	{
 		NodeName ??= typeof(T).Name.ToLower();
@@ -214,121 +203,127 @@ public class BaseRecord
 
 		return records;
 	}
+	#endregion
 
-	public static XmlNode Serialize(object T, XmlDocument doc, ReleaseSide side = default, bool HasChild = true, string NodeName = null)
+
+
+	public RecordModel Serialize(ITable table = null, RecordBuilder _recordBuilder = null)
 	{
-		//如果未传递节点名, 则获取当前节点名称
-		NodeName ??= T.GetAttribute<Signal>()?.Description ?? T.GetType().Name.ToLower();
-		var Node = doc.CreateElement(NodeName);
+		table ??= this.GetType().Name.CastTable();
+		ArgumentNullException.ThrowIfNull(table);
 
+		// get attributes from instance if doesn't exist 
+		_attributes ??= new XElementData(Serialize(ReleaseSide.Client));
+	
+		// Create record builder if it doesn't exist
+		_recordBuilder ??= table.Owner.converter.Builder;
+		_recordBuilder.InitializeRecord();
 
-		foreach (var field in T.GetType().GetFields(ClassExtension.Flags))
+		// Create record
+		var def = table.TableDef;
+		var record = new RecordModel
 		{
-			if (field.FieldType.GetGenericTypeDefinition() == typeof(List<>))
-			{
-				//if (Field.FieldType.IsValueType) continue;
+			Data = new byte[def.Size],
+			XmlNodeType = 1,
+			SubclassType = def.SubclassType,
+			DataSize = def.Size,
+			StringLookup = _recordBuilder.StringLookup
+		};
 
-				if (HasChild)
-				{
-					var obj = field.GetValue(T);
-					if (obj is null) continue;
-					if (obj.GetType().GetGenericTypeDefinition() == typeof(Lazy<>))
-						obj = obj.GetValue("Value");
-
-
-					SetData(obj);
-					void SetData(object obj)
-					{
-						if (obj is null) return;
-						else if (obj is BaseRecord) Node.AppendChild(Serialize(obj, doc, side));
-						else if (obj is IEnumerable enumerable) foreach (var t in enumerable) SetData(t);
-						else Trace.WriteLine($"[Serialize Failed] {field.Name} ,{obj.GetType()}");
-					}
-				}
-			}
-			else
-			{
-				//remove server fields
-				if (field.ContainAttribute(out Side fside))
-				{
-					if (side == ReleaseSide.Client && fside.SideType == ReleaseSide.Server) continue;
-					else if (side == ReleaseSide.Server && fside.SideType == ReleaseSide.Client) continue;
-				}
-
-				var ObjVal = field.GetValue(T);
-				if (ObjVal is null) continue;
-
-				#region deault
-				//默认值为 Null, 则表示任何值都应该显示
-				if (field.ContainAttribute(out DefaultValueAttribute DefVal))
-				{
-					if (DefVal.Value != null && DefVal.Value.Equals(ObjVal))
-						continue;
-				}
-				else if (field.FieldType == typeof(bool) && !(bool)ObjVal) continue;
-				else if (field.FieldType == typeof(int) && (int)ObjVal == 0) continue;
-				else if (field.FieldType == typeof(byte) && (byte)ObjVal == 0) continue;
-				else if (field.FieldType == typeof(long) && (long)ObjVal == 0) continue;
-				else if (field.FieldType == typeof(short) && (short)ObjVal == 0) continue;
-				else if (field.FieldType == typeof(float) && (float)ObjVal == 0) continue;
-				else if (field.FieldType == typeof(double) && (double)ObjVal == 0) continue;
-				else if (field.FieldType.IsEnum)
-				{
-					var EnumValue = ObjVal.ToString();
-
-					//如果不存在, 则判断枚举对象自身的默认值信息
-					if (field.FieldType.ContainAttribute(out DefaultValueAttribute DefVal2))
-					{
-						if (field.FieldType == DefVal2.Value.GetType() && DefVal2.Value.Equals(ObjVal)) continue;
-					}
-					else if (EnumValue.Equals("none", StringComparison.OrdinalIgnoreCase)) continue;
-				}
-				#endregion
-
-				#region value
-				string Value = ObjVal.ToString();
-				if (field.FieldType == typeof(bool)) Value = (bool)ObjVal ? "y" : "n";
-				else if (field.FieldType == typeof(float)) Value = ((float)ObjVal).ToString("0.0001");
-				else if (field.FieldType.IsEnum)
-				{
-					if (ObjVal.ContainAttribute(out Signal EnumDescA) && !string.IsNullOrWhiteSpace(EnumDescA.Description))
-						Value = EnumDescA.Description;
-
-					Value = Value.ToLower();
-				}
-				#endregion
-
-				#region name
-				string Key = field.Name.ToLower();
-				if (field.ContainAttribute(out Signal descA) && !string.IsNullOrWhiteSpace(descA.Description))
-					Key = descA.Description;
-
-				Node.SetAttribute(Key, Value);
-				#endregion
-			}
+		// Go through each attribute
+		//AttributeDefaultValues.SetRecordDefaults(record, this);
+		foreach (var attr in table.TableDef.ExpandedAttributes)
+		{
+			_recordBuilder.SetAttribute(record, attr, Attributes[attr.Name]);
 		}
 
-		return Node;
-	}
-	#endregion
-}
-
-public class IAttribute
-{
-	public string Key;
-
-	public string Value;
-
-
-	public IAttribute(string key, string value)
-	{
-		this.Key = key;
-		this.Value = value;
+		_recordBuilder.FinalizeRecord();
+		return record;
 	}
 
-	public IAttribute(KeyValuePair<string, string> pair)
+	public XNode Serialize(ReleaseSide side, ITableDefinition el = null)
 	{
-		this.Key = pair.Key;
-		this.Value = pair.Value;
+		var node = new XElement(el?.Name ??
+			this.GetAttribute<Signal>()?.Description ??
+			this.GetType().Name.ToLower());
+
+		foreach (var field in this.GetType().GetFields(ClassExtension.Flags | BindingFlags.DeclaredOnly))
+		{
+			var type = field.FieldType;
+			var value = field.GetValue(this);
+
+			// *
+			// if (value is null) continue;
+
+
+			// child
+			if (type.IsGenericType && type.GetGenericTypeDefinition() == typeof(List<>))
+			{
+				if (value.GetType().GetGenericTypeDefinition() == typeof(Lazy<>))
+					value = value.GetValue("Value");
+
+				SetData(value);
+				void SetData(object value)
+				{
+					if (value is null) return;
+					else if (value is BaseRecord record) node.Add(record.Serialize(side));
+					else if (value is IEnumerable enumerable) foreach (var t in enumerable) SetData(t);
+					else Trace.WriteLine($"[Serialize Failed] {field.Name} ,{value.GetType()}");
+				}
+
+				continue;
+			}
+
+
+
+			// attribute
+			AttributeDefinition attribute = null;
+
+			//remove server fields
+			if (field.ContainAttribute(out Side fside))
+			{
+				if (side == ReleaseSide.Client && fside.SideType == ReleaseSide.Server) continue;
+				else if (side == ReleaseSide.Server && fside.SideType == ReleaseSide.Client) continue;
+			}
+
+
+
+
+
+			var Repeat = type.IsArray ? field.GetAttribute<Repeat>().Value : (ushort)1;
+
+
+			Linq.For(Repeat,
+			(idx) =>
+			{
+				object _value = value;
+				if (Repeat > 1) _value = type.GetMethod("GetValue", new Type[] { typeof(int) }).Invoke(value, new object[] { idx });
+
+				// check default
+				if (false)
+				{
+					var ValueD = attribute?.DefaultValue;
+					if (ValueD != null && value.ToString() == ValueD) return;
+
+					if (field.ContainAttribute(out DefaultValueAttribute ValueDA)
+						&& ValueDA.Value != null && ValueDA.Value.Equals(value)) return;
+				}
+
+
+				// convert
+				string Value = (_value ??= default)?.ToString() ?? "";
+				if (field.FieldType == typeof(bool)) Value = (bool)_value ? "y" : "n";
+				else if (field.FieldType == typeof(float)) Value = ((float)_value).ToString("F2");
+				else if (field.FieldType.IsEnum) Value = _value.GetSignal().TitleLowerCase();
+
+				// key
+				string Key = field.GetDescription(true) ?? field.Name;
+				if (Repeat > 1) Key += $"-{idx + 1}";
+
+				node.SetAttributeValue(Key.TitleLowerCase(), Value);
+			});
+		}
+
+		return node;
 	}
 }

@@ -2,10 +2,10 @@
 <table name="guilduniformslider" version="0.4" autokey="false" module="6">
   <el name="table" child="1" />
   <el name="record">
-    <record name="param-type" type="Int32" key="y" required="y" />
-    <record name="min-value" type="Int8" default="1" min="1" max="100" />
-    <record name="max-value" type="Int8" default="100" min="1" max="100" />
-    <record name="step" type="Int8" required="y" min="1" />
-    <record name="required-guild-level" type="Int8" default="1" min="1" max="50" />
+    <attribute name="param-type" type="Int32" key="y" required="y" />
+    <attribute name="min-value" type="Int8" default="1" min="1" max="100" />
+    <attribute name="max-value" type="Int8" default="100" min="1" max="100" />
+    <attribute name="step" type="Int8" required="y" min="1" />
+    <attribute name="required-guild-level" type="Int8" default="1" min="1" max="50" />
   </el>
 </table>

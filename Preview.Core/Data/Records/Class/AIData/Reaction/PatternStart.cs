@@ -8,5 +8,5 @@ namespace Xylia.Preview.Data.Record.ReactionClass;
 [Signal("pattern-start")]
 public sealed class PatternStart : Reaction
 {
-	public byte Index;
+	public sbyte Index;
 }

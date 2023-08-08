@@ -2,24 +2,24 @@
 <table name="constellation-star" version="2.0" autokey="true" module="6">
   <el name="table" child="1" />
   <el name="record">
-	<record name="alias" type="String" required="y" />
-	<record name="name" ref="Text" />
-	<record name="describe" ref="Text" />
-	<record name="group" type="Int8" />
-	<record name="unk-" type="Int32" start-show="32" />
-	<record name="unk-" type="Int8" start-show="36" />
-	<record name="star" type="Int8" />
-	<record name="unk-" type="Int32" start-show="40" />
-	<record name="unk-" type="Int32" start-show="44" />
-	<record name="unk-" type="Int32" start-show="48" />
-	<record name="unk-" type="Int32" start-show="52" />
-	<record name="open-ingredient-money" type="Int32" />
-	<record name="open-ingredient-item" ref="Item" repeat="6" />
-	<record name="open-ingredient-count" type="Int16" repeat="6" />
-	<record name="reset-ingredient-money" type="Int32" />
-	<record name="reset-ingredient-item" ref="Item" repeat="6" />
-	<record name="reset-ingredient-count" type="Int16" repeat="6" />
-	<record name="option-assured-count" type="Int8" />
-	<record name="option" ref="constellation-star-option" repeat="63" />
+	<attribute name="alias" type="String" required="y" />
+	<attribute name="name" ref="Text" />
+	<attribute name="describe" ref="Text" />
+	<attribute name="group" type="Int8" />
+	<attribute name="unk-" type="Int32" start-show="32" />
+	<attribute name="unk-" type="Int8" start-show="36" />
+	<attribute name="star" type="Int8" />
+	<attribute name="unk-" type="Int32" start-show="40" />
+	<attribute name="unk-" type="Int32" start-show="44" />
+	<attribute name="unk-" type="Int32" start-show="48" />
+	<attribute name="unk-" type="Int32" start-show="52" />
+	<attribute name="open-ingredient-money" type="Int32" />
+	<attribute name="open-ingredient-item" ref="Item" repeat="6" />
+	<attribute name="open-ingredient-count" type="Int16" repeat="6" />
+	<attribute name="reset-ingredient-money" type="Int32" />
+	<attribute name="reset-ingredient-item" ref="Item" repeat="6" />
+	<attribute name="reset-ingredient-count" type="Int16" repeat="6" />
+	<attribute name="option-assured-count" type="Int8" />
+	<attribute name="option" ref="constellation-star-option" repeat="63" />
   </el>
 </table>

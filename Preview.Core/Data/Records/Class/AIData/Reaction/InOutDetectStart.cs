@@ -28,9 +28,9 @@ public sealed class InOutDetectStart : Reaction
 	public Script_obj Subscriber;
 
 	[Signal("gather-count")]
-	public byte GatherCount;
+	public sbyte GatherCount;
 
-	public byte Index;
+	public sbyte Index;
 }
 
 

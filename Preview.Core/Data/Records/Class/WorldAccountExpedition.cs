@@ -8,12 +8,12 @@ namespace Xylia.Preview.Data.Record;
 public sealed class WorldAccountExpedition : BaseRecord, IOut
 {
 	#region Fields
-	public byte Step;
+	public sbyte Step;
 
 	[Signal("can-not-used")]
 	public bool CanNotUsed;
 
-	public byte Category;
+	public sbyte Category;
 
 	
 	public bool Unknown;

@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-using Xylia.Preview.Common.Interface;
+using Xylia.Preview.UI.Interface;
 
 namespace Xylia.Preview.GameUI.Scene.Game_QuestJournal;
 
@@ -17,8 +17,5 @@ public partial class GroupBase : UserControl , IPreview
 	[EditorBrowsable(EditorBrowsableState.Always)]
 	public string Title { get => this.GroupName.Text; set => this.GroupName.Text = value; }
 
-	/// <summary>
-	/// 内容起始横坐标
-	/// </summary>
 	public const int ContentStartX = 20;
 }

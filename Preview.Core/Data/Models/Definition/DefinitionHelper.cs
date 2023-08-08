@@ -26,7 +26,7 @@ public static class DefinitionHelper
     /// <summary>
     /// load <see cref="TableDefinition"/> from program
     /// </summary>
-    public static List<DataTableDefinition> LoadTableDefinition()
+    public static List<TableDefinition> LoadTableDefinition()
 	{
 		var _assembly = Assembly.GetExecutingAssembly();
 
@@ -47,6 +47,6 @@ public static class DefinitionHelper
     /// <summary>
     /// load <see cref="TableDefinition"/> from files
     /// </summary>
-    public static List<DataTableDefinition> LoadTableDefinition(params string[] files) => files.SelectMany(f => ConfigLoad.LoadFromFile(null, f)).ToList();
+    public static List<TableDefinition> LoadTableDefinition(params string[] files) => files.SelectMany(f => ConfigLoad.LoadFromFile(null, f)).ToList();
 
 }

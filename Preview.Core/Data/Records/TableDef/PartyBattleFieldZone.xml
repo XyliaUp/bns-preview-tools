@@ -2,95 +2,95 @@
 <table name="party-battle-field-zone" version="0.48" autokey="false" module="70" maxid="31999">
 	<el name="table" child="1" />
 	<el name="record">
-		<record name="id" type="Int16" key="y" required="y" min="1" max="31999" />
-		<record name="alias" type="String" required="y" max="70" />
-		<record name="zone" type="Ref" ref="zone" required="y" />
-		<record name="unk-" type="Int8" />
-		<record name="unk-" type="Int8" />
-		<record name="required-level" type="Int8" default="0" min="0" max="100" />
-		<record name="required-mastery-level" type="Int8" default="0" min="0" max="100" />
-		<record name="enable-team-matching" type="Bool" />
-		<record name="enable-unrated-matching" type="Bool" />
-		<record name="enable-unrated-join" type="Bool" />
-		<record name="required-member-count-team-matching" type="Int8" default="6" min="2" max="6" />
-		<record name="available-solo-matching-weekly-time" type="Ref" ref="weeklytimetable" />
-		<record name="available-team-matching-weekly-time" type="Ref" ref="weeklytimetable" />
-		<record name="available-random-matching-weekly-time" type="Ref" ref="weeklytimetable" />
-		<record name="disable-calc-rating-score-weekly-time" type="Ref" ref="weeklytimetable" />
-		<record name="unk-" type="Ref" ref="weeklytimetable" />
-		<record name="unk-" type="Ref" ref="text" />
-		<record name="ready-duration-second" type="Int16" default="80" />
-		<record name="play-duration-second" type="Int16" default="600" />
-		<record name="no-game-decision-duration-second" type="Int16" default="300" />
-		<record name="enter-alpha-side-pc-spawn" type="Ref" ref="zonepcspawn" required="y" />
-		<record name="enter-beta-side-pc-spawn" type="Ref" ref="zonepcspawn" required="y" />
-		<record name="start-alpha-side-pc-spawn" type="Ref" ref="zonepcspawn" required="y" />
-		<record name="start-beta-side-pc-spawn" type="Ref" ref="zonepcspawn" required="y" />
-		<record name="respawn-delay" type="Msec" default="0" />
-		<record name="alpha-side-respawn" type="Ref" ref="zonerespawn" required="y" />
-		<record name="beta-side-respawn" type="Ref" ref="zonerespawn" required="y" />
-		<record name="set-env-time" type="Int16" default="0" repeat="10" />
-		<record name="set-env2-target" type="Ref" ref="zoneenv2spawn" repeat="10" />
-		<record name="set-env-operation" type="Seq" seq="env-operation" default="none" repeat="10" />
-		<record name="set-env-operation-message" type="Ref" ref="game-message" />
-		<record name="group" type="Ref" ref="attraction-group" />
-		<record name="zone-name2" type="Ref" ref="text" required="y" />
-		<record name="zone-desc" type="Ref" ref="text" required="y" />
-		<record name="arena-minimap" type="XUnknown2" />
-		<record name="kill-score" type="Int16" default="0" />
-		<record name="goal-score" type="Int16" default="0" />
-		<record name="enable-infinite-hyper-energy" type="Bool" />
-		<record name="reward-summary" type="Ref" ref="attractionrewardsummary" />
-		<record name="ui-filter-attraction-quest-only" type="Bool" />
-		<record name="zone-sub-desc" type="Ref" ref="text" required="y" />
-		<record name="weekly-time-table-for-added-reward" type="Ref" ref="weeklytimetable" repeat="2" />
-		<record name="bonus-point-percent" type="Int32" default="0" repeat="2" min="0" max="400" />
-		<record name="bonus-exp-percent" type="Int32" default="0" repeat="2" min="0" max="400" />
-		<record name="vote-duration-second" type="Int16" default="0" />
-		<record name="vote-reward-point" type="Int32" default="0" min="0" />
-		<record name="vote-reward-exp" type="Int32" default="0" min="0" />
-		<record name="zone-enter-kismet-sequence-name" type="String" repeat="3" max="50" />
-		<record name="result-kismet-sequence-name" type="String" max="50" />
-		<record name="notify-msg-score-value" type="Int16" default="0" repeat="3" />
+		<attribute name="id" type="Int16" key="y" required="y" min="1" max="31999" />
+		<attribute name="alias" type="String" required="y" max="70" />
+		<attribute name="zone" type="Ref" ref="zone" required="y" />
+		<attribute name="unk-" type="Int8" />
+		<attribute name="unk-" type="Int8" />
+		<attribute name="required-level" type="Int8" default="0" min="0" max="100" />
+		<attribute name="required-mastery-level" type="Int8" default="0" min="0" max="100" />
+		<attribute name="enable-team-matching" type="Bool" />
+		<attribute name="enable-unrated-matching" type="Bool" />
+		<attribute name="enable-unrated-join" type="Bool" />
+		<attribute name="required-member-count-team-matching" type="Int8" default="6" min="2" max="6" />
+		<attribute name="available-solo-matching-weekly-time" type="Ref" ref="weeklytimetable" />
+		<attribute name="available-team-matching-weekly-time" type="Ref" ref="weeklytimetable" />
+		<attribute name="available-random-matching-weekly-time" type="Ref" ref="weeklytimetable" />
+		<attribute name="disable-calc-rating-score-weekly-time" type="Ref" ref="weeklytimetable" />
+		<attribute name="unk-" type="Ref" ref="weeklytimetable" />
+		<attribute name="unk-" type="Ref" ref="text" />
+		<attribute name="ready-duration-second" type="Int16" default="80" />
+		<attribute name="play-duration-second" type="Int16" default="600" />
+		<attribute name="no-game-decision-duration-second" type="Int16" default="300" />
+		<attribute name="enter-alpha-side-pc-spawn" type="Ref" ref="zonepcspawn" required="y" />
+		<attribute name="enter-beta-side-pc-spawn" type="Ref" ref="zonepcspawn" required="y" />
+		<attribute name="start-alpha-side-pc-spawn" type="Ref" ref="zonepcspawn" required="y" />
+		<attribute name="start-beta-side-pc-spawn" type="Ref" ref="zonepcspawn" required="y" />
+		<attribute name="respawn-delay" type="Msec" default="0" />
+		<attribute name="alpha-side-respawn" type="Ref" ref="zonerespawn" required="y" />
+		<attribute name="beta-side-respawn" type="Ref" ref="zonerespawn" required="y" />
+		<attribute name="set-env-time" type="Int16" default="0" repeat="10" />
+		<attribute name="set-env2-target" type="Ref" ref="zoneenv2spawn" repeat="10" />
+		<attribute name="set-env-operation" type="Seq" seq="env-operation" default="none" repeat="10" />
+		<attribute name="set-env-operation-message" type="Ref" ref="game-message" />
+		<attribute name="group" type="Ref" ref="attraction-group" />
+		<attribute name="zone-name2" type="Ref" ref="text" required="y" />
+		<attribute name="zone-desc" type="Ref" ref="text" required="y" />
+		<attribute name="arena-minimap" type="XUnknown2" />
+		<attribute name="kill-score" type="Int16" default="0" />
+		<attribute name="goal-score" type="Int16" default="0" />
+		<attribute name="enable-infinite-hyper-energy" type="Bool" />
+		<attribute name="reward-summary" type="Ref" ref="attractionrewardsummary" />
+		<attribute name="ui-filter-attraction-quest-only" type="Bool" />
+		<attribute name="zone-sub-desc" type="Ref" ref="text" required="y" />
+		<attribute name="weekly-time-table-for-added-reward" type="Ref" ref="weeklytimetable" repeat="2" />
+		<attribute name="bonus-point-percent" type="Int32" default="0" repeat="2" min="0" max="400" />
+		<attribute name="bonus-exp-percent" type="Int32" default="0" repeat="2" min="0" max="400" />
+		<attribute name="vote-duration-second" type="Int16" default="0" />
+		<attribute name="vote-reward-point" type="Int32" default="0" min="0" />
+		<attribute name="vote-reward-exp" type="Int32" default="0" min="0" />
+		<attribute name="zone-enter-kismet-sequence-name" type="String" repeat="3" max="50" />
+		<attribute name="result-kismet-sequence-name" type="String" max="50" />
+		<attribute name="notify-msg-score-value" type="Int16" default="0" repeat="3" />
 		<sub name="occupation-war">
-			<record name="control-point" type="Ref" ref="zoneenv2spawn" repeat="5" />
-			<record name="whole-occupation-bonus-score" type="Int16" default="0" />
+			<attribute name="control-point" type="Ref" ref="zoneenv2spawn" repeat="5" />
+			<attribute name="whole-occupation-bonus-score" type="Int16" default="0" />
 		</sub>
 		<sub name="capture-the-flag">
-			<record name="flag-spawn-env" type="Ref" ref="zoneenv2spawn" />
-			<record name="flag-spawn-env-respawn-duration-second" type="Int16" default="60" repeat="5" />
-			<record name="flag-spawn-limit-count" type="Int8" default="5" min="1" max="5" />
-			<record name="alpha-control-point" type="Ref" ref="zoneenv2spawn" repeat="3" />
-			<record name="beta-control-point" type="Ref" ref="zoneenv2spawn" repeat="3" />
-			<record name="double-occupation-bonus-score" type="Int16" default="0" />
-			<record name="vote-delay-second" type="Int16" default="0" />
+			<attribute name="flag-spawn-env" type="Ref" ref="zoneenv2spawn" />
+			<attribute name="flag-spawn-env-respawn-duration-second" type="Int16" default="60" repeat="5" />
+			<attribute name="flag-spawn-limit-count" type="Int8" default="5" min="1" max="5" />
+			<attribute name="alpha-control-point" type="Ref" ref="zoneenv2spawn" repeat="3" />
+			<attribute name="beta-control-point" type="Ref" ref="zoneenv2spawn" repeat="3" />
+			<attribute name="double-occupation-bonus-score" type="Int16" default="0" />
+			<attribute name="vote-delay-second" type="Int16" default="0" />
 		</sub>
 		<sub name="lead-the-ball">
-			<record name="arrow-control-point" type="Ref" ref="zoneenv2spawn" repeat="6" />
-			<record name="opening-tip-off-control-point" type="Ref" ref="zoneenv2spawn" />
-			<record name="alpha-goal-post" type="Ref" ref="zoneenv2spawn" />
-			<record name="beta-goal-post" type="Ref" ref="zoneenv2spawn" />
-			<record name="goal-post-enable-delay-second" type="Int16" default="0" />
-			<record name="ball-spawn-max-count" type="Int8" default="0" max="20" />
-			<record name="init-ball-spawn-delay-second" type="Int16" default="0" />
-			<record name="ball-npc-id" type="Ref" ref="npc" />
-			<record name="play-section-duration-second" type="Int16" default="0" repeat="2" />
-			<record name="ball-spawn-interval-second" type="Int16" default="0" repeat="3" />
-			<record name="ball-speed-effect" type="Ref" ref="effect" repeat="3" />
-			<record name="goal-in-score" type="Int16" default="0" repeat="3" />
-			<record name="consecutive-goal-bonus" type="Int16" default="0" repeat="3" />
-			<record name="consecutive-goal-bonus-duration-second" type="Int16" default="0" />
-			<record name="goal-in-effect" type="Ref" ref="effect" repeat="2" />
-			<record name="friend-goal-in-kismet-name" type="XUnknown2" />
-			<record name="enemy-goal-in-kismet-name" type="XUnknown2" />
-			<record name="friend-alpha-goal-post-kismet-name" type="XUnknown2" />
-			<record name="friend-beta-goal-post-kismet-name" type="XUnknown2" />
-			<record name="enemy-alpha-goal-post-kismet-name" type="XUnknown2" />
-			<record name="enemy-beta-goal-post-kismet-name" type="XUnknown2" />
-			<record name="friend-alpha-goal-post-goal-in-kismet-name" type="XUnknown2" />
-			<record name="friend-beta-goal-post-goal-in-kismet-name" type="XUnknown2" />
-			<record name="enemy-alpha-goal-post-goal-in-kismet-name" type="XUnknown2" />
-			<record name="enemy-beta-goal-post-goal-in-kismet-name" type="XUnknown2" />
+			<attribute name="arrow-control-point" type="Ref" ref="zoneenv2spawn" repeat="6" />
+			<attribute name="opening-tip-off-control-point" type="Ref" ref="zoneenv2spawn" />
+			<attribute name="alpha-goal-post" type="Ref" ref="zoneenv2spawn" />
+			<attribute name="beta-goal-post" type="Ref" ref="zoneenv2spawn" />
+			<attribute name="goal-post-enable-delay-second" type="Int16" default="0" />
+			<attribute name="ball-spawn-max-count" type="Int8" default="0" max="20" />
+			<attribute name="init-ball-spawn-delay-second" type="Int16" default="0" />
+			<attribute name="ball-npc-id" type="Ref" ref="npc" />
+			<attribute name="play-section-duration-second" type="Int16" default="0" repeat="2" />
+			<attribute name="ball-spawn-interval-second" type="Int16" default="0" repeat="3" />
+			<attribute name="ball-speed-effect" type="Ref" ref="effect" repeat="3" />
+			<attribute name="goal-in-score" type="Int16" default="0" repeat="3" />
+			<attribute name="consecutive-goal-bonus" type="Int16" default="0" repeat="3" />
+			<attribute name="consecutive-goal-bonus-duration-second" type="Int16" default="0" />
+			<attribute name="goal-in-effect" type="Ref" ref="effect" repeat="2" />
+			<attribute name="friend-goal-in-kismet-name" type="XUnknown2" />
+			<attribute name="enemy-goal-in-kismet-name" type="XUnknown2" />
+			<attribute name="friend-alpha-goal-post-kismet-name" type="XUnknown2" />
+			<attribute name="friend-beta-goal-post-kismet-name" type="XUnknown2" />
+			<attribute name="enemy-alpha-goal-post-kismet-name" type="XUnknown2" />
+			<attribute name="enemy-beta-goal-post-kismet-name" type="XUnknown2" />
+			<attribute name="friend-alpha-goal-post-goal-in-kismet-name" type="XUnknown2" />
+			<attribute name="friend-beta-goal-post-goal-in-kismet-name" type="XUnknown2" />
+			<attribute name="enemy-alpha-goal-post-goal-in-kismet-name" type="XUnknown2" />
+			<attribute name="enemy-beta-goal-post-goal-in-kismet-name" type="XUnknown2" />
 		</sub>
 	</el>
 </table>

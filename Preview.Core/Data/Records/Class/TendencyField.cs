@@ -16,7 +16,7 @@ public sealed class TendencyField : BaseRecord, IAttraction
 	public AttractionRewardSummary RewardSummary;
 
 	[Signal("ui-text-grade")]
-	public byte UiTextGrade;
+	public sbyte UiTextGrade;
 
 
 	#region Interface Functions

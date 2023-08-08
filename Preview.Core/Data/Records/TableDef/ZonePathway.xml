@@ -2,20 +2,20 @@
 <table name="zonepathway" version="1.52" autokey="false" module="14" maxid="250">
   <el name="table" child="1" />
   <el name="record">
-    <record name="zone" type="Int32" key="y" required="y" />
-    <record name="id" type="Int16" key="y" required="y" max="250" />
-    <record name="waypoint" type="Int16" key="y" required="y" />
-    <record name="alias" type="String" max="70" />
-    <record name="pos" type="Vector32" required="y" />
-    <record name="move-type" type="Seq" required="y">
+    <attribute name="zone" type="Int32" key="y" required="y" />
+    <attribute name="id" type="Int16" key="y" required="y" max="250" />
+    <attribute name="waypoint" type="Int16" key="y" required="y" />
+    <attribute name="alias" type="String" max="70" />
+    <attribute name="pos" type="Vector32" required="y" />
+    <attribute name="move-type" type="Seq" required="y">
       <case name="walk" />
       <case name="run" />
       <case name="warp" />
       <case name="sprint" />
-    </record>
-    <record name="warp-social" type="Ref" ref="social" />
-    <record name="description" type="String" max="50" />
-    <record name="sync" type="Int16" default="0" />
-    <record name="duration" type="Msec" default="0" deprecated="y" min="0" />
+    </attribute>
+    <attribute name="warp-social" type="Ref" ref="social" />
+    <attribute name="description" type="String" max="50" />
+    <attribute name="sync" type="Int16" default="0" />
+    <attribute name="duration" type="Msec" default="0" deprecated="y" min="0" />
   </el>
 </table>

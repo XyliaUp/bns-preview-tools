@@ -1,17 +1,17 @@
 ﻿using System.Numerics;
 
+using CUE4Parse.BNS.Conversion;
+
 using ImGuiNET;
 
 using OpenTK.Windowing.Common;
-
-using Xylia.Preview.CUE4Parse_BNS.Conversion;
 
 namespace FModel.Views.Snooper;
 public partial class ModelGui : SnimGui
 {
 	private ModelView view;
 	private bool _viewportFocus = true;
-
+	private DateTime lastTime = default;
 
 	public ModelGui(int width, int height) : base(width, height)
 	{
@@ -84,7 +84,6 @@ public partial class ModelGui : SnimGui
 			SetAttribute("Colors", null);
 			SetAttribute("Bones", model.Skeleton.BoneCount);
 
-
 			if (view._showFps)
 			{
 				pos.Y += 10;
@@ -93,6 +92,14 @@ public partial class ModelGui : SnimGui
 				float framerate = ImGui.GetIO().Framerate;
 				ImGui.Text($"FPS: {framerate:0}");
 			}
+
+			if(lastTime != default && (DateTime.Now - lastTime).TotalSeconds < 5)
+			{
+				pos.Y += 10;
+				ImGui.SetCursorPos(pos with { X = 7 });
+				ImGui.Text($"Extract files successful.");
+			}
+
 
 			ImGui.End();
 		}
@@ -110,7 +117,7 @@ public partial class ModelGui : SnimGui
 			_viewportFocus = false;
 			foreach (var model in view.Models)
 			{
-				if (ImGui.MenuItem(model.Name))
+				if (ImGui.MenuItem(model.DisplayName))
 				{
 					view.Renderer.Options = new Options();   //clear model 
 					view.TryLoadExport(default, model);
@@ -160,7 +167,10 @@ public partial class ModelGui : SnimGui
 				view.ShowFps = ShowFps;
 
 			if (ImGui.MenuItem("Extract"))
-				Common.Output(view.SelectedData.Export);	
+			{
+				Common.Output(view.SelectedData.Export);
+				lastTime = DateTime.Now;
+			}
 	
 
 			ImGui.EndMenu();

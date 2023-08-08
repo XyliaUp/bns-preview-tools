@@ -2,8 +2,8 @@
 
 using HZH_Controls.Forms;
 
-using Xylia.Preview.Common.Extension;
 using Xylia.Preview.Data.Helper;
+using Xylia.Preview.UI.Extension;
 
 namespace Xylia.Preview.Helper;
 public static class Register

@@ -2,17 +2,17 @@
 <table name="questbonusrewardsetting" version="3.0" autokey="false" module="6">
   <el name="table" child="1" />
   <el name="record">
-    <record name="id" type="Int64" key="y" required="y" />
-    <record name="alias" type="String" required="y" max="70" />
-    <record name="quest" type="Ref" ref="quest" required="y" />
-    <record name="reward" type="Ref" ref="questbonusreward" required="y" />
-    <record name="basic-quota" type="Ref" ref="content-quota" required="y" />
-    <record name="contents-reset" type="Ref" ref="contents-reset" repeat="10" />
+    <attribute name="id" type="Int64" key="y" required="y" />
+    <attribute name="alias" type="String" required="y" max="70" />
+    <attribute name="quest" type="Ref" ref="quest" required="y" />
+    <attribute name="reward" type="Ref" ref="questbonusreward" required="y" />
+    <attribute name="basic-quota" type="Ref" ref="content-quota" required="y" />
+    <attribute name="contents-reset" type="Ref" ref="contents-reset" repeat="10" />
     <sub name="sealed-level">
-      <record name="sealed-level" type="Int8" required="y" min="0" />
+      <attribute name="sealed-level" type="Int8" required="y" min="0" />
     </sub>
     <sub name="difficulty-type">
-      <record name="difficulty-type" type="Seq" seq="difficulty-type" required="y" />
+      <attribute name="difficulty-type" type="Seq" seq="difficulty-type" required="y" />
     </sub>
     <sub name="ignore-difficulty" />
   </el>

@@ -96,7 +96,7 @@ public class CombineOption
 
 public sealed class GradeInfo
 {
-	public GradeInfo(byte ItemGrade, string Name)
+	public GradeInfo(sbyte ItemGrade, string Name)
 	{
 		this.Name = Name;
 		this.ItemGrade = ItemGrade;
@@ -105,7 +105,7 @@ public sealed class GradeInfo
 
 	public string Name;
 
-	public byte ItemGrade = 1;
+	public sbyte ItemGrade = 1;
 }
 
 public sealed class ImageInfo

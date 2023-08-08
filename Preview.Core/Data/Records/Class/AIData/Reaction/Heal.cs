@@ -9,5 +9,5 @@ public sealed class Heal : Reaction
 	public Script_obj Target2;
 
 
-	public byte Percent;
+	public sbyte Percent;
 }

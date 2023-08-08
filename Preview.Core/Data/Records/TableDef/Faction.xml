@@ -2,34 +2,34 @@
 <table name="faction" version="0.20" autokey="false" module="270" maxid="100">
   <el name="table" child="1" />
   <el name="record">
-    <record name="id" type="Int8" key="y" required="y" min="0" max="100" />
-    <record name="alias" type="String" required="y" max="70" />
-    <record name="hostile-faction" type="Ref" ref="faction" />
-    <record name="main-faction" type="Bool" deprecated="y" />
-    <record name="category" type="Seq">
+    <attribute name="id" type="Int8" key="y" required="y" min="0" max="100" />
+    <attribute name="alias" type="String" required="y" max="70" />
+    <attribute name="hostile-faction" type="Ref" ref="faction" />
+    <attribute name="main-faction" type="Bool" deprecated="y" />
+    <attribute name="category" type="Seq">
       <case name="gang" default="y" />
       <case name="main" />
       <case name="second" />
-    </record>
-    <record name="koreaname" type="String" deprecated="y" max="50" />
-    <record name="name2" type="Ref" ref="text" />
-    <record name="tag-name" type="Ref" ref="text" />
-    <record name="icon" type="Icon" max="32767" />
-    <record name="activated-icon" type="Icon" max="32767" />
-    <record name="activated-desc" type="Ref" ref="text" />
-    <record name="level-up-show" type="XUnknown2" />
-    <record name="text" type="Ref" ref="text" />
-    <record name="join-confirm-msg" type="Ref" ref="text" />
-    <record name="join-confirm-input" type="Ref" ref="text" />
-    <record name="transfer-confirm-msg" type="Ref" ref="text" />
-    <record name="transfer-confirm-input" type="Ref" ref="text" />
-    <record name="grade-name" type="Ref" ref="text" />
-    <record name="grade-image" type="Ref" ref="text" />
-    <record name="grade-type" type="Int8" default="0" min="0" max="100" />
-    <record name="grade-icon" type="Icon" max="32767" />
-    <record name="grade-tooltip" type="Ref" ref="text" />
-    <record name="hide-name" type="Ref" ref="text" />
-    <record name="hide-summoned-name" type="Ref" ref="text" />
-    <record name="guild-battle-field-teleport" type="Ref" ref="teleport" />
+    </attribute>
+    <attribute name="koreaname" type="String" deprecated="y" max="50" />
+    <attribute name="name2" type="Ref" ref="text" />
+    <attribute name="tag-name" type="Ref" ref="text" />
+    <attribute name="icon" type="Icon" max="32767" />
+    <attribute name="activated-icon" type="Icon" max="32767" />
+    <attribute name="activated-desc" type="Ref" ref="text" />
+    <attribute name="level-up-show" type="XUnknown2" />
+    <attribute name="text" type="Ref" ref="text" />
+    <attribute name="join-confirm-msg" type="Ref" ref="text" />
+    <attribute name="join-confirm-input" type="Ref" ref="text" />
+    <attribute name="transfer-confirm-msg" type="Ref" ref="text" />
+    <attribute name="transfer-confirm-input" type="Ref" ref="text" />
+    <attribute name="grade-name" type="Ref" ref="text" />
+    <attribute name="grade-image" type="Ref" ref="text" />
+    <attribute name="grade-type" type="Int8" default="0" min="0" max="100" />
+    <attribute name="grade-icon" type="Icon" max="32767" />
+    <attribute name="grade-tooltip" type="Ref" ref="text" />
+    <attribute name="hide-name" type="Ref" ref="text" />
+    <attribute name="hide-summoned-name" type="Ref" ref="text" />
+    <attribute name="guild-battle-field-teleport" type="Ref" ref="teleport" />
   </el>
 </table>

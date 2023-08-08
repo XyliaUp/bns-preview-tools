@@ -21,12 +21,10 @@ public sealed class AliasCollection : List<AliasInfo>
     public new void Add(AliasInfo aliasInfo)
     {
         base.Add(aliasInfo);
-
-        //由于之前的处理会按表进行拆分，此处无需缓存完整文本
         ht[aliasInfo.Alias] = aliasInfo;
     }
 
-    public void Sort(bool Mode = false) => Sort(new HNodeSort(Mode));
+	public void Sort(bool Mode = false) => Sort(new HNodeSort(Mode));
     #endregion
 }
 
@@ -48,6 +46,6 @@ public class HNodeSort : IComparer<AliasInfo>
 		ArgumentNullException.ThrowIfNull(y);
 
 		if (_mode) return Method.StrCompare(x.CompleteText, y.CompleteText, Method.SortRule.EveryChar);
-        else return (int)(x.Ref.Id - y.Ref.Id);
+        else return x.Ref.Id - y.Ref.Id;
     }
 }

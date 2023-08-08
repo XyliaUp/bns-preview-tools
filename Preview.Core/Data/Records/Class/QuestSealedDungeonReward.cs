@@ -7,7 +7,7 @@ public sealed class QuestSealedDungeonReward : BaseRecord
 {
 	public int Id;
 
-	public byte Level;
+	public sbyte Level;
 
 	[Signal("reward-item"), Repeat(4)]
 	public Item[] RewardItem;

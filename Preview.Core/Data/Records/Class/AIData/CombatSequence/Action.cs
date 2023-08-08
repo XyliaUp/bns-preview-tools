@@ -17,9 +17,9 @@ public abstract class Action : BaseRecord
     /// 只有 special子节点 可以使用
     /// </summary>
     [Signal("event-step")]
-    public byte EventStep;
+    public sbyte EventStep;
 
-    public byte Repeat;
+    public sbyte Repeat;
 
     [Signal("immune-breaker-disable")]
     public bool ImmuneBreakerDisable;
@@ -27,7 +27,7 @@ public abstract class Action : BaseRecord
     /// <summary>
     /// 仅当上级节点是 Select 时才有意义
     /// </summary>
-    public byte Prob;
+    public sbyte Prob;
 
 
 
@@ -169,7 +169,7 @@ public abstract class Action : BaseRecord
     public sealed class BossSpSelectAttack : Action
     {
         [Repeat(3)]
-        public byte[] Sp;
+        public sbyte[] Sp;
 
         [Repeat(3)]
         public Skill[] Skill;
@@ -180,12 +180,12 @@ public abstract class Action : BaseRecord
 
     public sealed class ChangeSet : Action
     {
-        public byte Stance;
+        public sbyte Stance;
 
         [Signal("stance-effect-1")]
-        public byte StanceEffect1;
+        public sbyte StanceEffect1;
 
-        public byte Weapon;
+        public sbyte Weapon;
     }
 
     public sealed class CombatMove : Action
@@ -209,7 +209,7 @@ public abstract class Action : BaseRecord
 
     public sealed class DoIndexedSocial : Action
     {
-        public byte Social;
+        public sbyte Social;
     }
 
     public sealed class DoSocial : SkillBase
@@ -229,7 +229,7 @@ public abstract class Action : BaseRecord
         public Flag Condition;
 
         [Signal("gather-count")]
-        public byte GatherCount;
+        public sbyte GatherCount;
 
         [Signal("gather-rule")]
         public GatherRule GatherRule;
@@ -241,7 +241,7 @@ public abstract class Action : BaseRecord
         /// 进入概率
         /// </summary>
         [Signal("enter-prob")]
-        public byte EnterProb = 100;
+        public sbyte EnterProb = 100;
 
         public List<Action> Actions;
     }

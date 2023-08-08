@@ -49,22 +49,22 @@ public class ItemBuyPrice : BaseRecord
 	public short FactionLevel;
 
 	[Signal("check-solo-duel-grade")]
-	public byte CheckSoloDuelGrade;
+	public sbyte CheckSoloDuelGrade;
 
 	[Signal("check-team-duel-grade")]
-	public byte CheckTeamDuelGrade;
+	public sbyte CheckTeamDuelGrade;
 
 	[Signal("check-battle-field-grade-occupation-war")]
-	public byte CheckBattleFieldGradeOccupationWar;
+	public sbyte CheckBattleFieldGradeOccupationWar;
 
 	[Signal("check-battle-field-grade-capture-the-flag")]
-	public byte CheckBattleFieldGradeCaptureTheFlag;
+	public sbyte CheckBattleFieldGradeCaptureTheFlag;
 
 	[Signal("check-battle-field-grade-lead-the-ball")]
-	public byte CheckBattleFieldGradeLeadTheBall;
+	public sbyte CheckBattleFieldGradeLeadTheBall;
 
 	[Signal("check-closet-collecting-grade")]
-	public byte CheckClosetCollectingGrade;
+	public sbyte CheckClosetCollectingGrade;
 
 	[Signal("check-content-quota")]
 	public ContentQuota CheckContentQuota;
@@ -73,10 +73,10 @@ public class ItemBuyPrice : BaseRecord
 	public int CheckSoulBoostSeasonBm;
 
 	[Signal("required-level")]
-	public byte RequiredLevel;
+	public sbyte RequiredLevel;
 
 	[Signal("required-mastery-level")]
-	public byte RequiredMasteryLevel;
+	public sbyte RequiredMasteryLevel;
 
 	[Signal("required-account-level")]
 	public short RequiredAccountLevel;

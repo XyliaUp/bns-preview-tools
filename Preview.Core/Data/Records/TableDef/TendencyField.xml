@@ -2,23 +2,23 @@
 <table name="tendency-field" version="0.20" autokey="false" module="262">
   <el name="table" child="1" />
   <el name="record">
-    <record name="id" type="Int32" key="y" required="y" min="1" />
-    <record name="alias" type="String" required="y" max="70" />
-    <record name="main-zone" type="Ref" ref="zone" required="y" />
-    <record name="sub-zone" type="Ref" ref="zone" repeat="7" />
-    <record name="enable-change-channel" type="Bool" required="y" />
-    <record name="required-level" type="Int8" default="0" min="0" max="100" />
-    <record name="required-mastery-level" type="Int8" default="0" min="0" max="100" />
-    <record name="required-preceding-quest" type="Ref" ref="quest" repeat="3" />
-    <record name="required-preceding-quest-check" type="Seq" seq="check" default="and" />
-    <record name="required-activated-main-faction" type="Bool" />
-    <record name="restrict-enter-zone-when-manifest-tendency" type="Bool" />
-    <record name="stand-by-duration-minute" type="Int16" required="y" min="3" max="60" />
-    <record name="in-progress-duration-minute" type="Int32" required="y" min="3" max="1440" />
-    <record name="tendency-1-max-play-value" type="Int8" default="1" min="1" max="5" />
-    <record name="tendency-2-max-play-value" type="Int8" default="1" min="1" max="5" />
-    <record name="tendency-3-max-play-value" type="Int8" default="1" min="1" max="5" />
-    <record name="tendency-1-reset-score-type" type="Seq">
+    <attribute name="id" type="Int32" key="y" required="y" min="1" />
+    <attribute name="alias" type="String" required="y" max="70" />
+    <attribute name="main-zone" type="Ref" ref="zone" required="y" />
+    <attribute name="sub-zone" type="Ref" ref="zone" repeat="7" />
+    <attribute name="enable-change-channel" type="Bool" required="y" />
+    <attribute name="required-level" type="Int8" default="0" min="0" max="100" />
+    <attribute name="required-mastery-level" type="Int8" default="0" min="0" max="100" />
+    <attribute name="required-preceding-quest" type="Ref" ref="quest" repeat="3" />
+    <attribute name="required-preceding-quest-check" type="Seq" seq="check" default="and" />
+    <attribute name="required-activated-main-faction" type="Bool" />
+    <attribute name="restrict-enter-zone-when-manifest-tendency" type="Bool" />
+    <attribute name="stand-by-duration-minute" type="Int16" required="y" min="3" max="60" />
+    <attribute name="in-progress-duration-minute" type="Int32" required="y" min="3" max="1440" />
+    <attribute name="tendency-1-max-play-value" type="Int8" default="1" min="1" max="5" />
+    <attribute name="tendency-2-max-play-value" type="Int8" default="1" min="1" max="5" />
+    <attribute name="tendency-3-max-play-value" type="Int8" default="1" min="1" max="5" />
+    <attribute name="tendency-1-reset-score-type" type="Seq">
       <case name="none" />
       <case name="tendency-1" />
       <case name="tendency-2" />
@@ -27,8 +27,8 @@
       <case name="tendency-1-3" />
       <case name="tendency-2-3" />
       <case name="tendency-1-2-3" default="y" />
-    </record>
-    <record name="tendency-2-reset-score-type" type="Seq">
+    </attribute>
+    <attribute name="tendency-2-reset-score-type" type="Seq">
       <case name="none" />
       <case name="tendency-1" />
       <case name="tendency-2" />
@@ -37,8 +37,8 @@
       <case name="tendency-1-3" />
       <case name="tendency-2-3" />
       <case name="tendency-1-2-3" default="y" />
-    </record>
-    <record name="tendency-3-reset-score-type" type="Seq">
+    </attribute>
+    <attribute name="tendency-3-reset-score-type" type="Seq">
       <case name="none" />
       <case name="tendency-1" />
       <case name="tendency-2" />
@@ -47,69 +47,69 @@
       <case name="tendency-1-3" />
       <case name="tendency-2-3" />
       <case name="tendency-1-2-3" default="y" />
-    </record>
-    <record name="quest-pack-simple-quest-refresh-money" type="Int64" required="y" min="1" max="20000000000" />
-    <record name="weekly-time-table-for-added-reward" type="Ref" ref="weeklytimetable" repeat="2" />
-    <record name="weekly-bonus-point-percent" type="Int32" default="0" repeat="2" min="0" max="100" />
-    <record name="group" type="Ref" ref="attraction-group" />
-    <record name="enable-infinite-hyper-energy" type="Bool" />
-    <record name="disable-move-to-arena" type="Bool" />
-    <record name="disable-move-to-skill-training-room" type="Bool" />
-    <record name="enable-change-faction-costume" type="Bool" default="y" />
-    <record name="enable-set-guild-meeting-place" type="Bool" default="y" />
-    <record name="enable-warp-to-guild-member" type="Bool" default="y" />
-    <record name="enable-warp-to-pvp-result-opponent" type="Bool" default="y" />
-    <record name="tendency-start-kismet-name" type="String" repeat="3" max="50" />
-    <record name="tendency-end-kismet-name" type="String" repeat="3" max="50" />
-    <record name="tendency-field-name2" type="Ref" ref="text" />
-    <record name="tendency-field-desc" type="Ref" ref="text" />
-    <record name="reward-summary" type="Ref" ref="attractionrewardsummary" />
-    <record name="ui-text-grade" type="Int8" default="0" max="8" />
-    <record name="tendency-standby-msg" type="Ref" ref="game-message" repeat="3" />
-    <record name="tendency-start-msg" type="Ref" ref="game-message" repeat="3" />
-    <record name="tendency-timeup-alarm-msg" type="Ref" ref="game-message" repeat="3" />
-    <record name="tendency-end-msg" type="Ref" ref="game-message" repeat="3" />
-    <record name="guide-standby-msg" type="Ref" ref="game-message" repeat="3" />
-    <record name="guide-start-msg" type="Ref" ref="game-message" repeat="3" />
-    <record name="guide-timeup-alarm-msg" type="Ref" ref="game-message" repeat="3" />
-    <record name="guide-end-msg" type="Ref" ref="game-message" repeat="3" />
-    <record name="recommand-level-min" type="Int8" default="0" />
-    <record name="recommand-level-max" type="Int8" default="0" />
-    <record name="recommand-mastery-level-min" type="Int8" default="0" />
-    <record name="recommand-mastery-level-max" type="Int8" default="0" />
-    <record name="recommend-attack-power" type="Int16" default="0" min="0" max="9999" />
-    <record name="standard-gear-weapon" type="Ref" ref="item" required="y" />
-    <record name="display-quests" type="Ref" ref="quest" repeat="12" hidden="y" />
-    <record name="tactic" type="Ref" ref="text" />
-    <record name="recommend-alias" type="Ref" ref="contentsjournalrecommenditem" />
+    </attribute>
+    <attribute name="quest-pack-simple-quest-refresh-money" type="Int64" required="y" min="1" max="20000000000" />
+    <attribute name="weekly-time-table-for-added-reward" type="Ref" ref="weeklytimetable" repeat="2" />
+    <attribute name="weekly-bonus-point-percent" type="Int32" default="0" repeat="2" min="0" max="100" />
+    <attribute name="group" type="Ref" ref="attraction-group" />
+    <attribute name="enable-infinite-hyper-energy" type="Bool" />
+    <attribute name="disable-move-to-arena" type="Bool" />
+    <attribute name="disable-move-to-skill-training-room" type="Bool" />
+    <attribute name="enable-change-faction-costume" type="Bool" default="y" />
+    <attribute name="enable-set-guild-meeting-place" type="Bool" default="y" />
+    <attribute name="enable-warp-to-guild-member" type="Bool" default="y" />
+    <attribute name="enable-warp-to-pvp-result-opponent" type="Bool" default="y" />
+    <attribute name="tendency-start-kismet-name" type="String" repeat="3" max="50" />
+    <attribute name="tendency-end-kismet-name" type="String" repeat="3" max="50" />
+    <attribute name="tendency-field-name2" type="Ref" ref="text" />
+    <attribute name="tendency-field-desc" type="Ref" ref="text" />
+    <attribute name="reward-summary" type="Ref" ref="attractionrewardsummary" />
+    <attribute name="ui-text-grade" type="Int8" default="0" max="8" />
+    <attribute name="tendency-standby-msg" type="Ref" ref="game-message" repeat="3" />
+    <attribute name="tendency-start-msg" type="Ref" ref="game-message" repeat="3" />
+    <attribute name="tendency-timeup-alarm-msg" type="Ref" ref="game-message" repeat="3" />
+    <attribute name="tendency-end-msg" type="Ref" ref="game-message" repeat="3" />
+    <attribute name="guide-standby-msg" type="Ref" ref="game-message" repeat="3" />
+    <attribute name="guide-start-msg" type="Ref" ref="game-message" repeat="3" />
+    <attribute name="guide-timeup-alarm-msg" type="Ref" ref="game-message" repeat="3" />
+    <attribute name="guide-end-msg" type="Ref" ref="game-message" repeat="3" />
+    <attribute name="recommand-level-min" type="Int8" default="0" />
+    <attribute name="recommand-level-max" type="Int8" default="0" />
+    <attribute name="recommand-mastery-level-min" type="Int8" default="0" />
+    <attribute name="recommand-mastery-level-max" type="Int8" default="0" />
+    <attribute name="recommend-attack-power" type="Int16" default="0" min="0" max="9999" />
+    <attribute name="standard-gear-weapon" type="Ref" ref="item" required="y" />
+    <attribute name="display-quests" type="Ref" ref="quest" repeat="12" hidden="y" />
+    <attribute name="tactic" type="Ref" ref="text" />
+    <attribute name="recommend-alias" type="Ref" ref="contentsjournalrecommenditem" />
     <sub name="normal" />
     <sub name="buyudo">
-      <record name="playable-time" type="Ref" ref="weeklytimetable" />
-      <record name="check-score-required-min-faction-member-count" type="Int16" default="6" />
-      <record name="tendency-1-faction1-warfare-boss" type="Ref" ref="npc" repeat="5" />
-      <record name="tendency-1-faction2-warfare-boss" type="Ref" ref="npc" repeat="5" />
-      <record name="tendency-2-faction1-warfare-boss" type="Ref" ref="npc" repeat="5" />
-      <record name="tendency-2-faction2-warfare-boss" type="Ref" ref="npc" repeat="5" />
-      <record name="tendency-3-warfare-boss" type="Ref" ref="npc" repeat="5" />
-      <record name="tendency-1-faction1-warfare-quest" type="Ref" ref="quest" repeat="5" />
-      <record name="tendency-1-faction2-warfare-quest" type="Ref" ref="quest" repeat="5" />
-      <record name="tendency-2-faction1-warfare-quest" type="Ref" ref="quest" repeat="5" />
-      <record name="tendency-2-faction2-warfare-quest" type="Ref" ref="quest" repeat="5" />
-      <record name="tendency-3-faction1-warfare-quest" type="Ref" ref="quest" repeat="5" />
-      <record name="tendency-3-faction2-warfare-quest" type="Ref" ref="quest" repeat="5" />
-      <record name="tendency-1-faction1-sub-quest" type="Ref" ref="quest" repeat="5" />
-      <record name="tendency-1-faction2-sub-quest" type="Ref" ref="quest" repeat="5" />
-      <record name="tendency-2-faction1-sub-quest" type="Ref" ref="quest" repeat="5" />
-      <record name="tendency-2-faction2-sub-quest" type="Ref" ref="quest" repeat="5" />
-      <record name="tendency-3-faction1-sub-quest" type="Ref" ref="quest" repeat="5" />
-      <record name="tendency-3-faction2-sub-quest" type="Ref" ref="quest" repeat="5" />
-      <record name="faction1-kill-quest" type="Ref" ref="quest" />
-      <record name="faction2-kill-quest" type="Ref" ref="quest" />
-      <record name="defeat-field-play-point-bonus-percent" type="Int32" default="0" min="0" max="100" />
-      <record name="defeat-faction-score-bonus-percent" type="Int32" default="0" min="0" max="1000" />
-      <record name="defeat-bonus-point-percent" type="Int32" default="0" min="0" max="100" />
-      <record name="reentrance-faction1-spawn" type="Ref" ref="zonepcspawn" />
-      <record name="reentrance-faction2-spawn" type="Ref" ref="zonepcspawn" />
+      <attribute name="playable-time" type="Ref" ref="weeklytimetable" />
+      <attribute name="check-score-required-min-faction-member-count" type="Int16" default="6" />
+      <attribute name="tendency-1-faction1-warfare-boss" type="Ref" ref="npc" repeat="5" />
+      <attribute name="tendency-1-faction2-warfare-boss" type="Ref" ref="npc" repeat="5" />
+      <attribute name="tendency-2-faction1-warfare-boss" type="Ref" ref="npc" repeat="5" />
+      <attribute name="tendency-2-faction2-warfare-boss" type="Ref" ref="npc" repeat="5" />
+      <attribute name="tendency-3-warfare-boss" type="Ref" ref="npc" repeat="5" />
+      <attribute name="tendency-1-faction1-warfare-quest" type="Ref" ref="quest" repeat="5" />
+      <attribute name="tendency-1-faction2-warfare-quest" type="Ref" ref="quest" repeat="5" />
+      <attribute name="tendency-2-faction1-warfare-quest" type="Ref" ref="quest" repeat="5" />
+      <attribute name="tendency-2-faction2-warfare-quest" type="Ref" ref="quest" repeat="5" />
+      <attribute name="tendency-3-faction1-warfare-quest" type="Ref" ref="quest" repeat="5" />
+      <attribute name="tendency-3-faction2-warfare-quest" type="Ref" ref="quest" repeat="5" />
+      <attribute name="tendency-1-faction1-sub-quest" type="Ref" ref="quest" repeat="5" />
+      <attribute name="tendency-1-faction2-sub-quest" type="Ref" ref="quest" repeat="5" />
+      <attribute name="tendency-2-faction1-sub-quest" type="Ref" ref="quest" repeat="5" />
+      <attribute name="tendency-2-faction2-sub-quest" type="Ref" ref="quest" repeat="5" />
+      <attribute name="tendency-3-faction1-sub-quest" type="Ref" ref="quest" repeat="5" />
+      <attribute name="tendency-3-faction2-sub-quest" type="Ref" ref="quest" repeat="5" />
+      <attribute name="faction1-kill-quest" type="Ref" ref="quest" />
+      <attribute name="faction2-kill-quest" type="Ref" ref="quest" />
+      <attribute name="defeat-field-play-point-bonus-percent" type="Int32" default="0" min="0" max="100" />
+      <attribute name="defeat-faction-score-bonus-percent" type="Int32" default="0" min="0" max="1000" />
+      <attribute name="defeat-bonus-point-percent" type="Int32" default="0" min="0" max="100" />
+      <attribute name="reentrance-faction1-spawn" type="Ref" ref="zonepcspawn" />
+      <attribute name="reentrance-faction2-spawn" type="Ref" ref="zonepcspawn" />
     </sub>
   </el>
 </table>

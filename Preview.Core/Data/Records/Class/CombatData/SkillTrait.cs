@@ -10,10 +10,10 @@ public class SkillTrait : BaseRecord
 	[Signal("job-style")]
 	public JobStyleSeq JobStyle;
 
-	public byte Tier;
+	public sbyte Tier;
 
 	[Signal("tier-variation")]
-	public byte TierVariation;
+	public sbyte TierVariation;
 
 
 

@@ -27,9 +27,9 @@ public sealed class KeyCommand : BaseRecord
 	public bool ModifierEnabled;
 
 	[Signal("sort-no")]
-	public byte SortNo;
+	public sbyte SortNo;
 
-	public byte Layer;
+	public sbyte Layer;
 
 	[Signal("option-sort-no")]
 	public short OptionSortNo;

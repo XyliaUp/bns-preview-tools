@@ -2,14 +2,14 @@
 <table name="constellation-star-option" version="1.0" autokey="true" module="6">
   <el name="table" child="1" />
   <el name="record">
-	<record name="alias" type="String" required="y" />
+	<attribute name="alias" type="String" required="y" />
     <sub name="ability">
-		<record name="ability" type="Seq" seq="attach-ability" />
-		<record name="ability-min" type="Int32" />
-		<record name="ability-max" type="Int32" />
+		<attribute name="ability" type="Seq" seq="attach-ability" />
+		<attribute name="ability-min" type="Int32" />
+		<attribute name="ability-max" type="Int32" />
     </sub>
     <sub name="effect">
-		<record name="effect" ref="Effect" />
+		<attribute name="effect" ref="Effect" />
     </sub>
   </el>
 </table>

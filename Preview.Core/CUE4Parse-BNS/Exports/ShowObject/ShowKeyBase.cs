@@ -5,4 +5,7 @@ public abstract class ShowKeyBase : UObject
 {
 	public float StartTime = 0;
 	public int SpawnId;
+
+	public float Duration;
+	public bool FixByTime;
 }

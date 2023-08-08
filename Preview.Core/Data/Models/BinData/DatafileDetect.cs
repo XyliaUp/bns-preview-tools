@@ -1,10 +1,12 @@
 ﻿using System.Collections.Concurrent;
 
+using BnsBinTool.Core.Definitions;
 using BnsBinTool.Core.Models;
 
 using Xylia.Extension;
 using Xylia.Preview.Data.Models.BinData.AliasTable;
 using Xylia.Preview.Data.Models.BinData.Table;
+using Xylia.Preview.Data.Models.BinData.Table.Config;
 
 using TableModel = BnsBinTool.Core.Models.Table;
 
@@ -17,7 +19,7 @@ namespace Xylia.Preview.Data.Models.BinData;
 public sealed class DatafileDetect
 {
 	#region Auto Detect
-	public void Detect(Datafile data) => Detect(data.Tables, data.NameTable.Entries.CreateTable());
+	public void Detect(Datafile data) => Detect(data.Tables, data.NameTable.CreateTable());
 
 	public void Detect(IEnumerable<TableModel> tables, ConcurrentDictionary<string, AliasCollection> AliasTable)
 	{
@@ -193,7 +195,6 @@ public sealed class DatafileDetect
 	}
 	#endregion
 
-
 	#region Datafile Helper
 	readonly Dictionary<int, string> by_id = new();
 
@@ -204,4 +205,36 @@ public sealed class DatafileDetect
 
 	public bool TryGetKey(string name, out short key) => by_name.TryGetValue(name.Replace("-", null), out key);
 	#endregion
+
+
+	/// <summary>
+	/// convert ref table name to key
+	/// </summary>
+	public void ConvertTableName(List<TableDefinition> definitions)
+	{
+		foreach (var tableDef in definitions)
+		{
+			{
+				if (tableDef.Type == 0 && this.TryGetKey(tableDef.Name, out var type))
+					tableDef.Type = type;
+			}
+
+			foreach (AttributeDef attr in tableDef.ExpandedAttributes.Where(o => o is AttributeDef))
+			{
+				var TypeName = attr.ReferedTableName;
+				if (TypeName != null && this.TryGetKey(TypeName, out var type))
+					attr.ReferedTable = type;
+			}
+
+			foreach (var subtable in tableDef.Subtables)
+			{
+				foreach (AttributeDef attr in subtable.ExpandedAttributes.Where(o => o is AttributeDef))
+				{
+					var TypeName = attr.ReferedTableName;
+					if (TypeName != null && this.TryGetKey(TypeName, out var type))
+						attr.ReferedTable = type;
+				}
+			}
+		}
+	}
 }

@@ -2,8 +2,8 @@
 <table name="item-brand" version="2.0" autokey="false" module="262">
   <el name="table" child="1" />
   <el name="record">
-    <record name="id" type="Int32" key="y" required="y" />
-    <record name="alias" type="String" required="y" max="70" />
-    <record name="transform-item-by-job" type="Int64" repeat="17" hidden="y" />
+    <attribute name="id" type="Int32" key="y" required="y" />
+    <attribute name="alias" type="String" required="y" max="70" />
+    <attribute name="transform-item-by-job" type="Int64" repeat="17" hidden="y" />
   </el>
 </table>

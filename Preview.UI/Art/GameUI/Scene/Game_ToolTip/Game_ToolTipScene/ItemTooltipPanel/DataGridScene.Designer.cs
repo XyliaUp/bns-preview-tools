@@ -1,4 +1,4 @@
-﻿namespace Xylia.Preview.Art.GameUI.Scene.Game_ToolTip.Game_ToolTipScene.ItemTooltipPanel;
+﻿namespace Xylia.Preview.Art.GameUI.Scene.Game_ToolTipScene.ItemTooltipPanel;
 
 partial class DataGridScene
 {

@@ -1,4 +1,7 @@
 ﻿using System.Xml;
+using System.Xml.Linq;
+
+using Xylia.Xml;
 
 namespace Xylia.Preview.Data.Models.BinData.Table.Record.Attributes;
 public sealed class XElementData : IAttributeCollection
@@ -7,7 +10,12 @@ public sealed class XElementData : IAttributeCollection
     public XmlElement data;
 
 	public XElementData(XmlElement data) => this.data = data;
+	public XElementData(XNode data) : this((data as XElement).LinqTo())
+	{
+
+	}
 	#endregion
+
 
 	#region Attribute
 	public string this[string param, int index, bool convert] => data.Attributes[index == 0 ? param : $"{param}-{index}"]?.Value;

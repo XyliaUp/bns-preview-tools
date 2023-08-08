@@ -16,7 +16,7 @@ public abstract partial class Case : BaseRecord
 	public List<FilterSet> FilterSet;
 
 	[DefaultValue(100)]
-	public byte Prob = 100;
+	public sbyte Prob = 100;
 
 	[Signal("mapunit"), Repeat(10), Side(ReleaseSide.Client)]
 	public MapUnit[] MapUnit;
@@ -54,7 +54,7 @@ public abstract partial class Case : BaseRecord
 	public Zone ValidZone2;
 
 	[Signal("completion-count")]
-	public byte CompletionCount;
+	public sbyte CompletionCount;
 
 	[Signal("completion-count-op")]
 	public Op CompletionCountOp = Op.ge;
@@ -147,10 +147,10 @@ public abstract partial class Case : BaseRecord
 
 
 	[Signal("faction-killed-count-min")]
-	public byte FactionKilledCountMin;
+	public sbyte FactionKilledCountMin;
 
 	[Signal("faction-killed-count-max")]
-	public byte FactionKilledCountMax;
+	public sbyte FactionKilledCountMax;
 
 
 
@@ -224,10 +224,10 @@ public abstract partial class Case : BaseRecord
 		public Text ButtonTextCancel;
 
 		[Signal("faction-killed-count-min")]
-		public byte FactonKilledCountMin;
+		public sbyte FactonKilledCountMin;
 
 		[Signal("faction-killed-count-max")]
-		public byte FactonKilledCountMax;
+		public sbyte FactonKilledCountMax;
 
 		[Signal("duel-type")]
 		public Duel.DuelType DuelType;
@@ -260,10 +260,10 @@ public abstract partial class Case : BaseRecord
 		public bool CheckInventoryFull = false;
 
 		[Signal("check-equiped-durability-below")]
-		public byte CheckEquipedDurabilityBelow;
+		public sbyte CheckEquipedDurabilityBelow;
 
 		[Signal("check-exp-boost-normal-below")]
-		public byte CheckExpBoostNormalBelow;
+		public sbyte CheckExpBoostNormalBelow;
 
 	}
 
@@ -275,10 +275,10 @@ public abstract partial class Case : BaseRecord
 		public bool CheckInventoryFull;
 
 		[Signal("check-equiped-durability-below")]
-		public byte CheckEquipedDurabilityBelow;
+		public sbyte CheckEquipedDurabilityBelow;
 
 		[Signal("check-exp-boost-normal-below")]
-		public byte CheckExpBoostNormalBelow;
+		public sbyte CheckExpBoostNormalBelow;
 
 
 		public override List<string> AttractionObject => new() { "item:" + Item };
@@ -300,10 +300,10 @@ public abstract partial class Case : BaseRecord
 		public bool CheckInventoryFull;
 
 		[Signal("check-equiped-durability-below")]
-		public byte CheckEquipedDurabilityBelow;
+		public sbyte CheckEquipedDurabilityBelow;
 
 		[Signal("check-exp-boost-normal-below")]
-		public byte CheckExpBoostNormalBelow;
+		public sbyte CheckExpBoostNormalBelow;
 
 		[Signal("required-jumping-character-state")]
 		public JumpingCharacterState RequiredJumpingCharacterState;
@@ -382,7 +382,7 @@ public abstract partial class Case : BaseRecord
 		public string[] MultiObject;
 
 		[Signal("quest-symbol-drop-prob")]
-		public byte QuestSymbolDropProb;
+		public sbyte QuestSymbolDropProb;
 
 		[Signal("loot-item")]
 		public Item LootItem;
@@ -491,7 +491,7 @@ public abstract partial class Case : BaseRecord
 		public string Object;
 
 		[Side(ReleaseSide.Server)]
-		public byte idx;
+		public sbyte idx;
 
 
 		public override List<string> AttractionObject => new() { Object };
@@ -548,7 +548,7 @@ public abstract partial class Case : BaseRecord
 	public sealed class DuelFinish : Case
 	{
 		[Signal("duel-grade")]
-		public byte DuelGrade;
+		public sbyte DuelGrade;
 
 		[Signal("duel-result")]
 		public ResultSeq DuelResult;

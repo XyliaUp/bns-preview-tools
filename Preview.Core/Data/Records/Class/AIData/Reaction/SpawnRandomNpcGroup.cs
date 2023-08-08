@@ -10,5 +10,5 @@ public sealed class SpawnRandomNpcGroup : SpawnNpcBase
 	public Script_obj[] Group;
 
 	[Signal("prob"), Repeat(10)]
-	public byte[] Prob;
+	public sbyte[] Prob;
 }

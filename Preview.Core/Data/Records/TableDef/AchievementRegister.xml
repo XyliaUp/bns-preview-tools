@@ -2,256 +2,256 @@
 <table name="achievement-register" version="1.0" autokey="false" module="262" maxid="2200">
   <el name="table" child="1" />
   <el name="record">
-    <record name="alias" type="String" required="y" max="70" />
-    <record name="id" type="Int16" key="y" required="y" min="1" max="2200" />
-    <record name="job" type="Prop_seq" seq="job" key="y" required="y" />
-    <record name="version" type="Int16" required="y" min="1" max="100" />
-    <record name="max-value" type="Int32" default="0" />
-    <record name="for-newbie-care" type="Bool" />
-    <record name="persistant" type="Bool" />
-    <record name="increment-from-client" type="Bool" hidden="y" />
-    <record name="achievement" type="Ref" ref="achievement" repeat="8" hidden="y" />
-    <record name="register-name" type="Ref" ref="text" />
+    <attribute name="alias" type="String" required="y" max="70" />
+    <attribute name="id" type="Int16" key="y" required="y" min="1" max="2200" />
+    <attribute name="job" type="Prop_seq" seq="job" key="y" required="y" />
+    <attribute name="version" type="Int16" required="y" min="1" max="100" />
+    <attribute name="max-value" type="Int32" default="0" />
+    <attribute name="for-newbie-care" type="Bool" />
+    <attribute name="persistant" type="Bool" />
+    <attribute name="increment-from-client" type="Bool" hidden="y" />
+    <attribute name="achievement" type="Ref" ref="achievement" repeat="8" hidden="y" />
+    <attribute name="register-name" type="Ref" ref="text" />
     <sub name="null" />
     <sub name="kill-boss-npc">
-      <record name="boss-npc" type="Ref" ref="npc" required="y" />
-      <record name="first-attacker" type="Bool" />
-      <record name="last-attacker" type="Bool" />
-      <record name="max-level" type="Int8" default="0" />
-      <record name="team-broadcast" type="Bool" />
-      <record name="difficulty-type" type="Seq">
+      <attribute name="boss-npc" type="Ref" ref="npc" required="y" />
+      <attribute name="first-attacker" type="Bool" />
+      <attribute name="last-attacker" type="Bool" />
+      <attribute name="max-level" type="Int8" default="0" />
+      <attribute name="team-broadcast" type="Bool" />
+      <attribute name="difficulty-type" type="Seq">
         <case name="none" default="y" />
         <case name="easy" />
         <case name="normal" />
         <case name="hard" />
-      </record>
-      <record name="party-member-min-count" type="Int8" default="0" />
-      <record name="party-member-max-count" type="Int8" default="0" />
-      <record name="party-same-job" type="Bool" />
-      <record name="min-sealed-level" type="Int8" default="0" />
-      <record name="min-sealed-level-op" type="Seq">
+      </attribute>
+      <attribute name="party-member-min-count" type="Int8" default="0" />
+      <attribute name="party-member-max-count" type="Int8" default="0" />
+      <attribute name="party-same-job" type="Bool" />
+      <attribute name="min-sealed-level" type="Int8" default="0" />
+      <attribute name="min-sealed-level-op" type="Seq">
         <case name="none" default="y" />
         <case name="or-more" />
         <case name="or-less" />
         <case name="over" />
         <case name="under" />
         <case name="equal" />
-      </record>
-      <record name="max-sealed-level" type="Int8" default="0" />
-      <record name="max-sealed-level-op" type="Seq">
+      </attribute>
+      <attribute name="max-sealed-level" type="Int8" default="0" />
+      <attribute name="max-sealed-level-op" type="Seq">
         <case name="none" default="y" />
         <case name="or-more" />
         <case name="or-less" />
         <case name="over" />
         <case name="under" />
         <case name="equal" />
-      </record>
+      </attribute>
     </sub>
     <sub name="kill-npc">
-      <record name="npc" type="Ref" ref="npc" repeat="8" />
-      <record name="faction" type="Ref" ref="faction" />
+      <attribute name="npc" type="Ref" ref="npc" repeat="8" />
+      <attribute name="faction" type="Ref" ref="faction" />
     </sub>
     <sub name="kill-pc">
-      <record name="faction" type="Ref" ref="faction" />
-      <record name="race" type="Prop_seq" seq="race" default="race-none" />
-      <record name="target-job" type="Prop_seq" seq="job" default="job-none" />
-      <record name="above-level" type="Int8" default="0" />
-      <record name="below-level" type="Int8" default="0" />
+      <attribute name="faction" type="Ref" ref="faction" />
+      <attribute name="race" type="Prop_seq" seq="race" default="race-none" />
+      <attribute name="target-job" type="Prop_seq" seq="job" default="job-none" />
+      <attribute name="above-level" type="Int8" default="0" />
+      <attribute name="below-level" type="Int8" default="0" />
     </sub>
     <sub name="equip-item-brand-n">
-      <record name="item-brand" type="Ref" ref="item-brand" repeat="8" />
-      <record name="equip-type" type="Seq" seq="equip-type" default="none" repeat="8" />
-      <record name="item-min-level" type="Int8" default="0" repeat="8" />
-      <record name="slot-name" type="Ref" ref="text" repeat="8" />
+      <attribute name="item-brand" type="Ref" ref="item-brand" repeat="8" />
+      <attribute name="equip-type" type="Seq" seq="equip-type" default="none" repeat="8" />
+      <attribute name="item-min-level" type="Int8" default="0" repeat="8" />
+      <attribute name="slot-name" type="Ref" ref="text" repeat="8" />
     </sub>
     <sub name="equip-item-n">
-      <record name="item" type="Ref" ref="item" repeat="8" />
-      <record name="slot-name" type="Ref" ref="text" repeat="8" />
+      <attribute name="item" type="Ref" ref="item" repeat="8" />
+      <attribute name="slot-name" type="Ref" ref="text" repeat="8" />
     </sub>
     <sub name="use-grocery">
-      <record name="item" type="Ref" ref="item" repeat="8" />
+      <attribute name="item" type="Ref" ref="item" repeat="8" />
     </sub>
     <sub name="use-grocery-n">
-      <record name="item" type="Ref" ref="item" repeat="8" />
-      <record name="slot-name" type="Ref" ref="text" repeat="8" />
+      <attribute name="item" type="Ref" ref="item" repeat="8" />
+      <attribute name="slot-name" type="Ref" ref="text" repeat="8" />
     </sub>
     <sub name="use-grocery-brand-n">
-      <record name="item-brand" type="Ref" ref="item-brand" repeat="8" />
-      <record name="slot-name" type="Ref" ref="text" repeat="8" />
+      <attribute name="item-brand" type="Ref" ref="item-brand" repeat="8" />
+      <attribute name="slot-name" type="Ref" ref="text" repeat="8" />
     </sub>
     <sub name="time" />
     <sub name="use-skill-to-npc">
-      <record name="skill-id" type="Int32" default="0" repeat="8" />
-      <record name="npc" type="Ref" ref="npc" repeat="4" />
+      <attribute name="skill-id" type="Int32" default="0" repeat="8" />
+      <attribute name="npc" type="Ref" ref="npc" repeat="4" />
     </sub>
     <sub name="defend-npc-skill">
-      <record name="npc-skill" type="Ref" ref="skill3" required="y" />
-      <record name="skill-id" type="Int32" default="0" repeat="8" />
+      <attribute name="npc-skill" type="Ref" ref="skill3" required="y" />
+      <attribute name="skill-id" type="Int32" default="0" repeat="8" />
     </sub>
     <sub name="pc-exhaustion" />
     <sub name="pc-dead" />
     <sub name="use-gadget-to-npc">
-      <record name="gadget" type="Ref" ref="fielditem" required="y" />
-      <record name="npc" type="Ref" ref="npc" required="y" />
+      <attribute name="gadget" type="Ref" ref="fielditem" required="y" />
+      <attribute name="npc" type="Ref" ref="npc" required="y" />
     </sub>
     <sub name="quest-complete">
-      <record name="quest" type="Ref" ref="quest" required="y" />
+      <attribute name="quest" type="Ref" ref="quest" required="y" />
     </sub>
     <sub name="quest-complete-count">
-      <record name="reset-type" type="Seq">
+      <attribute name="reset-type" type="Seq">
         <case name="none" default="y" />
         <case name="daily" />
         <case name="weekly" />
         <case name="monthly" />
-      </record>
-      <record name="reset-by-acquire-time" type="Seq">
+      </attribute>
+      <attribute name="reset-by-acquire-time" type="Seq">
         <case name="none" default="y" />
         <case name="daily" />
         <case name="weekly" />
-      </record>
+      </attribute>
     </sub>
     <sub name="tendency-quest-complete-count">
-      <record name="required-attraction" type="TRef" required="y" />
-      <record name="tendency-id" type="Int8" required="y" min="0" max="3" />
+      <attribute name="required-attraction" type="TRef" required="y" />
+      <attribute name="tendency-id" type="Int8" required="y" min="0" max="3" />
     </sub>
     <sub name="duel-win-count">
-      <record name="duel-type" type="Seq">
+      <attribute name="duel-type" type="Seq">
         <case name="none" default="y" />
         <case name="solo" />
         <case name="team" />
-      </record>
+      </attribute>
     </sub>
     <sub name="duel-grade">
-      <record name="duel-type" type="Seq">
+      <attribute name="duel-type" type="Seq">
         <case name="none" default="y" />
         <case name="solo" />
         <case name="team" />
-      </record>
+      </attribute>
     </sub>
     <sub name="manipulate-env">
-      <record name="env2" type="Ref" ref="zoneenv2" repeat="8" />
-      <record name="env2-state" type="Seq" seq="env-state" default="none" repeat="8" />
+      <attribute name="env2" type="Ref" ref="zoneenv2" repeat="8" />
+      <attribute name="env2-state" type="Seq" seq="env-state" default="none" repeat="8" />
     </sub>
     <sub name="exchange-faction-score-count">
-      <record name="npc" type="Ref" ref="npc" />
-      <record name="min-exchange-score" type="Int8" default="0" />
+      <attribute name="npc" type="Ref" ref="npc" />
+      <attribute name="min-exchange-score" type="Int8" default="0" />
     </sub>
     <sub name="teleport-count">
-      <record name="teleport" type="Ref" ref="teleport" />
+      <attribute name="teleport" type="Ref" ref="teleport" />
     </sub>
     <sub name="help-restoration" />
     <sub name="help-resurrect" />
     <sub name="get-contribution-count">
-      <record name="npc" type="Ref" ref="npc" repeat="8" />
+      <attribute name="npc" type="Ref" ref="npc" repeat="8" />
     </sub>
     <sub name="get-contribution-score">
-      <record name="npc" type="Ref" ref="npc" repeat="8" />
+      <attribute name="npc" type="Ref" ref="npc" repeat="8" />
     </sub>
     <sub name="give-faction-score-to-refiner" />
     <sub name="duel-bot-challenge-finished-floor" />
     <sub name="accumulate-field-play-point-by-simple-tendency-quest" />
     <sub name="accumulate-faction-score" />
     <sub name="growth-item">
-      <record name="seed-item-brand" type="Ref" ref="item-brand" />
-      <record name="feed-item-brand" type="Ref" ref="item-brand" />
-      <record name="seed-item-before-level" type="Int8" default="0" />
-      <record name="seed-item-growth-level" type="Int8" default="0" />
-      <record name="feed-item-level" type="Int8" default="0" />
+      <attribute name="seed-item-brand" type="Ref" ref="item-brand" />
+      <attribute name="feed-item-brand" type="Ref" ref="item-brand" />
+      <attribute name="seed-item-before-level" type="Int8" default="0" />
+      <attribute name="seed-item-growth-level" type="Int8" default="0" />
+      <attribute name="feed-item-level" type="Int8" default="0" />
     </sub>
     <sub name="attach-equip-gem-piece">
-      <record name="primary-item-brand" type="Ref" ref="item-brand" />
-      <record name="secondary-item-brand" type="Ref" ref="item-brand" />
-      <record name="primary-item-grade" type="Int8" default="0" />
-      <record name="secondary-item-grade" type="Int8" default="0" />
+      <attribute name="primary-item-brand" type="Ref" ref="item-brand" />
+      <attribute name="secondary-item-brand" type="Ref" ref="item-brand" />
+      <attribute name="primary-item-grade" type="Int8" default="0" />
+      <attribute name="secondary-item-grade" type="Int8" default="0" />
     </sub>
     <sub name="decompose-item">
-      <record name="item-brand" type="Ref" ref="item-brand" />
-      <record name="item-grade" type="Int8" default="0" />
-      <record name="item-level" type="Int8" default="0" />
-      <record name="equip-type" type="Seq" seq="equip-type" default="none" />
-      <record name="equip-gem-only" type="Bool" />
-      <record name="weapon-gem-level" type="Int8" default="0" />
+      <attribute name="item-brand" type="Ref" ref="item-brand" />
+      <attribute name="item-grade" type="Int8" default="0" />
+      <attribute name="item-level" type="Int8" default="0" />
+      <attribute name="equip-type" type="Seq" seq="equip-type" default="none" />
+      <attribute name="equip-gem-only" type="Bool" />
+      <attribute name="weapon-gem-level" type="Int8" default="0" />
     </sub>
     <sub name="decompose-item-n">
-      <record name="item" type="Ref" ref="item" repeat="8" />
-      <record name="slot-name" type="Ref" ref="text" repeat="8" />
+      <attribute name="item" type="Ref" ref="item" repeat="8" />
+      <attribute name="slot-name" type="Ref" ref="text" repeat="8" />
     </sub>
     <sub name="decompose-item-equip-type-n">
-      <record name="item-brand" type="Ref" ref="item-brand" />
-      <record name="item-grade" type="Int8" default="0" />
-      <record name="item-level" type="Int8" default="0" />
-      <record name="equip-type" type="Seq" seq="equip-type" default="none" repeat="8" />
-      <record name="slot-name" type="Ref" ref="text" repeat="8" />
+      <attribute name="item-brand" type="Ref" ref="item-brand" />
+      <attribute name="item-grade" type="Int8" default="0" />
+      <attribute name="item-level" type="Int8" default="0" />
+      <attribute name="equip-type" type="Seq" seq="equip-type" default="none" repeat="8" />
+      <attribute name="slot-name" type="Ref" ref="text" repeat="8" />
     </sub>
     <sub name="decompose-item-weapon-gem-level-n">
-      <record name="weapon-gem-brand" type="Ref" ref="item-brand" />
-      <record name="weapon-gem-grade" type="Int8" default="0" />
-      <record name="weapon-gem-level" type="Int8" default="0" repeat="8" />
-      <record name="slot-name" type="Ref" ref="text" repeat="8" />
+      <attribute name="weapon-gem-brand" type="Ref" ref="item-brand" />
+      <attribute name="weapon-gem-grade" type="Int8" default="0" />
+      <attribute name="weapon-gem-level" type="Int8" default="0" repeat="8" />
+      <attribute name="slot-name" type="Ref" ref="text" repeat="8" />
     </sub>
     <sub name="attach-gem-to-weapon">
-      <record name="weapon-brand" type="Ref" ref="item-brand" />
-      <record name="weapon-grade" type="Int8" default="0" />
-      <record name="weapon-gem-brand" type="Ref" ref="item-brand" />
-      <record name="weapon-gem-grade" type="Int8" default="0" />
-      <record name="weapon-gem-level" type="Int8" default="0" />
+      <attribute name="weapon-brand" type="Ref" ref="item-brand" />
+      <attribute name="weapon-grade" type="Int8" default="0" />
+      <attribute name="weapon-gem-brand" type="Ref" ref="item-brand" />
+      <attribute name="weapon-gem-grade" type="Int8" default="0" />
+      <attribute name="weapon-gem-level" type="Int8" default="0" />
     </sub>
     <sub name="attach-gem-to-weapon-n">
-      <record name="weapon-brand" type="Ref" ref="item-brand" />
-      <record name="weapon-grade" type="Int8" default="0" />
-      <record name="weapon-gem" type="Ref" ref="item" repeat="8" />
-      <record name="slot-name" type="Ref" ref="text" repeat="8" />
+      <attribute name="weapon-brand" type="Ref" ref="item-brand" />
+      <attribute name="weapon-grade" type="Int8" default="0" />
+      <attribute name="weapon-gem" type="Ref" ref="item" repeat="8" />
+      <attribute name="slot-name" type="Ref" ref="text" repeat="8" />
     </sub>
     <sub name="awakening-item">
-      <record name="item-brand" type="Ref" ref="item-brand" />
-      <record name="equip-type" type="Seq" seq="equip-type" default="none" />
+      <attribute name="item-brand" type="Ref" ref="item-brand" />
+      <attribute name="equip-type" type="Seq" seq="equip-type" default="none" />
     </sub>
     <sub name="transform-item-brand">
-      <record name="item-brand" type="Ref" ref="item-brand" />
-      <record name="item-grade" type="Int8" default="0" />
-      <record name="equip-type" type="Seq" seq="equip-type" default="none" />
-      <record name="result" type="Seq">
+      <attribute name="item-brand" type="Ref" ref="item-brand" />
+      <attribute name="item-grade" type="Int8" default="0" />
+      <attribute name="equip-type" type="Seq" seq="equip-type" default="none" />
+      <attribute name="result" type="Seq">
         <case name="none" default="y" />
         <case name="blank" />
         <case name="normal" />
         <case name="rare" />
         <case name="premium" />
-      </record>
+      </attribute>
     </sub>
     <sub name="transform-item">
-      <record name="item" type="Ref" ref="item" />
-      <record name="result" type="Seq">
+      <attribute name="item" type="Ref" ref="item" />
+      <attribute name="result" type="Seq">
         <case name="none" default="y" />
         <case name="blank" />
         <case name="normal" />
         <case name="rare" />
         <case name="premium" />
-      </record>
+      </attribute>
     </sub>
     <sub name="zero-durability">
-      <record name="item-brand" type="Ref" ref="item-brand" />
-      <record name="item-grade" type="Int8" default="0" />
+      <attribute name="item-brand" type="Ref" ref="item-brand" />
+      <attribute name="item-grade" type="Int8" default="0" />
     </sub>
     <sub name="repair-item">
-      <record name="item-brand" type="Ref" ref="item-brand" />
-      <record name="item-grade" type="Int8" default="0" />
+      <attribute name="item-brand" type="Ref" ref="item-brand" />
+      <attribute name="item-grade" type="Int8" default="0" />
     </sub>
     <sub name="detach-post-attachment-count" />
     <sub name="detach-post-attachment-money" />
     <sub name="detach-post-attachment-item">
-      <record name="item" type="Ref" ref="item" required="y" />
+      <attribute name="item" type="Ref" ref="item" required="y" />
     </sub>
     <sub name="detach-post-attachment-item-n">
-      <record name="item" type="Ref" ref="item" repeat="8" />
-      <record name="slot-name" type="Ref" ref="text" repeat="8" />
+      <attribute name="item" type="Ref" ref="item" repeat="8" />
+      <attribute name="slot-name" type="Ref" ref="text" repeat="8" />
     </sub>
     <sub name="take-craft-count" />
     <sub name="take-craft-item">
-      <record name="item" type="Ref" ref="item" required="y" />
+      <attribute name="item" type="Ref" ref="item" required="y" />
     </sub>
     <sub name="take-craft-item-n">
-      <record name="item" type="Ref" ref="item" repeat="8" />
-      <record name="slot-name" type="Ref" ref="text" repeat="8" />
+      <attribute name="item" type="Ref" ref="item" repeat="8" />
+      <attribute name="slot-name" type="Ref" ref="text" repeat="8" />
     </sub>
     <sub name="inventory-size" />
     <sub name="wardrobe-size" />
@@ -260,46 +260,46 @@
     <sub name="pc-mastery-level" />
     <sub name="client-only" />
     <sub name="party-battle-win-count">
-      <record name="party-battle-type" type="Seq">
+      <attribute name="party-battle-type" type="Seq">
         <case name="none" default="y" />
         <case name="occupation-war" />
         <case name="capture-the-flag" />
         <case name="lead-the-ball" />
-      </record>
+      </attribute>
     </sub>
     <sub name="party-battle-challenge-count">
-      <record name="party-battle-type" type="Seq">
+      <attribute name="party-battle-type" type="Seq">
         <case name="none" default="y" />
         <case name="occupation-war" />
         <case name="capture-the-flag" />
         <case name="lead-the-ball" />
-      </record>
+      </attribute>
     </sub>
     <sub name="party-battle-grade">
-      <record name="party-battle-type" type="Seq">
+      <attribute name="party-battle-type" type="Seq">
         <case name="none" default="y" />
         <case name="occupation-war" />
         <case name="capture-the-flag" />
         <case name="lead-the-ball" />
-      </record>
+      </attribute>
     </sub>
     <sub name="lead-the-ball-goal-in-count" />
     <sub name="skill-training-subject-complete">
-      <record name="skill-training-room-group" type="Ref" ref="skill-training-room-group" />
+      <attribute name="skill-training-room-group" type="Ref" ref="skill-training-room-group" />
     </sub>
     <sub name="dispose-item-buy-price-required-point" />
     <sub name="acquire-fish-count" />
     <sub name="acquire-specific-fish-count">
-      <record name="fish" type="Ref" ref="fish" required="y" />
+      <attribute name="fish" type="Ref" ref="fish" required="y" />
     </sub>
     <sub name="acquire-fish-size-count">
-      <record name="fish-size" type="Int32" required="y" min="1" max="100000" />
+      <attribute name="fish-size" type="Int32" required="y" min="1" max="100000" />
     </sub>
     <sub name="acquire-fish-grade-count">
-      <record name="fish-grade" type="Int8" default="0" required="y" />
+      <attribute name="fish-grade" type="Int8" default="0" required="y" />
     </sub>
     <sub name="acquire-fish-size-grade-count">
-      <record name="fish-size-grade" type="Seq" required="y">
+      <attribute name="fish-size-grade" type="Seq" required="y">
         <case name="fish-grade-1" />
         <case name="fish-grade-2" />
         <case name="fish-grade-3" />
@@ -310,7 +310,7 @@
         <case name="fish-grade-8" />
         <case name="fish-grade-9" />
         <case name="fish-grade-10" />
-      </record>
+      </attribute>
     </sub>
     <sub name="accumulate-life-contents-point-by-fishing" />
   </el>

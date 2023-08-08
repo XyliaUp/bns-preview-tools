@@ -44,7 +44,7 @@ public partial class SkillTraitPreview : PreviewFrm
 	#region Functions
 	SkillTrait Default;
 
-	Dictionary<byte, TraitTier> TraitTiers;
+	Dictionary<sbyte, TraitTier> TraitTiers;
 
 	public void LoadData(JobSeq Job, JobStyleSeq JobStyle)
 	{

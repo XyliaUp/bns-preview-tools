@@ -2,41 +2,41 @@
 <table name="duel" version="0.35" autokey="true" module="70">
   <el name="table" child="1" />
   <el name="record">
-    <record name="alias" type="String" required="y" max="70" />
-    <record name="group" type="Ref" ref="attraction-group" />
-    <record name="duel-type" type="Seq" required="y">
+    <attribute name="alias" type="String" required="y" max="70" />
+    <attribute name="group" type="Ref" ref="attraction-group" />
+    <attribute name="duel-type" type="Seq" required="y">
       <case name="none" />
       <case name="death-match-1vs1" />
       <case name="tag-match-3vs3" />
-    </record>
-    <record name="max-round-count" type="Int8" default="1" min="1" max="10" />
-    <record name="round-win-count" type="Int8" default="0" min="0" max="5" />
-    <record name="round-count" type="Int8" default="1" min="1" max="10" />
-    <record name="round-start-countdown-duration" type="Msec" default="5000" min="1000" max="120000" />
-    <record name="round-preparation-duration" type="Msec" default="20000" min="1000" max="120000" />
-    <record name="round-duration" type="Msec" default="60000" min="1000" max="1200000" />
-    <record name="round-restart-duration" type="Msec" default="40000" min="1000" max="120000" />
-    <record name="zone" type="Ref" ref="zone" required="y" />
-    <record name="arena-outside-alpha-side-pc-spawn" type="Ref" ref="zonepcspawn" repeat="3" />
-    <record name="arena-outside-beta-side-pc-spawn" type="Ref" ref="zonepcspawn" repeat="3" />
-    <record name="effect" type="Ref" ref="effect" />
-    <record name="is-unrated-match" type="Bool" hidden="y" />
-    <record name="loading-description-1" type="Ref" ref="text" />
-    <record name="loading-description-2" type="Ref" ref="text" />
-    <record name="loading-icon" type="Icon" max="32767" />
-    <record name="boast" type="Ref" ref="boast" hidden="y" />
-    <record name="attraction-quest" type="Ref" ref="quest" repeat="5" hidden="y" />
-    <record name="ui-filter-attraction-quest-only" type="Bool" />
-    <record name="duel-name2" type="Ref" ref="text" />
-    <record name="duel-desc" type="Ref" ref="text" />
-    <record name="reward-summary" type="Ref" ref="attractionrewardsummary" />
-    <record name="weekly-time-table-for-added-reward" type="Ref" ref="weeklytimetable" repeat="2" />
-    <record name="bonus-point-percent" type="Int32" default="0" repeat="2" min="0" max="400" />
-    <record name="bonus-exp-percent" type="Int32" default="0" repeat="2" min="0" max="400" />
-    <record name="camera-world-pos-index" type="Int8" default="0" min="0" max="100" />
-    <record name="disable-calc-rating-score-weekly-time" type="Ref" ref="weeklytimetable" />
-    <record name="available-normal-matching-weekly-time" type="Ref" ref="weeklytimetable" />
-    <record name="available-ingame-championship-matching-weekly-time" type="Ref" ref="weeklytimetable" />
-    <record name="is-championship" type="Bool" />
+    </attribute>
+    <attribute name="max-round-count" type="Int8" default="1" min="1" max="10" />
+    <attribute name="round-win-count" type="Int8" default="0" min="0" max="5" />
+    <attribute name="round-count" type="Int8" default="1" min="1" max="10" />
+    <attribute name="round-start-countdown-duration" type="Msec" default="5000" min="1000" max="120000" />
+    <attribute name="round-preparation-duration" type="Msec" default="20000" min="1000" max="120000" />
+    <attribute name="round-duration" type="Msec" default="60000" min="1000" max="1200000" />
+    <attribute name="round-restart-duration" type="Msec" default="40000" min="1000" max="120000" />
+    <attribute name="zone" type="Ref" ref="zone" required="y" />
+    <attribute name="arena-outside-alpha-side-pc-spawn" type="Ref" ref="zonepcspawn" repeat="3" />
+    <attribute name="arena-outside-beta-side-pc-spawn" type="Ref" ref="zonepcspawn" repeat="3" />
+    <attribute name="effect" type="Ref" ref="effect" />
+    <attribute name="is-unrated-match" type="Bool" hidden="y" />
+    <attribute name="loading-description-1" type="Ref" ref="text" />
+    <attribute name="loading-description-2" type="Ref" ref="text" />
+    <attribute name="loading-icon" type="Icon" max="32767" />
+    <attribute name="boast" type="Ref" ref="boast" hidden="y" />
+    <attribute name="attraction-quest" type="Ref" ref="quest" repeat="5" hidden="y" />
+    <attribute name="ui-filter-attraction-quest-only" type="Bool" />
+    <attribute name="duel-name2" type="Ref" ref="text" />
+    <attribute name="duel-desc" type="Ref" ref="text" />
+    <attribute name="reward-summary" type="Ref" ref="attractionrewardsummary" />
+    <attribute name="weekly-time-table-for-added-reward" type="Ref" ref="weeklytimetable" repeat="2" />
+    <attribute name="bonus-point-percent" type="Int32" default="0" repeat="2" min="0" max="400" />
+    <attribute name="bonus-exp-percent" type="Int32" default="0" repeat="2" min="0" max="400" />
+    <attribute name="camera-world-pos-index" type="Int8" default="0" min="0" max="100" />
+    <attribute name="disable-calc-rating-score-weekly-time" type="Ref" ref="weeklytimetable" />
+    <attribute name="available-normal-matching-weekly-time" type="Ref" ref="weeklytimetable" />
+    <attribute name="available-ingame-championship-matching-weekly-time" type="Ref" ref="weeklytimetable" />
+    <attribute name="is-championship" type="Bool" />
   </el>
 </table>

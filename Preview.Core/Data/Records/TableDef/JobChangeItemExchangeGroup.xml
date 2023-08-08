@@ -2,9 +2,9 @@
 <table name="job-change-item-exchange-group" version="1.0" autokey="false" module="6">
   <el name="table" child="1" />
   <el name="record">
-    <record name="id" type="Int32" key="y" required="y" min="1" />
-    <record name="alias" type="String" required="y" max="70" />
-    <record name="cost-item" type="Ref" ref="item" />
-    <record name="cost-item-count" type="Ref" ref="item" />
+    <attribute name="id" type="Int32" key="y" required="y" min="1" />
+    <attribute name="alias" type="String" required="y" max="70" />
+    <attribute name="cost-item" type="Ref" ref="item" />
+    <attribute name="cost-item-count" type="Int16" default="1" />
   </el>
 </table>

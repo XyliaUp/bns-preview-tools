@@ -23,7 +23,7 @@ public class TipMessage
 			};
 
 
-			int proweight = (item.Attributes["proweight"]?.Value).ToInt();
+			int proweight = (item.Attributes["proweight"]?.Value).ToInt32();
 			if (proweight <= 0) proweight = 1;
 
 			Tips.Add(TotalWeight, tip);

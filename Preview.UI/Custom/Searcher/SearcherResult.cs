@@ -5,7 +5,6 @@ using Xylia.Extension;
 using Xylia.Preview.Data.Helper;
 using Xylia.Preview.Data.Models.BinData.Table.Record;
 using Xylia.Preview.Data.Record;
-using Xylia.Preview.UI.Custom;
 using Xylia.Preview.UI.FModel.Views;
 
 namespace Xylia.Preview.GameUI.Scene.Searcher;
@@ -18,7 +17,6 @@ public partial class SearcherResult : Form
 		InitializeComponent();
 
 		this.Records = records;
-		this.ListPreview.MaxItemNum = 0;
 		this.ListPreview.Items = new(records);
 	}
 
@@ -32,7 +30,8 @@ public partial class SearcherResult : Form
 			string Text2 = MapUnit is null ? null : FileCache.Data.MapInfo[MapUnit.Mapid]?.Name2.GetText();
 
 			e.Graphics.FillRectangle(new SolidBrush(this.ListPreview.BackColor), e.ClipRectangle);
-			e.Graphics.DrawString(Text, this.ListPreview.Font, new SolidBrush(this.ListPreview.ForeColor), e.ClipRectangle, new StringFormat { LineAlignment = StringAlignment.Near });
+			e.Graphics.DrawString(Text, this.Font, new SolidBrush(this.ForeColor), e.ClipRectangle, new StringFormat { LineAlignment = StringAlignment.Near });
+			e.Graphics.DrawString(Text2, this.Font, new SolidBrush(Color.BlueViolet), e.ClipRectangle, new StringFormat { LineAlignment = StringAlignment.Far });
 		}
 	}
 
@@ -45,9 +44,9 @@ public partial class SearcherResult : Form
 
 			new ModelData()
 			{
-				Export = FileCache.PakData.LoadObject<UObject>(appearance.BodyMeshName),
-				AnimSet = FileCache.PakData.LoadObject<UAnimSet>(npc.AnimSet),
-				cols = new string[] { appearance.BodyMaterialName },
+				Export = FileCache.Provider.LoadObject<UObject>(appearance.BodyMeshName.Path),
+				AnimSet = FileCache.Provider.LoadObject<UAnimSet>(npc.AnimSet),
+				cols = new string[] { appearance.BodyMaterialName.Path },
 			}.Run();
 		}
 	}

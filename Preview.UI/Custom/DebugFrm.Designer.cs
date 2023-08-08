@@ -1,6 +1,5 @@
 ﻿using System.Windows.Forms.Integration;
 
-using Xylia.Preview.UI.Controls;
 using Xylia.Preview.UI.Custom.Controls;
 using Xylia.Preview.UI.Custom.Controls.Currency;
 
@@ -60,7 +59,7 @@ namespace Xylia.Preview.UI
 			listPreview1.AutoScroll = true;
 			listPreview1.BackColor = Color.Transparent;
 			listPreview1.ForeColor = Color.Blue;
-			listPreview1.Location = new Point(321, 26);
+			listPreview1.Location = new Point(301, 12);
 			listPreview1.Name = "listPreview1";
 			listPreview1.Size = new Size(284, 320);
 			listPreview1.TabIndex = 4;
@@ -123,7 +122,6 @@ namespace Xylia.Preview.UI
 		private System.Windows.Forms.TextBox textBox1;
 
 		private ElementHost elementHost1;
-		private ListBoxPreview userControl1;
 		private ListPreview listPreview1;
 		private ContentPanel contentPanel1;
 		private PriceCell priceCell1;

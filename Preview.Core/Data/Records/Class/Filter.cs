@@ -66,7 +66,7 @@ public abstract class Filter : BaseRecord
 
 	public sealed class JobStyle : Filter
 	{
-		public byte Count;
+		public sbyte Count;
 
 		[Signal("job-1")]
 		public JobSeq Job1;
@@ -127,7 +127,7 @@ public abstract class Filter : BaseRecord
 
 		public Op Op;
 
-		public byte Value;
+		public sbyte Value;
 	}
 
 	public sealed class PropFlag : Filter
@@ -208,7 +208,7 @@ public abstract class Filter : BaseRecord
 	{
 		public Item Item;
 
-		public byte Amount;
+		public sbyte Amount;
 	}
 
 	public sealed class fieldItem : Filter
@@ -248,7 +248,7 @@ public abstract class Filter : BaseRecord
 	{
 		public Op Op;
 
-		public byte Value;
+		public sbyte Value;
 	}
 
 	public sealed class Skill : Filter
@@ -305,7 +305,7 @@ public abstract class Filter : BaseRecord
 		public Quest Quest;
 
 		[Signal("mission-step")]
-		public byte MissionStep;
+		public sbyte MissionStep;
 
 		public short Count;
 

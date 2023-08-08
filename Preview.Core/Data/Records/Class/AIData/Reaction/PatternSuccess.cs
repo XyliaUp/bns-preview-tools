@@ -8,5 +8,5 @@ namespace Xylia.Preview.Data.Record.ReactionClass;
 [Signal("pattern-success")]
 public sealed class PatternSuccess : Reaction
 {
-	public byte Index;
+	public sbyte Index;
 }

@@ -54,7 +54,7 @@ public class SkillTooltip : BaseRecord
 	public Text AttributeColorText;
 
 	[Signal("skill-modify-diff-repeat-count")]
-	public byte SkillModifyDiffRepeatCount;
+	public sbyte SkillModifyDiffRepeatCount;
 
 	[Signal("skill-attack-attribute-coefficient-percent")]
 	public short SkillAttackAttributeCoefficientPercent;

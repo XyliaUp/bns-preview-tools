@@ -2,10 +2,10 @@
 <table name="boss-challenge-round" version="0.3" autokey="false" module="6">
   <el name="table" child="1" />
   <el name="record">
-    <record name="id" type="Int32" key="y" required="y" min="1" />
-    <record name="round" type="Int16" key="y" required="y" min="1" />
-    <record name="alias" type="String" required="y" max="70" />
-    <record name="spawn-effect" type="Ref" ref="effect" repeat="2" />
-    <record name="boss-spawn-delay" type="Msec" default="0" />
+    <attribute name="id" type="Int32" key="y" required="y" min="1" />
+    <attribute name="round" type="Int16" key="y" required="y" min="1" />
+    <attribute name="alias" type="String" required="y" max="70" />
+    <attribute name="spawn-effect" type="Ref" ref="effect" repeat="2" />
+    <attribute name="boss-spawn-delay" type="Msec" default="0" />
   </el>
 </table>

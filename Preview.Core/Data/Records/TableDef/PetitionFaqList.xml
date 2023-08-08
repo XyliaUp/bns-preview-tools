@@ -2,11 +2,11 @@
 <table name="petition-faq-list" version="0.4" autokey="false" module="4" maxid="200000000">
   <el name="table" child="1" />
   <el name="record">
-    <record name="id" type="Int64" key="y" required="y" min="1" max="200000000" />
-    <record name="title" type="String" required="y" max="256" />
-    <record name="contents" type="Native" />
-    <record name="new-faq" type="Bool" />
-    <record name="hot-faq" type="Bool" />
-    <record name="file-name" type="String" required="y" deprecated="y" max="256" />
+    <attribute name="id" type="Int64" key="y" required="y" min="1" max="200000000" />
+    <attribute name="title" type="String" required="y" max="256" />
+    <attribute name="contents" type="Native" />
+    <attribute name="new-faq" type="Bool" />
+    <attribute name="hot-faq" type="Bool" />
+    <attribute name="file-name" type="String" required="y" deprecated="y" max="256" />
   </el>
 </table>

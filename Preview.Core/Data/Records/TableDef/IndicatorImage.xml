@@ -2,7 +2,7 @@
 <table name="indicator-image" version="0.27" autokey="false" module="4">
   <el name="table" child="1" />
   <el name="record">
-    <record name="indicator" type="Seq16" key="y" required="y">
+    <attribute name="indicator" type="Seq16" key="y" required="y">
       <case name="default" />
       <case name="quest-epic-can-complete" />
       <case name="quest-epic-can-acquire" />
@@ -174,11 +174,11 @@
       <case name="quest-hunting-repeat-can-progress" />
       <case name="quest-hunting-repeat-next-acquire" />
       <case name="quest-hunting-repeat-completed" />
-    </record>
-    <record name="mesh-iconset" type="XUnknown2" />
-    <record name="minimap" type="XUnknown2" />
-    <record name="minimap-over" type="XUnknown2" />
-    <record name="minimap-boder" type="XUnknown2" />
-    <record name="minimap-boder-over" type="XUnknown2" />
+    </attribute>
+    <attribute name="mesh-iconset" type="XUnknown2" />
+    <attribute name="minimap" type="XUnknown2" />
+    <attribute name="minimap-over" type="XUnknown2" />
+    <attribute name="minimap-boder" type="XUnknown2" />
+    <attribute name="minimap-boder-over" type="XUnknown2" />
   </el>
 </table>

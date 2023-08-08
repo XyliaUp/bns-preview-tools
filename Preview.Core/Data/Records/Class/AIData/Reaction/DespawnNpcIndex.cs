@@ -9,5 +9,5 @@ public sealed class DespawnNpcIndex : DespawnNpcBase
 	public Script_obj Group;
 
 	[Signal("index"), Repeat(15)]
-	public byte[] Index;
+	public sbyte[] Index;
 }

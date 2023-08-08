@@ -2,28 +2,28 @@
 <table name="questbonusreward" version="0.1" autokey="false" module="6">
 	<el name="table" child="1" />
 	<el name="record">
-		<record name="id" type="Int64" key="y" required="y" />
-		<record name="alias" type="String" required="y" max="70" />
-		<record name="normal-bonus-reward-total-count" type="Int8" default="0" min="0" max="4" />
-		<record name="fixed-item" type="Ref" ref="item" repeat="4" />
-		<record name="fixed-item-count" type="Int16" default="0" repeat="4" min="0" max="10000" />
-		<record name="fixed-item-total-count" type="Int8" default="0" hidden="y" />
-		<record name="random-item" type="Ref" ref="item" repeat="120" />
-		<record name="random-item-stack-count-min" type="Int16" default="0" repeat="120" min="0" max="10000" />
-		<record name="random-item-stack-count-max" type="Int16" default="0" repeat="120" min="0" max="10000" />
-		<record name="random-item-selected-count" type="Int8" default="0" min="0" max="4" />
-		<record name="random-item-total-input-count" type="Int8" default="0" hidden="y" />
-		<record name="random-item-tooltip-text" type="Ref" ref="text" />
-		<record name="unk-" type="Int8" default="0" />
-		<record name="unk-" type="Int32" default="0" />
-		<record name="paid-fixed-item" type="Ref" ref="item" repeat="4" />
-		<record name="paid-fixed-item-count" type="Int16" default="0" repeat="4" min="0" max="10000" />
-		<record name="paid-fixed-item-total-count" type="Int8" default="0" hidden="y" />
-		<record name="paid-random-item" type="Ref" ref="item" repeat="120" />
-		<record name="paid-random-item-stack-count-min" type="Int16" default="0" repeat="120" min="0" max="10000" />
-		<record name="paid-random-item-stack-count-max" type="Int16" default="0" repeat="120" min="0" max="10000" />
-		<record name="paid-random-item-selected-count" type="Int8" default="0" min="0" max="4" />
-		<record name="paid-random-item-total-input-count" type="Int8" default="0" hidden="y" />
-		<record name="paid-random-item-tooltip-text" type="Ref" ref="text" />
+		<attribute name="id" type="Int64" key="y" required="y" />
+		<attribute name="alias" type="String" required="y" max="70" />
+		<attribute name="normal-bonus-reward-total-count" type="Int8" default="0" min="0" max="4" />
+		<attribute name="fixed-item" type="Ref" ref="item" repeat="4" />
+		<attribute name="fixed-item-count" type="Int16" default="0" repeat="4" min="0" max="10000" />
+		<attribute name="fixed-item-total-count" type="Int8" default="0" hidden="y" />
+		<attribute name="random-item" type="Ref" ref="item" repeat="120" />
+		<attribute name="random-item-stack-count-min" type="Int16" default="0" repeat="120" min="0" max="10000" />
+		<attribute name="random-item-stack-count-max" type="Int16" default="0" repeat="120" min="0" max="10000" />
+		<attribute name="random-item-selected-count" type="Int8" default="0" min="0" max="4" />
+		<attribute name="random-item-total-input-count" type="Int8" default="0" hidden="y" />
+		<attribute name="random-item-tooltip-text" type="Ref" ref="text" />
+		<attribute name="unk-" type="Int8" default="0" />
+		<attribute name="unk-" type="Int32" default="0" />
+		<attribute name="paid-fixed-item" type="Ref" ref="item" repeat="4" />
+		<attribute name="paid-fixed-item-count" type="Int16" default="0" repeat="4" min="0" max="10000" />
+		<attribute name="paid-fixed-item-total-count" type="Int8" default="0" hidden="y" />
+		<attribute name="paid-random-item" type="Ref" ref="item" repeat="120" />
+		<attribute name="paid-random-item-stack-count-min" type="Int16" default="0" repeat="120" min="0" max="10000" />
+		<attribute name="paid-random-item-stack-count-max" type="Int16" default="0" repeat="120" min="0" max="10000" />
+		<attribute name="paid-random-item-selected-count" type="Int8" default="0" min="0" max="4" />
+		<attribute name="paid-random-item-total-input-count" type="Int8" default="0" hidden="y" />
+		<attribute name="paid-random-item-tooltip-text" type="Ref" ref="text" />
 	</el>
 </table>

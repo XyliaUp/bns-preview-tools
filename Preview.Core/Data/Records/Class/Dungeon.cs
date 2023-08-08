@@ -6,7 +6,7 @@ namespace Xylia.Preview.Data.Record;
 public sealed class Dungeon : BaseRecord, IAttraction
 {
 	[Signal("ui-text-grade")]
-	public byte UiTextGrade;
+	public sbyte UiTextGrade;
 
 	[Signal("dungeon-name2")]
 	public Text DungeonName2;

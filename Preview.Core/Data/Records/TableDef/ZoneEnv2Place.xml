@@ -2,18 +2,18 @@
 <table name="zoneenv2place" version="0.20" autokey="true" module="526">
   <el name="table" child="1" />
   <el name="record">
-    <record name="alias" type="String" required="y" max="70" />
-    <record name="region-point" type="Vector32" default="0,0,0" repeat="4" />
-    <record name="height" type="Distance" default="0" />
-    <record name="action-point" type="Vector32" required="y" />
-    <record name="action-radius" type="Distance" required="y" />
-    <record name="use-manipulation-point" type="Bool" required="y" />
-    <record name="manipulation-point" type="Vector32" required="y" />
-    <record name="manipulation-radius" type="Distance" required="y" />
-    <record name="manipulation-height-upper" type="Distance" required="y" />
-    <record name="manipulation-height-lower" type="Distance" required="y" />
-    <record name="env-actorname" type="String" max="70" />
-    <record name="spawn-env" type="Bool" />
+    <attribute name="alias" type="String" required="y" max="70" />
+    <attribute name="region-point" type="Vector32" default="0,0,0" repeat="4" />
+    <attribute name="height" type="Distance" default="0" />
+    <attribute name="action-point" type="Vector32" required="y" />
+    <attribute name="action-radius" type="Distance" required="y" />
+    <attribute name="use-manipulation-point" type="Bool" required="y" />
+    <attribute name="manipulation-point" type="Vector32" required="y" />
+    <attribute name="manipulation-radius" type="Distance" required="y" />
+    <attribute name="manipulation-height-upper" type="Distance" required="y" />
+    <attribute name="manipulation-height-lower" type="Distance" required="y" />
+    <attribute name="env-actorname" type="String" max="70" />
+    <attribute name="spawn-env" type="Bool" />
     <sub name="button" />
     <sub name="chest" />
     <sub name="pot" />
@@ -25,9 +25,9 @@
     <sub name="foot-switch" />
     <sub name="effect-region" />
     <sub name="airdash">
-      <record name="duration" type="Msec" default="0" />
-      <record name="end-pos" type="Vector32" required="y" />
-      <record name="summon-end-pos" type="Vector32" default="0,0,0" />
+      <attribute name="duration" type="Msec" default="0" />
+      <attribute name="end-pos" type="Vector32" required="y" />
+      <attribute name="summon-end-pos" type="Vector32" default="0,0,0" />
     </sub>
     <sub name="airdash-leave" />
     <sub name="oceanic-region" />

@@ -2,8 +2,8 @@
 <table name="summonedbeautyshop" version="0.1" autokey="true" module="6">
   <el name="table" child="1" />
   <el name="record">
-    <record name="alias" type="String" required="y" max="70" />
-    <record name="beauty-item" type="Ref" ref="summonedpreset" repeat="120" />
-    <record name="sell-rate" type="Int16" required="y" min="1" max="10000" />
+    <attribute name="alias" type="String" required="y" max="70" />
+    <attribute name="beauty-item" type="Ref" ref="summonedpreset" repeat="120" />
+    <attribute name="sell-rate" type="Int16" required="y" min="1" max="10000" />
   </el>
 </table>

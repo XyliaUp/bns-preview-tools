@@ -2,8 +2,8 @@
 <table name="event-contents" version="0.4" autokey="true" module="4">
   <el name="table" child="1" />
   <el name="record">
-    <record name="alias" type="String" required="y" max="70" />
-    <record name="publisher" type="Seq">
+    <attribute name="alias" type="String" required="y" max="70" />
+    <attribute name="publisher" type="Seq">
       <case name="none" default="y" />
       <case name="nc-korea" />
       <case name="tencent" />
@@ -18,16 +18,16 @@
       <case name="rncw" />
       <case name="rinv" />
       <case name="all" />
-    </record>
-    <record name="zone-id" type="Int32" default="0" max="30000" />
-    <record name="start-year" type="Int16" default="0" min="0" />
-    <record name="start-month" type="Int8" default="0" min="0" max="12" />
-    <record name="start-day" type="Int8" default="0" min="0" max="31" />
-    <record name="start-hour" type="Int8" default="-1" min="-1" max="23" />
-    <record name="end-year" type="Int16" default="0" min="0" />
-    <record name="end-month" type="Int8" default="0" min="0" max="12" />
-    <record name="end-day" type="Int8" default="0" min="0" max="31" />
-    <record name="end-hour" type="Int8" default="-1" min="-1" max="24" />
-    <record name="sub-level-ref" type="String" max="80" />
+    </attribute>
+    <attribute name="zone-id" type="Int32" default="0" max="30000" />
+    <attribute name="start-year" type="Int16" default="0" min="0" />
+    <attribute name="start-month" type="Int8" default="0" min="0" max="12" />
+    <attribute name="start-day" type="Int8" default="0" min="0" max="31" />
+    <attribute name="start-hour" type="Int8" default="-1" min="-1" max="23" />
+    <attribute name="end-year" type="Int16" default="0" min="0" />
+    <attribute name="end-month" type="Int8" default="0" min="0" max="12" />
+    <attribute name="end-day" type="Int8" default="0" min="0" max="31" />
+    <attribute name="end-hour" type="Int8" default="-1" min="-1" max="24" />
+    <attribute name="sub-level-ref" type="String" max="80" />
   </el>
 </table>

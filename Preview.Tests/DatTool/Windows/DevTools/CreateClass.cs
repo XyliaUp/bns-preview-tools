@@ -1,88 +1,84 @@
 ﻿using System.Text;
+using System.Xml;
+
+using BnsBinTool.Core.Definitions;
+
+using Xylia.Extension;
+using Xylia.Preview.Data.Models.BinData.Table;
+using Xylia.Preview.Data.Models.BinData.Table.Config;
 
 namespace Xylia.Preview.Tests.DatTool.Windows.DevTools;
-public static class Create
+public static class CreateClass
 {
-    public static string Class(string Text)
-    {
-        StringBuilder result = new();
+	public static string Instance(string text)
+	{
+		var xml = new XmlDocument();
+		xml.LoadXml(text);
 
-   //     ushort? SubClass = null;
-   //     void EndClass()
-   //     {
-   //         if (SubClass.HasValue)
-   //         {
-   //             result.Remove(result.Length - 2, 1);
-   //             result.AppendLine("}\n");
-   //         }
-   //     }
+		return Instance(xml);
+	}
 
+	public static string Instance(XmlDocument xml)
+	{
+		StringBuilder result = new();
 
+		var table = TableDefinitionEx.LoadFrom(null, xml.DocumentElement);
+		foreach (var attribute in table.Attributes) InstanceAttribute(attribute, result);
 
-   //     XmlDocument tmp = new();
-   //     tmp.LoadXml($"<?xml version=\"1.0\"?>\n<table>{Text?.Trim()}</table>");
+		foreach (var sub in table.Subtables)
+		{
+			result.AppendLine($"public sealed class {sub.Name.TitleCase()} : BaseClass");
+			result.AppendLine("{");
 
-   //     var table = DataTableDefinition.LoadFrom(tmp.SelectNodes("table/record").OfType<XmlElement>(), null);
-   //     foreach (AttributeDef attr in table.Attributes)
-   //     {
-			//var name = attr.Name;
-			//if (attr.Repeat > 1) name += $"-{0}";
+			foreach (var attribute in sub.Attributes) InstanceAttribute(attribute, result, true);
 
-			////if (SubClass != attr.Filter)
-			////{
-			////    EndClass();
+			result.Remove(result.Length - 2, 1);
+			result.AppendLine("}\n");
+		}
 
-			////    result.AppendLine($"public sealed class {table.TypeInfo.GetName((short)attr.Filter.Value).TitleCase()} : BaseClass");
-			////    result.AppendLine("{");
-
-			////    SubClass = attr.Filter;
-			////}
-
-			//#region Type
-			//string TypeInfo = attr.Type switch
-   //         {
-   //             AttributeType.TInt8 => "byte",
-   //             AttributeType.TInt16 => "short",
-   //             AttributeType.TInt32 => "int",
-   //             AttributeType.TInt64 => "long",
-   //             AttributeType.TFloat32 => "float",
-   //             AttributeType.TBool => "bool",
-   //             AttributeType.TString or AttributeType.TNative => "string",
-   //             AttributeType.TRef => attr.ReferedTableName?.TitleCase(),
-   //             AttributeType.TXUnknown1 or AttributeType.TTime64 => "DateTime",
-   //             AttributeType.TXUnknown2 => "FPath",
-   //             AttributeType.TSeq or AttributeType.TSeq16 or AttributeType.TProp_seq or AttributeType.TProp_field
-   //                 => attr.SequenceDef?.Name.TitleCase() ?? attr.Name.TitleCase() + "Seq",
-
-   //             _ => attr.Type.ToString(),
-   //         };
-   //         #endregion
+		return result.ToString();
+	}
 
 
-   //         #region sys_attr
-   //         List<string> sys_attr = new();
-   //         if (name.Contains('-'))
-   //         {
-   //             if (SubClass.HasValue) result.Append('\t');
-   //             sys_attr.Add($"Signal(\"{name}\")");
-   //         }
+	private static void InstanceAttribute(AttributeDefinition attribute, StringBuilder result, bool SubClass = false)
+	{
+		var prefix = new string('\t', SubClass ? 1 : 0);
 
-   //         if (attr.Repeat > 1) sys_attr.Add($"Repeat({attr.Repeat})");
+		#region type
+		string TypeInfo = attribute.Type switch
+		{
+			AttributeType.TInt8 => "sbyte",
+			AttributeType.TInt16 => "short",
+			AttributeType.TInt32 => "int",
+			AttributeType.TInt64 => "long",
+			AttributeType.TFloat32 => "float",
+			AttributeType.TBool => "bool",
+			AttributeType.TString or AttributeType.TNative => "string",
+			AttributeType.TXUnknown1 or AttributeType.TTime64 => "DateTime",
+			AttributeType.TXUnknown2 => "FPath",
+			AttributeType.TRef => attribute is AttributeDef attrDef ? attrDef.ReferedTableName?.TitleCase() : $"ref_{attribute.ReferedTable}",
+			AttributeType.TSeq or AttributeType.TSeq16 or AttributeType.TProp_seq or AttributeType.TProp_field
+				=> attribute.SequenceDef?.Name?.TitleCase() ?? attribute.Name.TitleCase() + "Seq",
 
-   //         if (sys_attr.Any()) result.AppendLine($"[{sys_attr.Aggregate(", ")}]");
-   //         #endregion
+			_ => attribute.Type.ToString(),
+		};
+
+		#endregion
+
+		#region sys_attr
+		List<string> sys_attr = new();
+		if (attribute.Name.RegexMatch(@"^\d+$")) sys_attr.Add($"Signal(\"{attribute.Name}\")");
+		if (attribute.Repeat > 1)
+		{
+			TypeInfo = $"{TypeInfo}[]";
+			sys_attr.Add($"Repeat({attribute.Repeat})");
+		}
 
 
-   //         if (SubClass.HasValue) result.Append('\t');
-   //         result.Append($"public {TypeInfo} {name.TitleCase()};\n\n");
-   //     }
-   //     EndClass();
+		if (sys_attr.Any()) result.AppendLine($"{prefix}[{sys_attr.Aggregate(", ")}]");
+		#endregion
 
-        return result.ToString();
-    }
 
-    public static string Seq(string Text)
-    {
-        return null;
-    }
+		result.Append($"{prefix}public {TypeInfo} {attribute.Name.TitleCase()};\n\n");
+	}
 }

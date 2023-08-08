@@ -8,6 +8,8 @@ using Xylia.Preview.Common.Extension;
 using Xylia.Preview.Common.Seq;
 using Xylia.Preview.Data.Helper;
 using Xylia.Preview.Data.Record;
+using Xylia.Preview.GameUI.Scene.Game_ToolTipScene.Skill3ToolTipPanel_1.SkillPreview;
+using Xylia.Preview.UI.Extension;
 
 using static Xylia.Preview.Data.Record.Skill3;
 
@@ -178,7 +180,7 @@ public partial class SkillPreview : UserControl
 				this.scale.Text = GatherRange.RadiusMax / 100 + "米";
 
 				string res = "BNSR/Content/Art/UI/GameUI/Resource/GameUI_ImageSet/SkillGatherType/" + GatherType.GetSignal().Replace("-", "_");
-				this.SkillGatherType.Image = res.GetUObject().GetImage();
+				this.SkillGatherType.Image = FileCache.Provider.LoadObject(res)?.GetImage();
 			}
 			#endregion
 		}

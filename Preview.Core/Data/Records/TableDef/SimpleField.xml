@@ -2,26 +2,26 @@
 <table name="simple-field" version="0.5" autokey="false" module="6">
   <el name="table" child="1" />
   <el name="record">
-    <record name="alias" type="String" required="y" max="70" />
-    <record name="zone" type="Ref" ref="zone" required="y" />
-    <record name="id" type="Int32" key="y" required="y" min="1" />
-    <record name="max-pc-count" type="Int16" required="y" min="1" max="100" />
-    <record name="required-level" type="Int8" default="0" min="0" max="100" />
-    <record name="required-mastery-level" type="Int8" default="0" min="0" max="100" />
-    <record name="required-preceding-quest" type="Ref" ref="quest" repeat="3" />
-    <record name="required-preceding-quest-check" type="Seq" seq="check" default="and" />
-    <record name="group" type="Ref" ref="attraction-group" />
-    <record name="recommend-attack-power" type="Int16" default="0" min="0" max="9999" />
-    <record name="standard-gear-weapon" type="Ref" ref="item" required="y" />
-    <record name="simple-field-name2" type="Ref" ref="text" />
-    <record name="simple-field-desc" type="Ref" ref="text" />
-    <record name="reward-summary" type="Ref" ref="attractionrewardsummary" />
-    <record name="ui-text-grade" type="Int8" default="0" max="8" />
-    <record name="tactic" type="Ref" ref="text" />
-    <record name="recommend-alias" type="Ref" ref="contentsjournalrecommenditem" />
-    <record name="recommend-level-min" type="Int8" default="0" />
-    <record name="recommend-level-max" type="Int8" default="0" />
-    <record name="recommend-mastery-level-min" type="Int8" default="0" />
-    <record name="recommend-mastery-level-max" type="Int8" default="0" />
+    <attribute name="alias" type="String" required="y" max="70" />
+    <attribute name="zone" type="Ref" ref="zone" required="y" />
+    <attribute name="id" type="Int32" key="y" required="y" min="1" />
+    <attribute name="max-pc-count" type="Int16" required="y" min="1" max="100" />
+    <attribute name="required-level" type="Int8" default="0" min="0" max="100" />
+    <attribute name="required-mastery-level" type="Int8" default="0" min="0" max="100" />
+    <attribute name="required-preceding-quest" type="Ref" ref="quest" repeat="3" />
+    <attribute name="required-preceding-quest-check" type="Seq" seq="check" default="and" />
+    <attribute name="group" type="Ref" ref="attraction-group" />
+    <attribute name="recommend-attack-power" type="Int16" default="0" min="0" max="9999" />
+    <attribute name="standard-gear-weapon" type="Ref" ref="item" required="y" />
+    <attribute name="simple-field-name2" type="Ref" ref="text" />
+    <attribute name="simple-field-desc" type="Ref" ref="text" />
+    <attribute name="reward-summary" type="Ref" ref="attractionrewardsummary" />
+    <attribute name="ui-text-grade" type="Int8" default="0" max="8" />
+    <attribute name="tactic" type="Ref" ref="text" />
+    <attribute name="recommend-alias" type="Ref" ref="contentsjournalrecommenditem" />
+    <attribute name="recommend-level-min" type="Int8" default="0" />
+    <attribute name="recommend-level-max" type="Int8" default="0" />
+    <attribute name="recommend-mastery-level-min" type="Int8" default="0" />
+    <attribute name="recommend-mastery-level-max" type="Int8" default="0" />
   </el>
 </table>

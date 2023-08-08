@@ -2,6 +2,7 @@
 using Xylia.Preview.Data.Helper;
 using Xylia.Preview.Data.Record;
 using Xylia.Preview.GameUI.Scene.Game_ItemGrowth2;
+using Xylia.Preview.GameUI.Scene.Game_ItemGrowth2.Game_ItemGrowth2;
 
 namespace Xylia.Preview.GameUI.Scene.Game_Intension;
 public partial class IntensionResetConfirmPanel : EquipmentGuidePage
@@ -38,18 +39,16 @@ public partial class IntensionResetConfirmPanel : EquipmentGuidePage
 		var OptionList = OptionLists[CurrentOptionList.SelectedIndex];
 		this.SubIngredientPreview.SetData(OptionList);
 
-		#region 获取强化效果列表
+		#region option
 		AcquirableOptionList.Clear();
-		foreach (var option in OptionList.Options)
+		foreach (var option in OptionList.Option)
 		{
-			if (option is null) break;
+			var _option = option;
+			if (option is null) continue;
+			if (option.Level < ImproveLevel)
+				_option = FileCache.Data.ItemImproveOption[option.Id, ImproveLevel] ?? option;
 
-			if (option.Level >= ImproveLevel) AcquirableOptionList.Add(option.ToString());
-			else
-			{
-				var _option = FileCache.Data.ItemImproveOption[option.Id, ImproveLevel] ?? option;
-				AcquirableOptionList.Add(_option.ToString());
-			}
+			AcquirableOptionList.Add(_option.ToString());
 		}
 
 		AcquirableOptionList.RefreshList();
@@ -59,6 +58,6 @@ public partial class IntensionResetConfirmPanel : EquipmentGuidePage
 	protected override void SubIngredientPreview_RecipeChanged(RecipeChangedEventArgs e)
 	{
 		this.FixedIngredientPreview.SetData(e.ItemImproveOptionList, "draw-cost-sub-item-" + e.Index, "draw-cost-sub-item-count-" + e.Index, 6);
-		this.MoneyCostPreview.MoneyCost = e.ItemImproveOptionList.Attributes[$"draw-cost-money-{e.Index}"].ToInt();
+		this.MoneyCostPreview.MoneyCost = e.ItemImproveOptionList.Attributes[$"draw-cost-money", e.Index].ToInt32();
 	}
 }

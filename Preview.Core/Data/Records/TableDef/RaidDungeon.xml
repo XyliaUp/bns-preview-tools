@@ -2,53 +2,53 @@
 <table name="raid-dungeon" version="5.0" autokey="false" module="70" maxid="31999">
   <el name="table" child="1" />
   <el name="record">
-    <record name="id" type="Int32" key="y" required="y" min="1" max="31999" />
-    <record name="alias" type="String" required="y" max="70" />
-    <record name="name2" type="Ref" ref="text" required="y" />
-    <record name="dungeon-type" type="Seq">
+    <attribute name="id" type="Int32" key="y" required="y" min="1" max="31999" />
+    <attribute name="alias" type="String" required="y" max="70" />
+    <attribute name="name2" type="Ref" ref="text" required="y" />
+    <attribute name="dungeon-type" type="Seq">
       <case name="unbind" default="y" />
       <case name="bind" />
-    </record>
-    <record name="group" type="Ref" ref="attraction-group" />
-    <record name="max-unbind-count" type="Int8" default="0" min="0" max="100" />
-    <record name="reset-money" type="Int32" default="0" min="0" />
-    <record name="reset-item" type="Ref" ref="item" repeat="4" />
-    <record name="reset-item-count" type="Int8" default="0" repeat="4" min="0" />
-    <record name="use-personal-binding" type="Bool" />
-    <record name="personal-binding-slot" type="Seq">
+    </attribute>
+    <attribute name="group" type="Ref" ref="attraction-group" />
+    <attribute name="max-unbind-count" type="Int8" default="0" min="0" max="100" />
+    <attribute name="reset-money" type="Int32" default="0" min="0" />
+    <attribute name="reset-item" type="Ref" ref="item" repeat="4" />
+    <attribute name="reset-item-count" type="Int8" default="0" repeat="4" min="0" />
+    <attribute name="use-personal-binding" type="Bool" />
+    <attribute name="personal-binding-slot" type="Seq">
       <case name="none" default="y" />
       <case name="slot-1" />
       <case name="slot-2" />
       <case name="slot-3" />
-    </record>
-    <record name="required-level" type="Int8" default="0" min="0" max="100" />
-    <record name="required-mastery-level" type="Int8" default="0" min="0" max="100" />
-    <record name="required-preceding-quest" type="Ref" ref="quest" repeat="3" />
-    <record name="required-preceding-quest-check" type="Seq" seq="check" default="and" />
-    <record name="attraction-quest" type="Ref" ref="quest" repeat="10" hidden="y" />
-    <record name="enable-heart-count" type="Bool" />
-    <record name="max-instant-heart-count" type="Int8" default="0" />
-    <record name="effect" type="Ref" ref="effect" repeat="3" />
-    <record name="step-count" type="Int8" default="1" min="1" max="9" />
-    <record name="zone" type="Ref" ref="zone" repeat="9" />
-    <record name="boss-npc" type="Ref" ref="npc" repeat="9" />
-    <record name="zone-index" type="Int8" default="0" repeat="9" min="0" max="16" />
-    <record name="dungeon-tap-name2" type="Ref" ref="text" />
-    <record name="step-name2" type="Ref" ref="text" repeat="9" />
-    <record name="step-image" type="String" repeat="9" max="70" />
-    <record name="arena-minimap" type="String" max="70" />
-    <record name="raid-dungeon-desc" type="Ref" ref="text" />
-    <record name="ui-text-grade" type="Int8" default="0" max="8" />
-    <record name="reward-summary" type="Ref" ref="attractionrewardsummary" />
-    <record name="recommand-level-min" type="Int8" default="0" />
-    <record name="recommand-level-max" type="Int8" default="0" />
-    <record name="recommand-mastery-level-min" type="Int8" default="0" />
-    <record name="recommand-mastery-level-max" type="Int8" default="0" />
-    <record name="recommend-attack-power" type="Int16" default="0" min="0" max="9999" />
-    <record name="standard-gear-weapon" type="Ref" ref="item" required="y" />
-    <record name="display-quests" type="Ref" ref="quest" repeat="12" hidden="y" />
-    <record name="tactic" type="Ref" ref="text" />
-    <record name="recommend-alias" type="Ref" ref="contentsjournalrecommenditem" />
-    <record name="contents-reset" type="Ref" ref="contents-reset" hidden="y" />
+    </attribute>
+    <attribute name="required-level" type="Int8" default="0" min="0" max="100" />
+    <attribute name="required-mastery-level" type="Int8" default="0" min="0" max="100" />
+    <attribute name="required-preceding-quest" type="Ref" ref="quest" repeat="3" />
+    <attribute name="required-preceding-quest-check" type="Seq" seq="check" default="and" />
+    <attribute name="attraction-quest" type="Ref" ref="quest" repeat="10" hidden="y" />
+    <attribute name="enable-heart-count" type="Bool" />
+    <attribute name="max-instant-heart-count" type="Int8" default="0" />
+    <attribute name="effect" type="Ref" ref="effect" repeat="3" />
+    <attribute name="step-count" type="Int8" default="1" min="1" max="9" />
+    <attribute name="zone" type="Ref" ref="zone" repeat="9" />
+    <attribute name="boss-npc" type="Ref" ref="npc" repeat="9" />
+    <attribute name="zone-index" type="Int8" default="0" repeat="9" min="0" max="16" />
+    <attribute name="dungeon-tap-name2" type="Ref" ref="text" />
+    <attribute name="step-name2" type="Ref" ref="text" repeat="9" />
+    <attribute name="step-image" type="String" repeat="9" max="70" />
+    <attribute name="arena-minimap" type="String" max="70" />
+    <attribute name="raid-dungeon-desc" type="Ref" ref="text" />
+    <attribute name="ui-text-grade" type="Int8" default="0" max="8" />
+    <attribute name="reward-summary" type="Ref" ref="attractionrewardsummary" />
+    <attribute name="recommand-level-min" type="Int8" default="0" />
+    <attribute name="recommand-level-max" type="Int8" default="0" />
+    <attribute name="recommand-mastery-level-min" type="Int8" default="0" />
+    <attribute name="recommand-mastery-level-max" type="Int8" default="0" />
+    <attribute name="recommend-attack-power" type="Int16" default="0" min="0" max="9999" />
+    <attribute name="standard-gear-weapon" type="Ref" ref="item" required="y" />
+    <attribute name="display-quests" type="Ref" ref="quest" repeat="12" hidden="y" />
+    <attribute name="tactic" type="Ref" ref="text" />
+    <attribute name="recommend-alias" type="Ref" ref="contentsjournalrecommenditem" />
+    <attribute name="contents-reset" type="Ref" ref="contents-reset" hidden="y" />
   </el>
 </table>

@@ -8,5 +8,5 @@ public sealed class SetZoneObject : Reaction
 {
 	public Script_obj Object;
 
-	public byte Zreg;
+	public sbyte Zreg;
 }

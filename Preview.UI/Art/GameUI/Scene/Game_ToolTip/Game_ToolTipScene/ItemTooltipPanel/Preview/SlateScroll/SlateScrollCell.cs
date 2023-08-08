@@ -34,7 +34,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_ToolTip.ItemTooltipPanel.Cell
 		}
 
 		[Category("Data"), Description("品质")]
-		public byte Grade
+		public sbyte Grade
 		{
 			get => this.Panel_ItemInfo.ItemGrade;
 			set => this.Panel_ItemInfo.ItemGrade = value;

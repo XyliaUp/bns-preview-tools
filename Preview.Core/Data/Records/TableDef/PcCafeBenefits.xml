@@ -2,7 +2,7 @@
 <table name="pccafebenefits" version="0.15" autokey="false" module="6">
   <el name="table" child="1" />
   <el name="record">
-    <record name="code" type="Seq" key="y" required="y">
+    <attribute name="code" type="Seq" key="y" required="y">
       <case name="none" />
       <case name="ncsoft-korea" />
       <case name="ncsoft-japan" />
@@ -18,26 +18,26 @@
       <case name="rtx-silver" />
       <case name="rtx-bronze" />
       <case name="rtx-platinum" />
-    </record>
-    <record name="job" type="Prop_seq" seq="job" key="y" required="y" />
-    <record name="effect" type="Ref" ref="effect" />
-    <record name="duel-effect" type="Ref" ref="effect" />
-    <record name="party-battle-point-bonus-percent" type="Int32" default="0" min="0" max="100" />
-    <record name="party-battle-exp-bonus-percent" type="Int32" default="0" min="0" max="100" />
-    <record name="duel-point-bonus-percent" type="Int32" default="0" min="0" max="100" />
-    <record name="duel-exp-bonus-percent" type="Int32" default="0" min="0" max="100" />
-    <record name="field-play-point-bonus-percent" type="Int32" default="0" min="0" max="100" />
-    <record name="npc-looting-money-reward-percent" type="Int32" default="0" min="0" max="200" />
-    <record name="weapon-accessory-transform-money-cost-discount-rate" type="Int8" default="0" min="0" max="100" />
-    <record name="weapon-gem-transform-money-cost-discount-rate" type="Int8" default="0" min="0" max="100" />
-    <record name="item-awakening-money-cost-discount-rate" type="Int8" default="0" min="0" max="100" />
-    <record name="detach-weapon-gem-money-cost-discount-rate" type="Int8" default="0" min="0" max="100" />
-    <record name="purify-item-discount-rate" type="Int8" default="0" min="0" max="100" />
-    <record name="market-register-amount-tax-discount-rate" type="Int8" default="0" min="0" max="100" />
-    <record name="unlocated-warehouse" type="Bool" />
-    <record name="quest-reward" type="Bool" />
-    <record name="quest-reward-account-exp-bonus-percent" type="Int32" default="0" min="0" max="1000" />
-    <record name="tendency-quest-reward-account-exp-bonus-percent" type="Int32" default="0" min="0" max="1000" />
-    <record name="challenge-reward-account-exp-bonus-percent" type="Int32" default="0" min="0" max="1000" />
+    </attribute>
+    <attribute name="job" type="Prop_seq" seq="job" key="y" required="y" />
+    <attribute name="effect" type="Ref" ref="effect" />
+    <attribute name="duel-effect" type="Ref" ref="effect" />
+    <attribute name="party-battle-point-bonus-percent" type="Int32" default="0" min="0" max="100" />
+    <attribute name="party-battle-exp-bonus-percent" type="Int32" default="0" min="0" max="100" />
+    <attribute name="duel-point-bonus-percent" type="Int32" default="0" min="0" max="100" />
+    <attribute name="duel-exp-bonus-percent" type="Int32" default="0" min="0" max="100" />
+    <attribute name="field-play-point-bonus-percent" type="Int32" default="0" min="0" max="100" />
+    <attribute name="npc-looting-money-reward-percent" type="Int32" default="0" min="0" max="200" />
+    <attribute name="weapon-accessory-transform-money-cost-discount-rate" type="Int8" default="0" min="0" max="100" />
+    <attribute name="weapon-gem-transform-money-cost-discount-rate" type="Int8" default="0" min="0" max="100" />
+    <attribute name="item-awakening-money-cost-discount-rate" type="Int8" default="0" min="0" max="100" />
+    <attribute name="detach-weapon-gem-money-cost-discount-rate" type="Int8" default="0" min="0" max="100" />
+    <attribute name="purify-item-discount-rate" type="Int8" default="0" min="0" max="100" />
+    <attribute name="market-register-amount-tax-discount-rate" type="Int8" default="0" min="0" max="100" />
+    <attribute name="unlocated-warehouse" type="Bool" />
+    <attribute name="quest-reward" type="Bool" />
+    <attribute name="quest-reward-account-exp-bonus-percent" type="Int32" default="0" min="0" max="1000" />
+    <attribute name="tendency-quest-reward-account-exp-bonus-percent" type="Int32" default="0" min="0" max="1000" />
+    <attribute name="challenge-reward-account-exp-bonus-percent" type="Int32" default="0" min="0" max="1000" />
   </el>
 </table>

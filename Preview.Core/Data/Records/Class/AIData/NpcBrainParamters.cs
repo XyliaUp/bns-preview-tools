@@ -60,13 +60,13 @@ public sealed class NpcBrainParameters : BaseRecord
 	public int PeriodBindCurTargetSec;
 
 	[Signal("bleeding-1")]
-	public byte Bleeding1;
+	public sbyte Bleeding1;
 
 	[Signal("bleeding-2")]
-	public byte Bleeding2;
+	public sbyte Bleeding2;
 
 	[Signal("bleeding-3")]
-	public byte Bleeding3;
+	public sbyte Bleeding3;
 
 	[Signal("reach-1")]
 	public int Reach1;

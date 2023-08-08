@@ -5,7 +5,7 @@ public sealed class ItemImprove : BaseRecord
 {
 	public int Id;
 
-	public byte Level;
+	public sbyte Level;
 
 	[Signal("success-option-list-id")]
 	public int SuccessOptionListId;

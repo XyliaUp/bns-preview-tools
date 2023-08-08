@@ -2,13 +2,13 @@
 <table name="pc-voice-set" version="0.5" autokey="false" module="4">
   <el name="table" child="1" />
   <el name="record">
-    <record name="id" type="Int8" key="y" required="y" />
-    <record name="job" type="Prop_seq" seq="job" key="y" required="y" />
-    <record name="stance" type="Prop_seq" seq="stance" key="y" required="y" />
-    <record name="voice-set-name" type="XUnknown2" required="y" />
-    <record name="sample-sound-name" type="XUnknown2" repeat="6" />
-    <record name="type1-sample-sound-name" type="XUnknown2" />
-    <record name="type2-sample-sound-name" type="XUnknown2" />
-    <record name="type3-sample-sound-name" type="XUnknown2" />
+    <attribute name="id" type="Int8" key="y" required="y" />
+    <attribute name="job" type="Prop_seq" seq="job" key="y" required="y" />
+    <attribute name="stance" type="Prop_seq" seq="stance" key="y" required="y" />
+    <attribute name="voice-set-name" type="XUnknown2" required="y" />
+    <attribute name="sample-sound-name" type="XUnknown2" repeat="6" />
+    <attribute name="type1-sample-sound-name" type="XUnknown2" />
+    <attribute name="type2-sample-sound-name" type="XUnknown2" />
+    <attribute name="type3-sample-sound-name" type="XUnknown2" />
   </el>
 </table>

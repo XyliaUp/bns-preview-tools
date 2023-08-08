@@ -2,26 +2,26 @@
 <table name="jackpot-boss-zone" version="0.5" autokey="false" module="6" maxid="31999">
   <el name="table" child="1" />
   <el name="record">
-    <record name="id" type="Int16" key="y" required="y" min="1" max="31999" />
-    <record name="alias" type="String" required="y" max="70" />
-    <record name="zone" type="Ref" ref="zone" />
-    <record name="group" type="Ref" ref="attraction-group" />
-    <record name="transfer-jackpot-percent" type="Int16" default="0" min="0" max="100" />
-    <record name="boss-max-faction-score" type="Int32" default="0" min="0" max="1000000" />
-    <record name="spawn-boss-faction-score" type="Int32" default="0" min="0" max="1000000" />
-    <record name="boss-npc-faction-1" type="Ref" ref="npc" />
-    <record name="boss-npc-faction-2" type="Ref" ref="npc" />
-    <record name="despawn-force-faction-1" type="Bool" default="y" />
-    <record name="respawn-after-despawn-faction-1" type="Bool" />
-    <record name="spawn-delay-faction-1" type="Msec" default="0" />
-    <record name="despawn-force-faction-2" type="Bool" default="y" />
-    <record name="respawn-after-despawn-faction-2" type="Bool" />
-    <record name="spawn-delay-faction-2" type="Msec" default="0" />
-    <record name="attraction-quest" type="Ref" ref="quest" repeat="5" hidden="y" />
-    <record name="ui-filter-attraction-quest-only" type="Bool" />
-    <record name="name2" type="Ref" ref="text" />
-    <record name="desc" type="Ref" ref="text" />
-    <record name="ui-text-grade" type="Int8" default="0" max="8" />
-    <record name="reward-summary" type="Ref" ref="attractionrewardsummary" />
+    <attribute name="id" type="Int16" key="y" required="y" min="1" max="31999" />
+    <attribute name="alias" type="String" required="y" max="70" />
+    <attribute name="zone" type="Ref" ref="zone" />
+    <attribute name="group" type="Ref" ref="attraction-group" />
+    <attribute name="transfer-jackpot-percent" type="Int16" default="0" min="0" max="100" />
+    <attribute name="boss-max-faction-score" type="Int32" default="0" min="0" max="1000000" />
+    <attribute name="spawn-boss-faction-score" type="Int32" default="0" min="0" max="1000000" />
+    <attribute name="boss-npc-faction-1" type="Ref" ref="npc" />
+    <attribute name="boss-npc-faction-2" type="Ref" ref="npc" />
+    <attribute name="despawn-force-faction-1" type="Bool" default="y" />
+    <attribute name="respawn-after-despawn-faction-1" type="Bool" />
+    <attribute name="spawn-delay-faction-1" type="Msec" default="0" />
+    <attribute name="despawn-force-faction-2" type="Bool" default="y" />
+    <attribute name="respawn-after-despawn-faction-2" type="Bool" />
+    <attribute name="spawn-delay-faction-2" type="Msec" default="0" />
+    <attribute name="attraction-quest" type="Ref" ref="quest" repeat="5" hidden="y" />
+    <attribute name="ui-filter-attraction-quest-only" type="Bool" />
+    <attribute name="name2" type="Ref" ref="text" />
+    <attribute name="desc" type="Ref" ref="text" />
+    <attribute name="ui-text-grade" type="Int8" default="0" max="8" />
+    <attribute name="reward-summary" type="Ref" ref="attractionrewardsummary" />
   </el>
 </table>

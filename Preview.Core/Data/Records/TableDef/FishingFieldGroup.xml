@@ -2,11 +2,11 @@
 <table name="fishing-field-group" version="0.1" autokey="false" module="4">
   <el name="table" child="1" />
   <el name="record">
-    <record name="id" type="Int16" key="y" required="y" min="1" />
-    <record name="alias" type="String" required="y" max="70" />
-    <record name="name2" type="Ref" ref="text" />
-    <record name="desc" type="Ref" ref="text" />
-    <record name="fishing-field" type="Ref" ref="fishing-field" repeat="10" hidden="y" />
-    <record name="fishing-field-count" type="Int16" default="0" hidden="y" />
+    <attribute name="id" type="Int16" key="y" required="y" min="1" />
+    <attribute name="alias" type="String" required="y" max="70" />
+    <attribute name="name2" type="Ref" ref="text" />
+    <attribute name="desc" type="Ref" ref="text" />
+    <attribute name="fishing-field" type="Ref" ref="fishing-field" repeat="10" hidden="y" />
+    <attribute name="fishing-field-count" type="Int16" default="0" hidden="y" />
   </el>
 </table>

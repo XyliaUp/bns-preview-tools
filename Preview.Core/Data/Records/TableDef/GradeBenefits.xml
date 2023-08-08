@@ -2,7 +2,7 @@
 <table name="gradebenefits" version="1.0" autokey="false" module="6">
   <el name="table" child="1" />
   <el name="record">
-    <record name="benefit-type" type="Seq" key="y" required="y">
+    <attribute name="benefit-type" type="Seq" key="y" required="y">
       <case name="none" />
       <case name="restoration-time" />
       <case name="nameplate-icon" />
@@ -72,15 +72,15 @@
       <case name="item-improve-money-cost-discount-rate" />
       <case name="etc-benefits" />
       <case name="external-daily-membership-mileage" />
-    </record>
-    <record name="level" type="Int8" key="y" required="y" min="1" max="10" />
-    <record name="game-grade-key" type="Int32" required="y" min="1" max="10000000" />
-    <record name="value" type="Int64" default="0" />
-    <record name="effect" type="Ref" ref="effect" />
-    <record name="string-value" type="String" max="150" />
-    <record name="enable-in-arena-duel" type="Bool" default="y" />
-    <record name="achievement" type="Ref" ref="achievement" repeat="4" />
-    <record name="icon-image-set" type="String" max="150" />
-    <record name="name" type="String" max="150" />
+    </attribute>
+    <attribute name="level" type="Int8" key="y" required="y" min="1" max="10" />
+    <attribute name="game-grade-key" type="Int32" required="y" min="1" max="10000000" />
+    <attribute name="value" type="Int64" default="0" />
+    <attribute name="effect" type="Ref" ref="effect" />
+    <attribute name="string-value" type="String" max="150" />
+    <attribute name="enable-in-arena-duel" type="Bool" default="y" />
+    <attribute name="achievement" type="Ref" ref="achievement" repeat="4" />
+    <attribute name="icon-image-set" type="String" max="150" />
+    <attribute name="name" type="String" max="150" />
   </el>
 </table>

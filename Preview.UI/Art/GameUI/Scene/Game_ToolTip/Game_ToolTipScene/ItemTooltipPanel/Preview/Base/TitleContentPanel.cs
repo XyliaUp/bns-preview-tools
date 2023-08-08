@@ -6,13 +6,11 @@ public partial class TitleContentPanel : TitlePanel
 {
 	public TitleContentPanel() => InitializeComponent();
 
-
 	public TitleContentPanel(string Title, string Content) : this()
 	{
 		this.Title = Title;
 		this.Text = Content;
 	}
-
 
 	[Editor("System.ComponentModel.Design.MultilineStringEditor", typeof(UITypeEditor))]
 	public override string Text
@@ -24,6 +22,7 @@ public partial class TitleContentPanel : TitlePanel
 
 	public override void Refresh()
 	{
+		this.ContentPanel.Refresh();
 		this.Height = this.ContentPanel.Bottom;
 	}
 }

@@ -2,8 +2,8 @@
 <table name="acquire-route" version="0.1" autokey="true" module="4">
   <el name="table" child="1" />
   <el name="record">
-    <record name="alias" type="String" required="y" max="70" />
-    <record name="category" type="Seq" required="y">
+    <attribute name="alias" type="String" required="y" max="70" />
+    <attribute name="category" type="Seq" required="y">
       <case name="None" />
       <case name="NormalQuest" />
       <case name="FactionQuest" />
@@ -40,8 +40,8 @@
       <case name="Deduction_Dungeon" />
       <case name="Deduction_Field" />
       <case name="Deduction_Worldmap" />
-    </record>
-    <record name="route-text" type="Ref" ref="text" repeat="5" />
-    <record name="route-ref" type="TRef" repeat="5" />
+    </attribute>
+    <attribute name="route-text" type="Ref" ref="text" repeat="5" />
+    <attribute name="route-ref" type="TRef" repeat="5" />
   </el>
 </table>

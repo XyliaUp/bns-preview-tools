@@ -2,31 +2,31 @@
 <table name="stance" version="0.293" autokey="false" module="14">
   <el name="table" child="1" />
   <el name="record">
-    <record name="stance-type" type="Prop_seq" seq="stance" key="y" required="y" />
-    <record name="name" type="String" required="y" deprecated="y" max="50" />
-    <record name="name2" type="Ref" ref="text" />
-    <record name="initialize" type="Bool" default="y" />
-    <record name="default-sp" type="Int16" default="0" min="0" max="200" />
-    <record name="max-sp" type="Int16" default="0" min="0" max="200" />
-    <record name="effect" type="Ref" ref="effect" repeat="4" />
-    <record name="impossible-equip" type="Bool" />
-    <record name="clone-weapon-appearance-to-left" type="Bool" />
-    <record name="target-angle" type="Float32" default="16" repeat="4" min="0.0" max="360.0" />
-    <record name="target-beam-width" type="Float32" default="1.4" repeat="4" />
-    <record name="target-band-first" type="Float32" default="5.0" repeat="4" />
-    <record name="target-band-second" type="Float32" default="15.0" repeat="4" />
-    <record name="band-check-limit" type="Int16" default="3" repeat="4" min="1" max="3" />
-    <record name="target-change-delay" type="Float32" default="1.0" repeat="4" />
-    <record name="threshold-min" type="Float32" default="0.0" repeat="4" />
-    <record name="threshold-max" type="Float32" default="0.0" repeat="4" />
-    <record name="empty-delay" type="Float32" default="1.0" repeat="4" />
-    <record name="target-gather-angle" type="Float32" default="30" min="0.0" max="360.0" />
-    <record name="stun-delay" type="Float32" default="1.0" />
-    <record name="kneel-delay" type="Float32" default="1.0" />
-    <record name="down-delay" type="Float32" default="1.0" />
-    <record name="mid-air-delay" type="Float32" default="1.0" />
-    <record name="swoon-delay" type="Float32" default="1.0" />
-    <record name="secondgauge-name" type="Seq">
+    <attribute name="stance-type" type="Prop_seq" seq="stance" key="y" required="y" />
+    <attribute name="name" type="String" required="y" deprecated="y" max="50" />
+    <attribute name="name2" type="Ref" ref="text" />
+    <attribute name="initialize" type="Bool" default="y" />
+    <attribute name="default-sp" type="Int16" default="0" min="0" max="200" />
+    <attribute name="max-sp" type="Int16" default="0" min="0" max="200" />
+    <attribute name="effect" type="Ref" ref="effect" repeat="4" />
+    <attribute name="impossible-equip" type="Bool" />
+    <attribute name="clone-weapon-appearance-to-left" type="Bool" />
+    <attribute name="target-angle" type="Float32" default="16" repeat="4" min="0.0" max="360.0" />
+    <attribute name="target-beam-width" type="Float32" default="1.4" repeat="4" />
+    <attribute name="target-band-first" type="Float32" default="5.0" repeat="4" />
+    <attribute name="target-band-second" type="Float32" default="15.0" repeat="4" />
+    <attribute name="band-check-limit" type="Int16" default="3" repeat="4" min="1" max="3" />
+    <attribute name="target-change-delay" type="Float32" default="1.0" repeat="4" />
+    <attribute name="threshold-min" type="Float32" default="0.0" repeat="4" />
+    <attribute name="threshold-max" type="Float32" default="0.0" repeat="4" />
+    <attribute name="empty-delay" type="Float32" default="1.0" repeat="4" />
+    <attribute name="target-gather-angle" type="Float32" default="30" min="0.0" max="360.0" />
+    <attribute name="stun-delay" type="Float32" default="1.0" />
+    <attribute name="kneel-delay" type="Float32" default="1.0" />
+    <attribute name="down-delay" type="Float32" default="1.0" />
+    <attribute name="mid-air-delay" type="Float32" default="1.0" />
+    <attribute name="swoon-delay" type="Float32" default="1.0" />
+    <attribute name="secondgauge-name" type="Seq">
       <case name="none" default="y" />
       <case name="blade" />
       <case name="soul" />
@@ -34,95 +34,95 @@
       <case name="force-energy" />
       <case name="fury" />
       <case name="chakra" />
-    </record>
-    <record name="secondgauge-use-type" type="Seq">
+    </attribute>
+    <attribute name="secondgauge-use-type" type="Seq">
       <case name="none" default="y" />
       <case name="use-sp" />
       <case name="use-fp" />
-    </record>
-    <record name="combat-mode-particle" type="XUnknown2" />
-    <record name="combat-mode-particle-followup-time-min" type="Float32" default="0.0" />
-    <record name="combat-mode-particle-followup-time-max" type="Float32" default="0.0" />
-    <record name="combat-mode-particle-release-show" type="XUnknown2" />
-    <record name="soul-fighter-weapon-particle" type="XUnknown2" />
-    <record name="soul-fighter-weapon-particle-followup-time-min" type="Float32" default="0.0" />
-    <record name="soul-fighter-weapon-particle-followup-time-max" type="Float32" default="0.0" />
-    <record name="soul-fighter-weapon-buff-particle" type="XUnknown2" />
-    <record name="soul-fighter-weapon-buff-particle-followup-time-min" type="Float32" default="0.0" />
-    <record name="soul-fighter-weapon-buff-particle-followup-time-max" type="Float32" default="0.0" />
-    <record name="soul-fighter-weapon-particle-release-show" type="XUnknown2" />
-    <record name="phantom-not-combat-mode-particle" type="XUnknown2" />
-    <record name="phantom-not-combat-mode-particle-followup-time-min" type="Float32" default="0.0" />
-    <record name="phantom-not-combat-mode-particle-followup-time-max" type="Float32" default="0.0" />
-    <record name="phantom-not-combat-mode-particle-release-show" type="XUnknown2" />
-    <record name="kungfu-fighter-weapon-mesh-id" type="XUnknown2" />
-    <record name="kungfu-fighter-weapon-mesh-col" type="XUnknown2" repeat="3" />
-    <record name="kungfu-fighter-weapon-particle" type="XUnknown2" />
-    <record name="kungfu-fighter-weapon-particle-followup-time-min" type="Float32" default="0.0" />
-    <record name="kungfu-fighter-weapon-particle-followup-time-max" type="Float32" default="0.0" />
-    <record name="kungfu-fighter-weapon-particle-release-show" type="XUnknown2" />
-    <record name="sp-gauge-style" type="Seq">
+    </attribute>
+    <attribute name="combat-mode-particle" type="XUnknown2" />
+    <attribute name="combat-mode-particle-followup-time-min" type="Float32" default="0.0" />
+    <attribute name="combat-mode-particle-followup-time-max" type="Float32" default="0.0" />
+    <attribute name="combat-mode-particle-release-show" type="XUnknown2" />
+    <attribute name="soul-fighter-weapon-particle" type="XUnknown2" />
+    <attribute name="soul-fighter-weapon-particle-followup-time-min" type="Float32" default="0.0" />
+    <attribute name="soul-fighter-weapon-particle-followup-time-max" type="Float32" default="0.0" />
+    <attribute name="soul-fighter-weapon-buff-particle" type="XUnknown2" />
+    <attribute name="soul-fighter-weapon-buff-particle-followup-time-min" type="Float32" default="0.0" />
+    <attribute name="soul-fighter-weapon-buff-particle-followup-time-max" type="Float32" default="0.0" />
+    <attribute name="soul-fighter-weapon-particle-release-show" type="XUnknown2" />
+    <attribute name="phantom-not-combat-mode-particle" type="XUnknown2" />
+    <attribute name="phantom-not-combat-mode-particle-followup-time-min" type="Float32" default="0.0" />
+    <attribute name="phantom-not-combat-mode-particle-followup-time-max" type="Float32" default="0.0" />
+    <attribute name="phantom-not-combat-mode-particle-release-show" type="XUnknown2" />
+    <attribute name="kungfu-fighter-weapon-mesh-id" type="XUnknown2" />
+    <attribute name="kungfu-fighter-weapon-mesh-col" type="XUnknown2" repeat="3" />
+    <attribute name="kungfu-fighter-weapon-particle" type="XUnknown2" />
+    <attribute name="kungfu-fighter-weapon-particle-followup-time-min" type="Float32" default="0.0" />
+    <attribute name="kungfu-fighter-weapon-particle-followup-time-max" type="Float32" default="0.0" />
+    <attribute name="kungfu-fighter-weapon-particle-release-show" type="XUnknown2" />
+    <attribute name="sp-gauge-style" type="Seq">
       <case name="none" default="y" />
       <case name="ball" />
       <case name="bar-1" />
       <case name="bar-2" />
-    </record>
-    <record name="sp-gauge-numeric-visible" type="Bool" />
-    <record name="sp-gauge-full-particle-ref" type="XUnknown2" />
-    <record name="sp-gauge-full-particle-scale" type="Float32" default="1.0" />
-    <record name="sp-gauge-charge-particle-ref" type="XUnknown2" />
-    <record name="sp-gauge-charge-particle-scale" type="Float32" default="1.0" />
-    <record name="sp-gauge-consume-particle-ref" type="XUnknown2" />
-    <record name="sp-gauge-consume-particle-scale" type="Float32" default="1.0" />
-    <record name="sp-gauge-charge-observer-particle-ref" type="XUnknown2" />
-    <record name="sp-gauge-charge-observer-particle-scale" type="Float32" default="1.0" />
-    <record name="sp-gauge-consume-observer-particle-ref" type="XUnknown2" />
-    <record name="sp-gauge-consume-observer-particle-scale" type="Float32" default="1.0" />
-    <record name="idle_key" type="String" deprecated="y" max="30" />
-    <record name="turn_left_key" type="String" deprecated="y" max="30" />
-    <record name="turn_right_key" type="String" deprecated="y" max="30" />
-    <record name="gauge_type" type="Seq" deprecated="y">
+    </attribute>
+    <attribute name="sp-gauge-numeric-visible" type="Bool" />
+    <attribute name="sp-gauge-full-particle-ref" type="XUnknown2" />
+    <attribute name="sp-gauge-full-particle-scale" type="Float32" default="1.0" />
+    <attribute name="sp-gauge-charge-particle-ref" type="XUnknown2" />
+    <attribute name="sp-gauge-charge-particle-scale" type="Float32" default="1.0" />
+    <attribute name="sp-gauge-consume-particle-ref" type="XUnknown2" />
+    <attribute name="sp-gauge-consume-particle-scale" type="Float32" default="1.0" />
+    <attribute name="sp-gauge-charge-observer-particle-ref" type="XUnknown2" />
+    <attribute name="sp-gauge-charge-observer-particle-scale" type="Float32" default="1.0" />
+    <attribute name="sp-gauge-consume-observer-particle-ref" type="XUnknown2" />
+    <attribute name="sp-gauge-consume-observer-particle-scale" type="Float32" default="1.0" />
+    <attribute name="idle_key" type="String" deprecated="y" max="30" />
+    <attribute name="turn_left_key" type="String" deprecated="y" max="30" />
+    <attribute name="turn_right_key" type="String" deprecated="y" max="30" />
+    <attribute name="gauge_type" type="Seq" deprecated="y">
       <case name="none" />
       <case name="speed-gauge" />
       <case name="sword-spirit-gauge" />
       <case name="angry-gauge" />
       <case name="force-master-gauge" />
       <case name="shooter-gauge" />
-    </record>
-    <record name="next-stanceid-1" type="Prop_seq" seq="stance" default="gauge-none" deprecated="y" />
-    <record name="next-stanceid-2" type="Prop_seq" seq="stance" default="gauge-none" deprecated="y" />
-    <record name="next-stanceid-3" type="Prop_seq" seq="stance" default="gauge-none" deprecated="y" />
-    <record name="next-skillid-1" type="Int32" default="0" deprecated="y" min="0" max="2000000" />
-    <record name="next-skillid-2" type="Int32" default="0" deprecated="y" min="0" max="2000000" />
-    <record name="next-skillid-3" type="Int32" default="0" deprecated="y" min="0" max="2000000" />
-    <record name="iconindex" type="Int32" default="0" deprecated="y" min="0" max="2000000" />
-    <record name="upper-mov-anim-walkfront" type="String" deprecated="y" max="30" />
-    <record name="upper-mov-anim-walkback" type="String" deprecated="y" max="30" />
-    <record name="upper-mov-anim-walkleft" type="String" deprecated="y" max="30" />
-    <record name="upper-mov-anim-walkright" type="String" deprecated="y" max="30" />
-    <record name="upper-mov-anim-walkleftback" type="String" deprecated="y" max="30" />
-    <record name="upper-mov-anim-walkrightback" type="String" deprecated="y" max="30" />
-    <record name="lower-mov-anim-walkfront" type="String" deprecated="y" max="30" />
-    <record name="lower-mov-anim-walkback" type="String" deprecated="y" max="30" />
-    <record name="lower-mov-anim-walkleft" type="String" deprecated="y" max="30" />
-    <record name="lower-mov-anim-walkright" type="String" deprecated="y" max="30" />
-    <record name="lower-mov-anim-walkleftback" type="String" deprecated="y" max="30" />
-    <record name="lower-mov-anim-walkrightback" type="String" deprecated="y" max="30" />
-    <record name="upper-mov-anim-runfront" type="String" deprecated="y" max="30" />
-    <record name="upper-mov-anim-runback" type="String" deprecated="y" max="30" />
-    <record name="upper-mov-anim-runleft" type="String" deprecated="y" max="30" />
-    <record name="upper-mov-anim-runright" type="String" deprecated="y" max="30" />
-    <record name="upper-mov-anim-runleftback" type="String" deprecated="y" max="30" />
-    <record name="upper-mov-anim-runrightback" type="String" deprecated="y" max="30" />
-    <record name="lower-mov-anim-runfront" type="String" deprecated="y" max="30" />
-    <record name="lower-mov-anim-runback" type="String" deprecated="y" max="30" />
-    <record name="lower-mov-anim-runleft" type="String" deprecated="y" max="30" />
-    <record name="lower-mov-anim-runright" type="String" deprecated="y" max="30" />
-    <record name="lower-mov-anim-runleftback" type="String" deprecated="y" max="30" />
-    <record name="lower-mov-anim-runrightback" type="String" deprecated="y" max="30" />
-    <record name="summoned-flyingship-attachment-mesh-id" type="XUnknown2" />
-    <record name="summoned-flyingship-attachment-mesh-col" type="XUnknown2" repeat="3" />
-    <record name="summoned-flyingship-attachment-mesh-animset" type="XUnknown2" />
-    <record name="summoned-preset-body-shape-part-value" type="Int8" default="0" min="0" max="50" />
+    </attribute>
+    <attribute name="next-stanceid-1" type="Prop_seq" seq="stance" default="gauge-none" deprecated="y" />
+    <attribute name="next-stanceid-2" type="Prop_seq" seq="stance" default="gauge-none" deprecated="y" />
+    <attribute name="next-stanceid-3" type="Prop_seq" seq="stance" default="gauge-none" deprecated="y" />
+    <attribute name="next-skillid-1" type="Int32" default="0" deprecated="y" min="0" max="2000000" />
+    <attribute name="next-skillid-2" type="Int32" default="0" deprecated="y" min="0" max="2000000" />
+    <attribute name="next-skillid-3" type="Int32" default="0" deprecated="y" min="0" max="2000000" />
+    <attribute name="iconindex" type="Int32" default="0" deprecated="y" min="0" max="2000000" />
+    <attribute name="upper-mov-anim-walkfront" type="String" deprecated="y" max="30" />
+    <attribute name="upper-mov-anim-walkback" type="String" deprecated="y" max="30" />
+    <attribute name="upper-mov-anim-walkleft" type="String" deprecated="y" max="30" />
+    <attribute name="upper-mov-anim-walkright" type="String" deprecated="y" max="30" />
+    <attribute name="upper-mov-anim-walkleftback" type="String" deprecated="y" max="30" />
+    <attribute name="upper-mov-anim-walkrightback" type="String" deprecated="y" max="30" />
+    <attribute name="lower-mov-anim-walkfront" type="String" deprecated="y" max="30" />
+    <attribute name="lower-mov-anim-walkback" type="String" deprecated="y" max="30" />
+    <attribute name="lower-mov-anim-walkleft" type="String" deprecated="y" max="30" />
+    <attribute name="lower-mov-anim-walkright" type="String" deprecated="y" max="30" />
+    <attribute name="lower-mov-anim-walkleftback" type="String" deprecated="y" max="30" />
+    <attribute name="lower-mov-anim-walkrightback" type="String" deprecated="y" max="30" />
+    <attribute name="upper-mov-anim-runfront" type="String" deprecated="y" max="30" />
+    <attribute name="upper-mov-anim-runback" type="String" deprecated="y" max="30" />
+    <attribute name="upper-mov-anim-runleft" type="String" deprecated="y" max="30" />
+    <attribute name="upper-mov-anim-runright" type="String" deprecated="y" max="30" />
+    <attribute name="upper-mov-anim-runleftback" type="String" deprecated="y" max="30" />
+    <attribute name="upper-mov-anim-runrightback" type="String" deprecated="y" max="30" />
+    <attribute name="lower-mov-anim-runfront" type="String" deprecated="y" max="30" />
+    <attribute name="lower-mov-anim-runback" type="String" deprecated="y" max="30" />
+    <attribute name="lower-mov-anim-runleft" type="String" deprecated="y" max="30" />
+    <attribute name="lower-mov-anim-runright" type="String" deprecated="y" max="30" />
+    <attribute name="lower-mov-anim-runleftback" type="String" deprecated="y" max="30" />
+    <attribute name="lower-mov-anim-runrightback" type="String" deprecated="y" max="30" />
+    <attribute name="summoned-flyingship-attachment-mesh-id" type="XUnknown2" />
+    <attribute name="summoned-flyingship-attachment-mesh-col" type="XUnknown2" repeat="3" />
+    <attribute name="summoned-flyingship-attachment-mesh-animset" type="XUnknown2" />
+    <attribute name="summoned-preset-body-shape-part-value" type="Int8" default="0" min="0" max="50" />
   </el>
 </table>

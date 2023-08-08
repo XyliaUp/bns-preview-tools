@@ -2,9 +2,9 @@
 <table name="randombox-preview" version="0.5" autokey="true" module="4">
   <el name="table" child="1" />
   <el name="record">
-    <record name="alias" type="String" required="y" max="70" />
-    <record name="fixed-item" type="TRef" repeat="8" />
-    <record name="fixed-item-condition" type="Seq" repeat="8">
+    <attribute name="alias" type="String" required="y" max="70" />
+    <attribute name="fixed-item" type="TRef" repeat="8" />
+    <attribute name="fixed-item-condition" type="Seq" repeat="8">
       <case name="none" default="y" />
       <case name="variation-1" />
       <case name="variation-2" />
@@ -22,9 +22,9 @@
       <case name="hide-line" />
       <case name="hide-line-and-tooltip" />
       <case name="hide-tooltip" />
-    </record>
-    <record name="selected-item" type="TRef" repeat="20" />
-    <record name="selected-item-condition" type="Seq" repeat="20">
+    </attribute>
+    <attribute name="selected-item" type="TRef" repeat="20" />
+    <attribute name="selected-item-condition" type="Seq" repeat="20">
       <case name="none" default="y" />
       <case name="variation-1" />
       <case name="variation-2" />
@@ -42,9 +42,9 @@
       <case name="hide-line" />
       <case name="hide-line-and-tooltip" />
       <case name="hide-tooltip" />
-    </record>
-    <record name="random-item" type="TRef" repeat="20" />
-    <record name="random-item-condition" type="Seq" repeat="20">
+    </attribute>
+    <attribute name="random-item" type="TRef" repeat="20" />
+    <attribute name="random-item-condition" type="Seq" repeat="20">
       <case name="none" default="y" />
       <case name="variation-1" />
       <case name="variation-2" />
@@ -62,7 +62,7 @@
       <case name="hide-line" />
       <case name="hide-line-and-tooltip" />
       <case name="hide-tooltip" />
-    </record>
-    <record name="description" type="Ref" ref="text" />
+    </attribute>
+    <attribute name="description" type="Ref" ref="text" />
   </el>
 </table>

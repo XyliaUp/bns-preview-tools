@@ -2,8 +2,8 @@
 <table name="skipteleport" version="0.1" autokey="false" module="6">
   <el name="table" child="1" />
   <el name="record">
-    <record name="id" type="Int32" key="y" required="y" min="1" />
-    <record name="level" type="Int16" required="y" min="1" max="70" />
-    <record name="mastery-level" type="Int16" default="0" min="0" max="50" />
+    <attribute name="id" type="Int32" key="y" required="y" min="1" />
+    <attribute name="level" type="Int16" required="y" min="1" max="70" />
+    <attribute name="mastery-level" type="Int16" default="0" min="0" max="50" />
   </el>
 </table>

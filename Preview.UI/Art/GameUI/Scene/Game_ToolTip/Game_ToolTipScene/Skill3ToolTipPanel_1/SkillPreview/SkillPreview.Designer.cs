@@ -1,8 +1,9 @@
-﻿using Xylia.Preview.UI.Custom.Controls;
+﻿using Xylia.Preview.GameUI.Scene.Game_ToolTipScene.Skill3ToolTipPanel_1.SkillPreview;
+using Xylia.Preview.UI.Custom.Controls;
 
 namespace Xylia.Preview.GameUI.Scene.Skill
 {
-	partial class SkillPreview
+    partial class SkillPreview
 	{
 		/// <summary> 
 		/// Required designer variable.

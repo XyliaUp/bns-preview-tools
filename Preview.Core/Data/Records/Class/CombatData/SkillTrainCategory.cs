@@ -28,7 +28,7 @@ public class SkillTrainCategory : BaseRecord
 	public int ConsumedTp;
 
 	[Signal("sort-id")]
-	public byte SortId;
+	public sbyte SortId;
 
 	[Signal("ui-invisible")]
 	public bool UiInvisible;

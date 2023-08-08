@@ -2,8 +2,8 @@
 <table name="guild-combat" version="0.1" autokey="false" module="70">
   <el name="table" child="1" />
   <el name="record">
-    <record name="alias" type="String" required="y" max="70" />
-    <record name="season-type" type="Seq" key="y" required="y">
+    <attribute name="alias" type="String" required="y" max="70" />
+    <attribute name="season-type" type="Seq" key="y" required="y">
       <case name="invalid" />
       <case name="duel-death-match-1vs1" />
       <case name="duel-death-match-3vs3" />
@@ -21,10 +21,10 @@
       <case name="battle-royal-free-for-all" />
       <case name="battle-royal-free-for-all-party" />
       <case name="mastery-exp-best-record" />
-    </record>
-    <record name="required-level" type="Int8" required="y" min="0" />
-    <record name="required-mastery-level" type="Int16" required="y" min="0" />
-    <record name="available-matching-weekly-time" type="Ref" ref="weeklytimetable" />
-    <record name="party-battle-point-bonus-rate" type="Int16" default="0" min="0" max="1000" />
+    </attribute>
+    <attribute name="required-level" type="Int8" required="y" min="0" />
+    <attribute name="required-mastery-level" type="Int16" required="y" min="0" />
+    <attribute name="available-matching-weekly-time" type="Ref" ref="weeklytimetable" />
+    <attribute name="party-battle-point-bonus-rate" type="Int16" default="0" min="0" max="1000" />
   </el>
 </table>

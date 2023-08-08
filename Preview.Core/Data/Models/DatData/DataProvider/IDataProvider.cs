@@ -1,7 +1,25 @@
-﻿namespace Xylia.Preview.Data.Models.DatData.DataProvider;
+﻿using Xylia.Preview.Data.Models.DatData.DatDetect;
+
+namespace Xylia.Preview.Data.Models.DatData.DataProvider;
 public interface IDataProvider
 {
 	FileInfo[] GetFiles(string pattern);
+
+	bool is64Bit() => true;
+}
+
+
+public class DefaultProvider : DataDetector , IDataProvider
+{
+	public DefaultProvider(string FolderPath) : base(FolderPath)
+	{
+		
+	}
+
+
+	FileInfo[] IDataProvider.GetFiles(string pattern) => throw new NotImplementedException();
+
+	bool IDataProvider.is64Bit() => base.is64Bit;
 }
 
 
@@ -17,7 +35,7 @@ public class FolderProvider : IDataProvider
 	#endregion
 
 
-	public FileInfo[] GetFiles(string pattern) => directory.GetFiles(pattern, SearchOption.AllDirectories);
+	FileInfo[] IDataProvider.GetFiles(string pattern) => directory.GetFiles(pattern, SearchOption.AllDirectories);
 }
 
 public class FileProvider : IDataProvider
@@ -30,8 +48,7 @@ public class FileProvider : IDataProvider
 		this.files.AddRange(file);
 	}
 	#endregion
-	
 
-	public FileInfo[] GetFiles(string pattern) => files.ToArray();
+
+	FileInfo[] IDataProvider.GetFiles(string pattern) => files.ToArray();
 }
-

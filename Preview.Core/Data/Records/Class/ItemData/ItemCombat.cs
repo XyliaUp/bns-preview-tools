@@ -22,7 +22,7 @@ public sealed class ItemCombat : BaseRecord
 	public int[] SkillBuildUpParentSkill3Id;
 
 	[Signal("skill-build-up-level"), Repeat(3)]
-	public byte[] SkillBuildUpLevel;
+	public sbyte[] SkillBuildUpLevel;
 
 	[Signal("skill-modify-info-group")]
 	public SkillModifyInfoGroup SkillModifyInfoGroup;

@@ -1,7 +1,7 @@
 ﻿using CUE4Parse.BNS.Exports;
 using CUE4Parse.UE4.Assets.Exports;
 
-using Xylia.Preview.Art.GameUI.Scene.Game_ToolTip.Game_ToolTipScene.ItemTooltipPanel;
+using Xylia.Preview.Art.GameUI.Scene.Game_ToolTipScene.ItemTooltipPanel;
 using Xylia.Preview.Data.Helper;
 using Xylia.Preview.Data.Record;
 using Xylia.Preview.GameUI.Scene.ItemGrowth.Scene;
@@ -36,13 +36,14 @@ public partial class UserOperPanel : Form
 
 		this.MyParentForm = ParentForm;
 		this.EquipmentGuideScene = new(MyParentForm.ItemInfo);
+		this.LoadModel();
 
 		#region Buttons
 		var OperBtns = new List<Control>();
 
 		if (this.MoreInformation) OperBtns.Add(this.pictureBox2);
 		if (this.EquipmentGuideScene.Pages.Count > 0) OperBtns.Add(this.EquipmentGuide);
-		if (true) OperBtns.Add(this.ModelViwer);
+		if (this.Models.Any()) OperBtns.Add(this.ModelViwer);
 
 		BtnCount = OperBtns.Count;
 		#endregion
@@ -100,26 +101,11 @@ public partial class UserOperPanel : Form
 
 
 	#region ModelViwer
-	private void ModelViwer_Click(object sender, EventArgs e)
+	private List<ModelData> Models = new();
+
+	private void LoadModel()
 	{
 		var item = MyParentForm.ItemInfo;
-
-		#region Model
-		ModelData Model(string Mesh, string Col = null)
-		{
-			Col ??= Mesh + "-col";
-
-			return new ModelData()
-			{
-				Name = Mesh,
-				Export = FileCache.PakData.LoadObject<UObject>(item.Attributes[Mesh]),
-				cols = new string[] { item.Attributes[Col + "-1"], item.Attributes[Col + "-3"], item.Attributes[Col + "-3"] },
-			};
-		}
-		#endregion
-
-
-
 		if (item.Contains("mesh-id", out var MeshID))
 		{
 			//"mesh-id"
@@ -131,31 +117,30 @@ public partial class UserOperPanel : Form
 			//"mesh-attach"
 			//"mesh-animtree"
 
-			//"talk-mesh"
-			//"talk-animset"
+			LoadModel("mesh-id", "mesh-col");
 
-			Model("mesh-id", "mesh-col").Run();
+			Models.Add(new ModelData()
+			{
+				Export = FileCache.Provider.LoadObject<UObject>(item.Attributes["talk-mesh"]),
+				AnimSet = FileCache.Provider.LoadObject<UAnimSet>(item.Attributes["talk-animset"]),
+			});
 		}
 		else
 		{
-			List<ModelData> Models = new()
-			{
-				Model("kun-mesh"),
-				Model("gon-male-mesh"),
-				Model("gon-female-mesh"),
-				Model("lyn-male-mesh"),
-				Model("lyn-female-mesh"),
-				Model("jin-male-mesh"),
-				Model("jin-female-mesh"),
-				Model("cat-mesh"),
-			};
+			LoadModel("kun-mesh");
+			LoadModel("gon-male-mesh");
+			LoadModel("gon-female-mesh");
+			LoadModel("lyn-male-mesh");
+			LoadModel("lyn-female-mesh");
+			LoadModel("jin-male-mesh");
+			LoadModel("jin-female-mesh");
+			LoadModel("cat-mesh");
 
 			var _models = Models.Where(model => model.Export != null).ToList();
 			if (_models.Any())
 			{
-				MyTest.ModelViewer.Models = _models;
-				MyTest.ModelViewer.TryLoadExport(default);
-				MyTest.ModelViewer.Run();
+				Models = _models;
+				return;
 			}
 			else if (item is Weapon weapon)
 			{
@@ -164,11 +149,11 @@ public partial class UserOperPanel : Form
 					var Pet = FileCache.Data.Pet[pet];
 					if (Pet != null)
 					{
-						new ModelData()
+						Models.Add(new ModelData()
 						{
-							Export = FileCache.PakData.LoadObject<UObject>(Pet.MeshName.Path),
+							Export = FileCache.Provider.LoadObject<UObject>(Pet.MeshName.Path),
 							cols = Pet.MaterialName.Select(o => o.Path)
-						}.Run();
+						});
 					}
 				}
 
@@ -185,20 +170,39 @@ public partial class UserOperPanel : Form
 					var Appearance = Vehicle.Appearance;
 					if (Vehicle != null && Appearance != null)
 					{
-						new ModelData()
+						Models.Add(new ModelData()
 						{
-							Export = FileCache.PakData.LoadObject<UObject>(Appearance.MeshName.Path),
-							AnimSet = FileCache.PakData.LoadObject<UAnimSet>(Appearance.AnimSetName.Path),
+							Export = FileCache.Provider.LoadObject<UObject>(Appearance.MeshName.Path),
+							AnimSet = FileCache.Provider.LoadObject<UAnimSet>(Appearance.AnimSetName.Path),
 							cols = Appearance.MaterialName.Select(o => o.Path),
-						}.Run();
+						});
 					}
 				}
 			}
 		}
 
-		//// TODO: move to load
-		//if (MyTest.ModelViewer.Renderer.Options.Models.Count == 0)
-		//	ModelViwer.Visible = false;
+
+		Models = Models.Where(model => model.Export != null).ToList();
+	}
+
+	private void LoadModel(string Mesh, string Col = null)
+	{
+		var item = MyParentForm.ItemInfo;
+
+		Col ??= Mesh + "-col";
+		Models.Add(new ModelData()
+		{
+			DisplayName = Mesh,
+			Export = FileCache.Provider.LoadObject<UObject>(item.Attributes[Mesh]),
+			cols = new string[] { item.Attributes[Col, 1], item.Attributes[Col, 2], item.Attributes[Col, 3] },
+		});
+	}
+
+	private void ModelViwer_Click(object sender, EventArgs e)
+	{
+		MyTest.ModelViewer.Models = Models;
+		MyTest.ModelViewer.TryLoadExport(default);
+		MyTest.ModelViewer.Run();
 	}
 	#endregion
 }

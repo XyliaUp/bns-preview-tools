@@ -15,10 +15,10 @@ public sealed class FactionBattleFieldZone : BaseRecord, IAttraction
 	public Text RespawnConfirmText;
 
 	[Signal("required-level")]
-	public byte RequiredLevel;
+	public sbyte RequiredLevel;
 
 	[Signal("required-faction-level")]
-	public byte RequiredFactionLevel;
+	public sbyte RequiredFactionLevel;
 
 	[Signal("faction-battle-field-zone-name2")]
 	public Text FactionBattleFieldZoneName2;

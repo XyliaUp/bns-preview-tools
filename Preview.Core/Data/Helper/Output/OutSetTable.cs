@@ -1,6 +1,8 @@
 ﻿using System.Xml.Serialization;
 
 namespace Xylia.Preview.Data.Helper.Output;
+
+[XmlRoot("table")]
 public class OutSetTable
 {
 	[XmlElement]

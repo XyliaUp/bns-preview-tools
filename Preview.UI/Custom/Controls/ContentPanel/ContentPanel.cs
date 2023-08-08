@@ -90,10 +90,6 @@ public partial class ContentPanel : Panel
 	[DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
 	public string FontName { get; set; }
 
-	/// <summary>																							                                                                                                      
-	/// 使用字体高度
-	/// </summary>
-	public bool _useHeight = true;
 
 	public bool _useMaxWidth = false;
 	#endregion
@@ -121,7 +117,7 @@ public partial class ContentPanel : Panel
 	#region OnDoubleClick
 	public static int CopyMode
 	{
-		get => Ini.ReadValue("Preview", "copy-mode").ToInt();
+		get => Ini.ReadValue("Preview", "copy-mode").ToInt32();
 		set => Ini.WriteValue("Preview", "copy-mode", value);
 	}
 

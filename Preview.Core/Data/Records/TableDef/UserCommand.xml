@@ -2,9 +2,9 @@
 <table name="user-command" version="0.40" autokey="true" module="4">
   <el name="table" child="1" />
   <el name="record">
-    <record name="text" type="Ref" ref="text" />
+    <attribute name="text" type="Ref" ref="text" />
     <sub name="command">
-      <record name="command" type="Seq" required="y">
+      <attribute name="command" type="Seq" required="y">
         <case name="none" />
         <case name="chat-sight" />
         <case name="chat-party" />
@@ -59,25 +59,25 @@
         <case name="challengeparty-leave" />
         <case name="challengeparty-banish" />
         <case name="guild-apply" />
-      </record>
+      </attribute>
     </sub>
     <sub name="social">
-      <record name="social-type" type="Seq" required="y">
+      <attribute name="social-type" type="Seq" required="y">
         <case name="command" />
         <case name="filter" />
-      </record>
-      <record name="talk-social" type="Ref" ref="talksocial" />
-      <record name="state-social" type="Ref" ref="statesocial" />
+      </attribute>
+      <attribute name="talk-social" type="Ref" ref="talksocial" />
+      <attribute name="state-social" type="Ref" ref="statesocial" />
     </sub>
     <sub name="system-social">
-      <record name="system-social-type" type="Seq" required="y">
+      <attribute name="system-social-type" type="Seq" required="y">
         <case name="none" />
         <case name="party-match-social" />
-      </record>
-      <record name="talk-social" type="Ref" ref="talksocial" />
+      </attribute>
+      <attribute name="talk-social" type="Ref" ref="talksocial" />
     </sub>
     <sub name="emoticon">
-      <record name="emoticon" type="Ref" ref="emoticon" required="y" />
+      <attribute name="emoticon" type="Ref" ref="emoticon" required="y" />
     </sub>
   </el>
 </table>

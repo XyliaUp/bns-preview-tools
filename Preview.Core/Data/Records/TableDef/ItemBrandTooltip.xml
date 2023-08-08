@@ -2,10 +2,10 @@
 <table name="item-brand-tooltip" version="0.8" autokey="false" module="4">
   <el name="table" child="1" />
   <el name="record">
-    <record name="brand-id" type="Int32" key="y" required="y" />
-    <record name="item-condition-type" type="Seq" seq="condition-type" key="y" required="y" />
-    <record name="name2" type="Ref" ref="text" />
-    <record name="game-category-3" type="Seq16" required="y">
+    <attribute name="brand-id" type="Int32" key="y" required="y" />
+    <attribute name="item-condition-type" type="Seq" seq="condition-type" key="y" required="y" />
+    <attribute name="name2" type="Ref" ref="text" />
+    <attribute name="game-category-3" type="Seq16" required="y">
       <case name="none" />
       <case name="sword" />
       <case name="gauntlet" />
@@ -190,19 +190,19 @@
       <case name="badge-appearance" />
       <case name="fusion-material" />
       <case name="card" />
-    </record>
-    <record name="item-grade" type="Int8" default="1" min="1" max="8" />
-    <record name="equip-level" type="Int8" default="1" min="1" max="100" />
-    <record name="equip-mastery-level" type="Int8" default="0" min="0" max="100" />
-    <record name="equip-job" type="Prop_seq" seq="job" default="job-none" deprecated="y" />
-    <record name="equip-job-check" type="Prop_seq" seq="job" default="job-none" repeat="4" />
-    <record name="equip-sex" type="Seq">
+    </attribute>
+    <attribute name="item-grade" type="Int8" default="1" min="1" max="8" />
+    <attribute name="equip-level" type="Int8" default="1" min="1" max="100" />
+    <attribute name="equip-mastery-level" type="Int8" default="0" min="0" max="100" />
+    <attribute name="equip-job" type="Prop_seq" seq="job" default="job-none" deprecated="y" />
+    <attribute name="equip-job-check" type="Prop_seq" seq="job" default="job-none" repeat="4" />
+    <attribute name="equip-sex" type="Seq">
       <case name="none" />
       <case name="all" default="y" />
       <case name="male" />
       <case name="female" />
-    </record>
-    <record name="equip-race" type="Seq">
+    </attribute>
+    <attribute name="equip-race" type="Seq">
       <case name="none" />
       <case name="all" default="y" />
       <case name="jin" />
@@ -211,22 +211,22 @@
       <case name="kun" />
       <case name="summoned-all" />
       <case name="summoned-cat" />
-    </record>
-    <record name="equip-solo-duel-grade" type="Int8" default="0" />
-    <record name="equip-team-duel-grade" type="Int8" default="0" />
-    <record name="icon" type="Icon" max="32767" />
-    <record name="tag-icon" type="Icon" max="32767" />
-    <record name="tag-icon-grade" type="Icon" max="32767" />
-    <record name="main-info" type="Ref" ref="text" />
-    <record name="sub-info" type="Ref" ref="text" />
-    <record name="description2" type="Ref" ref="text" />
-    <record name="description4-title" type="Ref" ref="text" />
-    <record name="description5-title" type="Ref" ref="text" />
-    <record name="description6-title" type="Ref" ref="text" />
-    <record name="description4" type="Ref" ref="text" />
-    <record name="description5" type="Ref" ref="text" />
-    <record name="description6" type="Ref" ref="text" />
-    <record name="store-description" type="Ref" ref="text" />
-    <record name="title-item" type="Ref" ref="item" />
+    </attribute>
+    <attribute name="equip-solo-duel-grade" type="Int8" default="0" />
+    <attribute name="equip-team-duel-grade" type="Int8" default="0" />
+    <attribute name="icon" type="Icon" max="32767" />
+    <attribute name="tag-icon" type="Icon" max="32767" />
+    <attribute name="tag-icon-grade" type="Icon" max="32767" />
+    <attribute name="main-info" type="Ref" ref="text" />
+    <attribute name="sub-info" type="Ref" ref="text" />
+    <attribute name="description2" type="Ref" ref="text" />
+    <attribute name="description4-title" type="Ref" ref="text" />
+    <attribute name="description5-title" type="Ref" ref="text" />
+    <attribute name="description6-title" type="Ref" ref="text" />
+    <attribute name="description4" type="Ref" ref="text" />
+    <attribute name="description5" type="Ref" ref="text" />
+    <attribute name="description6" type="Ref" ref="text" />
+    <attribute name="store-description" type="Ref" ref="text" />
+    <attribute name="title-item" type="Ref" ref="item" />
   </el>
 </table>

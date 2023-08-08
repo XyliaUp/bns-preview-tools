@@ -9,6 +9,7 @@ using Xylia.Match.Util.Paks.Textures;
 using Xylia.Preview.Common.Extension;
 using Xylia.Preview.GameUI.Scene.Game_ToolTip.ItemTooltipPanel.Cell;
 using Xylia.Preview.Properties;
+using Xylia.Preview.UI.Extension;
 
 namespace Xylia.Match.Windows.Panel;
 
@@ -298,7 +299,7 @@ public partial class IconPage : UserControl
 		this.ComboBox1_TextChanged(sender, e);
 	}
 
-	private byte ImageCompose_GetGrade() => CombineOption.Grades.Find(o => o.Name == ComboBox1.TextValue)?.ItemGrade ?? 0;
+	private sbyte ImageCompose_GetGrade() => CombineOption.Grades.Find(o => o.Name == ComboBox1.TextValue)?.ItemGrade ?? 0;
 
 
 	private void ComboBox1_TextChanged(object sender, EventArgs e)

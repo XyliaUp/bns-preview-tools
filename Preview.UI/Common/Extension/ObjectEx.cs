@@ -1,14 +1,13 @@
 ﻿using Xylia.Extension;
 using Xylia.Preview.Common.Cast;
-using Xylia.Preview.UI.Custom;
 using Xylia.Preview.Data.Helper;
 using Xylia.Preview.Data.Models.BinData.Table.Record;
 using Xylia.Preview.Data.Record;
-using Xylia.Preview.UI.Custom.Controls;
 using Xylia.Preview.GameUI.Scene.Game_ToolTip.ItemTooltipPanel;
 using Xylia.Preview.GameUI.Scene.Skill;
+using Xylia.Preview.UI.Custom.Controls;
 
-namespace Xylia.Preview.Common.Extension;
+namespace Xylia.Preview.UI.Extension;
 public static class ObjectEx
 {
 	#region Icon 
@@ -17,7 +16,7 @@ public static class ObjectEx
 
 
 
-	public static ItemIconCell GetObjIcon(this string ObjInfo, string StackCount) => GetObjIcon(ObjInfo, (short)StackCount.ToInt());
+	public static ItemIconCell GetObjIcon(this string ObjInfo, string StackCount) => GetObjIcon(ObjInfo, (short)StackCount.ToInt32());
 
 	public static ItemIconCell GetObjIcon(this string ObjInfo, short StackCount = 0)
 	{

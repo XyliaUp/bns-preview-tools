@@ -8,11 +8,11 @@ public sealed class SpawnRandomNpc : SpawnNpcBase
 {
 	public Script_obj Group;
 
-	public byte Min;
+	public sbyte Min;
 
-	public byte Max;
+	public sbyte Max;
 
-	public byte Start;
+	public sbyte Start;
 
-	public byte End;
+	public sbyte End;
 }

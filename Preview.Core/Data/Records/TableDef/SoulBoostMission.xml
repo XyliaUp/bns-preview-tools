@@ -2,9 +2,9 @@
 <table name="soul-boost-mission" version="4.0" autokey="false" module="6">
   <el name="table" child="1" />
   <el name="record">
-    <record name="id" type="Int32" key="y" required="y" min="1" />
-    <record name="alias" type="String" required="y" max="70" />
-    <record name="mission-type" type="Seq">
+    <attribute name="id" type="Int32" key="y" required="y" min="1" />
+    <attribute name="alias" type="String" required="y" max="70" />
+    <attribute name="mission-type" type="Seq">
       <case name="none" default="y" />
       <case name="pc-login" />
       <case name="complete-challenge-daily" />
@@ -39,8 +39,8 @@
       <case name="decompose-random-box" />
       <case name="acquire-quest-reward" />
       <case name="acquire-quest-bonus-reward" />
-    </record>
-    <record name="entity-type" type="Seq" repeat="10">
+    </attribute>
+    <attribute name="entity-type" type="Seq" repeat="10">
       <case name="none" default="y" />
       <case name="zone" />
       <case name="npc" />
@@ -63,7 +63,7 @@
       <case name="dungeon" />
       <case name="sealed-dungeon-level" />
       <case name="value" />
-    </record>
-    <record name="condition" type="Int64" default="0" repeat="10" />
+    </attribute>
+    <attribute name="condition" type="Int64" default="0" repeat="10" />
   </el>
 </table>

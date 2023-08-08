@@ -2,34 +2,34 @@
 <table name="rankingreward" version="0.5" autokey="false" module="4102" maxid="2000000000">
   <el name="table" child="1" />
   <el name="record">
-    <record name="id" type="Int32" key="y" required="y" min="1" max="2000000000" />
-    <record name="alias" type="String" required="y" max="70" />
-    <record name="week-reward-exp" type="Int32" default="0" min="0" max="2000000000" />
-    <record name="week-reward-money" type="Int32" default="0" min="0" max="2000000000" />
-    <record name="week-reward-item" type="Ref" ref="item" repeat="4" />
-    <record name="week-reward-item-amount" type="Int32" default="0" repeat="4" min="0" />
-    <record name="season-reward-exp" type="Int32" default="0" min="0" max="2000000000" />
-    <record name="season-reward-money" type="Int32" default="0" min="0" max="2000000000" />
-    <record name="season-reward-item" type="Ref" ref="item" repeat="4" />
-    <record name="season-reward-item-amount" type="Int32" default="0" repeat="4" min="0" />
-    <record name="week-reward-combat-exp-bonus-rate" type="Int16" default="0" min="0" max="1000" />
-    <record name="week-reward-duel-point-bonus-rate" type="Int16" default="0" min="0" max="1000" />
-    <record name="week-reward-party-battle-point-bonus-rate" type="Int16" default="0" min="0" max="1000" />
-    <record name="week-reward-field-point-bonus-rate" type="Int16" default="0" min="0" max="1000" />
-    <record name="season-reward-combat-exp-bonus-rate" type="Int16" default="0" min="0" max="1000" />
-    <record name="season-reward-duel-point-bonus-rate" type="Int16" default="0" min="0" max="1000" />
-    <record name="season-reward-party-battle-point-bonus-rate" type="Int16" default="0" min="0" max="1000" />
-    <record name="season-reward-field-point-bonus-rate" type="Int16" default="0" min="0" max="1000" />
-    <record name="season-reward-guild-bank-money" type="Int32" default="0" min="0" max="1000000000" />
-    <record name="season-reward-guild-bank-item" type="Seq" repeat="5">
+    <attribute name="id" type="Int32" key="y" required="y" min="1" max="2000000000" />
+    <attribute name="alias" type="String" required="y" max="70" />
+    <attribute name="week-reward-exp" type="Int32" default="0" min="0" max="2000000000" />
+    <attribute name="week-reward-money" type="Int32" default="0" min="0" max="2000000000" />
+    <attribute name="week-reward-item" type="Ref" ref="item" repeat="4" />
+    <attribute name="week-reward-item-amount" type="Int32" default="0" repeat="4" min="0" />
+    <attribute name="season-reward-exp" type="Int32" default="0" min="0" max="2000000000" />
+    <attribute name="season-reward-money" type="Int32" default="0" min="0" max="2000000000" />
+    <attribute name="season-reward-item" type="Ref" ref="item" repeat="4" />
+    <attribute name="season-reward-item-amount" type="Int32" default="0" repeat="4" min="0" />
+    <attribute name="week-reward-combat-exp-bonus-rate" type="Int16" default="0" min="0" max="1000" />
+    <attribute name="week-reward-duel-point-bonus-rate" type="Int16" default="0" min="0" max="1000" />
+    <attribute name="week-reward-party-battle-point-bonus-rate" type="Int16" default="0" min="0" max="1000" />
+    <attribute name="week-reward-field-point-bonus-rate" type="Int16" default="0" min="0" max="1000" />
+    <attribute name="season-reward-combat-exp-bonus-rate" type="Int16" default="0" min="0" max="1000" />
+    <attribute name="season-reward-duel-point-bonus-rate" type="Int16" default="0" min="0" max="1000" />
+    <attribute name="season-reward-party-battle-point-bonus-rate" type="Int16" default="0" min="0" max="1000" />
+    <attribute name="season-reward-field-point-bonus-rate" type="Int16" default="0" min="0" max="1000" />
+    <attribute name="season-reward-guild-bank-money" type="Int32" default="0" min="0" max="1000000000" />
+    <attribute name="season-reward-guild-bank-item" type="Seq" repeat="5">
       <case name="none" default="y" />
       <case name="gemstone" />
       <case name="moonstone" />
       <case name="tokeniron" />
       <case name="tokensilver" />
       <case name="tokengold" />
-    </record>
-    <record name="season-reward-guild-bank-item-amount" type="Int32" default="0" repeat="5" min="0" max="30000" />
-    <record name="guild-ranking-reward-effect" type="Ref" ref="effect" />
+    </attribute>
+    <attribute name="season-reward-guild-bank-item-amount" type="Int32" default="0" repeat="5" min="0" max="30000" />
+    <attribute name="guild-ranking-reward-effect" type="Ref" ref="effect" />
   </el>
 </table>

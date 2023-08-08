@@ -2,7 +2,7 @@
 <table name="unlocated-store-ui" version="0.1" autokey="false" module="4">
   <el name="table" child="1" />
   <el name="record">
-    <record name="unlocated-store-type" type="Seq" key="y" required="y">
+    <attribute name="unlocated-store-type" type="Seq" key="y" required="y">
       <case name="unlocated-none" />
       <case name="unlocated-store" />
       <case name="account-store" />
@@ -12,10 +12,10 @@
       <case name="soul-boost-store-4" />
       <case name="soul-boost-store-5" />
       <case name="soul-boost-store-6" />
-    </record>
-    <record name="title-icon" type="String" required="y" max="50" />
-    <record name="title-text" type="Ref" ref="text" required="y" />
-    <record name="button-icon" type="String" max="50" />
-    <record name="button-text" type="Ref" ref="text" />
+    </attribute>
+    <attribute name="title-icon" type="String" required="y" max="50" />
+    <attribute name="title-text" type="Ref" ref="text" required="y" />
+    <attribute name="button-icon" type="String" max="50" />
+    <attribute name="button-text" type="Ref" ref="text" />
   </el>
 </table>

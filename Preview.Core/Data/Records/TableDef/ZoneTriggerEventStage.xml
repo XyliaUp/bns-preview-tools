@@ -2,45 +2,45 @@
 <table name="zonetriggereventstage" version="0.16" autokey="false" module="6" maxid="200">
   <el name="table" child="1" />
   <el name="record">
-    <record name="zone" type="Int32" key="y" required="y" />
-    <record name="zone-mode-set-id" type="Int8" key="y" required="y" min="1" max="1" />
-    <record name="zone-mode" type="Int8" key="y" required="y" min="0" max="4" />
-    <record name="branch-id" type="Int8" key="y" required="y" min="1" max="2" />
-    <record name="alias" type="String" required="y" max="70" />
-    <record name="next-cond" type="Ref" ref="zonetriggereventcond" repeat="2" />
-    <record name="next-cond-branch-id" type="Int8" default="1" repeat="2" min="1" max="2" />
-    <record name="broadcast-context" type="Seq">
+    <attribute name="zone" type="Int32" key="y" required="y" />
+    <attribute name="zone-mode-set-id" type="Int8" key="y" required="y" min="1" max="1" />
+    <attribute name="zone-mode" type="Int8" key="y" required="y" min="0" max="4" />
+    <attribute name="branch-id" type="Int8" key="y" required="y" min="1" max="2" />
+    <attribute name="alias" type="String" required="y" max="70" />
+    <attribute name="next-cond" type="Ref" ref="zonetriggereventcond" repeat="2" />
+    <attribute name="next-cond-branch-id" type="Int8" default="1" repeat="2" min="1" max="2" />
+    <attribute name="broadcast-context" type="Seq">
       <case name="none" default="y" />
       <case name="timeout-time" />
       <case name="boss-challenge-attraction-round" />
-    </record>
-    <record name="start-stage-kismet" type="String" max="50" />
-    <record name="end-stage-kismet" type="String" max="50" />
+    </attribute>
+    <attribute name="start-stage-kismet" type="String" max="50" />
+    <attribute name="end-stage-kismet" type="String" max="50" />
     <sub name="stage-stand-by-classic-field" />
     <sub name="stage-stand-by-guild-battle-field-entrance">
-      <record name="min-growing-channel" type="Int8" default="0" min="0" max="4" />
-      <record name="total-duration-minute" type="Int16" default="0" repeat="2" min="0" max="1440" />
+      <attribute name="min-growing-channel" type="Int8" default="0" min="0" max="4" />
+      <attribute name="total-duration-minute" type="Int16" default="0" repeat="2" min="0" max="1440" />
     </sub>
     <sub name="stage-stand-by-persistant-zone">
-      <record name="all-channel" type="Bool" />
-      <record name="max-channel" type="Int8" default="0" min="0" max="5" />
-      <record name="max-event-channel" type="Int8" default="0" min="0" max="15" />
-      <record name="min-growing-channel" type="Int8" default="0" min="0" max="4" />
-      <record name="total-duration-minute" type="Int16" default="0" repeat="2" min="0" max="1440" />
-      <record name="persistant-zone-subtype" type="Seq">
+      <attribute name="all-channel" type="Bool" />
+      <attribute name="max-channel" type="Int8" default="0" min="0" max="5" />
+      <attribute name="max-event-channel" type="Int8" default="0" min="0" max="15" />
+      <attribute name="min-growing-channel" type="Int8" default="0" min="0" max="4" />
+      <attribute name="total-duration-minute" type="Int16" default="0" repeat="2" min="0" max="1440" />
+      <attribute name="persistant-zone-subtype" type="Seq">
         <case name="none" default="y" />
         <case name="invade-town" />
         <case name="faction-stage" />
-      </record>
-      <record name="event-channel-text" type="Ref" ref="text" />
-      <record name="event-notify-diff-zone" type="Ref" ref="zone" repeat="6" />
-      <record name="event-notify-diff-zone-msg" type="Ref" ref="game-message" />
-      <record name="event-notify-diff-channel-msg" type="Ref" ref="game-message" />
-      <record name="event-notify-msg" type="Ref" ref="game-message" />
+      </attribute>
+      <attribute name="event-channel-text" type="Ref" ref="text" />
+      <attribute name="event-notify-diff-zone" type="Ref" ref="zone" repeat="6" />
+      <attribute name="event-notify-diff-zone-msg" type="Ref" ref="game-message" />
+      <attribute name="event-notify-diff-channel-msg" type="Ref" ref="game-message" />
+      <attribute name="event-notify-msg" type="Ref" ref="game-message" />
     </sub>
     <sub name="stage-stand-by-instant-zone" />
     <sub name="stage">
-      <record name="fail-cond" type="Ref" ref="zonetriggereventcond" repeat="3" />
+      <attribute name="fail-cond" type="Ref" ref="zonetriggereventcond" repeat="3" />
     </sub>
   </el>
 </table>

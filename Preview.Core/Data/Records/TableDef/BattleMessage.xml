@@ -2,13 +2,13 @@
 <table name="battlemessage" version="0.3" autokey="false" module="4">
   <el name="table" child="1" />
   <el name="record">
-    <record name="object-type" type="Seq" key="y" required="y">
+    <attribute name="object-type" type="Seq" key="y" required="y">
       <case name="player-attack" />
       <case name="player-attacked" />
       <case name="other" />
       <case name="none-caster" />
-    </record>
-    <record name="skill-result-type" type="Seq" key="y" required="y">
+    </attribute>
+    <attribute name="skill-result-type" type="Seq" key="y" required="y">
       <case name="hit" />
       <case name="cri" />
       <case name="parry" />
@@ -18,8 +18,8 @@
       <case name="dodge" />
       <case name="bounce" />
       <case name="none-skill" />
-    </record>
-    <record name="effect-type" type="Seq" key="y" required="y">
+    </attribute>
+    <attribute name="effect-type" type="Seq" key="y" required="y">
       <case name="none-effect" />
       <case name="instant-damage" />
       <case name="attach-damage" />
@@ -42,7 +42,7 @@
       <case name="detach" />
       <case name="exhaustion" />
       <case name="dead" />
-    </record>
-    <record name="game-message" type="Ref" ref="game-message" />
+    </attribute>
+    <attribute name="game-message" type="Ref" ref="game-message" />
   </el>
 </table>

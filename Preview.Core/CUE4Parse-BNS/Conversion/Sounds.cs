@@ -1,4 +1,5 @@
-﻿using CUE4Parse.UE4.Assets;
+﻿using CUE4Parse.BNS.Exports;
+using CUE4Parse.UE4.Assets;
 using CUE4Parse.UE4.Assets.Exports;
 using CUE4Parse.UE4.Assets.Exports.Sound;
 using CUE4Parse.UE4.Objects.UObject;
@@ -31,18 +32,14 @@ public static class Sounds
 			}
 		}
 		else if (Object.ExportType == "ShowSoundKey") return Object.GetOrDefault<ResolvedObject>("SoundCue").Load().GetWave();
-
-		else if (Object.ExportType == "ShowFaceFxKey") return Object.GetOrDefault<string>("FaceFXAnimSetName").GetUObject().GetWave(ReferenceIdx);
-		else if (Object.ExportType == "LegacyFaceFXAnimSet") return Object.GetOrDefault<ResolvedObject[]>("ReferencedSoundCues")[ReferenceIdx].Load().GetWave();
-
+		else if (Object is UShowFaceFxKey ShowFaceFxKey) return FileCache.Provider.LoadObject(ShowFaceFxKey.FaceFXAnimSetName).GetWave(ReferenceIdx);
 		else if (Object.ExportType == "ShowFaceFxUE4Key") return Object.GetOrDefault<FSoftObjectPath>("FaceFXAnimObj").Load().GetWave();
 		else if (Object.ExportType == "FaceFXAnim") return Object.GetOrDefault<FSoftObjectPath>("SoundCue").Load().GetWave();
-		else if (Object.ExportType == "ShowObject")
+		else if (Object.ExportType == "LegacyFaceFXAnimSet") return Object.GetOrDefault<ResolvedObject[]>("ReferencedSoundCues")[ReferenceIdx].Load().GetWave();
+		else if (Object is UShowObject ShowObject)
 		{
-			var EventKeys = Object.GetOrDefault<ResolvedObject[]>("EventKeys");
-			if (EventKeys is null) return null;
-
-			foreach (var _eventKey in EventKeys)
+			if (ShowObject.EventKeys is null) return null;
+			foreach (var _eventKey in ShowObject.EventKeys)
 			{
 				var o = _eventKey.Load();
 				if (o.ExportType == "ShowSoundKey") return o.GetWave();
@@ -50,7 +47,6 @@ public static class Sounds
 				else if (o.ExportType == "ShowFaceFxKey") return o.GetWave(ReferenceIdx);
 			}
 		}
-
 
 		return null;
 	}

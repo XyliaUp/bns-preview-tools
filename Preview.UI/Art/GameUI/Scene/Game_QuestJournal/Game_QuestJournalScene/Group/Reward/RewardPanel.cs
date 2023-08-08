@@ -1,10 +1,11 @@
 ﻿using Xylia.Extension;
-using Xylia.Preview.Common.Extension;
 using Xylia.Preview.Data.Helper;
 using Xylia.Preview.Data.Record;
+using Xylia.Preview.GameUI.Scene.Game_QuestJournal.Game_QuestJournal.Group.Reward;
 using Xylia.Preview.GameUI.Scene.Game_QuestJournal.RewardCell;
 using Xylia.Preview.UI.Custom.Controls;
 using Xylia.Preview.UI.Custom.Controls.Currency;
+using Xylia.Preview.UI.Extension;
 
 using static Xylia.Preview.Data.Record.QuestBonusRewardSetting;
 

@@ -2,8 +2,8 @@
 <table name="item-event" version="0.2" autokey="true" module="6">
   <el name="table" child="1" />
   <el name="record">
-    <record name="alias" type="String" required="y" max="70" />
-    <record name="event-expiration-time" type="Time64" />
-    <record name="name2" type="Ref" ref="text" />
+    <attribute name="alias" type="String" required="y" max="70" />
+    <attribute name="event-expiration-time" type="Time64" />
+    <attribute name="name2" type="Ref" ref="text" />
   </el>
 </table>

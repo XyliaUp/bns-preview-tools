@@ -22,8 +22,8 @@ public partial class SealPreview : TitleContentPanel
 
 			var item1 = Record.Attributes["seal-consume-item-1"].CastObject<Item>();
 			var item2 = Record.Attributes["seal-consume-item-2"].CastObject<Item>();
-			var count1 = Record.Attributes["seal-consume-item-count-1"].ToShort();
-			var count2 = Record.Attributes["seal-consume-item-count-2"].ToShort();
+			var count1 = Record.Attributes["seal-consume-item-count-1"].ToInt16();
+			var count2 = Record.Attributes["seal-consume-item-count-2"].ToInt16();
 
 			if (item1 != null) Info = $"{count1}个{item1.ItemName}";
 			if (item2 != null) Info += $"或者 {count2}个{item2.ItemName}";
@@ -51,7 +51,7 @@ public partial class SealPreview : TitleContentPanel
 			for (int i = 1; i <= 4; i++)
 			{
 				var item = Record.Attributes[$"unseal-consume-item2", i].CastObject<Item>();
-				var count = Record.Attributes[$"unseal-consume-item2-stack-count", i].ToShort();
+				var count = Record.Attributes[$"unseal-consume-item2-stack-count", i].ToInt16();
 
 				if (item != null)
 				{

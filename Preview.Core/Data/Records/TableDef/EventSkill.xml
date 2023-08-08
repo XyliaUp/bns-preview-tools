@@ -2,8 +2,8 @@
 <table name="event-skill" version="0.6" autokey="false" module="6">
   <el name="table" child="1" />
   <el name="record">
-    <record name="stance-type" type="Prop_seq" seq="stance" key="y" required="y" />
-    <record name="skill-result" type="Seq" key="y" required="y">
+    <attribute name="stance-type" type="Prop_seq" seq="stance" key="y" required="y" />
+    <attribute name="skill-result" type="Seq" key="y" required="y">
       <case name="none" />
       <case name="hit" />
       <case name="miss" />
@@ -23,17 +23,17 @@
       <case name="parry-perfect-parry-counter" />
       <case name="parry-perfect-parry-dodge" />
       <case name="parry-dodge" />
-    </record>
-    <record name="event-type" type="Seq" key="y" required="y">
+    </attribute>
+    <attribute name="event-type" type="Seq" key="y" required="y">
       <case name="none" />
       <case name="attack" />
       <case name="attacked" />
-    </record>
-    <record name="state" type="Seq" key="y" required="y">
+    </attribute>
+    <attribute name="state" type="Seq" key="y" required="y">
       <case name="none" />
       <case name="hold_deadbody" />
-    </record>
-    <record name="skill-1" type="Int32" default="0" repeat="2" />
-    <record name="skill-2" type="Int32" default="0" repeat="12" />
+    </attribute>
+    <attribute name="skill-1" type="Int32" default="0" repeat="2" />
+    <attribute name="skill-2" type="Int32" default="0" repeat="12" />
   </el>
 </table>

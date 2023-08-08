@@ -28,13 +28,13 @@ public sealed class IconTexture : BaseRecord
 
 public static class IconTextureExt
 {
-	public static Bitmap GetIcon(this string IconInfo, DataTableSet set = null, PakData pak = null)
+	public static Bitmap GetIcon(this string IconInfo, TableSet set = null, GameFileProvider pak = null)
 	{
 		GetInfo(IconInfo, out string TextureAlias, out short IconIndex);
 		return GetIcon(TextureAlias, IconIndex, set, pak);
 	}
 
-	public static Bitmap GetIcon(this string TextureAlias, short IconIndex, DataTableSet set = null, PakData pak = null)
+	public static Bitmap GetIcon(this string TextureAlias, short IconIndex, TableSet set = null, GameFileProvider pak = null)
 	{
 		if (TextureAlias is null) return null;
 
@@ -42,11 +42,11 @@ public static class IconTextureExt
 		return GetIcon(set.IconTexture[TextureAlias], IconIndex, pak);
 	}
 
-	public static Bitmap GetIcon(this IconTexture record, short IconIndex, PakData pak = null)
+	public static Bitmap GetIcon(this IconTexture record, short IconIndex, GameFileProvider pak = null)
 	{
 		if (record is null) return null;
 
-		Bitmap TextureData = (pak ?? FileCache.PakData).LoadObject<UTexture2D>(record.iconTexture).GetImage();
+		Bitmap TextureData = Task.Run(() => (pak ?? FileCache.Provider).LoadObject<UTexture2D>(record.iconTexture)).Result.GetImage();
 		if (TextureData is null) return null;
 
 		#region get sub
@@ -61,7 +61,6 @@ public static class IconTextureExt
 		if (RowID == 0) RowID = AmountRow;
 		else ColID += 1;
 
-		//System.Diagnostics.Debug.WriteLine($"{IconIndex} => {ColID} - {RowID}");
 		lock (TextureData)
 		{
 			try

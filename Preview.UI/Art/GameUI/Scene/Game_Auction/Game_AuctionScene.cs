@@ -32,7 +32,8 @@ public partial class Game_AuctionScene : Form // PreviewFrm
 			var node = TreeView.Nodes.Add(category2.ToString(), $"Name.item.game-category-2.{category2.GetSignal()}".GetText());
 
 			if (!child.TryGetValue(category2, out var category3Seqs)) continue;
-			category3Seqs.ForEach(category3 => node.Nodes.Add(category3.ToString(), $"Name.item.game-category-3.{category3.GetSignal()}".GetText(true)));
+			category3Seqs.ForEach(category3 => node.Nodes.Add(category3.ToString(),
+				$"Name.item.game-category-3.{category3.GetSignal()}".GetText(true) ?? category3.ToString()));
 		}
 		#endregion
 	}
@@ -312,8 +313,7 @@ public partial class Game_AuctionScene : Form // PreviewFrm
 
 			lock (this.ItemList.Items)
 			{
-				this.ItemList.Items.Clear();
-				this.ItemList.Items.AddRange(checkBox1.Checked ?
+				this.ItemList.Items = new(checkBox1.Checked ?
 					result.OrderByDescending(o => o.Ref.Id) :
 					result.OrderBy(o => o.Ref.Id));
 
@@ -322,5 +322,42 @@ public partial class Game_AuctionScene : Form // PreviewFrm
 		});
 
 		loader.Visible = false;
+	}
+
+
+	private void Page_Prev_Click(object sender, EventArgs e)
+	{
+		if (ItemList.HasPrevPage)
+		{
+			ItemList.PageIndex--;
+			ItemList.RefreshList(true);
+			ItemList.Invalidate();
+		}
+	}
+
+	private void Page_Next_Click(object sender, EventArgs e)
+	{
+		if (ItemList.HasNextPage)
+		{
+			ItemList.PageIndex++;
+			ItemList.RefreshList(true);
+			ItemList.Invalidate();
+		}
+	}
+
+	private void ItemList_Paint(object sender, PaintEventArgs e)
+	{
+		if (ItemList.PageCount > 1)
+		{
+			this.ItemList.ContextMenuStrip = this.PageControl;
+
+			Page_Info.Text = $"Page: {ItemList.PageIndex} / {ItemList.PageCount}";
+			Page_Prev.Visible = ItemList.HasPrevPage;
+			Page_Next.Visible = ItemList.HasNextPage;
+		}
+		else
+		{
+			this.ItemList.ContextMenuStrip = null;
+		}
 	}
 }

@@ -2,11 +2,11 @@
 <table name="treasure-board-reward" version="0.2" autokey="false" module="6">
   <el name="table" child="1" />
   <el name="record">
-    <record name="id" type="Int32" key="y" required="y" min="1" />
-    <record name="alias" type="String" required="y" max="70" />
-    <record name="reward-grade" type="Int16" required="y" min="1" max="10" />
-    <record name="reward-item" type="Ref" ref="item" />
-    <record name="reward-item-count" type="Int16" default="1" min="1" max="9999" />
-    <record name="max-draw-count" type="Int16" default="1" min="1" max="1000" />
+    <attribute name="id" type="Int32" key="y" required="y" min="1" />
+    <attribute name="alias" type="String" required="y" max="70" />
+    <attribute name="reward-grade" type="Int16" required="y" min="1" max="10" />
+    <attribute name="reward-item" type="Ref" ref="item" />
+    <attribute name="reward-item-count" type="Int16" default="1" min="1" max="9999" />
+    <attribute name="max-draw-count" type="Int16" default="1" min="1" max="1000" />
   </el>
 </table>

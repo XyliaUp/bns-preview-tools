@@ -2,7 +2,7 @@
 <table name="guild-member-grade-authority" version="0.11" autokey="false" module="6">
   <el name="table" child="1" />
   <el name="record">
-    <record name="authority" type="Seq" key="y" required="y">
+    <attribute name="authority" type="Seq" key="y" required="y">
       <case name="none" />
       <case name="change-guildmember-grade-by-permission" />
       <case name="banish-guildmember" />
@@ -22,9 +22,9 @@
       <case name="guild-pr" />
       <case name="accept-guildmember" />
       <case name="purchase-guild-benefit" />
-    </record>
-    <record name="guild-type" type="Int8" key="y" required="y" min="1" max="2" />
-    <record name="editable" type="Bool" repeat="5" />
-    <record name="initial-value" type="Bool" repeat="5" />
+    </attribute>
+    <attribute name="guild-type" type="Int8" key="y" required="y" min="1" max="2" />
+    <attribute name="editable" type="Bool" repeat="5" />
+    <attribute name="initial-value" type="Bool" repeat="5" />
   </el>
 </table>

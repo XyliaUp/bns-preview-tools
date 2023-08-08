@@ -1,5 +1,5 @@
-﻿using Xylia.Preview.UI.Custom.Controls;
-using Xylia.Preview.GameUI.Scene.Game_ItemGrowth2;
+﻿using Xylia.Preview.GameUI.Scene.Game_ItemGrowth2.Game_ItemGrowth2;
+using Xylia.Preview.UI.Custom.Controls;
 
 namespace Xylia.Preview.GameUI.Scene.Game_ItemGrowth2
 {
@@ -36,16 +36,16 @@ namespace Xylia.Preview.GameUI.Scene.Game_ItemGrowth2
 			this.pictureBox2 = new System.Windows.Forms.PictureBox();
 			this.MyWeapon_Name = new Xylia.Preview.UI.Custom.Controls.ItemNamePanel();
 			this.MyWeapon_Icon = new Xylia.Preview.UI.Custom.Controls.ItemIconCell();
-			this.WarningPreview = new Xylia.Preview.GameUI.Scene.Game_ItemGrowth2.WarningPreview();
+			this.WarningPreview = new WarningPreview();
 			this.FixedIngredientTitle = new System.Windows.Forms.Label();
 			this.SubIngredientTitle = new System.Windows.Forms.Label();
-			this.feedItemIconCell1 = new Xylia.Preview.GameUI.Scene.Game_ItemGrowth2.FeedItemIconCell();
-			this.FixedIngredientPreview = new Xylia.Preview.GameUI.Scene.Game_ItemGrowth2.FixedIngredientPreview();
+			this.feedItemIconCell1 = new FeedItemIconCell();
+			this.FixedIngredientPreview = new FixedIngredientPreview();
 			this.itemIconCell4 = new Xylia.Preview.UI.Custom.Controls.ItemIconCell();
 			this.itemIconCell3 = new Xylia.Preview.UI.Custom.Controls.ItemIconCell();
 			this.itemIconCell2 = new Xylia.Preview.UI.Custom.Controls.ItemIconCell();
 			this.MoneyCostPreview = new Xylia.Preview.GameUI.Scene.Game_ItemGrowth2.MoneyCostPreview();
-			this.SubIngredientPreview = new Xylia.Preview.GameUI.Scene.Game_ItemGrowth2.SubIngredientPreview();
+			this.SubIngredientPreview = new SubIngredientPreview();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.MyWeapon_Icon)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.feedItemIconCell1)).BeginInit();
@@ -84,7 +84,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_ItemGrowth2
 			// 
 			this.MyWeapon_Name.BackColor = System.Drawing.Color.Transparent;
 			this.MyWeapon_Name.Font = new System.Drawing.Font("Microsoft YaHei UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-			this.MyWeapon_Name.ItemGrade = ((byte)(7));
+			this.MyWeapon_Name.ItemGrade = ((sbyte)(7));
 			this.MyWeapon_Name.Location = new System.Drawing.Point(42, 136);
 			this.MyWeapon_Name.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
 			this.MyWeapon_Name.Name = "MyWeapon_Name";

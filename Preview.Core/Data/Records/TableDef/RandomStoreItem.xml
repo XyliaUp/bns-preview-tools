@@ -2,12 +2,12 @@
 <table name="random-store-item" version="0.2" autokey="false" module="6" maxid="30000">
   <el name="table" child="1" />
   <el name="record">
-    <record name="id" type="Int16" key="y" required="y" min="1" max="30000" />
-    <record name="alias" type="String" required="y" max="70" />
-    <record name="item" type="Ref" ref="item" required="y" />
-    <record name="item-count" type="Int16" default="1" min="1" max="1000" />
-    <record name="item-price-money" type="Int32" default="0" min="0" max="1000000000" />
-    <record name="item-price-item" type="Ref" ref="item" />
-    <record name="item-price-item-amount" type="Int16" default="0" min="0" max="1000" />
+    <attribute name="id" type="Int16" key="y" required="y" min="1" max="30000" />
+    <attribute name="alias" type="String" required="y" max="70" />
+    <attribute name="item" type="Ref" ref="item" required="y" />
+    <attribute name="item-count" type="Int16" default="1" min="1" max="1000" />
+    <attribute name="item-price-money" type="Int32" default="0" min="0" max="1000000000" />
+    <attribute name="item-price-item" type="Ref" ref="item" />
+    <attribute name="item-price-item-amount" type="Int16" default="0" min="0" max="1000" />
   </el>
 </table>

@@ -11,5 +11,5 @@ public sealed class Damage : Reaction
 
 	public long Amount;
 
-	public byte Percent;
+	public sbyte Percent;
 }

@@ -2,11 +2,11 @@
 <table name="zoneteleportswitch" version="0.6" autokey="false" module="14" maxid="127">
   <el name="table" child="1" />
   <el name="record">
-    <record name="zone" type="Int32" key="y" required="y" />
-    <record name="id" type="Int16" key="y" required="y" max="127" />
-    <record name="alias" type="String" required="y" max="70" />
-    <record name="position" type="Vector32" required="y" />
-    <record name="activate-radius" type="Distance" required="y" />
-    <record name="activate-teleport" type="Ref" ref="teleport" required="y" />
+    <attribute name="zone" type="Int32" key="y" required="y" />
+    <attribute name="id" type="Int16" key="y" required="y" max="127" />
+    <attribute name="alias" type="String" required="y" max="70" />
+    <attribute name="position" type="Vector32" required="y" />
+    <attribute name="activate-radius" type="Distance" required="y" />
+    <attribute name="activate-teleport" type="Ref" ref="teleport" required="y" />
   </el>
 </table>

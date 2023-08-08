@@ -1,5 +1,4 @@
 ﻿using System.ComponentModel;
-using System.Diagnostics;
 
 using HZH_Controls.Forms;
 
@@ -9,7 +8,6 @@ using Xylia.Match.Windows.Attribute;
 using Xylia.Match.Windows.Forms;
 using Xylia.Match.Windows.Panel;
 using Xylia.Match.Windows.Panel.TextInfo;
-using Xylia.Preview.Data.Helper;
 using Xylia.Preview.Properties;
 
 namespace Xylia.Match.Windows;
@@ -69,9 +67,7 @@ public partial class MainFrm : FrmWithTitle
 	#region Form
 	private void MainForm_Shown(object sender, EventArgs e)
 	{
-		Thread thread = new(act => new Update().CheckForUpdates());
-		thread.SetApartmentState(ApartmentState.STA);
-		thread.Start();
+		Task.Run(() => new Update().CheckForUpdates());
 	}
 
 	private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -123,9 +119,9 @@ public partial class MainFrm : FrmWithTitle
 	#endregion
 
 	#region Open Files / Pages
-	private void OpenFolder_Click(object sender, EventArgs e) => Process.Start("explorer", CommonPath.OutputFolder);
+	private void OpenFolder_Click(object sender, EventArgs e) => System.Diagnostics.Process.Start("explorer", CommonPath.OutputFolder);
 
 	private void pictureBox1_Click(object sender, EventArgs e) => LoggerFrm.Instance.Show();
-	private void Btn_AboutUs_Click(object sender, EventArgs e) => Process.Start("explorer", "https://github.com/XyliaUp/bns-preview-tools");
+	private void Btn_AboutUs_Click(object sender, EventArgs e) => System.Diagnostics.Process.Start("explorer", "https://github.com/XyliaUp/bns-preview-tools");
 	#endregion
 }

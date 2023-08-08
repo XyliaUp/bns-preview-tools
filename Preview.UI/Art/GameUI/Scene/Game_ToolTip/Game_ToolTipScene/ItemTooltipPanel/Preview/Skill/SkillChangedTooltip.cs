@@ -5,8 +5,9 @@ using Xylia.Preview.Common.Extension;
 using Xylia.Preview.Data.Helper;
 using Xylia.Preview.Data.Models.BinData.Table.Record;
 using Xylia.Preview.Data.Record;
-using Xylia.Preview.UI.Custom.Controls;
 using Xylia.Preview.GameUI.Scene.Game_ToolTip.ItemTooltipPanel.Cell;
+using Xylia.Preview.UI.Extension;
+using Xylia.Preview.UI.Custom.Controls;
 
 namespace Xylia.Preview.GameUI.Scene.Game_ToolTip.ItemTooltipPanel;
 

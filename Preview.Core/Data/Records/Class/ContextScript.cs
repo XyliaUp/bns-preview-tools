@@ -68,7 +68,7 @@ public sealed class ContextScript : BaseRecord
 		public int Skill;
 
 		[Signal("variation-id")]
-		public byte VariationId;
+		public sbyte VariationId;
 
 		[Signal("job-style")]
 		public JobStyleSeq JobStyle;

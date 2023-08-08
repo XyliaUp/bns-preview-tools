@@ -295,7 +295,6 @@
 			Compare_Diff.TabIndex = 113;
 			Compare_Diff.Text = "比对差异";
 			Compare_Diff.UseVisualStyleBackColor = true;
-			Compare_Diff.Click += button18_Click;
 			// 
 			// textBox6
 			// 
@@ -877,7 +876,6 @@
 			textBox11.Size = new Size(578, 23);
 			textBox11.TabIndex = 91;
 			textBox11.Text = "E:\\资源\\客户端相关\\Auto\\data\\物品解析\\public.xml";
-			textBox11.TextChanged += textBox11_TextChanged;
 			textBox11.DoubleClick += DoubleClickPath;
 			// 
 			// label32
@@ -1054,7 +1052,6 @@
 			button2.TabIndex = 62;
 			button2.Text = "浏览";
 			button2.UseVisualStyleBackColor = true;
-			button2.Click += Button2_Click;
 			// 
 			// Chk_Backup
 			// 

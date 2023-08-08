@@ -9,19 +9,19 @@ public sealed class ItemImproveSuccession : BaseRecord
 	public int FeedItemImproveId;
 
 	[Signal("feed-item-improve-level")]
-	public byte FeedItemImproveLevel;
+	public sbyte FeedItemImproveLevel;
 
 	[Signal("result-item-improve-id")]
 	public int ResultItemImproveId;
 
 	[Signal("result-item-improve-level")]
-	public byte ResultItemImproveLevel;
+	public sbyte ResultItemImproveLevel;
 
 	[Signal("seed-item-improve-id")]
 	public int SeedItemImproveId;
 
 	[Signal("seed-item-improve-level")]
-	public byte SeedItemImproveLevel;
+	public sbyte SeedItemImproveLevel;
 
 
 	#region Functions

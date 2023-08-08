@@ -2,11 +2,11 @@
 <table name="jobstylestandidle" version="0.6" autokey="false" module="4">
   <el name="table" child="1" />
   <el name="record">
-    <record name="job" type="Prop_seq" seq="job" key="y" required="y" />
-    <record name="job-style" type="Seq" seq="job-style" key="y" required="y" />
-    <record name="index" type="Int32" key="y" required="y" min="0" max="3" />
-    <record name="group-index" type="Int32" key="y" required="y" min="0" max="1" />
-    <record name="job-style-stand-idle-show" type="XUnknown2" />
-    <record name="event-time" type="Msec" default="25000" min="0" max="600000" />
+    <attribute name="job" type="Prop_seq" seq="job" key="y" required="y" />
+    <attribute name="job-style" type="Seq" seq="job-style" key="y" required="y" />
+    <attribute name="index" type="Int32" key="y" required="y" min="0" max="3" />
+    <attribute name="group-index" type="Int32" key="y" required="y" min="0" max="1" />
+    <attribute name="job-style-stand-idle-show" type="XUnknown2" />
+    <attribute name="event-time" type="Msec" default="25000" min="0" max="600000" />
   </el>
 </table>

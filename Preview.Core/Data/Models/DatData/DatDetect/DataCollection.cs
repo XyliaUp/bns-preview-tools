@@ -66,7 +66,6 @@ public class DataCollection
 		return result;
 	}
 	#endregion
-
 }
 
 

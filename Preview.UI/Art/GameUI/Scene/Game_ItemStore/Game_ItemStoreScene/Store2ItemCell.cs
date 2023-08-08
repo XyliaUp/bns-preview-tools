@@ -2,11 +2,11 @@
 using Xylia.Preview.Common.Arg;
 using Xylia.Preview.Common.Extension;
 using Xylia.Preview.Common.Seq;
-using Xylia.Preview.UI.Custom.Controls.List;
 using Xylia.Preview.Data.Helper;
 using Xylia.Preview.Data.Record;
-using Xylia.Preview.UI.Resources;
 using Xylia.Preview.UI.Custom.Controls;
+using Xylia.Preview.UI.Custom.Controls.List;
+using Xylia.Preview.UI.Resources;
 
 namespace Xylia.Preview.GameUI.Scene.Game_ItemStore;
 public partial class Store2ItemCell : ListItemCell
@@ -147,7 +147,7 @@ public partial class Store2ItemCell : ListItemCell
 
 		//set tips
 		if (TipInfo.Count != 0)
-			TestTooltip2.SetTooltip(this, TipInfo.Aggregate((sum, now) => sum + "\n" + now));
+			TestTooltip2.SetTooltip(this, TipInfo.Aggregate("\n"));
 	}
 
 	private void Store2ItemCell_SizeChanged(object sender, EventArgs e)

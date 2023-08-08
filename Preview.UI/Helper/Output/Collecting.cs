@@ -62,9 +62,9 @@ public sealed class CollectingOut : OutBase
 
             for (int i = 1; i <= 8; i++)
             {
-                var closet = record.Attributes["collect-closet-" + i].ToInt();
-                var closetreplace = record.Attributes["collect-closet-replace-" + i].ToInt();
-                var closetsubreplace = record.Attributes["collect-closet-subreplace-" + i].ToInt();
+                var closet = record.Attributes["collect-closet-" + i].ToInt32();
+                var closetreplace = record.Attributes["collect-closet-replace-" + i].ToInt32();
+                var closetsubreplace = record.Attributes["collect-closet-subreplace-" + i].ToInt32();
 
                 row.AddCell(GetName(closet));
             }

@@ -2,17 +2,17 @@
 <table name="skillcastcondition3" version="6.0" autokey="true" module="2062">
   <el name="table" child="1" />
   <el name="record">
-    <record name="alias" type="String" required="y" max="70" />
-    <record name="stance" type="Prop_seq" seq="stance" default="stance-none" />
-    <record name="summoned-stance" type="Prop_seq" seq="stance" default="stance-none" />
-    <record name="summoned-use-only" type="Bool" />
-    <record name="summoned-dead-state" type="Seq">
+    <attribute name="alias" type="String" required="y" max="70" />
+    <attribute name="stance" type="Prop_seq" seq="stance" default="stance-none" />
+    <attribute name="summoned-stance" type="Prop_seq" seq="stance" default="stance-none" />
+    <attribute name="summoned-use-only" type="Bool" />
+    <attribute name="summoned-dead-state" type="Seq">
       <case name="all" default="y" />
       <case name="not-dead" />
       <case name="dead" />
-    </record>
-    <record name="required-weapon-type" type="Seq" seq="weapon-type" default="none" />
-    <record name="link-type" type="Seq">
+    </attribute>
+    <attribute name="required-weapon-type" type="Seq" seq="weapon-type" default="none" />
+    <attribute name="link-type" type="Seq">
       <case name="none" default="y" />
       <case name="mount" />
       <case name="inhalation" />
@@ -21,84 +21,84 @@
       <case name="catch-none-human" />
       <case name="catch-friend" />
       <case name="inhalation-catch" />
-    </record>
-    <record name="link-state" type="Seq" seq="link-state" default="not-link" />
-    <record name="link-stage" type="Seq" seq="link-stage" default="none" />
-    <record name="immune-caster-block-skill" type="Bool" />
-    <record name="unnecessary-acquired" type="Bool" />
-    <record name="target-type" type="Seq">
+    </attribute>
+    <attribute name="link-state" type="Seq" seq="link-state" default="not-link" />
+    <attribute name="link-stage" type="Seq" seq="link-stage" default="none" />
+    <attribute name="immune-caster-block-skill" type="Bool" />
+    <attribute name="unnecessary-acquired" type="Bool" />
+    <attribute name="target-type" type="Seq">
       <case name="all" default="y" />
       <case name="friend" />
       <case name="enemy" />
       <case name="my-party" />
       <case name="my-team" />
-    </record>
-    <record name="success-caster-combat-mode" type="Seq">
+    </attribute>
+    <attribute name="success-caster-combat-mode" type="Seq">
       <case name="all" default="y" />
       <case name="combat-mode" />
       <case name="not-combat-mode" />
-    </record>
-    <record name="success-caster-flag" type="Seq16" seq="flag" default="none" repeat="4" />
-    <record name="success-caster-op" type="Seq" seq="op" default="or" />
-    <record name="fail-caster-flag" type="Seq16" seq="flag" default="none" repeat="4" />
-    <record name="fail-caster-op" type="Seq" seq="op" default="or" />
-    <record name="success-caster-effect-attribute" type="Seq16" seq="effect-attribute" default="none" repeat="4" />
-    <record name="success-caster-effect-attribute-op" type="Seq" seq="op" default="or" />
-    <record name="fail-caster-effect-attribute" type="Seq16" seq="effect-attribute" default="none" repeat="4" />
-    <record name="fail-caster-effect-attribute-op" type="Seq" seq="op" default="or" />
-    <record name="success-caster-filter" type="Ref" ref="filter" repeat="2" />
-    <record name="success-caster-filter-op" type="Seq" seq="op" default="or" />
-    <record name="fail-caster-filter" type="Ref" ref="filter" repeat="2" />
-    <record name="fail-caster-filter-op" type="Seq" seq="op" default="or" />
-    <record name="success-target-dead-state" type="Seq" seq="dead-state" default="not-dead-restoration" />
-    <record name="success-target-flag" type="Seq16" seq="flag" default="none" repeat="4" />
-    <record name="success-target-op" type="Seq" seq="op" default="or" />
-    <record name="fail-target-flag" type="Seq16" seq="flag" default="none" repeat="4" />
-    <record name="fail-target-op" type="Seq" seq="op" default="or" />
-    <record name="success-target-effect-attribute" type="Seq16" seq="effect-attribute" default="none" repeat="4" />
-    <record name="success-target-effect-attribute-op" type="Seq" seq="op" default="or" />
-    <record name="fail-target-effect-attribute" type="Seq16" seq="effect-attribute" default="none" repeat="4" />
-    <record name="fail-target-effect-attribute-op" type="Seq" seq="op" default="or" />
-    <record name="success-target-filter" type="Ref" ref="filter" repeat="2" />
-    <record name="success-target-filter-op" type="Seq" seq="op" default="or" />
-    <record name="fail-target-filter" type="Ref" ref="filter" repeat="2" />
-    <record name="fail-target-filter-op" type="Seq" seq="op" default="or" />
-    <record name="fail-target-mount-linker" type="Bool" />
-    <record name="fail-target-mount-linked" type="Bool" />
-    <record name="fail-target-inhalation-linker" type="Bool" />
-    <record name="fail-target-inhalation-linked" type="Bool" />
-    <record name="fail-target-catch-linker" type="Bool" />
-    <record name="fail-target-catch-linked" type="Bool" />
-    <record name="gather-range" type="Ref" ref="skillgatherrange3" required="y" />
-    <record name="check-style-score" type="Int16" default="0" min="0" />
-    <record name="check-hp-value" type="Int16" default="0" min="0" />
-    <record name="check-hp-type" type="Seq">
+    </attribute>
+    <attribute name="success-caster-flag" type="Seq16" seq="flag" default="none" repeat="4" />
+    <attribute name="success-caster-op" type="Seq" seq="op" default="or" />
+    <attribute name="fail-caster-flag" type="Seq16" seq="flag" default="none" repeat="4" />
+    <attribute name="fail-caster-op" type="Seq" seq="op" default="or" />
+    <attribute name="success-caster-effect-attribute" type="Seq16" seq="effect-attribute" default="none" repeat="4" />
+    <attribute name="success-caster-effect-attribute-op" type="Seq" seq="op" default="or" />
+    <attribute name="fail-caster-effect-attribute" type="Seq16" seq="effect-attribute" default="none" repeat="4" />
+    <attribute name="fail-caster-effect-attribute-op" type="Seq" seq="op" default="or" />
+    <attribute name="success-caster-filter" type="Ref" ref="filter" repeat="2" />
+    <attribute name="success-caster-filter-op" type="Seq" seq="op" default="or" />
+    <attribute name="fail-caster-filter" type="Ref" ref="filter" repeat="2" />
+    <attribute name="fail-caster-filter-op" type="Seq" seq="op" default="or" />
+    <attribute name="success-target-dead-state" type="Seq" seq="dead-state" default="not-dead-restoration" />
+    <attribute name="success-target-flag" type="Seq16" seq="flag" default="none" repeat="4" />
+    <attribute name="success-target-op" type="Seq" seq="op" default="or" />
+    <attribute name="fail-target-flag" type="Seq16" seq="flag" default="none" repeat="4" />
+    <attribute name="fail-target-op" type="Seq" seq="op" default="or" />
+    <attribute name="success-target-effect-attribute" type="Seq16" seq="effect-attribute" default="none" repeat="4" />
+    <attribute name="success-target-effect-attribute-op" type="Seq" seq="op" default="or" />
+    <attribute name="fail-target-effect-attribute" type="Seq16" seq="effect-attribute" default="none" repeat="4" />
+    <attribute name="fail-target-effect-attribute-op" type="Seq" seq="op" default="or" />
+    <attribute name="success-target-filter" type="Ref" ref="filter" repeat="2" />
+    <attribute name="success-target-filter-op" type="Seq" seq="op" default="or" />
+    <attribute name="fail-target-filter" type="Ref" ref="filter" repeat="2" />
+    <attribute name="fail-target-filter-op" type="Seq" seq="op" default="or" />
+    <attribute name="fail-target-mount-linker" type="Bool" />
+    <attribute name="fail-target-mount-linked" type="Bool" />
+    <attribute name="fail-target-inhalation-linker" type="Bool" />
+    <attribute name="fail-target-inhalation-linked" type="Bool" />
+    <attribute name="fail-target-catch-linker" type="Bool" />
+    <attribute name="fail-target-catch-linked" type="Bool" />
+    <attribute name="gather-range" type="Ref" ref="skillgatherrange3" required="y" />
+    <attribute name="check-style-score" type="Int16" default="0" min="0" />
+    <attribute name="check-hp-value" type="Int16" default="0" min="0" />
+    <attribute name="check-hp-type" type="Seq">
       <case name="point" default="y" />
       <case name="point-below" />
       <case name="point-above" />
       <case name="base-max-percent" />
       <case name="total-max-percent" />
       <case name="current-percent" />
-    </record>
-    <record name="check-sp-value" type="Int16" default="0" repeat="2" min="0" />
-    <record name="check-sp-type" type="Seq" repeat="2">
+    </attribute>
+    <attribute name="check-sp-value" type="Int16" default="0" repeat="2" min="0" />
+    <attribute name="check-sp-type" type="Seq" repeat="2">
       <case name="point" default="y" />
       <case name="point-below" />
       <case name="point-above" />
       <case name="base-max-percent" />
       <case name="total-max-percent" />
       <case name="current-percent" />
-    </record>
-    <record name="check-summoned-hp-value" type="Int16" default="0" min="0" />
-    <record name="check-summoned-hp-type" type="Seq">
+    </attribute>
+    <attribute name="check-summoned-hp-value" type="Int16" default="0" min="0" />
+    <attribute name="check-summoned-hp-type" type="Seq">
       <case name="point" default="y" />
       <case name="point-below" />
       <case name="point-above" />
       <case name="base-max-percent" />
       <case name="total-max-percent" />
       <case name="current-percent" />
-    </record>
-    <record name="success-caster-move-state" type="Seq" repeat="9">
+    </attribute>
+    <attribute name="success-caster-move-state" type="Seq" repeat="9">
       <case name="none" default="y" />
       <case name="sprint" />
       <case name="sprint-jump" />
@@ -109,8 +109,8 @@
       <case name="dive" />
       <case name="wall-run" />
       <case name="wall-jump" />
-    </record>
-    <record name="fail-caster-move-state" type="Seq" repeat="9">
+    </attribute>
+    <attribute name="fail-caster-move-state" type="Seq" repeat="9">
       <case name="none" default="y" />
       <case name="sprint" />
       <case name="sprint-jump" />
@@ -121,25 +121,25 @@
       <case name="dive" />
       <case name="wall-run" />
       <case name="wall-jump" />
-    </record>
-    <record name="move-type" type="Seq">
+    </attribute>
+    <attribute name="move-type" type="Seq">
       <case name="free" default="y" />
       <case name="cast-block" />
       <case name="whole-block" />
-    </record>
-    <record name="prev-combo-id" type="Int32" default="0" repeat="4" />
-    <record name="prev-combo-event-type" type="Seq" repeat="4">
+    </attribute>
+    <attribute name="prev-combo-id" type="Int32" default="0" repeat="4" />
+    <attribute name="prev-combo-event-type" type="Seq" repeat="4">
       <case name="none" default="y" />
       <case name="attack" />
       <case name="attacked" />
-    </record>
-    <record name="prev-combo-check-point" type="Seq" repeat="4">
+    </attribute>
+    <attribute name="prev-combo-check-point" type="Seq" repeat="4">
       <case name="exec-first" default="y" />
       <case name="exec-last" />
       <case name="fire" />
-    </record>
-    <record name="prev-combo-result" type="Int16" default="0" repeat="4" hidden="y" />
-    <record name="prev-combo-1-result" type="Seq" repeat="8">
+    </attribute>
+    <attribute name="prev-combo-result" type="Int16" default="0" repeat="4" hidden="y" />
+    <attribute name="prev-combo-1-result" type="Seq" repeat="8">
       <case name="none" default="y" />
       <case name="hit" />
       <case name="miss" />
@@ -159,8 +159,8 @@
       <case name="parry-perfect-parry-counter" />
       <case name="parry-perfect-parry-dodge" />
       <case name="parry-dodge" />
-    </record>
-    <record name="prev-combo-2-result" type="Seq" repeat="8">
+    </attribute>
+    <attribute name="prev-combo-2-result" type="Seq" repeat="8">
       <case name="none" default="y" />
       <case name="hit" />
       <case name="miss" />
@@ -180,8 +180,8 @@
       <case name="parry-perfect-parry-counter" />
       <case name="parry-perfect-parry-dodge" />
       <case name="parry-dodge" />
-    </record>
-    <record name="prev-combo-3-result" type="Seq" repeat="8">
+    </attribute>
+    <attribute name="prev-combo-3-result" type="Seq" repeat="8">
       <case name="none" default="y" />
       <case name="hit" />
       <case name="miss" />
@@ -201,8 +201,8 @@
       <case name="parry-perfect-parry-counter" />
       <case name="parry-perfect-parry-dodge" />
       <case name="parry-dodge" />
-    </record>
-    <record name="prev-combo-4-result" type="Seq" repeat="8">
+    </attribute>
+    <attribute name="prev-combo-4-result" type="Seq" repeat="8">
       <case name="none" default="y" />
       <case name="hit" />
       <case name="miss" />
@@ -222,14 +222,14 @@
       <case name="parry-perfect-parry-counter" />
       <case name="parry-perfect-parry-dodge" />
       <case name="parry-dodge" />
-    </record>
-    <record name="last-event-type" type="Seq" repeat="2">
+    </attribute>
+    <attribute name="last-event-type" type="Seq" repeat="2">
       <case name="none" default="y" />
       <case name="attack" />
       <case name="attacked" />
-    </record>
-    <record name="last-event-result" type="Int16" default="0" repeat="2" hidden="y" />
-    <record name="last-event-1-result" type="Seq" repeat="8">
+    </attribute>
+    <attribute name="last-event-result" type="Int16" default="0" repeat="2" hidden="y" />
+    <attribute name="last-event-1-result" type="Seq" repeat="8">
       <case name="none" default="y" />
       <case name="hit" />
       <case name="miss" />
@@ -249,8 +249,8 @@
       <case name="parry-perfect-parry-counter" />
       <case name="parry-perfect-parry-dodge" />
       <case name="parry-dodge" />
-    </record>
-    <record name="last-event-2-result" type="Seq" repeat="8">
+    </attribute>
+    <attribute name="last-event-2-result" type="Seq" repeat="8">
       <case name="none" default="y" />
       <case name="hit" />
       <case name="miss" />
@@ -270,8 +270,8 @@
       <case name="parry-perfect-parry-counter" />
       <case name="parry-perfect-parry-dodge" />
       <case name="parry-dodge" />
-    </record>
-    <record name="success-recycle-group" type="Seq" repeat="4">
+    </attribute>
+    <attribute name="success-recycle-group" type="Seq" repeat="4">
       <case name="none" default="y" />
       <case name="class" />
       <case name="item-1" />
@@ -279,10 +279,10 @@
       <case name="class-2" />
       <case name="db" />
       <case name="gadget" />
-    </record>
-    <record name="success-recycle-group-id" type="Int8" default="0" repeat="4" min="0" max="45" />
-    <record name="success-recycle-group-op" type="Seq" seq="op" default="or" />
-    <record name="fail-recycle-group" type="Seq" repeat="4">
+    </attribute>
+    <attribute name="success-recycle-group-id" type="Int8" default="0" repeat="4" min="0" max="45" />
+    <attribute name="success-recycle-group-op" type="Seq" seq="op" default="or" />
+    <attribute name="fail-recycle-group" type="Seq" repeat="4">
       <case name="none" default="y" />
       <case name="class" />
       <case name="item-1" />
@@ -290,45 +290,45 @@
       <case name="class-2" />
       <case name="db" />
       <case name="gadget" />
-    </record>
-    <record name="fail-recycle-group-id" type="Int8" default="0" repeat="4" min="0" max="45" />
-    <record name="fail-recycle-group-op" type="Seq" seq="op" default="or" />
-    <record name="soul-mask" type="Ref" ref="soulmaskset" repeat="2" />
-    <record name="fail-soulmask-except-normal" type="Bool" default="y" />
-    <record name="is-special-skill" type="Bool" />
-    <record name="lockon-skill-type" type="Seq">
+    </attribute>
+    <attribute name="fail-recycle-group-id" type="Int8" default="0" repeat="4" min="0" max="45" />
+    <attribute name="fail-recycle-group-op" type="Seq" seq="op" default="or" />
+    <attribute name="soul-mask" type="Ref" ref="soulmaskset" repeat="2" />
+    <attribute name="fail-soulmask-except-normal" type="Bool" default="y" />
+    <attribute name="is-special-skill" type="Bool" />
+    <attribute name="lockon-skill-type" type="Seq">
       <case name="none" default="y" />
       <case name="only-target" />
       <case name="target-pawn-rotate" />
       <case name="full-lock-on" />
-    </record>
-    <record name="is-ground-pitch-dash-skill" type="Bool" />
-    <record name="simple-context-success-caster-flag" type="Seq16" seq="flag" default="none" repeat="4" />
-    <record name="simple-context-success-caster-op" type="Seq" seq="op" default="or" />
-    <record name="simple-context-fail-caster-flag" type="Seq16" seq="flag" default="none" repeat="4" />
-    <record name="simple-context-fail-caster-op" type="Seq" seq="op" default="or" />
-    <record name="simple-context-success-caster-effect-attribute" type="Seq16" seq="effect-attribute" default="none" repeat="4" />
-    <record name="simple-context-success-caster-effect-attribute-op" type="Seq" seq="op" default="or" />
-    <record name="simple-context-fail-caster-effect-attribute" type="Seq16" seq="effect-attribute" default="none" repeat="4" />
-    <record name="simple-context-fail-caster-effect-attribute-op" type="Seq" seq="op" default="or" />
-    <record name="simple-context-success-target-flag" type="Seq16" seq="flag" default="none" repeat="4" />
-    <record name="simple-context-success-target-op" type="Seq" seq="op" default="or" />
-    <record name="simple-context-fail-target-flag" type="Seq16" seq="flag" default="none" repeat="4" />
-    <record name="simple-context-fail-target-op" type="Seq" seq="op" default="or" />
-    <record name="simple-context-success-target-effect-attribute" type="Seq16" seq="effect-attribute" default="none" repeat="4" />
-    <record name="simple-context-success-target-effect-attribute-op" type="Seq" seq="op" default="or" />
-    <record name="simple-context-fail-target-effect-attribute" type="Seq16" seq="effect-attribute" default="none" repeat="4" />
-    <record name="simple-context-fail-target-effect-attribute-op" type="Seq" seq="op" default="or" />
-    <record name="simple-context-check-sp-value" type="Int16" default="0" repeat="2" min="0" />
-    <record name="simple-context-check-sp-type" type="Seq" repeat="2">
+    </attribute>
+    <attribute name="is-ground-pitch-dash-skill" type="Bool" />
+    <attribute name="simple-context-success-caster-flag" type="Seq16" seq="flag" default="none" repeat="4" />
+    <attribute name="simple-context-success-caster-op" type="Seq" seq="op" default="or" />
+    <attribute name="simple-context-fail-caster-flag" type="Seq16" seq="flag" default="none" repeat="4" />
+    <attribute name="simple-context-fail-caster-op" type="Seq" seq="op" default="or" />
+    <attribute name="simple-context-success-caster-effect-attribute" type="Seq16" seq="effect-attribute" default="none" repeat="4" />
+    <attribute name="simple-context-success-caster-effect-attribute-op" type="Seq" seq="op" default="or" />
+    <attribute name="simple-context-fail-caster-effect-attribute" type="Seq16" seq="effect-attribute" default="none" repeat="4" />
+    <attribute name="simple-context-fail-caster-effect-attribute-op" type="Seq" seq="op" default="or" />
+    <attribute name="simple-context-success-target-flag" type="Seq16" seq="flag" default="none" repeat="4" />
+    <attribute name="simple-context-success-target-op" type="Seq" seq="op" default="or" />
+    <attribute name="simple-context-fail-target-flag" type="Seq16" seq="flag" default="none" repeat="4" />
+    <attribute name="simple-context-fail-target-op" type="Seq" seq="op" default="or" />
+    <attribute name="simple-context-success-target-effect-attribute" type="Seq16" seq="effect-attribute" default="none" repeat="4" />
+    <attribute name="simple-context-success-target-effect-attribute-op" type="Seq" seq="op" default="or" />
+    <attribute name="simple-context-fail-target-effect-attribute" type="Seq16" seq="effect-attribute" default="none" repeat="4" />
+    <attribute name="simple-context-fail-target-effect-attribute-op" type="Seq" seq="op" default="or" />
+    <attribute name="simple-context-check-sp-value" type="Int16" default="0" repeat="2" min="0" />
+    <attribute name="simple-context-check-sp-type" type="Seq" repeat="2">
       <case name="point" default="y" />
       <case name="point-below" />
       <case name="point-above" />
       <case name="base-max-percent" />
       <case name="total-max-percent" />
       <case name="current-percent" />
-    </record>
-    <record name="simple-context-success-recycle-group" type="Seq" repeat="4">
+    </attribute>
+    <attribute name="simple-context-success-recycle-group" type="Seq" repeat="4">
       <case name="none" default="y" />
       <case name="class" />
       <case name="item-1" />
@@ -336,10 +336,10 @@
       <case name="class-2" />
       <case name="db" />
       <case name="gadget" />
-    </record>
-    <record name="simple-context-success-recycle-group-id" type="Int8" default="0" repeat="4" min="0" max="45" />
-    <record name="simple-context-success-recycle-group-op" type="Seq" seq="op" default="or" />
-    <record name="simple-context-fail-recycle-group" type="Seq" repeat="4">
+    </attribute>
+    <attribute name="simple-context-success-recycle-group-id" type="Int8" default="0" repeat="4" min="0" max="45" />
+    <attribute name="simple-context-success-recycle-group-op" type="Seq" seq="op" default="or" />
+    <attribute name="simple-context-fail-recycle-group" type="Seq" repeat="4">
       <case name="none" default="y" />
       <case name="class" />
       <case name="item-1" />
@@ -347,8 +347,8 @@
       <case name="class-2" />
       <case name="db" />
       <case name="gadget" />
-    </record>
-    <record name="simple-context-fail-recycle-group-id" type="Int8" default="0" repeat="4" min="0" max="45" />
-    <record name="simple-context-fail-recycle-group-op" type="Seq" seq="op" default="or" />
+    </attribute>
+    <attribute name="simple-context-fail-recycle-group-id" type="Int8" default="0" repeat="4" min="0" max="45" />
+    <attribute name="simple-context-fail-recycle-group-op" type="Seq" seq="op" default="or" />
   </el>
 </table>

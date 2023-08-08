@@ -2,26 +2,26 @@
 <table name="classic-field-zone" version="0.15" autokey="false" module="14" maxid="31999">
   <el name="table" child="1" />
   <el name="record">
-    <record name="id" type="Int16" key="y" required="y" min="1" max="31999" />
-    <record name="alias" type="String" required="y" max="70" />
-    <record name="zone" type="Ref" ref="zone" repeat="2" />
-    <record name="group" type="Ref" ref="attraction-group" />
-    <record name="attraction-quest" type="Ref" ref="quest" repeat="5" hidden="y" />
-    <record name="ui-filter-attraction-quest-only" type="Bool" />
-    <record name="respawn-confirm-text" type="Ref" ref="text" />
-    <record name="escape-cave-confirm-text" type="Ref" ref="text" />
-    <record name="recommend-attack-power" type="Int16" default="0" min="0" max="9999" />
-    <record name="standard-gear-weapon" type="Ref" ref="item" required="y" />
-    <record name="classic-field-zone-name2" type="Ref" ref="text" />
-    <record name="classic-field-zone-desc" type="Ref" ref="text" />
-    <record name="thumbnail-image" type="String" max="70" />
-    <record name="reward-summary" type="Ref" ref="attractionrewardsummary" />
-    <record name="ui-text-grade" type="Int8" default="0" max="8" />
-    <record name="tactic" type="Ref" ref="text" />
-    <record name="recommend-alias" type="Ref" ref="contentsjournalrecommenditem" />
-    <record name="recommend-level-min" type="Int8" default="0" />
-    <record name="recommend-level-max" type="Int8" default="0" />
-    <record name="recommend-mastery-level-min" type="Int8" default="0" />
-    <record name="recommend-mastery-level-max" type="Int8" default="0" />
+    <attribute name="id" type="Int16" key="y" required="y" min="1" max="31999" />
+    <attribute name="alias" type="String" required="y" max="70" />
+    <attribute name="zone" type="Ref" ref="zone" repeat="2" />
+    <attribute name="group" type="Ref" ref="attraction-group" />
+    <attribute name="attraction-quest" type="Ref" ref="quest" repeat="5" hidden="y" />
+    <attribute name="ui-filter-attraction-quest-only" type="Bool" />
+    <attribute name="respawn-confirm-text" type="Ref" ref="text" />
+    <attribute name="escape-cave-confirm-text" type="Ref" ref="text" />
+    <attribute name="recommend-attack-power" type="Int16" default="0" min="0" max="9999" />
+    <attribute name="standard-gear-weapon" type="Ref" ref="item" required="y" />
+    <attribute name="classic-field-zone-name2" type="Ref" ref="text" />
+    <attribute name="classic-field-zone-desc" type="Ref" ref="text" />
+    <attribute name="thumbnail-image" type="String" max="70" />
+    <attribute name="reward-summary" type="Ref" ref="attractionrewardsummary" />
+    <attribute name="ui-text-grade" type="Int8" default="0" max="8" />
+    <attribute name="tactic" type="Ref" ref="text" />
+    <attribute name="recommend-alias" type="Ref" ref="contentsjournalrecommenditem" />
+    <attribute name="recommend-level-min" type="Int8" default="0" />
+    <attribute name="recommend-level-max" type="Int8" default="0" />
+    <attribute name="recommend-mastery-level-min" type="Int8" default="0" />
+    <attribute name="recommend-mastery-level-max" type="Int8" default="0" />
   </el>
 </table>

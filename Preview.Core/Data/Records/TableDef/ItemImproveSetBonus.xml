@@ -2,12 +2,12 @@
 <table name="item-improve-set-bonus" version="3.0" autokey="false" module="6">
   <el name="table" child="1" />
   <el name="record" >
-		<record name="id" type="Int32" key="y" required="y" />
-		<record name="alias" type="String" required="y" />
-		<record name="name" ref="Text" />
-		<record name="target-item" repeat="12" type="TRef" />
-		<record name="target-item-condition-type" type="Seq" seq="condition-type" repeat="12" />
-		<record name="target-equip-pos" type="Seq" repeat="12" >
+		<attribute name="id" type="Int32" key="y" required="y" />
+		<attribute name="alias" type="String" required="y" />
+		<attribute name="name" ref="Text" />
+		<attribute name="target-item" repeat="12" type="TRef" />
+		<attribute name="target-item-condition-type" type="Seq" seq="condition-type" repeat="12" />
+		<attribute name="target-equip-pos" type="Seq" repeat="12" >
 			<case name="none" default="y" />
 			<case name="hand" />
 			<case name="body" />
@@ -62,20 +62,20 @@
 			<case name="preset-rune-2" />
 			<case name="preset-nova" />
 			<case name="preset-vehicle" />
-		</record>
-		<record name="target-equip-pos-icon" repeat="12" type="Icon" />
-		<record name="min-item-grade" type="Int8" max="8" min="0" />
-		<record name="total-improve-level" type="Int16" repeat="30" />
-		<record name="total-improve-level-effect" ref="Effect" repeat="30" />
-		<record name="total-improve-level-effect-description" ref="Text" repeat="30" />
-		<record name="total-improve-level-ability" type="Seq" seq="attach-ability" repeat="30" />
-		<record name="total-improve-level-ability-value" type="Int32" repeat="30" />
-		<record name="total-improve-level-condition-event" ref="condition-event" repeat="30" />
-		<record name="min-improve-level" type="Int16" repeat="30" />
-		<record name="min-improve-level-effect" ref="Effect" repeat="30" />
-		<record name="min-improve-level-effect-description" ref="Text" repeat="30" />
-		<record name="min-improve-level-ability" type="Seq" seq="attach-ability" repeat="30" />
-		<record name="min-improve-level-ability-value" type="Int32" repeat="30" />
-		<record name="min-improve-level-condition-event" ref="ConditionEvent" repeat="30" />
+		</attribute>
+		<attribute name="target-equip-pos-icon" repeat="12" type="Icon" />
+		<attribute name="min-item-grade" type="Int8" max="8" min="0" />
+		<attribute name="total-improve-level" type="Int16" repeat="30" />
+		<attribute name="total-improve-level-effect" ref="Effect" repeat="30" />
+		<attribute name="total-improve-level-effect-description" ref="Text" repeat="30" />
+		<attribute name="total-improve-level-ability" type="Seq" seq="attach-ability" repeat="30" />
+		<attribute name="total-improve-level-ability-value" type="Int32" repeat="30" />
+		<attribute name="total-improve-level-condition-event" ref="condition-event" repeat="30" />
+		<attribute name="min-improve-level" type="Int16" repeat="30" />
+		<attribute name="min-improve-level-effect" ref="Effect" repeat="30" />
+		<attribute name="min-improve-level-effect-description" ref="Text" repeat="30" />
+		<attribute name="min-improve-level-ability" type="Seq" seq="attach-ability" repeat="30" />
+		<attribute name="min-improve-level-ability-value" type="Int32" repeat="30" />
+		<attribute name="min-improve-level-condition-event" ref="ConditionEvent" repeat="30" />
   </el>
 </table>

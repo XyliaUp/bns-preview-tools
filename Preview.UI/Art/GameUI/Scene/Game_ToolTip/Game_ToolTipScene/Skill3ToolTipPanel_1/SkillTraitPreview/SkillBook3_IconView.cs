@@ -1,6 +1,6 @@
-﻿using Xylia.Preview.Common.Extension;
-using Xylia.Preview.Data.Record;
+﻿using Xylia.Preview.Data.Record;
 using Xylia.Preview.UI.Custom.Controls;
+using Xylia.Preview.UI.Extension;
 
 namespace Xylia.Preview.GameUI.Scene.Skill;
 public partial class SkillBook3_IconView : Form

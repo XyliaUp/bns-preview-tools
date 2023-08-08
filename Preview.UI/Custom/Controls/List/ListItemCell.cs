@@ -50,7 +50,6 @@ public partial class ListItemCell : UserControl
 		e.Graphics.FillRectangle(new LinearGradientBrush(this.ClientRectangle, c2, c1, LinearGradientMode.Horizontal), new RectangleF(new PointF(Half, this.ClientRectangle.Bottom - 2), new SizeF(Half, 2)));
 
 
-
 		e.Graphics.DrawString(job, this.Font, new SolidBrush(this.ForeColor), new RectangleF(), new StringFormat { Alignment = StringAlignment.Far });
 	}
 	#endregion

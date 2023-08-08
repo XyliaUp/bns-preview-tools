@@ -3,13 +3,13 @@
 using Xylia.Extension;
 using Xylia.Preview.Data.Helper;
 using Xylia.Preview.Data.Record;
-using Xylia.Preview.GameUI.Scene.Game_ToolTip.ItemTooltipPanel.Randombox;
+using Xylia.Preview.GameUI.Scene.Game_ToolTipScene.ItemTooltipPanel.Preview.Randombox;
 using Xylia.Preview.UI.Resources;
 
 using static Xylia.Preview.Data.Record.Item;
 using static Xylia.Preview.Data.Record.Item.Grocery;
 
-namespace Xylia.Preview.Common.Extension;
+namespace Xylia.Preview.UI.Extension;
 public static class ItemExtension
 {
 	/// <summary>
@@ -44,8 +44,6 @@ public static class ItemExtension
 		if (TopLeft != null) bmp = bmp.Combine(TopLeft, DrawLocation.TopLeft, false);
 		#endregion
 
-
-
 		#region TopRight
 		Bitmap TopRight = null;
 
@@ -67,12 +65,12 @@ public static class ItemExtension
 		return bmp;
 	}
 
-	
 
 
 
 
-	public static Bitmap GetBackGround(this byte Grade, bool IsUE4 = true) => Grade switch
+
+	public static Bitmap GetBackGround(this sbyte Grade, bool IsUE4 = true) => Grade switch
 	{
 		2 => IsUE4 ? Resource_BNSR.ItemIcon_Bg_Grade_2 : Resource_Common.ItemIcon_Bg_Grade_2,
 		3 => IsUE4 ? Resource_BNSR.ItemIcon_Bg_Grade_3 : Resource_Common.ItemIcon_Bg_Grade_3,
@@ -86,7 +84,7 @@ public static class ItemExtension
 		1 or _ => IsUE4 ? Resource_BNSR.ItemIcon_Bg_Grade_1 : Resource_Common.ItemIcon_Bg_Grade_1,
 	};
 
-	public static Bitmap GetIconWithGrade(this string IconInfo, byte Grade) => string.IsNullOrWhiteSpace(IconInfo) ? null :
+	public static Bitmap GetIconWithGrade(this string IconInfo, sbyte Grade) => string.IsNullOrWhiteSpace(IconInfo) ? null :
 		Grade.GetBackGround(true).Combine(IconInfo.GetIcon());
 
 

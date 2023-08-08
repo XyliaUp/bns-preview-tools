@@ -2,10 +2,10 @@
 <table name="stancetransit" version="0.1" autokey="false" module="4">
   <el name="table" child="1" />
   <el name="record">
-    <record name="before-stance" type="Prop_seq" seq="stance" key="y" required="y" />
-    <record name="before-combat" type="Bool" key="y" required="y" />
-    <record name="after-stance" type="Prop_seq" seq="stance" key="y" required="y" />
-    <record name="after-combat" type="Bool" key="y" required="y" />
-    <record name="transit-anim" type="String" max="60" />
+    <attribute name="before-stance" type="Prop_seq" seq="stance" key="y" required="y" />
+    <attribute name="before-combat" type="Bool" key="y" required="y" />
+    <attribute name="after-stance" type="Prop_seq" seq="stance" key="y" required="y" />
+    <attribute name="after-combat" type="Bool" key="y" required="y" />
+    <attribute name="transit-anim" type="String" max="60" />
   </el>
 </table>

@@ -69,7 +69,7 @@ public partial class QuestSelector : Form
 	#region Functions
 	public static int LastRule
 	{
-		get => Ini.ReadValue("Preview", "quest#last").ToInt();
+		get => Ini.ReadValue("Preview", "quest#last").ToInt32();
 		set => Ini.WriteValue("Preview", "quest#last", value);
 	}
 
@@ -121,7 +121,7 @@ public partial class QuestSelector : Form
 		#endregion
 
 
-		#region 图标
+		#region icon
 		Graphics g = e.Graphics;
 		Rectangle bounds = e.Bounds;
 		Rectangle imageRect = new(bounds.X, bounds.Y, bounds.Height, bounds.Height);
@@ -130,12 +130,10 @@ public partial class QuestSelector : Form
 		if (image != null) g.DrawImage(image, imageRect, 0, 0, image.Width, image.Height, GraphicsUnit.Pixel);
 		#endregion
 
-		#region 文本
-		//如果颜色未赋值, 则使用前景色
+		#region name
 		Color StrColor = CurQuest.ForeColor;
 		if (StrColor == default) StrColor = this.ForeColor;
 
-		//获取任务名称
 		string SourceText = CurQuest.Name2.GetText();
 		string QuestName = $"[{CurQuest.id}] " + SourceText.CutText();
 
@@ -144,7 +142,7 @@ public partial class QuestSelector : Form
 		e.Graphics.DrawString(QuestName, Font, new SolidBrush(StrColor), textRect, new StringFormat { LineAlignment = StringAlignment.Center });
 		#endregion
 
-		#region 额外附加图标
+		#region tag
 		if (SourceText is null) return;
 
 		List<Image> ExtraImage = new();

@@ -6,7 +6,7 @@ namespace Xylia.Preview.Data.Record.ReactionClass;
 [Signal("set-party-object")]
 public sealed class SetPartyObject : Reaction
 {
-	public byte Reg;
+	public sbyte Reg;
 
 	/// <summary>
 	/// NPC队伍

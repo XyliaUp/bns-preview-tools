@@ -2,19 +2,19 @@
 <table name="pc-cam-dist" version="0.4" autokey="false" module="4">
   <el name="table" child="1" />
   <el name="record">
-    <record name="race" type="Prop_seq" seq="race" key="y" required="y" />
-    <record name="sex" type="Prop_seq" seq="sex" key="y" required="y" />
-    <record name="stance" type="Prop_seq" seq="stance" key="y" required="y" />
-    <record name="combat-mode" type="Bool" key="y" required="y" />
-    <record name="height-transition" type="Float32" default="180" />
-    <record name="middle-transition" type="Float32" default="180" />
-    <record name="far-limit" type="Float32" default="300" deprecated="y" />
-    <record name="far-limit-min" type="Float32" default="300" />
-    <record name="far-limit-max" type="Float32" default="700" />
-    <record name="transparency" type="Float32" default="45" />
-    <record name="far-height" type="Float32" default="72" />
-    <record name="middle-height" type="Float32" default="72" />
-    <record name="near-height" type="Float32" default="70" />
-    <record name="modulate-factor" type="Float32" default="70" />
+    <attribute name="race" type="Prop_seq" seq="race" key="y" required="y" />
+    <attribute name="sex" type="Prop_seq" seq="sex" key="y" required="y" />
+    <attribute name="stance" type="Prop_seq" seq="stance" key="y" required="y" />
+    <attribute name="combat-mode" type="Bool" key="y" required="y" />
+    <attribute name="height-transition" type="Float32" default="180" />
+    <attribute name="middle-transition" type="Float32" default="180" />
+    <attribute name="far-limit" type="Float32" default="300" deprecated="y" />
+    <attribute name="far-limit-min" type="Float32" default="300" />
+    <attribute name="far-limit-max" type="Float32" default="700" />
+    <attribute name="transparency" type="Float32" default="45" />
+    <attribute name="far-height" type="Float32" default="72" />
+    <attribute name="middle-height" type="Float32" default="72" />
+    <attribute name="near-height" type="Float32" default="70" />
+    <attribute name="modulate-factor" type="Float32" default="70" />
   </el>
 </table>

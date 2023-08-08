@@ -2,48 +2,48 @@
 <table name="relic-set-item" version="4.1" autokey="true" module="6">
 	<el name="table" child="1" />
 	<el name="record">
-		<record name="alias" type="String" required="y" max="70" />
-		<record name="unk-" type="Int32" start-show="24" />
-		<record name="unk-" type="Int32" start-show="28" />
-		<record name="unk-" type="Int32" start-show="32" />
-		<record name="unk-" type="Int32" start-show="36" />
-		<record name="unk-" type="Int32" start-show="40" />
-		<record name="unk-" type="Int32" start-show="44" />
-		<record name="unk-" type="Int32" start-show="48" />
-		<record name="unk-" type="Int32" start-show="52" />
-		<record name="unk-" type="Int32" start-show="56" />
-		<record name="unk-" type="Int32" start-show="60" />
-		<record name="unk-" type="Int32" start-show="64" />
-		<record name="unk-" type="Int32" start-show="68" />
-		<record name="unk-" type="Int32" start-show="72" />
-		<record name="unk-" type="Int32" start-show="76" />
-		<record name="unk-" type="Int32" start-show="80" />
-		<record name="unk-" type="Int32" start-show="84" />
-		<record name="unk-" type="Int32" start-show="88" />
-		<record name="unk-" type="Int32" start-show="92" />
-		<record name="unk-" type="Int32" start-show="96" />
-		<record name="unk-" type="Int32" start-show="100" />
-		<record name="unk-" type="Int32" start-show="104" />
-		<record name="unk-" type="Int32" start-show="108" />
-		<record name="unk-" type="Int32" start-show="112" />
-		<record name="unk-" type="Int32" start-show="116" />
-		<record name="unk-" type="Int32" start-show="120" />
-		<record name="unk-" type="Int32" start-show="124" />
-		<record name="unk-" type="Int32" start-show="128" />
-		<record name="unk-" type="Int32" start-show="132" />
-		<record name="unk-" type="Int32" start-show="136" />
-		<record name="unk-" type="Int32" start-show="140" />
-		<record name="unk-" type="Int32" start-show="144" />
-		<record name="unk-" type="Int32" start-show="148" />
-		<record name="unk-" type="Int32" start-show="152" />
-		<record name="unk-" type="Int32" start-show="156" />
-		<record name="unk-" type="Int32" start-show="160" />
-		<record name="unk-" type="Int32" start-show="164" />
-		<record name="unk-" type="Int32" start-show="168" />
-		<record name="unk-" type="Int32" start-show="172" />
-		<record name="unk-" type="Int32" start-show="176" />
-		<record name="unk-" type="Int32" start-show="180" />
-		<record name="name2" type="Ref" ref="text"  />
-		<record name="item" type="Ref" ref="item" repeat="15" />
+		<attribute name="alias" type="String" required="y" max="70" />
+		<attribute name="unk-" type="Int32" start-show="24" />
+		<attribute name="unk-" type="Int32" start-show="28" />
+		<attribute name="unk-" type="Int32" start-show="32" />
+		<attribute name="unk-" type="Int32" start-show="36" />
+		<attribute name="unk-" type="Int32" start-show="40" />
+		<attribute name="unk-" type="Int32" start-show="44" />
+		<attribute name="unk-" type="Int32" start-show="48" />
+		<attribute name="unk-" type="Int32" start-show="52" />
+		<attribute name="unk-" type="Int32" start-show="56" />
+		<attribute name="unk-" type="Int32" start-show="60" />
+		<attribute name="unk-" type="Int32" start-show="64" />
+		<attribute name="unk-" type="Int32" start-show="68" />
+		<attribute name="unk-" type="Int32" start-show="72" />
+		<attribute name="unk-" type="Int32" start-show="76" />
+		<attribute name="unk-" type="Int32" start-show="80" />
+		<attribute name="unk-" type="Int32" start-show="84" />
+		<attribute name="unk-" type="Int32" start-show="88" />
+		<attribute name="unk-" type="Int32" start-show="92" />
+		<attribute name="unk-" type="Int32" start-show="96" />
+		<attribute name="unk-" type="Int32" start-show="100" />
+		<attribute name="unk-" type="Int32" start-show="104" />
+		<attribute name="unk-" type="Int32" start-show="108" />
+		<attribute name="unk-" type="Int32" start-show="112" />
+		<attribute name="unk-" type="Int32" start-show="116" />
+		<attribute name="unk-" type="Int32" start-show="120" />
+		<attribute name="unk-" type="Int32" start-show="124" />
+		<attribute name="unk-" type="Int32" start-show="128" />
+		<attribute name="unk-" type="Int32" start-show="132" />
+		<attribute name="unk-" type="Int32" start-show="136" />
+		<attribute name="unk-" type="Int32" start-show="140" />
+		<attribute name="unk-" type="Int32" start-show="144" />
+		<attribute name="unk-" type="Int32" start-show="148" />
+		<attribute name="unk-" type="Int32" start-show="152" />
+		<attribute name="unk-" type="Int32" start-show="156" />
+		<attribute name="unk-" type="Int32" start-show="160" />
+		<attribute name="unk-" type="Int32" start-show="164" />
+		<attribute name="unk-" type="Int32" start-show="168" />
+		<attribute name="unk-" type="Int32" start-show="172" />
+		<attribute name="unk-" type="Int32" start-show="176" />
+		<attribute name="unk-" type="Int32" start-show="180" />
+		<attribute name="name2" type="Ref" ref="text"  />
+		<attribute name="item" type="Ref" ref="item" repeat="15" />
 	</el>
 </table>

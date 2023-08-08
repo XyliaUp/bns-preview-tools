@@ -42,10 +42,10 @@ public class ChallengeList : BaseRecord
 	public ChallengeTypeSeq ChallengeType;
 
 	[Signal("required-level")]
-	public byte RequiredLevel;
+	public sbyte RequiredLevel;
 
 	[Signal("required-mastery-level")]
-	public byte RequiredMasteryLevel;
+	public sbyte RequiredMasteryLevel;
 
 
 
@@ -59,13 +59,13 @@ public class ChallengeList : BaseRecord
 	public Grade[] ChallengeQuestGrade;
 
 	[Signal("challenge-quest-complete-count")]
-	public byte ChallengeQuestCompleteCount;
+	public sbyte ChallengeQuestCompleteCount;
 
 	[Signal("challenge-quest-attraction"), Repeat(20)]
 	public BaseRecord[] ChallengeQuestAttraction;
 
 	[Signal("challenge-quest-count"), Side(ReleaseSide.Client)]
-	public byte ChallengeQuestCount;
+	public sbyte ChallengeQuestCount;
 
 	[Signal("challenge-npc-difficulty"), Repeat(20)]
 	public DifficultyType[] ChallengeNpcDifficulty;
@@ -83,13 +83,13 @@ public class ChallengeList : BaseRecord
 	public Quest[] ChallengeNpcQuest;
 
 	[Signal("challenge-npc-total-count"), Side(ReleaseSide.Client)]
-	public byte ChallengeNpcTotalCount;
+	public sbyte ChallengeNpcTotalCount;
 
 	[Signal("challenge-reward-total-count"), Side(ReleaseSide.Client)]
-	public byte ChallengeRewardTotalCount;
+	public sbyte ChallengeRewardTotalCount;
 
 	[Signal("challenge-count-for-reward"), Repeat(20)]
-	public byte[] ChallengeCountForReward;
+	public sbyte[] ChallengeCountForReward;
 
 	[Signal("reward"), Repeat(20)]
 	public ChallengeListReward[] Reward;

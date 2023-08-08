@@ -2,26 +2,26 @@
 <table name="itemusablerelation" version="0.5" autokey="true" module="6">
   <el name="table" child="1" />
   <el name="record">
-    <record name="alias" type="String" required="y" max="70" />
-    <record name="attraction-group" type="Ref" ref="attraction-group" required="y" />
-    <record name="all" type="Bool" />
-    <record name="default" type="Bool" />
-    <record name="duel" type="Bool" />
-    <record name="unusable" type="Bool" />
-    <record name="jeryoungrim" type="Bool" />
-    <record name="deasamak" type="Bool" />
-    <record name="suwal" type="Bool" />
-    <record name="beakchung" type="Bool" />
-    <record name="gunwon" type="Bool" />
-    <record name="epichigh" type="Bool" />
-    <record name="pacheonseongdo" type="Bool" />
-    <record name="musin1-15" type="Bool" />
-    <record name="cave-dungeon" type="Bool" />
-    <record name="potion" type="Bool" />
-    <record name="talisman" type="Bool" />
-    <record name="techeonwangreung" type="Bool" />
-    <record name="event1" type="Bool" />
-    <record name="event2" type="Bool" />
-    <record name="special-potion" type="Bool" />
+    <attribute name="alias" type="String" required="y" max="70" />
+    <attribute name="attraction-group" type="Ref" ref="attraction-group" required="y" />
+    <attribute name="all" type="Bool" />
+    <attribute name="default" type="Bool" />
+    <attribute name="duel" type="Bool" />
+    <attribute name="unusable" type="Bool" />
+    <attribute name="jeryoungrim" type="Bool" />
+    <attribute name="deasamak" type="Bool" />
+    <attribute name="suwal" type="Bool" />
+    <attribute name="beakchung" type="Bool" />
+    <attribute name="gunwon" type="Bool" />
+    <attribute name="epichigh" type="Bool" />
+    <attribute name="pacheonseongdo" type="Bool" />
+    <attribute name="musin1-15" type="Bool" />
+    <attribute name="cave-dungeon" type="Bool" />
+    <attribute name="potion" type="Bool" />
+    <attribute name="talisman" type="Bool" />
+    <attribute name="techeonwangreung" type="Bool" />
+    <attribute name="event1" type="Bool" />
+    <attribute name="event2" type="Bool" />
+    <attribute name="special-potion" type="Bool" />
   </el>
 </table>

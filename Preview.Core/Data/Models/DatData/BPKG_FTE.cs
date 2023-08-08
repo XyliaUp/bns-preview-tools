@@ -1,12 +1,9 @@
-﻿using System.IO;
-using System.Text;
-
-using NPOI.XSSF;
+﻿using System.Text;
 
 using static Xylia.Preview.Data.Models.DatData.BXML_CONTENT;
 
 namespace Xylia.Preview.Data.Models.DatData;
-public class BPKG_FTE
+public class BPKG_FTE  : IDisposable
 {
     #region Fields
     public string FilePath;
@@ -52,7 +49,7 @@ public class BPKG_FTE
 
 
     #region DATA
-    public KeyInfo KeyInfo;
+    internal KeyInfo KeyInfo;
 
 
     public byte[] Data;
@@ -87,6 +84,11 @@ public class BPKG_FTE
             Data = oStream.ToArray();
         }
         else Data = buffer_unpacked;
+    }
+
+    public void Dispose()
+    {
+        this.Data = null;
     }
     #endregion
 }

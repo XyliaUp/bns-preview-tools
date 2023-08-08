@@ -148,7 +148,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_ToolTip.ItemTooltipPanel
 			this.ItemNamePanel.AutoSize = true;
 			this.ItemNamePanel.BackColor = System.Drawing.Color.Transparent;
 			this.ItemNamePanel.Font = new System.Drawing.Font("Microsoft YaHei UI", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-			this.ItemNamePanel.ItemGrade = ((byte)(8));
+			this.ItemNamePanel.ItemGrade = ((sbyte)(8));
 			this.ItemNamePanel.Location = new System.Drawing.Point(2, 1);
 			this.ItemNamePanel.Margin = new System.Windows.Forms.Padding(7, 10, 7, 10);
 			this.ItemNamePanel.Name = "ItemNamePanel";
@@ -156,7 +156,6 @@ namespace Xylia.Preview.GameUI.Scene.Game_ToolTip.ItemTooltipPanel
 			this.ItemNamePanel.TabIndex = 23;
 			this.ItemNamePanel.TagImage = null;
 			this.ItemNamePanel.Text = "ItemName";
-			this.ItemNamePanel.DoubleClick += new System.EventHandler(this.ItemNamePanel_DoubleClick);
 			// 
 			// ItemFrm
 			// 

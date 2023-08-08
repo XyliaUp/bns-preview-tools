@@ -2,13 +2,14 @@
 using CUE4Parse.UE4.Assets.Exports;
 using CUE4Parse.UE4.Assets.Exports.Material;
 
+using Xylia.Extension;
 using Xylia.Preview.Data.Helper;
 using Xylia.Preview.UI.Custom;
 
 namespace Xylia.Preview.UI.FModel.Views;
 public class ModelData
 {
-	public string Name;
+	public string DisplayName;
 	public UObject Export;
 	public UAnimSet AnimSet;
 
@@ -18,15 +19,15 @@ public class ModelData
 		set
 		{
 			Materials = new();
-			foreach (var material in value
-				 .Where(o => o != null).SelectMany(o => o.Split(','))
-				 .Select(FileCache.PakData.LoadObject<UObject>))
+			foreach (var material in value.Split(','))
 			{
-				if (material is UMaterialInstance unrealMaterial)
+				var export = FileCache.Provider.LoadObject(material);
+				if (export is UMaterialInstance unrealMaterial)
 					Materials.Add(unrealMaterial);
 			}
 		}
 	}
+
 
 
 	public void Run()

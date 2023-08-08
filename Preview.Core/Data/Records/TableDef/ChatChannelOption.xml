@@ -2,8 +2,8 @@
 <table name="chat-channel-option" version="0.1" autokey="false" module="4">
   <el name="table" child="1" />
   <el name="record">
-    <record name="id" type="Int64" key="y" required="y" />
-    <record name="category" type="Seq">
+    <attribute name="id" type="Int64" key="y" required="y" />
+    <attribute name="category" type="Seq">
       <case name="none" default="y" />
       <case name="chat-sight" />
       <case name="chat-party" />
@@ -74,14 +74,14 @@
       <case name="combat-party-target-defend" />
       <case name="mentoring" />
       <case name="skill" />
-    </record>
-    <record name="font-color-index" type="Int8" default="1" min="1" />
-    <record name="group" type="Seq">
+    </attribute>
+    <attribute name="font-color-index" type="Int8" default="1" min="1" />
+    <attribute name="group" type="Seq">
       <case name="none" default="y" />
       <case name="chat" />
       <case name="system" />
       <case name="combat" />
-    </record>
-    <record name="modifiable" type="Bool" default="y" />
+    </attribute>
+    <attribute name="modifiable" type="Bool" default="y" />
   </el>
 </table>

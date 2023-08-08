@@ -28,23 +28,17 @@ partial class ListPreview
 	protected void InitializeComponent()
 	{
 		System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ListPreview));
-		_panel = new Panel();
+	
 		// 
 		// ListPreview
 		// 
-		this.Name = "ListPreview";
 		this.AutoScroll = true;
 		this.AutoSize = false;
 		this.AutoSizeMode = AutoSizeMode.GrowOnly;
 		this.DoubleBuffered = true;
 		this.BackColor = Color.Transparent;
 		this.ForeColor = Color.White;
-		this.Items = new();		
-
-		this.Controls.Add(_panel);
+		this.Items = new();
 	}
 	#endregion
-
-
-	public Panel _panel;
 }

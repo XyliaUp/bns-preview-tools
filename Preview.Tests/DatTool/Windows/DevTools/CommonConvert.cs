@@ -1,5 +1,4 @@
 ﻿namespace Xylia.Preview.Tests.DatTool.Windows.DevTools;
-
 public class CommonConvert
 {
     public CommonConvert(long LongVal) : this(BitConverter.GetBytes(LongVal)) { }

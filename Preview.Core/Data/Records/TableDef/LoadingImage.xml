@@ -2,19 +2,19 @@
 <table name="loadingimage" version="0.9" autokey="true" module="28">
   <el name="table" child="1" />
   <el name="record">
-    <record name="alias" type="String" required="y" max="128" />
-    <record name="zone-id" type="Int32" default="0" max="30000" />
-    <record name="zone-attraction" type="TRef" />
-    <record name="level-min" type="Int8" default="1" min="1" max="100" />
-    <record name="level-max" type="Int8" default="100" min="1" max="100" />
-    <record name="job" type="Prop_seq" seq="job" default="job-none" />
-    <record name="back-ground" type="String" max="128" />
-    <record name="count-back-ground" type="Int8" default="1" />
-    <record name="editable" type="Bool" default="y" />
-    <record name="guide-text-ref" type="String" max="128" />
-    <record name="guide-text-count" type="Int16" default="0" max="30000" />
-    <record name="tip-image" type="String" deprecated="y" max="128" />
-    <record name="tip-text" type="String" deprecated="y" max="128" />
-    <record name="count-tip" type="Int8" default="1" deprecated="y" />
+    <attribute name="alias" type="String" required="y" max="128" />
+    <attribute name="zone-id" type="Int32" default="0" max="30000" />
+    <attribute name="zone-attraction" type="TRef" />
+    <attribute name="level-min" type="Int8" default="1" min="1" max="100" />
+    <attribute name="level-max" type="Int8" default="100" min="1" max="100" />
+    <attribute name="job" type="Prop_seq" seq="job" default="job-none" />
+    <attribute name="back-ground" type="String" max="128" />
+    <attribute name="count-back-ground" type="Int8" default="1" />
+    <attribute name="editable" type="Bool" default="y" />
+    <attribute name="guide-text-ref" type="String" max="128" />
+    <attribute name="guide-text-count" type="Int16" default="0" max="30000" />
+    <attribute name="tip-image" type="String" deprecated="y" max="128" />
+    <attribute name="tip-text" type="String" deprecated="y" max="128" />
+    <attribute name="count-tip" type="Int8" default="1" deprecated="y" />
   </el>
 </table>

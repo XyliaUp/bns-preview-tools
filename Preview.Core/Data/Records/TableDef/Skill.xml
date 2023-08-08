@@ -2,22 +2,22 @@
 <table name="skill" version="3.0" autokey="false" module="2062" maxid="200000000">
   <el name="table" child="1" />
   <el name="record">
-    <record name="id" type="Int32" key="y" required="y" min="1" max="200000000" />
-    <record name="variation-1-level" type="Int8" key="y" required="y" min="0" max="250" />
-    <record name="variation-2-level" type="Int8" key="y" required="y" min="0" max="250" />
-    <record name="variation-3-level" type="Int8" key="y" required="y" min="0" max="250" />
-    <record name="variation-4-level" type="Int8" key="y" required="y" min="0" max="250" />
-    <record name="variation-value" type="Int8" default="0" />
-    <record name="alias" type="String" required="y" max="70" />
-    <record name="name" type="String" max="32" />
-    <record name="name2" type="Ref" ref="text" />
-    <record name="short-cut-key" type="Seq16" seq="key-command" default="none" />
-    <record name="short-cut-key-classic" type="Seq16" seq="key-command" default="none" />
+    <attribute name="id" type="Int32" key="y" required="y" min="1" max="200000000" />
+    <attribute name="variation-1-level" type="Int8" key="y" required="y" min="0" max="250" />
+    <attribute name="variation-2-level" type="Int8" key="y" required="y" min="0" max="250" />
+    <attribute name="variation-3-level" type="Int8" key="y" required="y" min="0" max="250" />
+    <attribute name="variation-4-level" type="Int8" key="y" required="y" min="0" max="250" />
+    <attribute name="variation-value" type="Int8" default="0" />
+    <attribute name="alias" type="String" required="y" max="70" />
+    <attribute name="name" type="String" max="32" />
+    <attribute name="name2" type="Ref" ref="text" />
+    <attribute name="short-cut-key" type="Seq16" seq="key-command" default="none" />
+    <attribute name="short-cut-key-classic" type="Seq16" seq="key-command" default="none" />
     <sub name="active-skill">
-      <record name="cast-condition" type="Ref" ref="skillcastcondition3" />
-      <record name="consume-sp-value" type="Int16" default="0" min="0" />
-      <record name="ui-next-combo" type="Int32" hidden="y" min="1" max="200000000" />
-      <record name="combo-start-point-flag" type="Int8" default="0" hidden="y" />
+      <attribute name="cast-condition" type="Ref" ref="skillcastcondition3" />
+      <attribute name="consume-sp-value" type="Int16" default="0" min="0" />
+      <attribute name="ui-next-combo" type="Int32" hidden="y" min="1" max="200000000" />
+      <attribute name="combo-start-point-flag" type="Int8" default="0" hidden="y" />
     </sub>
     <sub name="passive-skill" />
     <sub name="action" />

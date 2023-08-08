@@ -8,7 +8,7 @@ public partial class Skill3 : BaseRecord
 {
 	#region Fields
 	[Signal("variation-id")]
-	public byte VariationId = 1;
+	public sbyte VariationId = 1;
 
 
 	[Signal("revised-effect-equip-probability-in-exec") , Repeat(5)] 

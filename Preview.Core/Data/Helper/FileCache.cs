@@ -1,26 +1,23 @@
 ﻿using CUE4Parse.BNS;
-using CUE4Parse.UE4.Assets.Exports;
+
+using Xylia.Preview.Common.Arg;
 
 namespace Xylia.Preview.Data.Helper;
 public static class FileCache
 {
-    #region Data
-    public static DataTableSet Data = new();
-
-    public static PakData PakData = new();
-
-    public static void Clear()
-    {
-        Data?.Dispose();
-        Data = new();
-
-        PakData?.Dispose();
-        PakData = new();
-    }
-    #endregion
+	public static TableSet Data = new();
 
 
-    #region Extension 
-    public static UObject GetUObject(this string Path) => PakData.LoadObject<UObject>(Path);
-    #endregion
+	private static GameFileProvider _provider;
+	public static GameFileProvider Provider => _provider ??= new GameFileProvider();
+
+
+	public static void Clear()
+	{
+		Data?.Dispose();
+		Data = new();
+
+		(Provider as IDisposable)?.Dispose();
+		_provider = new();
+	}
 }

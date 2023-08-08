@@ -2,21 +2,21 @@
 <table name="duel-bot" version="1.0" autokey="true" module="2054">
   <el name="table" child="1" />
   <el name="record">
-    <record name="alias" type="String" required="y" max="70" />
-    <record name="race" type="Prop_seq" seq="race" default="race-none" />
-    <record name="sex" type="Prop_seq" seq="sex" default="sex-none" />
-    <record name="job" type="Prop_seq" seq="job" default="job-none" />
-    <record name="level" type="Int8" required="y" min="1" max="70" />
-    <record name="mastery-level" type="Int8" required="y" min="0" max="50" />
-    <record name="faction" type="Ref" ref="faction" />
-    <record name="speed" type="Velocity" required="y" min="0" max="8000" />
-    <record name="radius" type="Distance" default="0" min="0" max="5000" />
-    <record name="scale" type="Int16" default="1000" min="0" max="10000" />
-    <record name="name2" type="Ref" ref="text" />
-    <record name="appearance" type="Ref" ref="creatureappearance" />
-    <record name="animset" type="String" max="128" />
-    <record name="summoned-name2" type="Ref" ref="text" />
-    <record name="summoned-appearance" type="Ref" ref="creatureappearance" />
-    <record name="summoned-animset" type="String" max="128" />
+    <attribute name="alias" type="String" required="y" max="70" />
+    <attribute name="race" type="Prop_seq" seq="race" default="race-none" />
+    <attribute name="sex" type="Prop_seq" seq="sex" default="sex-none" />
+    <attribute name="job" type="Prop_seq" seq="job" default="job-none" />
+    <attribute name="level" type="Int8" required="y" min="1" max="70" />
+    <attribute name="mastery-level" type="Int8" required="y" min="0" max="50" />
+    <attribute name="faction" type="Ref" ref="faction" />
+    <attribute name="speed" type="Velocity" required="y" min="0" max="8000" />
+    <attribute name="radius" type="Distance" default="0" min="0" max="5000" />
+    <attribute name="scale" type="Int16" default="1000" min="0" max="10000" />
+    <attribute name="name2" type="Ref" ref="text" />
+    <attribute name="appearance" type="Ref" ref="creatureappearance" />
+    <attribute name="animset" type="String" max="128" />
+    <attribute name="summoned-name2" type="Ref" ref="text" />
+    <attribute name="summoned-appearance" type="Ref" ref="creatureappearance" />
+    <attribute name="summoned-animset" type="String" max="128" />
   </el>
 </table>

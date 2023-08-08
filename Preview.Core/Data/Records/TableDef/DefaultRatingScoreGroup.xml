@@ -2,7 +2,7 @@
 <table name="default-rating-score-group" version="0.1" autokey="false" module="6">
   <el name="table" child="1" />
   <el name="record">
-    <record name="season-contents-type" type="Seq" key="y" required="y">
+    <attribute name="season-contents-type" type="Seq" key="y" required="y">
       <case name="invalid" />
       <case name="duel-death-match-1vs1" />
       <case name="duel-death-match-3vs3" />
@@ -20,11 +20,11 @@
       <case name="battle-royal-free-for-all" />
       <case name="battle-royal-free-for-all-party" />
       <case name="mastery-exp-best-record" />
-    </record>
-    <record name="group-id" type="Int16" key="y" required="y" min="1" max="10" />
-    <record name="min-rating-score" type="Int32" required="y" />
-    <record name="max-rating-score" type="Int32" hidden="y" />
-    <record name="default-rating-score" type="Int32" required="y" />
-    <record name="is-placement-test" type="Bool" required="y" />
+    </attribute>
+    <attribute name="group-id" type="Int16" key="y" required="y" min="1" max="10" />
+    <attribute name="min-rating-score" type="Int32" required="y" />
+    <attribute name="max-rating-score" type="Int32" hidden="y" />
+    <attribute name="default-rating-score" type="Int32" required="y" />
+    <attribute name="is-placement-test" type="Bool" required="y" />
   </el>
 </table>

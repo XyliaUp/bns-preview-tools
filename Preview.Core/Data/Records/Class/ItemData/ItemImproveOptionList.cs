@@ -8,7 +8,7 @@ public sealed class ItemImproveOptionList : BaseRecord
 	public JobSeq Job;
 
 	[Repeat(50)]
-	public ItemImproveOption[] Options;
+	public ItemImproveOption[] Option;
 
 	[Repeat(50)]
 	public short[] OptionProbWeight;

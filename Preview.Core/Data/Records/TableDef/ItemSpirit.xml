@@ -2,25 +2,25 @@
 <table name="itemspirit" version="0.5" autokey="false" module="6">
   <el name="table" child="1" />
   <el name="record">
-    <record name="alias" type="String" required="y" max="70" />
-    <record name="id" type="Int32" key="y" required="y" />
-    <record name="level" type="Int8" key="y" required="y" />
-    <record name="main-ingredient" type="Ref" ref="item" />
-    <record name="applicable-part" type="Seq" seq="equip-type" default="none" repeat="4" />
-    <record name="use-random-ability-value" type="Bool" />
-    <record name="money-cost" type="Int32" default="0" min="0" max="2000000000" />
-	<record name="unk-" type="Int32" />
-	<record name="unk-" type="Int32" />
-    <record name="fixed-ingredient" type="Ref" ref="item" repeat="8" />
-    <record name="fixed-ingredient-stack-count" type="Int16" default="0" repeat="8" min="0" max="1000" />
-    <record name="attach-ability" type="Seq" seq="main-ability" default="none" repeat="2" />
-    <record name="ability-min" type="Int32" default="0" repeat="2" />
-    <record name="ability-max" type="Int32" default="0" repeat="2" />
-    <record name="once-attach-ability-min" type="Int32" default="0" repeat="2" />
-    <record name="once-attach-ability-max" type="Int32" default="0" repeat="2" />
-    <record name="warning" type="Seq">
+    <attribute name="alias" type="String" required="y" max="70" />
+    <attribute name="id" type="Int32" key="y" required="y" />
+    <attribute name="level" type="Int8" key="y" required="y" />
+    <attribute name="main-ingredient" type="Ref" ref="item" />
+    <attribute name="applicable-part" type="Seq" seq="equip-type" default="none" repeat="4" />
+    <attribute name="use-random-ability-value" type="Bool" />
+    <attribute name="money-cost" type="Int32" default="0" min="0" max="2000000000" />
+	<attribute name="unk-" type="Int32" />
+	<attribute name="unk-" type="Int32" />
+    <attribute name="fixed-ingredient" type="Ref" ref="item" repeat="8" />
+    <attribute name="fixed-ingredient-stack-count" type="Int16" default="0" repeat="8" min="0" max="1000" />
+    <attribute name="attach-ability" type="Seq" seq="main-ability" default="none" repeat="2" />
+    <attribute name="ability-min" type="Int32" default="0" repeat="2" />
+    <attribute name="ability-max" type="Int32" default="0" repeat="2" />
+    <attribute name="once-attach-ability-min" type="Int32" default="0" repeat="2" />
+    <attribute name="once-attach-ability-max" type="Int32" default="0" repeat="2" />
+    <attribute name="warning" type="Seq">
       <case name="none" default="y" />
       <case name="fail" />
-    </record>
+    </attribute>
   </el>
 </table>

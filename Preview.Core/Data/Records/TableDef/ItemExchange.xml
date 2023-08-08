@@ -2,15 +2,15 @@
 <table name="itemexchange" version="0.5" autokey="true" module="6">
   <el name="table" child="1" />
   <el name="record">
-    <record name="alias" type="String" required="y" max="70" />
-    <record name="rule-usage" type="Seq">
+    <attribute name="alias" type="String" required="y" max="70" />
+    <attribute name="rule-usage" type="Seq">
       <case name="antique-exchange" default="y" />
       <case name="crystallization" />
-    </record>
-    <record name="required-item" type="TRef" repeat="4" />
-    <record name="required-item-min-level" type="Int8" default="1" repeat="4" min="1" max="100" />
-    <record name="required-item-stack-count" type="Int16" default="0" repeat="4" min="0" max="1000" />
-    <record name="normal-item" type="Ref" ref="item" repeat="4" />
-    <record name="normal-item-stack-count" type="Int16" default="0" repeat="4" min="0" max="1000" />
+    </attribute>
+    <attribute name="required-item" type="TRef" repeat="4" />
+    <attribute name="required-item-min-level" type="Int8" default="1" repeat="4" min="1" max="100" />
+    <attribute name="required-item-stack-count" type="Int16" default="0" repeat="4" min="0" max="1000" />
+    <attribute name="normal-item" type="Ref" ref="item" repeat="4" />
+    <attribute name="normal-item-stack-count" type="Int16" default="0" repeat="4" min="0" max="1000" />
   </el>
 </table>

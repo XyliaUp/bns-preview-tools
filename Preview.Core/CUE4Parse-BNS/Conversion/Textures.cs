@@ -13,7 +13,7 @@ public static class Textures
 	public static Bitmap GetImage(this UObject o)
 	{
 		if (o is null) return null;
-		else if (o is UTexture2D texture)
+		else if (o is UTexture texture)
 		{
 			var bitmap = texture.Decode();
 			if (bitmap is not null) return new Bitmap(bitmap.Encode(SkiaSharp.SKEncodedImageFormat.Png, 100).AsStream());

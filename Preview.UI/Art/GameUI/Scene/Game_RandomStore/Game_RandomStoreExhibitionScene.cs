@@ -1,4 +1,5 @@
 ﻿using Xylia.Preview.Data.Helper;
+using Xylia.Preview.UI.Custom.Controls;
 
 using static Xylia.Preview.Data.Record.RandomStoreItemDisplay;
 
@@ -13,24 +14,8 @@ public partial class Game_RandomStoreExhibitionScene : Form
 
 	private void TabControl_SelectedIndexChanged(object sender, EventArgs e)
 	{
-		if (this.TabControl.SelectedTab == this.tabPage1)
-		{
-			if (RandomStoreItemDisplayList_1.Items.Any())
-				return;
-
-			RandomStoreItemDisplayList_1.MaxItemNum = 0;
-			RandomStoreItemDisplayList_1.Items = new(GetCells(RandomStoreTypeSeq.Paid));
-			RandomStoreItemDisplayList_1.RefreshList();
-		}
-		else if (this.TabControl.SelectedTab == this.tabPage2)
-		{
-			if (RandomStoreItemDisplayList_2.Items.Any()) 
-				return;
-
-			RandomStoreItemDisplayList_2.MaxItemNum = 0;
-			RandomStoreItemDisplayList_2.Items = new(GetCells(RandomStoreTypeSeq.Free));
-			RandomStoreItemDisplayList_2.RefreshList();
-		}
+		if (this.TabControl.SelectedTab == this.tabPage1) GetCells(RandomStoreItemDisplayList_1, RandomStoreTypeSeq.Paid);
+		else if (this.TabControl.SelectedTab == this.tabPage2) GetCells(RandomStoreItemDisplayList_2, RandomStoreTypeSeq.Free);
 		else if (this.TabControl.SelectedTab == this.tabPage3)
 		{
 
@@ -38,13 +23,19 @@ public partial class Game_RandomStoreExhibitionScene : Form
 	}
 
 
-	public static List<ItemDisplayListCell> GetCells(RandomStoreTypeSeq RandomStoreType)
+
+	public static void GetCells(ListPreview preview, RandomStoreTypeSeq RandomStoreType)
 	{
-		var StoreItems = FileCache.Data.RandomStoreItemDisplay
+		if (preview.Items.Any()) return;
+
+		var items = FileCache.Data.RandomStoreItemDisplay
 			.Where(o => o.RandomStoreType == RandomStoreType)
 			.Select(o => new ItemDisplayListCell(o)).ToList();
 
-		StoreItems.Sort();
-		return StoreItems;
+		items.Sort();
+
+
+		preview.Items = new(items);
+		preview.RefreshList();
 	}
 }

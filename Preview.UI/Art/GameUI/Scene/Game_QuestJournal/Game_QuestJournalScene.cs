@@ -2,6 +2,7 @@
 
 using Xylia.Extension;
 using Xylia.Preview.Data.Helper;
+using Xylia.Preview.Data.Models.DatData.DataProvider;
 using Xylia.Preview.Data.Record;
 using Xylia.Preview.Data.Record.QuestData.Enums;
 using Xylia.Preview.UI.Custom.Controls.Forms;
@@ -24,9 +25,6 @@ public partial class Game_QuestJournalScene : PreviewFrm
 	#region Fields
 	public WaveOut SoundOut = new() { Latency = 100 };
 
-	/// <summary>
-	/// 测试模式
-	/// </summary>
 	public static bool TestMode = false;
 	#endregion
 
@@ -117,7 +115,7 @@ public partial class Game_QuestJournalScene : PreviewFrm
 	private void OpenFileData_Click(object sender, EventArgs e)
 	{
 		string path = FileCache.Data.Quest.XmlDataPath.Replace("*", "." + this._data.id);
-		var content = FileCache.Data.DataPath.XmlData.FileTable.Find(o => o.FilePath == path)?.Xml;
+		var content = (FileCache.Data.Provider as DefaultProvider).XmlData.FileTable.Find(o => o.FilePath == path)?.Xml;
 		if (content is null) return;
 
 

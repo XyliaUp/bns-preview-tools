@@ -2,8 +2,8 @@
 <table name="closet-group" version="0.14" autokey="false" module="6">
   <el name="table" child="1" />
   <el name="record">
-    <record name="id" type="Int32" key="y" required="y" />
-    <record name="category" type="Seq">
+    <attribute name="id" type="Int32" key="y" required="y" />
+    <attribute name="category" type="Seq">
       <case name="none" default="y" />
       <case name="custom" />
       <case name="jeryoung" />
@@ -25,11 +25,11 @@
       <case name="fashionista" />
       <case name="unusable" />
       <case name="northland-east" />
-    </record>
-    <record name="sort-no" type="Int16" default="0" />
-    <record name="charge-of-item-for-instant-payment" type="Ref" ref="item" />
-    <record name="item-to-be-paid" type="Ref" ref="item" />
-    <record name="title-item" type="Ref" ref="item" repeat="30" hidden="y" />
-    <record name="check-equip-characteristics" type="Bool" default="true" hidden="y" />
+    </attribute>
+    <attribute name="sort-no" type="Int16" default="0" />
+    <attribute name="charge-of-item-for-instant-payment" type="Ref" ref="item" />
+    <attribute name="item-to-be-paid" type="Ref" ref="item" />
+    <attribute name="title-item" type="Ref" ref="item" repeat="30" hidden="y" />
+    <attribute name="check-equip-characteristics" type="Bool" default="true" hidden="y" />
   </el>
 </table>

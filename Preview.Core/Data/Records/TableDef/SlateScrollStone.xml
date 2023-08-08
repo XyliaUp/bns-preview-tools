@@ -2,8 +2,8 @@
 <table name="slatescrollstone" version="0.1" autokey="true" module="6">
   <el name="table" child="1" />
   <el name="record">
-    <record name="scroll" type="Ref" ref="slatescroll" default="null" required="y" />
-    <record name="stone" type="Ref" ref="slatestone" default="null" required="y" />
-    <record name="tooltip" type="Bool" />
+    <attribute name="scroll" type="Ref" ref="slatescroll" default="null" required="y" />
+    <attribute name="stone" type="Ref" ref="slatestone" default="null" required="y" />
+    <attribute name="tooltip" type="Bool" />
   </el>
 </table>

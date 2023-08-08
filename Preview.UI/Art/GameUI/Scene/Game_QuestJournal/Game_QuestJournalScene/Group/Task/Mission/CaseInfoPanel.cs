@@ -92,7 +92,7 @@ public partial class CaseInfoPanel : UserControl
 		this.pictureBox1.Image = Resource_Common.Image2;
 	}
 
-	public static byte[] GetWave(string StepShow, int StepIdx) => StepShow.GetUObject().GetWave(StepIdx);
+	public static byte[] GetWave(string StepShow, int StepIdx) => FileCache.Provider.LoadObject(StepShow)?.GetWave(StepIdx);
 
 	public TimeSpan Play(byte[] data)
 	{

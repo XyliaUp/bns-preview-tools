@@ -2,9 +2,9 @@
 <table name="indicator-idle" version="0.1" autokey="true" module="4">
   <el name="table" child="1" />
   <el name="record">
-    <record name="alias" type="String" required="y" max="70" />
-    <record name="master-idle" type="Ref" ref="npcindicatormoveanim" />
-    <record name="npc" type="Ref" ref="npc" repeat="5" />
-    <record name="idle" type="Ref" ref="npcindicatormoveanim" repeat="5" />
+    <attribute name="alias" type="String" required="y" max="70" />
+    <attribute name="master-idle" type="Ref" ref="npcindicatormoveanim" />
+    <attribute name="npc" type="Ref" ref="npc" repeat="5" />
+    <attribute name="idle" type="Ref" ref="npcindicatormoveanim" repeat="5" />
   </el>
 </table>

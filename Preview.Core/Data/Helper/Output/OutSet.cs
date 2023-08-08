@@ -1,4 +1,5 @@
 ﻿using System.Configuration;
+using System.Xml.Serialization;
 
 using BnsBinTool.Core.Definitions;
 
@@ -29,7 +30,7 @@ public sealed class OutSet<T> : OutBase where T : IOut, new()
 
 	}
 
-	public OutSet(string XmlString) : this(XmlString.GetObject<OutSetTable>("table"))
+	public OutSet(string XmlString) : this(XmlString.GetObject<OutSetTable>())
 	{
 
 	}

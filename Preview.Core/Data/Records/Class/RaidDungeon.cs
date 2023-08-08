@@ -15,7 +15,7 @@ public sealed class RaidDungeon : BaseRecord, IAttraction
 	public Text RaidDungeonDesc;
 
 	[Signal("ui-text-grade")]
-	public byte UiTextGrade;
+	public sbyte UiTextGrade;
 
 
 

@@ -2,6 +2,7 @@
 using Xylia.Preview.Data.Helper;
 using Xylia.Preview.Data.Models.BinData.Table.Record;
 using Xylia.Preview.Data.Record;
+using Xylia.Preview.UI.Extension;
 
 namespace Xylia.Preview.GameUI.Scene.Searcher;
 public partial class SearcherDialog : Form

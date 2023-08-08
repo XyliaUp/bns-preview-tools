@@ -15,7 +15,7 @@ public sealed class NpcFireSpecial : Reaction
 	/// 特殊序列编号
 	/// </summary>
 	[Signal("special-id")]
-	public byte SpecialId;
+	public sbyte SpecialId;
 
 
 	public Script_obj Requester;

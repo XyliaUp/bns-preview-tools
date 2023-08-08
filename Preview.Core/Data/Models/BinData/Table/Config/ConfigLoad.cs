@@ -2,25 +2,27 @@
 using System.Data;
 using System.Xml;
 
+using BnsBinTool.Core.Definitions;
+
 using Xylia.Extension;
 
 namespace Xylia.Preview.Data.Models.BinData.Table.Config;
 public static partial class ConfigLoad
 {
 	#region Load
-	public static List<DataTableDefinition> LoadFromFile(ConfigParam param, params string[] Files) =>
+	public static List<TableDefinition> LoadFromFile(ConfigParam param, params string[] Files) =>
 		Load(param, Files.Where(File.Exists).Select(File.ReadAllText).ToArray());
 
-	public static List<DataTableDefinition> Load(ConfigParam param, params string[] XmlContents)
+	public static List<TableDefinition> Load(ConfigParam param, params string[] XmlContents)
 	{
-		var tables = new List<DataTableDefinition>();
+		var tables = new List<TableDefinition>();
 		foreach (var Content in XmlContents)
 		{
 			var xmlDoc = new XmlDocument();
 			xmlDoc.LoadXml(Content);
 
 
-			var table = DataTableDefinition.LoadFrom(param, xmlDoc.DocumentElement);
+			var table = TableDefinitionEx.LoadFrom(param, xmlDoc.DocumentElement);
 			if (table is null) continue;
 
 			tables.Add(table);
@@ -37,8 +39,8 @@ public static partial class ConfigLoad
 		if (VerInfo is null) return;
 
 		var VersionText = VerInfo.Split('.');
-		MajorVersion = (ushort)VersionText[0].ToShort();
-		MinorVersion = (ushort)VersionText[1].ToShort();
+		MajorVersion = (ushort)VersionText[0].ToInt16();
+		MinorVersion = (ushort)VersionText[1].ToInt16();
 	}
 	#endregion
 }

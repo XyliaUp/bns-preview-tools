@@ -11,5 +11,5 @@ public sealed class SpawnNpcIndex : SpawnNpcBase
 	public Script_obj Group;
 
 	[Signal("index") , Repeat(15)] 
-	public byte[] Index;
+	public sbyte[] Index;
 }

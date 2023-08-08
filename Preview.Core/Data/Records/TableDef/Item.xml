@@ -2,14 +2,14 @@
 <table name="item" version="42.0" autokey="false" module="11534">
 	<el name="table" child="1" />
 	<el name="record">
-		<record name="id" type="Int32" key="y" required="y" />
-		<record name="level" type="Int8" key="y" required="y" min="1" max="26" />
-		<record name="alias" type="String" required="y" max="70" />
-		<record name="item-combat" type="Ref" ref="item-combat" repeat="10" />
-		<record name="brand" type="Ref" ref="item-brand" />
-		<record name="price" type="Int32" default="0" min="0" max="100000000" />
-		<record name="base-fee" type="Int32" default="0" min="0" max="100000000" />
-		<record name="game-category-1" type="Seq" required="y">
+		<attribute name="id" type="Int32" key="y" required="y" />
+		<attribute name="level" type="Int8" key="y" required="y" min="1" max="26" />
+		<attribute name="alias" type="String" required="y" max="70" />
+		<attribute name="item-combat" type="Ref" ref="item-combat" repeat="10" />
+		<attribute name="brand" type="Ref" ref="item-brand" />
+		<attribute name="price" type="Int32" default="0" min="0" max="100000000" />
+		<attribute name="base-fee" type="Int32" default="0" min="0" max="100000000" />
+		<attribute name="game-category-1" type="Seq" required="y">
 			<case name="none" />
 			<case name="equip" />
 			<case name="enchant" />
@@ -17,8 +17,8 @@
 			<case name="production" />
 			<case name="exchange" />
 			<case name="box" />
-		</record>
-		<record name="game-category-2" type="Seq" required="y">
+		</attribute>
+		<attribute name="game-category-2" type="Seq" required="y">
 			<case name="none" />
 			<case name="weapon" />
 			<case name="accessory" />
@@ -47,8 +47,8 @@
 			<case name="material-box" />
 			<case name="booty-box" />
 			<case name="etc-box" />
-		</record>
-		<record name="game-category-3" type="Seq16" required="y">
+		</attribute>
+		<attribute name="game-category-3" type="Seq16" required="y">
 			<case name="none" />
 			<case name="sword" />
 			<case name="gauntlet" />
@@ -245,8 +245,8 @@
 			<case name="badge-appearance" />
 			<case name="fusion-material" />
 			<case name="card" />
-		</record>
-		<record name="market-category-1" type="Seq" required="y">
+		</attribute>
+		<attribute name="market-category-1" type="Seq" required="y">
 			<case name="none" />
 			<case name="equip" />
 			<case name="enchant" />
@@ -254,8 +254,8 @@
 			<case name="production" />
 			<case name="exchange" />
 			<case name="box" />
-		</record>
-		<record name="market-category-2" type="Seq" required="y">
+		</attribute>
+		<attribute name="market-category-2" type="Seq" required="y">
 			<case name="none" />
 			<case name="weapon" />
 			<case name="equip-gem" />
@@ -277,8 +277,8 @@
 			<case name="etc-change" />
 			<case name="etc-box" />
 			<case name="badge" />
-		</record>
-		<record name="market-category-3" type="Seq16" required="y">
+		</attribute>
+		<attribute name="market-category-3" type="Seq16" required="y">
 			<case name="none" />
 			<case name="sword" />
 			<case name="gauntlet" />
@@ -409,33 +409,33 @@
 			<case name="name-plate" />
 			<case name="speech-bubble" />
 			<case name="instrument" />
-		</record>
-		<record name="cannot-dispose" type="Bool" />
-		<record name="cannot-sell" type="Bool" />
-		<record name="cannot-trade" type="Bool" />
-		<record name="cannot-depot" type="Bool" />
-		<record name="cannot-use-restore-failed-enchant-cost" type="Bool" />
-		<record name="consume-durability" type="Bool" default="y" />
-		<record name="auctionable" type="Bool" />
-		<record name="seal-renewal-auctionable" type="Bool" />
-		<record name="party-auction-exclusion" type="Bool" />
-		<record name="acquire-used" type="Bool" />
-		<record name="equip-used" type="Bool" />
-		<record name="account-used" type="Bool" />
-		<record name="filter-equip" type="Ref" ref="filter" repeat="4" />
-		<record name="effect-equip" type="Ref" ref="effect" repeat="4" />
-		<record name="gear-score" type="Int32" default="0" />
-		<record name="equip-level" type="Int8" default="1" min="1" max="100" />
-		<record name="equip-level-max" type="Int8" default="0" min="0" max="100" />
-		<record name="equip-mastery-level" type="Int8" default="0" min="0" max="100" />
-		<record name="equip-job-check" type="Prop_seq" seq="job" default="job-none" repeat="5" />
-		<record name="equip-sex" type="Seq">
+		</attribute>
+		<attribute name="cannot-dispose" type="Bool" />
+		<attribute name="cannot-sell" type="Bool" />
+		<attribute name="cannot-trade" type="Bool" />
+		<attribute name="cannot-depot" type="Bool" />
+		<attribute name="cannot-use-restore-failed-enchant-cost" type="Bool" />
+		<attribute name="consume-durability" type="Bool" default="y" />
+		<attribute name="auctionable" type="Bool" />
+		<attribute name="seal-renewal-auctionable" type="Bool" />
+		<attribute name="party-auction-exclusion" type="Bool" />
+		<attribute name="acquire-used" type="Bool" />
+		<attribute name="equip-used" type="Bool" />
+		<attribute name="account-used" type="Bool" />
+		<attribute name="filter-equip" type="Ref" ref="filter" repeat="4" />
+		<attribute name="effect-equip" type="Ref" ref="effect" repeat="4" />
+		<attribute name="gear-score" type="Int32" default="0" />
+		<attribute name="equip-level" type="Int8" default="1" min="1" max="100" />
+		<attribute name="equip-level-max" type="Int8" default="0" min="0" max="100" />
+		<attribute name="equip-mastery-level" type="Int8" default="0" min="0" max="100" />
+		<attribute name="equip-job-check" type="Prop_seq" seq="job" default="job-none" repeat="5" />
+		<attribute name="equip-sex" type="Seq">
 			<case name="none" />
 			<case name="all" default="y" />
 			<case name="male" />
 			<case name="female" />
-		</record>
-		<record name="equip-race" type="Seq">
+		</attribute>
+		<attribute name="equip-race" type="Seq">
 			<case name="none" />
 			<case name="all" default="y" />
 			<case name="jin" />
@@ -444,23 +444,23 @@
 			<case name="kun" />
 			<case name="summoned-all" />
 			<case name="summoned-cat" />
-		</record>
-		<record name="equip-type" type="Seq" seq="equip-type" default="none" />
-		<record name="equip-solo-duel-grade" type="Int8" default="0" />
-		<record name="equip-team-duel-grade" type="Int8" default="0" />
-		<record name="item-grade" type="Int8" default="1" min="1" max="8" />
-		<record name="legend-grade-background-particle-type" type="Seq">
+		</attribute>
+		<attribute name="equip-type" type="Seq" seq="equip-type" default="none" />
+		<attribute name="equip-solo-duel-grade" type="Int8" default="0" />
+		<attribute name="equip-team-duel-grade" type="Int8" default="0" />
+		<attribute name="item-grade" type="Int8" default="1" min="1" max="8" />
+		<attribute name="legend-grade-background-particle-type" type="Seq">
 			<case name="none" default="y" />
 			<case name="type-gold" />
 			<case name="type-redup" />
 			<case name="type-goldup" />
-		</record>
-		<record name="init-durability" type="Int16" default="0" min="0" max="30000" />
-		<record name="max-durability" type="Int16" default="0" min="0" max="30000" />
-		<record name="repair-money-cost" type="Int32" default="0" />
-		<record name="use-global-recycle-group" type="Int8" default="0" min="0" max="6" />
-		<record name="use-global-recycle-group-duration" type="Msec" default="0" min="0" max="6000000" />
-		<record name="use-recycle-group" type="Seq">
+		</attribute>
+		<attribute name="init-durability" type="Int16" default="0" min="0" max="30000" />
+		<attribute name="max-durability" type="Int16" default="0" min="0" max="30000" />
+		<attribute name="repair-money-cost" type="Int32" default="0" />
+		<attribute name="use-global-recycle-group" type="Int8" default="0" min="0" max="6" />
+		<attribute name="use-global-recycle-group-duration" type="Msec" default="0" min="0" max="6000000" />
+		<attribute name="use-recycle-group" type="Seq">
 			<case name="none" default="y" />
 			<case name="class" />
 			<case name="item-1" />
@@ -468,216 +468,216 @@
 			<case name="class-2" />
 			<case name="db" />
 			<case name="gadget" />
-		</record>
-		<record name="use-recycle-group-id" type="Int8" default="0" min="0" max="65" />
-		<record name="use-recycle-group-duration" type="Msec" default="0" min="0" max="86400000" />
-		<record name="decompose-reward-by-consume-index" type="Bool" />
-		<record name="decompose-reward" type="Ref" ref="reward" repeat="7" />
-		<record name="decompose-event-reward" type="Ref" ref="reward" />
-		<record name="decompose-job-reward-blade-master" type="Ref" ref="reward" />
-		<record name="decompose-job-reward-kung-fu-fighter" type="Ref" ref="reward" />
-		<record name="decompose-job-reward-force-master" type="Ref" ref="reward" />
-		<record name="decompose-job-reward-destroyer" type="Ref" ref="reward" />
-		<record name="decompose-job-reward-summoner" type="Ref" ref="reward" />
-		<record name="decompose-job-reward-assassin" type="Ref" ref="reward" />
-		<record name="decompose-job-reward-sword-master" type="Ref" ref="reward" />
-		<record name="decompose-job-reward-warlock" type="Ref" ref="reward" />
-		<record name="decompose-job-reward-soul-fighter" type="Ref" ref="reward" />
-		<record name="decompose-job-reward-shooter" type="Ref" ref="reward" />
-		<record name="decompose-job-reward-warrior" type="Ref" ref="reward" />
-		<record name="decompose-job-reward-archer" type="Ref" ref="reward" />
-		<record name="decompose-job-reward-spear-master" type="Ref" ref="reward" />
-		<record name="decompose-job-reward-thunderer" type="Ref" ref="reward" />
-		<record name="decompose-job-reward-dual-blader" type="Ref" ref="reward" />
-		<record name="decompose-job-reward-bard" type="Ref" ref="reward" />
-		<record name="decompose-max" type="Int8" default="1" min="1" max="100" />
-		<record name="decompose-money-cost" type="Int32" default="0" min="0" max="2000000000" />
-		<record name="decompose-by-item2" type="Ref" ref="item" repeat="7" />
-		<record name="decompose-by-item2-stack-count" type="Int16" default="0" repeat="7" min="0" max="1000" />
-		<record name="job-decompose-by-item2" type="Ref" ref="item" repeat="7" />
-		<record name="job-decompose-by-item2-stack-count" type="Int16" default="1" repeat="7" min="0" max="1000" />
-		<record name="set-item" type="Ref" ref="set-item" />
-		<record name="faction" type="Ref" ref="faction" />
-		<record name="equip-faction" type="Ref" ref="faction" />
-		<record name="equip-faction-level" type="Int16" default="0" />
-		<record name="new-product" type="Bool" />
-		<record name="hot-product" type="Bool" />
-		<record name="pouch-appearance-priority" type="Int16" default="1" min="1" max="1000" />
-		<record name="pouch-appearance" type="Seq" seq="pouch-appearance" required="y" />
-		<record name="seal-consume-item" type="Ref" ref="item" repeat="2" />
-		<record name="seal-consume-item-count" type="Int16" default="0" repeat="2" min="0" max="1000" />
-		<record name="seal-acquire-item" type="Ref" ref="item" />
-		<record name="seal-keep-level" type="Bool" />
-		<record name="forwarding-types" type="Seq" repeat="64" hidden="y">
+		</attribute>
+		<attribute name="use-recycle-group-id" type="Int8" default="0" min="0" max="65" />
+		<attribute name="use-recycle-group-duration" type="Msec" default="0" min="0" max="86400000" />
+		<attribute name="decompose-reward-by-consume-index" type="Bool" />
+		<attribute name="decompose-reward" type="Ref" ref="reward" repeat="7" />
+		<attribute name="decompose-event-reward" type="Ref" ref="reward" />
+		<attribute name="decompose-job-reward-blade-master" type="Ref" ref="reward" />
+		<attribute name="decompose-job-reward-kung-fu-fighter" type="Ref" ref="reward" />
+		<attribute name="decompose-job-reward-force-master" type="Ref" ref="reward" />
+		<attribute name="decompose-job-reward-destroyer" type="Ref" ref="reward" />
+		<attribute name="decompose-job-reward-summoner" type="Ref" ref="reward" />
+		<attribute name="decompose-job-reward-assassin" type="Ref" ref="reward" />
+		<attribute name="decompose-job-reward-sword-master" type="Ref" ref="reward" />
+		<attribute name="decompose-job-reward-warlock" type="Ref" ref="reward" />
+		<attribute name="decompose-job-reward-soul-fighter" type="Ref" ref="reward" />
+		<attribute name="decompose-job-reward-shooter" type="Ref" ref="reward" />
+		<attribute name="decompose-job-reward-warrior" type="Ref" ref="reward" />
+		<attribute name="decompose-job-reward-archer" type="Ref" ref="reward" />
+		<attribute name="decompose-job-reward-spear-master" type="Ref" ref="reward" />
+		<attribute name="decompose-job-reward-thunderer" type="Ref" ref="reward" />
+		<attribute name="decompose-job-reward-dual-blader" type="Ref" ref="reward" />
+		<attribute name="decompose-job-reward-bard" type="Ref" ref="reward" />
+		<attribute name="decompose-max" type="Int8" default="1" min="1" max="100" />
+		<attribute name="decompose-money-cost" type="Int32" default="0" min="0" max="2000000000" />
+		<attribute name="decompose-by-item2" type="Ref" ref="item" repeat="7" />
+		<attribute name="decompose-by-item2-stack-count" type="Int16" default="0" repeat="7" min="0" max="1000" />
+		<attribute name="job-decompose-by-item2" type="Ref" ref="item" repeat="7" />
+		<attribute name="job-decompose-by-item2-stack-count" type="Int16" default="1" repeat="7" min="0" max="1000" />
+		<attribute name="set-item" type="Ref" ref="set-item" />
+		<attribute name="faction" type="Ref" ref="faction" />
+		<attribute name="equip-faction" type="Ref" ref="faction" />
+		<attribute name="equip-faction-level" type="Int16" default="0" />
+		<attribute name="new-product" type="Bool" />
+		<attribute name="hot-product" type="Bool" />
+		<attribute name="pouch-appearance-priority" type="Int16" default="1" min="1" max="1000" />
+		<attribute name="pouch-appearance" type="Seq" seq="pouch-appearance" required="y" />
+		<attribute name="seal-consume-item" type="Ref" ref="item" repeat="2" />
+		<attribute name="seal-consume-item-count" type="Int16" default="0" repeat="2" min="0" max="1000" />
+		<attribute name="seal-acquire-item" type="Ref" ref="item" />
+		<attribute name="seal-keep-level" type="Bool" />
+		<attribute name="forwarding-types" type="Seq" repeat="64" hidden="y">
 			<case name="progress-mission" />
 			<case name="acquire-quest" />
 			<case name="skill-target" />
 			<case name="mission-step-rollback" />
-		</record>
-		<record name="quests" type="Ref" ref="quest" repeat="64" hidden="y" />
-		<record name="missions" type="Int8" repeat="64" hidden="y" />
-		<record name="cases" type="Int8" repeat="64" hidden="y" />
-		<record name="case-subtypes" type="Int16" repeat="64" hidden="y" />
-		<record name="attack-power-equip-min" type="Int16" default="0" min="0" max="30000" />
-		<record name="attack-power-equip-max" type="Int16" default="0" min="0" max="30000" />
-		<record name="defend-power-equip-value" type="Int16" default="0" min="0" max="30000" />
-		<record name="defend-resist-power-equip-value" type="Int16" default="0" min="0" max="30000" />
-		<record name="attack-hit-base-percent" type="Int16" default="0" min="-1000" max="1000" />
-		<record name="attack-hit-value" type="Int16" default="0" min="-30000" max="30000" />
-		<record name="attack-hit-value-equip" type="Int16" default="0" min="-30000" max="30000" />
-		<record name="attack-pierce-base-percent" type="Int16" default="0" min="0" max="1000" />
-		<record name="attack-parry-pierce-percent" type="Int16" default="0" min="0" max="1000" />
-		<record name="attack-pierce-value" type="Int16" default="0" min="0" max="10000" />
-		<record name="attack-pierce-value-equip" type="Int16" default="0" min="0" max="10000" />
-		<record name="attack-critical-base-percent" type="Int16" default="0" min="0" max="1000" />
-		<record name="attack-critical-damage-percent" type="Int16" default="0" min="0" max="10000" />
-		<record name="attack-critical-value" type="Int16" default="0" min="0" max="30000" />
-		<record name="attack-critical-value-equip" type="Int16" default="0" min="0" max="30000" />
-		<record name="attack-critical-damage-value" type="Int16" default="0" min="0" max="30000" />
-		<record name="attack-critical-damage-value-equip" type="Int16" default="0" min="0" max="30000" />
-		<record name="defend-critical-base-percent" type="Int16" default="0" min="0" max="1000" />
-		<record name="defend-critical-damage-percent" type="Int16" default="0" min="0" max="10000" />
-		<record name="defend-critical-value" type="Int16" default="0" min="0" max="30000" />
-		<record name="defend-critical-value-equip" type="Int16" default="0" min="0" max="30000" />
-		<record name="unk-" type="Int16" default="0" min="0" max="10000" />
-		<record name="unk-" type="Int16" default="0" min="0" max="30000" />
-		<record name="unk-" type="Int16" default="0" min="0" max="30000" />
-		<record name="defend-dodge-base-percent" type="Int16" default="0" min="0" max="1000" />
-		<record name="defend-dodge-value" type="Int16" default="0" min="0" max="30000" />
-		<record name="defend-dodge-value-equip" type="Int16" default="0" min="0" max="30000" />
-		<record name="defend-parry-base-percent" type="Int16" default="0" min="0" max="1000" />
-		<record name="defend-parry-value" type="Int16" default="0" min="0" max="30000" />
-		<record name="defend-parry-value-equip" type="Int16" default="0" min="0" max="30000" />
-		<record name="attack-stiff-duration-base-percent" type="Int16" default="0" min="-1000" max="10000" />
-		<record name="attack-stiff-duration-value" type="Int16" default="0" min="0" max="30000" />
-		<record name="defend-stiff-duration-base-percent" type="Int16" default="0" min="0" max="1000" />
-		<record name="defend-stiff-duration-value" type="Int16" default="0" min="0" max="30000" />
-		<record name="cast-duration-base-percent" type="Int16" default="0" min="-10000" max="1000" />
-		<record name="cast-duration-value" type="Int16" default="0" min="0" max="30000" />
-		<record name="defend-physical-damage-reduce-percent" type="Int16" default="0" min="-10000" max="1000" />
-		<record name="defend-force-damage-reduce-percent" type="Int16" default="0" min="-10000" max="1000" />
-		<record name="attack-damage-modify-percent" type="Int16" default="0" min="-3000" max="10000" />
-		<record name="attack-damage-modify-diff" type="Int16" default="0" min="-30000" max="30000" />
-		<record name="defend-damage-modify-percent" type="Int16" default="0" min="-10000" max="3000" />
-		<record name="defend-damage-modify-diff" type="Int16" default="0" min="-30000" max="30000" />
-		<record name="max-hp" type="Int32" default="0" min="0" max="2000000000" />
-		<record name="max-hp-equip" type="Int32" default="0" min="0" max="2000000000" />
-		<record name="hp-regen" type="Int32" default="0" min="0" max="2000000000" />
-		<record name="hp-regen-equip" type="Int32" default="0" min="0" max="2000000000" />
-		<record name="hp-regen-combat" type="Int32" default="0" min="0" max="2000000000" />
-		<record name="hp-regen-combat-equip" type="Int32" default="0" min="0" max="2000000000" />
-		<record name="max-guard-gauge" type="Int32" default="0" min="0" max="2000000000" />
-		<record name="max-guard-gauge-equip" type="Int32" default="0" min="0" max="2000000000" />
-		<record name="attack-concentrate-value" type="Int16" default="0" min="0" max="10000" />
-		<record name="attack-concentrate-value-equip" type="Int16" default="0" min="0" max="10000" />
-		<record name="defend-perfect-parry-reduce-percent" type="Int16" default="0" min="0" max="10000" />
-		<record name="defend-counter-reduce-percent" type="Int16" default="0" min="0" max="10000" />
-		<record name="attack-attribute-value" type="Int16" default="0" min="0" max="30000" />
-		<record name="attack-attribute-value-equip" type="Int16" default="0" min="0" max="30000" />
-		<record name="attack-attribute-base-percent" type="Int16" default="0" min="0" max="10000" />
-		<record name="pve-boss-level-npc-attack-power-equip-min" type="Int16" default="0" min="0" max="30000" />
-		<record name="pve-boss-level-npc-attack-power-equip-max" type="Int16" default="0" min="0" max="30000" />
-		<record name="pve-boss-level-npc-defend-power-equip-value" type="Int16" default="0" min="0" max="30000" />
-		<record name="pvp-attack-power-equip-min" type="Int16" default="0" min="0" max="30000" />
-		<record name="pvp-attack-power-equip-max" type="Int16" default="0" min="0" max="30000" />
-		<record name="pvp-defend-power-equip-value" type="Int16" default="0" min="0" max="30000" />
-		<record name="unk-" type="Int32" default="0" min="0" max="2000000000" />
-		<record name="unk-" type="Int32" default="0" min="0" max="2000000000" />
-		<record name="unk-" type="Int32" default="0" min="0" max="2000000000" />
-		<record name="unk-" type="Int32" default="0" min="0" max="2000000000" />
-		<record name="unk-" type="Int32" default="0" min="0" max="2000000000" />
-		<record name="unk-" type="Int32" default="0" min="0" max="2000000000" />
-		<record name="unk-" type="Int32" default="0" min="0" max="2000000000" />
-		<record name="unk-" type="Int32" default="0" min="0" max="2000000000" />
-		<record name="unk-" type="Int32" default="0" min="0" max="2000000000" />
-		<record name="unk-" type="Int32" default="0" min="0" max="2000000000" />
-		<record name="unk-" type="Int32" default="0" min="0" max="2000000000" />
-		<record name="unk-" type="Int32" default="0" min="0" max="2000000000" />
-		<record name="unk-" type="Int32" default="0" min="0" max="2000000000" />
-		<record name="unk-" type="Int32" default="0" min="0" max="2000000000" />
-		<record name="unk-" type="Int32" default="0" min="0" max="2000000000" />
-		<record name="unk-" type="Int32" default="0" min="0" max="2000000000" />
-		<record name="unk-" type="Int32" default="0" min="0" max="2000000000" />
-		<record name="unk-" type="Int32" default="0" min="0" max="2000000000" />
-		<record name="r-attack-stiff-duration-equip-value" type="Int16" default="0" min="0" max="30000" />
-		<record name="r-defend-stiff-duration-equip-value" type="Int16" default="0" min="0" max="30000" />
-		<record name="r-aoe-defend-power-value-equip" type="Int16" default="0" min="0" max="30000" />
-		<record name="r-heal-power-equip-value" type="Int16" default="0" min="0" max="30000" />
-		<record name="r-defend-strength-equip-value" type="Int32" default="0" min="0" max="300000" />
-		<record name="r-attack-precise-equip-value" type="Int32" default="0" min="0" max="300000" />
-		<record name="r-attack-aoe-pierce-value-equip" type="Int16" default="0" min="0" max="30000" />
-		<record name="r-attack-abnormal-hit-equip-value" type="Int16" default="0" min="-30000" max="30000" />
-		<record name="r-defend-abnormal-dodge-equip-value" type="Int16" default="0" min="-30000" max="30000" />
-		<record name="r-support-power-equip-value" type="Int16" default="0" min="0" max="30000" />
-		<record name="r-hypermove-power-equip-value" type="Int16" default="0" min="0" max="30000" />
-		<record name="defend-difficulty-type-damage-reduce-percent" type="Int16" default="0" min="0" max="1000" />
-		<record name="potential-attack-power-equip-min" type="Int16" default="0" min="0" max="30000" />
-		<record name="potential-attack-power-equip-max" type="Int16" default="0" min="0" max="30000" />
-		<record name="potential-defend-power-equip-value" type="Int16" default="0" min="0" max="30000" />
-		<record name="potential-defend-resist-power-equip-value" type="Int16" default="0" min="0" max="30000" />
-		<record name="potential-attack-hit-base-percent" type="Int16" default="0" min="-1000" max="1000" />
-		<record name="potential-attack-hit-value" type="Int16" default="0" min="-30000" max="30000" />
-		<record name="potential-attack-pierce-value" type="Int16" default="0" min="0" max="10000" />
-		<record name="potential-attack-critical-base-percent" type="Int16" default="0" min="0" max="1000" />
-		<record name="potential-attack-critical-damage-percent" type="Int16" default="0" min="0" max="10000" />
-		<record name="potential-attack-critical-value" type="Int16" default="0" min="0" max="30000" />
-		<record name="potential-defend-critical-base-percent" type="Int16" default="0" min="0" max="1000" />
-		<record name="potential-defend-critical-value" type="Int16" default="0" min="0" max="30000" />
-		<record name="potential-defend-dodge-base-percent" type="Int16" default="0" min="0" max="1000" />
-		<record name="potential-defend-dodge-value" type="Int16" default="0" min="0" max="30000" />
-		<record name="potential-defend-parry-base-percent" type="Int16" default="0" min="0" max="1000" />
-		<record name="potential-defend-parry-value" type="Int16" default="0" min="0" max="30000" />
-		<record name="potential-attack-stiff-duration-base-percent" type="Int16" default="0" min="-1000" max="10000" />
-		<record name="potential-attack-stiff-duration-value" type="Int16" default="0" min="0" max="30000" />
-		<record name="potential-defend-stiff-duration-base-percent" type="Int16" default="0" min="0" max="1000" />
-		<record name="potential-defend-stiff-duration-value" type="Int16" default="0" min="0" max="30000" />
-		<record name="potential-cast-duration-base-percent" type="Int16" default="0" min="-10000" max="1000" />
-		<record name="potential-cast-duration-value" type="Int16" default="0" min="0" max="30000" />
-		<record name="potential-defend-physical-damage-reduce-percent" type="Int16" default="0" min="-10000" max="1000" />
-		<record name="potential-defend-force-damage-reduce-percent" type="Int16" default="0" min="-10000" max="1000" />
-		<record name="potential-attack-damage-modify-percent" type="Int16" default="0" min="-1000" max="10000" />
-		<record name="potential-attack-damage-modify-diff" type="Int16" default="0" min="-30000" max="30000" />
-		<record name="potential-defend-damage-modify-percent" type="Int16" default="0" min="-10000" max="1000" />
-		<record name="potential-defend-damage-modify-diff" type="Int16" default="0" min="-30000" max="30000" />
-		<record name="potential-attack-concentrate-value" type="Int16" default="0" min="0" max="10000" />
-		<record name="potential-defend-perfect-parry-reduce-percent" type="Int16" default="0" min="0" max="10000" />
-		<record name="potential-defend-counter-reduce-percent" type="Int16" default="0" min="0" max="10000" />
-		<record name="potential-max-hp" type="Int32" default="0" min="0" max="2000000000" />
-		<record name="potential-hp-regen" type="Int32" default="0" min="0" max="2000000000" />
-		<record name="potential-hp-regen-combat" type="Int32" default="0" min="0" max="2000000000" />
-		<record name="potential-max-guard-gauge" type="Int32" default="0" min="0" max="2000000000" />
-		<record name="potential-pve-boss-level-npc-attack-power-equip-min" type="Int16" default="0" min="0" max="30000" />
-		<record name="potential-pve-boss-level-npc-attack-power-equip-max" type="Int16" default="0" min="0" max="30000" />
-		<record name="unk-" type="Int32" default="0" min="0" max="2000000000" />
-		<record name="unk-" type="Int32" default="0" min="0" max="2000000000" />
-		<record name="unk-" type="Int16" default="0" min="0" max="30000" />
-		<record name="unk-" type="Int16" default="0" min="0" max="30000" />
-		<record name="unk-" type="Int16" default="0" min="0" max="30000" />
-		<record name="unk-" type="Int16" default="0" min="0" max="30000" />
-		<record name="unk-" type="Int16" default="0" min="0" max="30000" />
-		<record name="job-ability-1" type="Int16" default="0" min="0" max="30000" />
-		<record name="job-ability-2" type="Int16" default="0" min="0" max="30000" />
-		<record name="unk-" type="Int16" default="0" min="0" max="30000" />
-		<record name="heal-power-base-percent" type="Int16" default="0" min="0" max="10000" />
-		<record name="heal-power-value" type="Int16" default="0" min="0" max="30000" />
-		<record name="heal-power-diff" type="Int32" default="0" min="0" max="2000000000" />
-		<record name="aoe-defend-base-percent" type="Int16" default="0" min="0" max="10000" />
-		<record name="aoe-defend-power-value" type="Int16" default="0" min="0" max="30000" />
-		<record name="abnormal-attack-base-percent" type="Int16" default="0" min="0" max="10000" />
-		<record name="abnormal-attack-power-value" type="Int16" default="0" min="0" max="30000" />
-		<record name="abnormal-attack-power-value-equip" type="Int16" default="0" min="0" max="30000" />
-		<record name="abnormal-defend-base-percent" type="Int16" default="0" min="0" max="10000" />
-		<record name="abnormal-defend-power-value" type="Int16" default="0" min="0" max="30000" />
-		<record name="hate-power-equip-value" type="Int16" default="0" min="0" max="30000" />
-		<record name="unk-" type="Int32" default="0" min="0" max="2000000000" />
-		<record name="unk-" type="Int32" default="0" min="0" max="2000000000" />
-		<record name="unk-" type="Int32" default="0" min="0" max="2000000000" />
-		<record name="additional-exp-diff-by-kill" type="Int16" default="0" min="0" max="30000" />
-		<record name="additional-exp-percent-by-kill" type="Int16" default="0" min="0" max="1000" />
-		<record name="item-sound-move" type="XUnknown2" />
-		<record name="item-sound-dragstart" type="XUnknown2" />
-		<record name="item-sound-itemdrop" type="XUnknown2" />
-		<record name="main-ability" type="Seq" repeat="2">
+		</attribute>
+		<attribute name="quests" type="Ref" ref="quest" repeat="64" hidden="y" />
+		<attribute name="missions" type="Int8" repeat="64" hidden="y" />
+		<attribute name="cases" type="Int8" repeat="64" hidden="y" />
+		<attribute name="case-subtypes" type="Int16" repeat="64" hidden="y" />
+		<attribute name="attack-power-equip-min" type="Int16" default="0" min="0" max="30000" />
+		<attribute name="attack-power-equip-max" type="Int16" default="0" min="0" max="30000" />
+		<attribute name="defend-power-equip-value" type="Int16" default="0" min="0" max="30000" />
+		<attribute name="defend-resist-power-equip-value" type="Int16" default="0" min="0" max="30000" />
+		<attribute name="attack-hit-base-percent" type="Int16" default="0" min="-1000" max="1000" />
+		<attribute name="attack-hit-value" type="Int16" default="0" min="-30000" max="30000" />
+		<attribute name="attack-hit-value-equip" type="Int16" default="0" min="-30000" max="30000" />
+		<attribute name="attack-pierce-base-percent" type="Int16" default="0" min="0" max="1000" />
+		<attribute name="attack-parry-pierce-percent" type="Int16" default="0" min="0" max="1000" />
+		<attribute name="attack-pierce-value" type="Int16" default="0" min="0" max="10000" />
+		<attribute name="attack-pierce-value-equip" type="Int16" default="0" min="0" max="10000" />
+		<attribute name="attack-critical-base-percent" type="Int16" default="0" min="0" max="1000" />
+		<attribute name="attack-critical-damage-percent" type="Int16" default="0" min="0" max="10000" />
+		<attribute name="attack-critical-value" type="Int16" default="0" min="0" max="30000" />
+		<attribute name="attack-critical-value-equip" type="Int16" default="0" min="0" max="30000" />
+		<attribute name="attack-critical-damage-value" type="Int16" default="0" min="0" max="30000" />
+		<attribute name="attack-critical-damage-value-equip" type="Int16" default="0" min="0" max="30000" />
+		<attribute name="defend-critical-base-percent" type="Int16" default="0" min="0" max="1000" />
+		<attribute name="defend-critical-damage-percent" type="Int16" default="0" min="0" max="10000" />
+		<attribute name="defend-critical-value" type="Int16" default="0" min="0" max="30000" />
+		<attribute name="defend-critical-value-equip" type="Int16" default="0" min="0" max="30000" />
+		<attribute name="unk-" type="Int16" default="0" min="0" max="10000" />
+		<attribute name="unk-" type="Int16" default="0" min="0" max="30000" />
+		<attribute name="unk-" type="Int16" default="0" min="0" max="30000" />
+		<attribute name="defend-dodge-base-percent" type="Int16" default="0" min="0" max="1000" />
+		<attribute name="defend-dodge-value" type="Int16" default="0" min="0" max="30000" />
+		<attribute name="defend-dodge-value-equip" type="Int16" default="0" min="0" max="30000" />
+		<attribute name="defend-parry-base-percent" type="Int16" default="0" min="0" max="1000" />
+		<attribute name="defend-parry-value" type="Int16" default="0" min="0" max="30000" />
+		<attribute name="defend-parry-value-equip" type="Int16" default="0" min="0" max="30000" />
+		<attribute name="attack-stiff-duration-base-percent" type="Int16" default="0" min="-1000" max="10000" />
+		<attribute name="attack-stiff-duration-value" type="Int16" default="0" min="0" max="30000" />
+		<attribute name="defend-stiff-duration-base-percent" type="Int16" default="0" min="0" max="1000" />
+		<attribute name="defend-stiff-duration-value" type="Int16" default="0" min="0" max="30000" />
+		<attribute name="cast-duration-base-percent" type="Int16" default="0" min="-10000" max="1000" />
+		<attribute name="cast-duration-value" type="Int16" default="0" min="0" max="30000" />
+		<attribute name="defend-physical-damage-reduce-percent" type="Int16" default="0" min="-10000" max="1000" />
+		<attribute name="defend-force-damage-reduce-percent" type="Int16" default="0" min="-10000" max="1000" />
+		<attribute name="attack-damage-modify-percent" type="Int16" default="0" min="-3000" max="10000" />
+		<attribute name="attack-damage-modify-diff" type="Int16" default="0" min="-30000" max="30000" />
+		<attribute name="defend-damage-modify-percent" type="Int16" default="0" min="-10000" max="3000" />
+		<attribute name="defend-damage-modify-diff" type="Int16" default="0" min="-30000" max="30000" />
+		<attribute name="max-hp" type="Int32" default="0" min="0" max="2000000000" />
+		<attribute name="max-hp-equip" type="Int32" default="0" min="0" max="2000000000" />
+		<attribute name="hp-regen" type="Int32" default="0" min="0" max="2000000000" />
+		<attribute name="hp-regen-equip" type="Int32" default="0" min="0" max="2000000000" />
+		<attribute name="hp-regen-combat" type="Int32" default="0" min="0" max="2000000000" />
+		<attribute name="hp-regen-combat-equip" type="Int32" default="0" min="0" max="2000000000" />
+		<attribute name="max-guard-gauge" type="Int32" default="0" min="0" max="2000000000" />
+		<attribute name="max-guard-gauge-equip" type="Int32" default="0" min="0" max="2000000000" />
+		<attribute name="attack-concentrate-value" type="Int16" default="0" min="0" max="10000" />
+		<attribute name="attack-concentrate-value-equip" type="Int16" default="0" min="0" max="10000" />
+		<attribute name="defend-perfect-parry-reduce-percent" type="Int16" default="0" min="0" max="10000" />
+		<attribute name="defend-counter-reduce-percent" type="Int16" default="0" min="0" max="10000" />
+		<attribute name="attack-attribute-value" type="Int16" default="0" min="0" max="30000" />
+		<attribute name="attack-attribute-value-equip" type="Int16" default="0" min="0" max="30000" />
+		<attribute name="attack-attribute-base-percent" type="Int16" default="0" min="0" max="10000" />
+		<attribute name="pve-boss-level-npc-attack-power-equip-min" type="Int16" default="0" min="0" max="30000" />
+		<attribute name="pve-boss-level-npc-attack-power-equip-max" type="Int16" default="0" min="0" max="30000" />
+		<attribute name="pve-boss-level-npc-defend-power-equip-value" type="Int16" default="0" min="0" max="30000" />
+		<attribute name="pvp-attack-power-equip-min" type="Int16" default="0" min="0" max="30000" />
+		<attribute name="pvp-attack-power-equip-max" type="Int16" default="0" min="0" max="30000" />
+		<attribute name="pvp-defend-power-equip-value" type="Int16" default="0" min="0" max="30000" />
+		<attribute name="unk-" type="Int32" default="0" min="0" max="2000000000" />
+		<attribute name="unk-" type="Int32" default="0" min="0" max="2000000000" />
+		<attribute name="unk-" type="Int32" default="0" min="0" max="2000000000" />
+		<attribute name="unk-" type="Int32" default="0" min="0" max="2000000000" />
+		<attribute name="unk-" type="Int32" default="0" min="0" max="2000000000" />
+		<attribute name="unk-" type="Int32" default="0" min="0" max="2000000000" />
+		<attribute name="unk-" type="Int32" default="0" min="0" max="2000000000" />
+		<attribute name="unk-" type="Int32" default="0" min="0" max="2000000000" />
+		<attribute name="unk-" type="Int32" default="0" min="0" max="2000000000" />
+		<attribute name="unk-" type="Int32" default="0" min="0" max="2000000000" />
+		<attribute name="unk-" type="Int32" default="0" min="0" max="2000000000" />
+		<attribute name="unk-" type="Int32" default="0" min="0" max="2000000000" />
+		<attribute name="unk-" type="Int32" default="0" min="0" max="2000000000" />
+		<attribute name="unk-" type="Int32" default="0" min="0" max="2000000000" />
+		<attribute name="unk-" type="Int32" default="0" min="0" max="2000000000" />
+		<attribute name="unk-" type="Int32" default="0" min="0" max="2000000000" />
+		<attribute name="unk-" type="Int32" default="0" min="0" max="2000000000" />
+		<attribute name="unk-" type="Int32" default="0" min="0" max="2000000000" />
+		<attribute name="r-attack-stiff-duration-equip-value" type="Int16" default="0" min="0" max="30000" />
+		<attribute name="r-defend-stiff-duration-equip-value" type="Int16" default="0" min="0" max="30000" />
+		<attribute name="r-aoe-defend-power-value-equip" type="Int16" default="0" min="0" max="30000" />
+		<attribute name="r-heal-power-equip-value" type="Int16" default="0" min="0" max="30000" />
+		<attribute name="r-defend-strength-equip-value" type="Int32" default="0" min="0" max="300000" />
+		<attribute name="r-attack-precise-equip-value" type="Int32" default="0" min="0" max="300000" />
+		<attribute name="r-attack-aoe-pierce-value-equip" type="Int16" default="0" min="0" max="30000" />
+		<attribute name="r-attack-abnormal-hit-equip-value" type="Int16" default="0" min="-30000" max="30000" />
+		<attribute name="r-defend-abnormal-dodge-equip-value" type="Int16" default="0" min="-30000" max="30000" />
+		<attribute name="r-support-power-equip-value" type="Int16" default="0" min="0" max="30000" />
+		<attribute name="r-hypermove-power-equip-value" type="Int16" default="0" min="0" max="30000" />
+		<attribute name="defend-difficulty-type-damage-reduce-percent" type="Int16" default="0" min="0" max="1000" />
+		<attribute name="potential-attack-power-equip-min" type="Int16" default="0" min="0" max="30000" />
+		<attribute name="potential-attack-power-equip-max" type="Int16" default="0" min="0" max="30000" />
+		<attribute name="potential-defend-power-equip-value" type="Int16" default="0" min="0" max="30000" />
+		<attribute name="potential-defend-resist-power-equip-value" type="Int16" default="0" min="0" max="30000" />
+		<attribute name="potential-attack-hit-base-percent" type="Int16" default="0" min="-1000" max="1000" />
+		<attribute name="potential-attack-hit-value" type="Int16" default="0" min="-30000" max="30000" />
+		<attribute name="potential-attack-pierce-value" type="Int16" default="0" min="0" max="10000" />
+		<attribute name="potential-attack-critical-base-percent" type="Int16" default="0" min="0" max="1000" />
+		<attribute name="potential-attack-critical-damage-percent" type="Int16" default="0" min="0" max="10000" />
+		<attribute name="potential-attack-critical-value" type="Int16" default="0" min="0" max="30000" />
+		<attribute name="potential-defend-critical-base-percent" type="Int16" default="0" min="0" max="1000" />
+		<attribute name="potential-defend-critical-value" type="Int16" default="0" min="0" max="30000" />
+		<attribute name="potential-defend-dodge-base-percent" type="Int16" default="0" min="0" max="1000" />
+		<attribute name="potential-defend-dodge-value" type="Int16" default="0" min="0" max="30000" />
+		<attribute name="potential-defend-parry-base-percent" type="Int16" default="0" min="0" max="1000" />
+		<attribute name="potential-defend-parry-value" type="Int16" default="0" min="0" max="30000" />
+		<attribute name="potential-attack-stiff-duration-base-percent" type="Int16" default="0" min="-1000" max="10000" />
+		<attribute name="potential-attack-stiff-duration-value" type="Int16" default="0" min="0" max="30000" />
+		<attribute name="potential-defend-stiff-duration-base-percent" type="Int16" default="0" min="0" max="1000" />
+		<attribute name="potential-defend-stiff-duration-value" type="Int16" default="0" min="0" max="30000" />
+		<attribute name="potential-cast-duration-base-percent" type="Int16" default="0" min="-10000" max="1000" />
+		<attribute name="potential-cast-duration-value" type="Int16" default="0" min="0" max="30000" />
+		<attribute name="potential-defend-physical-damage-reduce-percent" type="Int16" default="0" min="-10000" max="1000" />
+		<attribute name="potential-defend-force-damage-reduce-percent" type="Int16" default="0" min="-10000" max="1000" />
+		<attribute name="potential-attack-damage-modify-percent" type="Int16" default="0" min="-1000" max="10000" />
+		<attribute name="potential-attack-damage-modify-diff" type="Int16" default="0" min="-30000" max="30000" />
+		<attribute name="potential-defend-damage-modify-percent" type="Int16" default="0" min="-10000" max="1000" />
+		<attribute name="potential-defend-damage-modify-diff" type="Int16" default="0" min="-30000" max="30000" />
+		<attribute name="potential-attack-concentrate-value" type="Int16" default="0" min="0" max="10000" />
+		<attribute name="potential-defend-perfect-parry-reduce-percent" type="Int16" default="0" min="0" max="10000" />
+		<attribute name="potential-defend-counter-reduce-percent" type="Int16" default="0" min="0" max="10000" />
+		<attribute name="potential-max-hp" type="Int32" default="0" min="0" max="2000000000" />
+		<attribute name="potential-hp-regen" type="Int32" default="0" min="0" max="2000000000" />
+		<attribute name="potential-hp-regen-combat" type="Int32" default="0" min="0" max="2000000000" />
+		<attribute name="potential-max-guard-gauge" type="Int32" default="0" min="0" max="2000000000" />
+		<attribute name="potential-pve-boss-level-npc-attack-power-equip-min" type="Int16" default="0" min="0" max="30000" />
+		<attribute name="potential-pve-boss-level-npc-attack-power-equip-max" type="Int16" default="0" min="0" max="30000" />
+		<attribute name="unk-" type="Int32" default="0" min="0" max="2000000000" />
+		<attribute name="unk-" type="Int32" default="0" min="0" max="2000000000" />
+		<attribute name="unk-" type="Int16" default="0" min="0" max="30000" />
+		<attribute name="unk-" type="Int16" default="0" min="0" max="30000" />
+		<attribute name="unk-" type="Int16" default="0" min="0" max="30000" />
+		<attribute name="unk-" type="Int16" default="0" min="0" max="30000" />
+		<attribute name="unk-" type="Int16" default="0" min="0" max="30000" />
+		<attribute name="job-ability-1" type="Int16" default="0" min="0" max="30000" />
+		<attribute name="job-ability-2" type="Int16" default="0" min="0" max="30000" />
+		<attribute name="unk-" type="Int16" default="0" min="0" max="30000" />
+		<attribute name="heal-power-base-percent" type="Int16" default="0" min="0" max="10000" />
+		<attribute name="heal-power-value" type="Int16" default="0" min="0" max="30000" />
+		<attribute name="heal-power-diff" type="Int32" default="0" min="0" max="2000000000" />
+		<attribute name="aoe-defend-base-percent" type="Int16" default="0" min="0" max="10000" />
+		<attribute name="aoe-defend-power-value" type="Int16" default="0" min="0" max="30000" />
+		<attribute name="abnormal-attack-base-percent" type="Int16" default="0" min="0" max="10000" />
+		<attribute name="abnormal-attack-power-value" type="Int16" default="0" min="0" max="30000" />
+		<attribute name="abnormal-attack-power-value-equip" type="Int16" default="0" min="0" max="30000" />
+		<attribute name="abnormal-defend-base-percent" type="Int16" default="0" min="0" max="10000" />
+		<attribute name="abnormal-defend-power-value" type="Int16" default="0" min="0" max="30000" />
+		<attribute name="hate-power-equip-value" type="Int16" default="0" min="0" max="30000" />
+		<attribute name="unk-" type="Int32" default="0" min="0" max="2000000000" />
+		<attribute name="unk-" type="Int32" default="0" min="0" max="2000000000" />
+		<attribute name="unk-" type="Int32" default="0" min="0" max="2000000000" />
+		<attribute name="additional-exp-diff-by-kill" type="Int16" default="0" min="0" max="30000" />
+		<attribute name="additional-exp-percent-by-kill" type="Int16" default="0" min="0" max="1000" />
+		<attribute name="item-sound-move" type="XUnknown2" />
+		<attribute name="item-sound-dragstart" type="XUnknown2" />
+		<attribute name="item-sound-itemdrop" type="XUnknown2" />
+		<attribute name="main-ability" type="Seq" repeat="2">
 			<case name="none" default="y" />
 			<case name="attack-power-equip-min-and-max" />
 			<case name="defend-power-equip-value" />
@@ -738,62 +738,62 @@
 			<case name="r-support-power-equip-value" />
 			<case name="r-hypermove-power-equip-value" />
 			<case name="defend-difficulty-type-damage-reduce-percent" />
-		</record>
-		<record name="pccafe-ncsoft-korea-only" type="Bool" />
-		<record name="growth-id" type="Int32" default="0" />
-		<record name="growth-level-max" type="Int8" default="1" />
-		<record name="growth-step" type="Int8" default="0" min="0" max="3" />
-		<record name="growth-efficient-level" type="Int8" default="1" min="1" max="100" />
-		<record name="growth-exp-scale" type="Int16" default="1000" />
-		<record name="r-random-option" type="Ref" ref="item-random-option" />
-		<record name="growth-recipe-exp-min" type="Int32" default="0" />
-		<record name="growth-recipe-exp-max" type="Int32" default="0" />
-		<record name="growth-recipe-exp" type="Int32" default="0" repeat="4" />
-		<record name="growth-recipe-cost" type="Int32" default="0" />
-		<record name="growth-recipe-material" type="Ref" ref="item" repeat="6" />
-		<record name="growth-recipe-material-count" type="Int16" default="0" repeat="6" />
-		<record name="growth-fail-probability" type="Int8" default="0" min="0" max="100" />
-		<record name="awakening-recipe-cost" type="Int32" default="0" />
-		<record name="awakening-recipe-material" type="Ref" ref="item" repeat="6" />
-		<record name="awakening-recipe-material-count" type="Int16" default="0" repeat="6" />
-		<record name="dispose-awakening-feed-item" type="Bool" />
-		<record name="dispose-awakening-material" type="Bool" default="y" />
-		<record name="required-feed-item-brand-for-growth" type="Ref" ref="item-brand" />
-		<record name="required-feed-item-for-growth" type="Ref" ref="item" />
-		<record name="required-seed-item-growth-course" type="Seq">
+		</attribute>
+		<attribute name="pccafe-ncsoft-korea-only" type="Bool" />
+		<attribute name="growth-id" type="Int32" default="0" />
+		<attribute name="growth-level-max" type="Int8" default="1" />
+		<attribute name="growth-step" type="Int8" default="0" min="0" max="3" />
+		<attribute name="growth-efficient-level" type="Int8" default="1" min="1" max="100" />
+		<attribute name="growth-exp-scale" type="Int16" default="1000" />
+		<attribute name="r-random-option" type="Ref" ref="item-random-option" />
+		<attribute name="growth-recipe-exp-min" type="Int32" default="0" />
+		<attribute name="growth-recipe-exp-max" type="Int32" default="0" />
+		<attribute name="growth-recipe-exp" type="Int32" default="0" repeat="4" />
+		<attribute name="growth-recipe-cost" type="Int32" default="0" />
+		<attribute name="growth-recipe-material" type="Ref" ref="item" repeat="6" />
+		<attribute name="growth-recipe-material-count" type="Int16" default="0" repeat="6" />
+		<attribute name="growth-fail-probability" type="Int8" default="0" min="0" max="100" />
+		<attribute name="awakening-recipe-cost" type="Int32" default="0" />
+		<attribute name="awakening-recipe-material" type="Ref" ref="item" repeat="6" />
+		<attribute name="awakening-recipe-material-count" type="Int16" default="0" repeat="6" />
+		<attribute name="dispose-awakening-feed-item" type="Bool" />
+		<attribute name="dispose-awakening-material" type="Bool" default="y" />
+		<attribute name="required-feed-item-brand-for-growth" type="Ref" ref="item-brand" />
+		<attribute name="required-feed-item-for-growth" type="Ref" ref="item" />
+		<attribute name="required-seed-item-growth-course" type="Seq">
 			<case name="none" default="y" />
 			<case name="normal" />
 			<case name="coin" />
-		</record>
-		<record name="required-seed-item-condition-type" type="Seq" seq="condition-type" default="all" />
-		<record name="required-seed-item-equip-level-min" type="Int8" default="0" />
-		<record name="required-seed-item-equip-level-max" type="Int8" default="0" />
-		<record name="required-feed-item-brand-for-awakening" type="Ref" ref="item-brand" />
-		<record name="required-feed-item-condition-type" type="Seq" seq="condition-type" default="all" />
-		<record name="required-feed-item-level-min" type="Int8" default="0" />
-		<record name="awakening-target-item" type="Ref" ref="item" repeat="5" hidden="y" />
-		<record name="required-awakening-bm-item-count" type="Int16" default="0" min="0" max="1000" />
-		<record name="awakening-probability" type="Int8" default="100" min="1" max="100" />
-		<record name="awakening-fail-effect" type="Ref" ref="effect" />
-		<record name="lock-enable" type="Bool" />
-		<record name="time-limit-type" type="Seq">
+		</attribute>
+		<attribute name="required-seed-item-condition-type" type="Seq" seq="condition-type" default="all" />
+		<attribute name="required-seed-item-equip-level-min" type="Int8" default="0" />
+		<attribute name="required-seed-item-equip-level-max" type="Int8" default="0" />
+		<attribute name="required-feed-item-brand-for-awakening" type="Ref" ref="item-brand" />
+		<attribute name="required-feed-item-condition-type" type="Seq" seq="condition-type" default="all" />
+		<attribute name="required-feed-item-level-min" type="Int8" default="0" />
+		<attribute name="awakening-target-item" type="Ref" ref="item" repeat="5" hidden="y" />
+		<attribute name="required-awakening-bm-item-count" type="Int16" default="0" min="0" max="1000" />
+		<attribute name="awakening-probability" type="Int8" default="100" min="1" max="100" />
+		<attribute name="awakening-fail-effect" type="Ref" ref="effect" />
+		<attribute name="lock-enable" type="Bool" />
+		<attribute name="time-limit-type" type="Seq">
 			<case name="invalid" />
 			<case name="none" default="y" />
 			<case name="duration" />
 			<case name="fixed" />
 			<case name="duration-with-fixed" />
 			<case name="undefined" />
-		</record>
-		<record name="usable-duration" type="Int32" default="0" min="0" />
-		<record name="fixed-expiration-time" type="Time64" />
-		<record name="delete-expiration-type" type="Seq">
+		</attribute>
+		<attribute name="usable-duration" type="Int32" default="0" min="0" />
+		<attribute name="fixed-expiration-time" type="Time64" />
+		<attribute name="delete-expiration-type" type="Seq">
 			<case name="none" default="y" />
 			<case name="sell" />
-		</record>
-		<record name="event-info" type="Ref" ref="item-event" />
-		<record name="show-reward-preview" type="Bool" />
-		<record name="account-post-charge" type="Ref" ref="account-post-charge" />
-		<record name="fusion-category-1" type="Seq">
+		</attribute>
+		<attribute name="event-info" type="Ref" ref="item-event" />
+		<attribute name="show-reward-preview" type="Bool" />
+		<attribute name="account-post-charge" type="Ref" ref="account-post-charge" />
+		<attribute name="fusion-category-1" type="Seq">
 			<case name="none" default="y" />
 			<case name="all" />
 			<case name="dress" />
@@ -807,8 +807,8 @@
 			<case name="nova" />
 			<case name="pet" />
 			<case name="corundum" />
-		</record>
-		<record name="fusion-category-2" type="Seq16">
+		</attribute>
+		<attribute name="fusion-category-2" type="Seq16">
 			<case name="none" default="y" />
 			<case name="costume" />
 			<case name="head-attach" />
@@ -856,76 +856,76 @@
 			<case name="corundum-bluegreen" />
 			<case name="corundum-blue" />
 			<case name="dual-blade" />
-		</record>
-		<record name="fusion-score" type="Int32" default="0" />
-		<record name="boast-event-type" type="Seq">
+		</attribute>
+		<attribute name="fusion-score" type="Int32" default="0" />
+		<attribute name="boast-event-type" type="Seq">
 			<case name="none" default="y" />
 			<case name="conditional" />
 			<case name="always" />
-		</record>
-		<record name="improve-id" type="Int32" default="0" min="0" />
-		<record name="improve-level" type="Int8" default="0" min="0" />
-		<record name="improve-next-item" type="Ref" ref="item" />
-		<record name="improve-prev-item" type="Ref" ref="item" />
-		<record name="job-change-item-exchange-group" type="Ref" ref="job-change-item-exchange-group" />
-		<record name="name2" type="Ref" ref="text" />
-		<record name="nickname" type="Ref" ref="text" />
-		<record name="stage-number" type="Int8" default="0" min="0" max="100" />
-		<record name="tag-icon" type="Icon" max="32767" />
-		<record name="tag-icon-grade" type="Icon" max="32767" />
-		<record name="icon" type="Icon" max="32767" />
-		<record name="kun-mesh" type="XUnknown2" />
-		<record name="gon-male-mesh" type="XUnknown2" />
-		<record name="gon-female-mesh" type="XUnknown2" />
-		<record name="lyn-male-mesh" type="XUnknown2" />
-		<record name="lyn-female-mesh" type="XUnknown2" />
-		<record name="jin-male-mesh" type="XUnknown2" />
-		<record name="jin-female-mesh" type="XUnknown2" />
-		<record name="cat-mesh" type="XUnknown2" />
-		<record name="kun-mesh-col" type="XUnknown2" repeat="3" />
-		<record name="gon-male-mesh-col" type="XUnknown2" repeat="3" />
-		<record name="gon-female-mesh-col" type="XUnknown2" repeat="3" />
-		<record name="lyn-male-mesh-col" type="XUnknown2" repeat="3" />
-		<record name="lyn-female-mesh-col" type="XUnknown2" repeat="3" />
-		<record name="jin-male-mesh-col" type="XUnknown2" repeat="3" />
-		<record name="jin-female-mesh-col" type="XUnknown2" repeat="3" />
-		<record name="cat-mesh-col" type="XUnknown2" repeat="3" />
-		<record name="mesh-id" type="XUnknown2" />
-		<record name="mesh-id-2" type="XUnknown2" />
-		<record name="talk-mesh" type="String" max="50" />
-		<record name="talk-animset" type="String" max="50" />
-		<record name="mesh-col" type="XUnknown2" repeat="3" />
-		<record name="mesh-animset" type="XUnknown2" />
-		<record name="mesh-animtree" type="XUnknown2" />
-		<record name="mesh-attach" type="Bool" />
-		<record name="hide-beard" type="Bool" />
-		<record name="hide-name" type="Bool" />
-		<record name="guild-item" type="Bool" />
-		<record name="description2" type="Ref" ref="text" />
-		<record name="description4-title" type="Ref" ref="text" />
-		<record name="description5-title" type="Ref" ref="text" />
-		<record name="description6-title" type="Ref" ref="text" />
-		<record name="description4" type="Ref" ref="text" />
-		<record name="description5" type="Ref" ref="text" />
-		<record name="description6" type="Ref" ref="text" />
-		<record name="description7" type="Ref" ref="text" />
-		<record name="main-info" type="Ref" ref="text" />
-		<record name="sub-info" type="Ref" ref="text" />
-		<record name="identify-main-info" type="Ref" ref="text" />
-		<record name="identify-sub-info" type="Ref" ref="text" />
-		<record name="identify-description" type="Ref" ref="text" />
-		<record name="legend-transform-title-name" type="Ref" ref="text" />
-		<record name="ui-icon-state" type="Seq">
+		</attribute>
+		<attribute name="improve-id" type="Int32" default="0" min="0" />
+		<attribute name="improve-level" type="Int8" default="0" min="0" />
+		<attribute name="improve-next-item" type="Ref" ref="item" />
+		<attribute name="improve-prev-item" type="Ref" ref="item" />
+		<attribute name="job-change-item-exchange-group" type="Ref" ref="job-change-item-exchange-group" />
+		<attribute name="name2" type="Ref" ref="text" />
+		<attribute name="nickname" type="Ref" ref="text" />
+		<attribute name="stage-number" type="Int8" default="0" min="0" max="100" />
+		<attribute name="tag-icon" type="Icon" max="32767" />
+		<attribute name="tag-icon-grade" type="Icon" max="32767" />
+		<attribute name="icon" type="Icon" max="32767" />
+		<attribute name="kun-mesh" type="XUnknown2" />
+		<attribute name="gon-male-mesh" type="XUnknown2" />
+		<attribute name="gon-female-mesh" type="XUnknown2" />
+		<attribute name="lyn-male-mesh" type="XUnknown2" />
+		<attribute name="lyn-female-mesh" type="XUnknown2" />
+		<attribute name="jin-male-mesh" type="XUnknown2" />
+		<attribute name="jin-female-mesh" type="XUnknown2" />
+		<attribute name="cat-mesh" type="XUnknown2" />
+		<attribute name="kun-mesh-col" type="XUnknown2" repeat="3" />
+		<attribute name="gon-male-mesh-col" type="XUnknown2" repeat="3" />
+		<attribute name="gon-female-mesh-col" type="XUnknown2" repeat="3" />
+		<attribute name="lyn-male-mesh-col" type="XUnknown2" repeat="3" />
+		<attribute name="lyn-female-mesh-col" type="XUnknown2" repeat="3" />
+		<attribute name="jin-male-mesh-col" type="XUnknown2" repeat="3" />
+		<attribute name="jin-female-mesh-col" type="XUnknown2" repeat="3" />
+		<attribute name="cat-mesh-col" type="XUnknown2" repeat="3" />
+		<attribute name="mesh-id" type="XUnknown2" />
+		<attribute name="mesh-id-2" type="XUnknown2" />
+		<attribute name="talk-mesh" type="String" max="50" />
+		<attribute name="talk-animset" type="String" max="50" />
+		<attribute name="mesh-col" type="XUnknown2" repeat="3" />
+		<attribute name="mesh-animset" type="XUnknown2" />
+		<attribute name="mesh-animtree" type="XUnknown2" />
+		<attribute name="mesh-attach" type="Bool" />
+		<attribute name="hide-beard" type="Bool" />
+		<attribute name="hide-name" type="Bool" />
+		<attribute name="guild-item" type="Bool" />
+		<attribute name="description2" type="Ref" ref="text" />
+		<attribute name="description4-title" type="Ref" ref="text" />
+		<attribute name="description5-title" type="Ref" ref="text" />
+		<attribute name="description6-title" type="Ref" ref="text" />
+		<attribute name="description4" type="Ref" ref="text" />
+		<attribute name="description5" type="Ref" ref="text" />
+		<attribute name="description6" type="Ref" ref="text" />
+		<attribute name="description7" type="Ref" ref="text" />
+		<attribute name="main-info" type="Ref" ref="text" />
+		<attribute name="sub-info" type="Ref" ref="text" />
+		<attribute name="identify-main-info" type="Ref" ref="text" />
+		<attribute name="identify-sub-info" type="Ref" ref="text" />
+		<attribute name="identify-description" type="Ref" ref="text" />
+		<attribute name="legend-transform-title-name" type="Ref" ref="text" />
+		<attribute name="ui-icon-state" type="Seq">
 			<case name="none" default="y" />
 			<case name="decompose" />
 			<case name="sell" />
 			<case name="exchange" />
-		</record>
-		<record name="message" type="Ref" ref="npctalkmessage" repeat="9" />
-		<record name="invoke-fx-msg" type="Bool" />
-		<record name="tooltip_info" type="String" max="100" />
-		<record name="item-score" type="Int32" default="0" />
-		<record name="item-style" type="Seq">
+		</attribute>
+		<attribute name="message" type="Ref" ref="npctalkmessage" repeat="9" />
+		<attribute name="invoke-fx-msg" type="Bool" />
+		<attribute name="tooltip_info" type="String" max="100" />
+		<attribute name="item-score" type="Int32" default="0" />
+		<attribute name="item-style" type="Seq">
 			<case name="none" default="y" />
 			<case name="normal" />
 			<case name="pve-weapon1" />
@@ -938,17 +938,17 @@
 			<case name="pvp" />
 			<case name="soul-long" />
 			<case name="soul-short" />
-		</record>
+		</attribute>
 
 		<sub name="weapon">
-			<record name="weapon-type" type="Seq" seq="weapon-type" required="y" />
-			<record name="equip-show" type="XUnknown2" />
-			<record name="default-gem-level" type="Int16" default="1" min="1" />
-			<record name="max-gem-slot-level" type="Int16" default="3" min="3" max="7" />
-			<record name="identify-enable" type="Bool" />
-			<record name="identify-grocery" type="Ref" ref="item" />
-			<record name="gem-slot-by-probability" type="Bool" />
-			<record name="gem-slot-type" type="Seq" repeat="4">
+			<attribute name="weapon-type" type="Seq" seq="weapon-type" required="y" />
+			<attribute name="equip-show" type="XUnknown2" />
+			<attribute name="default-gem-level" type="Int16" default="1" min="1" />
+			<attribute name="max-gem-slot-level" type="Int16" default="3" min="3" max="7" />
+			<attribute name="identify-enable" type="Bool" />
+			<attribute name="identify-grocery" type="Ref" ref="item" />
+			<attribute name="gem-slot-by-probability" type="Bool" />
+			<attribute name="gem-slot-type" type="Seq" repeat="4">
 				<case name="closed" default="y" />
 				<case name="minus-one" />
 				<case name="plus-zero" />
@@ -959,49 +959,49 @@
 				<case name="plus-two" />
 				<case name="plus-three" />
 				<case name="plus-four" />
-			</record>
-			<record name="open-gem-slot-grocery" type="Ref" ref="item" repeat="8" />
-			<record name="open-gem-slot-grocery-count" type="Int16" default="1" repeat="8" />
-			<record name="open-gem-slot-price" type="Int32" default="0" repeat="8" />
-			<record name="fixed-open-gem-slot" type="Int8" default="0" min="0" max="8" />
-			<record name="max-gem-slot-count" type="Int8" default="4" min="0" max="8" />
-			<record name="enchant-gem-slot-usable" type="Bool" repeat="2" />
-			<record name="repairable" type="Bool" default="y" />
-			<record name="repair-level" type="Int16" default="1" min="1" />
-			<record name="repair-item-count" type="Int16" default="1" min="1" />
-			<record name="ui-repair-item" type="Ref" ref="item" />
-			<record name="gem-slot-expandable" type="Bool" />
-			<record name="skill-by-equipment" type="Ref" ref="skill-by-equipment" />
-			<record name="weapon-appearance-change-type" type="Seq">
+			</attribute>
+			<attribute name="open-gem-slot-grocery" type="Ref" ref="item" repeat="8" />
+			<attribute name="open-gem-slot-grocery-count" type="Int16" default="1" repeat="8" />
+			<attribute name="open-gem-slot-price" type="Int32" default="0" repeat="8" />
+			<attribute name="fixed-open-gem-slot" type="Int8" default="0" min="0" max="8" />
+			<attribute name="max-gem-slot-count" type="Int8" default="4" min="0" max="8" />
+			<attribute name="enchant-gem-slot-usable" type="Bool" repeat="2" />
+			<attribute name="repairable" type="Bool" default="y" />
+			<attribute name="repair-level" type="Int16" default="1" min="1" />
+			<attribute name="repair-item-count" type="Int16" default="1" min="1" />
+			<attribute name="ui-repair-item" type="Ref" ref="item" />
+			<attribute name="gem-slot-expandable" type="Bool" />
+			<attribute name="skill-by-equipment" type="Ref" ref="skill-by-equipment" />
+			<attribute name="weapon-appearance-change-type" type="Seq">
 				<case name="none" default="y" />
 				<case name="used-only-as-target-weapon" />
 				<case name="used-only-as-applying-weapon" />
 				<case name="both" />
-			</record>
-			<record name="pet" type="Ref" ref="pet" />
-			<record name="closet-group-id" type="Int32" default="0" />
-			<record name="skill-skin" type="Ref" ref="skillskin" />
-			<record name="hidden-power-attach" type="Int16" default="0" min="0" />
-			<record name="unseal-consume-item2" type="Ref" ref="item" repeat="4" />
-			<record name="unseal-consume-item2-stack-count" type="Int16" default="0" repeat="4" min="0" max="1000" />
+			</attribute>
+			<attribute name="pet" type="Ref" ref="pet" />
+			<attribute name="closet-group-id" type="Int32" default="0" />
+			<attribute name="skill-skin" type="Ref" ref="skillskin" />
+			<attribute name="hidden-power-attach" type="Int16" default="0" min="0" />
+			<attribute name="unseal-consume-item2" type="Ref" ref="item" repeat="4" />
+			<attribute name="unseal-consume-item2-stack-count" type="Int16" default="0" repeat="4" min="0" max="1000" />
 		</sub>
 		<sub name="costume">
-			<record name="guild-used" type="Bool" />
-			<record name="closet-group-id" type="Int32" default="0" />
-			<record name="talk-social" type="Ref" ref="talksocial" />
-			<record name="pair-costume" type="Ref" ref="item" />
-			<record name="pair-costume-brand" type="Ref" ref="item-brand" />
-			<record name="pair-costume-signal-show" type="XUnknown2" />
-			<record name="pair-costume-signal-detach-show" type="XUnknown2" />
-			<record name="custom-dress-design-state" type="Seq">
+			<attribute name="guild-used" type="Bool" />
+			<attribute name="closet-group-id" type="Int32" default="0" />
+			<attribute name="talk-social" type="Ref" ref="talksocial" />
+			<attribute name="pair-costume" type="Ref" ref="item" />
+			<attribute name="pair-costume-brand" type="Ref" ref="item-brand" />
+			<attribute name="pair-costume-signal-show" type="XUnknown2" />
+			<attribute name="pair-costume-signal-detach-show" type="XUnknown2" />
+			<attribute name="custom-dress-design-state" type="Seq">
 				<case name="none" default="y" />
 				<case name="disabled" />
 				<case name="activated" />
-			</record>
-			<record name="skill-skin" type="Ref" ref="skillskin" />
+			</attribute>
+			<attribute name="skill-skin" type="Ref" ref="skillskin" />
 		</sub>
 		<sub name="grocery">
-			<record name="grocery-type" type="Seq" required="y">
+			<attribute name="grocery-type" type="Seq" required="y">
 				<case name="other" />
 				<case name="repair" />
 				<case name="seal" />
@@ -1024,95 +1024,95 @@
 				<case name="card" />
 				<case name="glyph" />
 				<case name="soul-boost" />
-			</record>
-			<record name="stack-count" type="Int16" default="1" min="1" max="10000" />
-			<record name="store-bundle-count" type="Int16" default="0" min="0" max="1000" />
-			<record name="skill3" type="Ref" ref="skill3" />
-			<record name="duel-skill3" type="Ref" ref="skill3" />
-			<record name="skill-limit-level" type="Int8" default="0" min="0" max="100" />
-			<record name="skill-limit-level-max" type="Int8" default="0" min="0" max="100" />
-			<record name="skill-limit-mastery-level" type="Int8" default="0" min="0" max="100" />
-			<record name="skill-limit-mastery-level-max" type="Int8" default="0" min="0" max="100" />
-			<record name="skill-limit-job" type="Prop_seq" seq="job" default="job-none" />
-			<record name="skill-limit-faction" type="Ref" ref="faction" />
-			<record name="skill-limit-faction-level" type="Int16" default="0" />
-			<record name="skill-limit-activated-faction" type="Ref" ref="faction" />
-			<record name="recharge-heart-type" type="Seq">
+			</attribute>
+			<attribute name="stack-count" type="Int16" default="1" min="1" max="10000" />
+			<attribute name="store-bundle-count" type="Int16" default="0" min="0" max="1000" />
+			<attribute name="skill3" type="Ref" ref="skill3" />
+			<attribute name="duel-skill3" type="Ref" ref="skill3" />
+			<attribute name="skill-limit-level" type="Int8" default="0" min="0" max="100" />
+			<attribute name="skill-limit-level-max" type="Int8" default="0" min="0" max="100" />
+			<attribute name="skill-limit-mastery-level" type="Int8" default="0" min="0" max="100" />
+			<attribute name="skill-limit-mastery-level-max" type="Int8" default="0" min="0" max="100" />
+			<attribute name="skill-limit-job" type="Prop_seq" seq="job" default="job-none" />
+			<attribute name="skill-limit-faction" type="Ref" ref="faction" />
+			<attribute name="skill-limit-faction-level" type="Int16" default="0" />
+			<attribute name="skill-limit-activated-faction" type="Ref" ref="faction" />
+			<attribute name="recharge-heart-type" type="Seq">
 				<case name="none" default="y" />
 				<case name="instant-heart" />
 				<case name="heart" />
-			</record>
-			<record name="disable-vitality-zero" type="Bool" />
-			<record name="disable-vitality-none-zero" type="Bool" />
-			<record name="skill-score-point" type="Int32" default="0" />
-			<record name="skill-skin-acquire" type="Ref" ref="skillskin" />
-			<record name="resurrect-effect" type="Ref" ref="effect" />
-			<record name="bonus-exp" type="Int32" default="0" min="0" max="100000" />
-			<record name="bonus-mastery-exp" type="Int32" default="0" min="0" max="10000000" />
-			<record name="bonus-account-exp" type="Int32" default="0" min="0" />
-			<record name="bonus-sealed-dungeon-exp" type="Int32" default="0" min="0" />
-			<record name="bonus-sealed-dungeon-id" type="Ref" ref="dungeon" />
-			<record name="energy-multiple-point" type="Int32" default="0" min="0" />
-			<record name="additional-mastery-stat-point" type="Int16" default="0" min="0" max="1000" />
-			<record name="skill-build-up-point" type="Int16" default="0" min="0" max="30000" />
-			<record name="soul-boost-season-id" type="Int32" default="0" />
-			<record name="soul-boost-item-point" type="Int32" default="1" min="1" max="10000000" />
-			<record name="consume-by-skill" type="Bool" default="y" />
-			<record name="repair-level-min" type="Int16" default="0" />
-			<record name="repair-level-max" type="Int16" default="0" />
-			<record name="repair-duration" type="Msec" default="0" />
-			<record name="repair-grade" type="Int8" default="0" />
-			<record name="necessary-campfire" type="Bool" default="y" />
-			<record name="valid-attraction" type="TRef" repeat="4" deprecated="y" />
-			<record name="valid-attraction-name" type="Ref" ref="text" />
-			<record name="usable-in-cave-and-dungeon-only" type="Bool" deprecated="y" />
-			<record name="usable-in-duel" type="Bool" default="y" deprecated="y" />
-			<record name="dest-zone" type="Ref" ref="zone" />
-			<record name="expand-weapon-gem-slot-level" type="Int8" default="3" repeat="2" min="3" max="6" />
-			<record name="unseal-acquire-item" type="Ref" ref="item" repeat="20" />
-			<record name="unseal-consume-item2" type="Ref" ref="item" repeat="4" />
-			<record name="unseal-consume-item2-stack-count" type="Int16" default="0" repeat="4" min="0" max="1000" />
-			<record name="unseal-result-preview-item" type="Ref" ref="item" />
-			<record name="transform-add-probability" type="Int16" default="0" min="0" max="1000" />
-			<record name="transform-change-group" type="Bool" />
-			<record name="additional-growth-recipe-exp-diff" type="Int32" default="0" />
-			<record name="additional-growth-recipe-exp-percent" type="Int32" default="0" min="0" max="1000" />
-			<record name="additional-awakening-probability" type="Int8" default="0" min="0" max="100" />
-			<record name="randombox-preview" type="Ref" ref="randombox-preview" />
-			<record name="message-range" type="Seq">
+			</attribute>
+			<attribute name="disable-vitality-zero" type="Bool" />
+			<attribute name="disable-vitality-none-zero" type="Bool" />
+			<attribute name="skill-score-point" type="Int32" default="0" />
+			<attribute name="skill-skin-acquire" type="Ref" ref="skillskin" />
+			<attribute name="resurrect-effect" type="Ref" ref="effect" />
+			<attribute name="bonus-exp" type="Int32" default="0" min="0" max="100000" />
+			<attribute name="bonus-mastery-exp" type="Int32" default="0" min="0" max="10000000" />
+			<attribute name="bonus-account-exp" type="Int32" default="0" min="0" />
+			<attribute name="bonus-sealed-dungeon-exp" type="Int32" default="0" min="0" />
+			<attribute name="bonus-sealed-dungeon-id" type="Ref" ref="dungeon" />
+			<attribute name="energy-multiple-point" type="Int32" default="0" min="0" />
+			<attribute name="additional-mastery-stat-point" type="Int16" default="0" min="0" max="1000" />
+			<attribute name="skill-build-up-point" type="Int16" default="0" min="0" max="30000" />
+			<attribute name="soul-boost-season-id" type="Int32" default="0" />
+			<attribute name="soul-boost-item-point" type="Int32" default="1" min="1" max="10000000" />
+			<attribute name="consume-by-skill" type="Bool" default="y" />
+			<attribute name="repair-level-min" type="Int16" default="0" />
+			<attribute name="repair-level-max" type="Int16" default="0" />
+			<attribute name="repair-duration" type="Msec" default="0" />
+			<attribute name="repair-grade" type="Int8" default="0" />
+			<attribute name="necessary-campfire" type="Bool" default="y" />
+			<attribute name="valid-attraction" type="TRef" repeat="4" deprecated="y" />
+			<attribute name="valid-attraction-name" type="Ref" ref="text" />
+			<attribute name="usable-in-cave-and-dungeon-only" type="Bool" deprecated="y" />
+			<attribute name="usable-in-duel" type="Bool" default="y" deprecated="y" />
+			<attribute name="dest-zone" type="Ref" ref="zone" />
+			<attribute name="expand-weapon-gem-slot-level" type="Int8" default="3" repeat="2" min="3" max="6" />
+			<attribute name="unseal-acquire-item" type="Ref" ref="item" repeat="20" />
+			<attribute name="unseal-consume-item2" type="Ref" ref="item" repeat="4" />
+			<attribute name="unseal-consume-item2-stack-count" type="Int16" default="0" repeat="4" min="0" max="1000" />
+			<attribute name="unseal-result-preview-item" type="Ref" ref="item" />
+			<attribute name="transform-add-probability" type="Int16" default="0" min="0" max="1000" />
+			<attribute name="transform-change-group" type="Bool" />
+			<attribute name="additional-growth-recipe-exp-diff" type="Int32" default="0" />
+			<attribute name="additional-growth-recipe-exp-percent" type="Int32" default="0" min="0" max="1000" />
+			<attribute name="additional-awakening-probability" type="Int8" default="0" min="0" max="100" />
+			<attribute name="randombox-preview" type="Ref" ref="randombox-preview" />
+			<attribute name="message-range" type="Seq">
 				<case name="none" default="y" />
 				<case name="district" />
 				<case name="all" />
-			</record>
-			<record name="quest-replay-epic-dest-quest" type="Ref" ref="quest" deprecated="y" />
-			<record name="quest-replay-epic-filter-start-quest" type="Ref" ref="quest" deprecated="y" />
-			<record name="quest-replay-epic-filter-end-quest" type="Ref" ref="quest" deprecated="y" />
-			<record name="pet-food-recovery" type="Ref" ref="pet-food-recovery" />
-			<record name="exceptional-usable-attraction" type="TRef" />
-			<record name="item-usable-group" type="Ref" ref="item-usable-group" />
-			<record name="required-completion-quest" type="Ref" ref="quest" />
-			<record name="skill-book-achievement-blademaster" type="Ref" ref="achievement" hidden="y" />
-			<record name="skill-book-achievement-kungfufighter" type="Ref" ref="achievement" hidden="y" />
-			<record name="skill-book-achievement-forcemaster" type="Ref" ref="achievement" hidden="y" />
-			<record name="skill-book-achievement-shooter" type="Ref" ref="achievement" hidden="y" />
-			<record name="skill-book-achievement-destroyer" type="Ref" ref="achievement" hidden="y" />
-			<record name="skill-book-achievement-summoner" type="Ref" ref="achievement" hidden="y" />
-			<record name="skill-book-achievement-assassin" type="Ref" ref="achievement" hidden="y" />
-			<record name="skill-book-achievement-swordmaster" type="Ref" ref="achievement" hidden="y" />
-			<record name="skill-book-achievement-warlock" type="Ref" ref="achievement" hidden="y" />
-			<record name="skill-book-achievement-soulfighter" type="Ref" ref="achievement" hidden="y" />
-			<record name="skill-book-achievement-warrior" type="Ref" ref="achievement" hidden="y" />
-			<record name="skill-book-achievement-archer" type="Ref" ref="achievement" hidden="y" />
-			<record name="skill-book-achievement-spear-master" type="Ref" ref="achievement" hidden="y" />
-			<record name="skill-book-achievement-thunderer" type="Ref" ref="achievement" hidden="y" />
-			<record name="skill-book-achievement-dual-blader" type="Ref" ref="achievement" hidden="y" />
-			<record name="skill-book-achievement-bard" type="Ref" ref="achievement" hidden="y" />
-			<record name="fishing-paste" type="Ref" ref="fishing-paste" hidden="y" />
-			<record name="secret-treasure-id" type="Int16" default="0" hidden="y" />
-			<record name="badge-gear-score" type="Int32" default="0" />
-			<record name="badge-synthesis-score" type="Int32" default="0" />
-			<record name="slate-scroll" type="Ref" ref="slatescroll" />
-			<record name="fusion-target-category" type="Seq">
+			</attribute>
+			<attribute name="quest-replay-epic-dest-quest" type="Ref" ref="quest" deprecated="y" />
+			<attribute name="quest-replay-epic-filter-start-quest" type="Ref" ref="quest" deprecated="y" />
+			<attribute name="quest-replay-epic-filter-end-quest" type="Ref" ref="quest" deprecated="y" />
+			<attribute name="pet-food-recovery" type="Ref" ref="pet-food-recovery" />
+			<attribute name="exceptional-usable-attraction" type="TRef" />
+			<attribute name="item-usable-group" type="Ref" ref="item-usable-group" />
+			<attribute name="required-completion-quest" type="Ref" ref="quest" />
+			<attribute name="skill-book-achievement-blademaster" type="Ref" ref="achievement" hidden="y" />
+			<attribute name="skill-book-achievement-kungfufighter" type="Ref" ref="achievement" hidden="y" />
+			<attribute name="skill-book-achievement-forcemaster" type="Ref" ref="achievement" hidden="y" />
+			<attribute name="skill-book-achievement-shooter" type="Ref" ref="achievement" hidden="y" />
+			<attribute name="skill-book-achievement-destroyer" type="Ref" ref="achievement" hidden="y" />
+			<attribute name="skill-book-achievement-summoner" type="Ref" ref="achievement" hidden="y" />
+			<attribute name="skill-book-achievement-assassin" type="Ref" ref="achievement" hidden="y" />
+			<attribute name="skill-book-achievement-swordmaster" type="Ref" ref="achievement" hidden="y" />
+			<attribute name="skill-book-achievement-warlock" type="Ref" ref="achievement" hidden="y" />
+			<attribute name="skill-book-achievement-soulfighter" type="Ref" ref="achievement" hidden="y" />
+			<attribute name="skill-book-achievement-warrior" type="Ref" ref="achievement" hidden="y" />
+			<attribute name="skill-book-achievement-archer" type="Ref" ref="achievement" hidden="y" />
+			<attribute name="skill-book-achievement-spear-master" type="Ref" ref="achievement" hidden="y" />
+			<attribute name="skill-book-achievement-thunderer" type="Ref" ref="achievement" hidden="y" />
+			<attribute name="skill-book-achievement-dual-blader" type="Ref" ref="achievement" hidden="y" />
+			<attribute name="skill-book-achievement-bard" type="Ref" ref="achievement" hidden="y" />
+			<attribute name="fishing-paste" type="Ref" ref="fishing-paste" hidden="y" />
+			<attribute name="secret-treasure-id" type="Int16" default="0" hidden="y" />
+			<attribute name="badge-gear-score" type="Int32" default="0" />
+			<attribute name="badge-synthesis-score" type="Int32" default="0" />
+			<attribute name="slate-scroll" type="Ref" ref="slatescroll" />
+			<attribute name="fusion-target-category" type="Seq">
 				<case name="none" default="y" />
 				<case name="all" />
 				<case name="dress" />
@@ -1126,15 +1126,15 @@
 				<case name="nova" />
 				<case name="pet" />
 				<case name="corundum" />
-			</record>
-			<record name="fusion-score-factor" type="Int16" default="0" min="0" max="10000" />
-			<record name="grocery-effect-type" type="Seq" seq="grocery-effect-type" default="etc" />
-			<record name="grocery-effect-level" type="Int16" default="0" min="0" max="1000" />
-			<record name="card" type="Ref" ref="world-account-card" hidden="y" />
-			<record name="use-fail-caster-flag" type="Seq16" seq="flag" default="none" />
-			<record name="glyph-reward" type="Ref" ref="glyph-reward" />
-			<record name="glyph-reward-fixed" type="Ref" ref="glyph" />
-			<record name="grocery-batch-type" type="Seq">
+			</attribute>
+			<attribute name="fusion-score-factor" type="Int16" default="0" min="0" max="10000" />
+			<attribute name="grocery-effect-type" type="Seq" seq="grocery-effect-type" default="etc" />
+			<attribute name="grocery-effect-level" type="Int16" default="0" min="0" max="1000" />
+			<attribute name="card" type="Ref" ref="world-account-card" hidden="y" />
+			<attribute name="use-fail-caster-flag" type="Seq16" seq="flag" default="none" />
+			<attribute name="glyph-reward" type="Ref" ref="glyph-reward" />
+			<attribute name="glyph-reward-fixed" type="Ref" ref="glyph" />
+			<attribute name="grocery-batch-type" type="Seq">
 				<case name="none" default="y" />
 				<case name="glyph" />
 				<case name="soul-boost" />
@@ -1142,19 +1142,19 @@
 				<case name="bonus-mastery-exp" />
 				<case name="bonus-account-exp" />
 				<case name="bonus-sealed-dungeon-exp" />
-			</record>
-			<record name="unk-" type="Int32" />
-			<record name="unk-" type="Int32" />
-			<record name="unk-" type="Ref" ref="0" />
-			<record name="unk-" type="Int8" />
-			<record name="relic-option" type="Ref" ref="relic-option" repeat="4" />
-			<record name="unk-" type="Int32" />
-			<record name="unk-" type="Ref" ref="relic-set-item" />
-			<record name="unk-" type="Ref" ref="relic-enhance-cost" />
-			<record name="unk-" type="Int32" />
+			</attribute>
+			<attribute name="unk-" type="Int32" />
+			<attribute name="unk-" type="Int32" />
+			<attribute name="unk-" type="Ref" ref="0" />
+			<attribute name="unk-" type="Int8" />
+			<attribute name="relic-option" type="Ref" ref="relic-option" repeat="4" />
+			<attribute name="unk-" type="Int32" />
+			<attribute name="unk-" type="Ref" ref="relic-set-item" />
+			<attribute name="unk-" type="Ref" ref="relic-enhance-cost" />
+			<attribute name="unk-" type="Int32" />
 		</sub>
 		<sub name="gem">
-			<record name="gem-type" type="Seq" required="y">
+			<attribute name="gem-type" type="Seq" required="y">
 				<case name="none" />
 				<case name="weapon-gem" />
 				<case name="equip-gem" />
@@ -1163,29 +1163,29 @@
 				<case name="weapon-enchant-gem" />
 				<case name="pet-gem" />
 				<case name="accessory-enchant-gem" />
-			</record>
-			<record name="weapon-gem-type" type="Seq" seq="weapon-gem-type" required="y" />
-			<record name="weapon-gem-level" type="Int16" default="0" />
-			<record name="cannot-transform" type="Bool" />
-			<record name="extra-icon" type="Icon" max="32767" />
-			<record name="extra-icon-grade" type="Icon" max="32767" />
-			<record name="weapon-enchant-gem-slot-type" type="Seq" required="y">
+			</attribute>
+			<attribute name="weapon-gem-type" type="Seq" seq="weapon-gem-type" required="y" />
+			<attribute name="weapon-gem-level" type="Int16" default="0" />
+			<attribute name="cannot-transform" type="Bool" />
+			<attribute name="extra-icon" type="Icon" max="32767" />
+			<attribute name="extra-icon-grade" type="Icon" max="32767" />
+			<attribute name="weapon-enchant-gem-slot-type" type="Seq" required="y">
 				<case name="none" />
 				<case name="first" />
 				<case name="second" />
-			</record>
-			<record name="reveal-consumable-item" type="Ref" ref="item" repeat="4" />
-			<record name="reveal-consumable-item-count" type="Int8" default="1" repeat="4" min="1" max="100" />
-			<record name="equip-gem-piece" type="Ref" ref="equip-gem-piece" repeat="4" />
-			<record name="attach-equip-gem-piece-consumable-item" type="Ref" ref="item" repeat="4" />
-			<record name="attach-equip-gem-piece-consumable-item-count" type="Int16" default="1" repeat="4" min="1" max="30000" />
-			<record name="attach-equip-gem-piece-money-cost" type="Int32" default="0" />
-			<record name="attach-equip-gem-piece" type="Ref" ref="equip-gem-piece" repeat="10" />
-			<record name="attach-equip-gem-piece-prop-weight" type="Int16" default="0" repeat="10" min="0" max="1000" />
-			<record name="attach-equip-gem-piece-primary-gem-equip-level-min" type="Int8" default="0" />
-			<record name="attach-equip-gem-piece-primary-gem-equip-level-max" type="Int8" default="0" />
-			<record name="attack-effect" type="Ref" ref="effect" repeat="2" />
-			<record name="attack-effect-skill-result" type="Seq">
+			</attribute>
+			<attribute name="reveal-consumable-item" type="Ref" ref="item" repeat="4" />
+			<attribute name="reveal-consumable-item-count" type="Int8" default="1" repeat="4" min="1" max="100" />
+			<attribute name="equip-gem-piece" type="Ref" ref="equip-gem-piece" repeat="4" />
+			<attribute name="attach-equip-gem-piece-consumable-item" type="Ref" ref="item" repeat="4" />
+			<attribute name="attach-equip-gem-piece-consumable-item-count" type="Int16" default="1" repeat="4" min="1" max="30000" />
+			<attribute name="attach-equip-gem-piece-money-cost" type="Int32" default="0" />
+			<attribute name="attach-equip-gem-piece" type="Ref" ref="equip-gem-piece" repeat="10" />
+			<attribute name="attach-equip-gem-piece-prop-weight" type="Int16" default="0" repeat="10" min="0" max="1000" />
+			<attribute name="attach-equip-gem-piece-primary-gem-equip-level-min" type="Int8" default="0" />
+			<attribute name="attach-equip-gem-piece-primary-gem-equip-level-max" type="Int8" default="0" />
+			<attribute name="attack-effect" type="Ref" ref="effect" repeat="2" />
+			<attribute name="attack-effect-skill-result" type="Seq">
 				<case name="none" />
 				<case name="hit" default="y" />
 				<case name="miss" />
@@ -1205,13 +1205,13 @@
 				<case name="parry-perfect-parry-counter" />
 				<case name="parry-perfect-parry-dodge" />
 				<case name="parry-dodge" />
-			</record>
-			<record name="attack-effect-probability" type="Int8" default="100" min="1" max="100" />
-			<record name="attack-effect-target-limit-level" type="Int8" default="0" />
-			<record name="attack-effect-target-effect-flag" type="Seq16" seq="flag" default="none" repeat="4" />
-			<record name="attack-effect-caster-effect-flag" type="Seq16" seq="flag" default="none" repeat="4" />
-			<record name="second-attack-effect" type="Ref" ref="effect" repeat="2" />
-			<record name="second-attack-effect-skill-result" type="Seq">
+			</attribute>
+			<attribute name="attack-effect-probability" type="Int8" default="100" min="1" max="100" />
+			<attribute name="attack-effect-target-limit-level" type="Int8" default="0" />
+			<attribute name="attack-effect-target-effect-flag" type="Seq16" seq="flag" default="none" repeat="4" />
+			<attribute name="attack-effect-caster-effect-flag" type="Seq16" seq="flag" default="none" repeat="4" />
+			<attribute name="second-attack-effect" type="Ref" ref="effect" repeat="2" />
+			<attribute name="second-attack-effect-skill-result" type="Seq">
 				<case name="none" />
 				<case name="hit" default="y" />
 				<case name="miss" />
@@ -1231,37 +1231,37 @@
 				<case name="parry-perfect-parry-counter" />
 				<case name="parry-perfect-parry-dodge" />
 				<case name="parry-dodge" />
-			</record>
-			<record name="second-attack-effect-probability" type="Int8" default="100" min="1" max="100" />
-			<record name="second-attack-effect-target-limit-level" type="Int8" default="0" />
-			<record name="second-attack-effect-target-effect-flag" type="Seq16" seq="flag" default="none" repeat="4" />
-			<record name="second-attack-effect-caster-effect-flag" type="Seq16" seq="flag" default="none" repeat="4" />
-			<record name="detach-gem-money-cost" type="Int32" default="0" />
-			<record name="main-ability-fixed" type="Ref" ref="item-random-ability-slot" />
-			<record name="sub-ability-fixed" type="Ref" ref="item-random-ability-slot" />
-			<record name="sub-ability-random-count" type="Int8" default="0" />
-			<record name="sub-ability-random" type="Ref" ref="item-random-ability-slot" repeat="5" />
-			<record name="feed-ability-random" type="Ref" ref="item-random-ability-slot" repeat="8" />
-			<record name="feed-ability-random-count" type="Int8" default="0" />
-			<record name="unk-" type="Int32" default="0" />
-			<record name="unk-" type="Int32" default="0" />
-			<record name="unk-" type="Int32" default="0" />
-			<record name="unk-" type="Int32" default="0" />
-			<record name="unk-" type="Int32" default="0" />
-			<record name="unk-" type="Int32" default="0" />
-			<record name="ability-feeding-required-money" type="Int32" default="0" />
-			<record name="ability-feeding-required-item" type="Ref" ref="item" repeat="2" />
-			<record name="ability-feeding-required-item-count" type="Int16" default="0" repeat="2" />
-			<record name="ability-feeding-special-item" type="Ref" ref="item" />
-			<record name="ability-feeding-special-item-count" type="Int16" default="0" />
-			<record name="ability-feeding-target" type="Ref" ref="item-brand" repeat="2" />
-			<record name="skill-by-equipment" type="Ref" ref="skill-by-equipment" />
-			<record name="hidden-power-attach" type="Int16" default="0" min="0" />
-			<record name="unseal-consume-item2" type="Ref" ref="item" repeat="4" />
-			<record name="unseal-consume-item2-stack-count" type="Int16" default="0" repeat="4" min="0" max="1000" />
+			</attribute>
+			<attribute name="second-attack-effect-probability" type="Int8" default="100" min="1" max="100" />
+			<attribute name="second-attack-effect-target-limit-level" type="Int8" default="0" />
+			<attribute name="second-attack-effect-target-effect-flag" type="Seq16" seq="flag" default="none" repeat="4" />
+			<attribute name="second-attack-effect-caster-effect-flag" type="Seq16" seq="flag" default="none" repeat="4" />
+			<attribute name="detach-gem-money-cost" type="Int32" default="0" />
+			<attribute name="main-ability-fixed" type="Ref" ref="item-random-ability-slot" />
+			<attribute name="sub-ability-fixed" type="Ref" ref="item-random-ability-slot" />
+			<attribute name="sub-ability-random-count" type="Int8" default="0" />
+			<attribute name="sub-ability-random" type="Ref" ref="item-random-ability-slot" repeat="5" />
+			<attribute name="feed-ability-random" type="Ref" ref="item-random-ability-slot" repeat="8" />
+			<attribute name="feed-ability-random-count" type="Int8" default="0" />
+			<attribute name="unk-" type="Int32" default="0" />
+			<attribute name="unk-" type="Int32" default="0" />
+			<attribute name="unk-" type="Int32" default="0" />
+			<attribute name="unk-" type="Int32" default="0" />
+			<attribute name="unk-" type="Int32" default="0" />
+			<attribute name="unk-" type="Int32" default="0" />
+			<attribute name="ability-feeding-required-money" type="Int32" default="0" />
+			<attribute name="ability-feeding-required-item" type="Ref" ref="item" repeat="2" />
+			<attribute name="ability-feeding-required-item-count" type="Int16" default="0" repeat="2" />
+			<attribute name="ability-feeding-special-item" type="Ref" ref="item" />
+			<attribute name="ability-feeding-special-item-count" type="Int16" default="0" />
+			<attribute name="ability-feeding-target" type="Ref" ref="item-brand" repeat="2" />
+			<attribute name="skill-by-equipment" type="Ref" ref="skill-by-equipment" />
+			<attribute name="hidden-power-attach" type="Int16" default="0" min="0" />
+			<attribute name="unseal-consume-item2" type="Ref" ref="item" repeat="4" />
+			<attribute name="unseal-consume-item2-stack-count" type="Int16" default="0" repeat="4" min="0" max="1000" />
 		</sub>
 		<sub name="accessory">
-			<record name="accessory-type" type="Seq">
+			<attribute name="accessory-type" type="Seq">
 				<case name="accessory" default="y" />
 				<case name="costume-attach" />
 				<case name="ring" />
@@ -1283,39 +1283,39 @@
 				<case name="appearance-hypermove" />
 				<case name="appearance-name-plate" />
 				<case name="appearance-speech-bubble" />
-			</record>
-			<record name="necessary-costume" type="Ref" ref="item" />
-			<record name="necessary-costume-brand" type="Ref" ref="item-brand" />
-			<record name="cannot-equip-identical-pairs" type="Bool" />
-			<record name="guild-used" type="Bool" />
-			<record name="closet-group-id" type="Int32" default="0" />
-			<record name="unk-" type="Int32" default="0" />
-			<record name="unk-" type="Int32" default="0" />
-			<record name="skill3" type="Ref" ref="skill3" />
-			<record name="custom-dress-design-state" type="Seq">
+			</attribute>
+			<attribute name="necessary-costume" type="Ref" ref="item" />
+			<attribute name="necessary-costume-brand" type="Ref" ref="item-brand" />
+			<attribute name="cannot-equip-identical-pairs" type="Bool" />
+			<attribute name="guild-used" type="Bool" />
+			<attribute name="closet-group-id" type="Int32" default="0" />
+			<attribute name="unk-" type="Int32" default="0" />
+			<attribute name="unk-" type="Int32" default="0" />
+			<attribute name="skill3" type="Ref" ref="skill3" />
+			<attribute name="custom-dress-design-state" type="Seq">
 				<case name="none" default="y" />
 				<case name="disabled" />
 				<case name="activated" />
-			</record>
-			<record name="hidden-power-attach" type="Int16" default="0" min="0" />
-			<record name="vehicle-detail" type="Ref" ref="vehicle" />
-			<record name="unseal-consume-item2" type="Ref" ref="item" repeat="4" />
-			<record name="unseal-consume-item2-stack-count" type="Int16" default="0" repeat="4" min="0" max="1000" />
-			<record name="unk-" type="Int32" default="0" />
-			<record name="unk-" type="Int32" default="0" />
-			<record name="unk-" type="Int32" default="0" />
-			<record name="frame-show" type="String" required="y" max="70" />
-			<record name="appearance" type="Ref" ref="appearence-item" />
-			<record name="max-gem-slot-count" type="Int8" default="0" />
+			</attribute>
+			<attribute name="hidden-power-attach" type="Int16" default="0" min="0" />
+			<attribute name="vehicle-detail" type="Ref" ref="vehicle" />
+			<attribute name="unseal-consume-item2" type="Ref" ref="item" repeat="4" />
+			<attribute name="unseal-consume-item2-stack-count" type="Int16" default="0" repeat="4" min="0" max="1000" />
+			<attribute name="unk-" type="Int32" default="0" />
+			<attribute name="unk-" type="Int32" default="0" />
+			<attribute name="unk-" type="Int32" default="0" />
+			<attribute name="frame-show" type="String" required="y" max="70" />
+			<attribute name="appearance" type="Ref" ref="appearence-item" />
+			<attribute name="max-gem-slot-count" type="Int8" default="0" />
 		</sub>
 		<sub name="enchant">
-			<record name="enchant-type" type="Seq" required="y">
+			<attribute name="enchant-type" type="Seq" required="y">
 				<case name="none" />
 				<case name="enchant" />
 				<case name="transient-enchant" />
-			</record>
-			<record name="transient-enchant-duration" type="Msec" default="0" min="0" max="1800000" />
-			<record name="transient-ehchant-effect" type="Ref" ref="effect" repeat="2" />
+			</attribute>
+			<attribute name="transient-enchant-duration" type="Msec" default="0" min="0" max="1800000" />
+			<attribute name="transient-ehchant-effect" type="Ref" ref="effect" repeat="2" />
 		</sub>
 	</el>
 </table>

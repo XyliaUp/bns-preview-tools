@@ -1,15 +1,11 @@
 ﻿namespace Xylia.Match.Windows.Attribute.Data;
-
-/// <summary>
-/// 等级修正系数
-/// </summary>
 public class LevelFactor
 {
-	public byte Level;
+	public sbyte Level;
 
 	public double Value;
 
-	public LevelFactor(byte level , double value)
+	public LevelFactor(sbyte level , double value)
 	{
 		this.Level = level;
 		this.Value = value;

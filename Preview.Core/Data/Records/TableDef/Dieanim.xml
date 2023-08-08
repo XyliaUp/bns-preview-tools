@@ -2,7 +2,7 @@
 <table name="dieanim" version="0.3" autokey="false" module="12">
   <el name="table" child="1" />
   <el name="record">
-    <record name="idle-type" type="Seq" seq="idle-type" key="y" required="y" />
-    <record name="die-anim" type="String" max="80" />
+    <attribute name="idle-type" type="Seq" seq="idle-type" key="y" required="y" />
+    <attribute name="die-anim" type="String" max="80" />
   </el>
 </table>

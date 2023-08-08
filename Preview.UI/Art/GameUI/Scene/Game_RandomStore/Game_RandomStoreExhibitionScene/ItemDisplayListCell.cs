@@ -1,6 +1,6 @@
 ﻿using Xylia.Extension;
-using Xylia.Preview.Common.Extension;
 using Xylia.Preview.Data.Record;
+using Xylia.Preview.UI.Extension;
 using Xylia.Preview.UI.Resources;
 
 namespace Xylia.Preview.GameUI.Scene.Game_RandomStore;

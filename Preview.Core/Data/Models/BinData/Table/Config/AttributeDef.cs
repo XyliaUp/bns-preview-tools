@@ -25,13 +25,12 @@ public sealed class AttributeDef : AttributeDefinition
 	public ErrorType ErrorType;
 	#endregion
 
-
 	#region Interface
 	public AttributeDef Clone() => (AttributeDef)MemberwiseClone();
 	#endregion
 
 
-	public static AttributeDef LoadFrom(XmlElement node, DataTableDefinition table, Func<SeqInfo> seqfun)
+	public static AttributeDef LoadFrom(XmlElement node, ITableDefinition table, Func<SeqInfo> seqfun)
 	{
 		if ((node.Attributes["deprecated"]?.Value).ToBool())
 			return null;
@@ -180,7 +179,7 @@ public sealed class AttributeDef : AttributeDefinition
 
 			Type = Type,
 			TypeName = TypeName,
-			Offset = (ushort)(node.Attributes["offset"]?.Value).ToShort(),
+			Offset = (ushort)(node.Attributes["offset"]?.Value).ToInt16(),
 			Repeat = ushort.TryParse(node.Attributes["repeat"]?.Value, out var tmp) ? tmp : (ushort)1,
 			ReferedTableName = RefTable,
 			Sequence = seqdef?.Sequence ?? new List<string>(),

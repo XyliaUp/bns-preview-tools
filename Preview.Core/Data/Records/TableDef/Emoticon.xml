@@ -2,16 +2,16 @@
 <table name="emoticon" version="0.5" autokey="true" module="4">
   <el name="table" child="1" />
   <el name="record">
-    <record name="alias" type="String" required="y" max="70" />
-    <record name="index" type="Int32" required="y" />
+    <attribute name="alias" type="String" required="y" max="70" />
+    <attribute name="index" type="Int32" required="y" />
     <sub name="emoticon">
-      <record name="tip" type="Ref" ref="text" />
-      <record name="name2" type="Ref" ref="text" />
-      <record name="candidate-name" type="Ref" ref="text" />
-      <record name="single-name" type="Ref" ref="text" />
+      <attribute name="tip" type="Ref" ref="text" />
+      <attribute name="name2" type="Ref" ref="text" />
+      <attribute name="candidate-name" type="Ref" ref="text" />
+      <attribute name="single-name" type="Ref" ref="text" />
     </sub>
     <sub name="profile">
-      <record name="profile-image-set-path" type="String" max="70" />
+      <attribute name="profile-image-set-path" type="String" max="70" />
     </sub>
   </el>
 </table>

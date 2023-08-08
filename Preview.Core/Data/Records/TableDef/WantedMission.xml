@@ -2,19 +2,19 @@
 <table name="WantedMission" version="0.1" autokey="true" module="262">
   <el name="table" child="1" />
   <el name="record">
-	<record name="alias" type="String" required="y" />
-	<record name="npc" ref="Npc" />
-	<record name="reward-item" ref="Item" repeat="5" />
-	<record name="reward-item-count" type="Int16" repeat="5" />
-	<record name="describe2" ref="Text" />
-	<record name="unk-" type="Int32" start-show="80" />
-	<record name="unk-" type="Int32" start-show="84" />
-	<record name="unk-" type="Int32" start-show="88" />
-	<record name="unk-" type="Float32" />
-	<record name="unk-" type="String" />
-	<record name="unk-" type="String" />
-	<record name="anim-tree-name" type="String" />
-	<record name="unk-" type="Int32" start-show="120" />
-	<record name="unk-" type="Int32" start-show="124" />
+	<attribute name="alias" type="String" required="y" />
+	<attribute name="npc" ref="Npc" />
+	<attribute name="reward-item" ref="Item" repeat="5" />
+	<attribute name="reward-item-count" type="Int16" repeat="5" />
+	<attribute name="describe2" ref="Text" />
+	<attribute name="unk-" type="Int32" start-show="80" />
+	<attribute name="unk-" type="Int32" start-show="84" />
+	<attribute name="unk-" type="Int32" start-show="88" />
+	<attribute name="unk-" type="Float32" />
+	<attribute name="unk-" type="String" />
+	<attribute name="unk-" type="String" />
+	<attribute name="anim-tree-name" type="String" />
+	<attribute name="unk-" type="Int32" start-show="120" />
+	<attribute name="unk-" type="Int32" start-show="124" />
   </el>
 </table>

@@ -2,9 +2,9 @@
 <table name="fishing-show" version="0.12" autokey="false" module="12">
   <el name="table" child="1" />
   <el name="record">
-    <record name="id" type="Int16" key="y" required="y" min="1" />
-    <record name="alias" type="String" required="y" max="70" />
-    <record name="show-type" type="Seq" required="y">
+    <attribute name="id" type="Int16" key="y" required="y" min="1" />
+    <attribute name="alias" type="String" required="y" max="70" />
+    <attribute name="show-type" type="Seq" required="y">
       <case name="none" />
       <case name="casting" />
       <case name="bonus-fishing-point-casting" />
@@ -20,12 +20,12 @@
       <case name="grab-small-rare" />
       <case name="grab-big-normal" />
       <case name="grab-big-rare" />
-    </record>
-    <record name="player-show" type="String" max="70" />
-    <record name="fishing-rod-anim" type="String" max="70" />
-    <record name="fishing-float-show" type="String" max="70" />
-    <record name="fish-anim" type="String" max="70" />
-    <record name="fishing-show-duration" type="Msec" required="y" />
-    <record name="loop" type="Bool" required="y" />
+    </attribute>
+    <attribute name="player-show" type="String" max="70" />
+    <attribute name="fishing-rod-anim" type="String" max="70" />
+    <attribute name="fishing-float-show" type="String" max="70" />
+    <attribute name="fish-anim" type="String" max="70" />
+    <attribute name="fishing-show-duration" type="Msec" required="y" />
+    <attribute name="loop" type="Bool" required="y" />
   </el>
 </table>

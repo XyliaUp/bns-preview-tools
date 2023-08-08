@@ -2,18 +2,18 @@
 <table name="cinematic" version="0.14" autokey="true" module="14">
   <el name="table" child="1" />
   <el name="record">
-    <record name="alias" type="String" required="y" max="70" />
-    <record name="cinema-name" type="String" max="256" />
-    <record name="cinema-resource-name" type="String" max="256" />
-    <record name="teen-cinema-name" type="String" max="256" />
-    <record name="teen-cinema-resource-name" type="String" max="256" />
-    <record name="costume" type="Ref" ref="item" />
-    <record name="skippable" type="Seq">
+    <attribute name="alias" type="String" required="y" max="70" />
+    <attribute name="cinema-name" type="String" max="256" />
+    <attribute name="cinema-resource-name" type="String" max="256" />
+    <attribute name="teen-cinema-name" type="String" max="256" />
+    <attribute name="teen-cinema-resource-name" type="String" max="256" />
+    <attribute name="costume" type="Ref" ref="item" />
+    <attribute name="skippable" type="Seq">
       <case name="none" default="y" />
       <case name="skip" />
       <case name="party-skip" />
       <case name="team-skip" />
-    </record>
-    <record name="point-camera" type="Bool" />
+    </attribute>
+    <attribute name="point-camera" type="Bool" />
   </el>
 </table>

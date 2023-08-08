@@ -2,9 +2,9 @@
 <table name="battle-royal-field-effect-pouch" version="0.7" autokey="false" module="6">
   <el name="table" child="1" />
   <el name="record">
-    <record name="id" type="Int16" key="y" required="y" min="1" />
-    <record name="alias" type="String" required="y" max="70" />
-    <record name="effect" type="Ref" ref="effect" repeat="4" />
-    <record name="radius" type="Distance" default="16" min="0" max="5000" />
+    <attribute name="id" type="Int16" key="y" required="y" min="1" />
+    <attribute name="alias" type="String" required="y" max="70" />
+    <attribute name="effect" type="Ref" ref="effect" repeat="4" />
+    <attribute name="radius" type="Distance" default="16" min="0" max="5000" />
   </el>
 </table>

@@ -2,9 +2,9 @@
 <table name="benefit-ability-set" version="0.3" autokey="false" module="6" maxid="1000">
   <el name="table" child="1" />
   <el name="record">
-    <record name="id" type="Int16" key="y" required="y" min="1" max="1000" />
-    <record name="ability" type="Seq" seq="attach-ability" default="none" repeat="4" />
-    <record name="ability-value" type="Int32" default="0" repeat="4" min="0" max="1000000" />
-    <record name="name2" type="Ref" ref="text" />
+    <attribute name="id" type="Int16" key="y" required="y" min="1" max="1000" />
+    <attribute name="ability" type="Seq" seq="attach-ability" default="none" repeat="4" />
+    <attribute name="ability-value" type="Int32" default="0" repeat="4" min="0" max="1000000" />
+    <attribute name="name2" type="Ref" ref="text" />
   </el>
 </table>

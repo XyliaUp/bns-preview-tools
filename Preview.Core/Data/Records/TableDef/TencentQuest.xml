@@ -2,7 +2,7 @@
 <table name="tencent-quest" version="0.2" autokey="false" module="6">
   <el name="table" child="1" />
   <el name="record">
-    <record name="questid" type="Int16" key="y" required="y" min="1" max="25200" />
-    <record name="check-vitality" type="Bool" default="y" />
+    <attribute name="questid" type="Int16" key="y" required="y" min="1" max="25200" />
+    <attribute name="check-vitality" type="Bool" default="y" />
   </el>
 </table>

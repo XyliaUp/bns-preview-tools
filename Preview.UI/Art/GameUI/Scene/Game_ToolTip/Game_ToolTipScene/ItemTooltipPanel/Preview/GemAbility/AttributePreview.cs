@@ -1,14 +1,14 @@
 ﻿using Xylia.Extension;
-using Xylia.Preview.Common.Interface;
 using Xylia.Preview.Data.Helper;
 using Xylia.Preview.Data.Models.BinData.Table.Record;
 using Xylia.Preview.Data.Record;
-using Xylia.Preview.UI.Custom.Controls;
 using Xylia.Preview.GameUI.Scene.Game_ToolTip.ItemTooltipPanel.Cell;
+using Xylia.Preview.UI.Custom.Controls;
+using Xylia.Preview.UI.Interface;
 
 namespace Xylia.Preview.GameUI.Scene.Game_ToolTip.ItemTooltipPanel
 {
-    public partial class AttributePreview : PreviewControl
+	public partial class AttributePreview : PreviewControl
 	{
 		#region Constructor
 		public AttributePreview() => InitializeComponent();
@@ -22,7 +22,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_ToolTip.ItemTooltipPanel
 			var MainAbilityFixed = FileCache.Data.ItemRandomAbilitySlot[record.Attributes["main-ability-fixed"]];
 			var SubAbilityFixed = FileCache.Data.ItemRandomAbilitySlot[record.Attributes["sub-ability-fixed"]];
 
-			var SubAbilityRandomCount = record.Attributes["sub-ability-random-count"].ToByte();
+			var SubAbilityRandomCount = record.Attributes["sub-ability-random-count"].ToInt8();
 			var SubAbilityRandoms = new List<ItemRandomAbilitySlot>();
 			for (int i = 1; i <= 5; i++)
 			{

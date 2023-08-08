@@ -39,7 +39,7 @@ public sealed class ItemIcon : IconOutBase
 
 			#region Get data
 			var record = ((DbData)item.Attributes).record;
-			var Grade = record.Data[GRADE.Offset];
+			var Grade = (sbyte)record.Data[GRADE.Offset];
 			var Name2 = set.Text[BitConverter.ToInt32(record.Data, NAME2.Offset)].GetText();
 			var IconId = BitConverter.ToInt32(record.Data, ICON.Offset);
 			var IconIdx = BitConverter.ToInt16(record.Data, ICON.Offset + 8);

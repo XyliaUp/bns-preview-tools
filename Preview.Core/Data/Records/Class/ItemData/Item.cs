@@ -101,7 +101,7 @@ public partial class Item : BaseRecord
 	public short EquipFactionLevel;
 
 	[Signal("item-grade")]
-	public byte ItemGrade;
+	public sbyte ItemGrade;
 
 
 
@@ -123,11 +123,11 @@ public partial class Item : BaseRecord
 
 
 	public RecycleGroup UseGlobalRecycleGroup => this.Attributes["use-global-recycle-group"].ToEnum<RecycleGroup>();
-	public byte UseGlobalRecycleGroupID => this.Attributes["use-global-recycle-group-id"].ToByte();
-	public int UseGlobalRecycleGroupDuration => this.Attributes["use-global-recycle-group-duration"].ToInt();
+	public sbyte UseGlobalRecycleGroupID => this.Attributes["use-global-recycle-group-id"].ToInt8();
+	public int UseGlobalRecycleGroupDuration => this.Attributes["use-global-recycle-group-duration"].ToInt32();
 	public RecycleGroup UseRecycleGroup => this.Attributes["use-recycle-group"].ToEnum<RecycleGroup>();
-	public byte UseRecycleGroupID => this.Attributes["use-recycle-group-id"].ToByte();
-	public int UseRecycleGroupDuration => this.Attributes["use-recycle-group-duration"].ToInt();
+	public sbyte UseRecycleGroupID => this.Attributes["use-recycle-group-id"].ToInt8();
+	public int UseRecycleGroupDuration => this.Attributes["use-recycle-group-duration"].ToInt32();
 
 
 
@@ -139,7 +139,7 @@ public partial class Item : BaseRecord
 
 
 
-	public int UsableDuration => this.Attributes["usable-duration"].ToInt();
+	public int UsableDuration => this.Attributes["usable-duration"].ToInt32();
 	public ItemEvent EventInfo => FileCache.Data.ItemEvent[this.Attributes["event-info"]];
 	public bool ShowRewardPreview => this.Attributes["show-reward-preview"].ToBool();
 	public AccountPostCharge AccountPostCharge => FileCache.Data.AccountPostCharge[this.Attributes["account-post-charge"]];
@@ -149,8 +149,8 @@ public partial class Item : BaseRecord
 
 
 
-	public int ImproveId => this.Attributes["improve-id"].ToInt();
-	public byte ImproveLevel => this.Attributes["improve-level"].ToByte();
+	public int ImproveId => this.Attributes["improve-id"].ToInt32();
+	public sbyte ImproveLevel => this.Attributes["improve-level"].ToInt8();
 	public string ImproveNextItem => this.Attributes["improve-next-item"];
 	public string ImprovePrevItem => this.Attributes["improve-prev-item"];
 
@@ -174,7 +174,7 @@ public partial class Item : BaseRecord
 	public string Description6 => this.Attributes["description6"].GetText(true);
 	public string Description7 => this.Attributes["description7"].GetText(true);
 
-	public int ClosetGroupId => this.Attributes["closet-group-id"].ToInt();
+	public int ClosetGroupId => this.Attributes["closet-group-id"].ToInt32();
 
 
 	public Bitmap TagIconGrade => this.Attributes["tag-icon-grade"].GetIcon();

@@ -2,59 +2,59 @@
 <table name="ItemTransformRecipe" version="3.0" autokey="true" module="262">
   <el name="table" child="1" />
   <el name="record">
-    <record name="alias" type="String" required="y" max="70" />
-    <record name="upgrade-grocery" type="Ref" ref="itemtransformupgradeitem" />
-    <record name="required-inven-capacity" type="Int8" default="1" min="1" max="4" />
-    <record name="money-cost" type="Int32" default="0" min="0" max="2000000000" />
-    <record name="main-ingredient" type="TRef" />
-    <record name="main-ingredient-condition-type" type="Seq" seq="condition-type" default="all" />
-    <record name="main-ingredient-min-level" type="Int8" default="1" min="1" max="100" />
-    <record name="main-ingredient-stack-count" type="Int16" default="0" min="0" max="10000" />
-    <record name="main-ingredient-title-name" type="Ref" ref="text" />
-    <record name="main-ingredient-title-item" type="Ref" ref="item" />
-    <record name="keep-main-ingredient-weapon-gem-slot" type="Bool" />
-    <record name="keep-main-ingredient-weapon-appearance" type="Bool" />
-    <record name="keep-main-ingredient-spirit" type="Bool" />
-    <record name="consume-main-ingredient" type="Bool" />
-    <record name="sub-ingredient" type="TRef" repeat="7" />
-    <record name="sub-ingredient-condition-type" type="Seq" seq="condition-type" default="all" repeat="7" />
-    <record name="sub-ingredient-min-level" type="Int8" default="1" repeat="7" min="1" max="100" />
-    <record name="sub-ingredient-stack-count" type="Int16" default="0" repeat="7" min="0" max="10000" />
-    <record name="sub-ingredient-title-name" type="Ref" ref="text" repeat="7" />
-    <record name="sub-ingredient-title-item" type="Ref" ref="item" repeat="7" />
-    <record name="consume-sub-ingredient" type="Bool" />
-    <record name="fixed-ingredient" type="Ref" ref="item" repeat="8" />
-    <record name="fixed-ingredient-stack-count" type="Int16" default="0" repeat="8" min="0" max="10000" />
-    <record name="consume-fixed-ingredient" type="Bool" default="y" />
-    <record name="special-fixed-index" type="Int8" default="0" />
-    <record name="unk-" type="Bool" />
-    <record name="unk-" type="Bool" />
-    <record name="unk-" type="Bool" />
-    <record name="rare-item" type="TRef" repeat="12" />
-    <record name="normal-item" type="TRef" repeat="12" />
-    <record name="premium-item" type="TRef" repeat="12" />
-    <record name="random-item" type="TRef" repeat="10" />
-    <record name="unk-" type="Int32" default="0" />
-    <record name="unk-" type="Int32" default="0" />
-    <record name="unk-" type="Int32" default="0" />
-    <record name="unk-" type="Int32" default="0" />
-    <record name="unk-" type="Int32" default="0" />
-    <record name="random-failure-mileage-save" type="Bool" />
-    <record name="random-failure-mileage-influence-recipe" type="Ref" ref="ItemTransformRecipe" repeat="2" />
-    <record name="random-retry-cost" type="Ref" ref="item-transform-retry-cost" />
-    <record name="main-ingredient-weapon-gem-type" type="Seq" seq="weapon-gem-type" default="none" />
-    <record name="main-ingredient-weapon-gem-level" type="Int16" default="0" />
-    <record name="main-ingredient-weapon-gem-grade" type="Int8" default="0" />
-    <record name="sub-ingredient-weapon-gem-type" type="Seq" seq="weapon-gem-type" default="none" repeat="7" />
-    <record name="sub-ingredient-weapon-gem-level" type="Int16" default="0" repeat="7" />
-    <record name="sub-ingredient-weapon-gem-grade" type="Int8" default="0" repeat="7" />
-    <record name="title-item" type="Ref" ref="item" />
-    <record name="title-name" type="Ref" ref="text" />
-    <record name="title-reward" type="Ref" ref="randombox-preview" />
-    <record name="category2" type="Seq">
+    <attribute name="alias" type="String" required="y" max="70" />
+    <attribute name="upgrade-grocery" type="Ref" ref="itemtransformupgradeitem" />
+    <attribute name="required-inven-capacity" type="Int8" default="1" min="1" max="4" />
+    <attribute name="money-cost" type="Int32" default="0" min="0" max="2000000000" />
+    <attribute name="main-ingredient" type="TRef" />
+    <attribute name="main-ingredient-condition-type" type="Seq" seq="condition-type" default="all" />
+    <attribute name="main-ingredient-min-level" type="Int8" default="1" min="1" max="100" />
+    <attribute name="main-ingredient-stack-count" type="Int16" default="0" min="0" max="10000" />
+    <attribute name="main-ingredient-title-name" type="Ref" ref="text" />
+    <attribute name="main-ingredient-title-item" type="Ref" ref="item" />
+    <attribute name="keep-main-ingredient-weapon-gem-slot" type="Bool" />
+    <attribute name="keep-main-ingredient-weapon-appearance" type="Bool" />
+    <attribute name="keep-main-ingredient-spirit" type="Bool" />
+    <attribute name="consume-main-ingredient" type="Bool" />
+    <attribute name="sub-ingredient" type="TRef" repeat="7" />
+    <attribute name="sub-ingredient-condition-type" type="Seq" seq="condition-type" default="all" repeat="7" />
+    <attribute name="sub-ingredient-min-level" type="Int8" default="1" repeat="7" min="1" max="100" />
+    <attribute name="sub-ingredient-stack-count" type="Int16" default="0" repeat="7" min="0" max="10000" />
+    <attribute name="sub-ingredient-title-name" type="Ref" ref="text" repeat="7" />
+    <attribute name="sub-ingredient-title-item" type="Ref" ref="item" repeat="7" />
+    <attribute name="consume-sub-ingredient" type="Bool" />
+    <attribute name="fixed-ingredient" type="Ref" ref="item" repeat="8" />
+    <attribute name="fixed-ingredient-stack-count" type="Int16" default="0" repeat="8" min="0" max="10000" />
+    <attribute name="consume-fixed-ingredient" type="Bool" default="y" />
+    <attribute name="special-fixed-index" type="Int8" default="0" />
+    <attribute name="unk-" type="Bool" />
+    <attribute name="unk-" type="Bool" />
+    <attribute name="unk-" type="Bool" />
+    <attribute name="rare-item" type="TRef" repeat="12" />
+    <attribute name="normal-item" type="TRef" repeat="12" />
+    <attribute name="premium-item" type="TRef" repeat="12" />
+    <attribute name="random-item" type="TRef" repeat="10" />
+    <attribute name="unk-" type="Int32" default="0" />
+    <attribute name="unk-" type="Int32" default="0" />
+    <attribute name="unk-" type="Int32" default="0" />
+    <attribute name="unk-" type="Int32" default="0" />
+    <attribute name="unk-" type="Int32" default="0" />
+    <attribute name="random-failure-mileage-save" type="Bool" />
+    <attribute name="random-failure-mileage-influence-recipe" type="Ref" ref="ItemTransformRecipe" repeat="2" />
+    <attribute name="random-retry-cost" type="Ref" ref="item-transform-retry-cost" />
+    <attribute name="main-ingredient-weapon-gem-type" type="Seq" seq="weapon-gem-type" default="none" />
+    <attribute name="main-ingredient-weapon-gem-level" type="Int16" default="0" />
+    <attribute name="main-ingredient-weapon-gem-grade" type="Int8" default="0" />
+    <attribute name="sub-ingredient-weapon-gem-type" type="Seq" seq="weapon-gem-type" default="none" repeat="7" />
+    <attribute name="sub-ingredient-weapon-gem-level" type="Int16" default="0" repeat="7" />
+    <attribute name="sub-ingredient-weapon-gem-grade" type="Int8" default="0" repeat="7" />
+    <attribute name="title-item" type="Ref" ref="item" />
+    <attribute name="title-name" type="Ref" ref="text" />
+    <attribute name="title-reward" type="Ref" ref="randombox-preview" />
+    <attribute name="category2" type="Seq">
       <case name="none" default="y" />
-    </record>
-    <record name="category" type="Seq">
+    </attribute>
+    <attribute name="category" type="Seq">
       <case name="none" default="y" />
       <case name="event" />
       <case name="material" />
@@ -77,12 +77,12 @@
       <case name="weapon-transform" />
       <case name="accessory-transform" />
       <case name="equip-gem" />
-    </record>
-    <record name="use-random" type="Bool" />
-    <record name="fail-effect" type="Ref" ref="effect" />
-    <record name="quest" type="Ref" ref="quest" />
-    <record name="bm-ingredient-recipe" type="Bool" />
-    <record name="warning" type="Seq">
+    </attribute>
+    <attribute name="use-random" type="Bool" />
+    <attribute name="fail-effect" type="Ref" ref="effect" />
+    <attribute name="quest" type="Ref" ref="quest" />
+    <attribute name="bm-ingredient-recipe" type="Bool" />
+    <attribute name="warning" type="Seq">
       <case name="none" default="y" />
       <case name="fail" />
       <case name="stuck" />
@@ -105,10 +105,10 @@
       <case name="partialfail-spiritreset" />
       <case name="cannot-division" />
       <case name="fail-cannot-division" />
-    </record>
-    <record name="event-index" type="Int8" default="0" />
-    <record name="recipe-score" type="Int32" default="0" min="0" max="200000" />
-    <record name="recipe-series" type="Seq">
+    </attribute>
+    <attribute name="event-index" type="Int8" default="0" />
+    <attribute name="recipe-score" type="Int32" default="0" min="0" max="200000" />
+    <attribute name="recipe-series" type="Seq">
       <case name="none" default="y" />
       <case name="normal-1" />
       <case name="normal-2" />
@@ -148,7 +148,7 @@
       <case name="bm-18" />
       <case name="bm-19" />
       <case name="bm-20" />
-    </record>
-    <record name="definite-discount-minimum-value" type="Int8" default="0" min="0" max="100" />
+    </attribute>
+    <attribute name="definite-discount-minimum-value" type="Int8" default="0" min="0" max="100" />
   </el>
 </table>

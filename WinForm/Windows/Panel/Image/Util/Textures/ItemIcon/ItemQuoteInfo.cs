@@ -1,5 +1,5 @@
 ﻿using Xylia.Extension;
-using Xylia.Preview.Common.Extension;
+using Xylia.Preview.UI.Extension;
 using Xylia.Preview.UI.Resources;
 
 using static Xylia.Preview.Data.Record.Item.Grocery;
@@ -13,7 +13,7 @@ public sealed class ItemQuoteInfo : QuoteInfo
 	/// </summary>
 	public bool NoBG = false;
 
-	public byte Grade;
+	public sbyte Grade;
 
 	public GroceryTypeSeq GroceryType;
 	#endregion
@@ -26,7 +26,6 @@ public sealed class ItemQuoteInfo : QuoteInfo
 		//如果需要背景
 		if (!NoBG)
 		{
-			//获取物品等级背景
 			var Background = Grade.GetBackGround();
 			bitmap = Background.Combine(bitmap, DrawLocation.Centre);
 		}

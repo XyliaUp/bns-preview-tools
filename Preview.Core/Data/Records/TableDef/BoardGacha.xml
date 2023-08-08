@@ -2,38 +2,38 @@
 <table name="board-gacha" version="0.6" autokey="true" module="8198">
   <el name="table" child="1" />
   <el name="record">
-    <record name="square-matrix-n" type="Int8" required="y" min="1" max="10" />
-    <record name="round-duration" type="Int16" required="y" min="1" max="720" />
-    <record name="select-position-enable" type="Bool" required="y" />
-    <record name="participation-count-per-character" type="Int16" required="y" min="1" max="100" />
-    <record name="result-top-rank-count" type="Int8" required="y" min="1" max="10" />
-    <record name="top-rank-history-count" type="Int8" required="y" min="1" max="30" />
-    <record name="cost-item" type="Ref" ref="item" />
-    <record name="cost-item-count" type="Int16" default="0" />
-    <record name="instant-payment-enable" type="Bool" />
-    <record name="instant-payment-item" type="Ref" ref="item" />
-    <record name="board-image-player" type="String" default="00047888.BordGacha_Disable" max="128" />
-    <record name="board-image-other-pc" type="String" default="00047888.BordGacha_Disable" max="128" />
-    <record name="board-image-special" type="String" default="00047888.BordGacha_Disable" max="128" />
-    <record name="board-image-first" type="String" default="00047888.BordGacha_Disable" max="128" />
-    <record name="board-image-second" type="String" default="00047888.BordGacha_Disable" max="128" />
-    <record name="board-image-third" type="String" default="00047888.BordGacha_Disable" max="128" />
-    <record name="board-image-lucky-line" type="String" default="00047888.BordGacha_Disable" max="128" />
-    <record name="effect-number-select" type="String" default="00027869.UI_BoardGarcha_smallbox" max="128" />
-    <record name="effect-number-recieve" type="String" default="00027869.UI_BoardGarcha_Loop" max="128" />
-    <record name="effect-time-end" type="String" default="00027869.UI_BoardGarcha_timebox" max="128" />
-    <record name="effect-result-confirm-button" type="String" default="00027869.UI_BoardGarcha_checkbox" max="128" />
-    <record name="effect-result-recieve-reward-window" type="String" default="00027869.UI_BoardGarcha_ItemGet" max="128" />
-    <record name="effect-result-reward-lucky" type="String" default="00027869.UI_BoardGarcha_Luckyloop" max="128" />
-    <record name="effect-result-reward-special" type="String" default="00027869.UI_BoardGarcha_Luckyloop" max="128" />
-    <record name="effect-result-reward-first" type="String" default="00027869.UI_BoardGarcha_Luckyloop" max="128" />
-    <record name="effect-result-reward-second" type="String" default="00027869.UI_BoardGarcha_Luckyloop" max="128" />
-    <record name="effect-result-reward-third" type="String" default="00027869.UI_BoardGarcha_Luckyloop" max="128" />
-    <record name="effect-progress-bar-edge" type="String" default="00027869.UI_BoardGarcha_Luckyloop" max="128" />
-    <record name="effect-progress-bar-end" type="String" default="00027869.UI_BoardGarcha_Luckyloop" max="128" />
-    <record name="font-first-list-my-name" type="String" default="00008130.UI.Over_14" max="128" />
-    <record name="font-first-list-other-name" type="String" default="00008130.UI.Over_14" max="128" />
-    <record name="font-draw-reward-list-item-name" type="String" default="00008130.UI.Over_14" max="128" />
-    <record name="font-recieve-reward-list-item-name" type="String" default="00008130.UI.Over_14" max="128" />
+    <attribute name="square-matrix-n" type="Int8" required="y" min="1" max="10" />
+    <attribute name="round-duration" type="Int16" required="y" min="1" max="720" />
+    <attribute name="select-position-enable" type="Bool" required="y" />
+    <attribute name="participation-count-per-character" type="Int16" required="y" min="1" max="100" />
+    <attribute name="result-top-rank-count" type="Int8" required="y" min="1" max="10" />
+    <attribute name="top-rank-history-count" type="Int8" required="y" min="1" max="30" />
+    <attribute name="cost-item" type="Ref" ref="item" />
+    <attribute name="cost-item-count" type="Int16" default="0" />
+    <attribute name="instant-payment-enable" type="Bool" />
+    <attribute name="instant-payment-item" type="Ref" ref="item" />
+    <attribute name="board-image-player" type="String" default="00047888.BordGacha_Disable" max="128" />
+    <attribute name="board-image-other-pc" type="String" default="00047888.BordGacha_Disable" max="128" />
+    <attribute name="board-image-special" type="String" default="00047888.BordGacha_Disable" max="128" />
+    <attribute name="board-image-first" type="String" default="00047888.BordGacha_Disable" max="128" />
+    <attribute name="board-image-second" type="String" default="00047888.BordGacha_Disable" max="128" />
+    <attribute name="board-image-third" type="String" default="00047888.BordGacha_Disable" max="128" />
+    <attribute name="board-image-lucky-line" type="String" default="00047888.BordGacha_Disable" max="128" />
+    <attribute name="effect-number-select" type="String" default="00027869.UI_BoardGarcha_smallbox" max="128" />
+    <attribute name="effect-number-recieve" type="String" default="00027869.UI_BoardGarcha_Loop" max="128" />
+    <attribute name="effect-time-end" type="String" default="00027869.UI_BoardGarcha_timebox" max="128" />
+    <attribute name="effect-result-confirm-button" type="String" default="00027869.UI_BoardGarcha_checkbox" max="128" />
+    <attribute name="effect-result-recieve-reward-window" type="String" default="00027869.UI_BoardGarcha_ItemGet" max="128" />
+    <attribute name="effect-result-reward-lucky" type="String" default="00027869.UI_BoardGarcha_Luckyloop" max="128" />
+    <attribute name="effect-result-reward-special" type="String" default="00027869.UI_BoardGarcha_Luckyloop" max="128" />
+    <attribute name="effect-result-reward-first" type="String" default="00027869.UI_BoardGarcha_Luckyloop" max="128" />
+    <attribute name="effect-result-reward-second" type="String" default="00027869.UI_BoardGarcha_Luckyloop" max="128" />
+    <attribute name="effect-result-reward-third" type="String" default="00027869.UI_BoardGarcha_Luckyloop" max="128" />
+    <attribute name="effect-progress-bar-edge" type="String" default="00027869.UI_BoardGarcha_Luckyloop" max="128" />
+    <attribute name="effect-progress-bar-end" type="String" default="00027869.UI_BoardGarcha_Luckyloop" max="128" />
+    <attribute name="font-first-list-my-name" type="String" default="00008130.UI.Over_14" max="128" />
+    <attribute name="font-first-list-other-name" type="String" default="00008130.UI.Over_14" max="128" />
+    <attribute name="font-draw-reward-list-item-name" type="String" default="00008130.UI.Over_14" max="128" />
+    <attribute name="font-recieve-reward-list-item-name" type="String" default="00008130.UI.Over_14" max="128" />
   </el>
 </table>

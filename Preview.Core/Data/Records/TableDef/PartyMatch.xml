@@ -2,10 +2,10 @@
 <table name="partymatch" version="0.6" autokey="true" module="518">
   <el name="table" child="1" />
   <el name="record">
-    <record name="alias" type="String" required="y" max="70" />
-    <record name="name" type="Ref" ref="text" required="y" />
-    <record name="faction" type="Ref" ref="faction" />
-    <record name="level" type="Int16" default="0" />
-    <record name="party-chat-channel" type="Ref" ref="partychatchannel" />
+    <attribute name="alias" type="String" required="y" max="70" />
+    <attribute name="name" type="Ref" ref="text" required="y" />
+    <attribute name="faction" type="Ref" ref="faction" />
+    <attribute name="level" type="Int16" default="0" />
+    <attribute name="party-chat-channel" type="Ref" ref="partychatchannel" />
   </el>
 </table>

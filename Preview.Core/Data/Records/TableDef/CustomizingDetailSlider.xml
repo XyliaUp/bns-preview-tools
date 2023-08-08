@@ -2,15 +2,15 @@
 <table name="customizingdetailslider" version="0.4" autokey="false" module="14">
   <el name="table" child="1" />
   <el name="record">
-    <record name="race" type="Prop_seq" seq="race" key="y" required="y" />
-    <record name="sex" type="Prop_seq" seq="sex" key="y" required="y" />
-    <record name="param-index" type="Int8" key="y" required="y" min="0" max="91" />
-    <record name="min-value" type="Int8" default="-100" min="-100" max="100" />
-    <record name="max-value" type="Int8" default="100" min="-100" max="100" />
-    <record name="step" type="Int8" required="y" min="1" />
-    <record name="desc-type" type="Seq">
+    <attribute name="race" type="Prop_seq" seq="race" key="y" required="y" />
+    <attribute name="sex" type="Prop_seq" seq="sex" key="y" required="y" />
+    <attribute name="param-index" type="Int8" key="y" required="y" min="0" max="91" />
+    <attribute name="min-value" type="Int8" default="-100" min="-100" max="100" />
+    <attribute name="max-value" type="Int8" default="100" min="-100" max="100" />
+    <attribute name="step" type="Int8" required="y" min="1" />
+    <attribute name="desc-type" type="Seq">
       <case name="percent" default="y" />
       <case name="value" />
-    </record>
+    </attribute>
   </el>
 </table>

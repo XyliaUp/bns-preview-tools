@@ -2,35 +2,35 @@
 <table name="glyph" version="3.0" autokey="false" module="6" maxid="30000">
   <el name="table" child="1" />
   <el name="record">
-    <record name="id" type="Int16" key="y" required="y" min="1" max="30000" />
-    <record name="alias" type="String" required="y" max="70" />
-    <record name="name" type="Ref" ref="text" />
-    <record name="glyph-type" type="Seq" required="y">
+    <attribute name="id" type="Int16" key="y" required="y" min="1" max="30000" />
+    <attribute name="alias" type="String" required="y" max="70" />
+    <attribute name="name" type="Ref" ref="text" />
+    <attribute name="glyph-type" type="Seq" required="y">
       <case name="none" />
       <case name="normal" />
       <case name="special" />
       <case name="material" />
-    </record>
-    <record name="color" type="Seq" required="y">
+    </attribute>
+    <attribute name="color" type="Seq" required="y">
       <case name="none" />
       <case name="red" />
       <case name="yellow" />
       <case name="blue" />
-    </record>
-    <record name="grade" type="Int8" required="y" min="1" max="8" />
-    <record name="icon" type="Icon" max="32767" />
-    <record name="is-representative" type="Bool" />
-    <record name="condition-event" type="Ref" ref="condition-event" />
-    <record name="condition-event-type" type="Seq" required="y">
+    </attribute>
+    <attribute name="grade" type="Int8" required="y" min="1" max="8" />
+    <attribute name="icon" type="Icon" max="32767" />
+    <attribute name="is-representative" type="Bool" />
+    <attribute name="condition-event" type="Ref" ref="condition-event" />
+    <attribute name="condition-event-type" type="Seq" required="y">
       <case name="attack" />
       <case name="defense" />
       <case name="utility" />
       <case name="special" />
       <case name="none" />
-    </record>
-    <record name="condition-event-min" type="Ref" ref="condition-event" />
-    <record name="condition-event-max" type="Ref" ref="condition-event" />
-    <record name="flavor-text" type="Ref" ref="text" />
-    <record name="reward-tier" type="Int8" required="y" min="0" max="8" />
+    </attribute>
+    <attribute name="condition-event-min" type="Ref" ref="condition-event" />
+    <attribute name="condition-event-max" type="Ref" ref="condition-event" />
+    <attribute name="flavor-text" type="Ref" ref="text" />
+    <attribute name="reward-tier" type="Int8" required="y" min="0" max="8" />
   </el>
 </table>

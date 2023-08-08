@@ -2,17 +2,17 @@
 <table name="challenge-party" version="0.14" autokey="true" module="6">
   <el name="table" child="1" />
   <el name="record">
-    <record name="alias" type="String" required="y" max="70" />
-    <record name="zone" type="Ref" ref="zone" required="y" />
-    <record name="name2" type="Ref" ref="text" required="y" />
-    <record name="arena-minimap" type="String" max="70" />
-    <record name="required-item" type="Ref" ref="item" repeat="2" />
-    <record name="required-item-count" type="Int16" default="1" repeat="2" min="0" max="1000" />
-    <record name="use-training-mode" type="Bool" />
-    <record name="group" type="Ref" ref="attraction-group" />
-    <record name="play-time" type="Msec" default="0" min="0" max="3600000" />
-    <record name="pattern-time" type="Msec" default="0" repeat="8" min="0" max="600000" />
-    <record name="score-per-evaluate" type="Int32" default="100000" min="0" />
-    <record name="kill-score" type="Int32" default="0" min="0" max="99999" />
+    <attribute name="alias" type="String" required="y" max="70" />
+    <attribute name="zone" type="Ref" ref="zone" required="y" />
+    <attribute name="name2" type="Ref" ref="text" required="y" />
+    <attribute name="arena-minimap" type="String" max="70" />
+    <attribute name="required-item" type="Ref" ref="item" repeat="2" />
+    <attribute name="required-item-count" type="Int16" default="1" repeat="2" min="0" max="1000" />
+    <attribute name="use-training-mode" type="Bool" />
+    <attribute name="group" type="Ref" ref="attraction-group" />
+    <attribute name="play-time" type="Msec" default="0" min="0" max="3600000" />
+    <attribute name="pattern-time" type="Msec" default="0" repeat="8" min="0" max="600000" />
+    <attribute name="score-per-evaluate" type="Int32" default="100000" min="0" />
+    <attribute name="kill-score" type="Int32" default="0" min="0" max="99999" />
   </el>
 </table>

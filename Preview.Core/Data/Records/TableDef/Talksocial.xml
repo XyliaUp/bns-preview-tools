@@ -2,34 +2,34 @@
 <table name="talksocial" version="0.18" autokey="true" module="4">
   <el name="table" child="1" />
   <el name="record">
-    <record name="alias" type="String" required="y" max="70" />
-    <record name="name" type="Ref" ref="text" />
-    <record name="use-at-dead" type="Bool" />
-    <record name="use-at-exhaustion" type="Bool" />
-    <record name="use-at-restoration" type="Bool" />
-    <record name="use-at-not-dead" type="Bool" default="y" />
-    <record name="use-in-chat-input" type="Bool" default="y" />
-    <record name="use-at-equip-costume" type="Bool" />
-    <record name="use-at-achievement-title" type="Bool" />
-    <record name="use-at-equip-setitem" type="Bool" />
-    <record name="use-at-equip-paircostume" type="Bool" />
-    <record name="msg" type="Ref" ref="game-message" />
-    <record name="msg-target" type="Ref" ref="game-message" />
-    <record name="can-move" type="Bool" default="y" />
-    <record name="can-sit" type="Bool" default="y" />
-    <record name="duration" type="Msec" default="1000" min="0" max="900000" />
-    <record name="show" type="XUnknown2" />
-    <record name="kun-show" type="XUnknown2" />
-    <record name="gon-male-show" type="XUnknown2" />
-    <record name="gon-female-show" type="XUnknown2" />
-    <record name="lyn-male-show" type="XUnknown2" />
-    <record name="lyn-female-show" type="XUnknown2" />
-    <record name="jin-male-show" type="XUnknown2" />
-    <record name="jin-female-show" type="XUnknown2" />
-    <record name="social-mode-group-index" type="Int8" default="0" min="0" max="8" />
-    <record name="social-mode-slot-index" type="Int8" default="0" min="0" max="8" />
-    <record name="icon" type="Icon" max="32767" />
-    <record name="summoned-show" type="XUnknown2" repeat="3" />
-    <record name="can-ride-vehicle" type="Bool" />
+    <attribute name="alias" type="String" required="y" max="70" />
+    <attribute name="name" type="Ref" ref="text" />
+    <attribute name="use-at-dead" type="Bool" />
+    <attribute name="use-at-exhaustion" type="Bool" />
+    <attribute name="use-at-restoration" type="Bool" />
+    <attribute name="use-at-not-dead" type="Bool" default="y" />
+    <attribute name="use-in-chat-input" type="Bool" default="y" />
+    <attribute name="use-at-equip-costume" type="Bool" />
+    <attribute name="use-at-achievement-title" type="Bool" />
+    <attribute name="use-at-equip-setitem" type="Bool" />
+    <attribute name="use-at-equip-paircostume" type="Bool" />
+    <attribute name="msg" type="Ref" ref="game-message" />
+    <attribute name="msg-target" type="Ref" ref="game-message" />
+    <attribute name="can-move" type="Bool" default="y" />
+    <attribute name="can-sit" type="Bool" default="y" />
+    <attribute name="duration" type="Msec" default="1000" min="0" max="900000" />
+    <attribute name="show" type="XUnknown2" />
+    <attribute name="kun-show" type="XUnknown2" />
+    <attribute name="gon-male-show" type="XUnknown2" />
+    <attribute name="gon-female-show" type="XUnknown2" />
+    <attribute name="lyn-male-show" type="XUnknown2" />
+    <attribute name="lyn-female-show" type="XUnknown2" />
+    <attribute name="jin-male-show" type="XUnknown2" />
+    <attribute name="jin-female-show" type="XUnknown2" />
+    <attribute name="social-mode-group-index" type="Int8" default="0" min="0" max="8" />
+    <attribute name="social-mode-slot-index" type="Int8" default="0" min="0" max="8" />
+    <attribute name="icon" type="Icon" max="32767" />
+    <attribute name="summoned-show" type="XUnknown2" repeat="3" />
+    <attribute name="can-ride-vehicle" type="Bool" />
   </el>
 </table>

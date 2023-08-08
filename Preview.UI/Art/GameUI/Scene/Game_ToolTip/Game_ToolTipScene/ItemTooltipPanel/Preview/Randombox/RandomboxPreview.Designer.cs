@@ -1,4 +1,4 @@
-﻿namespace Xylia.Preview.GameUI.Scene.Game_ToolTip.ItemTooltipPanel
+﻿namespace Xylia.Preview.GameUI.Scene.Game_ToolTip.ItemTooltipPanel.Preview.Randombox
 {
 	partial class RandomboxPreview
 	{

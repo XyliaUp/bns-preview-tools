@@ -65,6 +65,7 @@ namespace Xylia.Preview.GameUI.Scene.Searcher
 			resources.ApplyResources(this, "$this");
 			AutoScaleMode = AutoScaleMode.Font;
 			BackColor = Color.Black;
+			ForeColor = Color.White;
 			Controls.Add(ListPreview);
 			FormBorderStyle = FormBorderStyle.SizableToolWindow;
 			MaximizeBox = false;

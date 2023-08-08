@@ -118,158 +118,8 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="ArenaDungeonTooltip" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\art\gameui\resource\gameui_window_r\arenadungeontooltip.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="BattleFieldPoint" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\art\gameui\resource\gameui_window\battlefieldpoint.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Bleeding" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\art\gameui\resource\gameui_window_r\bleeding.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="BNSR_ChattingBack" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\art\gameui\resource\gameui_window_r\bnsr_chattingback.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="BNSR_EnergyMagnification" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\art\gameui\resource\gameui_window_r\bnsr_energymagnification.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="BNSR_Gacha" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\art\gameui\resource\gameui_window_r\bnsr_gacha.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="BNSR_Gem01_Disable_Image" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\art\gameui\resource\gameui_window_r\bnsr_gem01_disable_image.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="BNSR_Gem01_Image" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\art\gameui\resource\gameui_window_r\bnsr_gem01_image.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="BNSR_Gem02_Disable_Image" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\art\gameui\resource\gameui_window_r\bnsr_gem02_disable_image.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="BNSR_Gem02_Image" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\art\gameui\resource\gameui_window_r\bnsr_gem02_image.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="BNSR_Gem03_Disable_Image" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\art\gameui\resource\gameui_window_r\bnsr_gem03_disable_image.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="BNSR_Gem03_Image" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\art\gameui\resource\gameui_window_r\bnsr_gem03_image.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="BNSR_Gem04_Disable_Image" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\art\gameui\resource\gameui_window_r\bnsr_gem04_disable_image.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="BNSR_Gem04_Image" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\art\gameui\resource\gameui_window_r\bnsr_gem04_image.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="BNSR_Gem05_Disable_Image" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\art\gameui\resource\gameui_window_r\bnsr_gem05_disable_image.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="BNSR_Gem05_Image" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\art\gameui\resource\gameui_window_r\bnsr_gem05_image.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="BNSR_Gem06_Disable_Image" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\art\gameui\resource\gameui_window_r\bnsr_gem06_disable_image.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="BNSR_Gem06_Image" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\art\gameui\resource\gameui_window_r\bnsr_gem06_image.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="BNSR_Gem07_Disable_Image" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\art\gameui\resource\gameui_window_r\bnsr_gem07_disable_image.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="BNSR_Gem07_Image" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\art\gameui\resource\gameui_window_r\bnsr_gem07_image.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="BNSR_Gem08_Disable_Image" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\art\gameui\resource\gameui_window_r\bnsr_gem08_disable_image.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="BNSR_Gem08_Image" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\art\gameui\resource\gameui_window_r\bnsr_gem08_image.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="BNSR_Gem09_Disable_Image" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\art\gameui\resource\gameui_window_r\bnsr_gem09_disable_image.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="BNSR_Gem09_Image" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\art\gameui\resource\gameui_window_r\bnsr_gem09_image.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="BNSR_Gem10_Disable_Image" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\art\gameui\resource\gameui_window_r\bnsr_gem10_disable_image.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="BNSR_Gem10_Image" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\art\gameui\resource\gameui_window_r\bnsr_gem10_image.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="BNSR_Gem_Base" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\art\gameui\resource\gameui_window_r\bnsr_gem_base.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="BNSR_Gem_Currunt" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\art\gameui\resource\gameui_window_r\bnsr_gem_currunt.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="BNSR_Intension" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\art\gameui\resource\gameui_window_r\bnsr_intension.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="BNSR_IntensionGrade" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\art\gameui\resource\gameui_window_r\bnsr_intensiongrade.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="BNSR_ItamCommend" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\art\gameui\resource\gameui_window_r\bnsr_itamcommend.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="BNSR_JobGraph" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\art\gameui\resource\gameui_window_r\bnsr_jobgraph.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="BNSR_JobIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\art\gameui\resource\gameui_window_r\bnsr_jobicon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="BNSR_JobIcon_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\art\gameui\resource\gameui_window_r\bnsr_jobicon_2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="BNSR_JobIcon_3" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\art\gameui\resource\gameui_window_r\bnsr_jobicon_3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="BNSR_JobIcon_4" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\art\gameui\resource\gameui_window_r\bnsr_jobicon_4.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="BNSR_JobIcon_5" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\art\gameui\resource\gameui_window_r\bnsr_jobicon_5.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="BNSR_PartyBar" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\art\gameui\resource\gameui_window_r\bnsr_partybar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="BNSR_RaceIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\art\gameui\resource\gameui_window_r\bnsr_raceicon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="BNSR_RaceIcon_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\art\gameui\resource\gameui_window_r\bnsr_raceicon_2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="BNSR_RaceIcon_3" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\art\gameui\resource\gameui_window_r\bnsr_raceicon_3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="BNSR_RaceIcon_4" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\art\gameui\resource\gameui_window_r\bnsr_raceicon_4.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="BNSR_UIElement" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\art\gameui\resource\gameui_window_r\bnsr_uielement.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="BNSR_Window" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\art\gameui\resource\gameui_window_r\bnsr_window.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="BNSR_WindowBackground" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\art\gameui\resource\gameui_window_r\bnsr_windowbackground.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="BNSR_Window_Outfocus" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\art\gameui\resource\gameui_window_r\bnsr_window_outfocus.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="ChangeBoostLevel_64" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\art\gameui\resource\gameui_window_r\changeboostlevel_64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Chatting_Boast" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\art\gameui\resource\gameui_window_r\chatting_boast.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Chatting_Talk" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\art\gameui\resource\gameui_window_r\chatting_talk.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Chatting_Whisper_In" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\art\gameui\resource\gameui_window_r\chatting_whisper_in.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Chatting_Whisper_Out" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\art\gameui\resource\gameui_window_r\chatting_whisper_out.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="CollectionCard_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\art\gameui\resource\gameui_imageset\collectioncard_1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -325,35 +175,14 @@
   <data name="CollectionCard_Preview_9" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\art\gameui\resource\gameui_imageset\collectioncard_preview_9.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="dash_block" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\art\gameui\resource\gameui_window_r\dash_block.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="defence_block" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\art\gameui\resource\gameui_window_r\defence_block.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="DuelPoint" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\art\gameui\resource\gameui_window\duelpoint.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="EventMarker_Img" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\art\gameui\resource\gameui_window_r\eventmarker_img.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="ExpBoost_01" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\art\gameui\resource\gameui_window_r\expboost_01.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="ExpBoost_02" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\art\gameui\resource\gameui_window_r\expboost_02.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="FactionScoreIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\art\gameui\resource\gameui_window\factionscoreicon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="fieldplay" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\art\gameui\resource\gameui_window\fieldplay.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="fireseed" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\art\gameui\resource\gameui_window_r\fireseed.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="frostbite" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\art\gameui\resource\gameui_window_r\frostbite.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="GameUI_Coin_Bronze" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\art\gameui\resource\gameui_window\gameui_coin_bronze.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -385,87 +214,6 @@
   <data name="GameUI_Coin_Silver_Disable" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\art\gameui\resource\gameui_window\gameui_coin_silver_disable.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="GuildBattleField_History_04" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\art\gameui\resource\gameui_window_r\guildbattlefield_history_04.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="GuildSkill_RequiredLongTime" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\art\gameui\resource\gameui_window_r\guildskill_requiredlongtime.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="GuildSkill_RequiredLongTime_7" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\art\gameui\resource\gameui_window_r\guildskill_requiredlongtime_7.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Img_Attendance" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\art\gameui\resource\gameui_window_r\img_attendance.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Img_dungeon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\art\gameui\resource\gameui_window_r\img_dungeon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Img_NpcPeaktime" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\art\gameui\resource\gameui_window_r\img_npcpeaktime.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Img_Party_BossAggro_Black" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\art\gameui\resource\gameui_window_r\img_party_bossaggro_black.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Img_Party_BossAggro_Blue" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\art\gameui\resource\gameui_window_r\img_party_bossaggro_blue.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Img_Party_BossAggro_Gold" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\art\gameui\resource\gameui_window_r\img_party_bossaggro_gold.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Img_Party_BossAggro_Green" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\art\gameui\resource\gameui_window_r\img_party_bossaggro_green.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Img_Party_BossAggro_Purple" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\art\gameui\resource\gameui_window_r\img_party_bossaggro_purple.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Img_Party_BossAggro_Red" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\art\gameui\resource\gameui_window_r\img_party_bossaggro_red.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Img_Party_BossAggro_Silver" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\art\gameui\resource\gameui_window_r\img_party_bossaggro_silver.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Img_Party_BossAggro_White" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\art\gameui\resource\gameui_window_r\img_party_bossaggro_white.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Img_Party_BossAggro_Yellow" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\art\gameui\resource\gameui_window_r\img_party_bossaggro_yellow.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Img_PvPEvent" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\art\gameui\resource\gameui_window_r\img_pvpevent.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Img_Quest" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\art\gameui\resource\gameui_window_r\img_quest.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Img_Quest_Box" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\art\gameui\resource\gameui_window_r\img_quest_box.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Img_Quest_MoneyPaper" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\art\gameui\resource\gameui_window_r\img_quest_moneypaper.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Img_Quest_Paper" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\art\gameui\resource\gameui_window_r\img_quest_paper.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Img_Race_Cat" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\art\gameui\resource\gameui_window_r\img_race_cat.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Img_Race_Warlock" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\art\gameui\resource\gameui_window_r\img_race_warlock.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Img_Store_PublicRaid" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\art\gameui\resource\gameui_window_r\img_store_publicraid.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Img_Store_PublicRaid_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\art\gameui\resource\gameui_window_r\img_store_publicraid_1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Img_ZoneTriggerEvent" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\art\gameui\resource\gameui_window_r\img_zonetriggerevent.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="ItemGrowth_MetarialDiscount" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\art\gameui\resource\gameui_window_r\itemgrowth_metarialdiscount.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="ItemGrowth_MileageIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\art\gameui\resource\gameui_window_r\itemgrowth_mileageicon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="ItemIcon_Bg_Grade_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\art\gameui\resource\gameui_window_r\itemicon_bg_grade_1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -493,138 +241,6 @@
   <data name="ItemIcon_Bg_Grade_9" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\art\gameui\resource\gameui_window_r\itemicon_bg_grade_9.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Job_Img_Archer_40" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\art\gameui\resource\gameui_window_r\job_img_archer_40.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Job_Img_Archer_40_Select" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\art\gameui\resource\gameui_window_r\job_img_archer_40_select.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Job_Img_Assassin_40" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\art\gameui\resource\gameui_window_r\job_img_assassin_40.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Job_Img_Assassin_40_Select" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\art\gameui\resource\gameui_window_r\job_img_assassin_40_select.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Job_Img_BladeMaster_40" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\art\gameui\resource\gameui_window_r\job_img_blademaster_40.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Job_Img_BladeMaster_40_Select" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\art\gameui\resource\gameui_window_r\job_img_blademaster_40_select.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Job_Img_Destroyer_40" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\art\gameui\resource\gameui_window_r\job_img_destroyer_40.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Job_Img_Destroyer_40_Select" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\art\gameui\resource\gameui_window_r\job_img_destroyer_40_select.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Job_Img_Dual_Blader_40" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\art\gameui\resource\gameui_window_r\job_img_dual-blader_40.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Job_Img_Dual_Blader_40_Select" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\art\gameui\resource\gameui_window_r\job_img_dual-blader_40_select.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Job_Img_ForceMaster_40" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\art\gameui\resource\gameui_window_r\job_img_forcemaster_40.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Job_Img_ForceMaster_40_Select" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\art\gameui\resource\gameui_window_r\job_img_forcemaster_40_select.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Job_Img_KungfuFighter_40" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\art\gameui\resource\gameui_window_r\job_img_kungfufighter_40.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Job_Img_KungfuFighter_40_Select" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\art\gameui\resource\gameui_window_r\job_img_kungfufighter_40_select.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Job_Img_Shooter_40" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\art\gameui\resource\gameui_window_r\job_img_shooter_40.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Job_Img_Shooter_40_Select" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\art\gameui\resource\gameui_window_r\job_img_shooter_40_select.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Job_Img_SoulFighter_40" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\art\gameui\resource\gameui_window_r\job_img_soulfighter_40.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Job_Img_SoulFighter_40_Select" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\art\gameui\resource\gameui_window_r\job_img_soulfighter_40_select.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Job_Img_summoner_40" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\art\gameui\resource\gameui_window_r\job_img_summoner_40.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Job_Img_summoner_40_Select" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\art\gameui\resource\gameui_window_r\job_img_summoner_40_select.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Job_Img_SwordMaster_40" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\art\gameui\resource\gameui_window_r\job_img_swordmaster_40.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Job_Img_SwordMaster_40_Select" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\art\gameui\resource\gameui_window_r\job_img_swordmaster_40_select.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Job_Img_Thunderer_40" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\art\gameui\resource\gameui_window_r\job_img_thunderer_40.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Job_Img_Thunderer_40_Select" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\art\gameui\resource\gameui_window_r\job_img_thunderer_40_select.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Job_Img_Warlock_40" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\art\gameui\resource\gameui_window_r\job_img_warlock_40.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Job_Img_Warlock_40_Select" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\art\gameui\resource\gameui_window_r\job_img_warlock_40_select.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Job_Img_Warrior_40" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\art\gameui\resource\gameui_window_r\job_img_warrior_40.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Job_Img_warrior_40_Select" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\art\gameui\resource\gameui_window_r\job_img_warrior_40_select.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Map_Party" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\art\gameui\resource\gameui_window_r\map_party.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Map_Team" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\art\gameui\resource\gameui_window_r\map_team.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Map_Unit_PartyCamp" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\art\gameui\resource\gameui_window_r\map_unit_partycamp.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="OpenClose_Down" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\art\gameui\resource\gameui_window_r\openclose_down.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="OpenClose_Left" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\art\gameui\resource\gameui_window_r\openclose_left.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="OpenClose_Right" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\art\gameui\resource\gameui_window_r\openclose_right.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="OpenClose_Up" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\art\gameui\resource\gameui_window_r\openclose_up.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="poison" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\art\gameui\resource\gameui_window_r\poison.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="QuestPaper_01" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\art\gameui\resource\gameui_window_r\questpaper_01.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="SealedDungeon_Arrow" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\art\gameui\resource\gameui_window_r\sealeddungeon_arrow.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="SkillEffect_Active" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\art\gameui\resource\gameui_window_r\skilleffect_active.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="SkillEffect_Disable" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\art\gameui\resource\gameui_window_r\skilleffect_disable.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="SkillEffect_First" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\art\gameui\resource\gameui_window_r\skilleffect_first.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="SkillEffect_Second" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\art\gameui\resource\gameui_window_r\skilleffect_second.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="SkillEffect_Third" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\art\gameui\resource\gameui_window_r\skilleffect_third.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="SkillTrainingField_GetReward" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\art\gameui\resource\gameui_window_r\skilltrainingfield_getreward.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="SlotItem_marketBusiness" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\art\gameui\resource\gameui_icon3_r\slotitem_marketbusiness.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -646,9 +262,6 @@
   <data name="Tag_026" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\art\gameui\resource\gameui_windowicon\tag_026.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Tag_090" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\art\gameui\resource\gameui_windowicon\tag_090.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="Tag_138" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\art\gameui\resource\gameui_windowicon\tag_138.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -663,78 +276,6 @@
   </data>
   <data name="Tag_166" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\art\gameui\resource\gameui_windowicon\tag_166.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Tag_199" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\art\gameui\resource\gameui_windowicon\tag_199.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Tooltip_01" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\art\gameui\resource\gameui_window_r\tooltip_01.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Tooltip_02" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\art\gameui\resource\gameui_window_r\tooltip_02.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Tooltip_03" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\art\gameui\resource\gameui_window_r\tooltip_03.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Tooltip_04" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\art\gameui\resource\gameui_window_r\tooltip_04.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Tooltip_05" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\art\gameui\resource\gameui_window_r\tooltip_05.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Tooltip_06" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\art\gameui\resource\gameui_window_r\tooltip_06.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Tooltip_07" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\art\gameui\resource\gameui_window_r\tooltip_07.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Tooltip_08" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\art\gameui\resource\gameui_window_r\tooltip_08.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Tooltip_09" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\art\gameui\resource\gameui_window_r\tooltip_09.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="ToolTip_10" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\art\gameui\resource\gameui_window_r\tooltip_10.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Tooltip_AbilityScore02" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\art\gameui\resource\gameui_window_r\tooltip_abilityscore02.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Tooltip_EXPBoost" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\art\gameui\resource\gameui_window_r\tooltip_expboost.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Tooltip_Faction" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\art\gameui\resource\gameui_window_r\tooltip_faction.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Tooltip_FildDrop" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\art\gameui\resource\gameui_window_r\tooltip_filddrop.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Tooltip_GemDecompose" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\art\gameui\resource\gameui_window_r\tooltip_gemdecompose.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Tooltip_Gemstone" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\art\gameui\resource\gameui_window_r\tooltip_gemstone.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Tooltip_Growth" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\art\gameui\resource\gameui_window_r\tooltip_growth.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Tooltip_Heart" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\art\gameui\resource\gameui_window_r\tooltip_heart.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Tooltip_Max" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\art\gameui\resource\gameui_window_r\tooltip_max.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Tooltip_Max_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\art\gameui\resource\gameui_window_r\tooltip_max_2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Tooltip_NormalKey" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\art\gameui\resource\gameui_window_r\tooltip_normalkey.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Tooltip_SpecialKey" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\art\gameui\resource\gameui_window_r\tooltip_specialkey.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Tooltip_VMHeart" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\art\gameui\resource\gameui_window_r\tooltip_vmheart.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="T_tooltip_legend2_texture_cn_NEW" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\art\fx\01_source\01_tex\fx_texture_03_ui\t_tooltip_legend2_texture_cn_new.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -813,9 +354,6 @@
   </data>
   <data name="useable_PcRoomOnly" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\art\gameui\resource\gameui_icon3_r\useable_pcroomonly.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Venom" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\art\gameui\resource\gameui_window_r\venom.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Weapon_Lock_01" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\art\gameui\resource\gameui_icon3_r\weapon_lock_01.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>

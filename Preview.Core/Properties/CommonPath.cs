@@ -30,7 +30,7 @@ public static class CommonPath
 
 	public static string OutputFolder_Resource
 	{
-		get => Ini.ReadValue("Folder", "Output_Resource");
+		get => Ini.ReadValue("Folder", "Output_Resource") ?? (OutputFolder + @"\Pak");
 		set => Ini.WriteValue("Folder", "Output_Resource", value);
 	}
 }

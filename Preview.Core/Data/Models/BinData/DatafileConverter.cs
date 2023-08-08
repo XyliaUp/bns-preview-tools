@@ -20,6 +20,8 @@ public class DatafileConverter
 
 	private readonly ResolvedAliases _tablesAliases;
 
+	public readonly RecordBuilder Builder;
+
 	public DatafileConverter(DatafileDefinition datafileDef, IEnumerable<TableModel> Tables)
 	{
 		_datafileDef = datafileDef;
@@ -27,6 +29,9 @@ public class DatafileConverter
 
 		DatafileAliasResolverHelper.Resolve(_tablesAliases, datafileDef, Tables);
 		DatafileAliasResolverHelper.ResolveXmlDatAlias(_tablesAliases, datafileDef);
+
+
+		Builder = new RecordBuilder(_datafileDef , _tablesAliases);
 	}
 
 
@@ -388,7 +393,6 @@ public class DatafileConverter
 
 		return value;
 	}
-
 
 	//public DateTime ToLocalTime(DateTime time)
 	//{

@@ -8,11 +8,14 @@ using Xylia.Preview.Common.Arg;
 using Xylia.Preview.Common.Extension;
 using Xylia.Preview.Common.Seq;
 using Xylia.Preview.Data.Helper;
+using Xylia.Preview.Data.Models.DatData.DataProvider;
 using Xylia.Preview.Data.Models.DatData.DatDetect;
 using Xylia.Preview.Data.Record;
-using Xylia.Preview.GameUI.Scene.Game_ToolTip.Game_ToolTipScene;
-using Xylia.Preview.GameUI.Scene.Game_ToolTip.Game_ToolTipScene.ItemTooltipPanel;
+using Xylia.Preview.GameUI.Scene.Game_ToolTip.ItemTooltipPanel.Preview.Randombox;
+using Xylia.Preview.GameUI.Scene.Game_ToolTipScene;
+using Xylia.Preview.GameUI.Scene.Game_ToolTipScene.ItemTooltipPanel.Register;
 using Xylia.Preview.UI.Custom.Controls;
+using Xylia.Preview.UI.Extension;
 using Xylia.Preview.UI.Resources;
 
 using static Vanara.PInvoke.User32;
@@ -97,17 +100,10 @@ public partial class ItemTooltipPanel : Form
 		this.Refresh();
 	}
 
-	private void ItemNamePanel_DoubleClick(object sender, EventArgs e) => sender.SetClipboard();
-
 	private void MenuItem_IconSaveAs_Click(object sender, EventArgs e) => this.ItemInfo.Icon().SaveDialog(this.ItemInfo.Ref.Id.ToString());
 
 	private void MenuItem_SaveAsImage_Click(object sender, EventArgs e) => this.DrawMeToBitmap(true).SaveDialog(this.ItemInfo.alias + "_ScreenShot");
 
-	/// <summary>
-	/// 启用用户操作板
-	/// </summary>
-	/// <param name="sender"></param>
-	/// <param name="e"></param>
 	private void MenuItem_SwitchUserOperPanel_CheckedChanged(object sender, EventArgs e)
 	{
 		if (this.UserOperScene != null)
@@ -397,8 +393,7 @@ public partial class ItemTooltipPanel : Form
 	}
 
 
-
-	public static Bitmap LoadCardImage(Bitmap CardImage, byte ItemGrade)
+	public static Bitmap LoadCardImage(Bitmap CardImage, sbyte ItemGrade)
 	{
 		if (CardImage is null) return null;
 
@@ -435,16 +430,16 @@ public partial class ItemTooltipPanel : Form
 		this.ItemAbility = new();
 
 		#region AttackPower
-		var AttackPowerEquipMin = this.ItemInfo.Attributes["attack-power-equip-min"].ToInt();
-		var AttackPowerEquipMax = this.ItemInfo.Attributes["attack-power-equip-max"].ToInt();
+		var AttackPowerEquipMin = this.ItemInfo.Attributes["attack-power-equip-min"].ToInt32();
+		var AttackPowerEquipMax = this.ItemInfo.Attributes["attack-power-equip-max"].ToInt32();
 		ItemAbility[MainAbility.AttackPowerEquipMinAndMax] = (AttackPowerEquipMin + AttackPowerEquipMax) / 2;
 
-		var PveBossLevelNpcAttackPowerEquipMin = this.ItemInfo.Attributes["pve-boss-level-npc-attack-power-equip-min"].ToInt();
-		var PveBossLevelNpcAttackPowerEquipMax = this.ItemInfo.Attributes["pve-boss-level-npc-attack-power-equip-max"].ToInt();
+		var PveBossLevelNpcAttackPowerEquipMin = this.ItemInfo.Attributes["pve-boss-level-npc-attack-power-equip-min"].ToInt32();
+		var PveBossLevelNpcAttackPowerEquipMax = this.ItemInfo.Attributes["pve-boss-level-npc-attack-power-equip-max"].ToInt32();
 		ItemAbility[MainAbility.PveBossLevelNpcAttackPowerEquipMinAndMax] = (PveBossLevelNpcAttackPowerEquipMin + PveBossLevelNpcAttackPowerEquipMax) / 2;
 
-		var PvpAttackPowerEquipMin = this.ItemInfo.Attributes["pvp-attack-power-equip-min"].ToInt();
-		var PvpAttackPowerEquipMax = this.ItemInfo.Attributes["pvp-attack-power-equip-max"].ToInt();
+		var PvpAttackPowerEquipMin = this.ItemInfo.Attributes["pvp-attack-power-equip-min"].ToInt32();
+		var PvpAttackPowerEquipMax = this.ItemInfo.Attributes["pvp-attack-power-equip-max"].ToInt32();
 		ItemAbility[MainAbility.PvpAttackPowerEquipMinAndMax] = (PvpAttackPowerEquipMin + PvpAttackPowerEquipMax) / 2;
 		#endregion
 
@@ -500,7 +495,7 @@ public partial class ItemTooltipPanel : Form
 
 
 		#region post charge
-		var DecomposeMoneyCost = this.ItemInfo.Attributes["decompose-money-cost"].ToInt();
+		var DecomposeMoneyCost = this.ItemInfo.Attributes["decompose-money-cost"].ToInt32();
 		if (DecomposeMoneyCost != 0)
 		{
 			var param = new ContentParams(DecomposeMoneyCost);
@@ -617,7 +612,7 @@ public partial class ItemTooltipPanel : Form
 		if (LimitInfo.Any())
 		{
 			var comma = "Name.Item.Cannot.Comma".GetText();
-			this.LoadBottomControl(FileCache.Data.DataPath?.Locale?.Language switch
+			this.LoadBottomControl((FileCache.Data.Provider as DefaultProvider)?.Locale?.Language switch
 			{
 				Language.Korean => LimitInfo.Aggregate(comma, now => (now).GetText()) + " " + "Name.Item.Cannot".GetText(),
 				Language.ChineseS => LimitInfo.Aggregate(comma, now => (now + ".Tencent").GetText()),
@@ -640,7 +635,7 @@ public partial class ItemTooltipPanel : Form
 		this.ItemNamePanel.Text = this.ItemInfo.Name2;
 
 		this.lbl_Category.Text = $"Name.item.game-category-3.{this.ItemInfo.GameCategory3.GetSignal()}".GetText(true);
-		this.PricePreview.CurrencyCount = this.ItemInfo.Attributes["price"].ToInt();
+		this.PricePreview.CurrencyCount = this.ItemInfo.Attributes["price"].ToInt32();
 
 		this.MainInfo = new List<MyInfo>()
 		{
@@ -685,7 +680,7 @@ public partial class ItemTooltipPanel : Form
 			if (Skill3Data != null) Trace.WriteLine($">> {Skill3Data.alias} ({Skill3Data.Name2.GetText()})");
 
 			if (Grocery.Card != null)
-				this.CardImage = LoadCardImage(Grocery.Card.CardImage.GetUObject().GetImage(), Grocery.ItemGrade);
+				this.CardImage = LoadCardImage(FileCache.Provider.LoadObject(Grocery.Card.CardImage)?.GetImage(), Grocery.ItemGrade);
 		}
 	}
 }

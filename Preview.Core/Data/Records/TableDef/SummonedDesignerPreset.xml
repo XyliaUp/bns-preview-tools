@@ -2,17 +2,17 @@
 <table name="summoneddesignerpreset" version="0.3" autokey="false" module="6">
   <el name="table" child="1" />
   <el name="record">
-    <record name="alias" type="String" required="y" max="70" />
-    <record name="index" type="Int32" key="y" required="y" min="1" />
-    <record name="race" type="Prop_seq" seq="race" default="race-none" key="y" />
-    <record name="icon-texture" type="Ref" ref="icontexture" />
-    <record name="icon-index" type="Int16" default="0" />
-    <record name="face" type="Int8" required="y" min="1" max="50" />
-    <record name="body" type="Int8" required="y" min="1" max="50" />
-    <record name="eye-color" type="Int8" required="y" min="1" max="50" />
-    <record name="eye" type="Int8" required="y" min="1" max="50" />
-    <record name="body-color" type="Int8" required="y" min="1" max="50" />
-    <record name="body-shape" type="Int8" required="y" min="1" max="50" />
-    <record name="decal" type="Int8" required="y" min="1" max="50" />
+    <attribute name="alias" type="String" required="y" max="70" />
+    <attribute name="index" type="Int32" key="y" required="y" min="1" />
+    <attribute name="race" type="Prop_seq" seq="race" default="race-none" key="y" />
+    <attribute name="icon-texture" type="Ref" ref="icontexture" />
+    <attribute name="icon-index" type="Int16" default="0" />
+    <attribute name="face" type="Int8" required="y" min="1" max="50" />
+    <attribute name="body" type="Int8" required="y" min="1" max="50" />
+    <attribute name="eye-color" type="Int8" required="y" min="1" max="50" />
+    <attribute name="eye" type="Int8" required="y" min="1" max="50" />
+    <attribute name="body-color" type="Int8" required="y" min="1" max="50" />
+    <attribute name="body-shape" type="Int8" required="y" min="1" max="50" />
+    <attribute name="decal" type="Int8" required="y" min="1" max="50" />
   </el>
 </table>

@@ -2,37 +2,37 @@
 <table name="npctalkmessage" version="0.50" autokey="true" module="4">
   <el name="table" child="1" />
   <el name="record">
-    <record name="alias" type="String" required="y" max="70" />
-    <record name="name" type="String" deprecated="y" max="50" />
-    <record name="name2" type="Ref" ref="text" />
-    <record name="required-faction" type="Ref" ref="faction" />
-    <record name="required-complete-quest" type="Ref" ref="quest" />
-    <record name="step-text" type="Ref" ref="text" repeat="30" />
-    <record name="step-subtext" type="Ref" ref="text" repeat="30" />
-    <record name="step-next" type="Ref" ref="text" repeat="30" />
-    <record name="step-kismet" type="String" repeat="30" max="50" />
-    <record name="step-cinematic" type="Ref" ref="cinematic" repeat="30" />
-    <record name="step-show" type="XUnknown2" repeat="30" />
-    <record name="step-camera-show" type="XUnknown2" repeat="30" />
-    <record name="step-sound" type="String" repeat="30" deprecated="y" max="50" />
-    <record name="function-step" type="Int8" default="0" />
-    <record name="end-talk-social" type="Ref" ref="social" />
-    <record name="end-talk-sound" type="String" max="70" />
+    <attribute name="alias" type="String" required="y" max="70" />
+    <attribute name="name" type="String" deprecated="y" max="50" />
+    <attribute name="name2" type="Ref" ref="text" />
+    <attribute name="required-faction" type="Ref" ref="faction" />
+    <attribute name="required-complete-quest" type="Ref" ref="quest" />
+    <attribute name="step-text" type="Ref" ref="text" repeat="30" />
+    <attribute name="step-subtext" type="Ref" ref="text" repeat="30" />
+    <attribute name="step-next" type="Ref" ref="text" repeat="30" />
+    <attribute name="step-kismet" type="String" repeat="30" max="50" />
+    <attribute name="step-cinematic" type="Ref" ref="cinematic" repeat="30" />
+    <attribute name="step-show" type="XUnknown2" repeat="30" />
+    <attribute name="step-camera-show" type="XUnknown2" repeat="30" />
+    <attribute name="step-sound" type="String" repeat="30" deprecated="y" max="50" />
+    <attribute name="function-step" type="Int8" default="0" />
+    <attribute name="end-talk-social" type="Ref" ref="social" />
+    <attribute name="end-talk-sound" type="String" max="70" />
     <sub name="branch">
-      <record name="initial-branch" type="Bool" />
-      <record name="branch-msg" type="Ref" ref="npctalkmessage" repeat="4" />
+      <attribute name="initial-branch" type="Bool" />
+      <attribute name="branch-msg" type="Ref" ref="npctalkmessage" repeat="4" />
     </sub>
     <sub name="questmessage">
-      <record name="acquire-quest" type="Ref" ref="quest" hidden="y" deprecated="y" />
-      <record name="progress-quest" type="Ref" ref="quest" hidden="y" deprecated="y" />
-      <record name="progress-mission" type="Int8" default="0" hidden="y" deprecated="y" />
-      <record name="progress-talkcase" type="Int8" default="0" hidden="y" deprecated="y" />
-      <record name="end-talk-social-quest-ok" type="Ref" ref="social" />
-      <record name="end-talk-sound-quest-ok" type="String" max="70" />
+      <attribute name="acquire-quest" type="Ref" ref="quest" hidden="y" deprecated="y" />
+      <attribute name="progress-quest" type="Ref" ref="quest" hidden="y" deprecated="y" />
+      <attribute name="progress-mission" type="Int8" default="0" hidden="y" deprecated="y" />
+      <attribute name="progress-talkcase" type="Int8" default="0" hidden="y" deprecated="y" />
+      <attribute name="end-talk-social-quest-ok" type="Ref" ref="social" />
+      <attribute name="end-talk-sound-quest-ok" type="String" max="70" />
     </sub>
     <sub name="teleport" />
     <sub name="craft">
-      <record name="craft-message-type" type="Seq">
+      <attribute name="craft-message-type" type="Seq">
         <case name="none" default="y" />
         <case name="join" />
         <case name="ask" />
@@ -40,78 +40,78 @@
         <case name="receive" />
         <case name="need-level" />
         <case name="full-craft" />
-      </record>
+      </attribute>
     </sub>
     <sub name="faction-coin-exchange" />
     <sub name="store">
-      <record name="store-message-type" type="Seq">
+      <attribute name="store-message-type" type="Seq">
         <case name="sale" default="y" />
         <case name="NotAuthority" />
-      </record>
+      </attribute>
     </sub>
     <sub name="warehouse" />
     <sub name="auction" />
     <sub name="delivery" />
     <sub name="make-summoned">
-      <record name="end-talk-social-ok" type="Ref" ref="social" />
+      <attribute name="end-talk-social-ok" type="Ref" ref="social" />
     </sub>
     <sub name="summoned-beauty-shop" />
     <sub name="summoned-name-change">
-      <record name="end-talk-show-ok" type="String" max="70" />
-      <record name="end-talk-sound-ok" type="String" max="70" />
+      <attribute name="end-talk-show-ok" type="String" max="70" />
+      <attribute name="end-talk-sound-ok" type="String" max="70" />
     </sub>
     <sub name="create-guild">
-      <record name="end-talk-social-ok" type="Ref" ref="social" />
-      <record name="end-talk-sound-ok" type="String" max="70" />
+      <attribute name="end-talk-social-ok" type="Ref" ref="social" />
+      <attribute name="end-talk-sound-ok" type="String" max="70" />
     </sub>
     <sub name="join-faction">
-      <record name="population-statistics" type="Seq">
+      <attribute name="population-statistics" type="Seq">
         <case name="none" />
         <case name="faction-1-high" />
         <case name="equal" default="y" />
         <case name="faction-1-low" />
         <case name="joined-guild" />
         <case name="transfer-cooltime" />
-      </record>
-      <record name="end-talk-social-ok" type="Ref" ref="social" />
-      <record name="fail-population-message" type="Ref" ref="npctalkmessage" />
+      </attribute>
+      <attribute name="end-talk-social-ok" type="Ref" ref="social" />
+      <attribute name="fail-population-message" type="Ref" ref="npctalkmessage" />
     </sub>
     <sub name="transfer-faction">
-      <record name="population-statistics" type="Seq">
+      <attribute name="population-statistics" type="Seq">
         <case name="none" />
         <case name="faction-1-high" />
         <case name="equal" default="y" />
         <case name="faction-1-low" />
         <case name="joined-guild" />
         <case name="transfer-cooltime" />
-      </record>
-      <record name="end-talk-sound-ok" type="String" max="70" />
-      <record name="fail-population-message" type="Ref" ref="npctalkmessage" />
+      </attribute>
+      <attribute name="end-talk-sound-ok" type="String" max="70" />
+      <attribute name="fail-population-message" type="Ref" ref="npctalkmessage" />
     </sub>
     <sub name="contribute-guild-reputation" />
     <sub name="dungeon-progress">
-      <record name="dungeon" type="Ref" ref="dungeon" />
+      <attribute name="dungeon" type="Ref" ref="dungeon" />
     </sub>
     <sub name="select-join-faction">
-      <record name="population-statistics" type="Seq">
+      <attribute name="population-statistics" type="Seq">
         <case name="none" />
         <case name="faction-1-high" />
         <case name="equal" default="y" />
         <case name="faction-1-low" />
         <case name="joined-guild" />
         <case name="transfer-cooltime" />
-      </record>
-      <record name="msg" type="Ref" ref="npctalkmessage" repeat="2" />
-      <record name="faction" type="Ref" ref="faction" repeat="2" />
+      </attribute>
+      <attribute name="msg" type="Ref" ref="npctalkmessage" repeat="2" />
+      <attribute name="faction" type="Ref" ref="faction" repeat="2" />
     </sub>
     <sub name="guild-customize">
-      <record name="guild-customize-message-type" type="Seq">
+      <attribute name="guild-customize-message-type" type="Seq">
         <case name="none" />
         <case name="EnterCustomize" default="y" />
         <case name="NotAuthority" />
         <case name="ActivateFaction" />
         <case name="WaitingArena" />
-      </record>
+      </attribute>
     </sub>
   </el>
 </table>

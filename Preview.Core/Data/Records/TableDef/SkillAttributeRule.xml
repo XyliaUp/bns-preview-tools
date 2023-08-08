@@ -2,15 +2,15 @@
 <table name="skillattributerule" version="0.7" autokey="false" module="2054">
   <el name="table" child="1" />
   <el name="record">
-    <record name="attribute" type="Seq" seq="skill-attribute" key="y" required="y" />
-    <record name="block-caster-flag" type="Seq16" seq="flag" default="none" repeat="4" />
-    <record name="target-flag" type="Seq16" seq="flag" default="none" repeat="8" />
-    <record name="dir" type="Seq" repeat="8">
+    <attribute name="attribute" type="Seq" seq="skill-attribute" key="y" required="y" />
+    <attribute name="block-caster-flag" type="Seq16" seq="flag" default="none" repeat="4" />
+    <attribute name="target-flag" type="Seq16" seq="flag" default="none" repeat="8" />
+    <attribute name="dir" type="Seq" repeat="8">
       <case name="front-back" default="y" />
       <case name="front" />
       <case name="back" />
-    </record>
-    <record name="auto-skill-result" type="Seq" repeat="8">
+    </attribute>
+    <attribute name="auto-skill-result" type="Seq" repeat="8">
       <case name="none" default="y" />
       <case name="hit" />
       <case name="miss" />
@@ -30,6 +30,6 @@
       <case name="parry-perfect-parry-counter" />
       <case name="parry-perfect-parry-dodge" />
       <case name="parry-dodge" />
-    </record>
+    </attribute>
   </el>
 </table>

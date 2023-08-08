@@ -2,40 +2,40 @@
 <table name="skill-training-room-subject" version="0.11" autokey="false" module="262">
   <el name="table" child="1" />
   <el name="record">
-    <record name="id" type="Int32" key="y" required="y" min="1" />
-    <record name="subject-name" type="Ref" ref="text" />
-    <record name="group-data-id" type="Ref" ref="skill-training-room-group" default="0" hidden="y" />
-    <record name="system-msg" type="Ref" ref="game-message" />
-    <record name="start-kismet-name" type="String" repeat="2" max="50" />
-    <record name="end-kismet-name" type="String" repeat="2" max="50" />
-    <record name="sort-number" type="Int16" default="0" />
+    <attribute name="id" type="Int32" key="y" required="y" min="1" />
+    <attribute name="subject-name" type="Ref" ref="text" />
+    <attribute name="group-data-id" type="Ref" ref="skill-training-room-group" default="0" hidden="y" />
+    <attribute name="system-msg" type="Ref" ref="game-message" />
+    <attribute name="start-kismet-name" type="String" repeat="2" max="50" />
+    <attribute name="end-kismet-name" type="String" repeat="2" max="50" />
+    <attribute name="sort-number" type="Int16" default="0" />
     <sub name="class-training">
-      <record name="main-skill" type="Ref" ref="skill3" />
-      <record name="skill-combo-desc" type="Ref" ref="text" />
-      <record name="skill-combo-tips-main" type="Ref" ref="text" />
-      <record name="skill-combo-tips-desc" type="Ref" ref="text" />
-      <record name="skill-training-sequence" type="Ref" ref="skill-training-sequence" required="y" />
-      <record name="guide-text" type="Ref" ref="text" />
-      <record name="base-job-style" type="Seq" seq="job-style" required="y" />
-      <record name="advanced-job-style" type="Seq" seq="job-style" required="y" />
-      <record name="advanced-tier-variation" type="Int8" default="0" repeat="5" min="0" max="3" />
-      <record name="advanced-tier-variation-flag-op" type="Seq" repeat="5">
+      <attribute name="main-skill" type="Ref" ref="skill3" />
+      <attribute name="skill-combo-desc" type="Ref" ref="text" />
+      <attribute name="skill-combo-tips-main" type="Ref" ref="text" />
+      <attribute name="skill-combo-tips-desc" type="Ref" ref="text" />
+      <attribute name="skill-training-sequence" type="Ref" ref="skill-training-sequence" required="y" />
+      <attribute name="guide-text" type="Ref" ref="text" />
+      <attribute name="base-job-style" type="Seq" seq="job-style" required="y" />
+      <attribute name="advanced-job-style" type="Seq" seq="job-style" required="y" />
+      <attribute name="advanced-tier-variation" type="Int8" default="0" repeat="5" min="0" max="3" />
+      <attribute name="advanced-tier-variation-flag-op" type="Seq" repeat="5">
         <case name="equal" default="y" />
         <case name="not" />
-      </record>
+      </attribute>
     </sub>
     <sub name="boss-training">
-      <record name="boss-npc" type="Ref" ref="npc" />
-      <record name="boss-desc" type="Ref" ref="text" />
-      <record name="boss-combat-desc" type="Ref" ref="text" />
-      <record name="boss-combat-tips-desc" type="Ref" ref="text" />
-      <record name="boss-image" type="String" max="50" />
-      <record name="dungeon-name" type="Ref" ref="text" />
-      <record name="dungeon-group" type="Seq">
+      <attribute name="boss-npc" type="Ref" ref="npc" />
+      <attribute name="boss-desc" type="Ref" ref="text" />
+      <attribute name="boss-combat-desc" type="Ref" ref="text" />
+      <attribute name="boss-combat-tips-desc" type="Ref" ref="text" />
+      <attribute name="boss-image" type="String" max="50" />
+      <attribute name="dungeon-name" type="Ref" ref="text" />
+      <attribute name="dungeon-group" type="Seq">
         <case name="none" default="y" />
         <case name="party" />
         <case name="team" />
-      </record>
+      </attribute>
     </sub>
   </el>
 </table>

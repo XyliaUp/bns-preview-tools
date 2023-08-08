@@ -131,7 +131,7 @@ public partial class AttributePage : UserControl
 		label1.Text = $"在{level}级时所对应的 {SelNode.Text}率:\n{Value} ({percent:0.000%})";
 		if (UseCompare.Checked)
 		{
-			double value2 = Value + AttritubeValue_Extra.Text.ToInt();
+			double value2 = Value + AttritubeValue_Extra.Text.ToInt32();
 			double percent2 = obj.GetPercent(value2, level) + extra;
 
 			label1.Text += $"\n{value2} ({percent2:0.000%})\n\n差值为 {percent2 - percent:0.000%}";
@@ -159,7 +159,7 @@ public partial class AttributePage : UserControl
 
 	private void TextBox2_TextChanged(object sender, EventArgs e)
 	{
-		int Value = AttritubeValue_Extra.Text.ToInt();
+		int Value = AttritubeValue_Extra.Text.ToInt32();
 		if (Value > 0) this.pictureBox1.Image = Resource_Common.Arrow_Up_24px;
 		else if (Value < 0) this.pictureBox1.Image = Resource_Common.Arrow_Down_24px;
 		else this.pictureBox1.Image = null;

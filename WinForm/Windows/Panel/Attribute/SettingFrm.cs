@@ -61,8 +61,8 @@ public partial class SettingFrm : Form
 		if (!double.TryParse(Page2_Percent1.Text, out double Percent1)) return;
 		if (!double.TryParse(Page2_Percent2.Text, out double Percent2)) return;
 
-		var level1 = (byte)numericUpDown1.Value;
-		var level2 = (byte)numericUpDown2.Value;
+		var level1 = (sbyte)numericUpDown1.Value;
+		var level2 = (sbyte)numericUpDown2.Value;
 
 
 		var ParaEntity = new ParaEntity()
@@ -88,7 +88,7 @@ public partial class SettingFrm : Form
 				K = int.Parse(textBox7.Text),
 			};
 
-			var level = (byte)numericUpDown1.Value;
+			var level = (sbyte)numericUpDown1.Value;
 			var value = Page2_Value1.Text.ToDouble();
 			var percent = Page2_Percent1.Text.ToDouble();
 			var factor = new LevelFactor(level, ParaEntity.GetFactor(value, percent));
@@ -112,7 +112,7 @@ public partial class SettingFrm : Form
 				K = int.Parse(textBox7.Text),
 			};
 
-			var level = (byte)numericUpDown2.Value;
+			var level = (sbyte)numericUpDown2.Value;
 			var value = Page2_Value1.Text.ToDouble();
 			var percent = Page2_Percent1.Text.ToDouble();
 			var factor = new LevelFactor(level, ParaEntity.GetFactor(value, percent));

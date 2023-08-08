@@ -13,7 +13,7 @@ public sealed class BossChallenge : BaseRecord, IAttraction
 	public Text BossChallengeDesc;
 
 	[Signal("ui-text-grade")]
-	public byte UiTextGrade;
+	public sbyte UiTextGrade;
 
 	[Signal("reward-summary")]
 	public AttractionRewardSummary RewardSummary;

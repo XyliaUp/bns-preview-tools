@@ -2,13 +2,13 @@
 <table name="mastery-stat-point" version="0.5" autokey="false" module="6">
   <el name="table" child="1" />
   <el name="record">
-    <record name="stat-point-attribute" type="Seq" key="y" required="y">
+    <attribute name="stat-point-attribute" type="Seq" key="y" required="y">
       <case name="attacker" />
       <case name="defender" />
-    </record>
-    <record name="stat-point" type="Int16" key="y" required="y" min="1" max="1000" />
-    <record name="stat-effect" type="Ref" ref="effect" />
-    <record name="event-effect" type="Ref" ref="effect" repeat="4" />
-    <record name="description" type="Ref" ref="text" />
+    </attribute>
+    <attribute name="stat-point" type="Int16" key="y" required="y" min="1" max="1000" />
+    <attribute name="stat-effect" type="Ref" ref="effect" />
+    <attribute name="event-effect" type="Ref" ref="effect" repeat="4" />
+    <attribute name="description" type="Ref" ref="text" />
   </el>
 </table>

@@ -49,7 +49,7 @@ public partial class Skill3
 		public bool FireMiss;
 
 		[Signal("global-recycle-group")]
-		public byte GlobalRecycleGroup;
+		public sbyte GlobalRecycleGroup;
 
 		[Signal("global-recycle-group-duration")]
 		public int GlobalRecycleGroupDuration;
@@ -58,7 +58,7 @@ public partial class Skill3
 		public RecycleGroup RecycleGroup;
 
 		[Signal("recycle-group-id")]
-		public byte RecycleGroupId;
+		public sbyte RecycleGroupId;
 
 		[Signal("recycle-group-duration")]
 		public int RecycleGroupDuration;
@@ -67,7 +67,7 @@ public partial class Skill3
 		public RecycleGroup BoundRecycleGroup;
 
 		[Signal("bound-recycle-group-id")]
-		public byte BoundRecycleGroupId;
+		public sbyte BoundRecycleGroupId;
 
 
 		public enum ConsumeType
@@ -119,13 +119,13 @@ public partial class Skill3
 
 
 		[Signal("flow-repeat")]
-		public byte FlowRepeat = 1;
+		public sbyte FlowRepeat = 1;
 
 		[Signal("expanded-flow-repeat-count")]
-		public byte ExpandedFlowRepeatCount;
+		public sbyte ExpandedFlowRepeatCount;
 
 		[Signal("expanded-flow-repeat-start-flow-step")]
-		public byte ExpandedFlowRepeatStartFlowStep = 1;
+		public sbyte ExpandedFlowRepeatStartFlowStep = 1;
 
 
 

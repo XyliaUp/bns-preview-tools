@@ -1,11 +1,9 @@
 ﻿using System.Text;
 using System.Text.RegularExpressions;
 using System.Xml;
-using System.Xml.Linq;
 
 using Xylia.Extension;
 using Xylia.Preview.Data.Models.Util.Writer;
-using Xylia.Xml;
 
 namespace Xylia.Preview.Tests.DatTool.Windows.DevTools;
 
@@ -51,9 +49,9 @@ public partial class Frm1 : Form
 				var BytesB = StrB.ToBytes();
 
 
-                BytesInfo SameBytes = new();
-                BytesInfo DiffBytesA = new();
-                BytesInfo DiffBytesB = new();
+				BytesInfo SameBytes = new();
+				BytesInfo DiffBytesA = new();
+				BytesInfo DiffBytesB = new();
 
 				for (int i = 0; i < BytesA.Length; i++)
 				{
@@ -320,30 +318,23 @@ public partial class Frm1 : Form
 	private void Btn_HexToDecimal_Click(object sender, EventArgs e)
 	{
 		lbl_Warning3.Text = null;
+		string text = Txt_HEX.Text.Replace('-' , ' ');
 
 		try
 		{
 			if (radioButton2.Checked)
 			{
-				Txt_Decimal.Text = long.Parse(Txt_HEX.Text, System.Globalization.NumberStyles.HexNumber).ToString();
+				Txt_Decimal.Text = long.Parse(text, System.Globalization.NumberStyles.HexNumber).ToString();
 				return;
 			}
 
 
-			var bytes = this.Txt_HEX.Text.ToBytes();
+			var bytes = text.ToBytes();
 			CommonConvert CC = new(bytes);
 
-			//如果激活选择1 (Hex <=> float /255)
-			if (Option1.Checked)
-			{
-				Txt_Decimal.Text = (CC.Float * 255).ToString();
-			}
-			else
-			{
-				if (CC.Data.Length == 2) Txt_Decimal.Text = CC.Short1.ToString();
-				else if (CC.Data.Length >= 8) Txt_Decimal.Text = CC.Long.ToString();
-				else Txt_Decimal.Text = CC.Int32.ToString();
-			}
+			if (CC.Data.Length == 2) Txt_Decimal.Text = CC.Short1.ToString();
+			else if (CC.Data.Length >= 8) Txt_Decimal.Text = CC.Long.ToString();
+			else Txt_Decimal.Text = CC.Int32.ToString();
 
 			label2.Text = "Short型：" + CC.Short1 + " | " + CC.Short2 + "\nFloat型：" + CC.Float;
 			lbl_Warning3.Text = null;
@@ -378,16 +369,11 @@ public partial class Frm1 : Form
 
 			if (long.TryParse(Txt_Decimal.Text, out long result))
 			{
-				//如果激活选择1 (Hex <=> float /255)
-				if (Option1.Checked) Source = BitConverter.GetBytes((float)result / 255);
-				else
-				{
-					CommonConvert CC = new(result);
-					if (result < int.MaxValue) CC = new((int)result);
+				CommonConvert CC = new(result);
+				if (result < int.MaxValue) CC = new((int)result);
 
-					label2.Text = "Short型：" + CC.Short1 + " | " + CC.Short2 + "\nFloat型：" + CC.Float;
-					Source = CC.Data;
-				}
+				label2.Text = "Short型：" + CC.Short1 + " | " + CC.Short2 + "\nFloat型：" + CC.Float;
+				Source = CC.Data;
 			}
 			else if (float.TryParse(Txt_Decimal.Text, out float result2))
 			{
@@ -428,14 +414,6 @@ public partial class Frm1 : Form
 	}
 	#endregion
 
-
-	private void textBox6_TextChanged(object sender, EventArgs e)
-	{
-		if (int.TryParse(textBox6.Text, out int result))
-		{
-			textBox5.Text = BitConverter.GetBytes((sbyte)result)[0].ToString();
-		}
-	}
 
 	private void button6_Click(object sender, EventArgs e)
 	{
@@ -481,7 +459,6 @@ public partial class Frm1 : Form
 			return;
 		}
 		#endregion
-
 
 		#region 插入属性
 		XmlDocument tmp = new();
@@ -653,13 +630,13 @@ public partial class Frm1 : Form
 		StringBuilder rtf = new();
 		rtf.Append(@"{\rtf1 ");
 
-		foreach (var attr in record.Property().Attributes)
+		foreach (XmlAttribute attr in record.Attributes)
 		{
 			rtf.Append(@"\trowd");
 			for (int j = 1; j <= 2; j++) rtf.Append($@"\cellx{j * 4000}");
 
 			//create row
-			rtf.Append($@"\intbl {GetAsc2Code(attr.Name)}\cell {GetAsc2Code(attr.Value.ToString())}\row");
+			rtf.Append($@"\intbl {GetAsc2Code(attr.Name)}\cell {GetAsc2Code(attr.Value)}\row");
 		}
 
 		rtf.Append(@"\pard ");
@@ -669,7 +646,7 @@ public partial class Frm1 : Form
 		this.richTextBox1.SelectedRtf = rtf.ToString();
 	}
 
-	private void button3_Click(object sender, EventArgs e) => richTextBox1.Text = Create.Class(richTextBox1.Text);
+	private void button3_Click(object sender, EventArgs e) => richTextBox1.Text = CreateClass.Instance(richTextBox1.Text);
 
 	private void button4_Click_1(object sender, EventArgs e)
 	{

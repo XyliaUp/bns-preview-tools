@@ -2,10 +2,10 @@
 <table name="zonebasecamp" version="0.5" autokey="false" module="14" maxid="127">
   <el name="table" child="1" />
   <el name="record">
-    <record name="zone" type="Int32" key="y" required="y" />
-    <record name="id" type="Int16" key="y" required="y" max="127" />
-    <record name="alias" type="String" required="y" max="70" />
-    <record name="area" type="Ref" ref="zonearea" />
-    <record name="center" type="Vector32" default="0,0,0" hidden="y" />
+    <attribute name="zone" type="Int32" key="y" required="y" />
+    <attribute name="id" type="Int16" key="y" required="y" max="127" />
+    <attribute name="alias" type="String" required="y" max="70" />
+    <attribute name="area" type="Ref" ref="zonearea" />
+    <attribute name="center" type="Vector32" default="0,0,0" hidden="y" />
   </el>
 </table>

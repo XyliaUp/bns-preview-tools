@@ -2,11 +2,11 @@
 <table name="collecting" version="0.6" autokey="false" module="6">
   <el name="table" child="1" />
   <el name="record">
-    <record name="id" type="Int32" key="y" required="y" min="1" />
-    <record name="alias" type="String" required="y" max="70" />
-    <record name="name" type="Ref" ref="text" />
+    <attribute name="id" type="Int32" key="y" required="y" min="1" />
+    <attribute name="alias" type="String" required="y" max="70" />
+    <attribute name="name" type="Ref" ref="text" />
     <sub name="closet">
-      <record name="category" type="Seq">
+      <attribute name="category" type="Seq">
         <case name="none" />
         <case name="category1" default="y" />
         <case name="category2" />
@@ -19,19 +19,19 @@
         <case name="category9" />
         <case name="category10" />
         <case name="category-special" />
-      </record>
-      <record name="collect-closet" type="Ref" ref="closet-group" repeat="8" />
-      <record name="collect-closet-replace" type="Ref" ref="closet-group" repeat="8" />
-      <record name="collect-closet-subreplace" type="Ref" ref="closet-group" repeat="8" />
-      <record name="collect-skill-skin" type="Ref" ref="skillskin" repeat="4" />
-      <record name="reward-item" type="Ref" ref="item" repeat="6" />
-      <record name="reward-item-count" type="Int16" default="0" repeat="6" />
-      <record name="reward-money" type="Int32" default="0" />
-      <record name="reward-collecting-score" type="Int32" default="0" />
-      <record name="ability" type="Seq" seq="attach-ability" default="none" repeat="3" />
-      <record name="ability-value" type="Int32" default="0" repeat="3" min="0" max="1000000" />
-      <record name="expiration-time" type="Time64" />
-      <record name="can-not-used" type="Bool" />
+      </attribute>
+      <attribute name="collect-closet" type="Ref" ref="closet-group" repeat="8" />
+      <attribute name="collect-closet-replace" type="Ref" ref="closet-group" repeat="8" />
+      <attribute name="collect-closet-subreplace" type="Ref" ref="closet-group" repeat="8" />
+      <attribute name="collect-skill-skin" type="Ref" ref="skillskin" repeat="4" />
+      <attribute name="reward-item" type="Ref" ref="item" repeat="6" />
+      <attribute name="reward-item-count" type="Int16" default="0" repeat="6" />
+      <attribute name="reward-money" type="Int32" default="0" />
+      <attribute name="reward-collecting-score" type="Int32" default="0" />
+      <attribute name="ability" type="Seq" seq="attach-ability" default="none" repeat="3" />
+      <attribute name="ability-value" type="Int32" default="0" repeat="3" min="0" max="1000000" />
+      <attribute name="expiration-time" type="Time64" />
+      <attribute name="can-not-used" type="Bool" />
     </sub>
   </el>
 </table>

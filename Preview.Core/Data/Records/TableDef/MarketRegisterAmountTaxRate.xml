@@ -2,8 +2,8 @@
 <table name="market-register-amount-tax-rate" version="0.2" autokey="true" module="6">
   <el name="table" child="1" />
   <el name="record">
-    <record name="min-amount" type="Int16" required="y" min="1" max="10000" />
-    <record name="max-amount" type="Int16" required="y" min="1" max="10000" />
-    <record name="tax-rate" type="Int16" required="y" />
+    <attribute name="min-amount" type="Int16" required="y" min="1" max="10000" />
+    <attribute name="max-amount" type="Int16" required="y" min="1" max="10000" />
+    <attribute name="tax-rate" type="Int16" required="y" />
   </el>
 </table>

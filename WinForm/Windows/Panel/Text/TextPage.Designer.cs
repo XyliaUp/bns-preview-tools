@@ -1,6 +1,4 @@
-﻿using Xylia.Match.Util;
-
-namespace Xylia.Match.Windows.Panel.TextInfo
+﻿namespace Xylia.Match.Windows.Panel.TextInfo
 {
 	partial class TextPage
 	{
@@ -261,7 +259,6 @@ namespace Xylia.Match.Windows.Panel.TextInfo
 			// 
 			resources.ApplyResources(TextBox2, "TextBox2");
 			TextBox2.Name = "TextBox2";
-			TextBox2.TextChanged += TestEx.SaveConfig;
 			// 
 			// ucBtnFillet5
 			// 
@@ -315,13 +312,11 @@ namespace Xylia.Match.Windows.Panel.TextInfo
 			resources.ApplyResources(SaveAsBin, "SaveAsBin");
 			SaveAsBin.Name = "SaveAsBin";
 			SaveAsBin.TextValue = ".bin文件";
-			SaveAsBin.CheckedChangeEvent += TestEx.SaveConfig;
 			// 
 			// TextBox1
 			// 
 			resources.ApplyResources(TextBox1, "TextBox1");
 			TextBox1.Name = "TextBox1";
-			TextBox1.TextChanged += TestEx.SaveConfig;
 			// 
 			// ucBtnFillet6
 			// 

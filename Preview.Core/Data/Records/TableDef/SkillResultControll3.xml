@@ -2,12 +2,12 @@
 <table name="skillresultcontroll3" version="0.8" autokey="true" module="2062">
   <el name="table" child="1" />
   <el name="record">
-    <record name="alias" type="String" required="y" max="70" />
-    <record name="immune-target-counter-skill" type="Bool" repeat="5" />
-    <record name="immune-target-parry-skill" type="Bool" repeat="5" />
-    <record name="immune-target-perfect-parry-skill" type="Bool" repeat="5" />
-    <record name="immune-target-bounce-skill" type="Bool" repeat="5" />
-    <record name="immune-target-dodge-skill" type="Bool" repeat="5" />
-    <record name="immune-miss-result" type="Bool" repeat="5" />
+    <attribute name="alias" type="String" required="y" max="70" />
+    <attribute name="immune-target-counter-skill" type="Bool" repeat="5" />
+    <attribute name="immune-target-parry-skill" type="Bool" repeat="5" />
+    <attribute name="immune-target-perfect-parry-skill" type="Bool" repeat="5" />
+    <attribute name="immune-target-bounce-skill" type="Bool" repeat="5" />
+    <attribute name="immune-target-dodge-skill" type="Bool" repeat="5" />
+    <attribute name="immune-miss-result" type="Bool" repeat="5" />
   </el>
 </table>

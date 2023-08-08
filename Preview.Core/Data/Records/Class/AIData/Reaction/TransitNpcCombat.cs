@@ -18,7 +18,7 @@ public class TransitNpcCombat : Reaction
 	/// 转移条件序号
 	/// </summary>
 	[Signal("transit-cond-idx")]
-	public byte TransitCondIdx;
+	public sbyte TransitCondIdx;
 
 	/// <summary>
 	/// 立即转移

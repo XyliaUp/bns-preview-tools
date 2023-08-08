@@ -54,7 +54,7 @@ public partial class Game_MapScene : PreviewFrm
 		Trace.WriteLine(_mapInfo.Attributes);
 
 		this.Text = $"[{_mapInfo.Name2.GetText()}]";
-		this.pictureBox1.Image = _mapInfo.Imageset.GetUObject().GetImage();
+		this.pictureBox1.Image = FileCache.Provider.LoadObject(_mapInfo.Imageset)?.GetImage();
 
 		this.LoadMapUint(_mapInfo);
 	}
@@ -86,8 +86,7 @@ public partial class Game_MapScene : PreviewFrm
 			if (mapunit is MapUnit.Quest) continue;
 			if (mapunit is MapUnit.Npc) continue;    //该类型按接取的任务进行显示
 
-
-			var res = mapunit.Imageset.GetUObject().GetImage();
+			var res = FileCache.Provider.LoadObject(mapunit.Imageset)?.GetImage();
 			if (res is null) continue;
 
 			#region Get Pos

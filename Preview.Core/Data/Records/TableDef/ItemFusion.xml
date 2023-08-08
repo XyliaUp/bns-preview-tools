@@ -2,8 +2,8 @@
 <table name="item-fusion" version="0.3" autokey="false" module="6">
   <el name="table" child="1" />
   <el name="record">
-    <record name="alias" type="String" required="y" max="70" />
-    <record name="category" type="Seq16" key="y" required="y">
+    <attribute name="alias" type="String" required="y" max="70" />
+    <attribute name="category" type="Seq16" key="y" required="y">
       <case name="none" />
       <case name="costume" />
       <case name="head-attach" />
@@ -51,9 +51,9 @@
       <case name="corundum-bluegreen" />
       <case name="corundum-blue" />
       <case name="dual-blade" />
-    </record>
-    <record name="score" type="Int32" key="y" required="y" min="1" max="30000" />
-    <record name="cost-group" type="Ref" ref="cost-group" />
-    <record name="result-item" type="Ref" ref="item" repeat="80" />
+    </attribute>
+    <attribute name="score" type="Int32" key="y" required="y" min="1" max="30000" />
+    <attribute name="cost-group" type="Ref" ref="cost-group" />
+    <attribute name="result-item" type="Ref" ref="item" repeat="80" />
   </el>
 </table>

@@ -2,8 +2,8 @@
 <table name="weapon-gem-effect" version="0.2" autokey="false" module="4">
   <el name="table" child="1" />
   <el name="record">
-    <record name="level" type="Int8" key="y" required="y" />
-    <record name="small-category" type="Seq" deprecated="y">
+    <attribute name="level" type="Int8" key="y" required="y" />
+    <attribute name="small-category" type="Seq" deprecated="y">
       <case name="none" />
       <case name="sword" />
       <case name="gauntlet" />
@@ -79,10 +79,10 @@
       <case name="mineral-water" />
       <case name="special-material" />
       <case name="merchant-material" />
-    </record>
-    <record name="weapon-gem-type" type="Seq" seq="weapon-gem-type" key="y" required="y" />
-    <record name="weapon-type" type="Seq" seq="weapon-type" key="y" required="y" />
-    <record name="effect-show" type="String" max="80" />
-    <record name="effect-color" type="IColor" default="255,255,255" max="255" />
+    </attribute>
+    <attribute name="weapon-gem-type" type="Seq" seq="weapon-gem-type" key="y" required="y" />
+    <attribute name="weapon-type" type="Seq" seq="weapon-type" key="y" required="y" />
+    <attribute name="effect-show" type="String" max="80" />
+    <attribute name="effect-color" type="IColor" default="255,255,255" max="255" />
   </el>
 </table>

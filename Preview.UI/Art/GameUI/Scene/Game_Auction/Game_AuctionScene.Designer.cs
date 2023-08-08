@@ -30,9 +30,15 @@ namespace Xylia.Preview.GameUI.Scene.Game_Auction
 		/// </summary>
 		private void InitializeComponent()
 		{
+			components = new System.ComponentModel.Container();
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Game_AuctionScene));
 			TreeView = new Windows.Controls.TreeView();
 			ItemList = new ListPreview();
+			PageControl = new ContextMenuStrip(components);
+			Page_Info = new ToolStripMenuItem();
+			toolStripSeparator1 = new ToolStripSeparator();
+			Page_Prev = new ToolStripMenuItem();
+			Page_Next = new ToolStripMenuItem();
 			loader = new PictureBox();
 			panel1 = new Panel();
 			chk_compare = new CheckBox();
@@ -41,6 +47,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_Auction
 			panel2 = new Panel();
 			ItemPreview_Search = new HZH_Controls.Controls.UCTextBoxEx();
 			ItemList.SuspendLayout();
+			PageControl.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)loader).BeginInit();
 			panel1.SuspendLayout();
 			panel2.SuspendLayout();
@@ -62,9 +69,39 @@ namespace Xylia.Preview.GameUI.Scene.Game_Auction
 			// 
 			resources.ApplyResources(ItemList, "ItemList");
 			ItemList.BackColor = Color.FromArgb(20, 26, 35);
+			ItemList.ContextMenuStrip = PageControl;
 			ItemList.Controls.Add(loader);
 			ItemList.ForeColor = Color.Blue;
 			ItemList.Name = "ItemList";
+			ItemList.Paint += ItemList_Paint;
+			// 
+			// PageControl
+			// 
+			PageControl.Items.AddRange(new ToolStripItem[] { Page_Info, toolStripSeparator1, Page_Prev, Page_Next });
+			PageControl.Name = "PageControl";
+			resources.ApplyResources(PageControl, "PageControl");
+			// 
+			// Page_Info
+			// 
+			Page_Info.Name = "Page_Info";
+			resources.ApplyResources(Page_Info, "Page_Info");
+			// 
+			// toolStripSeparator1
+			// 
+			toolStripSeparator1.Name = "toolStripSeparator1";
+			resources.ApplyResources(toolStripSeparator1, "toolStripSeparator1");
+			// 
+			// Page_Prev
+			// 
+			Page_Prev.Name = "Page_Prev";
+			resources.ApplyResources(Page_Prev, "Page_Prev");
+			Page_Prev.Click += Page_Prev_Click;
+			// 
+			// Page_Next
+			// 
+			Page_Next.Name = "Page_Next";
+			resources.ApplyResources(Page_Next, "Page_Next");
+			Page_Next.Click += Page_Next_Click;
 			// 
 			// loader
 			// 
@@ -151,6 +188,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_Auction
 			KeyDown += Game_AuctionScene_KeyDown;
 			ItemList.ResumeLayout(false);
 			ItemList.PerformLayout();
+			PageControl.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)loader).EndInit();
 			panel1.ResumeLayout(false);
 			panel1.PerformLayout();
@@ -169,5 +207,10 @@ namespace Xylia.Preview.GameUI.Scene.Game_Auction
 		private System.Windows.Forms.CheckBox checkBox1;
 		private System.Windows.Forms.CheckBox chk_compare;
 		private PictureBox loader;
+		private ContextMenuStrip PageControl;
+		private ToolStripMenuItem Page_Prev;
+		private ToolStripMenuItem Page_Next;
+		private ToolStripMenuItem Page_Info;
+		private ToolStripSeparator toolStripSeparator1;
 	}
 }

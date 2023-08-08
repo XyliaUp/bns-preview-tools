@@ -2,8 +2,8 @@
 <table name="zoneex" version="0.2" autokey="false" module="4">
   <el name="table" child="1" />
   <el name="record">
-    <record name="zone" type="Int32" key="y" required="y" />
-    <record name="download-level" type="Int8" default="0" />
-    <record name="dungeon-guide-path" type="String" max="100" />
+    <attribute name="zone" type="Int32" key="y" required="y" />
+    <attribute name="download-level" type="Int8" default="0" />
+    <attribute name="dungeon-guide-path" type="String" max="100" />
   </el>
 </table>

@@ -1,7 +1,9 @@
 ﻿using System.Reflection;
 using System.Xml.Linq;
 
+using Xylia.Attribute;
 using Xylia.Extension;
+using Xylia.Extension.Class;
 using Xylia.Preview.Common.Attribute;
 using Xylia.Preview.Common.Cast;
 using Xylia.Preview.Common.Interface;
@@ -70,6 +72,8 @@ public static partial class RecordExtension
 			?? Obj.alias;
 	}
 	#endregion
+
+
 
 
 	public static T CreateNew<T>(params IAttribute[] attrs) where T : BaseRecord, new()

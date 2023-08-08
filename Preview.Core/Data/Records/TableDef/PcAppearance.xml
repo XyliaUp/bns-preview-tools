@@ -2,10 +2,10 @@
 <table name="pc-appearance" version="0.7" autokey="false" module="12">
   <el name="table" child="1" />
   <el name="record">
-    <record name="race" type="Prop_seq" seq="race" key="y" required="y" />
-    <record name="job" type="Prop_seq" seq="job" key="y" required="y" />
-    <record name="sex" type="Prop_seq" seq="sex" key="y" required="y" />
-    <record name="anim-set-name" type="XUnknown2" />
-    <record name="appearance" type="Ref" ref="creatureappearance" />
+    <attribute name="race" type="Prop_seq" seq="race" key="y" required="y" />
+    <attribute name="job" type="Prop_seq" seq="job" key="y" required="y" />
+    <attribute name="sex" type="Prop_seq" seq="sex" key="y" required="y" />
+    <attribute name="anim-set-name" type="XUnknown2" />
+    <attribute name="appearance" type="Ref" ref="creatureappearance" />
   </el>
 </table>

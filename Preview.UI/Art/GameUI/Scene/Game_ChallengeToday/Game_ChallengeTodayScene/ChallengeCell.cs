@@ -86,7 +86,7 @@ public partial class ChallengeCell : UserControl
 	};
 
 
-	private void LoadAttraction(BaseRecord Attraction, out byte grade)
+	private void LoadAttraction(BaseRecord Attraction, out sbyte grade)
 	{
 		grade = 1;
 		string text;

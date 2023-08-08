@@ -2,43 +2,43 @@
 <table name="standidle" version="0.10" autokey="true" module="4">
   <el name="table" child="1" />
   <el name="record">
-    <record name="alias" type="String" required="y" max="70" />
-    <record name="front-skip-time" type="Msec" default="20000" deprecated="y" min="0" max="600000" />
-    <record name="tail-skip-time" type="Msec" default="20000" deprecated="y" min="0" max="600000" />
-    <record name="idle-duration" type="Msec" default="240000" deprecated="y" min="0" max="1000000" />
-    <record name="event-ani-1" type="String" repeat="7" deprecated="y" max="60" />
-    <record name="event-ani-rate-1" type="Int16" repeat="7" deprecated="y" />
-    <record name="transit-1-2" type="String" deprecated="y" max="60" />
-    <record name="idle-2" type="String" deprecated="y" max="60" />
-    <record name="event-ani-2" type="String" repeat="7" deprecated="y" max="60" />
-    <record name="event-ani-rate-2" type="Int16" repeat="7" deprecated="y" />
-    <record name="transit-2-3" type="String" deprecated="y" max="60" />
-    <record name="idle-3" type="String" deprecated="y" max="60" />
-    <record name="event-ani-3" type="String" repeat="7" deprecated="y" max="60" />
-    <record name="event-ani-rate-3" type="Int16" repeat="7" deprecated="y" />
-    <record name="transit-3-1" type="String" deprecated="y" max="60" />
-    <record name="event-count" type="Int16" default="5" deprecated="y" />
-    <record name="lobby-event-count" type="Int16" default="3" deprecated="y" />
-    <record name="skip-time" type="Msec" default="20000" min="0" max="600000" />
-    <record name="event-time" type="Msec" default="20000" min="0" max="600000" />
-    <record name="idle-event-ani-1" type="String" repeat="4" max="60" />
-    <record name="idle-event-ani-rate-1" type="Int16" repeat="4" />
-    <record name="lobby-idle-event-ani-rate-1" type="Int16" repeat="4" />
-    <record name="idle-event-type-1" type="Seq" repeat="4">
+    <attribute name="alias" type="String" required="y" max="70" />
+    <attribute name="front-skip-time" type="Msec" default="20000" deprecated="y" min="0" max="600000" />
+    <attribute name="tail-skip-time" type="Msec" default="20000" deprecated="y" min="0" max="600000" />
+    <attribute name="idle-duration" type="Msec" default="240000" deprecated="y" min="0" max="1000000" />
+    <attribute name="event-ani-1" type="String" repeat="7" deprecated="y" max="60" />
+    <attribute name="event-ani-rate-1" type="Int16" repeat="7" deprecated="y" />
+    <attribute name="transit-1-2" type="String" deprecated="y" max="60" />
+    <attribute name="idle-2" type="String" deprecated="y" max="60" />
+    <attribute name="event-ani-2" type="String" repeat="7" deprecated="y" max="60" />
+    <attribute name="event-ani-rate-2" type="Int16" repeat="7" deprecated="y" />
+    <attribute name="transit-2-3" type="String" deprecated="y" max="60" />
+    <attribute name="idle-3" type="String" deprecated="y" max="60" />
+    <attribute name="event-ani-3" type="String" repeat="7" deprecated="y" max="60" />
+    <attribute name="event-ani-rate-3" type="Int16" repeat="7" deprecated="y" />
+    <attribute name="transit-3-1" type="String" deprecated="y" max="60" />
+    <attribute name="event-count" type="Int16" default="5" deprecated="y" />
+    <attribute name="lobby-event-count" type="Int16" default="3" deprecated="y" />
+    <attribute name="skip-time" type="Msec" default="20000" min="0" max="600000" />
+    <attribute name="event-time" type="Msec" default="20000" min="0" max="600000" />
+    <attribute name="idle-event-ani-1" type="String" repeat="4" max="60" />
+    <attribute name="idle-event-ani-rate-1" type="Int16" repeat="4" />
+    <attribute name="lobby-idle-event-ani-rate-1" type="Int16" repeat="4" />
+    <attribute name="idle-event-type-1" type="Seq" repeat="4">
       <case name="animation" default="y" />
       <case name="show" />
-    </record>
-    <record name="idle-event-need-weapon-1" type="Bool" repeat="4" />
-    <record name="second-idle" type="String" max="60" />
-    <record name="idle-event-ani-2" type="String" repeat="4" max="60" />
-    <record name="idle-event-ani-rate-2" type="Int16" repeat="4" />
-    <record name="lobby-idle-event-ani-rate-2" type="Int16" repeat="4" />
-    <record name="idle-event-type-2" type="Seq" repeat="4">
+    </attribute>
+    <attribute name="idle-event-need-weapon-1" type="Bool" repeat="4" />
+    <attribute name="second-idle" type="String" max="60" />
+    <attribute name="idle-event-ani-2" type="String" repeat="4" max="60" />
+    <attribute name="idle-event-ani-rate-2" type="Int16" repeat="4" />
+    <attribute name="lobby-idle-event-ani-rate-2" type="Int16" repeat="4" />
+    <attribute name="idle-event-type-2" type="Seq" repeat="4">
       <case name="animation" default="y" />
       <case name="show" />
-    </record>
-    <record name="idle-event-need-weapon-2" type="Bool" repeat="4" />
-    <record name="hp-idle-rate" type="Int16" />
-    <record name="hp-idle" type="String" max="60" />
+    </attribute>
+    <attribute name="idle-event-need-weapon-2" type="Bool" repeat="4" />
+    <attribute name="hp-idle-rate" type="Int16" />
+    <attribute name="hp-idle" type="String" max="60" />
   </el>
 </table>

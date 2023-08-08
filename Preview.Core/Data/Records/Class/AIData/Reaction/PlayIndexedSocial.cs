@@ -14,7 +14,7 @@ public sealed class PlayIndexedSocial : Reaction
 	public Script_obj To;
 
 
-	public byte Social;
+	public sbyte Social;
 
 	[Signal("play-social-delay")]
 	public int PlaySocialDelay;

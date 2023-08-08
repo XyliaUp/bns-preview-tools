@@ -2,7 +2,7 @@
 <table name="ui-command" version="0.50" autokey="false" module="4">
   <el name="table" child="1" />
   <el name="record">
-    <record name="command" type="Seq" key="y" required="y">
+    <attribute name="command" type="Seq" key="y" required="y">
       <case name="none" />
       <case name="default" />
       <case name="transform" />
@@ -108,8 +108,8 @@
       <case name="select-collection-card" />
       <case name="deselect-collection-card" />
       <case name="batched-use-grocery" />
-    </record>
-    <record name="name2" type="Ref" ref="text" />
-    <record name="icon" type="String" max="128" />
+    </attribute>
+    <attribute name="name2" type="Ref" ref="text" />
+    <attribute name="icon" type="String" max="128" />
   </el>
 </table>

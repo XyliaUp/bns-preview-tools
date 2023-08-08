@@ -9,13 +9,13 @@ public static class Settings
 
 	public static LoadMode LoadMode
 	{
-		get => (LoadMode)ReadValue(SEC, "load-mode").ToInt();
+		get => (LoadMode)ReadValue(SEC, "load-mode").ToInt32();
 		set => WriteValue(SEC, "load-mode", (int)value);
 	}
 
 	public static DumpMode TestMode
 	{
-		get => (DumpMode)ReadValue(SEC, "test-mode").ToInt();
+		get => (DumpMode)ReadValue(SEC, "test-mode").ToInt32();
 		set => WriteValue(SEC, "test-mode", (int)value);
 	}
 }

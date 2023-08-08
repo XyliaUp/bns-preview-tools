@@ -2,28 +2,28 @@
 <table name="battle-royal-field" version="0.18" autokey="false" module="70">
   <el name="table" child="1" />
   <el name="record">
-    <record name="id" type="Int32" key="y" required="y" min="1" />
-    <record name="alias" type="String" required="y" max="70" />
-    <record name="zone" type="Ref" ref="zone" required="y" />
-    <record name="public-raid" type="Ref" ref="public-raid" required="y" />
-    <record name="required-level" type="Int8" default="0" min="0" max="100" />
-    <record name="required-mastery-level" type="Int8" default="0" min="0" max="100" />
-    <record name="required-member-count-party-mode-matching" type="Int8" default="3" min="3" max="3" />
-    <record name="required-party-count-party-mode-matching" type="Int8" default="20" min="2" max="20" />
-    <record name="available-party-mode-matching-weekly-time" type="Ref" ref="weeklytimetable" />
-    <record name="waiting-duration-second" type="Int16" default="80" min="80" />
-    <record name="stand-by-duration" type="Msec" default="0" />
-    <record name="waiting-time-before-combat" type="Msec" default="0" />
-    <record name="group" type="Ref" ref="attraction-group" />
-    <record name="waiting-time-before-move" type="Msec" required="y" min="1" />
-    <record name="enter-pc-spawn" type="Ref" ref="zonepcspawn" required="y" />
-    <record name="enable-infinite-hyper-energy" type="Bool" />
-    <record name="waiting-time-before-start" type="Msec" default="0" />
-    <record name="camera-max-distance" type="Float32" default="50" />
-    <record name="start-condition-guide-timer-delay" type="Float32" default="20000" />
-    <record name="survivor-escape-delay" type="Float32" default="10000" />
-    <record name="name2" type="Ref" ref="text" />
-    <record name="desc" type="Ref" ref="text" />
-    <record name="reward-summary" type="Ref" ref="attractionrewardsummary" />
+    <attribute name="id" type="Int32" key="y" required="y" min="1" />
+    <attribute name="alias" type="String" required="y" max="70" />
+    <attribute name="zone" type="Ref" ref="zone" required="y" />
+    <attribute name="public-raid" type="Ref" ref="public-raid" required="y" />
+    <attribute name="required-level" type="Int8" default="0" min="0" max="100" />
+    <attribute name="required-mastery-level" type="Int8" default="0" min="0" max="100" />
+    <attribute name="required-member-count-party-mode-matching" type="Int8" default="3" min="3" max="3" />
+    <attribute name="required-party-count-party-mode-matching" type="Int8" default="20" min="2" max="20" />
+    <attribute name="available-party-mode-matching-weekly-time" type="Ref" ref="weeklytimetable" />
+    <attribute name="waiting-duration-second" type="Int16" default="80" min="80" />
+    <attribute name="stand-by-duration" type="Msec" default="0" />
+    <attribute name="waiting-time-before-combat" type="Msec" default="0" />
+    <attribute name="group" type="Ref" ref="attraction-group" />
+    <attribute name="waiting-time-before-move" type="Msec" required="y" min="1" />
+    <attribute name="enter-pc-spawn" type="Ref" ref="zonepcspawn" required="y" />
+    <attribute name="enable-infinite-hyper-energy" type="Bool" />
+    <attribute name="waiting-time-before-start" type="Msec" default="0" />
+    <attribute name="camera-max-distance" type="Float32" default="50" />
+    <attribute name="start-condition-guide-timer-delay" type="Float32" default="20000" />
+    <attribute name="survivor-escape-delay" type="Float32" default="10000" />
+    <attribute name="name2" type="Ref" ref="text" />
+    <attribute name="desc" type="Ref" ref="text" />
+    <attribute name="reward-summary" type="Ref" ref="attractionrewardsummary" />
   </el>
 </table>

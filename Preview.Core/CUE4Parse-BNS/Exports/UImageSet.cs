@@ -6,7 +6,7 @@ using CUE4Parse.UE4.Assets.Readers;
 using Xylia.Extension;
 
 namespace CUE4Parse.BNS.Exports;
-public class UImageSet : UObject
+public sealed class UImageSet : UObject
 {
 	public ResolvedObject Image;
 	public float U;

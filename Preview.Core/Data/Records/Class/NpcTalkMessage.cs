@@ -14,7 +14,7 @@ public class NpcTalkMessage : BaseRecord
 	public string RequiredCompleteQuest;
 
 	[Signal("function-step")]
-	public byte FunctionStep;
+	public sbyte FunctionStep;
 
 
 	[Signal("step-text"), Repeat(30)]

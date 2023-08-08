@@ -2,7 +2,7 @@
 <table name="secondary-stat" version="0.1" autokey="false" module="6">
   <el name="table" child="1" />
   <el name="record">
-    <record name="primary-stat" type="Prop_field" seq="creature_field" key="y" required="y" />
-    <record name="secondary-stat" type="Prop_field" seq="creature_field" default="creature_field_none" repeat="4" />
+    <attribute name="primary-stat" type="Prop_field" seq="creature_field" key="y" required="y" />
+    <attribute name="secondary-stat" type="Prop_field" seq="creature_field" default="creature_field_none" repeat="4" />
   </el>
 </table>

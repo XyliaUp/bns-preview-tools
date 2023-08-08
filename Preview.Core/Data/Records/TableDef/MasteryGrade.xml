@@ -2,8 +2,8 @@
 <table name="mastery-grade" version="0.1" autokey="false" module="4">
   <el name="table" child="1" />
   <el name="record">
-    <record name="grade" type="Int8" key="y" required="y" min="1" />
-    <record name="level" type="Int8" required="y" min="0" />
-    <record name="image-tag" type="String" max="128" />
+    <attribute name="grade" type="Int8" key="y" required="y" min="1" />
+    <attribute name="level" type="Int8" required="y" min="0" />
+    <attribute name="image-tag" type="String" max="128" />
   </el>
 </table>

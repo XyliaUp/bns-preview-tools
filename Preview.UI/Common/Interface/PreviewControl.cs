@@ -2,7 +2,7 @@
 
 using Xylia.Preview.Data.Models.BinData.Table.Record;
 
-namespace Xylia.Preview.Common.Interface;
+namespace Xylia.Preview.UI.Interface;
 
 [DesignTimeVisible(false)]
 public partial class PreviewControl : UserControl, IPreview

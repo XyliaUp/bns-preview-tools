@@ -33,14 +33,10 @@
 			ToolTip = new ToolTip(components);
 			Txt_Decimal = new TextBox();
 			Txt_HEX = new TextBox();
-			textBox5 = new TextBox();
-			textBox6 = new TextBox();
 			TabControl1 = new TabControl();
 			metroTabPage1 = new TabPage();
 			radioButton2 = new RadioButton();
 			radioButton1 = new RadioButton();
-			Option1 = new CheckBox();
-			label3 = new Label();
 			label2 = new Label();
 			lbl_Warning3 = new Label();
 			Btn_DecimalToHex = new Button();
@@ -109,25 +105,6 @@
 			ToolTip.SetToolTip(Txt_HEX, "16进制");
 			Txt_HEX.TextChanged += Txt_HEX_TextChanged;
 			// 
-			// textBox5
-			// 
-			textBox5.Location = new Point(15, 264);
-			textBox5.Margin = new Padding(3, 4, 3, 4);
-			textBox5.Name = "textBox5";
-			textBox5.Size = new Size(72, 23);
-			textBox5.TabIndex = 48;
-			ToolTip.SetToolTip(textBox5, "10进制");
-			// 
-			// textBox6
-			// 
-			textBox6.Location = new Point(93, 264);
-			textBox6.Margin = new Padding(3, 4, 3, 4);
-			textBox6.Name = "textBox6";
-			textBox6.Size = new Size(81, 23);
-			textBox6.TabIndex = 49;
-			ToolTip.SetToolTip(textBox6, "10进制");
-			textBox6.TextChanged += textBox6_TextChanged;
-			// 
 			// TabControl1
 			// 
 			TabControl1.Controls.Add(metroTabPage1);
@@ -146,10 +123,6 @@
 			// 
 			metroTabPage1.Controls.Add(radioButton2);
 			metroTabPage1.Controls.Add(radioButton1);
-			metroTabPage1.Controls.Add(Option1);
-			metroTabPage1.Controls.Add(label3);
-			metroTabPage1.Controls.Add(textBox6);
-			metroTabPage1.Controls.Add(textBox5);
 			metroTabPage1.Controls.Add(label2);
 			metroTabPage1.Controls.Add(lbl_Warning3);
 			metroTabPage1.Controls.Add(Btn_DecimalToHex);
@@ -186,29 +159,6 @@
 			radioButton1.TabStop = true;
 			radioButton1.Text = "多字节转换";
 			radioButton1.UseVisualStyleBackColor = false;
-			// 
-			// Option1
-			// 
-			Option1.AutoSize = true;
-			Option1.BackColor = Color.Transparent;
-			Option1.Location = new Point(23, 88);
-			Option1.Margin = new Padding(3, 4, 3, 4);
-			Option1.Name = "Option1";
-			Option1.Size = new Size(140, 21);
-			Option1.TabIndex = 51;
-			Option1.Text = "Hex <=> float /255";
-			Option1.UseVisualStyleBackColor = false;
-			// 
-			// label3
-			// 
-			label3.AutoSize = true;
-			label3.BackColor = SystemColors.Window;
-			label3.Font = new Font("微软雅黑", 12F, FontStyle.Regular, GraphicsUnit.Point);
-			label3.Location = new Point(19, 239);
-			label3.Name = "label3";
-			label3.Size = new Size(134, 21);
-			label3.TabIndex = 50;
-			label3.Text = "int32 <=> sbyte";
 			// 
 			// label2
 			// 
@@ -270,7 +220,6 @@
 			metroTabPage3.Size = new Size(885, 427);
 			metroTabPage3.TabIndex = 3;
 			metroTabPage3.Text = "其他功能";
-			
 			// 
 			// button4
 			// 
@@ -685,12 +634,8 @@
 		private System.Windows.Forms.PictureBox Find;
 		private System.Windows.Forms.TextBox RuleText;
 		private System.Windows.Forms.CheckBox checkBox1;
-		private System.Windows.Forms.TextBox textBox6;
-		private System.Windows.Forms.TextBox textBox5;
 		private System.Windows.Forms.TabPage metroTabPage3;
 		private System.Windows.Forms.RichTextBox richTextBox1;
-		private System.Windows.Forms.Label label3;
-		private System.Windows.Forms.CheckBox Option1;
 		private System.Windows.Forms.RadioButton radioButton2;
 		private System.Windows.Forms.RadioButton radioButton1;
 		private System.Windows.Forms.CheckBox checkBox3;

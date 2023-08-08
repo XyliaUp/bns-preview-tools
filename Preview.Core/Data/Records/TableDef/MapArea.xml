@@ -2,8 +2,8 @@
 <table name="map-area" version="0.2" autokey="false" module="12" maxid="10000">
   <el name="table" child="1" />
   <el name="record">
-    <record name="id" type="Int16" key="y" required="y" min="1" max="10000" />
-    <record name="alias" type="String" required="y" max="70" />
-    <record name="name2" type="Ref" ref="text" required="y" />
+    <attribute name="id" type="Int16" key="y" required="y" min="1" max="10000" />
+    <attribute name="alias" type="String" required="y" max="70" />
+    <attribute name="name2" type="Ref" ref="text" required="y" />
   </el>
 </table>

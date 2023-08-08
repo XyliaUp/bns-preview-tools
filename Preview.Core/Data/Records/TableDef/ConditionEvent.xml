@@ -2,12 +2,12 @@
 <table name="condition-event" version="1.0" autokey="false" module="6" maxid="30000">
   <el name="table" child="1" />
   <el name="record">
-    <record name="id" type="Int16" key="y" required="y" min="1" max="30000" />
-    <record name="score" type="Int16" key="y" required="y" min="1" max="800" />
-    <record name="alias" type="String" required="y" max="70" />
-    <record name="name" type="Ref" ref="text" />
-    <record name="tooltip-text-1" type="Ref" ref="text" />
-    <record name="tooltip-arg-type-1" type="Seq" repeat="4">
+    <attribute name="id" type="Int16" key="y" required="y" min="1" max="30000" />
+    <attribute name="score" type="Int16" key="y" required="y" min="1" max="800" />
+    <attribute name="alias" type="String" required="y" max="70" />
+    <attribute name="name" type="Ref" ref="text" />
+    <attribute name="tooltip-text-1" type="Ref" ref="text" />
+    <attribute name="tooltip-arg-type-1" type="Seq" repeat="4">
       <case name="none" default="y" />
       <case name="time" />
       <case name="stack-count" />
@@ -15,10 +15,10 @@
       <case name="counter" />
       <case name="distance" />
       <case name="number" />
-    </record>
-    <record name="tooltip-arg-1" type="Int32" default="0" repeat="4" />
-    <record name="tooltip-text-2" type="Ref" ref="text" />
-    <record name="tooltip-arg-type-2" type="Seq" repeat="4">
+    </attribute>
+    <attribute name="tooltip-arg-1" type="Int32" default="0" repeat="4" />
+    <attribute name="tooltip-text-2" type="Ref" ref="text" />
+    <attribute name="tooltip-arg-type-2" type="Seq" repeat="4">
       <case name="none" default="y" />
       <case name="time" />
       <case name="stack-count" />
@@ -26,10 +26,10 @@
       <case name="counter" />
       <case name="distance" />
       <case name="number" />
-    </record>
-    <record name="tooltip-arg-2" type="Int32" default="0" repeat="4" />
-    <record name="tooltip-text-3" type="Ref" ref="text" />
-    <record name="tooltip-arg-type-3" type="Seq" repeat="4">
+    </attribute>
+    <attribute name="tooltip-arg-2" type="Int32" default="0" repeat="4" />
+    <attribute name="tooltip-text-3" type="Ref" ref="text" />
+    <attribute name="tooltip-arg-type-3" type="Seq" repeat="4">
       <case name="none" default="y" />
       <case name="time" />
       <case name="stack-count" />
@@ -37,10 +37,10 @@
       <case name="counter" />
       <case name="distance" />
       <case name="number" />
-    </record>
-    <record name="tooltip-arg-3" type="Int32" default="0" repeat="4" />
-    <record name="tooltip-text-4" type="Ref" ref="text" />
-    <record name="tooltip-arg-type-4" type="Seq" repeat="4">
+    </attribute>
+    <attribute name="tooltip-arg-3" type="Int32" default="0" repeat="4" />
+    <attribute name="tooltip-text-4" type="Ref" ref="text" />
+    <attribute name="tooltip-arg-type-4" type="Seq" repeat="4">
       <case name="none" default="y" />
       <case name="time" />
       <case name="stack-count" />
@@ -48,7 +48,7 @@
       <case name="counter" />
       <case name="distance" />
       <case name="number" />
-    </record>
-    <record name="tooltip-arg-4" type="Int32" default="0" repeat="4" />
+    </attribute>
+    <attribute name="tooltip-arg-4" type="Int32" default="0" repeat="4" />
   </el>
 </table>

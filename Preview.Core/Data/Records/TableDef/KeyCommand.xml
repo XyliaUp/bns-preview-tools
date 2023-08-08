@@ -2,9 +2,9 @@
 <table name="key-command" version="0.96" autokey="false" module="4">
   <el name="table" child="1" />
   <el name="record">
-    <record name="command" type="Seq16" seq="key-command" key="y" required="y" />
-    <record name="pc-job" type="Prop_seq" seq="job" key="y" required="y" />
-    <record name="category" type="Seq" required="y">
+    <attribute name="command" type="Seq16" seq="key-command" key="y" required="y" />
+    <attribute name="pc-job" type="Prop_seq" seq="job" key="y" required="y" />
+    <attribute name="category" type="Seq" required="y">
       <case name="none" />
       <case name="movement" />
       <case name="panel" />
@@ -15,8 +15,8 @@
       <case name="bns-mode" />
       <case name="joypad" />
       <case name="spectate" />
-    </record>
-    <record name="joypad-category" type="Seq">
+    </attribute>
+    <attribute name="joypad-category" type="Seq">
       <case name="none" default="y" />
       <case name="joypad-movement" />
       <case name="joypad-skill" />
@@ -25,19 +25,19 @@
       <case name="joypad-mark" />
       <case name="joypad-special-function" />
       <case name="joypad-spectate" />
-    </record>
-    <record name="name" type="Ref" ref="text" />
-    <record name="default-keycap" type="String" max="100" />
-    <record name="modifier-enabled" type="Bool" />
-    <record name="sort-no" type="Int8" default="0" />
-    <record name="layer" type="Int8" default="0" />
-    <record name="option-sort-no" type="Int16" default="0" />
-    <record name="usable-joypad-mode" type="Seq">
+    </attribute>
+    <attribute name="name" type="Ref" ref="text" />
+    <attribute name="default-keycap" type="String" max="100" />
+    <attribute name="modifier-enabled" type="Bool" />
+    <attribute name="sort-no" type="Int8" default="0" />
+    <attribute name="layer" type="Int8" default="0" />
+    <attribute name="option-sort-no" type="Int16" default="0" />
+    <attribute name="usable-joypad-mode" type="Seq">
       <case name="none" default="y" />
       <case name="any" />
       <case name="ui" />
       <case name="action" />
-    </record>
-    <record name="joypad-customize-enabled" type="Bool" />
+    </attribute>
+    <attribute name="joypad-customize-enabled" type="Bool" />
   </el>
 </table>

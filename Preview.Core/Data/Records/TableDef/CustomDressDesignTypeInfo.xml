@@ -2,33 +2,33 @@
 <table name="custom-dress-design-type-info" version="0.2" autokey="false" module="6">
   <el name="table" child="1" />
   <el name="record">
-    <record name="alias" type="String" required="y" max="70" />
-    <record name="item-type" type="Seq" key="y" required="y">
+    <attribute name="alias" type="String" required="y" max="70" />
+    <attribute name="item-type" type="Seq" key="y" required="y">
       <case name="none" />
       <case name="costume" />
       <case name="costume-attach" />
       <case name="head-attach" />
       <case name="face-attach" />
-    </record>
-    <record name="customize-id" type="Int8" key="y" required="y" min="1" />
-    <record name="design-type" type="Seq">
+    </attribute>
+    <attribute name="customize-id" type="Int8" key="y" required="y" min="1" />
+    <attribute name="design-type" type="Seq">
       <case name="none" />
       <case name="color" default="y" />
       <case name="pattern" />
       <case name="saturation" />
-    </record>
-    <record name="customize-category" type="Seq">
+    </attribute>
+    <attribute name="customize-category" type="Seq">
       <case name="none" />
       <case name="center" default="y" />
       <case name="sub" />
       <case name="leg" />
       <case name="dressline" />
       <case name="hair" />
-    </record>
-    <record name="price-ref" type="Ref" ref="custom-dress-design-type-info" />
-    <record name="min-value" type="Int8" default="0" />
-    <record name="max-value" type="Int8" default="0" />
-    <record name="name" type="Ref" ref="text" />
-    <record name="desc" type="Ref" ref="text" />
+    </attribute>
+    <attribute name="price-ref" type="Ref" ref="custom-dress-design-type-info" />
+    <attribute name="min-value" type="Int8" default="0" />
+    <attribute name="max-value" type="Int8" default="0" />
+    <attribute name="name" type="Ref" ref="text" />
+    <attribute name="desc" type="Ref" ref="text" />
   </el>
 </table>

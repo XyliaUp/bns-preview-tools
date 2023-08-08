@@ -2,26 +2,26 @@
 <table name="summoned-sequence" version="0.5" autokey="true" module="2052">
   <el name="table" child="1" />
   <el name="summoned-sequence">
-    <record name="alias" type="String" required="y" max="70" />
+    <attribute name="alias" type="String" required="y" max="70" />
   </el>
   <el name="action">
-    <record name="line" type="Int32" default="0" hidden="y" />
-    <record name="prob" type="Int8" default="100" />
+    <attribute name="line" type="Int32" default="0" hidden="y" />
+    <attribute name="prob" type="Int8" default="100" />
     <sub name="use-indexed-skill">
-      <record name="skill" type="Int8" required="y" min="1" max="10" />
+      <attribute name="skill" type="Int8" required="y" min="1" max="10" />
     </sub>
     <sub name="stay">
-      <record name="duration" type="Msec" default="2000" min="1000" max="3600000" />
+      <attribute name="duration" type="Msec" default="2000" min="1000" max="3600000" />
     </sub>
     <sub name="select" />
   </el>
   <el name="melee">
-    <record name="margin" type="Distance" default="40" />
+    <attribute name="margin" type="Distance" default="40" />
   </el>
   <el name="range">
-    <record name="margin" type="Distance" default="160" />
+    <attribute name="margin" type="Distance" default="160" />
   </el>
   <el name="range-sim">
-    <record name="margin" type="Distance" default="160" />
+    <attribute name="margin" type="Distance" default="160" />
   </el>
 </table>

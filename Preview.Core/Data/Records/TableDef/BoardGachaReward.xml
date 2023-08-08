@@ -2,20 +2,20 @@
 <table name="board-gacha-reward" version="0.1" autokey="true" module="8198">
   <el name="table" child="1" />
   <el name="record">
-    <record name="reward-type" type="Seq" required="y">
+    <attribute name="reward-type" type="Seq" required="y">
       <case name="none" />
       <case name="rank" />
       <case name="line" />
       <case name="lucky" />
       <case name="participation" />
-    </record>
-    <record name="rank-min" type="Int16" default="0" min="0" />
-    <record name="rank-max" type="Int16" default="0" min="0" />
-    <record name="participation-count" type="Int16" default="0" min="0" />
-    <record name="reward-item" type="Ref" ref="item" />
-    <record name="reward-item-count" type="Int16" default="0" />
-    <record name="lucky-reward-item" type="Ref" ref="item" repeat="5" />
-    <record name="lucky-reward-item-count" type="Int16" default="0" repeat="5" />
-    <record name="lucky-reward-represent-item" type="Ref" ref="item" />
+    </attribute>
+    <attribute name="rank-min" type="Int16" default="0" min="0" />
+    <attribute name="rank-max" type="Int16" default="0" min="0" />
+    <attribute name="participation-count" type="Int16" default="0" min="0" />
+    <attribute name="reward-item" type="Ref" ref="item" />
+    <attribute name="reward-item-count" type="Int16" default="0" />
+    <attribute name="lucky-reward-item" type="Ref" ref="item" repeat="5" />
+    <attribute name="lucky-reward-item-count" type="Int16" default="0" repeat="5" />
+    <attribute name="lucky-reward-represent-item" type="Ref" ref="item" />
   </el>
 </table>

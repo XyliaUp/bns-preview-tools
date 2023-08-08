@@ -2,169 +2,169 @@
 <table name="summonedlevel" version="0.24" autokey="false" module="6">
   <el name="table" child="1" />
   <el name="record">
-    <record name="race" type="Prop_seq" seq="race" default="race-none" key="y" />
-    <record name="job" type="Prop_seq" seq="job" default="job-none" key="y" />
-    <record name="level" type="Int16" key="y" required="y" min="1" max="70" />
-    <record name="contents-type" type="Seq" key="y" required="y">
+    <attribute name="race" type="Prop_seq" seq="race" default="race-none" key="y" />
+    <attribute name="job" type="Prop_seq" seq="job" default="job-none" key="y" />
+    <attribute name="level" type="Int16" key="y" required="y" min="1" max="70" />
+    <attribute name="contents-type" type="Seq" key="y" required="y">
       <case name="invalid" />
       <case name="normal" />
       <case name="duel" />
       <case name="dungeon" />
       <case name="battle-royal" />
-    </record>
-    <record name="is-duelbot-summoned" type="Bool" key="y" />
-    <record name="max-hp" type="Int64" required="y" min="1" max="1000000000000" />
-    <record name="modify-cast-speed-percent" type="Int16" required="y" min="-1000" max="1000" />
-    <record name="hp-regen" type="Int32" required="y" min="0" max="2000000000" />
-    <record name="hp-regen-combat" type="Int32" required="y" min="0" max="2000000000" />
-    <record name="attack-hit-base-percent" type="Int16" required="y" min="-1000" max="10000" />
-    <record name="attack-hit-value" type="Int16" required="y" min="-30000" max="30000" />
-    <record name="attack-pierce-base-percent" type="Int16" required="y" min="-1000" max="10000" />
-    <record name="attack-parry-pierce-percent" type="Int16" required="y" min="-1000" max="10000" />
-    <record name="attack-pierce-value" type="Int16" required="y" min="0" max="30000" />
-    <record name="attack-concentrate-value" type="Int16" required="y" min="0" max="30000" />
-    <record name="attack-critical-base-percent" type="Int16" required="y" min="0" max="1000" />
-    <record name="attack-critical-damage-percent" type="Int16" required="y" min="0" max="10000" />
-    <record name="attack-critical-value" type="Int32" required="y" min="0" max="300000" />
-    <record name="attack-critical-damage-value" type="Int32" required="y" min="0" max="300000" />
-    <record name="defend-critical-base-percent" type="Int16" required="y" min="0" max="1000" />
-    <record name="defend-critical-damage-percent" type="Int16" required="y" min="0" max="10000" />
-    <record name="defend-critical-value" type="Int16" required="y" min="0" max="30000" />
-    <record name="defend-bounce-percent" type="Int16" required="y" min="0" max="1000" />
-    <record name="defend-dodge-base-percent" type="Int16" required="y" min="0" max="1000" />
-    <record name="defend-dodge-value" type="Int16" required="y" min="0" max="30000" />
-    <record name="defend-parry-base-percent" type="Int16" required="y" min="0" max="1000" />
-    <record name="defend-parry-value" type="Int16" required="y" min="0" max="30000" />
-    <record name="defend-parry-reduce-percent" type="Int16" required="y" min="0" max="1000" />
-    <record name="defend-parry-reduce-diff" type="Int16" required="y" min="0" max="30000" />
-    <record name="defend-perfect-parry-base-percent" type="Int16" required="y" min="0" max="1000" />
-    <record name="defend-perfect-parry-reduce-percent" type="Int16" required="y" min="0" max="1000" />
-    <record name="defend-counter-reduce-percent" type="Int16" required="y" min="0" max="1000" />
-    <record name="defend-immune-base-percent" type="Int16" required="y" min="0" max="1000" />
-    <record name="attack-power-creature-min" type="Int32" required="y" min="0" max="300000" />
-    <record name="attack-power-creature-max" type="Int32" required="y" min="0" max="300000" />
-    <record name="attack-power-equip-min" type="Int16" required="y" min="0" max="30000" />
-    <record name="attack-power-equip-max" type="Int16" required="y" min="0" max="30000" />
-    <record name="defend-power-creature-value" type="Int32" required="y" min="0" max="300000" />
-    <record name="defend-power-equip-value" type="Int32" required="y" min="0" max="300000" />
-    <record name="defend-resist-power-creature-value" type="Int16" required="y" min="0" max="30000" />
-    <record name="defend-resist-power-equip-value" type="Int16" required="y" min="0" max="30000" />
-    <record name="defend-physical-damage-reduce-percent" type="Int16" required="y" min="-10000" max="1000" />
-    <record name="defend-force-damage-reduce-percent" type="Int16" required="y" min="-10000" max="1000" />
-    <record name="attack-damage-modify-percent" type="Int16" required="y" min="-3000" max="10000" />
-    <record name="attack-damage-modify-diff" type="Int32" required="y" min="-1000000" max="1000000" />
-    <record name="defend-damage-modify-percent" type="Int16" required="y" min="-10000" max="3000" />
-    <record name="defend-damage-modify-diff" type="Int32" required="y" min="-1000000" max="1000000" />
-    <record name="defend-miss-base-percent" type="Int16" required="y" min="0" max="1000" />
-    <record name="attack-stiff-duration-base-percent" type="Int16" required="y" min="-1000" max="10000" />
-    <record name="attack-stiff-duration-value" type="Int16" required="y" min="0" max="30000" />
-    <record name="defend-stiff-duration-base-percent" type="Int16" required="y" min="0" max="1000" />
-    <record name="defend-stiff-duration-value" type="Int16" required="y" min="0" max="30000" />
-    <record name="cast-duration-base-percent" type="Int16" required="y" min="-10000" max="1000" />
-    <record name="cast-duration-value" type="Int16" required="y" min="0" max="30000" />
-    <record name="abnormal-attack-power-value" type="Int16" required="y" min="0" max="30000" />
-    <record name="abnormal-attack-base-percent" type="Int16" required="y" min="0" max="10000" />
-    <record name="abnormal-defend-power-value" type="Int16" required="y" min="0" max="30000" />
-    <record name="abnormal-defend-base-percent" type="Int16" required="y" min="0" max="10000" />
-    <record name="attack-hit-value-modify" type="Int16" required="y" />
-    <record name="attack-critical-value-modify" type="Int16" required="y" />
-    <record name="defend-critical-value-modify" type="Int16" required="y" />
-    <record name="defend-dodge-value-modify" type="Int16" required="y" />
-    <record name="defend-parry-value-modify" type="Int16" required="y" />
-    <record name="defend-physical-value-modify" type="Int16" required="y" />
-    <record name="defend-force-value-modify" type="Int16" required="y" />
-    <record name="attack-stiff-duration-value-modify" type="Int16" required="y" />
-    <record name="defend-stiff-duration-value-modify" type="Int16" required="y" />
-    <record name="cast-duration-value-modify" type="Int16" required="y" />
-    <record name="attack-critical-damage-modify" type="Int16" required="y" />
-    <record name="defend-critical-damage-modify" type="Int16" required="y" />
-    <record name="attack-pierce-modify" type="Int16" required="y" />
-    <record name="attack-parry-pierce-modify" type="Int16" required="y" />
-    <record name="defend-parry-reduce-modify" type="Int16" required="y" />
-    <record name="attack-perfect-parry-damage-modify" type="Int16" required="y" />
-    <record name="defend-perfect-parry-reduce-modify" type="Int16" required="y" />
-    <record name="attack-counter-damage-modify" type="Int16" required="y" />
-    <record name="defend-counter-reduce-modify" type="Int16" required="y" />
-    <record name="heal-power-base-percent" type="Int16" required="y" min="0" max="10000" />
-    <record name="aoe-defend-base-percent" type="Int16" required="y" min="0" max="10000" />
-    <record name="aoe-defend-power-value" type="Int16" required="y" min="0" max="30000" />
-    <record name="hate-base-percent" type="Int16" required="y" min="0" max="10000" />
-    <record name="hate-power-creature-value" type="Int16" required="y" min="0" max="30000" />
-    <record name="abnormal-attack-power-modify" type="Int16" required="y" />
-    <record name="abnormal-defend-power-modify" type="Int16" required="y" />
-    <record name="hate-power-modify" type="Int16" required="y" />
-    <record name="heal-power-modify" type="Int16" required="y" />
-    <record name="aoe-defend-power-modify" type="Int16" required="y" />
-    <record name="attack-attribute-value" type="Int32" required="y" min="0" max="300000" />
-    <record name="attack-attribute-base-percent" type="Int16" required="y" min="0" max="10000" />
-    <record name="attack-attribute-modify" type="Int16" required="y" />
-    <record name="summon-ability-rate-attack-power-creature-min" type="Int16" default="0" min="0" max="30000" />
-    <record name="summon-ability-rate-attack-power-creature-max" type="Int16" default="0" min="0" max="30000" />
-    <record name="summon-ability-rate-defend-power-creature-value" type="Int16" default="0" min="0" max="30000" />
-    <record name="summon-ability-rate-pve-boss-level-npc-attack-power-equip-min" type="Int16" default="0" min="0" max="30000" />
-    <record name="summon-ability-rate-pve-boss-level-npc-attack-power-equip-max" type="Int16" default="0" min="0" max="30000" />
-    <record name="summon-ability-rate-pve-boss-level-npc-defend-power-equip-value" type="Int16" default="0" min="0" max="30000" />
-    <record name="summon-ability-rate-pvp-attack-power-equip-min" type="Int16" default="0" min="0" max="30000" />
-    <record name="summon-ability-rate-pvp-attack-power-equip-max" type="Int16" default="0" min="0" max="30000" />
-    <record name="summon-ability-rate-pvp-defend-power-equip-value" type="Int16" default="0" min="0" max="30000" />
-    <record name="summon-ability-rate-defend-resist-power-creature-value" type="Int16" default="0" min="0" max="30000" />
-    <record name="summon-ability-rate-attack-hit-base-percent" type="Int16" default="0" min="-1000" max="1000" />
-    <record name="summon-ability-rate-attack-hit-value" type="Int16" default="0" min="-30000" max="30000" />
-    <record name="summon-ability-rate-attack-pierce-value" type="Int16" default="0" min="0" max="10000" />
-    <record name="summon-ability-rate-attack-critical-base-percent" type="Int16" default="0" min="0" max="1000" />
-    <record name="summon-ability-rate-attack-critical-value" type="Int16" default="0" min="0" max="30000" />
-    <record name="summon-ability-rate-attack-critical-damage-value" type="Int16" default="0" min="0" max="30000" />
-    <record name="summon-ability-rate-defend-critical-base-percent" type="Int16" default="0" min="0" max="1000" />
-    <record name="summon-ability-rate-defend-critical-value" type="Int16" default="0" min="0" max="30000" />
-    <record name="summon-ability-rate-defend-dodge-base-percent" type="Int16" default="0" min="0" max="1000" />
-    <record name="summon-ability-rate-defend-dodge-value" type="Int16" default="0" min="0" max="30000" />
-    <record name="summon-ability-rate-defend-parry-base-percent" type="Int16" default="0" min="0" max="1000" />
-    <record name="summon-ability-rate-defend-parry-value" type="Int16" default="0" min="0" max="30000" />
-    <record name="summon-ability-rate-attack-stiff-duration-base-percent" type="Int16" default="0" min="-1000" max="10000" />
-    <record name="summon-ability-rate-attack-stiff-duration-value" type="Int16" default="0" min="0" max="30000" />
-    <record name="summon-ability-rate-defend-stiff-duration-base-percent" type="Int16" default="0" min="0" max="1000" />
-    <record name="summon-ability-rate-defend-stiff-duration-value" type="Int16" default="0" min="0" max="30000" />
-    <record name="summon-ability-rate-cast-duration-base-percent" type="Int16" default="0" min="-10000" max="1000" />
-    <record name="summon-ability-rate-cast-duration-value" type="Int16" default="0" min="0" max="30000" />
-    <record name="summon-ability-rate-defend-physical-damage-reduce-percent" type="Int16" default="0" min="-10000" max="1000" />
-    <record name="summon-ability-rate-defend-force-damage-reduce-percent" type="Int16" default="0" min="-10000" max="1000" />
-    <record name="summon-ability-rate-attack-damage-modify-percent" type="Int16" default="0" min="-1000" max="10000" />
-    <record name="summon-ability-rate-attack-damage-modify-diff" type="Int16" default="0" min="-30000" max="30000" />
-    <record name="summon-ability-rate-defend-damage-modify-percent" type="Int16" default="0" min="-10000" max="1000" />
-    <record name="summon-ability-rate-defend-damage-modify-diff" type="Int16" default="0" min="-30000" max="30000" />
-    <record name="summon-ability-rate-max-hp" type="Int32" default="0" min="0" max="2000000000" />
-    <record name="summon-ability-rate-hp-regen" type="Int32" default="0" min="0" max="2000000000" />
-    <record name="summon-ability-rate-hp-regen-combat" type="Int32" default="0" min="0" max="2000000000" />
-    <record name="summon-ability-rate-abnormal-attack-base-percent" type="Int16" default="0" min="0" max="10000" />
-    <record name="summon-ability-rate-abnormal-attack-power-value" type="Int16" default="0" min="0" max="30000" />
-    <record name="summon-ability-rate-abnormal-defend-base-percent" type="Int16" default="0" min="0" max="10000" />
-    <record name="summon-ability-rate-abnormal-defend-power-value" type="Int16" default="0" min="0" max="30000" />
-    <record name="summon-ability-rate-attack-attribute-value" type="Int16" default="0" min="0" max="30000" />
-    <record name="summon-ability-rate-attack-attribute-base-percent" type="Int16" default="0" min="0" max="10000" />
-    <record name="defend-strength-creature-value" type="Int32" required="y" min="0" max="300000" />
-    <record name="attack-precise-creature-value" type="Int32" required="y" min="0" max="300000" />
-    <record name="attack-aoe-pierce-value" type="Int16" required="y" min="0" max="30000" />
-    <record name="attack-abnormal-hit-base-percent" type="Int16" required="y" min="-1000" max="10000" />
-    <record name="attack-abnormal-hit-value" type="Int16" required="y" min="-30000" max="30000" />
-    <record name="defend-abnormal-dodge-base-percent" type="Int16" required="y" min="-1000" max="10000" />
-    <record name="defend-abnormal-dodge-value" type="Int16" required="y" min="-30000" max="30000" />
-    <record name="support-power-base-percent" type="Int16" required="y" min="-1000" max="10000" />
-    <record name="support-power-value" type="Int16" required="y" min="0" max="30000" />
-    <record name="heal-power-value" type="Int16" required="y" min="0" max="30000" />
-    <record name="hypermove-power-value" type="Int16" required="y" min="0" max="30000" />
-    <record name="r-attack-aoe-pierce-modify" type="Int16" required="y" />
-    <record name="r-attack-abnormal-hit-modify" type="Int16" required="y" />
-    <record name="r-defend-abnormal-dodge-modify" type="Int16" required="y" />
-    <record name="r-support-power-modify" type="Int16" required="y" />
-    <record name="r-summon-ability-rate-defend-strength-creature-value" type="Int16" default="0" min="0" max="30000" />
-    <record name="r-summon-ability-rate-attack-precise-creature-value" type="Int16" default="0" min="0" max="30000" />
-    <record name="r-summon-ability-rate-attack-aoe-pierce-value" type="Int16" default="0" min="0" max="30000" />
-    <record name="r-summon-ability-rate-attack-abnormal-hit-base-percent" type="Int16" default="0" min="0" max="30000" />
-    <record name="r-summon-ability-rate-attack-abnormal-hit-value" type="Int16" default="0" min="0" max="30000" />
-    <record name="r-summon-ability-rate-defend-abnormal-dodge-base-percent" type="Int16" default="0" min="0" max="30000" />
-    <record name="r-summon-ability-rate-defend-abnormal-dodge-value" type="Int16" default="0" min="0" max="30000" />
-    <record name="r-summon-ability-rate-support-power-base-percent" type="Int16" default="0" min="0" max="30000" />
-    <record name="r-summon-ability-rate-support-power-value" type="Int16" default="0" min="0" max="30000" />
-    <record name="r-summon-ability-rate-hypermove-power-value" type="Int16" default="0" min="0" max="30000" />
+    </attribute>
+    <attribute name="is-duelbot-summoned" type="Bool" key="y" />
+    <attribute name="max-hp" type="Int64" required="y" min="1" max="1000000000000" />
+    <attribute name="modify-cast-speed-percent" type="Int16" required="y" min="-1000" max="1000" />
+    <attribute name="hp-regen" type="Int32" required="y" min="0" max="2000000000" />
+    <attribute name="hp-regen-combat" type="Int32" required="y" min="0" max="2000000000" />
+    <attribute name="attack-hit-base-percent" type="Int16" required="y" min="-1000" max="10000" />
+    <attribute name="attack-hit-value" type="Int16" required="y" min="-30000" max="30000" />
+    <attribute name="attack-pierce-base-percent" type="Int16" required="y" min="-1000" max="10000" />
+    <attribute name="attack-parry-pierce-percent" type="Int16" required="y" min="-1000" max="10000" />
+    <attribute name="attack-pierce-value" type="Int16" required="y" min="0" max="30000" />
+    <attribute name="attack-concentrate-value" type="Int16" required="y" min="0" max="30000" />
+    <attribute name="attack-critical-base-percent" type="Int16" required="y" min="0" max="1000" />
+    <attribute name="attack-critical-damage-percent" type="Int16" required="y" min="0" max="10000" />
+    <attribute name="attack-critical-value" type="Int32" required="y" min="0" max="300000" />
+    <attribute name="attack-critical-damage-value" type="Int32" required="y" min="0" max="300000" />
+    <attribute name="defend-critical-base-percent" type="Int16" required="y" min="0" max="1000" />
+    <attribute name="defend-critical-damage-percent" type="Int16" required="y" min="0" max="10000" />
+    <attribute name="defend-critical-value" type="Int16" required="y" min="0" max="30000" />
+    <attribute name="defend-bounce-percent" type="Int16" required="y" min="0" max="1000" />
+    <attribute name="defend-dodge-base-percent" type="Int16" required="y" min="0" max="1000" />
+    <attribute name="defend-dodge-value" type="Int16" required="y" min="0" max="30000" />
+    <attribute name="defend-parry-base-percent" type="Int16" required="y" min="0" max="1000" />
+    <attribute name="defend-parry-value" type="Int16" required="y" min="0" max="30000" />
+    <attribute name="defend-parry-reduce-percent" type="Int16" required="y" min="0" max="1000" />
+    <attribute name="defend-parry-reduce-diff" type="Int16" required="y" min="0" max="30000" />
+    <attribute name="defend-perfect-parry-base-percent" type="Int16" required="y" min="0" max="1000" />
+    <attribute name="defend-perfect-parry-reduce-percent" type="Int16" required="y" min="0" max="1000" />
+    <attribute name="defend-counter-reduce-percent" type="Int16" required="y" min="0" max="1000" />
+    <attribute name="defend-immune-base-percent" type="Int16" required="y" min="0" max="1000" />
+    <attribute name="attack-power-creature-min" type="Int32" required="y" min="0" max="300000" />
+    <attribute name="attack-power-creature-max" type="Int32" required="y" min="0" max="300000" />
+    <attribute name="attack-power-equip-min" type="Int16" required="y" min="0" max="30000" />
+    <attribute name="attack-power-equip-max" type="Int16" required="y" min="0" max="30000" />
+    <attribute name="defend-power-creature-value" type="Int32" required="y" min="0" max="300000" />
+    <attribute name="defend-power-equip-value" type="Int32" required="y" min="0" max="300000" />
+    <attribute name="defend-resist-power-creature-value" type="Int16" required="y" min="0" max="30000" />
+    <attribute name="defend-resist-power-equip-value" type="Int16" required="y" min="0" max="30000" />
+    <attribute name="defend-physical-damage-reduce-percent" type="Int16" required="y" min="-10000" max="1000" />
+    <attribute name="defend-force-damage-reduce-percent" type="Int16" required="y" min="-10000" max="1000" />
+    <attribute name="attack-damage-modify-percent" type="Int16" required="y" min="-3000" max="10000" />
+    <attribute name="attack-damage-modify-diff" type="Int32" required="y" min="-1000000" max="1000000" />
+    <attribute name="defend-damage-modify-percent" type="Int16" required="y" min="-10000" max="3000" />
+    <attribute name="defend-damage-modify-diff" type="Int32" required="y" min="-1000000" max="1000000" />
+    <attribute name="defend-miss-base-percent" type="Int16" required="y" min="0" max="1000" />
+    <attribute name="attack-stiff-duration-base-percent" type="Int16" required="y" min="-1000" max="10000" />
+    <attribute name="attack-stiff-duration-value" type="Int16" required="y" min="0" max="30000" />
+    <attribute name="defend-stiff-duration-base-percent" type="Int16" required="y" min="0" max="1000" />
+    <attribute name="defend-stiff-duration-value" type="Int16" required="y" min="0" max="30000" />
+    <attribute name="cast-duration-base-percent" type="Int16" required="y" min="-10000" max="1000" />
+    <attribute name="cast-duration-value" type="Int16" required="y" min="0" max="30000" />
+    <attribute name="abnormal-attack-power-value" type="Int16" required="y" min="0" max="30000" />
+    <attribute name="abnormal-attack-base-percent" type="Int16" required="y" min="0" max="10000" />
+    <attribute name="abnormal-defend-power-value" type="Int16" required="y" min="0" max="30000" />
+    <attribute name="abnormal-defend-base-percent" type="Int16" required="y" min="0" max="10000" />
+    <attribute name="attack-hit-value-modify" type="Int16" required="y" />
+    <attribute name="attack-critical-value-modify" type="Int16" required="y" />
+    <attribute name="defend-critical-value-modify" type="Int16" required="y" />
+    <attribute name="defend-dodge-value-modify" type="Int16" required="y" />
+    <attribute name="defend-parry-value-modify" type="Int16" required="y" />
+    <attribute name="defend-physical-value-modify" type="Int16" required="y" />
+    <attribute name="defend-force-value-modify" type="Int16" required="y" />
+    <attribute name="attack-stiff-duration-value-modify" type="Int16" required="y" />
+    <attribute name="defend-stiff-duration-value-modify" type="Int16" required="y" />
+    <attribute name="cast-duration-value-modify" type="Int16" required="y" />
+    <attribute name="attack-critical-damage-modify" type="Int16" required="y" />
+    <attribute name="defend-critical-damage-modify" type="Int16" required="y" />
+    <attribute name="attack-pierce-modify" type="Int16" required="y" />
+    <attribute name="attack-parry-pierce-modify" type="Int16" required="y" />
+    <attribute name="defend-parry-reduce-modify" type="Int16" required="y" />
+    <attribute name="attack-perfect-parry-damage-modify" type="Int16" required="y" />
+    <attribute name="defend-perfect-parry-reduce-modify" type="Int16" required="y" />
+    <attribute name="attack-counter-damage-modify" type="Int16" required="y" />
+    <attribute name="defend-counter-reduce-modify" type="Int16" required="y" />
+    <attribute name="heal-power-base-percent" type="Int16" required="y" min="0" max="10000" />
+    <attribute name="aoe-defend-base-percent" type="Int16" required="y" min="0" max="10000" />
+    <attribute name="aoe-defend-power-value" type="Int16" required="y" min="0" max="30000" />
+    <attribute name="hate-base-percent" type="Int16" required="y" min="0" max="10000" />
+    <attribute name="hate-power-creature-value" type="Int16" required="y" min="0" max="30000" />
+    <attribute name="abnormal-attack-power-modify" type="Int16" required="y" />
+    <attribute name="abnormal-defend-power-modify" type="Int16" required="y" />
+    <attribute name="hate-power-modify" type="Int16" required="y" />
+    <attribute name="heal-power-modify" type="Int16" required="y" />
+    <attribute name="aoe-defend-power-modify" type="Int16" required="y" />
+    <attribute name="attack-attribute-value" type="Int32" required="y" min="0" max="300000" />
+    <attribute name="attack-attribute-base-percent" type="Int16" required="y" min="0" max="10000" />
+    <attribute name="attack-attribute-modify" type="Int16" required="y" />
+    <attribute name="summon-ability-rate-attack-power-creature-min" type="Int16" default="0" min="0" max="30000" />
+    <attribute name="summon-ability-rate-attack-power-creature-max" type="Int16" default="0" min="0" max="30000" />
+    <attribute name="summon-ability-rate-defend-power-creature-value" type="Int16" default="0" min="0" max="30000" />
+    <attribute name="summon-ability-rate-pve-boss-level-npc-attack-power-equip-min" type="Int16" default="0" min="0" max="30000" />
+    <attribute name="summon-ability-rate-pve-boss-level-npc-attack-power-equip-max" type="Int16" default="0" min="0" max="30000" />
+    <attribute name="summon-ability-rate-pve-boss-level-npc-defend-power-equip-value" type="Int16" default="0" min="0" max="30000" />
+    <attribute name="summon-ability-rate-pvp-attack-power-equip-min" type="Int16" default="0" min="0" max="30000" />
+    <attribute name="summon-ability-rate-pvp-attack-power-equip-max" type="Int16" default="0" min="0" max="30000" />
+    <attribute name="summon-ability-rate-pvp-defend-power-equip-value" type="Int16" default="0" min="0" max="30000" />
+    <attribute name="summon-ability-rate-defend-resist-power-creature-value" type="Int16" default="0" min="0" max="30000" />
+    <attribute name="summon-ability-rate-attack-hit-base-percent" type="Int16" default="0" min="-1000" max="1000" />
+    <attribute name="summon-ability-rate-attack-hit-value" type="Int16" default="0" min="-30000" max="30000" />
+    <attribute name="summon-ability-rate-attack-pierce-value" type="Int16" default="0" min="0" max="10000" />
+    <attribute name="summon-ability-rate-attack-critical-base-percent" type="Int16" default="0" min="0" max="1000" />
+    <attribute name="summon-ability-rate-attack-critical-value" type="Int16" default="0" min="0" max="30000" />
+    <attribute name="summon-ability-rate-attack-critical-damage-value" type="Int16" default="0" min="0" max="30000" />
+    <attribute name="summon-ability-rate-defend-critical-base-percent" type="Int16" default="0" min="0" max="1000" />
+    <attribute name="summon-ability-rate-defend-critical-value" type="Int16" default="0" min="0" max="30000" />
+    <attribute name="summon-ability-rate-defend-dodge-base-percent" type="Int16" default="0" min="0" max="1000" />
+    <attribute name="summon-ability-rate-defend-dodge-value" type="Int16" default="0" min="0" max="30000" />
+    <attribute name="summon-ability-rate-defend-parry-base-percent" type="Int16" default="0" min="0" max="1000" />
+    <attribute name="summon-ability-rate-defend-parry-value" type="Int16" default="0" min="0" max="30000" />
+    <attribute name="summon-ability-rate-attack-stiff-duration-base-percent" type="Int16" default="0" min="-1000" max="10000" />
+    <attribute name="summon-ability-rate-attack-stiff-duration-value" type="Int16" default="0" min="0" max="30000" />
+    <attribute name="summon-ability-rate-defend-stiff-duration-base-percent" type="Int16" default="0" min="0" max="1000" />
+    <attribute name="summon-ability-rate-defend-stiff-duration-value" type="Int16" default="0" min="0" max="30000" />
+    <attribute name="summon-ability-rate-cast-duration-base-percent" type="Int16" default="0" min="-10000" max="1000" />
+    <attribute name="summon-ability-rate-cast-duration-value" type="Int16" default="0" min="0" max="30000" />
+    <attribute name="summon-ability-rate-defend-physical-damage-reduce-percent" type="Int16" default="0" min="-10000" max="1000" />
+    <attribute name="summon-ability-rate-defend-force-damage-reduce-percent" type="Int16" default="0" min="-10000" max="1000" />
+    <attribute name="summon-ability-rate-attack-damage-modify-percent" type="Int16" default="0" min="-1000" max="10000" />
+    <attribute name="summon-ability-rate-attack-damage-modify-diff" type="Int16" default="0" min="-30000" max="30000" />
+    <attribute name="summon-ability-rate-defend-damage-modify-percent" type="Int16" default="0" min="-10000" max="1000" />
+    <attribute name="summon-ability-rate-defend-damage-modify-diff" type="Int16" default="0" min="-30000" max="30000" />
+    <attribute name="summon-ability-rate-max-hp" type="Int32" default="0" min="0" max="2000000000" />
+    <attribute name="summon-ability-rate-hp-regen" type="Int32" default="0" min="0" max="2000000000" />
+    <attribute name="summon-ability-rate-hp-regen-combat" type="Int32" default="0" min="0" max="2000000000" />
+    <attribute name="summon-ability-rate-abnormal-attack-base-percent" type="Int16" default="0" min="0" max="10000" />
+    <attribute name="summon-ability-rate-abnormal-attack-power-value" type="Int16" default="0" min="0" max="30000" />
+    <attribute name="summon-ability-rate-abnormal-defend-base-percent" type="Int16" default="0" min="0" max="10000" />
+    <attribute name="summon-ability-rate-abnormal-defend-power-value" type="Int16" default="0" min="0" max="30000" />
+    <attribute name="summon-ability-rate-attack-attribute-value" type="Int16" default="0" min="0" max="30000" />
+    <attribute name="summon-ability-rate-attack-attribute-base-percent" type="Int16" default="0" min="0" max="10000" />
+    <attribute name="defend-strength-creature-value" type="Int32" required="y" min="0" max="300000" />
+    <attribute name="attack-precise-creature-value" type="Int32" required="y" min="0" max="300000" />
+    <attribute name="attack-aoe-pierce-value" type="Int16" required="y" min="0" max="30000" />
+    <attribute name="attack-abnormal-hit-base-percent" type="Int16" required="y" min="-1000" max="10000" />
+    <attribute name="attack-abnormal-hit-value" type="Int16" required="y" min="-30000" max="30000" />
+    <attribute name="defend-abnormal-dodge-base-percent" type="Int16" required="y" min="-1000" max="10000" />
+    <attribute name="defend-abnormal-dodge-value" type="Int16" required="y" min="-30000" max="30000" />
+    <attribute name="support-power-base-percent" type="Int16" required="y" min="-1000" max="10000" />
+    <attribute name="support-power-value" type="Int16" required="y" min="0" max="30000" />
+    <attribute name="heal-power-value" type="Int16" required="y" min="0" max="30000" />
+    <attribute name="hypermove-power-value" type="Int16" required="y" min="0" max="30000" />
+    <attribute name="r-attack-aoe-pierce-modify" type="Int16" required="y" />
+    <attribute name="r-attack-abnormal-hit-modify" type="Int16" required="y" />
+    <attribute name="r-defend-abnormal-dodge-modify" type="Int16" required="y" />
+    <attribute name="r-support-power-modify" type="Int16" required="y" />
+    <attribute name="r-summon-ability-rate-defend-strength-creature-value" type="Int16" default="0" min="0" max="30000" />
+    <attribute name="r-summon-ability-rate-attack-precise-creature-value" type="Int16" default="0" min="0" max="30000" />
+    <attribute name="r-summon-ability-rate-attack-aoe-pierce-value" type="Int16" default="0" min="0" max="30000" />
+    <attribute name="r-summon-ability-rate-attack-abnormal-hit-base-percent" type="Int16" default="0" min="0" max="30000" />
+    <attribute name="r-summon-ability-rate-attack-abnormal-hit-value" type="Int16" default="0" min="0" max="30000" />
+    <attribute name="r-summon-ability-rate-defend-abnormal-dodge-base-percent" type="Int16" default="0" min="0" max="30000" />
+    <attribute name="r-summon-ability-rate-defend-abnormal-dodge-value" type="Int16" default="0" min="0" max="30000" />
+    <attribute name="r-summon-ability-rate-support-power-base-percent" type="Int16" default="0" min="0" max="30000" />
+    <attribute name="r-summon-ability-rate-support-power-value" type="Int16" default="0" min="0" max="30000" />
+    <attribute name="r-summon-ability-rate-hypermove-power-value" type="Int16" default="0" min="0" max="30000" />
   </el>
 </table>

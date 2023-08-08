@@ -2,26 +2,26 @@
 <table name="arenaportal" version="3.3" autokey="true" module="70" maxid="127">
   <el name="table" child="1" />
   <el name="record">
-    <record name="alias" type="String" required="y" max="70" />
-    <record name="faction" type="Ref" ref="faction" />
-    <record name="required-quest-check" type="Seq" seq="check" default="and" />
-    <record name="required-quest" type="Ref" ref="quest" repeat="6" />
-    <record name="required-min-level" type="Int8" required="y" min="0" />
-    <record name="required-min-faction-level" type="Int16" required="y" min="0" />
-    <record name="zone" type="Ref" ref="zone" required="y" />
-    <record name="position-x" type="Float32" default="0.0" />
-    <record name="position-y" type="Float32" default="0.0" />
+    <attribute name="alias" type="String" required="y" max="70" />
+    <attribute name="faction" type="Ref" ref="faction" />
+    <attribute name="required-quest-check" type="Seq" seq="check" default="and" />
+    <attribute name="required-quest" type="Ref" ref="quest" repeat="6" />
+    <attribute name="required-min-level" type="Int8" required="y" min="0" />
+    <attribute name="required-min-faction-level" type="Int16" required="y" min="0" />
+    <attribute name="zone" type="Ref" ref="zone" required="y" />
+    <attribute name="position-x" type="Float32" default="0.0" />
+    <attribute name="position-y" type="Float32" default="0.0" />
     <sub name="duel">
-      <record name="death-match-1vs1" type="Ref" ref="duel" repeat="4" />
-      <record name="death-match-unrated" type="Ref" ref="duel" repeat="4" />
-      <record name="tag-match-3vs3" type="Ref" ref="duel" repeat="4" />
-      <record name="tag-match-unrated" type="Ref" ref="duel" repeat="4" />
+      <attribute name="death-match-1vs1" type="Ref" ref="duel" repeat="4" />
+      <attribute name="death-match-unrated" type="Ref" ref="duel" repeat="4" />
+      <attribute name="tag-match-3vs3" type="Ref" ref="duel" repeat="4" />
+      <attribute name="tag-match-unrated" type="Ref" ref="duel" repeat="4" />
     </sub>
     <sub name="dungeon">
-      <record name="sealed-dungeon" type="Bool" />
+      <attribute name="sealed-dungeon" type="Bool" />
     </sub>
     <sub name="public-raid">
-      <record name="public-raid-mode" type="Seq" required="y">
+      <attribute name="public-raid-mode" type="Seq" required="y">
         <case name="public-raid-1" />
         <case name="public-raid-2" />
         <case name="public-raid-2-party-mode" />
@@ -29,8 +29,8 @@
         <case name="public-raid-2-party-mode-championship" />
         <case name="public-raid-3" />
         <case name="public-raid-4" />
-      </record>
-      <record name="public-raid" type="Ref" ref="public-raid" />
+      </attribute>
+      <attribute name="public-raid" type="Ref" ref="public-raid" />
     </sub>
   </el>
 </table>

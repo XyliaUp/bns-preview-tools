@@ -2,8 +2,8 @@
 <table name="skilldashattribute3" version="0.3" autokey="true" module="2062">
   <el name="table" child="1" />
   <el name="record">
-    <record name="alias" type="String" required="y" max="70" />
-    <record name="dash-type" type="Seq">
+    <attribute name="alias" type="String" required="y" max="70" />
+    <attribute name="dash-type" type="Seq">
       <case name="none" default="y" />
       <case name="dash" />
       <case name="rear-dash" />
@@ -11,8 +11,8 @@
       <case name="right-dash" />
       <case name="zero-point-dash" />
       <case name="position-dash" />
-    </record>
-    <record name="dash-margin" type="Distance" default="0" min="0" max="5000" />
-    <record name="calculate-dash-position-include-radius" type="Bool" default="y" />
+    </attribute>
+    <attribute name="dash-margin" type="Distance" default="0" min="0" max="5000" />
+    <attribute name="calculate-dash-position-include-radius" type="Bool" default="y" />
   </el>
 </table>

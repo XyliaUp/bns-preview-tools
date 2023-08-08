@@ -3,10 +3,10 @@ using System.Data;
 
 using HZH_Controls.Controls;
 
+using Xylia.Attribute;
 using Xylia.Extension;
-using Xylia.Preview.Data.Models.BinData.Table.Record;
 
-namespace Xylia.Preview.Art.GameUI.Scene.Game_ToolTip.Game_ToolTipScene.ItemTooltipPanel;
+namespace Xylia.Preview.Art.GameUI.Scene.Game_ToolTipScene.ItemTooltipPanel;
 public partial class DataGridScene : Form
 {
 	#region Constructor
@@ -35,7 +35,7 @@ public partial class DataGridScene : Form
 		#endregion
 
 
-		this.table = GetSource(attrs.Select(a => new Fields(a)));
+		this.table = GetSource(attrs.Select(a => new IAttribute(a)));
 	}
 	#endregion
 
@@ -47,7 +47,7 @@ public partial class DataGridScene : Form
 
 	private void Filter_SearchClick(object sender, EventArgs e)
 	{
-		List<Fields> pairs = new();
+		List<IAttribute> pairs = new();
 		foreach (DataRow row in table.Rows)
 		{
 			var key = (string)row[field1];
@@ -62,7 +62,7 @@ public partial class DataGridScene : Form
 			o.Key.MyContains(this.Filter.InputText));
 	}
 
-	private DataTable GetSource(IEnumerable<Fields> pairs, Func<Fields, bool> func = null)
+	private DataTable GetSource(IEnumerable<IAttribute> pairs, Func<IAttribute, bool> func = null)
 	{
 		var table = new DataTable();
 		table.Columns.Add(field1);
@@ -83,18 +83,4 @@ public partial class DataGridScene : Form
 		return table;
 	}
 	#endregion
-
-
-	public class Fields : IAttribute
-	{
-		public Fields(string Key, string Value) : base(Key, Value)
-		{
-
-		}
-
-		public Fields(KeyValuePair<string, string> pair) : base(pair)
-		{
-
-		}
-	}
 }

@@ -6,11 +6,11 @@ using Xylia.Preview.Common.Struct;
 namespace Xylia.Preview.Data.Models.BinData.Table.Record;
 public static class ValueConvert
 {
-	public static object Construct(Type type, string value)
+	public static object Construct(Type type, string value , BaseRecord Source = null)
 	{
 		if (string.IsNullOrEmpty(value)) return default;
 
-		if (type == typeof(byte)) return byte.Parse(value);					/// <see cref="AttributeType.TInt8">
+		if (type == typeof(sbyte)) return sbyte.Parse(value);				/// <see cref="AttributeType.TInt8">
 		else if (type == typeof(short)) return short.Parse(value);			/// <see cref="AttributeType.TInt16">
 		else if (type == typeof(int)) return int.Parse(value);				/// <see cref="AttributeType.TInt32">
 		else if (type == typeof(long)) return long.Parse(value);			/// <see cref="AttributeType.TInt64">
@@ -28,7 +28,8 @@ public static class ValueConvert
 		else if (typeof(BaseRecord).IsAssignableFrom(type))      /// use sub class mean as <see cref="AttributeType.TRef">
 		{
 			// InvalidOperationException: ValueFactory attempted to access the Value property of this instance.
-			// eg. Item -> Card -> Item   必须延迟第二个类的初始化
+			// this mean object conflicts occurred:	  eg. Item -> Card -> Item   
+			// TODO: Delay set attribute ?
 			BaseRecord obj = null;
 
 			try 
@@ -36,8 +37,8 @@ public static class ValueConvert
 				obj = value.CastObject<BaseRecord>(type.Name);
 			}
 			catch
-			{ 
-
+			{
+				Trace.WriteLine($"Construct Failed , {Source?.GetType()} -> {type.Name}");
 			}
 
 

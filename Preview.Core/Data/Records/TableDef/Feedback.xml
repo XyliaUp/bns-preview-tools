@@ -2,9 +2,9 @@
 <table name="feedback" version="3.4" autokey="true" module="6">
   <el name="table" child="1" />
   <el name="record">
-    <record name="alias" type="String" required="y" max="70" />
-    <record name="max-score-except-boss-npc" type="Int32" default="0" min="0" />
-    <record name="unk-" type="Int64" min="0" max="0" />
-    <record name="boss-npc" type="Ref" ref="feedback-boss-npc" repeat="4" />
+    <attribute name="alias" type="String" required="y" max="70" />
+    <attribute name="max-score-except-boss-npc" type="Int32" default="0" min="0" />
+    <attribute name="unk-" type="Int64" min="0" max="0" />
+    <attribute name="boss-npc" type="Ref" ref="feedback-boss-npc" repeat="4" />
   </el>
 </table>

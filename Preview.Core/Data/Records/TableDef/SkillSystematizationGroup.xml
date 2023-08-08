@@ -2,17 +2,17 @@
 <table name="skillsystematizationgroup" version="0.3" autokey="true" module="4">
   <el name="table" child="1" />
   <el name="record">
-    <record name="alias" type="String" required="y" max="70" />
-    <record name="name" type="String" max="70" />
-    <record name="name2" type="Ref" ref="text" />
-    <record name="description" type="Ref" ref="text" />
-    <record name="sort-no" type="Int8" default="0" />
-    <record name="use-bookmark" type="Bool" />
-    <record name="bookmark-description" type="Ref" ref="text" />
-    <record name="category-icon-text" type="String" repeat="2" max="100" />
-    <record name="train-icon-text" type="String" repeat="2" max="100" />
-    <record name="icon-texture" type="Ref" ref="icontexture" />
-    <record name="icon-index" type="Int16" default="0" />
-    <record name="tooltip-description" type="Ref" ref="text" />
+    <attribute name="alias" type="String" required="y" max="70" />
+    <attribute name="name" type="String" max="70" />
+    <attribute name="name2" type="Ref" ref="text" />
+    <attribute name="description" type="Ref" ref="text" />
+    <attribute name="sort-no" type="Int8" default="0" />
+    <attribute name="use-bookmark" type="Bool" />
+    <attribute name="bookmark-description" type="Ref" ref="text" />
+    <attribute name="category-icon-text" type="String" repeat="2" max="100" />
+    <attribute name="train-icon-text" type="String" repeat="2" max="100" />
+    <attribute name="icon-texture" type="Ref" ref="icontexture" />
+    <attribute name="icon-index" type="Int16" default="0" />
+    <attribute name="tooltip-description" type="Ref" ref="text" />
   </el>
 </table>

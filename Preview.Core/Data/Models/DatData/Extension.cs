@@ -1,4 +1,6 @@
-﻿using Xylia.Extension;
+﻿using BnsBinTool.Core.Models;
+
+using Xylia.Extension;
 
 namespace Xylia.Preview.Data.Models.DatData;
 public static class Extension
@@ -18,13 +20,16 @@ public static class Extension
 		GC.Collect();
 	}
 
-	public static byte[] ExtractBin(this BNSDat bNSDat)
+	public static Datafile ExtractBin(this BNSDat bNSDat)
 	{
 		var file = bNSDat.FileTable.Find(f => f.FilePath.RegexMatch(".*?.bin"));
 		ArgumentNullException.ThrowIfNull(file);
 
 		file.Decrypt();
-		return file.Data;
+		var datafile = Datafile.ReadFromBytes(file.Data, is64Bit: bNSDat.Bit64);
+
+		file.Dispose();
+		return datafile;
 	}
 	#endregion
 

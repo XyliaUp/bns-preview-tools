@@ -7,13 +7,13 @@ using HZH_Controls.Forms;
 using Xylia.Configure;
 using Xylia.Match.Util.ItemList;
 using Xylia.Match.Windows.Forms;
-using Xylia.Preview.Common.Extension;
 using Xylia.Preview.Data.Helper;
 using Xylia.Preview.Data.Helper.Output;
 using Xylia.Preview.Data.Record;
 using Xylia.Preview.GameUI.Scene.Searcher;
 using Xylia.Preview.Helper.Output;
 using Xylia.Preview.Properties;
+using Xylia.Preview.UI.Extension;
 
 using GameUI = Xylia.Preview.GameUI.Scene;
 

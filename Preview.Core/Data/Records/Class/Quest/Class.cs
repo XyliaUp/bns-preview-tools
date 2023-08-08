@@ -42,10 +42,10 @@ public class Acquisition : CaseParent
 	public Faction Faction;
 
 	[Signal("faction-level")] 
-	public byte FactionLevel;
+	public sbyte FactionLevel;
 
 	[Signal("faction-level-max")] 
-	public byte FactionLevelMax;
+	public sbyte FactionLevelMax;
 
 	[Signal("faction-reputation")] 
 	public int FactionReputation;
@@ -64,10 +64,10 @@ public class Acquisition : CaseParent
 	public Quest[] PrecedingQuestRetired;
 
 	[Signal("preceding-quest-mission-step"), Repeat(15)]
-	public byte[] PrecedingQuestMissionStep;
+	public sbyte[] PrecedingQuestMissionStep;
 
 	[Signal("preceding-quest-count"), Repeat(15)]
-	public byte[] PrecedingQuestCount;
+	public sbyte[] PrecedingQuestCount;
 
 
 	[Signal("production-id")]
@@ -113,7 +113,7 @@ public class MissionStep : BaseRecord
 	public List<MissionStepFail> MissionStepFail;
 
 
-	public byte id;
+	public sbyte id;
 
 	[Signal("completion-type")]
 	public OpCheck CompletionType;
@@ -290,7 +290,7 @@ public class OptionalReward : FixedReward
 public class Mission : CaseParent
 {
 	//max: 16
-	public byte id;
+	public sbyte id;
 
 	[Signal("check-tencent-vitality")]
 	public bool CheckTencentVitality;
@@ -300,7 +300,7 @@ public class Mission : CaseParent
 	/// min: 1
 	/// </summary>
 	[Signal("required-register-value")]
-	public byte RequiredRegisterValue = 1;
+	public sbyte RequiredRegisterValue = 1;
 
 	[Signal("reward-1")]
 	public QuestReward Reward1;
@@ -315,7 +315,7 @@ public class Mission : CaseParent
 	public string RequiredAttraction;
 
 	[Signal("tendency-id")]
-	public byte TendencyID;
+	public sbyte TendencyID;
 
 	[Signal("simple-quest-play-section")]
 	public string SimpleQuestPlaySection;
@@ -366,12 +366,12 @@ public class MissionStepSuccess : CaseParent
 public class MissionStepFail : CaseParent
 {
 	[Signal("rollback-step-id")]
-	public byte RollbackStepID;
+	public sbyte RollbackStepID;
 
 	[Signal("dispose-quest")]
 	public bool DisposeQuest;
 
-	public byte Step;
+	public sbyte Step;
 
 	[Side(ReleaseSide.Client)]
 	[Signal("fail-talksocial")]
@@ -409,7 +409,7 @@ public class NextQuest : BaseRecord
 
 public class Transit : BaseRecord
 {
-	public byte id;
+	public sbyte id;
 
 	public string Zone;
 
@@ -422,11 +422,11 @@ public class Transit : BaseRecord
 public class Destination : BaseRecord
 {
 	[Signal("mission-step-id")]
-	public byte MissionStepID;
+	public sbyte MissionStepID;
 
 	[DefaultValue(null)]
 	[Signal("zone-index")]
-	public byte ZoneIndex;
+	public sbyte ZoneIndex;
 
 	[Side(ReleaseSide.Client)]
 	public string Kismet;
@@ -436,7 +436,7 @@ public class Complete : BaseRecord
 {
 	[DefaultValue(null)]
 	[Signal("zone-index")]
-	public byte ZoneIndex;
+	public sbyte ZoneIndex;
 
 	[Side(ReleaseSide.Client)]
 	public string Kismet;
@@ -446,7 +446,7 @@ public class NotAcquire : BaseRecord
 {
 	[DefaultValue(null)]
 	[Signal("zone-index")]
-	public byte ZoneIndex;
+	public sbyte ZoneIndex;
 
 	[Side(ReleaseSide.Client)]
 	public string Kismet;

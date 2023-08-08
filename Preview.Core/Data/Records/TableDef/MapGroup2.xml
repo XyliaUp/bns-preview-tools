@@ -2,10 +2,10 @@
 <table name="map-group-2" version="0.1" autokey="true" module="12">
   <el name="table" child="1" />
   <el name="record">
-    <record name="alias" type="String" required="y" max="70" />
-    <record name="quest-filtering-type" type="Seq">
+    <attribute name="alias" type="String" required="y" max="70" />
+    <attribute name="quest-filtering-type" type="Seq">
       <case name="default" default="y" />
       <case name="current-group-only" />
-    </record>
+    </attribute>
   </el>
 </table>

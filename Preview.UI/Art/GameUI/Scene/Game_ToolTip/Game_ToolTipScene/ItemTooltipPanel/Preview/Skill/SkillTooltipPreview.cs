@@ -1,6 +1,6 @@
-﻿using Xylia.Preview.Common.Interface;
-using Xylia.Preview.Data.Models.BinData.Table.Record;
+﻿using Xylia.Preview.Data.Models.BinData.Table.Record;
 using Xylia.Preview.Data.Record;
+using Xylia.Preview.UI.Interface;
 
 namespace Xylia.Preview.GameUI.Scene.Game_ToolTip.ItemTooltipPanel;
 public partial class SkillTooltipPreview : PreviewControl

@@ -9,7 +9,7 @@ using Xylia.Preview.UI.Resources;
 using static Xylia.Preview.Data.Record.Item;
 using static Xylia.Preview.Data.Record.Item.Grocery;
 
-namespace Xylia.Preview.GameUI.Scene.Game_ToolTip.ItemTooltipPanel.Randombox;
+namespace Xylia.Preview.GameUI.Scene.Game_ToolTipScene.ItemTooltipPanel.Preview.Randombox;
 public sealed class DecomposeInfo
 {
 	#region Fields
@@ -41,18 +41,18 @@ public sealed class DecomposeInfo
 	public DecomposeInfo(Item ItemInfo)
 	{
 		var attr = ItemInfo.Attributes;
-		this.DecomposeJobRewards = new();
+		DecomposeJobRewards = new();
 
 
 		DecomposeRewardByConsumeIndex = attr["decompose-reward-by-consume-index"].ToBool();
-		DecomposeMax = attr["decompose-max"].ToInt();
-		DecomposeMoneyCost = attr["decompose-money-cost"].ToInt();
+		DecomposeMax = attr["decompose-max"].ToInt32();
+		DecomposeMoneyCost = attr["decompose-money-cost"].ToInt32();
 
-		Linq.For(ref DecomposeReward, 7, (id) => FileCache.Data.Reward[attr["decompose-reward", id]]);
+		DecomposeReward = Linq.For(7, (id) => FileCache.Data.Reward[attr["decompose-reward", id]]);
 		Job.GetPcJob().ForEach(job => DecomposeJobRewards[job] = FileCache.Data.Reward[attr[$"decompose-job-reward-{job.GetSignal()}"]]);
 
-		Linq.For(ref Decompose_By_Item2, 7, (id) => new DecomposeByItem2(attr["decompose-by-item2", id], attr["decompose-by-item2-stack-count", id].ToInt()));
-		Linq.For(ref Job_Decompose_By_Item2, 7, (id) => new DecomposeByItem2(attr["job-decompose-by-item2", id], attr["job-decompose-by-item2-stack-count", id].ToInt()));
+		Decompose_By_Item2 = Linq.For(7, (id) => new DecomposeByItem2(attr["decompose-by-item2", id], attr["decompose-by-item2-stack-count", id].ToInt32()));
+		Job_Decompose_By_Item2 = Linq.For(7, (id) => new DecomposeByItem2(attr["job-decompose-by-item2", id], attr["job-decompose-by-item2-stack-count", id].ToInt32()));
 	}
 	#endregion
 
@@ -60,9 +60,9 @@ public sealed class DecomposeInfo
 	#region Functions
 	public Bitmap GetExtra()
 	{
-		var result = GetExtra(this.Decompose_By_Item2[0].Item);
-		result ??= GetExtra(this.Job_Decompose_By_Item2[0].Item);
-		result ??= this.DecomposeMoneyCost == 0 ? null : Resource_BNSR.Weapon_Lock_04;
+		var result = GetExtra(Decompose_By_Item2[0].Item);
+		result ??= GetExtra(Job_Decompose_By_Item2[0].Item);
+		result ??= DecomposeMoneyCost == 0 ? null : Resource_BNSR.Weapon_Lock_04;
 
 		return result;
 	}

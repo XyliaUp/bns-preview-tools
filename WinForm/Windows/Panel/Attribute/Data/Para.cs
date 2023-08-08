@@ -17,13 +17,13 @@ public class ParaEntity
 		this.category = xe.Attributes["category"]?.Value;
 		this.type = xe.Attributes["type"]?.Value.ToEnum<ParaType>() ?? default;
 
-		this.K = xe.Attributes["k"]?.Value.ToInt() ?? 0;
-		this.C = xe.Attributes["c"]?.Value.ToInt() ?? 0;
+		this.K = xe.Attributes["k"]?.Value.ToInt32() ?? 0;
+		this.C = xe.Attributes["c"]?.Value.ToInt32() ?? 0;
 		this.μ = xe.Attributes["μ"]?.Value.ToDouble() ?? 0;
 		this.Φ = xe.Attributes["Φ"]?.Value.ToDouble() ?? 0;
 		foreach (XmlElement level in xe.SelectNodes("./level"))
 		{
-			var key = level.Attributes["key"]?.Value.ToByte() ?? 0;
+			var key = level.Attributes["key"]?.Value.ToInt8() ?? 0;
 			var value = level.Attributes["value"]?.Value.ToDouble() ?? 0;
 			if (value == 0) continue;
 

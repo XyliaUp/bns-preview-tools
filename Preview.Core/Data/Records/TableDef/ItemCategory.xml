@@ -2,7 +2,7 @@
 <table name="itemcategory" version="0.1" autokey="false" module="4">
   <el name="table" child="1" />
   <el name="record">
-    <record name="game-category-3" type="Seq16" key="y" required="y">
+    <attribute name="game-category-3" type="Seq16" key="y" required="y">
       <case name="none" />
       <case name="sword" />
       <case name="gauntlet" />
@@ -187,7 +187,7 @@
       <case name="badge-appearance" />
       <case name="fusion-material" />
       <case name="card" />
-    </record>
-    <record name="sort-order" type="Int16" required="y" />
+    </attribute>
+    <attribute name="sort-order" type="Int16" required="y" />
   </el>
 </table>

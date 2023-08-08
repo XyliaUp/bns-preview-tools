@@ -1,14 +1,14 @@
-﻿namespace Xylia.Preview.GameUI.Scene.Game_ItemStore;
+﻿namespace Xylia.Preview.GameUI.Scene.Game_ItemStore.Game_ItemStore;
 public class NodeInfo
 {
-	public NodeInfo(string alias, TreeNode node)
-	{
-		this.RecordAlias = alias;
-		this.ParentNode = node.Parent;
-	}
+    public NodeInfo(string alias, TreeNode node)
+    {
+        RecordAlias = alias;
+        ParentNode = node.Parent;
+    }
 
 
-	public string RecordAlias;
+    public string RecordAlias;
 
-	public TreeNode ParentNode;
+    public TreeNode ParentNode;
 }

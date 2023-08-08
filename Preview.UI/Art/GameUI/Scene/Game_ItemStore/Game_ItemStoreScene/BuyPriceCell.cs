@@ -7,6 +7,7 @@ using Xylia.Preview.Data.Helper;
 using Xylia.Preview.Data.Record;
 using Xylia.Preview.UI.Custom.Controls;
 using Xylia.Preview.UI.Custom.Controls.Currency;
+using Xylia.Preview.UI.Extension;
 using Xylia.Preview.UI.Resources;
 
 namespace Xylia.Preview.GameUI.Scene.Game_ItemStore;

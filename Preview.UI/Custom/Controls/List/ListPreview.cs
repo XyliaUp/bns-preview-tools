@@ -11,22 +11,7 @@ public partial class ListPreview : Panel
 	{
 		this.SetStyle(ControlStyles.UserPaint | ControlStyles.SupportsTransparentBackColor, true);
 		this.InitializeComponent();
-
-		this.Scroll += new((s, e) => PerformLayout());
-		this.MouseWheel += new((s, e) =>
-		{
-			var value = this.VerticalScroll.Value - e.Delta / 5;
-			if (value >= this.VerticalScroll.Minimum && value <= this.VerticalScroll.Maximum)
-			{
-				this.VerticalScroll.Value = value;
-				this.OnScroll(new ScrollEventArgs(ScrollEventType.SmallIncrement, value));
-
-				this.Invalidate();
-			}
-		});
 	}
-
-	protected override Point ScrollToControl(Control activeControl) => this.AutoScrollPosition;
 	#endregion
 
 	#region Event
@@ -36,69 +21,36 @@ public partial class ListPreview : Panel
 	#endregion
 
 
-
 	#region Items
 	public List<object> Items;
 
 	public int ItemHeight = 30;
+
+	[DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+	public int MaxItemNum { get; set; } = 0;
 	#endregion
 
 	#region Pages
-	[DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-	public int MaxItemNum { get; set; } = 100;
+	public int PageIndex = 1;
+	public int PageCount;
 
-	private int PageIndex = 1;
+	public bool HasPrevPage => PageIndex - 1 > 0;
+	public bool HasNextPage => PageIndex + 1 <= PageCount;
 
-	private int PageCount;
-
-
-	private void PrevPage(object sender, EventArgs e)
-	{
-		if (PageIndex - 1 <= 0) return;
-
-		PageIndex--;
-		this.RefreshList(true);
-	}
-
-	private void NextPage(object sender, EventArgs e)
-	{
-		if (PageIndex + 1 > PageCount) return;
-
-		PageIndex++;
-		this.RefreshList(true);
-	}
+	protected override Point ScrollToControl(Control activeControl) => this.AutoScrollPosition;
 	#endregion
 
 
-	#region OnPaint 
-	List<KeyValuePair<object, int>> tempObj = new();
-
-	protected override void OnPaint(PaintEventArgs e)
-	{
-		base.OnPaint(e);
-
-		for (int i = 0; i < tempObj.Count; i++)
-		{
-			var item = tempObj[i].Key;
-
-			var RECT = GetItemRectangle(i);
-			if (RECT.Width == 0 && RECT.Height == 0) continue;
-
-			if (DrawItem != null) DrawItem?.Invoke(item, new PaintEventArgs(e.Graphics, RECT));
-			else e.Graphics.DrawString(item.ToString(), this.Font, new SolidBrush(this.ForeColor), RECT);
-		}
-	}
+	#region Paint 
+	readonly List<KeyValuePair<object, int>> tempObj = new();
 
 	public void RefreshList(bool SwitchPage = false)
 	{
-		base.Refresh();
-
+		#region init
 		this.SuspendLayout();
 		this.Controls.Clear();
-
-		VerticalScroll.Value = 0;
 		tempObj.Clear();
-
+		#endregion
 
 		#region data 
 		if (!SwitchPage) PageIndex = 1;
@@ -107,7 +59,7 @@ public partial class ListPreview : Panel
 		if (MaxItemNum > 0)
 		{
 			data = data.Skip(MaxItemNum * (PageIndex - 1)).Take(MaxItemNum);
-			PageCount = (int)Math.Ceiling((float)Items.Count() / MaxItemNum);
+			PageCount = (int)Math.Ceiling((float)Items.Count / MaxItemNum);
 		}
 		#endregion
 
@@ -128,7 +80,7 @@ public partial class ListPreview : Panel
 			}
 			else if (item is Item record)
 			{
-				this.Invoke(() =>
+				this.BeginInvoke(() =>
 				{
 					var cell = new ListItemCell(record);
 					cell.Location = new Point(0, y);
@@ -145,52 +97,78 @@ public partial class ListPreview : Panel
 		}
 		#endregion
 
-		#region page
-		// TODO: change to use paint
-		if (PageCount > 1)
-		{
-			y += 10;
-			var pageSelector = new PageSelector { Text = $"{PageIndex} / {PageCount}" };
-			pageSelector.Location = new Point((this.Width - pageSelector.Width) / 2, y);
-			pageSelector.PrevSeleted += PrevPage;
-			pageSelector.NextSeleted += NextPage;
-			this.Invoke(() => this.Controls.Add(pageSelector));
-
-			y = pageSelector.Bottom;
-		}
-		#endregion
-
-
-		// source: https://source.dot.net/#System.Windows.Forms/System/Windows/Forms/ScrollableControl.cs,320
-		this.ResumeLayout(true);
+		this.VerticalScroll.Minimum = 0;
+		this.VerticalScroll.Maximum = Math.Max(0, y - this.ClientRectangle.Height);
+		this.VerticalScroll.Value = 0;
 		this.VerticalScroll.Visible = true;
-		this.VerticalScroll.Maximum = y;
+		this.ResumeLayout(true);
 	}
 
-	private Rectangle GetItemRectangle(int index)
+	protected override void OnPaint(PaintEventArgs e)
 	{
-		var y = tempObj[index].Value - this.VerticalScroll.Value;
-		if (y < 0 || y > this.ClientRectangle.Width) return default;
+		base.OnPaint(e);
 
-		return new Rectangle()
+		// set default item draw event
+		DrawItem ??= new PaintEventHandler((o, e) => e.Graphics.DrawString(o.ToString(), this.Font, new SolidBrush(this.ForeColor), e.ClipRectangle));
+
+		// execute
+		e.Graphics.TranslateTransform(-this.HorizontalScroll.Value, -this.VerticalScroll.Value);
+		foreach (var item in tempObj)
 		{
-			X = 0,
-			Y = y,
-			Width = this.Width,
-			Height = ItemHeight
-		};
+			if (item.Value < this.VerticalScroll.Value ||
+				item.Value > this.VerticalScroll.Value + this.ClientRectangle.Height + ItemHeight) continue;
+
+			DrawItem.Invoke(item.Key, new PaintEventArgs(e.Graphics, new Rectangle(0, item.Value, this.Width, ItemHeight)));
+		}
 	}
 	#endregion
 
-
+	#region Click 	
 	protected override void OnDoubleClick(EventArgs e)
 	{
+		// get real point
 		var point = this.PointToClient(MousePosition);
-		for (int index = 0; index < tempObj.Count; index++)
+		point.Y += this.VerticalScroll.Value;
+
+		// execute
+		foreach (var item in tempObj)
 		{
-			var RECT = GetItemRectangle(index);
-			if (point.Y > RECT.Y && point.Y < RECT.Y + RECT.Height)
-				SelectItem?.Invoke(tempObj[index].Key, new());
+			if (item.Value < this.VerticalScroll.Value ||
+				item.Value > this.VerticalScroll.Value + this.ClientRectangle.Height + ItemHeight) continue;
+
+			if (point.Y > item.Value && point.Y < item.Value + ItemHeight)
+				SelectItem?.Invoke(item.Key, new());
 		}
 	}
+	#endregion
+
+	#region Scroll
+	protected override void OnMouseWheel(MouseEventArgs e)
+	{
+		base.OnMouseWheel(e);
+
+		if (!VerticalScroll.Visible) return;
+
+		var value = VerticalScroll.Value - e.Delta / 5;
+		if (value >= VerticalScroll.Minimum && value <= VerticalScroll.Maximum)
+		{
+			this.VerticalScroll.Value = value;
+			this.OnScroll(new ScrollEventArgs(ScrollEventType.SmallIncrement, value));
+
+			this.Invalidate();
+		}
+	}
+
+	protected override void OnScroll(ScrollEventArgs se)
+	{
+		base.OnScroll(se);
+		PerformLayout();
+	}
+
+	protected override void OnSizeChanged(EventArgs e)
+	{
+		base.OnSizeChanged(e);
+		this.RefreshList(true);
+	}
+	#endregion
 }

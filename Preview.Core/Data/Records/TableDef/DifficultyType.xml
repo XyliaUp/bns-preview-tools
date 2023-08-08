@@ -2,16 +2,16 @@
 <table name="difficulty-type" version="0.3" autokey="false" module="326">
   <el name="table" child="1" />
   <el name="record">
-    <record name="id" type="Seq" key="y" required="y">
+    <attribute name="id" type="Seq" key="y" required="y">
       <case name="none" />
       <case name="easy" />
       <case name="normal" />
       <case name="hard" />
-    </record>
-    <record name="alias" type="String" required="y" max="70" />
-    <record name="max-party-member-count" type="Int8" default="6" min="1" max="6" />
-    <record name="default" type="Bool" />
-    <record name="is-pvp" type="Bool" />
-    <record name="name" type="Ref" ref="text" />
+    </attribute>
+    <attribute name="alias" type="String" required="y" max="70" />
+    <attribute name="max-party-member-count" type="Int8" default="6" min="1" max="6" />
+    <attribute name="default" type="Bool" />
+    <attribute name="is-pvp" type="Bool" />
+    <attribute name="name" type="Ref" ref="text" />
   </el>
 </table>

@@ -8,7 +8,7 @@ public sealed class SetPartyNumber : Reaction
 {
 	public Script_obj Target;
 
-	public byte Reg;
+	public sbyte Reg;
 
 	public int Amount;
 }

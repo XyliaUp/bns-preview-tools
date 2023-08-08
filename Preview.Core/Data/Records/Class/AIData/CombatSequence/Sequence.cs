@@ -14,13 +14,13 @@ public abstract class Sequence : BaseRecord
 	public short ID;
 
 	[Signal("attack-limit")]
-	public byte AttackLimit;
+	public sbyte AttackLimit;
 
 	[Signal("range-attack-limit")]
-	public byte RangeAttackLimit;
+	public sbyte RangeAttackLimit;
 
 	[Signal("combat-distance")]
-	public byte CombatDistance;
+	public sbyte CombatDistance;
 
 	[DefaultValue(1)]
 	[Signal("max-count")]
@@ -33,7 +33,7 @@ public abstract class Sequence : BaseRecord
 	/// 普通序列过程中调用特殊序列
 	/// </summary>
 	[Signal("special"), Repeat(5)]
-	public byte[] Special;
+	public sbyte[] Special;
 	#endregion
 
 
@@ -60,7 +60,7 @@ public abstract class Sequence : BaseRecord
 	public sealed class NormalSequence : Sequence
 	{
 		[Signal("change-min-msec")]
-		public byte ChangeMinMsec;
+		public sbyte ChangeMinMsec;
 
 		[Signal("except-summoned")]
 		public bool ExceptSummoned;
@@ -69,7 +69,7 @@ public abstract class Sequence : BaseRecord
 		public bool HideSeqStart;
 
 		[Signal("seq-start-social")]
-		public byte SeqStartSocial;
+		public sbyte SeqStartSocial;
 
 		[Signal("setup-position")]
 		public bool SetupPosition;

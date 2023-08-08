@@ -2,15 +2,15 @@
 <table name="skillacquirecondition" version="0.13" autokey="false" module="12" maxid="200000000">
   <el name="table" child="1" />
   <el name="record">
-    <record name="id" type="Int32" key="y" required="y" min="1" max="200000000" />
-    <record name="variation-index" type="Int8" key="y" required="y" min="0" max="4" />
-    <record name="variation-level" type="Int8" key="y" required="y" min="0" max="250" />
-    <record name="pc-level" type="Int16" default="1" min="1" max="70" />
-    <record name="pc-job" type="Prop_seq" seq="job" default="job-none" />
-    <record name="training-name" type="Ref" ref="text" />
-    <record name="training-icon" type="Icon" max="32767" />
-    <record name="training-description" type="Ref" ref="text" deprecated="y" />
-    <record name="main-info" type="Ref" ref="text" />
-    <record name="sub-info" type="Ref" ref="text" />
+    <attribute name="id" type="Int32" key="y" required="y" min="1" max="200000000" />
+    <attribute name="variation-index" type="Int8" key="y" required="y" min="0" max="4" />
+    <attribute name="variation-level" type="Int8" key="y" required="y" min="0" max="250" />
+    <attribute name="pc-level" type="Int16" default="1" min="1" max="70" />
+    <attribute name="pc-job" type="Prop_seq" seq="job" default="job-none" />
+    <attribute name="training-name" type="Ref" ref="text" />
+    <attribute name="training-icon" type="Icon" max="32767" />
+    <attribute name="training-description" type="Ref" ref="text" deprecated="y" />
+    <attribute name="main-info" type="Ref" ref="text" />
+    <attribute name="sub-info" type="Ref" ref="text" />
   </el>
 </table>

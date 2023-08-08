@@ -2,8 +2,8 @@
 <table name="skilltooltipattribute" version="0.10" autokey="true" module="4">
   <el name="table" child="1" />
   <el name="record">
-    <record name="alias" type="String" required="y" max="70" />
-    <record name="arg-type" type="Seq" repeat="4">
+    <attribute name="alias" type="String" required="y" max="70" />
+    <attribute name="arg-type" type="Seq" repeat="4">
       <case name="none" default="y" />
       <case name="damage-percent-min-max" />
       <case name="damage-percent" />
@@ -29,16 +29,16 @@
       <case name="r-shield-diff" />
       <case name="r-support-percent" />
       <case name="r-support-diff" />
-    </record>
-    <record name="text" type="Ref" ref="text" />
-    <record name="icon" type="Icon" max="32767" />
-    <record name="skill-modify-type" type="Seq">
+    </attribute>
+    <attribute name="text" type="Ref" ref="text" />
+    <attribute name="icon" type="Icon" max="32767" />
+    <attribute name="skill-modify-type" type="Seq">
       <case name="none" default="y" />
       <case name="recycle-duration" />
       <case name="sp-consume" />
       <case name="damage" />
       <case name="hp-drain" />
       <case name="heal-percent" />
-    </record>
+    </attribute>
   </el>
 </table>

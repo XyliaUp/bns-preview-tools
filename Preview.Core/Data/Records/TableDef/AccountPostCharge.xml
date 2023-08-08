@@ -2,9 +2,9 @@
 <table name="account-post-charge" version="0.1" autokey="true" module="6">
   <el name="table" child="1" />
   <el name="record">
-    <record name="alias" type="String" required="y" max="70" />
-    <record name="charge-money" type="Int32" default="0" min="0" max="10000000" />
-    <record name="charge-item" type="Ref" ref="item" repeat="2" />
-    <record name="charge-item-amount" type="Int32" default="0" repeat="2" min="0" max="100" />
+    <attribute name="alias" type="String" required="y" max="70" />
+    <attribute name="charge-money" type="Int32" default="0" min="0" max="10000000" />
+    <attribute name="charge-item" type="Ref" ref="item" repeat="2" />
+    <attribute name="charge-item-amount" type="Int32" default="0" repeat="2" min="0" max="100" />
   </el>
 </table>

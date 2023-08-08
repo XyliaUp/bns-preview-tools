@@ -2,7 +2,7 @@
 <table name="special-skill-gauge" version="0.1" autokey="false" module="6">
   <el name="table" child="1" />
   <el name="record">
-    <record name="job" type="Prop_seq" seq="job" key="y" required="y" />
-    <record name="gauge-increase-per-sec" type="Int16" default="0" />
+    <attribute name="job" type="Prop_seq" seq="job" key="y" required="y" />
+    <attribute name="gauge-increase-per-sec" type="Int16" default="0" />
   </el>
 </table>

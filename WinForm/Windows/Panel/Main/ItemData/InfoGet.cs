@@ -10,9 +10,9 @@ using Xylia.Preview.Data.Record;
 namespace Xylia.Match.Util;
 public class InfoGet
 {
-	readonly DataTable<Text> TextData;
+	readonly Table<Text> TextData;
 
-	public InfoGet(DataTableSet set)
+	public InfoGet(TableSet set)
 	{
 		this.Special = GetSpecial();
 		this.TextData = set.Text;

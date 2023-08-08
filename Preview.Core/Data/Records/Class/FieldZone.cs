@@ -33,7 +33,7 @@ public sealed class FieldZone : BaseRecord, IAttraction
 	public Text Desc;
 
 	[Signal("ui-text-grade")]
-	public byte UiTextGrade;
+	public sbyte UiTextGrade;
 
 	[Signal("reward-summary")]
 	public AttractionRewardSummary RewardSummary;

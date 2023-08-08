@@ -2,10 +2,10 @@
 <table name="craft-recipe-step" version="0.3" autokey="true" module="38">
   <el name="table" child="1" />
   <el name="record">
-    <record name="alias" type="String" required="y" max="50" />
-    <record name="time-cost" type="Int32" required="y" />
-    <record name="output-id" type="Int64" default="0" repeat="3" />
-    <record name="output-amount" type="Int16" default="0" repeat="3" />
-    <record name="output-customizable" type="Bool" repeat="3" />
+    <attribute name="alias" type="String" required="y" max="50" />
+    <attribute name="time-cost" type="Int32" required="y" />
+    <attribute name="output-id" type="Int64" default="0" repeat="3" />
+    <attribute name="output-amount" type="Int16" default="0" repeat="3" />
+    <attribute name="output-customizable" type="Bool" repeat="3" />
   </el>
 </table>

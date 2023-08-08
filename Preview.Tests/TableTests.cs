@@ -1,17 +1,17 @@
 ﻿using System.Data;
 using System.Diagnostics;
 
-using BnsBinTool.Core.Models;
-
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 using Xylia.Preview.Data.Helper;
 using Xylia.Preview.Data.Models.BinData.AliasTable;
 using Xylia.Preview.Data.Models.DatData;
-using Xylia.Preview.Data.Models.DatData.DatDetect;
+using Xylia.Preview.Data.Models.DatData.DataProvider;
 using Xylia.Preview.Data.Models.Definition;
 using Xylia.Preview.Data.Record;
+using Xylia.Preview.Data.Record.Test;
 using Xylia.Preview.Properties;
+
 
 namespace Xylia.Preview.Tests;
 
@@ -47,21 +47,16 @@ public class TableTests
 		var record = table[id];
 
 		Console.WriteLine(record);
-		Console.WriteLine(record.XmlInfo());
-	}
-
-
-	[TestMethod]
-	public void TableOutput()
-	{
-		new TestSet()
-			.Output("F:\\Resources\\文档\\Programming\\C#\\Xylia\\bns\\bns-preview-tools\\Preview.Core\\Data\\Records\\TableDef\\RelicOption.xml"); 
+		//Console.WriteLine(record.XmlInfo());
 	}
 
 
 
+	//[TestMethod]
 	public void Test2()
 	{
+		ClientConfiguration.LoadFrom();
+
 		//foreach (var record in Data.FileCache.Data.TextData.Where(r => 
 		//	r.alias.StartsWith("UI.ItemTooltip.") ||
 		//	r.alias.StartsWith("Name.Item.")))
@@ -90,7 +85,7 @@ public class TableTests
 }
 
 
-public sealed class TestSet : DataTableSet
+public sealed class TestSet : TableSet
 {
 	public TestSet() => this.LoadData(true, null);
 
@@ -98,15 +93,18 @@ public sealed class TestSet : DataTableSet
 	{
 		if (Tables is not null) return;
 
-		DataPath = new GetDataPath(Folder ?? CommonPath.GameFolder);
-		var data = Datafile.ReadFromBytes(DataPath.XmlData.ExtractBin(), is64Bit: DataPath.is64Bit);
-		var local = Datafile.ReadFromBytes(DataPath.LocalData.ExtractBin(), is64Bit: DataPath.is64Bit);
+		var _provider = new DefaultProvider(Folder ?? CommonPath.GameFolder);
+		this.Provider = _provider;
+
+		var data = _provider.XmlData.ExtractBin();
+		var local = _provider.LocalData.ExtractBin();
+
 		Tables = data.Tables.Concat(local.Tables).ToArray();
 
 		// auto detect
 		if (true)
 		{
-			var AliasTable = data.NameTable.Entries.CreateTable();
+			var AliasTable = data.NameTable.CreateTable();
 			this.detect.Detect(this.Tables, AliasTable);
 		}
 	}

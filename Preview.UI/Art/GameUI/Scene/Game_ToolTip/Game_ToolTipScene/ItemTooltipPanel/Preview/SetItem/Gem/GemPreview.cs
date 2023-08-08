@@ -37,7 +37,7 @@ public partial class GemPreview : UserControl
 
 
 
-	public byte PublicGrade
+	public sbyte PublicGrade
 	{
 		get => this.itemNameCell1.ItemGrade;
 		set => this.itemNameCell1.ItemGrade = this.itemNameCell2.ItemGrade = this.itemNameCell3.ItemGrade =

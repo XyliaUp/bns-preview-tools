@@ -1,8 +1,8 @@
 ﻿using Xylia.Preview.Data.Helper;
 using Xylia.Preview.Data.Record;
-using Xylia.Preview.UI.Custom.Controls.Forms;
 using Xylia.Preview.GameUI.Scene.Game_Intension;
 using Xylia.Preview.GameUI.Scene.Game_ItemGrowth2;
+using Xylia.Preview.UI.Custom.Controls.Forms;
 
 namespace Xylia.Preview.GameUI.Scene.ItemGrowth.Scene;
 public partial class EquipmentGuideScene : PreviewFrm
@@ -21,7 +21,7 @@ public partial class EquipmentGuideScene : PreviewFrm
 		var recipes = ItemTransformRecipe.QueryRecipe(ItemInfo);
 		if (recipes != null && recipes.Any()) SetPage(new ItemGrowth2Page(), "UI.ItemGrowth2.Tab.Product".GetText()).Recipes = recipes;
 
-		var itemspirit =   FileCache.Data.ItemSpirit.FirstOrDefault(o => o.MainIngredient == MyWeapon);
+		var itemspirit = FileCache.Data.ItemSpirit.FirstOrDefault(o => o.MainIngredient == MyWeapon);
 		if (itemspirit != null) SetPage(new ItemSpiritPage(), "UI.ItemSpirit.Panel.Title".GetText()).ItemSpirit = itemspirit;
 
 		if (ItemInfo.ImproveId != 0)

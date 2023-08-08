@@ -21,7 +21,7 @@ public class QuestBonusRewardSetting : BaseRecord
 	public sealed class SealedLevel : QuestBonusRewardSetting
 	{
 		[Signal("sealed-level")]
-		public byte sealedLevel;
+		public sbyte sealedLevel;
 	}
 
 	public sealed class DifficultyType : QuestBonusRewardSetting

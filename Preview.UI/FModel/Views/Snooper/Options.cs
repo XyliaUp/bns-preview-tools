@@ -62,7 +62,7 @@ public class Options
 		};
 
 		_platform = UserSettings.Default.OverridedPlatform;
-		_game = FileCache.PakData.Provider.InternalGameName.ToUpper();
+		_game = FileCache.Provider.InternalGameName.ToUpper();
 
 		SelectModel(Guid.Empty);
 	}

@@ -2,9 +2,9 @@
 <table name="ranking2-contents" version="5.1" autokey="false" module="6">
   <el name="table" child="1" />
   <el name="record">
-    <record name="id" type="Int32" key="y" required="y" min="1" />
-    <record name="alias" type="String" required="y" max="70" />
-    <record name="contents-type" type="Seq" required="y">
+    <attribute name="id" type="Int32" key="y" required="y" min="1" />
+    <attribute name="alias" type="String" required="y" max="70" />
+    <attribute name="contents-type" type="Seq" required="y">
       <case name="invalid" />
       <case name="duel-death-match-1vs1" />
       <case name="duel-death-match-3vs3" />
@@ -28,21 +28,21 @@
       <case name="sealed-dungeon-3" />
       <case name="sealed-dungeon-4" />
       <case name="sealed-dungeon-5" />
-    </record>
-    <record name="player-type" type="Seq" required="y">
+    </attribute>
+    <attribute name="player-type" type="Seq" required="y">
       <case name="invalid" />
       <case name="pc" />
       <case name="guild" />
       <case name="challenge-party" />
-    </record>
-    <record name="score-type" type="Seq" required="y">
+    </attribute>
+    <attribute name="score-type" type="Seq" required="y">
       <case name="invalid" />
       <case name="update" />
       <case name="best-update" />
-    </record>
-    <record name="minimum-score" type="Int32" default="1" min="1" />
-    <record name="contents-banner-img" type="XUnknown2" />
-    <record name="contents-name" type="Ref" ref="text" />
-    <record name="sort-number" type="Int8" default="1" />
+    </attribute>
+    <attribute name="minimum-score" type="Int32" default="1" min="1" />
+    <attribute name="contents-banner-img" type="XUnknown2" />
+    <attribute name="contents-name" type="Ref" ref="text" />
+    <attribute name="sort-number" type="Int8" default="1" />
   </el>
 </table>

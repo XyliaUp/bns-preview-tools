@@ -234,9 +234,13 @@ public class Model : IDisposable
         for (var s = 0; s < Sections.Length; s++)
         {
             var section = lod.Sections.Value[s];
-            Sections[s] = new Section(section.MaterialIndex, section.NumFaces * _faceSize, section.FirstIndex);
-            if (section.IsValid) Sections[s].SetupMaterial(Materials[section.MaterialIndex]);
-        }
+            if (section.IsValid)
+			{
+				Sections[s] = new Section(section.MaterialIndex, section.NumFaces * _faceSize, section.FirstIndex);
+				Sections[s].SetupMaterial(Materials[section.MaterialIndex]);
+            }
+			else Sections[s] = new Section(0, 0, 0);
+		}
 
         var t = transform ?? Transform.Identity;
         _previousMatrix = t.Matrix;

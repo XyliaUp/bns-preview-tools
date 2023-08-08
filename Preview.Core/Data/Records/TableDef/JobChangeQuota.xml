@@ -2,6 +2,6 @@
 <table name="job-change-quota" version="1.0" autokey="false" module="6">
   <el name="table" child="1" />
   <el name="record">
-	<record name="alias" type="String" required="y" />
+	<attribute name="alias" type="String" required="y" />
   </el>
 </table>

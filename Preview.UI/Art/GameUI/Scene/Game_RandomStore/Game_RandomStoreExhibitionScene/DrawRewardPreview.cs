@@ -3,10 +3,6 @@ using Xylia.Preview.Data.Helper;
 using Xylia.Preview.Data.Record;
 
 namespace Xylia.Preview.GameUI.Scene.Game_RandomStore;
-
-/// <summary>
-/// 聚灵阁次数奖励
-/// </summary>
 [DesignTimeVisible(false)]
 public partial class DrawRewardPreview : UserControl
 {

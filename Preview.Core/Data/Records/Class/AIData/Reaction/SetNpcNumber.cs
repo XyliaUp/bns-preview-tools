@@ -11,7 +11,7 @@ public class SetNpcNumber : Reaction
 {
 	public Script_obj Target;
 
-	public byte Reg;
+	public sbyte Reg;
 
 	public int Amount;
 }

@@ -2,7 +2,7 @@
 <table name="key-cap" version="0.12" autokey="false" module="4">
   <el name="table" child="1" />
   <el name="record">
-    <record name="key-code" type="Seq16" key="y" required="y">
+    <attribute name="key-code" type="Seq16" key="y" required="y">
       <case name="none" />
       <case name="0" />
       <case name="1" />
@@ -134,12 +134,12 @@
       <case name="mouse-left-button-joypad-replaceable" />
       <case name="mouse-right-button-joypad-replaceable" />
       <case name="escape-joypad-replaceable" />
-    </record>
-    <record name="name" type="Ref" ref="text" />
-    <record name="short-name" type="Ref" ref="text" />
-    <record name="image" type="Ref" ref="text" />
-    <record name="icon" type="Icon" max="32767" />
-    <record name="scroll-imageset" type="String" max="70" />
-    <record name="scroll-imageset-scale" type="Float32" default="1.0" />
+    </attribute>
+    <attribute name="name" type="Ref" ref="text" />
+    <attribute name="short-name" type="Ref" ref="text" />
+    <attribute name="image" type="Ref" ref="text" />
+    <attribute name="icon" type="Icon" max="32767" />
+    <attribute name="scroll-imageset" type="String" max="70" />
+    <attribute name="scroll-imageset-scale" type="Float32" default="1.0" />
   </el>
 </table>

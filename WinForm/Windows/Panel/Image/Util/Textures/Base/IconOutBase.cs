@@ -7,6 +7,7 @@ using CUE4Parse.BNS;
 
 using Xylia.Preview.Data.Helper;
 using Xylia.Preview.Data.Record;
+using Xylia.Preview.Properties;
 
 namespace Xylia.Match.Util.Paks.Textures;
 public abstract class IconOutBase : IDisposable
@@ -21,7 +22,7 @@ public abstract class IconOutBase : IDisposable
 	#endregion
 
 	#region	Fields
-	protected DataTableSet set;
+	protected TableSet set;
 
 	internal BlockingCollection<QuoteInfo> QuoteInfos = new();
 
@@ -43,7 +44,7 @@ public abstract class IconOutBase : IDisposable
 		this.LogHelper = new OutLogHelper(Path.GetDirectoryName(this.OutputDirectory));  
 		this.Action = action;
 
-		set = new DataTableSet();
+		set = new TableSet();
 		set.LoadData(Folder: this._gameDirectory);
 		#endregion
 
@@ -75,9 +76,11 @@ public abstract class IconOutBase : IDisposable
 		#endregion
 
 		#region Data
-		var PakData = new PakData(this._gameDirectory);
-		PakData.LoadAssetRegistry();
+		var mode = Settings.LoadMode;
+		Settings.LoadMode = LoadMode.LoadOnInit;
 
+		var PakData = new GameFileProvider(this._gameDirectory);
+		Settings.LoadMode = mode;
 
 		int Count = 0;
 		Directory.CreateDirectory(OutputDirectory);

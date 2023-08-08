@@ -70,7 +70,7 @@ public sealed class Quest : BaseRecord
 	public bool CompletedList;
 
 	[Side(ReleaseSide.Client)]
-	public /*Grade*/ byte Grade;
+	public /*Grade*/ sbyte Grade;
 
 	public bool Tutorial;
 
@@ -79,7 +79,7 @@ public sealed class Quest : BaseRecord
 	public bool ShowTutorialTag;
 
 	[Signal("last-mission-step")]
-	public byte LastMissionStep;
+	public sbyte LastMissionStep;
 
 
 
@@ -132,7 +132,7 @@ public sealed class Quest : BaseRecord
 	public BDayOfWeek ResetDayOfWeek;
 
 	[Signal("reset-day-of-month")]
-	public byte ResetDayOfMonth;
+	public sbyte ResetDayOfMonth;
 
 	[Signal("activated-faction")]
 	public Faction ActivatedFaction;
@@ -268,25 +268,25 @@ public sealed class Quest : BaseRecord
 	public short ValidDateStartYear;
 
 	[Signal("valid-date-start-month")]
-	public byte ValidDateStartMonth;
+	public sbyte ValidDateStartMonth;
 
 	[Signal("valid-date-start-day")]
-	public byte ValidDateStartDay;
+	public sbyte ValidDateStartDay;
 
 	[Signal("valid-date-end-year")]
 	public short ValidDateEndYear;
 
 	[Signal("valid-date-end-month")]
-	public byte ValidDateEndMonth;
+	public sbyte ValidDateEndMonth;
 
 	[Signal("valid-date-end-day")]
-	public byte ValidDateEndDay;
+	public sbyte ValidDateEndDay;
 
 	[Signal("valid-time-start-hour")]
-	public byte ValidTimeStartHour;
+	public sbyte ValidTimeStartHour;
 
 	[Signal("valid-time-end-hour")]
-	public byte ValidTimeEndHour;
+	public sbyte ValidTimeEndHour;
 
 	[Signal("valid-dayofweek-sun")]
 	public bool ValidDayofweekSun;
@@ -321,19 +321,19 @@ public sealed class Quest : BaseRecord
 	public Dungeon Dungeon2;
 
 	[Signal("duel-mission-steps")]
-	public byte DuelMissionSteps;
+	public sbyte DuelMissionSteps;
 
 	[Signal("duel-missions")]
-	public byte DuelMissions;
+	public sbyte DuelMissions;
 
 	[Signal("duel-cases")]
-	public byte DuelCases;
+	public sbyte DuelCases;
 
 	[Signal("duel-case-subtypes")]
 	public short DuelCaseSubtypes;
 
 	[Signal("exceed-level-next-level")]
-	public byte ExceedLevelNextLevel;
+	public sbyte ExceedLevelNextLevel;
 
 	[Signal("contents-reset")]
 	public ContentsReset ContentsReset;
@@ -427,10 +427,11 @@ public sealed class Quest : BaseRecord
 			var res = respath();
 			if (res is null) return null;
 
-			return $"BNSR/Content/Art/UI/GameUI/Resource/GameUI_Map_Indicator/{res}".GetUObject().GetImage();
+			return FileCache.Provider.LoadObject($"BNSR/Content/Art/UI/GameUI/Resource/GameUI_Map_Indicator/{res}")?.GetImage();
 		}
 	}
 	#endregion
+
 
 	#region Functions
 	public override void LoadData(XmlElement data)
@@ -444,15 +445,6 @@ public sealed class Quest : BaseRecord
 		GiveupLoss = new(() => LoadChildren<GiveupLoss>(data, "giveup-loss"));
 		Complete = new(() => LoadChildren<Complete>(data, "complete"));
 	}
-
-
-	//protected bool SerializeChild(ReleaseSide ReleaseSide) => !this.Retired || ReleaseSide == ReleaseSide.Server;
-	public void Save(string OutFolder, ReleaseSide side = default)
-	{
-		Directory.CreateDirectory(OutFolder);
-		XmlInfo(side).Save(OutFolder + $"\\questdata.{id}.xml");
-	}
-
 
 	public static void GetEpic(Action<Quest> act, JobSeq TargetJob = JobSeq.소환사) => GetEpic("q_epic_221", act, TargetJob);
 

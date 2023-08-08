@@ -41,7 +41,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_RandomStore
 			this.ItemShow.ForeColor = System.Drawing.Color.Black;
 			this.ItemShow.HeightDiff = 0;
 			this.ItemShow.ItemData = null;
-			this.ItemShow.ItemGrade = ((byte)(7));
+			this.ItemShow.ItemGrade = ((sbyte)(7));
 			this.ItemShow.ItemIcon = ((System.Drawing.Bitmap)(resources.GetObject("ItemShow.ItemIcon")));
 			this.ItemShow.ItemName = "ItemName";
 			this.ItemShow.Location = new System.Drawing.Point(4, 0);

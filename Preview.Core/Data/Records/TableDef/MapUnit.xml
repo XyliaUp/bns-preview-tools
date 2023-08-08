@@ -2,15 +2,15 @@
 <table name="mapunit" version="1.77" autokey="false" module="12">
   <el name="table" child="1" />
   <el name="record">
-    <record name="id" type="Int32" key="y" required="y" />
-    <record name="alias" type="String" required="y" max="70" />
-    <record name="mapid" type="Int16" required="y" />
-    <record name="zone-id" type="Int32" default="0" />
-    <record name="is-phasing-unit" type="Bool" />
-    <record name="position-x" type="Float32" default="0" />
-    <record name="position-y" type="Float32" default="0" />
-    <record name="position-z" type="Float32" default="0" />
-    <record name="category" type="Seq">
+    <attribute name="id" type="Int32" key="y" required="y" />
+    <attribute name="alias" type="String" required="y" max="70" />
+    <attribute name="mapid" type="Int16" required="y" />
+    <attribute name="zone-id" type="Int32" default="0" />
+    <attribute name="is-phasing-unit" type="Bool" />
+    <attribute name="position-x" type="Float32" default="0" />
+    <attribute name="position-y" type="Float32" default="0" />
+    <attribute name="position-z" type="Float32" default="0" />
+    <attribute name="category" type="Seq">
       <case name="none" default="y" />
       <case name="player" />
       <case name="party" />
@@ -52,104 +52,104 @@
       <case name="party-battle-startpoint" />
       <case name="party-battle-enemy" />
       <case name="fishing-field" />
-    </record>
-    <record name="map-depth" type="Seq">
+    </attribute>
+    <attribute name="map-depth" type="Seq">
       <case name="1" default="y" />
       <case name="2" />
       <case name="3" />
       <case name="4" />
       <case name="5" />
-    </record>
-    <record name="arena-dungeon-map-depth" type="Seq">
+    </attribute>
+    <attribute name="arena-dungeon-map-depth" type="Seq">
       <case name="1" default="y" />
       <case name="2" />
       <case name="3" />
       <case name="4" />
       <case name="5" />
-    </record>
-    <record name="zoom" type="Bool" />
-    <record name="rotate" type="Bool" />
-    <record name="click" type="Bool" />
-    <record name="front" type="Bool" />
-    <record name="show-tooltip" type="Bool" default="y" />
-    <record name="name2" type="Ref" ref="text" />
-    <record name="opacity" type="Int16" default="0" />
-    <record name="size-x" type="Int16" default="0" />
-    <record name="size-y" type="Int16" default="0" />
-    <record name="oufofsight-size-x" type="Int16" default="0" />
-    <record name="oufofsight-size-y" type="Int16" default="0" />
-    <record name="imageset" type="XUnknown2" />
-    <record name="over-imageset" type="XUnknown2" />
-    <record name="pressed-imageset" type="XUnknown2" />
-    <record name="outofsight-imageset" type="XUnknown2" />
-    <record name="outofsight-over-imageset" type="XUnknown2" />
-    <record name="outofsight-pressed-imageset" type="XUnknown2" />
-    <record name="center-pos-x" type="Float32" default="-1.0" />
-    <record name="center-pos-y" type="Float32" default="-1.0" />
+    </attribute>
+    <attribute name="zoom" type="Bool" />
+    <attribute name="rotate" type="Bool" />
+    <attribute name="click" type="Bool" />
+    <attribute name="front" type="Bool" />
+    <attribute name="show-tooltip" type="Bool" default="y" />
+    <attribute name="name2" type="Ref" ref="text" />
+    <attribute name="opacity" type="Int16" default="0" />
+    <attribute name="size-x" type="Int16" default="0" />
+    <attribute name="size-y" type="Int16" default="0" />
+    <attribute name="oufofsight-size-x" type="Int16" default="0" />
+    <attribute name="oufofsight-size-y" type="Int16" default="0" />
+    <attribute name="imageset" type="XUnknown2" />
+    <attribute name="over-imageset" type="XUnknown2" />
+    <attribute name="pressed-imageset" type="XUnknown2" />
+    <attribute name="outofsight-imageset" type="XUnknown2" />
+    <attribute name="outofsight-over-imageset" type="XUnknown2" />
+    <attribute name="outofsight-pressed-imageset" type="XUnknown2" />
+    <attribute name="center-pos-x" type="Float32" default="-1.0" />
+    <attribute name="center-pos-y" type="Float32" default="-1.0" />
     <sub name="static" />
     <sub name="quest">
-      <record name="ignore-quest-map-location" type="Bool" />
-      <record name="force-quest-indicator-map-depth" type="Seq">
+      <attribute name="ignore-quest-map-location" type="Bool" />
+      <attribute name="force-quest-indicator-map-depth" type="Seq">
         <case name="1" default="y" />
         <case name="2" />
         <case name="3" />
         <case name="4" />
         <case name="5" />
-      </record>
-      <record name="force-tendency-simple-quest-indicator-to-change" type="Bool" />
+      </attribute>
+      <attribute name="force-tendency-simple-quest-indicator-to-change" type="Bool" />
     </sub>
     <sub name="link">
-      <record name="link-mapid" type="Int16" default="0" />
-      <record name="link-map-location-x" type="Float32" default="0" />
-      <record name="link-map-location-y" type="Float32" default="0" />
+      <attribute name="link-mapid" type="Int16" default="0" />
+      <attribute name="link-map-location-x" type="Float32" default="0" />
+      <attribute name="link-map-location-y" type="Float32" default="0" />
     </sub>
     <sub name="npc">
-      <record name="npc" type="Ref" ref="npc" />
-      <record name="ignore-object-pos" type="Bool" />
-      <record name="in-sight-only" type="Bool" />
-      <record name="many-counts" type="Bool" />
+      <attribute name="npc" type="Ref" ref="npc" />
+      <attribute name="ignore-object-pos" type="Bool" />
+      <attribute name="in-sight-only" type="Bool" />
+      <attribute name="many-counts" type="Bool" />
     </sub>
     <sub name="boss">
-      <record name="npc" type="Ref" ref="npc" />
-      <record name="combat-imageset" type="XUnknown2" />
-      <record name="combat-over-imageset" type="XUnknown2" />
-      <record name="combat-pressed-imageset" type="XUnknown2" />
-      <record name="combat-outofsight-imageset" type="XUnknown2" />
-      <record name="combat-outofsight-over-imageset" type="XUnknown2" />
-      <record name="combat-outofsight-pressed-imageset" type="XUnknown2" />
-      <record name="many-counts" type="Bool" />
+      <attribute name="npc" type="Ref" ref="npc" />
+      <attribute name="combat-imageset" type="XUnknown2" />
+      <attribute name="combat-over-imageset" type="XUnknown2" />
+      <attribute name="combat-pressed-imageset" type="XUnknown2" />
+      <attribute name="combat-outofsight-imageset" type="XUnknown2" />
+      <attribute name="combat-outofsight-over-imageset" type="XUnknown2" />
+      <attribute name="combat-outofsight-pressed-imageset" type="XUnknown2" />
+      <attribute name="many-counts" type="Bool" />
     </sub>
     <sub name="airdash">
-      <record name="env2spawn" type="Ref" ref="zoneenv2spawn" />
+      <attribute name="env2spawn" type="Ref" ref="zoneenv2spawn" />
     </sub>
     <sub name="env">
-      <record name="env2" type="Ref" ref="zoneenv2" />
+      <attribute name="env2" type="Ref" ref="zoneenv2" />
     </sub>
     <sub name="attraction">
-      <record name="attraction" type="TRef" />
-      <record name="attraction-position-x" type="Float32" default="0" />
-      <record name="attraction-position-y" type="Float32" default="0" />
+      <attribute name="attraction" type="TRef" />
+      <attribute name="attraction-position-x" type="Float32" default="0" />
+      <attribute name="attraction-position-y" type="Float32" default="0" />
     </sub>
     <sub name="npc-group">
-      <record name="npc" type="Ref" ref="npc" />
+      <attribute name="npc" type="Ref" ref="npc" />
     </sub>
     <sub name="guild-battle-field-portal">
-      <record name="env2spawn" type="Ref" ref="zoneenv2spawn" />
-      <record name="disable-imageset" type="XUnknown2" />
-      <record name="disable-over-imageset" type="XUnknown2" />
-      <record name="disable-pressed-imageset" type="XUnknown2" />
-      <record name="disable-outofsight-imageset" type="XUnknown2" />
-      <record name="disable-outofsight-over-imageset" type="XUnknown2" />
-      <record name="disable-outofsight-pressed-imageset" type="XUnknown2" />
+      <attribute name="env2spawn" type="Ref" ref="zoneenv2spawn" />
+      <attribute name="disable-imageset" type="XUnknown2" />
+      <attribute name="disable-over-imageset" type="XUnknown2" />
+      <attribute name="disable-pressed-imageset" type="XUnknown2" />
+      <attribute name="disable-outofsight-imageset" type="XUnknown2" />
+      <attribute name="disable-outofsight-over-imageset" type="XUnknown2" />
+      <attribute name="disable-outofsight-pressed-imageset" type="XUnknown2" />
     </sub>
     <sub name="party-battle-startpoint-alpha">
-      <record name="enemy-side-imageset" type="XUnknown2" />
+      <attribute name="enemy-side-imageset" type="XUnknown2" />
     </sub>
     <sub name="party-battle-startpoint-beta">
-      <record name="enemy-side-imageset" type="XUnknown2" />
+      <attribute name="enemy-side-imageset" type="XUnknown2" />
     </sub>
     <sub name="fishing-field">
-      <record name="fishing-point-env" type="Ref" ref="zoneenv2" />
+      <attribute name="fishing-point-env" type="Ref" ref="zoneenv2" />
     </sub>
   </el>
 </table>

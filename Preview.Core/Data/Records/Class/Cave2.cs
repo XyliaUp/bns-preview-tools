@@ -7,7 +7,7 @@ namespace Xylia.Preview.Data.Record;
 public sealed class Cave2 : BaseRecord, IAttraction
 {
 	[Signal("ui-text-grade")]
-	public byte UiTextGrade;
+	public sbyte UiTextGrade;
 
 	[Signal("cave2-name2")]
 	public Text Cave2Name2;
@@ -25,10 +25,10 @@ public sealed class Cave2 : BaseRecord, IAttraction
 	public bool ArenaDisableZonePhase;
 
 	[Signal("required-level")]
-	public byte RequiredLevel;
+	public sbyte RequiredLevel;
 
 	[Signal("required-mastery-level")]
-	public byte RequiredMasteryLevel;
+	public sbyte RequiredMasteryLevel;
 
 	[Signal("quest-for-ignoring-required-level")]
 	public string QuestForIgnoringRequiredLevel;

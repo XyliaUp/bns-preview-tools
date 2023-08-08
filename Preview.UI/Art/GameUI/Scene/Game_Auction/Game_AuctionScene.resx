@@ -97,6 +97,39 @@
   <data name="ItemList.AutoScroll" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <metadata name="PageControl.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <data name="Page_Info.Size" type="System.Drawing.Size, System.Drawing">
+    <value>136, 22</value>
+  </data>
+  <data name="Page_Info.Text" xml:space="preserve">
+    <value>Page</value>
+  </data>
+  <data name="toolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>133, 6</value>
+  </data>
+  <data name="Page_Prev.Size" type="System.Drawing.Size, System.Drawing">
+    <value>136, 22</value>
+  </data>
+  <data name="Page_Prev.Text" xml:space="preserve">
+    <value>Prev Page</value>
+  </data>
+  <data name="Page_Next.Size" type="System.Drawing.Size, System.Drawing">
+    <value>136, 22</value>
+  </data>
+  <data name="Page_Next.Text" xml:space="preserve">
+    <value>Next Page</value>
+  </data>
+  <data name="PageControl.Size" type="System.Drawing.Size, System.Drawing">
+    <value>137, 76</value>
+  </data>
+  <data name="&gt;&gt;PageControl.Name" xml:space="preserve">
+    <value>PageControl</value>
+  </data>
+  <data name="&gt;&gt;PageControl.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="loader.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         R0lGODlhLAAsANU3ABsiLRceKh8mMSIpNCoxOyYtODY9Ry40PzpBSzE4Qj5ETk5TXEJIUUZMVGBmbkpP
@@ -363,7 +396,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;panel1.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="ItemPreview_Search.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft YaHei UI, 13px</value>
@@ -417,7 +450,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;panel2.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -430,6 +463,30 @@
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Item Search</value>
+  </data>
+  <data name="&gt;&gt;Page_Info.Name" xml:space="preserve">
+    <value>Page_Info</value>
+  </data>
+  <data name="&gt;&gt;Page_Info.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator1.Name" xml:space="preserve">
+    <value>toolStripSeparator1</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Page_Prev.Name" xml:space="preserve">
+    <value>Page_Prev</value>
+  </data>
+  <data name="&gt;&gt;Page_Prev.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Page_Next.Name" xml:space="preserve">
+    <value>Page_Next</value>
+  </data>
+  <data name="&gt;&gt;Page_Next.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>Game_AuctionScene</value>

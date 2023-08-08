@@ -15,13 +15,13 @@ public sealed class ItemBrandTooltip : BaseRecord
 	public Item.GameCategory3Seq GameCategory3;
 
 	[Signal("item-grade")]
-	public byte ItemGrade;
+	public sbyte ItemGrade;
 
 	[Signal("equip-level")]
-	public byte EquipLevel;
+	public sbyte EquipLevel;
 
 	[Signal("equip-mastery-level")]
-	public byte EquipMasteryLevel;
+	public sbyte EquipMasteryLevel;
 
 	[Signal("equip-job-check") , Repeat(4)]
 	public JobSeq[] EquipJobCheck;
@@ -33,10 +33,10 @@ public sealed class ItemBrandTooltip : BaseRecord
 	public RaceSeq2 EquipRace;
 
 	[Signal("equip-solo-duel-grade")]
-	public byte EquipSoloDuelGrade;
+	public sbyte EquipSoloDuelGrade;
 
 	[Signal("equip-team-duel-grade")]
-	public byte EquipTeamDuelGrade;
+	public sbyte EquipTeamDuelGrade;
 
 	public string Icon;
 

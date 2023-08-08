@@ -2,56 +2,56 @@
 <table name="boast-event" version="2.0" autokey="false" module="6" maxid="30000">
   <el name="table" child="1" />
   <el name="record">
-    <record name="id" type="Int16" key="y" required="y" min="1" max="30000" />
-    <record name="alias" type="String" required="y" max="70" />
-    <record name="broadcast" type="Seq" required="y">
+    <attribute name="id" type="Int16" key="y" required="y" min="1" max="30000" />
+    <attribute name="alias" type="String" required="y" max="70" />
+    <attribute name="broadcast" type="Seq" required="y">
       <case name="guild" />
       <case name="world" />
-    </record>
+    </attribute>
     <sub name="transform-item">
-      <record name="boast-from-recipe" type="Ref" ref="ItemTransformRecipe" required="y" />
-      <record name="boast-item" type="Ref" ref="item" required="y" />
+      <attribute name="boast-from-recipe" type="Ref" ref="ItemTransformRecipe" required="y" />
+      <attribute name="boast-item" type="Ref" ref="item" required="y" />
     </sub>
     <sub name="transform-item-convert">
-      <record name="boast-from-recipe" type="Ref" ref="ItemTransformRecipe" required="y" />
-      <record name="boast-item" type="Ref" ref="item" required="y" />
+      <attribute name="boast-from-recipe" type="Ref" ref="ItemTransformRecipe" required="y" />
+      <attribute name="boast-item" type="Ref" ref="item" required="y" />
     </sub>
     <sub name="buy-random-store-item">
-      <record name="boast-from-random-store" type="Ref" ref="randomstore" required="y" />
-      <record name="boast-item" type="Ref" ref="item" required="y" />
+      <attribute name="boast-from-random-store" type="Ref" ref="randomstore" required="y" />
+      <attribute name="boast-item" type="Ref" ref="item" required="y" />
     </sub>
     <sub name="acquire-item-reward">
-      <record name="boast-from-decomposed-item" type="Ref" ref="item" required="y" />
-      <record name="boast-item" type="Ref" ref="item" required="y" />
+      <attribute name="boast-from-decomposed-item" type="Ref" ref="item" required="y" />
+      <attribute name="boast-item" type="Ref" ref="item" required="y" />
     </sub>
     <sub name="awakening-item">
-      <record name="boast-item" type="Ref" ref="item" required="y" />
+      <attribute name="boast-item" type="Ref" ref="item" required="y" />
     </sub>
     <sub name="complete-achievement">
-      <record name="boast-achievement" type="Ref" ref="achievement" required="y" />
+      <attribute name="boast-achievement" type="Ref" ref="achievement" required="y" />
     </sub>
     <sub name="acquire-env-reward">
-      <record name="boast-from-env" type="Ref" ref="zoneenv2" required="y" />
-      <record name="boast-item" type="Ref" ref="item" required="y" />
+      <attribute name="boast-from-env" type="Ref" ref="zoneenv2" required="y" />
+      <attribute name="boast-item" type="Ref" ref="item" required="y" />
     </sub>
     <sub name="acquire-npc-reward">
-      <record name="item-grade" type="Int8" default="2" min="1" max="8" />
+      <attribute name="item-grade" type="Int8" default="2" min="1" max="8" />
     </sub>
     <sub name="growth-item">
-      <record name="item-grade" type="Int8" default="2" min="1" max="8" />
+      <attribute name="item-grade" type="Int8" default="2" min="1" max="8" />
     </sub>
     <sub name="process-item-fusion">
-      <record name="item-grade" type="Int8" default="2" min="1" max="8" />
+      <attribute name="item-grade" type="Int8" default="2" min="1" max="8" />
     </sub>
     <sub name="treasureboard-season-reward">
-      <record name="boast-item" type="Ref" ref="item" required="y" />
+      <attribute name="boast-item" type="Ref" ref="item" required="y" />
     </sub>
     <sub name="treasureboard-reward">
-      <record name="boast-item" type="Ref" ref="item" required="y" />
+      <attribute name="boast-item" type="Ref" ref="item" required="y" />
     </sub>
     <sub name="improve-item">
-      <record name="improve-id" type="Int32" required="y" />
-      <record name="improve-level" type="Int8" required="y" />
+      <attribute name="improve-id" type="Int32" required="y" />
+      <attribute name="improve-level" type="Int8" required="y" />
     </sub>
   </el>
 </table>

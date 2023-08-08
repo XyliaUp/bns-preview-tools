@@ -34,5 +34,5 @@ public sealed class ContentQuota : BaseRecord
 	public BDayOfWeek ChargeDayOfWeek;
 
 	[Signal("charge-time")]
-	public byte ChargeTime;
+	public sbyte ChargeTime;
 }

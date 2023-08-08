@@ -3,23 +3,23 @@
   <el name="table" child="1" />
   <el name="record">
     <sub name="seed">
-      <record name="seed-item" type="Ref" ref="item" repeat="42" />
-      <record name="seed-item-group" type="Ref" ref="item-graph-seed-group" />
-      <record name="seed-item-sub-group" type="Seq" repeat="42">
+      <attribute name="seed-item" type="Ref" ref="item" repeat="42" />
+      <attribute name="seed-item-group" type="Ref" ref="item-graph-seed-group" />
+      <attribute name="seed-item-sub-group" type="Seq" repeat="42">
         <case name="sub-group-1" default="y" />
         <case name="sub-group-2" />
-      </record>
-      <record name="node-type" type="Seq" required="y">
+      </attribute>
+      <attribute name="node-type" type="Seq" required="y">
         <case name="seed-normal" />
         <case name="seed-black-sky" />
-      </record>
-      <record name="attribute-group" type="Seq">
+      </attribute>
+      <attribute name="attribute-group" type="Seq">
         <case name="none" default="y" />
         <case name="attribute-group-1" />
         <case name="attribute-group-2" />
-      </record>
-      <record name="item-equip-type" type="Seq" seq="equip-type" required="y" />
-      <record name="growth-category" type="Seq">
+      </attribute>
+      <attribute name="item-equip-type" type="Seq" seq="equip-type" required="y" />
+      <attribute name="growth-category" type="Seq">
         <case name="none" default="y" />
         <case name="dungeon" />
         <case name="raid" />
@@ -27,44 +27,44 @@
         <case name="attribute" />
         <case name="etc1" />
         <case name="etc2" />
-      </record>
-      <record name="row" type="Int16" default="0" min="0" max="30000" />
-      <record name="column" type="Int16" default="0" min="0" max="30000" />
+      </attribute>
+      <attribute name="row" type="Int16" default="0" min="0" max="30000" />
+      <attribute name="column" type="Int16" default="0" min="0" max="30000" />
     </sub>
     <sub name="edge">
-      <record name="edge-type" type="Seq" required="y">
+      <attribute name="edge-type" type="Seq" required="y">
         <case name="growth" />
         <case name="awaken" />
         <case name="transform" />
         <case name="jump-transform" />
         <case name="purification" />
-      </record>
-      <record name="attribute-group" type="Seq">
+      </attribute>
+      <attribute name="attribute-group" type="Seq">
         <case name="none" default="y" />
         <case name="attribute-group-1" />
         <case name="attribute-group-2" />
-      </record>
-      <record name="seed-item-sub-group" type="Seq">
+      </attribute>
+      <attribute name="seed-item-sub-group" type="Seq">
         <case name="sub-group-1" default="y" />
         <case name="sub-group-2" />
-      </record>
-      <record name="feed-item" type="Ref" ref="item" />
-      <record name="feed-recipe" type="Ref" ref="ItemTransformRecipe" />
-      <record name="start-item" type="Ref" ref="item" required="y" />
-      <record name="start-orientation" type="Seq">
+      </attribute>
+      <attribute name="feed-item" type="Ref" ref="item" />
+      <attribute name="feed-recipe" type="Ref" ref="ItemTransformRecipe" />
+      <attribute name="start-item" type="Ref" ref="item" required="y" />
+      <attribute name="start-orientation" type="Seq">
         <case name="horizontal" />
         <case name="vertical" default="y" />
-      </record>
-      <record name="end-item" type="Ref" ref="item" required="y" />
-      <record name="end-orientation" type="Seq">
+      </attribute>
+      <attribute name="end-item" type="Ref" ref="item" required="y" />
+      <attribute name="end-orientation" type="Seq">
         <case name="horizontal" />
         <case name="vertical" default="y" />
-      </record>
-      <record name="success-probability" type="Seq">
+      </attribute>
+      <attribute name="success-probability" type="Seq">
         <case name="definite" default="y" />
         <case name="stochastic" />
-      </record>
-      <record name="has-arrow" type="Bool" default="y" />
+      </attribute>
+      <attribute name="has-arrow" type="Bool" default="y" />
     </sub>
   </el>
 </table>

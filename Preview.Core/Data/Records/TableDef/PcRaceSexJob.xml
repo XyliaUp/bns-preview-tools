@@ -2,8 +2,8 @@
 <table name="pc-race-sex-job" version="0.3" autokey="false" module="14">
   <el name="table" child="1" />
   <el name="record">
-    <record name="race" type="Prop_seq" seq="race" key="y" required="y" />
-    <record name="sex" type="Prop_seq" seq="sex" key="y" required="y" />
-    <record name="job" type="Prop_seq" seq="job" key="y" required="y" />
+    <attribute name="race" type="Prop_seq" seq="race" key="y" required="y" />
+    <attribute name="sex" type="Prop_seq" seq="sex" key="y" required="y" />
+    <attribute name="job" type="Prop_seq" seq="job" key="y" required="y" />
   </el>
 </table>

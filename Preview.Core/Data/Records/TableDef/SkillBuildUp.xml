@@ -2,11 +2,11 @@
 <table name="skill-build-up" version="0.2" autokey="false" module="2054">
   <el name="table" child="1" />
   <el name="record">
-    <record name="alias" type="String" required="y" max="70" />
-    <record name="parent-skill3-id" type="Int32" key="y" required="y" />
-    <record name="max-level" type="Int8" required="y" min="0" max="15" />
-    <record name="required-build-up-point" type="Int8" default="0" repeat="20" min="0" max="15" />
-    <record name="required-build-up-point-level" type="Int8" repeat="20" hidden="y" />
-    <record name="skill-modify-info" type="Ref" ref="skill-modify-info" repeat="20" />
+    <attribute name="alias" type="String" required="y" max="70" />
+    <attribute name="parent-skill3-id" type="Int32" key="y" required="y" />
+    <attribute name="max-level" type="Int8" required="y" min="0" max="15" />
+    <attribute name="required-build-up-point" type="Int8" default="0" repeat="20" min="0" max="15" />
+    <attribute name="required-build-up-point-level" type="Int8" repeat="20" hidden="y" />
+    <attribute name="skill-modify-info" type="Ref" ref="skill-modify-info" repeat="20" />
   </el>
 </table>

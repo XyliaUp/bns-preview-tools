@@ -2,19 +2,19 @@
 <table name="skill-by-equipment" version="0.10" autokey="true" module="2054">
   <el name="table" child="1" />
   <el name="record">
-    <record name="alias" type="String" required="y" max="70" />
-    <record name="skill3-id" type="Int32" default="0" repeat="4" />
-    <record name="block-skill3-id" type="Int32" default="0" repeat="4" />
-    <record name="skill-tree-id" type="Int32" default="0" repeat="4" />
-    <record name="context-script" type="Ref" ref="contextscript" repeat="4" />
-    <record name="tooltip-text" type="Ref" ref="text" repeat="4" />
-    <record name="skill-attack-power-min-param1-slot" type="Int32" default="0" repeat="4" />
-    <record name="skill-attack-power-max-param1-slot" type="Int32" default="0" repeat="4" />
-    <record name="skill-attack-power-min-param2-slot" type="Int32" default="0" repeat="4" />
-    <record name="skill-attack-power-max-param2-slot" type="Int32" default="0" repeat="4" />
-    <record name="skill-attack-power-min-param3-slot" type="Int32" default="0" repeat="4" />
-    <record name="skill-attack-power-max-param3-slot" type="Int32" default="0" repeat="4" />
-    <record name="skill-attack-power-min-param4-slot" type="Int32" default="0" repeat="4" />
-    <record name="skill-attack-power-max-param4-slot" type="Int32" default="0" repeat="4" />
+    <attribute name="alias" type="String" required="y" max="70" />
+    <attribute name="skill3-id" type="Int32" default="0" repeat="4" />
+    <attribute name="block-skill3-id" type="Int32" default="0" repeat="4" />
+    <attribute name="skill-tree-id" type="Int32" default="0" repeat="4" />
+    <attribute name="context-script" type="Ref" ref="contextscript" repeat="4" />
+    <attribute name="tooltip-text" type="Ref" ref="text" repeat="4" />
+    <attribute name="skill-attack-power-min-param1-slot" type="Int32" default="0" repeat="4" />
+    <attribute name="skill-attack-power-max-param1-slot" type="Int32" default="0" repeat="4" />
+    <attribute name="skill-attack-power-min-param2-slot" type="Int32" default="0" repeat="4" />
+    <attribute name="skill-attack-power-max-param2-slot" type="Int32" default="0" repeat="4" />
+    <attribute name="skill-attack-power-min-param3-slot" type="Int32" default="0" repeat="4" />
+    <attribute name="skill-attack-power-max-param3-slot" type="Int32" default="0" repeat="4" />
+    <attribute name="skill-attack-power-min-param4-slot" type="Int32" default="0" repeat="4" />
+    <attribute name="skill-attack-power-max-param4-slot" type="Int32" default="0" repeat="4" />
   </el>
 </table>

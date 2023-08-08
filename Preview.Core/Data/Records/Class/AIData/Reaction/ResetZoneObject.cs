@@ -8,5 +8,5 @@ namespace Xylia.Preview.Data.Record.ReactionClass;
 [Signal("reset-zone-object")]
 public sealed class ResetZoneObject : Reaction
 {
-	public byte zreg;
+	public sbyte zreg;
 }

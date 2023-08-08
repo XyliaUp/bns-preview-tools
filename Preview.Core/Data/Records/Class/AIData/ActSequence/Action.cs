@@ -8,7 +8,7 @@ public abstract class Action : BaseRecord
 	/// <summary>
 	/// 仅当上级节点是 Select 时才有意义
 	/// </summary>
-	public byte Prob;
+	public sbyte Prob;
 
 	#region Sub
 	public sealed class Despawn : Action
@@ -20,24 +20,24 @@ public abstract class Action : BaseRecord
 	{
 		public bool hide;
 
-		public byte Social;
+		public sbyte Social;
 	}
 
 	public sealed class IndexedMovearound : MovearoundBase
 	{
-		public byte Area;
+		public sbyte Area;
 	}
 
 	public sealed class IndexedPathway : Action
 	{
-		public byte pathway;
+		public sbyte pathway;
 	}
 
 	public sealed class IndexedSocial : Action
 	{
 		public long Duration;
 
-		public byte Social;
+		public sbyte Social;
 	}
 
 	public sealed class Loop : Action
@@ -91,18 +91,18 @@ public abstract class Action : BaseRecord
 
 	public sealed class Pause : Action
 	{
-		public byte Step;
+		public sbyte Step;
 	}
 
 	public sealed class Select : Action
 	{
 		[Signal("enter-prob")]
-		public byte EnterProb;
+		public sbyte EnterProb;
 	}
 
-	public sealed class social : Action
+	public sealed class Social : Action
 	{
-		public Social Social;
+		public Social social;
 
 		public Detect detect;
 
@@ -115,7 +115,7 @@ public abstract class Action : BaseRecord
 
 		public Detect detect;
 
-		public byte Repeat;
+		public sbyte Repeat;
 	}
 	#endregion
 }

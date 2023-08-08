@@ -2,8 +2,8 @@
 <table name="district" version="0.3" autokey="true" module="14">
   <el name="table" child="1" />
   <el name="record">
-    <record name="alias" type="String" required="y" max="70" />
-    <record name="name2" type="Ref" ref="text" />
-    <record name="talk-to-self-quests" type="Ref" ref="quest" repeat="64" hidden="y" />
+    <attribute name="alias" type="String" required="y" max="70" />
+    <attribute name="name2" type="Ref" ref="text" />
+    <attribute name="talk-to-self-quests" type="Ref" ref="quest" repeat="64" hidden="y" />
   </el>
 </table>

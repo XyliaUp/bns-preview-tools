@@ -2,40 +2,40 @@
 <table name="bossnpc" version="3.0" autokey="true" module="262">
   <el name="table" child="1" />
   <el name="record">
-    <record name="alias" type="String" required="y" max="70" />
-    <record name="sp-point" type="Int16" default="0" repeat="3" min="0" />
-    <record name="sp-show" type="XUnknown2" repeat="3" />
-    <record name="immune-breaker-disabale-show" type="XUnknown2" />
-    <record name="berserk-sequence-invoke-time" type="Msec" default="0" min="0" max="1800000" />
-    <record name="difficulty-type-modify" type="Ref" ref="difficulty-type-modify" />
-    <record name="use-second-gauge" type="Bool" default="false" />
-    <record name="default-gp" type="Int16" default="0" min="-1000" max="1000" />
-    <record name="gp-section" type="Int16" default="0" repeat="11" min="-1000" max="1000" />
-    <record name="gp-section-cnt" type="Int8" default="3" min="3" max="11" />
-    <record name="ui-style" type="Seq">
+    <attribute name="alias" type="String" required="y" max="70" />
+    <attribute name="sp-point" type="Int16" default="0" repeat="3" min="0" />
+    <attribute name="sp-show" type="XUnknown2" repeat="3" />
+    <attribute name="immune-breaker-disabale-show" type="XUnknown2" />
+    <attribute name="berserk-sequence-invoke-time" type="Msec" default="0" min="0" max="1800000" />
+    <attribute name="difficulty-type-modify" type="Ref" ref="difficulty-type-modify" />
+    <attribute name="use-second-gauge" type="Bool" default="false" />
+    <attribute name="default-gp" type="Int16" default="0" min="-1000" max="1000" />
+    <attribute name="gp-section" type="Int16" default="0" repeat="11" min="-1000" max="1000" />
+    <attribute name="gp-section-cnt" type="Int8" default="3" min="3" max="11" />
+    <attribute name="ui-style" type="Seq">
       <case name="none" default="y" />
       <case name="fury" />
       <case name="absorb-level" />
       <case name="double-sided" />
-    </record>
-    <record name="ui-tooltip" type="Ref" ref="text" />
-    <record name="ui-double-sided-left-imageset" type="XUnknown2" />
-    <record name="ui-double-sided-right-imageset" type="XUnknown2" />
-    <record name="ui-double-sided-left-color-r" type="Int16" default="0" min="0" max="256" />
-    <record name="ui-double-sided-left-color-g" type="Int16" default="0" min="0" max="256" />
-    <record name="ui-double-sided-left-color-b" type="Int16" default="0" min="0" max="256" />
-    <record name="ui-double-sided-left-color-a" type="Int16" default="0" min="0" max="256" />
-    <record name="ui-double-sided-right-color-r" type="Int16" default="0" min="0" max="256" />
-    <record name="ui-double-sided-right-color-g" type="Int16" default="0" min="0" max="256" />
-    <record name="ui-double-sided-right-color-b" type="Int16" default="0" min="0" max="256" />
-    <record name="ui-double-sided-right-color-a" type="Int16" default="0" min="0" max="256" />
-    <record name="ui-fury-color-r" type="Int16" default="0" repeat="3" min="0" max="256" />
-    <record name="ui-fury-color-g" type="Int16" default="0" repeat="3" min="0" max="256" />
-    <record name="ui-fury-color-b" type="Int16" default="0" repeat="3" min="0" max="256" />
-    <record name="ui-fury-color-a" type="Int16" default="0" repeat="3" min="0" max="256" />
-    <record name="use-break" type="Bool" default="false" />
-    <record name="break-gauge-limit" type="Int16" default="1" min="1" max="10000" />
-    <record name="break-gauge-limit-increase-value" type="Int16" default="0" min="0" max="10000" />
-    <record name="max-break-count" type="Int8" default="5" min="1" max="10" />
+    </attribute>
+    <attribute name="ui-tooltip" type="Ref" ref="text" />
+    <attribute name="ui-double-sided-left-imageset" type="XUnknown2" />
+    <attribute name="ui-double-sided-right-imageset" type="XUnknown2" />
+    <attribute name="ui-double-sided-left-color-r" type="Int16" default="0" min="0" max="256" />
+    <attribute name="ui-double-sided-left-color-g" type="Int16" default="0" min="0" max="256" />
+    <attribute name="ui-double-sided-left-color-b" type="Int16" default="0" min="0" max="256" />
+    <attribute name="ui-double-sided-left-color-a" type="Int16" default="0" min="0" max="256" />
+    <attribute name="ui-double-sided-right-color-r" type="Int16" default="0" min="0" max="256" />
+    <attribute name="ui-double-sided-right-color-g" type="Int16" default="0" min="0" max="256" />
+    <attribute name="ui-double-sided-right-color-b" type="Int16" default="0" min="0" max="256" />
+    <attribute name="ui-double-sided-right-color-a" type="Int16" default="0" min="0" max="256" />
+    <attribute name="ui-fury-color-r" type="Int16" default="0" repeat="3" min="0" max="256" />
+    <attribute name="ui-fury-color-g" type="Int16" default="0" repeat="3" min="0" max="256" />
+    <attribute name="ui-fury-color-b" type="Int16" default="0" repeat="3" min="0" max="256" />
+    <attribute name="ui-fury-color-a" type="Int16" default="0" repeat="3" min="0" max="256" />
+    <attribute name="use-break" type="Bool" default="false" />
+    <attribute name="break-gauge-limit" type="Int16" default="1" min="1" max="10000" />
+    <attribute name="break-gauge-limit-increase-value" type="Int16" default="0" min="0" max="10000" />
+    <attribute name="max-break-count" type="Int8" default="5" min="1" max="10" />
   </el>
 </table>

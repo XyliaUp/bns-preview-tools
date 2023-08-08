@@ -1,5 +1,4 @@
-﻿
-using Xylia.Preview.Common.Attribute;
+﻿using Xylia.Preview.Common.Attribute;
 using Xylia.Preview.Common.Seq;
 using Xylia.Preview.Data.Record;
 
@@ -15,193 +14,13 @@ public class Creature
 
 	public Job Job;
 
-	public byte Appearance1;
+	[Repeat(92)]
+	public sbyte[] Appearance;
 
-	public byte Appearance2;
 
-	public byte Appearance3;
 
-	public byte Appearance4;
+	public string Name;
 
-	public byte Appearance5;
-
-	public byte Appearance6;
-
-	public byte Appearance7;
-
-	public byte Appearance8;
-
-	public byte Appearance9;
-
-	public byte Appearance10;
-
-	public byte Appearance11;
-
-	public byte Appearance12;
-
-	public byte Appearance13;
-
-	public byte Appearance14;
-
-	public byte Appearance15;
-
-	public byte Appearance16;
-
-	public byte Appearance17;
-
-	public byte Appearance18;
-
-	public byte Appearance19;
-
-	public byte Appearance20;
-
-	public byte Appearance21;
-
-	public byte Appearance22;
-
-	public byte Appearance23;
-
-	public byte Appearance24;
-
-	public byte Appearance25;
-
-	public byte Appearance26;
-
-	public byte Appearance27;
-
-	public byte Appearance28;
-
-	public byte Appearance29;
-
-	public byte Appearance30;
-
-	public byte Appearance31;
-
-	public byte Appearance32;
-
-	public byte Appearance33;
-
-	public byte Appearance34;
-
-	public byte Appearance35;
-
-	public byte Appearance36;
-
-	public byte Appearance37;
-
-	public byte Appearance38;
-
-	public byte Appearance39;
-
-	public byte Appearance40;
-
-	public byte Appearance41;
-
-	public byte Appearance42;
-
-	public byte Appearance43;
-
-	public byte Appearance44;
-
-	public byte Appearance45;
-
-	public byte Appearance46;
-
-	public byte Appearance47;
-
-	public byte Appearance48;
-
-	public byte Appearance49;
-
-	public byte Appearance50;
-
-	public byte Appearance51;
-
-	public byte Appearance52;
-
-	public byte Appearance53;
-
-	public byte Appearance54;
-
-	public byte Appearance55;
-
-	public byte Appearance56;
-
-	public byte Appearance57;
-
-	public byte Appearance58;
-
-	public byte Appearance59;
-
-	public byte Appearance60;
-
-	public byte Appearance61;
-
-	public byte Appearance62;
-
-	public byte Appearance63;
-
-	public byte Appearance64;
-
-	public byte Appearance65;
-
-	public byte Appearance66;
-
-	public byte Appearance67;
-
-	public byte Appearance68;
-
-	public byte Appearance69;
-
-	public byte Appearance70;
-
-	public byte Appearance71;
-
-	public byte Appearance72;
-
-	public byte Appearance73;
-
-	public byte Appearance74;
-
-	public byte Appearance75;
-
-	public byte Appearance76;
-
-	public byte Appearance77;
-
-	public byte Appearance78;
-
-	public byte Appearance79;
-
-	public byte Appearance80;
-
-	public byte Appearance81;
-
-	public byte Appearance82;
-
-	public byte Appearance83;
-
-	public byte Appearance84;
-
-	public byte Appearance85;
-
-	public byte Appearance86;
-
-	public byte Appearance87;
-
-	public byte Appearance88;
-
-	public byte Appearance89;
-
-	public byte Appearance90;
-
-	public byte Appearance91;
-
-	public byte Appearance92;
-
-	public string Name = "用户名称";
-
-	[Signal("geo-zone")]
 	public short GeoZone;
 
 	public int X;
@@ -210,157 +29,152 @@ public class Creature
 
 	public int Z;
 
-	public byte Yaw;
+	public sbyte Yaw;
 
-	public byte Level;
+	public sbyte Level;
 
-	public byte Exp;
+	public int Exp;
 
-	[Signal("mastery-level")]
-	public byte MasteryLevel;
+	public sbyte MasteryLevel;
 
-	[Signal("mastery-exp")]
-	public byte MasteryExp;
+	public long MasteryExp;
 
 	public long Hp;
 
-	[Signal("guard-gauge")]
-	public byte GuardGauge;
+	public sbyte GuardGauge;
 
 	public int Money;
 
-	[Signal("money-diff")]
 	public int MoneyDiff;
 
-	public byte Faction;
 
-	public byte Faction2;
 
-	[Signal("guild-id")]
-	public byte GuildId;
 
-	[Signal("activated-faction")]
-	public byte ActivatedFaction;
 
-	[Signal("faction-reputation")]
-	public byte FactionReputation;
 
-	[Signal("achievement-id")]
-	public byte AchievementId;
 
-	[Signal("achievement-step")]
-	public byte AchievementStep;
+	public object Faction;
 
-	[Signal("ability-achievement-id")]
-	public byte AbilityAchievementId;
+	public object Faction2;
 
-	[Signal("ability-achievement-step")]
-	public byte AbilityAchievementStep;
+	public object GuildId;
 
-	public byte Sp;
+	public object ActivatedFaction;
 
-	public byte Sp2;
+	public object FactionReputation;
 
-	public byte Stance;
+	public object AchievementId;
+
+	public object AchievementStep;
+
+	public object AbilityAchievementId;
+
+	public object AbilityAchievementStep;
+
+	public object Sp;
+
+	public object Sp2;
+
+	public object Stance;
 
 	[Signal("link-target")]
-	public byte LinkTarget;
+	public object LinkTarget;
 
 	[Signal("link-type")]
-	public byte LinkType;
+	public object LinkType;
 
 	[Signal("link-state")]
-	public byte LinkState;
+	public object LinkState;
 
 	[Signal("link-stage")]
-	public byte LinkStage;
+	public object LinkStage;
 
-	public byte Target;
+	public object Target;
 
 	[Signal("action-type")]
-	public byte ActionType;
+	public object ActionType;
 
 	[Signal("action-target")]
-	public byte ActionTarget;
+	public object ActionTarget;
 
 	[Signal("additional-hp")]
-	public byte AdditionalHp;
+	public object AdditionalHp;
 
 	[Signal("effect-attribute")]
-	public byte EffectAttribute;
+	public object EffectAttribute;
 
 	[Signal("effect-attribute-2")]
-	public byte EffectAttribute2;
+	public object EffectAttribute2;
 
 	[Signal("effect-attribute-3")]
-	public byte EffectAttribute3;
+	public object EffectAttribute3;
 
 	[Signal("immune-effect-attribute")]
-	public byte ImmuneEffectAttribute;
+	public object ImmuneEffectAttribute;
 
 	[Signal("immune-effect-attribute-2")]
-	public byte ImmuneEffectAttribute2;
+	public object ImmuneEffectAttribute2;
 
 	[Signal("immune-effect-attribute-3")]
-	public byte ImmuneEffectAttribute3;
+	public object ImmuneEffectAttribute3;
 
 	[Signal("effect-flag")]
-	public byte EffectFlag;
+	public object EffectFlag;
 
 	[Signal("effect-flag-2")]
-	public byte EffectFlag2;
+	public object EffectFlag2;
 
 	[Signal("effect-flag-3")]
-	public byte EffectFlag3;
+	public object EffectFlag3;
 
 	[Signal("effect-flag-4")]
-	public byte EffectFlag4;
+	public object EffectFlag4;
 
 	[Signal("field-item")]
-	public byte FieldItem;
+	public object FieldItem;
 
-	public byte Summoned;
+	public object Summoned;
 
 	[Signal("convoy-id")]
-	public byte ConvoyId;
+	public object ConvoyId;
 
 	[Signal("top-contribution-group-id")]
-	public byte TopContributionGroupId;
+	public object TopContributionGroupId;
 
 	[Signal("inventory-size")]
-	public byte InventorySize;
+	public object InventorySize;
 
 	[Signal("depository-size")]
-	public byte DepositorySize;
+	public object DepositorySize;
 
 	[Signal("wardrobe-size")]
-	public byte WardrobeSize;
+	public object WardrobeSize;
 
 	[Signal("premium-depository-size")]
-	public byte PremiumDepositorySize;
+	public object PremiumDepositorySize;
 
 	[Signal("builder-right")]
-	public byte BuilderRight;
+	public object BuilderRight;
 
-	public byte Survey;
+	public object Survey;
 
 	[Signal("style-score")]
-	public byte StyleScore;
+	public object StyleScore;
 
 	[Signal("immune-breaker-attribute")]
-	public byte ImmuneBreakerAttribute;
+	public object ImmuneBreakerAttribute;
 
 	[Signal("immune-breaker-count")]
-	public byte ImmuneBreakerCount;
+	public object ImmuneBreakerCount;
 
 	[Signal("faction-score")]
-	public byte FactionScore;
+	public object FactionScore;
 
 	[Signal("faction-killed-count")]
-	public byte FactionKilledCount;
+	public object FactionKilledCount;
 
 	[Signal("combat-side")]
-	public byte CombatSide;
+	public object CombatSide;
 
 	[Signal("duel-point")]
 	public int DuelPoint;
@@ -375,831 +189,831 @@ public class Creature
 	public int LifeContentsPoint;
 
 	[Signal("duel-grade")]
-	public byte DuelGrade;
+	public object DuelGrade;
 
 	[Signal("duel-grade-type")]
-	public byte DuelGradeType;
+	public object DuelGradeType;
 
-	public byte Dead;
+	public object Dead;
 
 	[Signal("gm-mode")]
 	public bool GmMode;
 
 	[Signal("grade-level")]
-	public byte GradeLevel;
+	public object GradeLevel;
 
 	[Signal("grade-broadcast-benefit-1")]
-	public byte GradeBroadcastBenefit1;
+	public object GradeBroadcastBenefit1;
 
 	[Signal("grade-broadcast-benefit-2")]
-	public byte GradeBroadcastBenefit2;
+	public object GradeBroadcastBenefit2;
 
 	[Signal("grade-broadcast-benefit-3")]
-	public byte GradeBroadcastBenefit3;
+	public object GradeBroadcastBenefit3;
 
 	[Signal("grade-broadcast-benefit-4")]
-	public byte GradeBroadcastBenefit4;
+	public object GradeBroadcastBenefit4;
 
 	[Signal("grade-broadcast-benefit-5")]
-	public byte GradeBroadcastBenefit5;
+	public object GradeBroadcastBenefit5;
 
 	[Signal("grade-broadcast-benefit-6")]
-	public byte GradeBroadcastBenefit6;
+	public object GradeBroadcastBenefit6;
 
 	[Signal("grade-broadcast-benefit-7")]
-	public byte GradeBroadcastBenefit7;
+	public object GradeBroadcastBenefit7;
 
 	[Signal("grade-broadcast-benefit-8")]
-	public byte GradeBroadcastBenefit8;
+	public object GradeBroadcastBenefit8;
 
 	[Signal("logout-time")]
-	public byte LogoutTime;
+	public object LogoutTime;
 
 	[Signal("instant-heart-count")]
-	public byte InstantHeartCount;
+	public object InstantHeartCount;
 
 	[Signal("heart-count")]
-	public byte HeartCount;
+	public object HeartCount;
 
 	[Signal("skill-score")]
-	public byte SkillScore;
+	public object SkillScore;
 
 	[Signal("bound-raid-dungeon-id-1")]
-	public byte BoundRaidDungeonId1;
+	public object BoundRaidDungeonId1;
 
 	[Signal("bound-raid-dungeon-id-2")]
-	public byte BoundRaidDungeonId2;
+	public object BoundRaidDungeonId2;
 
 	[Signal("bound-raid-dungeon-id-3")]
-	public byte BoundRaidDungeonId3;
+	public object BoundRaidDungeonId3;
 
 	[Signal("bound-raid-dungeon-id-4")]
-	public byte BoundRaidDungeonId4;
+	public object BoundRaidDungeonId4;
 
 	[Signal("bound-raid-dungeon-id-5")]
-	public byte BoundRaidDungeonId5;
+	public object BoundRaidDungeonId5;
 
 	[Signal("bound-raid-dungeon-id-6")]
-	public byte BoundRaidDungeonId6;
+	public object BoundRaidDungeonId6;
 
 	[Signal("bound-raid-dungeon-id-7")]
-	public byte BoundRaidDungeonId7;
+	public object BoundRaidDungeonId7;
 
 	[Signal("bound-raid-dungeon-id-8")]
-	public byte BoundRaidDungeonId8;
+	public object BoundRaidDungeonId8;
 
 	[Signal("bound-raid-dungeon-id-9")]
-	public byte BoundRaidDungeonId9;
+	public object BoundRaidDungeonId9;
 
 	[Signal("bound-raid-dungeon-id-10")]
-	public byte BoundRaidDungeonId10;
+	public object BoundRaidDungeonId10;
 
 	[Signal("bound-raid-dungeon-id-11")]
-	public byte BoundRaidDungeonId11;
+	public object BoundRaidDungeonId11;
 
 	[Signal("bound-raid-dungeon-id-12")]
-	public byte BoundRaidDungeonId12;
+	public object BoundRaidDungeonId12;
 
 	[Signal("bound-raid-dungeon-id-13")]
-	public byte BoundRaidDungeonId13;
+	public object BoundRaidDungeonId13;
 
 	[Signal("bound-raid-dungeon-id-14")]
-	public byte BoundRaidDungeonId14;
+	public object BoundRaidDungeonId14;
 
 	[Signal("bound-raid-dungeon-id-15")]
-	public byte BoundRaidDungeonId15;
+	public object BoundRaidDungeonId15;
 
 	[Signal("bound-raid-dungeon-id-16")]
-	public byte BoundRaidDungeonId16;
+	public object BoundRaidDungeonId16;
 
 	[Signal("bound-raid-dungeon-id-17")]
-	public byte BoundRaidDungeonId17;
+	public object BoundRaidDungeonId17;
 
 	[Signal("boss-second-gauge")]
-	public byte BossSecondGauge;
+	public object BossSecondGauge;
 
 	[Signal("accumulated-damage-slot-tao")]
-	public byte AccumulatedDamageSlotTao;
+	public object AccumulatedDamageSlotTao;
 
 	[Signal("accumulated-damage-slot-1")]
-	public byte AccumulatedDamageSlot1;
+	public object AccumulatedDamageSlot1;
 
 	[Signal("accumulated-damage-slot-2")]
-	public byte AccumulatedDamageSlot2;
+	public object AccumulatedDamageSlot2;
 
 	[Signal("accumulated-damage-slot-3")]
-	public byte AccumulatedDamageSlot3;
+	public object AccumulatedDamageSlot3;
 
 	[Signal("skill-skin-id")]
-	public byte SkillSkinId;
+	public object SkillSkinId;
 
 	[Signal("pvp-mode-cooltime")]
-	public byte PvpModeCooltime;
+	public object PvpModeCooltime;
 
 	[Signal("ghost-type")]
-	public byte GhostType;
+	public object GhostType;
 
 	[Signal("challenge-party-id")]
-	public byte ChallengePartyId;
+	public object ChallengePartyId;
 
 	[Signal("challenge-party-out-time")]
-	public byte ChallengePartyOutTime;
+	public object ChallengePartyOutTime;
 
 	[Signal("acquired-skill-build-up-point")]
-	public byte AcquiredSkillBuildUpPoint;
+	public object AcquiredSkillBuildUpPoint;
 
 	[Signal("usable-skill-build-up-point")]
-	public byte UsableSkillBuildUpPoint;
+	public object UsableSkillBuildUpPoint;
 
 	[Signal("job-style")]
-	public byte JobStyle;
+	public object JobStyle;
 
 	[Signal("account-exp-to-add")]
-	public byte AccountExpToAdd;
+	public object AccountExpToAdd;
 
 	[Signal("account-exp-added")]
-	public byte AccountExpAdded;
+	public object AccountExpAdded;
 
 	[Signal("account-exp-added-time")]
-	public byte AccountExpAddedTime;
+	public object AccountExpAddedTime;
 
 	[Signal("account-exp-by-pc")]
-	public byte AccountExpByPc;
+	public object AccountExpByPc;
 
 	[Signal("account-level")]
-	public byte AccountLevel;
+	public object AccountLevel;
 
 	[Signal("account-exp")]
-	public byte AccountExp;
+	public object AccountExp;
 
 	[Signal("account-exp-quota-per-day")]
-	public byte AccountExpQuotaPerDay;
+	public object AccountExpQuotaPerDay;
 
 	[Signal("account-exp-last-update-time")]
-	public byte AccountExpLastUpdateTime;
+	public object AccountExpLastUpdateTime;
 
 	[Signal("activated-badge-page")]
-	public byte ActivatedBadgePage;
+	public object ActivatedBadgePage;
 
 	[Signal("equip-badge-gear-score")]
-	public byte EquipBadgeGearScore;
+	public object EquipBadgeGearScore;
 
 	[Signal("combat-mode")]
-	public byte CombatMode;
+	public object CombatMode;
 
-	public byte Falling;
+	public object Falling;
 
-	public byte Convoy;
+	public object Convoy;
 
-	public byte Attackable;
+	public object Attackable;
 
-	public byte Casting;
+	public object Casting;
 
 	[Signal("immune-breaker-disable")]
-	public byte ImmuneBreakerDisable;
+	public object ImmuneBreakerDisable;
 
 	[Signal("npc-interactive")]
-	public byte NpcInteractive;
+	public object NpcInteractive;
 
 	[Signal("npc-talkable")]
-	public byte NpcTalkable;
+	public object NpcTalkable;
 
 	[Signal("special-skill-gauge-full")]
-	public byte SpecialSkillGaugeFull;
+	public object SpecialSkillGaugeFull;
 
 	[Signal("pvp-mode")]
-	public byte PvpMode;
+	public object PvpMode;
 
 	[Signal("break-state")]
-	public byte BreakState;
+	public object BreakState;
 
 	[Signal("break-gauge-block-state")]
-	public byte BreakGaugeBlockState;
+	public object BreakGaugeBlockState;
 
 	[Signal("public-reserve-5")]
-	public byte PublicReserve5;
+	public object PublicReserve5;
 
 	[Signal("public-reserve-6")]
-	public byte PublicReserve6;
+	public object PublicReserve6;
 
 	[Signal("public-reserve-7")]
-	public byte PublicReserve7;
+	public object PublicReserve7;
 
 	[Signal("public-reserve-8")]
-	public byte PublicReserve8;
+	public object PublicReserve8;
 
 	[Signal("detect-hiding")]
-	public byte DetectHiding;
+	public object DetectHiding;
 
 	[Signal("guild-invitation-refusal")]
-	public byte GuildInvitationRefusal;
+	public object GuildInvitationRefusal;
 
 	[Signal("pvp-safe-area")]
-	public byte PvpSafeArea;
+	public object PvpSafeArea;
 
 	[Signal("zone-move-state")]
-	public byte ZoneMoveState;
+	public object ZoneMoveState;
 
 	[Signal("private-reserve-5")]
-	public byte PrivateReserve5;
+	public object PrivateReserve5;
 
 	[Signal("private-reserve-6")]
-	public byte PrivateReserve6;
+	public object PrivateReserve6;
 
 	[Signal("private-reserve-7")]
-	public byte PrivateReserve7;
+	public object PrivateReserve7;
 
 	[Signal("private-reserve-8")]
-	public byte PrivateReserve8;
+	public object PrivateReserve8;
 
 	[Signal("slate-page")]
-	public byte SlatePage;
+	public object SlatePage;
 
 	[Signal("guild-point")]
-	public byte GuildPoint;
+	public object GuildPoint;
 
 	[Signal("activated-vehicle-id")]
-	public byte ActivatedVehicleId;
+	public object ActivatedVehicleId;
 
 	[Signal("break-gauge")]
-	public byte BreakGauge;
+	public object BreakGauge;
 
 	[Signal("break-state-count")]
-	public byte BreakStateCount;
+	public object BreakStateCount;
 
 	[Signal("personal-raid-dungeon-1-progress-step")]
-	public byte PersonalRaidDungeon1ProgressStep;
+	public object PersonalRaidDungeon1ProgressStep;
 
 	[Signal("personal-raid-dungeon-1-expiration-time")]
-	public byte PersonalRaidDungeon1ExpirationTime;
+	public object PersonalRaidDungeon1ExpirationTime;
 
 	[Signal("personal-raid-dungeon-2-progress-step")]
-	public byte PersonalRaidDungeon2ProgressStep;
+	public object PersonalRaidDungeon2ProgressStep;
 
 	[Signal("personal-raid-dungeon-2-expiration-time")]
-	public byte PersonalRaidDungeon2ExpirationTime;
+	public object PersonalRaidDungeon2ExpirationTime;
 
 	[Signal("personal-raid-dungeon-3-progress-step")]
-	public byte PersonalRaidDungeon3ProgressStep;
+	public object PersonalRaidDungeon3ProgressStep;
 
 	[Signal("personal-raid-dungeon-3-expiration-time")]
-	public byte PersonalRaidDungeon3ExpirationTime;
+	public object PersonalRaidDungeon3ExpirationTime;
 
 	[Signal("login-reset-time")]
-	public byte LoginResetTime;
+	public object LoginResetTime;
 
 	[Signal("activated-glyph-page")]
-	public byte ActivatedGlyphPage;
+	public object ActivatedGlyphPage;
 
 	[Signal("enabled-glyph-slot")]
-	public byte EnabledGlyphSlot;
+	public object EnabledGlyphSlot;
 
-	public byte Unk;
+	public object Unk;
 
 	[Signal("max-hp")]
-	public byte MaxHp;
+	public object MaxHp;
 
 	[Signal("max-hp-equip")]
-	public byte MaxHpEquip;
+	public object MaxHpEquip;
 
 	[Signal("max-guard-gauge")]
-	public byte MaxGuardGauge;
+	public object MaxGuardGauge;
 
 	[Signal("max-guard-gauge-equip")]
-	public byte MaxGuardGaugeEquip;
+	public object MaxGuardGaugeEquip;
 
 	[Signal("max-sp")]
-	public byte MaxSp;
+	public object MaxSp;
 
 	[Signal("max-sp2")]
-	public byte MaxSp2;
+	public object MaxSp2;
 
-	public byte Speed;
+	public object Speed;
 
 	[Signal("vehicle-speed")]
-	public byte VehicleSpeed;
+	public object VehicleSpeed;
 
 	[Signal("modify-cast-speed-percent")]
-	public byte ModifyCastSpeedPercent;
+	public object ModifyCastSpeedPercent;
 
 	[Signal("hp-regen")]
-	public byte HpRegen;
+	public object HpRegen;
 
 	[Signal("hp-regen-equip")]
-	public byte HpRegenEquip;
+	public object HpRegenEquip;
 
 	[Signal("hp-regen-combat")]
-	public byte HpRegenCombat;
+	public object HpRegenCombat;
 
 	[Signal("hp-regen-combat-equip")]
-	public byte HpRegenCombatEquip;
+	public object HpRegenCombatEquip;
 
 	[Signal("attack-hit-base-percent")]
-	public byte AttackHitBasePercent;
+	public object AttackHitBasePercent;
 
 	[Signal("attack-hit-value")]
-	public byte AttackHitValue;
+	public object AttackHitValue;
 
 	[Signal("attack-hit-value-equip")]
-	public byte AttackHitValueEquip;
+	public object AttackHitValueEquip;
 
 	[Signal("attack-pierce-base-percent")]
-	public byte AttackPierceBasePercent;
+	public object AttackPierceBasePercent;
 
 	[Signal("attack-parry-pierce-percent")]
-	public byte AttackParryPiercePercent;
+	public object AttackParryPiercePercent;
 
 	[Signal("attack-pierce-value")]
-	public byte AttackPierceValue;
+	public object AttackPierceValue;
 
 	[Signal("attack-pierce-value-equip")]
-	public byte AttackPierceValueEquip;
+	public object AttackPierceValueEquip;
 
 	[Signal("attack-critical-base-percent")]
-	public byte AttackCriticalBasePercent;
+	public object AttackCriticalBasePercent;
 
 	[Signal("attack-critical-damage-percent")]
-	public byte AttackCriticalDamagePercent;
+	public object AttackCriticalDamagePercent;
 
 	[Signal("attack-critical-value")]
-	public byte AttackCriticalValue;
+	public object AttackCriticalValue;
 
 	[Signal("attack-critical-value-equip")]
-	public byte AttackCriticalValueEquip;
+	public object AttackCriticalValueEquip;
 
 	[Signal("attack-critical-damage-value")]
-	public byte AttackCriticalDamageValue;
+	public object AttackCriticalDamageValue;
 
 	[Signal("attack-critical-damage-value-equip")]
-	public byte AttackCriticalDamageValueEquip;
+	public object AttackCriticalDamageValueEquip;
 
 	[Signal("defend-critical-base-percent")]
-	public byte DefendCriticalBasePercent;
+	public object DefendCriticalBasePercent;
 
 	[Signal("defend-critical-damage-percent")]
-	public byte DefendCriticalDamagePercent;
+	public object DefendCriticalDamagePercent;
 
 	[Signal("defend-critical-value")]
-	public byte DefendCriticalValue;
+	public object DefendCriticalValue;
 
 	[Signal("defend-critical-value-equip")]
-	public byte DefendCriticalValueEquip;
+	public object DefendCriticalValueEquip;
 
 	[Signal("defend-bounce-percent")]
-	public byte DefendBouncePercent;
+	public object DefendBouncePercent;
 
 	[Signal("defend-dodge-base-percent")]
-	public byte DefendDodgeBasePercent;
+	public object DefendDodgeBasePercent;
 
 	[Signal("defend-dodge-value")]
-	public byte DefendDodgeValue;
+	public object DefendDodgeValue;
 
 	[Signal("defend-dodge-value-equip")]
-	public byte DefendDodgeValueEquip;
+	public object DefendDodgeValueEquip;
 
 	[Signal("defend-parry-base-percent")]
-	public byte DefendParryBasePercent;
+	public object DefendParryBasePercent;
 
 	[Signal("defend-parry-value")]
-	public byte DefendParryValue;
+	public object DefendParryValue;
 
 	[Signal("defend-parry-value-equip")]
-	public byte DefendParryValueEquip;
+	public object DefendParryValueEquip;
 
 	[Signal("defend-parry-reduce-percent")]
-	public byte DefendParryReducePercent;
+	public object DefendParryReducePercent;
 
 	[Signal("defend-parry-reduce-diff")]
-	public byte DefendParryReduceDiff;
+	public object DefendParryReduceDiff;
 
 	[Signal("defend-perfect-parry-base-percent")]
-	public byte DefendPerfectParryBasePercent;
+	public object DefendPerfectParryBasePercent;
 
 	[Signal("defend-immune-base-percent")]
-	public byte DefendImmuneBasePercent;
+	public object DefendImmuneBasePercent;
 
 	[Signal("attack-power-creature-min")]
-	public byte AttackPowerCreatureMin;
+	public object AttackPowerCreatureMin;
 
 	[Signal("attack-power-creature-max")]
-	public byte AttackPowerCreatureMax;
+	public object AttackPowerCreatureMax;
 
 	[Signal("attack-power-equip-min")]
-	public byte AttackPowerEquipMin;
+	public object AttackPowerEquipMin;
 
 	[Signal("attack-power-equip-max")]
-	public byte AttackPowerEquipMax;
+	public object AttackPowerEquipMax;
 
 	[Signal("defend-power-creature-value")]
-	public byte DefendPowerCreatureValue;
+	public object DefendPowerCreatureValue;
 
 	[Signal("defend-power-equip-value")]
-	public byte DefendPowerEquipValue;
+	public object DefendPowerEquipValue;
 
 	[Signal("defend-resist-power-creature-value")]
-	public byte DefendResistPowerCreatureValue;
+	public object DefendResistPowerCreatureValue;
 
 	[Signal("defend-resist-power-equip-value")]
-	public byte DefendResistPowerEquipValue;
+	public object DefendResistPowerEquipValue;
 
 	[Signal("defend-physical-damage-reduce-percent")]
-	public byte DefendPhysicalDamageReducePercent;
+	public object DefendPhysicalDamageReducePercent;
 
 	[Signal("defend-force-damage-reduce-percent")]
-	public byte DefendForceDamageReducePercent;
+	public object DefendForceDamageReducePercent;
 
 	[Signal("attack-damage-modify-percent")]
-	public byte AttackDamageModifyPercent;
+	public object AttackDamageModifyPercent;
 
 	[Signal("attack-damage-modify-diff")]
-	public byte AttackDamageModifyDiff;
+	public object AttackDamageModifyDiff;
 
 	[Signal("defend-damage-modify-percent")]
-	public byte DefendDamageModifyPercent;
+	public object DefendDamageModifyPercent;
 
 	[Signal("defend-damage-modify-diff")]
-	public byte DefendDamageModifyDiff;
+	public object DefendDamageModifyDiff;
 
 	[Signal("defend-miss-base-percent")]
-	public byte DefendMissBasePercent;
+	public object DefendMissBasePercent;
 
 	[Signal("attack-stiff-duration-base-percent")]
-	public byte AttackStiffDurationBasePercent;
+	public object AttackStiffDurationBasePercent;
 
 	[Signal("attack-stiff-duration-value")]
-	public byte AttackStiffDurationValue;
+	public object AttackStiffDurationValue;
 
 	[Signal("defend-stiff-duration-base-percent")]
-	public byte DefendStiffDurationBasePercent;
+	public object DefendStiffDurationBasePercent;
 
 	[Signal("defend-stiff-duration-value")]
-	public byte DefendStiffDurationValue;
+	public object DefendStiffDurationValue;
 
 	[Signal("cast-duration-base-percent")]
-	public byte CastDurationBasePercent;
+	public object CastDurationBasePercent;
 
 	[Signal("cast-duration-value")]
-	public byte CastDurationValue;
+	public object CastDurationValue;
 
 	[Signal("attack-concentrate-value")]
-	public byte AttackConcentrateValue;
+	public object AttackConcentrateValue;
 
 	[Signal("attack-concentrate-value-equip")]
-	public byte AttackConcentrateValueEquip;
+	public object AttackConcentrateValueEquip;
 
 	[Signal("defend-perfect-parry-reduce-percent")]
-	public byte DefendPerfectParryReducePercent;
+	public object DefendPerfectParryReducePercent;
 
 	[Signal("defend-counter-reduce-percent")]
-	public byte DefendCounterReducePercent;
+	public object DefendCounterReducePercent;
 
 	[Signal("pve-boss-level-npc-attack-power-creature-min")]
-	public byte PveBossLevelNpcAttackPowerCreatureMin;
+	public object PveBossLevelNpcAttackPowerCreatureMin;
 
 	[Signal("pve-boss-level-npc-attack-power-creature-max")]
-	public byte PveBossLevelNpcAttackPowerCreatureMax;
+	public object PveBossLevelNpcAttackPowerCreatureMax;
 
 	[Signal("pve-boss-level-npc-attack-power-equip-min")]
-	public byte PveBossLevelNpcAttackPowerEquipMin;
+	public object PveBossLevelNpcAttackPowerEquipMin;
 
 	[Signal("pve-boss-level-npc-attack-power-equip-max")]
-	public byte PveBossLevelNpcAttackPowerEquipMax;
+	public object PveBossLevelNpcAttackPowerEquipMax;
 
 	[Signal("pve-boss-level-npc-defend-power-creature-value")]
-	public byte PveBossLevelNpcDefendPowerCreatureValue;
+	public object PveBossLevelNpcDefendPowerCreatureValue;
 
 	[Signal("pve-boss-level-npc-defend-power-equip-value")]
-	public byte PveBossLevelNpcDefendPowerEquipValue;
+	public object PveBossLevelNpcDefendPowerEquipValue;
 
 	[Signal("pvp-attack-power-creature-min")]
-	public byte PvpAttackPowerCreatureMin;
+	public object PvpAttackPowerCreatureMin;
 
 	[Signal("pvp-attack-power-creature-max")]
-	public byte PvpAttackPowerCreatureMax;
+	public object PvpAttackPowerCreatureMax;
 
 	[Signal("pvp-attack-power-equip-min")]
-	public byte PvpAttackPowerEquipMin;
+	public object PvpAttackPowerEquipMin;
 
 	[Signal("pvp-attack-power-equip-max")]
-	public byte PvpAttackPowerEquipMax;
+	public object PvpAttackPowerEquipMax;
 
 	[Signal("pvp-defend-power-creature-value")]
-	public byte PvpDefendPowerCreatureValue;
+	public object PvpDefendPowerCreatureValue;
 
 	[Signal("pvp-defend-power-equip-value")]
-	public byte PvpDefendPowerEquipValue;
+	public object PvpDefendPowerEquipValue;
 
 	[Signal("job-ability-1")]
-	public byte JobAbility1;
+	public object JobAbility1;
 
 	[Signal("job-ability-2")]
-	public byte JobAbility2;
+	public object JobAbility2;
 
 	[Signal("heal-power-base-percent")]
-	public byte HealPowerBasePercent;
+	public object HealPowerBasePercent;
 
 	[Signal("heal-power-value")]
-	public byte HealPowerValue;
+	public object HealPowerValue;
 
 	[Signal("heal-power-diff")]
-	public byte HealPowerDiff;
+	public object HealPowerDiff;
 
 	[Signal("aoe-defend-base-percent")]
-	public byte AoeDefendBasePercent;
+	public object AoeDefendBasePercent;
 
 	[Signal("aoe-defend-power-value")]
-	public byte AoeDefendPowerValue;
+	public object AoeDefendPowerValue;
 
 	[Signal("abnormal-attack-base-percent")]
-	public byte AbnormalAttackBasePercent;
+	public object AbnormalAttackBasePercent;
 
 	[Signal("abnormal-attack-power-value")]
-	public byte AbnormalAttackPowerValue;
+	public object AbnormalAttackPowerValue;
 
 	[Signal("abnormal-attack-power-value-equip")]
-	public byte AbnormalAttackPowerValueEquip;
+	public object AbnormalAttackPowerValueEquip;
 
 	[Signal("abnormal-defend-base-percent")]
-	public byte AbnormalDefendBasePercent;
+	public object AbnormalDefendBasePercent;
 
 	[Signal("abnormal-defend-power-value")]
-	public byte AbnormalDefendPowerValue;
+	public object AbnormalDefendPowerValue;
 
 	[Signal("hate-base-percent")]
-	public byte HateBasePercent;
+	public object HateBasePercent;
 
 	[Signal("hate-power-creature-value")]
-	public byte HatePowerCreatureValue;
+	public object HatePowerCreatureValue;
 
 	[Signal("hate-power-equip-value")]
-	public byte HatePowerEquipValue;
+	public object HatePowerEquipValue;
 
 	[Signal("additional-exp-diff-by-kill")]
-	public byte AdditionalExpDiffByKill;
+	public object AdditionalExpDiffByKill;
 
 	[Signal("additional-exp-percent-by-kill")]
-	public byte AdditionalExpPercentByKill;
+	public object AdditionalExpPercentByKill;
 
 	[Signal("additional-mastery-exp-diff-by-kill")]
-	public byte AdditionalMasteryExpDiffByKill;
+	public object AdditionalMasteryExpDiffByKill;
 
 	[Signal("additional-mastery-exp-percent-by-kill")]
-	public byte AdditionalMasteryExpPercentByKill;
+	public object AdditionalMasteryExpPercentByKill;
 
 	[Signal("additional-faction-score-max-percent")]
-	public byte AdditionalFactionScoreMaxPercent;
+	public object AdditionalFactionScoreMaxPercent;
 
 	[Signal("additional-sealed-dungeon-exp-diff-by-kill")]
-	public byte AdditionalSealedDungeonExpDiffByKill;
+	public object AdditionalSealedDungeonExpDiffByKill;
 
 	[Signal("additional-sealed-dungeon-exp-percent-by-kill")]
-	public byte AdditionalSealedDungeonExpPercentByKill;
+	public object AdditionalSealedDungeonExpPercentByKill;
 
 	[Signal("attack-attribute-value")]
-	public byte AttackAttributeValue;
+	public object AttackAttributeValue;
 
 	[Signal("attack-attribute-value-equip")]
-	public byte AttackAttributeValueEquip;
+	public object AttackAttributeValueEquip;
 
 	[Signal("attack-attribute-base-percent")]
-	public byte AttackAttributeBasePercent;
+	public object AttackAttributeBasePercent;
 
 	[Signal("defend-difficulty-type-damage-reduce-percent")]
-	public byte DefendDifficultyTypeDamageReducePercent;
+	public object DefendDifficultyTypeDamageReducePercent;
 
-	public byte Invisible;
+	public object Invisible;
 
 	[Signal("block-move")]
-	public byte BlockMove;
+	public object BlockMove;
 
 	[Signal("block-skill")]
-	public byte BlockSkill;
+	public object BlockSkill;
 
 	[Signal("block-physical-skill")]
-	public byte BlockPhysicalSkill;
+	public object BlockPhysicalSkill;
 
 	[Signal("block-force-skill")]
-	public byte BlockForceSkill;
+	public object BlockForceSkill;
 
 	[Signal("immune-damage")]
-	public byte ImmuneDamage;
+	public object ImmuneDamage;
 
 	[Signal("immune-death")]
-	public byte ImmuneDeath;
+	public object ImmuneDeath;
 
 	[Signal("immune-debuff")]
-	public byte ImmuneDebuff;
+	public object ImmuneDebuff;
 
 	[Signal("exception-target")]
-	public byte ExceptionTarget;
+	public object ExceptionTarget;
 
 	[Signal("exception-detect")]
-	public byte ExceptionDetect;
+	public object ExceptionDetect;
 
 	[Signal("exception-hostile-target")]
-	public byte ExceptionHostileTarget;
+	public object ExceptionHostileTarget;
 
 	[Signal("immune-casting-delay")]
-	public byte ImmuneCastingDelay;
+	public object ImmuneCastingDelay;
 
 	[Signal("block-dodge")]
-	public byte BlockDodge;
+	public object BlockDodge;
 
 	[Signal("block-bounce")]
-	public byte BlockBounce;
+	public object BlockBounce;
 
 	[Signal("block-parry")]
-	public byte BlockParry;
+	public object BlockParry;
 
 	[Signal("block-perfect-parry")]
-	public byte BlockPerfectParry;
+	public object BlockPerfectParry;
 
 	[Signal("front-perfect-parry")]
-	public byte FrontPerfectParry;
+	public object FrontPerfectParry;
 
 	[Signal("back-perfect-parry")]
-	public byte BackPerfectParry;
+	public object BackPerfectParry;
 
 	[Signal("front-bounce")]
-	public byte FrontBounce;
+	public object FrontBounce;
 
 	[Signal("back-bounce")]
-	public byte BackBounce;
+	public object BackBounce;
 
 	[Signal("debug-invincible")]
-	public byte DebugInvincible;
+	public object DebugInvincible;
 
 	[Signal("debug-invisible")]
-	public byte DebugInvisible;
+	public object DebugInvisible;
 
 	[Signal("abnormality-reserve-7")]
-	public byte AbnormalityReserve7;
+	public object AbnormalityReserve7;
 
 	[Signal("abnormality-reserve-8")]
-	public byte AbnormalityReserve8;
+	public object AbnormalityReserve8;
 
 	[Signal("equip-hand")]
-	public byte EquipHand;
+	public object EquipHand;
 
 	[Signal("equip-hand-level")]
-	public byte EquipHandLevel;
+	public object EquipHandLevel;
 
 	[Signal("equip-hand-appearance-item")]
-	public byte EquipHandAppearanceItem;
+	public object EquipHandAppearanceItem;
 
 	[Signal("equip-hand-appearance-item-level")]
-	public byte EquipHandAppearanceItemLevel;
+	public object EquipHandAppearanceItemLevel;
 
 	[Signal("equip-hand-alt")]
-	public byte EquipHandAlt;
+	public object EquipHandAlt;
 
 	[Signal("equip-body")]
-	public byte EquipBody;
+	public object EquipBody;
 
 	[Signal("equip-body-guild-id")]
-	public byte EquipBodyGuildId;
+	public object EquipBodyGuildId;
 
 	[Signal("equip-body-custom1")]
-	public byte EquipBodyCustom1;
+	public object EquipBodyCustom1;
 
 	[Signal("equip-body-custom2")]
-	public byte EquipBodyCustom2;
+	public object EquipBodyCustom2;
 
 	[Signal("equip-body-custom3")]
-	public byte EquipBodyCustom3;
+	public object EquipBodyCustom3;
 
 	[Signal("equip-body-custom4")]
-	public byte EquipBodyCustom4;
+	public object EquipBodyCustom4;
 
 	[Signal("equip-body-custom5")]
-	public byte EquipBodyCustom5;
+	public object EquipBodyCustom5;
 
 	[Signal("equip-body-custom6")]
-	public byte EquipBodyCustom6;
+	public object EquipBodyCustom6;
 
 	[Signal("equip-body-custom7")]
-	public byte EquipBodyCustom7;
+	public object EquipBodyCustom7;
 
 	[Signal("equip-body-custom8")]
-	public byte EquipBodyCustom8;
+	public object EquipBodyCustom8;
 
 	[Signal("equip-ear")]
-	public byte EquipEar;
+	public object EquipEar;
 
 	[Signal("equip-eye")]
-	public byte EquipEye;
+	public object EquipEye;
 
 	[Signal("equip-eye-custom1")]
-	public byte EquipEyeCustom1;
+	public object EquipEyeCustom1;
 
 	[Signal("equip-eye-custom2")]
-	public byte EquipEyeCustom2;
+	public object EquipEyeCustom2;
 
 	[Signal("equip-eye-custom3")]
-	public byte EquipEyeCustom3;
+	public object EquipEyeCustom3;
 
 	[Signal("equip-head")]
-	public byte EquipHead;
+	public object EquipHead;
 
 	[Signal("equip-head-custom1")]
-	public byte EquipHeadCustom1;
+	public object EquipHeadCustom1;
 
 	[Signal("equip-head-custom2")]
-	public byte EquipHeadCustom2;
+	public object EquipHeadCustom2;
 
 	[Signal("equip-head-custom3")]
-	public byte EquipHeadCustom3;
+	public object EquipHeadCustom3;
 
 	[Signal("equip-body-attach")]
-	public byte EquipBodyAttach;
+	public object EquipBodyAttach;
 
 	[Signal("equip-body-attach-custom1")]
-	public byte EquipBodyAttachCustom1;
+	public object EquipBodyAttachCustom1;
 
 	[Signal("equip-body-attach-custom2")]
-	public byte EquipBodyAttachCustom2;
+	public object EquipBodyAttachCustom2;
 
 	[Signal("equip-body-attach-custom3")]
-	public byte EquipBodyAttachCustom3;
+	public object EquipBodyAttachCustom3;
 
 	[Signal("equip-weapon-gem")]
-	public byte EquipWeaponGem;
+	public object EquipWeaponGem;
 
 	[Signal("equip-pet-1")]
-	public byte EquipPet1;
+	public object EquipPet1;
 
 	[Signal("equip-pet-1-appearance-item")]
-	public byte EquipPet1AppearanceItem;
+	public object EquipPet1AppearanceItem;
 
 	[Signal("equip-pet-2")]
-	public byte EquipPet2;
+	public object EquipPet2;
 
 	[Signal("equip-pet-2-appearance-item")]
-	public byte EquipPet2AppearanceItem;
+	public object EquipPet2AppearanceItem;
 
 	[Signal("equip-badge-appearance-item")]
-	public byte EquipBadgeAppearanceItem;
+	public object EquipBadgeAppearanceItem;
 
 	[Signal("attack-stiff-duration-equip-value")]
-	public byte AttackStiffDurationEquipValue;
+	public object AttackStiffDurationEquipValue;
 
 	[Signal("defend-stiff-duration-equip-value")]
-	public byte DefendStiffDurationEquipValue;
+	public object DefendStiffDurationEquipValue;
 
 	[Signal("aoe-defend-power-value-equip")]
-	public byte AoeDefendPowerValueEquip;
+	public object AoeDefendPowerValueEquip;
 
 	[Signal("heal-power-equip-value")]
-	public byte HealPowerEquipValue;
+	public object HealPowerEquipValue;
 
 	[Signal("defend-strength-creature-value")]
-	public byte DefendStrengthCreatureValue;
+	public object DefendStrengthCreatureValue;
 
 	[Signal("defend-strength-equip-value")]
-	public byte DefendStrengthEquipValue;
+	public object DefendStrengthEquipValue;
 
 	[Signal("attack-precise-creature-value")]
-	public byte AttackPreciseCreatureValue;
+	public object AttackPreciseCreatureValue;
 
 	[Signal("attack-precise-equip-value")]
-	public byte AttackPreciseEquipValue;
+	public object AttackPreciseEquipValue;
 
 	[Signal("attack-aoe-pierce-value")]
-	public byte AttackAoePierceValue;
+	public object AttackAoePierceValue;
 
 	[Signal("attack-aoe-pierce-value-equip")]
-	public byte AttackAoePierceValueEquip;
+	public object AttackAoePierceValueEquip;
 
 	[Signal("attack-abnormal-hit-base-percent")]
-	public byte AttackAbnormalHitBasePercent;
+	public object AttackAbnormalHitBasePercent;
 
 	[Signal("attack-abnormal-hit-value")]
-	public byte AttackAbnormalHitValue;
+	public object AttackAbnormalHitValue;
 
 	[Signal("attack-abnormal-hit-equip-value")]
-	public byte AttackAbnormalHitEquipValue;
+	public object AttackAbnormalHitEquipValue;
 
 	[Signal("defend-abnormal-dodge-base-percent")]
-	public byte DefendAbnormalDodgeBasePercent;
+	public object DefendAbnormalDodgeBasePercent;
 
 	[Signal("defend-abnormal-dodge-value")]
-	public byte DefendAbnormalDodgeValue;
+	public object DefendAbnormalDodgeValue;
 
 	[Signal("defend-abnormal-dodge-equip-value")]
-	public byte DefendAbnormalDodgeEquipValue;
+	public object DefendAbnormalDodgeEquipValue;
 
 	[Signal("support-power-base-percent")]
-	public byte SupportPowerBasePercent;
+	public object SupportPowerBasePercent;
 
 	[Signal("support-power-value")]
-	public byte SupportPowerValue;
+	public object SupportPowerValue;
 
 	[Signal("support-power-equip-value")]
-	public byte SupportPowerEquipValue;
+	public object SupportPowerEquipValue;
 
 	[Signal("hypermove-power-value")]
-	public byte HypermovePowerValue;
+	public object HypermovePowerValue;
 
 	[Signal("hypermove-power-equip-value")]
-	public byte HypermovePowerEquipValue;
+	public object HypermovePowerEquipValue;
 }

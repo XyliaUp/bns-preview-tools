@@ -152,7 +152,7 @@ public partial class Game_ChallengeTodayScene : PreviewFrm
 			if (reward is null) return;
 
 			this.ChallengeListReward.Add(reward);
-			this.ChallengeCountForReward.Add(record.Attributes["challenge-count-for-reward-" + i].ToByte());
+			this.ChallengeCountForReward.Add(record.Attributes["challenge-count-for-reward-" + i].ToInt8());
 		});
 
 		this.SelectReward(0);
@@ -163,7 +163,7 @@ public partial class Game_ChallengeTodayScene : PreviewFrm
 	#region Reward
 	private List<ChallengeListReward> ChallengeListReward;
 
-	private List<byte> ChallengeCountForReward;
+	private List<sbyte> ChallengeCountForReward;
 
 	private byte SeletedIndex;
 

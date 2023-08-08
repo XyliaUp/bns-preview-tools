@@ -2,8 +2,8 @@
 <table name="weapongemslot" version="0.2" autokey="false" module="6">
   <el name="table" child="1" />
   <el name="record">
-    <record name="level" type="Int8" key="y" required="y" min="3" max="7" />
-    <record name="delete-slot-consume-item" type="Ref" ref="item" repeat="4" />
-    <record name="delete-slot-consume-item-stack-count" type="Int16" default="0" repeat="4" min="0" max="1000" />
+    <attribute name="level" type="Int8" key="y" required="y" min="3" max="7" />
+    <attribute name="delete-slot-consume-item" type="Ref" ref="item" repeat="4" />
+    <attribute name="delete-slot-consume-item-stack-count" type="Int16" default="0" repeat="4" min="0" max="1000" />
   </el>
 </table>

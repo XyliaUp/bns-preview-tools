@@ -4,14 +4,15 @@ using Xylia.Preview.Common.Extension;
 using Xylia.Preview.Data.Helper;
 using Xylia.Preview.Data.Models.BinData.Table.Record;
 using Xylia.Preview.Data.Record;
-using Xylia.Preview.GameUI.Scene.Game_ToolTip.Game_ToolTipScene;
-using Xylia.Preview.GameUI.Scene.Game_ToolTip.ItemTooltipPanel.Randombox;
+using Xylia.Preview.GameUI.Scene.Game_ToolTipScene;
+using Xylia.Preview.GameUI.Scene.Game_ToolTipScene.ItemTooltipPanel.Preview.Randombox;
+using Xylia.Preview.UI.Extension;
 using Xylia.Preview.UI.Custom.Controls;
 using Xylia.Preview.UI.Resources;
 
 using static Xylia.Preview.Data.Record.Item;
 
-namespace Xylia.Preview.GameUI.Scene.Game_ToolTip.ItemTooltipPanel;
+namespace Xylia.Preview.GameUI.Scene.Game_ToolTip.ItemTooltipPanel.Preview.Randombox;
 public partial class RandomboxPreview : TitlePanel
 {
 	#region Constructor
@@ -232,7 +233,7 @@ public partial class RandomboxPreview : TitlePanel
 		}
 
 
-		var AssuredCount = e.Attrs["selected-item-assured-count"].ToInt();
+		var AssuredCount = e.Attrs["selected-item-assured-count"].ToInt32();
 		if (AssuredCount != 0)
 		{
 			parent.MainInfo.Add(new(

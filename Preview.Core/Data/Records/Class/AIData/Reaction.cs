@@ -6,7 +6,7 @@ namespace Xylia.Preview.Data.Record;
 public abstract class Reaction : BaseRecord
 {
     [DefaultValue(0)]
-    public byte Probability;
+    public sbyte Probability;
 
 
     #region Sub

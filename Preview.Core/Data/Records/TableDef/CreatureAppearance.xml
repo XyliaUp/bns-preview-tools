@@ -2,31 +2,31 @@
 <table name="creatureappearance" version="0.6" autokey="true" module="28">
 	<el name="table" child="1" />
 	<el name="record">
-		<record name="alias" type="String" required="y" max="128" />
-		<record name="race" type="Prop_seq" seq="race" default="race-none" />
-		<record name="sex" type="Prop_seq" seq="sex" default="sex-none" />
-		<record name="anim-set-name" type="XUnknown2" deprecated="y" />
-		<record name="face-anim-set-name" type="XUnknown2" />
-		<record name="anim-tree-name" type="XUnknown2" />
-		<record name="face-mesh-name" type="XUnknown2" />
-		<record name="body-mesh-name" type="XUnknown2" />
-		<record name="voice-set-name" type="XUnknown2" />
-		<record name="npc-dialogue-set" type="XUnknown2" />
-		<record name="attach-effect" type="XUnknown2" />
-		<record name="body-material-name" type="XUnknown2" />
-		<record name="face-material-name" type="XUnknown2" />
-		<record name="npcattach1" type="XUnknown2" />
-		<record name="npcattach2" type="XUnknown2" />
-		<record name="npcattach-material1" type="XUnknown2" />
-		<record name="npcattach-material2" type="XUnknown2" />
-		<record name="enable-physbrst" type="Bool" default="y" />
-		<record name="unique-soundcue" type="XUnknown2" />
-		<record name="unique-soundculldist" type="Float32" default="0" />
-		<record name="unique-soundfadetime" type="Float32" default="0" />
-		<record name="sound-attenuation-scale" type="Float32" default="1.0" />
-		<record name="sound-volume-scale" type="Float32" default="1.0" />
-		<record name="param8" type="Int8" default="0" repeat="92" />
-		<record name="decal-radius" type="Float32" default="1.0" min="0.0" max="100.0" />
-		<record name="pc-customize" type="Bool" />
+		<attribute name="alias" type="String" required="y" max="128" />
+		<attribute name="race" type="Prop_seq" seq="race" default="race-none" />
+		<attribute name="sex" type="Prop_seq" seq="sex" default="sex-none" />
+		<attribute name="anim-set-name" type="XUnknown2" deprecated="y" />
+		<attribute name="face-anim-set-name" type="XUnknown2" />
+		<attribute name="anim-tree-name" type="XUnknown2" />
+		<attribute name="face-mesh-name" type="XUnknown2" />
+		<attribute name="body-mesh-name" type="XUnknown2" />
+		<attribute name="voice-set-name" type="XUnknown2" />
+		<attribute name="npc-dialogue-set" type="XUnknown2" />
+		<attribute name="attach-effect" type="XUnknown2" />
+		<attribute name="body-material-name" type="XUnknown2" />
+		<attribute name="face-material-name" type="XUnknown2" />
+		<attribute name="npcattach1" type="XUnknown2" />
+		<attribute name="npcattach2" type="XUnknown2" />
+		<attribute name="npcattach-material1" type="XUnknown2" />
+		<attribute name="npcattach-material2" type="XUnknown2" />
+		<attribute name="enable-physbrst" type="Bool" default="y" />
+		<attribute name="unique-soundcue" type="XUnknown2" />
+		<attribute name="unique-soundculldist" type="Float32" default="0" />
+		<attribute name="unique-soundfadetime" type="Float32" default="0" />
+		<attribute name="sound-attenuation-scale" type="Float32" default="1.0" />
+		<attribute name="sound-volume-scale" type="Float32" default="1.0" />
+		<attribute name="param8" type="Int8" default="0" repeat="92" />
+		<attribute name="decal-radius" type="Float32" default="1.0" min="0.0" max="100.0" />
+		<attribute name="pc-customize" type="Bool" />
 	</el>
 </table>

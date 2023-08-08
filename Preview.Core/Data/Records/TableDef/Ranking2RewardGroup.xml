@@ -2,23 +2,23 @@
 <table name="ranking2-reward-group" version="2.1" autokey="false" module="6">
   <el name="table" child="1" />
   <el name="record">
-    <record name="id" type="Int32" key="y" required="y" min="1" />
-    <record name="alias" type="String" required="y" max="70" />
-    <record name="reward-group-ranking-top" type="Int32" default="0" repeat="20" />
-    <record name="reward-group-ranking-bottom" type="Int32" default="0" repeat="20" />
-    <record name="reward" type="Ref" ref="ranking2-reward" repeat="20" />
-    <record name="effect-reward-group-ranking-top" type="Int32" default="0" repeat="20" />
-    <record name="effect-reward-group-ranking-bottom" type="Int32" default="0" repeat="20" />
-    <record name="effect-reward" type="Ref" ref="ranking2-effect-reward" repeat="20" />
-    <record name="default-job-ranking-imageset-large" type="String" max="50" />
-    <record name="default-job-ranking-imageset" type="String" max="50" />
-    <record name="job-ranking-imageset-large" type="String" repeat="20" max="50" />
-    <record name="job-ranking-imageset" type="String" repeat="20" max="50" />
-    <record name="default-total-ranking-imageset-large" type="String" max="50" />
-    <record name="default-total-ranking-imageset" type="String" max="50" />
-    <record name="total-ranking-imageset-large" type="String" repeat="20" max="50" />
-    <record name="total-ranking-imageset" type="String" repeat="20" max="50" />
-    <record name="ranking-buff-imageset" type="String" repeat="20" max="50" />
-    <record name="ranking-top-ranker-imageset" type="XUnknown2" repeat="3" />
+    <attribute name="id" type="Int32" key="y" required="y" min="1" />
+    <attribute name="alias" type="String" required="y" max="70" />
+    <attribute name="reward-group-ranking-top" type="Int32" default="0" repeat="20" />
+    <attribute name="reward-group-ranking-bottom" type="Int32" default="0" repeat="20" />
+    <attribute name="reward" type="Ref" ref="ranking2-reward" repeat="20" />
+    <attribute name="effect-reward-group-ranking-top" type="Int32" default="0" repeat="20" />
+    <attribute name="effect-reward-group-ranking-bottom" type="Int32" default="0" repeat="20" />
+    <attribute name="effect-reward" type="Ref" ref="ranking2-effect-reward" repeat="20" />
+    <attribute name="default-job-ranking-imageset-large" type="String" max="50" />
+    <attribute name="default-job-ranking-imageset" type="String" max="50" />
+    <attribute name="job-ranking-imageset-large" type="String" repeat="20" max="50" />
+    <attribute name="job-ranking-imageset" type="String" repeat="20" max="50" />
+    <attribute name="default-total-ranking-imageset-large" type="String" max="50" />
+    <attribute name="default-total-ranking-imageset" type="String" max="50" />
+    <attribute name="total-ranking-imageset-large" type="String" repeat="20" max="50" />
+    <attribute name="total-ranking-imageset" type="String" repeat="20" max="50" />
+    <attribute name="ranking-buff-imageset" type="String" repeat="20" max="50" />
+    <attribute name="ranking-top-ranker-imageset" type="XUnknown2" repeat="3" />
   </el>
 </table>

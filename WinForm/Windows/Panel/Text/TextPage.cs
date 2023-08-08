@@ -292,7 +292,7 @@ public partial class TextPage : UserControl
 
 	private static Dictionary<string, Text> GetText(FileInfo file)
 	{
-		DataTable<Text> Table;
+		Table<Text> Table;
 		if (file.Extension == ".xml")
 		{
 			Table = new() { DataProvider = new FileProvider(file) };

@@ -7,7 +7,7 @@ namespace Xylia.Preview.Data.Record;
 public sealed class ItemImproveOption : BaseRecord
 {
 	public int Id;
-	public byte Level;
+	public sbyte Level;
 
 
 
@@ -39,8 +39,7 @@ public sealed class ItemImproveOption : BaseRecord
 		if (this.EffectDescription != null) return $"{this.EffectDescription.GetText()}{AdditionalText}";
 		if (this.Ability != MainAbility.None) return this.Ability.GetName(this.AbilityValue) + AdditionalText;
 
-		return SkillModifyInfoGroup?
-			.Where(record => record is not null)
+		return SkillModifyInfoGroup.Skip(5).Where(record => record is not null)
 			.Aggregate("<font name=\"00008130.UI.Label_Green03_12\">", (sum, now) => sum + "<br/>" + now) + "</font>";
 	}
 	#endregion

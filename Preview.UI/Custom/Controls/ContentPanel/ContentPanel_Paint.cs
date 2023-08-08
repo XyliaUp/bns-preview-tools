@@ -3,10 +3,11 @@
 using CUE4Parse.BNS.Conversion;
 
 using Xylia.Extension;
+using Xylia.Extension.Class;
 using Xylia.Preview.Common.Arg;
-using Xylia.Preview.Common.Interface;
 using Xylia.Preview.Common.Tag;
 using Xylia.Preview.Data.Helper;
+using Xylia.Preview.UI.Interface;
 
 using BNSTag = Xylia.Preview.Common.Tag;
 
@@ -91,7 +92,7 @@ public partial class ContentPanel
 
 		Tags = new();
 		_units = new();
-		this.Execute(new ExecuteParam(this).GetFont(FontName, _useHeight), base.Text?.Replace("\n", "<br/>"), ref LocX, ref LocY, true);
+		this.Execute(new ExecuteParam(this).GetFont(FontName), base.Text?.Replace("\n", "<br/>"), ref LocX, ref LocY, true);
 
 		if (this.AutoSize)
 		{
@@ -182,10 +183,10 @@ public partial class ContentPanel
 
 				case "p":
 				{
-					LocX += attr("leftmargin").ToFloat() / 2;
-					LocY += attr("topmargin").ToFloat() / 2;
+					LocX += attr("leftmargin").ToFloat32() / 2;
+					LocY += attr("topmargin").ToFloat32() / 2;
 
-					FinalHeight += attr("bottommargin").ToFloat() / 2;
+					FinalHeight += attr("bottommargin").ToFloat32() / 2;
 
 					var Justification = attr("justification").ToBool();
 					var JustificationType = attr("justificationtype").ToEnum<JustificationType>();
@@ -198,7 +199,7 @@ public partial class ContentPanel
 					{
 						var BulletsFontset = attr("bulletsfontset");
 
-						this.DrawString(param.GetFont(BulletsFontset, _useHeight), ref LocX, ref LocY, Bullets);
+						this.DrawString(param.GetFont(BulletsFontset), ref LocX, ref LocY, Bullets);
 						LocX += 2;
 					}
 
@@ -233,7 +234,7 @@ public partial class ContentPanel
 
 				case "font":
 				{
-					var param2 = param.GetFont(attr("name"), _useHeight);
+					var param2 = param.GetFont(attr("name"));
 
 					FinalHeight = param2.Font.Height;
 					this.Execute(param2, Node.InnerHtml, ref LocX, ref LocY);
@@ -251,21 +252,21 @@ public partial class ContentPanel
 					var ImagesetPath = Node.Attributes["imagesetpath"]?.Value;
 					var Path = Node.Attributes["path"]?.Value;
 					var EnableScale = Node.Attributes["enablescale"]?.Value.ToBool() ?? false;
-					var ScaleRate = Node.Attributes["scalerate"]?.Value.ToFloat() ?? 1.0f;
+					var ScaleRate = Node.Attributes["scalerate"]?.Value.ToFloat32() ?? 1.0f;
 
 
 					#region	Image
-					if (ImagesetPath != null) bitmap = ImagesetPath.GetUObject().GetImage();
+					if (ImagesetPath != null) bitmap = FileCache.Provider.LoadObject(ImagesetPath)?.GetImage();
 					if (Path != null)
 					{
-						bitmap = Path.GetUObject().GetImage();
+						bitmap = FileCache.Provider.LoadObject(Path).GetImage();
 
-						var u = attr("u").ToInt();
-						var v = attr("v").ToInt();
-						var ul = attr("ul").ToInt();
-						var vl = attr("vl").ToInt();
-						var width = attr("width").ToInt();
-						var height = attr("height").ToInt();
+						var u = attr("u").ToInt32();
+						var v = attr("v").ToInt32();
+						var ul = attr("ul").ToInt32();
+						var vl = attr("vl").ToInt32();
+						var width = attr("width").ToInt32();
+						var height = attr("height").ToInt32();
 
 						bitmap = bitmap.Clone(u, v, ul, vl);
 					}

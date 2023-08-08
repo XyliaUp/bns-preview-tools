@@ -2,10 +2,10 @@
 <table name="unlocated-store" version="1.0" autokey="true" module="6">
   <el name="table" child="1" />
   <el name="record">
-    <record name="alias" type="String" required="y" max="70" />
-    <record name="store2" type="Ref" ref="store2" required="y" />
-    <record name="available-only-with-grade-benefit" type="Bool" />
-    <record name="unlocated-store-type" type="Seq" required="y">
+    <attribute name="alias" type="String" required="y" max="70" />
+    <attribute name="store2" type="Ref" ref="store2" required="y" />
+    <attribute name="available-only-with-grade-benefit" type="Bool" />
+    <attribute name="unlocated-store-type" type="Seq" required="y">
       <case name="unlocated-none" />
       <case name="unlocated-store" default="y" />
       <case name="account-store" />
@@ -15,6 +15,6 @@
       <case name="soul-boost-store-4" />
       <case name="soul-boost-store-5" />
       <case name="soul-boost-store-6" />
-    </record>
+    </attribute>
   </el>
 </table>

@@ -2,8 +2,8 @@
 <table name="pcskill3" version="0.4" autokey="true" module="6">
   <el name="table" child="1" />
   <el name="record">
-    <record name="alias" type="String" required="y" max="70" />
-    <record name="job-style" type="Seq" seq="job-style" default="base-1" />
-    <record name="skill3" type="Ref" ref="skill3" repeat="40" />
+    <attribute name="alias" type="String" required="y" max="70" />
+    <attribute name="job-style" type="Seq" seq="job-style" default="base-1" />
+    <attribute name="skill3" type="Ref" ref="skill3" repeat="40" />
   </el>
 </table>

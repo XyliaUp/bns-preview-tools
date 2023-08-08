@@ -2,20 +2,20 @@
 <table name="war-field" version="0.3" autokey="false" module="6">
   <el name="table" child="1" />
   <el name="record">
-    <record name="id" type="Int32" key="y" required="y" min="1" />
-    <record name="alias" type="String" required="y" max="70" />
-    <record name="main-zone" type="Ref" ref="zone" required="y" />
-    <record name="battle-zone" type="Ref" ref="zone" repeat="10" />
-    <record name="field-break-zone" type="Ref" ref="zone" repeat="2" />
-    <record name="field-break-boss-zone" type="Ref" ref="zone" required="y" />
-    <record name="required-level" type="Int8" default="0" min="0" max="100" />
-    <record name="required-mastery-level" type="Int8" default="0" min="0" max="100" />
-    <record name="required-preceding-quest" type="Ref" ref="quest" repeat="3" />
-    <record name="required-preceding-quest-check" type="Seq" seq="check" default="and" />
-    <record name="field-break-zone-imprint-effect" type="Ref" ref="effect" required="y" />
-    <record name="field-break-zone-imprint-env" type="Ref" ref="zoneenv2spawn" repeat="2" />
-    <record name="boss-battle-zone-entrance-effect" type="Ref" ref="effect" required="y" />
-    <record name="group" type="Ref" ref="attraction-group" />
-    <record name="finish-pc-respawn" type="Ref" ref="zonepcspawn" required="y" />
+    <attribute name="id" type="Int32" key="y" required="y" min="1" />
+    <attribute name="alias" type="String" required="y" max="70" />
+    <attribute name="main-zone" type="Ref" ref="zone" required="y" />
+    <attribute name="battle-zone" type="Ref" ref="zone" repeat="10" />
+    <attribute name="field-break-zone" type="Ref" ref="zone" repeat="2" />
+    <attribute name="field-break-boss-zone" type="Ref" ref="zone" required="y" />
+    <attribute name="required-level" type="Int8" default="0" min="0" max="100" />
+    <attribute name="required-mastery-level" type="Int8" default="0" min="0" max="100" />
+    <attribute name="required-preceding-quest" type="Ref" ref="quest" repeat="3" />
+    <attribute name="required-preceding-quest-check" type="Seq" seq="check" default="and" />
+    <attribute name="field-break-zone-imprint-effect" type="Ref" ref="effect" required="y" />
+    <attribute name="field-break-zone-imprint-env" type="Ref" ref="zoneenv2spawn" repeat="2" />
+    <attribute name="boss-battle-zone-entrance-effect" type="Ref" ref="effect" required="y" />
+    <attribute name="group" type="Ref" ref="attraction-group" />
+    <attribute name="finish-pc-respawn" type="Ref" ref="zonepcspawn" required="y" />
   </el>
 </table>

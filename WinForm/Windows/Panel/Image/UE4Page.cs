@@ -1,10 +1,8 @@
 ﻿using System.ComponentModel;
-using System.IO;
 
 using CUE4Parse.BNS;
+using CUE4Parse.BNS.Conversion;
 
-using Xylia.Configure;
-using Xylia.Preview.CUE4Parse_BNS.Conversion;
 using Xylia.Preview.Properties;
 
 namespace Xylia.Match.Windows.Panel;
@@ -58,19 +56,17 @@ public partial class UE4Page : UserControl
 
 	private async Task UeExporter(string FilterText) => await Task.Run(() =>
 	{
-		using PakData PakData = new();
-		var filter = PakData.FixPath(FilterText, false) ?? FilterText;
+		using GameFileProvider Provider = new();
+		var filter = Provider.FixPath(FilterText, false) ?? FilterText;
 
-		foreach (var gamefile in PakData.Provider.Files.Values.Where(o => o.Extension == "uasset" &&
-			o.Path.Contains(filter, StringComparison.OrdinalIgnoreCase)))
+		Parallel.ForEach(Provider.Files.Values, gamefile =>
 		{
-			// get object
-			var obj = PakData.Provider.LoadPackage(gamefile).GetExports().FirstOrDefault();
-			if (obj is null) continue;
+			if (gamefile.Extension != "uasset" || !gamefile.Path.Contains(filter, StringComparison.OrdinalIgnoreCase))
+				return;
 
-			// output
-			Common.Output(obj, checkBox1.Checked);
-		}
+			try { Common.Output(Provider.LoadPackage(gamefile), this.checkBox1.Checked); }
+			catch { }
+		});
 	});
 	#endregion
 }

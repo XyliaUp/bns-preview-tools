@@ -5,5 +5,5 @@ namespace Xylia.Preview.Data.Record.ReactionClass;
 [Signal("in-out-detect-stop")]
 public sealed class InOutDetectStop : Reaction
 {
-	public byte Index;
+	public sbyte Index;
 }

@@ -17,16 +17,12 @@ public class StrWriter : TextWriter
     #endregion
 
     #region Constructor
-    /// <summary>
-    /// Constructor
-    /// </summary>
-    /// <param name="output"></param>
     public StrWriter(RichTextBox output)
     {
         _output = output;
 
         Console.SetOut(this);
-        Console.WriteLine($"#cFF6600#Initialize成功！版本信息：{Assembly.GetExecutingAssembly().GetName().Version} (内部版本 NT2.0)");
+        Console.WriteLine($"#cFF6600#版本信息：{Assembly.GetExecutingAssembly().GetName().Version} (内部版本 NT2.0)");
     }
     #endregion
 
@@ -38,18 +34,14 @@ public class StrWriter : TextWriter
         if (FinalTxt != null)
         {
             _output.AppendText(FinalTxt);
-
-            //剔除换行符后执行日志
             FinalTxt.Replace("\n", null).CreateLog();
         }
     }
 
     public string CreateInfo(string Text, bool NeedTimeInfo = true)
     {
-        //设置当前时间
         string Result = NeedTimeInfo ? $"{DateTime.Now:T} " : null;
 
-        //文本处理
         if (!string.IsNullOrEmpty(Text))
         {
             if (!string.IsNullOrEmpty(Result)) Result += Text.Replace("\n", "\n" + new string(' ', Result.Length)) + "\r\n";

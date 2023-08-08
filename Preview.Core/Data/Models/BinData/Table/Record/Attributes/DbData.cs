@@ -18,7 +18,7 @@ public sealed class DbData : IAttributeCollection
 
 	private readonly Dictionary<AttributeDefinition, string> data;
 
-	public DbData(DatafileConverter convert, DataTableDefinition tableDef, RecordModel record)
+	public DbData(DatafileConverter convert, TableDefinition tableDef, RecordModel record)
 	{
 		this.convert = convert;
 		this.record = record;

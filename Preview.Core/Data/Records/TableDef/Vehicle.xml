@@ -2,20 +2,20 @@
 <table name="vehicle" version="4.0" autokey="false" module="6" maxid="30000">
   <el name="table" child="1" />
   <el name="record">
-    <record name="id" type="Int32" key="y" required="y" max="30000" />
-    <record name="alias" type="String" required="y" max="70" />
-    <record name="vehicle-speed" type="Int16" required="y" min="0" max="1000" />
-    <record name="sprint-speed" type="Int32" required="y" />
-    <record name="glide-speed" type="Int32" required="y" />
-    <record name="boost-speed" type="Int32" required="y" />
-    <record name="turn-rate" type="Int32" required="y" />
-    <record name="jump-height" type="Int32" required="y" />
-    <record name="jump-run-height" type="Int32" required="y" />
-    <record name="jump-sprint-height" type="Int32" required="y" />
-    <record name="riding-action-duration" type="Int32" required="y" />
-    <record name="appearance" type="Ref" ref="vehicle-appearance" />
-    <record name="context-script" type="Ref" ref="contextscript" />
-    <record name="disable-move-type" type="Seq" repeat="8">
+    <attribute name="id" type="Int32" key="y" required="y" max="30000" />
+    <attribute name="alias" type="String" required="y" max="70" />
+    <attribute name="vehicle-speed" type="Int16" required="y" min="0" max="1000" />
+    <attribute name="sprint-speed" type="Int32" required="y" />
+    <attribute name="glide-speed" type="Int32" required="y" />
+    <attribute name="boost-speed" type="Int32" required="y" />
+    <attribute name="turn-rate" type="Int32" required="y" />
+    <attribute name="jump-height" type="Int32" required="y" />
+    <attribute name="jump-run-height" type="Int32" required="y" />
+    <attribute name="jump-sprint-height" type="Int32" required="y" />
+    <attribute name="riding-action-duration" type="Int32" required="y" />
+    <attribute name="appearance" type="Ref" ref="vehicle-appearance" />
+    <attribute name="context-script" type="Ref" ref="contextscript" />
+    <attribute name="disable-move-type" type="Seq" repeat="8">
       <case name="hyper" />
       <case name="sprint" />
       <case name="drift" />
@@ -26,9 +26,9 @@
       <case name="rocket-jump" />
       <case name="glide" />
       <case name="none" default="y" />
-    </record>
-    <record name="group" type="Int32" default="0" />
-    <record name="level" type="Int32" default="0" />
-    <record name="item" type="Ref" ref="item" />
+    </attribute>
+    <attribute name="group" type="Int32" default="0" />
+    <attribute name="level" type="Int32" default="0" />
+    <attribute name="item" type="Ref" ref="item" />
   </el>
 </table>

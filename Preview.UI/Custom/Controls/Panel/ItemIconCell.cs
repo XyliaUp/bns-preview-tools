@@ -5,7 +5,8 @@ using Xylia.Extension;
 using Xylia.Preview.Common.Extension;
 using Xylia.Preview.Data.Models.BinData.Table.Record;
 using Xylia.Preview.UI.Custom.Controls.Designer;
-using Xylia.Preview.GameUI.Scene.Game_ItemGrowth2;
+using Xylia.Preview.GameUI.Scene.Game_ItemGrowth2.Game_ItemGrowth2;
+using Xylia.Preview.UI.Extension;
 
 namespace Xylia.Preview.UI.Custom.Controls;
 

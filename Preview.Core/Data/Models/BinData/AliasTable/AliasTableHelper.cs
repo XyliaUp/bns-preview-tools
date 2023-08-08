@@ -2,63 +2,46 @@
 
 using BnsBinTool.Core.Models;
 
+using Xylia.Extension;
+
 namespace Xylia.Preview.Data.Models.BinData.AliasTable;
 public static class AliasTableHelper
 {
-	public static ConcurrentDictionary<string, AliasCollection> CreateTable(this List<NameTableEntry> entries)
+	public static ConcurrentDictionary<string, AliasCollection> CreateTable(this NameTable source)
 	{
-		#region find start index
-		int startIdx = -1;
-		for (int idx = entries.Count - 1; idx >= 0; idx--)
+		var result = new BlockingCollection<AliasInfo>();
+		Parallel.For(source.RootEntry.Begin >> 1, source.Entries.Count, Index =>
 		{
-			//存在别名的数据表名
-			var entry = entries[idx];
-			if (entry.IsLeaf && entry.String == "account-post-charge:")
-			{
-				startIdx = idx;
-				break;
-			}
-		}
-		if (startIdx == -1) throw new Exception($"start index not found!");
-		#endregion
+			BlockingCollection<AliasInfo> _table = new();
+			source.Entries[(int)Index].CreateNodes(source, _table);
 
-		var array = entries.ToArray();
-		var result = new ConcurrentDictionary<string, AliasCollection>(StringComparer.OrdinalIgnoreCase);
+			_table.ForEach(o => result.Add(o));
+		});
+		source.Clear();
 
-		Parallel.For(startIdx, array.Length, idx =>
+
+		var tables = new ConcurrentDictionary<string, AliasCollection>(StringComparer.OrdinalIgnoreCase);
+		Parallel.ForEach(result.GroupBy(o => o.Table), table =>
 		{
-			BlockingCollection<AliasInfo> table = new();
-			array[idx].CreateNodes(array, table);
+			var lst = new AliasCollection();
+			tables.TryAdd(table.Key, lst);
 
-			foreach (var record in table)
-			{
-				string ParentTable = record.Table;
-				if (!result.TryGetValue(ParentTable, out var infos))
-					infos = result[ParentTable] = new AliasCollection();
+			foreach (var item in table)
+				lst.Add(item);
 
-				infos.Add(record);
-			}
+			lst.Sort();
 		});
 
-		Parallel.ForEach(result, table => table.Value.Sort());
-		return result;
+		return tables;
 	}
 
-	private static void CreateNodes(this NameTableEntry entry, NameTableEntry[] entries, BlockingCollection<AliasInfo> NodesList, string CurPath = null)
+	private static void CreateNodes(this NameTableEntry entry, NameTable source, BlockingCollection<AliasInfo> table, string CurPath = null)
 	{
 		CurPath += entry.String;
 
 		if (entry.IsLeaf)
-		{
-			var IndexA = entry.Begin / 2;
-			var IndexB = entry.End;
-
-			var Children = new NameTableEntry[IndexB - IndexA + 1];
-			Array.Copy(entries, (int)IndexA, Children, 0, Children.Length);
-
-			foreach (var node in Children)
-				node.CreateNodes(entries, NodesList, CurPath);
-		}
-		else NodesList.Add(new AliasInfo(entry.ToRef(), CurPath));
+			for (uint Index = entry.Begin >> 1; Index <= entry.End; Index++)
+				source.Entries[(int)Index].CreateNodes(source, table, CurPath);
+		else table.Add(new AliasInfo(entry.ToRef(), CurPath));
 	}
 }

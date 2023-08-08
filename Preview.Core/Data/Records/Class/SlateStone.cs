@@ -8,9 +8,9 @@ public sealed class SlateStone : BaseRecord
 {
 	public Text Name;
 
-	public byte Group;
+	public sbyte Group;
 
-	public byte Grade;
+	public sbyte Grade;
 
 	[Signal("modify-ability-1")]
 	public AttachAbility ModifyAbility1;

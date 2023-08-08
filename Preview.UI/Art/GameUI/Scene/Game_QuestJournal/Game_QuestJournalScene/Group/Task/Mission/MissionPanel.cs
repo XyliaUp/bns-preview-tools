@@ -4,6 +4,7 @@ using CSCore.SoundOut;
 
 using Xylia.Preview.Data.Record;
 using Xylia.Preview.Data.Record.QuestData;
+using Xylia.Preview.GameUI.Scene.Game_QuestJournal.Game_QuestJournal.Group.Task.Mission;
 using Xylia.Preview.UI.Custom.Controls;
 
 using static Xylia.Preview.Data.Record.QuestData.Case;

@@ -1,9 +1,6 @@
-﻿using System.Data;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using System.Text.RegularExpressions;
 using System.Xml;
-
-using BnsBinTool.Core.Models;
 
 using Xylia.Configure;
 using Xylia.Extension;
@@ -19,6 +16,7 @@ using Xylia.Preview.Data.Models.ZoneData.RegionData;
 using Xylia.Preview.Data.Models.ZoneData.TerrainData;
 using Xylia.Preview.Tests.DatTool.Utils;
 using Xylia.Preview.Tests.DatTool.Utils.Extract;
+using Xylia.Preview.UI.Extension;
 using Xylia.Windows.CustomException;
 using Xylia.Xml;
 
@@ -34,19 +32,18 @@ public partial class MainForm : Form
 	{
 		InitializeComponent();
 
-		var o = new StrWriter(richOut);
+		new StrWriter(richOut);
 		CheckForIllegalCrossThreadCalls = false;
-
-		this.trackBar1.Value = this.trackBar1.Minimum;
-		this.Text = $"{this.Text}  (Build Date {AssemblyEx.BuildTime:yyMMdd})";
 	}
 	#endregion
 
 	#region TestFunc
 	private void MainForm_Load(object sender, EventArgs e)
 	{
-		txbDatFile.Text = Ini.ReadValue("Path", "Data_DatFile");
-		txbRpFolder.Text = Ini.ReadValue("Path", "Data_OutFolder");
+		this.Text = $"{this.Text}  (Build Date {AssemblyEx.BuildTime:yyMMdd})";
+		this.trackBar1.Value = this.trackBar1.Minimum;
+		this.txbDatFile.Text = Ini.ReadValue("Path", "Data_DatFile");
+		this.txbRpFolder.Text = Ini.ReadValue("Path", "Data_OutFolder");
 
 		this.ReadConfig();
 	}
@@ -72,10 +69,7 @@ public partial class MainForm : Form
 		}
 	}
 
-	private void TxtSavePath(object sender, EventArgs e)
-	{
-		((Control)sender).SavePath();
-	}
+	private void TxtSavePath(object sender, EventArgs e) => ((Control)sender).SaveConfig();
 
 	private void SaveCheckStatus(object sender, EventArgs e)
 	{
@@ -83,9 +77,29 @@ public partial class MainForm : Form
 		Ini.WriteValue("Config", this.Name + "_" + ctl.Name, ctl.Checked);
 	}
 
+	private static DateTime m_LastTime = DateTime.MinValue;
 	private void DoubleClickPath(object sender, EventArgs e)
 	{
-		((Control)sender).DoubleClickPath();
+		if (DateTime.Now.Subtract(m_LastTime).TotalSeconds <= 2) return;
+		m_LastTime = DateTime.Now;
+
+
+		var selected = (sender as Control).Text?.Trim();
+		if (selected.Contains('|'))
+		{
+			var FilePathes = selected.Split('|');
+			selected = FilePathes[0];
+		}
+
+		if (Directory.Exists(selected))
+		{
+			System.Diagnostics.Process.Start("Explorer.exe", selected);
+			return;
+		}
+
+		ProcessStartInfo psi = new("Explorer.exe");
+		psi.Arguments = "/e,/select," + selected;
+		System.Diagnostics.Process.Start(psi);
 	}
 
 	private void ClearLog(object sender, EventArgs e)
@@ -103,7 +117,6 @@ public partial class MainForm : Form
 		string Text = s.Text.Trim();
 		Ini.WriteValue("Path", "Data_DatFile", Text);
 
-		//目录
 		if (Directory.Exists(Text))
 		{
 			var dir = new DirectoryInfo(Text);
@@ -277,10 +290,6 @@ public partial class MainForm : Form
 	#endregion
 
 	#region Bin
-	private void Button2_Click(object sender, EventArgs e) => Txt_Bin_Data.OpenDirPath();
-
-
-
 	private void HeadDump_Click(object sender, EventArgs e)
 	{
 		if (MessageBox.Show("即将开始提取数据，是否确认?", "确认", MessageBoxButtons.OKCancel, MessageBoxIcon.Information) != DialogResult.OK) return;
@@ -364,12 +373,12 @@ public partial class MainForm : Form
 		{
 			try
 			{
-				var GetDataPath = new GetDataPath(Txt_Bin_Data.Text, this.checkBox13.Checked ? ResultMode.SelectBin : ResultMode.SelectDat);
+				var GetDataPath = new DataDetector(Txt_Bin_Data.Text, this.checkBox13.Checked ? ResultMode.SelectBin : ResultMode.SelectDat);
 				string OutFolder = Path.GetDirectoryName(GetDataPath.XmlData.Path) +
 					@"\Export\" + Path.GetFileNameWithoutExtension(GetDataPath.XmlData.Path) + @"\json\";
 
 
-				var data = Datafile.ReadFromBytes(GetDataPath.XmlData.ExtractBin(), is64Bit: GetDataPath.XmlData.Path.Judge64Bit());
+				var data = GetDataPath.XmlData.ExtractBin();
 				var detect = new DatafileDetect();
 				detect.Detect(data);
 
@@ -584,55 +593,8 @@ public partial class MainForm : Form
 
 	private void button34_Click(object sender, EventArgs e) => textBox11.OpenPath("配置文件|*.xml");
 
-	private void textBox11_TextChanged(object sender, EventArgs e)
-	{
-		TxtSavePath(sender, e);
-		ModifyCfgPath(textBox7, ((Control)sender).Text, textBox7.Text);
-	}
-
-	private static void ModifyCfgPath(Control ctl, string CfgPath, string TargetDir)
-	{
-		new Thread(() =>
-		{
-			try
-			{
-				string ConvertPath = TargetDir.Split('|')[0];
-				string Result = null;
 
 
-				if (File.Exists(CfgPath) && !string.IsNullOrWhiteSpace(ConvertPath))
-				{
-					XmlDocument tmp = new();
-					tmp.Load(CfgPath);
-
-					string Relative = tmp.DocumentElement.SelectSingleNode(".//list")?.Property()?.Attributes["relative-path", "path"]?.ToLower();
-
-					//判断目录
-					string TarDir = Path.GetDirectoryName(ConvertPath);
-					if (!string.IsNullOrWhiteSpace(Relative) && Directory.Exists(TarDir))
-					{
-						//var Files = FileGet.GetFiles(TarDir, Relative, ".xml", false);
-
-						//if (Files.Count != 0) Result = Files[0].FullName;
-						//else
-						//{
-						//	Files = FileGet.GetFiles(Path.GetDirectoryName(TarDir), Relative, ".xml", false);
-						//	if (Files.Count != 0) Result = Files[0].FullName;
-						//}
-					}
-				}
-
-				if (!string.IsNullOrWhiteSpace(Result)) ctl.Text = Result;
-			}
-			catch
-			{
-
-			}
-
-		}).Start();
-	}
-
-	
 	private void button13_Click(object sender, EventArgs e)
 	{
 		new Thread(() =>
@@ -702,157 +664,7 @@ public partial class MainForm : Form
 
 	private void button11_Click(object sender, EventArgs e)
 	{
-		Thread t = new(act =>
-		{
-			try
-			{
-				if (FilePathes is null) return;
 
-				#region 读取合并的信息
-				var Info = new Dictionary<string, XmlProperty>(StringComparer.OrdinalIgnoreCase);
-				foreach (var Path in FilePathes)
-				{
-					if (!string.IsNullOrWhiteSpace(Path) && File.Exists(Path))
-					{
-						XmlDocument doc = new();
-						doc.Load(Path);
-
-						doc.SelectNodes(".//record").OfType<XmlElement>().ToList().ForEach(Case =>
-						{
-							var xp = Case.Property();
-
-							//存储用的关键Key
-							string Key = checkBox12.Checked ? xp.Attributes["alias"] : xp.Attributes["id"];
-							//if (true) Key = xp.Attributes["job"] + "_" + xp.Attributes["level"];
-
-
-							if (Key == null) Console.WriteLine("无效对象：" + Case.OuterXml);
-							else if (Info.ContainsKey(Key)) Console.WriteLine("重复：" + Key);
-							else Info.Add(Key, xp);
-						});
-					}
-				}
-				#endregion
-
-				#region 生成白名单Fields名
-				List<string> AttrNames = null;
-				if (checkBox14.Checked)
-				{
-					//var Lists = ConfigLoad.Load(textBox6.Text);
-					//if (Lists is null || Lists.Count == 0) throw new Exception("没有载入任何配置数据，请确定路径是否正确");
-
-					//AttrNames = new List<string>();
-					//foreach (var record in Lists[0].Records.Where(r => !r.Client))
-					//{
-					//	for (int x = 1; x <= record.Repeat; x++)
-					//		AttrNames.Add(record.GetAlias(x));
-
-					//	//if (record is RepeatRecord repeatRecord)
-					//	//{
-					//	//	for (int x = repeatRecord.StartNumber; x <= repeatRecord.FinishNumber; x++) AttrNames.Add(repeatRecord.GetAlias(x));
-					//	//}
-					//	//else AttrNames.Add(record.GetAlias(0));
-					//}
-				}
-				#endregion
-
-
-
-				#region 处理被合并的数据源
-				foreach (var tmp in textBox4.Text.Split('|'))
-				{
-					var Source = new XmlDocument();
-					Source.Load(tmp);
-					Source.SelectNodes(".//record").OfType<XmlElement>().ToList().ForEach(Case =>
-					{
-						var xp = Case.Property();
-						if (true)
-						{
-							//唯一主键
-							string CaseKey = checkBox12.Checked ? xp.Attributes["alias"] : xp.Attributes["id"];
-							//if (true) CaseKey = xp.Attributes["job"] + "_" + xp.Attributes["level"];
-
-
-							if (string.IsNullOrWhiteSpace(CaseKey))
-								throw new Exception($"主键不能为空 ({Case.OuterXml})");
-
-
-							//如果被合并源中包含当前信息
-							if (Info.ContainsKey(CaseKey))
-							{
-								#region 清除原信息
-								if (false)
-								{
-								}
-								#endregion
-
-
-								//由于清除后信息发生变化，需要重新生成数据
-								xp = Case.Property();
-
-								//筛选出属性
-								foreach (var a in Info[CaseKey].Attributes.Where(a => a.Value != null))
-								{
-									//判断Fields是否需要处理
-									if (AttrNames != null && !AttrNames.Contains(a.Name))
-										continue;
-
-
-									//指示被合并信息中包含此属性
-									bool IsContain = xp.Attributes.ContainsName(a.Name, true);
-									bool Flag = checkBox11.Checked || !IsContain;
-									//Flag = a.Name != "id";
-
-									if (Flag)
-									{
-										string TarVal = a.Value.ToString();
-
-										//如果不包含此属性
-										if (!IsContain)
-										{
-											Case.SetAttribute(a.Name, TarVal);
-										}
-
-										//如果包含此属性
-										else
-										{
-											string OriVal = xp.Attributes[a.Name];
-
-											//两个文档中属性值不同时进行处理
-											if (!OriVal.Equals(TarVal))
-											{
-												string msg = $"重复的属性 ({a.Name})：{OriVal} => {TarVal}";
-
-												//将文本应用为合并源数据
-												Case.SetAttribute(a.Name, TarVal);
-											}
-										}
-									}
-								}
-							}
-						}
-					});
-
-					Source.Save(tmp);
-				}
-				#endregion
-
-				Console.WriteLine("合并完成");
-			}
-			catch (Exception ee)
-			{
-				Trace.WriteLine(ee);
-				Tip.Message(ee.Message);
-			}
-
-		});
-
-		t.Start();
-	}
-
-	private void button18_Click(object sender, EventArgs e)
-	{
-		MyComparer.AliasModify(textBox2.Text, textBox4.Text);
 	}
 
 	private void textBox2_TextChanged(object sender, EventArgs e)
@@ -929,10 +741,15 @@ public partial class MainForm : Form
 			{
 				XmlDocument xmlDocument = new();
 				xmlDocument.Load(openFile.FileName);
-				attrs.AddRange(from node in xmlDocument.SelectNodes("table/*").OfType<XmlElement>()
-							   from test in node.Property().Attributes
-							   where !attrs.Contains(test.Name)
-							   select test.Name);
+
+				foreach (var node in xmlDocument.SelectNodes("table/*").OfType<XmlElement>())
+				{
+					foreach (XmlAttribute attr in node.Attributes)
+					{
+						if (!attrs.Contains(attr.Name))
+							attrs.Add(attr.Name);
+					}
+				}
 			}
 
 			attrs.Sort(new SortByString());
@@ -1023,7 +840,7 @@ public partial class MainForm : Form
 							}
 							else
 							{
-								int Key = MajorKey.ToInt();
+								int Key = MajorKey.ToInt32();
 								if (!Group.ContainsKey(Key)) Group.Add(Key, new());
 
 								Group[Key].Add(record);
@@ -1037,14 +854,13 @@ public partial class MainForm : Form
 					{
 						foreach (var t in AliasGroup)
 						{
-							//属性筛选
-							XmlProperty xp = t.Value.Property();
+							//XmlProperty xp = t.Value.Property();
 
-							t.Value.Attributes.RemoveAll();
-							foreach (var a in xp.Attributes)
-								t.Value.SetAttribute(a.Name, a.Value.ToString());
+							//t.Value.Attributes.RemoveAll();
+							//foreach (var a in xp.Attributes)
+							//	t.Value.SetAttribute(a.Name, a.Value.ToString());
 
-							xi.AppendChild(t.Value);
+							//xi.AppendChild(t.Value);
 						}
 					}
 					else
@@ -1124,12 +940,11 @@ public partial class MainForm : Form
 			set ??= new TestSet();
 			set.Output(textBox11.Text.Split('|'));
 		}
-		catch(Exception ex)
+		catch (Exception ex)
 		{
 			Console.WriteLine("[error] " + ex);
 		}
 	}
-
 
 
 	private void button12_Click(object sender, EventArgs e)
@@ -1138,7 +953,7 @@ public partial class MainForm : Form
 		ServerPath = (checkBox9.Checked ? ServerPath : Path.GetDirectoryName(ServerPath)) + @"\server";
 		ServerPath = BNSFileHelper.PublicOutFolder;
 
-		if (Directory.Exists(ServerPath)) Process.Start(ServerPath);
+		if (Directory.Exists(ServerPath)) System.Diagnostics.Process.Start(ServerPath);
 		else Console.WriteLine("#cRed#文件夹不存在，请稍后再试");
 	}
 	#endregion

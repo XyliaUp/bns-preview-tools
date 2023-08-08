@@ -14,19 +14,7 @@ public class ActSequence : BaseRecord
 	public Detect Detect;
 
 	[Signal("indexed-detect")]
-	public byte IndexedDetect;
-
-	public override void LoadData(XmlElement data)
-	{
-		base.LoadData(data);
-
-		Action = new();
-		foreach (var record in data.SelectNodes("./action").OfType<XmlElement>())
-		{
-			throw new NotImplementedException();
-		}
-	}
-
+	public sbyte IndexedDetect;
 
 
 	#region Sub

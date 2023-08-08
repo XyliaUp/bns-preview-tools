@@ -5,6 +5,7 @@ public sealed class Script : BaseRecord
 {
 	public List<Decision> Decision = new();
 
+
 	public string Parent;
 
 	public HangerSeq Hanger;

@@ -1,16 +1,11 @@
 ﻿using System.Windows;
 
-using CUE4Parse.BNS.Exports;
-using CUE4Parse.UE4.Assets.Exports;
-using CUE4Parse.UE4.Assets.Exports.Material;
-
 using FModel.Framework;
 using FModel.Views.Snooper;
 
 using OpenTK.Windowing.Common;
 using OpenTK.Windowing.Desktop;
 
-using Xylia.Preview.Data.Helper;
 using Xylia.Preview.Helper;
 
 namespace Xylia.Preview.UI.Custom;
@@ -26,7 +21,7 @@ public class MyTest
 			var scale = ImGuiController.GetDpiScale();
 			var htz = Snooper.GetMaxRefreshFrequency();
 			return _snooper = new Snooper(
-				new GameWindowSettings { RenderFrequency = htz, UpdateFrequency = htz },
+				new GameWindowSettings { UpdateFrequency = htz },
 				new NativeWindowSettings
 				{
 					Size = new OpenTK.Mathematics.Vector2i(
@@ -59,7 +54,7 @@ public class MyTest
 				var scale = ImGuiController.GetDpiScale();
 				var htz = Snooper.GetMaxRefreshFrequency();
 				return _model = new ModelView(
-					new GameWindowSettings { RenderFrequency = htz, UpdateFrequency = htz },
+					new GameWindowSettings { UpdateFrequency = htz },
 					new NativeWindowSettings
 					{
 						Size = new OpenTK.Mathematics.Vector2i(

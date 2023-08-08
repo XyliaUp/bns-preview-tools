@@ -21,7 +21,7 @@ public sealed class ItemExchange : BaseRecord
 	public BaseRecord[] RequiredItem;
 
 	[Signal("required-item-min-level"), Repeat(4)]
-	public byte[] RequiredItemMinLevel;
+	public sbyte[] RequiredItemMinLevel;
 
 	[Signal("required-item-stack-count"), Repeat(4)]
 	public short[] RequiredItemStackCount;

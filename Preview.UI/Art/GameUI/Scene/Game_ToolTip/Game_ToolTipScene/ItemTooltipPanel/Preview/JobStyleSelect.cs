@@ -25,7 +25,7 @@ public partial class JobStyleSelect : UserControl
 
 		foreach (var o in FileCache.Data.JobStyle.Where(o => o.Job == job))
 		{
-			var icon = o.IntroduceJobStyleIcon.GetUObject().GetImage();
+			var icon = FileCache.Provider.LoadObject(o.IntroduceJobStyleIcon)?.GetImage();
 			if (icon is null) continue;
 
 			switch (o.jobStyle)

@@ -2,23 +2,23 @@
 <table name="content-quota" version="3.0" autokey="false" module="6" maxid="30000">
   <el name="table" child="1" />
   <el name="record">
-    <record name="id" type="Int32" key="y" required="y" min="1" max="30000" />
-    <record name="alias" type="String" required="y" max="70" />
-    <record name="min-value" type="Int64" required="y" min="0" />
-    <record name="max-value" type="Int64" required="y" min="0" />
-    <record name="version" type="Int16" required="y" min="1" max="100" />
-    <record name="target-type" type="Seq">
+    <attribute name="id" type="Int32" key="y" required="y" min="1" max="30000" />
+    <attribute name="alias" type="String" required="y" max="70" />
+    <attribute name="min-value" type="Int64" required="y" min="0" />
+    <attribute name="max-value" type="Int64" required="y" min="0" />
+    <attribute name="version" type="Int16" required="y" min="1" max="100" />
+    <attribute name="target-type" type="Seq">
       <case name="character" default="y" />
       <case name="account" />
-    </record>
-    <record name="expiration-time" type="Time64" />
-    <record name="charge-interval" type="Seq" required="y">
+    </attribute>
+    <attribute name="expiration-time" type="Time64" />
+    <attribute name="charge-interval" type="Seq" required="y">
       <case name="none" />
       <case name="hourly" />
       <case name="daily" />
       <case name="weekly" />
-    </record>
-    <record name="charge-day-of-week" type="Seq">
+    </attribute>
+    <attribute name="charge-day-of-week" type="Seq">
       <case name="sun" default="y" />
       <case name="mon" />
       <case name="tue" />
@@ -26,15 +26,15 @@
       <case name="thu" />
       <case name="fri" />
       <case name="sat" />
-    </record>
-    <record name="charge-time" type="Int8" default="0" min="0" max="23" />
-    <record name="charge-amount-per-interval" type="Int64" required="y" min="0" />
-    <record name="consume-key-record" type="Bool" required="y" />
-    <record name="consume-order" type="Ref" ref="content-quota" repeat="4" />
+    </attribute>
+    <attribute name="charge-time" type="Int8" default="0" min="0" max="23" />
+    <attribute name="charge-amount-per-interval" type="Int64" required="y" min="0" />
+    <attribute name="consume-key-record" type="Bool" required="y" />
+    <attribute name="consume-order" type="Ref" ref="content-quota" repeat="4" />
     <sub name="vitality">
-      <record name="following" type="Ref" ref="content-quota" />
-      <record name="delayed" type="Ref" ref="content-quota" />
-      <record name="exp-boost-ratio" type="Int32" default="100" />
+      <attribute name="following" type="Ref" ref="content-quota" />
+      <attribute name="delayed" type="Ref" ref="content-quota" />
+      <attribute name="exp-boost-ratio" type="Int32" default="100" />
     </sub>
     <sub name="shop-sale" />
     <sub name="guild-battle-field" />
@@ -398,7 +398,7 @@
     <sub name="daily-contents-reset" />
     <sub name="weekly-contents-reset" />
     <sub name="specific-target">
-      <record name="modifiable-by-admin" type="Bool" />
+      <attribute name="modifiable-by-admin" type="Bool" />
     </sub>
   </el>
 </table>

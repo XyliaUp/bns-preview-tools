@@ -16,7 +16,7 @@ public sealed class CombatSequence : BaseRecord
 	/// 开始时社交
 	/// </summary>
 	[Signal("seq-start-social")]
-	public byte SeqStartSocial;
+	public sbyte SeqStartSocial;
 
 	/// <summary>
 	/// 激活调试模式
@@ -43,10 +43,10 @@ public sealed class CombatSequence : BaseRecord
 	public TransitAction TransitAction2;
 
 	[Signal("transit-social-1")]
-	public byte TransitSocial1;
+	public sbyte TransitSocial1;
 
 	[Signal("transit-social-2")]
-	public byte TransitSocial2;
+	public sbyte TransitSocial2;
 
 
 

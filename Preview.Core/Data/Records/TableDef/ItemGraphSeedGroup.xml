@@ -2,6 +2,6 @@
 <table name="item-graph-seed-group" version="0.1" autokey="true" module="4">
   <el name="table" child="1" />
   <el name="record">
-    <record name="alias" type="String" required="y" max="70" />
+    <attribute name="alias" type="String" required="y" max="70" />
   </el>
 </table>

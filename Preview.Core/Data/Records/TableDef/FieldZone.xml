@@ -2,21 +2,21 @@
 <table name="field-zone" version="0.16" autokey="false" module="6" maxid="31999">
   <el name="table" child="1" />
   <el name="record">
-    <record name="id" type="Int16" key="y" required="y" min="1" max="31999" />
-    <record name="alias" type="String" required="y" max="70" />
-    <record name="zone" type="Ref" ref="zone" repeat="30" />
-    <record name="group" type="Ref" ref="attraction-group" />
-    <record name="attraction-quest" type="Ref" ref="quest" repeat="5" hidden="y" />
-    <record name="ui-filter-attraction-quest-only" type="Bool" />
-    <record name="respawn-confirm-text" type="Ref" ref="text" />
-    <record name="name2" type="Ref" ref="text" />
-    <record name="desc" type="Ref" ref="text" />
-    <record name="ui-text-grade" type="Int8" default="0" max="8" />
-    <record name="reward-summary" type="Ref" ref="attractionrewardsummary" />
+    <attribute name="id" type="Int16" key="y" required="y" min="1" max="31999" />
+    <attribute name="alias" type="String" required="y" max="70" />
+    <attribute name="zone" type="Ref" ref="zone" repeat="30" />
+    <attribute name="group" type="Ref" ref="attraction-group" />
+    <attribute name="attraction-quest" type="Ref" ref="quest" repeat="5" hidden="y" />
+    <attribute name="ui-filter-attraction-quest-only" type="Bool" />
+    <attribute name="respawn-confirm-text" type="Ref" ref="text" />
+    <attribute name="name2" type="Ref" ref="text" />
+    <attribute name="desc" type="Ref" ref="text" />
+    <attribute name="ui-text-grade" type="Int8" default="0" max="8" />
+    <attribute name="reward-summary" type="Ref" ref="attractionrewardsummary" />
     <sub name="normal" />
     <sub name="guild-battle-field-entrance">
-      <record name="guild-battle-field-zone" type="Ref" ref="guild-battle-field-zone" required="y" />
-      <record name="min-fixed-channel" type="Int8" default="2" min="1" max="10" />
+      <attribute name="guild-battle-field-zone" type="Ref" ref="guild-battle-field-zone" required="y" />
+      <attribute name="min-fixed-channel" type="Int8" default="2" min="1" max="10" />
     </sub>
   </el>
 </table>

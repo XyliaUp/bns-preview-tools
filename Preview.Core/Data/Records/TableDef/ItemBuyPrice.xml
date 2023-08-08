@@ -2,31 +2,31 @@
 <table name="item-buy-price" version="3.0" autokey="true" module="262">
   <el name="table" child="1" />
   <el name="record">
-    <record name="alias" type="String" required="y" max="70" />
-    <record name="money" type="Int32" default="0" min="0" max="100000000" />
-    <record name="required-itembrand" type="Ref" ref="item-brand" />
-    <record name="required-itembrand-condition-type" type="Seq" seq="condition-type" default="all" />
-    <record name="required-item" type="Ref" ref="item" repeat="4" />
-    <record name="required-item-count" type="Int16" default="0" repeat="4" min="0" max="30000" />
-    <record name="required-faction-score" type="Int32" default="0" min="0" max="100000" />
-    <record name="required-duel-point" type="Int32" default="0" min="0" max="100000" />
-    <record name="required-party-battle-point" type="Int32" default="0" min="0" max="100000" />
-    <record name="required-field-play-point" type="Int32" default="0" min="0" max="100000" />
-    <record name="required-life-contents-point" type="Int32" default="0" min="0" max="100000" />
-    <record name="required-achievement-score" type="Int32" default="0" min="0" max="3000000" />
-    <record name="required-achievement-id" type="Int32" default="0" />
-    <record name="required-achievement-step-min" type="Int16" default="0" />
-    <record name="faction-level" type="Int16" default="0" />
-    <record name="check-solo-duel-grade" type="Int8" default="0" />
-    <record name="check-team-duel-grade" type="Int8" default="0" />
-    <record name="check-battle-field-grade-occupation-war" type="Int8" default="0" />
-    <record name="check-battle-field-grade-capture-the-flag" type="Int8" default="0" />
-    <record name="check-battle-field-grade-lead-the-ball" type="Int8" default="0" />
-    <record name="check-closet-collecting-grade" type="Int16" default="0" min="0" />
-    <record name="check-content-quota" type="Ref" ref="content-quota" />
-    <record name="check-soul-boost-season-bm" type="Int32" default="0" />
-    <record name="required-level" type="Int8" default="1" min="0" max="100" />
-    <record name="required-mastery-level" type="Int8" default="0" min="0" max="100" />
-    <record name="required-account-level" type="Int16" default="0" min="0" />
+    <attribute name="alias" type="String" required="y" max="70" />
+    <attribute name="money" type="Int32" default="0" min="0" max="100000000" />
+    <attribute name="required-itembrand" type="Ref" ref="item-brand" />
+    <attribute name="required-itembrand-condition-type" type="Seq" seq="condition-type" default="all" />
+    <attribute name="required-item" type="Ref" ref="item" repeat="4" />
+    <attribute name="required-item-count" type="Int16" default="0" repeat="4" min="0" max="30000" />
+    <attribute name="required-faction-score" type="Int32" default="0" min="0" max="100000" />
+    <attribute name="required-duel-point" type="Int32" default="0" min="0" max="100000" />
+    <attribute name="required-party-battle-point" type="Int32" default="0" min="0" max="100000" />
+    <attribute name="required-field-play-point" type="Int32" default="0" min="0" max="100000" />
+    <attribute name="required-life-contents-point" type="Int32" default="0" min="0" max="100000" />
+    <attribute name="required-achievement-score" type="Int32" default="0" min="0" max="3000000" />
+    <attribute name="required-achievement-id" type="Int32" default="0" />
+    <attribute name="required-achievement-step-min" type="Int16" default="0" />
+    <attribute name="faction-level" type="Int16" default="0" />
+    <attribute name="check-solo-duel-grade" type="Int8" default="0" />
+    <attribute name="check-team-duel-grade" type="Int8" default="0" />
+    <attribute name="check-battle-field-grade-occupation-war" type="Int8" default="0" />
+    <attribute name="check-battle-field-grade-capture-the-flag" type="Int8" default="0" />
+    <attribute name="check-battle-field-grade-lead-the-ball" type="Int8" default="0" />
+    <attribute name="check-closet-collecting-grade" type="Int16" default="0" min="0" />
+    <attribute name="check-content-quota" type="Ref" ref="content-quota" />
+    <attribute name="check-soul-boost-season-bm" type="Int32" default="0" />
+    <attribute name="required-level" type="Int8" default="1" min="0" max="100" />
+    <attribute name="required-mastery-level" type="Int8" default="0" min="0" max="100" />
+    <attribute name="required-account-level" type="Int16" default="0" min="0" />
   </el>
 </table>

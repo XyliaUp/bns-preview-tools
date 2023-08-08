@@ -39,7 +39,7 @@ public sealed class ClassicFieldZone : BaseRecord, IAttraction
 	public AttractionRewardSummary RewardSummary;
 
 	[Signal("ui-text-grade")]
-	public byte UiTextGrade;
+	public sbyte UiTextGrade;
 
 
 

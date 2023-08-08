@@ -2,9 +2,9 @@
 <table name="skillcontext" version="1.13" autokey="false" module="4">
   <el name="table" child="1" />
   <el name="record">
-    <record name="alias" type="String" required="y" max="70" />
-    <record name="playerstance" type="Prop_seq" seq="stance" key="y" required="y" />
-    <record name="playerstate" type="Seq" key="y" required="y">
+    <attribute name="alias" type="String" required="y" max="70" />
+    <attribute name="playerstance" type="Prop_seq" seq="stance" key="y" required="y" />
+    <attribute name="playerstate" type="Seq" key="y" required="y">
       <case name="none" />
       <case name="impregnability" />
       <case name="summoned" />
@@ -30,8 +30,8 @@
       <case name="defence" />
       <case name="block_move" />
       <case name="wildfire_2" />
-    </record>
-    <record name="playerlinking" type="Seq" key="y" required="y">
+    </attribute>
+    <attribute name="playerlinking" type="Seq" key="y" required="y">
       <case name="none" />
       <case name="mount" />
       <case name="inhalation" />
@@ -40,9 +40,9 @@
       <case name="catch-none-human" />
       <case name="catch-friend" />
       <case name="inhalation-catch" />
-    </record>
-    <record name="playerlinkstage" type="Seq" seq="link-stage" key="y" required="y" />
-    <record name="enemydistance" type="Seq" key="y" required="y">
+    </attribute>
+    <attribute name="playerlinkstage" type="Seq" seq="link-stage" key="y" required="y" />
+    <attribute name="enemydistance" type="Seq" key="y" required="y">
       <case name="none" />
       <case name="1" />
       <case name="2" />
@@ -54,8 +54,8 @@
       <case name="8" />
       <case name="9" />
       <case name="10" />
-    </record>
-    <record name="enemystate" type="Seq" key="y" required="y">
+    </attribute>
+    <attribute name="enemystate" type="Seq" key="y" required="y">
       <case name="none" />
       <case name="impregnability" />
       <case name="summoned" />
@@ -81,16 +81,16 @@
       <case name="defence" />
       <case name="block_move" />
       <case name="wildfire_2" />
-    </record>
-    <record name="context-use-default" type="Bool" required="y" />
-    <record name="context" type="Int32" default="0" repeat="2" />
-    <record name="skillbar-use-default" type="Bool" required="y" />
-    <record name="skillbar-stance" type="Int32" default="0" repeat="3" />
-    <record name="skillbar" type="Int32" default="0" repeat="12" />
-    <record name="context-fallback" type="Int32" default="0" repeat="2" />
-    <record name="cmd-key-up" type="Int32" default="0" />
-    <record name="cmd-key-down" type="Int32" default="0" />
-    <record name="cmd-key-left" type="Int32" default="0" />
-    <record name="cmd-key-right" type="Int32" default="0" />
+    </attribute>
+    <attribute name="context-use-default" type="Bool" required="y" />
+    <attribute name="context" type="Int32" default="0" repeat="2" />
+    <attribute name="skillbar-use-default" type="Bool" required="y" />
+    <attribute name="skillbar-stance" type="Int32" default="0" repeat="3" />
+    <attribute name="skillbar" type="Int32" default="0" repeat="12" />
+    <attribute name="context-fallback" type="Int32" default="0" repeat="2" />
+    <attribute name="cmd-key-up" type="Int32" default="0" />
+    <attribute name="cmd-key-down" type="Int32" default="0" />
+    <attribute name="cmd-key-left" type="Int32" default="0" />
+    <attribute name="cmd-key-right" type="Int32" default="0" />
   </el>
 </table>

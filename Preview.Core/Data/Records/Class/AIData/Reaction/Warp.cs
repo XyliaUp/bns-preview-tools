@@ -22,7 +22,7 @@ public class Warp : Reaction
 	/// 转移玩家刷新点 （Area、PcSpawn必须且仅能设置其中的一个）
 	/// </summary>
 	[Signal("pc-spawn")]
-	public byte PcSpawn;
+	public sbyte PcSpawn;
 
 
 
@@ -34,21 +34,21 @@ public class Warp : Reaction
 	public Cinematic LeaveCinematic;
 
 
-	[Signal("phase-zone-pc-spawn-1")] public byte PhaseZonePcSpawn1;
-	[Signal("phase-zone-pc-spawn-2")] public byte PhaseZonePcSpawn2;
-	[Signal("phase-zone-pc-spawn-3")] public byte PhaseZonePcSpawn3;
-	[Signal("phase-zone-pc-spawn-4")] public byte PhaseZonePcSpawn4;
-	[Signal("phase-zone-pc-spawn-5")] public byte PhaseZonePcSpawn5;
-	[Signal("phase-zone-pc-spawn-6")] public byte PhaseZonePcSpawn6;
-	[Signal("phase-zone-pc-spawn-7")] public byte PhaseZonePcSpawn7;
-	[Signal("phase-zone-pc-spawn-8")] public byte PhaseZonePcSpawn8;
-	[Signal("phase-zone-pc-spawn-9")] public byte PhaseZonePcSpawn9;
-	[Signal("phase-zone-pc-spawn-10")] public byte PhaseZonePcSpawn10;
-	[Signal("phase-zone-pc-spawn-11")] public byte PhaseZonePcSpawn11;
-	[Signal("phase-zone-pc-spawn-12")] public byte PhaseZonePcSpawn12;
-	[Signal("phase-zone-pc-spawn-13")] public byte PhaseZonePcSpawn13;
-	[Signal("phase-zone-pc-spawn-14")] public byte PhaseZonePcSpawn14;
-	[Signal("phase-zone-pc-spawn-15")] public byte PhaseZonePcSpawn15;
+	[Signal("phase-zone-pc-spawn-1")] public sbyte PhaseZonePcSpawn1;
+	[Signal("phase-zone-pc-spawn-2")] public sbyte PhaseZonePcSpawn2;
+	[Signal("phase-zone-pc-spawn-3")] public sbyte PhaseZonePcSpawn3;
+	[Signal("phase-zone-pc-spawn-4")] public sbyte PhaseZonePcSpawn4;
+	[Signal("phase-zone-pc-spawn-5")] public sbyte PhaseZonePcSpawn5;
+	[Signal("phase-zone-pc-spawn-6")] public sbyte PhaseZonePcSpawn6;
+	[Signal("phase-zone-pc-spawn-7")] public sbyte PhaseZonePcSpawn7;
+	[Signal("phase-zone-pc-spawn-8")] public sbyte PhaseZonePcSpawn8;
+	[Signal("phase-zone-pc-spawn-9")] public sbyte PhaseZonePcSpawn9;
+	[Signal("phase-zone-pc-spawn-10")] public sbyte PhaseZonePcSpawn10;
+	[Signal("phase-zone-pc-spawn-11")] public sbyte PhaseZonePcSpawn11;
+	[Signal("phase-zone-pc-spawn-12")] public sbyte PhaseZonePcSpawn12;
+	[Signal("phase-zone-pc-spawn-13")] public sbyte PhaseZonePcSpawn13;
+	[Signal("phase-zone-pc-spawn-14")] public sbyte PhaseZonePcSpawn14;
+	[Signal("phase-zone-pc-spawn-15")] public sbyte PhaseZonePcSpawn15;
 
 	[Signal("phase-zone-enter-cinematic-1")] public Cinematic PhaseZoneEnterCinematic1;
 	[Signal("phase-zone-enter-cinematic-2")] public Cinematic PhaseZoneEnterCinematic2;

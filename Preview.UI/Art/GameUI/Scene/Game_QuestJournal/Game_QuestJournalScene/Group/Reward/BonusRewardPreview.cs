@@ -7,6 +7,7 @@ using Xylia.Preview.Common.Seq;
 using Xylia.Preview.Data.Helper;
 using Xylia.Preview.Data.Record;
 using Xylia.Preview.UI.Custom.Controls;
+using Xylia.Preview.UI.Extension;
 using Xylia.Preview.UI.Resources;
 
 namespace Xylia.Preview.GameUI.Scene.Game_QuestJournal;
@@ -98,8 +99,8 @@ public partial class BonusRewardPreview : UserControl
 			{
 				var Prefix = Paid ? "paid-" : null;
 				var RandomItem = FileCache.Data.Item[Reward.Attributes[Prefix + "random-item-" + idx]];
-				var StackCountMin = Reward.Attributes[Prefix + "random-item-stack-count-min-" + idx].ToShort();
-				var StackCountMax = Reward.Attributes[Prefix + "random-item-stack-count-max-" + idx].ToShort();
+				var StackCountMin = Reward.Attributes[Prefix + "random-item-stack-count-min-" + idx].ToInt16();
+				var StackCountMax = Reward.Attributes[Prefix + "random-item-stack-count-max-" + idx].ToInt16();
 
 				System.Diagnostics.Trace.WriteLine($"{RandomItem?.Name2}  {StackCountMin}~{StackCountMax}");
 			}

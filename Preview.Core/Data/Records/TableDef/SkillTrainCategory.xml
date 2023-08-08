@@ -2,16 +2,16 @@
 <table name="skill-train-category" version="0.37" autokey="false" module="6">
   <el name="table" child="1" />
   <el name="record">
-    <record name="job" type="Prop_seq" seq="job" key="y" required="y" />
-    <record name="view-skill-id" type="Int32" key="y" required="y" />
-    <record name="tree-id" type="Int32" default="1" min="1" max="200000000" />
-    <record name="pc-level" type="Int16" default="1" min="1" max="70" />
-    <record name="pc-mastery-level" type="Int16" default="0" min="0" max="50" />
-    <record name="complete-quest" type="Ref" ref="quest" />
-    <record name="jumping-pc-complete-quest" type="Ref" ref="quest" />
-    <record name="consumed-tp" type="Int32" default="0" />
-    <record name="sort-id" type="Int8" default="0" min="0" max="255" />
-    <record name="ui-invisible" type="Bool" />
-    <record name="context-lock-disable" type="Bool" />
+    <attribute name="job" type="Prop_seq" seq="job" key="y" required="y" />
+    <attribute name="view-skill-id" type="Int32" key="y" required="y" />
+    <attribute name="tree-id" type="Int32" default="1" min="1" max="200000000" />
+    <attribute name="pc-level" type="Int16" default="1" min="1" max="70" />
+    <attribute name="pc-mastery-level" type="Int16" default="0" min="0" max="50" />
+    <attribute name="complete-quest" type="Ref" ref="quest" />
+    <attribute name="jumping-pc-complete-quest" type="Ref" ref="quest" />
+    <attribute name="consumed-tp" type="Int32" default="0" />
+    <attribute name="sort-id" type="Int8" default="0" min="0" max="255" />
+    <attribute name="ui-invisible" type="Bool" />
+    <attribute name="context-lock-disable" type="Bool" />
   </el>
 </table>

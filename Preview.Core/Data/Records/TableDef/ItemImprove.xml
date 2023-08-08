@@ -2,29 +2,29 @@
 <table name="item-improve" version="3.0" autokey="false" module="6">
   <el name="table" child="1" />
   <el name="record">
-    <record name="id" type="Int32" key="y" required="y" min="1" />
-    <record name="level" type="Int8" key="y" required="y" min="0" />
-    <record name="cost-main-item" type="Ref" ref="item" repeat="5" />
-    <record name="cost-main-item-count" type="Int16" default="0" repeat="5" min="0" max="30000" />
-    <record name="cost-sub-item-1" type="Ref" ref="item" repeat="8" />
-    <record name="cost-sub-item-count-1" type="Int16" default="0" repeat="8" min="0" max="30000" />
-    <record name="cost-sub-item-2" type="Ref" ref="item" repeat="8" />
-    <record name="cost-sub-item-count-2" type="Int16" default="0" repeat="8" min="0" max="30000" />
-    <record name="cost-sub-item-3" type="Ref" ref="item" repeat="8" />
-    <record name="cost-sub-item-count-3" type="Int16" default="0" repeat="8" min="0" max="30000" />
-    <record name="cost-sub-item-4" type="Ref" ref="item" repeat="8" />
-    <record name="cost-sub-item-count-4" type="Int16" default="0" repeat="8" min="0" max="30000" />
-    <record name="cost-sub-item-5" type="Ref" ref="item" repeat="8" />
-    <record name="cost-sub-item-count-5" type="Int16" default="0" repeat="8" min="0" max="30000" />
-    <record name="cost-money" type="Int32" default="0" repeat="5" min="0" />
-    <record name="success-probability" type="Int16" default="0" repeat="5" min="0" max="1000" />
-    <record name="use-success-probability" type="Bool" repeat="5" />
-    <record name="unk-" type="Bool" />
-    <record name="random-failure-mileage-save" type="Bool" repeat="5" />
-    <record name="random-failure-mileage" type="Int8" default="0" repeat="5" min="0" />
-    <record name="unk-" type="Bool" />
-    <record name="success-option-list-id" type="Int32" default="0" />
-    <record name="unk-" type="Int8" default="0" min="0" />
-    <record name="fail-level-diff" type="Int8" default="0" repeat="5" min="0" />
+    <attribute name="id" type="Int32" key="y" required="y" min="1" />
+    <attribute name="level" type="Int8" key="y" required="y" min="0" />
+    <attribute name="cost-main-item" type="Ref" ref="item" repeat="5" />
+    <attribute name="cost-main-item-count" type="Int16" default="0" repeat="5" min="0" max="30000" />
+    <attribute name="cost-sub-item-1" type="Ref" ref="item" repeat="8" />
+    <attribute name="cost-sub-item-count-1" type="Int16" default="0" repeat="8" min="0" max="30000" />
+    <attribute name="cost-sub-item-2" type="Ref" ref="item" repeat="8" />
+    <attribute name="cost-sub-item-count-2" type="Int16" default="0" repeat="8" min="0" max="30000" />
+    <attribute name="cost-sub-item-3" type="Ref" ref="item" repeat="8" />
+    <attribute name="cost-sub-item-count-3" type="Int16" default="0" repeat="8" min="0" max="30000" />
+    <attribute name="cost-sub-item-4" type="Ref" ref="item" repeat="8" />
+    <attribute name="cost-sub-item-count-4" type="Int16" default="0" repeat="8" min="0" max="30000" />
+    <attribute name="cost-sub-item-5" type="Ref" ref="item" repeat="8" />
+    <attribute name="cost-sub-item-count-5" type="Int16" default="0" repeat="8" min="0" max="30000" />
+    <attribute name="cost-money" type="Int32" default="0" repeat="5" min="0" />
+    <attribute name="success-probability" type="Int16" default="0" repeat="5" min="0" max="1000" />
+    <attribute name="use-success-probability" type="Bool" repeat="5" />
+    <attribute name="unk-" type="Bool" />
+    <attribute name="random-failure-mileage-save" type="Bool" repeat="5" />
+    <attribute name="random-failure-mileage" type="Int8" default="0" repeat="5" min="0" />
+    <attribute name="unk-" type="Bool" />
+    <attribute name="success-option-list-id" type="Int32" default="0" />
+    <attribute name="unk-" type="Int8" default="0" min="0" />
+    <attribute name="fail-level-diff" type="Int8" default="0" repeat="5" min="0" />
   </el>
 </table>

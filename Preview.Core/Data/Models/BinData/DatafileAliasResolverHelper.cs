@@ -3,8 +3,6 @@ using BnsBinTool.Core.DataStructs;
 using BnsBinTool.Core.Definitions;
 using BnsBinTool.Core.Helpers;
 
-using Xylia.Preview.Data.Models.BinData.Table;
-
 using TableModel = BnsBinTool.Core.Models.Table;
 
 namespace Xylia.Preview.Data.Models.BinData;
@@ -12,8 +10,6 @@ public class DatafileAliasResolverHelper
 {
     public static void Resolve(ResolvedAliases resolvedAliases, DatafileDefinition datafileDef, IEnumerable<TableModel> tablesEnumerable, bool ignoreInvalidReferences = false)
     {
-        var tables = tablesEnumerable.ToDictionary(x => (int)x.Type);
-
         foreach (var tableDef in datafileDef.TableDefinitions)
         {
             var byRef = new Dictionary<Ref, string>();
@@ -23,7 +19,11 @@ public class DatafileAliasResolverHelper
             resolvedAliases.ByAlias[tableDef.Type] = byAlias;
         }
 
-        Parallel.ForEach(datafileDef.TableDefinitions, (tableDef =>
+
+        if (tablesEnumerable is null) return;
+		var tables = tablesEnumerable.ToDictionary(x => x.Type);
+
+		Parallel.ForEach(datafileDef.TableDefinitions, tableDef =>
         {
             var byRef = resolvedAliases.ByRef[tableDef.Type];
             var byAlias = resolvedAliases.ByAlias[tableDef.Type];
@@ -51,7 +51,7 @@ public class DatafileAliasResolverHelper
 					ThrowHelper.ThrowException($"Failed to read alias (This usually means ur using wrong table definition) {tableDef.Name}");
 				}
 			}
-        }));
+        });
     }
 
     public static void ResolveXmlDatAlias(ResolvedAliases resolvedAliases, DatafileDefinition datafileDef)

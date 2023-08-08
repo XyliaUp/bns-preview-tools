@@ -2,7 +2,7 @@
 <table name="posetransit" version="0.7" autokey="false" module="12">
   <el name="table" child="1" />
   <el name="record">
-    <record name="before-pose" type="Seq" key="y" required="y">
+    <attribute name="before-pose" type="Seq" key="y" required="y">
       <case name="standing" />
       <case name="dead" />
       <case name="dead-back" />
@@ -29,8 +29,8 @@
       <case name="bomb-kneel" />
       <case name="inhalation-catch-sword" />
       <case name="inhalation-catch-nonehuman-sword" />
-    </record>
-    <record name="after-pose" type="Seq" key="y" required="y">
+    </attribute>
+    <attribute name="after-pose" type="Seq" key="y" required="y">
       <case name="standing" />
       <case name="dead" />
       <case name="dead-back" />
@@ -57,12 +57,12 @@
       <case name="bomb-kneel" />
       <case name="inhalation-catch-sword" />
       <case name="inhalation-catch-nonehuman-sword" />
-    </record>
-    <record name="transit-time" type="Msec" default="500" min="0" max="100000" />
-    <record name="on-transit-time" type="Bool" deprecated="y" />
-    <record name="transit-anim-seq" type="String" max="60" />
-    <record name="fade-in" type="Float32" default="0" />
-    <record name="fade-out" type="Float32" default="0" />
-    <record name="moving-blend" type="Float32" default="0" />
+    </attribute>
+    <attribute name="transit-time" type="Msec" default="500" min="0" max="100000" />
+    <attribute name="on-transit-time" type="Bool" deprecated="y" />
+    <attribute name="transit-anim-seq" type="String" max="60" />
+    <attribute name="fade-in" type="Float32" default="0" />
+    <attribute name="fade-out" type="Float32" default="0" />
+    <attribute name="moving-blend" type="Float32" default="0" />
   </el>
 </table>

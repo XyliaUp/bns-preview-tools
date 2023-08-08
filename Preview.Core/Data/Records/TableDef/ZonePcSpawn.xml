@@ -2,12 +2,12 @@
 <table name="zonepcspawn" version="0.49" autokey="false" module="14" maxid="127">
   <el name="table" child="1" />
   <el name="record">
-    <record name="zone" type="Int32" key="y" required="y" />
-    <record name="id" type="Int16" key="y" required="y" max="127" />
-    <record name="alias" type="String" required="y" max="70" />
-    <record name="pos" type="Vector32" required="y" />
-    <record name="summon-pos" type="Vector32" default="0,0,0" />
-    <record name="yaw" type="Int16" default="0" min="0" max="359" />
-    <record name="description" type="String" max="50" />
+    <attribute name="zone" type="Int32" key="y" required="y" />
+    <attribute name="id" type="Int16" key="y" required="y" max="127" />
+    <attribute name="alias" type="String" required="y" max="70" />
+    <attribute name="pos" type="Vector32" required="y" />
+    <attribute name="summon-pos" type="Vector32" default="0,0,0" />
+    <attribute name="yaw" type="Int16" default="0" min="0" max="359" />
+    <attribute name="description" type="String" max="50" />
   </el>
 </table>

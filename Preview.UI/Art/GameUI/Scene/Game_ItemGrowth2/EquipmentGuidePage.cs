@@ -1,7 +1,8 @@
 ﻿using System.ComponentModel;
 
-using Xylia.Preview.Common.Extension;
 using Xylia.Preview.Data.Record;
+using Xylia.Preview.GameUI.Scene.Game_ItemGrowth2.Game_ItemGrowth2;
+using Xylia.Preview.UI.Extension;
 
 namespace Xylia.Preview.GameUI.Scene.Game_ItemGrowth2;
 
@@ -15,9 +16,6 @@ public partial class EquipmentGuidePage : UserControl
 
 	Item _myWeapon;
 
-	/// <summary>
-	/// 设置起始物品
-	/// </summary>
 	public Item MyWeapon
 	{
 		get => _myWeapon;
@@ -28,9 +26,7 @@ public partial class EquipmentGuidePage : UserControl
 			this.MyWeapon_Icon.Image = value.Icon();
 			this.MyWeapon_Name.Text = value.Name2;
 			this.MyWeapon_Name.ItemGrade = value.ItemGrade;
-#pragma warning disable CS0612
 			this.MyWeapon_Name.Location = new Point(this.MyWeapon_Icon.Left + (this.MyWeapon_Icon.Width - this.MyWeapon_Name.Width) / 2, this.MyWeapon_Name.Top);
-#pragma warning restore CS0612
 		}
 	}
 	#endregion

@@ -2,9 +2,9 @@
 <table name="feedback-skill-score" version="1.0" autokey="true" module="6">
   <el name="table" child="1" />
   <el name="record">
-    <record name="alias" type="String" required="y" max="70" />
-    <record name="skill" type="Ref" ref="skill3" required="y" />
-    <record name="skill-result" type="Seq" repeat="8">
+    <attribute name="alias" type="String" required="y" max="70" />
+    <attribute name="skill" type="Ref" ref="skill3" required="y" />
+    <attribute name="skill-result" type="Seq" repeat="8">
       <case name="none" default="y" />
       <case name="hit" />
       <case name="miss" />
@@ -24,6 +24,6 @@
       <case name="parry-perfect-parry-counter" />
       <case name="parry-perfect-parry-dodge" />
       <case name="parry-dodge" />
-    </record>
+    </attribute>
   </el>
 </table>

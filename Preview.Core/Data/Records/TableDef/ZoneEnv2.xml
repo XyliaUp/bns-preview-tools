@@ -2,222 +2,222 @@
 <table name="zoneenv2" version="3.4" autokey="true" module="782">
   <el name="table" child="1" />
   <el name="record">
-    <record name="alias" type="String" required="y" max="70" />
-    <record name="init-enable" type="Bool" default="y" />
-    <record name="init-enable-duration" type="Msec" default="0" min="0" max="36000000" />
-    <record name="koreaname" type="String" deprecated="y" max="50" />
-    <record name="name2" type="Ref" ref="text" />
-    <record name="hide-disable" type="Bool" />
-    <record name="category" type="Seq">
+    <attribute name="alias" type="String" required="y" max="70" />
+    <attribute name="init-enable" type="Bool" default="y" />
+    <attribute name="init-enable-duration" type="Msec" default="0" min="0" max="36000000" />
+    <attribute name="koreaname" type="String" deprecated="y" max="50" />
+    <attribute name="name2" type="Ref" ref="text" />
+    <attribute name="hide-disable" type="Bool" />
+    <attribute name="category" type="Seq">
       <case name="collect" />
       <case name="manipulate" />
       <case name="pick-up" />
       <case name="put-down" />
       <case name="recharge-heart" />
       <case name="default" default="y" />
-    </record>
-    <record name="required-fielditem" type="Ref" ref="fielditem" />
-    <record name="manipulate-by-item" type="Ref" ref="item" />
-    <record name="manipulate-by-item-count" type="Int16" default="1" />
-    <record name="show-require-manipulate-by-item-message" type="Bool" />
-    <record name="consume-item-by-manipulate" type="Bool" default="y" />
-    <record name="broadcast-manipulate-cinematic" type="Ref" ref="cinematic" />
-    <record name="show-confirm-type" type="Seq">
+    </attribute>
+    <attribute name="required-fielditem" type="Ref" ref="fielditem" />
+    <attribute name="manipulate-by-item" type="Ref" ref="item" />
+    <attribute name="manipulate-by-item-count" type="Int16" default="1" />
+    <attribute name="show-require-manipulate-by-item-message" type="Bool" />
+    <attribute name="consume-item-by-manipulate" type="Bool" default="y" />
+    <attribute name="broadcast-manipulate-cinematic" type="Ref" ref="cinematic" />
+    <attribute name="show-confirm-type" type="Seq">
       <case name="none" default="y" />
       <case name="manipulate-consume-item" />
-    </record>
-    <record name="manipulate-notification-range" type="Seq">
+    </attribute>
+    <attribute name="manipulate-notification-range" type="Seq">
       <case name="none" default="y" />
       <case name="party" />
       <case name="team" />
-    </record>
-    <record name="required-faction-score" type="Int32" default="0" min="0" />
-    <record name="required-faction-score-max" type="Int32" default="0" min="0" />
-    <record name="consume-faction-score" type="Bool" default="y" />
-    <record name="manipulate-duration" type="Msec" default="0" />
-    <record name="manipulated-effect" type="Ref" ref="effect" />
-    <record name="main-faction-effect" type="Ref" ref="effect" />
-    <record name="main-faction-effect-distance" type="Distance" default="0" />
-    <record name="cannot-manipulate-effect" type="Ref" ref="effect" />
-    <record name="cannot-manipulate-in-combat" type="Bool" />
-    <record name="cannot-manipulate-in-max-instant-heart-count" type="Bool" />
-    <record name="required-joined-main-faction" type="Bool" />
-    <record name="required-activated-main-faction" type="Bool" />
-    <record name="required-activated-faction" type="Ref" ref="faction" />
-    <record name="respawn-duration" type="Msec" default="0" min="0" max="36000000" />
-    <record name="rollback" type="Bool" />
-    <record name="max-hp" type="Int16" default="0" min="0" max="10000" />
-    <record name="attack-skill" type="Ref" ref="skill" repeat="4" />
-    <record name="attack-skill3" type="Ref" ref="skill3" repeat="4" />
-    <record name="dice-result-broadcast" type="Bool" />
-    <record name="save-authorizer" type="Bool" />
-    <record name="occurrence-event-in-respawn" type="Bool" />
-    <record name="broadcast-pickup-reward-to-world" type="Bool" />
-    <record name="acquire-reward-to-inventory" type="Bool" />
-    <record name="reward-faction-score" type="Int32" default="0" min="0" />
-    <record name="gain-faction-score-showname" type="String" max="50" />
-    <record name="caster-animname" type="String" max="50" />
-    <record name="caster-showname" type="String" max="50" />
-    <record name="caster-picking-animname" type="String" max="50" />
-    <record name="caster-manipulate-finish-showname" type="String" max="50" />
-    <record name="env-animname" type="String" max="50" />
-    <record name="env-sound-name" type="String" max="50" />
-    <record name="action-name2" type="Ref" ref="text" />
-    <record name="action-desc2" type="Ref" ref="text" />
-    <record name="hide-close" type="Bool" />
-    <record name="hide-empty" type="Bool" />
-    <record name="tooltip-option" type="Bool" />
-    <record name="show-quest-indicator" type="Bool" />
-    <record name="default-indicator-image" type="String" max="70" />
-    <record name="forwarding-types" type="Seq" repeat="20" hidden="y">
+    </attribute>
+    <attribute name="required-faction-score" type="Int32" default="0" min="0" />
+    <attribute name="required-faction-score-max" type="Int32" default="0" min="0" />
+    <attribute name="consume-faction-score" type="Bool" default="y" />
+    <attribute name="manipulate-duration" type="Msec" default="0" />
+    <attribute name="manipulated-effect" type="Ref" ref="effect" />
+    <attribute name="main-faction-effect" type="Ref" ref="effect" />
+    <attribute name="main-faction-effect-distance" type="Distance" default="0" />
+    <attribute name="cannot-manipulate-effect" type="Ref" ref="effect" />
+    <attribute name="cannot-manipulate-in-combat" type="Bool" />
+    <attribute name="cannot-manipulate-in-max-instant-heart-count" type="Bool" />
+    <attribute name="required-joined-main-faction" type="Bool" />
+    <attribute name="required-activated-main-faction" type="Bool" />
+    <attribute name="required-activated-faction" type="Ref" ref="faction" />
+    <attribute name="respawn-duration" type="Msec" default="0" min="0" max="36000000" />
+    <attribute name="rollback" type="Bool" />
+    <attribute name="max-hp" type="Int16" default="0" min="0" max="10000" />
+    <attribute name="attack-skill" type="Ref" ref="skill" repeat="4" />
+    <attribute name="attack-skill3" type="Ref" ref="skill3" repeat="4" />
+    <attribute name="dice-result-broadcast" type="Bool" />
+    <attribute name="save-authorizer" type="Bool" />
+    <attribute name="occurrence-event-in-respawn" type="Bool" />
+    <attribute name="broadcast-pickup-reward-to-world" type="Bool" />
+    <attribute name="acquire-reward-to-inventory" type="Bool" />
+    <attribute name="reward-faction-score" type="Int32" default="0" min="0" />
+    <attribute name="gain-faction-score-showname" type="String" max="50" />
+    <attribute name="caster-animname" type="String" max="50" />
+    <attribute name="caster-showname" type="String" max="50" />
+    <attribute name="caster-picking-animname" type="String" max="50" />
+    <attribute name="caster-manipulate-finish-showname" type="String" max="50" />
+    <attribute name="env-animname" type="String" max="50" />
+    <attribute name="env-sound-name" type="String" max="50" />
+    <attribute name="action-name2" type="Ref" ref="text" />
+    <attribute name="action-desc2" type="Ref" ref="text" />
+    <attribute name="hide-close" type="Bool" />
+    <attribute name="hide-empty" type="Bool" />
+    <attribute name="tooltip-option" type="Bool" />
+    <attribute name="show-quest-indicator" type="Bool" />
+    <attribute name="default-indicator-image" type="String" max="70" />
+    <attribute name="forwarding-types" type="Seq" repeat="20" hidden="y">
       <case name="progress-mission" />
       <case name="acquire-quest" />
       <case name="skill-target" />
       <case name="mission-step-rollback" />
-    </record>
-    <record name="quests" type="Ref" ref="quest" repeat="20" hidden="y" />
-    <record name="missions" type="Int8" repeat="20" hidden="y" />
-    <record name="cases" type="Int8" repeat="20" hidden="y" />
-    <record name="case-subtypes" type="Int16" repeat="20" hidden="y" />
-    <record name="loot-forwarding-types" type="Seq" repeat="8" hidden="y">
+    </attribute>
+    <attribute name="quests" type="Ref" ref="quest" repeat="20" hidden="y" />
+    <attribute name="missions" type="Int8" repeat="20" hidden="y" />
+    <attribute name="cases" type="Int8" repeat="20" hidden="y" />
+    <attribute name="case-subtypes" type="Int16" repeat="20" hidden="y" />
+    <attribute name="loot-forwarding-types" type="Seq" repeat="8" hidden="y">
       <case name="progress-mission" />
       <case name="acquire-quest" />
       <case name="skill-target" />
       <case name="mission-step-rollback" />
-    </record>
-    <record name="loot-quests" type="Ref" ref="quest" repeat="8" hidden="y" />
-    <record name="loot-missions" type="Int8" repeat="8" hidden="y" />
-    <record name="loot-cases" type="Int8" repeat="8" hidden="y" />
-    <record name="loot-item" type="Ref" ref="item" repeat="8" hidden="y" />
-    <record name="lootable" type="Bool" hidden="y" />
-    <record name="attraction" type="TRef" hidden="y" />
-    <record name="caster-reaction-attach" type="String" max="100" />
-    <record name="spawn-mesh" type="String" max="70" />
-    <record name="spawn-animset" type="String" max="70" />
-    <record name="image-text" type="Ref" ref="text" />
-    <record name="mapunit-image-enable-close-true-imageset" type="String" max="70" />
-    <record name="mapunit-image-enable-close-true-over-imageset" type="String" max="70" />
-    <record name="mapunit-image-enable-close-true-size-x" type="Int16" default="0" />
-    <record name="mapunit-image-enable-close-true-size-y" type="Int16" default="0" />
-    <record name="mapunit-image-enable-close-false-imageset" type="String" max="70" />
-    <record name="mapunit-image-enable-close-false-over-imageset" type="String" max="70" />
-    <record name="mapunit-image-enable-close-false-size-x" type="Int16" default="0" />
-    <record name="mapunit-image-enable-close-false-size-y" type="Int16" default="0" />
-    <record name="mapunit-image-enable-open-imageset" type="String" max="70" />
-    <record name="mapunit-image-enable-open-over-imageset" type="String" max="70" />
-    <record name="mapunit-image-enable-open-size-x" type="Int16" default="0" />
-    <record name="mapunit-image-enable-open-size-y" type="Int16" default="0" />
-    <record name="mapunit-image-disable-imageset" type="String" max="70" />
-    <record name="mapunit-image-disable-over-imageset" type="String" max="70" />
-    <record name="mapunit-image-disable-size-x" type="Int16" default="0" />
-    <record name="mapunit-image-disable-size-y" type="Int16" default="0" />
-    <record name="mapunit-image-unconfirmed-imageset" type="String" max="70" />
-    <record name="mapunit-image-unconfirmed-over-imageset" type="String" max="70" />
-    <record name="mapunit-image-unconfirmed-size-x" type="Int16" default="0" />
-    <record name="mapunit-image-unconfirmed-size-y" type="Int16" default="0" />
+    </attribute>
+    <attribute name="loot-quests" type="Ref" ref="quest" repeat="8" hidden="y" />
+    <attribute name="loot-missions" type="Int8" repeat="8" hidden="y" />
+    <attribute name="loot-cases" type="Int8" repeat="8" hidden="y" />
+    <attribute name="loot-item" type="Ref" ref="item" repeat="8" hidden="y" />
+    <attribute name="lootable" type="Bool" hidden="y" />
+    <attribute name="attraction" type="TRef" hidden="y" />
+    <attribute name="caster-reaction-attach" type="String" max="100" />
+    <attribute name="spawn-mesh" type="String" max="70" />
+    <attribute name="spawn-animset" type="String" max="70" />
+    <attribute name="image-text" type="Ref" ref="text" />
+    <attribute name="mapunit-image-enable-close-true-imageset" type="String" max="70" />
+    <attribute name="mapunit-image-enable-close-true-over-imageset" type="String" max="70" />
+    <attribute name="mapunit-image-enable-close-true-size-x" type="Int16" default="0" />
+    <attribute name="mapunit-image-enable-close-true-size-y" type="Int16" default="0" />
+    <attribute name="mapunit-image-enable-close-false-imageset" type="String" max="70" />
+    <attribute name="mapunit-image-enable-close-false-over-imageset" type="String" max="70" />
+    <attribute name="mapunit-image-enable-close-false-size-x" type="Int16" default="0" />
+    <attribute name="mapunit-image-enable-close-false-size-y" type="Int16" default="0" />
+    <attribute name="mapunit-image-enable-open-imageset" type="String" max="70" />
+    <attribute name="mapunit-image-enable-open-over-imageset" type="String" max="70" />
+    <attribute name="mapunit-image-enable-open-size-x" type="Int16" default="0" />
+    <attribute name="mapunit-image-enable-open-size-y" type="Int16" default="0" />
+    <attribute name="mapunit-image-disable-imageset" type="String" max="70" />
+    <attribute name="mapunit-image-disable-over-imageset" type="String" max="70" />
+    <attribute name="mapunit-image-disable-size-x" type="Int16" default="0" />
+    <attribute name="mapunit-image-disable-size-y" type="Int16" default="0" />
+    <attribute name="mapunit-image-unconfirmed-imageset" type="String" max="70" />
+    <attribute name="mapunit-image-unconfirmed-over-imageset" type="String" max="70" />
+    <attribute name="mapunit-image-unconfirmed-size-x" type="Int16" default="0" />
+    <attribute name="mapunit-image-unconfirmed-size-y" type="Int16" default="0" />
     <sub name="button">
-      <record name="enable-create-solo-party" type="Bool" />
+      <attribute name="enable-create-solo-party" type="Bool" />
     </sub>
     <sub name="chest" />
     <sub name="pot" />
     <sub name="gate" />
     <sub name="wall" />
     <sub name="refiner">
-      <record name="occupation-duration" type="Msec" default="0" />
-      <record name="try-refining-duration" type="Msec" default="0" />
-      <record name="base-refining-duration" type="Msec" default="0" />
-      <record name="accroach-duration" type="Msec" default="0" />
-      <record name="give-faction-score-duration" type="Msec" default="0" />
-      <record name="respawn-duration-in-refined" type="Msec" default="0" />
-      <record name="refine-faction-score" type="Int32" default="0" />
-      <record name="refined-reward-item" type="Ref" ref="item" />
-      <record name="refined-reward-item-base-count" type="Int16" default="0" />
-      <record name="refined-effect" type="Ref" ref="effect" />
-      <record name="refined-effect-distance" type="Distance" default="0" />
-      <record name="refining-disable" type="Bool" />
-      <record name="occputation-effect" type="Ref" ref="effect" />
-      <record name="occputation-effect-distance" type="Distance" default="0" />
-      <record name="occupy-action-icon" type="Icon" max="32767" />
-      <record name="occupy-action-name" type="Ref" ref="text" />
-      <record name="occupy-caster-showname" type="String" max="50" />
-      <record name="try-refine-action-icon" type="Icon" max="32767" />
-      <record name="try-refine-action-name" type="Ref" ref="text" />
-      <record name="try-refine-caster-showname" type="String" max="50" />
-      <record name="give-score-action-icon" type="Icon" max="32767" />
-      <record name="give-score-action-name" type="Ref" ref="text" />
-      <record name="give-score-social" type="Ref" ref="social" />
-      <record name="give-score-caster-showname" type="String" max="50" />
-      <record name="accroach-action-icon" type="Icon" max="32767" />
-      <record name="accroach-action-name" type="Ref" ref="text" />
-      <record name="accroach-caster-showname" type="String" max="50" />
-      <record name="accroach-start-kismet" type="String" max="50" />
-      <record name="accroach-end-kismet" type="String" max="50" />
-      <record name="friend-gate-start-kismet" type="String" max="50" />
-      <record name="friend-gate-end-kismet" type="String" max="50" />
-      <record name="enemy-gate-start-kismet" type="String" max="50" />
-      <record name="enemy-gate-end-kismet" type="String" max="50" />
-      <record name="refiner-ui-index" type="Int8" default="1" min="1" max="3" />
+      <attribute name="occupation-duration" type="Msec" default="0" />
+      <attribute name="try-refining-duration" type="Msec" default="0" />
+      <attribute name="base-refining-duration" type="Msec" default="0" />
+      <attribute name="accroach-duration" type="Msec" default="0" />
+      <attribute name="give-faction-score-duration" type="Msec" default="0" />
+      <attribute name="respawn-duration-in-refined" type="Msec" default="0" />
+      <attribute name="refine-faction-score" type="Int32" default="0" />
+      <attribute name="refined-reward-item" type="Ref" ref="item" />
+      <attribute name="refined-reward-item-base-count" type="Int16" default="0" />
+      <attribute name="refined-effect" type="Ref" ref="effect" />
+      <attribute name="refined-effect-distance" type="Distance" default="0" />
+      <attribute name="refining-disable" type="Bool" />
+      <attribute name="occputation-effect" type="Ref" ref="effect" />
+      <attribute name="occputation-effect-distance" type="Distance" default="0" />
+      <attribute name="occupy-action-icon" type="Icon" max="32767" />
+      <attribute name="occupy-action-name" type="Ref" ref="text" />
+      <attribute name="occupy-caster-showname" type="String" max="50" />
+      <attribute name="try-refine-action-icon" type="Icon" max="32767" />
+      <attribute name="try-refine-action-name" type="Ref" ref="text" />
+      <attribute name="try-refine-caster-showname" type="String" max="50" />
+      <attribute name="give-score-action-icon" type="Icon" max="32767" />
+      <attribute name="give-score-action-name" type="Ref" ref="text" />
+      <attribute name="give-score-social" type="Ref" ref="social" />
+      <attribute name="give-score-caster-showname" type="String" max="50" />
+      <attribute name="accroach-action-icon" type="Icon" max="32767" />
+      <attribute name="accroach-action-name" type="Ref" ref="text" />
+      <attribute name="accroach-caster-showname" type="String" max="50" />
+      <attribute name="accroach-start-kismet" type="String" max="50" />
+      <attribute name="accroach-end-kismet" type="String" max="50" />
+      <attribute name="friend-gate-start-kismet" type="String" max="50" />
+      <attribute name="friend-gate-end-kismet" type="String" max="50" />
+      <attribute name="enemy-gate-start-kismet" type="String" max="50" />
+      <attribute name="enemy-gate-end-kismet" type="String" max="50" />
+      <attribute name="refiner-ui-index" type="Int8" default="1" min="1" max="3" />
     </sub>
     <sub name="control-point">
-      <record name="manipulation-required-field-item" type="Ref" ref="fielditem" />
-      <record name="manipulation-drop-field-item" type="Ref" ref="fielditemdrop" />
-      <record name="occupation-zone-score" type="Int16" default="0" min="0" />
-      <record name="occupation-bonus-zone-score-per-sec" type="Int16" default="0" min="0" />
-      <record name="friend-occupation-additive-effect" type="XUnknown2" />
-      <record name="enemy-occupation-additive-effect" type="XUnknown2" />
-      <record name="friend-occupation-additive-sound" type="XUnknown2" />
-      <record name="enemy-occupation-additive-sound" type="XUnknown2" />
+      <attribute name="manipulation-required-field-item" type="Ref" ref="fielditem" />
+      <attribute name="manipulation-drop-field-item" type="Ref" ref="fielditemdrop" />
+      <attribute name="occupation-zone-score" type="Int16" default="0" min="0" />
+      <attribute name="occupation-bonus-zone-score-per-sec" type="Int16" default="0" min="0" />
+      <attribute name="friend-occupation-additive-effect" type="XUnknown2" />
+      <attribute name="enemy-occupation-additive-effect" type="XUnknown2" />
+      <attribute name="friend-occupation-additive-sound" type="XUnknown2" />
+      <attribute name="enemy-occupation-additive-sound" type="XUnknown2" />
     </sub>
     <sub name="portal">
-      <record name="portal-type" type="Seq">
+      <attribute name="portal-type" type="Seq">
         <case name="door" default="y" />
         <case name="button" />
-      </record>
-      <record name="transit-zone" type="Ref" ref="zone" />
-      <record name="transit-dungeon" type="Ref" ref="dungeon" />
-      <record name="transit-reentrance-pcspawn" type="Bool" />
-      <record name="transit-pc-spawn" type="Int16" default="0" />
-      <record name="transit-pc-spawn-in-arena" type="Ref" ref="zonepcspawn" />
-      <record name="transit-leave-cinematic" type="Ref" ref="cinematic" />
-      <record name="transit-enter-cinematic" type="Ref" ref="cinematic" />
-      <record name="effect" type="Ref" ref="effect" repeat="8" />
-      <record name="transit-leave-social" type="Ref" ref="social" />
-      <record name="transit-enter-social" type="Ref" ref="social" />
-      <record name="required-level" type="Int8" default="0" min="0" />
+      </attribute>
+      <attribute name="transit-zone" type="Ref" ref="zone" />
+      <attribute name="transit-dungeon" type="Ref" ref="dungeon" />
+      <attribute name="transit-reentrance-pcspawn" type="Bool" />
+      <attribute name="transit-pc-spawn" type="Int16" default="0" />
+      <attribute name="transit-pc-spawn-in-arena" type="Ref" ref="zonepcspawn" />
+      <attribute name="transit-leave-cinematic" type="Ref" ref="cinematic" />
+      <attribute name="transit-enter-cinematic" type="Ref" ref="cinematic" />
+      <attribute name="effect" type="Ref" ref="effect" repeat="8" />
+      <attribute name="transit-leave-social" type="Ref" ref="social" />
+      <attribute name="transit-enter-social" type="Ref" ref="social" />
+      <attribute name="required-level" type="Int8" default="0" min="0" />
     </sub>
     <sub name="portal-list">
-      <record name="portal-id" type="Ref" ref="zoneenv2" repeat="16" />
+      <attribute name="portal-id" type="Ref" ref="zoneenv2" repeat="16" />
     </sub>
     <sub name="foot-switch" />
     <sub name="effect-region">
-      <record name="effect" type="Ref" ref="effect" repeat="4" />
+      <attribute name="effect" type="Ref" ref="effect" repeat="4" />
     </sub>
     <sub name="airdash">
-      <record name="airdash-level" type="Int8" default="1" />
-      <record name="kismet" type="String" max="256" />
-      <record name="social" type="Ref" ref="social" deprecated="y" />
+      <attribute name="airdash-level" type="Int8" default="1" />
+      <attribute name="kismet" type="String" max="256" />
+      <attribute name="social" type="Ref" ref="social" deprecated="y" />
     </sub>
     <sub name="airdash-leave">
-      <record name="airdash-level" type="Int8" default="1" />
-      <record name="transit-zone" type="Ref" ref="zone" required="y" />
-      <record name="transit-pc-spawn" type="Int16" default="0" />
-      <record name="transit-leave-social" type="Ref" ref="social" />
-      <record name="transit-enter-social" type="Ref" ref="social" />
+      <attribute name="airdash-level" type="Int8" default="1" />
+      <attribute name="transit-zone" type="Ref" ref="zone" required="y" />
+      <attribute name="transit-pc-spawn" type="Int16" default="0" />
+      <attribute name="transit-leave-social" type="Ref" ref="social" />
+      <attribute name="transit-enter-social" type="Ref" ref="social" />
     </sub>
     <sub name="oceanic-region" />
     <sub name="fall-death" />
     <sub name="multiple-loop">
-      <record name="loop-restricted-effect" type="Ref" ref="effect" required="y" />
+      <attribute name="loop-restricted-effect" type="Ref" ref="effect" required="y" />
     </sub>
     <sub name="deck" />
     <sub name="fishing-point">
-      <record name="fishing-field" type="Ref" ref="fishing-field" />
+      <attribute name="fishing-field" type="Ref" ref="fishing-field" />
     </sub>
     <sub name="attraction-popup">
-      <record name="env-entrance" type="Ref" ref="env-entrance" required="y" />
+      <attribute name="env-entrance" type="Ref" ref="env-entrance" required="y" />
     </sub>
     <sub name="enter-arena-dungeonlobby">
-      <record name="enter-sealeddungeon" type="Bool" />
+      <attribute name="enter-sealeddungeon" type="Bool" />
     </sub>
   </el>
 </table>

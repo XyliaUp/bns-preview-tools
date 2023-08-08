@@ -2,15 +2,15 @@
 <table name="craft-introduction" version="0.1" autokey="false" module="4">
   <el name="table" child="1" />
   <el name="record">
-    <record name="category" type="Seq" seq="production-type" key="y" required="y" />
-    <record name="title-icon" type="Icon" max="32767" />
-    <record name="normal-icon" type="Icon" max="32767" />
-    <record name="slogan" type="Ref" ref="text" />
-    <record name="introduction-description" type="Ref" ref="text" />
-    <record name="associated-craft" type="Seq" seq="production-type" default="none" repeat="2" />
-    <record name="representative-product-item" type="Ref" ref="item" default="0" repeat="8" />
-    <record name="representative-product-label" type="Ref" ref="text" repeat="8" />
-    <record name="special-product-item" type="Ref" ref="item" default="0" repeat="4" />
-    <record name="special-product-label" type="Ref" ref="text" repeat="4" />
+    <attribute name="category" type="Seq" seq="production-type" key="y" required="y" />
+    <attribute name="title-icon" type="Icon" max="32767" />
+    <attribute name="normal-icon" type="Icon" max="32767" />
+    <attribute name="slogan" type="Ref" ref="text" />
+    <attribute name="introduction-description" type="Ref" ref="text" />
+    <attribute name="associated-craft" type="Seq" seq="production-type" default="none" repeat="2" />
+    <attribute name="representative-product-item" type="Ref" ref="item" default="0" repeat="8" />
+    <attribute name="representative-product-label" type="Ref" ref="text" repeat="8" />
+    <attribute name="special-product-item" type="Ref" ref="item" default="0" repeat="4" />
+    <attribute name="special-product-label" type="Ref" ref="text" repeat="4" />
   </el>
 </table>

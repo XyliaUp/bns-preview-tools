@@ -2,15 +2,15 @@
 <table name="zonetriggereventcond" version="0.11" autokey="true" module="6" maxid="10000">
   <el name="table" child="1" />
   <el name="record">
-    <record name="alias" type="String" required="y" max="70" />
-    <record name="cond-contents-type" type="Seq">
+    <attribute name="alias" type="String" required="y" max="70" />
+    <attribute name="cond-contents-type" type="Seq">
       <case name="none" default="y" />
       <case name="faction-stage-faction-1-win" />
       <case name="faction-stage-faction-2-win" />
-    </record>
-    <record name="cond-event-message" type="Ref" ref="game-message" />
+    </attribute>
+    <attribute name="cond-event-message" type="Ref" ref="game-message" />
     <sub name="weekly-event">
-      <record name="event-day-of-week" type="Seq" required="y">
+      <attribute name="event-day-of-week" type="Seq" required="y">
         <case name="sun" />
         <case name="mon" />
         <case name="tue" />
@@ -23,9 +23,9 @@
         <case name="fri-sat-sun" />
         <case name="weekend" />
         <case name="entire-week" />
-      </record>
-      <record name="event-hour" type="Int8" default="-1" repeat="8" min="-1" max="23" />
-      <record name="event-minute" type="Int8" default="-1" repeat="8" min="-1" max="59" />
+      </attribute>
+      <attribute name="event-hour" type="Int8" default="-1" repeat="8" min="-1" max="23" />
+      <attribute name="event-minute" type="Int8" default="-1" repeat="8" min="-1" max="59" />
     </sub>
     <sub name="timeout-event" />
     <sub name="npc-killed-event" />

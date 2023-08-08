@@ -2,25 +2,25 @@
 <table name="npcresponse" version="0.5" autokey="true" module="4">
   <el name="table" child="1" />
   <el name="record">
-    <record name="alias" type="String" required="y" max="70" />
-    <record name="faction-check-type" type="Seq">
+    <attribute name="alias" type="String" required="y" max="70" />
+    <attribute name="faction-check-type" type="Seq">
       <case name="is" default="y" />
       <case name="is-not" />
       <case name="is-none" />
-    </record>
-    <record name="faction" type="Ref" ref="faction" repeat="2" />
-    <record name="required-complete-quest" type="Ref" ref="quest" />
-    <record name="faction-level-check-type" type="Seq">
+    </attribute>
+    <attribute name="faction" type="Ref" ref="faction" repeat="2" />
+    <attribute name="required-complete-quest" type="Ref" ref="quest" />
+    <attribute name="faction-level-check-type" type="Seq">
       <case name="none" default="y" />
       <case name="check-for-success" />
       <case name="check-for-fail" />
-    </record>
-    <record name="talk-message" type="Ref" ref="npctalkmessage" />
-    <record name="indicator-social" type="Ref" ref="indicator-social" />
-    <record name="approach-social" type="Ref" ref="social" />
-    <record name="idle" type="Ref" ref="indicator-idle" />
-    <record name="idle-visible" type="Bool" default="true" />
-    <record name="idle-start" type="Ref" ref="social" />
-    <record name="idle-end" type="Ref" ref="social" />
+    </attribute>
+    <attribute name="talk-message" type="Ref" ref="npctalkmessage" />
+    <attribute name="indicator-social" type="Ref" ref="indicator-social" />
+    <attribute name="approach-social" type="Ref" ref="social" />
+    <attribute name="idle" type="Ref" ref="indicator-idle" />
+    <attribute name="idle-visible" type="Bool" default="true" />
+    <attribute name="idle-start" type="Ref" ref="social" />
+    <attribute name="idle-end" type="Ref" ref="social" />
   </el>
 </table>

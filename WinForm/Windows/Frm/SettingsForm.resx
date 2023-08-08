@@ -57,22 +57,585 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <metadata name="colorDialog1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="toolTip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>138, 17</value>
+  </metadata>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="textBox1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft YaHei UI, 9pt</value>
+  </data>
+  <data name="textBox1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 193</value>
+  </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="Faster_Folder_Note.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="textBox1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
+  </data>
+  <data name="textBox1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>336, 23</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="textBox1.TabIndex" type="System.Int32, mscorlib">
+    <value>98</value>
+  </data>
+  <data name="&gt;&gt;textBox1.Name" xml:space="preserve">
+    <value>textBox1</value>
+  </data>
+  <data name="&gt;&gt;textBox1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBox1.Parent" xml:space="preserve">
+    <value>FolderTabPage</value>
+  </data>
+  <data name="&gt;&gt;textBox1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="label1.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft YaHei UI, 9pt</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="label1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>7, 172</value>
+  </data>
+  <data name="label1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 0, 4, 0</value>
   </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>106, 17</value>
+  </data>
+  <data name="label1.TabIndex" type="System.Int32, mscorlib">
+    <value>97</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Resource Output</value>
+  </data>
+  <data name="&gt;&gt;label1.Name" xml:space="preserve">
+    <value>label1</value>
+  </data>
+  <data name="&gt;&gt;label1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label1.Parent" xml:space="preserve">
+    <value>FolderTabPage</value>
+  </data>
+  <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="ucBtnFillet3.BtnImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABQAAAAXCAYAAAALHW+jAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6
+        JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAB3RJTUUH4wEJBAMYIyTG/wAAAn1JREFU
+        SEudlUtrE1EUgCc73bjytbDgTtGdXfr4Af4AaZsaWwSpGlOMiIhQ3ehGigvJpj4CXYq6EjdZCUVFEAQp
+        JhGT5tE855XJZCbzyvGcm5uaFplMcsmXE5IzX8459w4jDJai2UQIOYRMIcdGMCWp1lEACP0uKMKvnMRN
+        fGECcQLZQDJIegSZhmz+yGzJs6WazoS7pJhAnEdMBIJQl0xI52URReEsVolybsOFCcQ5RB9cMAouBBSK
+        6bwU3qpoIa6bTCi1LKiJBlSbBsVcU+me5LrJhHtoINNc5y+k1sp1HXD4sI0RN2PX7xwSnuG6/wvxWECx
+        1oZCtc1aayomi4WKxuQytjzIRfyFcsuGIooqjQ6Ylge9HgC+wMM3w3R3KqZcjr+wJhlMaFoutDsWw7Jd
+        0DC6bo9JqdKh9v2F9O+U7GFJkmowdMMGUTGYmL6n9mmmlI/4C6k6mpHjetCU6Vh0diApVUkzLeGMKR8J
+        WCEOj9rsmDY0JNplDcyuM36FlNyfoccEtuOCqplYXQc/e2B0x5ih2nZY0p+SCttDu0yLIsmoskC7jDK9
+        XGtBNt/Ee1SEXLnFKq3jrotKl1U+8hzOR5YFFAk4prOb6aKeWHsDH1LfocwH/u9OabPoe6eQbDYcFZ4n
+        1oWXybcXH6ysmjdij+Bj6hs73Hsu8qMvnJm7KYQvx4S5+VunIgu3Py9FV2Dt9TsoVRQYzDIgfSGKiNOR
+        xfhXquxF8j2Uq+q4MmIgjB65shj/dD36EJ4+S26izJlARojItHBpZukAtpmIxR+/2vjy80JLd4I+U4bJ
+        IinkuHD12j3h7v3Vfct3nuznx+cwEuSpNwzlH1Q0O/QXHePJlGY6/JEAAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="ucBtnFillet3.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft YaHei UI, 15px</value>
+  </data>
+  <data name="ucBtnFillet3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>363, 186</value>
+  </data>
+  <data name="ucBtnFillet3.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>5, 7, 5, 7</value>
+  </data>
+  <data name="ucBtnFillet3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>94, 37</value>
+  </data>
+  <data name="ucBtnFillet3.TabIndex" type="System.Int32, mscorlib">
+    <value>99</value>
+  </data>
+  <data name="ucBtnFillet3.Text" xml:space="preserve">
+    <value>Browse</value>
+  </data>
+  <data name="&gt;&gt;ucBtnFillet3.Name" xml:space="preserve">
+    <value>ucBtnFillet3</value>
+  </data>
+  <data name="&gt;&gt;ucBtnFillet3.Type" xml:space="preserve">
+    <value>HZH_Controls.Controls.UCBtnFillet, HZH_Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;ucBtnFillet3.Parent" xml:space="preserve">
+    <value>FolderTabPage</value>
+  </data>
+  <data name="&gt;&gt;ucBtnFillet3.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="ucBtnFillet2.BtnImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABQAAAAXCAYAAAALHW+jAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6
+        JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAB3RJTUUH4wEJBAMYIyTG/wAAAn1JREFU
+        SEudlUtrE1EUgCc73bjytbDgTtGdXfr4Af4AaZsaWwSpGlOMiIhQ3ehGigvJpj4CXYq6EjdZCUVFEAQp
+        JhGT5tE855XJZCbzyvGcm5uaFplMcsmXE5IzX8459w4jDJai2UQIOYRMIcdGMCWp1lEACP0uKMKvnMRN
+        fGECcQLZQDJIegSZhmz+yGzJs6WazoS7pJhAnEdMBIJQl0xI52URReEsVolybsOFCcQ5RB9cMAouBBSK
+        6bwU3qpoIa6bTCi1LKiJBlSbBsVcU+me5LrJhHtoINNc5y+k1sp1HXD4sI0RN2PX7xwSnuG6/wvxWECx
+        1oZCtc1aayomi4WKxuQytjzIRfyFcsuGIooqjQ6Ylge9HgC+wMM3w3R3KqZcjr+wJhlMaFoutDsWw7Jd
+        0DC6bo9JqdKh9v2F9O+U7GFJkmowdMMGUTGYmL6n9mmmlI/4C6k6mpHjetCU6Vh0diApVUkzLeGMKR8J
+        WCEOj9rsmDY0JNplDcyuM36FlNyfoccEtuOCqplYXQc/e2B0x5ih2nZY0p+SCttDu0yLIsmoskC7jDK9
+        XGtBNt/Ee1SEXLnFKq3jrotKl1U+8hzOR5YFFAk4prOb6aKeWHsDH1LfocwH/u9OabPoe6eQbDYcFZ4n
+        1oWXybcXH6ysmjdij+Bj6hs73Hsu8qMvnJm7KYQvx4S5+VunIgu3Py9FV2Dt9TsoVRQYzDIgfSGKiNOR
+        xfhXquxF8j2Uq+q4MmIgjB65shj/dD36EJ4+S26izJlARojItHBpZukAtpmIxR+/2vjy80JLd4I+U4bJ
+        IinkuHD12j3h7v3Vfct3nuznx+cwEuSpNwzlH1Q0O/QXHePJlGY6/JEAAAAASUVORK5CYII=
+</value>
+  </data>
   <data name="ucBtnFillet2.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft YaHei UI, 15px</value>
+  </data>
+  <data name="ucBtnFillet2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>363, 36</value>
+  </data>
+  <data name="ucBtnFillet2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>5, 7, 5, 7</value>
+  </data>
+  <data name="ucBtnFillet2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>94, 37</value>
+  </data>
+  <data name="ucBtnFillet2.TabIndex" type="System.Int32, mscorlib">
+    <value>96</value>
+  </data>
+  <data name="ucBtnFillet2.Text" xml:space="preserve">
+    <value>Browse</value>
+  </data>
+  <data name="&gt;&gt;ucBtnFillet2.Name" xml:space="preserve">
+    <value>ucBtnFillet2</value>
+  </data>
+  <data name="&gt;&gt;ucBtnFillet2.Type" xml:space="preserve">
+    <value>HZH_Controls.Controls.UCBtnFillet, HZH_Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;ucBtnFillet2.Parent" xml:space="preserve">
+    <value>FolderTabPage</value>
+  </data>
+  <data name="&gt;&gt;ucBtnFillet2.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="lbl_Region.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lbl_Region.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft YaHei UI, 9pt</value>
+  </data>
+  <data name="lbl_Region.Location" type="System.Drawing.Point, System.Drawing">
+    <value>184, 73</value>
+  </data>
+  <data name="lbl_Region.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 0, 4, 0</value>
+  </data>
+  <data name="lbl_Region.Size" type="System.Drawing.Size, System.Drawing">
+    <value>92, 17</value>
+  </data>
+  <data name="lbl_Region.TabIndex" type="System.Int32, mscorlib">
+    <value>16</value>
+  </data>
+  <data name="lbl_Region.Text" xml:space="preserve">
+    <value>Client Region: </value>
+  </data>
+  <data name="lbl_Region.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;lbl_Region.Name" xml:space="preserve">
+    <value>lbl_Region</value>
+  </data>
+  <data name="&gt;&gt;lbl_Region.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lbl_Region.Parent" xml:space="preserve">
+    <value>FolderTabPage</value>
+  </data>
+  <data name="&gt;&gt;lbl_Region.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="GRoot_Path.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft YaHei UI, 9pt</value>
+  </data>
+  <data name="GRoot_Path.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 42</value>
   </data>
   <data name="GRoot_Path.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 4, 4, 4</value>
   </data>
+  <data name="GRoot_Path.Size" type="System.Drawing.Size, System.Drawing">
+    <value>336, 23</value>
+  </data>
+  <data name="GRoot_Path.TabIndex" type="System.Int32, mscorlib">
+    <value>11</value>
+  </data>
+  <data name="&gt;&gt;GRoot_Path.Name" xml:space="preserve">
+    <value>GRoot_Path</value>
+  </data>
+  <data name="&gt;&gt;GRoot_Path.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;GRoot_Path.Parent" xml:space="preserve">
+    <value>FolderTabPage</value>
+  </data>
+  <data name="&gt;&gt;GRoot_Path.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="GRoot_Note.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="GRoot_Note.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft YaHei UI, 9pt</value>
+  </data>
+  <data name="GRoot_Note.Location" type="System.Drawing.Point, System.Drawing">
+    <value>7, 21</value>
+  </data>
+  <data name="GRoot_Note.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 0, 4, 0</value>
+  </data>
+  <data name="GRoot_Note.Size" type="System.Drawing.Size, System.Drawing">
+    <value>42, 17</value>
+  </data>
+  <data name="GRoot_Note.TabIndex" type="System.Int32, mscorlib">
+    <value>13</value>
+  </data>
+  <data name="GRoot_Note.Text" xml:space="preserve">
+    <value>Game</value>
+  </data>
+  <data name="&gt;&gt;GRoot_Note.Name" xml:space="preserve">
+    <value>GRoot_Note</value>
+  </data>
+  <data name="&gt;&gt;GRoot_Note.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;GRoot_Note.Parent" xml:space="preserve">
+    <value>FolderTabPage</value>
+  </data>
+  <data name="&gt;&gt;GRoot_Note.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
   <data name="Faster_Folder_Path.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft YaHei UI, 9pt</value>
   </data>
+  <data name="Faster_Folder_Path.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 120</value>
+  </data>
+  <data name="Faster_Folder_Path.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
+  </data>
+  <data name="Faster_Folder_Path.Size" type="System.Drawing.Size, System.Drawing">
+    <value>336, 23</value>
+  </data>
+  <data name="Faster_Folder_Path.TabIndex" type="System.Int32, mscorlib">
+    <value>15</value>
+  </data>
+  <data name="&gt;&gt;Faster_Folder_Path.Name" xml:space="preserve">
+    <value>Faster_Folder_Path</value>
+  </data>
+  <data name="&gt;&gt;Faster_Folder_Path.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Faster_Folder_Path.Parent" xml:space="preserve">
+    <value>FolderTabPage</value>
+  </data>
+  <data name="&gt;&gt;Faster_Folder_Path.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="Faster_Folder_Note.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="Faster_Folder_Note.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft YaHei UI, 9pt</value>
+  </data>
+  <data name="Faster_Folder_Note.Location" type="System.Drawing.Point, System.Drawing">
+    <value>7, 99</value>
+  </data>
+  <data name="Faster_Folder_Note.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 0, 4, 0</value>
+  </data>
+  <data name="Faster_Folder_Note.Size" type="System.Drawing.Size, System.Drawing">
+    <value>79, 17</value>
+  </data>
+  <data name="Faster_Folder_Note.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
   <data name="Faster_Folder_Note.Text" xml:space="preserve">
     <value>Data Output</value>
+  </data>
+  <data name="&gt;&gt;Faster_Folder_Note.Name" xml:space="preserve">
+    <value>Faster_Folder_Note</value>
+  </data>
+  <data name="&gt;&gt;Faster_Folder_Note.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Faster_Folder_Note.Parent" xml:space="preserve">
+    <value>FolderTabPage</value>
+  </data>
+  <data name="&gt;&gt;Faster_Folder_Note.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="ucBtnFillet1.BtnImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABQAAAAXCAYAAAALHW+jAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6
+        JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAB3RJTUUH4wEJBAMYIyTG/wAAAn1JREFU
+        SEudlUtrE1EUgCc73bjytbDgTtGdXfr4Af4AaZsaWwSpGlOMiIhQ3ehGigvJpj4CXYq6EjdZCUVFEAQp
+        JhGT5tE855XJZCbzyvGcm5uaFplMcsmXE5IzX8459w4jDJai2UQIOYRMIcdGMCWp1lEACP0uKMKvnMRN
+        fGECcQLZQDJIegSZhmz+yGzJs6WazoS7pJhAnEdMBIJQl0xI52URReEsVolybsOFCcQ5RB9cMAouBBSK
+        6bwU3qpoIa6bTCi1LKiJBlSbBsVcU+me5LrJhHtoINNc5y+k1sp1HXD4sI0RN2PX7xwSnuG6/wvxWECx
+        1oZCtc1aayomi4WKxuQytjzIRfyFcsuGIooqjQ6Ylge9HgC+wMM3w3R3KqZcjr+wJhlMaFoutDsWw7Jd
+        0DC6bo9JqdKh9v2F9O+U7GFJkmowdMMGUTGYmL6n9mmmlI/4C6k6mpHjetCU6Vh0diApVUkzLeGMKR8J
+        WCEOj9rsmDY0JNplDcyuM36FlNyfoccEtuOCqplYXQc/e2B0x5ih2nZY0p+SCttDu0yLIsmoskC7jDK9
+        XGtBNt/Ee1SEXLnFKq3jrotKl1U+8hzOR5YFFAk4prOb6aKeWHsDH1LfocwH/u9OabPoe6eQbDYcFZ4n
+        1oWXybcXH6ysmjdij+Bj6hs73Hsu8qMvnJm7KYQvx4S5+VunIgu3Py9FV2Dt9TsoVRQYzDIgfSGKiNOR
+        xfhXquxF8j2Uq+q4MmIgjB65shj/dD36EJ4+S26izJlARojItHBpZukAtpmIxR+/2vjy80JLd4I+U4bJ
+        IinkuHD12j3h7v3Vfct3nuznx+cwEuSpNwzlH1Q0O/QXHePJlGY6/JEAAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="ucBtnFillet1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft YaHei UI, 15px</value>
+  </data>
+  <data name="ucBtnFillet1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>363, 113</value>
+  </data>
+  <data name="ucBtnFillet1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>5, 7, 5, 7</value>
+  </data>
+  <data name="ucBtnFillet1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>94, 37</value>
+  </data>
+  <data name="ucBtnFillet1.TabIndex" type="System.Int32, mscorlib">
+    <value>95</value>
+  </data>
+  <data name="ucBtnFillet1.Text" xml:space="preserve">
+    <value>Browse</value>
+  </data>
+  <data name="&gt;&gt;ucBtnFillet1.Name" xml:space="preserve">
+    <value>ucBtnFillet1</value>
+  </data>
+  <data name="&gt;&gt;ucBtnFillet1.Type" xml:space="preserve">
+    <value>HZH_Controls.Controls.UCBtnFillet, HZH_Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;ucBtnFillet1.Parent" xml:space="preserve">
+    <value>FolderTabPage</value>
+  </data>
+  <data name="&gt;&gt;ucBtnFillet1.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="FolderTabPage.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 36</value>
+  </data>
+  <data name="FolderTabPage.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
+  </data>
+  <data name="FolderTabPage.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
+  </data>
+  <data name="FolderTabPage.Size" type="System.Drawing.Size, System.Drawing">
+    <value>487, 268</value>
+  </data>
+  <data name="FolderTabPage.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="FolderTabPage.Text" xml:space="preserve">
+    <value>Folder</value>
+  </data>
+  <data name="&gt;&gt;FolderTabPage.Name" xml:space="preserve">
+    <value>FolderTabPage</value>
+  </data>
+  <data name="&gt;&gt;FolderTabPage.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;FolderTabPage.Parent" xml:space="preserve">
+    <value>SettingsTabControl</value>
+  </data>
+  <data name="&gt;&gt;FolderTabPage.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="cmb_DataTestMode.Font" type="System.Drawing.Font, System.Drawing">
+    <value>微软雅黑, 12pt</value>
+  </data>
+  <data name="cmb_DataTestMode.Location" type="System.Drawing.Point, System.Drawing">
+    <value>304, 87</value>
+  </data>
+  <data name="cmb_DataTestMode.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 5, 4, 5</value>
+  </data>
+  <data name="cmb_DataTestMode.Size" type="System.Drawing.Size, System.Drawing">
+    <value>173, 32</value>
+  </data>
+  <data name="cmb_DataTestMode.TabIndex" type="System.Int32, mscorlib">
+    <value>113</value>
+  </data>
+  <data name="&gt;&gt;cmb_DataTestMode.Name" xml:space="preserve">
+    <value>cmb_DataTestMode</value>
+  </data>
+  <data name="&gt;&gt;cmb_DataTestMode.Type" xml:space="preserve">
+    <value>HZH_Controls.Controls.UCCombox, HZH_Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;cmb_DataTestMode.Parent" xml:space="preserve">
+    <value>OptionTabPage</value>
+  </data>
+  <data name="&gt;&gt;cmb_DataTestMode.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="lbl_DataTestMode.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lbl_DataTestMode.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft YaHei UI, 12pt</value>
+  </data>
+  <data name="lbl_DataTestMode.Location" type="System.Drawing.Point, System.Drawing">
+    <value>22, 91</value>
+  </data>
+  <data name="lbl_DataTestMode.Size" type="System.Drawing.Size, System.Drawing">
+    <value>132, 21</value>
+  </data>
+  <data name="lbl_DataTestMode.TabIndex" type="System.Int32, mscorlib">
+    <value>112</value>
+  </data>
+  <data name="lbl_DataTestMode.Text" xml:space="preserve">
+    <value>Data Test Mode</value>
+  </data>
+  <data name="&gt;&gt;lbl_DataTestMode.Name" xml:space="preserve">
+    <value>lbl_DataTestMode</value>
+  </data>
+  <data name="&gt;&gt;lbl_DataTestMode.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lbl_DataTestMode.Parent" xml:space="preserve">
+    <value>OptionTabPage</value>
+  </data>
+  <data name="&gt;&gt;lbl_DataTestMode.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="cmb_ClipboardMode.Font" type="System.Drawing.Font, System.Drawing">
+    <value>微软雅黑, 12pt</value>
+  </data>
+  <data name="cmb_ClipboardMode.Location" type="System.Drawing.Point, System.Drawing">
+    <value>304, 7</value>
+  </data>
+  <data name="cmb_ClipboardMode.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 5, 4, 5</value>
+  </data>
+  <data name="cmb_ClipboardMode.Size" type="System.Drawing.Size, System.Drawing">
+    <value>173, 32</value>
+  </data>
+  <data name="cmb_ClipboardMode.TabIndex" type="System.Int32, mscorlib">
+    <value>111</value>
+  </data>
+  <data name="&gt;&gt;cmb_ClipboardMode.Name" xml:space="preserve">
+    <value>cmb_ClipboardMode</value>
+  </data>
+  <data name="&gt;&gt;cmb_ClipboardMode.Type" xml:space="preserve">
+    <value>HZH_Controls.Controls.UCCombox, HZH_Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;cmb_ClipboardMode.Parent" xml:space="preserve">
+    <value>OptionTabPage</value>
+  </data>
+  <data name="&gt;&gt;cmb_ClipboardMode.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="lbl_ClipboardMode.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lbl_ClipboardMode.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft YaHei UI, 12pt</value>
+  </data>
+  <data name="lbl_ClipboardMode.Location" type="System.Drawing.Point, System.Drawing">
+    <value>22, 16</value>
+  </data>
+  <data name="lbl_ClipboardMode.Size" type="System.Drawing.Size, System.Drawing">
+    <value>136, 21</value>
+  </data>
+  <data name="lbl_ClipboardMode.TabIndex" type="System.Int32, mscorlib">
+    <value>102</value>
+  </data>
+  <data name="lbl_ClipboardMode.Text" xml:space="preserve">
+    <value>Text Copy Mode</value>
+  </data>
+  <data name="&gt;&gt;lbl_ClipboardMode.Name" xml:space="preserve">
+    <value>lbl_ClipboardMode</value>
+  </data>
+  <data name="&gt;&gt;lbl_ClipboardMode.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lbl_ClipboardMode.Parent" xml:space="preserve">
+    <value>OptionTabPage</value>
+  </data>
+  <data name="&gt;&gt;lbl_ClipboardMode.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="OptionTabPage.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 36</value>
+  </data>
+  <data name="OptionTabPage.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="OptionTabPage.Size" type="System.Drawing.Size, System.Drawing">
+    <value>487, 268</value>
+  </data>
+  <data name="OptionTabPage.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="OptionTabPage.Text" xml:space="preserve">
+    <value>Option</value>
+  </data>
+  <data name="&gt;&gt;OptionTabPage.Name" xml:space="preserve">
+    <value>OptionTabPage</value>
+  </data>
+  <data name="&gt;&gt;OptionTabPage.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;OptionTabPage.Parent" xml:space="preserve">
+    <value>SettingsTabControl</value>
+  </data>
+  <data name="&gt;&gt;OptionTabPage.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="SettingsTabControl.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="SettingsTabControl.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
+  </data>
+  <data name="SettingsTabControl.Padding" type="System.Drawing.Point, System.Drawing">
+    <value>6, 8</value>
+  </data>
+  <data name="SettingsTabControl.Size" type="System.Drawing.Size, System.Drawing">
+    <value>495, 308</value>
+  </data>
+  <data name="SettingsTabControl.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;SettingsTabControl.Name" xml:space="preserve">
+    <value>SettingsTabControl</value>
+  </data>
+  <data name="&gt;&gt;SettingsTabControl.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabControl, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;SettingsTabControl.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;SettingsTabControl.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <metadata name="Folder.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>345, 17</value>
+  </metadata>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>7, 17</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>499, 312</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -1772,601 +2335,40 @@
         AACAAQAAwAMAAMADAADAAwAA4AcAAPw/AAD//wAA
 </value>
   </data>
-  <data name="&gt;&gt;SettingsTabControl.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="ucBtnFillet1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>94, 37</value>
-  </data>
-  <data name="&gt;&gt;ucBtnFillet1.Name" xml:space="preserve">
-    <value>ucBtnFillet1</value>
-  </data>
-  <data name="&gt;&gt;Faster_Folder_Path.Parent" xml:space="preserve">
-    <value>FolderTabPage</value>
-  </data>
-  <data name="Faster_Folder_Path.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="GRoot_Path.TabIndex" type="System.Int32, mscorlib">
-    <value>11</value>
-  </data>
-  <data name="ucBtnFillet2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>5, 7, 5, 7</value>
-  </data>
-  <data name="Faster_Folder_Path.Size" type="System.Drawing.Size, System.Drawing">
-    <value>336, 23</value>
-  </data>
-  <data name="label1.TabIndex" type="System.Int32, mscorlib">
-    <value>101</value>
-  </data>
-  <data name="lbl_Region.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;SettingsTabControl.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabControl, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;OptionTabPage.Parent" xml:space="preserve">
-    <value>SettingsTabControl</value>
-  </data>
-  <data name="&gt;&gt;cmb_DataTestMode.Name" xml:space="preserve">
-    <value>cmb_DataTestMode</value>
-  </data>
-  <data name="label1.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>499, 312</value>
-  </data>
-  <data name="&gt;&gt;ucBtnFillet2.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="GRoot_Note.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft YaHei UI, 9pt</value>
-  </data>
-  <data name="GRoot_Path.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft YaHei UI, 9pt</value>
-  </data>
-  <data name="&gt;&gt;cmb_DataTestMode.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="GRoot_Note.Text" xml:space="preserve">
-    <value>Game</value>
-  </data>
-  <data name="&gt;&gt;lbl_DataTestMode.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="ucBtnFillet2.BtnImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABQAAAAXCAYAAAALHW+jAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6
-        JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAB3RJTUUH4wEJBAMYIyTG/wAAAn1JREFU
-        SEudlUtrE1EUgCc73bjytbDgTtGdXfr4Af4AaZsaWwSpGlOMiIhQ3ehGigvJpj4CXYq6EjdZCUVFEAQp
-        JhGT5tE855XJZCbzyvGcm5uaFplMcsmXE5IzX8459w4jDJai2UQIOYRMIcdGMCWp1lEACP0uKMKvnMRN
-        fGECcQLZQDJIegSZhmz+yGzJs6WazoS7pJhAnEdMBIJQl0xI52URReEsVolybsOFCcQ5RB9cMAouBBSK
-        6bwU3qpoIa6bTCi1LKiJBlSbBsVcU+me5LrJhHtoINNc5y+k1sp1HXD4sI0RN2PX7xwSnuG6/wvxWECx
-        1oZCtc1aayomi4WKxuQytjzIRfyFcsuGIooqjQ6Ylge9HgC+wMM3w3R3KqZcjr+wJhlMaFoutDsWw7Jd
-        0DC6bo9JqdKh9v2F9O+U7GFJkmowdMMGUTGYmL6n9mmmlI/4C6k6mpHjetCU6Vh0diApVUkzLeGMKR8J
-        WCEOj9rsmDY0JNplDcyuM36FlNyfoccEtuOCqplYXQc/e2B0x5ih2nZY0p+SCttDu0yLIsmoskC7jDK9
-        XGtBNt/Ee1SEXLnFKq3jrotKl1U+8hzOR5YFFAk4prOb6aKeWHsDH1LfocwH/u9OabPoe6eQbDYcFZ4n
-        1oWXybcXH6ysmjdij+Bj6hs73Hsu8qMvnJm7KYQvx4S5+VunIgu3Py9FV2Dt9TsoVRQYzDIgfSGKiNOR
-        xfhXquxF8j2Uq+q4MmIgjB65shj/dD36EJ4+S26izJlARojItHBpZukAtpmIxR+/2vjy80JLd4I+U4bJ
-        IinkuHD12j3h7v3Vfct3nuznx+cwEuSpNwzlH1Q0O/QXHePJlGY6/JEAAAAASUVORK5CYII=
-</value>
-  </data>
-  <data name="ucBtnFillet2.TabIndex" type="System.Int32, mscorlib">
-    <value>96</value>
-  </data>
-  <data name="cmb_ClipboardMode.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>20, 39</value>
-  </data>
-  <data name="cmb_DataTestMode.Location" type="System.Drawing.Point, System.Drawing">
-    <value>304, 87</value>
-  </data>
-  <data name="SettingsTabControl.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;ucBtnFillet2.Name" xml:space="preserve">
-    <value>ucBtnFillet2</value>
-  </data>
-  <data name="&gt;&gt;Preview_DataTest.Name" xml:space="preserve">
-    <value>Preview_DataTest</value>
-  </data>
-  <data name="&gt;&gt;label2.Name" xml:space="preserve">
-    <value>label2</value>
-  </data>
-  <data name="&gt;&gt;OptionTabPage.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="lbl_Region.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 0, 4, 0</value>
-  </data>
-  <data name="&gt;&gt;ucBtnFillet1.Type" xml:space="preserve">
-    <value>HZH_Controls.Controls.UCBtnFillet, HZH_Controls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="OptionTabPage.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="&gt;&gt;ucBtnFillet1.Parent" xml:space="preserve">
-    <value>FolderTabPage</value>
-  </data>
-  <data name="&gt;&gt;Faster_Folder_Path.Name" xml:space="preserve">
-    <value>Faster_Folder_Path</value>
-  </data>
-  <data name="&gt;&gt;Preview_DataTest.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TrackBar, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;lbl_Region.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;Preview_DataTest.Parent" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="Preview_DataTest.TabIndex" type="System.Int32, mscorlib">
-    <value>101</value>
-  </data>
-  <data name="&gt;&gt;OptionTabPage.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="ucBtnFillet1.TabIndex" type="System.Int32, mscorlib">
-    <value>95</value>
-  </data>
-  <data name="GRoot_Note.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="&gt;&gt;lbl_ClipboardMode.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="$this.Text" xml:space="preserve">
-    <value>Settings</value>
-  </data>
-  <data name="FolderTabPage.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 36</value>
-  </data>
-  <data name="ucBtnFillet1.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="&gt;&gt;OptionTabPage.Name" xml:space="preserve">
-    <value>OptionTabPage</value>
-  </data>
-  <data name="OptionTabPage.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 3</value>
-  </data>
-  <data name="&gt;&gt;cmb_ClipboardMode.Parent" xml:space="preserve">
-    <value>OptionTabPage</value>
-  </data>
-  <data name="&gt;&gt;lbl_Region.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Faster_Folder_Path.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="GRoot_Note.Location" type="System.Drawing.Point, System.Drawing">
-    <value>7, 21</value>
-  </data>
-  <data name="groupBox1.Text" xml:space="preserve">
-    <value>Test</value>
-  </data>
-  <data name="&gt;&gt;lbl_Region.Name" xml:space="preserve">
-    <value>lbl_Region</value>
-  </data>
-  <data name="&gt;&gt;ucBtnFillet2.Parent" xml:space="preserve">
-    <value>FolderTabPage</value>
-  </data>
-  <data name="&gt;&gt;lbl_ClipboardMode.Name" xml:space="preserve">
-    <value>lbl_ClipboardMode</value>
-  </data>
-  <data name="ucBtnFillet1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>5, 7, 5, 7</value>
-  </data>
-  <data name="&gt;&gt;colorDialog1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ColorDialog, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="lbl_Region.Text" xml:space="preserve">
-    <value>客户端所属区域：</value>
-  </data>
-  <data name="&gt;&gt;toolTip1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolTip, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;cmb_ClipboardMode.Type" xml:space="preserve">
-    <value>HZH_Controls.Controls.UCCombox, HZH_Controls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;cmb_ClipboardMode.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;GRoot_Path.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;$this.Name" xml:space="preserve">
-    <value>SettingsForm</value>
-  </data>
-  <data name="ucBtnFillet1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>363, 119</value>
-  </data>
-  <data name="FolderTabPage.Size" type="System.Drawing.Size, System.Drawing">
-    <value>487, 268</value>
-  </data>
-  <data name="&gt;&gt;Folder.Type" xml:space="preserve">
-    <value>System.Windows.Forms.FolderBrowserDialog, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;groupBox1.Name" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="&gt;&gt;SettingsTabControl.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;GRoot_Note.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lbl_ClipboardMode.Parent" xml:space="preserve">
-    <value>OptionTabPage</value>
-  </data>
-  <data name="lbl_DataTestMode.Location" type="System.Drawing.Point, System.Drawing">
-    <value>22, 91</value>
-  </data>
-  <data name="&gt;&gt;label1.Parent" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="&gt;&gt;ucBtnFillet1.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="&gt;&gt;cmb_DataTestMode.Parent" xml:space="preserve">
-    <value>OptionTabPage</value>
-  </data>
-  <data name="ucBtnFillet2.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="GRoot_Path.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="&gt;&gt;Faster_Folder_Note.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;label2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="lbl_DataTestMode.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="&gt;&gt;groupBox1.Parent" xml:space="preserve">
-    <value>OptionTabPage</value>
-  </data>
-  <data name="GRoot_Note.Size" type="System.Drawing.Size, System.Drawing">
-    <value>42, 17</value>
-  </data>
-  <data name="SettingsTabControl.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="GRoot_Note.TabIndex" type="System.Int32, mscorlib">
-    <value>13</value>
-  </data>
-  <data name="Faster_Folder_Path.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
-  </data>
-  <data name="lbl_ClipboardMode.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="OptionTabPage.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 36</value>
-  </data>
-  <data name="label1.Text" xml:space="preserve">
-    <value>data mode</value>
-  </data>
-  <data name="&gt;&gt;GRoot_Note.Parent" xml:space="preserve">
-    <value>FolderTabPage</value>
-  </data>
-  <data name="Faster_Folder_Note.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft YaHei UI, 9pt</value>
-  </data>
-  <data name="&gt;&gt;GRoot_Note.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;label2.Parent" xml:space="preserve">
-    <value>OptionTabPage</value>
-  </data>
-  <data name="&gt;&gt;cmb_ClipboardMode.Name" xml:space="preserve">
-    <value>cmb_ClipboardMode</value>
-  </data>
-  <data name="&gt;&gt;groupBox1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="Faster_Folder_Path.TabIndex" type="System.Int32, mscorlib">
-    <value>15</value>
-  </data>
-  <data name="&gt;&gt;FolderTabPage.Parent" xml:space="preserve">
-    <value>SettingsTabControl</value>
-  </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
-    <value>CenterParent</value>
-  </data>
-  <data name="lbl_Region.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft YaHei UI, 9pt</value>
-  </data>
-  <data name="groupBox1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft YaHei UI, 12pt</value>
-  </data>
-  <data name="Preview_DataTest.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="&gt;&gt;FolderTabPage.Name" xml:space="preserve">
-    <value>FolderTabPage</value>
-  </data>
-  <data name="&gt;&gt;Faster_Folder_Note.Parent" xml:space="preserve">
-    <value>FolderTabPage</value>
-  </data>
-  <data name="groupBox1.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="SettingsTabControl.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="ucBtnFillet1.BtnImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABQAAAAXCAYAAAALHW+jAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6
-        JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAB3RJTUUH4wEJBAMYIyTG/wAAAn1JREFU
-        SEudlUtrE1EUgCc73bjytbDgTtGdXfr4Af4AaZsaWwSpGlOMiIhQ3ehGigvJpj4CXYq6EjdZCUVFEAQp
-        JhGT5tE855XJZCbzyvGcm5uaFplMcsmXE5IzX8459w4jDJai2UQIOYRMIcdGMCWp1lEACP0uKMKvnMRN
-        fGECcQLZQDJIegSZhmz+yGzJs6WazoS7pJhAnEdMBIJQl0xI52URReEsVolybsOFCcQ5RB9cMAouBBSK
-        6bwU3qpoIa6bTCi1LKiJBlSbBsVcU+me5LrJhHtoINNc5y+k1sp1HXD4sI0RN2PX7xwSnuG6/wvxWECx
-        1oZCtc1aayomi4WKxuQytjzIRfyFcsuGIooqjQ6Ylge9HgC+wMM3w3R3KqZcjr+wJhlMaFoutDsWw7Jd
-        0DC6bo9JqdKh9v2F9O+U7GFJkmowdMMGUTGYmL6n9mmmlI/4C6k6mpHjetCU6Vh0diApVUkzLeGMKR8J
-        WCEOj9rsmDY0JNplDcyuM36FlNyfoccEtuOCqplYXQc/e2B0x5ih2nZY0p+SCttDu0yLIsmoskC7jDK9
-        XGtBNt/Ee1SEXLnFKq3jrotKl1U+8hzOR5YFFAk4prOb6aKeWHsDH1LfocwH/u9OabPoe6eQbDYcFZ4n
-        1oWXybcXH6ysmjdij+Bj6hs73Hsu8qMvnJm7KYQvx4S5+VunIgu3Py9FV2Dt9TsoVRQYzDIgfSGKiNOR
-        xfhXquxF8j2Uq+q4MmIgjB65shj/dD36EJ4+S26izJlARojItHBpZukAtpmIxR+/2vjy80JLd4I+U4bJ
-        IinkuHD12j3h7v3Vfct3nuznx+cwEuSpNwzlH1Q0O/QXHePJlGY6/JEAAAAASUVORK5CYII=
-</value>
-  </data>
-  <data name="&gt;&gt;cmb_DataTestMode.Type" xml:space="preserve">
-    <value>HZH_Controls.Controls.UCCombox, HZH_Controls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>270, 150</value>
-  </data>
-  <data name="label2.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="FolderTabPage.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
-  </data>
-  <data name="Faster_Folder_Note.Location" type="System.Drawing.Point, System.Drawing">
-    <value>7, 105</value>
-  </data>
-  <data name="Faster_Folder_Note.TabIndex" type="System.Int32, mscorlib">
-    <value>10</value>
-  </data>
-  <data name="ucBtnFillet2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>94, 37</value>
-  </data>
   <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 4, 4, 4</value>
-  </data>
-  <data name="Preview_DataTest.Size" type="System.Drawing.Size, System.Drawing">
-    <value>137, 45</value>
-  </data>
-  <data name="label2.TabIndex" type="System.Int32, mscorlib">
-    <value>102</value>
-  </data>
-  <data name="GRoot_Note.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="lbl_Region.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="FolderTabPage.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="&gt;&gt;lbl_DataTestMode.Name" xml:space="preserve">
-    <value>lbl_DataTestMode</value>
-  </data>
-  <data name="&gt;&gt;FolderTabPage.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;Faster_Folder_Path.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lbl_DataTestMode.Parent" xml:space="preserve">
-    <value>OptionTabPage</value>
-  </data>
-  <data name="&gt;&gt;GRoot_Path.Parent" xml:space="preserve">
-    <value>FolderTabPage</value>
-  </data>
-  <data name="&gt;&gt;GRoot_Path.Name" xml:space="preserve">
-    <value>GRoot_Path</value>
-  </data>
-  <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>22, 14</value>
-  </data>
-  <data name="groupBox1.TabIndex" type="System.Int32, mscorlib">
-    <value>100</value>
-  </data>
-  <data name="ucBtnFillet1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft YaHei UI, 15px</value>
-  </data>
-  <data name="&gt;&gt;FolderTabPage.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;colorDialog1.Name" xml:space="preserve">
-    <value>colorDialog1</value>
-  </data>
-  <data name="SettingsTabControl.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
-  </data>
-  <data name="lbl_Region.Size" type="System.Drawing.Size, System.Drawing">
-    <value>104, 17</value>
-  </data>
-  <data name="label1.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="ucBtnFillet2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>363, 36</value>
-  </data>
-  <data name="SettingsTabControl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>495, 308</value>
-  </data>
-  <data name="FolderTabPage.Text" xml:space="preserve">
-    <value>Folder</value>
-  </data>
-  <data name="&gt;&gt;Folder.Name" xml:space="preserve">
-    <value>Folder</value>
-  </data>
-  <data name="lbl_Region.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="Faster_Folder_Note.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="lbl_Region.Location" type="System.Drawing.Point, System.Drawing">
-    <value>184, 73</value>
-  </data>
-  <data name="Faster_Folder_Path.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 126</value>
-  </data>
-  <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Form, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="SettingsTabControl.Padding" type="System.Drawing.Point, System.Drawing">
-    <value>6, 8</value>
   </data>
   <data name="$this.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>23, 85, 23, 28</value>
   </data>
-  <data name="&gt;&gt;GRoot_Note.Name" xml:space="preserve">
-    <value>GRoot_Note</value>
+  <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
+    <value>CenterParent</value>
   </data>
-  <data name="Preview_DataTest.Location" type="System.Drawing.Point, System.Drawing">
-    <value>110, 32</value>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Settings</value>
   </data>
-  <data name="lbl_ClipboardMode.TabIndex" type="System.Int32, mscorlib">
-    <value>102</value>
+  <data name="&gt;&gt;colorDialog1.Name" xml:space="preserve">
+    <value>colorDialog1</value>
   </data>
-  <data name="lbl_Region.TabIndex" type="System.Int32, mscorlib">
-    <value>16</value>
-  </data>
-  <data name="OptionTabPage.Size" type="System.Drawing.Size, System.Drawing">
-    <value>487, 268</value>
-  </data>
-  <data name="GRoot_Path.Size" type="System.Drawing.Size, System.Drawing">
-    <value>336, 23</value>
-  </data>
-  <data name="lbl_ClipboardMode.Location" type="System.Drawing.Point, System.Drawing">
-    <value>22, 16</value>
-  </data>
-  <data name="&gt;&gt;lbl_ClipboardMode.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="OptionTabPage.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;GRoot_Path.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lbl_DataTestMode.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="Faster_Folder_Note.Size" type="System.Drawing.Size, System.Drawing">
-    <value>79, 17</value>
-  </data>
-  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>7, 17</value>
-  </data>
-  <data name="Faster_Folder_Note.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="&gt;&gt;Preview_DataTest.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;lbl_Region.Parent" xml:space="preserve">
-    <value>FolderTabPage</value>
-  </data>
-  <data name="&gt;&gt;label1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ucBtnFillet2.Type" xml:space="preserve">
-    <value>HZH_Controls.Controls.UCBtnFillet, HZH_Controls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="FolderTabPage.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="FolderTabPage.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
-  </data>
-  <data name="&gt;&gt;Faster_Folder_Note.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;groupBox1.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>88, 20</value>
-  </data>
-  <data name="&gt;&gt;SettingsTabControl.Name" xml:space="preserve">
-    <value>SettingsTabControl</value>
-  </data>
-  <data name="GRoot_Path.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 42</value>
-  </data>
-  <data name="cmb_ClipboardMode.Location" type="System.Drawing.Point, System.Drawing">
-    <value>304, 7</value>
-  </data>
-  <data name="GRoot_Note.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 0, 4, 0</value>
-  </data>
-  <data name="lbl_DataTestMode.TabIndex" type="System.Int32, mscorlib">
-    <value>112</value>
-  </data>
-  <data name="label1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft YaHei UI, 11pt</value>
-  </data>
-  <data name="groupBox1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 112</value>
-  </data>
-  <data name="&gt;&gt;Faster_Folder_Note.Name" xml:space="preserve">
-    <value>Faster_Folder_Note</value>
-  </data>
-  <data name="$this.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="cmb_DataTestMode.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="cmb_DataTestMode.TabIndex" type="System.Int32, mscorlib">
-    <value>113</value>
-  </data>
-  <data name="cmb_ClipboardMode.TabIndex" type="System.Int32, mscorlib">
-    <value>111</value>
+  <data name="&gt;&gt;colorDialog1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ColorDialog, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;toolTip1.Name" xml:space="preserve">
     <value>toolTip1</value>
   </data>
-  <data name="OptionTabPage.Text" xml:space="preserve">
-    <value>Option</value>
+  <data name="&gt;&gt;toolTip1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolTip, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;label1.Name" xml:space="preserve">
-    <value>label1</value>
+  <data name="&gt;&gt;Folder.Name" xml:space="preserve">
+    <value>Folder</value>
   </data>
-  <metadata name="colorDialog1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
-  <metadata name="Folder.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>345, 17</value>
-  </metadata>
-  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="$this.Language" type="System.Globalization.CultureInfo, System.Private.CoreLib, Culture=neutral, PublicKeyToken=7cec85d7bea7798e">
-    <value>zh</value>
-  </metadata>
-  <metadata name="toolTip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>138, 17</value>
-  </metadata>
+  <data name="&gt;&gt;Folder.Type" xml:space="preserve">
+    <value>System.Windows.Forms.FolderBrowserDialog, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>SettingsForm</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Form, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
 </root>

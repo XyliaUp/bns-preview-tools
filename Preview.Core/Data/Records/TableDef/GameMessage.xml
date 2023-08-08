@@ -2,8 +2,8 @@
 <table name="game-message" version="1.44" autokey="true" module="12">
   <el name="table" child="1" />
   <el name="record">
-    <record name="alias" type="String" required="y" max="70" />
-    <record name="category" type="Seq">
+    <attribute name="alias" type="String" required="y" max="70" />
+    <attribute name="category" type="Seq">
       <case name="none" />
       <case name="chat-sight" />
       <case name="chat-party" />
@@ -74,53 +74,53 @@
       <case name="combat-party-target-defend" />
       <case name="mentoring" />
       <case name="skill" />
-    </record>
-    <record name="text" type="Ref" ref="text" />
-    <record name="chatting" type="Bool" />
-    <record name="chatting-fontset" type="XUnknown2" />
-    <record name="headline2" type="Bool" />
-    <record name="headline2-fontset" type="XUnknown2" />
-    <record name="headline" type="Bool" deprecated="y" />
-    <record name="headline-text" type="Ref" ref="text" />
-    <record name="headline-fontset" type="XUnknown2" />
-    <record name="headline-particle" type="XUnknown2" />
-    <record name="boss-headline-text" type="Ref" ref="text" />
-    <record name="boss-headline-fontset" type="XUnknown2" />
-    <record name="instant-notify" type="Bool" deprecated="y" />
-    <record name="instant-notify-fontset" type="XUnknown2" deprecated="y" />
-    <record name="sound" type="String" repeat="4" deprecated="y" max="70" />
-    <record name="sound-track" type="Seq">
+    </attribute>
+    <attribute name="text" type="Ref" ref="text" />
+    <attribute name="chatting" type="Bool" />
+    <attribute name="chatting-fontset" type="XUnknown2" />
+    <attribute name="headline2" type="Bool" />
+    <attribute name="headline2-fontset" type="XUnknown2" />
+    <attribute name="headline" type="Bool" deprecated="y" />
+    <attribute name="headline-text" type="Ref" ref="text" />
+    <attribute name="headline-fontset" type="XUnknown2" />
+    <attribute name="headline-particle" type="XUnknown2" />
+    <attribute name="boss-headline-text" type="Ref" ref="text" />
+    <attribute name="boss-headline-fontset" type="XUnknown2" />
+    <attribute name="instant-notify" type="Bool" deprecated="y" />
+    <attribute name="instant-notify-fontset" type="XUnknown2" deprecated="y" />
+    <attribute name="sound" type="String" repeat="4" deprecated="y" max="70" />
+    <attribute name="sound-track" type="Seq">
       <case name="none" default="y" />
       <case name="1" />
       <case name="2" />
-    </record>
-    <record name="stop-previous-track-sound" type="Bool" default="y" />
-    <record name="duplication-check" type="Bool" default="y" />
-    <record name="sound" type="XUnknown2" />
-    <record name="sound-type" type="Seq">
+    </attribute>
+    <attribute name="stop-previous-track-sound" type="Bool" default="y" />
+    <attribute name="duplication-check" type="Bool" default="y" />
+    <attribute name="sound" type="XUnknown2" />
+    <attribute name="sound-type" type="Seq">
       <case name="none" default="y" />
       <case name="voice" />
       <case name="effect" />
-    </record>
-    <record name="sound2" type="XUnknown2" />
-    <record name="sound2-type" type="Seq">
+    </attribute>
+    <attribute name="sound2" type="XUnknown2" />
+    <attribute name="sound2-type" type="Seq">
       <case name="none" default="y" />
       <case name="voice" />
       <case name="effect" />
-    </record>
-    <record name="guild-battle-type" type="Seq">
+    </attribute>
+    <attribute name="guild-battle-type" type="Seq">
       <case name="none" default="y" />
       <case name="1" />
       <case name="2" />
       <case name="3" />
       <case name="4" />
       <case name="5" />
-    </record>
-    <record name="guild-battle-text" type="Ref" ref="text" />
-    <record name="ghost-mode-type" type="Seq">
+    </attribute>
+    <attribute name="guild-battle-text" type="Ref" ref="text" />
+    <attribute name="ghost-mode-type" type="Seq">
       <case name="none" default="y" />
       <case name="normal" />
       <case name="ghost" />
-    </record>
+    </attribute>
   </el>
 </table>

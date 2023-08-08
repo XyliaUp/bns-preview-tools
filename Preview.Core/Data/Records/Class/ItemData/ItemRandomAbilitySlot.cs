@@ -18,13 +18,13 @@ public sealed class ItemRandomAbilitySlot : BaseRecord
 	public int InitialValueMax;
 
 	[Signal("item-ability-section-percent-1")]
-	public byte ItemAbilitySectionPercent1;
+	public sbyte ItemAbilitySectionPercent1;
 
 	[Signal("item-ability-section-percent-2")]
-	public byte ItemAbilitySectionPercent2;
+	public sbyte ItemAbilitySectionPercent2;
 
 	[Signal("item-ability-section-percent-3")]
-	public byte ItemAbilitySectionPercent3;
+	public sbyte ItemAbilitySectionPercent3;
 
 	[Signal("item-ability-section-1")]
 	public ItemRandomAbilitySection ItemAbilitySection1;

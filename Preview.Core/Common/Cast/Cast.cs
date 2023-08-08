@@ -1,4 +1,5 @@
 ﻿using Xylia.Extension;
+using Xylia.Extension.Class;
 using Xylia.Preview.Common.Seq;
 using Xylia.Preview.Data.Helper;
 using Xylia.Preview.Data.Models.BinData.Table;
@@ -23,9 +24,10 @@ public static class Cast
 
 
 	#region Object
-	public static ITable CastTable(this string TableName, DataTableSet set = null)
+	public static ITable CastTable(this string TableName, TableSet set = null)
 	{
 		set ??= FileCache.Data;
+
 		if (string.IsNullOrWhiteSpace(TableName)) return default;
 		if (TableName.Equals("skill", StringComparison.OrdinalIgnoreCase)) return set.Skill3;
 
@@ -54,7 +56,7 @@ public static class Cast
 		if (TableName is null && typeof(T) != typeof(BaseRecord))
 			TableName = typeof(T).Name;
 
-		return (T)TableName.CastTable()?[DataKey];
+		return TableName.CastTable()?[DataKey] as T;
 	}
 	#endregion
 }

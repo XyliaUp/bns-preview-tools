@@ -4,6 +4,7 @@ using Xylia.Preview.Common.Extension;
 using Xylia.Preview.Data.Helper;
 using Xylia.Preview.Data.Record;
 using Xylia.Preview.UI.Custom.Controls;
+using Xylia.Preview.UI.Extension;
 
 namespace Xylia.Preview.GameUI.Scene.Game_RandomStore;
 

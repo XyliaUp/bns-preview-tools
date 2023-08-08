@@ -1,7 +1,10 @@
 ﻿
+using Xylia.Preview.GameUI.Scene.Game_Intension.Game_IntensionScene;
+using Xylia.Preview.GameUI.Scene.Game_ItemGrowth2.Game_ItemGrowth2;
+
 namespace Xylia.Preview.GameUI.Scene.Game_Intension
 {
-	partial class IntensionResetConfirmPanel
+    partial class IntensionResetConfirmPanel
 	{
 		/// <summary> 
 		/// Required designer variable.
@@ -45,7 +48,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_Intension
 			// 
 			// SubIngredientPreview
 			// 
-			this.SubIngredientPreview.RecipeChanged += new Xylia.Preview.GameUI.Scene.Game_ItemGrowth2.SubIngredientPreview.RecipeChangedHandle(this.SubIngredientPreview_RecipeChanged);
+			this.SubIngredientPreview.RecipeChanged += new SubIngredientPreview.RecipeChangedHandle(this.SubIngredientPreview_RecipeChanged);
 			// 
 			// MyWeapon_Title
 			// 
@@ -99,7 +102,7 @@ namespace Xylia.Preview.GameUI.Scene.Game_Intension
 			// 
 			this.AcquirableOptionList.AutoScroll = true;
 			this.AcquirableOptionList.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-			this.AcquirableOptionList.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(19)))), ((int)(((byte)(5)))));
+			this.AcquirableOptionList.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0xF5)))), ((int)(((byte)(0x4D)))), ((int)(((byte)(0x25)))));
 			this.AcquirableOptionList.Location = new System.Drawing.Point(357, 28);
 			this.AcquirableOptionList.Name = "AcquirableOptionList";
 			this.AcquirableOptionList.Size = new System.Drawing.Size(313, 247);

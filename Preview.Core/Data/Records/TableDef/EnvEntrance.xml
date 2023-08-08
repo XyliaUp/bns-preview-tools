@@ -2,18 +2,18 @@
 <table name="env-entrance" version="0.3" autokey="false" module="4">
   <el name="table" child="1" />
   <el name="record">
-    <record name="id" type="Int32" key="y" required="y" min="1" />
-    <record name="alias" type="String" required="y" max="70" />
-    <record name="name" type="Ref" ref="text" />
-    <record name="desc" type="Ref" ref="text" />
-    <record name="title" type="String" max="100" />
-    <record name="title-icon" type="XUnknown2" />
-    <record name="background-image" type="XUnknown2" />
-    <record name="attraction-btn-name" type="Ref" ref="text" repeat="3" />
-    <record name="attraction-btn-desc" type="Ref" ref="text" repeat="3" />
-    <record name="attraction-btn-image" type="XUnknown2" repeat="3" />
-    <record name="attraction-name-desc" type="Ref" ref="text" repeat="3" />
-    <record name="season-contents-type" type="Seq">
+    <attribute name="id" type="Int32" key="y" required="y" min="1" />
+    <attribute name="alias" type="String" required="y" max="70" />
+    <attribute name="name" type="Ref" ref="text" />
+    <attribute name="desc" type="Ref" ref="text" />
+    <attribute name="title" type="String" max="100" />
+    <attribute name="title-icon" type="XUnknown2" />
+    <attribute name="background-image" type="XUnknown2" />
+    <attribute name="attraction-btn-name" type="Ref" ref="text" repeat="3" />
+    <attribute name="attraction-btn-desc" type="Ref" ref="text" repeat="3" />
+    <attribute name="attraction-btn-image" type="XUnknown2" repeat="3" />
+    <attribute name="attraction-name-desc" type="Ref" ref="text" repeat="3" />
+    <attribute name="season-contents-type" type="Seq">
       <case name="invalid" default="y" />
       <case name="duel-death-match-1vs1" />
       <case name="duel-death-match-3vs3" />
@@ -31,7 +31,7 @@
       <case name="battle-royal-free-for-all" />
       <case name="battle-royal-free-for-all-party" />
       <case name="mastery-exp-best-record" />
-    </record>
-    <record name="attraction-shortcut" type="Ref" ref="attraction-shortcut" repeat="3" />
+    </attribute>
+    <attribute name="attraction-shortcut" type="Ref" ref="attraction-shortcut" repeat="3" />
   </el>
 </table>

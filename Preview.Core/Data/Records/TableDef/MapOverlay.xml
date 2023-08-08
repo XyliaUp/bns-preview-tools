@@ -2,16 +2,16 @@
 <table name="mapoverlay" version="0.8" autokey="false" module="12">
   <el name="table" child="1" />
   <el name="record">
-    <record name="id" type="Int32" key="y" required="y" />
-    <record name="alias" type="String" required="y" max="70" />
-    <record name="mapid" type="Int32" required="y" />
-    <record name="position-x" type="Int16" default="0" />
-    <record name="position-y" type="Int16" default="0" />
-    <record name="size-x" type="Int16" default="0" />
-    <record name="size-y" type="Int16" default="0" />
-    <record name="opacity" type="Int16" default="0" />
-    <record name="imageset" type="String" max="128" />
-    <record name="mask-imageset" type="String" max="128" />
-    <record name="area" type="Ref" ref="discovery-area" />
+    <attribute name="id" type="Int32" key="y" required="y" />
+    <attribute name="alias" type="String" required="y" max="70" />
+    <attribute name="mapid" type="Int32" required="y" />
+    <attribute name="position-x" type="Int16" default="0" />
+    <attribute name="position-y" type="Int16" default="0" />
+    <attribute name="size-x" type="Int16" default="0" />
+    <attribute name="size-y" type="Int16" default="0" />
+    <attribute name="opacity" type="Int16" default="0" />
+    <attribute name="imageset" type="String" max="128" />
+    <attribute name="mask-imageset" type="String" max="128" />
+    <attribute name="area" type="Ref" ref="discovery-area" />
   </el>
 </table>

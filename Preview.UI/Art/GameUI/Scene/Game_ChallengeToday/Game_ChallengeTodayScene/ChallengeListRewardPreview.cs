@@ -5,6 +5,7 @@ using Xylia.Preview.Common.Extension;
 using Xylia.Preview.Data.Helper;
 using Xylia.Preview.Data.Record;
 using Xylia.Preview.UI.Custom.Controls;
+using Xylia.Preview.UI.Extension;
 
 namespace Xylia.Preview.GameUI.Scene.Game_ChallengeToday;
 public partial class ChallengeListRewardPreview : UserControl
@@ -36,7 +37,7 @@ public partial class ChallengeListRewardPreview : UserControl
 			var RewardItem = FileCache.Data.Item[Reward.Attributes["reward-item-" + i]];
 			if (RewardItem is null) continue;
 
-			var RewardItemCount = Reward.Attributes["reward-item-count-" + i].ToShort();
+			var RewardItemCount = Reward.Attributes["reward-item-count-" + i].ToInt16();
 
 
 			var ItemIcon = new ItemIconCell()

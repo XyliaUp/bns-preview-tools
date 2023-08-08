@@ -2,12 +2,12 @@
 <table name="sealed-dungeon-gimmick" version="1.1" autokey="false" module="6" maxid="30000">
   <el name="table" child="1" />
   <el name="record">
-    <record name="id" type="Int16" key="y" required="y" min="1" max="30000" />
-    <record name="alias" type="String" required="y" max="70" />
-    <record name="name" type="String" deprecated="y" max="30" />
-    <record name="icon-name" type="Ref" ref="text" />
-    <record name="icon-tooltip" type="Ref" ref="text" />
-    <record name="icon-texture" type="Ref" ref="icontexture" />
-    <record name="icon-index" type="Int16" default="0" />
+    <attribute name="id" type="Int16" key="y" required="y" min="1" max="30000" />
+    <attribute name="alias" type="String" required="y" max="70" />
+    <attribute name="name" type="String" deprecated="y" max="30" />
+    <attribute name="icon-name" type="Ref" ref="text" />
+    <attribute name="icon-tooltip" type="Ref" ref="text" />
+    <attribute name="icon-texture" type="Ref" ref="icontexture" />
+    <attribute name="icon-index" type="Int16" default="0" />
   </el>
 </table>

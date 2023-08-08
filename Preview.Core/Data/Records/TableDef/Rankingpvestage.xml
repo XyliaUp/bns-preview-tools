@@ -2,8 +2,8 @@
 <table name="rankingpvestage" version="0.7" autokey="false" module="6" maxid="10">
   <el name="table" child="1" />
   <el name="record">
-    <record name="id" type="Int32" key="y" required="y" min="1" max="10" />
-    <record name="ranking-npc-grade-text" type="String" repeat="30" max="70" />
-    <record name="use-ranking-npc-grade" type="Bool" default="false" hidden="y" />
+    <attribute name="id" type="Int32" key="y" required="y" min="1" max="10" />
+    <attribute name="ranking-npc-grade-text" type="String" repeat="30" max="70" />
+    <attribute name="use-ranking-npc-grade" type="Bool" default="false" hidden="y" />
   </el>
 </table>

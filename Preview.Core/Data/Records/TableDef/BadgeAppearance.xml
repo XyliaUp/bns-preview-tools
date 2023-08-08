@@ -2,14 +2,14 @@
 <table name="badge-appearance" version="0.4" autokey="true" module="4">
   <el name="table" child="1" />
   <el name="record">
-    <record name="alias" type="String" required="y" max="70" />
-    <record name="apperance-type" type="Seq">
+    <attribute name="alias" type="String" required="y" max="70" />
+    <attribute name="apperance-type" type="Seq">
       <case name="Default" default="y" />
       <case name="Item" />
-    </record>
-    <record name="item-alias" type="Ref" ref="item" />
-    <record name="set-score" type="Int32" repeat="10" min="1" max="30000" />
-    <record name="apperance-begin-show" type="XUnknown2" repeat="10" />
-    <record name="apperance-end-show" type="XUnknown2" repeat="10" />
+    </attribute>
+    <attribute name="item-alias" type="Ref" ref="item" />
+    <attribute name="set-score" type="Int32" repeat="10" min="1" max="30000" />
+    <attribute name="apperance-begin-show" type="XUnknown2" repeat="10" />
+    <attribute name="apperance-end-show" type="XUnknown2" repeat="10" />
   </el>
 </table>

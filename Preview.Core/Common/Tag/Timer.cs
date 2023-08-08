@@ -52,7 +52,7 @@ public sealed class Timer : ITag
 	#region Constructor
 	public Timer(HtmlNode node)
 	{
-		id = (node.Attributes["id"]?.Value).ToInt();
+		id = (node.Attributes["id"]?.Value).ToInt32();
 		type = (node.Attributes["id"]?.Value).ToEnum<TimerType>();
 	}
 

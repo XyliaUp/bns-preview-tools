@@ -8,7 +8,7 @@ public sealed class ItemSkill : BaseRecord
 	public int SkillId;
 
 	[Signal("skill-variation-id") , Repeat(8)]
-	public byte[] SkillVariationId1;
+	public sbyte[] SkillVariationId1;
 
 	[Signal("include-inheritance-skill")]
 	public bool IncludeInheritanceSkill;
