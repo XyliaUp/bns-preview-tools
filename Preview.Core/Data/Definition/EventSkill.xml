@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table name="event-skill" version="0.6" autokey="false" module="6">
+  <el name="table" child="1" />
+  <el name="record">
+    <attribute name="stance-type" type="Prop_seq" seq="stance" key="y" required="y" />
+    <attribute name="skill-result" type="Seq" key="y" required="y" seq="skill-result" />
+    <attribute name="event-type" type="Seq" key="y" required="y" seq="skill-event-type" />
+    <attribute name="state" type="Seq" key="y" required="y">
+      <case name="none" />
+      <case name="hold_deadbody" />
+    </attribute>
+    <attribute name="skill-1" type="Int32" default="0" repeat="2" />
+    <attribute name="skill-2" type="Int32" default="0" repeat="12" />
+  </el>
+</table>

@@ -19,7 +19,7 @@ public sealed class UShowSpawnKey : ShowKeyBase
 	public ResolvedObject SpawnObject;
 	public string SpawnObjectType; // SPAWN_GADGET(EnumProperty)
 	public string SpawnSpotType;   // SPAWN_SPOT_TARGET(EnumProperty)
-	public float StartTime;
+
 	public float TotalTime;
 	public FVector vSpawnPos;
 	public FVector vSpawnScale;

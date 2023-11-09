@@ -3,7 +3,7 @@ using CUE4Parse.UE4.Assets;
 using CUE4Parse.UE4.Assets.Exports;
 using CUE4Parse.UE4.Assets.Readers;
 
-using Xylia.Extension;
+using SkiaSharp;
 
 namespace CUE4Parse.BNS.Exports;
 public sealed class UImageSet : UObject
@@ -25,5 +25,5 @@ public sealed class UImageSet : UObject
 		VL = GetOrDefault<float>(nameof(VL));
 	}
 
-	public Bitmap GetImage() => Image?.Load()?.GetImage()?.Clone((int)U, (int)V, (int)UL, (int)VL);
+	public SKBitmap GetImage() => Image?.Load()?.GetImage()?.Clone((int)U, (int)V, (int)UL, (int)VL);
 }

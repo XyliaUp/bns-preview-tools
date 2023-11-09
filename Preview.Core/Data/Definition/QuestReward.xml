@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table name="questreward" version="4.0" autokey="false" module="6" maxid="31999">
+	<el name="table" child="1" />
+	<el name="record">
+		<attribute name="id" type="Int16" key="y" required="y" min="1" max="31999" />
+		<attribute name="alias" type="String" required="y" max="70" />
+		<attribute name="quest-first-progress" type="Seq">
+			<case name="none" default="y" />
+			<case name="y" />
+			<case name="n" />
+		</attribute>
+		<attribute name="quest-completion-count" type="Int8" default="0" min="0" max="100" />
+		<attribute name="quest-completion-count-op" type="Seq" seq="op2" default="eq" />
+		<attribute name="basic-money" type="Int32" default="0" />
+		<attribute name="basic-exp" type="Int32" default="0" />
+		<attribute name="basic-account-exp" type="Int32" default="0" />
+		<attribute name="basic-mastery-level" type="Int8" default="0" min="0" />
+		<attribute name="basic-production-exp" type="Int16" default="0" min="0" />
+		<attribute name="basic-faction-reputation" type="Int16" default="0" min="0" />
+		<attribute name="basic-guild-reputation" type="Int16" default="0" min="0" />
+		<attribute name="basic-duel-point" type="Int32" default="0" min="0" />
+		<attribute name="basic-party-battle-point" type="Int32" default="0" min="0" />
+		<attribute name="basic-field-play-point" type="Int32" default="0" min="0" />
+		<attribute name="fixed-skill3" type="Ref" ref="skill3" repeat="4" />
+		<attribute name="fixed-common-slot" type="TRef" repeat="4" />
+		<attribute name="fixed-common-item-count" type="Int8" default="1" repeat="4" />
+		<attribute name="fixed-common-skill-var-idx" type="Int8" default="0" repeat="4" min="0" max="4" />
+		<attribute name="optional-common-slot" type="TRef" repeat="4" />
+		<attribute name="optional-common-item-count" type="Int8" default="1" repeat="4" />
+		<attribute name="fixed-1-faction" type="Ref" ref="faction" />
+		<attribute name="fixed-1-job" type="Prop_seq" seq="job" default="job-none" repeat="16" />
+		<attribute name="fixed-1-sex" type="Prop_seq" seq="sex" default="sex-none" repeat="4" />
+		<attribute name="fixed-1-race" type="Prop_seq" seq="race" default="race-none" repeat="4" />
+		<attribute name="fixed-1-difficulty-type" type="Seq" seq="difficulty-type" default="none" />
+		<attribute name="fixed-1-slot" type="TRef" repeat="4" />
+		<attribute name="fixed-1-item-count" type="Int8" default="1" repeat="4" />
+		<attribute name="fixed-1-skill-var-idx" type="Int8" default="0" repeat="4" min="0" max="4" />
+		<attribute name="fixed-2-faction" type="Ref" ref="faction" />
+		<attribute name="fixed-2-job" type="Prop_seq" seq="job" default="job-none" repeat="16" />
+		<attribute name="fixed-2-sex" type="Prop_seq" seq="sex" default="sex-none" repeat="4" />
+		<attribute name="fixed-2-race" type="Prop_seq" seq="race" default="race-none" repeat="4" />
+		<attribute name="fixed-2-difficulty-type" type="Seq" seq="difficulty-type" default="none" />
+		<attribute name="fixed-2-slot" type="TRef" repeat="4" />
+		<attribute name="fixed-2-item-count" type="Int8" default="1" repeat="4" />
+		<attribute name="fixed-2-skill-var-idx" type="Int8" default="0" repeat="4" min="0" max="4" />
+		<attribute name="fixed-3-faction" type="Ref" ref="faction" />
+		<attribute name="fixed-3-job" type="Prop_seq" seq="job" default="job-none" repeat="16" />
+		<attribute name="fixed-3-sex" type="Prop_seq" seq="sex" default="sex-none" repeat="4" />
+		<attribute name="fixed-3-race" type="Prop_seq" seq="race" default="race-none" repeat="4" />
+		<attribute name="fixed-3-difficulty-type" type="Seq" seq="difficulty-type" default="none" />
+		<attribute name="fixed-3-slot" type="TRef" repeat="4" />
+		<attribute name="fixed-3-item-count" type="Int8" default="1" repeat="4" />
+		<attribute name="fixed-3-skill-var-idx" type="Int8" default="0" repeat="4" min="0" max="4" />
+		<attribute name="fixed-4-faction" type="Ref" ref="faction" />
+		<attribute name="fixed-4-job" type="Prop_seq" seq="job" default="job-none" repeat="16" />
+		<attribute name="fixed-4-sex" type="Prop_seq" seq="sex" default="sex-none" repeat="4" />
+		<attribute name="fixed-4-race" type="Prop_seq" seq="race" default="race-none" repeat="4" />
+		<attribute name="fixed-4-difficulty-type" type="Seq" seq="difficulty-type" default="none" />
+		<attribute name="fixed-4-slot" type="TRef" repeat="4" />
+		<attribute name="fixed-4-item-count" type="Int8" default="1" repeat="4" />
+		<attribute name="fixed-4-skill-var-idx" type="Int8" default="0" repeat="4" min="0" max="4" />
+		<attribute name="fixed-5-faction" type="Ref" ref="faction" />
+		<attribute name="fixed-5-job" type="Prop_seq" seq="job" default="job-none" repeat="16" />
+		<attribute name="fixed-5-sex" type="Prop_seq" seq="sex" default="sex-none" repeat="4" />
+		<attribute name="fixed-5-race" type="Prop_seq" seq="race" default="race-none" repeat="4" />
+		<attribute name="fixed-5-difficulty-type" type="Seq" seq="difficulty-type" default="none" />
+		<attribute name="fixed-5-slot" type="TRef" repeat="4" />
+		<attribute name="fixed-5-item-count" type="Int8" default="1" repeat="4" />
+		<attribute name="fixed-5-skill-var-idx" type="Int8" default="0" repeat="4" min="0" max="4" />
+		<attribute name="fixed-6-faction" type="Ref" ref="faction" />
+		<attribute name="fixed-6-job" type="Prop_seq" seq="job" default="job-none" repeat="16" />
+		<attribute name="fixed-6-sex" type="Prop_seq" seq="sex" default="sex-none" repeat="4" />
+		<attribute name="fixed-6-race" type="Prop_seq" seq="race" default="race-none" repeat="4" />
+		<attribute name="fixed-6-difficulty-type" type="Seq" seq="difficulty-type" default="none" />
+		<attribute name="fixed-6-slot" type="TRef" repeat="4" />
+		<attribute name="fixed-6-item-count" type="Int8" default="1" repeat="4" />
+		<attribute name="fixed-6-skill-var-idx" type="Int8" default="0" repeat="4" min="0" max="4" />
+		<attribute name="fixed-7-faction" type="Ref" ref="faction" />
+		<attribute name="fixed-7-job" type="Prop_seq" seq="job" default="job-none" repeat="16" />
+		<attribute name="fixed-7-sex" type="Prop_seq" seq="sex" default="sex-none" repeat="4" />
+		<attribute name="fixed-7-race" type="Prop_seq" seq="race" default="race-none" repeat="4" />
+		<attribute name="fixed-7-difficulty-type" type="Seq" seq="difficulty-type" default="none" />
+		<attribute name="fixed-7-slot" type="TRef" repeat="4" />
+		<attribute name="fixed-7-item-count" type="Int8" default="1" repeat="4" />
+		<attribute name="fixed-7-skill-var-idx" type="Int8" default="0" repeat="4" min="0" max="4" />
+		<attribute name="fixed-8-faction" type="Ref" ref="faction" />
+		<attribute name="fixed-8-job" type="Prop_seq" seq="job" default="job-none" repeat="16" />
+		<attribute name="fixed-8-sex" type="Prop_seq" seq="sex" default="sex-none" repeat="4" />
+		<attribute name="fixed-8-race" type="Prop_seq" seq="race" default="race-none" repeat="4" />
+		<attribute name="fixed-8-difficulty-type" type="Seq" seq="difficulty-type" default="none" />
+		<attribute name="fixed-8-slot" type="TRef" repeat="4" />
+		<attribute name="fixed-8-item-count" type="Int8" default="1" repeat="4" />
+		<attribute name="fixed-8-skill-var-idx" type="Int8" default="0" repeat="4" min="0" max="4" />
+		<attribute name="fixed-9-faction" type="Ref" ref="faction" />
+		<attribute name="fixed-9-job" type="Prop_seq" seq="job" default="job-none" repeat="16" />
+		<attribute name="fixed-9-sex" type="Prop_seq" seq="sex" default="sex-none" repeat="4" />
+		<attribute name="fixed-9-race" type="Prop_seq" seq="race" default="race-none" repeat="4" />
+		<attribute name="fixed-9-difficulty-type" type="Seq" seq="difficulty-type" default="none" />
+		<attribute name="fixed-9-slot" type="TRef" repeat="4" />
+		<attribute name="fixed-9-item-count" type="Int8" default="1" repeat="4" />
+		<attribute name="fixed-9-skill-var-idx" type="Int8" default="0" repeat="4" min="0" max="4" />
+		<attribute name="fixed-10-faction" type="Ref" ref="faction" />
+		<attribute name="fixed-10-job" type="Prop_seq" seq="job" default="job-none" repeat="16" />
+		<attribute name="fixed-10-sex" type="Prop_seq" seq="sex" default="sex-none" repeat="4" />
+		<attribute name="fixed-10-race" type="Prop_seq" seq="race" default="race-none" repeat="4" />
+		<attribute name="fixed-10-difficulty-type" type="Seq" seq="difficulty-type" default="none" />
+		<attribute name="fixed-10-slot" type="TRef" repeat="4" />
+		<attribute name="fixed-10-item-count" type="Int8" default="1" repeat="4" />
+		<attribute name="fixed-10-skill-var-idx" type="Int8" default="0" repeat="4" min="0" max="4" />
+		<attribute name="fixed-11-faction" type="Ref" ref="faction" />
+		<attribute name="fixed-11-job" type="Prop_seq" seq="job" default="job-none" repeat="16" />
+		<attribute name="fixed-11-sex" type="Prop_seq" seq="sex" default="sex-none" repeat="4" />
+		<attribute name="fixed-11-race" type="Prop_seq" seq="race" default="race-none" repeat="4" />
+		<attribute name="fixed-11-difficulty-type" type="Seq" seq="difficulty-type" default="none" />
+		<attribute name="fixed-11-slot" type="TRef" repeat="4" />
+		<attribute name="fixed-11-item-count" type="Int8" default="1" repeat="4" />
+		<attribute name="fixed-11-skill-var-idx" type="Int8" default="0" repeat="4" min="0" max="4" />
+		<attribute name="fixed-12-faction" type="Ref" ref="faction" />
+		<attribute name="fixed-12-job" type="Prop_seq" seq="job" default="job-none" repeat="16" />
+		<attribute name="fixed-12-sex" type="Prop_seq" seq="sex" default="sex-none" repeat="4" />
+		<attribute name="fixed-12-race" type="Prop_seq" seq="race" default="race-none" repeat="4" />
+		<attribute name="fixed-12-difficulty-type" type="Seq" seq="difficulty-type" default="none" />
+		<attribute name="fixed-12-slot" type="TRef" repeat="4" />
+		<attribute name="fixed-12-item-count" type="Int8" default="1" repeat="4" />
+		<attribute name="fixed-12-skill-var-idx" type="Int8" default="0" repeat="4" min="0" max="4" />
+		<attribute name="fixed-13-faction" type="Ref" ref="faction" />
+		<attribute name="fixed-13-job" type="Prop_seq" seq="job" default="job-none" repeat="16" />
+		<attribute name="fixed-13-sex" type="Prop_seq" seq="sex" default="sex-none" repeat="4" />
+		<attribute name="fixed-13-race" type="Prop_seq" seq="race" default="race-none" repeat="4" />
+		<attribute name="fixed-13-difficulty-type" type="Seq" seq="difficulty-type" default="none" />
+		<attribute name="fixed-13-slot" type="TRef" repeat="4" />
+		<attribute name="fixed-13-item-count" type="Int8" default="1" repeat="4" />
+		<attribute name="fixed-13-skill-var-idx" type="Int8" default="0" repeat="4" min="0" max="4" />
+		<attribute name="fixed-14-faction" type="Ref" ref="faction" />
+		<attribute name="fixed-14-job" type="Prop_seq" seq="job" default="job-none" repeat="16" />
+		<attribute name="fixed-14-sex" type="Prop_seq" seq="sex" default="sex-none" repeat="4" />
+		<attribute name="fixed-14-race" type="Prop_seq" seq="race" default="race-none" repeat="4" />
+		<attribute name="fixed-14-difficulty-type" type="Seq" seq="difficulty-type" default="none" />
+		<attribute name="fixed-14-slot" type="TRef" repeat="4" />
+		<attribute name="fixed-14-item-count" type="Int8" default="1" repeat="4" />
+		<attribute name="fixed-14-skill-var-idx" type="Int8" default="0" repeat="4" min="0" max="4" />
+		<attribute name="fixed-15-faction" type="Ref" ref="faction" />
+		<attribute name="fixed-15-job" type="Prop_seq" seq="job" default="job-none" repeat="16" />
+		<attribute name="fixed-15-sex" type="Prop_seq" seq="sex" default="sex-none" repeat="4" />
+		<attribute name="fixed-15-race" type="Prop_seq" seq="race" default="race-none" repeat="4" />
+		<attribute name="fixed-15-difficulty-type" type="Seq" seq="difficulty-type" default="none" />
+		<attribute name="fixed-15-slot" type="TRef" repeat="4" />
+		<attribute name="fixed-15-item-count" type="Int8" default="1" repeat="4" />
+		<attribute name="fixed-15-skill-var-idx" type="Int8" default="0" repeat="4" min="0" max="4" />
+		<attribute name="fixed-16-faction" type="Ref" ref="faction" />
+		<attribute name="fixed-16-job" type="Prop_seq" seq="job" default="job-none" repeat="16" />
+		<attribute name="fixed-16-sex" type="Prop_seq" seq="sex" default="sex-none" repeat="4" />
+		<attribute name="fixed-16-race" type="Prop_seq" seq="race" default="race-none" repeat="4" />
+		<attribute name="fixed-16-difficulty-type" type="Seq" seq="difficulty-type" default="none" />
+		<attribute name="fixed-16-slot" type="TRef" repeat="4" />
+		<attribute name="fixed-16-item-count" type="Int8" default="1" repeat="4" />
+		<attribute name="fixed-16-skill-var-idx" type="Int8" default="0" repeat="4" min="0" max="4" />
+		<attribute name="optional-1-faction" type="Ref" ref="faction" />
+		<attribute name="optional-1-job" type="Prop_seq" seq="job" default="job-none" repeat="16" />
+		<attribute name="optional-1-sex" type="Prop_seq" seq="sex" default="sex-none" repeat="4" />
+		<attribute name="optional-1-race" type="Prop_seq" seq="race" default="race-none" repeat="4" />
+		<attribute name="optional-1-difficulty-type" type="Seq" seq="difficulty-type" default="none" />
+		<attribute name="optional-1-slot" type="TRef" repeat="4" />
+		<attribute name="optional-1-item-count" type="Int8" default="1" repeat="4" />
+		<attribute name="optional-2-faction" type="Ref" ref="faction" />
+		<attribute name="optional-2-job" type="Prop_seq" seq="job" default="job-none" repeat="16" />
+		<attribute name="optional-2-sex" type="Prop_seq" seq="sex" default="sex-none" repeat="4" />
+		<attribute name="optional-2-race" type="Prop_seq" seq="race" default="race-none" repeat="4" />
+		<attribute name="optional-2-difficulty-type" type="Seq" seq="difficulty-type" default="none" />
+		<attribute name="optional-2-slot" type="TRef" repeat="4" />
+		<attribute name="optional-2-item-count" type="Int8" default="1" repeat="4" />
+		<attribute name="optional-3-faction" type="Ref" ref="faction" />
+		<attribute name="optional-3-job" type="Prop_seq" seq="job" default="job-none" repeat="16" />
+		<attribute name="optional-3-sex" type="Prop_seq" seq="sex" default="sex-none" repeat="4" />
+		<attribute name="optional-3-race" type="Prop_seq" seq="race" default="race-none" repeat="4" />
+		<attribute name="optional-3-difficulty-type" type="Seq" seq="difficulty-type" default="none" />
+		<attribute name="optional-3-slot" type="TRef" repeat="4" />
+		<attribute name="optional-3-item-count" type="Int8" default="1" repeat="4" />
+		<attribute name="optional-4-faction" type="Ref" ref="faction" />
+		<attribute name="optional-4-job" type="Prop_seq" seq="job" default="job-none" repeat="16" />
+		<attribute name="optional-4-sex" type="Prop_seq" seq="sex" default="sex-none" repeat="4" />
+		<attribute name="optional-4-race" type="Prop_seq" seq="race" default="race-none" repeat="4" />
+		<attribute name="optional-4-difficulty-type" type="Seq" seq="difficulty-type" default="none" />
+		<attribute name="optional-4-slot" type="TRef" repeat="4" />
+		<attribute name="optional-4-item-count" type="Int8" default="1" repeat="4" />
+		<attribute name="optional-5-faction" type="Ref" ref="faction" />
+		<attribute name="optional-5-job" type="Prop_seq" seq="job" default="job-none" repeat="16" />
+		<attribute name="optional-5-sex" type="Prop_seq" seq="sex" default="sex-none" repeat="4" />
+		<attribute name="optional-5-race" type="Prop_seq" seq="race" default="race-none" repeat="4" />
+		<attribute name="optional-5-difficulty-type" type="Seq" seq="difficulty-type" default="none" />
+		<attribute name="optional-5-slot" type="TRef" repeat="4" />
+		<attribute name="optional-5-item-count" type="Int8" default="1" repeat="4" />
+		<attribute name="optional-6-faction" type="Ref" ref="faction" />
+		<attribute name="optional-6-job" type="Prop_seq" seq="job" default="job-none" repeat="16" />
+		<attribute name="optional-6-sex" type="Prop_seq" seq="sex" default="sex-none" repeat="4" />
+		<attribute name="optional-6-race" type="Prop_seq" seq="race" default="race-none" repeat="4" />
+		<attribute name="optional-6-difficulty-type" type="Seq" seq="difficulty-type" default="none" />
+		<attribute name="optional-6-slot" type="TRef" repeat="4" />
+		<attribute name="optional-6-item-count" type="Int8" default="1" repeat="4" />
+		<attribute name="optional-7-faction" type="Ref" ref="faction" />
+		<attribute name="optional-7-job" type="Prop_seq" seq="job" default="job-none" repeat="16" />
+		<attribute name="optional-7-sex" type="Prop_seq" seq="sex" default="sex-none" repeat="4" />
+		<attribute name="optional-7-race" type="Prop_seq" seq="race" default="race-none" repeat="4" />
+		<attribute name="optional-7-difficulty-type" type="Seq" seq="difficulty-type" default="none" />
+		<attribute name="optional-7-slot" type="TRef" repeat="4" />
+		<attribute name="optional-7-item-count" type="Int8" default="1" repeat="4" />
+		<attribute name="optional-8-faction" type="Ref" ref="faction" />
+		<attribute name="optional-8-job" type="Prop_seq" seq="job" default="job-none" repeat="16" />
+		<attribute name="optional-8-sex" type="Prop_seq" seq="sex" default="sex-none" repeat="4" />
+		<attribute name="optional-8-race" type="Prop_seq" seq="race" default="race-none" repeat="4" />
+		<attribute name="optional-8-difficulty-type" type="Seq" seq="difficulty-type" default="none" />
+		<attribute name="optional-8-slot" type="TRef" repeat="4" />
+		<attribute name="optional-8-item-count" type="Int8" default="1" repeat="4" />
+		<attribute name="optional-9-faction" type="Ref" ref="faction" />
+		<attribute name="optional-9-job" type="Prop_seq" seq="job" default="job-none" repeat="16" />
+		<attribute name="optional-9-sex" type="Prop_seq" seq="sex" default="sex-none" repeat="4" />
+		<attribute name="optional-9-race" type="Prop_seq" seq="race" default="race-none" repeat="4" />
+		<attribute name="optional-9-difficulty-type" type="Seq" seq="difficulty-type" default="none" />
+		<attribute name="optional-9-slot" type="TRef" repeat="4" />
+		<attribute name="optional-9-item-count" type="Int8" default="1" repeat="4" />
+		<attribute name="optional-10-faction" type="Ref" ref="faction" />
+		<attribute name="optional-10-job" type="Prop_seq" seq="job" default="job-none" repeat="16" />
+		<attribute name="optional-10-sex" type="Prop_seq" seq="sex" default="sex-none" repeat="4" />
+		<attribute name="optional-10-race" type="Prop_seq" seq="race" default="race-none" repeat="4" />
+		<attribute name="optional-10-difficulty-type" type="Seq" seq="difficulty-type" default="none" />
+		<attribute name="optional-10-slot" type="TRef" repeat="4" />
+		<attribute name="optional-10-item-count" type="Int8" default="1" repeat="4" />
+		<attribute name="optional-11-faction" type="Ref" ref="faction" />
+		<attribute name="optional-11-job" type="Prop_seq" seq="job" default="job-none" repeat="16" />
+		<attribute name="optional-11-sex" type="Prop_seq" seq="sex" default="sex-none" repeat="4" />
+		<attribute name="optional-11-race" type="Prop_seq" seq="race" default="race-none" repeat="4" />
+		<attribute name="optional-11-difficulty-type" type="Seq" seq="difficulty-type" default="none" />
+		<attribute name="optional-11-slot" type="TRef" repeat="4" />
+		<attribute name="optional-11-item-count" type="Int8" default="1" repeat="4" />
+		<attribute name="optional-12-faction" type="Ref" ref="faction" />
+		<attribute name="optional-12-job" type="Prop_seq" seq="job" default="job-none" repeat="16" />
+		<attribute name="optional-12-sex" type="Prop_seq" seq="sex" default="sex-none" repeat="4" />
+		<attribute name="optional-12-race" type="Prop_seq" seq="race" default="race-none" repeat="4" />
+		<attribute name="optional-12-difficulty-type" type="Seq" seq="difficulty-type" default="none" />
+		<attribute name="optional-12-slot" type="TRef" repeat="4" />
+		<attribute name="optional-12-item-count" type="Int8" default="1" repeat="4" />
+		<attribute name="optional-13-faction" type="Ref" ref="faction" />
+		<attribute name="optional-13-job" type="Prop_seq" seq="job" default="job-none" repeat="16" />
+		<attribute name="optional-13-sex" type="Prop_seq" seq="sex" default="sex-none" repeat="4" />
+		<attribute name="optional-13-race" type="Prop_seq" seq="race" default="race-none" repeat="4" />
+		<attribute name="optional-13-difficulty-type" type="Seq" seq="difficulty-type" default="none" />
+		<attribute name="optional-13-slot" type="TRef" repeat="4" />
+		<attribute name="optional-13-item-count" type="Int8" default="1" repeat="4" />
+		<attribute name="optional-14-faction" type="Ref" ref="faction" />
+		<attribute name="optional-14-job" type="Prop_seq" seq="job" default="job-none" repeat="16" />
+		<attribute name="optional-14-sex" type="Prop_seq" seq="sex" default="sex-none" repeat="4" />
+		<attribute name="optional-14-race" type="Prop_seq" seq="race" default="race-none" repeat="4" />
+		<attribute name="optional-14-difficulty-type" type="Seq" seq="difficulty-type" default="none" />
+		<attribute name="optional-14-slot" type="TRef" repeat="4" />
+		<attribute name="optional-14-item-count" type="Int8" default="1" repeat="4" />
+		<attribute name="optional-15-faction" type="Ref" ref="faction" />
+		<attribute name="optional-15-job" type="Prop_seq" seq="job" default="job-none" repeat="16" />
+		<attribute name="optional-15-sex" type="Prop_seq" seq="sex" default="sex-none" repeat="4" />
+		<attribute name="optional-15-race" type="Prop_seq" seq="race" default="race-none" repeat="4" />
+		<attribute name="optional-15-difficulty-type" type="Seq" seq="difficulty-type" default="none" />
+		<attribute name="optional-15-slot" type="TRef" repeat="4" />
+		<attribute name="optional-15-item-count" type="Int8" default="1" repeat="4" />
+		<attribute name="optional-16-faction" type="Ref" ref="faction" />
+		<attribute name="optional-16-job" type="Prop_seq" seq="job" default="job-none" repeat="16" />
+		<attribute name="optional-16-sex" type="Prop_seq" seq="sex" default="sex-none" repeat="4" />
+		<attribute name="optional-16-race" type="Prop_seq" seq="race" default="race-none" repeat="4" />
+		<attribute name="optional-16-difficulty-type" type="Seq" seq="difficulty-type" default="none" />
+		<attribute name="optional-16-slot" type="TRef" repeat="4" />
+		<attribute name="optional-16-item-count" type="Int8" default="1" repeat="4" />
+		
+		
+		<attribute name="dayofweek-sun-fixed-item" type="Ref" ref="item" repeat="2" />
+		<attribute name="dayofweek-sun-fixed-item-count" type="Int8" default="1" repeat="2" />
+		<attribute name="dayofweek-mon-fixed-item" type="Ref" ref="item" repeat="2" />
+		<attribute name="dayofweek-mon-fixed-item-count" type="Int8" default="1" repeat="2" />
+		<attribute name="dayofweek-tue-fixed-item" type="Ref" ref="item" repeat="2" />
+		<attribute name="dayofweek-tue-fixed-item-count" type="Int8" default="1" repeat="2" />
+		<attribute name="dayofweek-wed-fixed-item" type="Ref" ref="item" repeat="2" />
+		<attribute name="dayofweek-wed-fixed-item-count" type="Int8" default="1" repeat="2" />
+		<attribute name="dayofweek-thu-fixed-item" type="Ref" ref="item" repeat="2" />
+		<attribute name="dayofweek-thu-fixed-item-count" type="Int8" default="1" repeat="2" />
+		<attribute name="dayofweek-fri-fixed-item" type="Ref" ref="item" repeat="2" />
+		<attribute name="dayofweek-fri-fixed-item-count" type="Int8" default="1" repeat="2" />
+		<attribute name="dayofweek-sat-fixed-item" type="Ref" ref="item" repeat="2" />
+		<attribute name="dayofweek-sat-fixed-item-count" type="Int8" default="1" repeat="2" />
+		<attribute name="dayofweek-sun-bonus-money" type="Int32" default="0" min="0" />
+		<attribute name="dayofweek-mon-bonus-money" type="Int32" default="0" min="0" />
+		<attribute name="dayofweek-tue-bonus-money" type="Int32" default="0" min="0" />
+		<attribute name="dayofweek-wed-bonus-money" type="Int32" default="0" min="0" />
+		<attribute name="dayofweek-thu-bonus-money" type="Int32" default="0" min="0" />
+		<attribute name="dayofweek-fri-bonus-money" type="Int32" default="0" min="0" />
+		<attribute name="dayofweek-sat-bonus-money" type="Int32" default="0" min="0" />
+		<attribute name="newbie-party-fixed-item" type="Ref" ref="item" repeat="2" />
+		<attribute name="newbie-party-fixed-item-count" type="Int8" default="1" repeat="2" />
+		<attribute name="oldbie-party-fixed-item" type="Ref" ref="item" repeat="2" />
+		<attribute name="oldbie-party-fixed-item-count" type="Int8" default="1" repeat="2" />
+		<attribute name="mentor-fixed-item" type="Ref" ref="item" repeat="2" />
+		<attribute name="mentor-fixed-item-count" type="Int8" default="1" repeat="2" />
+		<attribute name="hongmoon-item" type="Ref" ref="item" repeat="2" />
+		<attribute name="hongmoon-item-count" type="Int16" default="1" repeat="2" />
+		<attribute name="membership-item" type="Ref" ref="item" repeat="2" />
+		<attribute name="membership-item-count" type="Int16" default="1" repeat="2" />
+		<attribute name="pccafe-item" type="Ref" ref="item" repeat="2" />
+		<attribute name="pccafe-item-count" type="Int16" default="1" repeat="2" />
+		<attribute name="dungeon-additional-reward-item" type="Ref" ref="item" repeat="4" />
+		<attribute name="dungeon-additional-reward-item-count" type="Int8" default="0" repeat="4" />
+		<attribute name="dungeon-additional-reward-cost-a" type="Ref" ref="cost-group" repeat="4" />
+		<attribute name="dungeon-additional-reward-cost-b" type="Ref" ref="cost-group" repeat="4" />
+		<attribute name="sealed-dungeon-reward" type="Ref" ref="quest-sealed-dungeon-reward" />
+		<attribute name="sealed-dungeon-reward-data-id" type="Int32" default="0" hidden="y" />
+		<!-- ========================================================================== -->
+		<attribute name="elevate-job-style" type="Bool" client="n" />
+		<!-- ========================================================================== -->
+	</el>
+</table>

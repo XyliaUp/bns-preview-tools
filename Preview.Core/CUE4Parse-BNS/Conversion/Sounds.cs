@@ -7,8 +7,7 @@ using CUE4Parse.UE4.Objects.UObject;
 using CUE4Parse_Conversion.Sounds;
 using CUE4Parse_Conversion.Textures;
 
-using Xylia.Extension;
-using Xylia.Preview.Data.Helper;
+using Xylia.Preview.Data.Helpers;
 
 namespace CUE4Parse.BNS.Conversion;
 public static class Sounds
@@ -21,9 +20,9 @@ public static class Sounds
 			Object.Decode(true, out var audioFormat, out var data);
 			return data;
 		}
-		else if (Object.ExportType == "SoundCue")
+		else if (Object is USoundCue SoundCue)
 		{
-			var FirstNode = Object.GetOrDefault<ResolvedObject>("FirstNode").Load();
+			var FirstNode = SoundCue.FirstNode?.Load();
 			var ChildNodes = FirstNode.GetOrDefault<ResolvedObject[]>("ChildNodes");
 			foreach (var ChildNode in ChildNodes)
 			{
@@ -31,9 +30,9 @@ public static class Sounds
 				return obj.GetOrDefault<FSoftObjectPath>("SoundWaveAssetPtr").Load().GetWave();
 			}
 		}
-		else if (Object.ExportType == "ShowSoundKey") return Object.GetOrDefault<ResolvedObject>("SoundCue").Load().GetWave();
+		else if (Object is UShowSoundKey ShowSoundKey) return ShowSoundKey.SoundCue?.Load().GetWave();
 		else if (Object is UShowFaceFxKey ShowFaceFxKey) return FileCache.Provider.LoadObject(ShowFaceFxKey.FaceFXAnimSetName).GetWave(ReferenceIdx);
-		else if (Object.ExportType == "ShowFaceFxUE4Key") return Object.GetOrDefault<FSoftObjectPath>("FaceFXAnimObj").Load().GetWave();
+		else if (Object is UShowFaceFxUE4Key ShowFaceFxUE4Key) return ShowFaceFxUE4Key.FaceFXAnimObj.Load().GetWave();
 		else if (Object.ExportType == "FaceFXAnim") return Object.GetOrDefault<FSoftObjectPath>("SoundCue").Load().GetWave();
 		else if (Object.ExportType == "LegacyFaceFXAnimSet") return Object.GetOrDefault<ResolvedObject[]>("ReferencedSoundCues")[ReferenceIdx].Load().GetWave();
 		else if (Object is UShowObject ShowObject)

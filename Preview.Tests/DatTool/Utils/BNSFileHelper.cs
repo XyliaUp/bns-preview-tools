@@ -1,15 +1,17 @@
 ﻿using System.Data;
 using System.Diagnostics;
+using System.Security.Cryptography;
+using System.Text;
 
-using Xylia.Extension;
+using Xylia.Preview.Common.Extension;
 
 namespace Xylia.Preview.Tests.DatTool.Utils;
 
 public static class BNSFileHelper
 {
-	public static string Bak_Folder = @"E:\Game\bak_auto";
+    public static string Bak_Folder = @"E:\Game\bak_auto";
 
-	public static void Backup(string FilePath)
+    public static void Backup(string FilePath)
     {
         FileInfo fi = new(FilePath);
         string SHA1 = fi.GetFileSHA1();
@@ -21,7 +23,6 @@ public static class BNSFileHelper
         if (!Directory.Exists(FolderPath)) Directory.CreateDirectory(FolderPath);
         else
         {
-            //要求计算文件sha值，对于目录下sha值一致的文件不进行重复备份
             var SHA1s = new DirectoryInfo(FolderPath).GetFiles().Select(f => f.GetFileSHA1()).ToList();
             if (SHA1s.Contains(SHA1)) return;
         }
@@ -39,6 +40,29 @@ public static class BNSFileHelper
         File.Copy(fi.FullName, Combine_Folder + @"\" + FileName + fi.Extension, true);
     }
 
+    public static string GetFileSHA1(this FileInfo FileInfo)
+    {
+        if (FileInfo is null) return null;
+
+
+        SHA1 mySHA1 = SHA1.Create();
+        FileStream myFileStream = new FileStream(FileInfo.FullName, FileMode.Open, FileAccess.Read);
+        byte[] data1 = new byte[myFileStream.Length];
+        myFileStream.Read(data1, 0, data1.Length);
+        myFileStream.Close();
+
+        byte[] data2 = mySHA1.ComputeHash(data1);
+        StringBuilder myBuilder = new StringBuilder();
+
+        for (int i = 0; i < data2.Length; i++)
+        {
+            myBuilder.Append(data2[i].ToString("x2"));
+        }
+        return myBuilder.ToString();
+    }
+
+
+
 
 
     #region SeriFile
@@ -47,18 +71,18 @@ public static class BNSFileHelper
     public static string PublicOutFolder = @"F:\Bns\Rebuild";
 
 
-    private static string Seri_GetFileName(string TableName) => $"{TableName.RemoveSuffixString("Data")}Data*.xml";
+    private static string Seri_GetFileName(string Name) => $"{Name.RemoveSuffixString("Data")}Data*.xml";
 
-    public static FileInfo[] GetFiles(string TableName, string MainFoloer = null) => Seri_DataList(TableName, MainFoloer ?? SeriSourceFolder);
+    public static FileInfo[] GetFiles(string Name, string MainFoloer = null) => Seri_DataList(Name, MainFoloer ?? SeriSourceFolder);
 
-    public static FileInfo[] Seri_DataList(string TableName, params string[] DirInfos) => Seri_DataList(TableName, DirInfos.Select(dir => new DirectoryInfo(dir)).ToArray());
+    public static FileInfo[] Seri_DataList(string Name, params string[] DirInfos) => Seri_DataList(Name, DirInfos.Select(dir => new DirectoryInfo(dir)).ToArray());
 
-    public static FileInfo[] Seri_DataList(string TableName, params DirectoryInfo[] DirInfos)
+    public static FileInfo[] Seri_DataList(string Name, params DirectoryInfo[] DirInfos)
     {
         var result = DirInfos.SelectMany(dir =>
         {
             //只有物品类型是特殊的
-            if (TableName.Equals("item"))
+            if (Name.Equals("item"))
             {
                 List<FileInfo> tmp = new();
 
@@ -72,13 +96,13 @@ public static class BNSFileHelper
                 return tmp.ToArray();
             }
 
-            return dir.GetFiles(Seri_GetFileName(TableName), SearchOption.AllDirectories);
+            return dir.GetFiles(Seri_GetFileName(Name), SearchOption.AllDirectories);
         })
-           .Where(data => !data.DirectoryName.MyEndsWith("\\server"))     //排除掉生成的服务端数据
+           .Where(data => !data.DirectoryName.EndsWith("\\server"))     //排除掉生成的服务端数据
            .ToArray();
 
-        //调试用
-        Trace.WriteLine(TableName + " => " + result.Aggregate(string.Empty, (sum, now) => sum + now.FullName.Replace(now.DirectoryName + "\\", null) + ", "));
+
+        Trace.WriteLine(Name + " => " + result.Aggregate(string.Empty, (sum, now) => sum + now.FullName.Replace(now.DirectoryName + "\\", null) + ", "));
         return result;
     }
     #endregion

@@ -1,0 +1,15 @@
+﻿<Window x:Class="Xylia.Preview.UI.Views.Editor.TextEditor"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+		xmlns:avalonEdit="http://icsharpcode.net/sharpdevelop/avalonedit"
+        Title="TextEditor" Icon="{x:Null}" Height="450" Width="800">
+	<avalonEdit:TextEditor Name="Editor" Margin="7 0 0 0"
+		FontFamily="Consolas" FontSize="14" 
+		ShowLineNumbers="True" LineNumbersForeground="#FF2B91AF"
+		SyntaxHighlighting="XML" WordWrap="False" 
+		TextChanged="Editor_TextChanged">
+		<avalonEdit:TextEditor.Options>
+			<avalonEdit:TextEditorOptions ShowSpaces="True" WordWrapIndentation="4" InheritWordWrapIndentation="true" />
+		</avalonEdit:TextEditor.Options>
+	</avalonEdit:TextEditor>
+</Window>

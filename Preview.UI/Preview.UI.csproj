@@ -1,375 +1,275 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-  <PropertyGroup>
-    <TargetFramework>net7.0-windows</TargetFramework>
-    <PlatformTarget>x64</PlatformTarget>
-    <Nullable>enable</Nullable>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <RootNamespace>Xylia.Preview.UI</RootNamespace>
-    <UseWindowsForms>true</UseWindowsForms>
-    <UseWPF>True</UseWPF>
-    <NeutralLanguage>zh</NeutralLanguage>
-    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <OutputType>WinExe</OutputType>
-    <StartupObject>Xylia.Preview.UI.DebugFrm</StartupObject>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <DebugType>none</DebugType>
-    <OutputType>Library</OutputType>
-  </PropertyGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Preview.Core\Preview.Core.csproj" />
-    <Using Remove="SixLabors.ImageSharp" />
-    <Using Include="System.Diagnostics" />
-    <Using Include="Xylia.Preview.Data" />
-  </ItemGroup>
-  <ItemGroup>
-    <PackageReference Include="CSCore" Version="1.2.1.2">
-      <NoWarn>NU1701;NU1702</NoWarn>
-    </PackageReference>
-    <PackageReference Include="HZH_Controls-lib" Version="2.0.0.5" />
-    <PackageReference Include="ImGui.NET" Version="1.89.7.1" />
-    <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.1901.177" />
-    <PackageReference Include="NAudio.Vorbis" Version="1.5.0" />
-    <PackageReference Include="OpenTK" Version="4.8.0" />
-    <PackageReference Include="SixLabors.ImageSharp" Version="3.0.1" />
-    <PackageReference Include="SkiaSharp" Version="2.88.3" />
-    <PackageReference Include="Xylia" Version="1.0.4.43" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Update="Custom\Editor\Settings.settings">
-      <Generator>PublicSettingsSingleFileGenerator</Generator>
-      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Art\GameUI\Scene\Game_BattlePass\" />
-    <Folder Include="Art\GameUI\Scene\Game_BlackList\" />
-    <Folder Include="Art\GameUI\Scene\Game_BSUIKit\" />
-    <Folder Include="Art\GameUI\Scene\Game_ChallengeParty\" />
-    <Folder Include="Art\GameUI\Scene\Game_Debug_Scene\" />
-    <Folder Include="Art\GameUI\Scene\Game_Empty\" />
-    <Folder Include="Art\GameUI\Scene\Game_Guild2\Game_Guild2Scene\" />
-    <Folder Include="Art\GameUI\Scene\Game_HUD_Scene\" />
-    <Folder Include="Art\GameUI\Scene\Game_IngameNotice\Game_IngameNoticeScene\" />
-    <Folder Include="Art\GameUI\Scene\Game_ItemMap\Game_ItemMapScene\" />
-    <Folder Include="Art\GameUI\Scene\Game_JumpingLevel\" />
-    <Folder Include="Art\GameUI\Scene\Game_LevelDownload\" />
-    <Folder Include="Art\GameUI\Scene\Game_NativeCharacterInfo\" />
-    <Folder Include="Art\GameUI\Scene\Game_NPAuction\" />
-    <Folder Include="Art\GameUI\Scene\Game_PVPData\" />
-    <Folder Include="Art\GameUI\Scene\Game_QQ\" />
-    <Folder Include="Art\GameUI\Scene\Game_SecondPassword\" />
-    <Folder Include="Art\GameUI\Scene\Game_SNS\" />
-    <Folder Include="Art\GameUI\Scene\Game_Survey\" />
-    <Folder Include="Art\GameUI\Scene\Game_TargetIndicator\" />
-    <Folder Include="Art\GameUI\Scene\Game_Team\" />
-    <Folder Include="Art\GameUI\Scene\Game_TencentCharge\" />
-    <Folder Include="Art\GameUI\Scene\Game_TencentIngameShop\" />
-    <Folder Include="Art\GameUI\Scene\Lobby_Big_Sns\" />
-    <Folder Include="Art\GameUI\Scene\Lobby_Credit\" />
-    <Folder Include="Art\GameUI\Scene\Lobby_HomeBrowser\" />
-    <Folder Include="Art\GameUI\Scene\Lobby_NShop\" />
-    <Folder Include="Art\GameUI\Scene\Lobby_UniverseCombine\" />
-    <Folder Include="Art\GameUI_BNSR\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\add_directory.png" />
-    <Resource Include="Resources\android.png" />
-    <Resource Include="Resources\apple.png" />
-    <Resource Include="Resources\archive.png" />
-    <Resource Include="Resources\archive_disabled.png" />
-    <Resource Include="Resources\archive_enabled.png" />
-    <Resource Include="Resources\asset.png" />
-    <Resource Include="Resources\asset_ini.png" />
-    <Resource Include="Resources\asset_png.png" />
-    <Resource Include="Resources\asset_psd.png" />
-    <Resource Include="Resources\athena.png" />
-    <Resource Include="Resources\battlebreakers.png" />
-    <Resource Include="Resources\blueprint.png" />
-    <Resource Include="Resources\borderlands.png" />
-    <Resource Include="Resources\Cataba.png" />
-    <Resource Include="Resources\Changelog.xshd" />
-    <Resource Include="Resources\cinematics.png" />
-    <Resource Include="Resources\Cpp.xshd" />
-    <Resource Include="Resources\creative.png" />
-    <EmbeddedResource Include="Resources\default.frag" />
-    <Resource Include="Resources\Default.png" />
-    <EmbeddedResource Include="Resources\default.vert" />
-    <Resource Include="Resources\delete.png" />
-    <Resource Include="Resources\edit.png" />
-    <Resource Include="Resources\empty_folder.png" />
-    <Resource Include="Resources\engine.png" />
-    <Resource Include="Resources\fallenorder.png" />
-    <Resource Include="Resources\Flat.png" />
-    <Resource Include="Resources\folder.png" />
-    <Resource Include="Resources\fortnite.png" />
-    <Resource Include="Resources\fortnitebr.png" />
-    <EmbeddedResource Include="Resources\framebuffer.frag" />
-    <EmbeddedResource Include="Resources\framebuffer.vert" />
-    <Resource Include="Resources\gear.png" />
-    <Resource Include="Resources\go_to_directory.png" />
-    <EmbeddedResource Include="Resources\grid.frag" />
-    <EmbeddedResource Include="Resources\grid.vert" />
-    <Resource Include="Resources\Ini.xshd" />
-    <Resource Include="Resources\Json.xshd" />
-    <Resource Include="Resources\label.png" />
-    <EmbeddedResource Include="Resources\light.frag" />
-    <EmbeddedResource Include="Resources\light.vert" />
-    <Resource Include="Resources\link_has.png" />
-    <Resource Include="Resources\link_off.png" />
-    <Resource Include="Resources\link_on.png" />
-    <Resource Include="Resources\linux.png" />
-    <Resource Include="Resources\localization.png" />
-    <Resource Include="Resources\materialicon.png" />
-    <Resource Include="Resources\NoBackground.png" />
-    <Resource Include="Resources\NoText.png" />
-    <Resource Include="Resources\npcleftside.png" />
-    <Resource Include="Resources\nx.png" />
-    <Resource Include="Resources\ny.png" />
-    <Resource Include="Resources\nz.png" />
-    <EmbeddedResource Include="Resources\outline.frag" />
-    <EmbeddedResource Include="Resources\outline.vert" />
-    <Resource Include="Resources\pc.png" />
-    <EmbeddedResource Include="Resources\picking.frag" />
-    <EmbeddedResource Include="Resources\picking.vert" />
-    <Resource Include="Resources\pointlight.png" />
-    <Resource Include="Resources\puzzle.png" />
-    <Resource Include="Resources\px.png" />
-    <Resource Include="Resources\py.png" />
-    <Resource Include="Resources\pz.png" />
-    <Resource Include="Resources\roguecompany.png" />
-    <EmbeddedResource Include="Resources\skybox.frag" />
-    <EmbeddedResource Include="Resources\skybox.vert" />
-    <Resource Include="Resources\sound.png" />
-    <Resource Include="Resources\spellbreak.png" />
-    <Resource Include="Resources\spotlight.png" />
-    <Resource Include="Resources\stateofdecay2.png" />
-    <Resource Include="Resources\T-Icon-Pets-64.png" />
-    <Resource Include="Resources\T-Icon-Quests-64.png" />
-    <Resource Include="Resources\texture.png" />
-    <Resource Include="Resources\thecycle.png" />
-    <Resource Include="Resources\tl_forward.png" />
-    <Resource Include="Resources\tl_next.png" />
-    <Resource Include="Resources\tl_pause.png" />
-    <Resource Include="Resources\tl_play.png" />
-    <Resource Include="Resources\tl_previous.png" />
-    <Resource Include="Resources\tl_rewind.png" />
-    <Resource Include="Resources\T_ClipSize_Weapon_Stats.png" />
-    <Resource Include="Resources\T_DamagePerBullet_Weapon_Stats.png" />
-    <Resource Include="Resources\T_Placeholder_Item_Image.png" />
-    <Resource Include="Resources\T_ReloadTime_Weapon_Stats.png" />
-    <Resource Include="Resources\ui.png" />
-    <Resource Include="Resources\unix.png" />
-    <Resource Include="Resources\unknown_asset.png" />
-    <Resource Include="Resources\valorant.png" />
-    <Resource Include="Resources\Verse.xshd" />
-    <Resource Include="Resources\weapon.png" />
-    <Resource Include="Resources\windows.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Update="Art\GameUI\Scene\Game_Auction\Game_AuctionScene.cs" />
-    <Compile Update="Art\GameUI\Scene\Game_ChallengeToday\Game_ChallengeTodayScene.cs" />
-    <Compile Update="Art\GameUI\Scene\Game_ChallengeToday\Game_ChallengeTodayScene\ChallengeCell.cs" />
-    <Compile Update="Art\GameUI\Scene\Game_ChallengeToday\Game_ChallengeTodayScene\ChallengeListRewardPreview.cs" />
-    <Compile Update="Art\GameUI\Scene\Game_Intension\Game_IntensionScene\OptionList.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Update="Art\GameUI\Scene\Game_Intension\IntensionPanel.cs" />
-    <Compile Update="Art\GameUI\Scene\Game_Intension\IntensionResetConfirmPanel.cs" />
-    <Compile Update="Art\GameUI\Scene\Game_Intension\SuccessionPanel.cs" />
-    <Compile Update="Art\GameUI\Scene\Game_ItemGrowth2\EquipmentGuidePage.cs" />
-    <Compile Update="Art\GameUI\Scene\Game_ItemGrowth2\EquipmentGuideScene.cs" />
-    <Compile Update="Art\GameUI\Scene\Game_ItemGrowth2\Game_ItemGrowth2Scene\FeedItemIconCell.cs" />
-    <Compile Update="Art\GameUI\Scene\Game_ItemGrowth2\Game_ItemGrowth2Scene\FixedIngredientPreview.cs" />
-    <Compile Update="Art\GameUI\Scene\Game_ItemGrowth2\Game_ItemGrowth2Scene\MoneyCostPreview.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Update="Art\GameUI\Scene\Game_ItemGrowth2\Game_ItemGrowth2Scene\ResultWeaponPreview.cs" />
-    <Compile Update="Art\GameUI\Scene\Game_ItemGrowth2\Game_ItemGrowth2Scene\SubIngredientPreview.cs" />
-    <Compile Update="Art\GameUI\Scene\Game_ItemGrowth2\Game_ItemGrowth2Scene\WarningPreview.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Update="Art\GameUI\Scene\Game_ItemGrowth2\ItemGrowth2Page.cs" />
-    <Compile Update="Art\GameUI\Scene\Game_ItemGrowth2\ItemSpiritPage.cs" />
-    <Compile Update="Art\GameUI\Scene\Game_ItemStore\Game_ItemStoreScene.cs" />
-    <Compile Update="Art\GameUI\Scene\Game_ItemStore\Game_ItemStoreScene\BuyPriceCell.cs" />
-    <Compile Update="Art\GameUI\Scene\Game_ItemStore\Game_ItemStoreScene\Store2ItemCell.cs" />
-    <Compile Update="Art\GameUI\Scene\Game_ItemStore\Game_ItemStoreScene\StoreScene.cs" />
-    <Compile Update="Art\GameUI\Scene\Game_Map\Game_MapScene.cs" />
-    <Compile Update="Art\GameUI\Scene\Game_QuestJournal\Game_QuestJournalScene.cs" />
-    <Compile Update="Art\GameUI\Scene\Game_QuestJournal\Game_QuestJournalScene\Completed.cs" />
-    <Compile Update="Art\GameUI\Scene\Game_QuestJournal\Game_QuestJournalScene\Group\DescPanel.cs" />
-    <Compile Update="Art\GameUI\Scene\Game_QuestJournal\Game_QuestJournalScene\Group\GroupBase.cs" />
-    <Compile Update="Art\GameUI\Scene\Game_QuestJournal\Game_QuestJournalScene\Group\Reward\BonusRewardPreview.cs" />
-    <Compile Update="Art\GameUI\Scene\Game_QuestJournal\Game_QuestJournalScene\Group\Reward\RewardCell\Base\PriceBase.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Update="Art\GameUI\Scene\Game_QuestJournal\Game_QuestJournalScene\Group\Reward\RewardCell\Base\RewardCellBase.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Update="Art\GameUI\Scene\Game_QuestJournal\Game_QuestJournalScene\Group\Reward\RewardCell\FixedItem.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Update="Art\GameUI\Scene\Game_QuestJournal\Game_QuestJournalScene\Group\Reward\RewardCell\HonorExp.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Update="Art\GameUI\Scene\Game_QuestJournal\Game_QuestJournalScene\Group\Reward\RewardCell\Money.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Update="Art\GameUI\Scene\Game_QuestJournal\Game_QuestJournalScene\Group\Reward\RewardCell\OptionaItem.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Update="Art\GameUI\Scene\Game_QuestJournal\Game_QuestJournalScene\Group\Reward\RewardPanel.cs" />
-    <Compile Update="Art\GameUI\Scene\Game_QuestJournal\Game_QuestJournalScene\Group\Task\Mission\CaseInfoPanel.cs" />
-    <Compile Update="Art\GameUI\Scene\Game_QuestJournal\Game_QuestJournalScene\Group\Task\Mission\MissionPanel.cs" />
-    <Compile Update="Art\GameUI\Scene\Game_QuestJournal\Game_QuestJournalScene\Group\Task\Mission\MissionStepPanel.cs" />
-    <Compile Update="Art\GameUI\Scene\Game_QuestJournal\Game_QuestJournalScene\Group\Task\TaskPanel.cs" />
-    <Compile Update="Art\GameUI\Scene\Game_RandomStore\Game_RandomStoreExhibitionScene.cs" />
-    <Compile Update="Art\GameUI\Scene\Game_RandomStore\Game_RandomStoreExhibitionScene\DrawRewardCell.cs" />
-    <Compile Update="Art\GameUI\Scene\Game_RandomStore\Game_RandomStoreExhibitionScene\DrawRewardPreview.cs" />
-    <Compile Update="Art\GameUI\Scene\Game_RandomStore\Game_RandomStoreExhibitionScene\ItemDisplayListCell.cs" />
-    <Compile Update="Art\GameUI\Scene\Game_RandomStore\Game_RandomStoreScene.cs" />
-    <Compile Update="Art\GameUI\Scene\Game_ToolTip\Game_ToolTipScene\ItemTooltipPanel.cs" />
-    <Compile Update="Art\GameUI\Scene\Game_ToolTip\Game_ToolTipScene\ItemTooltipPanel\Preview\Base\TitleContentPanel.cs" />
-    <Compile Update="Art\GameUI\Scene\Game_ToolTip\Game_ToolTipScene\ItemTooltipPanel\Preview\Base\TitlePanel.cs" />
-    <Compile Update="Art\GameUI\Scene\Game_ToolTip\Game_ToolTipScene\ItemTooltipPanel\Preview\EventTimePreview.cs" />
-    <Compile Update="Art\GameUI\Scene\Game_ToolTip\Game_ToolTipScene\ItemTooltipPanel\Preview\Exchange\PieceTransformPreview.cs" />
-    <Compile Update="Art\GameUI\Scene\Game_ToolTip\Game_ToolTipScene\ItemTooltipPanel\Preview\Exchange\ProcessComparisonCell.cs" />
-    <Compile Update="Art\GameUI\Scene\Game_ToolTip\Game_ToolTipScene\ItemTooltipPanel\Preview\GemAbility\AttributeInfoCell.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Update="Art\GameUI\Scene\Game_ToolTip\Game_ToolTipScene\ItemTooltipPanel\Preview\GemAbility\AttributePreview.cs" />
-    <Compile Update="Art\GameUI\Scene\Game_ToolTip\Game_ToolTipScene\ItemTooltipPanel\Preview\JobStyleSelect.cs" />
-    <Compile Update="Art\GameUI\Scene\Game_ToolTip\Game_ToolTipScene\ItemTooltipPanel\Preview\Randombox\RandomboxPreview.cs" />
-    <Compile Update="Art\GameUI\Scene\Game_ToolTip\Game_ToolTipScene\ItemTooltipPanel\Preview\SealPreview.cs" />
-    <Compile Update="Art\GameUI\Scene\Game_ToolTip\Game_ToolTipScene\ItemTooltipPanel\Preview\SetItem\Gem\GemCircle.cs" />
-    <Compile Update="Art\GameUI\Scene\Game_ToolTip\Game_ToolTipScene\ItemTooltipPanel\Preview\SetItem\Gem\GemPreview.cs" />
-    <Compile Update="Art\GameUI\Scene\Game_ToolTip\Game_ToolTipScene\ItemTooltipPanel\Preview\SetItem\SetItemTooltip.cs" />
-    <Compile Update="Art\GameUI\Scene\Game_ToolTip\Game_ToolTipScene\ItemTooltipPanel\Preview\Skill\SkillChangedTooltip.cs" />
-    <Compile Update="Art\GameUI\Scene\Game_ToolTip\Game_ToolTipScene\ItemTooltipPanel\Preview\Skill\SkillModifyCell.cs" />
-    <Compile Update="Art\GameUI\Scene\Game_ToolTip\Game_ToolTipScene\ItemTooltipPanel\Preview\Skill\SkillTooltipPreview.cs" />
-    <Compile Update="Art\GameUI\Scene\Game_ToolTip\Game_ToolTipScene\ItemTooltipPanel\Preview\SlateScroll\SlateScrollCell.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Update="Art\GameUI\Scene\Game_ToolTip\Game_ToolTipScene\ItemTooltipPanel\Preview\SlateScroll\SlateScrollTooltip.cs" />
-    <Compile Update="Art\GameUI\Scene\Game_ToolTip\Game_ToolTipScene\ItemTooltipPanel\UserOperPanel.cs" />
-    <Compile Update="Art\GameUI\Scene\Game_ToolTip\Game_ToolTipScene\Skill3ToolTipPanel_1\SkillPreview\SkillFrm.cs" />
-    <Compile Update="Art\GameUI\Scene\Game_ToolTip\Game_ToolTipScene\Skill3ToolTipPanel_1\SkillPreview\SkillPreview.cs" />
-    <Compile Update="Art\GameUI\Scene\Game_ToolTip\Game_ToolTipScene\Skill3ToolTipPanel_1\SkillPreview\SkillTooltipPanel.cs" />
-    <Compile Update="Art\GameUI\Scene\Game_ToolTip\Game_ToolTipScene\Skill3ToolTipPanel_1\SkillTraitPreview\SkillBook3_IconView.cs" />
-    <Compile Update="Art\GameUI\Scene\Game_ToolTip\Game_ToolTipScene\Skill3ToolTipPanel_1\SkillTraitPreview\SkillTraitPreview.cs" />
-    <Compile Update="Art\GameUI\Scene\Game_ToolTip\Game_ToolTipScene\Skill3ToolTipPanel_1\SkillTraitPreview\TraitTier.cs" />
-    <Compile Update="Art\GameUI\Scene\Game_ToolTip\Game_ToolTipScene\Skill3ToolTipPanel_1\SkillTraitPreview\TraitTierCell.cs" />
-    <Compile Update="Custom\Controls\BlockTag.cs" />
-    <Compile Update="CustomUI\Controls\List\ListPreview2.cs" />
-    <Compile Update="Custom\Searcher\SearcherDialog.cs" />
-    <Compile Update="Custom\Searcher\SearcherResult.cs" />
-    <Compile Update="Common\Interface\PreviewControl.cs" />
-    <Compile Update="Common\SoundWave\MusicPlayer.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Update="Custom\Editor\Settings.Designer.cs">
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Settings.settings</DependentUpon>
-    </Compile>
-    <Compile Update="Custom\Controls\ContentPanel\ContentPanel.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Update="Custom\Controls\ContentPanel\ContentPanel_Paint.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Update="Custom\Controls\ContentPanel\UserControl1.xaml.cs" />
-    <Compile Update="Custom\Controls\Forms\PreviewFrm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="Custom\Controls\Panel\Currency\PriceCell.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Update="Custom\Controls\Panel\ItemIconCell.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Update="Custom\Controls\Panel\ItemNamePanel.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Update="Custom\Controls\Panel\ItemShowCell.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Update="Custom\Controls\Panel\List\Cell\InfoListCell.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Update="Custom\Controls\Panel\List\Cell\ItemListCell.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Update="Custom\Controls\Panel\List\Cell\ListCell.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Update="Custom\Controls\Panel\List\ListPreview.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Update="Custom\Controls\Panel\List\PageSelector.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Update="Custom\Controls\Tooltip\TestTooltip2.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="Custom\Controls\TreeView.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Update="Custom\DebugFrm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="Custom\Editor\CustomRichTextBox.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Update="Custom\Editor\MainForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="Custom\Editor\PublicSet.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="Resources\Resource_BNSR.Designer.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resource_BNSR.resx</DependentUpon>
-    </Compile>
-    <Compile Update="Resources\Resource_Common.Designer.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resource_Common.resx</DependentUpon>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Update="Art\GameUI\Scene\Game_Intension\IntensionPanel.resx">
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Art\GameUI\Scene\Game_Intension\IntensionResetConfirmPanel.resx">
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Art\GameUI\Scene\Game_Intension\SuccessionPanel.resx">
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Art\GameUI\Scene\Game_ItemGrowth2\EquipmentGuidePage.resx">
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Art\GameUI\Scene\Game_ItemGrowth2\ItemGrowth2Page.resx">
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Art\GameUI\Scene\Game_ItemGrowth2\ItemSpiritPage.resx">
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Art\GameUI\Scene\Game_ToolTip\Game_ToolTipScene\ItemTooltipPanel\Preview\SetItem\Gem\GemPreview.resx">
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Resources\Resource_BNSR.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resource_BNSR.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Resources\Resource_Common.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resource_Common.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-  </ItemGroup>
+	<PropertyGroup>
+		<TargetFramework>net7.0-windows</TargetFramework>
+		<PlatformTarget>x64</PlatformTarget>
+		<RootNamespace>Xylia.Preview.UI</RootNamespace>
+		<GenerateAssemblyInfo>False</GenerateAssemblyInfo>
+		<Deterministic>False</Deterministic>
+		<ApplicationIcon>Properties\Query.ico</ApplicationIcon>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+	    <NoWarn>NU1701;NU1702</NoWarn>
+		<UseWPF>True</UseWPF>
+
+		<!-- publish -->
+		<RuntimeIdentifier>win-x64</RuntimeIdentifier>
+		<OutputType>WinExe</OutputType>
+		<SelfContained>False</SelfContained>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+		<DebugType>none</DebugType>
+		<IsPublishable>True</IsPublishable>
+	</PropertyGroup>
+
+	<!-- Temp Asset -->
+	<ItemGroup>
+		<EmbeddedResource Include="FModel\Resources\Json.xshd" />
+		<EmbeddedResource Include="FModel\Resources\Ini.xshd" />
+		<EmbeddedResource Include="FModel\Resources\Verse.xshd" />
+		<EmbeddedResource Include="FModel\Resources\Xml.xshd" />
+		<EmbeddedResource Include="FModel\Resources\Cpp.xshd" />
+		<EmbeddedResource Include="FModel\Resources\Changelog.xshd" />
+		<EmbeddedResource Include="FModel\Resources\default.frag" />
+		<EmbeddedResource Include="FModel\Resources\default.vert" />
+		<EmbeddedResource Include="FModel\Resources\grid.frag" />
+		<EmbeddedResource Include="FModel\Resources\grid.vert" />
+		<EmbeddedResource Include="FModel\Resources\skybox.frag" />
+		<EmbeddedResource Include="FModel\Resources\skybox.vert" />
+		<EmbeddedResource Include="FModel\Resources\framebuffer.frag" />
+		<EmbeddedResource Include="FModel\Resources\framebuffer.vert" />
+		<EmbeddedResource Include="FModel\Resources\outline.frag" />
+		<EmbeddedResource Include="FModel\Resources\outline.vert" />
+		<EmbeddedResource Include="FModel\Resources\picking.frag" />
+		<EmbeddedResource Include="FModel\Resources\picking.vert" />
+		<EmbeddedResource Include="FModel\Resources\light.frag" />
+		<EmbeddedResource Include="FModel\Resources\light.vert" />
+		<EmbeddedResource Include="FModel\Resources\bone.frag" />
+		<EmbeddedResource Include="FModel\Resources\bone.vert" />
+	</ItemGroup>
+	<ItemGroup>
+		<Resource Include="FModel\Resources\android.png" />
+		<Resource Include="FModel\Resources\apple.png" />
+		<Resource Include="FModel\Resources\battlebreakers.png" />
+		<Resource Include="FModel\Resources\blueprint.png" />
+		<Resource Include="FModel\Resources\borderlands.png" />
+		<Resource Include="FModel\Resources\fallenorder.png" />
+		<Resource Include="FModel\Resources\FModel.ico" />
+		<Resource Include="FModel\Resources\folder.png" />
+		<Resource Include="FModel\Resources\label.png" />
+		<Resource Include="FModel\Resources\fortnite.png" />
+		<Resource Include="FModel\Resources\fortnitebr.png" />
+		<Resource Include="FModel\Resources\empty_folder.png" />
+		<Resource Include="FModel\Resources\engine.png" />
+		<Resource Include="FModel\Resources\gear.png" />
+		<Resource Include="FModel\Resources\localization.png" />
+		<Resource Include="FModel\Resources\materialicon.png" />
+		<Resource Include="FModel\Resources\pc.png" />
+		<Resource Include="FModel\Resources\puzzle.png" />
+		<Resource Include="FModel\Resources\roguecompany.png" />
+		<Resource Include="FModel\Resources\spellbreak.png" />
+		<Resource Include="FModel\Resources\sound.png" />
+		<Resource Include="FModel\Resources\creative.png" />
+		<Resource Include="FModel\Resources\texture.png" />
+		<Resource Include="FModel\Resources\thecycle.png" />
+		<Resource Include="FModel\Resources\valorant.png" />
+		<Resource Include="FModel\Resources\ui.png" />
+		<Resource Include="FModel\Resources\weapon.png" />
+		<Resource Include="FModel\Resources\windows.png" />
+		<Resource Include="FModel\Resources\cinematics.png" />
+		<Resource Include="FModel\Resources\archive.png" />
+		<Resource Include="FModel\Resources\archive_enabled.png" />
+		<Resource Include="FModel\Resources\archive_disabled.png" />
+		<Resource Include="FModel\Resources\unknown_asset.png" />
+		<Resource Include="FModel\Resources\asset.png" />
+		<Resource Include="FModel\Resources\asset_ini.png" />
+		<Resource Include="FModel\Resources\asset_psd.png" />
+		<Resource Include="FModel\Resources\asset_png.png" />
+		<Resource Include="FModel\Resources\athena.png" />
+		<Resource Include="FModel\Resources\unix.png" />
+		<Resource Include="FModel\Resources\linux.png" />
+		<Resource Include="FModel\Resources\stateofdecay2.png" />
+		<Resource Include="FModel\Resources\T_Placeholder_Item_Image.png" />
+		<Resource Include="FModel\Resources\checker.png" />
+		<Resource Include="FModel\Resources\T_ClipSize_Weapon_Stats.png" />
+		<Resource Include="FModel\Resources\T_DamagePerBullet_Weapon_Stats.png" />
+		<Resource Include="FModel\Resources\T_ReloadTime_Weapon_Stats.png" />
+		<Resource Include="FModel\Resources\T-Icon-Pets-64.png" />
+		<Resource Include="FModel\Resources\T-Icon-Quests-64.png" />
+		<Resource Include="FModel\Resources\Default.png" />
+		<Resource Include="FModel\Resources\NoBackground.png" />
+		<Resource Include="FModel\Resources\NoText.png" />
+		<Resource Include="FModel\Resources\Flat.png" />
+		<Resource Include="FModel\Resources\Cataba.png" />
+		<Resource Include="FModel\Resources\BurbankBigCondensed-Bold.ttf" />
+		<Resource Include="FModel\Resources\add_directory.png" />
+		<Resource Include="FModel\Resources\delete.png" />
+		<Resource Include="FModel\Resources\edit.png" />
+		<Resource Include="FModel\Resources\go_to_directory.png" />
+		<Resource Include="FModel\Resources\npcleftside.png" />
+		<Resource Include="FModel\Resources\nx.png" />
+		<Resource Include="FModel\Resources\ny.png" />
+		<Resource Include="FModel\Resources\nz.png" />
+		<Resource Include="FModel\Resources\px.png" />
+		<Resource Include="FModel\Resources\py.png" />
+		<Resource Include="FModel\Resources\pz.png" />
+		<Resource Include="FModel\Resources\pointlight.png" />
+		<Resource Include="FModel\Resources\spotlight.png" />
+		<Resource Include="FModel\Resources\link_on.png" />
+		<Resource Include="FModel\Resources\link_off.png" />
+		<Resource Include="FModel\Resources\link_has.png" />
+		<Resource Include="FModel\Resources\tl_play.png" />
+		<Resource Include="FModel\Resources\tl_pause.png" />
+		<Resource Include="FModel\Resources\tl_rewind.png" />
+		<Resource Include="FModel\Resources\tl_forward.png" />
+		<Resource Include="FModel\Resources\tl_previous.png" />
+		<Resource Include="FModel\Resources\tl_next.png" />
+	</ItemGroup>
+
+
+	<!-- Project -->
+	<ItemGroup>
+		<Reference Include="AduSkin">
+			<HintPath>..\..\..\..\AduSkin\src\AduSkin\bin\Debug\net47\AduSkin.dll</HintPath>
+		</Reference>
+	</ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\Preview.Core\Preview.Core.csproj" />
+		<Using Include="System.Diagnostics" />
+		<Using Include="System.Windows" />
+
+		<Using Remove="System.Drawing" />
+		<Using Remove="System.Windows.Forms" />
+		<Using Remove="SixLabors.ImageSharp" />
+	</ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Autoupdater.NET.Official" Version="1.8.4" />
+		<PackageReference Include="AvalonEdit" Version="6.3.0.90" />
+		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
+		<PackageReference Include="CSCore" Version="1.2.1.2" />
+		<PackageReference Include="EPPlus" Version="7.0.0" />
+		<PackageReference Include="ImGui.NET" Version="1.89.7.1" />
+		<PackageReference Include="Irony" Version="1.2.0" />
+		<PackageReference Include="Microsoft.Web.WebView2" Version="1.0.2088.41" />
+		<PackageReference Include="NAudio.Vorbis" Version="1.5.0" />
+		<PackageReference Include="Ookii.Dialogs.Wpf" Version="5.0.1" />
+		<PackageReference Include="OpenTK" Version="4.8.1" />
+		<PackageReference Include="Serilog" Version="3.0.1" />
+		<PackageReference Include="Serilog.Sinks.Debug" Version="2.0.0" />
+		<PackageReference Include="Serilog.Sinks.File" Version="5.0.0" />
+		<PackageReference Include="LiveCharts" Version="0.9.7" />
+		<PackageReference Include="LiveCharts.Wpf" Version="0.9.7" />
+		<PackageReference Include="Xylia" Version="1.0.5.5" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Content Include="Properties\Query.ico" />
+
+		<ApplicationDefinition Update="App.xaml">
+			<SubType>Designer</SubType>
+		</ApplicationDefinition>
+	</ItemGroup>
+	<ItemGroup>
+
+		<EmbeddedResource Update="Resources\Resource_Common.resx">
+			<Generator>PublicResXFileCodeGenerator</Generator>
+			<LastGenOutput>Resource_Common.Designer.cs</LastGenOutput>
+		</EmbeddedResource>
+
+		<EmbeddedResource Update="Resources\Strings\Strings.resx">
+		  <Generator></Generator>
+		</EmbeddedResource>
+
+		<EmbeddedResource Update="Resources\Strings\Strings.zh-Hans.resx">
+		  <Generator></Generator>
+		</EmbeddedResource>
+
+		<EmbeddedResource Update="Strings.zh-CN.resx">
+		  <Generator>PublicResXFileCodeGenerator</Generator>
+		</EmbeddedResource>
+		<Compile Update="Resources\Resource_Common.Designer.cs">
+			<DesignTime>True</DesignTime>
+			<AutoGen>True</AutoGen>
+			<DependentUpon>Resource_Common.resx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\Pages\TextPage.xaml.cs">
+		  <SubType>Code</SubType>
+		</Compile>
+	</ItemGroup>
+	<ItemGroup>
+		<Resource Include="Art\GameUI\Scene\Game_ItemMap\ItemMapPanel_Tab_RadioButton_1.png" />
+		<Resource Include="Art\GameUI\Scene\Game_ItemMap\ItemMapPanel_Tab_RadioButton_10.png" />
+		<Resource Include="Art\GameUI\Scene\Game_ItemMap\ItemMapPanel_Tab_RadioButton_11.png" />
+		<Resource Include="Art\GameUI\Scene\Game_ItemMap\ItemMapPanel_Tab_RadioButton_12.png" />
+		<Resource Include="Art\GameUI\Scene\Game_ItemMap\ItemMapPanel_Tab_RadioButton_13.png" />
+		<Resource Include="Art\GameUI\Scene\Game_ItemMap\ItemMapPanel_Tab_RadioButton_2.png" />
+		<Resource Include="Art\GameUI\Scene\Game_ItemMap\ItemMapPanel_Tab_RadioButton_3.png" />
+		<Resource Include="Art\GameUI\Scene\Game_ItemMap\ItemMapPanel_Tab_RadioButton_4.png" />
+		<Resource Include="Art\GameUI\Scene\Game_ItemMap\ItemMapPanel_Tab_RadioButton_5.png" />
+		<Resource Include="Art\GameUI\Scene\Game_ItemMap\ItemMapPanel_Tab_RadioButton_6.png" />
+		<Resource Include="Art\GameUI\Scene\Game_ItemMap\ItemMapPanel_Tab_RadioButton_7.png" />
+		<Resource Include="Art\GameUI\Scene\Game_ItemMap\ItemMapPanel_Tab_RadioButton_8.png" />
+		<Resource Include="Art\GameUI\Scene\Game_ItemMap\ItemMapPanel_Tab_RadioButton_9.png" />
+
+		<Resource Include="Art\GameUI\Resource\GameUI_Icon3_R\SlotItem_marketBusiness.png" />
+		<Resource Include="Art\GameUI\Resource\GameUI_Icon3_R\SlotItem_privateSale.png" />
+		<Resource Include="Art\GameUI\Resource\GameUI_Icon3_R\unuseable_AccountContents.png" />
+		<Resource Include="Art\GameUI\Resource\GameUI_Icon3_R\unuseable_Achievement.png" />
+		<Resource Include="Art\GameUI\Resource\GameUI_Icon3_R\unuseable_Area.png" />
+		<Resource Include="Art\GameUI\Resource\GameUI_Icon3_R\unuseable_Awaken.png" />
+		<Resource Include="Art\GameUI\Resource\GameUI_Icon3_R\unuseable_DuelRating.png" />
+		<Resource Include="Art\GameUI\Resource\GameUI_Icon3_R\unuseable_expired.png" />
+		<Resource Include="Art\GameUI\Resource\GameUI_Icon3_R\unuseable_growth_NotEnoughGem.png" />
+		<Resource Include="Art\GameUI\Resource\GameUI_Icon3_R\unuseable_growth_NotEnoughgrowth.png" />
+		<Resource Include="Art\GameUI\Resource\GameUI_Icon3_R\unuseable_growth_NotEnoughItem.png" />
+		<Resource Include="Art\GameUI\Resource\GameUI_Icon3_R\unuseable_growth_NotEnoughLevel.png" />
+		<Resource Include="Art\GameUI\Resource\GameUI_Icon3_R\unuseable_KeyLock.png" />
+		<Resource Include="Art\GameUI\Resource\GameUI_Icon3_R\unuseable_lock.png" />
+		<Resource Include="Art\GameUI\Resource\GameUI_Icon3_R\unuseable_lock_2.png" />
+		<Resource Include="Art\GameUI\Resource\GameUI_Icon3_R\unuseable_olditem_1.png" />
+		<Resource Include="Art\GameUI\Resource\GameUI_Icon3_R\unuseable_olditem_2.png" />
+		<Resource Include="Art\GameUI\Resource\GameUI_Icon3_R\unuseable_olditem_3.png" />
+		<Resource Include="Art\GameUI\Resource\GameUI_Icon3_R\unuseable_package.png" />
+		<Resource Include="Art\GameUI\Resource\GameUI_Icon3_R\unuseable_PcRoomOnly.png" />
+		<Resource Include="Art\GameUI\Resource\GameUI_Icon3_R\unuseable_seal.png" />
+		<Resource Include="Art\GameUI\Resource\GameUI_Icon3_R\unuseable_X1.png" />
+		<Resource Include="Art\GameUI\Resource\GameUI_Icon3_R\unuseable_X2.png" />
+		<Resource Include="Art\GameUI\Resource\GameUI_Icon3_R\useable_PcRoomOnly.png" />
+		<Resource Include="Art\GameUI\Resource\GameUI_Icon3_R\Weapon_Lock_01.png" />
+		<Resource Include="Art\GameUI\Resource\GameUI_Icon3_R\Weapon_Lock_02.png" />
+		<Resource Include="Art\GameUI\Resource\GameUI_Icon3_R\Weapon_Lock_03.png" />
+		<Resource Include="Art\GameUI\Resource\GameUI_Icon3_R\Weapon_Lock_04.png" />
+		<Resource Include="Art\GameUI\Resource\GameUI_Icon3_R\Weapon_Lock_05.png" />
+		<Resource Include="Art\GameUI\Resource\GameUI_Icon3_R\Weapon_Lock_06.png" />
+		<Resource Include="Art\GameUI\Resource\GameUI_Window_R\ItemIcon_Bg_Grade_1.png" />
+		<Resource Include="Art\GameUI\Resource\GameUI_Window_R\ItemIcon_Bg_Grade_2.png" />
+		<Resource Include="Art\GameUI\Resource\GameUI_Window_R\ItemIcon_Bg_Grade_3.png" />
+		<Resource Include="Art\GameUI\Resource\GameUI_Window_R\ItemIcon_Bg_Grade_4.png" />
+		<Resource Include="Art\GameUI\Resource\GameUI_Window_R\ItemIcon_Bg_Grade_5.png" />
+		<Resource Include="Art\GameUI\Resource\GameUI_Window_R\ItemIcon_Bg_Grade_6.png" />
+		<Resource Include="Art\GameUI\Resource\GameUI_Window_R\ItemIcon_Bg_Grade_7.png" />
+		<Resource Include="Art\GameUI\Resource\GameUI_Window_R\ItemIcon_Bg_Grade_8.png" />
+		<Resource Include="Art\GameUI\Resource\GameUI_Window_R\ItemIcon_Bg_Grade_9.png" />
+
+
+		<Resource Include="Resources\Fonts\Font Awesome 5 Free-Solid-900.otf" />
+		<Resource Include="Resources\Images\*" />
+		<None Remove="Common\Controls\TestV.cs~RF56edb9.TMP" />
+		<Resource Include="Resources\Images\ue3\CollectionCard_3D_214_Img.png" />
+		<Resource Include="Resources\Images\ue3\ItemError.png" />
+		<Resource Include="Resources\Images\ue3\ItemIcon.png" />
+		<Resource Include="Resources\Images\ue3\RandomItem.png" />
+		<Resource Include="Resources\Images\ue3\Sewing.png" />
+		<Resource Include="Resources\Images\ue3\Sewing2.png" />
+		<Resource Include="Resources\Images\ue3\ItemIcon_Bg_Grade_1.png" />
+		<Resource Include="Resources\Images\ue3\ItemIcon_Bg_Grade_2.png" />
+		<Resource Include="Resources\Images\ue3\ItemIcon_Bg_Grade_3.png" />
+		<Resource Include="Resources\Images\ue3\ItemIcon_Bg_Grade_4.png" />
+		<Resource Include="Resources\Images\ue3\ItemIcon_Bg_Grade_5.png" />
+		<Resource Include="Resources\Images\ue3\ItemIcon_Bg_Grade_6.png" />
+		<Resource Include="Resources\Images\ue3\ItemIcon_Bg_Grade_7.png" />
+		<Resource Include="Resources\Images\ue3\ItemIcon_Bg_Grade_8.png" />
+		<Resource Include="Resources\Images\ue3\ItemIcon_Bg_Grade_9.png" />
+		<Resource Include="Views\Editor\Sql.xshd" />
+	</ItemGroup>
 </Project>

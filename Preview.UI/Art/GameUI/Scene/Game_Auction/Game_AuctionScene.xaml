@@ -1,0 +1,72 @@
+﻿<UI:GameScene x:Class="Xylia.Preview.UI.Art.GameUI.Scene.Game_Auction.Game_AuctionScene"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:c="clr-namespace:Xylia.Preview.UI.Common.Controls"
+		xmlns:UI="clr-namespace:Xylia.Preview.UI"
+		xmlns:VM="clr-namespace:Xylia.Preview.UI.ViewModels"
+	  
+        Title="AuctionScene" Height="750" Width="800"  
+		DataContext="{Binding RelativeSource={RelativeSource Self}}">
+	<Grid>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="200" />
+			<ColumnDefinition Width="*" />
+		</Grid.ColumnDefinitions>
+
+		<Grid Grid.Column="0">
+			<Grid.RowDefinitions>
+				<RowDefinition Height="30" />
+				<RowDefinition Height="*" />
+			</Grid.RowDefinitions>
+
+			<TextBox Grid.Row="0" Text="{Binding NameFilter, UpdateSourceTrigger=PropertyChanged}" />
+			<TreeView Grid.Row="1" x:Name="TreeView" SelectedItemChanged="TreeView_SelectedItemChanged" />
+		</Grid>
+		<Grid Grid.Column="1">
+			<Grid.RowDefinitions>
+				<RowDefinition Height="30" />
+				<RowDefinition Height="*" />
+			</Grid.RowDefinitions>
+
+			<StackPanel Grid.Row="0" Orientation="Horizontal">
+				<CheckBox Content="Comapre"     Checked="Comapre_Checked" Unchecked="Comapre_Unchecked"/>
+				<CheckBox Content="Auctionable" IsChecked="{Binding Auctionable}"/>
+			</StackPanel>
+
+			<!-- <TextBlock Grid.Row="1" x:Name="loader" Text="Loading..." HorizontalAlignment="Center" VerticalAlignment="Center"/> -->
+			<ListView Grid.Row="1" x:Name="ItemList"
+					 Background="{DynamicResource BackgroundBrush}"
+					 HorizontalContentAlignment="Stretch" VirtualizingStackPanel.IsVirtualizing="True">
+				<ListView.Resources>
+					<ContextMenu x:Key="ItemMenu">
+						<MenuItem Header="{DynamicResource View_Model}" Command="VM:PreviewModel.Command" CommandParameter="{Binding Model.Value}"/>
+					</ContextMenu>
+				</ListView.Resources>
+				<ListView.ItemContainerStyle>
+					<Style TargetType="{x:Type ListViewItem}">
+						<Setter Property="Focusable" Value="False"/>
+						<Setter Property="ContextMenu" Value="{StaticResource ItemMenu}"/>
+					</Style>
+				</ListView.ItemContainerStyle>
+				<ListView.View>
+					<GridView>
+						<GridViewColumn Header="ItemName" Width="220">
+							<GridViewColumn.CellTemplate>
+								<DataTemplate>
+									<Grid>
+										<Grid.ColumnDefinitions>
+											<ColumnDefinition Width="54" />
+											<ColumnDefinition Width="*" />
+										</Grid.ColumnDefinitions>
+										<c:BnsCustomImageWidget Grid.Column="0" Image="{Binding Model.Value.Icon}" />
+										<c:BnsCustomLabelWidget Grid.Column="1" Text="{Binding Model.Value.ItemName}" VerticalAlignment="Center" Margin="5 0 0 0"/>
+									</Grid>
+								</DataTemplate>
+							</GridViewColumn.CellTemplate>
+						</GridViewColumn>
+					</GridView>
+				</ListView.View>
+			</ListView>
+		</Grid>
+	</Grid>
+</UI:GameScene>

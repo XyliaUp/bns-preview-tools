@@ -1,5 +1,5 @@
 bin
 obj
 .vs
+*.testlog
 *.user
-/Preview.Core/Data/Records/TableDef/Test

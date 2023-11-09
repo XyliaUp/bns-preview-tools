@@ -1,0 +1,17 @@
+﻿<Application x:Class="Xylia.Preview.UI.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+			 DispatcherUnhandledException="Application_DispatcherUnhandledException" >
+	<Application.Resources>
+		<ResourceDictionary>
+			<ResourceDictionary.MergedDictionaries>
+				<ResourceDictionary>
+					<FontFamily x:Key="FontAwesome">/Resources/Fonts/#Font Awesome 5 Free</FontFamily>
+				</ResourceDictionary>
+
+				<res:StringHelper xmlns:res="clr-namespace:Xylia.Preview.UI.Resources" />
+				<ResourceDictionary Source="Resources/Themes/Styles.xaml"/>
+			</ResourceDictionary.MergedDictionaries>
+		</ResourceDictionary>
+	</Application.Resources>
+</Application>

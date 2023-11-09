@@ -1,4 +1,5 @@
 ﻿using System.Collections.Concurrent;
+using System.Diagnostics;
 
 using CUE4Parse.Encryption.Aes;
 using CUE4Parse.FileProvider;
@@ -10,19 +11,18 @@ using CUE4Parse.UE4.Objects.Core.Misc;
 using CUE4Parse.UE4.Versions;
 using CUE4Parse.Utils;
 
-using Xylia.Extension;
-using Xylia.Preview.Properties;
+using Xylia.Preview.Common.Extension;
 
 namespace CUE4Parse.BNS;
 public sealed class GameFileProvider : DefaultFileProvider, IDisposable
 {
 	private static bool _register;
-	private const string _aesKey = "0xd2e5f7f94e625efe2726b5360c1039ce7cb9abb760a94f37bb15a6dc08741656";
+	internal const string _aesKey = "0xd2e5f7f94e625efe2726b5360c1039ce7cb9abb760a94f37bb15a6dc08741656";
 	private const string gameName = "BNSR";
 	private readonly ConcurrentDictionary<string, string> ObjectRef = new(StringComparer.OrdinalIgnoreCase);
 
-	public GameFileProvider(string GameDirectory = null) : base(
-		GameDirectory ?? CommonPath.GameFolder, SearchOption.AllDirectories, true,
+	public GameFileProvider(string GameDirectory, bool LoadOnInit = false) : base(
+		GameDirectory, SearchOption.AllDirectories, true,
 		new() { Game = EGame.GAME_BladeAndSoul })
 	{
 		this.Initialize();
@@ -37,9 +37,7 @@ public sealed class GameFileProvider : DefaultFileProvider, IDisposable
 		}
 
 		// load asset registry
-		if (Settings.LoadMode.HasFlag(LoadMode.LoadOnInit))
-			LoadAssetRegistry();
-
+		if (LoadOnInit) LoadAssetRegistry();
 	}
 
 	#region FixPath
@@ -60,6 +58,7 @@ public sealed class GameFileProvider : DefaultFileProvider, IDisposable
 			else if (path.StartsWith("00009499")) Ue4Path = "BNSR/Content/Art/UI/GameUI/Resource/GameUI_Map_Indicator/" + path[9..];
 			else if (path.StartsWith("00010047")) Ue4Path = "BNSR/Content/Art/UI/GameUI/Resource/GameUI_ImageSet_R/" + path[9..];
 			else if (path.StartsWith("00015590")) Ue4Path = "BNSR/Content/Art/UI/GameUI/Resource/GameUI_Tag/" + path[9..];
+			else if (path.StartsWith("00027869")) Ue4Path = "BNSR/Content/Art/FX/01_Source/05_SF/FXUI_03/" + path[9..];
 			else if (path.StartsWith("00027918")) Ue4Path = "BNSR/Content/Art/UI/GameUI/Resource/GameUI_Portrait/" + path[9..];
 			else if (path.StartsWith("00033689")) Ue4Path = "BNSR/Content/Art/UI/GameUI/Resource/GameUI_KeyKap/" + path[9..];
 			else if (path.StartsWith("00043230")) Ue4Path = "BNSR/Content/Art/UI/GameUI/Resource/GameUI_SkillBookImage/" + path[9..];
@@ -129,7 +128,14 @@ public sealed class GameFileProvider : DefaultFileProvider, IDisposable
 		objectPath = FixPath(objectPath, true);
 		if (objectPath is null) return null;
 
-		return await base.LoadObjectAsync(objectPath);
+		try
+		{
+			return await base.LoadObjectAsync(objectPath);
+		}
+		catch
+		{
+			return null;
+		}
 	}
 
 	public override async Task<T> LoadObjectAsync<T>(string objectPath)
@@ -167,4 +173,11 @@ public sealed class GameFileProvider : DefaultFileProvider, IDisposable
 		(Files as FileProviderDictionary)?.Clear();
 		base.Dispose();
 	}
+}
+
+[Flags]
+public enum LoadMode
+{
+	Default = 0x0000,
+	LoadOnInit = 0x0001,
 }

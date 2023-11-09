@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table name="tutorialskillsequence" version="0.7" autokey="true" module="4">
+  <el name="table" child="1" />
+  <el name="tutorialskillsequence" child="2" >
+    <attribute name="alias" type="String" required="y" max="50" />
+  </el>
+  <el name="step">
+    <attribute name="sequence-step-type" type="Seq" required="y">
+      <case name="skill" />
+      <case name="effect" />
+    </attribute>
+    <attribute name="skill" type="Int32" default="0" repeat="20" />
+    <attribute name="check-parent-skill" type="Bool" />
+    <attribute name="result" type="Seq" seq="skill-result" repeat="2" />
+    <attribute name="result-event-type" type="Seq" repeat="2" seq="skill-event-type" />
+    <attribute name="caster-fail-state" type="Seq16" seq="flag" default="none" />
+    <attribute name="caster-fail-effect" type="Ref" ref="effect" />
+    <attribute name="caster-pass-state" type="Seq16" seq="flag" default="none" />
+    <attribute name="target-pass-state" type="Seq16" seq="flag" default="none" />
+    <attribute name="target-pass-state-count" type="Int8" default="1" />
+    <attribute name="target-pass-effect" type="Ref" ref="effect" />
+    <attribute name="target-pass-effect-count" type="Int8" default="1" />
+    <attribute name="check-only-cast-skill" type="Bool" />
+  </el>
+</table>

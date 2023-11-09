@@ -1,14 +1,13 @@
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
 using System.Numerics;
 using System.Runtime.CompilerServices;
-using System.Windows;
 using System.Windows.Forms;
+
 using ImGuiNET;
+
 using OpenTK.Graphics.OpenGL4;
 using OpenTK.Windowing.Desktop;
 using OpenTK.Windowing.GraphicsLibraryFramework;
+
 using ErrorCode = OpenTK.Graphics.OpenGL4.ErrorCode;
 using Keys = OpenTK.Windowing.GraphicsLibraryFramework.Keys;
 

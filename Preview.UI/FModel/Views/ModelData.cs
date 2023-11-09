@@ -2,9 +2,9 @@
 using CUE4Parse.UE4.Assets.Exports;
 using CUE4Parse.UE4.Assets.Exports.Material;
 
-using Xylia.Extension;
-using Xylia.Preview.Data.Helper;
-using Xylia.Preview.UI.Custom;
+using Xylia.Preview.Common.Extension;
+using Xylia.Preview.Data.Helpers;
+using Xylia.Preview.UI.Views;
 
 namespace Xylia.Preview.UI.FModel.Views;
 public class ModelData
@@ -14,7 +14,7 @@ public class ModelData
 	public UAnimSet AnimSet;
 
 	private List<UMaterialInstance> Materials;
-	public IEnumerable<string> cols
+	public IEnumerable<string> Cols
 	{
 		set
 		{
@@ -27,7 +27,6 @@ public class ModelData
 			}
 		}
 	}
-
 
 
 	public void Run()

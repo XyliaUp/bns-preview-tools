@@ -1,36 +1,37 @@
 ﻿using System.Xml;
+using Xylia.Preview.Tests.DatTool.Utils;
 
 namespace Xylia.Preview.Tests.DatTool.Utils.ServerHandle;
 public abstract class TableHandle
 {
-	protected virtual string TableName => this.GetType().Name;
+    protected virtual string Name => GetType().Name;
 
 
-	private void FixTable()
-	{
-		ReadTable(TableName, (record) => Fix(record), true);
-	}
+    private void FixTable()
+    {
+        ReadTable(Name, (record) => Fix(record), true);
+    }
 
-	protected virtual void Fix(XmlElement record)
-	{
+    protected virtual void Fix(XmlElement record)
+    {
 
-	}
-
-
+    }
 
 
-	protected static void ReadTable(string table, Action<XmlElement> fix, bool save = false)
-	{
-		foreach (var path in BNSFileHelper.GetFiles(table + "Data"))
-		{
-			var data = new XmlDocument();
-			data.Load(path.FullName);
-
-			foreach (var record in data.SelectNodes("table/record").OfType<XmlElement>())
-				fix?.Invoke(record);
 
 
-			if (save) data.Save(path.FullName);
-		}
-	}
+    protected static void ReadTable(string table, Action<XmlElement> fix, bool save = false)
+    {
+        foreach (var path in BNSFileHelper.GetFiles(table + "Data"))
+        {
+            var data = new XmlDocument();
+            data.Load(path.FullName);
+
+            foreach (var record in data.SelectNodes("table/record").OfType<XmlElement>())
+                fix?.Invoke(record);
+
+
+            if (save) data.Save(path.FullName);
+        }
+    }
 }

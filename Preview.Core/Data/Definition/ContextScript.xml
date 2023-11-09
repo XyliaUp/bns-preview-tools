@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table name="contextscript" version="0.45" autokey="true" module="2052">
+  <el name="table" child="1" />
+  <el name="contextscript" child="2" >
+    <attribute name="alias" type="String" max="70" />
+    <attribute name="job" type="Prop_seq" seq="job" default="job-none" />
+    <attribute name="race" type="Prop_seq" seq="race" default="race-none" />
+    <attribute name="context-simple-mode" type="Bool" />
+  </el>
+  <el name="stance" child="3" >
+    <attribute name="status" type="Seq" required="y" deprecated="y">
+      <case name="stance" />
+      <case name="abnormal" />
+      <case name="link" />
+    </attribute>
+    <attribute name="stance" type="Prop_seq" seq="stance" default="stance-none" />
+    <attribute name="link" type="Seq" seq="link-type" />
+    <attribute name="abnormal" type="Seq" deprecated="y">
+      <case name="none" default="y" />
+      <case name="impregnability" />
+      <case name="summoned" />
+      <case name="deadbody" />
+      <case name="sprint" />
+      <case name="sprint-jump" />
+      <case name="drift" />
+      <case name="glide" />
+      <case name="diving" />
+      <case name="swim" />
+      <case name="death" />
+      <case name="burrow" />
+      <case name="linked" />
+      <case name="falling" />
+      <case name="down" />
+      <case name="midair-3" />
+      <case name="midair-2" />
+      <case name="midair-1" />
+      <case name="kneel" />
+      <case name="stun" />
+      <case name="back-180" />
+      <case name="rupture" />
+      <case name="defence" />
+      <case name="block-move" />
+      <case name="wildfire-2" />
+      <case name="knock-back" />
+    </attribute>
+    <attribute name="abnormal-flag" type="Seq16" seq="flag" default="none" />
+    <attribute name="use-branch-group" type="Bool" />
+  </el>
+  <el name="layer" child="4" />
+  <el name="decision" child="5,6" />
+  <el name="condition">
+    <attribute name="field" type="Seq">
+      <case name="none" />
+      <case name="all" default="y" />
+      <case name="state" />
+      <case name="combo" />
+      <case name="event" />
+      <case name="job-style-only" />
+    </attribute>
+    <attribute name="job-style" type="Seq" seq="job-style" default="base-1" />
+    <attribute name="skill" type="Int32" default="0" />
+    <attribute name="variation-id" type="Int32" default="0" />
+    <attribute name="combination-key-command" type="Seq16" seq="key-command" default="none" repeat="2" />
+    <attribute name="skip-condition-target-check" type="Bool" />
+    <attribute name="skip-condition-move-check" type="Bool" />
+    <attribute name="skip-condition-link-check" type="Bool" />
+    <attribute name="immune-breaker-attribute" type="Seq16" seq="effect-attribute" default="none" />
+  </el>
+  <el name="result">
+    <attribute name="control-mode" type="Seq">
+      <case name="classic" default="y" />
+      <case name="bns" />
+    </attribute>
+    <attribute name="key-status" type="Seq">
+      <case name="press" default="y" />
+      <case name="unpress" />
+    </attribute>
+    <attribute name="context" type="Int32" default="0" repeat="3" />
+    <attribute name="bns-context" type="Int32" default="0" repeat="3" />
+    <attribute name="tps-context" type="Int32" default="0" repeat="2" deprecated="y" />
+    <attribute name="special" type="Int32" default="0" repeat="2" />
+    <attribute name="stance" type="Int32" default="0" />
+    <attribute name="skillbar" type="Int32" default="0" repeat="12" />
+    <attribute name="branch-1-skillbar" type="Int32" default="0" repeat="3" />
+    <attribute name="branch-2-skillbar" type="Int32" default="0" repeat="3" />
+    <attribute name="branch-3-skillbar" type="Int32" default="0" repeat="3" />
+    <attribute name="branch-4-skillbar" type="Int32" default="0" repeat="3" />
+    <attribute name="branch-escape-combo-duration" type="Int32" default="0" min="0" max="60000" />
+    <attribute name="cmd-key-up" type="Int32" default="0" />
+    <attribute name="cmd-key-down" type="Int32" default="0" />
+    <attribute name="cmd-key-left" type="Int32" default="0" />
+    <attribute name="cmd-key-right" type="Int32" default="0" />
+    <attribute name="cmd-key-double-left" type="Int32" default="0" />
+    <attribute name="cmd-key-double-right" type="Int32" default="0" />
+    <attribute name="extra-skillbar" type="Int32" default="0" repeat="5" />
+    <attribute name="context-fallback" type="Int32" default="0" repeat="3" />
+    <attribute name="tps-context-fallback" type="Int32" default="0" repeat="2" deprecated="y" />
+    <attribute name="bns-context-fallback" type="Int32" default="0" repeat="3" />
+    <attribute name="stance-fallback" type="Int32" default="0" />
+    <attribute name="skillbar-fallback" type="Int32" default="0" repeat="12" />
+    <attribute name="cmd-key-up-fallback" type="Int32" default="0" />
+    <attribute name="cmd-key-down-fallback" type="Int32" default="0" />
+    <attribute name="cmd-key-left-fallback" type="Int32" default="0" />
+    <attribute name="cmd-key-right-fallback" type="Int32" default="0" />
+    <attribute name="cmd-key-double-left-fallback" type="Int32" default="0" />
+    <attribute name="cmd-key-double-right-fallback" type="Int32" default="0" />
+    <attribute name="stance-ui-effect" type="Seq">
+      <case name="none" default="y" />
+      <case name="key-change" />
+      <case name="combo" />
+      <case name="event" />
+      <case name="immune-break" />
+      <case name="combo-highlight" />
+    </attribute>
+    <attribute name="context-ui-effect" type="Seq">
+      <case name="none" default="y" />
+      <case name="key-change" />
+      <case name="combo" />
+      <case name="event" />
+      <case name="immune-break" />
+      <case name="combo-highlight" />
+    </attribute>
+    <attribute name="skillbar-ui-effect" type="Seq">
+      <case name="none" default="y" />
+      <case name="key-change" />
+      <case name="combo" />
+      <case name="event" />
+      <case name="immune-break" />
+      <case name="combo-highlight" />
+    </attribute>
+    <attribute name="special-ui-effect" type="Seq">
+      <case name="none" default="y" />
+      <case name="key-change" />
+      <case name="combo" />
+      <case name="event" />
+      <case name="immune-break" />
+      <case name="combo-highlight" />
+    </attribute>
+  </el>
+</table>

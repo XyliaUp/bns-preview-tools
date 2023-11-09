@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table name="feedback-skill-score" version="1.0" autokey="true" module="6">
+  <el name="table" child="1" />
+  <el name="record">
+    <attribute name="alias" type="String" required="y" max="70" />
+    <attribute name="skill" type="Ref" ref="skill3" required="y" />
+    <attribute name="skill-result" type="Seq" repeat="8" seq="skill-result" />
+  </el>
+</table>

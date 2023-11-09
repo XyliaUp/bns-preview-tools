@@ -1,13 +1,10 @@
-using System;
 using System.Numerics;
-using System.Windows;
 using CUE4Parse.UE4.Assets.Exports.Texture;
 using CUE4Parse.UE4.Objects.Core.Math;
 using CUE4Parse.UE4.Objects.Core.Misc;
 using ImGuiNET;
 using OpenTK.Graphics.OpenGL4;
-using SixLabors.ImageSharp;
-using SixLabors.ImageSharp.PixelFormats;
+using SkiaSharp;
 
 namespace FModel.Views.Snooper.Shading;
 
@@ -78,7 +75,7 @@ public class Texture : IDisposable
         GL.FramebufferTexture2D(FramebufferTarget.Framebuffer, FramebufferAttachment.ColorAttachment0, _target, _handle, 0);
     }
 
-    public Texture(byte[] data, int width, int height, UTexture2D texture2D) : this(TextureType.Normal)
+    public Texture(SKBitmap bitmap, UTexture2D texture2D) : this(TextureType.Normal)
     {
         Type = texture2D.ExportType;
         Guid = texture2D.LightingGuid;
@@ -87,11 +84,11 @@ public class Texture : IDisposable
         Format = texture2D.Format;
         ImportedWidth = texture2D.ImportedSize.X;
         ImportedHeight = texture2D.ImportedSize.Y;
-        Width = width;
-        Height = height;
+        Width = bitmap.Width;
+        Height = bitmap.Height;
         Bind(TextureUnit.Texture0);
 
-        GL.TexImage2D(_target, 0, texture2D.SRGB ? PixelInternalFormat.Srgb : PixelInternalFormat.Rgb, Width, Height, 0, PixelFormat.Rgba, PixelType.UnsignedByte, data);
+        GL.TexImage2D(_target, 0, texture2D.SRGB ? PixelInternalFormat.Srgb : PixelInternalFormat.Rgb, Width, Height, 0, PixelFormat.Rgba, PixelType.UnsignedByte, bitmap.Bytes);
         GL.TexParameter(_target, TextureParameterName.TextureMinFilter, (int) TextureMinFilter.LinearMipmapLinear);
         GL.TexParameter(_target, TextureParameterName.TextureMagFilter, (int) TextureMagFilter.Linear);
         GL.TexParameter(_target, TextureParameterName.TextureBaseLevel, 0);
@@ -150,18 +147,18 @@ public class Texture : IDisposable
 
     private void ProcessPixels(string texture, TextureTarget target)
     {
-		var info = System.Windows.Application.GetResourceStream(new Uri($"/Preview.UI;component/Resources/{texture}.png", UriKind.Relative));
-		using var img = SixLabors.ImageSharp.Image.Load<Rgba32>(info.Stream);
-		Width = img.Width;
-        Height = img.Height;
-        GL.TexImage2D(target, 0, PixelInternalFormat.Rgba8, Width, Height, 0, PixelFormat.Rgba, PixelType.UnsignedByte, IntPtr.Zero);
-        img.ProcessPixelRows(accessor =>
-        {
-            for (int y = 0; y < accessor.Height; y++)
-            {
-                GL.TexSubImage2D(target, 0, 0, y, accessor.Width, 1, PixelFormat.Rgba, PixelType.UnsignedByte, accessor.GetRowSpan(y).ToArray());
-            }
-        });
+        var info = Application.GetResourceStream(new Uri($"/FModel/Resources/{texture}.png", UriKind.Relative));
+        //using var img = Image.Load<Rgba32>(info.Stream);
+        //Width = img.Width;
+        //Height = img.Height;
+        //GL.TexImage2D(target, 0, PixelInternalFormat.Rgba8, Width, Height, 0, PixelFormat.Rgba, PixelType.UnsignedByte, IntPtr.Zero);
+        //img.ProcessPixelRows(accessor =>
+        //{
+        //    for (int y = 0; y < accessor.Height; y++)
+        //    {
+        //        GL.TexSubImage2D(target, 0, 0, y, accessor.Width, 1, PixelFormat.Rgba, PixelType.UnsignedByte, accessor.GetRowSpan(y).ToArray());
+        //    }
+        //});
     }
 
     public void Bind(TextureUnit textureSlot)

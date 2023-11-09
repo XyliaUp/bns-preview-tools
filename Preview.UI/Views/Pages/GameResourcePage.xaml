@@ -1,0 +1,141 @@
+﻿<Page x:Class="Xylia.Preview.UI.Views.Pages.GameResourcePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:VM="clr-namespace:Xylia.Preview.UI.ViewModels"
+
+      mc:Ignorable="d" 
+      d:DesignHeight="348.696" d:DesignWidth="502.59" d:Background="White" Loaded="Page_Loaded">
+	<TabControl>
+		<TabItem Header="Assets" >
+			<Grid Margin="3 0 0 0">
+				<Grid.RowDefinitions>
+					<RowDefinition Height="Auto" />
+					<RowDefinition Height="Auto" />
+					<RowDefinition Height="Auto" />
+					<RowDefinition Height="Auto" />
+					<RowDefinition Height="Auto" />
+					<RowDefinition Height="*" />
+				</Grid.RowDefinitions>
+
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="4*" />
+					<ColumnDefinition Width="*" />
+					<ColumnDefinition Width="*" />
+				</Grid.ColumnDefinitions>
+
+
+				<Label Grid.Row="0" Content="select output folder" />
+				<TextBox Grid.Row="1" Text="{Binding OutputFolder_Resource, Source={x:Static VM:UserSettings.Default}}" />
+				<Button Grid.Row="1" Grid.Column="1" Style="{StaticResource FolderBrower}"  Click="Brower_OutputFolder_Click" />
+
+				<Label Grid.Row="2" Content="Asset Path" />
+				<ComboBox Grid.Row="3" x:Name="Selector" IsEditable="True" IsTextSearchEnabled="True" >
+					<ComboBoxItem Content="Game/Art/UI/GameUI/Resource/GameUI_Icon" />
+					<ComboBoxItem Content="Game/Art/UI/GameUI/Resource/GameUI_Icon2nd" />
+					<ComboBoxItem Content="Game/Art/UI/GameUI/Resource/GameUI_Icon3rd" />
+					<ComboBoxItem Content="Game/Art/UI/GameUI/Resource/GameUI_Icon4th" />
+					<ComboBoxItem Content="Game/Art/UI/GameUI/Resource/GameUI_Icon5th" />
+					<ComboBoxItem Content="Game/Art/UI/GameUI/Resource/GameUI_Icon6th" />
+					<ComboBoxItem Content="Game/Art/UI/GameUI/Resource/GameUI_TitleImage" />
+					<ComboBoxItem Content="Game/Art/UI/GameUI/Resource/GameUI_ImageSet" />
+					<ComboBoxItem Content="Game/Art/UI/GameUI/Resource/GameUI_ImageSet_R" />
+					<ComboBoxItem Content="Game/Art/UI/V2/Resource" />
+				</ComboBox>
+				
+				<Button Grid.Row="3" x:Name="Extract" Grid.Column="1" Content="Extract" Width="50" Height="20" Click="Extract_Click"/>
+				<CheckBox Grid.Row="4" x:Name="OutputClassName" Content="Output class name" VerticalAlignment="Bottom" Margin="0 20 0 0"/>
+			</Grid>
+		</TabItem>
+
+		<TabItem Header="Icon" >
+			<Grid Margin="3 0 0 0">
+				<Grid.RowDefinitions>
+					<RowDefinition Height="Auto" />
+					<RowDefinition Height="Auto" />
+				</Grid.RowDefinitions>
+
+				<Grid Grid.Row="0" >
+					<Grid.RowDefinitions>
+						<RowDefinition Height="Auto" />
+						<RowDefinition Height="Auto" />
+						<RowDefinition Height="Auto" />
+						<RowDefinition Height="Auto" />
+						<RowDefinition Height="Auto" />
+						<RowDefinition Height="Auto" />
+						<RowDefinition Height="*" />
+					</Grid.RowDefinitions>
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="4*" />
+						<ColumnDefinition Width="*" />
+						<ColumnDefinition Width="*" />
+					</Grid.ColumnDefinitions>
+
+					<TextBlock Grid.Row="0" ><Run Text="{DynamicResource GameDirectory}" /> *</TextBlock>
+					<TextBox Grid.Row="1" Text="{Binding GameFolder, Source={x:Static VM:UserSettings.Default}}" />
+					<Button Grid.Row="1" Grid.Column="1" Style="{StaticResource FolderBrower}" Click="Brower_OutputFolder_Click" />
+
+					<TextBlock Grid.Row="2" ><Run Text="{DynamicResource OutputDirectory}" /> *</TextBlock>
+					<TextBox Grid.Row="3" Text="{Binding Icon_OutputFolder}" />
+					<Button Grid.Row="3" Grid.Column="1" Style="{StaticResource FolderBrower}" Click="Icon_BrowerOutputFolder_Click" />
+
+					<Label Grid.Row="4" Content="Select item list" />
+					<TextBox Grid.Row="5" x:Name="ItemListPath" Margin="0 0 5 0"/>
+					<Button Grid.Row="5" Grid.Column="1" Style="{StaticResource FolderBrower}" Click="Icon_BrowerItemList_Click" />
+				</Grid>
+
+				<StackPanel Grid.Row="1" Orientation="Vertical" Margin="0 10 0 0">
+					<Label Content="Output Name Format" />
+					<ComboBox x:Name="NameFormat"  >
+						<ComboBoxItem Content="[id]" />
+						<ComboBoxItem Content="[alias]" />
+						<ComboBoxItem Content="[id]_[name]" />
+					</ComboBox>
+
+					<CheckBox x:Name="FilterMode" Content="Whitelist filtering" ToolTip="create item only in list when checked, otherwise ignore listed item."/>
+					<CheckBox x:Name="UseBackground" Content="Grade Background" IsChecked="True" />
+
+					<Separator Height="5" />
+					<Button Content="Extract Good Icon" Click="Extract_GoodIcon" />
+					<Separator Height="5" />
+					<Button Content="Output List" ToolTip="Create item list from generated images" Click="Output_ItemList" />
+					<Button Content="Extract Item Icon" Click="Extract_ItemIcon" />
+				</StackPanel>
+			</Grid>
+		</TabItem>
+
+		<TabItem Header="Merge Icon">
+			<Grid Margin="3 0 0 0" AllowDrop="True" DragDrop.DragEnter="MergeIcon_DragEnter" DragDrop.Drop="MergeIcon_DragDrop">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="*"/>
+					<ColumnDefinition Width="*"/>
+					<ColumnDefinition Width="*"/>
+				</Grid.ColumnDefinitions>
+
+               <!-- Left -->
+				<StackPanel Grid.Column="0">
+					<ComboBox x:Name="Combobox_Grade" ItemsSource="{Binding GradeList}" SelectedItem="{Binding MergeIcon_Grade}" />
+					<ComboBox x:Name="Combobox_BottomLeft" ItemsSource="{Binding BottomLeftList}" SelectedItem="{Binding MergeIcon_BottomLeft}" />
+					<ComboBox x:Name="Combobox_TopRight" ItemsSource="{Binding TopRightList}" SelectedItem="{Binding MergeIcon_TopRight}" />
+
+					<CheckBox Content="New Background" IsChecked="{Binding MergeIcon_BackgroundMode}" ToolTip="UE4 resouce"/>
+				</StackPanel>
+
+				<!-- Center -->
+				<Grid Grid.Column="1">
+					<Image Source="{Binding MergeIcon_Image}" Width="64" Height="64" VerticalAlignment="Top" Margin="0 40" ToolTip="Drag the image into the form to load" />
+				</Grid>	
+
+				<!-- Right -->
+				<StackPanel Grid.Column="2">
+					<Button Content="Reset" Click="MergeIcon_Reset_Click" Command="{Binding MergeIcon_ResetCommand}" />
+					<Button Content="Save" Click="MergeIcon_Save_Click" Command="{Binding MergeIcon_SaveCommand}" />
+
+					<RadioButton x:Name="Radio_64px" IsChecked="{Binding MergeIcon_SizeMode}" Content="64   px" />
+					<RadioButton x:Name="Radio_128px" Content="128 px" />					
+				</StackPanel>
+			</Grid>
+		</TabItem>
+	</TabControl>
+</Page>

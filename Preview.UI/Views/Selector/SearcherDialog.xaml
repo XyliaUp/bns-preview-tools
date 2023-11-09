@@ -1,0 +1,17 @@
+﻿<Window x:Class="Xylia.Preview.UI.Views.Selector.SearcherDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="SearcherDialog" Height="121" Width="288" Loaded="Window_Loaded">
+	<Grid Margin="10 5 10 0">
+		<Grid.RowDefinitions>
+			<RowDefinition Height="20"/>
+			<RowDefinition Height="20"/>
+			<RowDefinition Height="*"/>
+		</Grid.RowDefinitions>
+
+		<TextBlock Grid.Row="0" Text="Enter filter rule (ref object need alias or id)" />
+		<TextBox Grid.Row="1" Name="FilterRule" />
+
+		<Button Grid.Row="2" Click="Confirm_Click" Content="OK" HorizontalAlignment="Right" Width="75" Height="25"/>
+	</Grid>
+</Window>

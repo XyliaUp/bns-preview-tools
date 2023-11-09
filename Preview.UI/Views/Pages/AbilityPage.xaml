@@ -1,0 +1,47 @@
+﻿<Page x:Class="Xylia.Preview.UI.Views.Pages.AbilityPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      mc:Ignorable="d" d:DesignHeight="382.101" d:DesignWidth="616.272" d:Background="White">
+	<Grid>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="230"/>
+			<ColumnDefinition Width="*"/>
+		</Grid.ColumnDefinitions>
+
+		<TreeView Grid.Column="0" x:Name="TreeView" SelectedItemChanged="TreeView_SelectedItemChanged" BorderThickness="0" Margin="0 10 0 0"/>
+
+		
+		<Grid Grid.Column="1">
+			<Grid.RowDefinitions>
+				<RowDefinition Height="7*"/>
+				<RowDefinition Height="10"/>
+				<RowDefinition Height="40"/>
+				<RowDefinition Height="40"/>
+				<RowDefinition Height="*"/>
+				<RowDefinition Height="*"/>
+			</Grid.RowDefinitions>
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="*"/>
+			</Grid.ColumnDefinitions>
+
+
+			<LiveCharts:CartesianChart Grid.Row="0" Grid.ColumnSpan="3" x:Name="Chart" xmlns:LiveCharts="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"/>
+
+
+			<TextBlock Grid.Row="2" Grid.Column="0" >
+				<Label Content="等级" />
+				<TextBox x:Name="LevelText" Height="25" Width="100"/>
+			</TextBlock>
+			<TextBlock Grid.Row="3" Grid.Column="0">
+				<Label Content="数值" />
+				<TextBox x:Name="AbilityText" Height="25" Width="100"/>
+			</TextBlock>
+
+			<Button Grid.Row="2" Content="Get" Click="GetPercent_Click" Width="75" HorizontalAlignment="Right" />
+			
+			<TextBlock Grid.Row="4" x:Name="ResultText" Margin="5 10 0 0" Text="" />
+		</Grid>
+	</Grid>
+</Page>

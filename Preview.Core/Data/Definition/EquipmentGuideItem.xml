@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table name="equipment-guide-item" version="1.0" autokey="true" module="6">
+	<el name="table" child="1" />
+	<el name="record">
+		<attribute name="item" type="Ref" ref="Item" />
+		<attribute name="stage" type="Int8" />
+		<attribute name="group" type="Ref" ref="equipment-guide" />
+	</el>
+</table>

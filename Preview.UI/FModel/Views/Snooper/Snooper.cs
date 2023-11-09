@@ -1,20 +1,15 @@
-using System;
 using System.ComponentModel;
 using System.Runtime.InteropServices;
-using System.Threading;
 using System.Windows.Forms;
 using CUE4Parse.UE4.Assets.Exports;
 using FModel.Views.Snooper.Buffers;
-using ImGuiNET;
 using OpenTK.Graphics.OpenGL4;
 using OpenTK.Windowing.Common;
 using OpenTK.Windowing.Common.Input;
 using OpenTK.Windowing.Desktop;
 using OpenTK.Windowing.GraphicsLibraryFramework;
-using SixLabors.ImageSharp.Advanced;
-using SixLabors.ImageSharp.PixelFormats;
+
 using Application = System.Windows.Application;
-using Keys = OpenTK.Windowing.GraphicsLibraryFramework.Keys;
 
 namespace FModel.Views.Snooper;
 
@@ -23,7 +18,7 @@ public class Snooper : GameWindow
     public readonly FramebufferObject Framebuffer;
     public readonly Renderer Renderer;
 
-    private readonly SnimGui _gui;
+    protected SnimGui _gui;
 
     private bool _init;
 
@@ -73,18 +68,18 @@ public class Snooper : GameWindow
 
     private unsafe void LoadWindowIcon()
     {
-        var info = Application.GetResourceStream(new Uri("/FModel;component/Resources/engine.png", UriKind.Relative));
-        using var img = SixLabors.ImageSharp.Image.Load<Rgba32>(info.Stream);
-        var memoryGroup = img.GetPixelMemoryGroup();
-        Memory<byte> array = new byte[memoryGroup.TotalLength * sizeof(Rgba32)];
-        var block = MemoryMarshal.Cast<byte, Rgba32>(array.Span);
-        foreach (var memory in memoryGroup)
-        {
-            memory.Span.CopyTo(block);
-            block = block[memory.Length..];
-        }
+		var info = Application.GetResourceStream(new Uri("/FModel/Resources/engine.png", UriKind.Relative));
+		//using var img = SixLabors.ImageSharp.Image.Load<Rgba32>(info.Stream);
+  //      var memoryGroup = img.GetPixelMemoryGroup();
+  //      Memory<byte> array = new byte[memoryGroup.TotalLength * sizeof(Rgba32)];
+  //      var block = MemoryMarshal.Cast<byte, Rgba32>(array.Span);
+  //      foreach (var memory in memoryGroup)
+  //      {
+  //          memory.Span.CopyTo(block);
+  //          block = block[memory.Length..];
+  //      }
 
-        Icon = new WindowIcon(new OpenTK.Windowing.Common.Input.Image(img.Width, img.Height, array.ToArray()));
+  //      Icon = new WindowIcon(new OpenTK.Windowing.Common.Input.Image(img.Width, img.Height, array.ToArray()));
     }
 
     protected override void OnLoad()
@@ -104,6 +99,7 @@ public class Snooper : GameWindow
         GL.Enable(EnableCap.CullFace);
         GL.Enable(EnableCap.DepthTest);
         GL.Enable(EnableCap.Multisample);
+        GL.Enable(EnableCap.VertexProgramPointSize);
         GL.StencilOp(StencilOp.Keep, StencilOp.Replace, StencilOp.Replace);
         GL.BlendFunc(BlendingFactor.SrcAlpha, BlendingFactor.OneMinusSrcAlpha);
 
@@ -112,33 +108,40 @@ public class Snooper : GameWindow
         _init = true;
     }
 
+    private void ClearWhatHasBeenDrawn()
+    {
+        GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit | ClearBufferMask.StencilBufferBit);
+    }
+
     protected override void OnRenderFrame(FrameEventArgs args)
     {
         base.OnRenderFrame(args);
         if (!IsVisible)
             return;
 
-        var delta = (float) args.Time;
-
         ClearWhatHasBeenDrawn(); // clear window background
-        _gui.Controller.Update(this, delta);
-        _gui.Render(this);
-
         Framebuffer.Bind(); // switch to viewport background
         ClearWhatHasBeenDrawn(); // clear viewport background
 
-        Renderer.Render(delta);
+        Renderer.Render(); // render everything
 
         Framebuffer.BindMsaa();
         Framebuffer.Bind(0); // switch to window background
 
+        _gui.Render(this); // render UI
         SwapBuffers();
     }
 
-    private void ClearWhatHasBeenDrawn()
+    protected override void OnUpdateFrame(FrameEventArgs e)
     {
-        GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit | ClearBufferMask.StencilBufferBit);
-        GL.PolygonMode(MaterialFace.FrontAndBack, PolygonMode.Fill);
+        base.OnUpdateFrame(e);
+        if (!IsVisible)
+            return;
+
+        var delta = (float) e.Time;
+
+        _gui.Controller.Update(this, delta);
+        Renderer.Update(this, delta);
     }
 
     protected override void OnTextInput(TextInputEventArgs e)
@@ -148,33 +151,6 @@ public class Snooper : GameWindow
             return;
 
         _gui.Controller.PressChar((char) e.Unicode);
-    }
-
-    protected override void OnUpdateFrame(FrameEventArgs e)
-    {
-        base.OnUpdateFrame(e);
-        if (!IsVisible || ImGui.GetIO().WantTextInput)
-            return;
-
-        var delta = (float) e.Time;
-        Renderer.CameraOp.Modify(KeyboardState, delta);
-
-        if (KeyboardState.IsKeyPressed(Keys.Z) &&
-            Renderer.Options.TryGetModel(out var selectedModel) &&
-            selectedModel.HasSkeleton)
-        {
-            Renderer.Options.RemoveAnimations();
-            Renderer.Options.AnimateMesh(true);
-            WindowShouldClose(true, false);
-        }
-        if (KeyboardState.IsKeyPressed(Keys.Space))
-            Renderer.Options.Tracker.IsPaused = !Renderer.Options.Tracker.IsPaused;
-        if (KeyboardState.IsKeyPressed(Keys.Delete))
-            Renderer.Options.RemoveModel(Renderer.Options.SelectedModel);
-        if (KeyboardState.IsKeyPressed(Keys.H))
-            WindowShouldClose(true, false);
-        if (KeyboardState.IsKeyPressed(Keys.Escape))
-            WindowShouldClose(true, true);
     }
 
     protected override void OnResize(ResizeEventArgs e)

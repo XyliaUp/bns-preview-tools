@@ -1,10 +1,12 @@
-﻿using System;
-using System.Numerics;
+﻿using System.Numerics;
+
 using CUE4Parse.UE4.Objects.Core.Math;
-using FModel.Settings;
+
 using ImGuiNET;
+
 using OpenTK.Windowing.GraphicsLibraryFramework;
-using Keys = OpenTK.Windowing.GraphicsLibraryFramework.Keys;
+
+using Xylia.Preview.UI.ViewModels;
 
 namespace FModel.Views.Snooper;
 

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table name="slatestone" version="1.0" autokey="false" module="6" maxid="32000">
+  <el name="table" child="1" />
+  <el name="record">
+    <attribute name="id" type="Int16" key="y" required="y" min="1" max="32000" />
+    <attribute name="alias" type="String" required="y" max="70" />
+    <attribute name="name" type="Ref" ref="text" required="y" />
+    <attribute name="group" type="Int16" default="0" />
+    <attribute name="grade" type="Int8" default="0" />
+    <attribute name="unk-" type="Int8" default="0" />
+    <attribute name="modify-ability" type="Seq" seq="attach-ability" default="none" repeat="4" />
+    <attribute name="init-ability-value" type="Int32" default="0" repeat="4" />
+    <attribute name="unit-ability-value" type="Int32" default="0" repeat="4" />
+    <attribute name="max-ability-value" type="Int32" default="0" repeat="4" />
+    <attribute name="icon" type="Icon" max="32767" />
+    <attribute name="icon-case" type="Icon" max="32767" />
+  </el>
+</table>

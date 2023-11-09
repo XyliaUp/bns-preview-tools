@@ -1,74 +1,83 @@
-﻿using Xylia.Extension;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 
-using static Xylia.Configure.Ini;
+using CUE4Parse.BNS;
+
+using Xylia.Configure;
+using Xylia.Extension;
 
 namespace Xylia.Preview.Properties;
-public static class Settings
+public class Settings : INotifyPropertyChanged
 {
-	const string SEC = "Preview";
+	internal static Settings Default => new();
 
-	public static LoadMode LoadMode
+	#region PropertyChange
+	public event PropertyChangedEventHandler PropertyChanged;
+
+	protected virtual bool SetProperty<T>(ref T storage, T value, [CallerMemberName] string propertyName = null)
 	{
-		get => (LoadMode)ReadValue(SEC, "load-mode").ToInt32();
-		set => WriteValue(SEC, "load-mode", (int)value);
+		if (EqualityComparer<T>.Default.Equals(storage, value))
+			return false;
+
+		storage = value;
+		PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+		return true;
 	}
 
-	public static DumpMode TestMode
+
+	protected static string GetValue(string section = "Common", [CallerMemberName] string Name = null)
 	{
-		get => (DumpMode)ReadValue(SEC, "test-mode").ToInt32();
-		set => WriteValue(SEC, "test-mode", (int)value);
+		if (Name.Contains('_'))
+		{
+			var split = Name.Split('_', 2);
+			section = split[0]; Name = split[1];
+		}
+
+		return Ini.Instance.ReadValue(section, Name);
 	}
-}
+
+	protected void SetValue(object value, string section = "Common", [CallerMemberName] string Name = null)
+	{
+		if (Name.Contains('_'))
+		{
+			var split = Name.Split('_', 2);
+			section = split[0]; Name = split[1];
+		}
+
+		Ini.Instance.WriteValue(section, Name, value);
+		PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(Name));
+	}
+	#endregion
+
+	#region Common
+	public string GameFolder
+	{
+		get => GetValue();
+		set
+		{
+			if (!Directory.Exists(value)) return;
+
+			SetValue(value);
+		}
+	}
+
+	public string OutputFolder
+	{
+		get => GetValue();
+		set
+		{
+			if (!Directory.Exists(value)) return;
+
+			SetValue(value);
+			OutputFolder_Resource ??= value + "\\Paks";
+		}
+	}
+
+	public string OutputFolder_Resource { get => GetValue(); set => SetValue(value); }
 
 
+	public LoadMode LoadMode { get => (LoadMode)GetValue().ToInt32(); set => SetValue((int)value); }
 
-[Flags]
-public enum LoadMode
-{
-	Default = 0x0000,
-	LoadOnInit = 0x0001,
-}
-
-public enum DumpMode
-{
-	None,
-	Used,
-	Full,
-}
-
-
-
-
-[Flags]
-public enum Moudle
-{
-	Client = 4, //??
-
-	LocalizationData = 6,
-
-	AbnormalMoveAnim = 12,
-
-	CombatData = 14,
-
-	CraftRecipe = 38,     
-
-	ArenaPortal = 70,
-
-	Achievement = 262,
-
-	DifficultyType = 326,
-
-	Campfire = 526,
-
-	ContextScript = 2052,
-
-	DuelBotTrainingRoom = 2054,
-
-	Skill = 2062,  //5
-
-	Effect = 2318,
-
-	BoardGacha = 8198,
-
-	Item = 11534,
+	public bool UseUserDefinition { get => GetValue().ToBool(); set => SetValue(value); }
+	#endregion
 }

@@ -1,2 +1,1 @@
-cd WinForm
-dotnet publish -c Release -p:PublishProfile="\Properties\PublishProfiles\default.pubxml"
+dotnet publish -c Release -p:PublishProfile="/Properties/PublishProfiles/FolderProfile.pubxml" Preview.UI

@@ -1,0 +1,1207 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table name="quest" version="6.0" autokey="false" module="262" maxid="32001">
+	<el name="table" child="1" />
+	<el name="quest" child="acquisition, mission-step, completion, transit , giveup-loss" >
+		<attribute name="id" type="Int16" key="y" required="y" min="1" max="32001" />
+		<attribute name="alias" type="String" required="y" max="70" />
+		<attribute name="max-repeat" type="Int8" default="1" min="-1" max="100" />
+		<attribute name="name" type="String" deprecated="y" max="50" />
+		<attribute name="name2" type="Ref" ref="text" />
+		<attribute name="district" type="Ref" ref="district" repeat="2" deprecated="y" />
+		<attribute name="map-group-1" type="Ref" ref="map-group-1" repeat="2" />
+		<attribute name="group" type="String" deprecated="y" max="50" />
+		<attribute name="group2" type="Ref" ref="text" />
+		<attribute name="desc" type="Ref" ref="text" />
+		<attribute name="completed-desc" type="Ref" ref="text" />
+		<attribute name="category" type="Seq" required="y">
+			<case name="epic" />
+			<case name="normal" />
+			<case name="job" />
+			<case name="dungeon" />
+			<case name="attraction" />
+			<case name="tendency-simple" />
+			<case name="tendency-tendency" />
+			<case name="mentoring" />
+			<case name="hunting" />
+		</attribute>
+		<attribute name="completed-list" type="Bool" />
+		<attribute name="grade" type="Seq">
+			<case name="1" default="y" />
+			<case name="2" />
+			<case name="3" />
+			<case name="4" />
+			<case name="5" />
+			<case name="6" />
+			<case name="7" />
+			<case name="8" />
+			<case name="9" />
+			<case name="10" />
+			<case name="11" />
+			<case name="12" />
+			<case name="13" />
+			<case name="14" />
+			<case name="15" />
+			<case name="16" />
+			<case name="17" />
+			<case name="18" />
+			<case name="19" />
+			<case name="20" />
+			<case name="21" />
+			<case name="22" />
+			<case name="23" />
+			<case name="24" />
+			<case name="25" />
+			<case name="26" />
+			<case name="27" />
+		</attribute>
+		<attribute name="tutorial" type="Bool" default="false" />
+		<attribute name="show-tutorial-tag" type="Bool" default="false" />
+		<attribute name="last-mission-step" type="Int8" hidden="y" />
+		<attribute name="effect-exist" type="Bool" hidden="y" />
+		<attribute name="day-of-week" type="Seq">
+			<case name="none" default="y" />
+			<case name="daily" />
+			<case name="weekly" />
+			<case name="monthly" />
+			<case name="mon" />
+			<case name="tue" />
+			<case name="wed" />
+			<case name="the" />
+			<case name="fri" />
+			<case name="sat" />
+			<case name="sun" />
+			<case name="sat-sun" />
+			<case name="fri-sat-sun" />
+		</attribute>
+		<attribute name="reset-type" type="Seq">
+			<case name="none" default="y" />
+			<case name="daily" />
+			<case name="weekly" />
+			<case name="monthly" />
+		</attribute>
+		<attribute name="reset-by-acquire-time" type="Seq">
+			<case name="none" default="y" />
+			<case name="daily" />
+			<case name="weekly" />
+		</attribute>
+		<attribute name="reset-day-of-week" type="Seq" hidden="y">
+			<case name="sun" default="y" />
+			<case name="mon" />
+			<case name="tue" />
+			<case name="wed" />
+			<case name="thu" />
+			<case name="fri" />
+			<case name="sat" />
+		</attribute>
+		<attribute name="reset-day-of-month" type="Int8" default="1" hidden="y" min="1" max="28" />
+		<attribute name="activated-faction" type="Ref" ref="faction" deprecated="y" />
+		<attribute name="main-faction" type="Ref" ref="faction" />
+		<attribute name="production" type="Seq" seq="production-type" default="none" />
+		<attribute name="save-type" type="Seq">
+			<case name="all" default="y" />
+			<case name="except-completion" />
+			<case name="nothing" />
+			<case name="except-completion-and-logout-save" />
+		</attribute>
+		<attribute name="invoke-fx-msg" type="Bool" />
+		<attribute name="dungeon" type="Ref" ref="dungeon" />
+		<attribute name="dungeon-type" type="Seq" hidden="y">
+			<case name="unbind" default="y" />
+			<case name="bind" />
+		</attribute>
+		<attribute name="craft-type" type="Seq" deprecated="y">
+			<case name="none" default="y" />
+			<case name="gather" />
+			<case name="production" />
+		</attribute>
+		<attribute name="content-type" type="Seq">
+			<case name="none" default="y" />
+			<case name="gather" />
+			<case name="production" />
+			<case name="pvp-reward" />
+			<case name="festival" />
+			<case name="elite-skill" />
+			<case name="duel" />
+			<case name="party-battle" />
+			<case name="special" />
+			<case name="side-episode" />
+		</attribute>
+		<attribute name="retired" type="Bool" />
+		<attribute name="progress-difficulty-type" type="Bool" default="y" repeat="3" />
+		<attribute name="progress-difficulty-type-always" type="Bool" hidden="y" />
+		<attribute name="attraction" type="TRef" repeat="4" />
+		<attribute name="attraction-info" type="TRef" />
+		<attribute name="reset-enable" type="Bool" default="false" />
+		<attribute name="reset-money" type="Int32" default="0" min="0" />
+		<attribute name="reset-item" type="Ref" ref="item" repeat="4" />
+		<attribute name="reset-item-count" type="Int8" default="0" repeat="4" min="0" />
+		<attribute name="acquire-talksocial" type="Ref" ref="talksocial" />
+		<attribute name="acquire-talksocial-delay" type="Float32" default="0.0" />
+		<attribute name="complete-talksocial" type="Ref" ref="talksocial" />
+		<attribute name="complete-talksocial-delay" type="Float32" default="0.0" />
+		<attribute name="check-vitality" type="Bool" default="y" hidden="y" />
+		<attribute name="valid-date-start-year" type="Int16" default="0" min="0" />
+		<attribute name="valid-date-start-month" type="Int8" default="0" min="0" max="12" />
+		<attribute name="valid-date-start-day" type="Int8" default="0" min="0" max="31" />
+		<attribute name="valid-date-end-year" type="Int16" default="0" min="0" />
+		<attribute name="valid-date-end-month" type="Int8" default="0" min="0" max="12" />
+		<attribute name="valid-date-end-day" type="Int8" default="0" min="0" max="31" />
+		<attribute name="valid-time-start-hour" type="Int8" default="-1" min="-1" max="23" />
+		<attribute name="valid-time-end-hour" type="Int8" default="-1" min="-1" max="24" />
+		<attribute name="valid-dayofweek-sun" type="Bool" />
+		<attribute name="valid-dayofweek-mon" type="Bool" />
+		<attribute name="valid-dayofweek-tue" type="Bool" />
+		<attribute name="valid-dayofweek-wed" type="Bool" />
+		<attribute name="valid-dayofweek-thu" type="Bool" />
+		<attribute name="valid-dayofweek-fri" type="Bool" />
+		<attribute name="valid-dayofweek-sat" type="Bool" />
+		<attribute name="replay-epic-original" type="Ref" ref="quest" deprecated="y" />
+		<attribute name="replay-epic-start-point" type="Bool" />
+		<attribute name="replay-epic-pcspawn" type="Ref" ref="zonepcspawn" />
+		<attribute name="dungeon2" type="Ref" ref="dungeon" hidden="y" />
+		<attribute name="duel-mission-steps" type="Int8" default="0" repeat="16" hidden="y" min="0" max="16" />
+		<attribute name="duel-missions" type="Int8" default="0" repeat="16" hidden="y" min="0" max="16" />
+		<attribute name="duel-cases" type="Int8" default="0" repeat="16" hidden="y" min="0" />
+		<attribute name="duel-case-subtypes" type="Int16" repeat="16" hidden="y" />
+		<attribute name="exceed-level-next-level" type="Int8" default="0" hidden="y" />
+		<attribute name="contents-reset" type="Ref" ref="contents-reset" hidden="y" />
+		<!-- <attribute name="cinema-check" type="Bool" />
+	    <attribute name="replay-check" type="Bool" /> -->
+	</el>
+	<el name="filter">
+		<attribute name="id" type="Int64" key="y" required="y" />
+		<attribute name="alias" type="String" required="y" max="70" />
+		<attribute name="subject" type="Script_obj" />
+		<attribute name="target" type="Script_obj" />
+		<attribute name="subject2" type="Script_obj" />
+		<attribute name="target2" type="Script_obj" />
+		<sub name="race">
+			<attribute name="value" type="Prop_seq" seq="race" default="race-none" repeat="4" />
+			<attribute name="either" type="Bool" default="y" />
+		</sub>
+		<sub name="sex">
+			<attribute name="value" type="Prop_seq" seq="sex" default="sex-none" repeat="4" />
+			<attribute name="either" type="Bool" default="y" />
+		</sub>
+		<sub name="job">
+			<attribute name="value" type="Prop_seq" seq="job" default="job-none" repeat="4" />
+			<attribute name="either" type="Bool" default="y" />
+		</sub>
+		<sub name="job-style">
+			<attribute name="count" type="Int8" default="1" min="1" max="4" />
+			<attribute name="job" type="Prop_seq" seq="job" default="job-none" repeat="4" />
+			<attribute name="job-style" type="Seq" seq="job-style" default="base-1" repeat="4" />
+			<attribute name="either" type="Bool" default="y" />
+		</sub>
+		<sub name="stance">
+			<attribute name="value" type="Prop_seq" seq="stance" default="stance-none" repeat="4" />
+			<attribute name="either" type="Bool" default="y" />
+		</sub>
+		<sub name="prop">
+			<attribute name="field" type="Prop_field" seq="creature_field" required="y" />
+			<attribute name="op" type="Seq" seq="op2" required="y" />
+			<attribute name="value" type="Int64" required="y" />
+		</sub>
+		<sub name="prop-percent">
+			<attribute name="field" type="Prop_field" seq="creature_field" required="y" />
+			<attribute name="op" type="Seq" seq="op2" required="y" />
+			<attribute name="value" type="Int8" required="y" min="0" max="100" />
+		</sub>
+		<sub name="prop-flag">
+			<attribute name="field" type="Prop_field" seq="creature_field" required="y" />
+			<attribute name="flag" type="Bool" required="y" />
+		</sub>
+		<sub name="effect-flag">
+			<attribute name="flagtype" type="Seq16" seq="flag" required="y" />
+			<attribute name="flag" type="Bool" required="y" />
+		</sub>
+		<sub name="faction">
+			<attribute name="value" type="Ref" ref="faction" required="y" />
+		</sub>
+		<sub name="active-faction">
+			<attribute name="value" type="Ref" ref="faction" required="y" />
+		</sub>
+		<sub name="deactivated-faction" />
+		<sub name="faction-reputation">
+			<attribute name="op" type="Seq" seq="op2" required="y" />
+			<attribute name="value" type="Int16" required="y" />
+		</sub>
+		<sub name="faction-level">
+			<attribute name="op" type="Seq" seq="op2" required="y" />
+			<attribute name="value" type="Int16" required="y" />
+		</sub>
+		<sub name="effect-attribute">
+			<attribute name="value" type="Seq16" seq="effect-attribute" default="none" repeat="4" />
+			<attribute name="either" type="Bool" default="y" />
+		</sub>
+		<sub name="pc" />
+		<sub name="weapon-type">
+			<attribute name="weapon-type" type="Seq" seq="weapon-type" default="none" repeat="4" />
+			<attribute name="either" type="Bool" default="y" />
+		</sub>
+		<sub name="party-leader" />
+		<sub name="party-member" />
+		<sub name="inventory">
+			<attribute name="item" type="Ref" ref="item" required="y" />
+			<attribute name="amount" type="Int8" default="1" min="1" max="100" />
+		</sub>
+		<sub name="field-item">
+			<attribute name="field-item" type="Ref" ref="fielditem" required="y" />
+		</sub>
+		<sub name="npc" />
+		<sub name="not-npc" />
+		<sub name="npc-id">
+			<attribute name="value" type="Ref" ref="npc" required="y" />
+		</sub>
+		<sub name="npc-convoy">
+			<attribute name="convoy" type="Bool" required="y" />
+		</sub>
+		<sub name="env" />
+		<sub name="env-id">
+			<attribute name="env2spawn" type="Ref" ref="zoneenv2spawn" required="y" />
+		</sub>
+		<sub name="env-state">
+			<attribute name="env2-state" type="Seq" seq="env-state" required="y" />
+		</sub>
+		<sub name="env-prestate">
+			<attribute name="env2-state" type="Seq" seq="env-state" required="y" />
+		</sub>
+		<sub name="env-hp-percent">
+			<attribute name="op" type="Seq" seq="op2" required="y" />
+			<attribute name="value" type="Int8" required="y" min="0" max="100" />
+		</sub>
+		<sub name="skill">
+			<attribute name="value" type="Ref" ref="skill" required="y" />
+		</sub>
+		<sub name="skill-id">
+			<attribute name="value" type="Ref" ref="skill" required="y" />
+		</sub>
+		<sub name="skill3">
+			<attribute name="value" type="Ref" ref="skill3" required="y" />
+		</sub>
+		<sub name="skill3-id">
+			<attribute name="value" type="Ref" ref="skill3" required="y" />
+		</sub>
+		<sub name="effect-id">
+			<attribute name="value" type="Ref" ref="effect" required="y" />
+		</sub>
+		<sub name="effect-stack-count">
+			<attribute name="effect-type" type="Sub" ref="Effect" required="y" />
+			<attribute name="effect-slot" type="Seq" required="y">
+				<case name="all" />
+				<case name="buff" />
+				<case name="debuff" />
+			</attribute>
+			<attribute name="term-op" type="Seq">
+				<case name="none" default="y" />
+				<case name="and" />
+				<case name="or" />
+			</attribute>
+			<attribute name="op" type="Seq" seq="op2" default="eq" repeat="2" />
+			<attribute name="value" type="Int64" default="0" repeat="2" />
+		</sub>
+		<sub name="quest-complete">
+			<attribute name="quest" type="Ref" ref="quest" required="y" />
+			<attribute name="mission-step" type="Int8" default="0" min="0" max="16" />
+			<attribute name="count" type="Int16" default="1" min="0" max="100" />
+			<attribute name="count-op" type="Seq" seq="op2" default="ge" />
+		</sub>
+		<sub name="quest-not-complete">
+			<attribute name="quest" type="Ref" ref="quest" required="y" />
+		</sub>
+		<sub name="act-sequence" />
+		<sub name="summoned" />
+		<sub name="not-summoned" />
+		<sub name="link-laser-terminate-reason" />
+		<sub name="content-quota-charge">
+			<attribute name="content-quota" type="Ref" ref="content-quota" required="y" />
+			<attribute name="op" type="Seq" seq="op2" required="y" />
+			<attribute name="charge-value" type="Int64" required="y" />
+		</sub>
+		<sub name="cinematic">
+			<attribute name="value" type="Ref" ref="cinematic" required="y" />
+		</sub>
+	</el>
+	<el name="filter-set" child="filter">
+		<attribute name="name" type="String" default="noname" max="15" />
+	</el>
+	<el name="reaction-set">
+		<attribute name="probability" type="Int8" default="100" min="0" max="100" />
+		<attribute name="name" type="String" default="noname" max="15" />
+	</el>
+	<el name="acquisition-loss">
+		<attribute name="faction" type="Ref" ref="faction" />
+		<attribute name="job" type="Prop_seq" seq="job" default="job-none" repeat="15" />
+		<attribute name="sex" type="Prop_seq" seq="sex" default="sex-none" repeat="4" />
+		<attribute name="race" type="Prop_seq" seq="race" default="race-none" repeat="4" />
+		<attribute name="money" type="Int32" default="0" />
+		<attribute name="item" type="Ref" ref="item" repeat="2" />
+		<attribute name="item-count" type="Int8" default="0" repeat="2" />
+	</el>
+	<el name="acquisition" child="case, tutorial-case, basic-reward, optional-reward, fixed-reward, acquisition-loss" >
+		<attribute name="npc" type="Ref" ref="npc" deprecated="y" />
+		<attribute name="msg" type="Ref" ref="npctalkmessage" deprecated="y" />
+		<attribute name="name2" type="Ref" ref="text" />
+		<attribute name="level" type="Int8" default="1" min="1" />
+		<attribute name="mastery-level" type="Int8" default="0" min="0" max="50" />
+		<attribute name="mastery-level-open-state" type="Seq">
+			<case name="dont-care" default="y" />
+			<case name="close" />
+			<case name="open" />
+		</attribute>
+		<attribute name="recommended-level" type="Int8" default="1" min="1" />
+		<attribute name="preceding-quest" type="Ref" ref="quest" repeat="15" />
+		<attribute name="preceding-quest-retired" type="Ref" ref="quest" repeat="15" />
+		<attribute name="preceding-quest-mission-step" type="Int8" default="0" repeat="15" min="0" max="16" />
+		<attribute name="preceding-quest-count" type="Int8" default="1" repeat="15" min="0" max="100" />
+		<attribute name="preceding-quest-check" type="Seq" seq="check" default="and" />
+		<attribute name="faction" type="Ref" ref="faction" deprecated="y" />
+		<attribute name="job" type="Prop_seq" seq="job" default="job-none" repeat="15" />
+		<attribute name="sort-no" type="Int16" default="0" />
+		<attribute name="production-id" type="Seq" seq="production-type" default="none" />
+		<attribute name="production-exp" type="Int16" default="0" min="0" />
+		<attribute name="faction-level" type="Int16" default="0" min="0" />
+		<attribute name="faction-level-max" type="Int16" default="0" min="0" />
+		<attribute name="valid-dayofweek-start-day" type="Seq" repeat="7">
+			<case name="none" default="y" />
+			<case name="mon" />
+			<case name="tue" />
+			<case name="wed" />
+			<case name="thu" />
+			<case name="fri" />
+			<case name="sat" />
+			<case name="sun" />
+		</attribute>
+		<attribute name="valid-dayofweek-start-hour" type="Int8" default="-1" repeat="7" min="-1" max="23" />
+		<attribute name="valid-dayofweek-end-day" type="Seq" repeat="7">
+			<case name="none" default="y" />
+			<case name="mon" />
+			<case name="tue" />
+			<case name="wed" />
+			<case name="thu" />
+			<case name="fri" />
+			<case name="sat" />
+			<case name="sun" />
+		</attribute>
+		<attribute name="valid-dayofweek-end-hour" type="Int8" default="-1" repeat="7" min="-1" max="23" />
+		<attribute name="reward" type="Ref" ref="questreward" repeat="3" />
+		<attribute name="check-tencent-vitality" type="Bool" default="y" deprecated="y" />
+		<attribute name="talk-to-self-guide-msg" type="Ref" ref="game-message" />
+	</el>
+	<el name="mission-step" child="mission, mission-step-success, mission-step-fail">
+		<attribute name="id" type="Int8" required="y" min="1" max="16" />
+		<attribute name="completion-type" type="Seq" seq="check" default="and" />
+		<attribute name="mission-mask" type="Int16" hidden="y" deprecated="y" />
+		<attribute name="mission-list" type="Int8" default="0" repeat="16" hidden="y" />
+		<attribute name="mission-map-type" type="Seq">
+			<case name="location" />
+			<case name="mapunit" default="y" />
+		</attribute>
+		<attribute name="map" type="Ref" ref="mapinfo" />
+		<attribute name="location-x" type="Float32" default="0.0" />
+		<attribute name="location-y" type="Float32" default="0.0" />
+		<attribute name="location-z" type="Float32" default="0.0" />
+		<attribute name="use-auto-navigation" type="Bool" />
+		<attribute name="enable-navigation" type="Bool" default="y" />
+		<attribute name="map-zoom-rate" type="Seq">
+			<case name="none" default="y" />
+			<case name="min" />
+			<case name="max" />
+		</attribute>
+		<attribute name="desc" type="Ref" ref="text" />
+		<attribute name="guide-message" type="Ref" ref="text" />
+		<attribute name="guide-message-zone" type="Ref" ref="zone" repeat="2" />
+		<attribute name="guide-message-category" type="Seq">
+			<case name="guide" default="y" />
+			<case name="situation" />
+		</attribute>
+		<attribute name="effect" type="Ref" ref="effect" />
+		<attribute name="time-limit-type" type="Seq">
+			<case name="none" default="y" />
+			<case name="until" />
+		</attribute>
+		<attribute name="time-limit" type="Int32" default="0" min="0" />
+		<attribute name="hide" type="Bool" />
+		<attribute name="progress-talksocial" type="Ref" ref="talksocial" />
+		<attribute name="progress-talksocial-delay" type="Float32" default="0.0" />
+		<attribute name="retired" type="Bool" />
+		<attribute name="skip-dest-mission-step" type="Int8" default="0" min="0" max="16" />
+		<attribute name="giveup-zone" type="Ref" ref="zone" repeat="3" />
+		<attribute name="giveup-warp-to-pcspawn" type="Ref" ref="zonepcspawn" />
+	</el>
+	<el name="case" child="filter-set, reaction-set">
+		<attribute name="prob" type="Int8" default="100" min="0" max="100" />
+		<attribute name="mapunit" type="Ref" ref="mapunit" repeat="10" />
+		<attribute name="range-min" type="Int16" default="-1" min="-1" max="10000" />
+		<attribute name="range-max" type="Int16" default="-1" min="-1" max="10000" />
+		<attribute name="progress-mission" type="Seq">
+			<case name="y" />
+			<case name="reaction-only" />
+			<case name="n" default="y" />
+		</attribute>
+		<attribute name="progress-value" type="Int8" default="1" min="1" max="100" />
+		<attribute name="acquire-quest" type="Bool" />
+		<attribute name="gadget-required" type="Seq">
+			<case name="dont-care" default="y" />
+			<case name="carry-and-remove" />
+			<case name="carry" />
+			<case name="empty" />
+			<case name="not-A" />
+		</attribute>
+		<attribute name="gadget" type="Ref" ref="fielditem" />
+		<attribute name="unload-map-navigation-object" type="TRef" />
+		<attribute name="valid-zone" type="Ref" ref="zone" repeat="2" />
+		<attribute name="completion-count" type="Int8" default="0" min="0" max="100" />
+		<attribute name="completion-count-op" type="Seq" seq="op2" default="ge" />
+		<attribute name="indicator" type="Seq16">
+			<case name="default" default="y" />
+			<case name="quest-epic-can-complete" />
+			<case name="quest-epic-can-acquire" />
+			<case name="quest-epic-can-progress" />
+			<case name="quest-epic-next-acquire" />
+			<case name="quest-epic-completed" />
+			<case name="quest-job-can-complete" />
+			<case name="quest-job-can-acquire" />
+			<case name="quest-job-can-progress" />
+			<case name="quest-job-next-acquire" />
+			<case name="quest-job-completed" />
+			<case name="quest-normal-can-complete" />
+			<case name="quest-normal-can-acquire" />
+			<case name="quest-normal-can-progress" />
+			<case name="quest-normal-next-acquire" />
+			<case name="quest-normal-completed" />
+			<case name="quest-faction-can-complete" />
+			<case name="quest-faction-can-acquire" />
+			<case name="quest-faction-can-progress" />
+			<case name="quest-faction-next-acquire" />
+			<case name="quest-faction-not-progress" />
+			<case name="quest-faction-completed" />
+			<case name="quest-festival-can-complete" />
+			<case name="quest-festival-can-acquire" />
+			<case name="quest-festival-can-progress" />
+			<case name="quest-festival-next-acquire" />
+			<case name="quest-festival-completed" />
+			<case name="quest-special-can-complete" />
+			<case name="quest-special-can-acquire" />
+			<case name="quest-special-can-progress" />
+			<case name="quest-special-next-acquire" />
+			<case name="quest-special-completed" />
+			<case name="quest-side-episode-can-complete" />
+			<case name="quest-side-episode-can-acquire" />
+			<case name="quest-side-episode-can-progress" />
+			<case name="quest-side-episode-next-acquire" />
+			<case name="quest-side-episode-completed" />
+			<case name="quest-challenge-today-can-complete" />
+			<case name="quest-challenge-today-can-acquire" />
+			<case name="quest-challenge-today-can-progress" />
+			<case name="quest-challenge-today-next-acquire" />
+			<case name="quest-challenge-today-completed" />
+			<case name="quest-normal-repeat-can-complete" />
+			<case name="quest-normal-repeat-can-acquire" />
+			<case name="quest-normal-repeat-can-progress" />
+			<case name="quest-normal-repeat-next-acquire" />
+			<case name="quest-normal-repeat-completed" />
+			<case name="quest-faction-repeat-can-complete" />
+			<case name="quest-faction-repeat-can-acquire" />
+			<case name="quest-faction-repeat-can-progress" />
+			<case name="quest-faction-repeat-next-acquire" />
+			<case name="quest-faction-repeat-not-progress" />
+			<case name="quest-faction-repeat-completed" />
+			<case name="quest-festival-repeat-can-complete" />
+			<case name="quest-festival-repeat-can-acquire" />
+			<case name="quest-festival-repeat-can-progress" />
+			<case name="quest-festival-repeat-next-acquire" />
+			<case name="quest-festival-repeat-completed" />
+			<case name="quest-side-episode-repeat-can-complete" />
+			<case name="quest-side-episode-repeat-can-acquire" />
+			<case name="quest-side-episode-repeat-can-progress" />
+			<case name="quest-side-episode-repeat-next-acquire" />
+			<case name="quest-side-episode-repeat-completed" />
+			<case name="quest-normal-dayofweek-can-complete" />
+			<case name="quest-normal-dayofweek-can-acquire" />
+			<case name="quest-normal-dayofweek-can-progress" />
+			<case name="quest-normal-dayofweek-next-acquire" />
+			<case name="quest-normal-dayofweek-completed" />
+			<case name="quest-faction-dayofweek-can-complete" />
+			<case name="quest-faction-dayofweek-can-acquire" />
+			<case name="quest-faction-dayofweek-can-progress" />
+			<case name="quest-faction-dayofweek-next-acquire" />
+			<case name="quest-faction-dayofweek-not-progress" />
+			<case name="quest-faction-dayofweek-completed" />
+			<case name="quest-festival-dayofweek-can-complete" />
+			<case name="quest-festival-dayofweek-can-acquire" />
+			<case name="quest-festival-dayofweek-can-progress" />
+			<case name="quest-festival-dayofweek-next-acquire" />
+			<case name="quest-festival-dayofweek-completed" />
+			<case name="quest-side-episode-dayofweek-can-complete" />
+			<case name="quest-side-episode-dayofweek-can-acquire" />
+			<case name="quest-side-episode-dayofweek-can-progress" />
+			<case name="quest-side-episode-dayofweek-next-acquire" />
+			<case name="quest-side-episode-dayofweek-completed" />
+			<case name="quest-attraction-can-complete" />
+			<case name="quest-attraction-can-acquire" />
+			<case name="quest-attraction-can-progress" />
+			<case name="quest-attraction-next-acquire" />
+			<case name="quest-attraction-not-progress" />
+			<case name="quest-attraction-completed" />
+			<case name="quest-retired" />
+			<case name="convoy" />
+			<case name="mark-1" />
+			<case name="mark-2" />
+			<case name="mark-3" />
+			<case name="mark-4" />
+			<case name="mark-5" />
+			<case name="mark-6" />
+			<case name="mark-7" />
+			<case name="mark-8" />
+			<case name="mark-timer-0" />
+			<case name="mark-timer-1" />
+			<case name="mark-timer-2" />
+			<case name="mark-timer-3" />
+			<case name="mark-timer-4" />
+			<case name="mark-timer-5" />
+			<case name="mark-timer-6" />
+			<case name="mark-timer-7" />
+			<case name="mark-timer-8" />
+			<case name="mark-timer-9" />
+			<case name="mark-timer-10" />
+			<case name="guild-mark-1" />
+			<case name="guild-mark-2" />
+			<case name="guild-mark-3" />
+			<case name="guild-mark-4" />
+			<case name="guild-mark-5" />
+			<case name="axe" />
+			<case name="coin" />
+			<case name="quest-gadget-drop" />
+			<case name="quest-gadget-required" />
+			<case name="quest-board-start" />
+			<case name="quest-vsboard-start" />
+			<case name="quest-vsboard-end" />
+			<case name="quest-vsboard-repeat-start" />
+			<case name="quest-factionboard-start" />
+			<case name="quest-factionboard-end" />
+			<case name="quest-factionboard-repeat-start" />
+			<case name="attack-epic-kill" />
+			<case name="attack-epic-kill-gadget" />
+			<case name="attack-job-kill" />
+			<case name="attack-job-kill-gadget" />
+			<case name="attack-normal-kill" />
+			<case name="attack-normal-kill-gadget" />
+			<case name="attack-faction-kill" />
+			<case name="attack-faction-kill-gadget" />
+			<case name="attack-festival-kill" />
+			<case name="attack-festival-kill-gadget" />
+			<case name="quest-simple-1" />
+			<case name="quest-simple-2" />
+			<case name="quest-simple-3" />
+			<case name="quest-simple-4" />
+			<case name="quest-simple-5" />
+			<case name="quest-tendency-1" />
+			<case name="quest-tendency-2" />
+			<case name="quest-tendency-3" />
+			<case name="quest-faction-challenge-today-can-complete" />
+			<case name="quest-faction-challenge-today-can-acquire" />
+			<case name="quest-faction-challenge-today-can-progress" />
+			<case name="quest-faction-challenge-today-next-acquire" />
+			<case name="quest-faction-challenge-today-not-progress" />
+			<case name="quest-faction-challenge-today-completed" />
+			<case name="quest-mentoring-can-complete" />
+			<case name="quest-mentoring-can-acquire" />
+			<case name="quest-mentoring-can-progress" />
+			<case name="quest-mentoring-completed" />
+			<case name="quest-bind-challenge-today-completed" />
+			<case name="quest-bind-duel-challenge-today-completed" />
+			<case name="quest-bind-festival-challenge-today-completed" />
+			<case name="quest-bind-normal-completed" />
+			<case name="quest-bind-duel-normal-completed" />
+			<case name="quest-bind-festival-normal-completed" />
+			<case name="quest-hunting-can-complete" />
+			<case name="quest-hunting-can-acquire" />
+			<case name="quest-hunting-can-progress" />
+			<case name="quest-hunting-next-acquire" />
+			<case name="quest-hunting-completed" />
+			<case name="quest-hunting-repeat-can-complete" />
+			<case name="quest-hunting-repeat-can-acquire" />
+			<case name="quest-hunting-repeat-can-progress" />
+			<case name="quest-hunting-repeat-next-acquire" />
+			<case name="quest-hunting-repeat-completed" />
+		</attribute>
+		<attribute name="show-in-tooltip" type="Bool" />
+		<attribute name="visible-object" type="Bool" deprecated="y" />
+		<attribute name="case-talksocial" type="Ref" ref="talksocial" />
+		<attribute name="case-talksocial-delay" type="Float32" default="0.0" />
+		<sub name="talk">
+			<attribute name="object" type="TRef" required="y" />
+			<attribute name="convoy-members" type="Int32" default="0" hidden="y" />
+			<attribute name="npc-response" type="Ref" ref="npcresponse" required="y" />
+			<attribute name="msg" type="Ref" ref="npctalkmessage" deprecated="y" />
+			<attribute name="start-msg" type="Ref" ref="npctalkmessage" deprecated="y" />
+			<attribute name="indicator-social" type="Ref" ref="indicator-social" deprecated="y" />
+			<attribute name="indicator-idle" type="Ref" ref="indicator-idle" deprecated="y" />
+			<attribute name="button-text-accept" type="Ref" ref="text" />
+			<attribute name="button-text-cancel" type="Ref" ref="text" />
+			<attribute name="grocery" type="Ref" ref="item" />
+			<attribute name="grocery-count" type="Int16" default="1" min="1" max="1000" />
+			<attribute name="remove-grocery" type="Bool" default="y" />
+			<attribute name="faction-killed-count-min" type="Int8" default="0" min="0" max="100" />
+			<attribute name="faction-killed-count-max" type="Int8" default="0" min="0" max="100" />
+			<attribute name="duel-type" type="Seq">
+				<case name="none" default="y" />
+				<case name="death-match-1vs1" />
+				<case name="tag-match-3vs3" />
+			</attribute>
+			<attribute name="arena-matching-rule-detail" type="Seq">
+				<case name="none" default="y" />
+				<case name="normal" />
+				<case name="guild combat" />
+				<case name="sparring" />
+				<case name="unrated match" />
+				<case name="championship" />
+				<case name="ingame championship" />
+				<case name="random party battle field match" />
+				<case name="battle royal field party mode" />
+				<case name="battle royal field championship" />
+				<case name="battle royal field party mode championship" />
+			</attribute>
+			<attribute name="duel-straight-win" type="Int32" default="0" min="0" />
+			<attribute name="required-money" type="Int32" default="0" min="0" />
+			<attribute name="required-item-depot" type="Seq">
+				<case name="none" default="y" />
+				<case name="equip" />
+				<case name="equip-bag" />
+				<case name="bag" />
+			</attribute>
+			<attribute name="required-item" type="Ref" ref="item" repeat="4" />
+			<attribute name="required-item-count" type="Int16" default="1" repeat="4" min="1" />
+			<attribute name="required-item-loss" type="Bool" />
+			<attribute name="required-item-brand" type="Ref" ref="item-brand" repeat="2" />
+			<attribute name="required-equip-gem-set" type="Ref" ref="set-item" />
+			<attribute name="check-inventory-full" type="Bool" />
+			<attribute name="check-equiped-durability-below" type="Int8" default="-1" min="-1" max="100" />
+			<attribute name="check-exp-boost-normal-below" type="Int8" default="-1" min="-1" max="100" />
+		</sub>
+		<sub name="talk-to-item">
+			<attribute name="item" type="Ref" ref="item" required="y" />
+			<attribute name="npc-response" type="Ref" ref="npcresponse" deprecated="y" />
+			<attribute name="msg" type="Ref" ref="npctalkmessage" required="y" />
+			<attribute name="start-msg" type="Ref" ref="npctalkmessage" deprecated="y" />
+			<attribute name="indicator-social" type="Ref" ref="indicator-social" deprecated="y" />
+			<attribute name="indicator-idle" type="Ref" ref="indicator-idle" deprecated="y" />
+			<attribute name="button-text-accept" type="Ref" ref="text" />
+			<attribute name="button-text-cancel" type="Ref" ref="text" />
+			<attribute name="grocery" type="Ref" ref="item" />
+			<attribute name="grocery-count" type="Int16" default="1" min="1" max="1000" />
+			<attribute name="remove-grocery" type="Bool" default="y" />
+			<attribute name="required-money" type="Int32" default="0" min="0" />
+			<attribute name="required-item-depot" type="Seq">
+				<case name="none" default="y" />
+				<case name="equip" />
+				<case name="equip-bag" />
+				<case name="bag" />
+			</attribute>
+			<attribute name="required-item" type="Ref" ref="item" repeat="4" />
+			<attribute name="required-item-count" type="Int16" default="1" repeat="4" min="1" />
+			<attribute name="required-item-loss" type="Bool" />
+			<attribute name="required-item-brand" type="Ref" ref="item-brand" repeat="2" />
+			<attribute name="required-equip-gem-set" type="Ref" ref="set-item" />
+			<attribute name="check-inventory-full" type="Bool" />
+			<attribute name="check-equiped-durability-below" type="Int8" default="-1" min="-1" max="100" />
+			<attribute name="check-exp-boost-normal-below" type="Int8" default="-1" min="-1" max="100" />
+		</sub>
+		<sub name="talk-to-self">
+			<attribute name="item" type="Ref" ref="virtual-item" required="y" />
+			<attribute name="msg" type="Ref" ref="npctalkmessage" required="y" />
+			<attribute name="faction-killed-count-min" type="Int8" default="0" min="0" max="100" />
+			<attribute name="faction-killed-count-max" type="Int8" default="0" min="0" max="100" />
+			<attribute name="fee" type="Bool" />
+			<attribute name="required-money" type="Int32" default="0" min="0" />
+			<attribute name="required-item-depot" type="Seq">
+				<case name="none" default="y" />
+				<case name="equip" />
+				<case name="equip-bag" />
+				<case name="bag" />
+			</attribute>
+			<attribute name="required-item" type="Ref" ref="item" repeat="4" />
+			<attribute name="required-item-count" type="Int16" default="1" repeat="4" min="1" />
+			<attribute name="required-item-loss" type="Bool" />
+			<attribute name="required-item-brand" type="Ref" ref="item-brand" repeat="2" />
+			<attribute name="required-equip-gem-set" type="Ref" ref="set-item" />
+			<attribute name="check-inventory-full" type="Bool" />
+			<attribute name="check-equiped-durability-below" type="Int8" default="-1" min="-1" max="100" />
+			<attribute name="check-exp-boost-normal-below" type="Int8" default="-1" min="-1" max="100" />
+			<attribute name="required-jumping-character-state" type="Seq">
+				<case name="dont-care" default="y" />
+				<case name="none" />
+				<case name="trial" />
+				<case name="jumping" />
+			</attribute>
+		</sub>
+		<sub name="manipulate">
+			<attribute name="object2" type="TRef" />
+			<attribute name="multi-object" type="TRef" repeat="16" />
+			<attribute name="grocery" type="Ref" ref="item" />
+			<attribute name="grocery-count" type="Int16" default="1" min="1" max="1000" />
+			<attribute name="remove-grocery" type="Bool" default="y" />
+			<attribute name="env-looting" type="Ref" ref="virtual-item" />
+			<attribute name="faction-killed-count-min" type="Int8" default="0" min="0" max="100" />
+			<attribute name="faction-killed-count-max" type="Int8" default="0" min="0" max="100" />
+			<attribute name="join-faction2" type="Ref" ref="faction" />
+			<attribute name="transfer-faction2" type="Ref" ref="faction" />
+			<attribute name="required-money" type="Int32" default="0" min="0" />
+			<attribute name="required-item-depot" type="Seq">
+				<case name="none" default="y" />
+				<case name="equip" />
+				<case name="equip-bag" />
+				<case name="bag" />
+			</attribute>
+			<attribute name="required-item" type="Ref" ref="item" repeat="4" />
+			<attribute name="required-item-count" type="Int16" default="1" repeat="4" min="1" />
+			<attribute name="required-item-loss" type="Bool" />
+			<attribute name="convoy-members" type="Int32" default="0" hidden="y" />
+		</sub>
+		<sub name="npc-manipulate">
+			<attribute name="object" type="TRef" />
+			<attribute name="multi-object" type="TRef" repeat="16" />
+			<attribute name="npc-response" type="Ref" ref="npcresponse" />
+			<attribute name="grocery" type="Ref" ref="item" />
+			<attribute name="grocery-count" type="Int16" default="1" min="1" max="1000" />
+			<attribute name="remove-grocery" type="Bool" default="y" />
+			<attribute name="faction-killed-count-min" type="Int8" default="0" min="0" max="100" />
+			<attribute name="faction-killed-count-max" type="Int8" default="0" min="0" max="100" />
+			<attribute name="required-money" type="Int32" default="0" min="0" />
+			<attribute name="required-item-depot" type="Seq">
+				<case name="none" default="y" />
+				<case name="equip" />
+				<case name="equip-bag" />
+				<case name="bag" />
+			</attribute>
+			<attribute name="required-item" type="Ref" ref="item" repeat="4" />
+			<attribute name="required-item-count" type="Int16" default="1" repeat="4" min="1" />
+			<attribute name="required-item-loss" type="Bool" />
+			<attribute name="convoy-members" type="Int32" default="0" hidden="y" />
+		</sub>
+		<sub name="approach">
+			<attribute name="object" type="TRef" required="y" />
+			<attribute name="npc-response" type="Ref" ref="npcresponse" />
+			<attribute name="approach-social" type="Ref" ref="social" deprecated="y" />
+			<attribute name="indicator-social" type="Ref" ref="indicator-social" deprecated="y" />
+			<attribute name="indicator-idle" type="Ref" ref="indicator-idle" deprecated="y" />
+			<attribute name="approach-talk" type="Bool" />
+			<attribute name="grocery" type="Ref" ref="item" />
+			<attribute name="grocery-count" type="Int16" default="1" min="1" max="1000" />
+			<attribute name="remove-grocery" type="Bool" default="y" />
+		</sub>
+		<sub name="skill">
+			<attribute name="npc-response" type="Ref" ref="npcresponse" />
+			<attribute name="object2" type="TRef" repeat="16" />
+			<attribute name="skill" type="Ref" ref="skill" required="y" />
+			<attribute name="skill3" type="Ref" ref="skill3" required="y" />
+		</sub>
+		<sub name="loot">
+			<attribute name="object2" type="TRef" />
+			<attribute name="multi-object" type="TRef" repeat="16" />
+			<attribute name="looting" type="Ref" ref="virtual-item" required="y" />
+			<attribute name="quest-symbol-drop-prob" type="Int8" default="100" min="0" max="100" />
+			<attribute name="loot-item" type="Ref" ref="item" />
+		</sub>
+		<sub name="killed">
+			<attribute name="specify-object-type" type="Seq">
+				<case name="specific-id" default="y" />
+				<case name="pc" />
+				<case name="duelbot" />
+			</attribute>
+			<attribute name="object2" type="TRef" />
+			<attribute name="multi-object" type="TRef" repeat="16" />
+			<attribute name="killed-difficulty-type" type="Seq">
+				<case name="none" default="y" />
+				<case name="easy" />
+				<case name="normal" />
+				<case name="hard" />
+			</attribute>
+			<attribute name="skill3" type="Ref" ref="skill3" repeat="8" deprecated="y" />
+		</sub>
+		<sub name="finish-blow">
+			<attribute name="npc" type="Ref" ref="npc" required="y" />
+			<attribute name="skill3-id" type="Int32" default="0" repeat="20" />
+		</sub>
+		<sub name="env-entered">
+			<attribute name="object2" type="TRef" required="y" />
+			<attribute name="env-response" type="Ref" ref="envresponse" />
+		</sub>
+		<sub name="enter-zone">
+			<attribute name="object" type="TRef" required="y" />
+		</sub>
+		<sub name="convoy-arrived">
+			<attribute name="object" type="TRef" required="y" />
+		</sub>
+		<sub name="convoy-failed">
+			<attribute name="object" type="TRef" required="y" />
+			<attribute name="convoy" type="Ref" ref="zoneconvoy" />
+		</sub>
+		<sub name="npc-bleeding-occured">
+			<attribute name="object" type="TRef" required="y" />
+		</sub>
+		<sub name="enter-portal">
+			<attribute name="object2" type="TRef" required="y" />
+		</sub>
+		<sub name="acquire-summoned">
+			<attribute name="object" type="TRef" />
+			<attribute name="summoned-preset" type="Ref" ref="summoneddesignerpreset" required="y" />
+			<attribute name="npc-response" type="Ref" ref="npcresponse" />
+			<attribute name="msg" type="Ref" ref="npctalkmessage" deprecated="y" />
+			<attribute name="start-msg" type="Ref" ref="npctalkmessage" deprecated="y" />
+			<attribute name="indicator-social" type="Ref" ref="indicator-social" deprecated="y" />
+			<attribute name="indicator-idle" type="Ref" ref="indicator-idle" deprecated="y" />
+			<attribute name="button-text-accept" type="Ref" ref="text" />
+			<attribute name="button-text-cancel" type="Ref" ref="text" />
+		</sub>
+		<sub name="pc-social">
+			<attribute name="object2" type="TRef" required="y" />
+			<attribute name="social" type="Ref" ref="talksocial" />
+			<attribute name="state-social" type="Ref" ref="statesocial" />
+			<attribute name="npc-response" type="Ref" ref="npcresponse" />
+		</sub>
+		<sub name="join-faction">
+			<attribute name="faction" type="Ref" ref="faction" required="y" />
+			<attribute name="object" type="TRef" />
+			<attribute name="npc-response" type="Ref" ref="npcresponse" repeat="3" />
+			<attribute name="start-msg" type="Ref" ref="npctalkmessage" deprecated="y" />
+			<attribute name="indicator-social" type="Ref" ref="indicator-social" deprecated="y" />
+			<attribute name="indicator-idle" type="Ref" ref="indicator-idle" deprecated="y" />
+			<attribute name="button-text-accept" type="Ref" ref="text" />
+			<attribute name="button-text-cancel" type="Ref" ref="text" />
+			<attribute name="grocery" type="Ref" ref="item" />
+			<attribute name="grocery-count" type="Int16" default="1" min="1" max="1000" />
+			<attribute name="remove-grocery" type="Bool" default="y" />
+		</sub>
+		<sub name="duel-finish">
+			<attribute name="duel-result" type="Seq">
+				<case name="none" default="y" />
+				<case name="win" />
+				<case name="draw" />
+				<case name="lose" />
+			</attribute>
+			<attribute name="duel-type" type="Seq">
+				<case name="none" default="y" />
+				<case name="death-match-1vs1" />
+				<case name="tag-match-3vs3" />
+			</attribute>
+			<attribute name="arena-matching-rule-detail" type="Seq">
+				<case name="none" default="y" />
+				<case name="normal" />
+				<case name="guild combat" />
+				<case name="sparring" />
+				<case name="unrated match" />
+				<case name="championship" />
+				<case name="ingame championship" />
+				<case name="random party battle field match" />
+				<case name="battle royal field party mode" />
+				<case name="battle royal field championship" />
+				<case name="battle royal field party mode championship" />
+			</attribute>
+			<attribute name="duel-straight-win" type="Int32" default="0" min="0" />
+			<attribute name="duel-grade" type="Int8" default="0" min="0" />
+		</sub>
+		<sub name="party-battle">
+			<attribute name="party-battle-type" type="Seq">
+				<case name="none" default="y" />
+				<case name="occupation-war" />
+				<case name="capture-the-flag" />
+				<case name="lead-the-ball" />
+			</attribute>
+			<attribute name="party-battle-result" type="Seq">
+				<case name="none" default="y" />
+				<case name="win" />
+				<case name="draw" />
+				<case name="lose" />
+			</attribute>
+		</sub>
+		<sub name="party-battle-action">
+			<attribute name="party-battle-type" type="Seq">
+				<case name="none" default="y" />
+				<case name="occupation-war" />
+				<case name="capture-the-flag" />
+				<case name="lead-the-ball" />
+			</attribute>
+			<attribute name="party-battle-action-type" type="Seq">
+				<case name="none" default="y" />
+				<case name="occupy" />
+			</attribute>
+		</sub>
+		<sub name="complete-quest">
+			<attribute name="complete-quest" type="Ref" ref="quest" required="y" />
+		</sub>
+		<sub name="pick-up-fielditem">
+			<attribute name="fielditem" type="Ref" ref="fielditem" required="y" />
+		</sub>
+		<sub name="battle-royal">
+			<attribute name="battle-royal-field" type="Ref" ref="battle-royal-field" required="y" />
+		</sub>
+		<sub name="attraction-popup">
+			<attribute name="attraction-popup-env" type="Ref" ref="zoneenv2" required="y" />
+		</sub>
+	</el>
+	<el name="tutorial-case" child="filter-set, reaction-set">
+		<attribute name="prob" type="Int8" default="100" min="0" max="100" />
+		<attribute name="mapunit" type="Ref" ref="mapunit" repeat="10" />
+		<attribute name="range-min" type="Int16" default="-1" min="-1" max="10000" />
+		<attribute name="range-max" type="Int16" default="-1" min="-1" max="10000" />
+		<attribute name="progress-mission" type="Seq">
+			<case name="y" />
+			<case name="reaction-only" />
+			<case name="n" default="y" />
+		</attribute>
+		<attribute name="valid-zone" type="Ref" ref="zone" repeat="2" />
+		<sub name="acquire-item">
+			<attribute name="item" type="Ref" ref="item" required="y" />
+		</sub>
+		<sub name="equip-item">
+			<attribute name="item-category" type="Seq">
+				<case name="none" default="y" />
+				<case name="weapon" />
+				<case name="accessory" />
+				<case name="dress" />
+				<case name="equip-gem" />
+				<case name="weapon-gem" />
+				<case name="build-up-stone" />
+				<case name="badge" />
+				<case name="medicine" />
+				<case name="food" />
+				<case name="tool" />
+				<case name="talisman" />
+				<case name="equip-material" />
+				<case name="union-material" />
+				<case name="dress-material" />
+				<case name="etc-material" />
+				<case name="coin" />
+				<case name="deed" />
+				<case name="quest" />
+				<case name="etc-change" />
+				<case name="weapon-box" />
+				<case name="accessory-box" />
+				<case name="dress-box" />
+				<case name="equip-gem-box" />
+				<case name="weapon-gem-box" />
+				<case name="material-box" />
+				<case name="booty-box" />
+				<case name="etc-box" />
+			</attribute>
+			<attribute name="item" type="Ref" ref="item" required="y" />
+		</sub>
+		<sub name="use-item">
+			<attribute name="item" type="Ref" ref="item" required="y" />
+		</sub>
+		<sub name="grow-item">
+			<attribute name="primary-item" type="Ref" ref="item" required="y" />
+			<attribute name="material-item" type="Ref" ref="item" required="y" />
+		</sub>
+		<sub name="transform-item">
+			<attribute name="item-transform-recipe" type="Ref" ref="ItemTransformRecipe" required="y" />
+		</sub>
+		<sub name="pick-up-fielditem">
+			<attribute name="fielditem" type="Ref" ref="fielditem" required="y" />
+		</sub>
+		<sub name="put-down-fielditem">
+			<attribute name="fielditem" type="Ref" ref="fielditem" required="y" />
+		</sub>
+		<sub name="targeting">
+			<attribute name="npc" type="Ref" ref="npc" required="y" />
+		</sub>
+		<sub name="talk-start">
+			<attribute name="npc" type="Ref" ref="npc" required="y" />
+		</sub>
+		<sub name="window-open">
+			<attribute name="window-type" type="Seq" required="y">
+				<case name="inventory" />
+				<case name="quest-journal" />
+				<case name="skill" />
+				<case name="sandbox" />
+				<case name="auction" />
+				<case name="cash-shop" />
+				<case name="wardrobe" />
+				<case name="account-contents" />
+			</attribute>
+			<attribute name="window-open-way" type="Seq">
+				<case name="none" default="y" />
+				<case name="by-npc-seller-button" />
+			</attribute>
+		</sub>
+		<sub name="complete-self-revival" />
+		<sub name="npc-bleeding">
+			<attribute name="npc" type="Ref" ref="npc" required="y" />
+			<attribute name="percent" type="Int8" required="y" min="0" max="100" />
+		</sub>
+		<sub name="pc-bleeding">
+			<attribute name="percent" type="Int8" required="y" min="0" max="100" />
+		</sub>
+		<sub name="exhausted" />
+		<sub name="attacked" />
+		<sub name="acquire-sp">
+			<attribute name="sp" type="Int8" required="y" min="0" max="100" />
+		</sub>
+		<sub name="skill">
+			<attribute name="object2" type="TRef" repeat="16" />
+			<attribute name="skill-check-type" type="Seq">
+				<case name="skill-key" default="y" />
+				<case name="skill-id" />
+			</attribute>
+			<attribute name="skill" type="Ref" ref="skill" required="y" />
+			<attribute name="skill3" type="Ref" ref="skill3" default="0" />
+			<attribute name="skill3-id" type="Int32" default="0" />
+			<attribute name="target-required-effect" type="Ref" ref="effect" default="0" />
+			<attribute name="target-effect-count" type="Int8" default="0" />
+		</sub>
+		<sub name="skill-sequence">
+			<attribute name="object2" type="TRef" repeat="16" />
+			<attribute name="skill-sequence" type="Ref" ref="tutorialskillsequence" required="y" />
+			<attribute name="check-parent-skill" type="Bool" deprecated="y" />
+		</sub>
+		<sub name="skill-training" />
+		<sub name="quest-tracking-position" />
+		<sub name="repair-with-campfire">
+			<attribute name="item" type="Ref" ref="item" required="y" />
+		</sub>
+		<sub name="teleport">
+			<attribute name="item" type="Ref" ref="item" required="y" />
+		</sub>
+		<sub name="expand-inventory" />
+		<sub name="gem-compose">
+			<attribute name="primary-item" type="Ref" ref="item" required="y" />
+			<attribute name="material-item" type="Ref" ref="item" required="y" />
+		</sub>
+		<sub name="gem-decompose">
+			<attribute name="item" type="Ref" ref="item" required="y" />
+		</sub>
+		<sub name="weapon-gem">
+			<attribute name="weapon" type="Ref" ref="item" required="y" />
+			<attribute name="gem" type="Ref" ref="item" required="y" />
+		</sub>
+		<sub name="detach-weapon-gem">
+			<attribute name="weapon" type="Ref" ref="item" required="y" />
+			<attribute name="gem" type="Ref" ref="item" required="y" />
+		</sub>
+		<sub name="airdash">
+			<attribute name="object2" type="TRef" required="y" />
+			<attribute name="env-response" type="Ref" ref="envresponse" />
+		</sub>
+		<sub name="enlarge-mini-map" />
+		<sub name="transparent-mini-map" />
+		<sub name="resurrecting-summoned" />
+		<sub name="move-to-position">
+			<attribute name="link-npc" type="Ref" ref="npc" required="y" />
+			<attribute name="location-x" type="Float32" default="0.0" />
+			<attribute name="location-y" type="Float32" default="0.0" />
+			<attribute name="approach-range" type="Float32" default="0.0" />
+		</sub>
+		<sub name="use-heart-count" />
+		<sub name="charge-heart-count" />
+		<sub name="teleport-zone">
+			<attribute name="teleport-id" type="Ref" ref="teleport" required="y" />
+		</sub>
+	</el>
+	<el name="completion-loss">
+		<attribute name="faction" type="Ref" ref="faction" />
+		<attribute name="job" type="Prop_seq" seq="job" default="job-none" repeat="15" />
+		<attribute name="sex" type="Prop_seq" seq="sex" default="sex-none" repeat="4" />
+		<attribute name="race" type="Prop_seq" seq="race" default="race-none" repeat="4" />
+		<attribute name="money" type="Int32" default="0" />
+		<attribute name="item" type="Ref" ref="item" repeat="4" />
+		<attribute name="item-count" type="Int8" default="0" repeat="4" />
+	</el>
+	<el name="giveup-loss">
+		<attribute name="faction" type="Ref" ref="faction" />
+		<attribute name="job" type="Prop_seq" seq="job" default="job-none" repeat="15" />
+		<attribute name="sex" type="Prop_seq" seq="sex" default="sex-none" repeat="4" />
+		<attribute name="race" type="Prop_seq" seq="race" default="race-none" repeat="4" />
+		<attribute name="item" type="Ref" ref="item" repeat="4" />
+		<attribute name="item-count" type="Int8" default="0" repeat="4" />
+	</el>
+	<el name="basic-reward">
+		<attribute name="money" type="Int32" default="0" />
+		<attribute name="exp" type="Int32" default="0" />
+		<attribute name="production-id" type="Seq" seq="production-type" default="none" />
+		<attribute name="production-exp" type="Int16" default="0" min="0" />
+		<attribute name="faction" type="Ref" ref="faction" />
+		<attribute name="faction-reputation" type="Int16" default="0" min="0" />
+	</el>
+	<el name="fixed-reward">
+		<attribute name="faction" type="Ref" ref="faction" />
+		<attribute name="job" type="Prop_seq" seq="job" default="job-none" repeat="15" />
+		<attribute name="sex" type="Prop_seq" seq="sex" default="sex-none" repeat="4" />
+		<attribute name="race" type="Prop_seq" seq="race" default="race-none" repeat="4" />
+		<attribute name="slot" type="TRef" repeat="4" />
+		<attribute name="item-count" type="Int8" default="1" repeat="4" />
+	</el>
+	<el name="optional-reward">
+		<attribute name="faction" type="Ref" ref="faction" />
+		<attribute name="job" type="Prop_seq" seq="job" default="job-none" repeat="15" />
+		<attribute name="sex" type="Prop_seq" seq="sex" default="sex-none" repeat="4" />
+		<attribute name="race" type="Prop_seq" seq="race" default="race-none" repeat="4" />
+		<attribute name="slot" type="TRef" repeat="4" />
+		<attribute name="item-count" type="Int8" default="1" repeat="4" />
+	</el>
+	<el name="mission" child="case, tutorial-case, basic-reward, optional-reward, fixed-reward, completion-loss">
+		<attribute name="id" type="Int8" required="y" min="1" max="16" />
+		<attribute name="name" type="String" deprecated="y" max="50" />
+		<attribute name="name2" type="Ref" ref="text" />
+		<attribute name="required-register-value" type="Int16" required="y" min="1" max="10000" />
+		<attribute name="step" type="Int8" hidden="y" min="1" max="16" />
+		<attribute name="register-start-bit" type="Int8" hidden="y" deprecated="y" />
+		<attribute name="register-mask" type="Int64" hidden="y" deprecated="y" />
+		<attribute name="show-kill-mapunit" type="Bool" />
+		<attribute name="reward" type="Ref" ref="questreward" repeat="3" />
+		<attribute name="check-tencent-vitality" type="Bool" default="y" deprecated="y" />
+		<attribute name="reset-teleport-recycle-time" type="Bool" />
+		<attribute name="required-attraction" type="TRef" />
+		<attribute name="tendency-id" type="Int8" default="0" min="0" max="3" />
+		<attribute name="simple-quest-play-section" type="Seq">
+			<case name="none" default="y" />
+			<case name="our" />
+			<case name="enemy" />
+		</attribute>
+		<attribute name="variation-count" type="Int8" hidden="y" />
+		<attribute name="variation-required-condition-type" type="Seq">
+			<case name="none" default="y" />
+			<case name="field-play-point" />
+			<case name="faction-score" />
+		</attribute>
+		<attribute name="variation-required-condition-value" type="Int32" default="0" repeat="8" min="0" max="100000" />
+		<attribute name="variation-required-field-play-point" type="Int32" default="0" repeat="8" min="0" max="100000" />
+		<attribute name="variation-required-register-value" type="Int16" default="0" repeat="8" min="0" max="10000" />
+		<attribute name="variation-reward-field-play-point" type="Int32" default="0" repeat="8" min="0" max="100000" />
+		<attribute name="variation-reward-faction-score" type="Int16" default="0" repeat="8" min="0" max="10000" />
+		<attribute name="variation-reward-account-exp" type="Int32" default="0" repeat="8" min="0" />
+		<attribute name="variation-reward-tendency-score" type="Int32" default="0" repeat="8" min="0" />
+	</el>
+	<el name="mission-step-success" child="case, tutorial-case" />
+	<el name="mission-step-fail" child="case, tutorial-case" >
+		<attribute name="rollback-step-id" type="Int8" default="1" min="1" max="16" />
+		<attribute name="dispose-quest" type="Bool" />
+		<attribute name="step" type="Int8" hidden="y" min="1" max="16" />
+		<attribute name="fail-talksocial" type="Ref" ref="talksocial" />
+		<attribute name="fail-talksocial-delay" type="Float32" default="0.0" />
+	</el>
+	<el name="completion" child="next-quest" />
+	<el name="next-quest">
+		<attribute name="faction" type="Ref" ref="faction" />
+		<attribute name="job" type="Prop_seq" seq="job" default="job-none" repeat="15" />
+		<attribute name="quest" type="Ref" ref="quest" required="y" />
+	</el>
+	<el name="transit" child="destination, complete, not-acquire" >
+		<attribute name="id" type="Int8" required="y" min="1" max="9" />
+		<attribute name="zone" type="Ref" ref="zone" required="y" />
+	</el>
+	<el name="destination">
+		<attribute name="mission-step-id" type="Int8" required="y" min="1" max="16" />
+		<attribute name="zone-index" type="Int8" required="y" min="-1" max="16" />
+		<attribute name="kismet" type="String" max="50" />
+	</el>
+	<el name="complete">
+		<attribute name="zone-index" type="Int8" required="y" min="-1" max="16" />
+		<attribute name="kismet" type="String" max="50" />
+	</el>
+	<el name="not-acquire">
+		<attribute name="zone-index" type="Int8" required="y" min="-1" max="16" />
+		<attribute name="kismet" type="String" max="50" />
+	</el>
+</table>

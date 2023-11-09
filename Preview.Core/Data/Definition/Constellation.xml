@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table name="constellation" version="2.2" autokey="true" module="6">
+  <el name="table" child="1" />
+  <el name="record">
+    <attribute name="alias" type="String" required="y" />
+    <attribute name="name" type="Ref" ref="text" />
+    <attribute name="describe" type="Ref" ref="text" />
+    <attribute name="star-count" type="Int8" />
+    <attribute name="widget" type="String" />
+  </el>
+</table>

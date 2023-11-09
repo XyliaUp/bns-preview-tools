@@ -1,33 +1,30 @@
 ﻿using System.Xml;
 
-using Xylia.Extension;
-using Xylia.Preview.Tests.DatTool.Utils.ServerHandle;
-
 namespace Xylia.Preview.Tests.DatTool.Utils.ServerHandle;
-
 public class Npc : TableHandle
 {
-	protected override void Fix(XmlElement record)
-	{
-		string Alias = record.Attributes["alias"].Value;
+    protected override void Fix(XmlElement record)
+    {
+        string alias = record.Attributes["alias"].Value;
+        var comparer = StringComparison.OrdinalIgnoreCase;
 
-		if (record.Attributes["brain"] is null)
-		{
-			string BrainInfo = null;
+        if (record.Attributes["brain"] is null)
+        {
+            string BrainInfo = null;
 
-			if (record.Attributes["boss-npc"] != null) BrainInfo = "Boss";
-			else if (Alias.MyStartsWith("CH_") || Alias.MyStartsWith("CE_")) BrainInfo = "Citizen";
-			else if (Alias.MyStartsWith("MH_") || Alias.MyStartsWith("ME_")) BrainInfo = "Monster";
-			else return;
+            if (record.Attributes["boss-npc"] != null) BrainInfo = "Boss";
+            else if (alias.StartsWith("CH_", comparer) || alias.StartsWith("CE_", comparer)) BrainInfo = "Citizen";
+            else if (alias.StartsWith("MH_", comparer) || alias.StartsWith("ME_", comparer)) BrainInfo = "Monster";
+            else return;
 
-			record.SetAttribute("brain", BrainInfo);
-			record.SetAttribute("brain-parameters", Alias + "_bp");
-		}
+            record.SetAttribute("brain", BrainInfo);
+            record.SetAttribute("brain-parameters", alias + "_bp");
+        }
 
-		if (record.Attributes["formal-radius"] is null)
-		{
-			if (record.Attributes["radius"] is not null)
-				record.SetAttribute("formal-radius", record.Attributes["radius"].Value);
-		}
-	}
+        if (record.Attributes["formal-radius"] is null)
+        {
+            if (record.Attributes["radius"] is not null)
+                record.SetAttribute("formal-radius", record.Attributes["radius"].Value);
+        }
+    }
 }

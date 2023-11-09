@@ -2,9 +2,13 @@
 
 using CUE4Parse.BNS.Conversion;
 
+using FModel.Views.Snooper.Models;
+
 using ImGuiNET;
 
 using OpenTK.Windowing.Common;
+
+using Xylia.Preview.UI.ViewModels;
 
 namespace FModel.Views.Snooper;
 public partial class ModelGui : SnimGui
@@ -18,9 +22,10 @@ public partial class ModelGui : SnimGui
 
 	}
 
-	public void Render(ModelView s)
+
+	public override void Render(Snooper s)
 	{
-		this.view = s;
+		this.view = s as ModelView;
 
 		Controller.SemiBold();
 		DrawDockSpace(s.Size);
@@ -30,7 +35,6 @@ public partial class ModelGui : SnimGui
 
 		Controller.Render();
 	}
-
 
 	private void Draw3DViewport()
 	{
@@ -78,13 +82,13 @@ public partial class ModelGui : SnimGui
 			SetAttribute("Object", model.Name);
 			pos.Y += 10;
 
-			SetAttribute("Skeleton", model.Skeleton.Name);
+			SetAttribute("Skeleton", (model as SkeletalModel).Skeleton.Name);
 			SetAttribute("LOD", view.Renderer.Options.Models.Count);
 			SetAttribute("UV Set", model.UvCount);
 			SetAttribute("Colors", null);
-			SetAttribute("Bones", model.Skeleton.BoneCount);
+			SetAttribute("Bones", (model as SkeletalModel).Skeleton.BoneCount);
 
-			if (view._showFps)
+			if (true)
 			{
 				pos.Y += 10;
 				ImGui.SetCursorPos(pos with { X = 7 });
@@ -93,7 +97,7 @@ public partial class ModelGui : SnimGui
 				ImGui.Text($"FPS: {framerate:0}");
 			}
 
-			if(lastTime != default && (DateTime.Now - lastTime).TotalSeconds < 5)
+			if (lastTime != default && (DateTime.Now - lastTime).TotalSeconds < 5)
 			{
 				pos.Y += 10;
 				ImGui.SetCursorPos(pos with { X = 7 });
@@ -146,7 +150,7 @@ public partial class ModelGui : SnimGui
 					async void SwitchAnimate()
 					{
 						var export = await sequence.Value.TryLoadAsync();
-						if (export is not null) view.Renderer.Animate(export);
+						if (export != null) view.Renderer.Animate(export);
 					}
 
 					_viewportFocus = true;
@@ -162,16 +166,15 @@ public partial class ModelGui : SnimGui
 		#region Settings 
 		if (ImGui.BeginMenu("Settings"))
 		{
-			var ShowFps = view._showFps;
-			if (ImGui.MenuItem("Show FPS", "", ref ShowFps))
-				view.ShowFps = ShowFps;
+			//if (ImGui.MenuItem("Show FPS", "", ref ShowFps))
+			//	view.ShowFps = ShowFps;
 
 			if (ImGui.MenuItem("Extract"))
 			{
-				Common.Output(view.SelectedData.Export);
 				lastTime = DateTime.Now;
+				new Exporter(UserSettings.Default.OutputFolder_Resource).Run(view.SelectedData.Export);
 			}
-	
+
 
 			ImGui.EndMenu();
 		}

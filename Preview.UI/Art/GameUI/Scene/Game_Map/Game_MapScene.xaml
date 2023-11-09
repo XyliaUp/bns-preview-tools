@@ -1,0 +1,37 @@
+<Window x:Class="Xylia.Preview.UI.Art.GameUI.Scene.Game_Map.Game_MapScene"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:Xylia.Preview.UI.Art.GameUI.Scene.Game_Map"
+        xmlns:data="clr-namespace:Xylia.Preview.Data.Models;assembly=Preview.Core"
+
+        Title="Game_MapScene" Height="1024" Width="1250" >
+	<Window.DataContext>
+		<local:Game_MapSceneViewModel />
+	</Window.DataContext>
+
+	<Grid>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="250" />
+			<ColumnDefinition Width="*" />
+		</Grid.ColumnDefinitions>
+
+
+		<TreeView Grid.Column="0" x:Name="TreeView" SelectedItemChanged="TreeView_SelectedItemChanged" >
+			<TreeView.Resources>
+				<DataTemplate DataType="{x:Type data:MapInfo}">
+					<StackPanel Orientation="Horizontal">
+						<TextBlock Text="{Binding Text}" />
+					</StackPanel>
+				</DataTemplate>
+			</TreeView.Resources>
+		</TreeView>
+
+		<Image Grid.Column="1" x:Name="Image" Stretch="Uniform" >
+			<Image.ContextMenu>
+				<ContextMenu>
+					<MenuItem Name="OpenParentMap" Header="OpenParentMap" Visibility="Hidden" />
+				</ContextMenu>
+			</Image.ContextMenu>
+		</Image>
+	</Grid>
+</Window>

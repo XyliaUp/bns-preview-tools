@@ -12,7 +12,6 @@ for more information,please browse the commits.
 get list    
 preview targeted item (also store/skill/map/challenge etc.) 
 view item information in search interface   
-output datas workbook
 
 ## quest
 get quest list  
@@ -24,14 +23,14 @@ compare update on diffent versions
 output origion data
 
 ## pak files
-output file (image only now)
+output file
 
 ## role attribute calculate
 the function has some defects, carefuly.    
 
 Environment
 ==========================
-.NET 6.0 SDK    
+.NET 7.0 SDK    
 Windows 7 above
 
 
@@ -44,9 +43,7 @@ Please click on the link for project detail information
 | :----:  | :----:  | :----: |
 | [Autoupdater.NET](https://github.com/ravibpatel/AutoUpdater.NET) | MIT |  |
 | [CSCore](https://github.com/filoe/cscore) | MS-PL | play audio data |
-| [HZH_Controls](https://gitee.com/kwwwvagaa/net_winform_custom_control) (Modified) | Apache-2.0 | Control Library |
 | [ImGui.NET](https://github.com/ImGuiNET/ImGui.NET) | MIT |  |
-| [log4net](https://logging.apache.org/log4net) | Apache-2.0 |  |
 | [LiveCharts](https://github.com/Live-Charts/Live-Charts) | MIT |  |
 | [OpenTK](https://github.com/opentk/opentk) | MIT |  |
 | [NAudio.Vorbis](https://github.com/naudio/Vorbis) | MIT | Ogg file decoder |
