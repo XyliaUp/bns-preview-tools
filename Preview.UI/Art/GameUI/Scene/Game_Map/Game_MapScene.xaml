@@ -1,20 +1,32 @@
-<Window x:Class="Xylia.Preview.UI.Art.GameUI.Scene.Game_Map.Game_MapScene"
+<UI:GameScene 
+		x:Class="Xylia.Preview.UI.Art.GameUI.Scene.Game_Map.Game_MapScene"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:local="clr-namespace:Xylia.Preview.UI.Art.GameUI.Scene.Game_Map"
+		xmlns:UI="https://github.com/xyliaup/bns-preview-tools"
         xmlns:data="clr-namespace:Xylia.Preview.Data.Models;assembly=Preview.Core"
-
         Title="Game_MapScene" Height="1024" Width="1250" >
-	<Window.DataContext>
-		<local:Game_MapSceneViewModel />
-	</Window.DataContext>
+	<Window.Resources>
+		<Style TargetType="ToolTip">
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate>
+						<Border BorderBrush="#525457" BorderThickness="1" Background="{DynamicResource BackgroundBrush}" Padding="2 3">
+							<UI:BnsCustomLabelWidget Text="{TemplateBinding ContentControl.Content}" Foreground="White" />
+						</Border>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
+	</Window.Resources>
 
 	<Grid>
 		<Grid.ColumnDefinitions>
 			<ColumnDefinition Width="250" />
 			<ColumnDefinition Width="*" />
 		</Grid.ColumnDefinitions>
-
+		<Grid.RowDefinitions>
+			<RowDefinition Height="*" />
+		</Grid.RowDefinitions>
 
 		<TreeView Grid.Column="0" x:Name="TreeView" SelectedItemChanged="TreeView_SelectedItemChanged" >
 			<TreeView.Resources>
@@ -26,12 +38,10 @@
 			</TreeView.Resources>
 		</TreeView>
 
-		<Image Grid.Column="1" x:Name="Image" Stretch="Uniform" >
-			<Image.ContextMenu>
-				<ContextMenu>
-					<MenuItem Name="OpenParentMap" Header="OpenParentMap" Visibility="Hidden" />
-				</ContextMenu>
-			</Image.ContextMenu>
-		</Image>
+		<Grid Grid.Column="1" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center">
+			<Canvas x:Name="MapPanel" Width="{Binding Image.Width,ElementName=MapSource}" Height="{Binding Image.Height,ElementName=MapSource}">
+				<UI:BnsCustomImageWidget x:Name="MapSource" />
+			</Canvas>
+		</Grid>
 	</Grid>
-</Window>
+</UI:GameScene>

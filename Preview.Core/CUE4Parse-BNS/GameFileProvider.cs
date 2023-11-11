@@ -11,8 +11,6 @@ using CUE4Parse.UE4.Objects.Core.Misc;
 using CUE4Parse.UE4.Versions;
 using CUE4Parse.Utils;
 
-using Xylia.Preview.Common.Extension;
-
 namespace CUE4Parse.BNS;
 public sealed class GameFileProvider : DefaultFileProvider, IDisposable
 {
@@ -80,7 +78,7 @@ public sealed class GameFileProvider : DefaultFileProvider, IDisposable
 			return string.Concat(Ue4Path, ".", Ue4Path.Split('/')[^1]);
 		}
 
-		return FixPath(path).RemoveSuffixString(".uasset");
+		return FixPath(path).SubstringBeforeLast(".uasset");
 	}
 
 	public override string FixPath(string path, StringComparison comparisonType)

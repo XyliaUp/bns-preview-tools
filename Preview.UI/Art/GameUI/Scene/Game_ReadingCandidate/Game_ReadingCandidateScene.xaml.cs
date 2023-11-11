@@ -1,9 +1,8 @@
 namespace Xylia.Preview.UI.Art.GameUI.Scene.Game_ReadingCandidate;
-public partial class Game_ReadingCandidateScene : Window
+public partial class Game_ReadingCandidateScene : GameScene
 {
 	public Game_ReadingCandidateScene()
 	{
-        DataContext = new Game_ReadingCandidateSceneViewModel();
-		InitializeComponent();
+        InitializeComponent();
 	}
 }

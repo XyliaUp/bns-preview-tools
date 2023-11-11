@@ -2,7 +2,7 @@
 using System.Windows.Controls;
 
 namespace Xylia.Preview.UI.Art.GameUI.Scene.Game_ToolTip;
-[ToolboxItem(false)]
+[DesignTimeVisible(false)]
 public partial class ItemBrandTooltipPanel : UserControl
 {
 	public ItemBrandTooltipPanel()

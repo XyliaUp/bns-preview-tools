@@ -7,7 +7,7 @@ internal class ControlPage
 
 	public ControlPage(Type type, string name = null)
 	{
-		this.name = name ?? ("Page_" + type.Name);
+		this.name = name ?? type.Name;
 		this.type = type;
 	}
 

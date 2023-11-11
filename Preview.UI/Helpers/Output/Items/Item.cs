@@ -8,6 +8,7 @@ using System.Xml;
 using OfficeOpenXml;
 
 using Xylia.Preview.Data;
+using Xylia.Preview.Data.Common.Cast;
 using Xylia.Preview.Data.Common.DataStruct;
 using Xylia.Preview.Data.Common.Seq;
 using Xylia.Preview.Data.Engine.DatData;
@@ -135,7 +136,6 @@ public sealed class ItemOut : OutSet , IDisposable
 		BnsDatabase set = new(DefaultProvider.Load(UserSettings.Default.GameFolder));
 		CreatedAt = set.Provider.CreatedAt;
 
-		#region Data
 		var Result = new BlockingCollection<ItemSimple>();
 		Parallel.ForEach(set.Item.Records, record =>
 		{
@@ -144,8 +144,6 @@ public sealed class ItemOut : OutSet , IDisposable
 			var data = new ItemSimple(record, set);
 			Result.Add(data);
 		});
-		#endregion
-
 
 		set.Item.Dispose();
 		set.Text.Dispose();

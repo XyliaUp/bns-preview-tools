@@ -25,7 +25,6 @@ public static class Linq
 	#endregion
 
 
-
 	public static string Aggregate(this IEnumerable<string> source, string comma, Func<string, string> func = null)
 	{
 		ArgumentNullException.ThrowIfNull(source);
@@ -46,18 +45,16 @@ public static class Linq
 		return result;
 	}
 
-	public static IEnumerable<string> Split(this IEnumerable<string> strings, char separator)
-	{
-		ArgumentNullException.ThrowIfNull(strings);
-		return strings.Where(o => !string.IsNullOrEmpty(o)).SelectMany(o => o.Split(separator));
-	}
-
-
-
 	public static void ForEach<T>(this IEnumerable<T> collection, Action<T> action)
 	{
 		foreach (var item in collection)
 			action(item);
+	}
+
+	public static IEnumerable<string> Split(this IEnumerable<string> strings, char separator)
+	{
+		ArgumentNullException.ThrowIfNull(strings);
+		return strings.Where(o => !string.IsNullOrEmpty(o)).SelectMany(o => o.Split(separator));
 	}
 
 	public static IEnumerable<T> ToIEnumerable<T>(this IEnumerator<T> enumerator)

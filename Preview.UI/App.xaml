@@ -10,7 +10,7 @@
 				</ResourceDictionary>
 
 				<res:StringHelper xmlns:res="clr-namespace:Xylia.Preview.UI.Resources" />
-				<ResourceDictionary Source="Resources/Themes/Styles.xaml"/>
+				<ResourceDictionary Source="/Resources/Themes/Styles.xaml"/>
 			</ResourceDictionary.MergedDictionaries>
 		</ResourceDictionary>
 	</Application.Resources>

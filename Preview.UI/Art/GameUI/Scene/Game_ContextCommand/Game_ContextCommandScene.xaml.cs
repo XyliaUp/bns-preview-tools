@@ -1,8 +1,8 @@
 namespace Xylia.Preview.UI.Art.GameUI.Scene.Game_ContextCommand;
 /// <summary>
-/// Ö¸Áî£¨¼´ÓÒ¼üÎïÆ·Ê±³öÏÖµÄÔ²ÐÎ°´Å¥£©
+/// Ö¸ï¿½î£¨ï¿½ï¿½ï¿½Ò¼ï¿½ï¿½ï¿½Æ·Ê±ï¿½ï¿½ï¿½Öµï¿½Ô²ï¿½Î°ï¿½Å¥ï¿½ï¿½
 /// </summary>
-public partial class Game_ContextCommandScene : Window
+public partial class Game_ContextCommandScene : GameScene
 {
 	public Game_ContextCommandScene()
 	{

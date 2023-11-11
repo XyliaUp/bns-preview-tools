@@ -5,7 +5,7 @@ using Xylia.Extension;
 using Xylia.Preview.Data.Common.Cast;
 using Xylia.Preview.Data.Helpers;
 using Xylia.Preview.Data.Models;
-using Xylia.Preview.UI.Common.Controls;
+using Xylia.Preview.UI.Controls;
 using Xylia.Preview.UI.Helpers.Output;
 
 namespace Xylia.Preview.UI.Art.GameUI.Scene.Game_Auction;
@@ -99,7 +99,7 @@ public partial class Game_AuctionScene : GameScene
 		// must set rule
 		if (IsAll)
 		{
-			if (IsEmpty) return false;
+			if (_lst is null && IsEmpty) return false;
 		}
 		else
 		{
@@ -132,15 +132,9 @@ public partial class Game_AuctionScene : GameScene
 	#endregion
 
 	#region Methods
-	private void Comapre_Checked(object sender, RoutedEventArgs e)
-	{
-		Lst = XList.LoadData();
-	}
+	private void Comapre_Checked(object sender, RoutedEventArgs e) => Lst = XList.LoadData();
 
-	private void Comapre_Unchecked(object sender, RoutedEventArgs e)
-	{
-		Lst = null;
-	}
+	private void Comapre_Unchecked(object sender, RoutedEventArgs e) => Lst = null;
 
 	private void TreeView_SelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
 	{

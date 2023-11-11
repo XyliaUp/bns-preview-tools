@@ -1,12 +1,11 @@
 namespace Xylia.Preview.UI.Art.GameUI.Scene.Lobby_CustomizeCharacter;
 /// <summary>
-/// ÄóÁ³
+/// ï¿½ï¿½ï¿½ï¿½
 /// </summary>
-public partial class Lobby_CustomizeCharacterScene : Window
+public partial class Lobby_CustomizeCharacterScene : GameScene
 {
 	public Lobby_CustomizeCharacterScene()
 	{
-        DataContext = new Lobby_CustomizeCharacterSceneViewModel();
-		InitializeComponent();
+        InitializeComponent();
 	}
 }

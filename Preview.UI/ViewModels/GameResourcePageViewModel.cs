@@ -9,9 +9,9 @@ using CUE4Parse.BNS.Conversion;
 using CUE4Parse.Utils;
 
 using SkiaSharp;
+using SkiaSharp.Views.WPF;
 
 using Xylia.Preview.UI.Common;
-using Xylia.Preview.UI.Extension;
 
 namespace Xylia.Preview.UI.ViewModels;
 public partial class GameResourcePageViewModel : ObservableObject
@@ -146,7 +146,7 @@ public partial class GameResourcePageViewModel : ObservableObject
 		bitmap = bitmap.Compose(_mergeIcon_BottomLeft?.Value);
 		bitmap = bitmap.Compose(_mergeIcon_TopRight?.Value);
 
-		MergeIcon_Image = bitmap.ToImageSource();
+		MergeIcon_Image = bitmap.ToWriteableBitmap();
 	}
 
 	[RelayCommand]

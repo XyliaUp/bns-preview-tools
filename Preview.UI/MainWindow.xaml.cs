@@ -21,8 +21,8 @@ public partial class MainWindow : MetroWindow
 		PageControl.ItemsSource = new List<object>()
 		{
 			new ControlPage<ItemPage>(),
-			new ControlPage<TextPage>(),
-			new ControlPage<GameUI.Game_QuestJournal.Game_QuestJournalScene>("Page_QuestPage"),
+			new ControlPage<TextView>(),
+			new ControlPage<GameUI.Game_QuestJournal.Game_QuestJournalScene>(),
 			new ControlPage<GameResourcePage>(),
 			new ControlPage<AbilityPage>(),
 		};
@@ -31,19 +31,6 @@ public partial class MainWindow : MetroWindow
 
 		new Update().CheckForUpdates();
 		Register.Create();
-	}
-
-
-	protected override void OnClosing(CancelEventArgs e)
-	{
-		var result = AduMessageBox.Show("您正在关闭应用程序, 是否确认这么做吗？", "提示信息", MessageBoxButton.YesNo);
-		if (result != MessageBoxResult.Yes)
-		{
-			e.Cancel = true;
-			return;
-		}
-
-		Application.Current.Shutdown();
 	}
 
 
@@ -63,5 +50,13 @@ public partial class MainWindow : MetroWindow
 	private void OpenSettings(object sender, RoutedEventArgs e)
 	{
 		new SettingsView().ShowDialog();
+	}
+
+	protected override void OnClosing(CancelEventArgs e)
+	{
+		var result = AduMessageBox.Show("您正在关闭应用程序, 是否确认这么做吗？", "提示信息", MessageBoxButton.YesNo);
+		if (result == MessageBoxResult.Yes) Application.Current.Shutdown();
+
+		e.Cancel = true;
 	}
 }

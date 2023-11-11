@@ -172,7 +172,7 @@ public partial class ModelGui : SnimGui
 			if (ImGui.MenuItem("Extract"))
 			{
 				lastTime = DateTime.Now;
-				new Exporter(UserSettings.Default.OutputFolder_Resource).Run(view.SelectedData.Export);
+				new Exporter(UserSettings.Default.OutputFolderResource).Run(view.SelectedData.Export);
 			}
 
 

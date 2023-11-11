@@ -1,12 +1,11 @@
 namespace Xylia.Preview.UI.Art.GameUI.Scene.Game_InstantNotification;
 /// <summary>
-/// Á¢¼´ÌáÊ¾¹¤¾ß
+/// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½
 /// </summary>
-public partial class Game_InstantNotificationScene : Window
+public partial class Game_InstantNotificationScene : GameScene
 {
 	public Game_InstantNotificationScene()
 	{
-        DataContext = new Game_InstantNotificationSceneViewModel();
-		InitializeComponent();
+        InitializeComponent();
 	}
 }

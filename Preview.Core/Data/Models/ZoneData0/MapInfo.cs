@@ -1,6 +1,5 @@
 ﻿using Xylia.Preview.Data.Common.Attribute;
 using Xylia.Preview.Data.Common.DataStruct;
-using Xylia.Preview.Data.Engine.BinData.Models;
 
 namespace Xylia.Preview.Data.Models;
 [Side(ReleaseSide.Client)]
@@ -8,7 +7,6 @@ public sealed class MapInfo : Record
 {
 	public int Id;
 	public string Alias;
-
 
 
 	[Name("group-id")]

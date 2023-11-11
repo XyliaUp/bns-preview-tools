@@ -1,5 +1,4 @@
 using System.ComponentModel;
-using System.Text;
 
 using Xylia.Preview.Data.Engine.DatData;
 using Xylia.Preview.Data.Helpers;
@@ -22,8 +21,8 @@ public partial class Game_CharacterInfo_Scene : GameScene
 		InitializeComponent();
 
 		var config = (FileCache.Data.Provider as DefaultProvider)?.ConfigData.EnumerateFiles("release.config2.xml").FirstOrDefault();
-		var release = ConfigTable.LoadFrom<Release>(Encoding.UTF8.GetString(config?.Data));
-		if (release is null) return;
+		var release = ConfigTable.LoadFrom<Release>(config?.Data);
+		if (release is null) throw new Exception("invalid define");
 
 		var group = release.group.First(x => x.name == "in-game-web");
 		CharacterInfoUrl = group["character-info-url"]?.value;

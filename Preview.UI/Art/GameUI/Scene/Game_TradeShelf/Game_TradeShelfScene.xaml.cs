@@ -1,9 +1,8 @@
 namespace Xylia.Preview.UI.Art.GameUI.Scene.Game_TradeShelf;
-public partial class Game_TradeShelfScene : Window
+public partial class Game_TradeShelfScene : GameScene
 {
 	public Game_TradeShelfScene()
 	{
-        DataContext = new Game_TradeShelfSceneViewModel();
-		InitializeComponent();
+        InitializeComponent();
 	}
 }

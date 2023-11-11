@@ -3,7 +3,6 @@ public partial class Game_ChallengeTodayScene : GameScene
 {
 	public Game_ChallengeTodayScene()
 	{
-        DataContext = new Game_ChallengeTodaySceneViewModel();
-		InitializeComponent();
+        InitializeComponent();
 	}
 }

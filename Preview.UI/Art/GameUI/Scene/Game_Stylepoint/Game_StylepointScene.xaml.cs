@@ -1,9 +1,8 @@
 namespace Xylia.Preview.UI.Art.GameUI.Scene.Game_Stylepoint;
-public partial class Game_StylepointScene : Window
+public partial class Game_StylepointScene : GameScene
 {
 	public Game_StylepointScene()
 	{
-        DataContext = new Game_StylepointSceneViewModel();
-		InitializeComponent();
+        InitializeComponent();
 	}
 }

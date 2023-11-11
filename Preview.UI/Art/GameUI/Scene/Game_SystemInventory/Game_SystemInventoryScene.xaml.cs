@@ -1,12 +1,11 @@
 namespace Xylia.Preview.UI.Art.GameUI.Scene.Game_SystemInventory;
 /// <summary>
-/// ±£¹ÜÏä & Á÷Ê§ÎïÆ·
+/// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ & ï¿½ï¿½Ê§ï¿½ï¿½Æ·
 /// </summary>
-public partial class Game_SystemInventoryScene : Window
+public partial class Game_SystemInventoryScene : GameScene
 {
 	public Game_SystemInventoryScene()
 	{
-        DataContext = new Game_SystemInventorySceneViewModel();
-		InitializeComponent();
+        InitializeComponent();
 	}
 }

@@ -1,21 +1,21 @@
-﻿<UserControl x:Class="Xylia.Preview.UI.Art.GameUI.Scene.Game_QuestJournal.QuestJournalPanel"
-      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:controls="clr-namespace:Xylia.Preview.UI.Common.Controls"
-	 
-      mc:Ignorable="d" d:DesignHeight="254" d:DesignWidth="544" d:Background="White">
+﻿<UserControl 
+		x:Class="Xylia.Preview.UI.Art.GameUI.Scene.Game_QuestJournal.QuestJournalPanel"
+		xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+		xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+		xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+		xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+		xmlns:UI="https://github.com/xyliaup/bns-preview-tools"
+		mc:Ignorable="d" d:DesignHeight="254" d:DesignWidth="544" d:Background="White">
 	<StackPanel Orientation="Vertical">
 		<Label Content="{Binding Title ,FallbackValue=Group}" FontSize="17" Foreground= "Gray"/>
 		<StackPanel Orientation="Horizontal">
 			<Image Source="/Resources/Images/Folder.png" Stretch="None" />
-			<controls:BnsCustomLabelWidget Text="{Binding Text,FallbackValue=Name2}" />
+			<UI:BnsCustomLabelWidget Text="{Binding Text,FallbackValue=Name2}" />
 		</StackPanel>
 
 
 		<TextBlock Text="内容" FontSize="22" />
-		<controls:BnsCustomLabelWidget Text="{Binding Describe}" />
+		<UI:BnsCustomLabelWidget Text="{Binding Describe}" />
 
 		<TextBlock Text="任务" FontSize="22" />
 

@@ -1,12 +1,11 @@
 namespace Xylia.Preview.UI.Art.GameUI.Scene.Lobby_CreateCharacter;
 /// <summary>
-/// 创建角色时 选择职业
+/// 锟斤拷锟斤拷锟斤拷色时 选锟斤拷职业
 /// </summary>
-public partial class Lobby_CreateCharacterScene : Window
+public partial class Lobby_CreateCharacterScene : GameScene
 {
 	public Lobby_CreateCharacterScene()
 	{
-        DataContext = new Lobby_CreateCharacterSceneViewModel();
-		InitializeComponent();
+        InitializeComponent();
 	}
 }

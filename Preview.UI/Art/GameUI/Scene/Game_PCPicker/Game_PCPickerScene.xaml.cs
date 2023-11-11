@@ -1,12 +1,11 @@
 namespace Xylia.Preview.UI.Art.GameUI.Scene.Game_PCPicker;
 /// <summary>
-/// ¿ç·þÄÚÑûÇë
+/// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 /// </summary>
-public partial class Game_PCPickerScene : Window
+public partial class Game_PCPickerScene : GameScene
 {
 	public Game_PCPickerScene()
 	{
-        DataContext = new Game_PCPickerSceneViewModel();
-		InitializeComponent();
+        InitializeComponent();
 	}
 }

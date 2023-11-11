@@ -1,10 +1,9 @@
 ﻿using System.ComponentModel;
 
-using Xylia.Preview.Data.Common.Seq;
-using Xylia.Preview.Data.Common.DataStruct;
 using Xylia.Preview.Data.Common.Attribute;
+using Xylia.Preview.Data.Common.DataStruct;
+using Xylia.Preview.Data.Common.Seq;
 using Xylia.Preview.Data.Models.CombatSequenceData.Enums;
-using Xylia.Preview.Data.Engine.BinData.Models;
 
 namespace Xylia.Preview.Data.Models;
 [Side(ReleaseSide.Server)]

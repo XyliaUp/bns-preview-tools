@@ -1,12 +1,11 @@
 namespace Xylia.Preview.UI.Art.GameUI.Scene.Lobby_Title;
 /// <summary>
-/// 用户协议
+/// 锟矫伙拷协锟斤拷
 /// </summary>
-public partial class Lobby_NPOptionScene : Window
+public partial class Lobby_NPOptionScene : GameScene
 {
 	public Lobby_NPOptionScene()
 	{
-        DataContext = new Lobby_NPOptionSceneViewModel();
-		InitializeComponent();
+        InitializeComponent();
 	}
 }

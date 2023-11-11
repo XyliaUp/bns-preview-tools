@@ -1,12 +1,11 @@
 namespace Xylia.Preview.UI.Art.GameUI.Scene.Game_Megaphone;
 /// <summary>
-/// ìÅÒ«À®°È
+/// ï¿½ï¿½Ò«ï¿½ï¿½ï¿½ï¿½
 /// </summary>
-public partial class Game_MegaphoneScene : Window
+public partial class Game_MegaphoneScene : GameScene
 {
 	public Game_MegaphoneScene()
 	{
-        DataContext = new Game_MegaphoneSceneViewModel();
-		InitializeComponent();
+        InitializeComponent();
 	}
 }

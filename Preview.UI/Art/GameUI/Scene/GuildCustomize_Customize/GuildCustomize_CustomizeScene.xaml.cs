@@ -1,9 +1,8 @@
 namespace Xylia.Preview.UI.Art.GameUI.Scene.GuildCustomize_Customize;
-public partial class GuildCustomize_CustomizeScene : Window
+public partial class GuildCustomize_CustomizeScene : GameScene
 {
 	public GuildCustomize_CustomizeScene()
 	{
-        DataContext = new GuildCustomize_CustomizeSceneViewModel();
-		InitializeComponent();
+        InitializeComponent();
 	}
 }

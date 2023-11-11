@@ -159,16 +159,16 @@
   <data name="OutputDirectory_Resource" xml:space="preserve">
     <value>Output Directory (Resource)</value>
   </data>
-  <data name="Page_AbilityPage" xml:space="preserve">
+  <data name="AbilityPage" xml:space="preserve">
     <value>Role Ability</value>
   </data>
-  <data name="Page_GameResourcePage" xml:space="preserve">
+  <data name="GameResourcePage" xml:space="preserve">
     <value>Engine</value>
   </data>
-  <data name="Page_ItemPage" xml:space="preserve">
+  <data name="ItemPage" xml:space="preserve">
     <value>Item</value>
   </data>
-  <data name="Page_QuestPage" xml:space="preserve">
+  <data name="Game_QuestJournalScene" xml:space="preserve">
     <value>Quest</value>
   </data>
   <data name="ProductName" xml:space="preserve">
@@ -189,5 +189,8 @@
   </data>
   <data name="View_Model" xml:space="preserve">
     <value>View Model</value>
+  </data>
+  <data name="TextView" xml:space="preserve">
+    <value>Text</value>
   </data>
 </root>

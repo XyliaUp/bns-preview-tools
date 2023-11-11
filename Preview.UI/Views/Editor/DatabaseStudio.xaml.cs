@@ -11,8 +11,7 @@ using Ookii.Dialogs.Wpf;
 using Xylia.Preview.Data;
 using Xylia.Preview.Data.Engine.BinData.Models;
 using Xylia.Preview.Data.Helpers;
-using Xylia.Preview.Data.Models;
-using Xylia.Preview.UI.Common.Controls;
+using Xylia.Preview.UI.Controls;
 using Xylia.Preview.UI.ViewModels;
 
 namespace Xylia.Preview.UI.Views.Editor;
@@ -180,18 +179,20 @@ public partial class DatabaseStudio : Window
 
 	private void OutputExcel_Click(object sender, RoutedEventArgs e)
 	{
-		//if (grdResult.Items.Count == 0)
-		//{
-		//	AduMessageBox.Show("no data");
-		//	return;
-		//}
+		if (grdResult.Items.Count == 0)
+		{
+			AduMessageBox.Show("no data");
+			return;
+		}
 
-		//var save = new VistaSaveFileDialog
-		//{
-		//	Filter = "Excel Files|*.xlsx",
-		//	FileName = $"test.xlsx",
-		//};
-		//if (save.ShowDialog() != true) return;
+		var save = new VistaSaveFileDialog
+		{
+			Filter = "Excel Files|*.xlsx",
+			FileName = $"test.xlsx",
+		};
+		if (save.ShowDialog() != true) return;
+
+		throw new NotImplementedException();
 
 		//using var workbook = new XSSFWorkbook();
 		//var sheet = workbook.CreateSheet("Sheet");

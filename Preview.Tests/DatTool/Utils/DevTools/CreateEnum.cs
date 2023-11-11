@@ -2,6 +2,8 @@
 using System.Text.RegularExpressions;
 using System.Xml;
 
+using CUE4Parse.Utils;
+
 using Xylia.Extension;
 using Xylia.Preview.Common.Extension;
 
@@ -55,6 +57,6 @@ public static class CreateEnum
             result.Append("}\n");
         }
 
-        return result.ToString().RemoveSuffixString("\n");
+        return result.ToString().SubstringBeforeLast("\n");
     }
 }

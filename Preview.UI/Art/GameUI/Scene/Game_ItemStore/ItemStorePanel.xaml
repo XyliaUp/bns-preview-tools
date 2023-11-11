@@ -1,7 +1,8 @@
-﻿<UserControl x:Class="Xylia.Preview.UI.Art.GameUI.Scene.Game_ItemStore.ItemStorePanel"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:c="clr-namespace:Xylia.Preview.UI.Common.Controls">
+﻿<UserControl 
+		x:Class="Xylia.Preview.UI.Art.GameUI.Scene.Game_ItemStore.ItemStorePanel"
+		xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+		xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+		xmlns:UI="https://github.com/xyliaup/bns-preview-tools">
 	<Grid>
 		<ListBox x:Name="ItemStore_ItemList" ItemsSource="{Binding ItemList}" 
 				 Background="{DynamicResource BackgroundBrush}" 
@@ -22,17 +23,17 @@
 							</Grid.ColumnDefinitions>
 
 							<!-- IconImage -->
-							<c:BnsCustomImageWidget Grid.Column="0" Image="{Binding Key.Icon}" />
+							<UI:BnsCustomImageWidget Grid.Column="0" Image="{Binding Key.Icon}" />
 							
 							<!-- Name -->
-							<c:BnsCustomLabelWidget Grid.Column="1" Text="{Binding Key.ItemName}" VerticalAlignment="Center" Margin="5 0 0 0"/>
+							<UI:BnsCustomLabelWidget Grid.Column="1" Text="{Binding Key.ItemName}" VerticalAlignment="Center" Margin="5 0 0 0"/>
 
 							<!-- Limit -->
 							
 							<!-- PriceHoler -->
 							<StackPanel Grid.Column="2" HorizontalAlignment="Right" VerticalAlignment="Center">
-								<c:BnsCustomLabelWidget Text="{Binding Value.Coin}" HorizontalAlignment="Right" Orientation="Vertical" />
-								<c:BnsCustomLabelWidget Text="{Binding Value.Money}" HorizontalAlignment="Right" />
+								<UI:BnsCustomLabelWidget Text="{Binding Value.Coin}" HorizontalAlignment="Right" Orientation="Vertical" />
+								<UI:BnsCustomLabelWidget Text="{Binding Value.Money}" HorizontalAlignment="Right" />
 								
 								<ItemsControl ItemsSource="{Binding Value.ExtraCost_DisposeItem}" HorizontalAlignment="Right">
 									<ItemsControl.ItemsPanel>
@@ -43,7 +44,7 @@
 									<ItemsControl.ItemTemplate>
 										<DataTemplate>
 											<StackPanel>
-												<c:BnsCustomImageWidget Image="{Binding Key.Icon}" Count="{Binding Value}" ToolTip="{Binding Key.ItemNameOnly}"
+												<UI:BnsCustomImageWidget Image="{Binding Key.Icon}" Count="{Binding Value}" ToolTip="{Binding Key.ItemNameOnly}"
 													Height="30" Width="30" Margin="3 0 0 0" />
 											</StackPanel>
 										</DataTemplate>

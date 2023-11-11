@@ -47,7 +47,6 @@ Please click on the link for project detail information
 | [LiveCharts](https://github.com/Live-Charts/Live-Charts) | MIT |  |
 | [OpenTK](https://github.com/opentk/opentk) | MIT |  |
 | [NAudio.Vorbis](https://github.com/naudio/Vorbis) | MIT | Ogg file decoder |
-| [SixLabors.ImageSharp](https://github.com/SixLabors/ImageSharp) | Apache-2.0 | cross-platform, 2D Graphics library for .NET |
 | [SkiaSharp](https://github.com/mono/SkiaSharp) | MIT | cross-platform 2D graphics API |
 | |
 | [BnsBinTool](https://github.com/notscuffed/BnsBinTool) (Modified) | MIT | Blade & Soul data decoder |

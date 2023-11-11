@@ -135,6 +135,7 @@
 	</ItemGroup>
 	<ItemGroup>
 		<ProjectReference Include="..\Preview.Core\Preview.Core.csproj" />
+		<ProjectReference Include="..\Preview.UI.Common\Preview.UI.Common.csproj" />
 		<Using Include="System.Diagnostics" />
 		<Using Include="System.Windows" />
 
@@ -147,10 +148,10 @@
 		<PackageReference Include="AvalonEdit" Version="6.3.0.90" />
 		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
 		<PackageReference Include="CSCore" Version="1.2.1.2" />
-		<PackageReference Include="EPPlus" Version="7.0.0" />
+		<PackageReference Include="EPPlus" Version="7.0.1" />
 		<PackageReference Include="ImGui.NET" Version="1.89.7.1" />
 		<PackageReference Include="Irony" Version="1.2.0" />
-		<PackageReference Include="Microsoft.Web.WebView2" Version="1.0.2088.41" />
+		<PackageReference Include="Microsoft.Web.WebView2" Version="1.0.2151.40" />
 		<PackageReference Include="NAudio.Vorbis" Version="1.5.0" />
 		<PackageReference Include="Ookii.Dialogs.Wpf" Version="5.0.1" />
 		<PackageReference Include="OpenTK" Version="4.8.1" />
@@ -168,33 +169,8 @@
 		<ApplicationDefinition Update="App.xaml">
 			<SubType>Designer</SubType>
 		</ApplicationDefinition>
-	</ItemGroup>
-	<ItemGroup>
-
-		<EmbeddedResource Update="Resources\Resource_Common.resx">
-			<Generator>PublicResXFileCodeGenerator</Generator>
-			<LastGenOutput>Resource_Common.Designer.cs</LastGenOutput>
-		</EmbeddedResource>
-
-		<EmbeddedResource Update="Resources\Strings\Strings.resx">
-		  <Generator></Generator>
-		</EmbeddedResource>
-
-		<EmbeddedResource Update="Resources\Strings\Strings.zh-Hans.resx">
-		  <Generator></Generator>
-		</EmbeddedResource>
-
-		<EmbeddedResource Update="Strings.zh-CN.resx">
-		  <Generator>PublicResXFileCodeGenerator</Generator>
-		</EmbeddedResource>
-		<Compile Update="Resources\Resource_Common.Designer.cs">
-			<DesignTime>True</DesignTime>
-			<AutoGen>True</AutoGen>
-			<DependentUpon>Resource_Common.resx</DependentUpon>
-		</Compile>
-		<Compile Update="Views\Pages\TextPage.xaml.cs">
-		  <SubType>Code</SubType>
-		</Compile>
+		<EmbeddedResource Update="Resources\Strings\Strings.resx" />
+		<EmbeddedResource Update="Resources\Strings\Strings.zh-Hans.resx" />
 	</ItemGroup>
 	<ItemGroup>
 		<Resource Include="Art\GameUI\Scene\Game_ItemMap\ItemMapPanel_Tab_RadioButton_1.png" />
@@ -254,22 +230,7 @@
 
 		<Resource Include="Resources\Fonts\Font Awesome 5 Free-Solid-900.otf" />
 		<Resource Include="Resources\Images\*" />
-		<None Remove="Common\Controls\TestV.cs~RF56edb9.TMP" />
-		<Resource Include="Resources\Images\ue3\CollectionCard_3D_214_Img.png" />
-		<Resource Include="Resources\Images\ue3\ItemError.png" />
-		<Resource Include="Resources\Images\ue3\ItemIcon.png" />
-		<Resource Include="Resources\Images\ue3\RandomItem.png" />
-		<Resource Include="Resources\Images\ue3\Sewing.png" />
-		<Resource Include="Resources\Images\ue3\Sewing2.png" />
-		<Resource Include="Resources\Images\ue3\ItemIcon_Bg_Grade_1.png" />
-		<Resource Include="Resources\Images\ue3\ItemIcon_Bg_Grade_2.png" />
-		<Resource Include="Resources\Images\ue3\ItemIcon_Bg_Grade_3.png" />
-		<Resource Include="Resources\Images\ue3\ItemIcon_Bg_Grade_4.png" />
-		<Resource Include="Resources\Images\ue3\ItemIcon_Bg_Grade_5.png" />
-		<Resource Include="Resources\Images\ue3\ItemIcon_Bg_Grade_6.png" />
-		<Resource Include="Resources\Images\ue3\ItemIcon_Bg_Grade_7.png" />
-		<Resource Include="Resources\Images\ue3\ItemIcon_Bg_Grade_8.png" />
-		<Resource Include="Resources\Images\ue3\ItemIcon_Bg_Grade_9.png" />
+		<Resource Include="Resources\Images\ue3\*" />
 		<Resource Include="Views\Editor\Sql.xshd" />
 	</ItemGroup>
 </Project>

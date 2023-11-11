@@ -1,12 +1,11 @@
 namespace Xylia.Preview.UI.Art.GameUI.Scene.Game_GuildVoiceChat;
 /// <summary>
-/// цееисОрТ
+/// О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫
 /// </summary>
-public partial class Game_GuildVoiceChatScene : Window
+public partial class Game_GuildVoiceChatScene : GameScene
 {
 	public Game_GuildVoiceChatScene()
 	{
-        DataContext = new Game_GuildVoiceChatSceneViewModel();
-		InitializeComponent();
+        InitializeComponent();
 	}
 }

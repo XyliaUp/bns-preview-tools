@@ -1,9 +1,8 @@
 namespace Xylia.Preview.UI.Art.GameUI.Scene.ArenaLobby_Duel;
-public partial class ArenaLobby_DuelScene : Window
+public partial class ArenaLobby_DuelScene : GameScene
 {
 	public ArenaLobby_DuelScene()
 	{
-        DataContext = new ArenaLobby_DuelSceneViewModel();
-		InitializeComponent();
+        InitializeComponent();
 	}
 }

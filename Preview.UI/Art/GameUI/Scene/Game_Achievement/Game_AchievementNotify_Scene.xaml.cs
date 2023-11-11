@@ -1,9 +1,8 @@
 namespace Xylia.Preview.UI.Art.GameUI.Scene.Game_Achievement;
-public partial class Game_AchievementNotify_Scene : Window
+public partial class Game_AchievementNotify_Scene : GameScene
 {
 	public Game_AchievementNotify_Scene()
 	{
-        DataContext = new Game_AchievementNotify_SceneViewModel();
-		InitializeComponent();
+        InitializeComponent();
 	}
 }

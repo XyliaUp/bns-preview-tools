@@ -48,7 +48,7 @@ public partial class SettingsView : Window
 
 	private void OnBrowseDirectories3(object sender, RoutedEventArgs e)
 	{
-		if (TryBrowseFolder(out var path)) settings.OutputFolder_Resource = path;
+		if (TryBrowseFolder(out var path)) settings.OutputFolderResource = path;
 
 		this.Activate();
 	}

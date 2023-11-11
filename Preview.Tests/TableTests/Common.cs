@@ -1,6 +1,8 @@
 ﻿using System.Data;
 using System.Diagnostics;
 
+using CUE4Parse.Utils;
+
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 using Xylia.Preview.Data;
@@ -69,6 +71,9 @@ public class Common
 	[TestMethod]
 	public void Test2()
 	{
+		Debug.WriteLine("test.uac".SubstringBeforeLast(".uac"));
+
+
 		//using var db = new BnsDatabase();
 
 		//var table = db.Get<Text>();

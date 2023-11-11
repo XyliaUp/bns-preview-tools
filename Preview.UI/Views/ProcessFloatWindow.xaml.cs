@@ -1,4 +1,5 @@
-﻿using System.Windows.Input;
+﻿using System.Runtime.CompilerServices;
+using System.Windows.Input;
 using System.Windows.Interop;
 
 using Vanara.PInvoke;
@@ -6,6 +7,7 @@ using Vanara.PInvoke;
 namespace Xylia.Preview.UI.Views;
 public partial class ProcessFloatWindow : Window
 {
+	#region Constructor
 	static ProcessFloatWindow _Instance;
 	public static ProcessFloatWindow Instance
 	{
@@ -19,15 +21,13 @@ public partial class ProcessFloatWindow : Window
 		}
 	}
 
-
-
 	private ProcessFloatWindow()
 	{
 		InitializeComponent();
 	}
+	#endregion
 
-
-
+	#region Methods
 	System.Timers.Timer timer;
 
 	private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -45,14 +45,7 @@ public partial class ProcessFloatWindow : Window
 		timer.Elapsed += new((s, e) =>
 		{
 			var process = Process.GetCurrentProcess();
-
-			int num = 0;
-			double memory = process.PrivateMemorySize64;
-			while (memory > 1024)
-			{
-				memory /= 1024;
-				num++;
-			}
+			var size = process.PrivateMemorySize64;
 
 			var value = (process.TotalProcessorTime - prevCpuTime).TotalMilliseconds / Interval / Environment.ProcessorCount;
 			prevCpuTime = process.TotalProcessorTime;
@@ -60,7 +53,7 @@ public partial class ProcessFloatWindow : Window
 			Application.Current.Dispatcher.Invoke(() =>
 			{
 				UsedCPU.Text = value.ToString("P0");
-				UsedMemory.Text = memory.ToString("0.0 ") + (num switch { 0 => "Bit", 1 => "KB", 2 => "MB", 3 => "GB", _ => null });
+				UsedMemory.Text = GetReadableSize(size);
 			});
 		});
 
@@ -76,4 +69,22 @@ public partial class ProcessFloatWindow : Window
 			timer = null;
 		}
 	}
+
+
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	public static string GetReadableSize(double size)
+	{
+		if (size == 0) return "0 B";
+
+		string[] sizes = { "B", "KB", "MB", "GB", "TB" };
+		var order = 0;
+		while (size >= 1024 && order < sizes.Length - 1)
+		{
+			order++;
+			size /= 1024;
+		}
+
+		return $"{size:# ###.##} {sizes[order]}".TrimStart();
+	}
+	#endregion
 }

@@ -3,6 +3,8 @@ using System.Diagnostics;
 using System.Security.Cryptography;
 using System.Text;
 
+using CUE4Parse.Utils;
+
 using Xylia.Preview.Common.Extension;
 
 namespace Xylia.Preview.Tests.DatTool.Utils;
@@ -71,7 +73,7 @@ public static class BNSFileHelper
     public static string PublicOutFolder = @"F:\Bns\Rebuild";
 
 
-    private static string Seri_GetFileName(string Name) => $"{Name.RemoveSuffixString("Data")}Data*.xml";
+    private static string Seri_GetFileName(string Name) => $"{Name.SubstringBeforeLast("Data")}Data*.xml";
 
     public static FileInfo[] GetFiles(string Name, string MainFoloer = null) => Seri_DataList(Name, MainFoloer ?? SeriSourceFolder);
 

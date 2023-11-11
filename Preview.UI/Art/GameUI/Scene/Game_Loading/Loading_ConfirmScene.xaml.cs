@@ -1,12 +1,11 @@
 namespace Xylia.Preview.UI.Art.GameUI.Scene.Game_Loading;
 /// <summary>
-/// ¹ýÍ¼£¨º¬¹ýÍ¼Ê±µÄÅÅÐÐÐÅÏ¢£©
+/// ï¿½ï¿½Í¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¼Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½
 /// </summary>
-public partial class Loading_ConfirmScene : Window
+public partial class Loading_ConfirmScene : GameScene
 {
 	public Loading_ConfirmScene()
 	{
-        DataContext = new Loading_ConfirmSceneViewModel();
-		InitializeComponent();
+        InitializeComponent();
 	}
 }

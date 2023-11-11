@@ -1,9 +1,8 @@
 namespace Xylia.Preview.UI.Art.GameUI.Scene.Game_GameOption;
-public partial class Game_OptionScene : Window
+public partial class Game_OptionScene : GameScene
 {
 	public Game_OptionScene()
 	{
-        DataContext = new Game_OptionSceneViewModel();
-		InitializeComponent();
+        InitializeComponent();
 	}
 }

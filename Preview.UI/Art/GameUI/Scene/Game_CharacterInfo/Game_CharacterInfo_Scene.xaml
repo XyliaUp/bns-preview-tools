@@ -2,10 +2,9 @@
 	    x:Class="Xylia.Preview.UI.Art.GameUI.Scene.Game_CharacterInfo.Game_CharacterInfo_Scene"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-	    xmlns:Controls="clr-namespace:Xylia.Preview.UI.Common.Controls" 
-	    xmlns:UI="clr-namespace:Xylia.Preview.UI"
+	    xmlns:UI="https://github.com/xyliaup/bns-preview-tools"
         Title="CharacterInfo_Scene" Width="1215" Height="800" ResizeMode="NoResize">
 	<Grid>
-		<Controls:BnsWebBrowser x:Name="WebView" WebBrowserInitialized="WebView_WebBrowserInitialized" PostMessage="WebView_PostMessage" />
+		<UI:BnsWebBrowser x:Name="WebView" WebBrowserInitialized="WebView_WebBrowserInitialized" PostMessage="WebView_PostMessage" />
 	</Grid>
 </UI:GameScene>

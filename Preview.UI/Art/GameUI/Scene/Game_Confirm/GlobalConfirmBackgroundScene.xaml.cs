@@ -1,9 +1,8 @@
 namespace Xylia.Preview.UI.Art.GameUI.Scene.Game_Confirm;
-public partial class GlobalConfirmBackgroundScene : Window
+public partial class GlobalConfirmBackgroundScene : GameScene
 {
 	public GlobalConfirmBackgroundScene()
 	{
-        DataContext = new GlobalConfirmBackgroundSceneViewModel();
-		InitializeComponent();
+        InitializeComponent();
 	}
 }

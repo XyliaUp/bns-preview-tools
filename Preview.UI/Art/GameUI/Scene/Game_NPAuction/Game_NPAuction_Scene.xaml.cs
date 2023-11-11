@@ -1,12 +1,11 @@
 namespace Xylia.Preview.UI.Art.GameUI.Scene.Game_NPAuction;
 /// <summary>
-/// ·á»ãÐÐ
+/// ï¿½ï¿½ï¿½ï¿½ï¿½
 /// </summary>
-public partial class Game_NPAuction_Scene : Window
+public partial class Game_NPAuction_Scene : GameScene
 {
 	public Game_NPAuction_Scene()
 	{
-        DataContext = new Game_NPAuction_SceneViewModel();
-		InitializeComponent();
+        InitializeComponent();
 	}
 }

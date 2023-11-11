@@ -2,17 +2,14 @@
 
 using Xylia.Extension;
 using Xylia.Preview.Data.Common.Attribute;
-using Xylia.Preview.Data.Common.Cast;
 using Xylia.Preview.Data.Common.DataStruct;
 using Xylia.Preview.Data.Common.Interface;
+using Xylia.Preview.Data.Common.Seq;
 using Xylia.Preview.Data.Models;
 
 namespace Xylia.Preview.Data.Common.Cast;
 public static partial class RecordExtension
 {
-	#region GetParam
-	internal static object GetParam<T>(this T Object, string ParamName) => Object.TryGetParam(ParamName, out object Value) ? Value : null;
-
 	public static bool TryGetParam<T>(this T Object, string ParamName, out object Value)
 	{
 		if (ParamName == Object.GetType().Name)
@@ -41,12 +38,21 @@ public static partial class RecordExtension
 		return false;
 	}
 
-	public static string GetName(this object Object) => Object.GetAttribute<Name>()?.Description ?? (Object is MemberInfo m ? m.Name : Object.ToString());
+	public static string GetName(this object Object)
+	{
+		if (Object is Enum value)
+		{
+			if (value == default) return null;
+			else if (value is EquipType EquipType) return EquipType.GetName();
+			else if (value is ConditionType ConditionType) return ConditionType.GetName();
+			else if (value is RaceSeq RaceSeq) return Race.Get(RaceSeq).GetName();
+			else if (value is SexSeq SexSeq) return ((Item.SexSeq2)SexSeq).GetName();
+			else if (value is Item.SexSeq2 SexSeq2) return SexSeq2.GetName();
+		}
 
-	public static T Get<T>(this T[] array, int num) => array.Length < num ? default : array[num - 1];
-	#endregion
+		return Object.GetAttribute<Name>()?.Description ?? (Object is MemberInfo m ? m.Name : Object.ToString());
+	}
 
-	#region GetName
 	public static string GetName(this Record record)
 	{
 		if (record is null) return null;
@@ -61,17 +67,6 @@ public static partial class RecordExtension
 		return name;
 	}
 
-	/// <summary>
-	/// temp
-	/// </summary>
-	/// <param name="record"></param>
-	/// <returns></returns>
-	public static string GetAttraction(this Record record)
-	{
-		var tooltip = $"{record.GetType().Name}: " + record.GetName();
-		if (record is IAttraction attraction) tooltip += "\n" + attraction.GetDescribe();
 
-		return tooltip;
-	}
-	#endregion
+	public static T Get<T>(this T[] array, int num) => array.Length < num ? default : array[num - 1];
 }

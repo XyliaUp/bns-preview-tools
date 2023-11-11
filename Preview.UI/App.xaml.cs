@@ -12,11 +12,11 @@ using CUE4Parse.UE4.VirtualFileSystem;
 
 using Serilog;
 
-using Vanara.PInvoke;
-
 using Xylia.Preview.Common.Extension;
 using Xylia.Preview.Data.Helpers;
 using Xylia.Preview.UI.ViewModels;
+
+using Kernel32 = Vanara.PInvoke.Kernel32;
 
 namespace Xylia.Preview.UI;
 public partial class App : Application
@@ -56,11 +56,13 @@ public partial class App : Application
 		#endregion
 
 #if DEV
-		//FileCache.Data = new Data.Engine.DatData.FolderProvider(@"D:\资源\客户端相关\Auto\data");
+		FileCache.Data = new Data.Engine.DatData.FolderProvider(@"D:\资源\客户端相关\Auto\data");
 #endif
 		MainWindow = new MainWindow();
+		//MainWindow = new Game_ItemMapScene();
 		MainWindow.Show();
 	}
+
 
 	#region Exception	
 	private void Application_DispatcherUnhandledException(object sender, DispatcherUnhandledExceptionEventArgs e)

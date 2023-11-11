@@ -2,22 +2,21 @@ using System.Windows.Controls;
 
 using Xylia.Preview.Data.Helpers;
 using Xylia.Preview.Data.Models;
-using Xylia.Preview.UI.Common.Controls;
+using Xylia.Preview.UI.Controls;
 
 using static Xylia.Preview.Data.Models.UnlocatedStore;
 
 namespace Xylia.Preview.UI.Art.GameUI.Scene.Game_ItemStore;
-public partial class Game_ItemStoreScene : Window
+public partial class Game_ItemStoreScene : GameScene
 {
 	public Game_ItemStoreScene()
 	{
 		InitializeComponent();
-		LoadData();
 	}
 
 
 	#region Methods 
-	private void LoadData()
+	protected override void OnLoading(EventArgs e)
 	{
 		#region type
 		var group = new Dictionary<UnlocatedStoreTypeSeq, TreeViewItem>();
@@ -27,7 +26,14 @@ public partial class Game_ItemStoreScene : Window
 			TitleText = new("UI.ItemStore.Title"),
 		}))
 		{
-			var item = new TreeViewImageItem() { HeaderText = record.TitleText.GetText() };
+			if (record.UnlocatedStoreType > UnlocatedStoreTypeSeq.SoulBoostStore1 &&
+				record.UnlocatedStoreType <= UnlocatedStoreTypeSeq.SoulBoostStore6) continue;
+
+			var item = new TreeViewImageItem()
+			{
+				HeaderText = record.TitleText.GetText(),
+				//Image = FileCache.Provider.LoadObject(record.TitleIcon)?.GetImage()?.ToImageSource(),
+			};
 			this.TreeView.Items.Add(group[record.UnlocatedStoreType] = item);
 		}
 		#endregion
@@ -37,6 +43,8 @@ public partial class Game_ItemStoreScene : Window
 		{
 			var text = $"[{store2.Name2.GetText()}] {store2.Alias}";
 			var type = FileCache.Data.UnlocatedStore.FirstOrDefault(x => x.Store2 == store2)?.UnlocatedStoreType ?? UnlocatedStoreTypeSeq.UnlocatedNone;
+			if (type > UnlocatedStoreTypeSeq.SoulBoostStore1 && type <= UnlocatedStoreTypeSeq.SoulBoostStore6)
+				type = UnlocatedStoreTypeSeq.SoulBoostStore1;
 
 			var item = new TreeViewItem() { Header = text, Tag = store2 };
 			group[type].Items.Add(item);

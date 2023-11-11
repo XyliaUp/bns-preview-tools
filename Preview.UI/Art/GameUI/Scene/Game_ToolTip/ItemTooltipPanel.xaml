@@ -3,12 +3,10 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:c="clr-namespace:Xylia.Preview.UI.Common.Controls"
+             xmlns:UI="https://github.com/xyliaup/bns-preview-tools"
              mc:Ignorable="d" Height="467" Width="395"
 			 DataContext="{Binding RelativeSource={RelativeSource Self}}">
 	<Grid>
-		<c:BnsCustomLabelWidget Text="{Binding Model.Name2}" />
-
-
+		<UI:BnsCustomLabelWidget Text="{Binding Model.Name2}" />
 	</Grid>
 </UserControl>

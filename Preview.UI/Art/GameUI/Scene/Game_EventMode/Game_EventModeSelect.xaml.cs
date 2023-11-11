@@ -1,9 +1,8 @@
 namespace Xylia.Preview.UI.Art.GameUI.Scene.Game_EventMode;
-public partial class Game_EventModeSelect : Window
+public partial class Game_EventModeSelect : GameScene
 {
 	public Game_EventModeSelect()
 	{
-        DataContext = new Game_EventModeSelectViewModel();
-		InitializeComponent();
+        InitializeComponent();
 	}
 }

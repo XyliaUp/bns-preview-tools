@@ -1,23 +1,17 @@
 <UI:GameScene
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:c="clr-namespace:Xylia.Preview.UI.Common.Controls"
-		xmlns:UI="clr-namespace:Xylia.Preview.UI"
-        xmlns:local="clr-namespace:Xylia.Preview.UI.Art.GameUI.Scene.Game_ItemMap"
-	                      x:Class="Xylia.Preview.UI.Art.GameUI.Scene.Game_ItemMap.Game_ItemMapScene"
-        mc:Ignorable="d"
-        Title="ItemMap" Width="1300" Height="800" >
-	<Window.DataContext>
-		<local:Game_ItemMapSceneViewModel />
-	</Window.DataContext>
+		x:Class="Xylia.Preview.UI.Art.GameUI.Scene.Game_ItemMap.Game_ItemMapScene"
+		xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+		xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+		xmlns:local="clr-namespace:Xylia.Preview.UI.Art.GameUI.Scene.Game_ItemMap"
+		xmlns:UI="https://github.com/xyliaup/bns-preview-tools"		  	  
+		Title="ItemMap" Width="1300" Height="800" 
+		DataContext="{Binding RelativeSource={RelativeSource Self}}">
 	<Window.Resources>
-		<Style TargetType="c:RadioImageButton">
+		<Style TargetType="UI:RadioImageButton">
 			<Setter Property="Margin" Value="1"/>
 			<Setter Property="Template">
 				<Setter.Value>
-					<ControlTemplate TargetType="c:RadioImageButton">
+					<ControlTemplate TargetType="UI:RadioImageButton">
 						<Grid Background="{TemplateBinding Background}" Width="40" Height="40" Margin="{TemplateBinding Margin}">
 							<Image Source="{TemplateBinding BackgrondImage}" />
 							<Border x:Name="_borderOver" Background="Transparent" BorderBrush="Transparent" BorderThickness="1" Margin="1">
@@ -36,7 +30,6 @@
 			</Setter>
 		</Style>
 	</Window.Resources>
-
 	<Grid>
 		<Grid.RowDefinitions>
 			<RowDefinition Height="40" />
@@ -44,21 +37,20 @@
 		</Grid.RowDefinitions>
 
 		<StackPanel Grid.Row="0" x:Name="ItemMapPanel_Tab_RadioButton" Orientation="Horizontal" >
-			<c:RadioImageButton BackgrondImage="/Art/GameUI/Scene/Game_ItemMap/ItemMapPanel_Tab_RadioButton_1.png" Command="{Binding EquipTypeChangeCommand}" CommandParameter="Weapon" ToolTip="UI.ButtonTooltip.Weapon" />
-			<c:RadioImageButton BackgrondImage="/Art/GameUI/Scene/Game_ItemMap/ItemMapPanel_Tab_RadioButton_2.png" Command="{Binding EquipTypeChangeCommand}" CommandParameter="Necklace" ToolTip="UI.ButtonTooltip.Necklace" />
-			<c:RadioImageButton BackgrondImage="/Art/GameUI/Scene/Game_ItemMap/ItemMapPanel_Tab_RadioButton_3.png" Command="{Binding EquipTypeChangeCommand}" CommandParameter="Earring" ToolTip="UI.ButtonTooltip.Earring"/>
-			<c:RadioImageButton BackgrondImage="/Art/GameUI/Scene/Game_ItemMap/ItemMapPanel_Tab_RadioButton_4.png" Command="{Binding EquipTypeChangeCommand}" CommandParameter="Ring" ToolTip="UI.ButtonTooltip.Ring"/>
-			<c:RadioImageButton BackgrondImage="/Art/GameUI/Scene/Game_ItemMap/ItemMapPanel_Tab_RadioButton_5.png" Command="{Binding EquipTypeChangeCommand}" CommandParameter="Bracelet" ToolTip="UI.ButtonTooltip.Bracelet"/>
-			<c:RadioImageButton BackgrondImage="/Art/GameUI/Scene/Game_ItemMap/ItemMapPanel_Tab_RadioButton_6.png" Command="{Binding EquipTypeChangeCommand}" CommandParameter="Belt" ToolTip="UI.ButtonTooltip.Belt"/>
-			<c:RadioImageButton BackgrondImage="/Art/GameUI/Scene/Game_ItemMap/ItemMapPanel_Tab_RadioButton_7.png" Command="{Binding EquipTypeChangeCommand}" CommandParameter="Soul" ToolTip="UI.ButtonTooltip.Soul"/>
-			<c:RadioImageButton BackgrondImage="/Art/GameUI/Scene/Game_ItemMap/ItemMapPanel_Tab_RadioButton_8.png" Command="{Binding EquipTypeChangeCommand}" CommandParameter="Gloves" ToolTip="UI.ButtonTooltip.Gloves"/>
-			<c:RadioImageButton BackgrondImage="/Art/GameUI/Scene/Game_ItemMap/ItemMapPanel_Tab_RadioButton_9.png" Command="{Binding EquipTypeChangeCommand}" CommandParameter="Pet1" ToolTip="UI.ButtonTooltip.Pet"/>
-			<c:RadioImageButton BackgrondImage="/Art/GameUI/Scene/Game_ItemMap/ItemMapPanel_Tab_RadioButton_10.png" Command="{Binding EquipTypeChangeCommand}" CommandParameter="" ToolTip="UI.ButtonTooltip.SubGem1"/>
-			<c:RadioImageButton BackgrondImage="/Art/GameUI/Scene/Game_ItemMap/ItemMapPanel_Tab_RadioButton_11.png" Command="{Binding EquipTypeChangeCommand}" CommandParameter="" ToolTip="UI.ButtonTooltip.SubGem2"/>
-			<c:RadioImageButton BackgrondImage="/Art/GameUI/Scene/Game_ItemMap/ItemMapPanel_Tab_RadioButton_12.png" Command="{Binding EquipTypeChangeCommand}" CommandParameter="Soul2" ToolTip="UI.ButtonTooltip.soul-2"/>
-			<c:RadioImageButton BackgrondImage="/Art/GameUI/Scene/Game_ItemMap/ItemMapPanel_Tab_RadioButton_13.png" Command="{Binding EquipTypeChangeCommand}" CommandParameter="Nova" ToolTip="UI.ButtonTooltip.Nova"/>
+			<UI:RadioImageButton BackgrondImage="/Art/GameUI/Scene/Game_ItemMap/ItemMapPanel_Tab_RadioButton_1.png" Command="{Binding EquipTypeChangeCommand}" CommandParameter="Weapon" ToolTip="UI.ButtonTooltip.Weapon" />
+			<UI:RadioImageButton BackgrondImage="/Art/GameUI/Scene/Game_ItemMap/ItemMapPanel_Tab_RadioButton_2.png" Command="{Binding EquipTypeChangeCommand}" CommandParameter="Necklace" ToolTip="UI.ButtonTooltip.Necklace" />
+			<UI:RadioImageButton BackgrondImage="/Art/GameUI/Scene/Game_ItemMap/ItemMapPanel_Tab_RadioButton_3.png" Command="{Binding EquipTypeChangeCommand}" CommandParameter="Earring" ToolTip="UI.ButtonTooltip.Earring"/>
+			<UI:RadioImageButton BackgrondImage="/Art/GameUI/Scene/Game_ItemMap/ItemMapPanel_Tab_RadioButton_4.png" Command="{Binding EquipTypeChangeCommand}" CommandParameter="Ring" ToolTip="UI.ButtonTooltip.Ring"/>
+			<UI:RadioImageButton BackgrondImage="/Art/GameUI/Scene/Game_ItemMap/ItemMapPanel_Tab_RadioButton_5.png" Command="{Binding EquipTypeChangeCommand}" CommandParameter="Bracelet" ToolTip="UI.ButtonTooltip.Bracelet"/>
+			<UI:RadioImageButton BackgrondImage="/Art/GameUI/Scene/Game_ItemMap/ItemMapPanel_Tab_RadioButton_6.png" Command="{Binding EquipTypeChangeCommand}" CommandParameter="Belt" ToolTip="UI.ButtonTooltip.Belt"/>
+			<UI:RadioImageButton BackgrondImage="/Art/GameUI/Scene/Game_ItemMap/ItemMapPanel_Tab_RadioButton_7.png" Command="{Binding EquipTypeChangeCommand}" CommandParameter="Soul" ToolTip="UI.ButtonTooltip.Soul"/>
+			<UI:RadioImageButton BackgrondImage="/Art/GameUI/Scene/Game_ItemMap/ItemMapPanel_Tab_RadioButton_8.png" Command="{Binding EquipTypeChangeCommand}" CommandParameter="Gloves" ToolTip="UI.ButtonTooltip.Gloves"/>
+			<UI:RadioImageButton BackgrondImage="/Art/GameUI/Scene/Game_ItemMap/ItemMapPanel_Tab_RadioButton_9.png" Command="{Binding EquipTypeChangeCommand}" CommandParameter="Pet1" ToolTip="UI.ButtonTooltip.Pet"/>
+			<UI:RadioImageButton BackgrondImage="/Art/GameUI/Scene/Game_ItemMap/ItemMapPanel_Tab_RadioButton_10.png" Command="{Binding EquipTypeChangeCommand}" CommandParameter="" ToolTip="UI.ButtonTooltip.SubGem1"/>
+			<UI:RadioImageButton BackgrondImage="/Art/GameUI/Scene/Game_ItemMap/ItemMapPanel_Tab_RadioButton_11.png" Command="{Binding EquipTypeChangeCommand}" CommandParameter="" ToolTip="UI.ButtonTooltip.SubGem2"/>
+			<UI:RadioImageButton BackgrondImage="/Art/GameUI/Scene/Game_ItemMap/ItemMapPanel_Tab_RadioButton_12.png" Command="{Binding EquipTypeChangeCommand}" CommandParameter="Soul2" ToolTip="UI.ButtonTooltip.soul-2"/>
+			<UI:RadioImageButton BackgrondImage="/Art/GameUI/Scene/Game_ItemMap/ItemMapPanel_Tab_RadioButton_13.png" Command="{Binding EquipTypeChangeCommand}" CommandParameter="Nova" ToolTip="UI.ButtonTooltip.Nova"/>
 		</StackPanel>
-
 
 		<Grid Grid.Column="0" Grid.Row="1" >
 			<Grid.ColumnDefinitions>
@@ -68,8 +60,6 @@
 
 			<!-- Nag -->
 			<Grid Grid.Column="0" >
-				
-
 				<Grid>
 					<Grid.RowDefinitions>
 						<RowDefinition Height="50" />
@@ -93,19 +83,23 @@
 
 
 			</Grid>
-			
+
 			<Grid Grid.Column="1" >
 				<Grid.RowDefinitions>
 					<RowDefinition Height="30" />
 					<RowDefinition Height="*"/>
 				</Grid.RowDefinitions>
 
-				<TextBox Text="Searcher" />
-				<ComboBox Width="200" HorizontalAlignment="Right" >
-					<ComboBoxItem Content="123" />
-				</ComboBox>
+				<StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+					<TextBox Width="200" Text="Searcher" />
+					<ComboBox Width="200">
+						<ComboBoxItem Content="123" />
+					</ComboBox>
+				</StackPanel>
 
-				<local:ItemMapPanel Grid.Row="1" x:Name="ItemMapPanel" EquipType="{Binding EquipType}" />
+				<ScrollViewer Grid.Row="1" x:Name="Scroller" PreviewMouseWheel="PanelMouseWheel" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" >
+					<local:ItemMapPanel x:Name="ItemMapPanel" />
+				</ScrollViewer>
 			</Grid>
 		</Grid>
 	</Grid>

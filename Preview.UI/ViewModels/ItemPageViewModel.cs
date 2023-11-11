@@ -20,8 +20,6 @@ using Xylia.Preview.UI.FModel.Views;
 using Xylia.Preview.UI.Helpers.Output.Items;
 using Xylia.Preview.UI.Views.Selector;
 
-using static Xylia.Preview.Data.Models.Item;
-
 namespace Xylia.Preview.UI.ViewModels;
 public partial class ItemPageViewModel : ObservableObject
 {
@@ -205,7 +203,7 @@ public class PreviewModel : ICommand
 					models = temp;
 					return;
 				}
-				else if (item is Weapon weapon)
+				else if (item is Item.Weapon weapon)
 				{
 					var pet = item.Attributes["pet"];
 					if (pet != null)
@@ -227,7 +225,7 @@ public class PreviewModel : ICommand
 						//var EquipShow = FileCache.Pakitem.LoadObject<UShowObject>(equipshow);
 					}
 				}
-				else if (item is Accessory accessory)
+				else if (item is Item.Accessory accessory)
 				{
 					var VehicleDetail = item.Attributes["vehicle-detail"];
 					if (VehicleDetail != null)
@@ -267,11 +265,4 @@ public class PreviewModel : ICommand
 			Debug.WriteLine(parameter?.GetType());
 		}
 	});
-
-
-	public List<ModelData> GetModels()
-	{
-
-		return null;
-	}
 }

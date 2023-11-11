@@ -1,33 +1,22 @@
-﻿using System.Text;
-using System.Text.RegularExpressions;
+﻿using System.ComponentModel;
+using System.Runtime.CompilerServices;
+using System.Text;
 
 namespace Xylia.Preview.Common.Extension;
 public static partial class String
 {
-	public static string RemovePrefixString(this string s, string str)
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	public static string GetDescription(this Enum value)
 	{
-		if (string.IsNullOrWhiteSpace(s))
-			return null;
-
-		string strRegex = @"^(" + Regex.Escape(str) + ")";
-		return Regex.Unescape(Regex.Replace(s, strRegex, ""));
+		var fi = value.GetType().GetField(value.ToString());
+		if (fi == null) return $"{value} ({value:D})";
+		var attributes = (DescriptionAttribute[])fi.GetCustomAttributes(typeof(DescriptionAttribute), false);
+		return attributes.Length > 0 ? attributes[0].Description : $"{value} ({value:D})";
 	}
 
-	public static string RemoveSuffixString(this string s, string str)
-	{
-		if (string.IsNullOrWhiteSpace(s))
-			return null;
-
-		string strRegex = @"(" + Regex.Escape(str) + ")" + "$";
-		return Regex.Unescape(Regex.Replace(s, strRegex, ""));
-	}
-
-	public static string RemovePrefixString(this string s, char str) => RemovePrefixString(s, str.ToString());
-
-	public static string RemoveSuffixString(this string s, char str) => RemoveSuffixString(s, str.ToString());
 
 
-
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static string TitleCase(this string line)
 	{
 		StringBuilder sb = new();
@@ -40,6 +29,7 @@ public static partial class String
 		return sb.ToString();
 	}
 
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static string TitleLowerCase(this string line)
 	{
 		StringBuilder sb = new();

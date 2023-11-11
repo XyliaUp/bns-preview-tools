@@ -1,0 +1,203 @@
+﻿<ResourceDictionary 
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:Metro="https://github.com/aduskin"
+    xmlns:UI="clr-namespace:Xylia.Preview.UI">
+	<ResourceDictionary.MergedDictionaries>
+		<ResourceDictionary Source="/AduSkin;component/Themes/Metro/MetroBase.xaml" />
+	</ResourceDictionary.MergedDictionaries>
+
+	<Geometry x:Key="Icon_Question">M202.021 0C122.202 0 70.503 32.703 29.914 91.026c-7.363 10.58-5.093 25.086 5.178 32.874l43.138 32.709c10.373 7.865 25.132 6.026 33.253-4.148 25.049-31.381 43.63-49.449 82.757-49.449 30.764 0 68.816 19.799 68.816 49.631 0 22.552-18.617 34.134-48.993 51.164-35.423 19.86-82.299 44.576-82.299 106.405V320c0 13.255 10.745 24 24 24h72.471c13.255 0 24-10.745 24-24v-5.773c0-42.86 125.268-44.645 125.268-160.627C377.504 66.256 286.902 0 202.021 0zM192 373.459c-38.196 0-69.271 31.075-69.271 69.271 0 38.195 31.075 69.27 69.271 69.27s69.271-31.075 69.271-69.271-31.075-69.27-69.271-69.27z</Geometry>
+
+
+	<Style x:Key="buttonStyle" TargetType="{x:Type Button}">
+		<Setter Property="FocusVisualStyle" Value="{x:Null}" />
+		<Setter Property="SnapsToDevicePixels" Value="True" />
+		<Setter Property="Cursor" Value="Hand"/>
+		<Setter Property="Width" Value="40" />
+		<Setter Property="Height" Value="40" />
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="{x:Type Button}">
+					<Grid>
+						<Rectangle x:Name="backRectangle" Fill="{TemplateBinding Background}" Opacity="0" />
+						<ContentPresenter />
+						<VisualStateManager.VisualStateGroups>
+							<VisualStateGroup x:Name="CommonStates">
+								<VisualState x:Name="Normal">
+									<Storyboard>
+										<DoubleAnimation Storyboard.TargetName="backRectangle" Storyboard.TargetProperty="(UIElement.Opacity)" To="0" Duration="0:0:0.1" />
+									</Storyboard>
+								</VisualState>
+								<VisualState x:Name="MouseOver">
+									<Storyboard>
+										<DoubleAnimation Storyboard.TargetName="backRectangle" Storyboard.TargetProperty="(UIElement.Opacity)" To="0.15" Duration="0:0:0.1" />
+									</Storyboard>
+								</VisualState>
+								<VisualState x:Name="Pressed">
+									<Storyboard>
+										<DoubleAnimation Storyboard.TargetName="backRectangle" Storyboard.TargetProperty="(UIElement.Opacity)" To="0.05" Duration="0:0:0.1" />
+									</Storyboard>
+								</VisualState>
+								<VisualState x:Name="Disabled" />
+							</VisualStateGroup>
+						</VisualStateManager.VisualStateGroups>
+					</Grid>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+
+	<Style TargetType="{x:Type UI:GameScene}">
+		<Setter Property="FocusVisualStyle" Value="{x:Null}" />
+		<Setter Property="SnapsToDevicePixels" Value="True" />
+
+		<Setter Property="Background" Value="#FFF3F3F3" />
+		<Setter Property="WindowStyle" Value="SingleBorderWindow" />
+		<Setter Property="BorderBrush" Value="{StaticResource Brush}" />
+		<Setter Property="Foreground" Value="#FF000000" />
+		<Setter Property="TitleForeground" Value="#ffffff" />
+		<Setter Property="SysButtonColor" Value="#ffffff" />
+		<Setter Property="BorderThickness" Value="1" />
+		<Setter Property="TextOptions.TextFormattingMode" Value="Display" />
+		<Setter Property="TextOptions.TextRenderingMode" Value="ClearType" />
+		<Setter Property="UseLayoutRounding" Value="True" />
+
+		<Setter Property="WindowChrome.WindowChrome">
+			<Setter.Value>
+				<WindowChrome CaptionHeight="40" CornerRadius="5" GlassFrameThickness="-1" NonClientFrameEdges="None" ResizeBorderThickness="5" UseAeroCaptionButtons="False" />
+			</Setter.Value>
+		</Setter>
+
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="{x:Type UI:GameScene}">
+					<Border x:Name="PART_WindowBorder" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+						<Grid Background="{StaticResource DefaultWhiteBrush}" x:Name="WindowGrid">
+							<Border Margin="-1" BorderBrush="#000000" BorderThickness="{Binding BorderThickness, ElementName=border}" Opacity="0.15" />
+							<Grid x:Name="WIdowGrid">
+								<Grid.RowDefinitions>
+									<RowDefinition x:Name="TitleHeight" Height="40" />
+									<RowDefinition />
+								</Grid.RowDefinitions>
+								<Grid x:Name="PART_Title" Background="{TemplateBinding BorderBrush}">
+									<Grid.ColumnDefinitions>
+										<ColumnDefinition x:Name="iconSize" Width="36" />
+										<ColumnDefinition Width="Auto" />
+										<ColumnDefinition />
+										<ColumnDefinition Width="Auto" />
+									</Grid.ColumnDefinitions>
+									<Grid Grid.Column="0" Margin="7,0,0,0">
+										<Metro:MetroImage Source="{TemplateBinding Icon}" />
+										<Rectangle Fill="{TemplateBinding TitleForeground}" Opacity="0" />
+									</Grid>
+									<Grid Grid.Column="1" x:Name="title">
+										<Metro:MetroTextBlock Margin="10,0" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="{TemplateBinding TitleForeground}" FontSize="20" Text="{TemplateBinding Title}" />
+									</Grid>
+									<Grid Grid.Column="3" x:Name="PART_SysButton" WindowChrome.IsHitTestVisibleInChrome="True">
+										<StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+											<Button x:Name="PART_QuestionButton" Style="{StaticResource buttonStyle}">
+												<Button.Content>
+													<Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+														<Path Width="8.25" Height="11" Margin="0,0,0,0" Shape.Fill="{TemplateBinding SysButtonColor}" Shape.Stretch="Fill" Path.Data="{StaticResource Icon_Question}" />
+													</Grid>
+												</Button.Content>
+												<Button.ToolTip>
+													Tooltip
+												</Button.ToolTip>
+											</Button>
+
+											<Button x:Name="PART_MinimizedButton" Style="{StaticResource buttonStyle}">
+												<Button.Content>
+													<Path Width="11" Height="2" Data="{StaticResource Icon_SysMin}" Fill="{TemplateBinding SysButtonColor}"  Stretch="Fill"/>
+												</Button.Content>
+											</Button>
+											<Button x:Name="PART_MaximizedButton" Foreground="{TemplateBinding TitleForeground}" Style="{StaticResource buttonStyle}" Visibility="Collapsed">
+												<Button.Content>
+													<Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+														<Path Width="11" Height="11" Margin="0,0,0,0" Shape.Fill="{TemplateBinding SysButtonColor}" Shape.Stretch="Fill" Path.Data="{StaticResource Icon_SysMax}" />
+													</Grid>
+												</Button.Content>
+											</Button>
+											<Button x:Name="PART_NormalButton" Foreground="{TemplateBinding TitleForeground}" Style="{StaticResource buttonStyle}">
+												<Button.Content>
+													<Grid Margin="0,2,3,0" HorizontalAlignment="Center" VerticalAlignment="Center">
+														<Path  Width="11" Height="11" Margin="0,0,0,0" Shape.Fill="{TemplateBinding SysButtonColor}" Shape.Stretch="Fill" Path.Data="{StaticResource Icon_SystemRestore}" />
+													</Grid>
+												</Button.Content>
+											</Button>
+											<Button x:Name="PART_CloseButton" Foreground="{TemplateBinding TitleForeground}" Style="{StaticResource buttonStyle}">
+												<Button.Content>
+													<Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+														<Path Width="11" Height="11" Margin="0,0,0,0" Shape.Fill="{TemplateBinding SysButtonColor}" Shape.Stretch="Fill" Path.Data="{StaticResource Icon_SystemClose}" />
+													</Grid>
+												</Button.Content>
+											</Button>
+										</StackPanel>
+									</Grid>
+								</Grid>
+								<Grid x:Name="PART_Content" Grid.Row="1" Background="{TemplateBinding Background}">
+									<AdornerDecorator>
+										<ContentPresenter/>
+									</AdornerDecorator>
+								</Grid>
+								<Rectangle x:Name="disableRectangle" Grid.RowSpan="2" Fill="#FF000000" IsHitTestVisible="False" Opacity="0" />
+							</Grid>
+						</Grid>
+						<VisualStateManager.VisualStateGroups>
+							<VisualStateGroup>
+								<VisualState x:Name="Enabled">
+									<Storyboard>
+										<DoubleAnimation Storyboard.TargetName="disableRectangle" Storyboard.TargetProperty="(UIElement.Opacity)" To="0.5" Duration="0:0:0.1" />
+									</Storyboard>
+								</VisualState>
+								<VisualState x:Name="Disable">
+									<Storyboard>
+										<DoubleAnimation Storyboard.TargetName="disableRectangle" Storyboard.TargetProperty="(UIElement.Opacity)" To="0" Duration="0:0:0.1" />
+									</Storyboard>
+								</VisualState>
+							</VisualStateGroup>
+						</VisualStateManager.VisualStateGroups>
+					</Border>
+					<ControlTemplate.Triggers>
+						<Trigger Property="ResizeMode" Value="NoResize">
+							<Setter TargetName="PART_MinimizedButton" Property="Visibility" Value="Collapsed" />
+							<Setter TargetName="PART_MaximizedButton" Property="Visibility" Value="Collapsed" />
+							<Setter TargetName="PART_NormalButton" Property="Visibility" Value="Collapsed" />
+						</Trigger>
+						<Trigger Property="ResizeMode" Value="CanMinimize">
+							<Setter TargetName="PART_MaximizedButton" Property="Visibility" Value="Collapsed" />
+							<Setter TargetName="PART_NormalButton" Property="Visibility" Value="Collapsed" />
+						</Trigger>
+						<Trigger Property="WindowState" Value="Maximized">
+							<Setter TargetName="PART_MaximizedButton" Property="Visibility" Value="Collapsed" />
+							<Setter TargetName="PART_WindowBorder" Property="BorderThickness" Value="6" />
+						</Trigger>
+						<Trigger Property="WindowState" Value="Normal">
+							<Setter TargetName="PART_NormalButton" Property="Visibility" Value="Collapsed" />
+						</Trigger>
+						<Trigger Property="Icon" Value="{x:Null}">
+							<Setter TargetName="iconSize" Property="Width" Value="0" />
+							<Setter Property="MinWidth" Value="120" />
+						</Trigger>
+						<Trigger Property="WindowStyle" Value="ToolWindow">
+							<Setter TargetName="PART_MaximizedButton" Property="Visibility" Value="Collapsed" />
+							<Setter TargetName="PART_NormalButton" Property="Visibility" Value="Collapsed" />
+							<Setter TargetName="PART_MinimizedButton" Property="Visibility" Value="Collapsed" />
+						</Trigger>
+						<Trigger Property="WindowStyle" Value="None">
+							<Setter TargetName="PART_MaximizedButton" Property="Visibility" Value="Collapsed" />
+							<Setter TargetName="PART_NormalButton" Property="Visibility" Value="Collapsed" />
+							<Setter TargetName="PART_MinimizedButton" Property="Visibility" Value="Collapsed" />
+							<Setter TargetName="PART_CloseButton" Property="Visibility" Value="Collapsed" />
+							<Setter TargetName="PART_SysButton" Property="Visibility" Value="Collapsed" />
+							<Setter TargetName="PART_Title" Property="Visibility" Value="Collapsed" />
+							<Setter TargetName="PART_Content" Property="Grid.Row" Value="0" />
+							<Setter TargetName="PART_Content" Property="Grid.RowSpan" Value="2" />
+						</Trigger>
+					</ControlTemplate.Triggers>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+</ResourceDictionary>

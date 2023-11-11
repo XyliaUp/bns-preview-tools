@@ -1,13 +1,10 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-
+					xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+	<SolidColorBrush x:Key="BackgroundBrush">DimGray</SolidColorBrush>
 	<Style x:Key="FolderBrower" TargetType="Button">
 		<Setter Property="FontSize" Value="15" />
 		<Setter Property="FontWeight" Value="ExtraBold" />
 		<Setter Property="Width"  Value="50" />
 		<Setter Property="Content"  Value="..." />
 	</Style>
-
-
-	<SolidColorBrush x:Key="BackgroundBrush">DimGray</SolidColorBrush>
 </ResourceDictionary>

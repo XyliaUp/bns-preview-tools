@@ -62,6 +62,7 @@ public class Table : TableHeader, IDisposable
 
 	internal Dictionary<AttributeDefinition, Dictionary<string, Record[]>> ByRequired = new();
 
+
 	/// <summary>
 	/// the table index
 	/// should use hashmap
@@ -211,6 +212,7 @@ public class Table : TableHeader, IDisposable
 	{
 		get
 		{
+			if (Ref == default) return null;
 			if (_records == null) LoadAsync().Wait();
 
 			if (Ref.Id <= 0) return null;

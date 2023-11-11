@@ -1,7 +1,9 @@
 ﻿using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
-using Xylia.Preview.Data.Common.Cast;
+using Xylia.Extension;
+using Xylia.Preview.Data.Engine.BinData.Models;
+using Xylia.Preview.Data.Helpers;
 using Xylia.Preview.Data.Models;
 
 namespace Xylia.Preview.Data.Common.DataStruct;
@@ -79,16 +81,20 @@ public struct Ref
 	{
 		return HashCode.Combine(Id, Variant);
 	}
-
 }
 
+
+/// <summary>
+/// model reference
+/// </summary>
+/// <typeparam name="TRecord"></typeparam>
 public struct Ref<TRecord> where TRecord : Record
 {
 	public Ref(string value, BnsDatabase database = null)
 	{
 		if (value is null)
 		{
-
+			throw new Exception();
 		}
 		else if (value.Contains(':'))
 		{
@@ -101,10 +107,12 @@ public struct Ref<TRecord> where TRecord : Record
 			Alias = value;
 		}
 
-		Database = database;
+		Database = database ?? FileCache.Data;
 	}
 
 	#region Field
+	private readonly BnsDatabase Database;
+
 	public readonly string Table;
 	public string Alias;
 	//public int Id;
@@ -115,14 +123,25 @@ public struct Ref<TRecord> where TRecord : Record
 	public override string ToString() => IsNull ? null : $"{Table}:{Alias}";
 	#endregion
 
-	#region Instance
-	private readonly BnsDatabase Database;
-
-
+	#region	Instance
 	private TRecord _instance;
 
-	public TRecord Instance => _instance ??= Alias.CastObject<TRecord>(Table, Database);
+	public TRecord Instance => _instance ??= CastObject<TRecord>(Table, Alias, Database);
+
+	public static T CastObject<T>(string table, string alias, BnsDatabase data) where T : Record
+	{
+		if (alias is null) return null;
+
+		// tref: need register on the database
+		// TODO: change to auto create ?
+		if (typeof(T) == typeof(Record))
+			return (T)(data.GetValue(table, true) as Table)?[alias]?.Model.Value;
+
+		// ref: create model table
+		return data.Get<T>(table)?[alias];
+	}
 	#endregion
+
 
 	#region Operator
 	public static bool operator ==(Ref<TRecord> a, Ref<TRecord> b)

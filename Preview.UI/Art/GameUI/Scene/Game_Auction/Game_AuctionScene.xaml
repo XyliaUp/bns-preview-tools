@@ -1,10 +1,8 @@
 ﻿<UI:GameScene x:Class="Xylia.Preview.UI.Art.GameUI.Scene.Game_Auction.Game_AuctionScene"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:c="clr-namespace:Xylia.Preview.UI.Common.Controls"
-		xmlns:UI="clr-namespace:Xylia.Preview.UI"
+		xmlns:UI="https://github.com/xyliaup/bns-preview-tools"
 		xmlns:VM="clr-namespace:Xylia.Preview.UI.ViewModels"
-	  
         Title="AuctionScene" Height="750" Width="800"  
 		DataContext="{Binding RelativeSource={RelativeSource Self}}">
 	<Grid>
@@ -58,8 +56,8 @@
 											<ColumnDefinition Width="54" />
 											<ColumnDefinition Width="*" />
 										</Grid.ColumnDefinitions>
-										<c:BnsCustomImageWidget Grid.Column="0" Image="{Binding Model.Value.Icon}" />
-										<c:BnsCustomLabelWidget Grid.Column="1" Text="{Binding Model.Value.ItemName}" VerticalAlignment="Center" Margin="5 0 0 0"/>
+										<UI:BnsCustomImageWidget Grid.Column="0" Image="{Binding Model.Value.Icon}" />
+										<UI:BnsCustomLabelWidget Grid.Column="1" Text="{Binding Model.Value.ItemName}" VerticalAlignment="Center" Margin="5 0 0 0"/>
 									</Grid>
 								</DataTemplate>
 							</GridViewColumn.CellTemplate>

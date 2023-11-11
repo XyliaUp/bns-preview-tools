@@ -1,4 +1,5 @@
-﻿using System.Xml.Serialization;
+﻿using System.Text;
+using System.Xml.Serialization;
 
 namespace Xylia.Preview.Data.Models.Config;
 public abstract class ConfigTable : Group
@@ -21,6 +22,12 @@ public abstract class ConfigTable : Group
 
 
 	public static T LoadFrom<T>(FileInfo file) where T : ConfigTable => LoadFrom<T>(File.ReadAllText(file.FullName));
+
+	public static T LoadFrom<T>(byte[] data) where T : ConfigTable
+	{
+		if (data is null) return null;
+		return LoadFrom<T>(Encoding.UTF8.GetString(data));
+	}
 
 	public static T LoadFrom<T>(string xml) where T : ConfigTable
 	{

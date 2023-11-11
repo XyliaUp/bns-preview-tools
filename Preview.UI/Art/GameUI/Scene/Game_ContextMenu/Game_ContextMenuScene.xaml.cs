@@ -1,9 +1,8 @@
 namespace Xylia.Preview.UI.Art.GameUI.Scene.Game_ContextMenu;
-public partial class Game_ContextMenuScene : Window
+public partial class Game_ContextMenuScene : GameScene
 {
 	public Game_ContextMenuScene()
 	{
-        DataContext = new Game_ContextMenuSceneViewModel();
-		InitializeComponent();
+        InitializeComponent();
 	}
 }

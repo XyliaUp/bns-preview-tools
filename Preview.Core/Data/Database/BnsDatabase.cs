@@ -132,7 +132,6 @@ public class BnsDatabase : IDisposable
 	public ModelTable<ItemImproveOption> ItemImproveOption => Get<ItemImproveOption>();
 	public ModelTable<ItemImproveOptionList> ItemImproveOptionList => Get<ItemImproveOptionList>();
 	public ModelTable<ItemImproveSuccession> ItemImproveSuccession => Get<ItemImproveSuccession>();
-
 	public ModelTable<ItemRandomAbilitySection> ItemRandomAbilitySection => Get<ItemRandomAbilitySection>();
 	public ModelTable<ItemRandomAbilitySlot> ItemRandomAbilitySlot => Get<ItemRandomAbilitySlot>();
 	public ModelTable<ItemSkill> ItemSkill => Get<ItemSkill>();

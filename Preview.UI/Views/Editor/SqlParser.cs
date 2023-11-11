@@ -261,7 +261,7 @@ public static class IronyExtension
 		// xpath
 		path = path.Remove(0, 1);
 		var current = path.SubstringBefore('/');
-		var next = path.RemovePrefixString(current).Trim();
+		var next = path.SubstringBeforeLast(current).Trim();
 
 		// select
 		var temp = node.ChildNodes.Where(x => current == "*" || x.Term.Name == current);

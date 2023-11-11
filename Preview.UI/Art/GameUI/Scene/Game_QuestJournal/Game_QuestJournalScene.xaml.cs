@@ -1,6 +1,8 @@
 using System.ComponentModel;
 using System.Windows.Controls;
 
+using CommunityToolkit.Mvvm.Input;
+
 using Xylia.Preview.Data.Helpers;
 using Xylia.Preview.Data.Models;
 using Xylia.Preview.UI.Helpers.Output.Quests;
@@ -8,17 +10,27 @@ using Xylia.Preview.UI.ViewModels;
 using Xylia.Preview.UI.Views.Editor;
 
 namespace Xylia.Preview.UI.Art.GameUI.Scene.Game_QuestJournal;
-public partial class Game_QuestJournalScene : Window
+public partial class Game_QuestJournalScene : GameScene
 {
+	#region Ctr
 	public Game_QuestJournalScene()
 	{
-		DataContext = new Game_QuestJournalSceneViewModel();
 		InitializeComponent();
+	}
 
-		QuestJournalPanel.DataContext = null;
+	protected override void OnLoading(EventArgs e)
+	{
+		// Quest
+		TreeView1.ItemsSource = FileCache.Data.Quest.OrderBy(q => q.id);
 
-		LoadData(0);
-		LoadData(2);
+		// Completed
+		List<Quest> CompletedQuest = new();
+		QuestEpic.GetEpic(CompletedQuest.Add);
+		TreeView2.ItemsSource = CompletedQuest.GroupBy(o => o.Group2).Select(o => new TreeViewItem
+		{
+			Header = o.Key.GetText(),
+			ItemsSource = o.ToList(),
+		});
 	}
 
 	protected override void OnClosing(CancelEventArgs e)
@@ -26,46 +38,20 @@ public partial class Game_QuestJournalScene : Window
 		this.Hide();
 		e.Cancel = true;
 	}
+	#endregion
 
 
 	#region ProgressTab
-	public void LoadData(int type = 0)
-	{
-		if (type == 0)
-		{
-			TreeView1.ItemsSource = FileCache.Data.Quest.OrderBy(q => q.id);
-		}
-
-
-		if (type == 2)
-		{
-			List<Quest> CompletedQuest = new();
-			QuestEpic.GetEpic(CompletedQuest.Add);
-
-			TreeView2.ItemsSource = CompletedQuest.GroupBy(o => o.Group2).Select(o => new TreeViewItem
-			{
-				Header = o.Key.GetText(),
-				ItemsSource = o.ToList(),
-			});
-		}
-	}
-
 	private void ProgressTab_SelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
 	{
 		QuestJournalPanel.DataContext = e.NewValue as Quest;
 	}
 
-	private void ViewRawData_Click(object sender, RoutedEventArgs e)
+	[RelayCommand]
+	public static void ViewRaw(Quest record)
 	{
-		var menu = ((MenuItem)sender).Parent as ContextMenu;
-		var data = ((FrameworkElement)menu.PlacementTarget).DataContext;
-		if (data is not Quest quest) return;
-
 		// Warning: is not original text
-		var editor = new TextEditor
-		{
-			Text = quest.Owner.WriteXml(quest)
-		};
+		var editor = new TextEditor { Text = record.Owner.WriteXml(record) };
 		editor.Show();
 	}
 	#endregion

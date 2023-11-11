@@ -1,9 +1,8 @@
 namespace Xylia.Preview.UI.Art.GameUI.Scene.Game_Attendance;
-public partial class Game_BattlePassScene : Window
+public partial class Game_BattlePassScene : GameScene
 {
 	public Game_BattlePassScene()
 	{
-        DataContext = new Game_BattlePassSceneViewModel();
-		InitializeComponent();
+        InitializeComponent();
 	}
 }

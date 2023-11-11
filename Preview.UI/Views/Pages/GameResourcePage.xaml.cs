@@ -62,7 +62,7 @@ public partial class GameResourcePage : Page
 
 			try
 			{
-				new Exporter(UserSettings.Default.OutputFolder_Resource)
+				new Exporter(UserSettings.Default.OutputFolderResource)
 					.Run(provider.LoadPackage(gamefile), ContainType);
 			}
 			catch (Exception ex)

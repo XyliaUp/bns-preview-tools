@@ -69,11 +69,11 @@ public class Settings : INotifyPropertyChanged
 			if (!Directory.Exists(value)) return;
 
 			SetValue(value);
-			OutputFolder_Resource ??= value + "\\Paks";
+			OutputFolderResource ??= value + "\\Paks";
 		}
 	}
 
-	public string OutputFolder_Resource { get => GetValue(); set => SetValue(value); }
+	public string OutputFolderResource { get => GetValue(); set => SetValue(value); }
 
 
 	public LoadMode LoadMode { get => (LoadMode)GetValue().ToInt32(); set => SetValue((int)value); }

@@ -1,9 +1,8 @@
 namespace Xylia.Preview.UI.Art.GameUI.Scene.Game_TreasureBoard;
-public partial class GameUI_TreasureBoardScene : Window
+public partial class GameUI_TreasureBoardScene : GameScene
 {
 	public GameUI_TreasureBoardScene()
 	{
-        DataContext = new GameUI_TreasureBoardSceneViewModel();
-		InitializeComponent();
+        InitializeComponent();
 	}
 }

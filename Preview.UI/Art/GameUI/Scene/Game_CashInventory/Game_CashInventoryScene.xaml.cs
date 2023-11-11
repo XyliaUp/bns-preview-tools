@@ -1,12 +1,11 @@
 namespace Xylia.Preview.UI.Art.GameUI.Scene.Game_CashInventory;
 /// <summary>
-/// ¸¶·Ñ°ü¹ü
+/// ï¿½ï¿½ï¿½Ñ°ï¿½ï¿½ï¿½
 /// </summary>
-public partial class Game_CashInventoryScene : Window
+public partial class Game_CashInventoryScene : GameScene
 {
 	public Game_CashInventoryScene()
 	{
-        DataContext = new Game_CashInventorySceneViewModel();
-		InitializeComponent();
+        InitializeComponent();
 	}
 }

@@ -1,9 +1,8 @@
 namespace Xylia.Preview.UI.Art.GameUI.Scene.Game_SkillTrainingField;
-public partial class Game_SkillTrainingFieldScene : Window
+public partial class Game_SkillTrainingFieldScene : GameScene
 {
 	public Game_SkillTrainingFieldScene()
 	{
-        DataContext = new Game_SkillTrainingFieldSceneViewModel();
-		InitializeComponent();
+        InitializeComponent();
 	}
 }

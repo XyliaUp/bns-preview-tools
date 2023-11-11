@@ -7,18 +7,13 @@ using static Xylia.Preview.Data.Models.Item;
 namespace Xylia.Preview.Data.Common.Cast;
 public static partial class SeqExtension
 {
-	public static string GetText(this Enum value)
+	public static object CastSeq(this string value, string name)
 	{
-		if (value is EquipType EquipType) return EquipType.GetName();
-		else if (value is ConditionType ConditionType) return ConditionType.GetName();
-		else if (value is DifficultyTypeSeq DifficultyType) return DifficultyType.GetDescription();
-		else if (value is JobSeq JobSeq) return JobSeq.GetName();
-		else if (value is RaceSeq RaceSeq) return Race.Get(RaceSeq).GetName();
-		else if (value is SexSeq SexSeq) return ((SexSeq2)SexSeq).GetName();
-		else if (value is SexSeq2 SexSeq2) return SexSeq2.GetName();
-		else if (value is StanceSeq StanceSeq) return StanceSeq.GetDescription();
+		if (!name.TryParseToEnum<SeqType>(out var SeqType)) return null;
+		else if (SeqType == SeqType.KeyCap) return KeyCap.Cast(KeyCap.GetKeyCode(value));
+		else if (SeqType == SeqType.KeyCommand) return KeyCommand.Cast(value.ToEnum<KeyCommandSeq>());
 
-		return value.GetDescription();
+		throw new InvalidCastException($"Cast Failed: {name} > {value}");
 	}
 
 
@@ -37,9 +32,7 @@ public static partial class SeqExtension
 		return Text ?? Seq.ToString();
 	}
 
-	public static string GetName(this ConditionType Seq)
-	{
-		var Text = $"Name.item.equip-type.{Seq.GetName()}".GetText();
-		return Text ?? Seq.ToString();
-	}
+	public static string GetName(this ConditionType Seq) => $"Name.item.equip-type.{Seq.GetName()}".GetText() ?? Seq.ToString();
+
+	public static string GetName(this SexSeq2 Seq) => $"Name.sex.{Seq.GetName()}".GetText() ?? Seq.ToString();
 }

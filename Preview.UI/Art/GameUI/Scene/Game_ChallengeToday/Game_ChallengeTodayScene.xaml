@@ -1,22 +1,46 @@
 <UI:GameScene
+		x:Class="Xylia.Preview.UI.Art.GameUI.Scene.Game_ChallengeToday.Game_ChallengeTodayScene"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Xylia.Preview.UI.Art.GameUI.Scene.Game_ChallengeToday"
-		xmlns:UI="clr-namespace:Xylia.Preview.UI"
-	                      x:Class="Xylia.Preview.UI.Art.GameUI.Scene.Game_ChallengeToday.Game_ChallengeTodayScene"
+		xmlns:UI="https://github.com/xyliaup/bns-preview-tools"
+	                      
         mc:Ignorable="d"
-        Title="Game_ChallengeTodayScene" Height="450" Width="800" >
-    <Grid>
-		<Grid>
-			
-			
-		</Grid>
+        Title="Game_ChallengeTodayScene" Height="344" Width="546" >
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="*" />
+			<RowDefinition Height="2*" />
+		</Grid.RowDefinitions>
 
-		<Grid x:Name="Task">
-			<Label Content="123" />
 
-		</Grid>
+		<ListView x:Name="Task" Grid.Row="1">
+			<ListView.View>
+				<GridView>
+					<GridViewColumn Header="挑战任务" Width="220">
+						<GridViewColumn.CellTemplate>
+							<DataTemplate>
+
+							</DataTemplate>
+						</GridViewColumn.CellTemplate>
+					</GridViewColumn>
+					<GridViewColumn Header="挑战奖励" Width="220">
+						<GridViewColumn.CellTemplate>
+							<DataTemplate>
+
+							</DataTemplate>
+						</GridViewColumn.CellTemplate>
+					</GridViewColumn>
+					<GridViewColumn Header="状态" Width="50">
+						<GridViewColumn.CellTemplate>
+							<DataTemplate>
+
+							</DataTemplate>
+						</GridViewColumn.CellTemplate>
+					</GridViewColumn>
+				</GridView>
+			</ListView.View>
+		</ListView>
 	</Grid>
 </UI:GameScene>

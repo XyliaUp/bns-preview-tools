@@ -1,9 +1,8 @@
 namespace Xylia.Preview.UI.Art.GameUI.Scene.Game_Battle;
-public partial class Game_HUDHigh : Window
+public partial class Game_HUDHigh : GameScene
 {
 	public Game_HUDHigh()
 	{
-        DataContext = new Game_HUDHighViewModel();
-		InitializeComponent();
+        InitializeComponent();
 	}
 }

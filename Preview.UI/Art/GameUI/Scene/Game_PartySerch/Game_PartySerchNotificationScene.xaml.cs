@@ -1,12 +1,11 @@
 namespace Xylia.Preview.UI.Art.GameUI.Scene.Game_PartySerch;
 /// <summary>
-/// ÁúÖùÉêÇë
+/// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 /// </summary>
-public partial class Game_PartySerchNotificationScene : Window
+public partial class Game_PartySerchNotificationScene : GameScene
 {
 	public Game_PartySerchNotificationScene()
 	{
-        DataContext = new Game_PartySerchNotificationSceneViewModel();
-		InitializeComponent();
+        InitializeComponent();
 	}
 }

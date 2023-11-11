@@ -1,9 +1,8 @@
 namespace Xylia.Preview.UI.Art.GameUI.Scene.Game_Production;
-public partial class Game_ProductionNotificationScene : Window
+public partial class Game_ProductionNotificationScene : GameScene
 {
 	public Game_ProductionNotificationScene()
 	{
-        DataContext = new Game_ProductionNotificationSceneViewModel();
-		InitializeComponent();
+        InitializeComponent();
 	}
 }

@@ -1,4 +1,4 @@
-using System.Windows.Forms;
+using System.Windows.Controls;
 
 using CUE4Parse.BNS.Conversion;
 
@@ -8,21 +8,17 @@ using Xylia.Preview.Data.Common.DataStruct;
 using Xylia.Preview.Data.Common.Interface;
 using Xylia.Preview.Data.Helpers;
 using Xylia.Preview.Data.Models;
-using Xylia.Preview.UI.Extension;
-
-using static Xylia.Preview.Data.Models.MapUnit;
+using Xylia.Preview.UI.Controls;
 
 namespace Xylia.Preview.UI.Art.GameUI.Scene.Game_Map;
-public partial class Game_MapScene : Window
+public partial class Game_MapScene : GameScene
 {
+	#region Ctr
 	public Game_MapScene()
 	{
 		InitializeComponent();
 		TreeView.ItemsSource = FileCache.Data.MapInfo;
 	}
-
-	#region Map
-	private MapDepthSeq Depth;
 
 	private void TreeView_SelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
 	{
@@ -30,85 +26,58 @@ public partial class Game_MapScene : Window
 
 		LoadData(e.NewValue as MapInfo);
 	}
+	#endregion
+
+	#region Map
+	private MapUnit.MapDepthSeq depth;
 
 	public void LoadData(MapInfo MapInfo)
-	{
-		if (MapInfo is null) return;
-
-		if (MapInfo.ParentMapinfo.Instance != null)
-		{
-			this.OpenParentMap.Visibility = Visibility.Visible;
-			//this.OpenParentMap.Click += new RoutedEventHandler((o, e) =>
-			//	Task.Run(() => new Game_MapScene(MapInfo.ParentMapinfo.Alias).ShowDialog()));
-		}
-
+	{	
 		// get current map depth
-		Depth = MapInfo.GetMapDepth(MapInfo);
+		if (MapInfo is null) return;
+		depth = MapInfo.GetMapDepth(MapInfo);
 
-		//Trace.WriteLine(MapInfo.Attributes);
+		// layout
+		MapPanel.Children.Clear();
+		MapPanel.Children.Add(MapSource);
 
-		this.Image.Source = FileCache.Provider.LoadObject(MapInfo.Imageset)?.GetImage()?.ToBitmap().ToImageSource();
-
+		this.MapSource.Image = FileCache.Provider.LoadObject(MapInfo.Imageset)?.GetImage();
 		this.LoadMapUint(MapInfo);
 	}
-
 
 	private void LoadMapUint(MapInfo MapInfo, List<MapInfo> MapTree = null)
 	{
 		MapTree ??= new();
 		MapTree.Add(MapInfo);
 
-		//this.GetMapUnit(MapInfo, MapTree);
+		this.GetMapUnit(MapInfo, MapTree);
 
 		if (MapInfo.Alias == "World") return;
 		FileCache.Data.MapInfo
-			.Where(o => o.ParentMapinfo.Instance == MapInfo)
-			.ForEach(o => this.LoadMapUint(o, new(MapTree)));
+			.Where(x => x.ParentMapinfo == MapInfo)
+			.ForEach( x => this.LoadMapUint(x, new(MapTree)));
 	}
 
-	private void GetMapUnit(MapInfo CurMapInfo, List<MapInfo> MapTree)
+	private void GetMapUnit(MapInfo MapInfo, List<MapInfo> MapTree)
 	{
-		var MapUnits = FileCache.Data.MapUnit.Where(o => o.Mapid == CurMapInfo.Id && o.MapDepth <= Depth);
+		var MapUnits = FileCache.Data.MapUnit.Where(o => o.Mapid == MapInfo.Id && o.MapDepth <= depth);
 		foreach (var mapunit in MapUnits)
 		{
+			#region init
 			if (mapunit is MapUnit.Quest) continue;
-			if (mapunit is MapUnit.Npc) continue;    //�����Ͱ���ȡ�����������ʾ
+			if (mapunit is MapUnit.Npc) continue;
 
-			var res = FileCache.Provider.LoadObject(mapunit.Imageset)?.GetImage().ToBitmap();
+			var res = FileCache.Provider.LoadObject(mapunit.Imageset)?.GetImage();
 			if (res is null) continue;
 
-			#region Get Pos
-			//�������һ��, ����ת�� pos
-			//var Pos = GetPoint(mapunit.PositionX, mapunit.PositionY, this._mapInfo);
-			//if (MapTree.Count > 1)
-			//{
-			//	for (int idx = MapTree.Count; idx > 1; idx--)
-			//	{
-			//		var Map = MapTree[idx - 1];
-			//		if (Map.UsePosInParent) Pos = new System.Drawing.Point((int)Map.PosInParentX, (int)Map.PosInParentY);
-			//	}
-			//}
-			#endregion
-
-
-			var temp = new PictureBox()
+			var temp = new BnsCustomImageWidget()
 			{
-				Name = mapunit.Alias,
-				BackColor = System.Drawing.Color.Transparent,
-				SizeMode = PictureBoxSizeMode.AutoSize,
+				Tag = mapunit,
+				Image = res,
 
-				//Location = Pos,
-				Image = res.GetThumbnailImage(mapunit.SizeX == 0 ? res.Width : mapunit.SizeX, mapunit.SizeY == 0 ? res.Height : mapunit.SizeY, null, IntPtr.Zero),
+				Width = mapunit.SizeX,
+				Height = mapunit.SizeY,
 			};
-			//this.Image.Add(temp);
-
-			#region Event
-			temp.Click += new EventHandler((sender, e) =>
-			{
-				//if (mapunit is MapUnit.Link) Task.Run(() => new Game_MapScene(mapunit.Attributes["link-mapid"]).ShowDialog());
-
-				Debug.WriteLine(mapunit.Attributes);
-			});
 			#endregion
 
 			#region Tooltip
@@ -116,25 +85,53 @@ public partial class Game_MapScene : Window
 			if (mapunit is MapUnit.Attraction)
 			{
 				var obj = new Ref<Record>(mapunit.Attributes["attraction"]).Instance;
-				if (obj != null) tooltip = obj.GetAttraction();
+				if (obj != null)
+				{
+					tooltip = obj.GetName();
+					if (obj is IAttraction attraction) tooltip += "\n" + attraction.GetDescribe();
+				}
+
 			}
 			else if (mapunit is MapUnit.Npc or MapUnit.Boss)
 			{
 				var Npc = FileCache.Data.Npc[mapunit.Attributes["npc"]];
 				if (Npc != null) tooltip = Npc.GetName();
 			}
+			else if (mapunit is MapUnit.Link)
+			{
+				temp.MouseLeftButtonDown += new((o, e) =>
+				{
+					var map = FileCache.Data.MapInfo[mapunit.Attributes["link-mapid"]];
+					LoadData(map);
+				});
+			}
 
-			//TestTooltip2.SetTooltip(temp, tooltip);
+			temp.ToolTip = tooltip;
+			temp.MouseLeftButtonDown += new((o, e) => Debug.WriteLine(mapunit.Attributes));
+			#endregion
+
+			#region Pos
+			float posX = (mapunit.PositionX - MapInfo.LocalAxisX) / (MapInfo.Scale);
+			float posY = (mapunit.PositionY - MapInfo.LocalAxisY) / (MapInfo.Scale);
+
+			if (MapTree.Count > 1)
+			{
+				for (int idx = MapTree.Count; idx > 1; idx--)
+				{
+					var Map = MapTree[idx - 1];
+					if (Map.UsePosInParent)
+					{
+						posX = Map.PosInParentX;
+						posY = Map.PosInParentY;
+					}
+				}
+			}
+
+			Canvas.SetLeft(temp, posY);
+			Canvas.SetTop(temp, MapInfo.ImageSize - posX);
+			MapPanel.Children.Add(temp);
 			#endregion
 		}
-	}
-
-	public static System.Drawing.Point GetPoint(float PositionX, float PositionY, MapInfo ParentMapInfo)
-	{
-		float PointX = (PositionX - ParentMapInfo.LocalAxisX) / (ParentMapInfo.Scale);     //1050
-		float PointY = (PositionY - ParentMapInfo.LocalAxisY) / (ParentMapInfo.Scale);     //1000
-
-		return new System.Drawing.Point((int)PointY, (int)(ParentMapInfo.ImageSize - PointX));
 	}
 	#endregion
 }

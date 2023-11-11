@@ -1,12 +1,11 @@
 namespace Xylia.Preview.UI.Art.GameUI.Scene.Game_Confirm2;
 /// <summary>
-/// ¿ç·þÍæ·¨Èë³¡
+/// ï¿½ï¿½ï¿½ï¿½æ·¨ï¿½ë³¡
 /// </summary>
-public partial class Arenalobby_ConfirmScene2 : Window
+public partial class Arenalobby_ConfirmScene2 : GameScene
 {
 	public Arenalobby_ConfirmScene2()
 	{
-        DataContext = new Arenalobby_ConfirmScene2ViewModel();
-		InitializeComponent();
+        InitializeComponent();
 	}
 }

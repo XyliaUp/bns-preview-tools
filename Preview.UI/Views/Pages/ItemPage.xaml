@@ -1,10 +1,10 @@
 ﻿<Page x:Class="Xylia.Preview.UI.Views.Pages.ItemPage"
-      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-	  xmlns:c="clr-namespace:Xylia.Preview.UI.Common.Controls"
-      xmlns:VM="clr-namespace:Xylia.Preview.UI.ViewModels"
-      xmlns:Metro="clr-namespace:AduSkin.Controls.Metro;assembly=AduSkin"
-      Title="ItemPage">
+		xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+		xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	    xmlns:UI="https://github.com/xyliaup/bns-preview-tools"
+		xmlns:VM="clr-namespace:Xylia.Preview.UI.ViewModels"
+		xmlns:Metro="clr-namespace:AduSkin.Controls.Metro;assembly=AduSkin"
+		Title="ItemPage">
 	<TabControl>
 		<TabItem Header="Item List" >
 			<Grid>
@@ -89,21 +89,16 @@
 
 
 
-		<TabItem Header="Test" Visibility="Visible" IsSelected="True">
+		<TabItem Header="Test" Visibility="Collapsed">
 			<StackPanel>
-				<c:BnsCustomLabelWidget Width="Auto">
+				<UI:BnsCustomLabelWidget>
 					<![CDATA[
-			
-					]]>
-				</c:BnsCustomLabelWidget>
-				
-				
-				<!--
-					<font name="00008130.Program.Fontset_ItemGrade_8">造成<arg p="3:integer"/>～<arg p="4:integer"/>点伤害</font><br/>
+<font name="00008130.Program.Fontset_ItemGrade_8">造成<arg p="3:integer"/>～<arg p="4:integer"/>点伤害</font><br/>
 <font name="00008130.UI.Label_Green03_12">22229522</font><br/>
 <font name="00008130.UI.Label_Green03_20">3333332</font>
 <image enablescale="true" imagesetpath="/Game/Art/UI/V2/Resource/UI_Common_Resource/UI_Stats_Resource/Species_Dragon.Species_Dragon" scalerate="1.4"/>
-				-->
+					]]>
+				</UI:BnsCustomLabelWidget>
 			</StackPanel>
 		</TabItem>
 	</TabControl>

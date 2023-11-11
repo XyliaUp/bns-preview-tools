@@ -1,9 +1,8 @@
 namespace Xylia.Preview.UI.Art.GameUI.Scene.Game_NpcTalk;
-public partial class Game_ExchangeFactionCoinScene : Window
+public partial class Game_ExchangeFactionCoinScene : GameScene
 {
 	public Game_ExchangeFactionCoinScene()
 	{
-        DataContext = new Game_ExchangeFactionCoinSceneViewModel();
-		InitializeComponent();
+        InitializeComponent();
 	}
 }

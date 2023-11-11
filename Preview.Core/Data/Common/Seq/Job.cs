@@ -1,5 +1,4 @@
 ﻿using Xylia.Preview.Data.Common.Attribute;
-using Xylia.Preview.Data.Common.Cast;
 using Xylia.Preview.Data.Helpers;
 using Xylia.Preview.Data.Models;
 
@@ -76,7 +75,5 @@ public enum JobSeq
 
 public static partial class Extension
 {
-	public static string GetName(this JobSeq seq) => seq == JobSeq.JobNone ? null : RecordExtension.GetName(seq);
-
 	public static Job Convert(this JobSeq seq) => FileCache.Data.Job.FirstOrDefault(o => o.job == seq);
 }

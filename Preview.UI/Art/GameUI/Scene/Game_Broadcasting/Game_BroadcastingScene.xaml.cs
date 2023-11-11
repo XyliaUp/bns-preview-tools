@@ -1,12 +1,11 @@
 namespace Xylia.Preview.UI.Art.GameUI.Scene.Game_Broadcasting;
 /// <summary>
-/// ½£ÁéTv
+/// ï¿½ï¿½ï¿½ï¿½Tv
 /// </summary>
-public partial class Game_BroadcastingScene : Window
+public partial class Game_BroadcastingScene : GameScene
 {
 	public Game_BroadcastingScene()
 	{
-        DataContext = new Game_BroadcastingSceneViewModel();
-		InitializeComponent();
+        InitializeComponent();
 	}
 }

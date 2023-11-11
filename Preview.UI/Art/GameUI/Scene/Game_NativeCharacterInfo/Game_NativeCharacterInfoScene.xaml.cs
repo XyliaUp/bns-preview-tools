@@ -1,12 +1,11 @@
 namespace Xylia.Preview.UI.Art.GameUI.Scene.Game_NativeCharacterInfo;
 /// <summary>
-/// ¸öÈËÐÅÏ¢£¨¾É°æ±¾£¬¿É¿´ÄóÁ³£©
+/// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½É°æ±¾ï¿½ï¿½ï¿½É¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 /// </summary>
-public partial class Game_NativeCharacterInfoScene : Window
+public partial class Game_NativeCharacterInfoScene : GameScene
 {
 	public Game_NativeCharacterInfoScene()
 	{
-        DataContext = new Game_NativeCharacterInfoSceneViewModel();
-		InitializeComponent();
+        InitializeComponent();
 	}
 }

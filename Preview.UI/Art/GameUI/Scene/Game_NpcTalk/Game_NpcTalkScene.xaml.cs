@@ -1,9 +1,8 @@
 namespace Xylia.Preview.UI.Art.GameUI.Scene.Game_NpcTalk;
-public partial class Game_NpcTalkScene : Window
+public partial class Game_NpcTalkScene : GameScene
 {
 	public Game_NpcTalkScene()
 	{
-        DataContext = new Game_NpcTalkSceneViewModel();
-		InitializeComponent();
+        InitializeComponent();
 	}
 }
