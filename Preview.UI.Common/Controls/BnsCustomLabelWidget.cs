@@ -98,10 +98,10 @@ public class BnsCustomLabelWidget : Control
         get { return (Orientation)GetValue(OrientationProperty); }
         set { SetValue(OrientationProperty, value); }
     }
-    #endregion
+	#endregion
 
-    #region Protected Methods
-    protected override void OnMouseDoubleClick(MouseButtonEventArgs e)
+	#region Protected Methods
+	protected override void OnMouseDoubleClick(MouseButtonEventArgs e)
     {
         base.OnMouseDoubleClick(e);
 

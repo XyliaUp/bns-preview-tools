@@ -7,7 +7,7 @@ using AduSkin.Controls.Metro;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 
-using CUE4Parse.BNS.Exports;
+using CUE4Parse.BNS.Assets.Exports;
 using CUE4Parse.UE4.Assets.Exports;
 
 using Ookii.Dialogs.Wpf;
@@ -18,6 +18,7 @@ using Xylia.Preview.Data.Helpers.Output;
 using Xylia.Preview.Data.Models;
 using Xylia.Preview.UI.FModel.Views;
 using Xylia.Preview.UI.Helpers.Output.Items;
+using Xylia.Preview.UI.Views.Editor;
 using Xylia.Preview.UI.Views.Selector;
 
 namespace Xylia.Preview.UI.ViewModels;
@@ -124,6 +125,7 @@ public partial class ItemPageViewModel : ObservableObject
 	}
 	#endregion
 }
+
 
 public class PreviewModel : ICommand
 {
@@ -265,4 +267,26 @@ public class PreviewModel : ICommand
 			Debug.WriteLine(parameter?.GetType());
 		}
 	});
+}
+
+public class PreviewRaw : ICommand
+{
+	public static PreviewRaw Command { get; } = new();
+
+
+	public event EventHandler? CanExecuteChanged;
+
+	public bool CanExecute(object parameter) => true;
+
+	public void Execute(object parameter)
+	{
+		if (parameter is not Record record) return;
+
+		// Warning: is not original text
+		var editor = new TextEditor();
+		if (parameter is Quest) editor.Text = record.Owner.WriteXml(record);
+		else editor.Text = record.Owner.WriteXml();
+
+		editor.Show();
+	}
 }

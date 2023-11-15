@@ -1,6 +1,6 @@
 using System.Windows.Controls;
 
-using CUE4Parse.BNS.Conversion;
+using CUE4Parse.BNS.Assets.Exports;
 
 using Xylia.Preview.Common.Extension;
 using Xylia.Preview.Data.Common.Cast;
@@ -41,7 +41,7 @@ public partial class Game_MapScene : GameScene
 		MapPanel.Children.Clear();
 		MapPanel.Children.Add(MapSource);
 
-		this.MapSource.Image = FileCache.Provider.LoadObject(MapInfo.Imageset)?.GetImage();
+		this.MapSource.Image = FileCache.Provider.LoadObject<UImageSet>(MapInfo.Imageset)?.GetImage();
 		this.LoadMapUint(MapInfo);
 	}
 
@@ -67,7 +67,7 @@ public partial class Game_MapScene : GameScene
 			if (mapunit is MapUnit.Quest) continue;
 			if (mapunit is MapUnit.Npc) continue;
 
-			var res = FileCache.Provider.LoadObject(mapunit.Imageset)?.GetImage();
+			var res = FileCache.Provider.LoadObject<UImageSet>(mapunit.Imageset)?.GetImage();
 			if (res is null) continue;
 
 			var temp = new BnsCustomImageWidget()

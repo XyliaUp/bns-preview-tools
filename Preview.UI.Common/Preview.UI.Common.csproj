@@ -2,24 +2,24 @@
 	<PropertyGroup>
 		<TargetFramework>net7.0-windows</TargetFramework>
 		<RootNamespace>Xylia.Preview.UI</RootNamespace>
-
 		<Nullable>enable</Nullable>
 		<UseWPF>true</UseWPF>
 	</PropertyGroup>
 
+
 	<ItemGroup>
 	  <PackageReference Include="HtmlAgilityPack" Version="1.11.54" />
+	  <PackageReference Include="JerryShaw.AduSkin" Version="1.1.1.11" />
 	  <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.2151.40" />
 	  <PackageReference Include="SkiaSharp.Views.WPF" Version="2.88.6" />
 	</ItemGroup>
+
 
 	<ItemGroup>
 	  <ProjectReference Include="..\Preview.Core\Preview.Core.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>
-		<Reference Include="AduSkin">
-			<HintPath>..\..\..\..\AduSkin\src\AduSkin\bin\Debug\net47\AduSkin.dll</HintPath>
-		</Reference>
+	  <Resource Include="Resources\a.png" />
 	</ItemGroup>
 </Project>

@@ -1,4 +1,4 @@
-﻿using CUE4Parse.BNS.Exports;
+﻿using CUE4Parse.BNS.Assets.Exports;
 using CUE4Parse.UE4.Assets.Exports;
 using CUE4Parse.UE4.Assets.Exports.Material;
 

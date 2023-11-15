@@ -1,10 +1,13 @@
 ﻿using CUE4Parse.BNS.Conversion;
 using CUE4Parse.FileProvider;
+using CUE4Parse.UE4.Assets.Exports.Texture;
+
+using CUE4Parse_Conversion.Textures;
 
 using Xylia.Extension;
 using Xylia.Preview.Data.Common.DataStruct;
 using Xylia.Preview.Data.Models;
-using Xylia.Preview.UI.Helpers.Output.Items;
+
 using static Xylia.Preview.Data.Models.Item.Grocery;
 
 namespace Xylia.Preview.UI.Helpers.Output.Textures;
@@ -25,7 +28,7 @@ public sealed class ItemIcon : IconOutBase
 	protected override void AnalyseSourceData(DefaultFileProvider provider, string format, CancellationToken token)
 	{
 		var lst = XList.LoadData(ChvPath); 
-		var Weapon_Lock_04 = provider.LoadObject("BNSR/Content/Art/UI/GameUI_BNSR/Resource/GameUI_Icon3_R/Weapon_Lock_04").GetImage();
+		var Weapon_Lock_04 = provider.LoadObject<UTexture>("BNSR/Content/Art/UI/GameUI_BNSR/Resource/GameUI_Icon3_R/Weapon_Lock_04")?.Decode();
 
 		Parallel.ForEach(set.Item.Records, (x) =>
 		{

@@ -14,6 +14,7 @@ namespace Xylia.Preview.UI;
 /// <summary>
 /// base class of game scene
 /// </summary>
+[TemplatePart(Name = "PART_QuestionButton", Type = typeof(Button))]
 [TemplatePart(Name = "PART_MinimizedButton", Type = typeof(Button))]
 [TemplatePart(Name = "PART_MaximizedButton", Type = typeof(Button))]
 [TemplatePart(Name = "PART_NormalButton", Type = typeof(Button))]
@@ -83,9 +84,12 @@ public abstract class GameScene : Window, INotifyPropertyChanged
 	public static readonly new DependencyProperty BorderBrushProperty = ElementBase.Property<GameScene, Brush>("BorderBrushProperty");
 	public static readonly DependencyProperty TitleForegroundProperty = ElementBase.Property<GameScene, Brush>("TitleForegroundProperty");
 	public static readonly DependencyProperty SysButtonColorProperty = ElementBase.Property<GameScene, Brush>("SysButtonColorProperty");
+	public static readonly DependencyProperty MetaDataProperty = ElementBase.Property<GameScene, string>(nameof(MetaData));
+
 	public new Brush BorderBrush { get { return (Brush)GetValue(BorderBrushProperty); } set { SetValue(BorderBrushProperty, value); } }
 	public Brush TitleForeground { get { return (Brush)GetValue(TitleForegroundProperty); } set { SetValue(TitleForegroundProperty, value); } }
 	public Brush SysButtonColor { get { return (Brush)GetValue(SysButtonColorProperty); } set { SetValue(SysButtonColorProperty, value); } }
+	public string MetaData { get { return (string)GetValue(MetaDataProperty); } set { SetValue(MetaDataProperty, value); } }
 	#endregion
 
 	#region	PropertyChange
@@ -135,6 +139,10 @@ public abstract class GameScene : Window, INotifyPropertyChanged
 		}
 	}
 
+	/// <summary>
+	/// load data
+	/// </summary>
+	/// <param name="e"></param>
 	protected virtual void OnLoading(EventArgs e)
 	{
 

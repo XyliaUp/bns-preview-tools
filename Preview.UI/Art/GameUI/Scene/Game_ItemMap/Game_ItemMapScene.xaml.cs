@@ -23,7 +23,7 @@ public partial class Game_ItemMapScene : GameScene
 	[RelayCommand]
 	private void EquipTypeChange(object value)
 	{
-		ItemMapPanel.EquipType = value.ToString().ToEnum<EquipType>();
+		ItemMapPanel_MapField.EquipType = value.ToString().ToEnum<EquipType>();
 		Scroller.ScrollToRightEnd();
 	}
 

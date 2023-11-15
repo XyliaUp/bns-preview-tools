@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics;
 
-using CUE4Parse.BNS.Exports;
+using CUE4Parse.BNS.Assets.Exports;
 using CUE4Parse.UE4.Assets;
 using CUE4Parse.UE4.Assets.Exports;
 using CUE4Parse.UE4.Assets.Exports.SkeletalMesh;
@@ -11,6 +11,7 @@ using CUE4Parse.Utils;
 
 using CUE4Parse_Conversion;
 using CUE4Parse_Conversion.Sounds;
+using CUE4Parse_Conversion.Textures;
 
 using Newtonsoft.Json;
 
@@ -82,7 +83,7 @@ public class Exporter
 
 			default:
 			{
-				if (obj is UTexture) obj.GetImage()?.Save($"{name}.png");
+				if (obj is UTexture texture) texture.Decode()?.Save($"{name}.png");
 				else
 				{
 					if (!ContainType) name += $".{obj.ExportType}";

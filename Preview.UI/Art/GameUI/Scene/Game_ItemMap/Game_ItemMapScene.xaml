@@ -3,9 +3,9 @@
 		xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 		xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 		xmlns:local="clr-namespace:Xylia.Preview.UI.Art.GameUI.Scene.Game_ItemMap"
-		xmlns:UI="https://github.com/xyliaup/bns-preview-tools"		  	  
-		Title="ItemMap" Width="1300" Height="800" 
-		DataContext="{Binding RelativeSource={RelativeSource Self}}">
+		xmlns:UI="https://github.com/xyliaup/bns-preview-tools"
+		DataContext="{Binding RelativeSource={RelativeSource Self}}"
+		MetaData="textref=UI.ItemGraph.Title">
 	<Window.Resources>
 		<Style TargetType="UI:RadioImageButton">
 			<Setter Property="Margin" Value="1"/>
@@ -30,13 +30,14 @@
 			</Setter>
 		</Style>
 	</Window.Resources>
-	<Grid>
+
+	<Grid x:Name="ItemMapPanel" Width="1100" Height="800">
 		<Grid.RowDefinitions>
 			<RowDefinition Height="40" />
 			<RowDefinition Height="*"/>
 		</Grid.RowDefinitions>
 
-		<StackPanel Grid.Row="0" x:Name="ItemMapPanel_Tab_RadioButton" Orientation="Horizontal" >
+		<StackPanel Grid.Row="0" x:Name="ItemMapPanel_Tab" Orientation="Horizontal" >
 			<UI:RadioImageButton BackgrondImage="/Art/GameUI/Scene/Game_ItemMap/ItemMapPanel_Tab_RadioButton_1.png" Command="{Binding EquipTypeChangeCommand}" CommandParameter="Weapon" ToolTip="UI.ButtonTooltip.Weapon" />
 			<UI:RadioImageButton BackgrondImage="/Art/GameUI/Scene/Game_ItemMap/ItemMapPanel_Tab_RadioButton_2.png" Command="{Binding EquipTypeChangeCommand}" CommandParameter="Necklace" ToolTip="UI.ButtonTooltip.Necklace" />
 			<UI:RadioImageButton BackgrondImage="/Art/GameUI/Scene/Game_ItemMap/ItemMapPanel_Tab_RadioButton_3.png" Command="{Binding EquipTypeChangeCommand}" CommandParameter="Earring" ToolTip="UI.ButtonTooltip.Earring"/>
@@ -51,8 +52,7 @@
 			<UI:RadioImageButton BackgrondImage="/Art/GameUI/Scene/Game_ItemMap/ItemMapPanel_Tab_RadioButton_12.png" Command="{Binding EquipTypeChangeCommand}" CommandParameter="Soul2" ToolTip="UI.ButtonTooltip.soul-2"/>
 			<UI:RadioImageButton BackgrondImage="/Art/GameUI/Scene/Game_ItemMap/ItemMapPanel_Tab_RadioButton_13.png" Command="{Binding EquipTypeChangeCommand}" CommandParameter="Nova" ToolTip="UI.ButtonTooltip.Nova"/>
 		</StackPanel>
-
-		<Grid Grid.Column="0" Grid.Row="1" >
+		<Grid Grid.Row="1" >
 			<Grid.ColumnDefinitions>
 				<ColumnDefinition Width="200" />
 				<ColumnDefinition Width="*"/>
@@ -97,9 +97,11 @@
 					</ComboBox>
 				</StackPanel>
 
-				<ScrollViewer Grid.Row="1" x:Name="Scroller" PreviewMouseWheel="PanelMouseWheel" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" >
-					<local:ItemMapPanel x:Name="ItemMapPanel" />
-				</ScrollViewer>
+				<Grid x:Name="ItemMapPanel_MapFieldHolder" Grid.Row="1">
+					<ScrollViewer x:Name="Scroller" PreviewMouseWheel="PanelMouseWheel" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" >
+						<local:BnsCustomGraphMapWidget x:Name="ItemMapPanel_MapField"/>
+					</ScrollViewer>
+				</Grid>
 			</Grid>
 		</Grid>
 	</Grid>

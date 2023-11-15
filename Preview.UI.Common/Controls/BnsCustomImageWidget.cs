@@ -60,7 +60,7 @@ public class BnsCustomImageWidget : FrameworkElement
         var widget = (BnsCustomImageWidget)d;
         var value = (SKBitmap)e.NewValue;
 
-        widget.Source = value.ToWriteableBitmap();
+        widget.Source = value?.ToWriteableBitmap();
     }
     #endregion
 

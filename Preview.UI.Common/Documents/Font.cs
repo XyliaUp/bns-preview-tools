@@ -2,7 +2,7 @@
 using System.Windows;
 using System.Windows.Media;
 
-using CUE4Parse.BNS.Exports;
+using CUE4Parse.BNS.Assets.Exports;
 
 using Xylia.Preview.Data.Helpers;
 

@@ -1,15 +1,18 @@
 ﻿using System.Diagnostics;
 
 using CUE4Parse.BNS;
-using CUE4Parse.BNS.Objects.Script;
-using CUE4Parse.UE4.Assets;
+using CUE4Parse.BNS.Assets.Exports;
+using CUE4Parse.BNS.Conversion;
 using CUE4Parse.UE4.Assets.Exports;
 using CUE4Parse.UE4.Objects.Engine;
 using CUE4Parse.UE4.Objects.UObject;
 
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
+using Newtonsoft.Json;
+
 using Xylia.Configure;
+using Xylia.Preview.Common.Extension;
 using Xylia.Preview.Data.Helpers;
 
 namespace Xylia.Preview.Tests.PakTests;
@@ -21,63 +24,12 @@ public class SceneTest
 	public void Main()
 	{
 		using GameFileProvider Provider = new(Common.GameFolder);
+		var AssetPath = "BNSR/Content/Art/UI/GameUI/Scene/Game_Broadcasting/Game_BroadcastingScene.uasset";
+		var Blueprint = Provider.LoadAllObjects(AssetPath).OfType<UWidgetBlueprintGeneratedClass>().First();
 
-		#region Blueprint
-		var Blueprint = Provider.LoadObject<UWidgetBlueprintGeneratedClass>(@"BNSR/Content/Art/UI/GameUI/Scene/Game_Battle/Game_BattleScene/NovaSkillBar.NovaSkillBar_C");
-		var WidgetTree = Blueprint.GetOrDefault<ResolvedObject>("WidgetTree").Load<UWidgetTree>();
-		var bAllowTemplate = Blueprint.GetOrDefault<bool>("bAllowTemplate");
-		var bValidTemplate = Blueprint.GetOrDefault<bool>("bValidTemplate");
-		var bClassRequiresNativeTick = Blueprint.GetOrDefault<bool>("bClassRequiresNativeTick");
-		var TemplateAsset = Blueprint.GetOrDefault<FSoftObjectPath>("TemplateAsset");
-		var DefaultObject = Blueprint.ClassDefaultObject;
-		#endregion
-
-
-		TemplateAsset.Load().GetOrDefault<ResolvedObject>("WidgetTree").Load<UWidgetTree>().LoadWidget();
+		var dump = new WidgetDump() { Output = Path.Combine(PathDefine.Desktop, "scene", Path.GetFileNameWithoutExtension(AssetPath)) };
+		dump.LoadBlueprint(Blueprint);
 	}
-
-	[TestMethod]
-	public void GetScene()
-	{
-		var AssetPath = "BNSR/Content/Art/UI/GameUI/Scene/Game_ItemStore/Game_ItemStoreScene/ItemStore_PossessionPanel.uasset";
-
-		GameFileProvider Provider = new(Common.GameFolder);
-		foreach(var o in Provider.LoadAllObjects(AssetPath))
-		{
-			Debug.WriteLine(o.GetFullName());
-
-			if (o is UBnsCustomWidget widget && widget.StringProperty != null)
-				Debug.WriteLine(widget.StringProperty?.LabelText?.Text);
-		}
-		return;
-
-
-
-		string Output = Path.Combine(PathDefine.Desktop, "scene", Path.GetFileNameWithoutExtension(AssetPath));
-		Directory.CreateDirectory(Output);
-
-		foreach (var obj in Provider.LoadAllObjects(AssetPath))
-		{
-			//if (obj.Name != "ItemMapPanel_NavigationList_Column_1_1_Route_11_MainRoute_19_Desc_Arrow") continue;
-			if (obj is UBnsCustomWidget widget)
-			{
-				Debug.WriteLine(widget.GetFullName() + "	" + widget.MetaData);
-
-				//widget.BaseImageProperty?.GetBitmap?.Save(Output + $"/{obj.Name}.png");
-				//if (widget.ExpansionComponentList != null)
-				//{
-				//	//Debug.WriteLine(JsonConvert.SerializeObject(widget, Formatting.Indented));
-
-				//	for (int i = 0; i < widget.ExpansionComponentList.Count; i++)
-				//	{
-				//		var expansion = widget.ExpansionComponentList[i];
-				//		expansion.GetBitmap?.Save(Output + $"/{obj.Name}.{expansion.ExpansionName}.png");
-				//	}
-				//}
-			}
-		}
-	}
-
 
 
 	//[TestMethod]
@@ -145,5 +97,72 @@ public class SceneTest
 				}
 			}
 		}
+	}
+}
+
+
+public class WidgetDump
+{
+	public string Output;
+
+
+	public void LoadBlueprint(UWidgetBlueprintGeneratedClass blueprint, int level = 0)
+	{
+		var bAllowTemplate = blueprint.GetOrDefault<bool>("bAllowTemplate");
+		var bValidTemplate = blueprint.GetOrDefault<bool>("bValidTemplate");
+		var bClassRequiresNativeTick = blueprint.GetOrDefault<bool>("bClassRequiresNativeTick");
+		var DefaultObject = blueprint.ClassDefaultObject;
+		var TemplateAsset = blueprint.GetOrDefault<FSoftObjectPath>("TemplateAsset");
+		var WidgetTree = blueprint.GetOrDefault<UWidgetTree>("WidgetTree");
+
+		//WidgetTree = TemplateAsset.Load().GetOrDefault<UWidgetTree>("WidgetTree");  
+		this.LoadWidget(WidgetTree.RootWidget.Load(), null, level);
+	}
+
+	public void LoadWidget(UObject obj, UBnsCustomBaseWidgetSlot widgetslot, int level)
+	{
+		WriteLine(level, $"{obj.ExportType}  {obj.Name}");
+
+		if (obj.Template != null)
+		{
+			LoadBlueprint(obj.Template.Class.Load<UWidgetBlueprintGeneratedClass>(), level);
+			return;
+		}
+
+
+		if (widgetslot != null)
+		{
+			WriteLine(level, JsonConvert.SerializeObject(widgetslot.LayoutData));
+		}
+
+		if (obj is UBnsCustomBaseWidget widget)
+		{
+			WriteLineIf(level, widget.MetaData);
+			WriteLineIf(level, widget.StringProperty.LabelText?.Text);
+
+
+			Directory.CreateDirectory(Output);
+			widget.BaseImageProperty.Image?.Save(Output + $"/{obj.Name}.png");
+			widget.ExpansionComponentList?.ForEach(expansion =>
+			{
+				expansion.Image?.Save(Output + $"/{obj.Name}.{expansion.ExpansionName}.png");
+			});
+		}
+
+		// children
+		var Slots = obj.GetOrDefault<UBnsCustomBaseWidgetSlot[]>("Slots");
+		Slots?.ForEach(slot => LoadWidget(slot.Content.Load(), slot, level + 1));
+	}
+
+
+	private static void WriteLine(int level, string message)
+	{
+		Debug.WriteLine(new string('\t', level) + message);
+	}
+
+	private static void WriteLineIf(int level, string message)
+	{
+		if (message != null)
+			WriteLine(level, message);
 	}
 }

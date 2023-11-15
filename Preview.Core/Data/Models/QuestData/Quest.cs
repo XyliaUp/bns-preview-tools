@@ -1,11 +1,12 @@
-﻿using CUE4Parse.BNS.Conversion;
+﻿using CUE4Parse.UE4.Assets.Exports.Texture;
+
+using CUE4Parse_Conversion.Textures;
 
 using SkiaSharp;
 
 using Xylia.Preview.Data.Common.Attribute;
 using Xylia.Preview.Data.Common.DataStruct;
 using Xylia.Preview.Data.Common.Seq;
-using Xylia.Preview.Data.Engine.BinData.Models;
 using Xylia.Preview.Data.Helpers;
 using Xylia.Preview.Data.Models.QuestData;
 using Xylia.Preview.Data.Models.QuestData.Enums;
@@ -277,7 +278,7 @@ public sealed class Quest : Record
 			var res = respath();
 			if (res is null) return null;
 
-			return FileCache.Provider.LoadObject($"BNSR/Content/Art/UI/GameUI/Resource/GameUI_Map_Indicator/{res}")?.GetImage();
+			return FileCache.Provider.LoadObject<UTexture>($"BNSR/Content/Art/UI/GameUI/Resource/GameUI_Map_Indicator/{res}")?.Decode();
 		}
 	}
 	#endregion

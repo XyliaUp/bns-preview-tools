@@ -59,7 +59,7 @@ public partial class App : Application
 		FileCache.Data = new Data.Engine.DatData.FolderProvider(@"D:\资源\客户端相关\Auto\data");
 #endif
 		MainWindow = new MainWindow();
-		//MainWindow = new Game_ItemMapScene();
+		MainWindow = new Xylia.Preview.UI.Art.GameUI.Scene.Game_Broadcasting.Game_BroadcastingScene();
 		MainWindow.Show();
 	}
 

@@ -2,8 +2,10 @@
 using CUE4Parse.FileProvider;
 using CUE4Parse.UE4.Assets.Exports.Texture;
 
+using CUE4Parse_Conversion.Textures;
+
 using SkiaSharp;
-using Xylia.Preview.Data.Engine.BinData.Models;
+
 using Xylia.Preview.Data.Helpers;
 
 namespace Xylia.Preview.Data.Models;
@@ -41,7 +43,7 @@ public static class IconTextureExt
 	{
 		if (record is null) return null;
 
-		var TextureData = Task.Run(() => (pak ?? FileCache.Provider).LoadObject<UTexture2D>(record.iconTexture)).Result.GetImage();
+		var TextureData = Task.Run(() => (pak ?? FileCache.Provider).LoadObject<UTexture2D>(record.iconTexture)).Result.Decode();
 		if (TextureData is null) return null;
 
 		#region get sub
@@ -87,6 +89,6 @@ public static class IconTextureExt
 	public static SKBitmap GetBackground(this sbyte grade, DefaultFileProvider pak = null)
 	{
 		pak ??= FileCache.Provider;
-		return Task.Run(() => pak.LoadObject<UTexture2D>($"BNSR/Content/Art/UI/GameUI/Resource/GameUI_Window_R/ItemIcon_Bg_Grade_{grade}")).Result.GetImage();
+		return Task.Run(() => pak.LoadObject<UTexture2D>($"BNSR/Content/Art/UI/GameUI/Resource/GameUI_Window_R/ItemIcon_Bg_Grade_{grade}")).Result.Decode();
 	}
 }

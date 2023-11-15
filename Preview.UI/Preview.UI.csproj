@@ -129,11 +129,6 @@
 
 	<!-- Project -->
 	<ItemGroup>
-		<Reference Include="AduSkin">
-			<HintPath>..\..\..\..\AduSkin\src\AduSkin\bin\Debug\net47\AduSkin.dll</HintPath>
-		</Reference>
-	</ItemGroup>
-	<ItemGroup>
 		<ProjectReference Include="..\Preview.Core\Preview.Core.csproj" />
 		<ProjectReference Include="..\Preview.UI.Common\Preview.UI.Common.csproj" />
 		<Using Include="System.Diagnostics" />

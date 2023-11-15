@@ -38,7 +38,7 @@ public partial class Game_CharacterInfo_Scene : GameScene
 	#region Methods
 	private async void WebView_WebBrowserInitialized(object sender, EventArgs e)
 	{
-		await WebView.CoreWebView2.AddScriptToExecuteOnDocumentCreatedAsync($$"""
+		await CharacterInfoPanelWeb.CoreWebView2.AddScriptToExecuteOnDocumentCreatedAsync($$"""
 		onmouseover = (e) => {
 		    var obj = e.target; 
 			if (obj.tagName != 'IMG') return;
@@ -76,14 +76,14 @@ public partial class Game_CharacterInfo_Scene : GameScene
 
 	protected override void OnClosing(CancelEventArgs e)
 	{
-		WebView.Dispose();
-		WebView = null;
+		CharacterInfoPanelWeb.Dispose();
+		CharacterInfoPanelWeb = null;
 	}
 
 
 	public void InitUrl(Creature creature)
 	{
-		WebView.Source = new UriBuilder(CharacterInfoUrl.Replace("%s", creature.WorldId.ToString()[..2]) + CharacterInfoHomeUrn) { Query = $"c={creature.Name}&s={creature.WorldId}" }.Uri;
+		CharacterInfoPanelWeb.Source = new UriBuilder(CharacterInfoUrl.Replace("%s", creature.WorldId.ToString()[..2]) + CharacterInfoHomeUrn) { Query = $"c={creature.Name}&s={creature.WorldId}" }.Uri;
 	}
 	#endregion
 }
