@@ -5,7 +5,7 @@
 		xmlns:local="clr-namespace:Xylia.Preview.UI.Art.GameUI.Scene.Game_ItemMap"
 		xmlns:UI="https://github.com/xyliaup/bns-preview-tools"
 		DataContext="{Binding RelativeSource={RelativeSource Self}}"
-		MetaData="textref=UI.ItemGraph.Title">
+		Title="textref=UI.ItemGraph.Title">
 	<Window.Resources>
 		<Style TargetType="UI:RadioImageButton">
 			<Setter Property="Margin" Value="1"/>

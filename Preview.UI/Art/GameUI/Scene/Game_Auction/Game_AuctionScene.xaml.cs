@@ -1,3 +1,4 @@
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 
@@ -116,10 +117,13 @@ public partial class Game_AuctionScene : GameScene
 			!record.Attributes.Get<bool>("auctionable") &&
 			!record.Attributes.Get<bool>("seal-renewal-auctionable")) return false;
 
-		// filter name
+		// filter rule
 		if (IsEmpty) return true;
 		else
 		{
+			if(int.TryParse(_nameFilter , out int id)) return record.RecordId == id;
+
+
 			var alias = record.Attributes["alias"];
 			if (alias != null && alias.IndexOf(_nameFilter, StringComparison.OrdinalIgnoreCase) > 0) return true;
 

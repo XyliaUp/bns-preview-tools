@@ -193,4 +193,37 @@
   <data name="TextView" xml:space="preserve">
     <value>Text</value>
   </data>
+  <data name="Name_ItemList" xml:space="preserve">
+    <value>Item List</value>
+  </data>
+  <data name="Name_Preview" xml:space="preserve">
+    <value>Preview</value>
+  </data>
+  <data name="ItemList_OnlyUpdate" xml:space="preserve">
+    <value>only update</value>
+  </data>
+  <data name="ItemList_OnlyUpdate_Tooltip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ItemList_Path" xml:space="preserve">
+    <value>Select prev item list （or cancel check "only update"）</value>
+  </data>
+  <data name="ItemList_Path_Tooltip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ItemList_Run" xml:space="preserve">
+    <value>Create</value>
+  </data>
+  <data name="Name_Assets" xml:space="preserve">
+    <value>Assets</value>
+  </data>
+  <data name="Name_Icon" xml:space="preserve">
+    <value>Icon</value>
+  </data>
+  <data name="Name_MergeIcon" xml:space="preserve">
+    <value>Merge Icon</value>
+  </data>
+  <data name="Name_Output" xml:space="preserve">
+    <value>Output</value>
+  </data>
 </root>

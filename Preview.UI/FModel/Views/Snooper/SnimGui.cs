@@ -1,16 +1,19 @@
-using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using CUE4Parse.UE4.Objects.Core.Misc;
-using FModel.Framework;
-using ImGuiNET;
-using OpenTK.Windowing.Common;
 using System.Numerics;
 using System.Text;
+
+using CUE4Parse.UE4.Objects.Core.Misc;
+
+using FModel.Framework;
 using FModel.Views.Snooper.Animations;
 using FModel.Views.Snooper.Models;
 using FModel.Views.Snooper.Shading;
+
+using ImGuiNET;
+
 using OpenTK.Graphics.OpenGL4;
+using OpenTK.Windowing.Common;
+
 using Xylia.Preview.UI.ViewModels;
 
 namespace FModel.Views.Snooper;
@@ -253,7 +256,7 @@ public class SnimGui
         }
     }
 
-    protected void DrawDockSpace(OpenTK.Mathematics.Vector2i size)
+    private void DrawDockSpace(OpenTK.Mathematics.Vector2i size)
     {
         const ImGuiWindowFlags flags =
             ImGuiWindowFlags.MenuBar | ImGuiWindowFlags.NoDocking |

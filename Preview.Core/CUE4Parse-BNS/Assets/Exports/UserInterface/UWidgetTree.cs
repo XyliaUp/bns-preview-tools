@@ -1,7 +1,6 @@
-﻿using CUE4Parse.UE4.Assets.Exports;
-using CUE4Parse.UE4.Objects.UObject;
+﻿using CUE4Parse.UE4.Objects.UObject;
 
-namespace CUE4Parse.BNS.Assets.Exports;
+namespace CUE4Parse.UE4.Assets.Exports;
 public class UWidgetTree : USerializeObject
 {
 	[UPROPERTY]

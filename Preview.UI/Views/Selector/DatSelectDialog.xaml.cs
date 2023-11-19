@@ -1,4 +1,5 @@
 ﻿using System.IO;
+using System.Windows;
 using System.Windows.Threading;
 
 using Xylia.Preview.Data.Engine.DatData;

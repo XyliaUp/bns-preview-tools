@@ -1,4 +1,5 @@
-﻿using System.Xml;
+﻿using System.Windows;
+using System.Xml;
 
 using ICSharpCode.AvalonEdit.Folding;
 using ICSharpCode.AvalonEdit.Highlighting;

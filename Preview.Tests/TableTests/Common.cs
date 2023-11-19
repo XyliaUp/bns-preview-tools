@@ -71,9 +71,6 @@ public class Common
 	[TestMethod]
 	public void Test2()
 	{
-		Debug.WriteLine("test.uac".SubstringBeforeLast(".uac"));
-
-
 		//using var db = new BnsDatabase();
 
 		//var table = db.Get<Text>();

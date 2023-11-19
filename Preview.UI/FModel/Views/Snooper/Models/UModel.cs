@@ -1,18 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
+﻿using System.IO;
 using System.Numerics;
-using CUE4Parse_Conversion;
-using CUE4Parse_Conversion.Meshes.PSK;
+
 using CUE4Parse.UE4.Assets;
 using CUE4Parse.UE4.Assets.Exports;
 using CUE4Parse.UE4.Assets.Exports.Material;
 using CUE4Parse.UE4.Objects.Core.Math;
 using CUE4Parse.Utils;
+
+using CUE4Parse_Conversion;
+using CUE4Parse_Conversion.Meshes.PSK;
+
 using FModel.Views.Snooper.Buffers;
 using FModel.Views.Snooper.Shading;
+
 using OpenTK.Graphics.OpenGL4;
+
 using Xylia.Preview.UI.ViewModels;
 
 namespace FModel.Views.Snooper.Models;
@@ -364,7 +366,7 @@ public abstract class UModel : IRenderableModel
             MaterialFormat = UserSettings.Default.MaterialExportFormat,
             TextureFormat = UserSettings.Default.TextureExportFormat,
             SocketFormat = UserSettings.Default.SocketExportFormat,
-           // Platform = UserSettings.Default.CurrentDir.TexturePlatform,
+            //Platform = UserSettings.Default.CurrentDir.TexturePlatform,
             ExportMorphTargets = UserSettings.Default.SaveMorphTargets,
             ExportMaterials = UserSettings.Default.SaveEmbeddedMaterials
         };

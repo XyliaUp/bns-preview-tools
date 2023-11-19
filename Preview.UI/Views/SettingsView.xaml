@@ -247,7 +247,7 @@
 
 					<!-- -->
 					<DataTemplate x:Key="GeneralTemplate">
-						<Grid >
+						<Grid DataContext="{Binding DataContext, ElementName=window}">
 							<Grid.RowDefinitions>
 								<RowDefinition Height="Auto" />
 								<RowDefinition Height="Auto" />
@@ -281,41 +281,40 @@
 							<TextBlock Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" Margin="0 0 0 5" >
 								<Run Text="{DynamicResource GameDirectory}" /> *
 							</TextBlock>
-							<TextBox Grid.Row="0" Grid.Column="2" Margin="0 0 0 5" Text="{Binding DataContext.GameFolder, ElementName=window}"/>
+							<TextBox Grid.Row="0" Grid.Column="2" Margin="0 0 0 5" Text="{Binding GameFolder}"/>
 							<Button Grid.Row="0" Grid.Column="4" Content="..." HorizontalAlignment="Right" Click="OnBrowseDirectories" Margin="0 0 0 5" />
 
 							<TextBlock Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" Margin="0 0 0 5" >
 								<Run Text="{DynamicResource OutputDirectory}" /> *
 							</TextBlock>
-							<TextBox Grid.Row="1" Grid.Column="2" Margin="0 0 0 5" Text="{Binding DataContext.OutputFolder, ElementName=window}"/>
+							<TextBox Grid.Row="1" Grid.Column="2" Margin="0 0 0 5" Text="{Binding OutputFolder}"/>
 							<Button Grid.Row="1" Grid.Column="4" Content="..." HorizontalAlignment="Right" Click="OnBrowseDirectories2" Margin="0 0 0 5" />
 
 							<TextBlock Grid.Row="2" Grid.Column="0" Text="{DynamicResource OutputDirectory_Resource}" VerticalAlignment="Center" Margin="0 0 0 5" />
-							<TextBox Grid.Row="2" Grid.Column="2" Margin="0 0 0 5" Text="{Binding DataContext.OutputFolderResource, ElementName=window}"/>
+							<TextBox Grid.Row="2" Grid.Column="2" Margin="0 0 0 5" Text="{Binding OutputFolderResource}"/>
 							<Button Grid.Row="2" Grid.Column="4" Content="..." HorizontalAlignment="Right" Click="OnBrowseDirectories3" Margin="0 0 0 5" />
 
 
 							<!-- Data Options -->
 							<Separator Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="7" Tag="Test" />
 							<TextBlock Grid.Row="6" Grid.Column="0" Text="{DynamicResource UseUserDefinition}" VerticalAlignment="Center" Margin="0 5 0 5" />
-							<CheckBox Grid.Row="6" Grid.Column="2" Grid.ColumnSpan="5" Margin="0 0 0 5" IsChecked="{Binding DataContext.UseUserDefinition, ElementName=window}" />
+							<CheckBox Grid.Row="6" Grid.Column="2" Grid.ColumnSpan="5" Margin="0 0 0 5" IsChecked="{Binding UseUserDefinition}" />
 
 							<!-- Preview Options -->
 							<Separator Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="7" Tag="Test" />
 							<TextBlock Grid.Row="8" Grid.Column="0" Text="{DynamicResource CopyMode}" VerticalAlignment="Center" Margin="0 5 0 5" />
-							<ComboBox Grid.Row="8" Grid.Column="2" Grid.ColumnSpan="5" Margin="0 0 0 5" SelectedIndex="{Binding DataContext.CopyMode, ElementName=window, Converter={converters:EnumConverter}}">
+							<ComboBox Grid.Row="8" Grid.Column="2" Grid.ColumnSpan="5" Margin="0 0 0 5" SelectedIndex="{Binding CopyMode, Converter={converters:EnumConverter}}">
 								<ComboBoxItem Content="Trimmed" />
 								<ComboBoxItem Content="Regular" />
 								<ComboBoxItem Content="Source" />
 							</ComboBox>
 
 							<TextBlock Grid.Row="9" Grid.Column="0" Text="{DynamicResource UsePerformanceMonitor}" VerticalAlignment="Center" Margin="0 5 0 5" />
-							<CheckBox Grid.Row="9" Grid.Column="2" Grid.ColumnSpan="5" Margin="0 0 0 5" IsChecked="{Binding DataContext.UsePerformanceMonitor, ElementName=window}" />
+							<CheckBox Grid.Row="9" Grid.Column="2" Grid.ColumnSpan="5" Margin="0 0 0 5" IsChecked="{Binding UsePerformanceMonitor}" />
 						</Grid>
 					</DataTemplate>
-					
 					<DataTemplate x:Key="AboutTemplate">
-						<Grid>
+						<Grid DataContext="{Binding DataContext, ElementName=window}">
 							<Grid.RowDefinitions>
 								<RowDefinition Height="Auto" />
 								<RowDefinition Height="Auto" />
@@ -324,13 +323,11 @@
 
 							<StackPanel Grid.Row="0" Orientation="Horizontal">
 								<TextBlock Text="Version " FontSize="15" Foreground="#9DA3DD" />
-								<TextBlock Text="{Binding Version}"
-										   DataContext="{Binding DataContext, RelativeSource={RelativeSource AncestorType=local:SettingsView}}" />
+								<TextBlock Text="{Binding Version}" />
 							</StackPanel>
 							<StackPanel Grid.Row="1" Orientation="Horizontal">
 								<TextBlock Text="Publish " FontSize="15" Foreground="#9DA3DD" />
-								<TextBlock Text="{Binding VersionTime, StringFormat={}{0:yyyy.MM.dd}}" 
-										   DataContext="{Binding DataContext, RelativeSource={RelativeSource AncestorType=local:SettingsView}}" />
+								<TextBlock Text="{Binding VersionTime, StringFormat={}{0:yyyy.MM.dd}}" />
 							</StackPanel>
 						</Grid>
 					</DataTemplate>

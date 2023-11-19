@@ -2,8 +2,6 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 
-using AduSkin.Utility.Element;
-
 using Xylia.Preview.Data.Models;
 
 namespace Xylia.Preview.UI.Controls;
@@ -37,21 +35,21 @@ public class BnsCustomCaptionWidget : Control //FrameworkElement
 	/// DependencyProperty for Image Source property.
 	/// </summary>
 	/// <seealso cref="Image.Source" />
-	public static readonly DependencyProperty BaseImageProperty = ElementBase.Property<BnsCustomCaptionWidget, ImageSource>(nameof(BaseImage));
+	public static readonly DependencyProperty BaseImageProperty = DependencyProperty.Register(nameof(BaseImage), typeof(ImageSource), typeof(BnsCustomCaptionWidget));
 
 	public string String
 	{
 		get { return (string)GetValue(StringProperty); }
 		set { SetValue(StringProperty, value); }
 	}
-	public static readonly DependencyProperty StringProperty = ElementBase.Property<BnsCustomCaptionWidget, string>(nameof(String));
+	public static readonly DependencyProperty StringProperty = DependencyProperty.Register(nameof(String), typeof(string), typeof(BnsCustomCaptionWidget));
 
 	public string MetaData
 	{
 		get { return (string)GetValue(MetaDataProperty); }
 		set { SetValue(MetaDataProperty, value); }
 	}
-	public static readonly DependencyProperty MetaDataProperty = ElementBase.Property<BnsCustomCaptionWidget, string>(nameof(MetaData));
+	public static readonly DependencyProperty MetaDataProperty = DependencyProperty.Register(nameof(MetaData), typeof(string), typeof(BnsCustomCaptionWidget));
 
 	public string Text
 	{

@@ -2,11 +2,10 @@
 	x:Class="Xylia.Preview.UI.Art.GameUI.Scene.Game_QuestJournal.Game_QuestJournalScene"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-	xmlns:local="clr-namespace:Xylia.Preview.UI.Art.GameUI.Scene.Game_QuestJournal"
 	xmlns:data="clr-namespace:Xylia.Preview.Data.Models;assembly=Preview.Core"
 	xmlns:UI="https://github.com/xyliaup/bns-preview-tools"
 	xmlns:VM="clr-namespace:Xylia.Preview.UI.ViewModels"
-	MetaData="textref=UI.QuestJournal.Title">
+	Title="textref=UI.QuestJournal.Title">
 	<Window.Resources>
 		<ContextMenu x:Key="ExtractMenu">
 			<MenuItem Click="Extract_QuestList_Click" Header="导出任务列表"/>

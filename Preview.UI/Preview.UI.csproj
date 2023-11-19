@@ -131,12 +131,6 @@
 	<ItemGroup>
 		<ProjectReference Include="..\Preview.Core\Preview.Core.csproj" />
 		<ProjectReference Include="..\Preview.UI.Common\Preview.UI.Common.csproj" />
-		<Using Include="System.Diagnostics" />
-		<Using Include="System.Windows" />
-
-		<Using Remove="System.Drawing" />
-		<Using Remove="System.Windows.Forms" />
-		<Using Remove="SixLabors.ImageSharp" />
 	</ItemGroup>
 	<ItemGroup>
 		<PackageReference Include="Autoupdater.NET.Official" Version="1.8.4" />
@@ -144,13 +138,14 @@
 		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
 		<PackageReference Include="CSCore" Version="1.2.1.2" />
 		<PackageReference Include="EPPlus" Version="7.0.1" />
-		<PackageReference Include="ImGui.NET" Version="1.89.7.1" />
+		<PackageReference Include="HandyControls" Version="3.4.5" />
+		<PackageReference Include="ImGui.NET" Version="1.89.9.3" />
 		<PackageReference Include="Irony" Version="1.2.0" />
 		<PackageReference Include="Microsoft.Web.WebView2" Version="1.0.2151.40" />
 		<PackageReference Include="NAudio.Vorbis" Version="1.5.0" />
 		<PackageReference Include="Ookii.Dialogs.Wpf" Version="5.0.1" />
 		<PackageReference Include="OpenTK" Version="4.8.1" />
-		<PackageReference Include="Serilog" Version="3.0.1" />
+		<PackageReference Include="Serilog" Version="3.1.1" />
 		<PackageReference Include="Serilog.Sinks.Debug" Version="2.0.0" />
 		<PackageReference Include="Serilog.Sinks.File" Version="5.0.0" />
 		<PackageReference Include="LiveCharts" Version="0.9.7" />

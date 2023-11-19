@@ -1,4 +1,6 @@
-﻿using FModel.Framework;
+﻿using System.Windows;
+
+using FModel.Framework;
 using FModel.Views.Snooper;
 
 using OpenTK.Windowing.Common;
@@ -64,6 +66,8 @@ public class MyTest
 						APIVersion = new Version(4, 6),
 						StartVisible = false,
 						StartFocused = false,
+
+						Title = "Model",
 					});
 			});
 		}

@@ -1,4 +1,6 @@
-﻿using Xylia.Preview.Common.Extension;
+﻿using System.Windows;
+
+using Xylia.Preview.Common.Extension;
 using Xylia.Preview.Data.Helpers;
 using Xylia.Preview.Data.Models;
 

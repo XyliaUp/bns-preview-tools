@@ -1,17 +1,16 @@
-<Metro:MetroWindow
+<hc:Window
     x:Class="Xylia.Preview.UI.MainWindow"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:Metro="https://github.com/aduskin"
-	
+    xmlns:hc="https://handyorg.github.io/handycontrol"
 	Title="{DynamicResource ProductName}" Icon="{x:Null}"
 	Background="#FFF" MinHeight="600" MinWidth="1100" Width="1100" ResizeMode="CanResize" >
-	<Metro:MetroWindow.Menu>
-		<Metro:MetroTitleMenu Height="40" HorizontalAlignment="Right">
-			<Metro:MetroTitleMenuItem Header="{DynamicResource Repository}" Command="Metro:ControlCommands.OpenLink" CommandParameter="https://github.com/XyliaUp/bns-preview-tools" />
-			<Metro:MetroTitleMenuItem Header="&#xf013;" FontFamily="{StaticResource FontAwesome}" Click="OpenSettings" />
-		</Metro:MetroTitleMenu>
-	</Metro:MetroWindow.Menu>
+	<hc:Window.NonClientAreaContent>
+		<Menu Height="40" HorizontalAlignment="Right">
+			<MenuItem Header="{DynamicResource Repository}" Command="hc:ControlCommands.OpenLink" CommandParameter="https://github.com/XyliaUp/bns-preview-tools" />
+			<MenuItem Header="&#xf013;" FontFamily="{StaticResource FontAwesome}" Click="OpenSettings" />
+		</Menu>
+	</hc:Window.NonClientAreaContent>
 	
 	<Grid>
 		<Grid.RowDefinitions>
@@ -58,4 +57,4 @@
 
 		<Frame Grid.Column="1" x:Name="Presenter" NavigationUIVisibility="Hidden" />
 	</Grid>
-</Metro:MetroWindow>
+</hc:Window>

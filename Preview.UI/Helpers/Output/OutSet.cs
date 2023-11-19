@@ -21,7 +21,7 @@ public abstract class OutSet
 
 		ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
 		package = new ExcelPackage();
-		ExcelWorksheet sheet = package.Workbook.Worksheets.Add(Name);
+		var sheet = package.Workbook.Worksheets.Add(Name);
 		sheet.Cells.Style.Font.Name = "宋体";
 		sheet.Cells.Style.Font.Size = 11F;
 		sheet.Cells.Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Center;

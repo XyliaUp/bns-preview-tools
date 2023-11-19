@@ -1,7 +1,6 @@
 using System.ComponentModel;
+using System.Windows;
 using System.Windows.Controls;
-
-using AduSkin.Controls.Metro;
 
 using Xylia.Preview.UI.Helpers;
 using Xylia.Preview.UI.Services.Utils;
@@ -11,7 +10,7 @@ using Xylia.Preview.UI.Views.Pages;
 using GameUI = Xylia.Preview.UI.Art.GameUI.Scene;
 
 namespace Xylia.Preview.UI;
-public partial class MainWindow : MetroWindow
+public partial class MainWindow : HandyControl.Controls.Window
 {
 	public MainWindow()
 	{
@@ -54,9 +53,13 @@ public partial class MainWindow : MetroWindow
 
 	protected override void OnClosing(CancelEventArgs e)
 	{
-		var result = AduMessageBox.Show("您正在关闭应用程序, 是否确认这么做吗？", "提示信息", MessageBoxButton.YesNo);
-		if (result == MessageBoxResult.Yes) Application.Current.Shutdown();
+		var result = HandyControl.Controls.MessageBox.Show("您正在关闭应用程序, 是否确认这么做吗？", "提示信息", MessageBoxButton.YesNo);
+		if (result != MessageBoxResult.Yes)
+		{
+			e.Cancel = true;
+			return;
+		}
 
-		e.Cancel = true;
+		Application.Current.Shutdown();
 	}
 }

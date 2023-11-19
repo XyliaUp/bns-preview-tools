@@ -7,7 +7,7 @@
 		<ContextMenu x:Key="TableMenu">
 			<MenuItem Header="Output" Click="TableToXml_Click" />
 		</ContextMenu>
-		
+
 		<ContextMenu x:Key="GridMenu">
 			<MenuItem Header="Output as excel" Click="OutputExcel_Click" />
 		</ContextMenu>
@@ -24,9 +24,9 @@
 			<ColumnDefinition Width="*" />
 		</Grid.ColumnDefinitions>
 
-        <!-- Function -->
-		<ToolBar Grid.ColumnSpan="2">
-			<Button Name="Connect" Click="Connect_Click" Tag="Connect">
+		<!-- Function -->
+		<ToolBar Grid.ColumnSpan="2" ClipToBounds="False">
+			<Button Name="Connect" Click="Connect_Click" Tag="Connect" Style="{x:Null}">
 				<StackPanel Orientation="Horizontal">
 					<Image Source="/Resources/Images/database_connect.png" />
 					<TextBlock Margin="3,2,0,0" Text="{Binding Tag , ElementName=Connect}" />
@@ -34,7 +34,7 @@
 			</Button>
 			<Separator />
 
-			<Button Click="Refresh_Click" >
+			<Button Click="Refresh_Click" Style="{x:Null}">
 				<StackPanel Orientation="Horizontal">
 					<Image Source="/Resources/Images/arrow_refresh.png" />
 					<TextBlock Margin="3,2,3,0" Text="Refresh" />
@@ -42,7 +42,7 @@
 			</Button>
 			<Separator />
 
-			<Button x:Name="Run" Click="Run_Click" >
+			<Button x:Name="Run" Click="Run_Click" Style="{x:Null}">
 				<StackPanel Orientation="Horizontal">
 					<Image Source="/Resources/Images/resultset_next.png" />
 					<TextBlock Margin="3,2,10,0" Text="Run" />
@@ -50,7 +50,7 @@
 			</Button>
 			<Separator />
 
-			<Button Click="LoadSql_Click" >
+			<Button Click="LoadSql_Click" Style="{x:Null}">
 				<StackPanel Orientation="Horizontal">
 					<Image Source="/Resources/Images/folder_page.png" />
 					<TextBlock Margin="3,2,0,0" Text="Load" />
@@ -58,13 +58,14 @@
 			</Button>
 			<Separator />
 
-			<Button Click="SaveSql_Click" >
+			<Button Click="SaveSql_Click" Style="{x:Null}">
 				<StackPanel Orientation="Horizontal">
 					<Image Source="/Resources/Images/disk.png" />
 					<TextBlock Margin="3,2,0,0" Text="Save" />
 				</StackPanel>
 			</Button>
 		</ToolBar>
+
 
 		<!-- Tree -->
 		<TreeView x:Name="tvwDatabase" Grid.Row="1" Grid.RowSpan="2" MouseDoubleClick="tvwDatabase_MouseDoubleClick"/>
@@ -76,8 +77,7 @@
 
 		<TabControl Grid.Row="2" Grid.Column="2" >
 			<TabItem Header="Grid" >
-				<DataGrid x:Name="grdResult" AutoGenerateColumns="False" IsReadOnly="True" HorizontalScrollBarVisibility="Auto"
-						  ContextMenu="{StaticResource GridMenu}" />
+				<DataGrid x:Name="grdResult" AutoGenerateColumns="False" IsReadOnly="True" HorizontalScrollBarVisibility="Auto" ContextMenu="{StaticResource GridMenu}" Style="{x:Null}" />
 			</TabItem>
 			<TabItem Header="Text" Visibility="Hidden" />
 			<TabItem Header="Parameters" Visibility="Hidden" />

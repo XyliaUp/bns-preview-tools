@@ -7,6 +7,7 @@ namespace Xylia.Preview.UI.Controls;
 public class BnsWebBrowser : WebView2
 {
 	public event EventHandler<string> PostMessage;
+	public new event EventHandler<CoreWebView2> Initialized;
 
 	public BnsWebBrowser()
 	{
@@ -23,6 +24,8 @@ public class BnsWebBrowser : WebView2
 		CoreWebView2.Settings.IsStatusBarEnabled = false;
 		CoreWebView2.Settings.UserAgent = "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2272.104 Safari/537.36 BnsIngameBrowser";
 		CoreWebView2.AddHostObjectToScript("WebObject", this);
+
+		Initialized?.Invoke(this, CoreWebView2);
 	}
 
 	public void Message(string meaasge)

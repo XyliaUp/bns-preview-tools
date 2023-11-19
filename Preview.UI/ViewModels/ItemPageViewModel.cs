@@ -1,8 +1,8 @@
-﻿using System.IO;
+﻿using System.Diagnostics;
+using System.IO;
+using System.Windows;
 using System.Windows.Data;
 using System.Windows.Input;
-
-using AduSkin.Controls.Metro;
 
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
@@ -16,8 +16,10 @@ using Xylia.Configure;
 using Xylia.Preview.Data.Helpers;
 using Xylia.Preview.Data.Helpers.Output;
 using Xylia.Preview.Data.Models;
+using Xylia.Preview.UI.Art.GameUI.Scene.Game_Auction;
 using Xylia.Preview.UI.FModel.Views;
 using Xylia.Preview.UI.Helpers.Output.Items;
+using Xylia.Preview.UI.Views;
 using Xylia.Preview.UI.Views.Editor;
 using Xylia.Preview.UI.Views.Selector;
 
@@ -33,22 +35,35 @@ public partial class ItemPageViewModel : ObservableObject
 
 
 	[RelayCommand]
+	public void OpenSettings()
+	{
+		new SettingsView().ShowDialog();
+	}
+
+	[RelayCommand]
+	private void BrowerItemList()
+	{
+		var dialog = new VistaOpenFileDialog() { Filter = @"|*.chv|All files|*.*" };
+		if (dialog.ShowDialog() == true) ItemListPath = dialog.FileName;
+	}
+
+	[RelayCommand]
 	private async Task CreateItemList()
 	{
 		#region Check
 		if (!Directory.Exists(UserSettings.Default.GameFolder))
 		{
-			AduMessageBox.Show("Must to set game directory");
+			MessageBox.Show("Must to set game directory");
 			return;
 		}
 		else if (!Directory.Exists(UserSettings.Default.OutputFolder))
 		{
-			AduMessageBox.Show("Must to set output directory");
+			MessageBox.Show("Must to set output directory");
 			return;
 		}
 		else if (OnlyUpdate == true && !File.Exists(ItemListPath))
 		{
-			AduMessageBox.Show("Select a valid item list, or to cancel");
+			MessageBox.Show("Select a valid item list, or to cancel");
 			return;
 		}
 		#endregion
@@ -60,20 +75,20 @@ public partial class ItemPageViewModel : ObservableObject
 		var startTime = DateTime.Now;
 		using var match = new ItemOut() { OnlyUpdate = this.OnlyUpdate };
 
-		await Task.Run(async () =>
+		await Task.Run(() =>
 		{
 			match.LoadCache(ItemListPath);
-			await match.GetData();
+			match.GetData();
 			if (match.Count == 0)
 			{
-				AduMessageBox.Show("没有新增的物品");
+				MessageBox.Show("没有新增的物品");
 				return;
 			}
 
 			match.Start(startTime, select2.Result == FileModeDialog.FileMode.Xlsx);
 		});
 
-		AduMessageBox.Show($"本次拉取数据共计{match.Count}条, 总耗{(DateTime.Now - startTime).TotalSeconds}秒。", "Message", MessageBoxButton.OK, MessageBoxImage.Information);
+		MessageBox.Show($"本次拉取数据共计{match.Count}条, 总耗{(DateTime.Now - startTime).TotalSeconds}秒。", "Message", MessageBoxButton.OK, MessageBoxImage.Information);
 		#endregion
 	}
 	#endregion
@@ -88,6 +103,14 @@ public partial class ItemPageViewModel : ObservableObject
 		if (type is null) return;
 
 		(Activator.CreateInstance(type) as Window)?.Show();
+	}
+
+	[RelayCommand]
+	private void PreviewItem(string rule)
+	{
+		var scene = new Game_AuctionScene();
+		scene.NameFilter = rule;
+		scene.Show();
 	}
 
 	[RelayCommand]
@@ -121,7 +144,7 @@ public partial class ItemPageViewModel : ObservableObject
 		DateTime dt = DateTime.Now;
 		await instance.Output(new FileInfo(save.FileName));
 
-		AduMessageBox.Show($"output finish, {(DateTime.Now - dt).TotalSeconds:#0}s");
+		MessageBox.Show($"output finish, {(DateTime.Now - dt).TotalSeconds:#0}s");
 	}
 	#endregion
 }
@@ -139,7 +162,18 @@ public class PreviewModel : ICommand
 	public void Execute(object parameter) => Task.Run(async () =>
 	{
 		List<ModelData> models = new();
+		await Load(parameter, models);
 
+		// show
+		var view = MyTest.ModelViewer;
+		view.Models = models.ToArray();
+		if (view.TryLoadExport(default)) view.Run();
+		else Debug.WriteLine(parameter?.GetType());
+	});
+
+
+	private static async Task Load(object parameter, List<ModelData> models)
+	{
 		if (parameter is null) return;
 		else if (parameter is Npc npc)
 		{
@@ -169,7 +203,7 @@ public class PreviewModel : ICommand
 			}
 
 			var MeshId = item.Attributes["mesh-id"];
-			if (MeshId != null)
+			if (!string.IsNullOrEmpty(MeshId))
 			{
 				//"mesh-id"
 				//"mesh-id-2"
@@ -199,30 +233,20 @@ public class PreviewModel : ICommand
 				LoadModel("jin-female-mesh");
 				LoadModel("cat-mesh");
 
-				var temp = models.Where(model => model.Export != null).ToList();
+				var temp = models.Where(model => model.Export != null);
 				if (temp.Any())
 				{
-					models = temp;
+					models = temp.ToList();
 					return;
 				}
+
 				else if (item is Item.Weapon weapon)
 				{
 					var pet = item.Attributes["pet"];
-					if (pet != null)
-					{
-						var Pet = FileCache.Data.Pet[pet];
-						if (Pet != null)
-						{
-							models.Add(new ModelData()
-							{
-								Export = FileCache.Provider.LoadObject<UObject>(Pet.MeshName.Path),
-								Cols = Pet.MaterialName.Select(o => o.Path)
-							});
-						}
-					}
+					await Load(pet, models);
 
 					var equipshow = item.Attributes["equip-show"];
-					if (equipshow != null)
+					if (!string.IsNullOrEmpty(equipshow))
 					{
 						//var EquipShow = FileCache.Pakitem.LoadObject<UShowObject>(equipshow);
 					}
@@ -256,17 +280,7 @@ public class PreviewModel : ICommand
 				AnimSet = await FileCache.Provider.LoadObjectAsync<UAnimSet>(pet.AnimSetName.Path),
 			});
 		}
-		
-
-		if (models.Count > 0)
-		{
-			models.First().Run();
-		}
-		else
-		{
-			Debug.WriteLine(parameter?.GetType());
-		}
-	});
+	}
 }
 
 public class PreviewRaw : ICommand

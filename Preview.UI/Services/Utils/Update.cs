@@ -1,6 +1,5 @@
-﻿using System.Xml;
-
-using AduSkin.Controls.Metro;
+﻿using System.Windows;
+using System.Xml;
 
 using AutoUpdaterDotNET;
 
@@ -8,8 +7,8 @@ namespace Xylia.Preview.UI.Services.Utils;
 public class Update
 {
     public void CheckForUpdates()
-    {
-        AutoUpdater.RemindLaterTimeSpan = 0;
+	{
+		AutoUpdater.RemindLaterTimeSpan = 0;
         AutoUpdater.ParseUpdateInfoEvent += ParseUpdateInfoEvent;
         AutoUpdater.CheckForUpdateEvent += CheckForUpdateEvent;
         AutoUpdater.Start(Define.Update.ToString());
@@ -62,7 +61,7 @@ public class Update
 			//	IsSoundEnabled = false
 			//};
 
-			//AduMessageBox.Show(messageBox);
+			//MessageBox.Show(messageBox);
 			//if (messageBox.Result != MessageBoxResult.Yes) return;
 
 			if (AutoUpdater.DownloadUpdate(args))
@@ -70,7 +69,7 @@ public class Update
 		}
         else
         {
-			AduMessageBox.Show(
+			MessageBox.Show(
                 "There is a problem reaching the update server, please check your internet connection or try again later.",
                 "Update Check Failed", MessageBoxButton.OK, MessageBoxImage.Error);
         }

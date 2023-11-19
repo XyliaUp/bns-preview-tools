@@ -3,9 +3,8 @@
 using System.Collections.Concurrent;
 using System.IO;
 using System.Reflection;
+using System.Windows;
 using System.Windows.Threading;
-
-using AduSkin.Controls.Metro;
 
 using CUE4Parse.UE4.Assets.Objects;
 using CUE4Parse.UE4.VirtualFileSystem;
@@ -56,10 +55,10 @@ public partial class App : Application
 		#endregion
 
 #if DEV
-		FileCache.Data = new Data.Engine.DatData.FolderProvider(@"D:\资源\客户端相关\Auto\data");
+		//FileCache.Data = new Data.Engine.DatData.FolderProvider(@"D:\资源\客户端相关\Auto\data");
 #endif
 		MainWindow = new MainWindow();
-		MainWindow = new Xylia.Preview.UI.Art.GameUI.Scene.Game_Broadcasting.Game_BroadcastingScene();
+		//MainWindow = new Xylia.Preview.UI.Art.GameUI.Scene.Game_Broadcasting.Game_BroadcastingScene();
 		MainWindow.Show();
 	}
 
@@ -73,7 +72,7 @@ public partial class App : Application
 		if (exception is TargetInvocationException) exception = exception.InnerException;
 
 		Log.Fatal(exception.ToString());
-		AduMessageBox.Show(exception.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+		MessageBox.Show(exception.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
 	}
 
 	private void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
@@ -83,7 +82,7 @@ public partial class App : Application
 		string str = $"The program crashed and is about to exit.\n{error.Message};\nat {DateTime.Now}";
 
 		Log.Fatal(str);
-		AduMessageBox.Show(str);
+		MessageBox.Show(str, "Crash");
 	}
 	#endregion
 

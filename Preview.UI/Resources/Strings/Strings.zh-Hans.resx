@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <root>
-  <!--
-    Microsoft ResX Schema
-
+  <!-- 
+    Microsoft ResX Schema 
+    
     Version 2.0
-
-    The primary goals of this format is to allow a simple XML format
-    that is mostly human readable. The generation and parsing of the
-    various data types are done through the TypeConverter classes
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
     associated with the data types.
-
+    
     Example:
-
+    
     ... ado.net/XML headers & schema ...
     <resheader name="resmimetype">text/microsoft-resx</resheader>
     <resheader name="version">2.0</resheader>
@@ -26,79 +26,79 @@
         <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
         <comment>This is a comment</comment>
     </data>
-
-    There are any number of "resheader" rows that contain simple
+                
+    There are any number of "resheader" rows that contain simple 
     name/value pairs.
-
-    Each data row contains a name, and value. The row also contains a
-    type or mimetype. Type corresponds to a .NET class that support
-    text/value conversion through the TypeConverter architecture.
-    Classes that don't support this are serialized and stored with the
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
     mimetype set.
-
-    The mimetype is used for serialized objects, and tells the
-    ResXResourceReader how to depersist the object. This is currently not
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
     extensible. For a given mimetype the value must be set accordingly:
-
-    Note - application/x-microsoft.net.object.binary.base64 is the format
-    that the ResXResourceWriter will generate, however the reader can
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
     read any of the formats listed below.
-
+    
     mimetype: application/x-microsoft.net.object.binary.base64
-    value   : The object must be serialized with
+    value   : The object must be serialized with 
             : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
             : and then encoded with base64 encoding.
-
+    
     mimetype: application/x-microsoft.net.object.soap.base64
-    value   : The object must be serialized with
+    value   : The object must be serialized with 
             : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
             : and then encoded with base64 encoding.
 
     mimetype: application/x-microsoft.net.object.bytearray.base64
-    value   : The object must be serialized into a byte array
+    value   : The object must be serialized into a byte array 
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
   <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
-    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
         <xsd:choice maxOccurs="unbounded">
           <xsd:element name="metadata">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
               </xsd:sequence>
-              <xsd:attribute name="name" use="required" type="xsd:string"/>
-              <xsd:attribute name="type" type="xsd:string"/>
-              <xsd:attribute name="mimetype" type="xsd:string"/>
-              <xsd:attribute ref="xml:space"/>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="assembly">
             <xsd:complexType>
-              <xsd:attribute name="alias" type="xsd:string"/>
-              <xsd:attribute name="name" type="xsd:string"/>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="data">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
-                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
-              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
-              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
-              <xsd:attribute ref="xml:space"/>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="resheader">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required"/>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
             </xsd:complexType>
           </xsd:element>
         </xsd:choice>
@@ -119,102 +119,110 @@
   </resheader>
   <data name="CopyMode" xml:space="preserve">
     <value>文本复制模式</value>
-    <comment/>
   </data>
   <data name="GameDirectory" xml:space="preserve">
     <value>游戏目录</value>
-    <comment/>
   </data>
   <data name="MergeIcon_Grade1" xml:space="preserve">
     <value>粗糙</value>
-    <comment/>
   </data>
   <data name="MergeIcon_Grade2" xml:space="preserve">
     <value>凡品</value>
-    <comment/>
   </data>
   <data name="MergeIcon_Grade3" xml:space="preserve">
     <value>奇巧</value>
-    <comment/>
   </data>
   <data name="MergeIcon_Grade4" xml:space="preserve">
     <value>精粹</value>
-    <comment/>
   </data>
   <data name="MergeIcon_Grade5" xml:space="preserve">
     <value>至尊</value>
-    <comment/>
   </data>
   <data name="MergeIcon_Grade6" xml:space="preserve">
     <value>进化</value>
-    <comment/>
   </data>
   <data name="MergeIcon_Grade7" xml:space="preserve">
     <value>传说</value>
-    <comment/>
   </data>
   <data name="MergeIcon_Grade8" xml:space="preserve">
     <value>古代</value>
-    <comment/>
   </data>
   <data name="MergeIcon_Grade9" xml:space="preserve">
     <value>唯一</value>
-    <comment/>
   </data>
   <data name="None" xml:space="preserve">
     <value>无</value>
-    <comment/>
   </data>
   <data name="OutputDirectory" xml:space="preserve">
     <value>输出目录</value>
-    <comment/>
   </data>
   <data name="OutputDirectory_Resource" xml:space="preserve">
     <value>输出目录 （资源）</value>
-    <comment/>
   </data>
   <data name="AbilityPage" xml:space="preserve">
     <value>角色能力</value>
-    <comment/>
   </data>
   <data name="GameResourcePage" xml:space="preserve">
     <value>资源</value>
-    <comment/>
   </data>
   <data name="Game_QuestJournalScene" xml:space="preserve">
     <value>任务</value>
-    <comment/>
   </data>
   <data name="ItemPage" xml:space="preserve">
     <value>物品</value>
-    <comment/>
   </data>
   <data name="Repository" xml:space="preserve">
     <value>项目</value>
-    <comment/>
   </data>
   <data name="TestMode" xml:space="preserve">
     <value>数据测试模式</value>
-    <comment/>
   </data>
   <data name="UsePerformanceMonitor" xml:space="preserve">
     <value>启用性能监视器</value>
-    <comment/>
   </data>
   <data name="UseUserDefinition" xml:space="preserve">
     <value>允许用户自定义配置</value>
-    <comment/>
   </data>
   <data name="View_Model" xml:space="preserve">
     <value>查看模型</value>
-    <comment/>
   </data>
   <data name="ProductName" xml:space="preserve">
     <value>Blade &amp; Soul Preview Tool</value>
-    <comment/>
   </data>
   <data name="TextView" xml:space="preserve">
     <value>文本</value>
-    <comment/>
+  </data>
+  <data name="Name_ItemList" xml:space="preserve">
+    <value>物品列表</value>
+  </data>
+  <data name="Name_Preview" xml:space="preserve">
+    <value>预览</value>
+  </data>
+  <data name="ItemList_OnlyUpdate" xml:space="preserve">
+    <value>仅更新</value>
+  </data>
+  <data name="ItemList_OnlyUpdate_Tooltip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ItemList_Path" xml:space="preserve">
+    <value>选择先前的物品列表（或者取消勾选 "仅更新"）</value>
+  </data>
+  <data name="ItemList_Path_Tooltip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ItemList_Run" xml:space="preserve">
+    <value>生成</value>
+  </data>
+  <data name="Name_Assets" xml:space="preserve">
+    <value>资产</value>
+  </data>
+  <data name="Name_Icon" xml:space="preserve">
+    <value>图标</value>
+  </data>
+  <data name="Name_MergeIcon" xml:space="preserve">
+    <value>合成</value>
+  </data>
+  <data name="Name_Output" xml:space="preserve">
+    <value>输出</value>
   </data>
 </root>

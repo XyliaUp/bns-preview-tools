@@ -1,4 +1,5 @@
 ﻿using System.IO;
+using System.Windows;
 
 using Ookii.Dialogs.Wpf;
 
@@ -18,7 +19,7 @@ public partial class SettingsView : Window
 	}
 
 
-
+	#region Methods
 	private void OnClosing(object sender, RoutedEventArgs e)
 	{
 		Close();
@@ -52,10 +53,6 @@ public partial class SettingsView : Window
 
 		this.Activate();
 	}
-
-
-
-
 
 
 	public static bool TryBrowseFolder(out string path)
@@ -92,4 +89,5 @@ public partial class SettingsView : Window
 		path = string.Empty;
 		return false;
 	}
+	#endregion
 }

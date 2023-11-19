@@ -1,4 +1,5 @@
-﻿using CUE4Parse.UE4.Objects.UObject;
+﻿using CUE4Parse.UE4.Assets.Exports;
+using CUE4Parse.UE4.Objects.UObject;
 
 namespace CUE4Parse.BNS.Assets.Exports;
 public abstract class UBnsCustomBaseWidget : UUserWidget

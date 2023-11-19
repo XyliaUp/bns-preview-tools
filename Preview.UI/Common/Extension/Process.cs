@@ -1,7 +1,8 @@
-﻿using Vanara.PInvoke;
+﻿using System.Diagnostics;
+
+using Vanara.PInvoke;
 
 namespace Xylia;
-
 public static class ProcessEx
 {
 	public static void ClearMemory()

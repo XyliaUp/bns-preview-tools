@@ -1,9 +1,14 @@
 using System.Numerics;
+using System.Windows;
+
 using CUE4Parse.UE4.Assets.Exports.Texture;
 using CUE4Parse.UE4.Objects.Core.Math;
 using CUE4Parse.UE4.Objects.Core.Misc;
+
 using ImGuiNET;
+
 using OpenTK.Graphics.OpenGL4;
+
 using SkiaSharp;
 
 namespace FModel.Views.Snooper.Shading;
@@ -147,21 +152,16 @@ public class Texture : IDisposable
 
     private void ProcessPixels(string texture, TextureTarget target)
     {
-        var info = Application.GetResourceStream(new Uri($"/FModel/Resources/{texture}.png", UriKind.Relative));
-        //using var img = Image.Load<Rgba32>(info.Stream);
-        //Width = img.Width;
-        //Height = img.Height;
-        //GL.TexImage2D(target, 0, PixelInternalFormat.Rgba8, Width, Height, 0, PixelFormat.Rgba, PixelType.UnsignedByte, IntPtr.Zero);
-        //img.ProcessPixelRows(accessor =>
-        //{
-        //    for (int y = 0; y < accessor.Height; y++)
-        //    {
-        //        GL.TexSubImage2D(target, 0, 0, y, accessor.Width, 1, PixelFormat.Rgba, PixelType.UnsignedByte, accessor.GetRowSpan(y).ToArray());
-        //    }
-        //});
-    }
+		var info = Application.GetResourceStream(new Uri($"/FModel/Resources/{texture}.png", UriKind.Relative));
+		using var img = SKBitmap.Decode(info.Stream);
+        Width = img.Width;
+        Height = img.Height;
+        GL.TexImage2D(target, 0, PixelInternalFormat.Rgb, Width, Height, 0, PixelFormat.Bgra, PixelType.UnsignedByte, img.Bytes);
+		GL.TexParameter(target, TextureParameterName.TextureMinFilter, (int)TextureMinFilter.LinearMipmapLinear);
+		GL.TexParameter(target, TextureParameterName.TextureMagFilter, (int)TextureMagFilter.Linear);
+	}
 
-    public void Bind(TextureUnit textureSlot)
+	public void Bind(TextureUnit textureSlot)
     {
         GL.ActiveTexture(textureSlot);
         Bind(_target);

@@ -1,16 +1,19 @@
 ﻿using System.IO;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Input;
 using System.Windows.Media.Imaging;
 
-using AduSkin.Controls.Metro;
+using OfficeOpenXml;
 
 using Ookii.Dialogs.Wpf;
 
 using Xylia.Preview.Data;
 using Xylia.Preview.Data.Engine.BinData.Models;
 using Xylia.Preview.Data.Helpers;
+using Xylia.Preview.Data.Helpers.Output;
+using Xylia.Preview.Data.Models;
 using Xylia.Preview.UI.Controls;
 using Xylia.Preview.UI.ViewModels;
 
@@ -134,7 +137,7 @@ public partial class DatabaseStudio : Window
 		}
 		catch(Exception ex)
 		{
-			AduMessageBox.Show(ex.Message);
+			MessageBox.Show(ex.Message);
 		}
 		finally
 		{
@@ -181,7 +184,7 @@ public partial class DatabaseStudio : Window
 	{
 		if (grdResult.Items.Count == 0)
 		{
-			AduMessageBox.Show("no data");
+			MessageBox.Show("no data");
 			return;
 		}
 
@@ -192,44 +195,44 @@ public partial class DatabaseStudio : Window
 		};
 		if (save.ShowDialog() != true) return;
 
-		throw new NotImplementedException();
 
-		//using var workbook = new XSSFWorkbook();
-		//var sheet = workbook.CreateSheet("Sheet");
+		#region Sheet
+		ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
+		var package = new ExcelPackage();
+		var sheet = package.Workbook.Worksheets.Add("Sheet");
+		sheet.Cells.Style.Font.Name = "宋体";
+		sheet.Cells.Style.Font.Size = 11F;
+		sheet.Cells.Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Center;
+		sheet.Cells.Style.VerticalAlignment = OfficeOpenXml.Style.ExcelVerticalAlignment.Center;
+		#endregion
 
-		//#region Title
-		//var title = sheet.CreateRow(0);
-		//for (int i = 0; i < grdResult.Columns.Count; i++)
-		//{
-		//	title.CreateCell(i).SetCellValue(grdResult.Columns[i].Header.ToString());
-		//}
-		//#endregion
+		#region Title
+		int Column = 1;
+		for (int i = 0; i < grdResult.Columns.Count; i++)
+		{
+			sheet.SetColumn(Column++, grdResult.Columns[i].Header.ToString());
+		}
+		#endregion
 
-		//#region Row
-		//for (int i = 0; i < grdResult.Items.Count; i++)
-		//{
-		//	var item = grdResult.Items[i] as Record;
-		//	var row = sheet.CreateRow(i + 1);
+		#region Row
+		int Row = 1;
+		for (int i = 0; i < grdResult.Items.Count; i++)
+		{
+			Row++;
+			int column = 1;
 
-		//	for (int j = 0; j < grdResult.Columns.Count; j++)
-		//	{
-		//		var column = grdResult.Columns[j];
-		//		row.CreateCell(j).SetCellValue(item.Attributes[column.Header.ToString()]);
-		//	}
-		//}
-		//#endregion
+			var item = grdResult.Items[i] as Record;
+			for (int j = 0; j < grdResult.Columns.Count; j++)
+			{
+				var col = grdResult.Columns[j];
+				sheet.Cells[Row, column++].SetValue(item.Attributes[col.Header.ToString()]);
+			}
+		}
 
 
-		//#region Write
-		//MemoryStream stream = new MemoryStream();
-		//workbook.Write(stream, false);
-		//workbook.Dispose();
+		#endregion
 
-		//using var fs = new FileStream(save.FileName, FileMode.Create, FileAccess.Write);
-		//fs.Write(stream.ToArray());
-		//fs.Flush();
-		//fs.Close();
-		//#endregion
+		package.SaveAs(save.FileName);
 	}
 	#endregion
 }

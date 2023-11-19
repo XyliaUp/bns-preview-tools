@@ -1,3 +1,4 @@
+using System.Windows;
 using System.Windows.Controls;
 
 using Xylia.Preview.Data.Helpers;
@@ -16,7 +17,7 @@ public partial class Game_ItemStoreScene : GameScene
 
 
 	#region Methods 
-	protected override void OnLoading(EventArgs e)
+	protected override void OnLoaded(EventArgs e)
 	{
 		#region type
 		var group = new Dictionary<UnlocatedStoreTypeSeq, TreeViewItem>();

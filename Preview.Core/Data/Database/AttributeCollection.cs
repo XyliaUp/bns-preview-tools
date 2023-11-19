@@ -88,7 +88,15 @@ public class AttributeCollection : IDisposable, IEnumerable, IEnumerable<KeyValu
 	public string this[string name] => Get(name)?.ToString();
 	public string this[string name, int index] => this[$"{name}-{index}"];
 
-	public T Get<T>(string name, int index = 0) => (T)Get(index == 0 ? name : $"{name}-{index}");
+
+	public T Get<T>(string name, int index = 0)
+	{
+		var obj = Get(index == 0 ? name : $"{name}-{index}");
+		if (obj is T temp) return temp;
+
+		// TODO: type convert
+		return default;
+	}
 
 	public object Get(string name)
 	{

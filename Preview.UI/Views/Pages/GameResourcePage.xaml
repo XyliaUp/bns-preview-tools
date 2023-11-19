@@ -1,6 +1,7 @@
 ﻿<Page x:Class="Xylia.Preview.UI.Views.Pages.GameResourcePage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	  xmlns:hc="https://handyorg.github.io/handycontrol"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:VM="clr-namespace:Xylia.Preview.UI.ViewModels"
@@ -8,7 +9,7 @@
       mc:Ignorable="d" 
       d:DesignHeight="348.696" d:DesignWidth="502.59" d:Background="White" Loaded="Page_Loaded">
 	<TabControl>
-		<TabItem Header="Assets" >
+		<TabItem Header="{DynamicResource Name_Assets}" >
 			<Grid Margin="3 0 0 0">
 				<Grid.RowDefinitions>
 					<RowDefinition Height="Auto" />
@@ -25,13 +26,10 @@
 					<ColumnDefinition Width="*" />
 				</Grid.ColumnDefinitions>
 
-
-				<Label Grid.Row="0" Content="select output folder" />
-				<TextBox Grid.Row="1" Text="{Binding OutputFolderResource, Source={x:Static VM:UserSettings.Default}}" />
-				<Button Grid.Row="1" Grid.Column="1" Style="{StaticResource FolderBrower}"  Click="Brower_OutputFolder_Click" />
-
-				<Label Grid.Row="2" Content="Asset Path" />
-				<ComboBox Grid.Row="3" x:Name="Selector" IsEditable="True" IsTextSearchEnabled="True" >
+	
+				<hc:SearchBar Grid.Row="0" hc:InfoElement.Title="Output Folder" Style="{StaticResource SearchBarExtend}" Text="{Binding OutputFolderResource, Source={x:Static VM:UserSettings.Default}, Mode=OneWay}" 
+					 Command="{Binding OpenSettingsCommand}"/>
+				<hc:ComboBox Grid.Row="1" x:Name="Selector" hc:InfoElement.Title="Asset Path" IsEditable="True" IsTextSearchEnabled="True" >
 					<ComboBoxItem Content="Game/Art/UI/GameUI/Resource/GameUI_Icon" />
 					<ComboBoxItem Content="Game/Art/UI/GameUI/Resource/GameUI_Icon2nd" />
 					<ComboBoxItem Content="Game/Art/UI/GameUI/Resource/GameUI_Icon3rd" />
@@ -42,14 +40,15 @@
 					<ComboBoxItem Content="Game/Art/UI/GameUI/Resource/GameUI_ImageSet" />
 					<ComboBoxItem Content="Game/Art/UI/GameUI/Resource/GameUI_ImageSet_R" />
 					<ComboBoxItem Content="Game/Art/UI/V2/Resource" />
-				</ComboBox>
+				</hc:ComboBox>
 				
-				<Button Grid.Row="3" x:Name="Extract" Grid.Column="1" Content="Extract" Width="50" Height="20" Click="Extract_Click"/>
 				<CheckBox Grid.Row="4" x:Name="OutputClassName" Content="Output class name" VerticalAlignment="Bottom" Margin="0 20 0 0"/>
+
+				<Button Grid.Row="1" x:Name="Extract" Grid.Column="1" Margin="0 28 0 0" Content="Extract" Click="Extract_Click"/>
 			</Grid>
 		</TabItem>
 
-		<TabItem Header="Icon" >
+		<TabItem Header="{DynamicResource Name_Icon}" >
 			<Grid Margin="3 0 0 0">
 				<Grid.RowDefinitions>
 					<RowDefinition Height="Auto" />
@@ -72,27 +71,26 @@
 						<ColumnDefinition Width="*" />
 					</Grid.ColumnDefinitions>
 
-					<TextBlock Grid.Row="0" ><Run Text="{DynamicResource GameDirectory}" /> *</TextBlock>
-					<TextBox Grid.Row="1" Text="{Binding GameFolder, Source={x:Static VM:UserSettings.Default}}" />
-					<Button Grid.Row="1" Grid.Column="1" Style="{StaticResource FolderBrower}" Click="Brower_OutputFolder_Click" />
 
-					<TextBlock Grid.Row="2" ><Run Text="{DynamicResource OutputDirectory}" /> *</TextBlock>
-					<TextBox Grid.Row="3" Text="{Binding Icon_OutputFolder}" />
-					<Button Grid.Row="3" Grid.Column="1" Style="{StaticResource FolderBrower}" Click="Icon_BrowerOutputFolder_Click" />
-
-					<Label Grid.Row="4" Content="Select item list" />
-					<TextBox Grid.Row="5" x:Name="ItemListPath" Margin="0 0 5 0"/>
-					<Button Grid.Row="5" Grid.Column="1" Style="{StaticResource FolderBrower}" Click="Icon_BrowerItemList_Click" />
+					<hc:SearchBar Grid.Row="0"
+						Style="{StaticResource SearchBarExtend}" hc:InfoElement.Title="{DynamicResource GameDirectory}" hc:InfoElement.Necessary="True"
+						Text="{Binding GameFolder, Source={x:Static VM:UserSettings.Default}, Mode=OneWay}" 
+						Command="{Binding OpenSettingsCommand}" />
+					<hc:SearchBar Grid.Row="1"
+						Style="{StaticResource SearchBarExtend}" hc:InfoElement.Title="{DynamicResource OutputDirectory}" hc:InfoElement.Necessary="True"
+						Text="{Binding Icon_OutputFolder}" Command="{Binding Icon_BrowerOutputFolderCommand}" />
+					<hc:SearchBar Grid.Row="2"
+						Style="{StaticResource SearchBarExtend}" hc:InfoElement.Title="Select item list"
+						Text="{Binding Icon_ItemList}" Command="{Binding Icon_BrowerItemListCommand}" />
 				</Grid>
 
-				<StackPanel Grid.Row="1" Orientation="Vertical" Margin="0 10 0 0">
-					<Label Content="Output Name Format" />
-					<ComboBox x:Name="NameFormat"  >
+				<StackPanel Grid.Row="1" Orientation="Vertical" Margin="0 15 0 0">
+					<hc:ComboBox Name="NameFormat" hc:InfoElement.Title="Output Name Format">
 						<ComboBoxItem Content="[id]" />
 						<ComboBoxItem Content="[alias]" />
 						<ComboBoxItem Content="[id]_[name]" />
-					</ComboBox>
-
+					</hc:ComboBox>
+				
 					<CheckBox x:Name="FilterMode" Content="Whitelist filtering" ToolTip="create item only in list when checked, otherwise ignore listed item."/>
 					<CheckBox x:Name="UseBackground" Content="Grade Background" IsChecked="True" />
 
@@ -105,7 +103,7 @@
 			</Grid>
 		</TabItem>
 
-		<TabItem Header="Merge Icon">
+		<TabItem Header="{DynamicResource Name_MergeIcon}">
 			<Grid Margin="3 0 0 0" AllowDrop="True" DragDrop.DragEnter="MergeIcon_DragEnter" DragDrop.Drop="MergeIcon_DragDrop">
 				<Grid.ColumnDefinitions>
 					<ColumnDefinition Width="*"/>
@@ -129,8 +127,8 @@
 
 				<!-- Right -->
 				<StackPanel Grid.Column="2">
-					<Button Content="Reset" Click="MergeIcon_Reset_Click" Command="{Binding MergeIcon_ResetCommand}" />
-					<Button Content="Save" Click="MergeIcon_Save_Click" Command="{Binding MergeIcon_SaveCommand}" />
+					<Button Content="Reset" Click="Reset_Click"/>
+					<Button Content="Save" Command="{Binding MergeIcon_SaveCommand}" />
 
 					<RadioButton x:Name="Radio_64px" IsChecked="{Binding MergeIcon_SizeMode}" Content="64   px" />
 					<RadioButton x:Name="Radio_128px" Content="128 px" />					

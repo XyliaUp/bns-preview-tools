@@ -5,7 +5,7 @@
         Title="SearcherResult" Height="405" Width="467"
 		DataContext="{Binding RelativeSource={RelativeSource Self}}">
 	<Grid>
-		<ListBox ItemsSource="{Binding Source, Mode=OneWay}" HorizontalContentAlignment="Stretch" VirtualizingStackPanel.IsVirtualizing="True">
+		<ListBox ItemsSource="{Binding Source, Mode=OneWay}" HorizontalContentAlignment="Stretch" Style="{x:Null}">
 			<ListBox.ItemTemplate>
 				<DataTemplate>
 					<Border MinHeight="40" BorderBrush="#EBEBEB" BorderThickness="0 1 0 0" ToolTip="{Binding Attributes[alias]}" >

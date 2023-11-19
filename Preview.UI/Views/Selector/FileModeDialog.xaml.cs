@@ -1,4 +1,5 @@
-﻿using System.Windows.Input;
+﻿using System.Windows;
+using System.Windows.Input;
 
 namespace Xylia.Preview.UI.Views.Selector;
 public partial class FileModeDialog : Window

@@ -1,4 +1,5 @@
 using System.ComponentModel;
+using System.Windows;
 using System.Windows.Controls;
 
 using Xylia.Preview.Data.Helpers;
@@ -15,7 +16,7 @@ public partial class Game_QuestJournalScene : GameScene
 		InitializeComponent();
 	}
 
-	protected override void OnLoading(EventArgs e)
+	protected override void OnLoaded(EventArgs e)
 	{
 		// Quest
 		QuestJournal_ProgressQuestList.ItemsSource = FileCache.Data.Quest.OrderBy(q => q.id);

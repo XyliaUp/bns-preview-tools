@@ -1,4 +1,5 @@
 using System.ComponentModel;
+using System.Diagnostics;
 
 using Xylia.Preview.Data.Engine.DatData;
 using Xylia.Preview.Data.Helpers;
@@ -36,9 +37,9 @@ public partial class Game_CharacterInfo_Scene : GameScene
 	#endregion
 
 	#region Methods
-	private async void WebView_WebBrowserInitialized(object sender, EventArgs e)
+	private async void WebView_WebBrowserInitialized(object sender, Microsoft.Web.WebView2.Core.CoreWebView2 e)
 	{
-		await CharacterInfoPanelWeb.CoreWebView2.AddScriptToExecuteOnDocumentCreatedAsync($$"""
+		await e.AddScriptToExecuteOnDocumentCreatedAsync($$"""
 		onmouseover = (e) => {
 		    var obj = e.target; 
 			if (obj.tagName != 'IMG') return;

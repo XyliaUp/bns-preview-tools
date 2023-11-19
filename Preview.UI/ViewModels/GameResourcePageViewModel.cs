@@ -1,4 +1,5 @@
 ﻿using System.IO;
+using System.Windows;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
@@ -8,10 +9,13 @@ using CommunityToolkit.Mvvm.Input;
 using CUE4Parse.BNS.Conversion;
 using CUE4Parse.Utils;
 
+using Ookii.Dialogs.Wpf;
+
 using SkiaSharp;
 using SkiaSharp.Views.WPF;
 
 using Xylia.Preview.UI.Common;
+using Xylia.Preview.UI.Views;
 
 namespace Xylia.Preview.UI.ViewModels;
 public partial class GameResourcePageViewModel : ObservableObject
@@ -19,6 +23,30 @@ public partial class GameResourcePageViewModel : ObservableObject
 	#region Icon
 	[ObservableProperty]
 	string icon_OutputFolder;
+
+	[ObservableProperty]
+	string icon_ItemListPath;
+
+
+	[RelayCommand]
+	public void OpenSettings()
+	{
+		new SettingsView().ShowDialog();
+	}
+
+	[RelayCommand]
+	private void Icon_BrowerOutputFolder()
+	{
+		var dialog = new VistaFolderBrowserDialog() { };
+		if (dialog.ShowDialog() == true) Icon_OutputFolder = dialog.SelectedPath;
+	}
+
+	[RelayCommand]
+	private void Icon_BrowerItemList()
+	{
+		var dialog = new VistaOpenFileDialog() { Filter = @"|*.chv|All files|*.*" };
+		if (dialog.ShowDialog() == true) Icon_ItemListPath = dialog.FileName;
+	}
 	#endregion
 
 	#region Merge
@@ -147,14 +175,6 @@ public partial class GameResourcePageViewModel : ObservableObject
 		bitmap = bitmap.Compose(_mergeIcon_TopRight?.Value);
 
 		MergeIcon_Image = bitmap.ToWriteableBitmap();
-	}
-
-	[RelayCommand]
-	public void MergeIcon_Reset()
-	{
-		MergeIcon_Source = null;
-		MergeIcon_BottomLeft = BottomLeftList.First();
-		MergeIcon_TopRight = BottomLeftList.First();
 	}
 
 	[RelayCommand]

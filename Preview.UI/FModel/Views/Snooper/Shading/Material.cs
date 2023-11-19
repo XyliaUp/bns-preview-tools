@@ -4,13 +4,13 @@ using CUE4Parse.UE4.Assets.Exports.Material;
 using CUE4Parse.UE4.Assets.Exports.Texture;
 using CUE4Parse.UE4.Objects.Core.Math;
 
-using Xylia.Preview.Common.Extension;
 using FModel.Views.Snooper.Models;
 
 using ImGuiNET;
 
 using OpenTK.Graphics.OpenGL4;
 
+using Xylia.Preview.Common.Extension;
 using Xylia.Preview.UI.ViewModels;
 
 namespace FModel.Views.Snooper.Shading;

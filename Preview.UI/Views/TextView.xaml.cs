@@ -1,4 +1,5 @@
 ﻿using System.Text;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 
@@ -259,6 +260,7 @@ internal class TextAreaRenderer : IBackgroundRenderer
 		if (line1 != null && line2 != null) height = line2.VisualTop + line2.Height - line1.VisualTop;
 
 		// background
+		if (height < 0) return;
 		var geometry = new RectangleGeometry(new Rect(0, posY, textView.ActualWidth, height));
 		if (geometry != null) drawingContext.DrawGeometry(BackgroundBrush, this.BorderPen, geometry);
 

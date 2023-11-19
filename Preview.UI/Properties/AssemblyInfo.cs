@@ -1,4 +1,5 @@
 ﻿using System.Reflection;
+using System.Windows;
 
 [assembly: AssemblyTitle("Blade & Soul Preview Tool")]
 [assembly: AssemblyProduct("Xylia.Preview")]

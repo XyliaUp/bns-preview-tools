@@ -9,7 +9,6 @@
 
 	<ItemGroup>
 	  <PackageReference Include="HtmlAgilityPack" Version="1.11.54" />
-	  <PackageReference Include="JerryShaw.AduSkin" Version="1.1.1.11" />
 	  <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.2151.40" />
 	  <PackageReference Include="SkiaSharp.Views.WPF" Version="2.88.6" />
 	</ItemGroup>
