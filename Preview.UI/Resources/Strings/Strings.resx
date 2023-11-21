@@ -226,4 +226,13 @@
   <data name="Name_Output" xml:space="preserve">
     <value>Output</value>
   </data>
+  <data name="View_Raw" xml:space="preserve">
+    <value>View Raw</value>
+  </data>
+  <data name="Name_PropertyEditor" xml:space="preserve">
+    <value>Property Editor</value>
+  </data>
+  <data name="Name_Settings" xml:space="preserve">
+    <value>Settings</value>
+  </data>
 </root>

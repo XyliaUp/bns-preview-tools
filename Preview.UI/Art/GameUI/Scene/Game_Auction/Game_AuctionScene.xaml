@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 		xmlns:UI="https://github.com/xyliaup/bns-preview-tools"
 		xmlns:VM="clr-namespace:Xylia.Preview.UI.ViewModels"
-        Title="AuctionScene" Height="750" Width="800"  
+        Title="AuctionScene" Height="750" Width="800"
 		DataContext="{Binding RelativeSource={RelativeSource Self}}">
 	<Grid>
 		<Grid.ColumnDefinitions>
@@ -38,6 +38,7 @@
 				<ListView.Resources>
 					<ContextMenu x:Key="ItemMenu">
 						<MenuItem Header="{DynamicResource View_Model}" Command="VM:PreviewModel.Command" CommandParameter="{Binding Model.Value}"/>
+						<MenuItem Header="{DynamicResource View_Raw}" Command="VM:PreviewRaw.Command" CommandParameter="{Binding Path=.}"/>
 					</ContextMenu>
 				</ListView.Resources>
 				<ListView.ItemContainerStyle>

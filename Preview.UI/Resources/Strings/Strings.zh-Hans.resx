@@ -225,4 +225,13 @@
   <data name="Name_Output" xml:space="preserve">
     <value>输出</value>
   </data>
+  <data name="View_Raw" xml:space="preserve">
+    <value>查看源</value>
+  </data>
+  <data name="Name_PropertyEditor" xml:space="preserve">
+    <value>属性编辑器</value>
+  </data>
+  <data name="Name_Settings" xml:space="preserve">
+    <value>设置</value>
+  </data>
 </root>

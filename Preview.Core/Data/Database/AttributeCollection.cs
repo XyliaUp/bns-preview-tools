@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Dynamic;
 using System.Reflection;
 using System.Xml;
 
@@ -13,10 +14,9 @@ using Xylia.Preview.Data.Engine.BinData.Models;
 using Xylia.Preview.Data.Models;
 
 namespace Xylia.Preview.Data.Database;
-public class AttributeCollection : IDisposable, IEnumerable, IEnumerable<KeyValuePair<string, object>>
+public class AttributeCollection : DynamicObject, IDisposable, IEnumerable, IEnumerable<KeyValuePair<string, object>>
 {
 	#region Constructor
-	/// https://zhuanlan.zhihu.com/p/430728295
 	private readonly Record record;
 	private readonly Dictionary<string, object> _attributes = new();
 
@@ -35,21 +35,12 @@ public class AttributeCollection : IDisposable, IEnumerable, IEnumerable<KeyValu
 			if (!string.IsNullOrEmpty(item.Value))
 				_attributes[item.Name] = item.Value;
 		}
-
-		//foreach (var attribute in definition.ExpandedAttributes)
-		//{
-		//	if (!string.IsNullOrEmpty(attribute.DefaultValue))
-		//		_attributes[attribute.Name] = attribute.DefaultValue;
-		//}
 		#endregion
 
 		#region children
 		foreach (var child in definition.Children)
 		{
-			var table = new Table()
-			{
-				Definition = new TableDefinition() { ElRecord = child }
-			};
+			var table = new Table() { Definition = new TableDefinition() { ElRecord = child } };
 			table.LoadXml(element.SelectNodes("./" + table.Definition.ElRecord.Name).OfType<XmlElement>());
 
 			record.Children[child.Name] = table.Records.ToArray();
@@ -72,7 +63,7 @@ public class AttributeCollection : IDisposable, IEnumerable, IEnumerable<KeyValu
 		}
 
 		foreach (var attribute in record.ElDefinition.ExpandedAttributes)
-			yield return new(attribute.Name, Get(record, attribute));
+			yield return new(attribute.Name, Get(attribute));
 	}
 
 	public override string ToString() => GetEnumerator().ToIEnumerable().Aggregate("<record ", (sum, now) => sum + $"{now.Key}=\"{now.Value}\" ", result => result + "/>");
@@ -88,25 +79,27 @@ public class AttributeCollection : IDisposable, IEnumerable, IEnumerable<KeyValu
 	public string this[string name] => Get(name)?.ToString();
 	public string this[string name, int index] => this[$"{name}-{index}"];
 
-
-	public T Get<T>(string name, int index = 0)
-	{
-		var obj = Get(index == 0 ? name : $"{name}-{index}");
-		if (obj is T temp) return temp;
-
-		// TODO: type convert
-		return default;
-	}
+	public T Get<T>(string name) => (T) Get(name);
 
 	public object Get(string name)
 	{
-		if (_attributes.Any()) return _attributes.GetValueOrDefault(name);
+		var attribute = record.ElDefinition[name];
 
+		// from prev
+		if (_attributes.Any())
+		{
+			var value = _attributes.GetValueOrDefault(name);
+			if (value is string s && attribute != null) value = AttributeConverter.ConvertTo(s, attribute.Type, record.Owner.Owner);
+
+			return value;
+		}
+
+		// from definition
 		if (name == "type") return record.ElDefinition.Name;
-		return Get(record, record.ElDefinition?[name]);
+		return Get(attribute);
 	}
 
-	public static object Get(Record record, AttributeDefinition attribute, bool _noValidate = true)
+	public object Get(AttributeDefinition attribute, bool _noValidate = true)
 	{
 		if (_noValidate && (attribute is null || attribute.Offset >= record.DataSize))
 			return null;
@@ -188,7 +181,15 @@ public class AttributeCollection : IDisposable, IEnumerable, IEnumerable<KeyValu
 			default: throw new Exception($"Unhandled type name: '{attribute.Type}'");
 		}
 	}
+
+
+	public override bool TryGetMember(GetMemberBinder binder, out object result)
+	{
+		result = Get(binder.Name);
+		return record.ElDefinition[binder.Name] != null;
+	}
 	#endregion
+
 
 	#region Methods
 	/// <summary>

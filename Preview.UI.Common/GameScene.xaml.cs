@@ -40,6 +40,7 @@ public abstract class GameScene : Window, INotifyPropertyChanged
 
 	public GameScene()
 	{
+		DataContext = this;
 		Loaded += (s, e) => OnLoaded(e);
 	}
 	#endregion
@@ -88,28 +89,35 @@ public abstract class GameScene : Window, INotifyPropertyChanged
 			_CloseButton.Click += delegate { this.Close(); };
 	}
 
-	//protected override void OnInitialized(EventArgs e)
-	//{
-	//	base.OnInitialized(e);
+	protected override void OnInitialized(EventArgs e)
+	{
+		base.OnInitialized(e);
 
-	//	WindowStartupLocation = WindowStartupLocation.CenterScreen;
-	//	AllowsTransparency = false;
-	//	if (WindowStyle == WindowStyle.None)
-	//	{
-	//		WindowStyle = WindowStyle.SingleBorderWindow;
-	//	}
-	//}
+		WindowStartupLocation = WindowStartupLocation.CenterScreen;
+		if (WindowStyle == WindowStyle.None)
+		{
+			WindowStyle = WindowStyle.SingleBorderWindow;
+		}
+
+		// determine content alignment 
+		if (double.IsNaN(this.Width) && double.IsNaN(this.Height))
+		{
+			SizeToContent = SizeToContent.WidthAndHeight;
+			HorizontalAlignment = HorizontalAlignment.Left;
+			VerticalAlignment = VerticalAlignment.Top;
+		}	
+	}
 
 	protected override void OnStateChanged(EventArgs e)
 	{
 		base.OnStateChanged(e);
-		//if (ResizeMode == ResizeMode.CanMinimize || ResizeMode == ResizeMode.NoResize)
-		//{
-		//	if (WindowState == WindowState.Maximized)
-		//	{
-		//		WindowState = WindowState.Normal;
-		//	}
-		//}
+		if (ResizeMode == ResizeMode.CanMinimize || ResizeMode == ResizeMode.NoResize)
+		{
+			if (WindowState == WindowState.Maximized)
+			{
+				WindowState = WindowState.Normal;
+			}
+		}
 	}
 
 	protected override void OnKeyUp(KeyEventArgs e)

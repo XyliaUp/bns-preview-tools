@@ -8,10 +8,11 @@
 		<ListBox ItemsSource="{Binding Source, Mode=OneWay}" HorizontalContentAlignment="Stretch" Style="{x:Null}">
 			<ListBox.ItemTemplate>
 				<DataTemplate>
-					<Border MinHeight="40" BorderBrush="#EBEBEB" BorderThickness="0 1 0 0" ToolTip="{Binding Attributes[alias]}" >
+					<Border MinHeight="40" BorderBrush="#EBEBEB" BorderThickness="0 1 0 0" ToolTip="{Binding Attributes.alias}" >
 						<Border.ContextMenu>
 							<ContextMenu>
 								<MenuItem Header="{DynamicResource View_Model}" Command="VM:PreviewModel.Command" CommandParameter="{Binding Path=.}"/>
+								<MenuItem Header="{DynamicResource View_Raw}" Command="VM:PreviewRaw.Command" CommandParameter="{Binding Path=.}"/>
 							</ContextMenu>
 						</Border.ContextMenu>
 

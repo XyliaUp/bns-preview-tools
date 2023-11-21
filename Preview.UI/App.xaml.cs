@@ -1,6 +1,7 @@
 ﻿#define DEV
 
 using System.Collections.Concurrent;
+using System.ComponentModel;
 using System.IO;
 using System.Reflection;
 using System.Windows;
@@ -11,9 +12,11 @@ using CUE4Parse.UE4.VirtualFileSystem;
 
 using Serilog;
 
+using Xylia.Configure;
 using Xylia.Preview.Common.Extension;
 using Xylia.Preview.Data.Helpers;
 using Xylia.Preview.UI.ViewModels;
+using Xylia.Preview.UI.Views.Editor;
 
 using Kernel32 = Vanara.PInvoke.Kernel32;
 
@@ -26,10 +29,11 @@ public partial class App : Application
 		InitializeArgs(e.Args);
 
 		#region Log
+		var foloder = UserSettings.Default.OutputFolder ?? PathDefine.MainFolder;
 		string template = "{Timestamp:yyyy-MM-dd HH:mm:ss} [{Level}] {Message:lj}{NewLine}{Exception}";
 		Log.Logger = new LoggerConfiguration()
 			.WriteTo.Debug(Serilog.Events.LogEventLevel.Warning, outputTemplate: template)
-			.WriteTo.File(Path.Combine(UserSettings.Default.OutputFolder, "Logs", $"{DateTime.Now:yyyy-MM-dd}.log"), outputTemplate: template)
+			.WriteTo.File(Path.Combine(foloder, "Logs", $"{DateTime.Now:yyyy-MM-dd}.log"), outputTemplate: template)
 			.CreateLogger();
 		#endregion
 
@@ -54,11 +58,13 @@ public partial class App : Application
 		}
 		#endregion
 
+
+		MainWindow = new MainWindow();
 #if DEV
 		//FileCache.Data = new Data.Engine.DatData.FolderProvider(@"D:\资源\客户端相关\Auto\data");
-#endif
-		MainWindow = new MainWindow();
+		//MainWindow = new PropertyEditor() { Source = FileCache.Data.ItemSpirit[328, 1] };
 		//MainWindow = new Xylia.Preview.UI.Art.GameUI.Scene.Game_Broadcasting.Game_BroadcastingScene();
+#endif
 		MainWindow.Show();
 	}
 
@@ -71,8 +77,11 @@ public partial class App : Application
 		var exception = e.Exception;
 		if (exception is TargetInvocationException) exception = exception.InnerException;
 
-		Log.Fatal(exception.ToString());
-		MessageBox.Show(exception.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+		// not to write log
+		if (exception is not WarningException)
+			Log.Error(exception.ToString());
+
+		HandyControl.Controls.MessageBox.Show(exception.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
 	}
 
 	private void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
@@ -82,7 +91,7 @@ public partial class App : Application
 		string str = $"The program crashed and is about to exit.\n{error.Message};\nat {DateTime.Now}";
 
 		Log.Fatal(str);
-		MessageBox.Show(str, "Crash");
+		HandyControl.Controls.MessageBox.Show(str, "Crash", MessageBoxButton.OK, MessageBoxImage.Stop);
 	}
 	#endregion
 

@@ -61,7 +61,7 @@ public class Update
 			//	IsSoundEnabled = false
 			//};
 
-			//MessageBox.Show(messageBox);
+			//HandyControl.Controls.MessageBox.Show(messageBox);
 			//if (messageBox.Result != MessageBoxResult.Yes) return;
 
 			if (AutoUpdater.DownloadUpdate(args))
@@ -69,7 +69,7 @@ public class Update
 		}
         else
         {
-			MessageBox.Show(
+			HandyControl.Controls.MessageBox.Show(
                 "There is a problem reaching the update server, please check your internet connection or try again later.",
                 "Update Check Failed", MessageBoxButton.OK, MessageBoxImage.Error);
         }

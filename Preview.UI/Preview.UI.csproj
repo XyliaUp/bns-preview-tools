@@ -138,7 +138,6 @@
 		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
 		<PackageReference Include="CSCore" Version="1.2.1.2" />
 		<PackageReference Include="EPPlus" Version="7.0.1" />
-		<PackageReference Include="HandyControls" Version="3.4.5" />
 		<PackageReference Include="ImGui.NET" Version="1.89.9.3" />
 		<PackageReference Include="Irony" Version="1.2.0" />
 		<PackageReference Include="Microsoft.Web.WebView2" Version="1.0.2151.40" />
@@ -221,6 +220,9 @@
 		<Resource Include="Resources\Fonts\Font Awesome 5 Free-Solid-900.otf" />
 		<Resource Include="Resources\Images\*" />
 		<Resource Include="Resources\Images\ue3\*" />
+		<Reference Include="HandyControl">
+		  <HintPath>..\..\..\..\HandyControl\HandyControl\src\Net_GE45\HandyControlDemo_Net_GE45\bin\Debug\net7.0-windows\HandyControl.dll</HintPath>
+		</Reference>
 		<Resource Include="Views\Editor\Sql.xshd" />
 	</ItemGroup>
 </Project>

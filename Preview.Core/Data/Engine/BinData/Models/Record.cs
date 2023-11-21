@@ -243,6 +243,7 @@ public unsafe class Record : IDisposable
 
 
 	#region Instance
+	/// XXX: https://zhuanlan.zhihu.com/p/430728295
 	public Lazy<Record> Model { get; set; }
 	#endregion
 }

@@ -12,6 +12,7 @@ using HtmlAgilityPack;
 
 using Xylia.Preview.Data;
 using Xylia.Preview.Data.Common.Cast;
+using Xylia.Preview.Data.Database;
 using Xylia.Preview.UI.Controls;
 using Xylia.Preview.UI.Documents.Args;
 
@@ -353,7 +354,7 @@ public abstract class Element : ContentElement
 			var name = field.GetName();
 
 			var value = node.Attributes[name]?.Value;
-			field.SetValue(this, ModelTypeHelper.ToType(type, value, null));
+			field.SetValue(this, AttributeConverter.ConvertTo(value, type, null));
 		}
 
 		foreach (var prop in GetType().GetProperties(BindingFlags.Instance | BindingFlags.Public | BindingFlags.DeclaredOnly))
@@ -364,7 +365,7 @@ public abstract class Element : ContentElement
 			var name = prop.GetName();
 
 			var value = node.Attributes[name]?.Value;
-			prop.SetValue(this, ModelTypeHelper.ToType(type, value, null));
+			prop.SetValue(this, AttributeConverter.ConvertTo(value, type, null));
 		}
 	}
 

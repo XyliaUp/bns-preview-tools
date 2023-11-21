@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using System.ComponentModel;
+using System.Diagnostics;
 using System.IO;
 using System.Windows;
 using System.Windows.Data;
@@ -13,6 +14,7 @@ using CUE4Parse.UE4.Assets.Exports;
 using Ookii.Dialogs.Wpf;
 
 using Xylia.Configure;
+using Xylia.Preview.Data.Engine.BinData.Models;
 using Xylia.Preview.Data.Helpers;
 using Xylia.Preview.Data.Helpers.Output;
 using Xylia.Preview.Data.Models;
@@ -51,21 +53,9 @@ public partial class ItemPageViewModel : ObservableObject
 	private async Task CreateItemList()
 	{
 		#region Check
-		if (!Directory.Exists(UserSettings.Default.GameFolder))
-		{
-			MessageBox.Show("Must to set game directory");
-			return;
-		}
-		else if (!Directory.Exists(UserSettings.Default.OutputFolder))
-		{
-			MessageBox.Show("Must to set output directory");
-			return;
-		}
-		else if (OnlyUpdate == true && !File.Exists(ItemListPath))
-		{
-			MessageBox.Show("Select a valid item list, or to cancel");
-			return;
-		}
+		if (!Directory.Exists(UserSettings.Default.GameFolder)) throw new WarningException("Must to set game directory");
+		else if (!Directory.Exists(UserSettings.Default.OutputFolder)) throw new WarningException("Must to set output directory");
+		else if (OnlyUpdate == true && !File.Exists(ItemListPath)) throw new WarningException("Select a valid item list, or to cancel");
 		#endregion
 
 		#region Load
@@ -81,14 +71,14 @@ public partial class ItemPageViewModel : ObservableObject
 			match.GetData();
 			if (match.Count == 0)
 			{
-				MessageBox.Show("没有新增的物品");
+				HandyControl.Controls.MessageBox.Show("没有新增的物品");
 				return;
 			}
 
 			match.Start(startTime, select2.Result == FileModeDialog.FileMode.Xlsx);
 		});
 
-		MessageBox.Show($"本次拉取数据共计{match.Count}条, 总耗{(DateTime.Now - startTime).TotalSeconds}秒。", "Message", MessageBoxButton.OK, MessageBoxImage.Information);
+		HandyControl.Controls.MessageBox.Show($"本次拉取数据共计{match.Count}条, 总耗{(DateTime.Now - startTime).TotalSeconds}秒。", "Message", MessageBoxButton.OK, MessageBoxImage.Information);
 		#endregion
 	}
 	#endregion
@@ -144,11 +134,10 @@ public partial class ItemPageViewModel : ObservableObject
 		DateTime dt = DateTime.Now;
 		await instance.Output(new FileInfo(save.FileName));
 
-		MessageBox.Show($"output finish, {(DateTime.Now - dt).TotalSeconds:#0}s");
+		HandyControl.Controls.MessageBox.Show($"output finish, {(DateTime.Now - dt).TotalSeconds:#0}s");
 	}
 	#endregion
 }
-
 
 public class PreviewModel : ICommand
 {
@@ -189,8 +178,6 @@ public class PreviewModel : ICommand
 		}
 		else if (parameter is Item item)
 		{
-			Debug.WriteLine(item.Attributes);
-
 			void LoadModel(string Mesh, string Col = null)
 			{
 				Col ??= Mesh + "-col";
@@ -294,13 +281,29 @@ public class PreviewRaw : ICommand
 
 	public void Execute(object parameter)
 	{
-		if (parameter is not Record record) return;
+		if (parameter is Record record)
+		{
+			// TODO: valid children
+			// Warning: is not original text
+			if (parameter is Quest)
+			{
+				var editor = new TextEditor();
+				editor.Text = record.Owner.WriteXml(record);
+				editor.Show();
+			}
+			else
+			{
+				var editor = new PropertyEditor();
+				editor.Source = record;
+				editor.Show();
+			}
+		}
 
-		// Warning: is not original text
-		var editor = new TextEditor();
-		if (parameter is Quest) editor.Text = record.Owner.WriteXml(record);
-		else editor.Text = record.Owner.WriteXml();
-
-		editor.Show();
+		if (parameter is Table table)
+		{
+			var editor = new TextEditor();
+			editor.Text = table.WriteXml();
+			editor.Show();
+		}
 	}
 }

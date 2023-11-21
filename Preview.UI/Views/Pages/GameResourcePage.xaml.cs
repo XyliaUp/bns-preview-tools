@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using System.ComponentModel;
+using System.Diagnostics;
 using System.IO;
 using System.Text.RegularExpressions;
 using System.Windows;
@@ -125,7 +126,7 @@ public partial class GameResourcePage : Page
 	{
 		if (source2 != null)
 		{
-			if (MessageBox.Show("是否确认取消? ", "", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+			if (HandyControl.Controls.MessageBox.Show("是否确认取消? ", "", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
 			{
 				source2?.Cancel();
 				source2 = null;
@@ -144,7 +145,7 @@ public partial class GameResourcePage : Page
 	{
 		if (source1 != null)
 		{
-			if (MessageBox.Show("是否确认取消? ", "", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+			if (HandyControl.Controls.MessageBox.Show("是否确认取消? ", "", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
 			{
 				source1?.Cancel();
 				source1 = null;
@@ -156,24 +157,12 @@ public partial class GameResourcePage : Page
 
 		// filter
 		var ItemListPath = _viewModel.Icon_ItemListPath;
-		if (!string.IsNullOrWhiteSpace(ItemListPath) && !File.Exists(ItemListPath))
-		{
-			MessageBox.Show("配置文件路径错误或不存在, 请重新确认！");
-			return;
-		}
-		else if (this.FilterMode.IsChecked == true && !File.Exists(ItemListPath))
-		{
-			MessageBox.Show("选择白名单模式时, 必须选择配置文件!");
-			return;
-		}
+		if (!string.IsNullOrWhiteSpace(ItemListPath) && !File.Exists(ItemListPath)) throw new WarningException("配置文件路径错误或不存在, 请重新确认！");
+		else if (this.FilterMode.IsChecked == true && !File.Exists(ItemListPath)) throw new WarningException("选择白名单模式时, 必须选择配置文件!");
 
 		// format
 		var format = this.NameFormat.Text;
-		if (string.IsNullOrWhiteSpace(format) || !format.Contains('['))
-		{
-			MessageBox.Show("输出格式必须至少包含一个特殊规则");
-			return;
-		}
+		if (string.IsNullOrWhiteSpace(format) || !format.Contains('[')) throw new WarningException("输出格式必须至少包含一个特殊规则");
 		else
 		{
 			format = format.ToLower();
@@ -202,11 +191,11 @@ public partial class GameResourcePage : Page
 			Out.Dispose();
 
 			TimeSpan Ts = DateTime.Now - d1;
-			MessageBox.Show($"任务已经全部结束！ 共计 {Ts.Hours}小时 {Ts.Minutes}分 {Ts.Seconds}秒。");
+			HandyControl.Controls.MessageBox.Show($"任务已经全部结束！ 共计 {Ts.Hours}小时 {Ts.Minutes}分 {Ts.Seconds}秒。");
 		}
 		catch (Exception ee)
 		{
-			MessageBox.Show("由于发生了错误, 进程已提前结束。");
+			HandyControl.Controls.MessageBox.Show("由于发生了错误, 进程已提前结束。");
 			Console.WriteLine(ee);
 		}
 		finally

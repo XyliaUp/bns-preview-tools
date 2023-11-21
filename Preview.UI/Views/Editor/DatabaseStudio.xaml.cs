@@ -137,7 +137,7 @@ public partial class DatabaseStudio : Window
 		}
 		catch(Exception ex)
 		{
-			MessageBox.Show(ex.Message);
+			HandyControl.Controls.MessageBox.Show(ex.Message);
 		}
 		finally
 		{
@@ -182,11 +182,8 @@ public partial class DatabaseStudio : Window
 
 	private void OutputExcel_Click(object sender, RoutedEventArgs e)
 	{
-		if (grdResult.Items.Count == 0)
-		{
-			MessageBox.Show("no data");
-			return;
-		}
+		if (grdResult.Items.Count == 0) 
+			throw new Exception("no data");
 
 		var save = new VistaSaveFileDialog
 		{
