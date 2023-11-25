@@ -150,6 +150,10 @@
 		<PackageReference Include="LiveCharts" Version="0.9.7" />
 		<PackageReference Include="LiveCharts.Wpf" Version="0.9.7" />
 		<PackageReference Include="Xylia" Version="1.0.5.5" />
+
+		<Reference Include="HandyControl">
+			<HintPath>..\..\..\..\HandyControl\HandyControl\src\Net_GE45\HandyControlDemo_Net_GE45\bin\Debug\net7.0-windows\HandyControl.dll</HintPath>
+		</Reference>
 	</ItemGroup>
 
 	<ItemGroup>
@@ -215,14 +219,10 @@
 		<Resource Include="Art\GameUI\Resource\GameUI_Window_R\ItemIcon_Bg_Grade_7.png" />
 		<Resource Include="Art\GameUI\Resource\GameUI_Window_R\ItemIcon_Bg_Grade_8.png" />
 		<Resource Include="Art\GameUI\Resource\GameUI_Window_R\ItemIcon_Bg_Grade_9.png" />
-
-
-		<Resource Include="Resources\Fonts\Font Awesome 5 Free-Solid-900.otf" />
+		
 		<Resource Include="Resources\Images\*" />
 		<Resource Include="Resources\Images\ue3\*" />
-		<Reference Include="HandyControl">
-		  <HintPath>..\..\..\..\HandyControl\HandyControl\src\Net_GE45\HandyControlDemo_Net_GE45\bin\Debug\net7.0-windows\HandyControl.dll</HintPath>
-		</Reference>
+		<Resource Include="Resources\Fonts\Font Awesome 5 Free-Solid-900.otf" />
 		<Resource Include="Views\Editor\Sql.xshd" />
 	</ItemGroup>
 </Project>

@@ -43,8 +43,8 @@ public sealed class ItemIcon : IconOutBase
 			record.Alias = x.Attributes["alias"];
 			record.ItemGrade = x.Attributes.Get<sbyte>("item-grade");
 			record.icon = x.Attributes["icon"];
-			record.Name2 = new Ref<Text>(x.Attributes["name2"]?.ToString(), set);
-			var Text = record.Name2.GetText();
+
+			var Text = x.Attributes.Get<Record>("name2")?.Attributes["text"];	   
 			var GroceryType = x.SubclassType == 2 ? x.Attributes["grocery-type"]?.ToEnum<GroceryTypeSeq>() : null;
 
 			x.Dispose();

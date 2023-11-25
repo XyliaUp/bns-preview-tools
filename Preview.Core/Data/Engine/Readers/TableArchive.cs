@@ -60,6 +60,7 @@ public class TableArchive
 		{
 			var row = new Record
 			{
+				Owner = table,
 				Data = new byte[rowMemory.DataSize],
 				StringLookup = new StringLookup { IsPerTable = false, Data = new byte[rowMemory.StringBufferSize] },
 			};
@@ -79,7 +80,7 @@ public class TableArchive
 
 		if (!_recordUncompressedReader.Initialize(reader,
 			_is64Bit && !table.IsCompressed && table.ElementCount == 1))
-			 throw new Exception("Failed to initialize uncompressed record reader");
+			throw new Exception("Failed to initialize uncompressed record reader");
 
 		var rowMemory = new RecordMemory();
 		var stringLookup = new StringLookup { IsPerTable = true };
@@ -91,6 +92,7 @@ public class TableArchive
 
 			var row = new Record
 			{
+				Owner = table,
 				Data = new byte[rowMemory.DataSize],
 				StringLookup = stringLookup
 			};

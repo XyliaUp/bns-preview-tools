@@ -10,14 +10,13 @@ using Xylia.Preview.UI.ViewModels;
 namespace Xylia.Preview.UI.Views;
 public partial class SettingsView : Window
 {
-	public UserSettings settings;
+	UserSettings settings;
 
 	public SettingsView()
 	{
 		DataContext = settings = new UserSettings();
 		InitializeComponent();
 	}
-
 
 	#region Methods
 	private void OnClosing(object sender, RoutedEventArgs e)

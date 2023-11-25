@@ -28,8 +28,8 @@ public class AttributeGrid : Control
 
 	public AttributeGrid()
 	{
-		CommandBindings.Add(new CommandBinding(ControlCommands.SortByCategory, SortByCategory, (s, e) => e.CanExecute = ShowSortButton));
-		CommandBindings.Add(new CommandBinding(ControlCommands.SortByName, SortByName, (s, e) => e.CanExecute = ShowSortButton));
+		CommandBindings.Add(new CommandBinding(ControlCommands.SortByCategory, SortByCategory));
+		CommandBindings.Add(new CommandBinding(ControlCommands.SortByName, SortByName));
 	}
 
 	public virtual AttributeResolver PropertyResolver { get; } = new();
@@ -73,16 +73,6 @@ public class AttributeGrid : Control
 		set => SetValue(MinTitleWidthProperty, value);
 	}
 
-
-	public static readonly DependencyProperty ShowSortButtonProperty = DependencyProperty.Register(
-		nameof(ShowSortButton), typeof(bool), typeof(AttributeGrid), new PropertyMetadata(true));
-
-	public bool ShowSortButton
-	{
-		get => (bool)GetValue(ShowSortButtonProperty);
-		set => SetValue(ShowSortButtonProperty, value);
-	}
-
 	public override void OnApplyTemplate()
 	{
 		if (_searchBar != null)
@@ -109,7 +99,8 @@ public class AttributeGrid : Control
 		if (obj is not Record record) return;
 
 		_dataView = CollectionViewSource.GetDefaultView(record.ElDefinition.ExpandedAttributes
-			.Where(item => PropertyResolver.ResolveIsBrowsable(item)).Select(CreatePropertyItem)
+			.Where(PropertyResolver.ResolveIsBrowsable)
+			.Select(CreatePropertyItem)
 			.Do(item => item.InitElement()));
 
 		SortByCategory(null, null);
@@ -138,6 +129,7 @@ public class AttributeGrid : Control
 		{
 			_dataView.GroupDescriptions.Clear();
 			_dataView.SortDescriptions.Clear();
+			_dataView.SortDescriptions.Add(new SortDescription(PropertyItem.TagProperty.Name, ListSortDirection.Ascending));
 			_dataView.SortDescriptions.Add(new SortDescription(PropertyItem.PropertyNameProperty.Name, ListSortDirection.Ascending));
 		}
 	}
@@ -173,6 +165,8 @@ public class AttributeGrid : Control
 		Editor = PropertyResolver.ResolveEditor(attribute),
 		Value = SelectedObject.Attributes,
 		PropertyName = attribute.Name,
+		
+		Tag = attribute.Offset,
 	};
 
 	protected override void OnRenderSizeChanged(SizeChangedInfo sizeInfo)

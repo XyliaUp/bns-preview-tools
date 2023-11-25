@@ -12,13 +12,18 @@ using Xylia.Preview.Data.Database;
 using Xylia.Preview.Data.Engine.BinData.Definitions;
 using Xylia.Preview.Data.Engine.BinData.Helpers;
 using Xylia.Preview.Data.Engine.BinData.Models;
-using Xylia.Preview.Data.Models;
 
 namespace Xylia.Preview.Data.Models;
 
 [JsonConverter(typeof(RecordConverter))]
 public unsafe class Record : IDisposable
 {
+	public Record()
+	{
+		Attributes = new(this);
+	}
+
+
 	#region Fields
 	public byte XmlNodeType
 	{
@@ -209,35 +214,35 @@ public unsafe class Record : IDisposable
 
 	public void Serialize(RecordBuilder builder)
 	{
-		Attributes.Synchronize();
+		//Attributes.Synchronize();
 
-		// check definition
-		ArgumentNullException.ThrowIfNull(ElDefinition);
+		//// check definition
+		//ArgumentNullException.ThrowIfNull(ElDefinition);
 
-		// create record
-		builder.InitializeRecord();
+		//// create record
+		//builder.InitializeRecord();
 
-		Data = new byte[ElDefinition.Size];
-		XmlNodeType = 1;
-		SubclassType = ElDefinition.SubclassType;
-		DataSize = ElDefinition.Size;
-		StringLookup = builder.StringLookup;
+		//Data = new byte[ElDefinition.Size];
+		//XmlNodeType = 1;
+		//SubclassType = ElDefinition.SubclassType;
+		//DataSize = ElDefinition.Size;
+		//StringLookup = builder.StringLookup;
 
-		// Go through each attribute
-		//AttributeDefaultValues.SetRecordDefaults(record, this);
-		foreach (var attr in ElDefinition.ExpandedAttributes)
-		{
-			try
-			{
-				builder.SetAttribute(this, attr, Attributes[attr.Name]);
-			}
-			catch (Exception ex)
-			{
-				Debug.WriteLine(ex.Message);
-			}
-		}
+		//// Go through each attribute
+		////AttributeDefaultValues.SetRecordDefaults(record, this);
+		//foreach (var attr in ElDefinition.ExpandedAttributes)
+		//{
+		//	try
+		//	{
+		//		builder.SetAttribute(this, attr, Attributes[attr.Name]);
+		//	}
+		//	catch (Exception ex)
+		//	{
+		//		Debug.WriteLine(ex.Message);
+		//	}
+		//}
 
-		builder.FinalizeRecord();
+		//builder.FinalizeRecord();
 	}
 	#endregion
 

@@ -1,11 +1,13 @@
 ﻿using System.Data;
 using System.Diagnostics;
+using System.Runtime.CompilerServices;
 
 using CUE4Parse.Utils;
 
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 using Xylia.Preview.Data;
+using Xylia.Preview.Data.Common.DataStruct;
 using Xylia.Preview.Data.Engine.DatData;
 using Xylia.Preview.Data.Helpers;
 using Xylia.Preview.Data.Models;

@@ -22,8 +22,8 @@ public class ElDefinition : ITableDefinition
 	public List<AttributeDefinition> ExpandedAttributes { get; } = new List<AttributeDefinition>();
 
 	public AttributeDefinition this[string name] => _expandedAttributesDictionary.GetValueOrDefault(name, null);
-	public SubtableDefinition SubtableByName(string name) => _subtablesDictionary.GetValueOrDefault(name, null);
-	public ITableDefinition SubtableByType(short type) 
+
+	public ITableDefinition SubtableByType(short type)
 	{
 		if (type == -1) return this;
 		else if (this.Subtables.Count > type) return this.Subtables[type];
@@ -31,6 +31,18 @@ public class ElDefinition : ITableDefinition
 		return this;
 	}
 
+	public short GetSubtableType(string name)
+	{
+		if (Subtables.Any())
+		{
+			return _subtablesDictionary.GetValueOrDefault(name, null)?.SubclassType ?? 0;
+		}
+		else 
+		{
+			if (string.IsNullOrEmpty(name)) return -1;
+			else throw new InvalidDataException($"Invalid attribute: 'type'");
+		}
+	}
 
 
 

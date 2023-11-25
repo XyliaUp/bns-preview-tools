@@ -5,11 +5,6 @@ namespace Xylia.Preview.Data.Common.DataStruct;
 [StructLayout(LayoutKind.Sequential)]
 public struct Native
 {
-	public override int GetHashCode()
-	{
-		return HashCode.Combine(StringSize, Offset);
-	}
-
 	public int StringSize;
 	public int Offset;
 
@@ -39,5 +34,10 @@ public struct Native
 	public override bool Equals(object obj)
 	{
 		return obj is Native other && Equals(other);
+	}
+
+	public override int GetHashCode()
+	{
+		return HashCode.Combine(StringSize, Offset);
 	}
 }

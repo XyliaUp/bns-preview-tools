@@ -230,9 +230,7 @@ public class AttributeDefaultValues
                     SetDefaultVector16(record, attrDef);
                     break;
 
-                default:
-                    throw new Exception($"Unhandled type: {attrDef.TypeName}");
-                    break;
+                default: throw new Exception($"Unhandled type: {attrDef.Type}");
             }
         }
     }

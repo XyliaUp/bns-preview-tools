@@ -1,13 +1,14 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
 		<TargetFramework>net7.0-windows</TargetFramework>
-		<UseWindowsForms>true</UseWindowsForms>
-
 		<RootNamespace>Xylia.Preview.Tests</RootNamespace>
 		<StartupObject>Xylia.Preview.Tests.DatTool.MainForm</StartupObject>
 		<AllowUnsafeBlocks>True</AllowUnsafeBlocks>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<PlatformTarget>x64</PlatformTarget>
+
+		<OutputType>Exe</OutputType>
+		<UseWindowsForms>true</UseWindowsForms>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -17,6 +18,5 @@
 	</ItemGroup>
 	<ItemGroup>
 		<ProjectReference Include="..\Preview.Core\Preview.Core.csproj" />
-		<ProjectReference Include="..\Preview.UI\Preview.UI.csproj" />
 	</ItemGroup>
 </Project>

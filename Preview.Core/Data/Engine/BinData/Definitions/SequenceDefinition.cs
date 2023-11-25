@@ -76,6 +76,12 @@ public class SequenceDefinition
 		return seq;
 	}
 
+
+	/// <summary>
+	/// Check count of the sequence
+	/// </summary>
+	/// <param name="type"></param>
+	/// <exception cref="BnsDefinitionException"></exception>
 	public void Check(AttributeType type)
 	{
 		if (type == AttributeType.TSeq || type == AttributeType.TProp_seq)

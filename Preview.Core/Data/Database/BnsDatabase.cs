@@ -22,8 +22,6 @@ public class BnsDatabase : IDisposable
 
 		#region definition
 		var defs = TableDefinitionHelper.LoadTableDefinition();
-
-		Provider.Tables = new();
 		Provider.LoadData(defs);
 
 		var Definitions = new DatafileDefinition(defs);

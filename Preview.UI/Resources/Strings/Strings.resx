@@ -206,7 +206,7 @@
     <value />
   </data>
   <data name="ItemList_Path" xml:space="preserve">
-    <value>Select prev item list （or cancel check "only update"）</value>
+    <value>Select prev item list</value>
   </data>
   <data name="ItemList_Path_Tooltip" xml:space="preserve">
     <value />
@@ -234,5 +234,14 @@
   </data>
   <data name="Name_Settings" xml:space="preserve">
     <value>Settings</value>
+  </data>
+  <data name="PropertyEditor_ViewSource_Tooltip" xml:space="preserve">
+    <value>Copy raw data to clipboard, or open text editor when invalid</value>
+  </data>
+  <data name="Name_About" xml:space="preserve">
+    <value>About</value>
+  </data>
+  <data name="Name_General" xml:space="preserve">
+    <value>General</value>
   </data>
 </root>

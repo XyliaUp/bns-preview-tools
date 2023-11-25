@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Diagnostics;
 using System.Dynamic;
 using System.Reflection;
 using System.Xml;
@@ -14,6 +15,9 @@ using Xylia.Preview.Data.Engine.BinData.Models;
 using Xylia.Preview.Data.Models;
 
 namespace Xylia.Preview.Data.Database;
+/// <summary>
+/// attributes of data record 
+/// </summary>
 public class AttributeCollection : DynamicObject, IDisposable, IEnumerable, IEnumerable<KeyValuePair<string, object>>
 {
 	#region Constructor
@@ -76,10 +80,16 @@ public class AttributeCollection : DynamicObject, IDisposable, IEnumerable, IEnu
 	#endregion
 
 	#region Get
+	public override bool TryGetMember(GetMemberBinder binder, out object result)
+	{
+		result = Get(binder.Name);
+		return record.ElDefinition[binder.Name] != null;
+	}
+
 	public string this[string name] => Get(name)?.ToString();
 	public string this[string name, int index] => this[$"{name}-{index}"];
 
-	public T Get<T>(string name) => (T) Get(name);
+	public T Get<T>(string name) => (T)Get(name);
 
 	public object Get(string name)
 	{
@@ -181,19 +191,96 @@ public class AttributeCollection : DynamicObject, IDisposable, IEnumerable, IEnu
 			default: throw new Exception($"Unhandled type name: '{attribute.Type}'");
 		}
 	}
+	#endregion
 
-
-	public override bool TryGetMember(GetMemberBinder binder, out object result)
+	#region Set
+	public override bool TrySetMember(SetMemberBinder binder, object value)
 	{
-		result = Get(binder.Name);
-		return record.ElDefinition[binder.Name] != null;
+		var attribute = record.ElDefinition[binder.Name];
+		if (attribute is null) return false;
+
+		Set(attribute, value);
+		return true;
+	}
+
+	public void Set(AttributeDefinition attribute, object value)
+	{
+		// HACK: not implement xml
+		// NOTE: String is not expected type
+		switch (attribute.Type)
+		{
+			case AttributeType.TSeq:
+			case AttributeType.TProp_seq:
+			{
+				var seqIndex = (sbyte)attribute.Sequence.IndexOf((string)value);
+				if (seqIndex == -1)
+					throw new Exception($"Invalid sequence value: '{value}'");
+
+				value = seqIndex;
+				break;
+			}
+
+			case AttributeType.TSeq16:
+			case AttributeType.TProp_field:
+			{
+				var seqIndex = (short)attribute.Sequence.IndexOf((string)value);
+				if (seqIndex == -1)
+					throw new Exception($"Invalid sequence value: '{value}'");
+
+				value = seqIndex;
+				break;
+			}
+
+			case AttributeType.TRef:
+			{
+				var record = value as Record;
+				value = record?.Ref ?? new Ref();
+				break;
+			}
+			case AttributeType.TTRef:
+			{
+				var record = value as Record;
+				value = new TRef(record.Owner.Type, record?.Ref ?? new Ref());
+				break;
+			}
+
+			case AttributeType.TScript_obj:
+				// Ignore
+				break;
+
+			// HACK: 显然这种方式有严重问题 
+			case AttributeType.TString:
+			{
+				value = record.StringLookup.AppendString((string)value);
+				break;
+			}
+
+			default:
+				if (value is string) throw new InvalidDataException();
+				break;
+		}
+
+		// valid
+		if (record.Data.Length > attribute.Offset) record.Set(attribute.Offset, value);
+		else Debug.WriteLine("offset out of range");
+	}
+
+	/// <summary>
+	/// Create xml record data
+	/// </summary>
+	/// <param name="attribute"></param>
+	internal void Set(AttributeDefinition attribute)
+	{
+		var value = this[attribute.Name] ?? attribute.DefaultValue;
+		Set(attribute, AttributeConverter.ConvertTo(value, attribute.Type, record.Owner.Owner));
 	}
 	#endregion
 
 
+
 	#region Methods
 	/// <summary>
-	/// Sync attributes value from instance
+	/// Sync attributes value from <see langword="Model Record"/> 
 	/// </summary>
 	/// <param name="side"></param>
 	public void Synchronize()

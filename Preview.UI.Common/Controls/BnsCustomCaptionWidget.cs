@@ -18,7 +18,6 @@ public class BnsCustomCaptionWidget : Control //FrameworkElement
 	}
 	#endregion
 
-
 	#region Public Properties
 	/// <summary>
 	/// Gets/Sets the Source on this Image.

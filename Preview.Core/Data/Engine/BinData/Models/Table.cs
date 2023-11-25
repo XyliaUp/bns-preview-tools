@@ -144,12 +144,7 @@ public class Table : TableHeader, IDisposable
 		Archive.ReadFrom(this);
 
 		foreach (var record in _records)
-		{
-			record.Owner = this;
-			record.Attributes = new(record);
-
 			ByRef[record.Ref] = record;
-		}
 	}
 
 	internal void LoadXml(IEnumerable<XmlElement> elements)
@@ -157,24 +152,18 @@ public class Table : TableHeader, IDisposable
 		_records = new();
 		foreach (var element in elements)
 		{
-			var record = new Record();
-			record.Owner = this;
+			var type = element.Attributes["type"]?.Value;
+			var record = new Record
+			{
+				Owner = this,
+				Data = new byte[16],
+				SubclassType = Definition.ElRecord.GetSubtableType(type),
+			};
 			record.Attributes = new(record, element, Definition.ElRecord);
 
 			#region build ref
-			record.Data = new byte[16];
-
-			var type = record.Attributes["type"];
-			record.SubclassType = type is null ? (short)-1 : (Definition.ElRecord.SubtableByName(type)?.SubclassType ?? 0);
-
 			if (Definition.ElRecord.AutoKey) record.RecordId = _records.Count + 1;
-			else
-			{
-				var builder = new RecordBuilder(null, null);
-				record.ElDefinition.ExpandedAttributes
-					.Where(attr => attr.IsKey)
-					.ForEach(attr => builder.SetAttribute(record, attr, record.Attributes[attr.Name]));
-			}
+			else record.ElDefinition.ExpandedAttributes.Where(attr => attr.IsKey).ForEach(record.Attributes.Set);
 			#endregion
 
 			ByRef[record.Ref] = record;
@@ -215,8 +204,7 @@ public class Table : TableHeader, IDisposable
 			if (Ref == default) return null;
 			if (_records == null) LoadAsync().Wait();
 
-			if (Ref.Id <= 0) return null;
-			else if (ByRef.TryGetValue(Ref, out var item)) return item;
+			if (ByRef.TryGetValue(Ref, out var item)) return item;
 			else if (_records.Any() && message)
 				Debug.WriteLine($"[{Name}] get failed, id: {Ref.Id} variation: {Ref.Variant}");
 

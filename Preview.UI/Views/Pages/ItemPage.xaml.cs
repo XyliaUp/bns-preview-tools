@@ -15,7 +15,6 @@ public partial class ItemPage : Page
 		InitializeComponent();
 	}
 
-
 	#region Preview
 	private void DatabaseGui_Click(object sender, RoutedEventArgs e) => new DatabaseStudio().Show();
 	private void ClearCacheData_Click(object sender, RoutedEventArgs e)

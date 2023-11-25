@@ -16,7 +16,6 @@ using Xylia.Configure;
 using Xylia.Preview.Common.Extension;
 using Xylia.Preview.Data.Helpers;
 using Xylia.Preview.UI.ViewModels;
-using Xylia.Preview.UI.Views.Editor;
 
 using Kernel32 = Vanara.PInvoke.Kernel32;
 
@@ -61,11 +60,24 @@ public partial class App : Application
 
 		MainWindow = new MainWindow();
 #if DEV
-		//FileCache.Data = new Data.Engine.DatData.FolderProvider(@"D:\资源\客户端相关\Auto\data");
-		//MainWindow = new PropertyEditor() { Source = FileCache.Data.ItemSpirit[328, 1] };
+		FileCache.Data = new Data.Engine.DatData.FolderProvider(@"D:\资源\客户端相关\Auto\data");
+		//MainWindow = new Views.Editor.PropertyEditor() { Source = FileCache.Data.Store2[80087] };
 		//MainWindow = new Xylia.Preview.UI.Art.GameUI.Scene.Game_Broadcasting.Game_BroadcastingScene();
 #endif
 		MainWindow.Show();
+
+
+
+
+
+
+		//using var provider = DefaultProvider.Load(UserSettings.Default.GameFolder);
+		//var o = provider.XmlData.EnumerateFiles("datafile64.bin").FirstOrDefault()?.Data;
+		//o = null;
+
+		//GC.Collect();
+
+		//provider.LoadData(null);
 	}
 
 

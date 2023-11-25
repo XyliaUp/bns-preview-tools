@@ -32,7 +32,7 @@ public partial class Game_ItemStoreScene : GameScene
 
 			var item = new TreeViewImageItem()
 			{
-				HeaderText = record.TitleText.GetText(),
+				Header = record.TitleText.GetText(),
 				//Image = FileCache.Provider.LoadObject(record.TitleIcon)?.GetImage()?.ToImageSource(),
 			};
 			this.TreeView.Items.Add(group[record.UnlocatedStoreType] = item);

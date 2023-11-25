@@ -22,7 +22,7 @@
 			<ColumnDefinition Width="*" />
 		</Grid.ColumnDefinitions>
 
-		<ListBox x:Name="PageControl" Grid.Column="0" BorderThickness="0" Background="Transparent" SelectionChanged="PageControl_SelectionChanged">
+		<ListBox x:Name="PageControl" Grid.Column="0" BorderThickness="0" Background="Transparent" SelectionChanged="PageControl_SelectionChanged" Style="{x:Null}" Margin="0 0 5 0">
 			<ListBox.Resources>
 				<Style TargetType="ListBoxItem">
 					<Setter Property="Background" Value="Transparent" />
@@ -55,6 +55,6 @@
 			</ListBox.ItemTemplate>
 		</ListBox>
 
-		<Frame Grid.Column="1" x:Name="Presenter" NavigationUIVisibility="Hidden" />
+		<Frame Grid.Column="1" x:Name="Presenter" NavigationUIVisibility="Hidden" BorderThickness="0" />
 	</Grid>
 </hc:Window>

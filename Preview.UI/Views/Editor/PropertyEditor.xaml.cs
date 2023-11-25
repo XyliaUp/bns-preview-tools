@@ -1,33 +1,33 @@
-﻿using System.ComponentModel;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Input;
+﻿using System.Windows;
 
 using CommunityToolkit.Mvvm.ComponentModel;
 
-using HandyControl.Controls;
-using HandyControl.Data;
-using HandyControl.Interactivity;
-
-using HandyControl.Tools.Extension;
-
-using Xylia.Preview.Data.Database;
+using Xylia.Extension;
 using Xylia.Preview.Data.Models;
+using Xylia.Preview.UI.ViewModels;
 
 namespace Xylia.Preview.UI.Views.Editor;
 [ObservableObject]
-public partial class PropertyEditor : System.Windows.Window
+public partial class PropertyEditor : Window
 {
+	#region Ctor
+	public PropertyEditor()
+	{
+		InitializeComponent();
+	}
+	#endregion
+
 	#region Fields
 	[ObservableProperty]
 	private Record source;
 	#endregion
 
-	#region Ctr
-	public PropertyEditor()
+
+	#region Methods
+	private void ViewSource_Click(object sender, RoutedEventArgs e)
 	{
-		InitializeComponent();
+		if (Source.Data.Length > 16) Clipboard.SetText(Source.Data.ToHex());
+		else PreviewRaw.Command.Execute(Source, true);
 	}
 	#endregion
 }

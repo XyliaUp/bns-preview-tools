@@ -15,7 +15,7 @@ using Xylia.Preview.UI.Controls;
 namespace Xylia.Preview.UI.Art.GameUI.Scene.Game_Map;
 public partial class Game_MapScene : GameScene
 {
-	#region Ctr
+	#region Ctor
 	public Game_MapScene()
 	{
 		InitializeComponent();

@@ -9,8 +9,6 @@ public partial class AttributeDefinition
 {
 	public string Name { get; set; }
 	public string OriginalName { get; set; }
-	public string TypeName { get; set; }
-	public string OriginalTypeName { get; set; }
 	public AttributeType Type { get; set; }
 	public string DefaultValue { get; set; }
 	public ushort Repeat { get; set; }
@@ -21,6 +19,7 @@ public partial class AttributeDefinition
 	public bool IsKey { get; set; }
 	public bool IsRequired { get; set; }
 	public bool IsHidden { get; set; }
+
 	public AttributeDefaultValues AttributeDefaultValues { get; set; }
 
 	public List<string> Sequence { get; set; } = new List<string>();
@@ -32,7 +31,6 @@ public partial class AttributeDefinition
 		{
 			Name = Name,
 			OriginalName = OriginalName,
-			TypeName = TypeName,
 			Type = Type,
 			DefaultValue = DefaultValue,
 			Repeat = Repeat,
@@ -52,6 +50,9 @@ public partial class AttributeDefinition
 {
 	#region Properties
 	public string ReferedTableName { get; set; }
+	public double Max { get; set; }
+	public double Min { get; set; }
+
 
 	public bool CanOutput { get; set; } = true;
 
@@ -96,6 +97,8 @@ public partial class AttributeDefinition
 		#endregion
 
 		#region Default
+		double MaxValue = (node.Attributes["max"]?.Value).ToDouble();
+		double MinValue = (node.Attributes["min"]?.Value).ToDouble();
 		string DefaultValue = node.Attributes["default"]?.Value?.Trim();
 		if (string.IsNullOrEmpty(DefaultValue)) DefaultValue = null;
 
@@ -104,6 +107,61 @@ public partial class AttributeDefinition
 
 		switch (Type)
 		{
+			case AttributeType.TInt8:
+				attrDefDefaults.DString = DefaultValue ?? "0";
+				attrDefDefaults.DByte = sbyte.Parse(attrDefDefaults.DString);
+
+				if (MinValue == 0) MinValue = sbyte.MinValue;
+				if (MaxValue == 0) MaxValue = sbyte.MaxValue;
+				break;
+
+			case AttributeType.TInt16:
+			case AttributeType.TDistance:
+			case AttributeType.TAngle:
+				attrDefDefaults.DString = DefaultValue ?? "0";
+				attrDefDefaults.DShort = short.Parse(attrDefDefaults.DString);
+
+				if (MinValue == 0) MinValue = short.MinValue;
+				if (MaxValue == 0) MaxValue = short.MaxValue;
+				break;
+
+			case AttributeType.TVelocity:
+				attrDefDefaults.DString = DefaultValue ?? "0";
+				attrDefDefaults.DVelocity = ushort.Parse(attrDefDefaults.DString);
+				break;
+
+			case AttributeType.TInt32:
+			case AttributeType.TMsec:
+				attrDefDefaults.DString = DefaultValue ?? "0";
+				attrDefDefaults.DInt = int.Parse(attrDefDefaults.DString);
+
+				if (MinValue == 0) MinValue = int.MinValue;
+				if (MaxValue == 0) MaxValue = int.MaxValue;
+				break;
+
+
+			case AttributeType.TInt64:
+				attrDefDefaults.DString = DefaultValue ?? "0";
+				attrDefDefaults.DLong = long.Parse(attrDefDefaults.DString);
+
+				if (MinValue == 0) MinValue = long.MinValue;
+				if (MaxValue == 0) MaxValue = long.MaxValue;
+				break;
+
+			case AttributeType.TFloat32:
+				attrDefDefaults.DString = DefaultValue ?? "0";
+				attrDefDefaults.DFloat = float.Parse(attrDefDefaults.DString);
+
+				if (MinValue == 0) MinValue = float.MinValue;
+				if (MaxValue == 0) MaxValue = float.MaxValue;
+				break;
+
+			case AttributeType.TBool:
+				attrDefDefaults.DString = DefaultValue ?? "n";
+				attrDefDefaults.DBool = DefaultValue.ToBool();
+				break;
+
+
 			case AttributeType.TRef:
 			case AttributeType.TIcon:
 			case AttributeType.TTRef:
@@ -111,39 +169,6 @@ public partial class AttributeDefinition
 				attrDefDefaults.DString = DefaultValue;
 				break;
 
-			case AttributeType.TDistance:
-			case AttributeType.TInt16:
-			case AttributeType.TAngle:
-				attrDefDefaults.DString = DefaultValue ?? "0";
-				attrDefDefaults.DShort = short.Parse(attrDefDefaults.DString);
-				break;
-
-			case AttributeType.TInt64:
-			case AttributeType.TTime64:
-				attrDefDefaults.DString = DefaultValue ?? "0";
-				attrDefDefaults.DLong = long.Parse(attrDefDefaults.DString);
-				break;
-
-			case AttributeType.TInt32:
-			case AttributeType.TMsec:
-				attrDefDefaults.DString = DefaultValue ?? "0";
-				attrDefDefaults.DInt = int.Parse(attrDefDefaults.DString);
-				break;
-
-			case AttributeType.TInt8:
-				attrDefDefaults.DString = DefaultValue ?? "0";
-				attrDefDefaults.DByte = sbyte.Parse(attrDefDefaults.DString);
-				break;
-
-			case AttributeType.TFloat32:
-				attrDefDefaults.DString = DefaultValue ?? "0";
-				attrDefDefaults.DFloat = float.Parse(attrDefDefaults.DString);
-				break;
-
-			case AttributeType.TBool:
-				attrDefDefaults.DString = DefaultValue ?? "n";
-				attrDefDefaults.DBool = DefaultValue.ToBool();
-				break;
 
 			case AttributeType.TString:
 			case AttributeType.TXUnknown2:
@@ -163,12 +188,10 @@ public partial class AttributeDefinition
 				break;
 			}
 
-
 			case AttributeType.TSub:
 				attrDefDefaults.DString = DefaultValue ?? "0";
 				attrDefDefaults.DShort = short.Parse(attrDefDefaults.DString);
 				break;
-
 
 			case AttributeType.TVector16:
 				attrDefDefaults.DString = DefaultValue ?? "0,0,0";
@@ -185,13 +208,13 @@ public partial class AttributeDefinition
 				attrDefDefaults.DIColor = IColor.Parse(DefaultValue);
 				break;
 
-			case AttributeType.TVelocity:
-				attrDefDefaults.DString = DefaultValue ?? "0";
-				attrDefDefaults.DVelocity = ushort.Parse(attrDefDefaults.DString);
-				break;
-
 			case AttributeType.TScript_obj:
 				attrDefDefaults.DString = DefaultValue;
+				break;
+
+			case AttributeType.TTime64:
+				attrDefDefaults.DString = DefaultValue ?? "0";
+				attrDefDefaults.DLong = long.Parse(attrDefDefaults.DString);
 				break;
 
 			case AttributeType.TXUnknown1:
@@ -212,7 +235,6 @@ public partial class AttributeDefinition
 			IsHidden = (node.Attributes["hidden"]?.Value).ToBool(),
 
 			Type = Type,
-			TypeName = TypeName,
 			Offset = (ushort)(node.Attributes["offset"]?.Value).ToInt16(),
 			Repeat = ushort.TryParse(node.Attributes["repeat"]?.Value, out var tmp) ? tmp : (ushort)1,
 			ReferedTableName = RefTable,
@@ -220,7 +242,8 @@ public partial class AttributeDefinition
 			SequenceDef = seq,
 			DefaultValue = attrDefDefaults.DString,
 			AttributeDefaultValues = attrDefDefaults,
-
+			Max = MaxValue,
+			Min = MinValue,
 
 			Server = node.Attributes["server"]?.Value.ToBool() ?? true,
 			Client = node.Attributes["client"]?.Value.ToBool() ?? true,

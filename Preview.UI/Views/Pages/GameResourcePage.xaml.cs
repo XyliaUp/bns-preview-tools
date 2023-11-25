@@ -23,11 +23,8 @@ public partial class GameResourcePage : Page
 	{
 		InitializeComponent();
 		DataContext = _viewModel;
-	}
 
-	private void Page_Loaded(object sender, RoutedEventArgs e)
-	{
-		Reset_Click(sender, e);
+		Reset_Click(this, null);
 	}
 	#endregion
 

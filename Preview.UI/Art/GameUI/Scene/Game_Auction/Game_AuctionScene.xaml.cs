@@ -18,8 +18,8 @@ public partial class Game_AuctionScene : GameScene
 		InitializeComponent();
 
 		#region Category
-		TreeView.Items.Add(new TreeViewImageItem() { HeaderText = "UI.Market.Category.All".GetText(), Tag = "all" });
-		TreeView.Items.Add(new TreeViewImageItem() { HeaderText = "UI.Market.Category.Favorites".GetText(), Tag = "favorites" });
+		TreeView.Items.Add(new TreeViewImageItem() { Header = "UI.Market.Category.All".GetText(), Tag = "all" });
+		TreeView.Items.Add(new TreeViewImageItem() { Header = "UI.Market.Category.Favorites".GetText(), Tag = "favorites" });
 
 		foreach (var category2 in Item.MarketCategory2Group())
 		{

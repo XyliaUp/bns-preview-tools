@@ -46,7 +46,7 @@ public partial class DatabaseStudio : Window
 
 		var root = new TreeViewImageItem
 		{
-			HeaderText = provider.Name,
+			Header = provider.Name,
 			IsExpanded = true,
 			Image = new BitmapImage(new Uri("/Resources/Images/database.png", UriKind.Relative))
 		};
@@ -54,13 +54,13 @@ public partial class DatabaseStudio : Window
 
 		var system = new TreeViewImageItem
 		{
-			HeaderText = "System",
+			Header = "System",
 			Image = new BitmapImage(new Uri("/Resources/Images/folder.png", UriKind.Relative))
 		};
 		root.Items.Add(system);
 
-		system.Items.Add(new TreeViewImageItem { HeaderText = "CreatedAt: " + provider.CreatedAt });
-		system.Items.Add(new TreeViewImageItem { HeaderText = "Version: "   + provider.ClientVersion });
+		system.Items.Add(new TreeViewImageItem { Header = "CreatedAt: " + provider.CreatedAt });
+		system.Items.Add(new TreeViewImageItem { Header = "Version: "   + provider.ClientVersion });
 
 
 		foreach (var table in provider.Tables.OrderBy(x => x.Type))
@@ -73,7 +73,7 @@ public partial class DatabaseStudio : Window
 			root.Items.Add(new TreeViewImageItem
 			{
 				DataContext = table,
-				HeaderText = text,
+				Header = text,
 				Tag = $"SELECT * FROM \"{table.Name ?? table.Type.ToString()}\"\nLIMIT 1000",
 				Image = new BitmapImage(new Uri("/Resources/Images/table2.png", UriKind.Relative)),
 				ContextMenu = this.TryFindResource("TableMenu") as ContextMenu,

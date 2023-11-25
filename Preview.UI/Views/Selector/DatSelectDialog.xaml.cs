@@ -8,7 +8,7 @@ using Xylia.Preview.UI.Common;
 namespace Xylia.Preview.UI.Views.Selector;
 public partial class DatSelectDialog : Window , IDatSelect
 {
-	#region Construct
+	#region Constructor
 	private IEnumerable<FileInfo> list_xml;
 	private IEnumerable<FileInfo> list_local;
 

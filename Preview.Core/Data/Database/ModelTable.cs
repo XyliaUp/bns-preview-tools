@@ -55,7 +55,6 @@ public sealed class ModelTable<T> : Table, IEnumerable<T>, IEnumerable where T :
 		yield break;
 	}
 	#endregion
-
 }
 
 public class ModelTypeHelper

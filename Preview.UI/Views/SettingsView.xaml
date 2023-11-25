@@ -3,7 +3,7 @@
 		xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 		xmlns:converters="clr-namespace:Xylia.Preview.UI.Common.Converters"
 		xmlns:hc="https://handyorg.github.io/handycontrol"
-		Title="{DynamicResource Name_PropertyEditor}" Icon="{x:Null}" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" SizeToContent="Height"
+		Title="{DynamicResource Name_Settings}" Icon="{x:Null}" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" SizeToContent="Height"
 		MinHeight="{Binding Source={x:Static SystemParameters.MaximizedPrimaryScreenHeight}, Converter={converters:RatioConverter}, ConverterParameter='0.10'}"
 		Width="{Binding Source={x:Static SystemParameters.MaximizedPrimaryScreenWidth}, Converter={converters:RatioConverter}, ConverterParameter='0.35'}">
 	<Window.Resources>
@@ -96,7 +96,7 @@
 								<Path Fill="AntiqueWhite" Data="M17,13c-2.21,0-4,1.79-4,4c0,2.21,1.79,4,4,4s4-1.79,4-4C21,14.79,19.21,13,17,13z M17,14.38c0.62,0,1.12,0.51,1.12,1.12 s-0.51,1.12-1.12,1.12s-1.12-0.51-1.12-1.12S16.38,14.38,17,14.38z M17,19.75c-0.93,0-1.74-0.46-2.24-1.17 c0.05-0.72,1.51-1.08,2.24-1.08s2.19,0.36,2.24,1.08C18.74,19.29,17.93,19.75,17,19.75z" />
 							</Canvas>
 						</Viewbox>
-						<TextBlock Text="General" VerticalAlignment="Center" />
+						<TextBlock Text="{DynamicResource Name_General}" VerticalAlignment="Center" />
 					</StackPanel>
 				</TabItem.Header>
 				<Grid>
@@ -169,7 +169,7 @@
 				<TabItem.Header>
 					<StackPanel Orientation="Horizontal">
 						<Viewbox Width="16" Height="16" Margin="0 0 7.5 0" />
-						<TextBlock Text="About" VerticalAlignment="Center" />
+						<TextBlock Text="{DynamicResource Name_About}" VerticalAlignment="Center" />
 					</StackPanel>
 				</TabItem.Header>
 				<Grid>
@@ -223,7 +223,7 @@
 						</Grid.ColumnDefinitions>
 
 						<TextBlock Grid.Row="0" Grid.Column="0" Text="Cosmetic Style" VerticalAlignment="Center" Margin="0 0 0 5" />
-						<ComboBox Grid.Row="0" Grid.Column="2" ItemsSource="{Binding SettingsView.CosmeticStyles}" SelectedItem="{Binding SettingsView.SelectedCosmeticStyle, Mode=TwoWay}"
+						<ComboBox Grid.Row="0" Grid.Column="2" ItemsSource="{Binding CosmeticStyles}" SelectedItem="{Binding SelectedCosmeticStyle, Mode=TwoWay}"
                       Margin="0 0 0 5">
 							<ComboBox.ItemTemplate>
 								<DataTemplate>
@@ -272,7 +272,7 @@
 					<Button Grid.Row="0" Grid.Column="4" Content="..." HorizontalAlignment="Right" Margin="0 0 0 5" />
 
 					<TextBlock Grid.Row="1" Grid.Column="0" Text="Mesh Format" VerticalAlignment="Center" Margin="0 0 0 5" />
-					<ComboBox Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="3" ItemsSource="{Binding SettingsView.MeshExportFormats}" SelectedItem="{Binding SettingsView.SelectedMeshExportFormat, Mode=TwoWay}"
+					<ComboBox Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="3" ItemsSource="{Binding MeshExportFormats}" SelectedItem="{Binding SelectedMeshExportFormat, Mode=TwoWay}"
                   Margin="0 0 0 5">
 						<ComboBox.ItemTemplate>
 							<DataTemplate>
@@ -282,7 +282,7 @@
 					</ComboBox>
 
 					<TextBlock Grid.Row="2" Grid.Column="0" Text="Socket Format" VerticalAlignment="Center" Margin="0 0 0 5" />
-					<ComboBox Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="3" ItemsSource="{Binding SettingsView.SocketExportFormats}" SelectedItem="{Binding SettingsView.SelectedSocketExportFormat, Mode=TwoWay}"
+					<ComboBox Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="3" ItemsSource="{Binding SocketExportFormats}" SelectedItem="{Binding SelectedSocketExportFormat, Mode=TwoWay}"
                   Margin="0 0 0 5">
 						<ComboBox.ItemTemplate>
 							<DataTemplate>
@@ -292,7 +292,7 @@
 					</ComboBox>
 
 					<TextBlock Grid.Row="3" Grid.Column="0" Text="Level Of Detail Format" VerticalAlignment="Center" Margin="0 0 0 5" />
-					<ComboBox Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="3" ItemsSource="{Binding SettingsView.LodExportFormats}" SelectedItem="{Binding SettingsView.SelectedLodExportFormat, Mode=TwoWay}"
+					<ComboBox Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="3" ItemsSource="{Binding LodExportFormats}" SelectedItem="{Binding SelectedLodExportFormat, Mode=TwoWay}"
                   Margin="0 0 0 5">
 						<ComboBox.ItemTemplate>
 							<DataTemplate>
@@ -312,7 +312,7 @@
 					<Separator Grid.Row="12" Grid.Column="0" Grid.ColumnSpan="5"/>
 
 					<TextBlock Grid.Row="13" Grid.Column="0" Text="Material Format" VerticalAlignment="Center" Margin="0 0 0 5" />
-					<ComboBox Grid.Row="13" Grid.Column="2" Grid.ColumnSpan="3" ItemsSource="{Binding SettingsView.MaterialExportFormats}" SelectedItem="{Binding SettingsView.SelectedMaterialExportFormat, Mode=TwoWay}"
+					<ComboBox Grid.Row="13" Grid.Column="2" Grid.ColumnSpan="3" ItemsSource="{Binding MaterialExportFormats}" SelectedItem="{Binding SelectedMaterialExportFormat, Mode=TwoWay}"
                   Margin="0 0 0 5">
 						<ComboBox.ItemTemplate>
 							<DataTemplate>
@@ -322,7 +322,7 @@
 					</ComboBox>
 
 					<TextBlock Grid.Row="14" Grid.Column="0" Text="Texture Format" VerticalAlignment="Center" Margin="0 0 0 5" />
-					<ComboBox Grid.Row="14" Grid.Column="2" Grid.ColumnSpan="3" ItemsSource="{Binding SettingsView.TextureExportFormats}" SelectedItem="{Binding SettingsView.SelectedTextureExportFormat, Mode=TwoWay}"
+					<ComboBox Grid.Row="14" Grid.Column="2" Grid.ColumnSpan="3" ItemsSource="{Binding TextureExportFormats}" SelectedItem="{Binding SelectedTextureExportFormat, Mode=TwoWay}"
                   Margin="0 0 0 5">
 						<ComboBox.ItemTemplate>
 							<DataTemplate>

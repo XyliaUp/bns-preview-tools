@@ -279,13 +279,15 @@ public class PreviewRaw : ICommand
 
 	public bool CanExecute(object parameter) => true;
 
-	public void Execute(object parameter)
+	public void Execute(object parameter) => Execute(parameter, false);
+
+	public void Execute(object parameter, bool mode)
 	{
 		if (parameter is Record record)
 		{
 			// TODO: valid children
 			// Warning: is not original text
-			if (parameter is Quest)
+			if (parameter is Quest || mode)
 			{
 				var editor = new TextEditor();
 				editor.Text = record.Owner.WriteXml(record);

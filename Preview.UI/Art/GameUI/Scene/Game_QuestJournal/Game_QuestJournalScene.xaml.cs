@@ -10,7 +10,7 @@ using Xylia.Preview.UI.ViewModels;
 namespace Xylia.Preview.UI.Art.GameUI.Scene.Game_QuestJournal;
 public partial class Game_QuestJournalScene : GameScene
 {
-	#region Ctr
+	#region Ctor
 	public Game_QuestJournalScene()
 	{
 		InitializeComponent();

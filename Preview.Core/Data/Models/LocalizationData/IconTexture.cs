@@ -13,7 +13,6 @@ public sealed class IconTexture : Record
 {
 	public string Alias;
 
-
 	public string iconTexture;
 
 	public short IconHeight;
@@ -25,65 +24,52 @@ public sealed class IconTexture : Record
 
 public static class IconTextureExt
 {
-	public static SKBitmap GetIcon(this string IconInfo, BnsDatabase set = null, DefaultFileProvider pak = null)
+	public static SKBitmap GetIcon(this string @ref, BnsDatabase set = null, DefaultFileProvider pak = null)
 	{
-		GetInfo(IconInfo, out string TextureAlias, out short IconIndex);
-		return GetIcon(TextureAlias, IconIndex, set, pak);
+		if (!string.IsNullOrWhiteSpace(@ref) && @ref.Contains(','))
+		{
+			var split = @ref.Split(',', 2);
+			var alias = split[0];
+			if (!short.TryParse(split[^1], out var index))
+				throw new Exception("get icon index failed: " + @ref);
+
+			return GetIcon(alias, index, set, pak);
+		}
+
+		return null;
 	}
 
-	public static SKBitmap GetIcon(this string TextureAlias, short IconIndex, BnsDatabase set = null, DefaultFileProvider pak = null)
+	public static SKBitmap GetIcon(this string alias, short index, BnsDatabase set = null, DefaultFileProvider pak = null)
 	{
-		if (TextureAlias is null) return null;
+		if (alias is null) return null;
 
 		set ??= FileCache.Data;
-		return GetIcon(set.IconTexture[TextureAlias], IconIndex, pak);
+		return GetIcon(set.IconTexture[alias], index, pak);
 	}
 
-	public static SKBitmap GetIcon(this IconTexture record, short IconIndex, DefaultFileProvider pak = null)
+	public static SKBitmap GetIcon(this IconTexture record, short index, DefaultFileProvider pak = null)
 	{
 		if (record is null) return null;
 
-		var TextureData = Task.Run(() => (pak ?? FileCache.Provider).LoadObject<UTexture2D>(record.iconTexture)).Result.Decode();
-		if (TextureData is null) return null;
+		var raw = Task.Run(() => (pak ?? FileCache.Provider).LoadObject<UTexture2D>(record.iconTexture)).Result?.Decode();
+		if (raw is null || index == 0) return raw;
 
 		#region get sub
-		if (record.TextureWidth == record.IconWidth && record.TextureHeight == record.IconHeight)
-			return TextureData;
-
 		// get index
-		int AmountRow = record.TextureWidth / record.IconWidth;
-		int Row = IconIndex % AmountRow;
-		int Col = IconIndex / AmountRow;
+		int amountRow = record.TextureWidth / record.IconWidth;
+		int row = index % amountRow;
+		int col = index / amountRow;
 
-		if (Row == 0) Row = AmountRow;
-		else Col += 1;
+		if (row == 0)
+		{
+			row = amountRow;
+			col--;
+		}
+		row--;
 
-		return TextureData.Clone((Row - 1) * record.IconWidth, (Col - 1) * record.IconHeight, record.IconWidth, record.IconHeight);
+		return raw.Clone(row * record.IconWidth, col * record.IconHeight, record.IconWidth, record.IconHeight);
 		#endregion
 	}
-
-
-	private static void GetInfo(this string IconInfo, out string TextureAlias, out short IconIndex)
-	{
-		TextureAlias = null;
-		IconIndex = 0;
-		if (string.IsNullOrWhiteSpace(IconInfo)) return;
-
-		//get index
-		if (IconInfo.Contains(','))
-		{
-			var IconSplit = IconInfo.Split(',');
-			TextureAlias = IconSplit[0];
-
-			if (short.TryParse(IconSplit[^1], out IconIndex)) return;
-			else throw new Exception("get icon index failed: " + IconInfo);
-		}
-
-		TextureAlias = IconInfo;
-		IconIndex = 1;
-		return;
-	}
-
 
 
 	public static SKBitmap GetBackground(this sbyte grade, DefaultFileProvider pak = null)

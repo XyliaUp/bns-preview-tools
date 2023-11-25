@@ -4,19 +4,19 @@ using System.Windows.Data;
 
 using HandyControl.Controls;
 
+using Xylia.Preview.Data.Engine.BinData.Definitions;
+
 namespace Xylia.Preview.UI.Controls;
 public class NumberAttributeEditor : PropertyEditorBase
 {
-	public NumberAttributeEditor()
+	public NumberAttributeEditor(AttributeDefinition attribute)
 	{
-
+		Attribute = attribute;
+		Minimum = attribute.Min;
+		Maximum = attribute.Max;
 	}
 
-	public NumberAttributeEditor(double minimum, double maximum)
-	{
-		Minimum = minimum;
-		Maximum = maximum;
-	}
+	private AttributeDefinition Attribute { get; set; }
 
 	public double Minimum { get; set; }
 
@@ -31,11 +31,15 @@ public class NumberAttributeEditor : PropertyEditorBase
 
 	public override DependencyProperty GetDependencyProperty() => NumericUpDown.ValueProperty;
 
-	protected override IValueConverter GetConverter(PropertyItem propertyItem) => new NumberValueConverter();
+	protected override IValueConverter GetConverter(PropertyItem propertyItem) => new NumberValueConverter(Attribute.Type);
 }
 
 internal class NumberValueConverter : IValueConverter
 {
+	private readonly AttributeType Type;
+
+	public NumberValueConverter(AttributeType type)	=> Type = type;
+
 	public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
 	{
 		if (value is null) return 0.0;
@@ -50,16 +54,17 @@ internal class NumberValueConverter : IValueConverter
 
 	public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
 	{
+		// For DynamicObject, targetType is always Object  
+		// Therefore, we can only use AttributeType
 		if (value is double Value)
 		{
-			if (targetType == typeof(sbyte)) return (sbyte)Value;
-			if (targetType == typeof(short)) return (short)Value;
-			if (targetType == typeof(int)) return (int)Value;
-			if (targetType == typeof(long)) return (long)Value;
-			if (targetType == typeof(float)) return (float)Value;
+			if (Type == AttributeType.TInt8) return (sbyte)Value;
+			if (Type == AttributeType.TInt16) return (short)Value;
+			if (Type == AttributeType.TInt32) return (int)Value;
+			if (Type == AttributeType.TInt64) return (long)Value;
+			if (Type == AttributeType.TFloat32) return (float)Value;
 		}
 
-		return null;
 		throw new NotImplementedException();
 	}
 }

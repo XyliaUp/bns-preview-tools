@@ -40,4 +40,7 @@ public sealed class StringHelper : ResourceDictionary
 		}
 	}
 	#endregion
+
+
+	// add bns text help?
 }
