@@ -13,8 +13,8 @@ namespace Xylia.Preview.Data.Models.QuestData;
 public partial class TutorialCase : Record
 {
 	#region Base
-	public List<FilterSet> FilterSet;
-	public List<ReactionSet> ReactionSet;
+	public List<FilterSet> FilterSet { get; set; }
+	public List<ReactionSet> ReactionSet { get; set; }
 
 
 

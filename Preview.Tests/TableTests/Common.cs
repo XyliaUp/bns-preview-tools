@@ -1,13 +1,10 @@
 ﻿using System.Data;
 using System.Diagnostics;
-using System.Runtime.CompilerServices;
-
-using CUE4Parse.Utils;
+using System.Xml.Linq;
 
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 using Xylia.Preview.Data;
-using Xylia.Preview.Data.Common.DataStruct;
 using Xylia.Preview.Data.Engine.DatData;
 using Xylia.Preview.Data.Helpers;
 using Xylia.Preview.Data.Models;
@@ -73,6 +70,8 @@ public class Common
 	[TestMethod]
 	public void Test2()
 	{
+		
+
 		//using var db = new BnsDatabase();
 
 		//var table = db.Get<Text>();

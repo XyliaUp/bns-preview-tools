@@ -1,6 +1,4 @@
-﻿using Xylia.Preview.UI.Documents.Args;
-
-namespace Xylia.Preview.UI.Documents.Links;
+﻿namespace Xylia.Preview.UI.Documents.Links;
 /// <summary>
 /// skill:SRK_B1_DollQueen_AirBomb
 /// </summary>

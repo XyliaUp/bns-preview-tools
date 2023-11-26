@@ -73,7 +73,9 @@ public class AttributeConverter
 		else if (type.IsEnum)
 		{
 			if (value.TryParseToEnum(type, out var seq, Extension: true)) return seq;
-			throw new FormatException($"Seq `{type.Name}` cast failed: {value}");
+
+			Trace.WriteLine($"Seq `{type.Name}` cast failed: {value}");
+			return default;
 		}
 		else if (type.IsGenericType && type.GetGenericTypeDefinition() == typeof(Ref<>)) return Activator.CreateInstance(type, value, database);
 		else if (type.IsGenericType && type.GetGenericTypeDefinition() == typeof(Sub<>)) return Activator.CreateInstance(type, value, database);
@@ -82,7 +84,7 @@ public class AttributeConverter
 		if (TypeCode.TryGetValue(type, out var code)) return ConvertTo(value, code, database);
 
 		//throw new NotSupportedException($"type not supported: {type}");
-		Trace.WriteLine($"== WARNING == type not supported: {type}");
+		Trace.WriteLine($"type not supported: {type}");
 		return null;
 	}
 

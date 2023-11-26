@@ -1,6 +1,6 @@
 ﻿namespace Xylia.Preview.Data.Common.Attribute;
 
-[AttributeUsage(AttributeTargets.Class | AttributeTargets.Field)]
+[AttributeUsage(AttributeTargets.Class | AttributeTargets.Field | AttributeTargets.Property)]
 public class Side : System.Attribute
 {
     public Side() => SideType = ReleaseSide.Client | ReleaseSide.Server;

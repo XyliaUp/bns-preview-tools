@@ -243,4 +243,10 @@
   <data name="Name_General" xml:space="preserve">
     <value>通用</value>
   </data>
+  <data name="Name_TextEditor" xml:space="preserve">
+    <value>文本编辑器</value>
+  </data>
+  <data name="Name_TextViewer" xml:space="preserve">
+    <value>文本查看器</value>
+  </data>
 </root>

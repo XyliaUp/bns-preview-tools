@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Diagnostics;
 using System.Reflection;
+using System.Runtime.Serialization;
+using System.Xml.Linq;
 
 using Xylia.Extension;
 using Xylia.Preview.Common.Extension;
@@ -57,6 +59,9 @@ public sealed class ModelTable<T> : Table, IEnumerable<T>, IEnumerable where T :
 	#endregion
 }
 
+/// <summary>
+/// entity model helper
+/// </summary>
 public class ModelTypeHelper
 {
 	#region Load Methods
@@ -123,7 +128,6 @@ public class ModelTypeHelper
 	#endregion
 
 
-
 	/// <summary>
 	/// Convert original record to RecordModel
 	/// </summary>
@@ -140,8 +144,13 @@ public class ModelTypeHelper
 		record.StringLookup = source.StringLookup;
 
 		#region	instance
-		foreach (var field in record.GetType().GetFields(BindingFlags.Instance | BindingFlags.Public))
+		foreach (var field in record.GetType().GetMembers(BindingFlags.Instance | BindingFlags.Public))
 		{
+			if (field is not FieldInfo &&
+			   (field is not PropertyInfo prop || !prop.CanWrite)) continue;
+			if (field.ContainAttribute<IgnoreDataMemberAttribute>()) continue;
+
+
 			var name = field.GetName().TitleLowerCase();
 			var type = field.GetMemberType();
 			if (type.IsList())
@@ -164,11 +173,10 @@ public class ModelTypeHelper
 				continue;
 			}
 
-
 			var repeat = field.GetAttribute<Repeat>()?.Value ?? 1;
 			if (repeat == 1)
 			{
-				field.SetValue(record, AttributeConverter.ConvertTo(record.Attributes[name], type, record.Owner.Owner));
+				field.SetValue(record, AttributeConverter.ConvertTo(record.Attributes[name], type, record.Owner?.Owner));
 			}
 			else
 			{

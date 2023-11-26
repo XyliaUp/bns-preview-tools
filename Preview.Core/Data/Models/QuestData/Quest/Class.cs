@@ -28,17 +28,17 @@ public class AcquisitionLoss : Record
 
 public class Acquisition : Record
 {
-	public List<Case> Case;
+	public List<Case> Case { get; set; }
 
-	public List<TutorialCase> TutorialCase;
+	public List<TutorialCase> TutorialCase { get; set; }
 
-	public List<BasicReward> BasicReward;
+	public List<BasicReward> BasicReward { get; set; }
 
-	public List<FixedReward> FixedReward;
+	public List<FixedReward> FixedReward { get; set; }
 
-	public List<OptionalReward> OptionalReward;
+	public List<OptionalReward> OptionalReward { get; set; }
 
-	public List<AcquisitionLoss> AcquisitionLoss;
+	public List<AcquisitionLoss> AcquisitionLoss { get; set; }
 
 
 
@@ -128,13 +128,13 @@ public class Acquisition : Record
 public class MissionStep : Record
 {
 	[Name("mission")]
-	public List<Mission> Mission;
+	public List<Mission> Mission { get; set; }
 
 	[Name("mission-step-success")]
-	public List<MissionStepSuccess> MissionStepSuccess;
+	public List<MissionStepSuccess> MissionStepSuccess { get; set; }
 
 	[Name("mission-step-fail")]
-	public List<MissionStepFail> MissionStepFail;
+	public List<MissionStepFail> MissionStepFail { get; set; }
 
 
 
@@ -236,6 +236,9 @@ public class MissionStep : Record
 
 	[Side(ReleaseSide.Server)]
 	public RollBack RollBack;
+
+
+	public string Text => Desc.GetText();
 }
 
 public partial class Case
@@ -316,20 +319,7 @@ public class OptionalReward : FixedReward
 
 public class Mission : Record
 {
-	public List<Case> Case;
-
-	public List<TutorialCase> TutorialCase;
-
-	public List<BasicReward> BasicReward;
-
-	public List<FixedReward> FixedReward;
-
-	public List<OptionalReward> OptionalReward;
-
-	public List<CompletionLoss> CompletionLoss;
-
-
-
+	#region Fields
 	public sbyte id;
 
 	//[Side(ReleaseSide.Client)]
@@ -399,20 +389,40 @@ public class Mission : Record
 
 	[Repeat(8)]
 	public int[] VariationRewardTendencyScore;
+	#endregion
+
+	#region Elements
+	public List<Case> Case { get; set; }
+
+	public List<TutorialCase> TutorialCase { get; set; }
+
+	public List<BasicReward> BasicReward { get; set; }
+
+	public List<FixedReward> FixedReward { get; set; }
+
+	public List<OptionalReward> OptionalReward { get; set; }
+
+	public List<CompletionLoss> CompletionLoss { get; set; }
+	#endregion
+
+
+	#region Properities
+	public string Text => Name2.GetText();
+	#endregion
 }
 
 public class MissionStepSuccess : Record
 {
-	public List<Case> Case;
+	public List<Case> Case { get; set; }
 
-	public List<TutorialCase> TutorialCase;
+	public List<TutorialCase> TutorialCase { get; set; }
 }
 
 public class MissionStepFail : Record
 {
-	public List<Case> Case;
+	public List<Case> Case { get; set; }
 
-	public List<TutorialCase> TutorialCase;
+	public List<TutorialCase> TutorialCase { get; set; }
 
 
 
@@ -439,7 +449,7 @@ public class MissionStepFail : Record
 
 public class Completion : Record
 {
-	public List<NextQuest> NextQuest;
+	public List<NextQuest> NextQuest { get; set; }
 }
 
 public class NextQuest : Record
@@ -454,9 +464,9 @@ public class NextQuest : Record
 
 public class Transit : Record
 {
-	public List<Destination> Destination;
-	public List<Complete> Complete;
-	public List<NotAcquire> NotAcquire;
+	public List<Destination> Destination { get; set; }
+	public List<Complete> Complete { get; set; }
+	public List<NotAcquire> NotAcquire { get; set; }
 
 
 	public sbyte id;

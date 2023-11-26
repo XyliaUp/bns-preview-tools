@@ -3,6 +3,7 @@ using System.Diagnostics;
 using System.Dynamic;
 using System.Reflection;
 using System.Xml;
+using System.Xml.Linq;
 
 using Xylia.Extension;
 using Xylia.Preview.Common.Extension;
@@ -51,6 +52,20 @@ public class AttributeCollection : DynamicObject, IDisposable, IEnumerable, IEnu
 		}
 		#endregion
 	}
+
+	internal AttributeCollection(Record record, XElement element)
+	{
+		this.record = record;
+
+		#region attribute
+		foreach (var item in element.Attributes())
+		{
+			if (!string.IsNullOrEmpty(item.Value))
+				_attributes[item.Name.LocalName] = item.Value;
+		}
+		#endregion
+
+	}
 	#endregion
 
 
@@ -83,7 +98,11 @@ public class AttributeCollection : DynamicObject, IDisposable, IEnumerable, IEnu
 	public override bool TryGetMember(GetMemberBinder binder, out object result)
 	{
 		result = Get(binder.Name);
-		return record.ElDefinition[binder.Name] != null;
+
+		// parse-record does not have definition 
+		return record.ElDefinition is null ?
+			result != null :
+			record.ElDefinition![binder.Name] != null;
 	}
 
 	public string this[string name] => Get(name)?.ToString();
@@ -93,7 +112,7 @@ public class AttributeCollection : DynamicObject, IDisposable, IEnumerable, IEnu
 
 	public object Get(string name)
 	{
-		var attribute = record.ElDefinition[name];
+		var attribute = record.ElDefinition?[name];
 
 		// from prev
 		if (_attributes.Any())

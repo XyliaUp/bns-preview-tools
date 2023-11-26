@@ -18,13 +18,13 @@ public sealed class ContextScript : Record
 	public bool ContextSimpleMode;
 
 
-	public List<STANCE> Stance;
+	public List<STANCE> Stance { get; set; }
 	#endregion
 
 	#region	Element
 	public sealed class STANCE : Record
 	{
-		public List<Layer> Layer;
+		public List<Layer> Layer { get; set; }
 
 		public StanceSeq Stance;
 		public LinkType Link;
@@ -34,14 +34,14 @@ public sealed class ContextScript : Record
 
 	public sealed class Layer : Record
 	{
-		public List<Decision> Decision;
+		public List<Decision> Decision { get; set; }
 	}
 
 	public sealed class Decision : Record
 	{
-		public List<Condition> Condition;
+		public List<Condition> Condition { get; set; }
 
-		public List<Result> Result;
+		public List<Result> Result { get; set; }
 	}
 
 	public sealed class Condition : Record

@@ -9,7 +9,7 @@ namespace Xylia.Preview.UI.Controls;
 /// temp implement
 /// TODO: not use style
 /// </summary>
-public class BnsCustomCaptionWidget : Control //FrameworkElement
+public class BnsCustomCaptionWidget : BnsCustomBaseWidget //FrameworkElement
 {
 	#region Constructor
 	static BnsCustomCaptionWidget()
@@ -36,19 +36,6 @@ public class BnsCustomCaptionWidget : Control //FrameworkElement
 	/// <seealso cref="Image.Source" />
 	public static readonly DependencyProperty BaseImageProperty = DependencyProperty.Register(nameof(BaseImage), typeof(ImageSource), typeof(BnsCustomCaptionWidget));
 
-	public string String
-	{
-		get { return (string)GetValue(StringProperty); }
-		set { SetValue(StringProperty, value); }
-	}
-	public static readonly DependencyProperty StringProperty = DependencyProperty.Register(nameof(String), typeof(string), typeof(BnsCustomCaptionWidget));
-
-	public string MetaData
-	{
-		get { return (string)GetValue(MetaDataProperty); }
-		set { SetValue(MetaDataProperty, value); }
-	}
-	public static readonly DependencyProperty MetaDataProperty = DependencyProperty.Register(nameof(MetaData), typeof(string), typeof(BnsCustomCaptionWidget));
 
 	public string Text
 	{

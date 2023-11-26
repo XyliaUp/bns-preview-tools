@@ -2,6 +2,7 @@
 
 using System.Collections.Concurrent;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.IO;
 using System.Reflection;
 using System.Windows;
@@ -14,7 +15,9 @@ using Serilog;
 
 using Xylia.Configure;
 using Xylia.Preview.Common.Extension;
+using Xylia.Preview.Data;
 using Xylia.Preview.Data.Helpers;
+using Xylia.Preview.Data.Models;
 using Xylia.Preview.UI.ViewModels;
 
 using Kernel32 = Vanara.PInvoke.Kernel32;
@@ -65,9 +68,6 @@ public partial class App : Application
 		//MainWindow = new Xylia.Preview.UI.Art.GameUI.Scene.Game_Broadcasting.Game_BroadcastingScene();
 #endif
 		MainWindow.Show();
-
-
-
 
 
 

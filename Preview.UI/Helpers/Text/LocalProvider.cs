@@ -21,7 +21,12 @@ public class LocalProvider : DefaultProvider
 	public override Stream[] GetFiles(string pattern) => new Stream[] { File.Open(path, FileMode.Open) };
 
 	public override void LoadData(List<TableDefinition> definitions)
-	{
+	{    
+		this.Tables = new();
+
+		// invalid path
+		if (string.IsNullOrWhiteSpace(path)) return;
+
 		var ext = Path.GetExtension(path);
 		switch (ext)
 		{

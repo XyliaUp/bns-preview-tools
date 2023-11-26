@@ -27,9 +27,9 @@ public sealed class CombatSequence : Record
 	public sbyte[] TransitSocial;
 
 
-	public List<Sequence.NormalSequence> Normal;
+	public List<Sequence.NormalSequence> Normal { get; set; }
 
-	public List<Sequence.SpecialSequence> Special;
+	public List<Sequence.SpecialSequence> Special { get; set; }
 
 
 	#region Element
@@ -270,7 +270,7 @@ public sealed class CombatSequence : Record
 			[Name("enter-prob")]
 			public sbyte EnterProb = 100;
 
-			public List<Action> Actions;
+			public List<Action> Actions { get; set; }
 		}
 
 		public sealed class Stay : Action
@@ -319,7 +319,7 @@ public sealed class CombatSequence : Record
 	public abstract class Sequence : Record
 	{
 		#region Fields
-		public List<Action> Action = new();
+		public List<Action> Action { get; set; } = new();
 
 
 		public short ID;

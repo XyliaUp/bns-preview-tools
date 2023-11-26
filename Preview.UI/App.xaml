@@ -5,12 +5,12 @@
 	<Application.Resources>
 		<ResourceDictionary>
 			<ResourceDictionary.MergedDictionaries>
+				<ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/SkinDefault.xaml"/>
+				<ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/Theme.xaml"/>
+
 				<res:StringHelper xmlns:res="clr-namespace:Xylia.Preview.UI.Resources" />
 				<ResourceDictionary Source="pack://application:,,,/Preview.UI;component/Resources/Themes/Styles.xaml"/>
 				<ResourceDictionary Source="pack://application:,,,/Preview.UI;component/Resources/Themes/Themes.xaml"/>
-			
-				<ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/SkinDefault.xaml"/>
-				<ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/Theme.xaml"/>
 			</ResourceDictionary.MergedDictionaries>
 		</ResourceDictionary>
 	</Application.Resources>

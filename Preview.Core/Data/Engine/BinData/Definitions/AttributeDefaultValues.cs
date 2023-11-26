@@ -37,7 +37,6 @@ public class AttributeDefaultValues
         if (attrDef.DefaultValue == null)
             return attrDefDefaults;
 
-        // TODO: Convert this to enum?
         switch (attrDef.Type)
         {
             case AttributeType.TRef:

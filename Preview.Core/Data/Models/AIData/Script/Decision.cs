@@ -4,8 +4,8 @@ using Xylia.Preview.Data.Engine.BinData.Models;
 namespace Xylia.Preview.Data.Models;
 public class Decision : Record
 {
-    public List<FilterSet> FilterSet;
-    public List<ReactionSet> ReactionSet;
+    public List<FilterSet> FilterSet { get; set; }
+    public List<ReactionSet> ReactionSet { get; set; }
 
 	#region Sub
 	public class Default : Decision

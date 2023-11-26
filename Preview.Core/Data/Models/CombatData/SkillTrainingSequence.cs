@@ -11,7 +11,7 @@ public sealed class SkillTrainingSequence : Record
 
 
 
-	public List<Step> step;
+	public List<Step> step { get; set; }
 
 	public sealed class Step
 	{

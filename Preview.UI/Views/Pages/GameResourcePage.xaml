@@ -76,7 +76,7 @@
 						Text="{Binding Icon_OutputFolder}" Command="{Binding Icon_BrowerOutputFolderCommand}" />
 					<hc:SearchBar Grid.Row="2"
 						Style="{StaticResource SearchBarExtend}" hc:InfoElement.Title="Select item list"
-						Text="{Binding Icon_ItemList}" Command="{Binding Icon_BrowerItemListCommand}" />
+						Text="{Binding Icon_ItemListPath}" Command="{Binding Icon_BrowerItemListCommand}" />
 				</Grid>
 
 				<StackPanel Grid.Row="1" Orientation="Vertical" Margin="0 15 0 0">

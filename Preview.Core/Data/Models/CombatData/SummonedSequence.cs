@@ -9,9 +9,9 @@ public sealed class SummonedSequence : Record
 	public string Alias;
 
 
-	public List<Melee> melee;
-	public List<Range> range;
-	public List<RangeSim> rangeSim;
+	public List<Melee> melee { get; set; }
+	public List<Range> range { get; set; }
+	public List<RangeSim> rangeSim { get; set; }
 
 
 	public class Action : Record
@@ -35,14 +35,14 @@ public sealed class SummonedSequence : Record
 
 	public class Melee : Record
 	{
-		public List<Action> Action;
+		public List<Action> Action { get; set; }
 
 		public Distance Margin;
 	}
 
 	public class Range : Record
 	{
-		public List<Action> Action;
+		public List<Action> Action { get; set; }
 
 		public Distance Margin;
 	}

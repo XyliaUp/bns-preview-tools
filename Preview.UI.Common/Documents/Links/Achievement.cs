@@ -1,6 +1,4 @@
-﻿using Xylia.Preview.UI.Documents.Args;
-
-namespace Xylia.Preview.UI.Documents.Links;
+﻿namespace Xylia.Preview.UI.Documents.Links;
 /// <summary>
 /// achievement:291_event_SoulEvent_Extreme_0004_step1:123.3.0.1.1.1.626f57f5.1.0.0.0.1
 /// </summary>

@@ -1,6 +1,4 @@
-﻿using Xylia.Preview.UI.Documents.Args;
-
-namespace Xylia.Preview.UI.Documents.Links;
+﻿namespace Xylia.Preview.UI.Documents.Links;
 internal sealed class Tooltip : LinkId
 {
 	public string alias;

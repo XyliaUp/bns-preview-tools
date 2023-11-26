@@ -37,7 +37,7 @@ public class TextDiff
 			else if (piece2.text == piece.text)
 				pieces.Add(new TextDiffPiece(piece, ChangeType.Unchanged));
 			else
-				pieces.Add(new TextDiffPiece(piece, ChangeType.Modified) { TextOld = piece2.text });
+				pieces.Add(new TextDiffPiece(piece, ChangeType.Modified) { oldtext = piece2.text });
 		}
 
 		foreach (var pair in PiecesOld)

@@ -9,7 +9,7 @@ public sealed class TutorialSkillSequence : Record
 {
 	public string Alias;
 
-	public List<Step> step;
+	public List<Step> step { get; set; }
 
 	public sealed class Step
 	{

@@ -218,23 +218,22 @@ public sealed class Quest : Record
 	public Ref<Cinematic> ReplayEpicZoneLeaveCinematic;
 	#endregion
 
-	#region children element
-	public List<Acquisition> Acquisition;
+	#region Elements
+	public List<Acquisition> Acquisition { get; set; }
 
-	public List<MissionStep> MissionStep;
+	public List<MissionStep> MissionStep { get; set; }
 
-	public List<Completion> Completion;
+	public List<Completion> Completion { get; set; }
 
-	public List<Transit> Transit;
+	public List<Transit> Transit { get; set; }
 
-	public List<GiveupLoss> GiveupLoss;
+	public List<GiveupLoss> GiveupLoss { get; set; }
 	#endregion
 
 
 	#region	Properties
 	public string Title => Group2.GetText();
 	public string Text => Name2.GetText();
-	public string Describe => Desc.GetText();
 
 	public SKBitmap FrontIcon
 	{

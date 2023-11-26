@@ -1,7 +1,8 @@
 ﻿using System.Collections;
-using System.Diagnostics;
 using System.Globalization;
+using System.Runtime.Serialization;
 using System.Xml;
+using System.Xml.Linq;
 
 using Newtonsoft.Json;
 
@@ -25,6 +26,7 @@ public unsafe class Record : IDisposable
 
 
 	#region Fields
+	[IgnoreDataMember]
 	public byte XmlNodeType
 	{
 		get
@@ -37,6 +39,7 @@ public unsafe class Record : IDisposable
 		}
 	}
 
+	[IgnoreDataMember]
 	public short SubclassType
 	{
 		get
@@ -49,6 +52,7 @@ public unsafe class Record : IDisposable
 		}
 	}
 
+	[IgnoreDataMember]
 	public ushort DataSize
 	{
 		get
@@ -61,6 +65,7 @@ public unsafe class Record : IDisposable
 		}
 	}
 
+	[IgnoreDataMember]
 	public int RecordId
 	{
 		get
@@ -73,6 +78,7 @@ public unsafe class Record : IDisposable
 		}
 	}
 
+	[IgnoreDataMember]
 	public int RecordVariationId
 	{
 		get
@@ -85,10 +91,13 @@ public unsafe class Record : IDisposable
 		}
 	}
 
+	[IgnoreDataMember]
 	public byte[] Data { get; set; }
 
+	[IgnoreDataMember]
 	public StringLookup StringLookup { get; set; }
 
+	[IgnoreDataMember]
 	public int SizeWithLookup
 	{
 		get
@@ -102,56 +111,45 @@ public unsafe class Record : IDisposable
 		}
 	}
 
+	[IgnoreDataMember]
 	public Table Owner { get; internal set; }
 
-	public Ref Ref => new(RecordId, RecordVariationId);
+	[IgnoreDataMember]
+	public Ref Ref => Data is null ? default : new(RecordId, RecordVariationId);
 
-	public ITableDefinition ElDefinition => Owner.Definition.ElRecord?.SubtableByType(SubclassType);
+	[IgnoreDataMember]
+	public ITableDefinition ElDefinition => Owner?.Definition.ElRecord?.SubtableByType(SubclassType);
 
+	[IgnoreDataMember]
 	public AttributeCollection Attributes { get; internal set; }
 
+	[IgnoreDataMember]
 	internal Dictionary<string, Record[]> Children { get; set; } = new();
 	#endregion
 
-
-	#region Interface
-	public override string ToString() => this.Attributes["alias"] ?? Ref.ToString();
-
-	public static bool operator ==(Record a, Record b)
-	{
-		// If both are null, or both are same instance, return true.
-		if (ReferenceEquals(a, b)) return true;
-
-		// If one is null, but not both, return false.
-		if (a is null || b is null) return false;
-		if (a.GetType() != b.GetType()) return false;
-
-		// Return true if the fields match:
-		return a.Ref == b.Ref;
-	}
-
-	public static bool operator !=(Record a, Record b) => !(a == b);
-
-	public override bool Equals(object other) => other is Record record && this == record;
-
-	public override int GetHashCode() => HashCode.Combine(GetType(), Ref);
-
-
-	public void Dispose()
-	{
-		Model = null;
-
-		Data = null;
-		StringLookup = null;
-
-		Attributes?.Dispose();
-		Attributes = null;
-
-		GC.SuppressFinalize(this);
-	}
-	#endregion
-
 	#region Serialize
+	/// <summary>
+	/// Convert XML text to record
+	/// </summary>
+	/// <remarks>This method is only used at convert fields</remarks>
+	/// <param name="xml"></param>
+	/// <returns></returns>
+	public static Record Parse(string xml)
+	{
+		try
+		{
+			var record = new Record();
+			record.Attributes = new AttributeCollection(record, XElement.Parse(xml));
+
+			return record;
+		}
+		catch
+		{
+			return default;
+		}
+	}
+
+
 	public void WriteXml(XmlWriter writer, ElDefinition el)
 	{
 		Attributes.Synchronize();
@@ -250,5 +248,44 @@ public unsafe class Record : IDisposable
 	#region Instance
 	/// XXX: https://zhuanlan.zhihu.com/p/430728295
 	public Lazy<Record> Model { get; set; }
+	#endregion
+
+
+
+	#region Interface
+	public override string ToString() => this.Attributes["alias"] ?? Ref.ToString();
+
+	public static bool operator ==(Record a, Record b)
+	{
+		// If both are null, or both are same instance, return true.
+		if (ReferenceEquals(a, b)) return true;
+
+		// If one is null, but not both, return false.
+		if (a is null || b is null) return false;
+		if (a.GetType() != b.GetType()) return false;
+
+		// Return true if the fields match:
+		return a.Ref == b.Ref;
+	}
+
+	public static bool operator !=(Record a, Record b) => !(a == b);
+
+	public override bool Equals(object other) => other is Record record && this == record;
+
+	public override int GetHashCode() => HashCode.Combine(GetType(), Ref);
+
+
+	public void Dispose()
+	{
+		Model = null;
+
+		Data = null;
+		StringLookup = null;
+
+		Attributes?.Dispose();
+		Attributes = null;
+
+		GC.SuppressFinalize(this);
+	}
 	#endregion
 }

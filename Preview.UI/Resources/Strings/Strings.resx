@@ -244,4 +244,10 @@
   <data name="Name_General" xml:space="preserve">
     <value>General</value>
   </data>
+  <data name="Name_TextEditor" xml:space="preserve">
+    <value>Text Editor</value>
+  </data>
+  <data name="Name_TextViewer" xml:space="preserve">
+    <value>Text Viewer</value>
+  </data>
 </root>

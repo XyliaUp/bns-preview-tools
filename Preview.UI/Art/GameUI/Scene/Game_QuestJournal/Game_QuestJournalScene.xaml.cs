@@ -41,8 +41,11 @@ public partial class Game_QuestJournalScene : GameScene
 
 	#region ProgressTab
 	private void ProgressTab_SelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
-	{
+	{   
 		QuestJournal_CurrentQuest_Info.DataContext = e.NewValue as Quest;
+
+		// HACK: binding can use? 
+		QuestJournal_Content.Params[2] = e.NewValue;
 	}
 	#endregion
 
