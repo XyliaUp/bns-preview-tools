@@ -36,7 +36,6 @@ public partial class DatabaseStudio : Window
 	}
 	#endregion
 
-
 	#region Methods
 	private void LoadTreeView()
 	{
@@ -60,7 +59,7 @@ public partial class DatabaseStudio : Window
 		root.Items.Add(system);
 
 		system.Items.Add(new TreeViewImageItem { Header = "CreatedAt: " + provider.CreatedAt });
-		system.Items.Add(new TreeViewImageItem { Header = "Version: "   + provider.ClientVersion });
+		system.Items.Add(new TreeViewImageItem { Header = "Version: " + provider.ClientVersion });
 
 
 		foreach (var table in provider.Tables.OrderBy(x => x.Type))
@@ -96,7 +95,34 @@ public partial class DatabaseStudio : Window
 		Array.ForEach(parser.Fields, x => grdResult.Columns.Add(new DataGridTextColumn { Header = x, Binding = new Binding($"Attributes[{x}]") }));
 		grdResult.ItemsSource = source;
 	}
+
+
+	private void AddTab(string sql, string header = null)
+	{
+		header ??= ("TabItem" + (editors.Items.Count + 1));
+		var item = new HandyControl.Controls.TabItem()
+		{
+			Content = new ICSharpCode.AvalonEdit.TextEditor() { Text = sql },
+			Header = header,
+			ToolTip = header,
+		};
+
+		editors.Items.Insert(0, item);
+		editors.SelectedItem = item;
+	}
+
+	private string ActivateSql
+	{
+		get
+		{
+			var item = (editors.SelectedItem as ContentControl)?.Content;
+			if (item is null) return null;
+
+			return (item as ICSharpCode.AvalonEdit.TextEditor).Text;
+		}
+	}
 	#endregion
+
 
 	#region Methods (UI)
 	private async void Connect_Click(object sender, RoutedEventArgs e)
@@ -133,9 +159,9 @@ public partial class DatabaseStudio : Window
 		try
 		{
 			this.Run.IsEnabled = false;
-			await ExecuteSql(editor.Text);
+			await ExecuteSql(ActivateSql);
 		}
-		catch(Exception ex)
+		catch (Exception ex)
 		{
 			HandyControl.Controls.MessageBox.Show(ex.Message);
 		}
@@ -150,27 +176,40 @@ public partial class DatabaseStudio : Window
 		var dialog = new VistaOpenFileDialog();
 		if (dialog.ShowDialog() != true) return;
 
-		editor.Text = File.ReadAllText(dialog.FileName);
+		// valid
+		var text = File.ReadAllText(dialog.FileName);
+		var header = Path.GetFileName(dialog.FileName);
+		AddTab(text, header);
 	}
 
 	private void SaveSql_Click(object sender, RoutedEventArgs e)
 	{
+		// valid
+		var text = ActivateSql;
+		if (text is null)
+		{
+			return;
+		}
+
+		// save
 		var dialog = new VistaSaveFileDialog()
 		{
 			Filter = "|*.sql",
 			FileName = "Query.sql",
 		};
-		if (dialog.ShowDialog() == true)
-			File.WriteAllText(dialog.FileName, editor.Text);
+		if (dialog.ShowDialog() == true) File.WriteAllText(dialog.FileName, text);
 	}
 
 	private void tvwDatabase_MouseDoubleClick(object sender, MouseButtonEventArgs e)
 	{
-		if (tvwDatabase.SelectedItem is TreeViewItem item)
+		if (tvwDatabase.SelectedItem is TreeViewImageItem item)
 		{
-			if (item.Tag != null) editor.Text = item.Tag as string;
-		}	
+			if (item.Tag is string s)
+				AddTab(s, item.Header);
+		}
 	}
+
+
 
 	private void TableToXml_Click(object sender, RoutedEventArgs e)
 	{
@@ -179,10 +218,9 @@ public partial class DatabaseStudio : Window
 			table.WriteXml(UserSettings.Default.OutputFolder + "\\data");
 	}
 
-
 	private void OutputExcel_Click(object sender, RoutedEventArgs e)
 	{
-		if (grdResult.Items.Count == 0) 
+		if (grdResult.Items.Count == 0)
 			throw new Exception("no data");
 
 		var save = new VistaSaveFileDialog

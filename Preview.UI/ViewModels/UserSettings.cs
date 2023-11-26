@@ -152,7 +152,7 @@ public partial class UserSettings : Settings
 	protected const string sp = "Preview";
 
 	public CopyMode CopyMode
-	{ 
+	{
 		get => (CopyMode)GetValue().ToInt32();
 		set
 		{
@@ -180,9 +180,13 @@ public partial class UserSettings : Settings
 		}
 	}
 	#endregion
+}
 
+internal static class VersionHelper
+{
+	public static Version InternalVersion => Assembly.GetEntryAssembly().GetName().Version;
 
-	public Version Version => Assembly.GetEntryAssembly().GetName().Version;
+	public static DateTime Time => new DateTime(2000, 1, 1).AddDays(InternalVersion.Build).AddSeconds(InternalVersion.Revision * 2);
 
-	public DateTime VersionTime => new DateTime(2000, 1, 1).AddDays(Version.Build).AddSeconds(Version.Revision * 2);
+	public static Version Version => new Version(InternalVersion.Major, InternalVersion.Minor, InternalVersion.Build);
 }

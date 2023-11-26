@@ -3,8 +3,9 @@
 using Xylia.Preview.Data.Models;
 
 namespace Xylia.Preview.Data.Common.DataStruct;
-public struct Msec
+public struct Msec : IFormattable
 {
+	#region Const
 	/// <summary>
 	/// Represents the number of ticks in 1 millisecond. This field is constant.
 	/// </summary>
@@ -17,6 +18,7 @@ public struct Msec
 	public const int TicksPerHour = TicksPerMinute * 60;        // 36,000,000
 
 	public const int TicksPerDay = TicksPerHour * 24;          // 864,000,000
+	#endregion
 
 
 	#region Constructors
@@ -29,9 +31,7 @@ public struct Msec
 	public Msec(int hours, int minutes, int seconds) => this.value = ((hours * 60 + minutes) * 60 + seconds) * 1000;
 	#endregion
 
-
-
-
+	#region Properties
 	public readonly int Days => value / TicksPerDay;
 
 	public readonly int Hours => value / TicksPerHour % 24;
@@ -49,33 +49,13 @@ public struct Msec
 	public readonly double TotalMinutes => (double)value / TicksPerMinute;
 
 	public readonly double TotalSeconds => (double)value / TicksPerSecond;
-
-
-
-	#region Operator
-	public static implicit operator Msec(int value) => new(value);
-
-	public static bool operator ==(Msec a, Msec b) => a.value == b.value;
-
-	public static bool operator !=(Msec a, Msec b) => !(a == b);
-
-	public static Msec operator +(Msec a, Msec b) => a.value + b.value;
-
-	public static Msec operator -(Msec a, Msec b) => a.value - b.value;
-
-
-	public readonly bool Equals(Msec other) => value == other.value;
-
-	public override bool Equals(object obj) => obj is Msec other && Equals(other);
-
-	public override int GetHashCode() => HashCode.Combine(value);
 	#endregion
 
 
-
+	#region Methods
 	public override string ToString() => value.ToString();
 
-	public string ToString(string format)
+	public string ToString(string format, IFormatProvider formatProvider)
 	{
 		if (string.IsNullOrEmpty(format))
 		{
@@ -91,7 +71,7 @@ public struct Msec
 				return FormatC(value); // formatProvider ignored, as "c" is invariant
 			}
 
-			if (c == 'g') 
+			if (c == 'g')
 			{
 				return FormatG(value);
 			}
@@ -159,12 +139,32 @@ public struct Msec
 					TimeFormat.FormatDigits(ref result, value.Days, tokenLen, 8);
 					break;
 				default:
-					i ++;
+					i++;
 					result.Append(ch);
 					break;
 			}
 		}
 	}
+	#endregion
+
+	#region Operator
+	public static implicit operator Msec(int value) => new(value);
+
+	public static bool operator ==(Msec a, Msec b) => a.value == b.value;
+
+	public static bool operator !=(Msec a, Msec b) => !(a == b);
+
+	public static Msec operator +(Msec a, Msec b) => a.value + b.value;
+
+	public static Msec operator -(Msec a, Msec b) => a.value - b.value;
+
+
+	public readonly bool Equals(Msec other) => value == other.value;
+
+	public override bool Equals(object obj) => obj is Msec other && Equals(other);
+
+	public override int GetHashCode() => HashCode.Combine(value);
+	#endregion
 }
 
 public static class TimeFormat

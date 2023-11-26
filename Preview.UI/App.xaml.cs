@@ -2,7 +2,6 @@
 
 using System.Collections.Concurrent;
 using System.ComponentModel;
-using System.Diagnostics;
 using System.IO;
 using System.Reflection;
 using System.Windows;
@@ -11,13 +10,13 @@ using System.Windows.Threading;
 using CUE4Parse.UE4.Assets.Objects;
 using CUE4Parse.UE4.VirtualFileSystem;
 
+using HandyControl.Controls;
+
 using Serilog;
 
 using Xylia.Configure;
 using Xylia.Preview.Common.Extension;
-using Xylia.Preview.Data;
 using Xylia.Preview.Data.Helpers;
-using Xylia.Preview.Data.Models;
 using Xylia.Preview.UI.ViewModels;
 
 using Kernel32 = Vanara.PInvoke.Kernel32;
@@ -91,9 +90,9 @@ public partial class App : Application
 
 		// not to write log
 		if (exception is not WarningException)
-			Log.Error(exception.ToString());
+			Log.Error(exception, "OnUnhandledException");
 
-		HandyControl.Controls.MessageBox.Show(exception.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+		Growl.Error(exception.Message);
 	}
 
 	private void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)

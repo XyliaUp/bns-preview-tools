@@ -3,9 +3,9 @@
 	  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 	  xmlns:hc="https://handyorg.github.io/handycontrol"
 	  xmlns:VM="clr-namespace:Xylia.Preview.UI.ViewModels"
-	  Title="ItemPage">
+	  Title="ItemPage" >
 	<TabControl BorderThickness="0">
-		<TabItem Header="{DynamicResource Name_ItemList}" >
+		<TabItem Header="{DynamicResource ItemList_Name}" >
 			<Grid >
 				<Grid.RowDefinitions>
 					<RowDefinition Height="Auto" />
@@ -15,7 +15,6 @@
 
 				<Grid.ColumnDefinitions>
 					<ColumnDefinition Width="4*" />
-					<ColumnDefinition Width="*" />
 					<ColumnDefinition Width="*" />
 				</Grid.ColumnDefinitions>
 
@@ -34,14 +33,14 @@
 			</Grid>
 		</TabItem>
 
-		<TabItem Header="{DynamicResource Name_Preview}" >
+		<TabItem Header="{DynamicResource Text_Preview}" >
 			<Grid>
 				<Grid.ColumnDefinitions>
 					<ColumnDefinition Width="*" />
 					<ColumnDefinition Width="*" />
 				</Grid.ColumnDefinitions>
 
-				<GroupBox Header="{DynamicResource Name_Preview}" Grid.Column="0">
+				<GroupBox Header="{DynamicResource Text_Preview}" Grid.Column="0">
 					<WrapPanel Orientation="Vertical">
 						<WrapPanel.Resources>
 							<Style TargetType="{x:Type Button}">
@@ -63,7 +62,7 @@
 					</WrapPanel>
 				</GroupBox>
 
-				<GroupBox Header="{DynamicResource Name_Output}" Grid.Column="1">
+				<GroupBox Header="{DynamicResource Text_Output}" Grid.Column="1">
 					<WrapPanel Orientation="Vertical">
 						<WrapPanel.Resources>
 							<Style TargetType="{x:Type Button}">

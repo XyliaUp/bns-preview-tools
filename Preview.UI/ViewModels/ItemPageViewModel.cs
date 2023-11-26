@@ -1,7 +1,6 @@
 ﻿using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
-using System.Windows;
 using System.Windows.Data;
 using System.Windows.Input;
 
@@ -10,6 +9,10 @@ using CommunityToolkit.Mvvm.Input;
 
 using CUE4Parse.BNS.Assets.Exports;
 using CUE4Parse.UE4.Assets.Exports;
+
+using HandyControl.Controls;
+using HandyControl.Data;
+using HandyControl.Tools.Extension;
 
 using Ookii.Dialogs.Wpf;
 
@@ -55,31 +58,38 @@ public partial class ItemPageViewModel : ObservableObject
 		#region Check
 		if (!Directory.Exists(UserSettings.Default.GameFolder)) throw new WarningException("Must to set game directory");
 		else if (!Directory.Exists(UserSettings.Default.OutputFolder)) throw new WarningException("Must to set output directory");
-		else if (OnlyUpdate == true && !File.Exists(ItemListPath)) throw new WarningException("Select a valid item list, or to cancel");
+		else if (OnlyUpdate == true && !File.Exists(ItemListPath)) throw new WarningException("Select a valid item list");
 		#endregion
 
 		#region Load
-		var select2 = new FileModeDialog();
-		if (select2.ShowDialog() != true) return;
+		var fileMode = await Dialog.Show<FileModeDialog>().GetResultAsync<FileModeDialog.FileMode>();
+		if (fileMode == FileModeDialog.FileMode.None) return;
 
-		var startTime = DateTime.Now;
-		using var match = new ItemOut() { OnlyUpdate = this.OnlyUpdate };
-
+		int span = 0;
+		using var Out = new ItemOut() { OnlyUpdate = this.OnlyUpdate };
 		await Task.Run(() =>
 		{
-			match.LoadCache(ItemListPath);
-			match.GetData();
-			if (match.Count == 0)
+			var startTime = DateTime.Now;
+
+			Out.LoadCache(ItemListPath);
+			Out.GetData();
+			if (Out.Count == 0)
 			{
-				HandyControl.Controls.MessageBox.Show("没有新增的物品");
+				Growl.Error("没有新增的物品");
 				return;
 			}
 
-			match.Start(startTime, select2.Result == FileModeDialog.FileMode.Xlsx);
+			Out.Start(startTime, fileMode == FileModeDialog.FileMode.Xlsx);
+			span = (int)(DateTime.Now - startTime).TotalSeconds;
 		});
-
-		HandyControl.Controls.MessageBox.Show($"本次拉取数据共计{match.Count}条, 总耗{(DateTime.Now - startTime).TotalSeconds}秒。", "Message", MessageBoxButton.OK, MessageBoxImage.Information);
 		#endregion
+
+
+		Growl.Success(new GrowlInfo()
+		{
+			Message = string.Format("本次拉取数据共计{0}条, 总耗{1}秒。", Out.Count, span),
+			StaysOpen = true,
+		});
 	}
 	#endregion
 
@@ -92,7 +102,7 @@ public partial class ItemPageViewModel : ObservableObject
 		var type = Type.GetType(name);
 		if (type is null) return;
 
-		(Activator.CreateInstance(type) as Window)?.Show();
+		(Activator.CreateInstance(type) as System.Windows.Window)?.Show();
 	}
 
 	[RelayCommand]
@@ -134,7 +144,8 @@ public partial class ItemPageViewModel : ObservableObject
 		DateTime dt = DateTime.Now;
 		await instance.Output(new FileInfo(save.FileName));
 
-		HandyControl.Controls.MessageBox.Show($"output finish, {(DateTime.Now - dt).TotalSeconds:#0}s");
+		int span = (int)(DateTime.Now - dt).TotalSeconds;
+		Growl.Success(string.Format("output finish, {0}s" , span));
 	}
 	#endregion
 }

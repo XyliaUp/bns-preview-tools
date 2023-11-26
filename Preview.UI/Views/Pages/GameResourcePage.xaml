@@ -4,8 +4,13 @@
 	  xmlns:hc="https://handyorg.github.io/handycontrol"
       xmlns:VM="clr-namespace:Xylia.Preview.UI.ViewModels">
 	<TabControl BorderThickness="0">
-		<TabItem Header="{DynamicResource Name_Assets}" >
+		<TabItem Header="{DynamicResource Assets_Name}" >
 			<Grid>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="4*" />
+					<ColumnDefinition Width="*" />
+				</Grid.ColumnDefinitions>
+
 				<Grid.RowDefinitions>
 					<RowDefinition Height="Auto" />
 					<RowDefinition Height="Auto" />
@@ -15,16 +20,10 @@
 					<RowDefinition Height="*" />
 				</Grid.RowDefinitions>
 
-				<Grid.ColumnDefinitions>
-					<ColumnDefinition Width="4*" />
-					<ColumnDefinition Width="*" />
-					<ColumnDefinition Width="*" />
-				</Grid.ColumnDefinitions>
 
-
-				<hc:SearchBar Grid.Row="0" hc:InfoElement.Title="Output Folder" Style="{StaticResource SearchBarExtend}" Text="{Binding OutputFolderResource, Source={x:Static VM:UserSettings.Default}, Mode=OneWay}" 
-					 Command="{Binding OpenSettingsCommand}"/>
-				<hc:ComboBox Grid.Row="1" x:Name="Selector" hc:InfoElement.Title="Asset Path" IsEditable="True" IsTextSearchEnabled="True" >
+				<hc:SearchBar Grid.Row="0" hc:InfoElement.Title="{DynamicResource OutputDirectory}" Style="{StaticResource SearchBarExtend}" 
+					Text="{Binding OutputFolderResource, Source={x:Static VM:UserSettings.Default}, Mode=OneWay}" Command="{Binding OpenSettingsCommand}"/>
+				<hc:ComboBox Grid.Row="1" x:Name="Selector" hc:InfoElement.Title="{DynamicResource Asset_FilterPah}" IsEditable="True" IsTextSearchEnabled="True" >
 					<ComboBoxItem Content="Game/Art/UI/GameUI/Resource/GameUI_Icon" />
 					<ComboBoxItem Content="Game/Art/UI/GameUI/Resource/GameUI_Icon2nd" />
 					<ComboBoxItem Content="Game/Art/UI/GameUI/Resource/GameUI_Icon3rd" />
@@ -36,69 +35,64 @@
 					<ComboBoxItem Content="Game/Art/UI/GameUI/Resource/GameUI_ImageSet_R" />
 					<ComboBoxItem Content="Game/Art/UI/V2/Resource" />
 				</hc:ComboBox>
+				<CheckBox Grid.Row="4" Name="OutputClassName" Content="{DynamicResource Asset_OutputClassName}" VerticalAlignment="Bottom" Margin="0 20 0 0"/>
 
-				<CheckBox Grid.Row="4" x:Name="OutputClassName" Content="Output class name" VerticalAlignment="Bottom" Margin="0 20 0 0"/>
-
-				<Button Grid.Row="1" x:Name="Extract" Grid.Column="1" Margin="0 28 0 0" Content="Extract" Click="Extract_Click"/>
+				<Button Grid.Row="1" Name="Extract" Grid.Column="1" Margin="0 20 0 0" Content="{DynamicResource Asset_Extract}" Click="Extract_Click"/>
 			</Grid>
 		</TabItem>
 
-		<TabItem Header="{DynamicResource Name_Icon}" >
+		<TabItem Header="{DynamicResource IconOut_Name}">
 			<Grid>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="4*" />
+					<ColumnDefinition Width="*" />
+				</Grid.ColumnDefinitions>
 				<Grid.RowDefinitions>
+					<RowDefinition Height="Auto" />
+					<RowDefinition Height="Auto" />
+					<RowDefinition Height="Auto" />
+					<RowDefinition Height="Auto" />
+					<RowDefinition Height="Auto" />
 					<RowDefinition Height="Auto" />
 					<RowDefinition Height="Auto" />
 				</Grid.RowDefinitions>
 
-				<Grid Grid.Row="0" >
-					<Grid.RowDefinitions>
-						<RowDefinition Height="Auto" />
-						<RowDefinition Height="Auto" />
-						<RowDefinition Height="Auto" />
-						<RowDefinition Height="Auto" />
-						<RowDefinition Height="Auto" />
-						<RowDefinition Height="Auto" />
-						<RowDefinition Height="*" />
-					</Grid.RowDefinitions>
-					<Grid.ColumnDefinitions>
-						<ColumnDefinition Width="4*" />
-						<ColumnDefinition Width="*" />
-						<ColumnDefinition Width="*" />
-					</Grid.ColumnDefinitions>
+				<hc:SearchBar Grid.Row="0"
+					Style="{StaticResource SearchBarExtend}" hc:InfoElement.Title="{DynamicResource GameDirectory}" hc:InfoElement.Necessary="True"
+					Text="{Binding GameFolder, Source={x:Static VM:UserSettings.Default}, Mode=OneWay}" Command="{Binding OpenSettingsCommand}" />
+				<hc:SearchBar Grid.Row="1"
+					Style="{StaticResource SearchBarExtend}" hc:InfoElement.Title="{DynamicResource OutputDirectory}" hc:InfoElement.Necessary="True"
+					Text="{Binding Icon_OutputFolder}" Command="{Binding Icon_BrowerOutputFolderCommand}" />
+				<hc:SearchBar Grid.Row="2"
+					Style="{StaticResource SearchBarExtend}" hc:InfoElement.Title="{DynamicResource IconOut_ItemList}"
+					Text="{Binding Icon_ItemListPath}" Command="{Binding Icon_BrowerItemListCommand}" />
+				<hc:ComboBox Grid.Row="3" Name="NameFormat" hc:InfoElement.Title="{DynamicResource IconOut_NameFormat}" SelectedIndex="0">
+					<ComboBoxItem Content="[id]" />
+					<ComboBoxItem Content="[alias]" />
+					<ComboBoxItem Content="[id]_[name]" />
+				</hc:ComboBox>
 
+				<StackPanel Grid.Row="5" Grid.ColumnSpan="2">
+					<hc:UniformSpacingPanel Margin="0 15 0 0" Spacing="10">
+						<CheckBox x:Name="FilterMode" Content="{DynamicResource IconOut_FilterMode}" ToolTip="{DynamicResource IconOut_FilterMode_Tooltip}" />
+						<CheckBox x:Name="UseBackground" Content="{DynamicResource IconOut_UseBackground}" ToolTip="{DynamicResource IconOut_UseBackground_Tooltip}" IsChecked="True" />
+					</hc:UniformSpacingPanel>
 
-					<hc:SearchBar Grid.Row="0"
-						Style="{StaticResource SearchBarExtend}" hc:InfoElement.Title="{DynamicResource GameDirectory}" hc:InfoElement.Necessary="True"
-						Text="{Binding GameFolder, Source={x:Static VM:UserSettings.Default}, Mode=OneWay}" 
-						Command="{Binding OpenSettingsCommand}" />
-					<hc:SearchBar Grid.Row="1"
-						Style="{StaticResource SearchBarExtend}" hc:InfoElement.Title="{DynamicResource OutputDirectory}" hc:InfoElement.Necessary="True"
-						Text="{Binding Icon_OutputFolder}" Command="{Binding Icon_BrowerOutputFolderCommand}" />
-					<hc:SearchBar Grid.Row="2"
-						Style="{StaticResource SearchBarExtend}" hc:InfoElement.Title="Select item list"
-						Text="{Binding Icon_ItemListPath}" Command="{Binding Icon_BrowerItemListCommand}" />
-				</Grid>
-
-				<StackPanel Grid.Row="1" Orientation="Vertical" Margin="0 15 0 0">
-					<hc:ComboBox Name="NameFormat" hc:InfoElement.Title="Output Name Format">
-						<ComboBoxItem Content="[id]" />
-						<ComboBoxItem Content="[alias]" />
-						<ComboBoxItem Content="[id]_[name]" />
-					</hc:ComboBox>
-
-					<CheckBox x:Name="FilterMode" Content="Whitelist filtering" ToolTip="create item only in list when checked, otherwise ignore listed item."/>
-					<CheckBox x:Name="UseBackground" Content="Grade Background" IsChecked="True" />
-
-					<Separator Height="5" />
-					<Button Content="Extract Good Icon" Click="Extract_GoodIcon" />
-					<Separator Height="5" />
-					<Button Content="Output List" ToolTip="Create item list from generated images" Click="Output_ItemList" />
-					<Button Content="Extract Item Icon" Click="Extract_ItemIcon" />
+					<hc:Divider />
+					<hc:UniformSpacingPanel Spacing="10" Orientation="Vertical">
+						<hc:UniformSpacingPanel>
+							<Button Content="{DynamicResource IconOut_Goods}" Click="Extract_GoodIcon" />
+						</hc:UniformSpacingPanel>
+						<hc:UniformSpacingPanel Spacing="10">
+							<Button Content="{DynamicResource IconOut_Items}" Click="Extract_ItemIcon" />
+							<Button Content="{DynamicResource IconOut_CreateList}" ToolTip="{DynamicResource IconOut_CreateList_Tooltip}" Click="Output_ItemList" />
+						</hc:UniformSpacingPanel>
+					</hc:UniformSpacingPanel>
 				</StackPanel>
 			</Grid>
 		</TabItem>
 
-		<TabItem Header="{DynamicResource Name_MergeIcon}">
+		<TabItem Header="{DynamicResource MergeIcon_Name}">
 			<Grid AllowDrop="True" DragDrop.DragEnter="MergeIcon_DragEnter" DragDrop.Drop="MergeIcon_DragDrop">
 				<Grid.ColumnDefinitions>
 					<ColumnDefinition Width="*"/>
@@ -112,7 +106,7 @@
 					<ComboBox x:Name="Combobox_BottomLeft" ItemsSource="{Binding BottomLeftList}" SelectedItem="{Binding MergeIcon_BottomLeft}" />
 					<ComboBox x:Name="Combobox_TopRight" ItemsSource="{Binding TopRightList}" SelectedItem="{Binding MergeIcon_TopRight}" />
 
-					<CheckBox Content="New Background" IsChecked="{Binding MergeIcon_BackgroundMode}" ToolTip="UE4 resouce"/>
+					<CheckBox Content="{DynamicResource MergeIcon_BackgroundMode}" IsChecked="{Binding MergeIcon_BackgroundMode}" ToolTip="UE4 resouce"/>
 				</StackPanel>
 
 				<!-- Center -->
@@ -121,13 +115,10 @@
 				</Grid>
 
 				<!-- Right -->
-				<StackPanel Grid.Column="2">
-					<Button Content="Reset" Click="Reset_Click"/>
-					<Button Content="Save" Command="{Binding MergeIcon_SaveCommand}" />
-
-					<RadioButton x:Name="Radio_64px" IsChecked="{Binding MergeIcon_SizeMode}" Content="64   px" />
-					<RadioButton x:Name="Radio_128px" Content="128 px" />
-				</StackPanel>
+				<hc:ButtonGroup Grid.Column="2" Orientation="Vertical">
+					<Button Content="{DynamicResource Text_Reset}" Click="Reset_Click"/>
+					<Button Content="{DynamicResource Text_SaveAs}" Command="{Binding MergeIcon_SaveCommand}" />
+				</hc:ButtonGroup>
 			</Grid>
 		</TabItem>
 	</TabControl>

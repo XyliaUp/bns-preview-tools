@@ -27,7 +27,7 @@ public class AttributeResolver
 
 	public bool ResolveIsBrowsable(AttributeDefinition attribute) => !attribute.IsDeprecated;
 
-	public bool ResolveIsReadOnly(AttributeDefinition attribute) => false;
+	public bool ResolveIsReadOnly(AttributeDefinition attribute) => true;
 
 	public object ResolveDefaultValue(AttributeDefinition attribute) => attribute.DefaultValue;
 

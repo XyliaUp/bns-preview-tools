@@ -4,7 +4,7 @@
 		xmlns:hc="https://handyorg.github.io/handycontrol"
 		xmlns:lc="clr-namespace:Xylia.Preview.UI.Controls"
 		xmlns:UI="https://github.com/xyliaup/bns-preview-tools"
-        Title="{DynamicResource Name_PropertyEditor}" Height="450" Width="660"
+        Title="{DynamicResource PropertyEditor_Name}" Height="450" Width="660"
 		DataContext="{Binding RelativeSource={RelativeSource Self}}">
 	<Window.Resources>
 		<Style TargetType="{x:Type lc:AttributeGrid}">

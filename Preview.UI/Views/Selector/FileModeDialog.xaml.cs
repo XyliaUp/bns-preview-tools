@@ -1,14 +1,15 @@
-﻿using System.Windows;
-using System.Windows.Input;
+﻿using System.Windows.Input;
+
+using CommunityToolkit.Mvvm.ComponentModel;
+
+using HandyControl.Tools.Extension;
 
 namespace Xylia.Preview.UI.Views.Selector;
-public partial class FileModeDialog : Window
+
+[ObservableObject]
+public partial class FileModeDialog : IDialogResultable<FileModeDialog.FileMode>
 {
-	public FileModeDialog() => InitializeComponent();
-
-
-	public FileMode Result;
-
+	#region Ctor
 	public enum FileMode
 	{
 		None,
@@ -17,15 +18,32 @@ public partial class FileModeDialog : Window
 		Xlsx,
 	}
 
+	public FileModeDialog()
+	{
+		InitializeComponent();
+		DataContext = this;
+	}
+	#endregion
+
+	#region Methods
 	private void TextFile_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
 	{
 		Result = FileMode.Text;
-		this.DialogResult = true;
+		CloseAction?.Invoke();
 	}
 
 	private void ExcelFile_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
 	{
 		Result = FileMode.Xlsx;
-		this.DialogResult = true;
+		CloseAction?.Invoke();
 	}
+	#endregion
+
+
+	#region Interface
+	[ObservableProperty]
+	private FileMode result;
+
+	public Action CloseAction { get; set; }
+	#endregion
 }

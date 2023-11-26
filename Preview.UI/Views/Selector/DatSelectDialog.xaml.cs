@@ -116,7 +116,7 @@ public partial class DatSelectDialog : Window , IDatSelect
 
 	private void StartCountDown()
 	{
-		TimeInfo.Content = null;
+		TimeInfo.Text = null;
 
 		dt = DateTime.Now;
 		this.CountDown.IsEnabled = true;
@@ -142,9 +142,8 @@ public partial class DatSelectDialog : Window , IDatSelect
 	private void Timer_Tick(object sender, EventArgs e)
 	{
 		int RemainSec = CountDownSec - (int)DateTime.Now.Subtract(dt).TotalSeconds;
-		TimeInfo.Content = $"将在 {RemainSec} 秒后自动选择";
+		TimeInfo.Text = $"将在 {RemainSec} 秒后自动选择";
 
-		//自动选择
 		if (RemainSec <= 0) Btn_Confirm_Click(null, null);
 	}
 	#endregion

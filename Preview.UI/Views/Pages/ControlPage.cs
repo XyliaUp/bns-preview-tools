@@ -13,6 +13,9 @@ internal class ControlPage
 		this.type = type;
 	}
 
+
+	//public string Icon;
+
 	public string Text => Application.Current.TryFindResource(name)?.ToString();
 
 	public object Content

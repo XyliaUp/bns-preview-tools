@@ -1,6 +1,5 @@
 using System.ComponentModel;
 using System.Windows;
-using System.Windows.Controls;
 
 using Xylia.Preview.UI.Helpers;
 using Xylia.Preview.UI.Services.Utils;
@@ -10,14 +9,17 @@ using Xylia.Preview.UI.Views.Pages;
 using GameUI = Xylia.Preview.UI.Art.GameUI.Scene;
 
 namespace Xylia.Preview.UI;
-public partial class MainWindow : HandyControl.Controls.Window
+public partial class MainWindow 
 {
 	public MainWindow()
 	{
-		InitializeComponent();
+		InitializeComponent();	  
+
+		this.MinWidth = this.Width;
+		this.MinHeight = this.Height;
 
 		#region page
-		PageControl.ItemsSource = new List<object>()
+		SideMenu.ItemsSource = new List<object>()
 		{
 			new ControlPage<ItemPage>(),
 			new ControlPage<TextView>(),
@@ -25,25 +27,30 @@ public partial class MainWindow : HandyControl.Controls.Window
 			new ControlPage<GameResourcePage>(),
 			new ControlPage<AbilityPage>(),
 		};
-		PageControl.SelectedIndex = 0;
+		SideMenu.SelectedIndex = 0;
+		SideMenu_Switch(SideMenu, null);
 		#endregion
 
 		new Update().CheckForUpdates();
 		Register.Create();
 	}
 
-
-	private void PageControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
+	#region Methods
+	private void SideMenu_Switch(object sender, RoutedEventArgs e)
 	{
-		var page = PageControl.SelectedItem as ControlPage;
-		var content = page.Content;
+		var page = SideMenu.SelectedItem as ControlPage;
 
+		var content = page.Content;
 		if (content is Window window)
 		{
 			window.Closed += (s, e) => page.Content = null;
 			window.Show();
 		}
-		else if (content is FrameworkElement element) Presenter.Content = element;
+		else if (content is FrameworkElement element)
+		{
+			Presenter.Content = element;
+			SideMenuContainer.IsOpen = false;
+		}
 	}
 
 	private void OpenSettings(object sender, RoutedEventArgs e)
@@ -62,4 +69,5 @@ public partial class MainWindow : HandyControl.Controls.Window
 
 		Application.Current.Shutdown();
 	}
+	#endregion
 }

@@ -57,8 +57,6 @@ public partial class GameResourcePageViewModel : ObservableObject
 		set
 		{
 			_mergeIcon_Source = value;
-			_mergeIcon_SizeMode = value?.Width < 65;
-
 			MergeIcon();
 		}
 	}
@@ -70,19 +68,6 @@ public partial class GameResourcePageViewModel : ObservableObject
 		set
 		{
 			_mergeIcon_BackgroundMode = value;
-			MergeIcon();
-		}
-	}
-
-	bool _mergeIcon_SizeMode = true;
-	public bool MergeIcon_SizeMode
-	{
-		get => _mergeIcon_SizeMode;
-		set
-		{
-			_mergeIcon_SizeMode = value;
-			OnPropertyChanged();
-
 			MergeIcon();
 		}
 	}
@@ -201,7 +186,7 @@ public partial class GameResourcePageViewModel : ObservableObject
 
 	public static QuoteItem<SKBitmap> GetImage(string path, string section = null)
 	{
-		if (path == "None") return new(null, Application.Current.TryFindResource("None"));
+		if (path == "None") return new(null, Application.Current.TryFindResource("Text_None"));
 
 		var info = Application.GetResourceStream(new Uri($"/Preview.UI;component/{path}.png", UriKind.Relative));
 		return new(SKBitmap.Decode(info.Stream), GetText(path.SubstringAfterLast('/'), section));

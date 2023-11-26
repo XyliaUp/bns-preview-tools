@@ -8,6 +8,11 @@ using System.Windows.Controls;
 using CUE4Parse.BNS;
 using CUE4Parse.BNS.Conversion;
 
+using HandyControl.Controls;
+using HandyControl.Data;
+
+using Serilog;
+
 using SkiaSharp;
 
 using Xylia.Preview.UI.Helpers.Output.Textures;
@@ -21,10 +26,15 @@ public partial class GameResourcePage : Page
 
 	public GameResourcePage()
 	{
-		InitializeComponent();
 		DataContext = _viewModel;
 
-		Reset_Click(this, null);
+		InitializeComponent();
+		this.Loaded += Page_Loaded;
+	}
+
+	private void Page_Loaded(object sender, RoutedEventArgs e)
+	{
+		Reset_Click(sender, e);
 	}
 	#endregion
 
@@ -178,7 +188,7 @@ public partial class GameResourcePage : Page
 		}, format, source1 = new CancellationTokenSource());
 	}
 
-	public void Run(IconOutBase Out, string format, CancellationTokenSource source) => Task.Run(async () =>
+	private static void Run(IconOutBase Out, string format, CancellationTokenSource source) => Task.Run(async () =>
 	{
 		try
 		{
@@ -187,13 +197,17 @@ public partial class GameResourcePage : Page
 			await Out.Output(format, source.Token);
 			Out.Dispose();
 
-			TimeSpan Ts = DateTime.Now - d1;
-			HandyControl.Controls.MessageBox.Show($"任务已经全部结束！ 共计 {Ts.Hours}小时 {Ts.Minutes}分 {Ts.Seconds}秒。");
+			TimeSpan span = DateTime.Now - d1;
+			Growl.Success(new GrowlInfo()
+			{
+				Message = string.Format("任务已经全部结束, 总耗{0:hh}小时{0:mm}分{0:ss}秒。", span),
+				StaysOpen = true,
+			});
 		}
 		catch (Exception ee)
 		{
-			HandyControl.Controls.MessageBox.Show("由于发生了错误, 进程已提前结束。");
-			Console.WriteLine(ee);
+			Growl.Error("由于发生了错误, 进程已提前结束。");
+			Log.Error(ee, "Exception at IconOut");
 		}
 		finally
 		{
@@ -227,7 +241,8 @@ public partial class GameResourcePage : Page
 
 	private void Reset_Click(object sender, RoutedEventArgs e)
 	{
-		Combobox_Grade.SelectedIndex = 0;
+		_viewModel.MergeIcon_Source = null;
+		Combobox_Grade.SelectedIndex = 6;
 		Combobox_BottomLeft.SelectedIndex = 0;
 		Combobox_TopRight.SelectedIndex = 0;
 	}
