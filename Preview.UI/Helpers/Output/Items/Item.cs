@@ -17,7 +17,7 @@ using Xylia.Preview.Data.Models;
 using Xylia.Preview.UI.ViewModels;
 
 namespace Xylia.Preview.UI.Helpers.Output.Items;
-public sealed class ItemOut : OutSet , IDisposable
+public sealed class ItemOut : OutSet, IDisposable
 {
 	#region Path
 	public string Path_ItemList;
@@ -70,7 +70,7 @@ public sealed class ItemOut : OutSet , IDisposable
 
 			CreateData(sheet);
 			package.SaveAs(Path_MainFile);
-		} 
+		}
 
 		var Failures = ItemDatas.Where(o => o.Name2 is null);
 		if (Failures.Any())
@@ -110,7 +110,7 @@ public sealed class ItemOut : OutSet , IDisposable
 		}
 	}
 
-	private void CreateText()
+	protected override void CreateText()
 	{
 		using var writer = new StreamWriter(new FileStream(Path_MainFile, FileMode.Create));
 		foreach (var Item in ItemDatas)
@@ -131,13 +131,13 @@ public sealed class ItemOut : OutSet , IDisposable
 
 	public int Count => ItemDatas?.Count ?? 0;
 
-	public async Task GetData()
+	public void GetData()
 	{
 		BnsDatabase set = new(DefaultProvider.Load(UserSettings.Default.GameFolder));
 		CreatedAt = set.Provider.CreatedAt;
 
 		var Result = new BlockingCollection<ItemSimple>();
-		Parallel.ForEach(set.Item.Records, record =>
+		Parallel.ForEach(set.Item.Records, (record) =>
 		{
 			if (CacheList != null && CacheList.Contains(record.RecordId)) return;
 
@@ -151,9 +151,7 @@ public sealed class ItemOut : OutSet , IDisposable
 
 		ItemDatas = Result.OrderBy(o => o.Ref.Id).ToList();
 	}
-	#endregion
 
-	#region Interface
 	public void Dispose()
 	{
 		ItemDatas?.Clear();

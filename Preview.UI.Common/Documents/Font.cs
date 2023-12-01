@@ -2,7 +2,7 @@
 using System.Windows;
 using System.Windows.Media;
 
-using CUE4Parse.BNS.Exports;
+using CUE4Parse.BNS.Assets.Exports;
 
 using Xylia.Preview.Data.Helpers;
 
@@ -15,20 +15,22 @@ public class Font : Element
 
 	}
 
-	public Font(string Name , params Element[] elements)
+	public Font(string Name, params Element[] elements)
 	{
 		this.Name = Name;
 		this.Children = elements.ToList();
 	}
 	#endregion
 
-
+	#region Property
 	/// <summary>
 	/// fontset path
 	/// </summary>
 	public string Name;
+	#endregion
 
 
+	#region Methods
 	protected override Size MeasureCore(Size availableSize)
 	{
 		GetFont(Name);
@@ -71,4 +73,5 @@ public class Font : Element
 			Foreground = new SolidColorBrush(c);
 		}
 	}
+	#endregion
 }

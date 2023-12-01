@@ -1,7 +1,5 @@
-﻿using System.Globalization;
-using System.Text;
+﻿using System.Text;
 
-using Xylia.Extension;
 using Xylia.Preview.Data.Common;
 using Xylia.Preview.Data.Common.DataStruct;
 using Xylia.Preview.Data.Engine.BinData.Definitions;
@@ -12,7 +10,6 @@ namespace Xylia.Preview.Data.Engine.BinData.Helpers;
 public class RecordBuilder
 {
 	private readonly DatafileDefinition _definitions;
-	private readonly ResolvedAliases _resolvedAliases;
 
 	private readonly StringBuilder _stringBuilder = new StringBuilder(0x2000);
 	private readonly Dictionary<string, int> _existingStringOffset = new Dictionary<string, int>(0x2000);
@@ -20,11 +17,6 @@ public class RecordBuilder
 	// States
 	private bool _isCompressed;
 
-	public RecordBuilder(DatafileDefinition definitions, ResolvedAliases resolvedAliases)
-	{
-		_definitions = definitions;
-		_resolvedAliases = resolvedAliases;
-	}
 
 	public StringLookup StringLookup { get; private set; }
 
@@ -92,118 +84,6 @@ public class RecordBuilder
 		}
 	}
 
-	public void SetDefaultStrings(Record record, IEnumerable<AttributeDefinition> defaultStringAttrsWithValue)
-	{
-		foreach (var attrDef in defaultStringAttrsWithValue)
-		{
-			SetString(record, attrDef, attrDef.DefaultValue);
-		}
-	}
-
-	public void SetAttribute(Record record, AttributeDefinition attrDef, string value)
-	{
-		switch (attrDef.Type)
-		{
-			case AttributeType.TRef:
-				SetRef(record, attrDef, value);
-				break;
-
-			case AttributeType.TIcon:
-				SetIcon(record, attrDef, value);
-				break;
-
-			case AttributeType.TTRef:
-				SetTRef(record, attrDef, value);
-				break;
-
-			case AttributeType.TNative:
-				SetNative(record, attrDef, value);
-				break;
-
-			case AttributeType.TVector32:
-				SetVector32(record, attrDef, value);
-				break;
-
-			case AttributeType.TVelocity:
-				SetVelocity(record, attrDef, value);
-				break;
-
-			case AttributeType.TDistance:
-			case AttributeType.TInt16:
-			case AttributeType.TSub:
-				SetInt16(record, attrDef, value);
-				break;
-
-			case AttributeType.TInt64:
-			case AttributeType.TTime64:
-			case AttributeType.TXUnknown1:
-				SetInt64(record, attrDef, value);
-				break;
-
-			case AttributeType.TInt32:
-			case AttributeType.TMsec:
-				SetInt32(record, attrDef, value);
-				break;
-
-			case AttributeType.TInt8:
-				SetInt8(record, attrDef, value);
-				break;
-
-			case AttributeType.TFloat32:
-				SetFloat32(record, attrDef, value);
-				break;
-
-			case AttributeType.TString:
-			case AttributeType.TXUnknown2:
-				SetString(record, attrDef, value);
-				break;
-
-			case AttributeType.TBool:
-				SetBool(record, attrDef, value);
-				break;
-
-			case AttributeType.TSeq:
-			case AttributeType.TProp_seq:
-			{
-				var seqIndex = (sbyte)attrDef.Sequence.IndexOf(value);
-
-				if (seqIndex == -1)
-					throw new Exception($"Invalid sequence value: '{value}'");
-
-				record.Set(attrDef.Offset, seqIndex);
-				break;
-			}
-
-			case AttributeType.TSeq16:
-			case AttributeType.TProp_field:
-			{
-				var seqIndex = (short)attrDef.Sequence.IndexOf(value);
-
-				if (seqIndex == -1)
-					throw new Exception($"Invalid sequence value: '{value}'");
-
-				record.Set(attrDef.Offset, seqIndex);
-				break;
-			}
-
-			case AttributeType.TScript_obj:
-				// Ignore
-				break;
-
-			case AttributeType.TIColor:
-				SetIColor(record, attrDef, value);
-				break;
-
-			case AttributeType.TBox:
-				SetBox(record, attrDef, value);
-				break;
-
-			default:
-				throw new Exception("Unknown type");
-				break;
-		}
-	}
-
 	public void FinalizeMutateRecord()
 	{
 		if (_isCompressed)
@@ -231,51 +111,7 @@ public class RecordBuilder
 		StringLookup.Data = Encoding.Unicode.GetBytes(_stringBuilder.ToString());
 	}
 
-	private static void SetBox(Record record, AttributeDefinition attrDef, string value)
-	{
-		if (value != null)
-		{
-			var split = value.Split(',', 6);
 
-			var x1 = short.Parse(split[0]);
-			var y1 = short.Parse(split[1]);
-			var z1 = short.Parse(split[2]);
-			var x2 = short.Parse(split[3]);
-			var y2 = short.Parse(split[4]);
-			var z2 = short.Parse(split[5]);
-
-			record.Set(attrDef.Offset, new Box(x1, y1, z1, x2, y2, z2));
-			return;
-		}
-
-		throw new Exception("Value was null");
-	}
-
-	private static void SetIColor(Record record, AttributeDefinition attrDef, string value)
-	{
-		if (value != null)
-		{
-			var split = value.Split(',', 3);
-
-			var r = byte.Parse(split[0]);
-			var g = byte.Parse(split[1]);
-			var b = byte.Parse(split[2]);
-
-			record.Set(attrDef.Offset, new IColor(r, g, b));
-			return;
-		}
-
-		record.Set(attrDef.Offset, attrDef.AttributeDefaultValues.DIColor);
-	}
-
-	private static void SetBool(Record record, AttributeDefinition attrDef, string value)
-	{
-		var boolean = value == null
-			? attrDef.AttributeDefaultValues.DBool
-			: value.ToBool(); // TODO: optimize this
-
-		record.Data[attrDef.Offset] = boolean ? (byte)1 : (byte)0;
-	}
 
 	private void SetString(Record record, AttributeDefinition attrDef, string value)
 	{
@@ -292,138 +128,6 @@ public class RecordBuilder
 		record.Set(attrDef.Offset, stringOffset);
 	}
 
-	private static void SetFloat32(Record record, AttributeDefinition attrDef, string value)
-	{
-		if (value != null)
-		{
-			record.Set(attrDef.Offset, float.Parse(value, NumberStyles.Float, CultureInfo.InvariantCulture));
-			return;
-		}
-
-		record.Set(attrDef.Offset, attrDef.AttributeDefaultValues.DFloat);
-	}
-
-	private static void SetInt64(Record record, AttributeDefinition attrDef, string value)
-	{
-		if (value != null)
-		{
-			record.Set(attrDef.Offset, long.Parse(value));
-			return;
-		}
-
-		record.Set(attrDef.Offset, attrDef.AttributeDefaultValues.DLong);
-	}
-
-	private static void SetInt32(Record record, AttributeDefinition attrDef, string value)
-	{
-		if (value != null)
-		{
-			record.Set(attrDef.Offset, int.Parse(value));
-			return;
-		}
-
-		record.Set(attrDef.Offset, attrDef.AttributeDefaultValues.DInt);
-	}
-
-	private static void SetInt16(Record record, AttributeDefinition attrDef, string value)
-	{
-		if (value != null)
-		{
-			record.Set(attrDef.Offset, short.Parse(value));
-			return;
-		}
-
-		record.Set(attrDef.Offset, attrDef.AttributeDefaultValues.DShort);
-	}
-
-	private static void SetInt8(Record record, AttributeDefinition attrDef, string value)
-	{
-		if (value != null)
-		{
-			record.Set(attrDef.Offset, sbyte.Parse(value));
-			return;
-		}
-
-		record.Set(attrDef.Offset, attrDef.AttributeDefaultValues.DByte);
-	}
-
-	private void SetRef(Record record, AttributeDefinition attrDef, string value)
-	{
-		if (value != null)
-		{
-			if (_resolvedAliases.ByAlias[attrDef.ReferedTable].TryGetValue(value, out var @ref))
-			{
-				record.Set(attrDef.Offset, @ref);
-				return;
-			}
-
-			record.Set(attrDef.Offset, Ref.From(value));
-			return;
-		}
-
-		record.Set(attrDef.Offset, attrDef.AttributeDefaultValues.DRef);
-	}
-
-	private void SetIcon(Record record, AttributeDefinition attrDef, string value)
-	{
-		if (value != null)
-		{
-			var colon = value.LastIndexOf(':');
-
-			if (colon != -1)
-			{
-				var split = new[] { value[..colon], value[(colon + 1)..] };
-				var i32 = int.Parse(split[1]);
-
-				if (_resolvedAliases.ByAlias[_definitions.IconTextureTableId].TryGetValue(split[0], out var @ref))
-				{
-					record.Set(attrDef.Offset, new IconRef(@ref.Id, @ref.Variant, i32));
-					return;
-				}
-
-				@ref = Ref.From(split[0]);
-				record.Set(attrDef.Offset, new IconRef(@ref.Id, @ref.Variant, i32));
-				return;
-			}
-
-			throw new Exception($"Invalid icon reference string: '{value}'");
-			return;
-		}
-
-		record.Set(attrDef.Offset, attrDef.AttributeDefaultValues.DIconRef);
-	}
-
-	private void SetTRef(Record record, AttributeDefinition attrDef, string value)
-	{
-		if (value != null)
-		{
-			var split = value.Split(':', 2);
-
-			if (split.Length == 2)
-			{
-				var referedTableDef = _definitions[split[0]];
-				if (referedTableDef != null)
-				{
-					if (_resolvedAliases.ByAlias[referedTableDef.Type].TryGetValue(split[1], out var @ref))
-					{
-						record.Set(attrDef.Offset, new TRef(referedTableDef.Type, @ref.Id, @ref.Variant));
-						return;
-					}
-
-					@ref = Ref.From(split[1]);
-					record.Set(attrDef.Offset, new TRef(referedTableDef.Type, @ref.Id, @ref.Variant));
-					return;
-				}
-
-				throw new Exception($"Invalid typed reference, refered table doesn't exist: '{split[0]}'");
-			}
-
-			throw new Exception($"Invalid typed reference string: '{value}'");
-		}
-
-		record.Set(attrDef.Offset, attrDef.AttributeDefaultValues.DTRef);
-	}
-
 	private void SetNative(Record record, AttributeDefinition attrDef, string value)
 	{
 		value ??= "";
@@ -433,33 +137,5 @@ public class RecordBuilder
 		_stringBuilder.Append('\0');
 
 		record.Set(attrDef.Offset, new Native(_stringBuilder.Length * 2 - offset, offset));
-	}
-
-	private static void SetVector32(Record record, AttributeDefinition attrDef, string value)
-	{
-		if (value != null)
-		{
-			var split = value.Split(',', 3);
-
-			var x = int.Parse(split[0]);
-			var y = int.Parse(split[1]);
-			var z = int.Parse(split[2]);
-
-			record.Set(attrDef.Offset, new Vector32(x, y, z));
-			return;
-		}
-
-		record.Set(attrDef.Offset, attrDef.AttributeDefaultValues.DVector32);
-	}
-
-	private static void SetVelocity(Record record, AttributeDefinition attrDef, string value)
-	{
-		if (value != null)
-		{
-			record.Set(attrDef.Offset, ushort.Parse(value));
-			return;
-		}
-
-		record.Set(attrDef.Offset, attrDef.AttributeDefaultValues.DVelocity);
 	}
 }

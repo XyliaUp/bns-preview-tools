@@ -3,7 +3,6 @@
 using Xylia.Preview.UI.FModel.Views;
 
 namespace FModel.Views.Snooper;
-
 public class ModelView : Snooper
 {
 	public ModelView(GameWindowSettings gwSettings, NativeWindowSettings nwSettings) : base(gwSettings, nwSettings)
@@ -12,14 +11,19 @@ public class ModelView : Snooper
 	}
 
 
+	public ModelData[] Models { get; set; }
+	public ModelData SelectedData { get; private set; }
 
-	public List<ModelData> Models;
-	public ModelData SelectedData;
-
-	public bool TryLoadExport(CancellationToken cancellationToken, ModelData Model = null)
+	public bool TryLoadExport(CancellationToken cancellationToken, ModelData models = null)
 	{
-		SelectedData = Model ?? Models.First();
-		return TryLoadExport(cancellationToken, SelectedData.Export);
+		SelectedData = models ?? Models.FirstOrDefault();
+		if (SelectedData is null) return false;
+
+		// render
+		Renderer.Load(cancellationToken, SelectedData.Export);
+		SelectedData.Materials?.ForEach(Renderer.Swap);
+
+		return Renderer.Options.Models.Count > 0;
 	}
 
 	public void Transform()

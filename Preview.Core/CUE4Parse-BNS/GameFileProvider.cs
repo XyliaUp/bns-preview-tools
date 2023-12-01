@@ -1,6 +1,6 @@
-﻿using System.Collections.Concurrent;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 
+using CUE4Parse.BNS.AssetRegistry;
 using CUE4Parse.Encryption.Aes;
 using CUE4Parse.FileProvider;
 using CUE4Parse.FileProvider.Objects;
@@ -14,10 +14,15 @@ using CUE4Parse.Utils;
 namespace CUE4Parse.BNS;
 public sealed class GameFileProvider : DefaultFileProvider, IDisposable
 {
-	private static bool _register;
 	internal const string _aesKey = "0xd2e5f7f94e625efe2726b5360c1039ce7cb9abb760a94f37bb15a6dc08741656";
-	private const string gameName = "BNSR";
-	private readonly ConcurrentDictionary<string, string> ObjectRef = new(StringComparer.OrdinalIgnoreCase);
+	public FAssetRegistryState AssetRegistryModule { get; private set; }
+
+	#region Ctors
+	static GameFileProvider()
+	{
+		// register game custom class
+		ObjectTypeRegistry.RegisterEngine(typeof(GameFileProvider).Assembly);
+	}
 
 	public GameFileProvider(string GameDirectory, bool LoadOnInit = false) : base(
 		GameDirectory, SearchOption.AllDirectories, true,
@@ -25,18 +30,13 @@ public sealed class GameFileProvider : DefaultFileProvider, IDisposable
 	{
 		this.Initialize();
 		this.SubmitKey(new FGuid(), new FAesKey(_aesKey));
-		this.LoadLocalization(ELanguage.Chinese);
-
-		// register game custom class
-		if (!_register)
-		{
-			_register = true;
-			ObjectTypeRegistry.RegisterEngine(typeof(GameFileProvider).Assembly);
-		}
+		this.LoadLocalization(ELanguage.Korean);
 
 		// load asset registry
 		if (LoadOnInit) LoadAssetRegistry();
 	}
+	#endregion
+
 
 	#region FixPath
 	public string FixPath(string path, bool useRegistry)
@@ -69,9 +69,9 @@ public sealed class GameFileProvider : DefaultFileProvider, IDisposable
 			else if (!useRegistry) return null;
 			else
 			{
-				lock (ObjectRef) if (ObjectRef.IsEmpty) LoadAssetRegistry();
+				lock (this) if (AssetRegistryModule is null) LoadAssetRegistry();
 
-				return ObjectRef.TryGetValue(path, out path) ? FixPath(path, true) : null;
+				return AssetRegistryModule.ObjectRef.TryGetValue(path, out path) ? FixPath(path, true) : null;
 			}
 
 			Ue4Path = FixPath(Ue4Path.Replace('.', '/'), true);
@@ -147,17 +147,12 @@ public sealed class GameFileProvider : DefaultFileProvider, IDisposable
 		if (!TryCreateReader("BNSR/AssetRegistry.bin", out var archive))
 			throw new FileNotFoundException();
 
-
-		ObjectRef.Clear();
 		var dt = DateTime.Now;
+		AssetRegistryModule = new FAssetRegistryState(archive);
+		archive.Dispose();
 
-		var AssetRegistry = new AssetRegistry.FAssetRegistryState(archive);
-		foreach (var asset in AssetRegistry.PreallocatedAssetDataBuffers)
-		{
-			ObjectRef[asset.ObjectPath2] = asset.ObjectPath.Text;
-		}
-
-		string msg = $"Initialize asset registry, rt {(DateTime.Now - dt).Seconds}s";
+		string msg = $"Initialize asset registry, toked {(DateTime.Now - dt).Seconds}s";
+		Console.WriteLine(msg);
 		Debug.WriteLine(msg);
 	}
 	#endregion
@@ -165,9 +160,9 @@ public sealed class GameFileProvider : DefaultFileProvider, IDisposable
 
 	void IDisposable.Dispose()
 	{
-		ObjectRef?.Clear();
+		AssetRegistryModule?.ObjectRef.Clear();
 
-		// 内存回收有问题，懒得提issue
+		// GC issue on CUE4
 		(Files as FileProviderDictionary)?.Clear();
 		base.Dispose();
 	}

@@ -485,7 +485,7 @@ public partial class ToolFrm : Form
 		{
 			//if (records.sele.s.Count % info.Count != 0)
 			//{
-			//	AduMessageBox.Show($"数量不一致 (info:{ info.Count },records:{ records.Count })");
+			//	HandyControl.Controls.MessageBox.Show($"数量不一致 (info:{ info.Count },records:{ records.Count })");
 			//	return;
 			//}
 		}

@@ -1,4 +1,5 @@
 ﻿using Xylia.Preview.Data.Common.Attribute;
+
 namespace Xylia.Preview.Data.Models.CombatSequenceData.Enums;
 public enum GroundPattern
 {

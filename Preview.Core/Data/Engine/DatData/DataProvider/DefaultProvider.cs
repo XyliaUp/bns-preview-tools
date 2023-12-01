@@ -25,6 +25,8 @@ public class DefaultProvider : Datafile, IDataProvider
 
 	public virtual void LoadData(List<TableDefinition> definitions)
 	{
+		this.Tables = new();
+
 		#region bin
 		ReadFrom(XmlData.EnumerateFiles(is64Bit ? "datafile64.bin" : $"datafile.bin").FirstOrDefault()?.Data, is64Bit);
 		ReadFrom(LocalData.EnumerateFiles(is64Bit ? "localfile64.bin" : "localfile.bin").FirstOrDefault()?.Data, is64Bit);
@@ -58,9 +60,8 @@ public class DefaultProvider : Datafile, IDataProvider
 		ConfigData?.Dispose();
 		XmlData = LocalData = ConfigData = null;
 
-
-		Tables.ForEach(x => x.Dispose());
-		Tables.Clear();
+		Tables?.ForEach(x => x.Dispose());
+		Tables?.Clear();
 		Tables = null;
 
 		GC.SuppressFinalize(this);

@@ -1,13 +1,14 @@
 ﻿using System.Collections;
 using System.Diagnostics;
 using System.Reflection;
+using System.Runtime.Serialization;
 
 using Xylia.Extension;
 using Xylia.Preview.Common.Extension;
 using Xylia.Preview.Data.Common.Attribute;
 using Xylia.Preview.Data.Common.Cast;
 using Xylia.Preview.Data.Common.DataStruct;
-using Xylia.Preview.Data.Engine.BinData.Definitions;
+using Xylia.Preview.Data.Database;
 using Xylia.Preview.Data.Engine.BinData.Models;
 using Xylia.Preview.Data.Models;
 
@@ -55,9 +56,11 @@ public sealed class ModelTable<T> : Table, IEnumerable<T>, IEnumerable where T :
 		yield break;
 	}
 	#endregion
-
 }
 
+/// <summary>
+/// entity model helper
+/// </summary>
 public class ModelTypeHelper
 {
 	#region Load Methods
@@ -124,7 +127,6 @@ public class ModelTypeHelper
 	#endregion
 
 
-
 	/// <summary>
 	/// Convert original record to RecordModel
 	/// </summary>
@@ -141,8 +143,13 @@ public class ModelTypeHelper
 		record.StringLookup = source.StringLookup;
 
 		#region	instance
-		foreach (var field in record.GetType().GetFields(BindingFlags.Instance | BindingFlags.Public))
+		foreach (var field in record.GetType().GetMembers(BindingFlags.Instance | BindingFlags.Public))
 		{
+			if (field is not FieldInfo &&
+			   (field is not PropertyInfo prop || !prop.CanWrite)) continue;
+			if (field.ContainAttribute<IgnoreDataMemberAttribute>()) continue;
+
+
 			var name = field.GetName().TitleLowerCase();
 			var type = field.GetMemberType();
 			if (type.IsList())
@@ -165,11 +172,10 @@ public class ModelTypeHelper
 				continue;
 			}
 
-
 			var repeat = field.GetAttribute<Repeat>()?.Value ?? 1;
 			if (repeat == 1)
 			{
-				field.SetValue(record, ModelTypeHelper.ToType(type, record.Attributes[name], record.Owner.Owner, field.Name));
+				field.SetValue(record, AttributeConverter.ConvertTo(record.Attributes[name], type, record.Owner?.Owner));
 			}
 			else
 			{
@@ -180,7 +186,7 @@ public class ModelTypeHelper
 				var value = Array.CreateInstance(type, repeat);
 
 				for (int i = 0; i < repeat; i++)
-					value.SetValue(ModelTypeHelper.ToType(type, record.Attributes[name, i + 1], record.Owner.Owner, field.Name), i);
+					value.SetValue(AttributeConverter.ConvertTo(record.Attributes[name, i + 1], type, record.Owner.Owner), i);
 
 				field.SetValue(record, value);
 			}
@@ -206,54 +212,5 @@ public class ModelTypeHelper
 		table.LoadAsync().Wait();
 
 		return table;
-	}
-
-
-	public static object ToType(AttributeType type, string value, BnsDatabase database, string name) => throw new NotImplementedException();
-
-	public static object ToType(Type type, string value, BnsDatabase database, string name = null)
-	{
-		if (string.IsNullOrEmpty(value)) return default;                    /// <see cref="AttributeType.TNone">
-
-		if (type == typeof(sbyte)) return sbyte.Parse(value);               /// <see cref="AttributeType.TInt8">
-		else if (type == typeof(short)) return short.Parse(value);          /// <see cref="AttributeType.TInt16">
-		else if (type == typeof(int)) return int.Parse(value);              /// <see cref="AttributeType.TInt32">
-		else if (type == typeof(long)) return long.Parse(value);            /// <see cref="AttributeType.TInt64">
-		else if (type == typeof(float)) return float.Parse(value);          /// <see cref="AttributeType.TFloat32">
-		else if (type == typeof(bool)) return value.ToBool();               /// <see cref="AttributeType.TBool">
-		else if (type == typeof(string)) return value;                      /// <see cref="AttributeType.TString">
-		else if (type.IsEnum)                                               /// <see cref="AttributeType.TSeq">
-		{
-			if (value.TryParseToEnum(type, out var seq, Extension: true)) return seq;
-			throw new FormatException($"Seq `{type.Name}` cast failed: {value}");
-		}
-		else if (type.IsGenericType && type.GetGenericTypeDefinition() == typeof(Ref<>)) return Activator.CreateInstance(type, value, database);  /// <see cref="AttributeType.TTRef"><see cref="AttributeType.TRef">
-		else if (type.IsGenericType && type.GetGenericTypeDefinition() == typeof(Sub<>)) return Activator.CreateInstance(type, value, database);  /// <see cref="AttributeType.TSub">       
-		//else if (type == typeof(Su)) return Su.Parse(value);                /// <see cref="AttributeType.TSu">
-		else if (type == typeof(Vector16)) return Vector16.Parse(value);    /// <see cref="AttributeType.TVector16">
-		else if (type == typeof(Vector32)) return Vector32.Parse(value);    /// <see cref="AttributeType.TVector32">
-		else if (type == typeof(IColor)) return IColor.Parse(value);        /// <see cref="AttributeType.TIColor">
-		//else if (type == typeof(FColor)) return FColor.Parse(value);        /// <see cref="AttributeType.TFColor">
-		else if (type == typeof(Box)) return Box.Parse(value);              /// <see cref="AttributeType.TBox">
-		//else if (type == typeof(Angle)) return Angle.Parse(value);          /// <see cref="AttributeType.TAngle">
-		else if (type == typeof(Msec)) return new Msec(int.Parse(value));   /// <see cref="AttributeType.TMsec">
-		else if (type == typeof(Distance)) return short.Parse(value);       /// <see cref="AttributeType.TDistance">
-		else if (type == typeof(Velocity)) return short.Parse(value);       /// <see cref="AttributeType.TVelocity"> 
-																			/// 
-		else if (type == typeof(Script_obj)) return new Script_obj(value);  /// <see cref="AttributeType.TScript_obj">
-																			/// <see cref="AttributeType.TNative">
-		else if (type == typeof(Common.DataStruct.Version)) return new Common.DataStruct.Version(value);      /// <see cref="AttributeType.TVersion">
-																											  /// <see cref="AttributeType.TIcon">
-																											  /// <see cref="AttributeType.TTime32">
-																											  /// <see cref="AttributeType.TTime64">
-		else if (type == typeof(DateTime)) return DateTime.Parse(value);    /// <see cref="AttributeType.TXUnknown1">
-		else if (type == typeof(Time64)) return Time64.Parse(value);
-		else if (type == typeof(ObjectPath)) return new ObjectPath(value);            /// <see cref="AttributeType.TXUnknown2">
-
-
-		//throw new NotSupportedException($"type not supported: {type}");
-		Trace.WriteLine($"== WARNING == type not supported: {type} (name: {name})");
-
-		return null;
 	}
 }

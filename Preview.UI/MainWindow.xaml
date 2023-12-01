@@ -1,61 +1,103 @@
-<Metro:MetroWindow
+<hc:Window
     x:Class="Xylia.Preview.UI.MainWindow"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:Metro="https://github.com/aduskin"
-	
+    xmlns:hc="https://handyorg.github.io/handycontrol"
+    xmlns:VM="clr-namespace:Xylia.Preview.UI.ViewModels"
 	Title="{DynamicResource ProductName}" Icon="{x:Null}"
-	Background="#FFF" MinHeight="600" MinWidth="1100" Width="1100" ResizeMode="CanResize" >
-	<Metro:MetroWindow.Menu>
-		<Metro:MetroTitleMenu Height="40" HorizontalAlignment="Right">
-			<Metro:MetroTitleMenuItem Header="{DynamicResource Repository}" Command="Metro:ControlCommands.OpenLink" CommandParameter="https://github.com/XyliaUp/bns-preview-tools" />
-			<Metro:MetroTitleMenuItem Header="&#xf013;" FontFamily="{StaticResource FontAwesome}" Click="OpenSettings" />
-		</Metro:MetroTitleMenu>
-	</Metro:MetroWindow.Menu>
-	
-	<Grid>
-		<Grid.RowDefinitions>
-			<RowDefinition Height="*" />
-			<RowDefinition Height="50" />
-		</Grid.RowDefinitions>
-		<Grid.ColumnDefinitions>
-			<ColumnDefinition Width="Auto" MinWidth="75"/>
-			<ColumnDefinition Width="*" />
-		</Grid.ColumnDefinitions>
+	Background="#FFF" Height="600" Width="900" ResizeMode="CanResize">
+	<hc:Window.NonClientAreaContent>
+		<Menu HorizontalAlignment="Right" VerticalAlignment="Center">
+			<MenuItem Header="{DynamicResource Repository}" Command="hc:ControlCommands.OpenLink" CommandParameter="https://github.com/XyliaUp/bns-preview-tools" />
+			<MenuItem Header="&#xEF58;" FontFamily="{DynamicResource SegoeAssets}" Click="OpenSettings" />
+		</Menu>
+	</hc:Window.NonClientAreaContent>
 
-		<ListBox x:Name="PageControl" Grid.Column="0" BorderThickness="0" Background="Transparent" SelectionChanged="PageControl_SelectionChanged">
-			<ListBox.Resources>
-				<Style TargetType="ListBoxItem">
-					<Setter Property="Background" Value="Transparent" />
-					<Setter Property="BorderThickness" Value="0" />
-					<Setter Property="Padding" Value="0" />
-					<Setter Property="Cursor" Value="Hand"></Setter>
-				</Style>
-			</ListBox.Resources>
-			<ListBox.ItemTemplate>
-				<DataTemplate>
-					<Border MinHeight="40" Width="250" Background="#00000000" x:Name="Bd" BorderBrush="#EBEBEB" BorderThickness="0 1 0 0">
-						<TextBlock Text="{Binding Text}" Foreground="#EE796F" Margin="20,0" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="12" />
-					</Border>
-					<DataTemplate.Triggers>
-						<DataTrigger Binding="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ListBoxItem}}, Path=IsSelected}"  Value="True">
-							<Setter TargetName="Bd" Property="Background" Value="#EAEAEA" />
-						</DataTrigger>
+	<hc:DrawerContainer>
+		<Grid>
+			<Grid.RowDefinitions>
+				<RowDefinition Height="*" />
+				<RowDefinition Height="30" Name="Stauts" />
+			</Grid.RowDefinitions>
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="Auto" />
+				<ColumnDefinition Width="*" />
+				<ColumnDefinition Width="Auto" />
+			</Grid.ColumnDefinitions>
 
-						<MultiTrigger>
-							<MultiTrigger.Conditions>
-								<Condition Property="IsMouseOver" Value="True" />
-							</MultiTrigger.Conditions>
-							<Setter TargetName="Bd" Property="Background" Value="WhiteSmoke" />
-						</MultiTrigger>
-						<Trigger Property="IsEnabled" Value="False">
-							<Setter TargetName="Bd" Property="TextElement.Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}" />
-						</Trigger>
-					</DataTemplate.Triggers>
-				</DataTemplate>
-			</ListBox.ItemTemplate>
-		</ListBox>
+			<hc:Drawer Name="SideMenuContainer" Dock="Left" ShowMode="Push">
+				<Border Background="{DynamicResource RegionBrush}" Width="270" BorderBrush="{DynamicResource BorderBrush}">
+					<Grid>
+						<Grid.RowDefinitions>
+							<RowDefinition Height="*"/>
+							<RowDefinition Height="Auto"/>
+						</Grid.RowDefinitions>
 
-		<Frame Grid.Column="1" x:Name="Presenter" NavigationUIVisibility="Hidden" />
-	</Grid>
-</Metro:MetroWindow>
+						<ListBox x:Name="SideMenu" BorderThickness="0" Style="{x:Null}" HorizontalContentAlignment="Stretch" PreviewMouseLeftButtonUp="SideMenu_Switch">
+							<ListBox.Resources>
+								<Style TargetType="ListBoxItem">
+									<Setter Property="Background" Value="Transparent" />
+									<Setter Property="BorderThickness" Value="0" />
+									<Setter Property="Padding" Value="0" />
+									<Setter Property="Cursor" Value="Hand"></Setter>
+								</Style>
+							</ListBox.Resources>
+							<ListBox.ItemTemplate>
+								<DataTemplate>
+									<Border Name="BorderRoot" Background="{DynamicResource RegionBrush}" MinHeight="50">
+										<hc:SimplePanel>
+											<Rectangle x:Name="Rect" Fill="{DynamicResource BorderBrush}" Width="4" HorizontalAlignment="Left" />
+											<DockPanel Margin="20 0 0 0">
+												<Image x:Name="PresenterIcon" HorizontalAlignment="Left" VerticalAlignment="Center" />
+												<TextBlock x:Name="PresenterHeader" Text="{Binding Text}" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="12" />
+											</DockPanel>
+										</hc:SimplePanel>
+									</Border>
+									<DataTemplate.Triggers>
+										<DataTrigger Binding="{Binding IsSelected,RelativeSource={RelativeSource AncestorType=ListBoxItem}}" Value="True">
+											<Setter TargetName="BorderRoot" Property="Background" Value="{DynamicResource BorderBrush}" />
+											<Setter TargetName="Rect" Property="Fill" Value="{DynamicResource PrimaryBrush}" />
+											<Setter TargetName="PresenterHeader" Property="FontWeight" Value="Bold" />
+										</DataTrigger>
+										<MultiTrigger>
+											<MultiTrigger.Conditions>
+												<Condition Property="IsMouseOver" Value="True" />
+											</MultiTrigger.Conditions>
+											<Setter TargetName="BorderRoot" Property="Background" Value="WhiteSmoke" />
+										</MultiTrigger>
+										<Trigger Property="IsEnabled" Value="False">
+											<Setter TargetName="BorderRoot" Property="TextElement.Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}" />
+										</Trigger>
+									</DataTemplate.Triggers>
+								</DataTemplate>
+							</ListBox.ItemTemplate>
+						</ListBox>
+
+						<TextBlock VerticalAlignment="Bottom" Margin="10 5" Foreground="Gray">
+							<Run Text="Version" />
+							<Run Text="{Binding Source={x:Static VM:VersionHelper.Version},Mode=OneWay}">
+								<Run.ToolTip>
+									 <TextBlock>
+										 <Run Text="{DynamicResource Text_PublishOn}" />
+										 <Run Text="{Binding Source={x:Static VM:VersionHelper.Time},Mode=OneWay,StringFormat={}{0:D}}" />
+									 </TextBlock>
+								</Run.ToolTip>
+							</Run>
+
+							<LineBreak />
+							<Run Text="Powered by Xylia" Foreground="{StaticResource DarkPrimaryBrush}"/>
+						</TextBlock>
+					</Grid>
+				</Border>
+			</hc:Drawer>
+			<ScrollViewer Grid.Column="2" VerticalScrollBarVisibility="Hidden">
+				<StackPanel hc:Growl.GrowlParent="True" VerticalAlignment="Top" Margin="0,10,0,10" />
+			</ScrollViewer>
+
+			<ToggleButton Style="{StaticResource ToggleButtonIconTransparent}" VerticalAlignment="Top" Margin="-5 0 0 0" hc:IconSwitchElement.Geometry="{StaticResource RightGeometry}" hc:IconSwitchElement.GeometrySelected="{StaticResource LeftGeometry}" 
+				IsChecked="{Binding IsOpen,ElementName=SideMenuContainer}"
+				Visibility="{Binding IsOpen,ElementName=SideMenuContainer,Converter={StaticResource Boolean2VisibilityReConverter}}" />
+			<Frame Grid.Column="1" x:Name="Presenter" NavigationUIVisibility="Hidden" BorderThickness="0" />
+		</Grid>
+	</hc:DrawerContainer>
+</hc:Window>

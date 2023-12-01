@@ -9,17 +9,12 @@ using FModel.Views.Snooper;
 
 using Xylia.Extension;
 using Xylia.Preview.Properties;
-using Xylia.Preview.UI.Views;
+using Xylia.Preview.UI.Controls;
 
 namespace Xylia.Preview.UI.ViewModels;
 public partial class UserSettings : Settings
 {
 	public static UserSettings Default => new();
-
-
-	public Version Version => Assembly.GetEntryAssembly().GetName().Version;
-
-	public DateTime VersionTime => new DateTime(2000, 1, 1).AddDays(Version.Build).AddSeconds(Version.Revision * 2);
 
 
 	#region Model
@@ -155,14 +150,21 @@ public partial class UserSettings : Settings
 	#region Preview 
 	protected const string sp = "Preview";
 
-	public int CopyMode { get => GetValue(sp).ToInt32(); set => SetValue(value,  sp); }
+	public CopyMode CopyMode
+	{
+		get => (CopyMode)GetValue().ToInt32();
+		set
+		{
+			SetValue((int)value);
+			BnsCustomLabelWidget.CopyMode = value;
+		}
+	}
 
 
 	public bool Text_LoadPrevious { get => GetValue().ToBool(); set => SetValue(value); }
 	public string Text_OldPath { get => GetValue(); set => SetValue(value); }
 	public string Text_NewPath { get => GetValue(); set => SetValue(value); }
 	#endregion
-
 
 	#region Common
 	public bool UsePerformanceMonitor
@@ -177,4 +179,13 @@ public partial class UserSettings : Settings
 		}
 	}
 	#endregion
+}
+
+internal static class VersionHelper
+{
+	public static Version InternalVersion => Assembly.GetEntryAssembly().GetName().Version;
+
+	public static DateTime Time => new DateTime(2000, 1, 1).AddDays(InternalVersion.Revision);
+
+	public static Version Version => new Version(InternalVersion.Major, InternalVersion.Minor, InternalVersion.Build);
 }

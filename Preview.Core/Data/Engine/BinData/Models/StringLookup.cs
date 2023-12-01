@@ -11,15 +11,9 @@ namespace Xylia.Preview.Data.Engine.BinData.Models;
 [JsonConverter(typeof(StringLookupConverter))]
 public class StringLookup
 {
-	public static StringLookup Empty => new StringLookup { Data = new byte[2] };
-
 	public byte[] Data { get; set; }
 	public bool IsPerTable { get; set; }
 
-	public void ReadFrom(BinaryReader reader, int size)
-	{
-		Data = reader.ReadBytes(size);
-	}
 
 	[MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
 	public string GetString(int offset)
@@ -59,4 +53,9 @@ public class StringLookup
 			IsPerTable = IsPerTable
 		};
 	}
+
+
+
+
+	//Encoding.Unicode.GetString(loadStringLookup.Data);
 }

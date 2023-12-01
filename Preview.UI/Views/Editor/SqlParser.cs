@@ -2,7 +2,6 @@
 
 using Irony.Parsing;
 
-using Xylia.Preview.Common.Extension;
 using Xylia.Preview.Data;
 using Xylia.Preview.Data.Models;
 
@@ -261,7 +260,7 @@ public static class IronyExtension
 		// xpath
 		path = path.Remove(0, 1);
 		var current = path.SubstringBefore('/');
-		var next = path.SubstringBeforeLast(current).Trim();
+		var next = path.SubstringAfter(current).Trim();
 
 		// select
 		var temp = node.ChildNodes.Where(x => current == "*" || x.Term.Name == current);
@@ -270,6 +269,11 @@ public static class IronyExtension
 	}
 
 	public static bool IsEmpty(this ParseTreeNode node) => node.ChildNodes.Count == 0;
+
+	/// <summary>
+	/// return token text
+	/// </summary>
+	public static string GetToken(this ParseTreeNode node) => node.Token.Text?.Trim('"');
 }
 
 
@@ -278,6 +282,8 @@ public sealed class SqlParser
 	private static readonly Parser parser = new(new LanguageData(new SqlGrammar()));
 	public BnsDatabase Database { internal set; get; }
 
+	public string[] Fields;
+	public Record[] Source;
 
 	public void Execute(string command)
 	{
@@ -295,10 +301,11 @@ public sealed class SqlParser
 		}
 	}
 
+
 	private void Select(ParseTreeNode node)
 	{
-		var Name = node.SelectNode("/fromClauseOpt/idlist/Id/*").Token.Text?.Trim('"');
-		var fields = node.SelectNodes("/selList/columnItemList/columnItem/columnSource/Id/*").Select(x => x.Token.Text).ToList();
+		var Name = node.SelectNode("/fromClauseOpt/idlist/Id/*").GetToken();
+		var fields = node.SelectNodes("/selList/columnItemList/columnItem/columnSource/Id/*").Select(x => x.GetToken()).ToList();
 		var limitNum = (int?)node.SelectNode("/limitClauseOpt/number")?.Token.Value;
 		var WhereClause = node.SelectNode("/whereClauseOpt");
 
@@ -345,14 +352,16 @@ public sealed class SqlParser
 		}
 		else
 		{
-			var Id = expr.SelectNodes("/Id/*").Select(x => x.Token.Text).ToArray();
+			var Id = expr.SelectNodes("/Id/*").Select(x => x.GetToken()).ToArray();
 			if (Id.Length > 1)
 			{
 				var key = Id[0];
 				var value = Id[1];
 				var _value = record.Attributes[key];
 
-				if (Op == "=" || Op == "==") return _value == value;
+				// TODO: String.Equal
+				// TODO: like
+				if (Op == "=" || Op == "==") return _value == value;  
 				else if (Op == "!=" || Op == "<>") return _value != value;
 			}
 			else
@@ -380,8 +389,4 @@ public sealed class SqlParser
 
 		throw new NotImplementedException("Invalid operator: " + Op);
 	}
-
-
-	public string[] Fields;
-	public Record[] Source;
 }

@@ -1,7 +1,6 @@
 ﻿using System;
 
 using Xylia.Preview.Data.Common.DataStruct;
-using Xylia.Preview.UI.Documents.Args;
 
 namespace Xylia.Preview.UI.Documents.Links;
 /// <summary>

@@ -16,6 +16,11 @@ public struct TRef
 		Variant = variant;
 	}
 
+	public TRef(int table, Ref Ref) : this(table, Ref.Id, Ref.Variant)
+	{
+	}
+
+
 	public override string ToString()
 	{
 		return $"({Id}:{Variant}, table: {Table})";

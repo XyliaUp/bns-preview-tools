@@ -1,16 +1,13 @@
 ﻿<Page x:Class="Xylia.Preview.UI.Views.Pages.ItemPage"
-		xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-		xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-	    xmlns:UI="https://github.com/xyliaup/bns-preview-tools"
-		xmlns:VM="clr-namespace:Xylia.Preview.UI.ViewModels"
-		xmlns:Metro="clr-namespace:AduSkin.Controls.Metro;assembly=AduSkin"
-		Title="ItemPage">
-	<TabControl>
-		<TabItem Header="Item List" >
-			<Grid>
+	  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	  xmlns:hc="https://handyorg.github.io/handycontrol"
+	  xmlns:VM="clr-namespace:Xylia.Preview.UI.ViewModels"
+	  Title="ItemPage" >
+	<TabControl BorderThickness="0">
+		<TabItem Header="{DynamicResource ItemList_Name}" >
+			<Grid >
 				<Grid.RowDefinitions>
-					<RowDefinition Height="Auto" />
-					<RowDefinition Height="Auto" />
 					<RowDefinition Height="Auto" />
 					<RowDefinition Height="Auto" />
 					<RowDefinition Height="Auto" />
@@ -19,87 +16,67 @@
 				<Grid.ColumnDefinitions>
 					<ColumnDefinition Width="4*" />
 					<ColumnDefinition Width="*" />
-					<ColumnDefinition Width="*" />
 				</Grid.ColumnDefinitions>
 
-				<Label Grid.Row="0" Content="{DynamicResource GameDirectory}" />
-				<TextBox Grid.Row="1" Text="{Binding GameFolder, Source={x:Static VM:UserSettings.Default}}" />
-				<Button Grid.Row="1" Grid.Column="1" Style="{StaticResource FolderBrower}" Click="Brower_GameFolder_Click" />
+
+				<hc:SearchBar Grid.Row="0"
+						Style="{StaticResource SearchBarExtend}" hc:InfoElement.Title="{DynamicResource GameDirectory}" hc:InfoElement.Necessary="True"
+						Text="{Binding GameFolder, Source={x:Static VM:UserSettings.Default}, Mode=OneWay}" Command="{Binding OpenSettingsCommand}" />
+				<hc:SearchBar Grid.Row="1"
+						Style="{StaticResource SearchBarExtend}" hc:InfoElement.Title="{DynamicResource ItemList_Path}"
+						Text="{Binding ItemListPath}" Command="{Binding BrowerItemListCommand}"
+						Visibility="{Binding OnlyUpdate, Converter={StaticResource Boolean2VisibilityConverter}}" />
+				<CheckBox Grid.Row="2" Content="{DynamicResource ItemList_OnlyUpdate}" IsChecked="{Binding OnlyUpdate}" Margin="0 15 0 0"/>
 
 
-				<Label Grid.Row="2" Content="Select prev item list （or cancel check &quot;only update&quot;）"/>
-				<TextBox Grid.Row="3" Text="{Binding ItemListPath}"  Margin="0 0 5 0" x:Name="ItemListPath" />
-				<Button Grid.Row="3" Grid.Column="1" Style="{StaticResource FolderBrower}" Click="Brower_ItemList_Click" />
-				<CheckBox Grid.Row="5" Grid.Column="0" Content="only update" IsChecked="{Binding OnlyUpdate}" Margin="0 15 0 0"/>
-
-				<Button Grid.Row="2" Grid.Column="2" Content="Create" Command="{Binding CreateItemListCommand}" />
+				<Button Grid.Row="0" Grid.Column="1" Content="{DynamicResource ItemList_Run}" Command="{Binding CreateItemListCommand}" Margin="0 20 0 0" />
 			</Grid>
 		</TabItem>
 
-		<TabItem Header="Preview Item" >
-			<StackPanel Orientation="Vertical" >
-				<Button Content="clear data" Click="ClearCacheData_Click" Width="80" Height="40" HorizontalAlignment="Left"/>
-
-				<Label Content="Search rule (Advance mode when empty)" />
-				<Metro:MetroTextBox x:Name="SearchItem_Rule" HorizontalAlignment="Left" Width="250" 
-									PopupHint="input item info  (id / alias / name)" 
-									ButtonTitle="Search" ButtonClick="SearchItem_Click" />
-			</StackPanel>
-		</TabItem>
-
-		<TabItem Header="Preview Else" >
+		<TabItem Header="{DynamicResource Text_Preview}" >
 			<Grid>
 				<Grid.ColumnDefinitions>
 					<ColumnDefinition Width="*" />
 					<ColumnDefinition Width="*" />
 				</Grid.ColumnDefinitions>
 
-				<GroupBox Header="Preview" Grid.Column="0">
-					<WrapPanel ItemHeight="35" ItemWidth="Auto" Orientation="Vertical">
+				<GroupBox Header="{DynamicResource Text_Preview}" Grid.Column="0">
+					<WrapPanel Orientation="Vertical">
 						<WrapPanel.Resources>
 							<Style TargetType="{x:Type Button}">
 								<Setter Property="FrameworkElement.Margin" Value="5"/>
+								<Setter Property="MinHeight" Value="35"/>
 							</Style>
 						</WrapPanel.Resources>
 
+
+						<hc:SearchBar x:Name="SearchItem_Rule" Style="{StaticResource SearchBarExtend}" Width="250" Margin="0 0 0 20" 
+							hc:InfoElement.Title="Search Item" hc:InfoElement.Placeholder="input item info  (id / alias / name)" 
+							Command="{Binding PreviewItemCommand}" CommandParameter="{Binding Text,RelativeSource={RelativeSource Self}}" />
 						<Button Content="ItemStore"     Command="{Binding PreviewCommand}" CommandParameter="Game_ItemStore.Game_ItemStoreScene" />
 						<Button Content="ItemMap"       Command="{Binding PreviewCommand}" CommandParameter="Game_ItemMap.Game_ItemMapScene" />
 						<Button Content="Map"           Command="{Binding PreviewCommand}" CommandParameter="Game_Map.Game_MapScene" />
-						<Button Content="Npc"           Command="{Binding PreviewListCommand}" CommandParameter="Npc" />
 						<Button Content="CharacterInfo" Command="{Binding PreviewCommand}" CommandParameter="Game_CharacterInfo.Game_CharacterInfo_Scene" />
+						<Button Content="clear data"    Click="ClearCacheData_Click" Background="Orange"/>
 					</WrapPanel>
 				</GroupBox>
 
-				<GroupBox Header="Output" Grid.Column="1">
-					<WrapPanel ItemHeight="35" ItemWidth="Auto" Orientation="Vertical">
+				<GroupBox Header="{DynamicResource Text_Output}" Grid.Column="1">
+					<WrapPanel Orientation="Vertical">
 						<WrapPanel.Resources>
 							<Style TargetType="{x:Type Button}">
-								<Setter Property="FrameworkElement.Margin" Value="5"/>
+								<Setter Property="Margin" Value="5"/>
+								<Setter Property="MinHeight" Value="35"/>
 							</Style>
 						</WrapPanel.Resources>
 
-						<Button Content="BuyPrice"     Click="BuyPrice_Click"/>
-						<Button Content="Transform"    Click="ItemTransform_Click"/>
-						<Button Content="Closet"       Click="ItemCloset_Main_Click"/>
-						<Button Content="Data GUI"     Click="DatabaseGui_Click" Background="Orange"/>
+						<Button Content="BuyPrice"	Click="BuyPrice_Click"/>
+						<Button Content="Transform"	Click="ItemTransform_Click"/>
+						<Button Content="Closet"	Click="ItemCloset_Main_Click"/>
+						<Button Content="Data GUI"	Click="DatabaseGui_Click" Background="Orange"/>
 					</WrapPanel>
 				</GroupBox>
 			</Grid>
-		</TabItem>
-
-
-
-		<TabItem Header="Test" Visibility="Collapsed">
-			<StackPanel>
-				<UI:BnsCustomLabelWidget>
-					<![CDATA[
-<font name="00008130.Program.Fontset_ItemGrade_8">造成<arg p="3:integer"/>～<arg p="4:integer"/>点伤害</font><br/>
-<font name="00008130.UI.Label_Green03_12">22229522</font><br/>
-<font name="00008130.UI.Label_Green03_20">3333332</font>
-<image enablescale="true" imagesetpath="/Game/Art/UI/V2/Resource/UI_Common_Resource/UI_Stats_Resource/Species_Dragon.Species_Dragon" scalerate="1.4"/>
-					]]>
-				</UI:BnsCustomLabelWidget>
-			</StackPanel>
 		</TabItem>
 	</TabControl>
 </Page>

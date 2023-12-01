@@ -1,4 +1,5 @@
 ﻿using System.IO;
+using System.Windows;
 
 using Ookii.Dialogs.Wpf;
 
@@ -9,7 +10,7 @@ using Xylia.Preview.UI.ViewModels;
 namespace Xylia.Preview.UI.Views;
 public partial class SettingsView : Window
 {
-	public UserSettings settings;
+	UserSettings settings;
 
 	public SettingsView()
 	{
@@ -17,8 +18,7 @@ public partial class SettingsView : Window
 		InitializeComponent();
 	}
 
-
-
+	#region Methods
 	private void OnClosing(object sender, RoutedEventArgs e)
 	{
 		Close();
@@ -52,10 +52,6 @@ public partial class SettingsView : Window
 
 		this.Activate();
 	}
-
-
-
-
 
 
 	public static bool TryBrowseFolder(out string path)
@@ -92,4 +88,5 @@ public partial class SettingsView : Window
 		path = string.Empty;
 		return false;
 	}
+	#endregion
 }

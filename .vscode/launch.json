@@ -2,11 +2,13 @@
     "version": "0.2.0",
     "configurations": [
         {
+            // https://github.com/dotnet/vscode-csharp/blob/main/debugger-launchjson.md
             "name": ".NET Core Launch (console)",
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "build",
-            "program": "${workspaceFolder}/Preview.UI/bin/Debug/net7.0-windows/win-x64/Preview.UI.dll",
+            //"program": "${workspaceFolder}/Preview.Tests/bin/Debug/net8.0-windows/Preview.Tests.dll",
+            "program": "${workspaceFolder}/Preview.UI/bin/Debug/net8.0-windows/win-x64/Preview.UI.dll",
             "args": [],
             "cwd": "${workspaceFolder}/Preview.UI",
             "console": "internalConsole",

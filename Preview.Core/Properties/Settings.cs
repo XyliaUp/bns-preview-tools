@@ -1,8 +1,6 @@
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
-using CUE4Parse.BNS;
-
 using Xylia.Configure;
 using Xylia.Extension;
 
@@ -75,8 +73,6 @@ public class Settings : INotifyPropertyChanged
 
 	public string OutputFolderResource { get => GetValue(); set => SetValue(value); }
 
-
-	public LoadMode LoadMode { get => (LoadMode)GetValue().ToInt32(); set => SetValue((int)value); }
 
 	public bool UseUserDefinition { get => GetValue().ToBool(); set => SetValue(value); }
 	#endregion

@@ -1,4 +1,6 @@
-﻿namespace Xylia.Preview.UI.Views.Pages;
+﻿using System.Windows;
+
+namespace Xylia.Preview.UI.Views.Pages;
 internal class ControlPage
 {
 	private readonly string name;
@@ -11,6 +13,8 @@ internal class ControlPage
 		this.type = type;
 	}
 
+
+	//public string Icon;
 
 	public string Text => Application.Current.TryFindResource(name)?.ToString();
 

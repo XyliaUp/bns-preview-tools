@@ -77,7 +77,7 @@ public sealed class MapInfo : Record
 
 
 	#region Methods
-	public string Text => Name2.GetText();
+	public override string GetText => Name2.GetText();
 
 	public static MapUnit.MapDepthSeq GetMapDepth(MapInfo MapInfo)
 	{

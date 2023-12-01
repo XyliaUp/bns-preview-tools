@@ -290,5 +290,5 @@ public sealed class FilterSet : Record
 	[Side(ReleaseSide.Client)]
 	public string Name;
 
-	public List<Filter> Filter;
+	public List<Filter> Filter { get; set; }
 }

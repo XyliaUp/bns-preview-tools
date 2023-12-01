@@ -4,7 +4,7 @@
 		xmlns:VM="clr-namespace:Xylia.Preview.UI.ViewModels"
 	    xmlns:UI="https://github.com/xyliaup/bns-preview-tools"
 		xmlns:avalonEdit="http://icsharpcode.net/sharpdevelop/avalonedit"
-        Title="TextEditor" Icon="{x:Null}" Height="450" Width="800" 
+        Title="{DynamicResource TextView}" Icon="{x:Null}" Height="450" Width="800" 
 		Loaded="Window_Loaded">
 	<Grid>
 		<Grid.RowDefinitions>
@@ -19,10 +19,10 @@
 
 		<!-- Menu -->
 		<Menu Background="#20808080" FontSize="14" Grid.ColumnSpan="2" Visibility="Visible">
-			<MenuItem Header="File">
-				<MenuItem Header="Left"  Click="OpenLeftFileMenuItem_Click" />
-				<MenuItem Header="Right" Click="OpenRightFileMenuItem_Click" />
-				<MenuItem Header="Load last on startup" IsCheckable="True" IsChecked="{Binding Text_LoadPrevious, Source={x:Static VM:UserSettings.Default}}"/>
+			<MenuItem Header="{DynamicResource Text_File}">
+				<MenuItem Header="{DynamicResource Text_Left}"  Click="OpenLeftFileMenuItem_Click" />
+				<MenuItem Header="{DynamicResource Text_Left}" Click="OpenRightFileMenuItem_Click" />
+				<MenuItem Header="{DynamicResource TextView_LoadLastOnStartup}" IsCheckable="True" IsChecked="{Binding Text_LoadPrevious, Source={x:Static VM:UserSettings.Default}}"/>
 			</MenuItem>
 			<MenuItem Header="Mode" Visibility="Collapsed">
 				<MenuItem Header="Inline Mode" Click="InlineModeToggle_Click" />
@@ -71,22 +71,21 @@
 													</Popup>
 												</avalonEdit:DropDownButton.DropDownContent>
 											</avalonEdit:DropDownButton>
-											<Button Margin="3" Height="24" Width="24" Command="avalonEdit:SearchCommands.FindPrevious" ToolTip="{Binding Localization.FindPreviousText, RelativeSource={RelativeSource TemplatedParent}}">
-												<!-- <Image Width="16" Height="16" Stretch="Fill" Source="prev.png" /> -->
-												<TextBlock Text="&lt;" />
+											
+											<Button Margin="3" Command="avalonEdit:SearchCommands.FindPrevious" ToolTip="{Binding Localization.FindPreviousText, RelativeSource={RelativeSource TemplatedParent}}">
+												<Path Data="{StaticResource LeftGeometry}" Fill="{DynamicResource PrimaryBrush}" Stretch="Uniform" />
 											</Button>
-											<Button Margin="3" Height="24" Width="24" Command="avalonEdit:SearchCommands.FindNext" ToolTip="{Binding Localization.FindNextText, RelativeSource={RelativeSource TemplatedParent}}">
-												<!-- <Image Width="16" Height="16" Stretch="Fill" Source="next.png" /> -->
-												<TextBlock Text="&gt;" />
+											<Button Margin="3" Command="avalonEdit:SearchCommands.FindNext" ToolTip="{Binding Localization.FindNextText, RelativeSource={RelativeSource TemplatedParent}}">
+												<Path Data="{StaticResource RightGeometry}" Fill="{DynamicResource PrimaryBrush}" Stretch="Uniform" />
 											</Button>
-											<Button Height="16" Width="16" HorizontalAlignment="Right" VerticalAlignment="Top" ToolTip="Close" Command="avalonEdit:SearchCommands.CloseSearchPanel" Focusable="False">
-												<Path Data="M 0,0 L 8,8 M 8,0 L 0,8" Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" StrokeThickness="1" />
+											<Button HorizontalAlignment="Right" VerticalAlignment="Top" ToolTip="Close" Command="avalonEdit:SearchCommands.CloseSearchPanel" Focusable="False">
+												<Path Data="{StaticResource CloseGeometry}" Fill="{DynamicResource PrimaryBrush}" Stretch="Uniform" />
 											</Button>
 										</StackPanel>
 
 										<StackPanel Grid.Row="2" Margin="5">
-											<UI:BnsCustomLabelWidget Text="{Binding Tag.Alias}" FontWeight="Bold" Margin="0 0 0 5"/>
-											<UI:BnsCustomLabelWidget Text="{Binding Tag.Text}" />
+											<UI:BnsCustomLabelWidget Text="{Binding Tag.alias ,Mode=OneWay}" FontWeight="Bold" Margin="0 0 0 5"/>
+											<UI:BnsCustomLabelWidget Text="{Binding Tag.text ,Mode=OneWay}" />
 										</StackPanel>
 									</StackPanel>
 								</Border>

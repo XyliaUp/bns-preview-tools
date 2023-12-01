@@ -1,11 +1,9 @@
-﻿using Xylia.Preview.Data.Engine.BinData.Models;
-
-namespace Xylia.Preview.Data.Models;
+﻿namespace Xylia.Preview.Data.Models;
 public sealed class Script : Record
 {
-	public List<Decision.Default> Decision = new();
+	public List<Decision.Default> Decision { get; set; } = new();
 
-	public List<Decision.QuestDecision> QuestDecision = new();
+	public List<Decision.QuestDecision> QuestDecision { get; set; } = new();
 
 
 

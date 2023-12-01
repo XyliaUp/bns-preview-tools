@@ -1,0 +1,52 @@
+﻿<Window x:Class="Xylia.Preview.UI.Views.Pages.AbilitySetting"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+		xmlns:hc="https://handyorg.github.io/handycontrol"
+        Title="AbilitySetting">
+	<TabControl>
+		<TabItem Header="Level Factor">
+			<hc:UniformSpacingPanel Orientation="Vertical" Spacing="5">
+				<StackPanel Orientation="Horizontal">
+					<TextBox Name="Page1_Value1" Width="100" />
+					<TextBox Name="Page1_Percent1" Width="50" />
+					<TextBlock Text="%" />
+				</StackPanel>
+				<StackPanel Orientation="Horizontal">
+					<TextBox Name="Page1_Value2" Width="100" />
+					<TextBox Name="Page1_Percent2" Width="50" />
+					<TextBlock Text="%" />
+				</StackPanel>
+
+				<hc:TextBox Name="Txt_Inital" hc:TitleElement.TitlePlacement="Left" hc:TitleElement.Title="Init" />
+				<hc:TextBox Name="Page1_k"    hc:TitleElement.TitlePlacement="Left" hc:TitleElement.Title="变化率 (%)" />
+				<CheckBox Name="Page1_k_Lock" Content="Lock" />
+				<Button Content="GET" Click="GetFactor_Click"/>
+
+				<hc:TextBox Name="Page1_A" hc:TitleElement.Title="Current level factor" />
+			</hc:UniformSpacingPanel>
+		</TabItem>
+
+		<TabItem Header="Level Params">
+			<hc:UniformSpacingPanel Orientation="Vertical" Spacing="5">
+				<StackPanel Orientation="Horizontal">
+					<hc:NumericUpDown Name="Level1" Value="1" />
+					<TextBox Name="Page2_Value1" Width="100" />
+					<TextBox Name="Page2_Percent1" Width="50" />
+					<TextBlock Text="%" />
+				</StackPanel>
+				<StackPanel Orientation="Horizontal">
+					<hc:NumericUpDown Name="Level2" Value="60" />
+					<TextBox Name="Page2_Value2" Width="100" />
+					<TextBox Name="Page2_Percent2" Width="50" />
+					<TextBlock Text="%" />
+				</StackPanel>
+
+				<hc:TextBox Name="Params_k" hc:TitleElement.Title="变化率 (%)" hc:TitleElement.TitlePlacement="Left" Text="95" />
+				<Button Content="GET" Click="GetParams_Click"/>
+
+				<hc:TextBox Name="Params_μ" hc:TitleElement.Title="μ" hc:TitleElement.TitlePlacement="Left" />
+				<hc:TextBox Name="Params_Φ" hc:TitleElement.Title="Φ" hc:TitleElement.TitlePlacement="Left" />
+			</hc:UniformSpacingPanel>
+		</TabItem>
+	</TabControl>
+</Window>

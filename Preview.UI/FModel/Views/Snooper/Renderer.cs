@@ -1,4 +1,5 @@
 using System.Numerics;
+using System.Windows;
 
 using CUE4Parse.UE4.Assets.Exports;
 using CUE4Parse.UE4.Assets.Exports.Animation;
@@ -11,12 +12,12 @@ using CUE4Parse.UE4.Objects.Core.Math;
 using CUE4Parse.UE4.Objects.Core.Misc;
 using CUE4Parse.UE4.Objects.Engine;
 using CUE4Parse.UE4.Objects.UObject;
+using CUE4Parse.Utils;
 
 using CUE4Parse_Conversion.Animations;
 using CUE4Parse_Conversion.Meshes;
 
 using FModel.Creator;
-using CUE4Parse.Utils;
 using FModel.Views.Snooper.Animations;
 using FModel.Views.Snooper.Buffers;
 using FModel.Views.Snooper.Lights;
@@ -107,7 +108,7 @@ public class Renderer : IDisposable
         if (!Options.TryGetModel(out var model) || !Options.TryGetSection(model, out var section)) return;
 
         model.Materials[section.MaterialIndex].SwapMaterial(unrealMaterial);
-        Application.Current.Dispatcher.Invoke(() => model.Materials[section.MaterialIndex].Setup(Options, model.UvCount));
+		Application.Current.Dispatcher.Invoke(() => model.Materials[section.MaterialIndex].Setup(Options, model.UvCount));
     }
 
     public void Animate(UObject anim) => Animate(anim, Options.SelectedModel);
@@ -292,15 +293,7 @@ public class Renderer : IDisposable
             foreach (var guid in animation.AttachedModels)
             {
                 if (Options.Models[guid] is not SkeletalModel skeletalModel) continue;
-
-                try
-                {
-					skeletalModel.Skeleton.UpdateAnimationMatrices(animation, AnimateWithRotationOnly);
-				}
-				catch
-                {
-
-                }
+                skeletalModel.Skeleton.UpdateAnimationMatrices(animation, AnimateWithRotationOnly);
             }
         }
 
@@ -423,8 +416,8 @@ public class Renderer : IDisposable
                 actor.ExportType is "LODActor" or "SplineMeshActor")
                 continue;
 
-            //Services.ApplicationService.ApplicationView.Status.UpdateStatusLabel($"{original.Name} ... {i}/{length}");
-            WorldCamera(actor);
+			//Services.ApplicationService.ApplicationView.Status.UpdateStatusLabel($"{original.Name} ... {i}/{length}");
+			WorldCamera(actor);
             WorldLight(actor);
             WorldMesh(actor, transform);
             AdditionalWorlds(actor, transform.Matrix, cancellationToken);

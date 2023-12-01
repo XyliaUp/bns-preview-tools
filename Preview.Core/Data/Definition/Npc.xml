@@ -1,432 +1,436 @@
 <?xml version="1.0" encoding="utf-8"?>
 <table name="npc" version="2.5" autokey="true" module="270">
-  <el name="table" child="1" />
-  <el name="record">
-    <attribute name="alias" type="String" required="y" max="70" />
-    <attribute name="name" type="String" max="50" />
-    <attribute name="title" type="String" max="64" />
-    <attribute name="name2" type="Ref" ref="text" />
-    <attribute name="title2" type="Ref" ref="text" />
-    <attribute name="boss-npc" type="Ref" ref="bossnpc" />
-    <attribute name="soul-npc" type="Bool" />
-    <attribute name="big-boss-npc" type="Bool" />
-    <attribute name="write-combat-log" type="Bool" />
-    <attribute name="radius" type="Distance" default="0" min="0" max="5000" />
-    <attribute name="scale" type="Int16" default="1000" min="0" max="10000" />
-    <attribute name="walk-speed" type="Velocity" default="0" min="0" max="8000" />
-    <attribute name="run-speed" type="Velocity" default="0" min="0" max="8000" />
-    <attribute name="spawn-cinematic" type="Ref" ref="cinematic" deprecated="y" />
-    <attribute name="neutral-hostile" type="Seq">
-      <case name="offensive" />
-      <case name="fightback" default="y" />
-      <case name="neutral" />
-    </attribute>
-    <attribute name="offensive" type="Bool" />
-    <attribute name="immune-skill-attribute" type="Seq" seq="skill-attribute" default="none" repeat="8" />
-    <attribute name="immune-effect-attribute" type="Seq16" seq="effect-attribute" default="none" repeat="20" />
-    <attribute name="immune-breaker-attribute" type="Seq16" seq="effect-attribute" default="none" repeat="8" />
-    <attribute name="immune-breaker-count" type="Int8" default="0" />
-    <attribute name="immune-breaker-init-duration" type="Msec" default="0" />
-    <attribute name="immune-breaker-show" type="XUnknown2" repeat="8" />
-    <attribute name="store" type="Ref" ref="store" />
-    <attribute name="store-by-item" type="Ref" ref="store-by-item" />
-    <attribute name="store2" type="Ref" ref="store2" repeat="6" />
-    <attribute name="teleport" type="Ref" ref="teleport" />
-    <attribute name="repairer" type="Bool" />
-    <attribute name="production" type="Seq" seq="production-type" default="none" />
-    <attribute name="market" type="Bool" />
-    <attribute name="post-office" type="Bool" />
-    <attribute name="exchange-faction-score" type="Bool" />
-    <attribute name="exchange-faction-score-max-faction-level" type="Int16" default="0" />
-    <attribute name="exchange-faction-score-multiply-value" type="Int8" default="1" min="1" max="100" />
-    <attribute name="join-leave-faction" type="Bool" />
-    <attribute name="transfer-faction" type="Bool" />
-    <attribute name="depot" type="Bool" />
-    <attribute name="guild" type="Bool" />
-    <attribute name="max-faction-score" type="Int32" default="999" min="0" max="1000000" />
-    <attribute name="enable-co-ownership-pouch" type="Bool" />
-    <attribute name="reward-faction-score" type="Int32" default="0" min="0" max="100000" />
-    <attribute name="peaktime-reward-sun-start-hour" type="Int8" default="-1" min="-1" max="23" />
-    <attribute name="peaktime-reward-sun-end-hour" type="Int8" default="-1" min="-1" max="24" />
-    <attribute name="peaktime-reward-mon-start-hour" type="Int8" default="-1" min="-1" max="23" />
-    <attribute name="peaktime-reward-mon-end-hour" type="Int8" default="-1" min="-1" max="24" />
-    <attribute name="peaktime-reward-tue-start-hour" type="Int8" default="-1" min="-1" max="23" />
-    <attribute name="peaktime-reward-tue-end-hour" type="Int8" default="-1" min="-1" max="24" />
-    <attribute name="peaktime-reward-wed-start-hour" type="Int8" default="-1" min="-1" max="23" />
-    <attribute name="peaktime-reward-wed-end-hour" type="Int8" default="-1" min="-1" max="24" />
-    <attribute name="peaktime-reward-thu-start-hour" type="Int8" default="-1" min="-1" max="23" />
-    <attribute name="peaktime-reward-thu-end-hour" type="Int8" default="-1" min="-1" max="24" />
-    <attribute name="peaktime-reward-fri-start-hour" type="Int8" default="-1" min="-1" max="23" />
-    <attribute name="peaktime-reward-fri-end-hour" type="Int8" default="-1" min="-1" max="24" />
-    <attribute name="peaktime-reward-sat-start-hour" type="Int8" default="-1" min="-1" max="23" />
-    <attribute name="peaktime-reward-sat-end-hour" type="Int8" default="-1" min="-1" max="24" />
-    <attribute name="contribution-reward" type="Ref" ref="contributionreward" />
-    <attribute name="contribution-day-reward-sun" type="Ref" ref="contributionreward" />
-    <attribute name="contribution-day-reward-mon" type="Ref" ref="contributionreward" />
-    <attribute name="contribution-day-reward-tue" type="Ref" ref="contributionreward" />
-    <attribute name="contribution-day-reward-wed" type="Ref" ref="contributionreward" />
-    <attribute name="contribution-day-reward-thu" type="Ref" ref="contributionreward" />
-    <attribute name="contribution-day-reward-fri" type="Ref" ref="contributionreward" />
-    <attribute name="contribution-day-reward-sat" type="Ref" ref="contributionreward" />
-    <attribute name="contribution-peaktime-reward-sun-start-hour" type="Int8" default="-1" min="-1" max="23" />
-    <attribute name="contribution-peaktime-reward-sun-end-hour" type="Int8" default="-1" min="-1" max="24" />
-    <attribute name="contribution-peaktime-reward-mon-start-hour" type="Int8" default="-1" min="-1" max="23" />
-    <attribute name="contribution-peaktime-reward-mon-end-hour" type="Int8" default="-1" min="-1" max="24" />
-    <attribute name="contribution-peaktime-reward-tue-start-hour" type="Int8" default="-1" min="-1" max="23" />
-    <attribute name="contribution-peaktime-reward-tue-end-hour" type="Int8" default="-1" min="-1" max="24" />
-    <attribute name="contribution-peaktime-reward-wed-start-hour" type="Int8" default="-1" min="-1" max="23" />
-    <attribute name="contribution-peaktime-reward-wed-end-hour" type="Int8" default="-1" min="-1" max="24" />
-    <attribute name="contribution-peaktime-reward-thu-start-hour" type="Int8" default="-1" min="-1" max="23" />
-    <attribute name="contribution-peaktime-reward-thu-end-hour" type="Int8" default="-1" min="-1" max="24" />
-    <attribute name="contribution-peaktime-reward-fri-start-hour" type="Int8" default="-1" min="-1" max="23" />
-    <attribute name="contribution-peaktime-reward-fri-end-hour" type="Int8" default="-1" min="-1" max="24" />
-    <attribute name="contribution-peaktime-reward-sat-start-hour" type="Int8" default="-1" min="-1" max="23" />
-    <attribute name="contribution-peaktime-reward-sat-end-hour" type="Int8" default="-1" min="-1" max="24" />
-    <attribute name="personal-dropped-pouch-reward" type="Ref" ref="reward" />
-    <attribute name="reward-sealed-dungeon" type="Ref" ref="npc-sealed-dungeon-reward" />
-    <attribute name="fielditemdrop" type="Ref" ref="fielditemdrop" />
-    <attribute name="deadbody-fielditemdrop" type="Ref" ref="fielditemdrop" />
-    <attribute name="deadbody-pickup-duration" type="Msec" default="0" />
-    <attribute name="burrow" type="Bool" />
-    <attribute name="manipulate-duration" type="Msec" default="0" />
-    <attribute name="caster-manipulate-animname" type="String" max="50" />
-    <attribute name="target-manipulate-animname" type="String" max="50" />
-    <attribute name="caster-manipulate-show" type="XUnknown2" />
-    <attribute name="target-manipulate-show" type="XUnknown2" />
-    <attribute name="action-name" type="Ref" ref="text" />
-    <attribute name="action-desc" type="Ref" ref="text" />
-    <attribute name="manipulate-transit-zone" type="Ref" ref="zone" />
-    <attribute name="forwarding-types" type="Seq" repeat="80" hidden="y">
-      <case name="progress-mission" />
-      <case name="acquire-quest" />
-      <case name="skill-target" />
-      <case name="mission-step-rollback" />
-    </attribute>
-    <attribute name="quests" type="Ref" ref="quest" repeat="80" hidden="y" />
-    <attribute name="missions" type="Int8" repeat="80" hidden="y" />
-    <attribute name="cases" type="Int8" repeat="80" hidden="y" />
-    <attribute name="case-subtypes" type="Int16" repeat="80" hidden="y" />
-    <attribute name="loot-forwarding-types" type="Seq" repeat="8" hidden="y">
-      <case name="progress-mission" />
-      <case name="acquire-quest" />
-      <case name="skill-target" />
-      <case name="mission-step-rollback" />
-    </attribute>
-    <attribute name="loot-quests" type="Ref" ref="quest" repeat="8" hidden="y" />
-    <attribute name="loot-missions" type="Int8" repeat="8" hidden="y" />
-    <attribute name="loot-cases" type="Int8" repeat="8" hidden="y" />
-    <attribute name="loot-item" type="Ref" ref="item" repeat="8" hidden="y" />
-    <attribute name="finish-blow-forwarding-types" type="Seq" repeat="21" hidden="y">
-      <case name="progress-mission" />
-      <case name="acquire-quest" />
-      <case name="skill-target" />
-      <case name="mission-step-rollback" />
-    </attribute>
-    <attribute name="finish-blow-quests" type="Ref" ref="quest" repeat="21" hidden="y" />
-    <attribute name="finish-blow-missions" type="Int8" repeat="21" hidden="y" />
-    <attribute name="finish-blow-cases" type="Int8" repeat="21" hidden="y" />
-    <attribute name="walk-ratescale" type="Float32" default="1" min="0.0" max="100.0" />
-    <attribute name="run-ratescale" type="Float32" default="1" min="0.0" max="100.0" />
-    <attribute name="appearance" type="Ref" ref="creatureappearance" />
-    <attribute name="body" type="String" max="50" />
-    <attribute name="body-col" type="String" max="50" />
-    <attribute name="animset" type="XUnknown2" />
-    <attribute name="hair" type="String" max="50" />
-    <attribute name="hair-col" type="String" max="50" />
-    <attribute name="face" type="String" max="50" />
-    <attribute name="face-col" type="String" max="50" />
-    <attribute name="face-animset" type="String" max="50" />
-    <attribute name="talk" type="Bool" />
-    <attribute name="iconindex" type="Int8" default="0" min="0" max="255" />
-    <attribute name="mesh-scale" type="Float32" default="1" min="0.1" max="10.0" />
-    <attribute name="p-radius" type="Int8" default="0" min="0" max="255" />
-    <attribute name="name-pos-diff" type="Int16" default="0" min="0" max="1000" />
-    <attribute name="name-pos-stand" type="Int16" default="0" min="0" max="1000" />
-    <attribute name="name-pos-sit" type="Int16" default="0" min="0" max="1000" />
-    <attribute name="name-pos-dead" type="Int16" default="0" min="0" max="1000" />
-    <attribute name="start-talk-action" type="String" max="50" />
-    <attribute name="end-talk-action" type="String" max="50" />
-    <attribute name="spawn-production" type="String" max="50" />
-    <attribute name="dead-production" type="String" max="50" />
-    <attribute name="four-leg" type="Bool" />
-    <attribute name="despawn-showdata" type="XUnknown2" />
-    <attribute name="race" type="Prop_seq" seq="race" default="race-none" />
-    <attribute name="sex" type="Prop_seq" seq="sex" default="sex-none" />
-    <attribute name="job" type="Prop_seq" seq="job" default="job-none" />
-    <attribute name="stance" type="Prop_seq" seq="stance" default="npc기본자세" />
-    <attribute name="level" type="Int8" required="y" min="1" max="70" />
-    <attribute name="mastery-level" type="Int8" required="y" min="0" max="50" />
-    <attribute name="faction" type="Ref" ref="faction" />
-    <attribute name="attackable" type="Bool" default="y" />
-    <attribute name="detect-hiding" type="Bool" />
-    <attribute name="default-idle" type="Ref" ref="npcmoveanim" />
-    <attribute name="warfare-boss" type="Bool" hidden="y" />
-    <attribute name="max-hp" type="Int64" required="y" min="1" max="1000000000000" />
-    <attribute name="max-sp" type="Int16" required="y" min="0" max="10000" />
-    <attribute name="modify-cast-speed-percent" type="Int16" required="y" min="-1000" max="1000" />
-    <attribute name="hp-regen" type="Int32" required="y" min="0" max="2000000000" />
-    <attribute name="hp-regen-combat" type="Int32" required="y" min="0" max="2000000000" />
-    <attribute name="attack-hit-base-percent" type="Int16" required="y" min="-1000" max="10000" />
-    <attribute name="attack-hit-value" type="Int16" required="y" min="-30000" max="30000" />
-    <attribute name="attack-pierce-base-percent" type="Int16" required="y" min="-1000" max="10000" />
-    <attribute name="attack-parry-pierce-percent" type="Int16" required="y" min="-1000" max="10000" />
-    <attribute name="attack-pierce-value" type="Int16" required="y" min="0" max="30000" />
-    <attribute name="attack-concentrate-value" type="Int16" required="y" min="0" max="30000" />
-    <attribute name="attack-critical-base-percent" type="Int16" required="y" min="0" max="1000" />
-    <attribute name="attack-critical-damage-percent" type="Int16" required="y" min="0" max="10000" />
-    <attribute name="attack-critical-value" type="Int32" required="y" min="0" max="300000" />
-    <attribute name="attack-critical-damage-value" type="Int32" required="y" min="0" max="300000" />
-    <attribute name="defend-critical-base-percent" type="Int16" required="y" min="0" max="1000" />
-    <attribute name="defend-critical-damage-percent" type="Int16" required="y" min="0" max="10000" />
-    <attribute name="defend-critical-value" type="Int16" required="y" min="0" max="30000" />
-    <attribute name="defend-bounce-percent" type="Int16" required="y" min="0" max="1000" />
-    <attribute name="defend-dodge-base-percent" type="Int16" required="y" min="0" max="1000" />
-    <attribute name="defend-dodge-value" type="Int16" required="y" min="0" max="30000" />
-    <attribute name="defend-parry-base-percent" type="Int16" required="y" min="0" max="1000" />
-    <attribute name="defend-parry-value" type="Int16" required="y" min="0" max="30000" />
-    <attribute name="defend-parry-reduce-percent" type="Int16" required="y" min="0" max="1000" />
-    <attribute name="defend-parry-reduce-diff" type="Int16" required="y" min="0" max="30000" />
-    <attribute name="defend-perfect-parry-base-percent" type="Int16" required="y" min="0" max="1000" />
-    <attribute name="defend-perfect-parry-reduce-percent" type="Int16" required="y" min="0" max="1000" />
-    <attribute name="defend-counter-reduce-percent" type="Int16" required="y" min="0" max="1000" />
-    <attribute name="defend-immune-base-percent" type="Int16" required="y" min="0" max="1000" />
-    <attribute name="attack-power-creature-min" type="Int32" required="y" min="0" max="300000" />
-    <attribute name="attack-power-creature-max" type="Int32" required="y" min="0" max="300000" />
-    <attribute name="attack-power-equip-min" type="Int16" required="y" min="0" max="30000" />
-    <attribute name="attack-power-equip-max" type="Int16" required="y" min="0" max="30000" />
-    <attribute name="defend-power-creature-value" type="Int32" required="y" min="0" max="300000" />
-    <attribute name="defend-power-equip-value" type="Int32" required="y" min="0" max="300000" />
-    <attribute name="defend-resist-power-creature-value" type="Int16" required="y" min="0" max="30000" />
-    <attribute name="defend-resist-power-equip-value" type="Int16" required="y" min="0" max="30000" />
-    <attribute name="defend-physical-damage-reduce-percent" type="Int16" required="y" min="-10000" max="1000" />
-    <attribute name="defend-force-damage-reduce-percent" type="Int16" required="y" min="-10000" max="1000" />
-    <attribute name="attack-damage-modify-percent" type="Int16" required="y" min="-3000" max="10000" />
-    <attribute name="attack-damage-modify-diff" type="Int32" required="y" min="-1000000" max="1000000" />
-    <attribute name="defend-damage-modify-percent" type="Int16" required="y" min="-10000" max="3000" />
-    <attribute name="defend-damage-modify-diff" type="Int32" required="y" min="-1000000" max="1000000" />
-    <attribute name="defend-miss-base-percent" type="Int16" required="y" min="0" max="1000" />
-    <attribute name="attack-stiff-duration-base-percent" type="Int16" required="y" min="-1000" max="10000" />
-    <attribute name="attack-stiff-duration-value" type="Int16" required="y" min="0" max="30000" />
-    <attribute name="defend-stiff-duration-base-percent" type="Int16" required="y" min="0" max="1000" />
-    <attribute name="defend-stiff-duration-value" type="Int16" required="y" min="0" max="30000" />
-    <attribute name="cast-duration-base-percent" type="Int16" required="y" min="-10000" max="1000" />
-    <attribute name="cast-duration-value" type="Int16" required="y" min="0" max="30000" />
-    <attribute name="job-ability-1" type="Int32" required="y" min="0" max="300000" />
-    <attribute name="job-ability-2" type="Int32" required="y" min="0" max="300000" />
-    <attribute name="heal-power-base-percent" type="Int16" required="y" min="0" max="10000" />
-    <attribute name="aoe-defend-base-percent" type="Int16" required="y" min="0" max="10000" />
-    <attribute name="aoe-defend-power-value" type="Int16" required="y" min="0" max="30000" />
-    <attribute name="hate-base-percent" type="Int16" required="y" min="0" max="10000" />
-    <attribute name="hate-power-creature-value" type="Int16" required="y" min="0" max="30000" />
-    <attribute name="abnormal-attack-power-value" type="Int16" required="y" min="0" max="30000" />
-    <attribute name="abnormal-attack-base-percent" type="Int16" required="y" min="0" max="10000" />
-    <attribute name="abnormal-defend-power-value" type="Int16" required="y" min="0" max="30000" />
-    <attribute name="abnormal-defend-base-percent" type="Int16" required="y" min="0" max="10000" />
-    <attribute name="abnormal-attack-power-modify" type="Int16" required="y" />
-    <attribute name="abnormal-defend-power-modify" type="Int16" required="y" />
-    <attribute name="hate-power-modify" type="Int16" required="y" />
-    <attribute name="heal-power-modify" type="Int16" required="y" />
-    <attribute name="aoe-defend-power-modify" type="Int16" required="y" />
-    <attribute name="attack-hit-value-modify" type="Int16" required="y" />
-    <attribute name="attack-critical-value-modify" type="Int16" required="y" />
-    <attribute name="defend-critical-value-modify" type="Int16" required="y" />
-    <attribute name="defend-dodge-value-modify" type="Int16" required="y" />
-    <attribute name="defend-parry-value-modify" type="Int16" required="y" />
-    <attribute name="defend-physical-value-modify" type="Int16" required="y" />
-    <attribute name="defend-force-value-modify" type="Int16" required="y" />
-    <attribute name="attack-stiff-duration-value-modify" type="Int16" required="y" />
-    <attribute name="defend-stiff-duration-value-modify" type="Int16" required="y" />
-    <attribute name="cast-duration-value-modify" type="Int16" required="y" />
-    <attribute name="attack-critical-damage-modify" type="Int16" required="y" />
-    <attribute name="defend-critical-damage-modify" type="Int16" required="y" />
-    <attribute name="attack-pierce-modify" type="Int16" required="y" />
-    <attribute name="attack-parry-pierce-modify" type="Int16" required="y" />
-    <attribute name="defend-parry-reduce-modify" type="Int16" required="y" />
-    <attribute name="attack-perfect-parry-damage-modify" type="Int16" required="y" />
-    <attribute name="defend-perfect-parry-reduce-modify" type="Int16" required="y" />
-    <attribute name="attack-counter-damage-modify" type="Int16" required="y" />
-    <attribute name="defend-counter-reduce-modify" type="Int16" required="y" />
-    <attribute name="grade" type="Seq" deprecated="y">
-      <case name="none" default="y" />
-      <case name="weakest" />
-      <case name="weak" />
-      <case name="regular" />
-      <case name="strong" />
-      <case name="elite" />
-      <case name="captain" />
-      <case name="bossn" />
-      <case name="bossf" />
-      <case name="bossp" />
-      <case name="boss" />
-    </attribute>
-    <attribute name="grade2" type="Seq" seq="npc-grade2" default="none" />
-    <attribute name="grade-imageset" type="String" max="100" />
-    <attribute name="grade-tooltip-text" type="Ref" ref="text" />
-    <attribute name="boss-ui-type" type="Seq">
-      <case name="target" default="y" />
-      <case name="list" />
-    </attribute>
-    <attribute name="boss-group-id" type="Int8" default="0" />
-    <attribute name="boss-slot" type="Seq">
-      <case name="none" default="y" />
-      <case name="boss1" />
-      <case name="boss2" />
-      <case name="boss3" />
-      <case name="boss4" />
-    </attribute>
-    <attribute name="boss-kill-hide-slot" type="Bool" />
-    <attribute name="boss-spawn-message" type="Ref" ref="game-message" />
-    <attribute name="boss-icon" type="Icon" max="32767" />
-    <attribute name="boss-aggro-icon" type="Icon" max="32767" />
-    <attribute name="boss-aggro-indicator" type="String" max="50" />
-    <attribute name="boss-aggro-twin-indicator" type="String" max="50" />
-    <attribute name="end-talk-sound" type="XUnknown2" />
-    <attribute name="end-talk-social" type="Ref" ref="social" />
-    <attribute name="burrow-scaned-mark" type="XUnknown2" />
-    <attribute name="burrow-visual-effect" type="XUnknown2" />
-    <attribute name="use-foot-print" type="Bool" default="y" />
-    <attribute name="use-water-print" type="Bool" default="y" />
-    <attribute name="default-visible" type="Bool" default="y" />
-    <attribute name="visible-by-quest" type="Bool" deprecated="y" />
-    <attribute name="visible-on-social" type="Ref" ref="social" deprecated="y" />
-    <attribute name="visible-off-social" type="Ref" ref="social" deprecated="y" />
-    <attribute name="message" type="Ref" ref="npctalkmessage" repeat="9" deprecated="y" />
-    <attribute name="monster-type" type="Seq" deprecated="y">
-      <case name="none" default="y" />
-      <case name="human" />
-      <case name="beastman" />
-      <case name="devils" />
-      <case name="beasts" />
-      <case name="polluted" />
-      <case name="spirits" />
-      <case name="enchanteddoll" />
-      <case name="god" />
-    </attribute>
-    <attribute name="move-type" type="Seq">
-      <case name="none" default="y" />
-      <case name="static" />
-      <case name="ground" />
-      <case name="float" />
-    </attribute>
-    <attribute name="size-type" type="Seq">
-      <case name="none" default="y" />
-      <case name="small" />
-      <case name="regular" />
-      <case name="huge" />
-    </attribute>
-    <attribute name="description" type="String" max="100" />
-    <attribute name="description2" type="Ref" ref="text" />
-    <attribute name="dying-message" type="Ref" ref="text" />
-    <attribute name="role-type" type="Seq">
-      <case name="none" default="y" />
-      <case name="keeper-inn" />
-      <case name="shop-grocery" />
-      <case name="shop-weapon" />
-      <case name="shop-cloth" />
-      <case name="shop-acc" />
-      <case name="shop-by-item" />
-      <case name="shop-achievement" />
-      <case name="keeper-warp" />
-      <case name="guardian" />
-      <case name="distribution" />
-      <case name="gather-digger" />
-      <case name="gather-farmer" />
-      <case name="gather-fisherman" />
-      <case name="gather-hunter" />
-      <case name="gather-miner" />
-      <case name="gather-gemcolletor" />
-      <case name="gather-lumberjack" />
-      <case name="produce-blacksmith" />
-      <case name="produce-shaman" />
-      <case name="produce-gemmaker" />
-      <case name="produce-accmaker" />
-      <case name="produce-potionmaker" />
-      <case name="produce-cook" />
-      <case name="produce-chinamaker" />
-      <case name="coinshop" />
-      <case name="factionshop" />
-      <case name="faction-exchange" />
-      <case name="broker" />
-      <case name="shop-food" />
-      <case name="shop-beauty" />
-      <case name="depot" />
-      <case name="event" />
-    </attribute>
-    <attribute name="die-shout" type="Ref" ref="text" />
-    <attribute name="race-type" type="Seq">
-      <case name="etc" default="y" />
-      <case name="jin" />
-      <case name="kun" />
-      <case name="gon" />
-      <case name="lyn" />
-    </attribute>
-    <attribute name="default-indicator" type="Ref" ref="indicator-social" deprecated="y" />
-    <attribute name="indicator" type="Ref" ref="indicator-social" />
-    <attribute name="required-faction" type="Ref" ref="faction" repeat="9" deprecated="y" />
-    <attribute name="required-complete-quest" type="Ref" ref="quest" repeat="9" deprecated="y" />
-    <attribute name="craft-message-type" type="Seq" repeat="9" deprecated="y">
-      <case name="none" default="y" />
-      <case name="join" />
-      <case name="ask" />
-      <case name="busy" />
-      <case name="receive" />
-      <case name="need-level" />
-      <case name="full-craft" />
-    </attribute>
-    <attribute name="talk-message" type="Ref" ref="npctalkmessage" repeat="9" deprecated="y" />
-    <attribute name="default-indicator-social" type="Ref" ref="indicator-social" repeat="9" deprecated="y" />
-    <attribute name="relationship-indicator" type="Ref" ref="indicator-social" repeat="9" deprecated="y" />
-    <attribute name="relationship-idle" type="Ref" ref="indicator-idle" repeat="9" deprecated="y" />
-    <attribute name="neutral-faction-required-complete-quest" type="Ref" ref="quest" deprecated="y" />
-    <attribute name="neutral-faction-talk-message" type="Ref" ref="npctalkmessage" deprecated="y" />
-    <attribute name="neutral-faction-relationship-indicator" type="Ref" ref="indicator-social" deprecated="y" />
-    <attribute name="neutral-faction-relationship-idle" type="Ref" ref="indicator-idle" deprecated="y" />
-    <attribute name="neutral-faction-nameplate-enemy" type="Bool" />
-    <attribute name="banned-response" type="Ref" ref="npcresponse" repeat="2" />
-    <attribute name="response" type="Ref" ref="npcresponse" repeat="7" />
-    <attribute name="stand-social" type="Ref" ref="social" repeat="3" />
-    <attribute name="stand-social-rate" type="Int16" default="0" repeat="3" />
-    <attribute name="die-knockback" type="Bool" default="y" />
-    <attribute name="invoke-fx-msg" type="Bool" />
-    <attribute name="disable-name-spawn" type="Bool" />
-    <attribute name="play-additional-die" type="Bool" default="y" />
-    <attribute name="summoned-beauty-shop" type="Ref" ref="summonedbeautyshop" />
-    <attribute name="boast-contents-id" type="Ref" ref="boast" deprecated="y" />
-    <attribute name="boast" type="Ref" ref="boast" hidden="y" />
-    <attribute name="always-show-hp" type="Bool" default="false" />
-    <attribute name="use-map-unit-group" type="Bool" hidden="y" />
-    <attribute name="map-unit" type="Ref" ref="mapunit" repeat="2" hidden="y" />
-    <attribute name="use-immediate-load" type="Bool" />
-    <attribute name="ghost-type" type="Prop_seq">
-      <case name="none" default="y" />
-      <case name="basic" />
-      <case name="beyond" />
-      <case name="phase" />
-    </attribute>
-    <attribute name="ghostmode-beyond-start-show" type="String" max="50" />
-    <attribute name="ghostmode-beyond-end-show" type="String" max="50" />
-    <attribute name="soul-npc-skill-level" type="Int8" default="0" min="0" max="10" />
-    <attribute name="boss-challenge-attraction-score" type="Int16" default="0" min="0" max="30000" />
-    <attribute name="is-mysterious-store" type="Bool" />
-    <attribute name="newbiecare" type="Ref" ref="newbie-care" hidden="y" />
-    <attribute name="attack-attribute-value" type="Int32" required="y" min="0" max="300000" />
-    <attribute name="attack-attribute-base-percent" type="Int16" required="y" min="0" max="10000" />
-    <attribute name="attack-attribute-modify" type="Int16" required="y" />
-    <attribute name="hide-nameplate" type="Bool" />
-    <attribute name="attack-aoe-pierce-value" type="Int16" required="y" min="0" max="30000" />
-    <attribute name="attack-abnormal-hit-base-percent" type="Int16" required="y" min="-1000" max="10000" />
-    <attribute name="attack-abnormal-hit-value" type="Int16" required="y" min="-30000" max="30000" />
-    <attribute name="defend-abnormal-dodge-base-percent" type="Int16" required="y" min="-1000" max="10000" />
-    <attribute name="defend-abnormal-dodge-value" type="Int16" required="y" min="-30000" max="30000" />
-    <attribute name="support-power-base-percent" type="Int16" required="y" min="-1000" max="10000" />
-    <attribute name="support-power-value" type="Int16" required="y" min="0" max="30000" />
-    <attribute name="heal-power-value" type="Int16" required="y" min="0" max="30000" />
-    <attribute name="hypermove-power-value" type="Int16" required="y" min="0" max="30000" />
-    <attribute name="unk-" type="Int16" min="0" max="30000" />
-    <attribute name="r-attack-aoe-pierce-modify" type="Int16" required="y" />
-    <attribute name="r-attack-abnormal-hit-modify" type="Int16" required="y" />
-    <attribute name="r-defend-abnormal-dodge-modify" type="Int16" required="y" />
-    <attribute name="r-support-power-modify" type="Int16" required="y" />
-    <attribute name="unk-" type="Int32" />
-  </el>
+	<el name="table" child="1" />
+	<el name="record">
+		<attribute name="alias" type="String" required="y" max="70" />
+		<attribute name="name" type="String" max="50" />
+		<attribute name="title" type="String" max="64" />
+		<attribute name="name2" type="Ref" ref="text" />
+		<attribute name="title2" type="Ref" ref="text" />
+		<attribute name="boss-npc" type="Ref" ref="bossnpc" />
+		<attribute name="soul-npc" type="Bool" />
+		<attribute name="big-boss-npc" type="Bool" />
+		<attribute name="write-combat-log" type="Bool" />
+		<attribute name="radius" type="Distance" default="0" min="0" max="5000" />
+		<attribute name="scale" type="Int16" default="1000" min="0" max="10000" />
+		<attribute name="walk-speed" type="Velocity" default="0" min="0" max="8000" />
+		<attribute name="run-speed" type="Velocity" default="0" min="0" max="8000" />
+		<attribute name="spawn-cinematic" type="Ref" ref="cinematic" deprecated="y" />
+		<attribute name="neutral-hostile" type="Seq">
+			<case name="offensive" />
+			<case name="fightback" default="y" />
+			<case name="neutral" />
+		</attribute>
+		<attribute name="offensive" type="Bool" />
+		<attribute name="immune-skill-attribute" type="Seq" seq="skill-attribute" default="none" repeat="8" />
+		<attribute name="immune-effect-attribute" type="Seq16" seq="effect-attribute" default="none" repeat="20" />
+		<attribute name="immune-breaker-attribute" type="Seq16" seq="effect-attribute" default="none" repeat="8" />
+		<attribute name="immune-breaker-count" type="Int8" default="0" />
+		<attribute name="immune-breaker-init-duration" type="Msec" default="0" />
+		<attribute name="immune-breaker-show" type="XUnknown2" repeat="8" />
+		<attribute name="store" type="Ref" ref="store" />
+		<attribute name="store-by-item" type="Ref" ref="store-by-item" />
+		<attribute name="store2" type="Ref" ref="store2" repeat="6" />
+		<attribute name="teleport" type="Ref" ref="teleport" />
+		<attribute name="repairer" type="Bool" />
+		<attribute name="production" type="Seq" seq="production-type" default="none" />
+		<attribute name="market" type="Bool" />
+		<attribute name="post-office" type="Bool" />
+		<attribute name="exchange-faction-score" type="Bool" />
+		<attribute name="exchange-faction-score-max-faction-level" type="Int16" default="0" />
+		<attribute name="exchange-faction-score-multiply-value" type="Int8" default="1" min="1" max="100" />
+		<attribute name="join-leave-faction" type="Bool" />
+		<attribute name="transfer-faction" type="Bool" />
+		<attribute name="depot" type="Bool" />
+		<attribute name="guild" type="Bool" />
+		<attribute name="max-faction-score" type="Int32" default="999" min="0" max="1000000" />
+		<attribute name="enable-co-ownership-pouch" type="Bool" />
+		<attribute name="reward-faction-score" type="Int32" default="0" min="0" max="100000" />
+		<attribute name="peaktime-reward-sun-start-hour" type="Int8" default="-1" min="-1" max="23" />
+		<attribute name="peaktime-reward-sun-end-hour" type="Int8" default="-1" min="-1" max="24" />
+		<attribute name="peaktime-reward-mon-start-hour" type="Int8" default="-1" min="-1" max="23" />
+		<attribute name="peaktime-reward-mon-end-hour" type="Int8" default="-1" min="-1" max="24" />
+		<attribute name="peaktime-reward-tue-start-hour" type="Int8" default="-1" min="-1" max="23" />
+		<attribute name="peaktime-reward-tue-end-hour" type="Int8" default="-1" min="-1" max="24" />
+		<attribute name="peaktime-reward-wed-start-hour" type="Int8" default="-1" min="-1" max="23" />
+		<attribute name="peaktime-reward-wed-end-hour" type="Int8" default="-1" min="-1" max="24" />
+		<attribute name="peaktime-reward-thu-start-hour" type="Int8" default="-1" min="-1" max="23" />
+		<attribute name="peaktime-reward-thu-end-hour" type="Int8" default="-1" min="-1" max="24" />
+		<attribute name="peaktime-reward-fri-start-hour" type="Int8" default="-1" min="-1" max="23" />
+		<attribute name="peaktime-reward-fri-end-hour" type="Int8" default="-1" min="-1" max="24" />
+		<attribute name="peaktime-reward-sat-start-hour" type="Int8" default="-1" min="-1" max="23" />
+		<attribute name="peaktime-reward-sat-end-hour" type="Int8" default="-1" min="-1" max="24" />
+		<attribute name="contribution-reward" type="Ref" ref="contributionreward" />
+		<attribute name="contribution-day-reward-sun" type="Ref" ref="contributionreward" />
+		<attribute name="contribution-day-reward-mon" type="Ref" ref="contributionreward" />
+		<attribute name="contribution-day-reward-tue" type="Ref" ref="contributionreward" />
+		<attribute name="contribution-day-reward-wed" type="Ref" ref="contributionreward" />
+		<attribute name="contribution-day-reward-thu" type="Ref" ref="contributionreward" />
+		<attribute name="contribution-day-reward-fri" type="Ref" ref="contributionreward" />
+		<attribute name="contribution-day-reward-sat" type="Ref" ref="contributionreward" />
+		<attribute name="contribution-peaktime-reward-sun-start-hour" type="Int8" default="-1" min="-1" max="23" />
+		<attribute name="contribution-peaktime-reward-sun-end-hour" type="Int8" default="-1" min="-1" max="24" />
+		<attribute name="contribution-peaktime-reward-mon-start-hour" type="Int8" default="-1" min="-1" max="23" />
+		<attribute name="contribution-peaktime-reward-mon-end-hour" type="Int8" default="-1" min="-1" max="24" />
+		<attribute name="contribution-peaktime-reward-tue-start-hour" type="Int8" default="-1" min="-1" max="23" />
+		<attribute name="contribution-peaktime-reward-tue-end-hour" type="Int8" default="-1" min="-1" max="24" />
+		<attribute name="contribution-peaktime-reward-wed-start-hour" type="Int8" default="-1" min="-1" max="23" />
+		<attribute name="contribution-peaktime-reward-wed-end-hour" type="Int8" default="-1" min="-1" max="24" />
+		<attribute name="contribution-peaktime-reward-thu-start-hour" type="Int8" default="-1" min="-1" max="23" />
+		<attribute name="contribution-peaktime-reward-thu-end-hour" type="Int8" default="-1" min="-1" max="24" />
+		<attribute name="contribution-peaktime-reward-fri-start-hour" type="Int8" default="-1" min="-1" max="23" />
+		<attribute name="contribution-peaktime-reward-fri-end-hour" type="Int8" default="-1" min="-1" max="24" />
+		<attribute name="contribution-peaktime-reward-sat-start-hour" type="Int8" default="-1" min="-1" max="23" />
+		<attribute name="contribution-peaktime-reward-sat-end-hour" type="Int8" default="-1" min="-1" max="24" />
+		<attribute name="personal-dropped-pouch-reward" type="Ref" ref="reward" />
+		<attribute name="reward-sealed-dungeon" type="Ref" ref="npc-sealed-dungeon-reward" />
+		<attribute name="fielditemdrop" type="Ref" ref="fielditemdrop" />
+		<attribute name="deadbody-fielditemdrop" type="Ref" ref="fielditemdrop" />
+		<attribute name="deadbody-pickup-duration" type="Msec" default="0" />
+		<attribute name="burrow" type="Bool" />
+		<attribute name="manipulate-duration" type="Msec" default="0" />
+		<attribute name="caster-manipulate-animname" type="String" max="50" />
+		<attribute name="target-manipulate-animname" type="String" max="50" />
+		<attribute name="caster-manipulate-show" type="XUnknown2" />
+		<attribute name="target-manipulate-show" type="XUnknown2" />
+		<attribute name="action-name" type="Ref" ref="text" />
+		<attribute name="action-desc" type="Ref" ref="text" />
+		<attribute name="manipulate-transit-zone" type="Ref" ref="zone" />
+		<attribute name="forwarding-types" type="Seq" repeat="80" hidden="y">
+			<case name="progress-mission" />
+			<case name="acquire-quest" />
+			<case name="skill-target" />
+			<case name="mission-step-rollback" />
+		</attribute>
+		<attribute name="quests" type="Ref" ref="quest" repeat="80" hidden="y" />
+		<attribute name="missions" type="Int8" repeat="80" hidden="y" />
+		<attribute name="cases" type="Int8" repeat="80" hidden="y" />
+		<attribute name="case-subtypes" type="Int16" repeat="80" hidden="y" />
+		<attribute name="loot-forwarding-types" type="Seq" repeat="8" hidden="y">
+			<case name="progress-mission" />
+			<case name="acquire-quest" />
+			<case name="skill-target" />
+			<case name="mission-step-rollback" />
+		</attribute>
+		<attribute name="loot-quests" type="Ref" ref="quest" repeat="8" hidden="y" />
+		<attribute name="loot-missions" type="Int8" repeat="8" hidden="y" />
+		<attribute name="loot-cases" type="Int8" repeat="8" hidden="y" />
+		<attribute name="loot-item" type="Ref" ref="item" repeat="8" hidden="y" />
+		<attribute name="finish-blow-forwarding-types" type="Seq" repeat="21" hidden="y">
+			<case name="progress-mission" />
+			<case name="acquire-quest" />
+			<case name="skill-target" />
+			<case name="mission-step-rollback" />
+		</attribute>
+		<attribute name="finish-blow-quests" type="Ref" ref="quest" repeat="21" hidden="y" />
+		<attribute name="finish-blow-missions" type="Int8" repeat="21" hidden="y" />
+		<attribute name="finish-blow-cases" type="Int8" repeat="21" hidden="y" />
+		<attribute name="walk-ratescale" type="Float32" default="1" min="0.0" max="100.0" />
+		<attribute name="run-ratescale" type="Float32" default="1" min="0.0" max="100.0" />
+		<attribute name="appearance" type="Ref" ref="creatureappearance" />
+		<attribute name="body" type="String" max="50" />
+		<attribute name="body-col" type="String" max="50" />
+		<attribute name="animset" type="XUnknown2" />
+		<attribute name="hair" type="String" max="50" />
+		<attribute name="hair-col" type="String" max="50" />
+		<attribute name="face" type="String" max="50" />
+		<attribute name="face-col" type="String" max="50" />
+		<attribute name="face-animset" type="String" max="50" />
+		<attribute name="talk" type="Bool" />
+		<attribute name="iconindex" type="Int8" default="0" min="0" max="255" />
+		<attribute name="mesh-scale" type="Float32" default="1" min="0.1" max="10.0" />
+		<attribute name="p-radius" type="Int8" default="0" min="0" max="255" />
+		<attribute name="name-pos-diff" type="Int16" default="0" min="0" max="1000" />
+		<attribute name="name-pos-stand" type="Int16" default="0" min="0" max="1000" />
+		<attribute name="name-pos-sit" type="Int16" default="0" min="0" max="1000" />
+		<attribute name="name-pos-dead" type="Int16" default="0" min="0" max="1000" />
+		<attribute name="start-talk-action" type="String" max="50" />
+		<attribute name="end-talk-action" type="String" max="50" />
+		<attribute name="spawn-production" type="String" max="50" />
+		<attribute name="dead-production" type="String" max="50" />
+		<attribute name="four-leg" type="Bool" />
+		<attribute name="despawn-showdata" type="XUnknown2" />
+		<attribute name="race" type="Prop_seq" seq="race" default="race-none" />
+		<attribute name="sex" type="Prop_seq" seq="sex" default="sex-none" />
+		<attribute name="job" type="Prop_seq" seq="job" default="job-none" />
+		<attribute name="stance" type="Prop_seq" seq="stance" default="npc기본자세" />
+		<attribute name="level" type="Int8" required="y" min="1" max="70" />
+		<attribute name="mastery-level" type="Int8" required="y" min="0" max="50" />
+		<attribute name="faction" type="Ref" ref="faction" />
+		<attribute name="attackable" type="Bool" default="y" />
+		<attribute name="detect-hiding" type="Bool" />
+		<attribute name="default-idle" type="Ref" ref="npcmoveanim" />
+		<attribute name="warfare-boss" type="Bool" hidden="y" />
+		<attribute name="max-hp" type="Int64" required="y" min="1" max="1000000000000" />
+		<attribute name="max-sp" type="Int16" required="y" min="0" max="10000" />
+		<attribute name="modify-cast-speed-percent" type="Int16" required="y" min="-1000" max="1000" />
+		<attribute name="hp-regen" type="Int32" required="y" min="0" max="2000000000" />
+		<attribute name="hp-regen-combat" type="Int32" required="y" min="0" max="2000000000" />
+		<attribute name="attack-hit-base-percent" type="Int16" required="y" min="-1000" max="10000" />
+		<attribute name="attack-hit-value" type="Int16" required="y" min="-30000" max="30000" />
+		<attribute name="attack-pierce-base-percent" type="Int16" required="y" min="-1000" max="10000" />
+		<attribute name="attack-parry-pierce-percent" type="Int16" required="y" min="-1000" max="10000" />
+		<attribute name="attack-pierce-value" type="Int16" required="y" min="0" max="30000" />
+		<attribute name="attack-concentrate-value" type="Int16" required="y" min="0" max="30000" />
+		<attribute name="attack-critical-base-percent" type="Int16" required="y" min="0" max="1000" />
+		<attribute name="attack-critical-damage-percent" type="Int16" required="y" min="0" max="10000" />
+		<attribute name="attack-critical-value" type="Int32" required="y" min="0" max="300000" />
+		<attribute name="attack-critical-damage-value" type="Int32" required="y" min="0" max="300000" />
+		<attribute name="defend-critical-base-percent" type="Int16" required="y" min="0" max="1000" />
+		<attribute name="defend-critical-damage-percent" type="Int16" required="y" min="0" max="10000" />
+		<attribute name="defend-critical-value" type="Int16" required="y" min="0" max="30000" />
+		<attribute name="defend-bounce-percent" type="Int16" required="y" min="0" max="1000" />
+		<attribute name="defend-dodge-base-percent" type="Int16" required="y" min="0" max="1000" />
+		<attribute name="defend-dodge-value" type="Int16" required="y" min="0" max="30000" />
+		<attribute name="defend-parry-base-percent" type="Int16" required="y" min="0" max="1000" />
+		<attribute name="defend-parry-value" type="Int16" required="y" min="0" max="30000" />
+		<attribute name="defend-parry-reduce-percent" type="Int16" required="y" min="0" max="1000" />
+		<attribute name="defend-parry-reduce-diff" type="Int16" required="y" min="0" max="30000" />
+		<attribute name="defend-perfect-parry-base-percent" type="Int16" required="y" min="0" max="1000" />
+		<attribute name="defend-perfect-parry-reduce-percent" type="Int16" required="y" min="0" max="1000" />
+		<attribute name="defend-counter-reduce-percent" type="Int16" required="y" min="0" max="1000" />
+		<attribute name="defend-immune-base-percent" type="Int16" required="y" min="0" max="1000" />
+		<attribute name="attack-power-creature-min" type="Int32" required="y" min="0" max="300000" />
+		<attribute name="attack-power-creature-max" type="Int32" required="y" min="0" max="300000" />
+		<attribute name="attack-power-equip-min" type="Int16" required="y" min="0" max="30000" />
+		<attribute name="attack-power-equip-max" type="Int16" required="y" min="0" max="30000" />
+		<attribute name="defend-power-creature-value" type="Int32" required="y" min="0" max="300000" />
+		<attribute name="defend-power-equip-value" type="Int32" required="y" min="0" max="300000" />
+		<attribute name="defend-resist-power-creature-value" type="Int16" required="y" min="0" max="30000" />
+		<attribute name="defend-resist-power-equip-value" type="Int16" required="y" min="0" max="30000" />
+		<attribute name="defend-physical-damage-reduce-percent" type="Int16" required="y" min="-10000" max="1000" />
+		<attribute name="defend-force-damage-reduce-percent" type="Int16" required="y" min="-10000" max="1000" />
+		<attribute name="attack-damage-modify-percent" type="Int16" required="y" min="-3000" max="10000" />
+		<attribute name="attack-damage-modify-diff" type="Int32" required="y" min="-1000000" max="1000000" />
+		<attribute name="defend-damage-modify-percent" type="Int16" required="y" min="-10000" max="3000" />
+		<attribute name="defend-damage-modify-diff" type="Int32" required="y" min="-1000000" max="1000000" />
+		<attribute name="defend-miss-base-percent" type="Int16" required="y" min="0" max="1000" />
+		<attribute name="attack-stiff-duration-base-percent" type="Int16" required="y" min="-1000" max="10000" />
+		<attribute name="attack-stiff-duration-value" type="Int16" required="y" min="0" max="30000" />
+		<attribute name="defend-stiff-duration-base-percent" type="Int16" required="y" min="0" max="1000" />
+		<attribute name="defend-stiff-duration-value" type="Int16" required="y" min="0" max="30000" />
+		<attribute name="cast-duration-base-percent" type="Int16" required="y" min="-10000" max="1000" />
+		<attribute name="cast-duration-value" type="Int16" required="y" min="0" max="30000" />
+		<attribute name="job-ability-1" type="Int32" required="y" min="0" max="300000" />
+		<attribute name="job-ability-2" type="Int32" required="y" min="0" max="300000" />
+		<attribute name="heal-power-base-percent" type="Int16" required="y" min="0" max="10000" />
+		<attribute name="aoe-defend-base-percent" type="Int16" required="y" min="0" max="10000" />
+		<attribute name="aoe-defend-power-value" type="Int16" required="y" min="0" max="30000" />
+		<attribute name="hate-base-percent" type="Int16" required="y" min="0" max="10000" />
+		<attribute name="hate-power-creature-value" type="Int16" required="y" min="0" max="30000" />
+		<attribute name="abnormal-attack-power-value" type="Int16" required="y" min="0" max="30000" />
+		<attribute name="abnormal-attack-base-percent" type="Int16" required="y" min="0" max="10000" />
+		<attribute name="abnormal-defend-power-value" type="Int16" required="y" min="0" max="30000" />
+		<attribute name="abnormal-defend-base-percent" type="Int16" required="y" min="0" max="10000" />
+		<attribute name="abnormal-attack-power-modify" type="Int16" required="y" />
+		<attribute name="abnormal-defend-power-modify" type="Int16" required="y" />
+		<attribute name="hate-power-modify" type="Int16" required="y" />
+		<attribute name="heal-power-modify" type="Int16" required="y" />
+		<attribute name="aoe-defend-power-modify" type="Int16" required="y" />
+		<attribute name="attack-hit-value-modify" type="Int16" required="y" />
+		<attribute name="attack-critical-value-modify" type="Int16" required="y" />
+		<attribute name="defend-critical-value-modify" type="Int16" required="y" />
+		<attribute name="defend-dodge-value-modify" type="Int16" required="y" />
+		<attribute name="defend-parry-value-modify" type="Int16" required="y" />
+		<attribute name="defend-physical-value-modify" type="Int16" required="y" />
+		<attribute name="defend-force-value-modify" type="Int16" required="y" />
+		<attribute name="attack-stiff-duration-value-modify" type="Int16" required="y" />
+		<attribute name="defend-stiff-duration-value-modify" type="Int16" required="y" />
+		<attribute name="cast-duration-value-modify" type="Int16" required="y" />
+		<attribute name="attack-critical-damage-modify" type="Int16" required="y" />
+		<attribute name="defend-critical-damage-modify" type="Int16" required="y" />
+		<attribute name="attack-pierce-modify" type="Int16" required="y" />
+		<attribute name="attack-parry-pierce-modify" type="Int16" required="y" />
+		<attribute name="defend-parry-reduce-modify" type="Int16" required="y" />
+		<attribute name="attack-perfect-parry-damage-modify" type="Int16" required="y" />
+		<attribute name="defend-perfect-parry-reduce-modify" type="Int16" required="y" />
+		<attribute name="attack-counter-damage-modify" type="Int16" required="y" />
+		<attribute name="defend-counter-reduce-modify" type="Int16" required="y" />
+		<attribute name="unk-" type="Int16" required="y" />
+		<attribute name="unk-" type="Int16" required="y" />
+		<attribute name="unk-" type="Int16" required="y" />
+		<attribute name="unk-" type="Int16" required="y" />
+		<attribute name="grade" type="Seq" deprecated="y">
+			<case name="none" default="y" />
+			<case name="weakest" />
+			<case name="weak" />
+			<case name="regular" />
+			<case name="strong" />
+			<case name="elite" />
+			<case name="captain" />
+			<case name="bossn" />
+			<case name="bossf" />
+			<case name="bossp" />
+			<case name="boss" />
+		</attribute>
+		<attribute name="grade2" type="Seq" seq="npc-grade2" default="none" />
+		<attribute name="grade-imageset" type="String" max="100" />
+		<attribute name="grade-tooltip-text" type="Ref" ref="text" />
+		<attribute name="boss-ui-type" type="Seq">
+			<case name="target" default="y" />
+			<case name="list" />
+		</attribute>
+		<attribute name="boss-group-id" type="Int8" default="0" />
+		<attribute name="boss-slot" type="Seq">
+			<case name="none" default="y" />
+			<case name="boss1" />
+			<case name="boss2" />
+			<case name="boss3" />
+			<case name="boss4" />
+		</attribute>
+		<attribute name="boss-kill-hide-slot" type="Bool" />
+		<attribute name="boss-spawn-message" type="Ref" ref="game-message" />
+		<attribute name="boss-icon" type="Icon" max="32767" />
+		<attribute name="boss-aggro-icon" type="Icon" max="32767" />
+		<attribute name="boss-aggro-indicator" type="String" max="50" />
+		<attribute name="boss-aggro-twin-indicator" type="String" max="50" />
+		<attribute name="end-talk-sound" type="XUnknown2" />
+		<attribute name="end-talk-social" type="Ref" ref="social" />
+		<attribute name="burrow-scaned-mark" type="XUnknown2" />
+		<attribute name="burrow-visual-effect" type="XUnknown2" />
+		<attribute name="use-foot-print" type="Bool" default="y" />
+		<attribute name="use-water-print" type="Bool" default="y" />
+		<attribute name="default-visible" type="Bool" default="y" />
+		<attribute name="visible-by-quest" type="Bool" deprecated="y" />
+		<attribute name="visible-on-social" type="Ref" ref="social" deprecated="y" />
+		<attribute name="visible-off-social" type="Ref" ref="social" deprecated="y" />
+		<attribute name="message" type="Ref" ref="npctalkmessage" repeat="9" deprecated="y" />
+		<attribute name="monster-type" type="Seq" deprecated="y">
+			<case name="none" default="y" />
+			<case name="human" />
+			<case name="beastman" />
+			<case name="devils" />
+			<case name="beasts" />
+			<case name="polluted" />
+			<case name="spirits" />
+			<case name="enchanteddoll" />
+			<case name="god" />
+		</attribute>
+		<attribute name="move-type" type="Seq">
+			<case name="none" default="y" />
+			<case name="static" />
+			<case name="ground" />
+			<case name="float" />
+		</attribute>
+		<attribute name="size-type" type="Seq">
+			<case name="none" default="y" />
+			<case name="small" />
+			<case name="regular" />
+			<case name="huge" />
+		</attribute>
+		<attribute name="description" type="String" max="100" />
+		<attribute name="description2" type="Ref" ref="text" />
+		<attribute name="dying-message" type="Ref" ref="text" />
+		<attribute name="role-type" type="Seq">
+			<case name="none" default="y" />
+			<case name="keeper-inn" />
+			<case name="shop-grocery" />
+			<case name="shop-weapon" />
+			<case name="shop-cloth" />
+			<case name="shop-acc" />
+			<case name="shop-by-item" />
+			<case name="shop-achievement" />
+			<case name="keeper-warp" />
+			<case name="guardian" />
+			<case name="distribution" />
+			<case name="gather-digger" />
+			<case name="gather-farmer" />
+			<case name="gather-fisherman" />
+			<case name="gather-hunter" />
+			<case name="gather-miner" />
+			<case name="gather-gemcolletor" />
+			<case name="gather-lumberjack" />
+			<case name="produce-blacksmith" />
+			<case name="produce-shaman" />
+			<case name="produce-gemmaker" />
+			<case name="produce-accmaker" />
+			<case name="produce-potionmaker" />
+			<case name="produce-cook" />
+			<case name="produce-chinamaker" />
+			<case name="coinshop" />
+			<case name="factionshop" />
+			<case name="faction-exchange" />
+			<case name="broker" />
+			<case name="shop-food" />
+			<case name="shop-beauty" />
+			<case name="depot" />
+			<case name="event" />
+		</attribute>
+		<attribute name="die-shout" type="Ref" ref="text" />
+		<attribute name="race-type" type="Seq">
+			<case name="etc" default="y" />
+			<case name="jin" />
+			<case name="kun" />
+			<case name="gon" />
+			<case name="lyn" />
+		</attribute>
+		<attribute name="default-indicator" type="Ref" ref="indicator-social" deprecated="y" />
+		<attribute name="indicator" type="Ref" ref="indicator-social" />
+		<attribute name="required-faction" type="Ref" ref="faction" repeat="9" deprecated="y" />
+		<attribute name="required-complete-quest" type="Ref" ref="quest" repeat="9" deprecated="y" />
+		<attribute name="craft-message-type" type="Seq" repeat="9" deprecated="y">
+			<case name="none" default="y" />
+			<case name="join" />
+			<case name="ask" />
+			<case name="busy" />
+			<case name="receive" />
+			<case name="need-level" />
+			<case name="full-craft" />
+		</attribute>
+		<attribute name="talk-message" type="Ref" ref="npctalkmessage" repeat="9" deprecated="y" />
+		<attribute name="default-indicator-social" type="Ref" ref="indicator-social" repeat="9" deprecated="y" />
+		<attribute name="relationship-indicator" type="Ref" ref="indicator-social" repeat="9" deprecated="y" />
+		<attribute name="relationship-idle" type="Ref" ref="indicator-idle" repeat="9" deprecated="y" />
+		<attribute name="neutral-faction-required-complete-quest" type="Ref" ref="quest" deprecated="y" />
+		<attribute name="neutral-faction-talk-message" type="Ref" ref="npctalkmessage" deprecated="y" />
+		<attribute name="neutral-faction-relationship-indicator" type="Ref" ref="indicator-social" deprecated="y" />
+		<attribute name="neutral-faction-relationship-idle" type="Ref" ref="indicator-idle" deprecated="y" />
+		<attribute name="neutral-faction-nameplate-enemy" type="Bool" />
+		<attribute name="banned-response" type="Ref" ref="npcresponse" repeat="2" />
+		<attribute name="response" type="Ref" ref="npcresponse" repeat="7" />
+		<attribute name="stand-social" type="Ref" ref="social" repeat="3" />
+		<attribute name="stand-social-rate" type="Int16" default="0" repeat="3" />
+		<attribute name="die-knockback" type="Bool" default="y" />
+		<attribute name="invoke-fx-msg" type="Bool" />
+		<attribute name="disable-name-spawn" type="Bool" />
+		<attribute name="play-additional-die" type="Bool" default="y" />
+		<attribute name="summoned-beauty-shop" type="Ref" ref="summonedbeautyshop" />
+		<attribute name="boast-contents-id" type="Ref" ref="boast" deprecated="y" />
+		<attribute name="boast" type="Ref" ref="boast" hidden="y" />
+		<attribute name="always-show-hp" type="Bool" default="false" />
+		<attribute name="use-map-unit-group" type="Bool" hidden="y" />
+		<attribute name="map-unit" type="Ref" ref="mapunit" repeat="2" hidden="y" />
+		<attribute name="use-immediate-load" type="Bool" />
+		<attribute name="ghost-type" type="Prop_seq">
+			<case name="none" default="y" />
+			<case name="basic" />
+			<case name="beyond" />
+			<case name="phase" />
+		</attribute>
+		<attribute name="ghostmode-beyond-start-show" type="String" max="50" />
+		<attribute name="ghostmode-beyond-end-show" type="String" max="50" />
+		<attribute name="soul-npc-skill-level" type="Int8" default="0" min="0" max="10" />
+		<attribute name="boss-challenge-attraction-score" type="Int16" default="0" min="0" max="30000" />
+		<attribute name="is-mysterious-store" type="Bool" />
+		<attribute name="newbiecare" type="Ref" ref="newbie-care" hidden="y" />
+		<attribute name="attack-attribute-value" type="Int32" required="y" min="0" max="300000" />
+		<attribute name="attack-attribute-base-percent" type="Int16" required="y" min="0" max="10000" />
+		<attribute name="attack-attribute-modify" type="Int16" required="y" />
+		<attribute name="hide-nameplate" type="Bool" />
+		<attribute name="attack-aoe-pierce-value" type="Int16" required="y" min="0" max="30000" />
+		<attribute name="attack-abnormal-hit-base-percent" type="Int16" required="y" min="-1000" max="10000" />
+		<attribute name="attack-abnormal-hit-value" type="Int16" required="y" min="-30000" max="30000" />
+		<attribute name="defend-abnormal-dodge-base-percent" type="Int16" required="y" min="-1000" max="10000" />
+		<attribute name="defend-abnormal-dodge-value" type="Int16" required="y" min="-30000" max="30000" />
+		<attribute name="support-power-base-percent" type="Int16" required="y" min="-1000" max="10000" />
+		<attribute name="support-power-value" type="Int16" required="y" min="0" max="30000" />
+		<attribute name="heal-power-value" type="Int16" required="y" min="0" max="30000" />
+		<attribute name="hypermove-power-value" type="Int16" required="y" min="0" max="30000" />
+		<attribute name="unk-" type="Int16" min="0" max="30000" />
+		<attribute name="r-attack-aoe-pierce-modify" type="Int16" required="y" />
+		<attribute name="r-attack-abnormal-hit-modify" type="Int16" required="y" />
+		<attribute name="r-defend-abnormal-dodge-modify" type="Int16" required="y" />
+		<attribute name="r-support-power-modify" type="Int16" required="y" />
+		<attribute name="unk-" type="Int32" />
+	</el>
 </table>

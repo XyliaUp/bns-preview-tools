@@ -12,7 +12,6 @@ using Xylia.Preview.Data.Common.DataStruct;
 using Xylia.Preview.Data.Common.Seq;
 using Xylia.Preview.Data.Helpers;
 using Xylia.Preview.Data.Models;
-using Xylia.Preview.UI.Documents.Args;
 
 namespace Xylia.Preview.UI.Documents;
 public class Arg : Element
@@ -72,7 +71,7 @@ public class Arg : Element
 		if (result is null) return new Size();
 		//else if(result is ImageData b) FinalHeight = Math.Max(FinalHeight, DrawImage(param, ref LocX, ref LocY, b.source, BasicHeight, true /* , b.scale*/));
 		else if (result is int @int) this.Children.Add(new Run() { Text = @int.ToString("N0") });
-		else if (result is not null) this.Children.Add(new Run() { Text = result.ToString() });
+		else if (result is not null) this.Children.Add(new Paragraph(result.ToString()));
 
 		return base.MeasureCore(availableSize);
 	}

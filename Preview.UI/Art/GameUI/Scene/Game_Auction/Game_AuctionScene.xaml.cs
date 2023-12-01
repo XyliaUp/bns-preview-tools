@@ -1,3 +1,4 @@
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 
@@ -9,7 +10,7 @@ using Xylia.Preview.UI.Controls;
 using Xylia.Preview.UI.Helpers.Output;
 
 namespace Xylia.Preview.UI.Art.GameUI.Scene.Game_Auction;
-public partial class Game_AuctionScene : GameScene
+public partial class Game_AuctionScene 
 {
 	#region Constructor
 	public Game_AuctionScene()
@@ -17,8 +18,8 @@ public partial class Game_AuctionScene : GameScene
 		InitializeComponent();
 
 		#region Category
-		TreeView.Items.Add(new TreeViewImageItem() { HeaderText = "UI.Market.Category.All".GetText(), Tag = "all" });
-		TreeView.Items.Add(new TreeViewImageItem() { HeaderText = "UI.Market.Category.Favorites".GetText(), Tag = "favorites" });
+		TreeView.Items.Add(new TreeViewImageItem() { Header = "UI.Market.Category.All".GetText(), Tag = "all" });
+		TreeView.Items.Add(new TreeViewImageItem() { Header = "UI.Market.Category.Favorites".GetText(), Tag = "favorites" });
 
 		foreach (var category2 in Item.MarketCategory2Group())
 		{
@@ -47,7 +48,7 @@ public partial class Game_AuctionScene : GameScene
 
 
 	#region Fields
-	private ListCollectionView source;
+	private readonly ListCollectionView source;
 
 	private string _nameFilter;
 	public string NameFilter
@@ -116,10 +117,13 @@ public partial class Game_AuctionScene : GameScene
 			!record.Attributes.Get<bool>("auctionable") &&
 			!record.Attributes.Get<bool>("seal-renewal-auctionable")) return false;
 
-		// filter name
+		// filter rule
 		if (IsEmpty) return true;
 		else
 		{
+			if(int.TryParse(_nameFilter , out int id)) return record.RecordId == id;
+
+
 			var alias = record.Attributes["alias"];
 			if (alias != null && alias.IndexOf(_nameFilter, StringComparison.OrdinalIgnoreCase) > 0) return true;
 

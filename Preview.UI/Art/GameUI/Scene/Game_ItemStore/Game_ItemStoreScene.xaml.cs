@@ -1,3 +1,4 @@
+using System.Windows;
 using System.Windows.Controls;
 
 using Xylia.Preview.Data.Helpers;
@@ -7,7 +8,7 @@ using Xylia.Preview.UI.Controls;
 using static Xylia.Preview.Data.Models.UnlocatedStore;
 
 namespace Xylia.Preview.UI.Art.GameUI.Scene.Game_ItemStore;
-public partial class Game_ItemStoreScene : GameScene
+public partial class Game_ItemStoreScene
 {
 	public Game_ItemStoreScene()
 	{
@@ -16,7 +17,7 @@ public partial class Game_ItemStoreScene : GameScene
 
 
 	#region Methods 
-	protected override void OnLoading(EventArgs e)
+	protected override void OnLoaded(EventArgs e)
 	{
 		#region type
 		var group = new Dictionary<UnlocatedStoreTypeSeq, TreeViewItem>();
@@ -31,7 +32,7 @@ public partial class Game_ItemStoreScene : GameScene
 
 			var item = new TreeViewImageItem()
 			{
-				HeaderText = record.TitleText.GetText(),
+				Header = record.TitleText.GetText(),
 				//Image = FileCache.Provider.LoadObject(record.TitleIcon)?.GetImage()?.ToImageSource(),
 			};
 			this.TreeView.Items.Add(group[record.UnlocatedStoreType] = item);

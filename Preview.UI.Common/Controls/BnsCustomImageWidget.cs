@@ -3,8 +3,6 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 
-using AduSkin.Controls.Metro;
-
 using SkiaSharp;
 using SkiaSharp.Views.WPF;
 
@@ -60,7 +58,7 @@ public class BnsCustomImageWidget : FrameworkElement
         var widget = (BnsCustomImageWidget)d;
         var value = (SKBitmap)e.NewValue;
 
-        widget.Source = value.ToWriteableBitmap();
+        widget.Source = value?.ToWriteableBitmap();
     }
     #endregion
 
@@ -103,8 +101,8 @@ public class BnsCustomImageWidget : FrameworkElement
         if (isConstrainedWidth || isConstrainedHeight)
         {
             // Compute scaling factors for both axes
-            scaleX = DoubleUtil.IsZero(contentSize.Width) ? 0.0 : availableSize.Width / contentSize.Width;
-            scaleY = DoubleUtil.IsZero(contentSize.Height) ? 0.0 : availableSize.Height / contentSize.Height;
+            scaleX = double.IsInfinity(contentSize.Width) ? 0.0 : availableSize.Width / contentSize.Width;
+            scaleY = double.IsInfinity(contentSize.Height) ? 0.0 : availableSize.Height / contentSize.Height;
 
             if (!isConstrainedWidth) scaleX = scaleY;
             else if (!isConstrainedHeight) scaleY = scaleX;

@@ -1,6 +1,5 @@
-﻿using System.Diagnostics.CodeAnalysis;
-using System.Runtime.CompilerServices;
-using System.Text;
+﻿using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices;
 
 using Xylia.Preview.Data.Common.DataStruct;
 using Xylia.Preview.Data.Models;
@@ -8,20 +7,6 @@ using Xylia.Preview.Data.Models;
 namespace Xylia.Preview.Data.Common;
 public static class Extensions
 {
-	public static string ReadNString([NotNull] this BinaryReader reader)
-	{
-		var builder = new StringBuilder();
-		var c = reader.ReadByte();
-
-		while (c != 0)
-		{
-			builder.Append((char)c);
-			c = reader.ReadByte();
-		}
-
-		return builder.ToString();
-	}
-
 	[MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
 	public static unsafe string GetNStringUTF16(this byte[] array, int offset)
 	{
@@ -84,7 +69,6 @@ public static class Extensions
 
 
 
-
 	// Setters
 	[MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
 	public static unsafe void Set<T>(this Record record, int offset, T value) where T : unmanaged
@@ -92,6 +76,16 @@ public static class Extensions
 		fixed (byte* ptr = record.Data)
 		{
 			*(T*)(ptr + offset) = value;
+		}
+	}
+
+	[MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+	public static unsafe void Set(this Record record, int offset, object value)
+	{
+		fixed (byte* ptr = record.Data)
+		{
+			var ptr2 = new nint(ptr + offset);
+			Marshal.StructureToPtr(value, ptr2, true);
 		}
 	}
 

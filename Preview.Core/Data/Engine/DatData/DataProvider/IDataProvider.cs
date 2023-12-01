@@ -27,7 +27,7 @@ public interface IDataProvider : IDisposable
 	/// <summary>
 	/// DataSource localized information
 	/// </summary>
-	Locale Locale { get => throw new NotImplementedException(); private set => throw new NotImplementedException(); }
+	Locale Locale => null;
 	#endregion
 
 	#region Methods

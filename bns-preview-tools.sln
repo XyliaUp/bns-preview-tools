@@ -1,4 +1,3 @@
-﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.32414.318
@@ -17,7 +16,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Preview.Tests", "Preview.Te
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Preview.UI", "Preview.UI\Preview.UI.csproj", "{86EE04F4-CB0E-478A-A370-E2CA7E6F1A95}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Preview.UI.Common", "Preview.UI.Common\Preview.UI.Common.csproj", "{91B8A858-4B37-4852-ADB3-01F192CA57BD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Preview.UI.Common", "Preview.UI.Common\Preview.UI.Common.csproj", "{91B8A858-4B37-4852-ADB3-01F192CA57BD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -82,6 +81,11 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
+		RESX_Rules = {"EnabledRules":["StringFormat"]}
+		RESX_ShowErrorsInErrorList = False
+		RESX_TaskErrorCategory = Message
+		RESX_ResXSortingComparison = Ordinal
+		RESX_SortFileContentOnSave = True
 		SolutionGuid = {E692D4CD-1B89-448D-BED5-A4E1CFDEEB06}
 	EndGlobalSection
 EndGlobal

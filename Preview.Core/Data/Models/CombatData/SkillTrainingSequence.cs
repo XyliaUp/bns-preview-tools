@@ -1,7 +1,6 @@
-﻿using Xylia.Preview.Data.Common.Seq;
+﻿using Xylia.Preview.Data.Common.Attribute;
 using Xylia.Preview.Data.Common.DataStruct;
-using Xylia.Preview.Data.Common.Attribute;
-using Xylia.Preview.Data.Engine.BinData.Models;
+using Xylia.Preview.Data.Common.Seq;
 
 namespace Xylia.Preview.Data.Models;
 public sealed class SkillTrainingSequence : Record
@@ -11,7 +10,7 @@ public sealed class SkillTrainingSequence : Record
 
 
 
-	public List<Step> step;
+	public List<Step> step { get; set; }
 
 	public sealed class Step
 	{

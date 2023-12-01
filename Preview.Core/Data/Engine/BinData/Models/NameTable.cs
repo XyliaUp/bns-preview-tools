@@ -8,6 +8,56 @@ using Xylia.Preview.Data.Common.DataStruct;
 namespace Xylia.Preview.Data.Engine.BinData.Models;
 public class NameTable
 {
+	public NameTableEntry RootEntry { get; } = new NameTableEntry();
+	public virtual List<NameTableEntry> Entries { get; } = new List<NameTableEntry>();
+
+	public virtual void Clear()
+	{
+		Entries.Clear();
+	}
+
+
+	public List<AliasCollection> CreateTable()
+	{
+		var tables = new Dictionary<string, AliasCollection>(StringComparer.OrdinalIgnoreCase);
+
+		CreateNode(this.RootEntry, tables: tables);
+		Entries.Clear();
+
+		foreach (var table in tables.Values)
+		{
+			table.ByRef = table.ToLookup(x => x.Ref, x => x).ToDictionary(x => x.Key, x => x.First());
+			table.ByAlias = table.DistinctBy(x => x.Alias).ToDictionary(x => x.Alias, StringComparer.OrdinalIgnoreCase);
+		}
+
+		return tables.Values.ToList();
+	}
+
+	private void CreateNode(NameTableEntry entry, string path = null, Dictionary<string, AliasCollection> tables = null)
+	{
+		path += entry.String;
+
+		if (entry.IsLeaf)
+		{
+			for (uint i = entry.Begin >> 1; i <= entry.End; i++)
+				CreateNode(Entries[(int)i], path, tables);
+		}
+		else
+		{
+			var tmp = path.Split(':', 2);
+			if (tmp.Length < 2) return;
+
+			var table = tmp[0];
+			var alias = tmp[1];
+
+			if (!tables.TryGetValue(table, out var infos))
+				tables.TryAdd(table, infos = new() { Table = table });
+
+			infos.Add(new AliasEntry(entry.ToRef(), table, alias));
+		}
+	}
+
+
 	public class Rebuilder
 	{
 		private class Node
@@ -183,19 +233,6 @@ public class NameTable
 				break;
 			}
 		}
-	}
-
-	public NameTableEntry RootEntry { get; } = new NameTableEntry();
-	public virtual List<NameTableEntry> Entries { get; } = new List<NameTableEntry>();
-
-	public Rebuilder BeginRebuilding()
-	{
-		return new Rebuilder(this);
-	}
-
-	public virtual void Clear()
-	{
-		Entries.Clear();
 	}
 }
 

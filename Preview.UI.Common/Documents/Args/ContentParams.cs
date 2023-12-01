@@ -4,14 +4,24 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Runtime.CompilerServices;
 
-namespace Xylia.Preview.UI.Documents.Args;
-public sealed class ContentParams
+namespace Xylia.Preview.UI.Documents;
+/// <summary>
+/// DataContext
+/// </summary>
+public sealed class ContentParams : IEnumerable, ICollection, IList
 {
 	#region Fields
+	public event EventHandler Changed;
+
 	private const int DefaultCapacity = 4;
 
 	internal object[] _items = new object[DefaultCapacity];
 	internal int _size;
+
+	public ContentParams()
+	{
+
+	}
 
 	public ContentParams(params object[] args)
 	{
@@ -23,7 +33,6 @@ public sealed class ContentParams
 	// Gets and sets the capacity of this list.  The capacity is the size of
 	// the internal array used to hold items.  When set, the internal
 	// array of the list is reallocated to the given capacity.
-	//
 	public int Capacity
 	{
 		get => _items.Length;
@@ -54,6 +63,16 @@ public sealed class ContentParams
 	// Read-only property describing how many elements are in the List.
 	public int Count => _size;
 
+	bool IList.IsFixedSize => false;
+
+	bool IList.IsReadOnly => false;
+
+	// Is this List synchronized (thread-safe)?
+	bool ICollection.IsSynchronized => false;
+
+	// Synchronization root for this object.
+	object ICollection.SyncRoot => this;
+
 	/// <summary>
 	/// Gets or sets the element at the specified index.
 	/// </summary>
@@ -61,17 +80,18 @@ public sealed class ContentParams
 	/// <returns></returns>
 	public object this[int ArgIndex]
 	{
-		get => ArgIndex > this.Count ? default : _items[ArgIndex - 1];
+		get => ArgIndex > _size ? default : _items[ArgIndex - 1];
 		set
 		{
-			if (ArgIndex > this.Count)
+			if (ArgIndex > _size)
 			{
-				int count = ArgIndex - this.Count;
-				for (int x = 0; x < count; x++)
-					this.Add(default);
+				if(ArgIndex > _items.Length) Grow(ArgIndex);
+
+				_size = ArgIndex;
 			}
 
 			_items[ArgIndex - 1] = value;
+			Changed?.Invoke(this, EventArgs.Empty);
 		}
 	}
 	#endregion
@@ -159,7 +179,66 @@ public sealed class ContentParams
 
 		return newCapacity;
 	}
+	#endregion
 
+
+	#region Interface
 	public IEnumerator GetEnumerator() => _items.GetEnumerator();
+
+	public void CopyTo(Array array, int index)
+	{
+		// Delegate rest of error checking to Array.Copy.
+		Array.Copy(_items, 0, array, index, _size);
+	}
+
+	int IList.Add(object? item)
+	{
+		Add(item!);
+		return Count - 1;
+	}
+
+	public void Clear()
+	{
+		int size = _size;
+		_size = 0;
+		if (size > 0)
+		{
+			Array.Clear(_items, 0, size); // Clear the elements so that the gc can reclaim the references.
+		}
+	}
+
+	public bool Contains(object? value)
+	{
+		return _size != 0 && IndexOf(value) >= 0;
+	}
+
+	public int IndexOf(object? value)
+	{
+		return Array.IndexOf(_items, value, 0, _size);
+	}
+
+	public void Insert(int index, object? value)
+	{
+		throw new NotImplementedException();
+	}
+
+	public void Remove(object? value)
+	{
+		int index = IndexOf(value);
+		if (index >= 0) RemoveAt(index);
+	}
+
+	public void RemoveAt(int index)
+	{
+		if ((uint)index >= (uint)_size)
+		{
+			throw new ArgumentOutOfRangeException();
+		}
+		_size--;
+		if (index < _size)
+		{
+			Array.Copy(_items, index + 1, _items, index, _size - index);
+		}
+	}
 	#endregion
 }

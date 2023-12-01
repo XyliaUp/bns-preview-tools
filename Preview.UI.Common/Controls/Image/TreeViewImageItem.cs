@@ -1,39 +1,61 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
 using System.Windows.Media;
 
 namespace Xylia.Preview.UI.Controls;
 public class TreeViewImageItem : TreeViewItem
 {
-	readonly Image icon;
-	readonly TextBlock textBlock;
-
-
+	#region Ctor
 	public TreeViewImageItem()
 	{
 		StackPanel stack = new StackPanel();
 		stack.Orientation = Orientation.Horizontal;
-		Header = stack;
+		base.Header = stack;
 
-		//Uncomment this code If you want to add an Image after the Node-HeaderText
-		//textBlock = new TextBlock();
-		//textBlock.VerticalAlignment = VerticalAlignment.Center;
-		//stack.Children.Add(textBlock);
-		icon = new Image();
-		icon.VerticalAlignment = VerticalAlignment.Center;
-		icon.Height = 18;
-		icon.Width = 18;
-		icon.Margin = new Thickness(0, 0, 4, 0);
+		var icon = new Image
+		{
+			VerticalAlignment = VerticalAlignment.Center,
+			Height = 18,
+			Width = 18,
+			Margin = new Thickness(0, 0, 4, 0),
+		};
+		var textBlock = new TextBlock
+		{
+			VerticalAlignment = VerticalAlignment.Center
+		};
+
+		BindingOperations.SetBinding(icon, System.Windows.Controls.Image.SourceProperty, new Binding { Source = this, Path = new PropertyPath(ImageProperty) });
+		BindingOperations.SetBinding(textBlock, TextBlock.TextProperty, new Binding { Source = this, Path = new PropertyPath(HeaderProperty) });
+
 		stack.Children.Add(icon);
-
-		//Add the HeaderText After Adding the icon
-		textBlock = new TextBlock();
-		textBlock.VerticalAlignment = VerticalAlignment.Center;
 		stack.Children.Add(textBlock);
 	}
+	#endregion
 
 
-	public ImageSource Image { get => icon.Source; set => icon.Source = value; }
+	#region Public Properties
+	public ImageSource Image
+	{
+		get { return (ImageSource)GetValue(ImageProperty); }
+		set { SetValue(ImageProperty, value); }
+	}
 
-	public string HeaderText { get => textBlock.Text; set => textBlock.Text = value; }
+	/// <summary>
+	/// DependencyProperty for Image property.
+	/// </summary>
+	/// <seealso cref="Image.Source" />
+	public static readonly DependencyProperty ImageProperty =
+		DependencyProperty.Register("Image", typeof(ImageSource), typeof(TreeViewImageItem));
+
+
+	public new string Header
+	{
+		get { return (string)GetValue(HeaderProperty); }
+		set { SetValue(HeaderProperty, value); }
+	}
+
+	public new static readonly DependencyProperty HeaderProperty =
+		DependencyProperty.Register("Header", typeof(string), typeof(TreeViewImageItem));
+	#endregion
 }

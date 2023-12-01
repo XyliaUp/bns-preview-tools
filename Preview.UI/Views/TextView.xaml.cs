@@ -1,4 +1,5 @@
 ﻿using System.Text;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 
@@ -10,6 +11,7 @@ using ICSharpCode.AvalonEdit.Search;
 using Microsoft.Win32;
 
 using Xylia.Preview.Data;
+using Xylia.Preview.Data.Models;
 using Xylia.Preview.UI.Helpers;
 using Xylia.Preview.UI.ViewModels;
 
@@ -99,59 +101,84 @@ public partial class TextView : Window
 
 	private void RenderView()
 	{
-		if (OldSource is null || NewSource is null) return;
+		#region Source
+		using var source1 = new BnsDatabase(new LocalProvider(OldSource));
+		using var source2 = new BnsDatabase(new LocalProvider(NewSource));
 
-		using var Source1 = new BnsDatabase(new LocalProvider(OldSource));
-		using var Source2 = new BnsDatabase(new LocalProvider(NewSource));
-		this.InlineHeaderText.Text = Source1.Provider.Name + " → " + Source2.Provider.Name;
+		bool IsEmpty1 = source1.Text is null || !source1.Text.Any();
+		bool IsEmpty2 = source2.Text is null || !source2.Text.Any();
 
-		// init
-		var strategy = new TextFoldingStrategy();
-		var builder = new StringBuilder();
-		diffResult = TextDiff.Diff(Source1.Text, Source2.Text);
-
-		int areaStart = 0;
-		var areaType = ChangeType.Unchanged;
-		for (int i = 0; i < diffResult.Count; i++)
+		// HeaderText
+		if (IsEmpty1 && IsEmpty2) return;
+		else if (!IsEmpty1 && !IsEmpty2) this.InlineHeaderText.Text = source1.Provider.Name + " → " + source2.Provider.Name;
+		else
 		{
-			// text
-			var line = diffResult[i];
-
-			if (i != 0) builder.AppendLine();
-			if (line.TextOld != null) builder.Append(line.TextOld + " → ");
-			builder.Append(line.Text);
-
-			// handle
-			if (line.Type != areaType)
-			{
-				strategy.Lines.Add(new TextArea() { Type = areaType, StartLine = areaStart, EndLine = i - 1 });
-
-				areaType = line.Type;
-				areaStart = i;
-			}
+			if (IsEmpty1) this.InlineHeaderText.Text = source2.Provider.Name;
+			if (IsEmpty2) this.InlineHeaderText.Text = source1.Provider.Name;
 		}
+		#endregion
 
-		strategy.Lines.Add(new TextArea() { Type = areaType, StartLine = areaStart, EndLine = diffResult.Count - 1 });
+
+		#region Lines
+		// compare
+		if (!IsEmpty1 && !IsEmpty2)
+		{
+			var strategy = new TextFoldingStrategy();
+			var builder = new StringBuilder();
+
+			diffResult = TextDiff.Diff(source1.Text, source2.Text);
+
+			int areaStart = 0;
+			var areaType = ChangeType.Unchanged;
+			for (int i = 0; i < diffResult.Count; i++)
+			{
+				// text
+				var line = diffResult[i];
+
+				if (i != 0) builder.AppendLine();
+				if (line.oldtext != null) builder.Append(line.oldtext + " → ");
+				builder.Append(line.text);
+
+				// handle
+				if (line.Type != areaType)
+				{
+					strategy.Lines.Add(new TextArea() { Type = areaType, StartLine = areaStart, EndLine = i - 1 });
+
+					areaType = line.Type;
+					areaStart = i;
+				}
+			}
+
+			strategy.Lines.Add(new TextArea() { Type = areaType, StartLine = areaStart, EndLine = diffResult.Count - 1 });
 
 
-		// set text
-		Editor.Text = builder.ToString();
-		strategy.UpdateFoldings(foldingManager, Editor.Document);
-		strategy.UpdateRenders(Editor.TextArea.TextView);
+			Editor.Text = builder.ToString();
+			strategy.UpdateFoldings(foldingManager, Editor.Document);
+			strategy.UpdateRenders(Editor.TextArea.TextView);
+		}
+		else
+		{
+			diffResult = null;
+			Editor.Text = (source1.Text ?? source2.Text).WriteXml();
+		}
+		#endregion
 	}
 
 	private void OnPositionChanged(Control sender)
 	{
-		// get current line
-		//var index2 = Editor.TextArea.Caret.Line - 1;
-		//var line = Editor.Document.Lines[index2];
-		//search.Tag = Editor.Document.Text.Substring(line.Offset, line.Length);
-
 		// preview	
 		var index = Editor.TextArea.Caret.Line - 1;
-		if (diffResult is null || diffResult.Count <= index) return;
+		if (diffResult is null)
+		{
+			var line = Editor.Document.Lines[index];
+			var text = Editor.Document.Text.Substring(line.Offset, line.Length);
 
-		sender.Tag = diffResult[index];
+			sender.Tag = Record.Parse(text)?.Attributes;
+		}
+		else if (diffResult.Count <= index)
+		{
+			sender.Tag = diffResult[index];
+		}
 	}
 	#endregion
 }
@@ -236,7 +263,7 @@ internal class TextAreaRenderer : IBackgroundRenderer
 	}
 
 	public void Draw(ICSharpCode.AvalonEdit.Rendering.TextView textView, DrawingContext drawingContext)
-	{        
+	{
 		// valid
 		ArgumentNullException.ThrowIfNull(textView);
 		ArgumentNullException.ThrowIfNull(drawingContext);
@@ -250,7 +277,7 @@ internal class TextAreaRenderer : IBackgroundRenderer
 		var line2 = textView.GetVisualLine(Area.EndLine + 1);
 
 
-        // rect
+		// rect
 		double posY = line1 is null ? 0 : (line1.VisualTop - textView.ScrollOffset.Y);
 		double height = 0;
 		if (line1 == null && line2 == null) height = textView.ActualHeight;
@@ -259,6 +286,7 @@ internal class TextAreaRenderer : IBackgroundRenderer
 		if (line1 != null && line2 != null) height = line2.VisualTop + line2.Height - line1.VisualTop;
 
 		// background
+		if (height < 0) return;
 		var geometry = new RectangleGeometry(new Rect(0, posY, textView.ActualWidth, height));
 		if (geometry != null) drawingContext.DrawGeometry(BackgroundBrush, this.BorderPen, geometry);
 

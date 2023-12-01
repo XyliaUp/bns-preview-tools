@@ -1,4 +1,4 @@
-﻿using System.Reflection;
+﻿using System.Windows;
 using System.Windows.Controls;
 
 using LiveCharts;
@@ -6,38 +6,27 @@ using LiveCharts.Defaults;
 using LiveCharts.Wpf;
 
 using Xylia.Preview.Data.Models.Creature;
+using Xylia.Preview.UI.ViewModels;
 
 namespace Xylia.Preview.UI.Views.Pages;
 public partial class AbilityPage : Page
 {
+	private AbilityViewModel _viewModel;
 	const sbyte DEFAULT_LEVEL = 60;
 
 	public AbilityPage()
 	{
 		InitializeComponent();
-
-		// ability list
-		foreach (var prop in typeof(AbilityFunction).GetProperties(BindingFlags.Static | BindingFlags.Public))
-		{
-			if (prop.GetValue(null) is not AbilityFunction ability || ability.K == 0) continue;
-
-			this.TreeView.Items.Add(new TreeViewItem()
-			{
-				Header = ability.Type,
-				Tag = ability,
-			});
-		}
+		DataContext = _viewModel = new AbilityViewModel();
 	}
-
 
 	private void TreeView_SelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
 	{
-		if (TreeView.SelectedItem is not Control c || c.Tag is not AbilityFunction ability)
-			return;
+		if (e.NewValue is not AbilityFunction ability) return;
 
+		_viewModel.Selected = ability;
 		LevelText.IsEnabled = ability.Φ != 0;
-		LevelText.Text = DEFAULT_LEVEL.ToString();
-
+		LevelText.Value = DEFAULT_LEVEL;
 
 		#region Chart	
 		int CHART_MAX_VALUE = 20000;
@@ -57,28 +46,5 @@ public partial class AbilityPage : Page
 			}
 		};
 		#endregion
-	}
-
-	private void GetPercent_Click(object sender, RoutedEventArgs e)
-	{
-		if (TreeView.SelectedItem is not Control c || c.Tag is not AbilityFunction ability)
-			return;
-
-
-		if (!double.TryParse(AbilityText.Text, out double Value)) return;
-
-		var level = sbyte.Parse(LevelText.Text);
-		double extra = 0;   // double)numericUpDown1.Value * 0.01;
-		double percent = ability.GetPercent(Value, level) + extra;
-
-
-		ResultText.Text = $"在{level}级时所对应的 {ability.Type}率:\n{Value} ({percent:P3})";
-		//if (UseCompare.Checked)
-		//{
-		//	double value2 = Value + AttritubeValue_Extra.Text.ToInt32();
-		//	double percent2 = obj.GetPercent(value2, level) + extra;
-
-		//	label1.Text += $"\n{value2} ({percent2:P3})\n\n差值为 {percent2 - percent:P3}";
-		//}
 	}
 }

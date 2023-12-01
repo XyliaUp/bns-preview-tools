@@ -1,38 +1,25 @@
-﻿<Window x:Class="Xylia.Preview.UI.Views.Selector.FileModeDialog"
+﻿<Border x:Class="Xylia.Preview.UI.Views.Selector.FileModeDialog"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="FileMode" Height="300" Width="500" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
-	<Window.Resources>
-		<Style TargetType="{x:Type Image}">
-			<Style.Triggers>
-				<Trigger Property="IsMouseOver" Value="True">
-					<Setter Property="Cursor" Value="Hand"/>
-				</Trigger>
-			</Style.Triggers>
-		</Style>
-
-		<Style TargetType="{x:Type Label}">
-			<Setter Property="HorizontalContentAlignment" Value="Center"/>
-			<Setter Property="FontSize" Value="17"/>		
-		</Style>
-	</Window.Resources>
-
+		xmlns:hc="https://handyorg.github.io/handycontrol"
+		CornerRadius="10"
+        Height="230" Width="400"
+		Background="{DynamicResource RegionBrush}">
 	<Grid>
 		<Grid.ColumnDefinitions>
 			<ColumnDefinition Width="*"/>
 			<ColumnDefinition Width="*"/>
 		</Grid.ColumnDefinitions>
-
 		<Grid.RowDefinitions>
 			<RowDefinition Height="*"/>
 			<RowDefinition Height="30"/>
 		</Grid.RowDefinitions>
 
+		<Image Grid.Column="0" Grid.Row="0" Source="pack://application:,,,/Resources/Images/icon-file.png" MouseLeftButtonDown="TextFile_MouseLeftButtonDown" Cursor="Hand"/>
+		<Image Grid.Column="1" Grid.Row="0" Source="pack://application:,,,/Resources/Images/icon-excel.png" MouseLeftButtonDown="ExcelFile_MouseLeftButtonDown" Cursor="Hand"/>
+		<TextBlock Grid.Column="0" Grid.Row="1" Text="Text File" HorizontalAlignment="Center" FontSize="17 "/>
+		<TextBlock Grid.Column="1" Grid.Row="1" Text="Excel File" HorizontalAlignment="Center" FontSize="17 "/>
 
-		<Image Grid.Column="0" Grid.Row="0" Source="pack://application:,,,/Resources/Images/icon-file.png" MouseLeftButtonDown="TextFile_MouseLeftButtonDown"/>
-		<Label Grid.Column="0" Grid.Row="1" Content="Text File" />
-
-		<Image Grid.Column="1" Grid.Row="0" Source="pack://application:,,,/Resources/Images/icon-excel.png" MouseLeftButtonDown="ExcelFile_MouseLeftButtonDown"/>
-		<Label Grid.Column="1" Grid.Row="1" Content="Excel File" />
+		<Button Width="30" Height="30" Command="hc:ControlCommands.Close" Style="{StaticResource ButtonIcon}" Foreground="{DynamicResource PrimaryBrush}" hc:IconElement.Geometry="{StaticResource ErrorGeometry}" Padding="0" HorizontalAlignment="Right" VerticalAlignment="Top" Grid.ColumnSpan="2" />
 	</Grid>
-</Window>
+</Border>

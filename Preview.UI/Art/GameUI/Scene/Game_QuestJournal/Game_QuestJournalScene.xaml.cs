@@ -1,27 +1,25 @@
 using System.ComponentModel;
+using System.Windows;
 using System.Windows.Controls;
-
-using CommunityToolkit.Mvvm.Input;
 
 using Xylia.Preview.Data.Helpers;
 using Xylia.Preview.Data.Models;
 using Xylia.Preview.UI.Helpers.Output.Quests;
 using Xylia.Preview.UI.ViewModels;
-using Xylia.Preview.UI.Views.Editor;
 
 namespace Xylia.Preview.UI.Art.GameUI.Scene.Game_QuestJournal;
-public partial class Game_QuestJournalScene : GameScene
+public partial class Game_QuestJournalScene
 {
-	#region Ctr
+	#region Ctor
 	public Game_QuestJournalScene()
 	{
 		InitializeComponent();
 	}
 
-	protected override void OnLoading(EventArgs e)
+	protected override void OnLoaded(EventArgs e)
 	{
 		// Quest
-		TreeView1.ItemsSource = FileCache.Data.Quest.OrderBy(q => q.id);
+		QuestJournal_ProgressQuestList.ItemsSource = FileCache.Data.Quest.OrderBy(q => q.id);
 
 		// Completed
 		List<Quest> CompletedQuest = new();
@@ -43,16 +41,11 @@ public partial class Game_QuestJournalScene : GameScene
 
 	#region ProgressTab
 	private void ProgressTab_SelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
-	{
-		QuestJournalPanel.DataContext = e.NewValue as Quest;
-	}
+	{   
+		QuestJournal_CurrentQuest_Info.DataContext = e.NewValue as Quest;
 
-	[RelayCommand]
-	public static void ViewRaw(Quest record)
-	{
-		// Warning: is not original text
-		var editor = new TextEditor { Text = record.Owner.WriteXml(record) };
-		editor.Show();
+		// HACK: binding can use? 
+		QuestJournal_Content.Params[2] = e.NewValue;
 	}
 	#endregion
 

@@ -1,4 +1,7 @@
 ﻿using CUE4Parse.BNS.Conversion;
+using CUE4Parse.UE4.Assets.Exports.Texture;
+
+using CUE4Parse_Conversion.Textures;
 
 using SkiaSharp;
 
@@ -214,8 +217,8 @@ public abstract partial class Item : Record
 			#region TopRight
 			SKBitmap TopRight = null;
 
-			if (AccountUsed) TopRight = FileCache.Provider.LoadObject("BNSR/Content/Art/UI/GameUI_BNSR/Resource/GameUI_Icon3_R/SlotItem_privateSale").GetImage();
-			else if (Auctionable) TopRight = FileCache.Provider.LoadObject("BNSR/Content/Art/UI/GameUI_BNSR/Resource/GameUI_Icon3_R/SlotItem_marketBusiness").GetImage();
+			if (AccountUsed) TopRight = FileCache.Provider.LoadObject<UTexture>("BNSR/Content/Art/UI/GameUI_BNSR/Resource/GameUI_Icon3_R/SlotItem_privateSale")?.Decode();
+			else if (Auctionable) TopRight = FileCache.Provider.LoadObject<UTexture>("BNSR/Content/Art/UI/GameUI_BNSR/Resource/GameUI_Icon3_R/SlotItem_marketBusiness")?.Decode();
 
 			if (TopRight != null) bmp = bmp.Compose(TopRight);
 			#endregion
@@ -223,9 +226,9 @@ public abstract partial class Item : Record
 			#region BottomLeft
 			SKBitmap BottomLeft = null;
 			if (EventInfo.Instance?.IsExpiration ?? false) 
-				BottomLeft = FileCache.Provider.LoadObject("BNSR/Content/Art/UI/GameUI_BNSR/Resource/GameUI_Icon3_R/unuseable_olditem_3").GetImage();
+				BottomLeft = FileCache.Provider.LoadObject<UTexture>("BNSR/Content/Art/UI/GameUI_BNSR/Resource/GameUI_Icon3_R/unuseable_olditem_3")?.Decode();
 			else if (this is Grocery grocery && grocery.GroceryType == GroceryTypeSeq.Sealed)
-				BottomLeft = FileCache.Provider.LoadObject("BNSR/Content/Art/UI/GameUI_BNSR/Resource/GameUI_Icon3_R/Weapon_Lock_04").GetImage();
+				BottomLeft = FileCache.Provider.LoadObject<UTexture>("BNSR/Content/Art/UI/GameUI_BNSR/Resource/GameUI_Icon3_R/Weapon_Lock_04")?.Decode();
 			//else BottomLeft = new DecomposeInfo(item).GetExtra();
 
 			if (BottomLeft != null) bmp = bmp.Compose(BottomLeft);

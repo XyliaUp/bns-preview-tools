@@ -55,7 +55,7 @@ public class Timer : Element
 		if (format.Contains("Plusonesec")) span -= new Msec(0, 1);
 		else if (format.Contains("Plusonemin")) span -= new Msec(1, 0);
 
-		return span.ToString(default);
+		return span.ToString(default, null);
 	}
 
 	public static bool Valid(DayOfWeek DayOfWeek, int ResetTime, out Time64 Time)

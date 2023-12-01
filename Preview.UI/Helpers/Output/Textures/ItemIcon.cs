@@ -1,17 +1,19 @@
 ﻿using CUE4Parse.BNS.Conversion;
 using CUE4Parse.FileProvider;
+using CUE4Parse.UE4.Assets.Exports.Texture;
+
+using CUE4Parse_Conversion.Textures;
 
 using Xylia.Extension;
 using Xylia.Preview.Data.Common.DataStruct;
 using Xylia.Preview.Data.Models;
-using Xylia.Preview.UI.Helpers.Output.Items;
+
 using static Xylia.Preview.Data.Models.Item.Grocery;
 
 namespace Xylia.Preview.UI.Helpers.Output.Textures;
-public sealed class ItemIcon : IconOutBase
+public sealed class ItemIcon(string GameFolder, string OutputFolder) : IconOutBase(GameFolder, OutputFolder)
 {
 	#region Constructor
-	public ItemIcon(string GameFolder, string OutputFolder) : base(GameFolder, OutputFolder) { }
 
 	public bool UseBackground = false;
 
@@ -25,7 +27,7 @@ public sealed class ItemIcon : IconOutBase
 	protected override void AnalyseSourceData(DefaultFileProvider provider, string format, CancellationToken token)
 	{
 		var lst = XList.LoadData(ChvPath); 
-		var Weapon_Lock_04 = provider.LoadObject("BNSR/Content/Art/UI/GameUI_BNSR/Resource/GameUI_Icon3_R/Weapon_Lock_04").GetImage();
+		var Weapon_Lock_04 = provider.LoadObject<UTexture>("BNSR/Content/Art/UI/GameUI_BNSR/Resource/GameUI_Icon3_R/Weapon_Lock_04")?.Decode();
 
 		Parallel.ForEach(set.Item.Records, (x) =>
 		{
@@ -40,8 +42,8 @@ public sealed class ItemIcon : IconOutBase
 			record.Alias = x.Attributes["alias"];
 			record.ItemGrade = x.Attributes.Get<sbyte>("item-grade");
 			record.icon = x.Attributes["icon"];
-			record.Name2 = new Ref<Text>(x.Attributes["name2"]?.ToString(), set);
-			var Text = record.Name2.GetText();
+
+			var Text = x.Attributes.Get<Record>("name2")?.Attributes["text"];	   
 			var GroceryType = x.SubclassType == 2 ? x.Attributes["grocery-type"]?.ToEnum<GroceryTypeSeq>() : null;
 
 			x.Dispose();

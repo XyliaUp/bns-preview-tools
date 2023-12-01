@@ -1,6 +1,9 @@
 ﻿using System.Collections;
+using System.Diagnostics;
+using System.Dynamic;
 using System.Reflection;
 using System.Xml;
+using System.Xml.Linq;
 
 using Xylia.Extension;
 using Xylia.Preview.Common.Extension;
@@ -13,10 +16,12 @@ using Xylia.Preview.Data.Engine.BinData.Models;
 using Xylia.Preview.Data.Models;
 
 namespace Xylia.Preview.Data.Database;
-public class AttributeCollection : IDisposable, IEnumerable, IEnumerable<KeyValuePair<string, object>>
+/// <summary>
+/// attributes of data record 
+/// </summary>
+public class AttributeCollection : DynamicObject, IDisposable, IEnumerable, IEnumerable<KeyValuePair<string, object>>
 {
 	#region Constructor
-	/// https://zhuanlan.zhihu.com/p/430728295
 	private readonly Record record;
 	private readonly Dictionary<string, object> _attributes = new();
 
@@ -35,26 +40,31 @@ public class AttributeCollection : IDisposable, IEnumerable, IEnumerable<KeyValu
 			if (!string.IsNullOrEmpty(item.Value))
 				_attributes[item.Name] = item.Value;
 		}
-
-		//foreach (var attribute in definition.ExpandedAttributes)
-		//{
-		//	if (!string.IsNullOrEmpty(attribute.DefaultValue))
-		//		_attributes[attribute.Name] = attribute.DefaultValue;
-		//}
 		#endregion
 
 		#region children
 		foreach (var child in definition.Children)
 		{
-			var table = new Table()
-			{
-				Definition = new TableDefinition() { ElRecord = child }
-			};
+			var table = new Table() { Definition = new TableDefinition() { ElRecord = child } };
 			table.LoadXml(element.SelectNodes("./" + table.Definition.ElRecord.Name).OfType<XmlElement>());
 
 			record.Children[child.Name] = table.Records.ToArray();
 		}
 		#endregion
+	}
+
+	internal AttributeCollection(Record record, XElement element)
+	{
+		this.record = record;
+
+		#region attribute
+		foreach (var item in element.Attributes())
+		{
+			if (!string.IsNullOrEmpty(item.Value))
+				_attributes[item.Name.LocalName] = item.Value;
+		}
+		#endregion
+
 	}
 	#endregion
 
@@ -72,7 +82,7 @@ public class AttributeCollection : IDisposable, IEnumerable, IEnumerable<KeyValu
 		}
 
 		foreach (var attribute in record.ElDefinition.ExpandedAttributes)
-			yield return new(attribute.Name, Get(record, attribute));
+			yield return new(attribute.Name, Get(attribute));
 	}
 
 	public override string ToString() => GetEnumerator().ToIEnumerable().Aggregate("<record ", (sum, now) => sum + $"{now.Key}=\"{now.Value}\" ", result => result + "/>");
@@ -85,20 +95,40 @@ public class AttributeCollection : IDisposable, IEnumerable, IEnumerable<KeyValu
 	#endregion
 
 	#region Get
+	public override bool TryGetMember(GetMemberBinder binder, out object result)
+	{
+		result = Get(binder.Name);
+
+		// parse-record does not have definition 
+		return record.ElDefinition is null ?
+			result != null :
+			record.ElDefinition![binder.Name] != null;
+	}
+
 	public string this[string name] => Get(name)?.ToString();
 	public string this[string name, int index] => this[$"{name}-{index}"];
 
-	public T Get<T>(string name, int index = 0) => (T)Get(index == 0 ? name : $"{name}-{index}");
+	public T Get<T>(string name) => (T)Get(name);
 
 	public object Get(string name)
 	{
-		if (_attributes.Any()) return _attributes.GetValueOrDefault(name);
+		var attribute = record.ElDefinition?[name];
 
+		// from prev
+		if (_attributes.Count != 0)
+		{
+			var value = _attributes.GetValueOrDefault(name);
+			if (value is string s && attribute != null) value = AttributeConverter.ConvertTo(s, attribute, record.Owner.Owner);
+
+			return value;
+		}
+
+		// from definition
 		if (name == "type") return record.ElDefinition.Name;
-		return Get(record, record.ElDefinition?[name]);
+		return Get(attribute);
 	}
 
-	public static object Get(Record record, AttributeDefinition attribute, bool _noValidate = true)
+	public object Get(AttributeDefinition attribute, bool _noValidate = true)
 	{
 		if (_noValidate && (attribute is null || attribute.Offset >= record.DataSize))
 			return null;
@@ -182,9 +212,94 @@ public class AttributeCollection : IDisposable, IEnumerable, IEnumerable<KeyValu
 	}
 	#endregion
 
+	#region Set
+	public override bool TrySetMember(SetMemberBinder binder, object value)
+	{
+		var attribute = record.ElDefinition[binder.Name];
+		if (attribute is null) return false;
+
+		Set(attribute, value);
+		return true;
+	}
+
+	public void Set(AttributeDefinition attribute, object value)
+	{
+		// HACK: not implement xml
+		// NOTE: String is not expected type
+		switch (attribute.Type)
+		{
+			case AttributeType.TSeq:
+			case AttributeType.TProp_seq:
+			{
+				var seqIndex = (sbyte)attribute.Sequence.IndexOf((string)value);
+				if (seqIndex == -1)
+					throw new Exception($"Invalid sequence value: '{value}'");
+
+				value = seqIndex;
+				break;
+			}
+
+			case AttributeType.TSeq16:
+			case AttributeType.TProp_field:
+			{
+				var seqIndex = (short)attribute.Sequence.IndexOf((string)value);
+				if (seqIndex == -1)
+					throw new Exception($"Invalid sequence value: '{value}'");
+
+				value = seqIndex;
+				break;
+			}
+
+			case AttributeType.TRef:
+			{
+				var record = value as Record;
+				value = record?.Ref ?? new Ref();
+				break;
+			}
+			case AttributeType.TTRef:
+			{
+				var record = value as Record;
+				value = new TRef(record.Owner.Type, record?.Ref ?? new Ref());
+				break;
+			}
+
+			case AttributeType.TScript_obj:
+				// Ignore
+				break;
+
+			// HACK: 显然这种方式有严重问题 
+			case AttributeType.TString:
+			{
+				value = record.StringLookup.AppendString((string)value);
+				break;
+			}
+
+			default:
+				if (value is string) throw new InvalidDataException();
+				break;
+		}
+
+		// valid
+		if (record.Data.Length > attribute.Offset) record.Set(attribute.Offset, value);
+		else Debug.WriteLine("offset out of range");
+	}
+
+	/// <summary>
+	/// Create xml record data
+	/// </summary>
+	/// <param name="attribute"></param>
+	internal void Set(AttributeDefinition attribute)
+	{
+		var value = this[attribute.Name] ?? attribute.DefaultValue;
+		Set(attribute, AttributeConverter.ConvertTo(value, attribute, record.Owner.Owner));
+	}
+	#endregion
+
+
+
 	#region Methods
 	/// <summary>
-	/// Sync attributes value from instance
+	/// Sync attributes value from <see langword="Model Record"/> 
 	/// </summary>
 	/// <param name="side"></param>
 	public void Synchronize()

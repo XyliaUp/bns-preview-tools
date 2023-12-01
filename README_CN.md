@@ -1,8 +1,10 @@
 剑灵预览工具
 ==========================
-这是一个数据读取器
+C#编写的游戏数据读取器
 
-项目创建于2018年9月
+![Repo Size](https://img.shields.io/github/repo-size/xyliaup/bns-preview-tools?style=flat-square)
+[![Release](https://img.shields.io/github/release-pre/xyliaup/bns-preview-tools?style=flat-square)](https://gitee.com/XyliaUp/bns-preview-tools/releases/latest)
+[![Release Date](https://img.shields.io/github/release-date-pre/xyliaup/bns-preview-tools?style=flat-square)](https://gitee.com/XyliaUp/bns-preview-tools/releases/latest)
 
 
 功能
@@ -23,14 +25,15 @@
 输出文件
 
 ## 资源文件
-输出文件
+本软件并非用于查看虚幻引擎资产, 只提供输出文件的功能。
+如需更多特性, 请使用 [FModel](https://github.com/4sval/FModel)
 
 ## 角色属性计算
 此功能存在一些瑕疵   
 
 环境
 ==========================
-.NET 7.0 SDK    
+.NET 8.0 SDK    
 Windows 7 更高
 
 

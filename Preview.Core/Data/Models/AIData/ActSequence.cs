@@ -11,7 +11,7 @@ public class ActSequence : Record
 	public sbyte IndexedDetect;
 
 
-	public List<Action> action;
+	public List<Action> action { get; set; }
 
 	#region Sub
 	public sealed class Act : ActSequence

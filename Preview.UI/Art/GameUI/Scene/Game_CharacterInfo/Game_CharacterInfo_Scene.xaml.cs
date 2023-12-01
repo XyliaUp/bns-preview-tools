@@ -1,4 +1,5 @@
 using System.ComponentModel;
+using System.Diagnostics;
 
 using Xylia.Preview.Data.Engine.DatData;
 using Xylia.Preview.Data.Helpers;
@@ -6,7 +7,7 @@ using Xylia.Preview.Data.Models.Config;
 using Xylia.Preview.Data.Models.Creature;
 
 namespace Xylia.Preview.UI.Art.GameUI.Scene.Game_CharacterInfo;
-public partial class Game_CharacterInfo_Scene : GameScene
+public partial class Game_CharacterInfo_Scene
 {
 	#region Constructor
 	private string CharacterInfoUrl;
@@ -36,9 +37,9 @@ public partial class Game_CharacterInfo_Scene : GameScene
 	#endregion
 
 	#region Methods
-	private async void WebView_WebBrowserInitialized(object sender, EventArgs e)
+	private async void WebView_WebBrowserInitialized(object sender, Microsoft.Web.WebView2.Core.CoreWebView2 e)
 	{
-		await WebView.CoreWebView2.AddScriptToExecuteOnDocumentCreatedAsync($$"""
+		await e.AddScriptToExecuteOnDocumentCreatedAsync($$"""
 		onmouseover = (e) => {
 		    var obj = e.target; 
 			if (obj.tagName != 'IMG') return;
@@ -76,14 +77,14 @@ public partial class Game_CharacterInfo_Scene : GameScene
 
 	protected override void OnClosing(CancelEventArgs e)
 	{
-		WebView.Dispose();
-		WebView = null;
+		CharacterInfoPanelWeb.Dispose();
+		CharacterInfoPanelWeb = null;
 	}
 
 
 	public void InitUrl(Creature creature)
 	{
-		WebView.Source = new UriBuilder(CharacterInfoUrl.Replace("%s", creature.WorldId.ToString()[..2]) + CharacterInfoHomeUrn) { Query = $"c={creature.Name}&s={creature.WorldId}" }.Uri;
+		CharacterInfoPanelWeb.Source = new UriBuilder(CharacterInfoUrl.Replace("%s", creature.WorldId.ToString()[..2]) + CharacterInfoHomeUrn) { Query = $"c={creature.Name}&s={creature.WorldId}" }.Uri;
 	}
 	#endregion
 }

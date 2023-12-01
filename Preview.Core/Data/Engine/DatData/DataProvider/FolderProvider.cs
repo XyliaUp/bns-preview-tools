@@ -22,6 +22,8 @@ public class FolderProvider : IDataProvider
 
 	public void LoadData(List<TableDefinition> definitions)
 	{
+		this.Tables = new();
+
 		foreach (var definition in definitions)
 		{
 			string path = definition.Name switch

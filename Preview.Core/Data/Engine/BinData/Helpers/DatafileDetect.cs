@@ -1,15 +1,9 @@
-﻿using System.Globalization;
-using System.Text;
-
-using CsvHelper;
-using CsvHelper.Configuration;
+﻿using System.Text;
 
 using Xylia.Preview.Common.Extension;
 using Xylia.Preview.Data.Engine.BinData.Definitions;
 using Xylia.Preview.Data.Engine.BinData.Models;
-using Xylia.Preview.Data.Engine.BinData.Serialization;
 using Xylia.Preview.Data.Models;
-using Xylia.Preview.Properties;
 
 namespace Xylia.Preview.Data.Engine.BinData.Helpers;
 
@@ -117,17 +111,11 @@ public sealed class DatafileDetect
         }
     }
 
-
-    public bool TryGetName(short key, out string name) => by_id.TryGetValue(key, out name);
-
-    public bool TryGetKey(string name, out short key) => by_name.TryGetValue(name, out key);
-
-
     /// <summary>
     /// create map by detect data
     /// </summary>
     /// <param name="data"></param>
-    public void Read(Datafile data) => Read(data.Tables, AliasCollection.CreateTable(data.NameTable));
+    public void Read(Datafile data) => Read(data.Tables, data.NameTable.CreateTable());
 
     /// <summary>
     /// create map by detect data
@@ -225,16 +213,21 @@ public sealed class DatafileDetect
 
         });
 
-        CreateNameMap();
+		CreateNameMap();
 
-        GC.Collect();
+		GC.Collect();
     }
-    #endregion
+	#endregion
 
-    /// <summary>
-    /// convert reference table name to key
-    /// </summary>
-    public void Convert(List<TableDefinition> definitions)
+	#region Methods
+	public bool TryGetName(short key, out string name) => by_id.TryGetValue(key, out name);
+
+	public bool TryGetKey(string name, out short key) => by_name.TryGetValue(name, out key);
+
+	/// <summary>
+	/// convert reference table name to key
+	/// </summary>
+	public void Convert(List<TableDefinition> definitions)
     {
         foreach (var defs in definitions)
         {
@@ -259,20 +252,22 @@ public sealed class DatafileDetect
             }
         }
     }
+	#endregion
 
-    #region Output Map
-    public void Read(string path = null)
-    {
-        path ??= Path.Combine(Settings.Default.OutputFolder, "defs", "table.csv");
 
-        using var csv = new CsvReader(new StreamReader(path), new CsvConfiguration(CultureInfo.InvariantCulture) { HasHeaderRecord = false });
-        while (csv.Read())
-        {
-            var type = csv.GetField<short>(0);
-            var name = csv.GetField(1);
+	#region Output Map
+	//public void Read(string path = null)
+ //   {
+ //       path ??= Path.Combine(Settings.Default.OutputFolder, "defs", "table.csv");
 
-            AddList(name, type);
-        }
-    }
+ //       using var csv = new CsvReader(new StreamReader(path), new CsvConfiguration(CultureInfo.InvariantCulture) { HasHeaderRecord = false });
+ //       while (csv.Read())
+ //       {
+ //           var type = csv.GetField<short>(0);
+ //           var name = csv.GetField(1);
+
+ //           AddList(name, type);
+ //       }
+ //   }
     #endregion
 }

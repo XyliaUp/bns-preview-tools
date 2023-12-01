@@ -1,8 +1,7 @@
 ﻿using Xylia.Preview.Common.Extension;
-using Xylia.Preview.Data.Common.Seq;
-using Xylia.Preview.Data.Common.DataStruct;
 using Xylia.Preview.Data.Common.Attribute;
-using Xylia.Preview.Data.Engine.BinData.Models;
+using Xylia.Preview.Data.Common.DataStruct;
+using Xylia.Preview.Data.Common.Seq;
 
 namespace Xylia.Preview.Data.Models;
 public class SkillModifyInfoGroup : Record

@@ -1,16 +1,19 @@
 ﻿using System.IO;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Input;
 using System.Windows.Media.Imaging;
 
-using AduSkin.Controls.Metro;
+using OfficeOpenXml;
 
 using Ookii.Dialogs.Wpf;
 
 using Xylia.Preview.Data;
 using Xylia.Preview.Data.Engine.BinData.Models;
 using Xylia.Preview.Data.Helpers;
+using Xylia.Preview.Data.Helpers.Output;
+using Xylia.Preview.Data.Models;
 using Xylia.Preview.UI.Controls;
 using Xylia.Preview.UI.ViewModels;
 
@@ -43,7 +46,7 @@ public partial class DatabaseStudio : Window
 
 		var root = new TreeViewImageItem
 		{
-			HeaderText = provider.Name,
+			Header = provider.Name,
 			IsExpanded = true,
 			Image = new BitmapImage(new Uri("/Resources/Images/database.png", UriKind.Relative))
 		};
@@ -51,13 +54,13 @@ public partial class DatabaseStudio : Window
 
 		var system = new TreeViewImageItem
 		{
-			HeaderText = "System",
+			Header = "System",
 			Image = new BitmapImage(new Uri("/Resources/Images/folder.png", UriKind.Relative))
 		};
 		root.Items.Add(system);
 
-		system.Items.Add(new TreeViewImageItem { HeaderText = "CreatedAt: " + provider.CreatedAt });
-		system.Items.Add(new TreeViewImageItem { HeaderText = "Version: "   + provider.ClientVersion });
+		system.Items.Add(new TreeViewImageItem { Header = "CreatedAt: " + provider.CreatedAt });
+		system.Items.Add(new TreeViewImageItem { Header = "Version: " + provider.ClientVersion });
 
 
 		foreach (var table in provider.Tables.OrderBy(x => x.Type))
@@ -70,7 +73,7 @@ public partial class DatabaseStudio : Window
 			root.Items.Add(new TreeViewImageItem
 			{
 				DataContext = table,
-				HeaderText = text,
+				Header = text,
 				Tag = $"SELECT * FROM \"{table.Name ?? table.Type.ToString()}\"\nLIMIT 1000",
 				Image = new BitmapImage(new Uri("/Resources/Images/table2.png", UriKind.Relative)),
 				ContextMenu = this.TryFindResource("TableMenu") as ContextMenu,
@@ -93,6 +96,32 @@ public partial class DatabaseStudio : Window
 		Array.ForEach(parser.Fields, x => grdResult.Columns.Add(new DataGridTextColumn { Header = x, Binding = new Binding($"Attributes[{x}]") }));
 		grdResult.ItemsSource = source;
 	}
+
+
+	private void AddTab(string sql, string header = null)
+	{
+		header ??= ("TabItem" + (editors.Items.Count + 1));
+		var item = new HandyControl.Controls.TabItem()
+		{
+			Content = new ICSharpCode.AvalonEdit.TextEditor() { Text = sql },
+			Header = header,
+			ToolTip = header,
+		};
+
+		editors.Items.Insert(0, item);
+		editors.SelectedItem = item;
+	}
+
+	private string ActivateSql
+	{
+		get
+		{
+			var item = (editors.SelectedItem as ContentControl)?.Content;
+			if (item is null) return null;
+
+			return (item as ICSharpCode.AvalonEdit.TextEditor).Text;
+		}
+	}
 	#endregion
 
 	#region Methods (UI)
@@ -104,7 +133,12 @@ public partial class DatabaseStudio : Window
 			var root = new TreeViewItem() { Header = "loading..." };
 			tvwDatabase.Items.Add(root);
 
-			await Task.Run(() => parser.Database = new BnsDatabase());
+			await Task.Run(() =>
+			{
+				parser.Database = new BnsDatabase();
+				if (FileCache.IsEmpty) FileCache.Data = parser.Database;
+			});
+
 			Connect.Tag = "Disconnect";
 
 			LoadTreeView();
@@ -130,11 +164,11 @@ public partial class DatabaseStudio : Window
 		try
 		{
 			this.Run.IsEnabled = false;
-			await ExecuteSql(editor.Text);
+			await ExecuteSql(ActivateSql);
 		}
-		catch(Exception ex)
+		catch (Exception ex)
 		{
-			AduMessageBox.Show(ex.Message);
+			HandyControl.Controls.MessageBox.Show(ex.Message);
 		}
 		finally
 		{
@@ -147,43 +181,43 @@ public partial class DatabaseStudio : Window
 		var dialog = new VistaOpenFileDialog();
 		if (dialog.ShowDialog() != true) return;
 
-		editor.Text = File.ReadAllText(dialog.FileName);
+		// valid
+		var text = File.ReadAllText(dialog.FileName);
+		var header = Path.GetFileName(dialog.FileName);
+		AddTab(text, header);
 	}
 
 	private void SaveSql_Click(object sender, RoutedEventArgs e)
 	{
+		// valid
+		var text = ActivateSql;
+		if (text is null)
+		{
+			return;
+		}
+
+		// save
 		var dialog = new VistaSaveFileDialog()
 		{
 			Filter = "|*.sql",
 			FileName = "Query.sql",
 		};
-		if (dialog.ShowDialog() == true)
-			File.WriteAllText(dialog.FileName, editor.Text);
+		if (dialog.ShowDialog() == true) File.WriteAllText(dialog.FileName, text);
 	}
 
 	private void tvwDatabase_MouseDoubleClick(object sender, MouseButtonEventArgs e)
 	{
-		if (tvwDatabase.SelectedItem is TreeViewItem item)
+		if (tvwDatabase.SelectedItem is TreeViewImageItem item)
 		{
-			if (item.Tag != null) editor.Text = item.Tag as string;
-		}	
+			if (item.Tag is string s)
+				AddTab(s, item.Header);
+		}
 	}
-
-	private void TableToXml_Click(object sender, RoutedEventArgs e)
-	{
-		// TODO: as sql result ?
-		if (tvwDatabase.SelectedItem is TreeViewItem item && item.DataContext is Table table)
-			table.WriteXml(UserSettings.Default.OutputFolder + "\\data");
-	}
-
 
 	private void OutputExcel_Click(object sender, RoutedEventArgs e)
 	{
 		if (grdResult.Items.Count == 0)
-		{
-			AduMessageBox.Show("no data");
-			return;
-		}
+			throw new Exception("no data");
 
 		var save = new VistaSaveFileDialog
 		{
@@ -192,44 +226,61 @@ public partial class DatabaseStudio : Window
 		};
 		if (save.ShowDialog() != true) return;
 
-		throw new NotImplementedException();
 
-		//using var workbook = new XSSFWorkbook();
-		//var sheet = workbook.CreateSheet("Sheet");
+		#region Sheet
+		ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
+		var package = new ExcelPackage();
+		var sheet = package.Workbook.Worksheets.Add("Sheet");
+		sheet.Cells.Style.Font.Name = "宋体";
+		sheet.Cells.Style.Font.Size = 11F;
+		sheet.Cells.Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Center;
+		sheet.Cells.Style.VerticalAlignment = OfficeOpenXml.Style.ExcelVerticalAlignment.Center;
+		#endregion
 
-		//#region Title
-		//var title = sheet.CreateRow(0);
-		//for (int i = 0; i < grdResult.Columns.Count; i++)
-		//{
-		//	title.CreateCell(i).SetCellValue(grdResult.Columns[i].Header.ToString());
-		//}
-		//#endregion
+		#region Title
+		int Column = 1;
+		for (int i = 0; i < grdResult.Columns.Count; i++)
+		{
+			sheet.SetColumn(Column++, grdResult.Columns[i].Header.ToString());
+		}
+		#endregion
 
-		//#region Row
-		//for (int i = 0; i < grdResult.Items.Count; i++)
-		//{
-		//	var item = grdResult.Items[i] as Record;
-		//	var row = sheet.CreateRow(i + 1);
+		#region Row
+		int Row = 1;
+		for (int i = 0; i < grdResult.Items.Count; i++)
+		{
+			Row++;
+			int column = 1;
 
-		//	for (int j = 0; j < grdResult.Columns.Count; j++)
-		//	{
-		//		var column = grdResult.Columns[j];
-		//		row.CreateCell(j).SetCellValue(item.Attributes[column.Header.ToString()]);
-		//	}
-		//}
-		//#endregion
+			var item = grdResult.Items[i] as Record;
+			for (int j = 0; j < grdResult.Columns.Count; j++)
+			{
+				var col = grdResult.Columns[j];
+				sheet.Cells[Row, column++].SetValue(item.Attributes[col.Header.ToString()]);
+			}
+		}
 
 
-		//#region Write
-		//MemoryStream stream = new MemoryStream();
-		//workbook.Write(stream, false);
-		//workbook.Dispose();
+		#endregion
 
-		//using var fs = new FileStream(save.FileName, FileMode.Create, FileAccess.Write);
-		//fs.Write(stream.ToArray());
-		//fs.Flush();
-		//fs.Close();
-		//#endregion
+		package.SaveAs(save.FileName);
+	}
+
+
+	private void TableToXml_Click(object sender, RoutedEventArgs e)
+	{
+		// TODO: as sql result ?
+		if (tvwDatabase.SelectedItem is TreeViewItem item && item.DataContext is Table table)
+			table.WriteXml(UserSettings.Default.OutputFolder + "\\data");
+	}
+
+	private void TableView_Click(object sender, RoutedEventArgs e)
+	{
+		if (tvwDatabase.SelectedItem is TreeViewItem item && item.DataContext is Table table)
+		{
+			var window = new TableView { Table = table };
+			window.Show();
+		}	
 	}
 	#endregion
 }

@@ -5,16 +5,16 @@ public class TextDiffPiece
 {
 	public ChangeType Type { get; set; }
 
-	public string Alias { get; set; }
-	public string Text { get; set; }
-	public string TextOld { get; set; }
+	public string alias { get; set; }
+	public string text { get; set; }
+	public string oldtext { get; set; }
 
 	public TextDiffPiece(Text model, ChangeType type)
 	{
 		this.Type = type;
 
-		this.Alias = model.Alias;
-		this.Text = model.text;
+		this.alias = model.Alias;
+		this.text = model.text;
 	}
 }
 

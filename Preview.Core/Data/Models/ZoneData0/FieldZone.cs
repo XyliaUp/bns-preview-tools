@@ -1,11 +1,11 @@
 ﻿using Xylia.Preview.Data.Common.Attribute;
-using Xylia.Preview.Data.Common.Interface;
 using Xylia.Preview.Data.Common.DataStruct;
-using Xylia.Preview.Data.Engine.BinData.Models;
+using Xylia.Preview.Data.Common.Interface;
 
 namespace Xylia.Preview.Data.Models;
 public class FieldZone : Record, IAttraction
 {
+	#region Fields
 	public string Alias;
 
 
@@ -29,6 +29,8 @@ public class FieldZone : Record, IAttraction
 	public sbyte UiTextGrade;
 
 	public Ref<AttractionRewardSummary> RewardSummary;
+	#endregion
+
 
 	public sealed class Normal : FieldZone
 	{
@@ -43,7 +45,7 @@ public class FieldZone : Record, IAttraction
 
 
 	#region Interface
-	public string Text => this.Name2.GetText();
+	public override string GetText => this.Name2.GetText();
 
 	public string GetDescribe() => this.Desc.GetText();
 	#endregion

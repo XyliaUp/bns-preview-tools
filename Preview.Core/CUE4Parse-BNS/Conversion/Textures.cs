@@ -1,31 +1,16 @@
-﻿using CUE4Parse.BNS.Exports;
-using CUE4Parse.UE4.Assets.Exports;
-using CUE4Parse.UE4.Assets.Exports.Texture;
-using CUE4Parse.UE4.Objects.Core.Math;
-
-using CUE4Parse_Conversion.Textures;
+﻿using CUE4Parse.UE4.Objects.Core.Math;
 
 using SkiaSharp;
 
 namespace CUE4Parse.BNS.Conversion;
 public static class Textures
 {
-	public static SKBitmap GetImage(this UObject o)
-	{
-		if (o is null) return null;
-		else if (o is UTexture texture) return texture.Decode();
-		else if (o is UImageSet ImageSet) return ImageSet.GetImage();
-
-		return null;
-	}
-
-
 	public static SKBitmap Clone(this SKBitmap source, float u, float v, float ul, float vl)
 	{
 		if (ul == 0) ul = source.Width - u;
 		if (vl == 0) vl = source.Height - v;
 
-		var output = new SKBitmap((int)ul, (int)vl);
+		var output = new SKBitmap((int)Math.Ceiling(ul), (int)Math.Ceiling(vl));
 		for (int i = 0; i < ul; i++)
 		{
 			if (source.Width < u + i) continue;
@@ -37,7 +22,6 @@ public static class Textures
 				output.SetPixel(i, j, source.GetPixel((int)(u + i), (int)(v + j)));
 			}
 		}
-
 
 		return output;
 	}

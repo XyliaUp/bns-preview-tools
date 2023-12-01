@@ -52,10 +52,10 @@ public class Group
 	public string name;
 
 	[XmlElement]
-	public List<Option> option = new();
+	public List<Option> option { get; set; } = new();
 
 	[XmlElement]
-	public List<Group> group = new();
+	public List<Group> group { get; set; } = new();
 
 
 

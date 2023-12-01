@@ -17,7 +17,7 @@ public static class FileCache
 
 
 	private static GameFileProvider _provider;
-	public static GameFileProvider Provider => _provider ??= new(Settings.Default.GameFolder, Settings.Default.LoadMode.HasFlag(LoadMode.LoadOnInit));
+	public static GameFileProvider Provider => _provider ??= new(Settings.Default.GameFolder);
 
 
 	public static void Clear()

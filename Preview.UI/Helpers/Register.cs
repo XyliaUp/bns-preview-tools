@@ -8,6 +8,9 @@ public static class Register
 	public static void Create()
 	{
 		IDatSelect.Default = new DatSelectDialog();
+
+		// default effects 
+		UserSettings.Default.CopyMode = UserSettings.Default.CopyMode;
 		UserSettings.Default.UsePerformanceMonitor = UserSettings.Default.UsePerformanceMonitor;
 	}
 }

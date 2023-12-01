@@ -2,7 +2,7 @@
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
-using CUE4Parse.BNS.Exports;
+using CUE4Parse.BNS.Assets.Exports;
 
 using SkiaSharp.Views.WPF;
 
@@ -36,7 +36,6 @@ public class Image : Element
 	{
 		var image = FileCache.Provider.LoadObject<UImageSet>(Imagesetpath)?.GetImage();
 		if (image is null) return new Size();
-
 
 		_source = image.ToWriteableBitmap();
 		double width = _source.Width;

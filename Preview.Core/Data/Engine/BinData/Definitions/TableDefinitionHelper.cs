@@ -255,8 +255,6 @@ public static class TableDefinitionHelper
 				Size = 8,
 				Offset = 8,
 				Type = AttributeType.TInt64,
-				OriginalTypeName = "int64",
-				TypeName = "int64",
 				AttributeDefaultValues = new AttributeDefaultValues(),
 				DefaultValue = "0",
 				IsKey = true,

@@ -2,13 +2,15 @@
 using System.Globalization;
 using System.Reflection;
 using System.Resources;
+using System.Windows;
 
-namespace Xylia.Preview.UI.Resources;
+namespace Xylia.Preview.UI;
+/// <summary>
+/// Text Controller
+/// </summary>
 public sealed class StringHelper : ResourceDictionary
 {
 	#region Constructor
-	public static StringHelper Instance { get; set; }
-
 	public StringHelper()
 	{
 		Instance = this;
@@ -38,5 +40,14 @@ public sealed class StringHelper : ResourceDictionary
 			}
 		}
 	}
+	#endregion
+
+
+	#region Methods
+	public static StringHelper Instance { get; set; }
+
+	public static string Get(string key) => (Instance[key] as string) ?? key;
+
+	// add bns text help?
 	#endregion
 }

@@ -16,6 +16,7 @@ public partial class ModelGui : SnimGui
 	private ModelView view;
 	private bool _viewportFocus = true;
 	private DateTime lastTime = default;
+	private const uint _dockspaceId = 1337;
 
 	public ModelGui(int width, int height) : base(width, height)
 	{
@@ -34,6 +35,23 @@ public partial class ModelGui : SnimGui
 		DrawNavbar();
 
 		Controller.Render();
+	}
+
+
+	private void DrawDockSpace(OpenTK.Mathematics.Vector2i size)
+	{
+		const ImGuiWindowFlags flags =
+			ImGuiWindowFlags.MenuBar | ImGuiWindowFlags.NoDocking |
+			ImGuiWindowFlags.NoTitleBar | ImGuiWindowFlags.NoResize |
+			ImGuiWindowFlags.NoCollapse | ImGuiWindowFlags.NoMove |
+			ImGuiWindowFlags.NoBringToFrontOnFocus | ImGuiWindowFlags.NoNavFocus;
+
+		ImGui.SetNextWindowPos(new Vector2(0, 0));
+		ImGui.SetNextWindowSize(new Vector2(size.X, size.Y));
+		ImGui.PushStyleVar(ImGuiStyleVar.WindowPadding, Vector2.Zero);
+		ImGui.Begin("Oui oui", flags);
+		ImGui.PopStyleVar();
+		ImGui.DockSpace(_dockspaceId);
 	}
 
 	private void Draw3DViewport()
@@ -61,8 +79,6 @@ public partial class ModelGui : SnimGui
 			{
 				view.CursorState = CursorState.Normal;
 			}
-
-
 
 
 			var pos = new Vector2(0, 5);
