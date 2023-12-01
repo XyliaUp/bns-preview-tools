@@ -1,3 +1,4 @@
+using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Markup;
 
@@ -11,6 +12,7 @@ using System.Windows.Markup;
 )]
 
 
+[assembly: InternalsVisibleTo("Xylia.Preview.UI")]
 [assembly: XmlnsDefinition("https://github.com/xyliaup/bns-preview-tools", "Xylia.Preview.UI")]
 [assembly: XmlnsDefinition("https://github.com/xyliaup/bns-preview-tools", "Xylia.Preview.UI.Controls")]
 [assembly: XmlnsDefinition("https://github.com/xyliaup/bns-preview-tools", "Xylia.Preview.UI.Documents")]

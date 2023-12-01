@@ -10,7 +10,6 @@ using FModel.Views.Snooper;
 using Xylia.Extension;
 using Xylia.Preview.Properties;
 using Xylia.Preview.UI.Controls;
-using Xylia.Preview.UI.Views;
 
 namespace Xylia.Preview.UI.ViewModels;
 public partial class UserSettings : Settings
@@ -186,7 +185,7 @@ internal static class VersionHelper
 {
 	public static Version InternalVersion => Assembly.GetEntryAssembly().GetName().Version;
 
-	public static DateTime Time => new DateTime(2000, 1, 1).AddDays(InternalVersion.Build).AddSeconds(InternalVersion.Revision * 2);
+	public static DateTime Time => new DateTime(2000, 1, 1).AddDays(InternalVersion.Revision);
 
 	public static Version Version => new Version(InternalVersion.Major, InternalVersion.Minor, InternalVersion.Build);
 }

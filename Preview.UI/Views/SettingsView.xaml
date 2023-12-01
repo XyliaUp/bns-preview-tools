@@ -3,7 +3,6 @@
 		xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 		xmlns:converters="clr-namespace:Xylia.Preview.UI.Common.Converters"
 		xmlns:hc="https://handyorg.github.io/handycontrol"
-		xmlns:VM="clr-namespace:Xylia.Preview.UI.ViewModels"
 		Title="{DynamicResource Settings_Name}" Icon="{x:Null}" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" SizeToContent="Height"
 		MinHeight="{Binding Source={x:Static SystemParameters.MaximizedPrimaryScreenHeight}, Converter={converters:RatioConverter}, ConverterParameter='0.10'}"
 		Width="{Binding Source={x:Static SystemParameters.MaximizedPrimaryScreenWidth}, Converter={converters:RatioConverter}, ConverterParameter='0.35'}">
@@ -169,32 +168,8 @@
 					<CheckBox Grid.Row="9" Grid.Column="2" Grid.ColumnSpan="5" Margin="0 0 0 5" IsChecked="{Binding UsePerformanceMonitor}" />
 				</Grid>
 			</TabItem>
-			<TabItem Tag="AboutTemplate">
-				<TabItem.Header>
-					<StackPanel Orientation="Horizontal">
-						<Viewbox Width="16" Height="16" Margin="0 0 7.5 0" />
-						<TextBlock Text="{DynamicResource Name_About}" VerticalAlignment="Center" />
-					</StackPanel>
-				</TabItem.Header>
-				<Grid>
-					<Grid.RowDefinitions>
-						<RowDefinition Height="Auto" />
-						<RowDefinition Height="Auto" />
-					</Grid.RowDefinitions>
-
-
-					<StackPanel Grid.Row="0" Orientation="Horizontal">
-						<TextBlock Text="Version " FontSize="15" Foreground="#9DA3DD" />
-						<TextBlock Text="{Binding Source={x:Static VM:VersionHelper.Version},Mode=OneWay}" />
-					</StackPanel>
-					<StackPanel Grid.Row="1" Orientation="Horizontal">
-						<TextBlock Text="Publish " FontSize="15" Foreground="#9DA3DD" />
-						<TextBlock Text="{Binding Source={x:Static VM:VersionHelper.Time},Mode=OneWay,StringFormat={}{0:yyyy.MM.dd}}" />
-					</StackPanel>
-				</Grid>
-			</TabItem>
-
-
+			
+			
 			<TabItem Header="Creator" Visibility="Collapsed">
 				<Grid >
 					<Grid.ColumnDefinitions>
@@ -393,7 +368,7 @@
 				</Grid.ColumnDefinitions>
 
 				<Button Grid.Column="1" MinWidth="78" Margin="0 0 12 0" IsDefault="True" IsCancel="False"
-                HorizontalAlignment="Right" VerticalAlignment="Bottom" Content="OK" Click="OnClosing" />
+					HorizontalAlignment="Right" VerticalAlignment="Bottom" Content="{DynamicResource Text_Ok}" Click="OnClosing" />
 			</Grid>
 		</Border>
 	</Grid>

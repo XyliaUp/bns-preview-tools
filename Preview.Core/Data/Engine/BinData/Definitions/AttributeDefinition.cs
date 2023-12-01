@@ -109,7 +109,6 @@ public partial class AttributeDefinition
 		{
 			case AttributeType.TInt8:
 				attrDefDefaults.DString = DefaultValue ?? "0";
-				attrDefDefaults.DByte = sbyte.Parse(attrDefDefaults.DString);
 
 				if (MinValue == 0) MinValue = sbyte.MinValue;
 				if (MaxValue == 0) MaxValue = sbyte.MaxValue;
@@ -119,7 +118,6 @@ public partial class AttributeDefinition
 			case AttributeType.TDistance:
 			case AttributeType.TAngle:
 				attrDefDefaults.DString = DefaultValue ?? "0";
-				attrDefDefaults.DShort = short.Parse(attrDefDefaults.DString);
 
 				if (MinValue == 0) MinValue = short.MinValue;
 				if (MaxValue == 0) MaxValue = short.MaxValue;
@@ -127,13 +125,11 @@ public partial class AttributeDefinition
 
 			case AttributeType.TVelocity:
 				attrDefDefaults.DString = DefaultValue ?? "0";
-				attrDefDefaults.DVelocity = ushort.Parse(attrDefDefaults.DString);
 				break;
 
 			case AttributeType.TInt32:
 			case AttributeType.TMsec:
 				attrDefDefaults.DString = DefaultValue ?? "0";
-				attrDefDefaults.DInt = int.Parse(attrDefDefaults.DString);
 
 				if (MinValue == 0) MinValue = int.MinValue;
 				if (MaxValue == 0) MaxValue = int.MaxValue;
@@ -142,7 +138,6 @@ public partial class AttributeDefinition
 
 			case AttributeType.TInt64:
 				attrDefDefaults.DString = DefaultValue ?? "0";
-				attrDefDefaults.DLong = long.Parse(attrDefDefaults.DString);
 
 				if (MinValue == 0) MinValue = long.MinValue;
 				if (MaxValue == 0) MaxValue = long.MaxValue;
@@ -150,7 +145,6 @@ public partial class AttributeDefinition
 
 			case AttributeType.TFloat32:
 				attrDefDefaults.DString = DefaultValue ?? "0";
-				attrDefDefaults.DFloat = float.Parse(attrDefDefaults.DString);
 
 				if (MinValue == 0) MinValue = float.MinValue;
 				if (MaxValue == 0) MaxValue = float.MaxValue;
@@ -158,7 +152,6 @@ public partial class AttributeDefinition
 
 			case AttributeType.TBool:
 				attrDefDefaults.DString = DefaultValue ?? "n";
-				attrDefDefaults.DBool = DefaultValue.ToBool();
 				break;
 
 
@@ -184,28 +177,23 @@ public partial class AttributeDefinition
 					seq.Default = seq.Sequence.FirstOrDefault();
 
 				attrDefDefaults.DString = DefaultValue ?? seq?.Default;
-				attrDefDefaults.DSeq = attrDefDefaults.DString;
 				break;
 			}
 
 			case AttributeType.TSub:
 				attrDefDefaults.DString = DefaultValue ?? "0";
-				attrDefDefaults.DShort = short.Parse(attrDefDefaults.DString);
 				break;
 
 			case AttributeType.TVector16:
 				attrDefDefaults.DString = DefaultValue ?? "0,0,0";
-				attrDefDefaults.DVector16 = Vector16.Parse(attrDefDefaults.DString);
 				break;
 
 			case AttributeType.TVector32:
 				attrDefDefaults.DString = DefaultValue ?? "0,0,0";
-				attrDefDefaults.DVector32 = Vector32.Parse(attrDefDefaults.DString);
 				break;
 
 			case AttributeType.TIColor:
 				attrDefDefaults.DString = DefaultValue ?? new IColor().ToString();
-				attrDefDefaults.DIColor = IColor.Parse(DefaultValue);
 				break;
 
 			case AttributeType.TScript_obj:
@@ -214,7 +202,6 @@ public partial class AttributeDefinition
 
 			case AttributeType.TTime64:
 				attrDefDefaults.DString = DefaultValue ?? "0";
-				attrDefDefaults.DLong = long.Parse(attrDefDefaults.DString);
 				break;
 
 			case AttributeType.TXUnknown1:

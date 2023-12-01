@@ -66,7 +66,7 @@
 				<hc:SearchBar Grid.Row="2"
 					Style="{StaticResource SearchBarExtend}" hc:InfoElement.Title="{DynamicResource IconOut_ItemList}"
 					Text="{Binding Icon_ItemListPath}" Command="{Binding Icon_BrowerItemListCommand}" />
-				<hc:ComboBox Grid.Row="3" Name="NameFormat" hc:InfoElement.Title="{DynamicResource IconOut_NameFormat}" SelectedIndex="0">
+				<hc:ComboBox Grid.Row="3" hc:InfoElement.Title="{DynamicResource IconOut_NameFormat}" SelectedIndex="0" x:Name="NameFormat">
 					<ComboBoxItem Content="[id]" />
 					<ComboBoxItem Content="[alias]" />
 					<ComboBoxItem Content="[id]_[name]" />
@@ -75,17 +75,17 @@
 				<StackPanel Grid.Row="5" Grid.ColumnSpan="2">
 					<hc:UniformSpacingPanel Margin="0 15 0 0" Spacing="10">
 						<CheckBox x:Name="FilterMode" Content="{DynamicResource IconOut_FilterMode}" ToolTip="{DynamicResource IconOut_FilterMode_Tooltip}" />
-						<CheckBox x:Name="UseBackground" Content="{DynamicResource IconOut_UseBackground}" ToolTip="{DynamicResource IconOut_UseBackground_Tooltip}" IsChecked="True" />
+						<CheckBox x:Name="UseBackground" Content="{DynamicResource IconOut_UseBackground}" ToolTip="{DynamicResource IconOut_UseBackground_Tooltip}" />
 					</hc:UniformSpacingPanel>
 
 					<hc:Divider />
 					<hc:UniformSpacingPanel Spacing="10" Orientation="Vertical">
 						<hc:UniformSpacingPanel>
-							<Button Content="{DynamicResource IconOut_Goods}" Click="Extract_GoodIcon" />
+							<Button Click="OutputGoodIcon" Content="{DynamicResource IconOut_Goods}" />
 						</hc:UniformSpacingPanel>
 						<hc:UniformSpacingPanel Spacing="10">
-							<Button Content="{DynamicResource IconOut_Items}" Click="Extract_ItemIcon" />
-							<Button Content="{DynamicResource IconOut_CreateList}" ToolTip="{DynamicResource IconOut_CreateList_Tooltip}" Click="Output_ItemList" />
+							<Button Click="OutputItemIcon" Content="{DynamicResource IconOut_Items}" />
+							<Button Content="{DynamicResource IconOut_CreateList}" ToolTip="{DynamicResource IconOut_CreateList_Tooltip}" Visibility="Collapsed" />
 						</hc:UniformSpacingPanel>
 					</hc:UniformSpacingPanel>
 				</StackPanel>
@@ -93,7 +93,7 @@
 		</TabItem>
 
 		<TabItem Header="{DynamicResource MergeIcon_Name}">
-			<Grid AllowDrop="True" DragDrop.DragEnter="MergeIcon_DragEnter" DragDrop.Drop="MergeIcon_DragDrop">
+			<Grid AllowDrop="True" DragDrop.DragEnter="MergeIcon_DragEnter" DragDrop.Drop="MergeIcon_DragDrop" Background="Transparent">
 				<Grid.ColumnDefinitions>
 					<ColumnDefinition Width="*"/>
 					<ColumnDefinition Width="*"/>

@@ -1,7 +1,6 @@
 ﻿using Xylia.Preview.Data.Common.Attribute;
-using Xylia.Preview.Data.Common.Interface;
 using Xylia.Preview.Data.Common.DataStruct;
-using Xylia.Preview.Data.Engine.BinData.Models;
+using Xylia.Preview.Data.Common.Interface;
 
 namespace Xylia.Preview.Data.Models;
 public sealed class RaidDungeon : Record, IAttraction
@@ -23,7 +22,7 @@ public sealed class RaidDungeon : Record, IAttraction
 
 
 	#region Interface Methdos
-	public string Text => this.Name2.GetText();
+	public override string GetText => this.Name2.GetText();
 
 	public string GetDescribe() => this.RaidDungeonDesc.GetText();
 	#endregion

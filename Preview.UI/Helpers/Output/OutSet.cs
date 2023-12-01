@@ -34,7 +34,17 @@ public abstract class OutSet
 		GC.Collect();
 	});
 
+	/// <summary>
+	/// Create xlsx file
+	/// </summary>
+	/// <param name="sheet"></param>
 	protected abstract void CreateData(ExcelWorksheet sheet);
+
+	/// <summary>
+	/// Create text file
+	/// </summary>
+	/// <exception cref="NotImplementedException"></exception>
+	protected virtual void CreateText() => throw new NotImplementedException();
 	#endregion
 }
 

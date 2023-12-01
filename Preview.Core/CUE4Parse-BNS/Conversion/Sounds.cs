@@ -2,6 +2,7 @@
 using CUE4Parse.UE4.Assets;
 using CUE4Parse.UE4.Assets.Exports;
 using CUE4Parse.UE4.Assets.Exports.Sound;
+using CUE4Parse.UE4.Assets.Exports.Sound.Node;
 using CUE4Parse.UE4.Objects.UObject;
 
 using CUE4Parse_Conversion.Sounds;
@@ -15,7 +16,7 @@ public static class Sounds
 	public static byte[] GetWave(this UObject Object, int ReferenceIdx = 0)
 	{
 		if (Object is null) return null;
-		else if (Object is USoundWave soundWave)
+		else if (Object is USoundWave SoundWave)
 		{
 			Object.Decode(true, out var audioFormat, out var data);
 			return data;
@@ -23,13 +24,22 @@ public static class Sounds
 		else if (Object is USoundCue SoundCue)
 		{
 			var FirstNode = SoundCue.FirstNode?.Load();
-			var ChildNodes = FirstNode.GetOrDefault<ResolvedObject[]>("ChildNodes");
-			foreach (var ChildNode in ChildNodes)
+			return FirstNode.GetWave();
+		}
+		else if (Object is USoundNode SoundNode)
+		{
+			if (SoundNode is USoundNodeWavePlayer wavePlayer)
 			{
-				var obj = ChildNode.Load();
-				return obj.GetOrDefault<FSoftObjectPath>("SoundWaveAssetPtr").Load().GetWave();
+				return wavePlayer.SoundWave.Load().GetWave();
+			}
+			else
+			{
+				var ChildNodes = SoundNode.ChildNodes;
+				return ChildNodes.Select(x => x.Load().GetWave()).FirstOrDefault(x => x != null);
 			}
 		}
+
+
 		else if (Object is UShowSoundKey ShowSoundKey) return ShowSoundKey.SoundCue?.Load().GetWave();
 		else if (Object is UShowFaceFxKey ShowFaceFxKey) return FileCache.Provider.LoadObject(ShowFaceFxKey.FaceFXAnimSetName).GetWave(ReferenceIdx);
 		else if (Object is UShowFaceFxUE4Key ShowFaceFxUE4Key) return ShowFaceFxUE4Key.FaceFXAnimObj.Load().GetWave();
@@ -41,9 +51,9 @@ public static class Sounds
 			foreach (var _eventKey in ShowObject.EventKeys)
 			{
 				var o = _eventKey.Load();
-				if (o.ExportType == "ShowSoundKey") return o.GetWave();
-				else if (o.ExportType == "ShowFaceFxUE4Key") return o.GetWave();
-				else if (o.ExportType == "ShowFaceFxKey") return o.GetWave(ReferenceIdx);
+				if (o is UShowSoundKey) return o.GetWave();
+				else if (o is UShowFaceFxKey) return o.GetWave(ReferenceIdx);
+				else if (o is UShowFaceFxUE4Key) return o.GetWave();
 			}
 		}
 

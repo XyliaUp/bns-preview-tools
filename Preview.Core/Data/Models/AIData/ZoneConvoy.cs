@@ -1,6 +1,4 @@
-﻿using Xylia.Preview.Data.Engine.BinData.Models;
-
-namespace Xylia.Preview.Data.Models;
+﻿namespace Xylia.Preview.Data.Models;
 public sealed class ZoneConvoy : Record
 {
 	// 护送只能在 cave2 定义区域生成

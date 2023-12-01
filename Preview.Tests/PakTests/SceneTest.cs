@@ -23,7 +23,7 @@ public class SceneTest
 	[TestMethod]
 	public void Main()
 	{
-		using GameFileProvider Provider = new(Common.GameFolder);
+		using GameFileProvider Provider = new(Common.Settings.GameFolder);
 		var AssetPath = "BNSR/Content/Art/UI/GameUI/Scene/Game_Broadcasting/Game_BroadcastingScene.uasset";
 		var Blueprint = Provider.LoadAllObjects(AssetPath).OfType<UWidgetBlueprintGeneratedClass>().First();
 

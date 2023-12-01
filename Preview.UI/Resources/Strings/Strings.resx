@@ -117,11 +117,128 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Settings_CopyMode" xml:space="preserve">
-    <value>Text Copy Mode</value>
+  <data name="AbilityPage" xml:space="preserve">
+    <value>Role Ability</value>
+  </data>
+  <data name="Application_ExitMessage" xml:space="preserve">
+    <value>Are you sure you are closing the application?</value>
+  </data>
+  <data name="Asset_Extract" xml:space="preserve">
+    <value>Extract</value>
+  </data>
+  <data name="Asset_FilterPah" xml:space="preserve">
+    <value>Asset Path</value>
+  </data>
+  <data name="Asset_OutputClassName" xml:space="preserve">
+    <value>Output class name</value>
+  </data>
+  <data name="Assets_Name" xml:space="preserve">
+    <value>Assets</value>
+  </data>
+  <data name="AudioPlayer_Name" xml:space="preserve">
+    <value>AudioPlayer</value>
+  </data>
+  <data name="Command_QueryAsset" xml:space="preserve">
+    <value>Query Asset</value>
+  </data>
+  <data name="Command_QueryAsset2" xml:space="preserve">
+    <value>Query Asset (old path)</value>
+  </data>
+  <data name="DatSelector_Name" xml:space="preserve">
+    <value>DatSelector</value>
+  </data>
+  <data name="DatSelector_Source1" xml:space="preserve">
+    <value>Xml Dat</value>
+  </data>
+  <data name="DatSelector_Source2" xml:space="preserve">
+    <value>Local Dat</value>
+  </data>
+  <data name="DatSelector_Tooltip" xml:space="preserve">
+    <value>Due to exists multiple files in your selected path, it is necessary to manually select.</value>
   </data>
   <data name="GameDirectory" xml:space="preserve">
     <value>Game Directory</value>
+  </data>
+  <data name="GameResourcePage" xml:space="preserve">
+    <value>Engine</value>
+  </data>
+  <data name="Game_QuestJournalScene" xml:space="preserve">
+    <value>Quest</value>
+  </data>
+  <data name="IconOut_CreateList" xml:space="preserve">
+    <value>Output List</value>
+  </data>
+  <data name="IconOut_CreateList_Tooltip" xml:space="preserve">
+    <value>Create item list from generated images</value>
+  </data>
+  <data name="IconOut_Error1" xml:space="preserve">
+    <value>The list file is seem to not exist, please confirm.</value>
+  </data>
+  <data name="IconOut_Error2" xml:space="preserve">
+    <value>When selecting whitelist filter, list file must be selected.</value>
+  </data>
+  <data name="IconOut_Error3" xml:space="preserve">
+    <value>The output name format must contain at least one special rule.</value>
+  </data>
+  <data name="IconOut_FilterMode" xml:space="preserve">
+    <value>Whitelist filtering</value>
+  </data>
+  <data name="IconOut_FilterMode_Tooltip" xml:space="preserve">
+    <value>create item only in list when checked, otherwise ignore listed item</value>
+  </data>
+  <data name="IconOut_Goods" xml:space="preserve">
+    <value>Extract Good Icon</value>
+  </data>
+  <data name="IconOut_ItemList" xml:space="preserve">
+    <value>Select item list</value>
+  </data>
+  <data name="IconOut_Items" xml:space="preserve">
+    <value>Extract Item Icon</value>
+  </data>
+  <data name="IconOut_Name" xml:space="preserve">
+    <value>Icon</value>
+  </data>
+  <data name="IconOut_NameFormat" xml:space="preserve">
+    <value>Output name format</value>
+  </data>
+  <data name="IconOut_TaskCancel" xml:space="preserve">
+    <value>There is a task already being executed, are you sure to cancel it?</value>
+  </data>
+  <data name="IconOut_TaskCompleted" xml:space="preserve">
+    <value>Task completed, taking {0: hh} hours {0: mm} minutes {0: ss} seconds.</value>
+  </data>
+  <data name="IconOut_TaskException" xml:space="preserve">
+    <value>Task unexpectedly terminated, because {0}.</value>
+  </data>
+  <data name="IconOut_UseBackground" xml:space="preserve">
+    <value>Grade Background</value>
+  </data>
+  <data name="IconOut_UseBackground_Tooltip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ItemList_Name" xml:space="preserve">
+    <value>Item List</value>
+  </data>
+  <data name="ItemList_OnlyUpdate" xml:space="preserve">
+    <value>only update</value>
+  </data>
+  <data name="ItemList_OnlyUpdate_Tooltip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ItemList_Path" xml:space="preserve">
+    <value>Select prev item list</value>
+  </data>
+  <data name="ItemList_Path_Tooltip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ItemList_Run" xml:space="preserve">
+    <value>Create</value>
+  </data>
+  <data name="ItemPage" xml:space="preserve">
+    <value>Item</value>
+  </data>
+  <data name="MergeIcon_BackgroundMode" xml:space="preserve">
+    <value>New Background</value>
   </data>
   <data name="MergeIcon_Grade1" xml:space="preserve">
     <value>Grade1</value>
@@ -150,8 +267,17 @@
   <data name="MergeIcon_Grade9" xml:space="preserve">
     <value>Grade9</value>
   </data>
-  <data name="Text_None" xml:space="preserve">
-    <value>None</value>
+  <data name="MergeIcon_Name" xml:space="preserve">
+    <value>Merge Icon</value>
+  </data>
+  <data name="Message_Tip" xml:space="preserve">
+    <value>Message</value>
+  </data>
+  <data name="Name_About" xml:space="preserve">
+    <value>About</value>
+  </data>
+  <data name="Name_General" xml:space="preserve">
+    <value>General</value>
   </data>
   <data name="OutputDirectory" xml:space="preserve">
     <value>Output Directory</value>
@@ -159,24 +285,33 @@
   <data name="OutputDirectory_Resource" xml:space="preserve">
     <value>Output Directory (Resource)</value>
   </data>
-  <data name="AbilityPage" xml:space="preserve">
-    <value>Role Ability</value>
+  <data name="PreviewModel" xml:space="preserve">
+    <value>View Model</value>
   </data>
-  <data name="GameResourcePage" xml:space="preserve">
-    <value>Engine</value>
+  <data name="PreviewRaw" xml:space="preserve">
+    <value>View Raw</value>
   </data>
-  <data name="ItemPage" xml:space="preserve">
-    <value>Item</value>
-  </data>
-  <data name="Game_QuestJournalScene" xml:space="preserve">
-    <value>Quest</value>
+  <data name="PreviewShowObject" xml:space="preserve">
+    <value>View Show Object</value>
   </data>
   <data name="ProductName" xml:space="preserve">
     <value>Blade &amp; Soul Preview Tool</value>
     <comment>Title</comment>
   </data>
+  <data name="PropertyEditor_Name" xml:space="preserve">
+    <value>Property Editor</value>
+  </data>
+  <data name="PropertyEditor_ViewSource_Tooltip" xml:space="preserve">
+    <value>Copy raw data to clipboard, or open text editor when invalid</value>
+  </data>
   <data name="Repository" xml:space="preserve">
     <value>Repository</value>
+  </data>
+  <data name="Settings_CopyMode" xml:space="preserve">
+    <value>Text Copy Mode</value>
+  </data>
+  <data name="Settings_Name" xml:space="preserve">
+    <value>Settings</value>
   </data>
   <data name="Settings_TestMode" xml:space="preserve">
     <value>Data Test Mode</value>
@@ -187,65 +322,23 @@
   <data name="Settings_UseUserDefinition" xml:space="preserve">
     <value>Activate user custome definitions</value>
   </data>
-  <data name="View_Model" xml:space="preserve">
-    <value>View Model</value>
+  <data name="ShowObjectPlayer_Name" xml:space="preserve">
+    <value>Show Object Player</value>
+  </data>
+  <data name="TableView_Name" xml:space="preserve">
+    <value>Table View</value>
+  </data>
+  <data name="TextEditor_Name" xml:space="preserve">
+    <value>Text Editor</value>
   </data>
   <data name="TextView" xml:space="preserve">
     <value>Text Viewer</value>
   </data>
-  <data name="ItemList_Name" xml:space="preserve">
-    <value>Item List</value>
+  <data name="TextView_LoadLastOnStartup" xml:space="preserve">
+    <value>Load last on startup</value>
   </data>
-  <data name="Text_Preview" xml:space="preserve">
-    <value>Preview</value>
-  </data>
-  <data name="ItemList_OnlyUpdate" xml:space="preserve">
-    <value>only update</value>
-  </data>
-  <data name="ItemList_OnlyUpdate_Tooltip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="ItemList_Path" xml:space="preserve">
-    <value>Select prev item list</value>
-  </data>
-  <data name="ItemList_Path_Tooltip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="ItemList_Run" xml:space="preserve">
-    <value>Create</value>
-  </data>
-  <data name="Assets_Name" xml:space="preserve">
-    <value>Assets</value>
-  </data>
-  <data name="IconOut_Name" xml:space="preserve">
-    <value>Icon</value>
-  </data>
-  <data name="MergeIcon_Name" xml:space="preserve">
-    <value>Merge Icon</value>
-  </data>
-  <data name="Text_Output" xml:space="preserve">
-    <value>Output</value>
-  </data>
-  <data name="View_Raw" xml:space="preserve">
-    <value>View Raw</value>
-  </data>
-  <data name="PropertyEditor_Name" xml:space="preserve">
-    <value>Property Editor</value>
-  </data>
-  <data name="Settings_Name" xml:space="preserve">
-    <value>Settings</value>
-  </data>
-  <data name="PropertyEditor_ViewSource_Tooltip" xml:space="preserve">
-    <value>Copy raw data to clipboard, or open text editor when invalid</value>
-  </data>
-  <data name="Name_About" xml:space="preserve">
-    <value>About</value>
-  </data>
-  <data name="Name_General" xml:space="preserve">
-    <value>General</value>
-  </data>
-  <data name="TextEditor_Name" xml:space="preserve">
-    <value>Text Editor</value>
+  <data name="Text_Cancel" xml:space="preserve">
+    <value>Cancel</value>
   </data>
   <data name="Text_File" xml:space="preserve">
     <value>File</value>
@@ -253,56 +346,23 @@
   <data name="Text_Left" xml:space="preserve">
     <value>Left</value>
   </data>
-  <data name="Text_Right" xml:space="preserve">
-    <value>Right</value>
+  <data name="Text_None" xml:space="preserve">
+    <value>None</value>
   </data>
-  <data name="TextView_LoadLastOnStartup" xml:space="preserve">
-    <value>Load last on startup</value>
+  <data name="Text_Ok" xml:space="preserve">
+    <value>Ok</value>
   </data>
-  <data name="IconOut_CreateList" xml:space="preserve">
-    <value>Output List</value>
+  <data name="Text_Output" xml:space="preserve">
+    <value>Output</value>
   </data>
-  <data name="IconOut_CreateList_Tooltip" xml:space="preserve">
-    <value>Create item list from generated images</value>
-  </data>
-  <data name="IconOut_FilterMode" xml:space="preserve">
-    <value>Whitelist filtering</value>
-  </data>
-  <data name="IconOut_FilterMode_Tooltip" xml:space="preserve">
-    <value>create item only in list when checked, otherwise ignore listed item.</value>
-  </data>
-  <data name="IconOut_Goods" xml:space="preserve">
-    <value>Extract Good Icon</value>
-  </data>
-  <data name="IconOut_ItemList" xml:space="preserve">
-    <value>Select item list</value>
-  </data>
-  <data name="IconOut_Items" xml:space="preserve">
-    <value>Extract Item Icon</value>
-  </data>
-  <data name="IconOut_NameFormat" xml:space="preserve">
-    <value>Output name format</value>
-  </data>
-  <data name="IconOut_UseBackground" xml:space="preserve">
-    <value>Grade Background</value>
-  </data>
-  <data name="IconOut_UseBackground_Tooltip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="Asset_FilterPah" xml:space="preserve">
-    <value>Asset Path</value>
-  </data>
-  <data name="Asset_OutputClassName" xml:space="preserve">
-    <value>Output class name</value>
-  </data>
-  <data name="Asset_Extract" xml:space="preserve">
-    <value>Extract</value>
-  </data>
-  <data name="MergeIcon_BackgroundMode" xml:space="preserve">
-    <value>New Background</value>
+  <data name="Text_Preview" xml:space="preserve">
+    <value>Preview</value>
   </data>
   <data name="Text_Reset" xml:space="preserve">
     <value>Reset</value>
+  </data>
+  <data name="Text_Right" xml:space="preserve">
+    <value>Right</value>
   </data>
   <data name="Text_Save" xml:space="preserve">
     <value>Save</value>
@@ -310,22 +370,13 @@
   <data name="Text_SaveAs" xml:space="preserve">
     <value>Save As</value>
   </data>
-  <data name="DatSelector_Name" xml:space="preserve">
-    <value>DatSelector</value>
+  <data name="Text_PublishOn" xml:space="preserve">
+    <value>Publish at</value>
   </data>
-  <data name="DatSelector_Source1" xml:space="preserve">
-    <value>Xml Dat</value>
+  <data name="ItemList_TaskCompleted" xml:space="preserve">
+    <value>Pull {0} piece(s) of data, taking {1} seconds.</value>
   </data>
-  <data name="DatSelector_Source2" xml:space="preserve">
-    <value>Local Dat</value>
-  </data>
-  <data name="DatSelector_Tooltip" xml:space="preserve">
-    <value>Due to exists multiple files in your selected path, it is necessary to manually select.</value>
-  </data>
-  <data name="Text_Cancel" xml:space="preserve">
-    <value>Cancel</value>
-  </data>
-  <data name="Text_Ok" xml:space="preserve">
-    <value>Ok</value>
+  <data name="ItemList_TaskCompleted2" xml:space="preserve">
+    <value>Task completed, taking {1} seconds.</value>
   </data>
 </root>

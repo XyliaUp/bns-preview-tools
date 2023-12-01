@@ -232,8 +232,9 @@ public sealed class Quest : Record
 
 
 	#region	Properties
+	public override string GetText => Name2.GetText();
+
 	public string Title => Group2.GetText();
-	public string Text => Name2.GetText();
 
 	public SKBitmap FrontIcon
 	{

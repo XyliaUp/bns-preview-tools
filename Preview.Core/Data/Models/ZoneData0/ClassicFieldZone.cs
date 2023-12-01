@@ -1,7 +1,6 @@
 ﻿using Xylia.Preview.Data.Common.Attribute;
-using Xylia.Preview.Data.Common.Interface;
 using Xylia.Preview.Data.Common.DataStruct;
-using Xylia.Preview.Data.Engine.BinData.Models;
+using Xylia.Preview.Data.Common.Interface;
 
 namespace Xylia.Preview.Data.Models;
 public sealed class ClassicFieldZone : Record, IAttraction
@@ -49,7 +48,7 @@ public sealed class ClassicFieldZone : Record, IAttraction
 
 
 	#region Interface
-	public string Text => this.ClassicFieldZoneName2.GetText();
+	public override string GetText => this.ClassicFieldZoneName2.GetText();
 
 	public string GetDescribe() => this.ClassicFieldZoneDesc.GetText();
 	#endregion

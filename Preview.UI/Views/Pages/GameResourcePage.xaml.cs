@@ -8,11 +8,6 @@ using System.Windows.Controls;
 using CUE4Parse.BNS;
 using CUE4Parse.BNS.Conversion;
 
-using HandyControl.Controls;
-using HandyControl.Data;
-
-using Serilog;
-
 using SkiaSharp;
 
 using Xylia.Preview.UI.Helpers.Output.Textures;
@@ -22,11 +17,11 @@ namespace Xylia.Preview.UI.Views.Pages;
 public partial class GameResourcePage : Page
 {
 	#region Constructor
-	GameResourcePageViewModel _viewModel = new GameResourcePageViewModel();
+	GameResourcePageViewModel _viewModel;
 
 	public GameResourcePage()
 	{
-		DataContext = _viewModel;
+		DataContext = _viewModel = new GameResourcePageViewModel();
 
 		InitializeComponent();
 		this.Loaded += Page_Loaded;
@@ -74,102 +69,22 @@ public partial class GameResourcePage : Page
 	});
 	#endregion
 
-	#region	Icon
-	private void Output_ItemList(object sender, RoutedEventArgs e)
+	#region Icon
+	private void OutputGoodIcon(object sender, RoutedEventArgs e)
 	{
-		//SaveFileDialog.FileName = "配置文件";
-		//SaveFileDialog.Filter = "Xylia Value 配置文件|*.chv";
-
-		//if (SaveFileDialog.ShowDialog() == DialogResult.OK)
-		//{
-		//	Thread thread = new((ThreadStart)delegate
-		//	{
-		//		int Count = 1;
-
-		//		using (StreamWriter sw = new(SaveFileDialog.FileName))
-		//		{
-		//			string FolderPath = this.Path_ResultPath.Text + @"\物品";
-		//			if (!Directory.Exists(FolderPath))
-		//			{
-		//				FolderPath = Path_ResultPath.Text;
-		//				this.Invoke(() => FrmTips.ShowTips("由于不存在目标子文件夹, 已变更为扫描所选的<输出目录>"));
-		//			}
-
-		//			var Files = new DirectoryInfo(FolderPath).GetFiles();
-		//			foreach (FileInfo fileInfo in Files)
-		//			{
-		//				this.Invoke(() => Footer.Text = $"正在生成配置文件  {100 * Count++ / Files.Length}%");
-
-		//				if (fileInfo.Name.Contains('_'))
-		//				{
-		//					string[] Temp = fileInfo.Name.Split('_');
-
-		//					foreach (var T in Temp) if (int.TryParse(T.Replace(".png", null), out int Result)) sw.WriteLine(Result);
-		//				}
-		//				else if (int.TryParse(fileInfo.Name.Replace(".png", null), out int ItemID))
-		//				{
-		//					sw.WriteLine(ItemID);
-		//				}
-		//			}
-		//		}
-
-		//		this.Invoke(() =>
-		//		{
-		//			Footer.Text = $"输出配置文件已完成";
-		//			FrmTips.ShowTips("输出配置文件已完成！");
-		//		});
-		//	});
-
-		//	thread.SetApartmentState(ApartmentState.STA);
-		//	thread.Start();
-		//}
+		_viewModel.Run(new GoodIcon(UserSettings.Default.GameFolder, _viewModel.Icon_OutputFolder + @"\Goods"), null, 1);
 	}
 
-
-	CancellationTokenSource source1;
-	CancellationTokenSource source2;
-
-	private void Extract_GoodIcon(object sender, RoutedEventArgs e)
+	private void OutputItemIcon(object sender, RoutedEventArgs e)
 	{
-		if (source2 != null)
-		{
-			if (HandyControl.Controls.MessageBox.Show("是否确认取消? ", "", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
-			{
-				source2?.Cancel();
-				source2 = null;
-			}
-
-			return;
-		}
-
-		Run(new GoodIcon(
-			UserSettings.Default.GameFolder,
-			_viewModel.Icon_OutputFolder + @"\Goods"),
-			 null, source2 = new CancellationTokenSource());
-	}
-
-	private void Extract_ItemIcon(object sender, RoutedEventArgs e)
-	{
-		if (source1 != null)
-		{
-			if (HandyControl.Controls.MessageBox.Show("是否确认取消? ", "", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
-			{
-				source1?.Cancel();
-				source1 = null;
-			}
-
-			return;
-		}
-
-
 		// filter
 		var ItemListPath = _viewModel.Icon_ItemListPath;
-		if (!string.IsNullOrWhiteSpace(ItemListPath) && !File.Exists(ItemListPath)) throw new WarningException("配置文件路径错误或不存在, 请重新确认！");
-		else if (this.FilterMode.IsChecked == true && !File.Exists(ItemListPath)) throw new WarningException("选择白名单模式时, 必须选择配置文件!");
+		if (!string.IsNullOrWhiteSpace(ItemListPath) && !File.Exists(ItemListPath)) throw new WarningException(StringHelper.Get("IconOut_Error1"));
+		else if (this.FilterMode.IsChecked == true && !File.Exists(ItemListPath)) throw new WarningException(StringHelper.Get("IconOut_Error2"));
 
 		// format
 		var format = this.NameFormat.Text;
-		if (string.IsNullOrWhiteSpace(format) || !format.Contains('[')) throw new WarningException("输出格式必须至少包含一个特殊规则");
+		if (string.IsNullOrWhiteSpace(format) || !format.Contains('[')) throw new WarningException(StringHelper.Get("IconOut_Error3"));
 		else
 		{
 			format = format.ToLower();
@@ -177,46 +92,15 @@ public partial class GameResourcePage : Page
 			format = new Regex(@"\s+\]", RegexOptions.Singleline).Replace(format, "]");
 		}
 
-		Run(new ItemIcon(
-			UserSettings.Default.GameFolder,
-			_viewModel.Icon_OutputFolder + @"\Items")
+
+		_viewModel.Run(new ItemIcon(UserSettings.Default.GameFolder, _viewModel.Icon_OutputFolder + @"\Items")
 		{
 			ChvPath = ItemListPath,
 			UseBackground = this.UseBackground.IsChecked == true,
 			isWhiteList = this.FilterMode.IsChecked == true,
 
-		}, format, source1 = new CancellationTokenSource());
+		}, format, 0);
 	}
-
-	private static void Run(IconOutBase Out, string format, CancellationTokenSource source) => Task.Run(async () =>
-	{
-		try
-		{
-			DateTime d1 = DateTime.Now;
-			await Out.LoadData(source.Token);
-			await Out.Output(format, source.Token);
-			Out.Dispose();
-
-			TimeSpan span = DateTime.Now - d1;
-			Growl.Success(new GrowlInfo()
-			{
-				Message = string.Format("任务已经全部结束, 总耗{0:hh}小时{0:mm}分{0:ss}秒。", span),
-				StaysOpen = true,
-			});
-		}
-		catch (Exception ee)
-		{
-			Growl.Error("由于发生了错误, 进程已提前结束。");
-			Log.Error(ee, "Exception at IconOut");
-		}
-		finally
-		{
-			ProcessEx.ClearMemory();
-		}
-
-		source.Dispose();
-		source = null;
-	});
 	#endregion
 
 	#region Merge
@@ -224,8 +108,6 @@ public partial class GameResourcePage : Page
 	{
 		if (e.Data.GetDataPresent(DataFormats.FileDrop))
 			e.Effects = DragDropEffects.Copy;
-		else
-			e.Effects = DragDropEffects.None;
 	}
 
 	private void MergeIcon_DragDrop(object sender, DragEventArgs e)
@@ -235,7 +117,14 @@ public partial class GameResourcePage : Page
 			var files = (string[])e.Data.GetData(DataFormats.FileDrop);
 			if (files.Length == 0) return;
 
-			_viewModel.MergeIcon_Source = SKBitmap.Decode(File.ReadAllBytes(files[0]));
+			try
+			{
+				_viewModel.MergeIcon_Source = SKBitmap.Decode(File.ReadAllBytes(files[0]));
+			}
+			catch
+			{
+
+			}
 		}
 	}
 

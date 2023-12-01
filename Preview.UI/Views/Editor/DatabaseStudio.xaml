@@ -6,6 +6,7 @@
 		x:Name="Wd" Title="Database Studio" Height="800" Width="1200">
 	<Window.Resources>
 		<ContextMenu x:Key="TableMenu">
+			<MenuItem Header="View" Click="TableView_Click" />
 			<MenuItem Header="Output" Click="TableToXml_Click" />
 		</ContextMenu>
 

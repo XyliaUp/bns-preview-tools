@@ -1,6 +1,5 @@
-﻿using Xylia.Preview.Data.Common.Interface;
-using Xylia.Preview.Data.Common.DataStruct;
-using Xylia.Preview.Data.Engine.BinData.Models;
+﻿using Xylia.Preview.Data.Common.DataStruct;
+using Xylia.Preview.Data.Common.Interface;
 
 namespace Xylia.Preview.Data.Models;
 public sealed class FactionBattleFieldZone : Record, IAttraction
@@ -24,7 +23,7 @@ public sealed class FactionBattleFieldZone : Record, IAttraction
 
 
 	#region Interface
-	public string Text => this.FactionBattleFieldZoneName2.GetText();
+	public override string GetText => this.FactionBattleFieldZoneName2.GetText();
 
 	public string GetDescribe() => this.FactionBattleFieldZoneDesc.GetText();
 	#endregion

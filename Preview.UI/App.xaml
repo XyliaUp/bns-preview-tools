@@ -1,6 +1,7 @@
 ﻿<Application x:Class="Xylia.Preview.UI.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+			 xmlns:local="clr-namespace:Xylia.Preview.UI"
 			 DispatcherUnhandledException="Application_DispatcherUnhandledException" >
 	<Application.Resources>
 		<ResourceDictionary>
@@ -8,7 +9,7 @@
 				<ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/SkinDefault.xaml"/>
 				<ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/Theme.xaml"/>
 
-				<res:StringHelper xmlns:res="clr-namespace:Xylia.Preview.UI.Resources" />
+				<local:StringHelper />
 				<ResourceDictionary Source="pack://application:,,,/Preview.UI;component/Resources/Themes/Styles.xaml"/>
 				<ResourceDictionary Source="pack://application:,,,/Preview.UI;component/Resources/Themes/Themes.xaml"/>
 			</ResourceDictionary.MergedDictionaries>

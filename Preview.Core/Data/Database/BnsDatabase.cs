@@ -179,6 +179,8 @@ public class BnsDatabase : IDisposable
 	public ModelTable<SlateScroll> SlateScroll => Get<SlateScroll>();
 	public ModelTable<SlateScrollStone> SlateScrollStone => Get<SlateScrollStone>();
 	public ModelTable<SlateStone> SlateStone => Get<SlateStone>();
+	public ModelTable<Social> Social => Get<Social>();
+
 	public ModelTable<Store2> Store2 => Get<Store2>();
 	public ModelTable<SummonedSequence> SummonedSequence => Get<SummonedSequence>();
 	public ModelTable<SurveyQuestion> SurveyQuestions => Get<SurveyQuestion>();

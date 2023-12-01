@@ -1,6 +1,5 @@
 ﻿using OfficeOpenXml;
 
-using Xylia.Preview.Data.Common.Cast;
 using Xylia.Preview.Data.Helpers;
 using Xylia.Preview.Data.Helpers.Output;
 using Xylia.Preview.Data.Models;
@@ -38,7 +37,7 @@ public sealed class QuestOut : OutSet
 			sheet.Cells[Row, column++].SetValue(Quest.ResetType);
 			sheet.Cells[Row, column++].SetValue(Quest.Retired);
 			sheet.Cells[Row, column++].SetValue(Quest.Tutorial);
-			sheet.Cells[Row, column++].SetValue(Quest.AttractionInfo.Instance?.GetName() ?? Quest.AttractionInfo.ToString());
+			sheet.Cells[Row, column++].SetValue(Quest.AttractionInfo.Instance?.GetText ?? Quest.AttractionInfo.ToString());
 		}
     }
 }

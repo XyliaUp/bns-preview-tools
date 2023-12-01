@@ -11,7 +11,7 @@
 			<RowDefinition Height="1.5*" />
 		</Grid.RowDefinitions>
 
-		<TextBlock Grid.Row="0" FontSize="15" Text="{DynamicResource DatSelector_Tooltip}" VerticalAlignment="Center"/>
+		<TextBlock Grid.Row="0" Text="{DynamicResource DatSelector_Tooltip}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="15" FontWeight="SemiBold" />
 		<hc:ComboBox Grid.Row="1" Name="comboBox1" hc:TitleElement.Title="{DynamicResource DatSelector_Source1}" hc:TitleElement.TitlePlacement="Left" hc:TitleElement.VerticalAlignment="Center" hc:TitleElement.TitleWidth="65" Height="30"/>
 		<hc:ComboBox Grid.Row="2" Name="comboBox2" hc:TitleElement.Title="{DynamicResource DatSelector_Source2}" hc:TitleElement.TitlePlacement="Left" hc:TitleElement.VerticalAlignment="Center" hc:TitleElement.TitleWidth="65" Height="30"/>
 

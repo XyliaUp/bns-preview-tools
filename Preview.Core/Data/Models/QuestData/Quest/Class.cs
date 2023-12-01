@@ -238,7 +238,7 @@ public class MissionStep : Record
 	public RollBack RollBack;
 
 
-	public string Text => Desc.GetText();
+	public override string GetText => Desc.GetText();
 }
 
 public partial class Case

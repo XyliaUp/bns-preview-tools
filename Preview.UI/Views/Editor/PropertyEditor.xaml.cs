@@ -1,33 +1,28 @@
 ﻿using System.Windows;
 
-using CommunityToolkit.Mvvm.ComponentModel;
-
 using Xylia.Extension;
 using Xylia.Preview.Data.Models;
-using Xylia.Preview.UI.ViewModels;
+using Xylia.Preview.UI.Interactivity;
 
 namespace Xylia.Preview.UI.Views.Editor;
-[ObservableObject]
-public partial class PropertyEditor : Window
+public partial class PropertyEditor 
 {
-	#region Ctor
 	public PropertyEditor()
 	{
 		InitializeComponent();
 	}
-	#endregion
-
-	#region Fields
-	[ObservableProperty]
-	private Record source;
-	#endregion
-
 
 	#region Methods
+	public Record Source
+	{
+		get => attributeGrid.SelectedObject;
+		set => attributeGrid.SelectedObject = value;
+	}
+
 	private void ViewSource_Click(object sender, RoutedEventArgs e)
 	{
 		if (Source.Data.Length > 16) Clipboard.SetText(Source.Data.ToHex());
-		else PreviewRaw.Command.Execute(Source, true);
+		else new PreviewRaw().Execute(Source, true);
 	}
 	#endregion
 }

@@ -19,10 +19,12 @@ namespace Xylia.Preview.Data.Models;
 [JsonConverter(typeof(RecordConverter))]
 public unsafe class Record : IDisposable
 {
+	#region Ctor
 	public Record()
 	{
 		Attributes = new(this);
 	}
+	#endregion
 
 
 	#region Fields
@@ -180,8 +182,8 @@ public unsafe class Record : IDisposable
 			}
 			else if (value is float f)
 			{
-				if (attributeDef != null && Math.Abs(f - attributeDef.AttributeDefaultValues.DFloat) < 0.001)
-					continue;
+				//if (attributeDef != null && Math.Abs(f - attributeDef.AttributeDefaultValues.DString) < 0.001)
+				//	continue;
 
 				value = f.ToString(CultureInfo.InvariantCulture);
 			}
@@ -250,10 +252,10 @@ public unsafe class Record : IDisposable
 	public Lazy<Record> Model { get; set; }
 	#endregion
 
-
-
 	#region Interface
 	public override string ToString() => this.Attributes["alias"] ?? Ref.ToString();
+
+	public virtual string GetText => this.Attributes["name2"]?.GetText() ?? ToString();
 
 	public static bool operator ==(Record a, Record b)
 	{

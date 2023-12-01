@@ -2,18 +2,18 @@ using System.ComponentModel;
 using System.Windows;
 
 using Xylia.Preview.UI.Helpers;
-using Xylia.Preview.UI.Services.Utils;
+using Xylia.Preview.UI.Services;
 using Xylia.Preview.UI.Views;
 using Xylia.Preview.UI.Views.Pages;
 
 using GameUI = Xylia.Preview.UI.Art.GameUI.Scene;
 
 namespace Xylia.Preview.UI;
-public partial class MainWindow 
+public partial class MainWindow
 {
 	public MainWindow()
 	{
-		InitializeComponent();	  
+		InitializeComponent();
 
 		this.MinWidth = this.Width;
 		this.MinHeight = this.Height;
@@ -31,7 +31,7 @@ public partial class MainWindow
 		SideMenu_Switch(SideMenu, null);
 		#endregion
 
-		new Update().CheckForUpdates();
+		new UpdateService().CheckForUpdates();
 		Register.Create();
 	}
 
@@ -60,7 +60,9 @@ public partial class MainWindow
 
 	protected override void OnClosing(CancelEventArgs e)
 	{
-		var result = HandyControl.Controls.MessageBox.Show("您正在关闭应用程序, 是否确认这么做吗？", "提示信息", MessageBoxButton.YesNo);
+		var result = HandyControl.Controls.MessageBox.Show(
+			StringHelper.Get("Application_ExitMessage"),
+			StringHelper.Get("Message_Tip"), MessageBoxButton.YesNo);
 		if (result != MessageBoxResult.Yes)
 		{
 			e.Cancel = true;

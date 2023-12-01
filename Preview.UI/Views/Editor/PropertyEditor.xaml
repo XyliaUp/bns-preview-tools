@@ -3,7 +3,6 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 		xmlns:hc="https://handyorg.github.io/handycontrol"
 		xmlns:lc="clr-namespace:Xylia.Preview.UI.Controls"
-		xmlns:UI="https://github.com/xyliaup/bns-preview-tools"
         Title="{DynamicResource PropertyEditor_Name}" Height="450" Width="660"
 		DataContext="{Binding RelativeSource={RelativeSource Self}}">
 	<Window.Resources>
@@ -27,7 +26,7 @@
 										</RadioButton>
 									</hc:ButtonGroup>
 
-									<Button Margin="0,0,6,0" Click="ViewSource_Click" Content="&#xf56e;" FontFamily="{StaticResource FontAwesome}" ToolTip="{DynamicResource PropertyEditor_ViewSource_Tooltip}" />
+									<Button Margin="0,0,6,0" Click="ViewSource_Click" Content="&#xE8E5;" FontFamily="{StaticResource SegoeAssets}" ToolTip="{DynamicResource PropertyEditor_ViewSource_Tooltip}" />
 									<hc:SearchBar x:Name="PART_SearchBar" IsRealTime="True" hc:InfoElement.ShowClearButton="True" Style="{StaticResource SearchBarPlus}" />
 								</DockPanel>
 								<hc:PropertyItemsControl Grid.Row="1" x:Name="PART_ItemsControl" Style="{StaticResource PropertyItemsControlBaseStyle}">
@@ -100,6 +99,6 @@
 	</Window.Resources>
 
 	<hc:SimplePanel>
-		<lc:AttributeGrid SelectedObject="{Binding Source}" MinTitleWidth="100" MaxTitleWidth="200" Focusable="False" Padding="10" Background="{DynamicResource RegionBrush}" BorderBrush="{DynamicResource BorderBrush}"/>
+		<lc:AttributeGrid x:Name="attributeGrid" MinTitleWidth="100" MaxTitleWidth="200" Focusable="False" Padding="10" Background="{DynamicResource RegionBrush}" BorderBrush="{DynamicResource BorderBrush}"/>
 	</hc:SimplePanel>
 </Window>

@@ -56,7 +56,6 @@
 						<Button Content="ItemStore"     Command="{Binding PreviewCommand}" CommandParameter="Game_ItemStore.Game_ItemStoreScene" />
 						<Button Content="ItemMap"       Command="{Binding PreviewCommand}" CommandParameter="Game_ItemMap.Game_ItemMapScene" />
 						<Button Content="Map"           Command="{Binding PreviewCommand}" CommandParameter="Game_Map.Game_MapScene" />
-						<Button Content="Npc"           Command="{Binding PreviewListCommand}" CommandParameter="Npc" />
 						<Button Content="CharacterInfo" Command="{Binding PreviewCommand}" CommandParameter="Game_CharacterInfo.Game_CharacterInfo_Scene" />
 						<Button Content="clear data"    Click="ClearCacheData_Click" Background="Orange"/>
 					</WrapPanel>

@@ -1,8 +1,10 @@
 bns preview tools
 ==========================
-blade & soul game data reader
+blade & soul game data reader, which is written in C#.
 
-created on Sep 2018.
+![Repo Size](https://img.shields.io/github/repo-size/xyliaup/bns-preview-tools?style=flat-square)
+[![Release](https://img.shields.io/github/release-pre/xyliaup/bns-preview-tools?style=flat-square)](https://github.com/XyliaUp/bns-preview-tools/releases/latest)
+[![Release Date](https://img.shields.io/github/release-date-pre/xyliaup/bns-preview-tools?style=flat-square)](https://github.com/XyliaUp/bns-preview-tools/releases/latest)
 
 
 Functions
@@ -23,14 +25,16 @@ compare update on diffent versions
 output origion data
 
 ## pak files
-output file
+This software is not specifical for viewing Unreal Engine assets, only support output file.
+If you need more features, please use [FModel](https://github.com/4sval/FModel).
+
 
 ## role attribute calculate
 the function has some defects, carefuly.    
 
 Environment
 ==========================
-.NET 7.0 SDK    
+.NET 8.0 SDK    
 Windows 7 above
 
 

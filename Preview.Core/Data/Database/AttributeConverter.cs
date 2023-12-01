@@ -17,11 +17,11 @@ public class AttributeConverter
 	/// Converts the specified attribute text into a value.
 	/// </summary>
 	/// <param name="value"></param>
-	/// <param name="type"></param>
+	/// <param name="attribute"></param>
 	/// <param name="database"></param>
 	/// <returns></returns>
 	/// <exception cref="Exception"></exception>
-	public static object ConvertTo(string value, AttributeType type, BnsDatabase database) => type switch
+	public static object ConvertTo(string value, AttributeDefinition attribute, BnsDatabase database) => attribute.Type switch
 	{
 		AttributeType.TNone => null,
 		AttributeType.TInt8 => sbyte.Parse(value),
@@ -33,8 +33,8 @@ public class AttributeConverter
 		AttributeType.TString => value,
 		AttributeType.TSeq => value,
 		AttributeType.TSeq16 => value,
-		AttributeType.TRef => value,
-		AttributeType.TTRef => value,
+		AttributeType.TRef => database.Provider.Tables[attribute.ReferedTableName][value],
+		AttributeType.TTRef => throw new Exception(),
 		AttributeType.TSub => short.Parse(value),
 		AttributeType.TSu => value,
 		AttributeType.TVector16 => Vector16.Parse(value),
@@ -56,7 +56,7 @@ public class AttributeConverter
 		AttributeType.TTime64 => Time64.Parse(value),
 		AttributeType.TXUnknown1 => Time64.Parse(value),
 		AttributeType.TXUnknown2 => new ObjectPath(value),
-		_ => throw new Exception($"Unhandled type name: '{type}'"),
+		_ => throw new Exception($"Unhandled type name: '{attribute.Type}'"),
 	};
 
 	/// <summary>
@@ -81,7 +81,7 @@ public class AttributeConverter
 		else if (type.IsGenericType && type.GetGenericTypeDefinition() == typeof(Sub<>)) return Activator.CreateInstance(type, value, database);
 
 
-		if (TypeCode.TryGetValue(type, out var code)) return ConvertTo(value, code, database);
+		if (TypeCode.TryGetValue(type, out var code)) return ConvertTo(value, new AttributeDefinition() { Type = code }, database);
 
 		//throw new NotSupportedException($"type not supported: {type}");
 		Trace.WriteLine($"type not supported: {type}");

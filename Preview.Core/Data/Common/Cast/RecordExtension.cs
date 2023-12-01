@@ -3,7 +3,6 @@
 using Xylia.Extension;
 using Xylia.Preview.Data.Common.Attribute;
 using Xylia.Preview.Data.Common.DataStruct;
-using Xylia.Preview.Data.Common.Interface;
 using Xylia.Preview.Data.Common.Seq;
 using Xylia.Preview.Data.Models;
 
@@ -51,20 +50,6 @@ public static partial class RecordExtension
 		}
 
 		return Object.GetAttribute<Name>()?.Description ?? (Object is MemberInfo m ? m.Name : Object.ToString());
-	}
-
-	public static string GetName(this Record record)
-	{
-		if (record is null) return null;
-		else if (record is IName IName) return IName.Text;
-
-		var name =
-			record.Attributes["name2"]?.ToString() ??
-			record.Attributes["name"]?.ToString();
-
-		if (record.GetType() != typeof(Record)) return record.ToString();
-
-		return name;
 	}
 
 

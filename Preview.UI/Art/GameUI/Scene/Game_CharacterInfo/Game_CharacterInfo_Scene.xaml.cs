@@ -7,7 +7,7 @@ using Xylia.Preview.Data.Models.Config;
 using Xylia.Preview.Data.Models.Creature;
 
 namespace Xylia.Preview.UI.Art.GameUI.Scene.Game_CharacterInfo;
-public partial class Game_CharacterInfo_Scene : GameScene
+public partial class Game_CharacterInfo_Scene
 {
 	#region Constructor
 	private string CharacterInfoUrl;

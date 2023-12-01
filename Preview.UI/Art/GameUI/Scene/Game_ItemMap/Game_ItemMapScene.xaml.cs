@@ -7,7 +7,7 @@ using Xylia.Extension;
 using Xylia.Preview.Data.Common.Seq;
 
 namespace Xylia.Preview.UI.Art.GameUI.Scene.Game_ItemMap;
-public partial class Game_ItemMapScene : GameScene
+public partial class Game_ItemMapScene
 {
 	public Game_ItemMapScene()
 	{

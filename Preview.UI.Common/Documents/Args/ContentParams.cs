@@ -13,7 +13,6 @@ public sealed class ContentParams : IEnumerable, ICollection, IList
 	#region Fields
 	public event EventHandler Changed;
 
-
 	private const int DefaultCapacity = 4;
 
 	internal object[] _items = new object[DefaultCapacity];

@@ -110,7 +110,7 @@ public sealed class ItemOut : OutSet, IDisposable
 		}
 	}
 
-	protected void CreateText()
+	protected override void CreateText()
 	{
 		using var writer = new StreamWriter(new FileStream(Path_MainFile, FileMode.Create));
 		foreach (var Item in ItemDatas)

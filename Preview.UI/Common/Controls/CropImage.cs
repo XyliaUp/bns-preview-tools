@@ -320,9 +320,9 @@ public class CropAdorner : Adorner
 		var maxHeight = double.IsNaN(parent.Height) ? parent.ActualHeight : parent.Height;
 		thumb.DragDelta += (s, e) =>
 		{
-			var element = AdornedElement as FrameworkElement;
-			if (element == null)
+			if (AdornedElement is not FrameworkElement element)
 				return;
+
 			Resize(element);
 
 			switch (thumb.VerticalAlignment)

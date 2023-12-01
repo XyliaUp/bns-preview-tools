@@ -5,7 +5,6 @@ using System.Windows.Controls;
 using CUE4Parse.BNS.Assets.Exports;
 
 using Xylia.Preview.Common.Extension;
-using Xylia.Preview.Data.Common.Cast;
 using Xylia.Preview.Data.Common.DataStruct;
 using Xylia.Preview.Data.Common.Interface;
 using Xylia.Preview.Data.Helpers;
@@ -13,7 +12,7 @@ using Xylia.Preview.Data.Models;
 using Xylia.Preview.UI.Controls;
 
 namespace Xylia.Preview.UI.Art.GameUI.Scene.Game_Map;
-public partial class Game_MapScene : GameScene
+public partial class Game_MapScene
 {
 	#region Ctor
 	public Game_MapScene()
@@ -89,7 +88,7 @@ public partial class Game_MapScene : GameScene
 				var obj = new Ref<Record>(mapunit.Attributes["attraction"]).Instance;
 				if (obj != null)
 				{
-					tooltip = obj.GetName();
+					tooltip = obj.GetText;
 					if (obj is IAttraction attraction) tooltip += "\n" + attraction.GetDescribe();
 				}
 
@@ -97,7 +96,7 @@ public partial class Game_MapScene : GameScene
 			else if (mapunit is MapUnit.Npc or MapUnit.Boss)
 			{
 				var Npc = FileCache.Data.Npc[mapunit.Attributes["npc"]];
-				if (Npc != null) tooltip = Npc.GetName();
+				if (Npc != null) tooltip = Npc.GetText;
 			}
 			else if (mapunit is MapUnit.Link)
 			{

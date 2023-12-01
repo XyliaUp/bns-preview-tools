@@ -11,10 +11,9 @@ using Xylia.Preview.Data.Models;
 using static Xylia.Preview.Data.Models.Item.Grocery;
 
 namespace Xylia.Preview.UI.Helpers.Output.Textures;
-public sealed class ItemIcon : IconOutBase
+public sealed class ItemIcon(string GameFolder, string OutputFolder) : IconOutBase(GameFolder, OutputFolder)
 {
 	#region Constructor
-	public ItemIcon(string GameFolder, string OutputFolder) : base(GameFolder, OutputFolder) { }
 
 	public bool UseBackground = false;
 

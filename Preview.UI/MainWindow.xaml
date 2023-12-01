@@ -9,15 +9,15 @@
 	<hc:Window.NonClientAreaContent>
 		<Menu HorizontalAlignment="Right" VerticalAlignment="Center">
 			<MenuItem Header="{DynamicResource Repository}" Command="hc:ControlCommands.OpenLink" CommandParameter="https://github.com/XyliaUp/bns-preview-tools" />
-			<MenuItem Header="&#xf013;" FontFamily="{StaticResource FontAwesome}" Click="OpenSettings" />
+			<MenuItem Header="&#xEF58;" FontFamily="{DynamicResource SegoeAssets}" Click="OpenSettings" />
 		</Menu>
 	</hc:Window.NonClientAreaContent>
 
 	<hc:DrawerContainer>
 		<Grid>
 			<Grid.RowDefinitions>
-				<RowDefinition Height="*" Name="Content" />
-				<RowDefinition Height="50" Name="Stauts" />
+				<RowDefinition Height="*" />
+				<RowDefinition Height="30" Name="Stauts" />
 			</Grid.RowDefinitions>
 			<Grid.ColumnDefinitions>
 				<ColumnDefinition Width="Auto" />
@@ -75,7 +75,15 @@
 
 						<TextBlock VerticalAlignment="Bottom" Margin="10 5" Foreground="Gray">
 							<Run Text="Version" />
-							<Run Text="{Binding Source={x:Static VM:VersionHelper.Version},Mode=OneWay}"/>
+							<Run Text="{Binding Source={x:Static VM:VersionHelper.Version},Mode=OneWay}">
+								<Run.ToolTip>
+									 <TextBlock>
+										 <Run Text="{DynamicResource Text_PublishOn}" />
+										 <Run Text="{Binding Source={x:Static VM:VersionHelper.Time},Mode=OneWay,StringFormat={}{0:D}}" />
+									 </TextBlock>
+								</Run.ToolTip>
+							</Run>
+
 							<LineBreak />
 							<Run Text="Powered by Xylia" Foreground="{StaticResource DarkPrimaryBrush}"/>
 						</TextBlock>
@@ -86,8 +94,9 @@
 				<StackPanel hc:Growl.GrowlParent="True" VerticalAlignment="Top" Margin="0,10,0,10" />
 			</ScrollViewer>
 
-			<ToggleButton Style="{StaticResource ToggleButtonIconTransparent}" hc:IconSwitchElement.Geometry="{StaticResource RightGeometry}" hc:IconSwitchElement.GeometrySelected="{StaticResource LeftGeometry}" 
-				IsChecked="{Binding IsOpen,ElementName=SideMenuContainer}" VerticalAlignment="Top" Margin="-5 0 0 0" />
+			<ToggleButton Style="{StaticResource ToggleButtonIconTransparent}" VerticalAlignment="Top" Margin="-5 0 0 0" hc:IconSwitchElement.Geometry="{StaticResource RightGeometry}" hc:IconSwitchElement.GeometrySelected="{StaticResource LeftGeometry}" 
+				IsChecked="{Binding IsOpen,ElementName=SideMenuContainer}"
+				Visibility="{Binding IsOpen,ElementName=SideMenuContainer,Converter={StaticResource Boolean2VisibilityReConverter}}" />
 			<Frame Grid.Column="1" x:Name="Presenter" NavigationUIVisibility="Hidden" BorderThickness="0" />
 		</Grid>
 	</hc:DrawerContainer>

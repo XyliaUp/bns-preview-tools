@@ -3,6 +3,7 @@
 using Xylia.Preview.Data.Models;
 
 namespace Xylia.Preview.Data.Common.DataStruct;
+
 public struct Msec : IFormattable
 {
 	#region Const

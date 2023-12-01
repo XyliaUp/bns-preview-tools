@@ -2,8 +2,8 @@
 	x:Class="Xylia.Preview.UI.Art.GameUI.Scene.Game_QuestJournal.Game_QuestJournalScene"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:i="clr-namespace:Xylia.Preview.UI.Interactivity"
 	xmlns:UI="https://github.com/xyliaup/bns-preview-tools"
-	xmlns:VM="clr-namespace:Xylia.Preview.UI.ViewModels"
 	xmlns:data="clr-namespace:Xylia.Preview.Data.Models;assembly=Preview.Core"
 	Title="textref=UI.QuestJournal.Title">
 	<Window.Resources>
@@ -13,7 +13,7 @@
 		</ContextMenu>
 
 		<ContextMenu x:Key="ItemMenu">
-			<MenuItem Header="{DynamicResource View_Raw}" Command="VM:PreviewRaw.Command" CommandParameter="{Binding Path=.}"/>
+			<MenuItem Header="{DynamicResource PreviewRaw}" Command="{i:PreviewRaw}" CommandParameter="{Binding Path=.}"/>
 		</ContextMenu>
 	</Window.Resources>
 

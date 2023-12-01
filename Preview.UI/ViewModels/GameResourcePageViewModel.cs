@@ -9,20 +9,28 @@ using CommunityToolkit.Mvvm.Input;
 using CUE4Parse.BNS.Conversion;
 using CUE4Parse.Utils;
 
+using HandyControl.Controls;
+using HandyControl.Data;
+
 using Ookii.Dialogs.Wpf;
+
+using Serilog;
 
 using SkiaSharp;
 using SkiaSharp.Views.WPF;
 
 using Xylia.Preview.UI.Common;
+using Xylia.Preview.UI.Helpers.Output.Textures;
 using Xylia.Preview.UI.Views;
+
+using MessageBox = HandyControl.Controls.MessageBox;
 
 namespace Xylia.Preview.UI.ViewModels;
 public partial class GameResourcePageViewModel : ObservableObject
 {
 	#region Icon
 	[ObservableProperty]
-	string icon_OutputFolder;
+	string icon_OutputFolder = UserSettings.Default.OutputFolderResource;
 
 	[ObservableProperty]
 	string icon_ItemListPath;
@@ -47,7 +55,58 @@ public partial class GameResourcePageViewModel : ObservableObject
 		var dialog = new VistaOpenFileDialog() { Filter = @"|*.chv|All files|*.*" };
 		if (dialog.ShowDialog() == true) Icon_ItemListPath = dialog.FileName;
 	}
+
+
+	readonly CancellationTokenSource[] Sources = new CancellationTokenSource[20];
+
+	public void Run(IconOutBase Out, string format, int id) => Task.Run(async () =>
+	{
+		#region Token
+		var source = this.Sources[id];
+		if (source != null)
+		{
+			if (MessageBox.Show(StringHelper.Get("IconOut_TaskCancel"), StringHelper.Get("Message_Tip"), MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+			{
+				source?.Cancel();
+				source = null;
+			}
+
+			return;
+		}
+
+		source = this.Sources[id] = new CancellationTokenSource();
+		#endregion
+
+		try
+		{
+			DateTime start = DateTime.Now;
+
+			await Out.LoadData(source.Token);
+			await Out.Output(format, source.Token);
+			Out.Dispose();
+
+			Growl.Success(new GrowlInfo()
+			{
+				Message = string.Format(StringHelper.Get("IconOut_TaskCompleted"), DateTime.Now - start),
+				StaysOpen = true,
+			});
+		}
+		catch (Exception ee)
+		{
+			Growl.Error(string.Format(StringHelper.Get("IconOut_TaskException"), ee.Message));
+			Log.Error(ee, "Exception at IconOut");
+		}
+		finally
+		{
+			ProcessEx.ClearMemory();
+		}
+
+		source.Dispose();
+		this.Sources[id] = source = null;
+	});
 	#endregion
+
+
 
 	#region Merge
 	SKBitmap _mergeIcon_Source;
@@ -85,15 +144,15 @@ public partial class GameResourcePageViewModel : ObservableObject
 	}
 	public List<QuoteItem<sbyte>> GradeList => new()
 	{
-		{ new(1, GetText("MergeIcon_Grade1")) },
-		{ new(2, GetText("MergeIcon_Grade2")) },
-		{ new(3, GetText("MergeIcon_Grade3")) },
-		{ new(4, GetText("MergeIcon_Grade4")) },
-		{ new(5, GetText("MergeIcon_Grade5")) },
-		{ new(6, GetText("MergeIcon_Grade6")) },
-		{ new(7, GetText("MergeIcon_Grade7")) },
-		{ new(8, GetText("MergeIcon_Grade8")) },
-		{ new(9, GetText("MergeIcon_Grade9")) },
+		{ new(1, StringHelper.Get("MergeIcon_Grade1")) },
+		{ new(2, StringHelper.Get("MergeIcon_Grade2")) },
+		{ new(3, StringHelper.Get("MergeIcon_Grade3")) },
+		{ new(4, StringHelper.Get("MergeIcon_Grade4")) },
+		{ new(5, StringHelper.Get("MergeIcon_Grade5")) },
+		{ new(6, StringHelper.Get("MergeIcon_Grade6")) },
+		{ new(7, StringHelper.Get("MergeIcon_Grade7")) },
+		{ new(8, StringHelper.Get("MergeIcon_Grade8")) },
+		{ new(9, StringHelper.Get("MergeIcon_Grade9")) },
 	};
 
 
@@ -180,22 +239,16 @@ public partial class GameResourcePageViewModel : ObservableObject
 			fs.Flush();
 		}
 	}
-	#endregion
 
 
 
-	public static QuoteItem<SKBitmap> GetImage(string path, string section = null)
+
+	public static QuoteItem<SKBitmap> GetImage(string path)
 	{
 		if (path == "None") return new(null, Application.Current.TryFindResource("Text_None"));
 
 		var info = Application.GetResourceStream(new Uri($"/Preview.UI;component/{path}.png", UriKind.Relative));
-		return new(SKBitmap.Decode(info.Stream), GetText(path.SubstringAfterLast('/'), section));
+		return new(SKBitmap.Decode(info.Stream), StringHelper.Get(path.SubstringAfterLast('/')));
 	}
-
-	public static string GetText(string key, string section = null)
-	{
-		if (section != null) key = section + "_" + key;
-
-		return Application.Current.TryFindResource(key) as string ?? key;
-	}
+	#endregion
 }

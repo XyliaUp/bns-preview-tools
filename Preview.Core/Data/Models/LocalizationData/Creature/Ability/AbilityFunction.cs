@@ -16,7 +16,6 @@ public class AbilityFunction
     /// </summary>
     public int C;
 
-
     /// <summary>
     /// 等级修正参数
     /// </summary>
@@ -29,9 +28,13 @@ public class AbilityFunction
     public List<LevelFactor> LevelFactors = new();
     #endregion
 
+    #region Properties
+    public string Text => this.Type.ToString();
+	#endregion
 
-    #region Methods
-    public double GetPercent(double value, byte level)
+
+	#region Methods
+	public double GetPercent(double value, byte level)
     {
         double factor = 0;
 
@@ -91,10 +94,10 @@ public class AbilityFunction
         Φ = factor1.CalΦ(factor2);
         μ = factor1.Calμ(Φ);
     }
-    #endregion
+	#endregion
 
-
-    public class LevelFactor
+	#region Factor
+	public class LevelFactor
     {
         public sbyte Level;
 
@@ -110,12 +113,11 @@ public class AbilityFunction
 
         public double Calμ(double Φ) => Value / Math.Exp(Φ * Level);
     }
+	#endregion
 
 
-
-
-    #region Instance
-    public static AbilityFunction AttackHit => new()
+	#region Instance
+	public static AbilityFunction AttackHit => new()
     {
         Type = CreatureField.AttackHitBasePercent,
         C = 85,

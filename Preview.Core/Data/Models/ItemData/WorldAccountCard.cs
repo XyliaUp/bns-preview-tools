@@ -1,10 +1,8 @@
 ﻿using Xylia.Preview.Data.Common.Attribute;
-using Xylia.Preview.Data.Common.Interface;
 using Xylia.Preview.Data.Common.DataStruct;
-using Xylia.Preview.Data.Engine.BinData.Models;
 
 namespace Xylia.Preview.Data.Models;
-public sealed class WorldAccountCard : Record, IName
+public sealed class WorldAccountCard : Record
 {
 	public string Alias;
 
@@ -20,6 +18,6 @@ public sealed class WorldAccountCard : Record, IName
 
 
 	#region Interface
-	public string Text => Item.Instance?.Name2.GetText();
+	public override string GetText => Item.Instance?.Name2.GetText();
 	#endregion
 }

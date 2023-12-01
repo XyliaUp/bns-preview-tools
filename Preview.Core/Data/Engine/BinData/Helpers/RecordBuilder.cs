@@ -10,7 +10,6 @@ namespace Xylia.Preview.Data.Engine.BinData.Helpers;
 public class RecordBuilder
 {
 	private readonly DatafileDefinition _definitions;
-	private readonly ResolvedAliases _resolvedAliases;
 
 	private readonly StringBuilder _stringBuilder = new StringBuilder(0x2000);
 	private readonly Dictionary<string, int> _existingStringOffset = new Dictionary<string, int>(0x2000);
@@ -18,11 +17,6 @@ public class RecordBuilder
 	// States
 	private bool _isCompressed;
 
-	public RecordBuilder(DatafileDefinition definitions, ResolvedAliases resolvedAliases)
-	{
-		_definitions = definitions;
-		_resolvedAliases = resolvedAliases;
-	}
 
 	public StringLookup StringLookup { get; private set; }
 

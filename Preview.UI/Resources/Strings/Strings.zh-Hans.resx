@@ -117,11 +117,125 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Settings_CopyMode" xml:space="preserve">
-    <value>文本复制模式</value>
+  <data name="AbilityPage" xml:space="preserve">
+    <value>角色能力</value>
+  </data>
+  <data name="Application_ExitMessage" xml:space="preserve">
+    <value>您正在关闭应用程序, 是否确认这么做吗？</value>
+  </data>
+  <data name="Asset_Extract" xml:space="preserve">
+    <value>提取</value>
+  </data>
+  <data name="Asset_FilterPah" xml:space="preserve">
+    <value>资产路径</value>
+  </data>
+  <data name="Asset_OutputClassName" xml:space="preserve">
+    <value>输出对象类名</value>
+  </data>
+  <data name="Assets_Name" xml:space="preserve">
+    <value>资产</value>
+  </data>
+  <data name="AudioPlayer_Name" xml:space="preserve">
+    <value>音频播放器</value>
+  </data>
+  <data name="Command_QueryAsset" xml:space="preserve">
+    <value>查询游戏资产</value>
+  </data>
+  <data name="Command_QueryAsset2" xml:space="preserve">
+    <value>查询游戏资产 (旧路径)</value>
+  </data>
+  <data name="DatSelector_Name" xml:space="preserve">
+    <value>数据选择器</value>
+  </data>
+  <data name="DatSelector_Source1" xml:space="preserve">
+    <value>数据文件</value>
+  </data>
+  <data name="DatSelector_Source2" xml:space="preserve">
+    <value>汉化文件</value>
+  </data>
+  <data name="DatSelector_Tooltip" xml:space="preserve">
+    <value>由于您选择的路径下存在多个相关文件，需要进行主动选择。</value>
   </data>
   <data name="GameDirectory" xml:space="preserve">
     <value>游戏目录</value>
+  </data>
+  <data name="GameResourcePage" xml:space="preserve">
+    <value>资源</value>
+  </data>
+  <data name="Game_QuestJournalScene" xml:space="preserve">
+    <value>任务</value>
+  </data>
+  <data name="IconOut_CreateList" xml:space="preserve">
+    <value>输出列表</value>
+  </data>
+  <data name="IconOut_CreateList_Tooltip" xml:space="preserve">
+    <value>根据已生成的图像创建物品列表</value>
+  </data>
+  <data name="IconOut_Error1" xml:space="preserve">
+    <value>列表文件路径错误或不存在, 请重新确认</value>
+  </data>
+  <data name="IconOut_Error2" xml:space="preserve">
+    <value>选择白名单模式时, 必须选择配置文件</value>
+  </data>
+  <data name="IconOut_Error3" xml:space="preserve">
+    <value>输出格式必须至少包含一个特殊规则</value>
+  </data>
+  <data name="IconOut_FilterMode" xml:space="preserve">
+    <value>白名单筛选模式</value>
+  </data>
+  <data name="IconOut_FilterMode_Tooltip" xml:space="preserve">
+    <value>选中时仅生成物品列表中的对象</value>
+  </data>
+  <data name="IconOut_Goods" xml:space="preserve">
+    <value>提取商品图标</value>
+  </data>
+  <data name="IconOut_ItemList" xml:space="preserve">
+    <value>选择物品列表</value>
+  </data>
+  <data name="IconOut_Items" xml:space="preserve">
+    <value>提取物品图标</value>
+  </data>
+  <data name="IconOut_Name" xml:space="preserve">
+    <value>图标</value>
+  </data>
+  <data name="IconOut_NameFormat" xml:space="preserve">
+    <value>输出名称格式</value>
+  </data>
+  <data name="IconOut_TaskCancel" xml:space="preserve">
+    <value>已经有一个任务正在执行，是否确认取消？</value>
+  </data>
+  <data name="IconOut_TaskCompleted" xml:space="preserve">
+    <value>任务已经完成, 总耗{0:hh}小时{0:mm}分{0:ss}秒。</value>
+  </data>
+  <data name="IconOut_TaskException" xml:space="preserve">
+    <value>任务意外终止, 由于 {0}。</value>
+  </data>
+  <data name="IconOut_UseBackground" xml:space="preserve">
+    <value>生成品质背景</value>
+  </data>
+  <data name="ItemList_Name" xml:space="preserve">
+    <value>物品列表</value>
+  </data>
+  <data name="ItemList_OnlyUpdate" xml:space="preserve">
+    <value>仅更新</value>
+  </data>
+  <data name="ItemList_OnlyUpdate_Tooltip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ItemList_Path" xml:space="preserve">
+    <value>选择先前的物品列表</value>
+  </data>
+  <data name="ItemList_Path_Tooltip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ItemList_Run" xml:space="preserve">
+    <value>生成</value>
+  </data>
+  <data name="ItemPage" xml:space="preserve">
+    <value>物品</value>
+  </data>
+  <data name="MergeIcon_BackgroundMode" xml:space="preserve">
+    <value>新背景</value>
   </data>
   <data name="MergeIcon_Grade1" xml:space="preserve">
     <value>粗糙</value>
@@ -150,8 +264,17 @@
   <data name="MergeIcon_Grade9" xml:space="preserve">
     <value>唯一</value>
   </data>
-  <data name="Text_None" xml:space="preserve">
-    <value>无</value>
+  <data name="MergeIcon_Name" xml:space="preserve">
+    <value>合成</value>
+  </data>
+  <data name="Message_Tip" xml:space="preserve">
+    <value>提示消息</value>
+  </data>
+  <data name="Name_About" xml:space="preserve">
+    <value>关于</value>
+  </data>
+  <data name="Name_General" xml:space="preserve">
+    <value>通用</value>
   </data>
   <data name="OutputDirectory" xml:space="preserve">
     <value>输出目录</value>
@@ -159,20 +282,32 @@
   <data name="OutputDirectory_Resource" xml:space="preserve">
     <value>输出目录 （资源）</value>
   </data>
-  <data name="AbilityPage" xml:space="preserve">
-    <value>角色能力</value>
+  <data name="PreviewModel" xml:space="preserve">
+    <value>查看模型</value>
   </data>
-  <data name="GameResourcePage" xml:space="preserve">
-    <value>资源</value>
+  <data name="PreviewRaw" xml:space="preserve">
+    <value>查看源</value>
   </data>
-  <data name="Game_QuestJournalScene" xml:space="preserve">
-    <value>任务</value>
+  <data name="PreviewShowObject" xml:space="preserve">
+    <value>查看显示对象</value>
   </data>
-  <data name="ItemPage" xml:space="preserve">
-    <value>物品</value>
+  <data name="ProductName" xml:space="preserve">
+    <value>Blade &amp; Soul Preview Tool</value>
+  </data>
+  <data name="PropertyEditor_Name" xml:space="preserve">
+    <value>属性编辑器</value>
+  </data>
+  <data name="PropertyEditor_ViewSource_Tooltip" xml:space="preserve">
+    <value>复制原始数据到剪切板，不可用时打开文本编辑器</value>
   </data>
   <data name="Repository" xml:space="preserve">
     <value>项目</value>
+  </data>
+  <data name="Settings_CopyMode" xml:space="preserve">
+    <value>文本复制模式</value>
+  </data>
+  <data name="Settings_Name" xml:space="preserve">
+    <value>设置</value>
   </data>
   <data name="Settings_TestMode" xml:space="preserve">
     <value>数据测试模式</value>
@@ -183,110 +318,47 @@
   <data name="Settings_UseUserDefinition" xml:space="preserve">
     <value>允许用户自定义配置</value>
   </data>
-  <data name="View_Model" xml:space="preserve">
-    <value>查看模型</value>
+  <data name="ShowObjectPlayer_Name" xml:space="preserve">
+    <value>显示对象播放器</value>
   </data>
-  <data name="ProductName" xml:space="preserve">
-    <value>Blade &amp; Soul Preview Tool</value>
-  </data>
-  <data name="TextView" xml:space="preserve">
-    <value>文本</value>
-  </data>
-  <data name="Text_Preview" xml:space="preserve">
-    <value>预览</value>
-  </data>
-  <data name="ItemList_OnlyUpdate" xml:space="preserve">
-    <value>仅更新</value>
-  </data>
-  <data name="ItemList_OnlyUpdate_Tooltip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="ItemList_Path" xml:space="preserve">
-    <value>选择先前的物品列表</value>
-  </data>
-  <data name="ItemList_Path_Tooltip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="ItemList_Run" xml:space="preserve">
-    <value>生成</value>
-  </data>
-  <data name="Assets_Name" xml:space="preserve">
-    <value>资产</value>
-  </data>
-  <data name="Text_Output" xml:space="preserve">
-    <value>输出</value>
-  </data>
-  <data name="View_Raw" xml:space="preserve">
-    <value>查看源</value>
-  </data>
-  <data name="PropertyEditor_Name" xml:space="preserve">
-    <value>属性编辑器</value>
-  </data>
-  <data name="Settings_Name" xml:space="preserve">
-    <value>设置</value>
-  </data>
-  <data name="PropertyEditor_ViewSource_Tooltip" xml:space="preserve">
-    <value>复制原始数据到剪切板，不可用时打开文本编辑器</value>
-  </data>
-  <data name="Name_About" xml:space="preserve">
-    <value>关于</value>
-  </data>
-  <data name="Name_General" xml:space="preserve">
-    <value>通用</value>
+  <data name="TableView_Name" xml:space="preserve">
+    <value>查看表</value>
   </data>
   <data name="TextEditor_Name" xml:space="preserve">
     <value>文本编辑器</value>
   </data>
-  <data name="Text_Left" xml:space="preserve">
-    <value>左</value>
-  </data>
-  <data name="Text_Right" xml:space="preserve">
-    <value>右</value>
+  <data name="TextView" xml:space="preserve">
+    <value>文本</value>
   </data>
   <data name="TextView_LoadLastOnStartup" xml:space="preserve">
     <value>启动时载入上次数据</value>
   </data>
-  <data name="IconOut_ItemList" xml:space="preserve">
-    <value>选择物品列表</value>
+  <data name="Text_Cancel" xml:space="preserve">
+    <value>取消</value>
   </data>
-  <data name="IconOut_NameFormat" xml:space="preserve">
-    <value>输出名称格式</value>
+  <data name="Text_File" xml:space="preserve">
+    <value>文件</value>
   </data>
-  <data name="IconOut_FilterMode" xml:space="preserve">
-    <value>白名单筛选模式</value>
+  <data name="Text_Left" xml:space="preserve">
+    <value>左</value>
   </data>
-  <data name="IconOut_FilterMode_Tooltip" xml:space="preserve">
-    <value>选中时仅生成物品列表中的对象</value>
+  <data name="Text_None" xml:space="preserve">
+    <value>无</value>
   </data>
-  <data name="IconOut_UseBackground" xml:space="preserve">
-    <value>生成品质背景</value>
+  <data name="Text_Ok" xml:space="preserve">
+    <value>确定</value>
   </data>
-  <data name="IconOut_Goods" xml:space="preserve">
-    <value>提取商品图标</value>
+  <data name="Text_Output" xml:space="preserve">
+    <value>输出</value>
   </data>
-  <data name="IconOut_Items" xml:space="preserve">
-    <value>提取物品图标</value>
-  </data>
-  <data name="IconOut_CreateList" xml:space="preserve">
-    <value>输出列表</value>
-  </data>
-  <data name="IconOut_CreateList_Tooltip" xml:space="preserve">
-    <value>根据已生成的图像创建物品列表</value>
-  </data>
-  <data name="Asset_FilterPah" xml:space="preserve">
-    <value>资产路径</value>
-  </data>
-  <data name="Asset_OutputClassName" xml:space="preserve">
-    <value>输出对象类名</value>
-  </data>
-  <data name="Asset_Extract" xml:space="preserve">
-    <value>提取</value>
-  </data>
-  <data name="MergeIcon_BackgroundMode" xml:space="preserve">
-    <value>新背景</value>
+  <data name="Text_Preview" xml:space="preserve">
+    <value>预览</value>
   </data>
   <data name="Text_Reset" xml:space="preserve">
     <value>重置</value>
+  </data>
+  <data name="Text_Right" xml:space="preserve">
+    <value>右</value>
   </data>
   <data name="Text_Save" xml:space="preserve">
     <value>存储</value>
@@ -294,34 +366,13 @@
   <data name="Text_SaveAs" xml:space="preserve">
     <value>存储为</value>
   </data>
-  <data name="MergeIcon_Name" xml:space="preserve">
-    <value>合成</value>
+  <data name="Text_PublishOn" xml:space="preserve">
+    <value>发布于</value>
   </data>
-  <data name="ItemList_Name" xml:space="preserve">
-    <value>物品列表</value>
+  <data name="ItemList_TaskCompleted" xml:space="preserve">
+    <value>拉取{0}条数据, 总耗{1}秒。</value>
   </data>
-  <data name="IconOut_Name" xml:space="preserve">
-    <value>图标</value>
-  </data>
-  <data name="Text_Ok" xml:space="preserve">
-    <value>确定</value>
-  </data>
-  <data name="Text_Cancel" xml:space="preserve">
-    <value>取消</value>
-  </data>
-  <data name="DatSelector_Name" xml:space="preserve">
-    <value>数据选择器</value>
-  </data>
-  <data name="DatSelector_Tooltip" xml:space="preserve">
-    <value>由于您选择的路径下存在多个相关文件，需要进行主动选择。</value>
-  </data>
-  <data name="DatSelector_Source1" xml:space="preserve">
-    <value>数据文件</value>
-  </data>
-  <data name="DatSelector_Source2" xml:space="preserve">
-    <value>汉化文件</value>
-  </data>
-  <data name="Text_File" xml:space="preserve">
-    <value>文件</value>
+  <data name="ItemList_TaskCompleted2" xml:space="preserve">
+    <value>任务已经完成, 总耗{1}秒。</value>
   </data>
 </root>

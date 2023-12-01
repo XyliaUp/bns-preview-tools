@@ -8,7 +8,7 @@ using Xylia.Preview.UI.Helpers.Output.Quests;
 using Xylia.Preview.UI.ViewModels;
 
 namespace Xylia.Preview.UI.Art.GameUI.Scene.Game_QuestJournal;
-public partial class Game_QuestJournalScene : GameScene
+public partial class Game_QuestJournalScene
 {
 	#region Ctor
 	public Game_QuestJournalScene()

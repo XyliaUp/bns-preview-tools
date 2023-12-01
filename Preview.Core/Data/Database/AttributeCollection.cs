@@ -115,10 +115,10 @@ public class AttributeCollection : DynamicObject, IDisposable, IEnumerable, IEnu
 		var attribute = record.ElDefinition?[name];
 
 		// from prev
-		if (_attributes.Any())
+		if (_attributes.Count != 0)
 		{
 			var value = _attributes.GetValueOrDefault(name);
-			if (value is string s && attribute != null) value = AttributeConverter.ConvertTo(s, attribute.Type, record.Owner.Owner);
+			if (value is string s && attribute != null) value = AttributeConverter.ConvertTo(s, attribute, record.Owner.Owner);
 
 			return value;
 		}
@@ -291,7 +291,7 @@ public class AttributeCollection : DynamicObject, IDisposable, IEnumerable, IEnu
 	internal void Set(AttributeDefinition attribute)
 	{
 		var value = this[attribute.Name] ?? attribute.DefaultValue;
-		Set(attribute, AttributeConverter.ConvertTo(value, attribute.Type, record.Owner.Owner));
+		Set(attribute, AttributeConverter.ConvertTo(value, attribute, record.Owner.Owner));
 	}
 	#endregion
 

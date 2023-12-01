@@ -13,20 +13,22 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 using Newtonsoft.Json;
 
+using Xylia.Preview.Properties;
+
 namespace Xylia.Preview.Tests.PakTests;
 
 [TestClass]
 public class Common
 {
-	internal static string GameFolder = @"C:\腾讯游戏\Blade_and_Soul";
-
+	internal static Settings Settings => new();
 
 	[TestMethod]
 	public void ObjectTest()
 	{
-		using GameFileProvider Provider = new(GameFolder);
+		using GameFileProvider Provider = new(Settings.GameFolder);
 
-		var obj = Provider.LoadObject(@"BNSR/Content/Art/FX/01_Source/05_SF/FXUI_03/Particle/UI_BIMUTag_EscapeNo.UI_BIMUTag_EscapeNo");
+		//var obj = Provider.LoadObject(@"BNSR/Content/Art/FX/01_Source/05_SF/FXUI_03/Particle/UI_BIMUTag_EscapeNo.UI_BIMUTag_EscapeNo");
+		var obj = Provider.LoadObject(@"BNSR/Content/bns/Package/World/GameDesign/commonpackage/ShowData/indun/soc_etc_all_insdungeun/ME_ChungGakABoss_0005_soc_voice.ME_ChungGakABoss_0005_soc_voice");
 		switch (obj)
 		{
 			case UTexture2D texture:
@@ -52,7 +54,7 @@ public class Common
 
 	public void MapTest(string name)
 	{
-		using GameFileProvider Provider = new(GameFolder);
+		using GameFileProvider Provider = new(Settings.GameFolder);
 		var MapRegistry = Provider.LoadObject<UMapBuildDataRegistry>($"/Game/bns/Package/World/Area/{name}_BuiltData");
 
 		throw new Exception(MapRegistry.ToString());

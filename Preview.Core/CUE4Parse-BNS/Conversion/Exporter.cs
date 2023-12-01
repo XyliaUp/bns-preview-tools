@@ -27,15 +27,14 @@ public class Exporter
 		Folder = OutputFolder;
 	}
 
-
-
-	private string FixPath(string path)
+	public static string FixPath(string saveFolder, string path)
 	{
-		var fullPath = Path.Combine(Folder, path);
+		var fullPath = Path.Combine(saveFolder, path.SubstringBeforeLast('.'));
 		Directory.CreateDirectory(fullPath.SubstringBeforeLast('/'));
 
 		return fullPath;
 	}
+
 
 	public void Run(IPackage package, bool ContainType = true)
 	{
@@ -46,7 +45,7 @@ public class Exporter
 		}
 		else
 		{
-			File.WriteAllText($"{FixPath(package.Name)}.json", JsonConvert.SerializeObject(objs, Formatting.Indented));
+			File.WriteAllText($"{FixPath(Folder, package.Name)}.json", JsonConvert.SerializeObject(objs, Formatting.Indented));
 		}
 
 #if (DEBUG)
@@ -57,7 +56,7 @@ public class Exporter
 
 	public void Run(UObject obj, bool ContainType = true)
 	{
-		var name = FixPath(obj.GetPathName()).SubstringBeforeLast('.');
+		var name = FixPath(Folder, obj.GetPathName());
 		if (ContainType) name += $".{obj.ExportType}";
 
 		switch (obj)
@@ -65,6 +64,7 @@ public class Exporter
 			case USoundWave:
 			{
 				obj.Decode(true, out var audioFormat, out var data);
+				File.WriteAllBytes($"{name}", data);
 			}
 			break;
 
@@ -80,17 +80,17 @@ public class Exporter
 			case UImageSet ImageSet:
 				ImageSet.GetImage()?.Save($"{name}.png");
 				break;
+			case UTexture texture:
+				texture.Decode()?.Save($"{name}.png");
+				break;
 
 			default:
 			{
-				if (obj is UTexture texture) texture.Decode()?.Save($"{name}.png");
-				else
-				{
-					if (!ContainType) name += $".{obj.ExportType}";
-					File.WriteAllText($"{name}", JsonConvert.SerializeObject(obj, Formatting.Indented));
-				}
+				// keep class name in the case
+				if (!ContainType) name += $".{obj.ExportType}";
+				File.WriteAllText($"{name}", JsonConvert.SerializeObject(obj, Formatting.Indented));
+				break;
 			}
-			break;
 		}
 	}
 }

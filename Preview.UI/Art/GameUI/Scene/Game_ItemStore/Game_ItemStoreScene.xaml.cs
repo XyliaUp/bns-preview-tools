@@ -8,7 +8,7 @@ using Xylia.Preview.UI.Controls;
 using static Xylia.Preview.Data.Models.UnlocatedStore;
 
 namespace Xylia.Preview.UI.Art.GameUI.Scene.Game_ItemStore;
-public partial class Game_ItemStoreScene : GameScene
+public partial class Game_ItemStoreScene
 {
 	public Game_ItemStoreScene()
 	{

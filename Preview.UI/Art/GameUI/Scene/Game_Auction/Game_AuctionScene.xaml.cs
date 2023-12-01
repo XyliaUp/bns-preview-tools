@@ -10,7 +10,7 @@ using Xylia.Preview.UI.Controls;
 using Xylia.Preview.UI.Helpers.Output;
 
 namespace Xylia.Preview.UI.Art.GameUI.Scene.Game_Auction;
-public partial class Game_AuctionScene : GameScene
+public partial class Game_AuctionScene 
 {
 	#region Constructor
 	public Game_AuctionScene()
@@ -48,7 +48,7 @@ public partial class Game_AuctionScene : GameScene
 
 
 	#region Fields
-	private ListCollectionView source;
+	private readonly ListCollectionView source;
 
 	private string _nameFilter;
 	public string NameFilter

@@ -36,6 +36,7 @@ public partial class DatabaseStudio : Window
 	}
 	#endregion
 
+
 	#region Methods
 	private void LoadTreeView()
 	{
@@ -123,7 +124,6 @@ public partial class DatabaseStudio : Window
 	}
 	#endregion
 
-
 	#region Methods (UI)
 	private async void Connect_Click(object sender, RoutedEventArgs e)
 	{
@@ -133,7 +133,12 @@ public partial class DatabaseStudio : Window
 			var root = new TreeViewItem() { Header = "loading..." };
 			tvwDatabase.Items.Add(root);
 
-			await Task.Run(() => parser.Database = new BnsDatabase());
+			await Task.Run(() =>
+			{
+				parser.Database = new BnsDatabase();
+				if (FileCache.IsEmpty) FileCache.Data = parser.Database;
+			});
+
 			Connect.Tag = "Disconnect";
 
 			LoadTreeView();
@@ -209,15 +214,6 @@ public partial class DatabaseStudio : Window
 		}
 	}
 
-
-
-	private void TableToXml_Click(object sender, RoutedEventArgs e)
-	{
-		// TODO: as sql result ?
-		if (tvwDatabase.SelectedItem is TreeViewItem item && item.DataContext is Table table)
-			table.WriteXml(UserSettings.Default.OutputFolder + "\\data");
-	}
-
 	private void OutputExcel_Click(object sender, RoutedEventArgs e)
 	{
 		if (grdResult.Items.Count == 0)
@@ -268,6 +264,23 @@ public partial class DatabaseStudio : Window
 		#endregion
 
 		package.SaveAs(save.FileName);
+	}
+
+
+	private void TableToXml_Click(object sender, RoutedEventArgs e)
+	{
+		// TODO: as sql result ?
+		if (tvwDatabase.SelectedItem is TreeViewItem item && item.DataContext is Table table)
+			table.WriteXml(UserSettings.Default.OutputFolder + "\\data");
+	}
+
+	private void TableView_Click(object sender, RoutedEventArgs e)
+	{
+		if (tvwDatabase.SelectedItem is TreeViewItem item && item.DataContext is Table table)
+		{
+			var window = new TableView { Table = table };
+			window.Show();
+		}	
 	}
 	#endregion
 }
