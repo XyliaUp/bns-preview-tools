@@ -2,7 +2,4 @@
 
 namespace Xylia.Preview.Data.Models;
 [Side(ReleaseSide.Server)]
-public class RandomStoreProbGroup : Record
-{
-	public string Alias;
-}
+public class RandomStoreProbGroup : Record { }

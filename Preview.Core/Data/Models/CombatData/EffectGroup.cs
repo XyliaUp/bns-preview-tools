@@ -1,5 +1,2 @@
 ﻿namespace Xylia.Preview.Data.Models;
-public sealed class EffectGroup : Record
-{
-	
-}
+public sealed class EffectGroup : Record { }

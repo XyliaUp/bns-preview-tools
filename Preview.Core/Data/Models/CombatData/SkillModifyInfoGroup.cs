@@ -6,9 +6,6 @@ using Xylia.Preview.Data.Common.Seq;
 namespace Xylia.Preview.Data.Models;
 public class SkillModifyInfoGroup : Record
 {
-	public string Alias;
-
-
 	[Name("job-style")]
 	public JobStyleSeq JobStyle;
 

@@ -1,5 +1,5 @@
-﻿using Xylia.Preview.Data.Common.DataStruct;
-using Xylia.Preview.Data.Common.Attribute;
+﻿using Xylia.Preview.Data.Common.Attribute;
+using Xylia.Preview.Data.Common.DataStruct;
 using Xylia.Preview.Data.Models.QuestData.Enums;
 
 using static Xylia.Preview.Data.Models.Decision;
@@ -7,7 +7,6 @@ using static Xylia.Preview.Data.Models.Item;
 
 using Skill3Model = Xylia.Preview.Data.Models.Skill3;
 using SkillModel = Xylia.Preview.Data.Models.Skill;
-using Xylia.Preview.Data.Engine.BinData.Models;
 
 namespace Xylia.Preview.Data.Models.QuestData;
 public partial class TutorialCase : Record

@@ -1,13 +1,10 @@
 ﻿namespace Xylia.Preview.UI.Documents.Links;
-/// <summary>
-/// skill:SRK_B1_DollQueen_AirBomb
-/// </summary>
-public sealed class Skill : LinkId
+public class Skill : LinkId
 {
-	internal override void Load(ContentParams data)
-	{
-		var alias = data[1];
+	public string alias;
 
-		//tagData.ClickEvent = new((o, e) => PreviewRegister.Preview(FileCache.Data.Skill3[alias]));
+	internal override void Load(string text)
+	{
+		alias = text;
 	}
 }

@@ -165,8 +165,8 @@
 		<attribute name="duel-case-subtypes" type="Int16" repeat="16" hidden="y" />
 		<attribute name="exceed-level-next-level" type="Int8" default="0" hidden="y" />
 		<attribute name="contents-reset" type="Ref" ref="contents-reset" hidden="y" />
-		<!-- <attribute name="cinema-check" type="Bool" />
-	    <attribute name="replay-check" type="Bool" /> -->
+		<attribute name="cinema-check" type="Bool" />
+	    <attribute name="replay-check" type="Bool" />
 	</el>
 	<el name="filter">
 		<attribute name="id" type="Int64" key="y" required="y" />

@@ -6,17 +6,7 @@
         xmlns:data="clr-namespace:Xylia.Preview.Data.Models;assembly=Preview.Core"
         Title="Game_MapScene" Height="1024" Width="1250" >
 	<Window.Resources>
-		<Style TargetType="ToolTip">
-			<Setter Property="Template">
-				<Setter.Value>
-					<ControlTemplate>
-						<Border BorderBrush="#525457" BorderThickness="1" Background="{DynamicResource BackgroundBrush}" Padding="2 3">
-							<UI:BnsCustomLabelWidget Text="{TemplateBinding ContentControl.Content}" Foreground="White" />
-						</Border>
-					</ControlTemplate>
-				</Setter.Value>
-			</Setter>
-		</Style>
+		<Style TargetType="ToolTip" BasedOn="{StaticResource BnsTooltip}" />
 	</Window.Resources>
 
 	<Grid>

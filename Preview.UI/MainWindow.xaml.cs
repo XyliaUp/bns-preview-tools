@@ -1,12 +1,11 @@
 using System.ComponentModel;
 using System.Windows;
 
+using Xylia.Preview.UI.Art.GameUI.Scene.Game_QuestJournal;
 using Xylia.Preview.UI.Helpers;
 using Xylia.Preview.UI.Services;
 using Xylia.Preview.UI.Views;
 using Xylia.Preview.UI.Views.Pages;
-
-using GameUI = Xylia.Preview.UI.Art.GameUI.Scene;
 
 namespace Xylia.Preview.UI;
 public partial class MainWindow
@@ -23,7 +22,7 @@ public partial class MainWindow
 		{
 			new ControlPage<ItemPage>(),
 			new ControlPage<TextView>(),
-			new ControlPage<GameUI.Game_QuestJournal.Game_QuestJournalScene>(),
+			new ControlPage<Game_QuestJournalScene>(),
 			new ControlPage<GameResourcePage>(),
 			new ControlPage<AbilityPage>(),
 		};
@@ -31,15 +30,15 @@ public partial class MainWindow
 		SideMenu_Switch(SideMenu, null);
 		#endregion
 
-		new UpdateService().CheckForUpdates();
+		new UpdateService().CheckForUpdates();						 
 		Register.Create();
 	}
 
-	#region Methods
 	private void SideMenu_Switch(object sender, RoutedEventArgs e)
 	{
-		var page = SideMenu.SelectedItem as ControlPage;
-
+		SideMenuContainer.IsOpen = false;
+		var page = SideMenu.SelectedItem as IControlPage;
+		
 		var content = page.Content;
 		if (content is Window window)
 		{
@@ -49,7 +48,6 @@ public partial class MainWindow
 		else if (content is FrameworkElement element)
 		{
 			Presenter.Content = element;
-			SideMenuContainer.IsOpen = false;
 		}
 	}
 
@@ -71,5 +69,4 @@ public partial class MainWindow
 
 		Application.Current.Shutdown();
 	}
-	#endregion
 }

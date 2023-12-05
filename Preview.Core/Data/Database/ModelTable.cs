@@ -10,6 +10,7 @@ using Xylia.Preview.Data.Common.Cast;
 using Xylia.Preview.Data.Common.DataStruct;
 using Xylia.Preview.Data.Database;
 using Xylia.Preview.Data.Engine.BinData.Models;
+using Xylia.Preview.Data.Helpers;
 using Xylia.Preview.Data.Models;
 
 namespace Xylia.Preview.Data;
@@ -20,8 +21,12 @@ namespace Xylia.Preview.Data;
 public sealed class ModelTable<T> : Table, IEnumerable<T>, IEnumerable where T : Record
 {
 	#region Load Methods
-	public override Task LoadAsync() => Task.Run(() =>
+	bool _loaded;
+
+	public override Task LoadAsync(bool Reload = false) => Task.Run(() =>
 	{
+		if (_loaded && !Reload) return;
+
 		var subs = ModelTypeHelper.Get(typeof(T));
 		foreach (var record in _records)
 		{
@@ -33,6 +38,7 @@ public sealed class ModelTable<T> : Table, IEnumerable<T>, IEnumerable where T :
 		}
 
 		Trace.WriteLine($"[{DateTime.Now}] load table `{Name}` successful ({_records.Count})");
+		_loaded = true;
 	});
 	#endregion
 
@@ -67,7 +73,6 @@ public class ModelTypeHelper
 	readonly Dictionary<short, Type> Types = new();
 	readonly Dictionary<string, short> Types_Name = new(StringComparer.OrdinalIgnoreCase);
 
-	//TODO: from def
 	private void GetSubType(Type baseType)
 	{
 		short typeIndex = -1;
@@ -127,8 +132,33 @@ public class ModelTypeHelper
 	#endregion
 
 
+
 	/// <summary>
-	/// Convert original record to RecordModel
+	/// Convert original table to ModelTable
+	/// </summary>
+	/// <typeparam name="T"></typeparam>
+	/// <param name="source"></param>
+	/// <returns></returns>
+	public static ModelTable<T> As<T>(Table source) where T : Record
+	{
+		var table = new ModelTable<T>();
+		table.Name = source.Name;
+		table.Owner = source.Owner;
+		table.Type = source.Type;
+		table.MajorVersion = source.MajorVersion;
+		table.MinorVersion = source.MajorVersion;
+		table.Size = source.Size;
+		table.Definition = source.Definition;
+		table.Records = source.Records;
+		table.ByRef = source.ByRef;
+		table.ByRequired = source.ByRequired;
+		table.LoadAsync().Wait();
+
+		return table;
+	}
+
+	/// <summary>
+	/// Convert original record to ModelRecord
 	/// </summary>
 	/// <typeparam name="T"></typeparam>
 	/// <param name="source"></param>
@@ -149,46 +179,21 @@ public class ModelTypeHelper
 			   (field is not PropertyInfo prop || !prop.CanWrite)) continue;
 			if (field.ContainAttribute<IgnoreDataMemberAttribute>()) continue;
 
-
+			// props
 			var name = field.GetName().TitleLowerCase();
 			var type = field.GetMemberType();
-			if (type.IsList())
-			{
-				var recordType = type.GetGenericArguments()[0];
-				if (!typeof(Record).IsAssignableFrom(recordType)) continue;
-				if (!record.Children.TryGetValue(name, out var children)) continue;
-
-				var records = Activator.CreateInstance(type);
-				var add = records.GetType().GetMethod("Add", ClassExtension.Flags);
-				var subs = ModelTypeHelper.Get(recordType);
-
-				foreach (var child in children)
-				{
-					var _record = (Record)subs.CreateInstance(child.Attributes["type"], out _);
-					add.Invoke(records, new object[] { ModelTypeHelper.As(child, _record) });
-				}
-
-				field.SetValue(record, records);
-				continue;
-			}
-
 			var repeat = field.GetAttribute<Repeat>()?.Value ?? 1;
-			if (repeat == 1)
+			if (type.IsGenericType && type.GetGenericTypeDefinition() == typeof(LazyList<>))
 			{
-				field.SetValue(record, AttributeConverter.ConvertTo(record.Attributes[name], type, record.Owner?.Owner));
+				var toType = typeof(List<>).MakeGenericType(type.GetGenericArguments()[0]);
+				var value = Activator.CreateInstance(type, 
+					new Func<object>(() => Convert(record, name, toType, repeat))); 
+
+				field.SetValue(record, value);
 			}
 			else
 			{
-				if (!type.IsArray)
-					throw new Exception($"Repeatable object must to use array type: {record.GetType()} -> {name}");
-
-				type = type.GetElementType();
-				var value = Array.CreateInstance(type, repeat);
-
-				for (int i = 0; i < repeat; i++)
-					value.SetValue(AttributeConverter.ConvertTo(record.Attributes[name, i + 1], type, record.Owner.Owner), i);
-
-				field.SetValue(record, value);
+				field.SetValue(record, Convert(record, name, type, repeat));
 			}
 		}
 		#endregion
@@ -196,21 +201,43 @@ public class ModelTypeHelper
 		return record;
 	}
 
-	public static ModelTable<T> As<T>(Table source) where T : Record
+	private static object Convert(Record record, string name, Type toType, ushort repeat)
 	{
-		var table = new ModelTable<T>();
-		table.Name = source.Name;
-		table.Owner = source.Owner;
-		table.Type = source.Type;
-		table.MajorVersion = source.MajorVersion;
-		table.MinorVersion = source.MajorVersion;
-		table.Size = source.Size;
-		table.Definition = source.Definition;
-		table.Records = source.Records;
-		table.ByRef = source.ByRef;
-		table.ByRequired = source.ByRequired;
-		table.LoadAsync().Wait();
+		if (toType.IsGenericType && toType.GetGenericTypeDefinition() == typeof(List<>))
+		{
+			var recordType = toType.GetGenericArguments()[0];
+			if (!typeof(Record).IsAssignableFrom(recordType)) return null;
+			if (!record.Children.TryGetValue(name, out var children)) return null;
 
-		return table;
+			var records = Activator.CreateInstance(toType);
+			var add = records.GetType().GetMethod("Add", ClassExtension.Flags);
+			var subs = ModelTypeHelper.Get(recordType);
+
+			foreach (var child in children)
+			{
+				var _record = (Record)subs.CreateInstance(child.Attributes["type"], out _);
+				add.Invoke(records, new object[] { ModelTypeHelper.As(child, _record) });
+			}
+
+			return records;
+		}
+
+		if (repeat == 1)
+		{
+			return AttributeConverter.Convert(record.Attributes[name], toType, record.Owner?.Owner);
+		}
+		else
+		{
+			if (!toType.IsArray)
+				throw new Exception($"Repeatable object must to use array type: {record.GetType()} -> {name}");
+
+			toType = toType.GetElementType();
+			var value = Array.CreateInstance(toType, repeat);
+
+			for (int i = 0; i < repeat; i++)
+				value.SetValue(AttributeConverter.Convert(record.Attributes[name, i + 1], toType, record.Owner.Owner), i);
+
+			return value;
+		}
 	}
 }

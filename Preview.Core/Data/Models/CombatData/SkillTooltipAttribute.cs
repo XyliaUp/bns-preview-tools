@@ -4,9 +4,6 @@ using Xylia.Preview.Data.Common.DataStruct;
 namespace Xylia.Preview.Data.Models;
 public class SkillTooltipAttribute : Record
 {
-	public string Alias;
-
-
 	[Repeat(4)]
 	public ArgTypeSeq[] ArgType;
 	public enum ArgTypeSeq

@@ -11,14 +11,5 @@ public sealed class JobStyle : Record
 	public JobStyleSeq jobStyle;
 
 
-
-
-	public string Alias;
-
-	public string IntroduceJobStyleIcon;
-
 	public Ref<Text> IntroduceJobStyleName;
-
-	public Ref<Text> IntroduceJobStylePlayDesc;
-
 }

@@ -26,10 +26,9 @@ public abstract class RecordCommand : MarkupExtension, ICommand
 	/// <returns></returns>
 	public abstract bool CanExecute(string name);
 
-	public virtual void Execute(object? parameter) => Task.Run(() =>
+	public void Execute(object? parameter) => Task.Run(() =>
 	{
-		if (parameter is Record record)
-			Execute(record);
+		if (parameter is Record record) Execute(record);
 	});
 
 	/// <summary>

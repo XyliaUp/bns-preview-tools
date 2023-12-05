@@ -19,6 +19,7 @@ using Serilog;
 using SkiaSharp;
 using SkiaSharp.Views.WPF;
 
+using Xylia.Preview.Common;
 using Xylia.Preview.UI.Common;
 using Xylia.Preview.UI.Helpers.Output.Textures;
 using Xylia.Preview.UI.Views;
@@ -85,7 +86,7 @@ public partial class GameResourcePageViewModel : ObservableObject
 			await Out.Output(format, source.Token);
 			Out.Dispose();
 
-			Growl.Success(new GrowlInfo()
+			Growl.SuccessGlobal(new GrowlInfo()
 			{
 				Message = string.Format(StringHelper.Get("IconOut_TaskCompleted"), DateTime.Now - start),
 				StaysOpen = true,
@@ -98,11 +99,11 @@ public partial class GameResourcePageViewModel : ObservableObject
 		}
 		finally
 		{
-			ProcessEx.ClearMemory();
-		}
+			source.Dispose();
+			this.Sources[id] = source = null;
 
-		source.Dispose();
-		this.Sources[id] = source = null;
+			ProcessHelper.ClearMemory();
+		}
 	});
 	#endregion
 

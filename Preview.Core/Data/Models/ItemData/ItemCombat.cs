@@ -5,13 +5,8 @@ using Xylia.Preview.Data.Common.Seq;
 namespace Xylia.Preview.Data.Models;
 public sealed class ItemCombat : Record
 {
-	public string Alias;
-
-
-
 	[Name("job-style")]
 	public JobStyleSeq JobStyle;
-
 
 	[Name("item-skill"), Repeat(16)]
 	public Ref<ItemSkill>[] ItemSkill;
@@ -21,12 +16,6 @@ public sealed class ItemCombat : Record
 
 	[Name("item-skill-third"), Repeat(16)]
 	public Ref<ItemSkill>[] ItemSkillThird;
-
-	[Name("skill-build-up-parent-skill3-id"), Repeat(3)]
-	public int[] SkillBuildUpParentSkill3Id;
-
-	[Name("skill-build-up-level"), Repeat(3)]
-	public sbyte[] SkillBuildUpLevel;
 
 	[Name("skill-modify-info-group")]
 	public Ref<SkillModifyInfoGroup> SkillModifyInfoGroup;

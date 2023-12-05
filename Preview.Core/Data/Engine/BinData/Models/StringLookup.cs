@@ -11,7 +11,7 @@ namespace Xylia.Preview.Data.Engine.BinData.Models;
 [JsonConverter(typeof(StringLookupConverter))]
 public class StringLookup
 {
-	public byte[] Data { get; set; }
+	public byte[] Data { get; set; } = [];
 	public bool IsPerTable { get; set; }
 
 
@@ -24,7 +24,7 @@ public class StringLookup
 		return null;
 	}
 
-	public int AppendString(string str)
+	public int AppendString(string str , out int size)
 	{
 		str ??= "";
 
@@ -39,23 +39,24 @@ public class StringLookup
 		Array.Copy(strBytes, 0, data, position, strBytes.Length);
 		Data = data;
 
+		size = strBytes.Length;
 		return position;
 	}
 
-	public StringLookup Duplicate()
-	{
-		var data = new byte[Data.Length];
-		Array.Copy(Data, data, data.Length);
 
-		return new StringLookup
+	public string[] Strings
+	{ 
+		get => Encoding.Unicode.GetString(Data).Split('\0'); 
+		set
 		{
-			Data = data,
-			IsPerTable = IsPerTable
-		};
+			StringBuilder _stringBuilder = new();
+			foreach(var s in value)
+			{
+				_stringBuilder.Append(s);
+				_stringBuilder.Append('\0');
+			}
+
+			Data = Encoding.Unicode.GetBytes(_stringBuilder.ToString());
+		}
 	}
-
-
-
-
-	//Encoding.Unicode.GetString(loadStringLookup.Data);
 }

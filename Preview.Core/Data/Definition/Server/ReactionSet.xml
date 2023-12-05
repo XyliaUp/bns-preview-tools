@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table name="reaction-set" version="0.1" autokey="true" module="270">
+	<el name="table" child="1" />
+	<el name="record" child="reaction">
+		<attribute name="probability" type="Int8" required="y" min="0" max="100" />
+		<attribute name="probability10000" type="Int16" required="y" min="0" max="10000" />
+	</el>
+	<el name="reaction" />
+</table>

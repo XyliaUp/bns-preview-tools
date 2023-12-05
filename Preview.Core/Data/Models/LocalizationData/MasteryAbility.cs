@@ -1,5 +1,2 @@
 ﻿namespace Xylia.Preview.Data.Models;
-public sealed class MasteryAbility : Record
-{
-	
-}
+public sealed class MasteryAbility : Record { }

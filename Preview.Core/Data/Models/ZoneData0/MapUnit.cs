@@ -5,10 +5,6 @@ namespace Xylia.Preview.Data.Models;
 [Side(ReleaseSide.Client)]
 public class MapUnit : Record
 {
-	public string Alias;
-
-
-
 	public short Mapid;
 
 	[Name("zone-id")]

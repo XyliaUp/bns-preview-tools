@@ -5,7 +5,7 @@ using Xylia.Extension;
 using Xylia.Preview.Data.Common.Exceptions;
 
 namespace Xylia.Preview.Data.Engine.BinData.Definitions;
-public class SequenceDefinition 
+public class SequenceDefinition : List<string>
 {
     public SequenceDefinition(string name, int size)
     {
@@ -13,11 +13,8 @@ public class SequenceDefinition
         Size = size;
     }
 
-    public List<string> Sequence { get; } = new List<string>();
-    public List<string> OriginalSequence { get; } = new List<string>();
     public string Name { get; set; }
     public int Size { get; set; }
-
 	public string Default { get; set; }
 
 
@@ -26,12 +23,12 @@ public class SequenceDefinition
 	public static SequenceDefinition LoadFrom(XmlElement element, string name, 
 		Dictionary<string, SequenceDefinition> globalSeq = null)
 	{
-		SequenceDefinition seq;
+		SequenceDefinition sequence;
 
 		var nodes = element.ChildNodes.OfType<XmlElement>();
 		if (nodes.Any())
 		{
-			seq = new SequenceDefinition(name , nodes.Count());
+			sequence = new SequenceDefinition(name , nodes.Count());
 
 			short key = 0;
 			foreach (var node in nodes)
@@ -48,13 +45,13 @@ public class SequenceDefinition
 				string text = node.Attributes["name"]?.Value?.Trim() ?? "unk" + key;
 				#endregion
 
-				seq.Sequence.Add(text);
+				sequence.Add(text);
 				if ((node.Attributes["default"]?.Value).ToBool())
 				{
-					if (seq.Default is not null)
-						throw new BnsDefinitionException($"seq `{name}` duplicate default value. (prev:{seq.Default}, now:{text})");
+					if (sequence.Default is not null)
+						throw new BnsDefinitionException($"seq `{name}` duplicate default value. (prev:{sequence.Default}, now:{text})");
 
-					seq.Default = text;
+					sequence.Default = text;
 				}
 			}
 		}
@@ -69,11 +66,11 @@ public class SequenceDefinition
 				return null;
 			}
 
-			seq = TSeq.MemberwiseClone() as SequenceDefinition;
-			seq.Name = name;
+			sequence = TSeq.MemberwiseClone() as SequenceDefinition;
+			sequence.Name = name;
 		}
 
-		return seq;
+		return sequence;
 	}
 
 
@@ -86,12 +83,12 @@ public class SequenceDefinition
 	{
 		if (type == AttributeType.TSeq || type == AttributeType.TProp_seq)
 		{
-			if (Sequence.Count > sbyte.MaxValue)
+			if (this.Count > sbyte.MaxValue)
 				throw new BnsDefinitionException($"{Name} -> seq exceeding maximum size, use `Seq16` instead.");
 		}
 		else if (type == AttributeType.TSeq16 || type == AttributeType.TProp_field)
 		{
-			if (Sequence.Count > short.MaxValue)
+			if (this.Count > short.MaxValue)
 				throw new BnsDefinitionException($"{Name} -> seq exceeding maximum size, use `Seq32` instead.");
 		}
 		else throw new BnsDefinitionException($"{Name} -> invalid attribute type, use `Seq` instead.");

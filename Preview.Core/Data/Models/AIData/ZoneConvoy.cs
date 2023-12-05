@@ -5,7 +5,4 @@ public sealed class ZoneConvoy : Record
 	// cannot start convoy before progress mission
 	// 无法在执行任务前开始护卫
 	// acquisition 的子对象护卫不生效
-
-
-	public string Alias;
 }

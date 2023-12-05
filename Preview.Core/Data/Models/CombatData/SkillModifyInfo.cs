@@ -5,9 +5,6 @@ namespace Xylia.Preview.Data.Models;
 public class SkillModifyInfo : Record
 {
 	#region Fields
-	public string Alias;
-
-
 	[Name("recycle-duration-modify-percent")]
 	public short RecycleDurationModifyPercent;
 

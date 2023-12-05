@@ -5,9 +5,6 @@ namespace Xylia.Preview.Data.Models;
 public class SkillGatherRange3 : Record
 {
 	#region Fields	
-	public string Alias;
-
-
 	public Distance RangeCastMin;
 	public Distance RangeCastMax;
 

@@ -3,7 +3,7 @@
 	  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 	  xmlns:hc="https://handyorg.github.io/handycontrol"
 	  xmlns:VM="clr-namespace:Xylia.Preview.UI.ViewModels"
-	  Title="ItemPage" >
+	  xmlns:UI="https://github.com/xyliaup/bns-preview-tools">
 	<TabControl BorderThickness="0">
 		<TabItem Header="{DynamicResource ItemList_Name}" >
 			<Grid >
@@ -33,7 +33,7 @@
 			</Grid>
 		</TabItem>
 
-		<TabItem Header="{DynamicResource Text_Preview}" >
+		<TabItem Header="{DynamicResource Text_Preview}">
 			<Grid>
 				<Grid.ColumnDefinitions>
 					<ColumnDefinition Width="*" />
@@ -76,6 +76,21 @@
 						<Button Content="Data GUI"	Click="DatabaseGui_Click" Background="Orange"/>
 					</WrapPanel>
 				</GroupBox>
+			</Grid>
+		</TabItem>
+
+		<TabItem Header="DEBUG" Visibility="Collapsed" IsSelected="False">
+			<Grid>
+				<UI:BnsCustomLabelWidget x:Name="Test">
+					<UI:BnsCustomLabelWidget.Text>
+						<![CDATA[<arg p="1"/> <arg p="1"/>]]>
+					</UI:BnsCustomLabelWidget.Text>
+					<UI:BnsCustomLabelWidget.Params>
+						<MultiBinding Converter="{StaticResource DataParamsConverter}">
+							<Binding Path="GameFolder" Source="{x:Static VM:UserSettings.Default}"/>
+						</MultiBinding>
+					</UI:BnsCustomLabelWidget.Params>
+				</UI:BnsCustomLabelWidget>
 			</Grid>
 		</TabItem>
 	</TabControl>

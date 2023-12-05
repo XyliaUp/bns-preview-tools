@@ -1,16 +1,7 @@
 ﻿using Xylia.Preview.Data.Common.Attribute;
-using Xylia.Preview.Data.Common.DataStruct;
 
 namespace Xylia.Preview.Data.Models;
-public sealed class ZoneEnv2 : Record
-{
-	public string Alias;
-
-	public Ref<Text> Name2;
-
-	public Ref<Text> ActionName2;
-	public Ref<Text> ActionDesc2;
-}
+public sealed class ZoneEnv2 : Record { }
 
 
 public enum EnvOperation

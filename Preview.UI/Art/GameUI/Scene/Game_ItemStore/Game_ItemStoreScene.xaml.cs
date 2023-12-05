@@ -10,15 +10,11 @@ using static Xylia.Preview.Data.Models.UnlocatedStore;
 namespace Xylia.Preview.UI.Art.GameUI.Scene.Game_ItemStore;
 public partial class Game_ItemStoreScene
 {
-	public Game_ItemStoreScene()
+	#region Methods 
+	protected override void OnLoading()
 	{
 		InitializeComponent();
-	}
 
-
-	#region Methods 
-	protected override void OnLoaded(EventArgs e)
-	{
 		#region type
 		var group = new Dictionary<UnlocatedStoreTypeSeq, TreeViewItem>();
 		foreach (var record in FileCache.Data.UnlocatedStoreUi.Append(new UnlocatedStoreUi()

@@ -6,12 +6,24 @@
 		x:Name="Wd" Title="Database Studio" Height="800" Width="1200">
 	<Window.Resources>
 		<ContextMenu x:Key="TableMenu">
-			<MenuItem Header="View" Click="TableView_Click" />
-			<MenuItem Header="Output" Click="TableToXml_Click" />
+			<MenuItem Header="View" Click="TableView_Click">
+				<MenuItem.Icon>
+					<TextBlock Text="&#xE8FD;" Style="{StaticResource SegoeIcon}" />
+				</MenuItem.Icon>
+			</MenuItem>
+			<MenuItem Header="Output" Click="TableToXml_Click">
+				<MenuItem.Icon>
+					<TextBlock Text="&#xE74E;" Style="{StaticResource SegoeIcon}" />
+				</MenuItem.Icon>
+			</MenuItem>
 		</ContextMenu>
 
 		<ContextMenu x:Key="GridMenu">
-			<MenuItem Header="Output as excel" Click="OutputExcel_Click" />
+			<MenuItem Header="Output as excel" Click="OutputExcel_Click">
+				<MenuItem.Icon>
+					<TextBlock Text="&#xE74E;" Style="{StaticResource SegoeIcon}" />
+				</MenuItem.Icon>
+			</MenuItem>
 		</ContextMenu>
 	</Window.Resources>
 
@@ -86,7 +98,10 @@
 		
 		<TabControl Grid.Row="2" Grid.Column="2" >
 			<TabItem Header="Grid" >
-				<DataGrid x:Name="grdResult" AutoGenerateColumns="False" IsReadOnly="True" HorizontalScrollBarVisibility="Auto" ContextMenu="{StaticResource GridMenu}" Style="{x:Null}" />
+				<Grid>
+					<DataGrid x:Name="QueryResult" AutoGenerateColumns="False" IsReadOnly="True" HorizontalScrollBarVisibility="Auto" ContextMenu="{StaticResource GridMenu}" Style="{x:Null}" Visibility="Hidden"/>
+					<TextBlock x:Name="QueryEmpty" Text="No data" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="{StaticResource PrimaryTextBrush}" FontWeight="Bold"/>
+				</Grid>
 			</TabItem>
 			<TabItem Header="Text" Visibility="Hidden" />
 			<TabItem Header="Parameters" Visibility="Hidden" />

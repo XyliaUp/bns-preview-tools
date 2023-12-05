@@ -2,8 +2,11 @@
 using System.Globalization;
 
 using Xylia.Extension;
+using Xylia.Preview.Data.Common;
+using Xylia.Preview.Data.Common.Cast;
 using Xylia.Preview.Data.Common.DataStruct;
 using Xylia.Preview.Data.Engine.BinData.Definitions;
+using Xylia.Preview.Data.Models;
 
 using Version = Xylia.Preview.Data.Common.DataStruct.Version;
 
@@ -14,6 +17,95 @@ namespace Xylia.Preview.Data.Database;
 public class AttributeConverter
 {
 	/// <summary>
+	/// equal AttributeCollection.Get
+	/// </summary>
+	/// <param name="record"></param>
+	/// <param name="attribute"></param>
+	/// <param name="database"></param>
+	/// <returns></returns>
+	public static object ConvertTo(Record record, AttributeDefinition attribute, BnsDatabase database, bool _noValidate = true)
+	{
+		if (_noValidate && (attribute is null || attribute.Offset >= record.DataSize)) return null;
+
+		switch (attribute.Type)
+		{
+			case AttributeType.TNone: return null;
+			case AttributeType.TInt8: return record.Get<sbyte>(attribute.Offset);
+			case AttributeType.TInt16: return record.Get<short>(attribute.Offset);
+			case AttributeType.TInt32: return record.Get<int>(attribute.Offset);
+			case AttributeType.TInt64: return record.Get<long>(attribute.Offset);
+			case AttributeType.TFloat32: return record.Get<float>(attribute.Offset);
+			case AttributeType.TBool: return record.Get<bool>(attribute.Offset);
+			case AttributeType.TString: return record.StringLookup.GetString(record.Get<int>(attribute.Offset));
+
+			case AttributeType.TSeq:
+			case AttributeType.TProp_seq:
+			{
+				var idx = record.Get<sbyte>(attribute.Offset);
+				if (idx >= 0 && idx < attribute.Sequence.Count)
+				{
+					return attribute.Sequence[idx];
+				}
+				else
+				{
+					if (!_noValidate) throw new Exception("Invalid sequence index");
+					return idx.ToString();
+				}
+			}
+
+			case AttributeType.TSeq16:
+			case AttributeType.TProp_field:
+			{
+				var idx = record.Get<short>(attribute.Offset);
+				if (idx >= 0 && idx < attribute.Sequence.Count)
+				{
+					return attribute.Sequence[idx];
+				}
+				else
+				{
+					if (!_noValidate) throw new Exception("Invalid sequence index");
+					return idx.ToString();
+				}
+			}
+
+			case AttributeType.TRef: return database.Provider.Tables.GetRef(attribute.ReferedTable, record.Get<Ref>(attribute.Offset));
+			case AttributeType.TTRef: return database.Provider.Tables.GetRef(record.Get<TRef>(attribute.Offset));
+			case AttributeType.TSub: return record.Get<short>(attribute.Offset);       // class -> subtype
+			case AttributeType.TSu: throw new NotSupportedException();
+			case AttributeType.TVector16: throw new NotSupportedException();
+			case AttributeType.TVector32: return record.Get<Vector32>(attribute.Offset);
+			case AttributeType.TIColor: return record.Get<IColor>(attribute.Offset);
+			case AttributeType.TFColor: throw new NotSupportedException();
+			case AttributeType.TBox: return record.Get<Box>(attribute.Offset);
+			case AttributeType.TAngle: throw new NotSupportedException();
+			case AttributeType.TMsec: return record.Get<Msec>(attribute.Offset);
+			case AttributeType.TDistance: return record.Get<Distance>(attribute.Offset);
+			case AttributeType.TVelocity: return record.Get<Velocity>(attribute.Offset);
+			case AttributeType.TScript_obj:
+			{
+				var scriptObjBytes = record.Data[attribute.Offset..(attribute.Offset + attribute.Size)];
+				if (scriptObjBytes.All(x => x == 0))
+					return null;
+
+				return System.Convert.ToBase64String(scriptObjBytes);
+			}
+			case AttributeType.TNative:
+			{
+				var n = record.Get<Native>(attribute.Offset);
+				return record.StringLookup.GetString(n.Offset);
+			}
+			case AttributeType.TVersion: return record.Get<Version>(attribute.Offset);
+			case AttributeType.TIcon: return database.Provider.Tables.GetRef(record.Get<IconRef>(attribute.Offset));
+			case AttributeType.TTime32: throw new NotSupportedException();
+			case AttributeType.TTime64: return record.Get<Time64>(attribute.Offset);
+			case AttributeType.TXUnknown1: return record.Get<Time64>(attribute.Offset);
+			case AttributeType.TXUnknown2: return record.StringLookup.GetString(record.Get<int>(attribute.Offset));
+
+			default: throw new Exception($"Unhandled type name: '{attribute.Type}'");
+		}
+	}
+
+	/// <summary>
 	/// Converts the specified attribute text into a value.
 	/// </summary>
 	/// <param name="value"></param>
@@ -21,7 +113,7 @@ public class AttributeConverter
 	/// <param name="database"></param>
 	/// <returns></returns>
 	/// <exception cref="Exception"></exception>
-	public static object ConvertTo(string value, AttributeDefinition attribute, BnsDatabase database) => attribute.Type switch
+	public static object ConvertBack(string value, AttributeDefinition attribute, BnsDatabase database) => attribute.Type switch
 	{
 		AttributeType.TNone => null,
 		AttributeType.TInt8 => sbyte.Parse(value),
@@ -33,10 +125,10 @@ public class AttributeConverter
 		AttributeType.TString => value,
 		AttributeType.TSeq => value,
 		AttributeType.TSeq16 => value,
-		AttributeType.TRef => database.Provider.Tables[attribute.ReferedTableName][value],
-		AttributeType.TTRef => throw new Exception(),
+		AttributeType.TRef => database.Provider.Tables.GetRecord(attribute.ReferedTableName, value),
+		AttributeType.TTRef => database.Provider.Tables.GetRecord(value),
 		AttributeType.TSub => short.Parse(value),
-		AttributeType.TSu => value,
+		//AttributeType.TSu => value,
 		AttributeType.TVector16 => Vector16.Parse(value),
 		AttributeType.TVector32 => Vector32.Parse(value),
 		AttributeType.TIColor => IColor.Parse(value),
@@ -51,14 +143,17 @@ public class AttributeConverter
 		AttributeType.TScript_obj => new Script_obj(value),
 		AttributeType.TNative => value,
 		AttributeType.TVersion => new Version(value),
-		AttributeType.TIcon => value,
-		AttributeType.TTime32 => value,
+		AttributeType.TIcon => database.Provider.Tables.GetIconRecord(value, out var index),
+		//AttributeType.TTime32 => value,
 		AttributeType.TTime64 => Time64.Parse(value),
 		AttributeType.TXUnknown1 => Time64.Parse(value),
 		AttributeType.TXUnknown2 => new ObjectPath(value),
 		_ => throw new Exception($"Unhandled type name: '{attribute.Type}'"),
 	};
 
+
+
+	#region Model Extension Method
 	/// <summary>
 	/// Converts the specified text into an object.
 	/// </summary>
@@ -67,7 +162,7 @@ public class AttributeConverter
 	/// <param name="database"></param>
 	/// <returns></returns>
 	/// <exception cref="FormatException"></exception>
-	public static object ConvertTo(string value, Type type, BnsDatabase database)
+	public static object Convert(string value, Type type, BnsDatabase database)
 	{
 		if (string.IsNullOrEmpty(value)) return default;
 		else if (type.IsEnum)
@@ -81,7 +176,7 @@ public class AttributeConverter
 		else if (type.IsGenericType && type.GetGenericTypeDefinition() == typeof(Sub<>)) return Activator.CreateInstance(type, value, database);
 
 
-		if (TypeCode.TryGetValue(type, out var code)) return ConvertTo(value, new AttributeDefinition() { Type = code }, database);
+		if (TypeCode.TryGetValue(type, out var code)) return ConvertBack(value, new AttributeDefinition() { Type = code }, database);
 
 		//throw new NotSupportedException($"type not supported: {type}");
 		Trace.WriteLine($"type not supported: {type}");
@@ -114,37 +209,5 @@ public class AttributeConverter
 		[typeof(Time64)] = AttributeType.TXUnknown1,
 		[typeof(ObjectPath)] = AttributeType.TXUnknown2,
 	};
-
-
-	// throw new Exception($"Invalid typed reference, refered table doesn't exist: '{split[0]}'");
-	// throw new Exception($"Invalid typed reference string: '{value}'");
-
-	//private void SetIcon(Record record, AttributeDefinition attrDef, string value)
-	//{
-	//	if (value != null)
-	//	{
-	//		var colon = value.LastIndexOf(':');
-
-	//		if (colon != -1)
-	//		{
-	//			var split = new[] { value[..colon], value[(colon + 1)..] };
-	//			var i32 = int.Parse(split[1]);
-
-	//			if (_resolvedAliases.ByAlias[_definitions.IconTextureTableId].TryGetValue(split[0], out var @ref))
-	//			{
-	//				record.Set(attrDef.Offset, new IconRef(@ref.Id, @ref.Variant, i32));
-	//				return;
-	//			}
-
-	//			@ref = Ref.From(split[0]);
-	//			record.Set(attrDef.Offset, new IconRef(@ref.Id, @ref.Variant, i32));
-	//			return;
-	//		}
-
-	//		throw new Exception($"Invalid icon reference string: '{value}'");
-	//		return;
-	//	}
-
-	//	record.Set(attrDef.Offset, attrDef.AttributeDefaultValues.DIconRef);
-	//}
+	#endregion
 }

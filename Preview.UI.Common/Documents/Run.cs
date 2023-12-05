@@ -1,9 +1,7 @@
 ﻿using System.Globalization;
-using System.Web;
 using System.Windows;
 using System.Windows.Markup;
 using System.Windows.Media;
-using System.Xml;
 
 using HtmlAgilityPack;
 
@@ -40,9 +38,8 @@ public class Run : Element
 	#region Methods
 	protected override void Load(HtmlNode node)
 	{
-		Text = HttpUtility.HtmlDecode(XmlConvert.DecodeName(node.InnerText));
+		Text = node.InnerText;
 	}
-
 
 	private Typeface typeface => new(FontFamily, FontStyle, FontWeight, FontStretch);
 
@@ -51,7 +48,7 @@ public class Run : Element
 		var format = new FormattedText(Text, CultureInfo.CurrentCulture, FlowDirection.LeftToRight, typeface, FontSize, Foreground, 96);
 		format.MaxTextWidth = double.IsInfinity(availableSize.Width) ? 0 : availableSize.Width;
 
-		return new Size(format.Width, format.Height);
+		return new Size(format.WidthIncludingTrailingWhitespace, format.Height);
 	}
 
 	internal override void Render(DrawingContext ctx)

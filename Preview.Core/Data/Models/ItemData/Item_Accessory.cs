@@ -1,7 +1,6 @@
 ﻿using Xylia.Extension;
 using Xylia.Preview.Data.Common.Attribute;
 using Xylia.Preview.Data.Common.DataStruct;
-using Xylia.Preview.Data.Helpers;
 
 namespace Xylia.Preview.Data.Models;
 public partial class Item
@@ -105,10 +104,7 @@ public partial class Item
 		[Name("stack-count")]
 		public short StackCount;
 
-		public Skill3 Skill3 => FileCache.Data.Skill3[this.Attributes["skill3"]];
-		public Skill3 DuelSkill3 => FileCache.Data.Skill3[this.Attributes["duel-skill3"]];
-
-
+		
 		[Name("bonus-exp")] public int BonusExp;
 		[Name("bonus-mastery-exp")] public int BonusMasteryExp;
 		[Name("bonus-account-exp")] public int BonusAccountExp;
@@ -185,7 +181,6 @@ public partial class Item
 
 			AppearanceSpeechBubble,
 		}
-
 
 
 		[Name("custom-dress-design-state")]

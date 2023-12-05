@@ -1,5 +1,4 @@
 ﻿using Xylia.Preview.Data.Common.Attribute;
-using Xylia.Preview.Data.Common.DataStruct;
 using Xylia.Preview.Data.Common.Seq;
 using Xylia.Preview.Data.Helpers;
 
@@ -11,8 +10,6 @@ namespace Xylia.Preview.Data.Models;
 public sealed class Race : Record
 {
 	public RaceSeq race;
-
-	public Ref<Text> Name2;
 
 
 	public static Race Get(RaceSeq? seq) => FileCache.Data.Race.FirstOrDefault(record => record.race == seq);

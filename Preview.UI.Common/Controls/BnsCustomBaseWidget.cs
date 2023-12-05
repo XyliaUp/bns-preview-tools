@@ -2,10 +2,11 @@
 using System.Windows;
 using System.Windows.Controls;
 
+using Xylia.Preview.Data.Helpers;
 using Xylia.Preview.Data.Models;
 
 namespace Xylia.Preview.UI.Controls;
-public abstract class BnsCustomBaseWidget : Control
+public abstract class BnsCustomBaseWidget : Control , IBnsCustomBaseWidget
 {
 	#region DependencyProperty 
 	public static readonly DependencyProperty MetaDataProperty = DependencyProperty.Register(nameof(MetaData), typeof(string), typeof(BnsCustomBaseWidget),
@@ -28,13 +29,17 @@ public abstract class BnsCustomBaseWidget : Control
 	#endregion
 
 	#region Dependency Helpers
-	private static void OnMetaDataChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+	private static async void OnMetaDataChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
 	{
 		var widget = (BnsCustomBaseWidget)d;
 
 		if (e.NewValue is string meta)
 		{
 			var ls = meta.Split('=', 2);
+			if (ls.Length < 2) return;
+
+			await FileCache.Data.Text.LoadAsync();
+
 			if (ls[0] == "textref") widget.SetText(ls[1].GetText());
 			if (ls[0] == "tooltip") widget.SetTooltip(ls[1].GetText());
 		}
@@ -59,4 +64,9 @@ public abstract class BnsCustomBaseWidget : Control
 		this.ToolTip = tooltip;
 	}
 	#endregion
+}
+
+public interface IBnsCustomBaseWidget
+{
+
 }

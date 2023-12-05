@@ -7,6 +7,7 @@ using CUE4Parse.Utils;
 using Xylia.Extension;
 using Xylia.Preview.Data.Common.Exceptions;
 using Xylia.Preview.Data.Engine.BinData.Models;
+using Xylia.Preview.Data.Models;
 using Xylia.Preview.Properties;
 
 namespace Xylia.Preview.Data.Engine.BinData.Definitions;
@@ -103,13 +104,9 @@ public static class TableDefinitionHelper
 			def.Name = el.Attributes["name"]?.Value;
 
 			#region body
-			foreach (var attrDef in LoadAttr(el.ChildNodes.OfType<XmlElement>().Where(e => e.Name == "attribute")))
+			foreach (var attrDef in LoadAttr(el.ChildNodes.OfType<XmlElement>().Where(e => e.Name == "attribute"), param, def))
 			{
-				if (attrDef == null)
-					continue;
-
 				def.Attributes.Add(attrDef);
-
 
 				// Expand repeated attributes if needed
 				if (attrDef.Repeat == 1)
@@ -122,13 +119,12 @@ public static class TableDefinitionHelper
 				{
 					var newAttrDef = attrDef.Clone();
 					newAttrDef.Name += $"-{i}";
-					newAttrDef.OriginalName = newAttrDef.Name;
 					newAttrDef.Repeat = 1;
 					def.ExpandedAttributes.Add(newAttrDef);
 				}
 			}
-
-			def.Size = GetOffsetAndSize(def.ExpandedAttributes, is64: true);
+			def.Size = GetOffsetAndSize(def.ExpandedAttributes, true);
+			def.CreateExpandedAttributeMap();
 
 
 			short subIndex = 0;
@@ -137,20 +133,18 @@ public static class TableDefinitionHelper
 				var subtable = new SubtableDefinition();
 				def.Subtables.Add(subtable);
 
-
 				subtable.Name = sub.Attributes["name"].Value;
 				subtable.SubclassType = subIndex++;
 
 				// Add parent expanded attributes
 				subtable.ExpandedAttributes.AddRange(def.ExpandedAttributes);
 
-				foreach (var attrDef in LoadAttr(sub.ChildNodes.OfType<XmlElement>()))
+				foreach (var attrDef in LoadAttr(sub.ChildNodes.OfType<XmlElement>(), param, def))
 				{
 					// HACK: Handle case when there's name conflict in subtable
 					if (def.Attributes.Any(x => x.Name == attrDef.Name))
 					{
 						attrDef.Name += "-rep";
-						attrDef.OriginalName = attrDef.Name;
 					}
 
 					subtable.Attributes.Add(attrDef);
@@ -167,44 +161,16 @@ public static class TableDefinitionHelper
 					{
 						var newAttrDef = attrDef.Clone();
 						newAttrDef.Name += $"-{i}";
-						newAttrDef.OriginalName = newAttrDef.Name;
 						newAttrDef.Repeat = 1;
 						subtable.ExpandedAttributes.Add(newAttrDef);
 						subtable.ExpandedAttributesSubOnly.Add(newAttrDef);
 					}
 				}
 
-				subtable.Size = GetOffsetAndSize(subtable.ExpandedAttributesSubOnly, is64: true, def.Size);
+				subtable.Size = GetOffsetAndSize(subtable.ExpandedAttributesSubOnly, true, def.Size);
 				subtable.CreateExpandedAttributeMap();
 			}
-
-			def.CreateExpandedAttributeMap();
 			def.CreateSubtableMap();
-
-			def.IsEmpty = def.Attributes.Count == 0 && (def.Subtables.Count == 0 || def.Subtables.All(x => x.Attributes.Count == 0));
-
-			List<AttributeDefinition> LoadAttr(IEnumerable<XmlElement> els)
-			{
-				var Attributes = new List<AttributeDefinition>();
-				foreach (XmlElement node in els)
-				{
-					try
-					{
-						string name = node.Attributes["alias"]?.Value;
-
-						var record = AttributeDefinition.LoadFrom(node, def, () => SequenceDefinition.LoadFrom(node, name, param?.PublicSeq));
-						if (record is null) continue;
-
-						Attributes.Add(record);
-					}
-					catch (Exception ee)
-					{
-						throw new BnsDefinitionException($"attribute load failed: {node.OuterXml}", ee);
-					}
-				}
-
-				return Attributes;
-			}
 			#endregion
 
 			els.Add(def);
@@ -251,7 +217,6 @@ public static class TableDefinitionHelper
 			var autoIdAttr = new AttributeDefinition
 			{
 				Name = "auto-id",
-				OriginalName = "auto-id",
 				Size = 8,
 				Offset = 8,
 				Type = AttributeType.TInt64,
@@ -270,6 +235,30 @@ public static class TableDefinitionHelper
 		return table;
 		#endregion
 	}
+
+	private static List<AttributeDefinition> LoadAttr(IEnumerable<XmlElement> els, ConfigParam param, ElDefinition def)
+	{
+		var Attributes = new List<AttributeDefinition>();
+		foreach (XmlElement node in els)
+		{
+			try
+			{
+				string name = node.Attributes["alias"]?.Value;
+
+				var record = AttributeDefinition.LoadFrom(node, def, () => SequenceDefinition.LoadFrom(node, name, param?.PublicSeq));
+				if (record is null) continue;
+
+				Attributes.Add(record);
+			}
+			catch (Exception ee)
+			{
+				throw new BnsDefinitionException($"attribute load failed: {node.OuterXml}", ee);
+			}
+		}
+
+		return Attributes;
+	}
+
 
 	private static ushort GetOffsetAndSize(IEnumerable<AttributeDefinition> Attributes, bool is64, int Offset = 16)
 	{
@@ -312,42 +301,53 @@ public static class TableDefinitionHelper
 	}
 	#endregion
 
+
 	#region Check Methods
 	/// <summary>
 	/// compare config version with game real version
 	/// </summary>
-	public static void CheckVersion(this Table table)
+	public static void CheckVersion(this Table table, TableDefinition definition)
 	{
-		if (table.Type == 0) return;
-		if (table.MajorVersion == table.Definition.MajorVersion && table.MinorVersion == table.Definition.MinorVersion) return;
+		if (table.Type == 0 || definition is null) return;
+		if (table.MajorVersion == definition.MajorVersion &&
+			table.MinorVersion == definition.MinorVersion) return;
 
-		Debug.WriteLine($"[{DateTime.Now}] check table `{table.Name}` type: {table.Type} " +
-			$"version: {table.Definition.MajorVersion}.{table.Definition.MinorVersion} <> {table.MajorVersion}.{table.MinorVersion}");
+		Console.WriteLine($"[{DateTime.Now}] check table `{definition.Name}` type: {table.Type} " +
+			$"version: {definition.MajorVersion}.{definition.MinorVersion} <> {table.MajorVersion}.{table.MinorVersion}");
 	}
 
-	public static void CheckSize(this Table table, Action<string> message = null)
+	public static void CheckSize(this Table table)
 	{
 		foreach (var type in table.Records.GroupBy(o => o.SubclassType).OrderBy(o => o.Key))
 		{
 			var def = table.Definition.ElRecord.SubtableByType(type.Key);
+			CheckSize(type.First(), def);
+		}
+	}
 
-			var size = type.First().DataSize;
-			if (size == def.Size) continue;
+	public static void CheckSize(this Record record, ITableDefinition definition)
+	{
+		var size = record.DataSize;
+		if (size == 0 || size == definition.Size) return;
 
-			// get block
-			var block = (size - def.Size) / 4;
-			message?.Invoke($"[{DateTime.Now}] check field size, \t" +
-				$"table: {table.Definition.Name} " +
-				$"{(type.Key == -1 ? string.Empty : "type: " + def.Name)} " +
-				$"size: {size} <> {def.Size} block:{block}");
+		// get block
+		lock (definition)
+		{
+			var block = (size - definition.Size) / 4;
+			if (block == 0) return;
 
-			// create unknown attribute
+			Console.WriteLine($"[{DateTime.Now}] check field size, " +
+				$"table: {record.Owner.Name} " +
+				$"type: {(record.SubclassType == -1 ? "null" : definition.Name)} " +
+				$"size: {definition.Size} <> {size} block: {block}");
+
 			if (block > 0)
 			{
+				// create unknown attribute
 				for (int i = 0; i < block; i++)
 				{
-					var offset = (ushort)(def.Size + i * 4);
-					def.ExpandedAttributes.Add(new AttributeDefinition()
+					var offset = (ushort)(definition.Size + i * 4);
+					definition.ExpandedAttributes.Add(new AttributeDefinition()
 					{
 						Name = "unk" + offset,
 						Size = 4,
@@ -359,8 +359,13 @@ public static class TableDefinitionHelper
 					});
 				}
 
-				def.Size = size;
-				def.CreateExpandedAttributeMap();
+				definition.Size = size;
+				definition.CreateExpandedAttributeMap();
+			}
+			else
+			{
+				// prevent duplicate message
+				definition.Size = size;
 			}
 		}
 	}

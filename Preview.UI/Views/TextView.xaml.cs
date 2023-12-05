@@ -1,7 +1,11 @@
-﻿using System.Text;
+﻿using System.IO;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 using System.Windows.Media;
+
+using HandyControl.Controls;
 
 using ICSharpCode.AvalonEdit.Document;
 using ICSharpCode.AvalonEdit.Folding;
@@ -16,7 +20,7 @@ using Xylia.Preview.UI.Helpers;
 using Xylia.Preview.UI.ViewModels;
 
 namespace Xylia.Preview.UI.Views;
-public partial class TextView : Window
+public partial class TextView 
 {
 	#region Constructor
 	private readonly FoldingManager foldingManager;
@@ -24,6 +28,7 @@ public partial class TextView : Window
 	public TextView()
 	{
 		InitializeComponent();
+		RegisterCommands(this.CommandBindings);
 
 		var search = SearchPanel.Install(Editor);
 		foldingManager = FoldingManager.Install(Editor.TextArea);
@@ -32,6 +37,12 @@ public partial class TextView : Window
 	#endregion
 
 	#region Methods
+	private void RegisterCommands(CommandBindingCollection commandBindings)
+	{
+		commandBindings.Add(new CommandBinding(ApplicationCommands.Save, SaveCommand, CanExecuteSave));
+		commandBindings.Add(new CommandBinding(ApplicationCommands.Replace, ReplaceInFilesCommand, CanExecuteSave));
+	}
+
 	private void Window_Loaded(object sender, RoutedEventArgs e)
 	{
 		if (UserSettings.Default.Text_LoadPrevious)
@@ -59,6 +70,38 @@ public partial class TextView : Window
 			RenderView();
 		}
 	}
+
+
+	private void CanExecuteSave(object sender, CanExecuteRoutedEventArgs e)
+	{
+		// only single file and left source
+		e.CanExecute = OldSource != null && diffResult is null;
+	}
+
+	private void SaveCommand(object sender, RoutedEventArgs e)
+	{
+		var dialog = new SaveFileDialog
+		{
+			FileName = "TextData",
+			Filter = "xml file|*.xml",
+		};
+		if (dialog.ShowDialog() == true)
+		{
+			File.WriteAllText(dialog.FileName, Editor.Text);
+		}
+	}
+
+	private void ReplaceInFilesCommand(object sender, RoutedEventArgs e)
+	{
+		if (OpenTextFile(out var file))
+		{
+			using var source1 = new BnsDatabase(new LocalProvider(OldSource));
+			(source1.Provider as LocalProvider).Rewrite(file);
+
+			Growl.InfoGlobal("Replace completed");
+		}
+	}
+
 
 	private void InlineModeToggle_Click(object sender, RoutedEventArgs e)
 	{
@@ -117,7 +160,6 @@ public partial class TextView : Window
 			if (IsEmpty2) this.InlineHeaderText.Text = source1.Provider.Name;
 		}
 		#endregion
-
 
 		#region Lines
 		// compare

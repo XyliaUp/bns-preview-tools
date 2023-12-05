@@ -1,14 +1,15 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Diagnostics;
+using System.Globalization;
 using System.Runtime.CompilerServices;
+using System.Windows.Data;
 
 namespace Xylia.Preview.UI.Documents;
-/// <summary>
-/// DataContext
-/// </summary>
-public sealed class ContentParams : IEnumerable, ICollection, IList
+[TypeConverter(typeof(DataParamsConverter))]
+public sealed class DataParams : IEnumerable, ICollection, IList
 {
 	#region Fields
 	public event EventHandler Changed;
@@ -18,12 +19,12 @@ public sealed class ContentParams : IEnumerable, ICollection, IList
 	internal object[] _items = new object[DefaultCapacity];
 	internal int _size;
 
-	public ContentParams()
+	public DataParams()
 	{
 
 	}
 
-	public ContentParams(params object[] args)
+	public DataParams(params object[] args)
 	{
 		this.AddRange(args);
 	}
@@ -85,7 +86,7 @@ public sealed class ContentParams : IEnumerable, ICollection, IList
 		{
 			if (ArgIndex > _size)
 			{
-				if(ArgIndex > _items.Length) Grow(ArgIndex);
+				if (ArgIndex > _items.Length) Grow(ArgIndex);
 
 				_size = ArgIndex;
 			}
@@ -162,6 +163,37 @@ public sealed class ContentParams : IEnumerable, ICollection, IList
 		Capacity = GetNewCapacity(capacity);
 	}
 
+	/// <summary>
+	/// Enlarge this list so it may contain at least <paramref name="insertionCount"/> more elements
+	/// And copy data to their after-insertion positions.
+	/// This method is specifically for insertion, as it avoids 1 extra array copy.
+	/// You should only call this method when Count + insertionCount > Capacity.
+	/// </summary>
+	/// <param name="indexToInsert">Index of the first insertion.</param>
+	/// <param name="insertionCount">How many elements will be inserted.</param>
+	private void GrowForInsertion(int indexToInsert, int insertionCount = 1)
+	{
+		Debug.Assert(insertionCount > 0);
+
+		int requiredCapacity = checked(_size + insertionCount);
+		int newCapacity = GetNewCapacity(requiredCapacity);
+
+		// Inline and adapt logic from set_Capacity
+
+		var newItems = new object[newCapacity];
+		if (indexToInsert != 0)
+		{
+			Array.Copy(_items, newItems, length: indexToInsert);
+		}
+
+		if (_size != indexToInsert)
+		{
+			Array.Copy(_items, indexToInsert, newItems, indexToInsert + insertionCount, _size - indexToInsert);
+		}
+
+		_items = newItems;
+	}
+
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	private int GetNewCapacity(int capacity)
 	{
@@ -207,24 +239,38 @@ public sealed class ContentParams : IEnumerable, ICollection, IList
 		}
 	}
 
-	public bool Contains(object? value)
+	public bool Contains(object? item)
 	{
-		return _size != 0 && IndexOf(value) >= 0;
+		return _size != 0 && IndexOf(item) >= 0;
 	}
 
-	public int IndexOf(object? value)
+	public int IndexOf(object? item)
 	{
-		return Array.IndexOf(_items, value, 0, _size);
+		return Array.IndexOf(_items, item, 0, _size);
 	}
 
-	public void Insert(int index, object? value)
+	public void Insert(int index, object? item)
 	{
-		throw new NotImplementedException();
+		// Note that insertions at the end are legal.
+		if ((uint)index > (uint)_size)
+		{
+			throw new ArgumentOutOfRangeException(nameof(index));
+		}
+		if (_size == _items.Length)
+		{
+			GrowForInsertion(index, 1);
+		}
+		else if (index < _size)
+		{
+			Array.Copy(_items, index, _items, index + 1, _size - index);
+		}
+		_items[index] = item;
+		_size++;
 	}
 
-	public void Remove(object? value)
+	public void Remove(object? item)
 	{
-		int index = IndexOf(value);
+		int index = IndexOf(item);
 		if (index >= 0) RemoveAt(index);
 	}
 
@@ -232,7 +278,7 @@ public sealed class ContentParams : IEnumerable, ICollection, IList
 	{
 		if ((uint)index >= (uint)_size)
 		{
-			throw new ArgumentOutOfRangeException();
+			throw new ArgumentOutOfRangeException(nameof(index));
 		}
 		_size--;
 		if (index < _size)
@@ -241,4 +287,23 @@ public sealed class ContentParams : IEnumerable, ICollection, IList
 		}
 	}
 	#endregion
+}
+
+public class DataParamsConverter : IMultiValueConverter
+{
+	public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
+	{
+		return new DataParams(values);
+	}
+
+	public object[] ConvertBack(object value, Type[] targetTypes, object parameter, CultureInfo culture)
+	{
+		throw new NotImplementedException();
+
+		//var param = (DataParams)value;
+		//var values = new object[param.Count];
+		//param.CopyTo(values, 0);
+
+		//return values;
+	}
 }

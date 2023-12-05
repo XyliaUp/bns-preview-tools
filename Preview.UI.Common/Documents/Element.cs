@@ -2,15 +2,16 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
+using System.Runtime.Serialization;
 using System.Windows;
 using System.Windows.Markup;
 using System.Windows.Media;
 
 using HtmlAgilityPack;
 
+using Xylia.Extension;
 using Xylia.Preview.Data.Common.Cast;
 using Xylia.Preview.Data.Database;
 using Xylia.Preview.UI.Controls;
@@ -125,8 +126,7 @@ public abstract class Element : ContentElement
 	/// </summary>
 	public static readonly DependencyProperty ForegroundProperty =
 		BnsCustomBaseWidget.ForegroundProperty.AddOwner(typeof(Element),
-			  new FrameworkPropertyMetadata(
-				  Brushes.White,
+			  new FrameworkPropertyMetadata(SystemColors.ControlTextBrush,
 				  FrameworkPropertyMetadataOptions.AffectsRender | FrameworkPropertyMetadataOptions.SubPropertiesDoNotAffectRender | FrameworkPropertyMetadataOptions.Inherits));
 
 	/// <summary>
@@ -138,9 +138,9 @@ public abstract class Element : ContentElement
 		set { SetValue(ForegroundProperty, value); }
 	}
 
-	public ContentParams Params
+	public DataParams Params
 	{
-		get { return (ContentParams)GetValue(ParamsProperty); }
+		get { return (DataParams)GetValue(ParamsProperty); }
 		set { SetValue(ParamsProperty, value); }
 	}
 
@@ -148,8 +148,6 @@ public abstract class Element : ContentElement
 		BnsCustomLabelWidget.ParamsProperty.AddOwner(typeof(Element),
 			   new FrameworkPropertyMetadata(null, FrameworkPropertyMetadataOptions.Inherits));
 	#endregion
-
-
 
 
 	#region Protected Methods
@@ -190,14 +188,7 @@ public abstract class Element : ContentElement
 
 	public void Measure(Size availableSize)
 	{
-		try
-		{
-			DesiredSize = MeasureCore(availableSize);
-		}
-		catch (Exception ex)
-		{
-		   Debug.WriteLine(ex);
-		}
+		DesiredSize = MeasureCore(availableSize);
 	}
 
 	public void Arrange(Rect finalRect)
@@ -283,15 +274,15 @@ public abstract class Element : ContentElement
 			var element = this.Children[i];
 			Size desiredSize = element.DesiredSize;
 
-			if (element is Paragraph)
+			if (element is Paragraph || i + 1 == this.Children.Count)
 			{
-				lines.Add(this.Children.GetRange(firstInLine, i - firstInLine + 1).ToArray());
+				lines.Add([.. this.Children.GetRange(firstInLine, i - firstInLine + 1)]);
 				currentLineSize = desiredSize;
 				firstInLine = i + 1;
 			}
 			else if (element is BR || currentLineSize.Width + desiredSize.Width > finalRect.Width)
 			{
-				lines.Add(this.Children.GetRange(firstInLine, i - firstInLine).ToArray());
+				lines.Add([.. this.Children.GetRange(firstInLine, i - firstInLine)]);
 				currentLineSize = desiredSize;
 
 				// single line if control width gather than line width
@@ -302,10 +293,6 @@ public abstract class Element : ContentElement
 				}
 
 				firstInLine = i;
-			}
-			else if (i + 1 == this.Children.Count)
-			{
-				lines.Add(this.Children.GetRange(firstInLine, i - firstInLine + 1).ToArray());
 			}
 			else
 			{
@@ -349,29 +336,22 @@ public abstract class Element : ContentElement
 
 
 
-
 	protected virtual void Load(HtmlNode node)
 	{
 		Children = node.ChildNodes.Select(TextDocument.ToElement).Where(x => x is not null).ToList();
 
-		foreach (var field in GetType().GetFields(BindingFlags.Instance | BindingFlags.Public | BindingFlags.DeclaredOnly))
+		foreach (var field in GetType().GetMembers(BindingFlags.Instance | BindingFlags.Public | BindingFlags.DeclaredOnly))
 		{
-			var type = field.FieldType;
+			if (field is not FieldInfo &&
+			   (field is not PropertyInfo prop || !prop.CanWrite)) continue;
+			if (field.ContainAttribute<IgnoreDataMemberAttribute>()) continue;
+
+			// props
 			var name = field.GetName();
+			var type = field.GetMemberType();
 
 			var value = node.Attributes[name]?.Value;
-			field.SetValue(this, AttributeConverter.ConvertTo(value, type, null));
-		}
-
-		foreach (var prop in GetType().GetProperties(BindingFlags.Instance | BindingFlags.Public | BindingFlags.DeclaredOnly))
-		{
-			if (!prop.CanWrite) continue;
-
-			var type = prop.PropertyType;
-			var name = prop.GetName();
-
-			var value = node.Attributes[name]?.Value;
-			prop.SetValue(this, AttributeConverter.ConvertTo(value, type, null));
+			field.SetValue(this, AttributeConverter.Convert(value, type, null));
 		}
 	}
 
@@ -383,6 +363,26 @@ public abstract class Element : ContentElement
 	internal virtual void Render(DrawingContext ctx)
 	{
 		Children?.ForEach(x => x.Render(ctx));
+	}
+
+	internal virtual IInputElement InputHitTest(Point point)
+	{
+		IInputElement element = null;
+
+		if (Children is null) return element;
+
+		// only Link need respond
+		foreach (var child in Children)
+		{
+			if (child.FinalRect.Contains(point))
+			{
+				if (child is Link) return child;
+			}
+
+			element = child.InputHitTest(point);
+		}
+
+		return element;
 	}
 	#endregion
 

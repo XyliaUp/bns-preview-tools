@@ -2,7 +2,4 @@
 
 namespace Xylia.Preview.Data.Models;
 [Side(ReleaseSide.Client)]
-public sealed class Attendance : Record
-{
-	public string Alias;
-}
+public sealed class Attendance : Record { }

@@ -22,19 +22,18 @@ public sealed class QuestEpic : OutSet
 			Row++;
 			int column = 1;
 
-			sheet.Cells[Row, column++].SetValue(data.id);
-			sheet.Cells[Row, column++].SetValue(data.Alias);
-			sheet.Cells[Row, column++].SetValue(data.Name2.GetText());
-			sheet.Cells[Row, column++].SetValue(data.Group2.GetText());
+			sheet.Cells[Row, column++].SetValue(data.RecordId);
+			sheet.Cells[Row, column++].SetValue(data);
+			sheet.Cells[Row, column++].SetValue(data.Text);
+			sheet.Cells[Row, column++].SetValue(data.Title);
 		});
 	}
 
 
-	public static void GetEpic(Action<Quest> act, JobSeq TargetJob = JobSeq.소환사) => GetEpic("q_epic_221", act, TargetJob);
+	public static void GetEpic(Action<Quest> act, JobSeq TargetJob = JobSeq.소환사) => GetEpic(FileCache.Data.Quest["q_epic_221"], act, TargetJob);
 
-	public static void GetEpic(string alias, Action<Quest> act, JobSeq TargetJob = JobSeq.소환사)
+	public static void GetEpic(Quest quest, Action<Quest> act, JobSeq TargetJob = JobSeq.소환사)
 	{
-		var quest = FileCache.Data.Quest[alias];
 		if (quest is null) return;
 
 		// act
@@ -47,7 +46,7 @@ public sealed class QuestEpic : OutSet
 		{
 			var jobs = NextQuest.Job;
 			if (jobs is null || jobs[0] == JobSeq.JobNone || jobs.FirstOrDefault(job => job == TargetJob) != JobSeq.JobNone)
-				GetEpic(NextQuest.Quest.Instance?.Alias, act, TargetJob);
+				GetEpic(NextQuest.Quest.Instance, act, TargetJob);
 		}
 	}
 }

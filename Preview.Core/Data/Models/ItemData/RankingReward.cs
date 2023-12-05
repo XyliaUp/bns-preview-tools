@@ -1,5 +1,2 @@
 ﻿namespace Xylia.Preview.Data.Models;
-public sealed class RankingReward : Record 
-{
-	public string Alias;
-}
+public sealed class RankingReward : Record { }

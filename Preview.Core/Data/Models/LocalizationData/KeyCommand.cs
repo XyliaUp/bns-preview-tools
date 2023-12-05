@@ -1,47 +1,17 @@
 ﻿using SkiaSharp;
 
 using Xylia.Preview.Data.Common.Attribute;
-using Xylia.Preview.Data.Common.DataStruct;
 using Xylia.Preview.Data.Common.Seq;
 using Xylia.Preview.Data.Helpers;
 
 namespace Xylia.Preview.Data.Models;
 public sealed class KeyCommand : Record
 {
-	#region Fields
+	#region Field
 	public KeyCommandSeq Command;
-
-	[Name("pc-job")]
-	public JobSeq PcJob;
-
-
-
-	//public Seq Category;
-
-	//[Signal("joypad-category")]
-	//public Seq JoypadCategory;
-
-	public Ref<Text> Name;
 
 	[Name("default-keycap")]
 	public string DefaultKeycap;
-
-	[Name("modifier-enabled")]
-	public bool ModifierEnabled;
-
-	[Name("sort-no")]
-	public sbyte SortNo;
-
-	public sbyte Layer;
-
-	[Name("option-sort-no")]
-	public short OptionSortNo;
-
-	//[Signal("usable-joypad-mode")]
-	//public Seq UsableJoypadMode;
-
-	[Name("joypad-customize-enabled")]
-	public bool JoypadCustomizeEnabled;
 	#endregion
 
 	#region Methods
@@ -49,7 +19,6 @@ public sealed class KeyCommand : Record
 	{
 		var result = new List<KeyCap>();
 
-		#region 处理默认组合键
 		if (this.DefaultKeycap != null)
 		{
 			//逗号分隔多个快捷键, 实际未支持处理
@@ -70,7 +39,6 @@ public sealed class KeyCommand : Record
 				else result.Add(KeyCap.Cast(o));
 			}
 		}
-		#endregion
 
 		return result.ToArray();
 	}

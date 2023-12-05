@@ -7,12 +7,13 @@ using Newtonsoft.Json;
 
 using Xylia.Configure;
 using Xylia.Extension;
-using Xylia.Preview.Common.Extension;
 using Xylia.Preview.Data.Engine.BinData.Definitions;
 using Xylia.Preview.Data.Engine.DatData;
 using Xylia.Preview.Data.Engine.DatData.Third;
 using Xylia.Preview.Data.Engine.ZoneData.RegionData;
 using Xylia.Preview.Data.Engine.ZoneData.TerrainData;
+using Xylia.Preview.Tests.DatTool.Utils;
+using Xylia.Preview.Tests.DatTool.Utils.DevTools;
 using Xylia.Preview.Tests.TableTests;
 
 using static Xylia.Preview.Data.Engine.DatData.Third.MySpport;
@@ -44,8 +45,8 @@ public partial class MainForm : Form
 	}
 	#endregion
 
-	#region TestFunc
-	private void SaveConfig(object sender, EventArgs e)
+	#region Static Methods
+	private static void SaveConfig(object sender, EventArgs e)
 	{
 		var c = (Control)sender;
 		Ini.Instance.WriteValue("Config", $"{c.FindForm().Name}_{c.Name}", c.Text);
@@ -65,14 +66,15 @@ public partial class MainForm : Form
 		}
 	}
 
-
 	private void SaveCheckStatus(object sender, EventArgs e)
 	{
 		var ctl = (CheckBox)sender;
 		Ini.Instance.WriteValue("Config", this.Name + "_" + ctl.Name, ctl.Checked);
 	}
 
-	private static DateTime m_LastTime = DateTime.MinValue;
+
+	private DateTime m_LastTime = DateTime.MinValue;
+
 	private void DoubleClickPath(object sender, EventArgs e)
 	{
 		if (DateTime.Now.Subtract(m_LastTime).TotalSeconds <= 2) return;
@@ -96,15 +98,50 @@ public partial class MainForm : Form
 		Process.Start(psi);
 	}
 
-	private void ClearLog(object sender, EventArgs e)
+	public static IEnumerable<string> OpenPath(Control link, string Filter = null, bool Multiselect = false)
 	{
-		this.richOut.Clear();
+		var openFile = new OpenFileDialog();
+
+		string FilePath = link.Text;
+		if (!string.IsNullOrWhiteSpace(FilePath) && !FilePath.Contains('|'))
+		{
+			openFile.InitialDirectory = Directory.Exists(FilePath) ? FilePath : new FileInfo(FilePath).DirectoryName;
+		}
+
+
+		openFile.Filter = (Filter == null ? null : Filter + "|") + "所有文件|*";
+		openFile.Multiselect = Multiselect;
+
+		if (openFile.ShowDialog() == DialogResult.OK)
+		{
+			if (openFile.FileNames.Length == 1) link.Text = openFile.FileName;
+			else
+			{
+				StringBuilder sb = new();
+
+				foreach (var f in openFile.FileNames)
+					sb.Append(f + "|");
+
+				link.Text = sb.ToString();
+			}
+
+			return openFile.FileNames;
+		}
+
+		return null;
+	}
+
+	private static void OpenFolder(Control link)
+	{
+		var dialog = new FolderBrowserDialog();
+		if (dialog.ShowDialog() == DialogResult.OK) link.Text = dialog.SelectedPath;
 	}
 	#endregion
 
 
-
 	#region Dat
+	private void bntSearchDat_Click(object sender, EventArgs e) => OpenPath(txbDatFile);
+
 	private void txbDatFile_TextChanged(object sender, EventArgs e)
 	{
 		var s = (Control)sender;
@@ -120,7 +157,7 @@ public partial class MainForm : Form
 		}
 		else if (File.Exists(Text))
 		{
-			txbRpFolder.Text = Path.GetDirectoryName(Text) + @"\Export\" + Path.GetFileNameWithoutExtension(Text) + @"\files";
+			txbRpFolder.Text = Path.GetDirectoryName(Text) + @"\Export\" + Path.GetFileNameWithoutExtension(Text);
 		}
 	}
 
@@ -128,14 +165,6 @@ public partial class MainForm : Form
 	{
 		Ini.Instance.WriteValue("Path", "Data_OutFolder", ((TextBox)sender).Text);
 	}
-
-	private void textBox8_TextChanged(object sender, EventArgs e)
-	{
-		if (Directory.Exists(((TextBox)sender).Text)) Ini.Instance.WriteValue("Server", "Folder", ((TextBox)sender).Text);
-	}
-
-
-	private void bntSearchDat_Click(object sender, EventArgs e) => OpenPath(txbDatFile);
 
 	private void button3_Click(object sender, EventArgs e)
 	{
@@ -204,20 +233,11 @@ public partial class MainForm : Form
 				return;
 		}
 
-		string datpath = txbDatFile.Text;
-		string outpath = txbRpFolder.Text ?? Path.GetDirectoryName(datpath) + @"\Export\" + Path.GetFileNameWithoutExtension(datpath) + @"\files";
-
-		// output
-		Task.Run(() =>
+		Task.Run(() => MySpport.Extract(new PackParam()
 		{
-			Parallel.ForEach(new BNSDat(datpath).FileTable, file =>
-			{
-				string path = Path.Combine(outpath, file.FilePath);
-				Directory.CreateDirectory(Path.GetDirectoryName(path));
-
-				File.WriteAllBytes(path, file.Data);
-			});
-		});
+			PackagePath = txbDatFile.Text,
+			FolderPath = txbRpFolder.Text
+		}));
 	}
 
 	private void btnRepack_Click(object sender, EventArgs e)
@@ -394,87 +414,11 @@ public partial class MainForm : Form
 	#endregion
 
 
-	#region ServerData
-	private void button13_Click(object sender, EventArgs e)
+	#region ToolStrip
+	private void ClearLog(object sender, EventArgs e)
 	{
-		new Thread(() =>
-		{
-			DirectoryInfo dir = new(textBox8.Text);
-			ServerUnpack(dir.GetFiles());
-
-			foreach (DirectoryInfo subDir in dir.GetDirectories())
-				ServerUnpack(subDir.GetFiles());
-		}).Start();
+		this.richOut.Clear();
 	}
-
-	private void button14_Click(object sender, EventArgs e)
-	{
-		Task.Run(() =>
-		{
-			var files = new DirectoryInfo(textBox8.Text).GetFiles();
-			foreach (FileInfo fi in files)
-			{
-				if (fi.Name.EndsWith("xml") || fi.Name.EndsWith(".x16"))
-				{
-					using FileStream fileStream = new(fi.FullName, FileMode.Open);
-					//File.WriteAllBytes(fi.FullName, BXML_CONTENT.Convert(fileStream, BXML_TYPE.BXML_BINARY).ToArray());
-				}
-			}
-		});
-	}
-
-	public static void ServerUnpack(FileInfo[] fis)
-	{
-		foreach (FileInfo fi in fis)
-		{
-			if (fi.Name.EndsWith("xml") || fi.Name.EndsWith(".x16"))
-			{
-				//using FileStream fileStream = new(fi.FullName, FileMode.Open);
-				//using MemoryStream memoryStream = BXML_CONTENT.Convert(fileStream, BXML_TYPE.BXML_PLAIN);
-
-				//File.WriteAllBytes(fi.FullName, memoryStream.ToArray());
-			}
-		}
-	}
-	#endregion
-
-	#region Combine
-	private void button10_Click(object sender, EventArgs e) => OpenPath(textBox4, null, false);
-
-
-	IEnumerable<string> FilePathes = null;
-
-	private void button9_Click(object sender, EventArgs e)
-	{
-		if ((FilePathes = OpenPath(textBox2, null, true)) != null)
-			this.textBox2.Text = "{对象集合}";
-	}
-
-	private void button17_Click(object sender, EventArgs e) => OpenPath(textBox6);
-
-	private void checkBox12_CheckedChanged(object sender, EventArgs e) => checkBox12.Text = checkBox12.Checked ? "alias作为主键" : "id作为主键";
-
-	private void checkBox14_CheckedChanged(object sender, EventArgs e) => this.label8.Visible = this.textBox6.Visible = this.button17.Visible = this.checkBox14.Checked;
-
-	private void button11_Click(object sender, EventArgs e)
-	{
-
-	}
-
-	private void textBox2_TextChanged(object sender, EventArgs e)
-	{
-		SaveConfig(sender, e);
-
-		if (File.Exists(this.textBox2.Text))
-		{
-			this.FilePathes = new string[] { this.textBox2.Text };
-		}
-	}
-	#endregion
-
-
-	#region	Xml操作
-	private void MenuItem_DevTools_Click(object sender, EventArgs e) => new ToolFrm().Show();
 
 	private void ToolStripMenuItem_NumSelect_Click(object sender, EventArgs e)
 	{
@@ -482,252 +426,155 @@ public partial class MainForm : Form
 		frm.Confirming += ClearLog;
 		frm.Show();
 	}
+	#endregion
 
-	private void 重新排列ToolStripMenuItem_Click(object sender, EventArgs e)
+	#region Page
+	private void Btn_HexToDecimal_Click(object sender, EventArgs e)
 	{
-		OpenFileDialog Open = new();
-		if (Open.ShowDialog() != DialogResult.OK) return;
+		lbl_Warning3.Text = null;
+		string text = Txt_HEX.Text.Replace('-', ' ');
 
-		new Thread(() =>
+		try
 		{
-			try
+			if (radioButton2.Checked)
 			{
-				Console.WriteLine("       ☆★ 开始计算 ★☆");
-				var document = new XmlDocument();
-				document.Load(Open.FileName);
-
-				//XmlAttributeSort.Sort(document.DocumentElement);
-				document.Save(Open.FileName);
-
-				Console.WriteLine("已重新排列");
-			}
-			catch (Exception ee)
-			{
-				Console.WriteLine("不是xml文件或者文件存在异常。\n" + ee.Message);
+				Txt_Decimal.Text = long.Parse(text, System.Globalization.NumberStyles.HexNumber).ToString();
+				return;
 			}
 
-		}).Start();
-	}
 
-	private void 列出所有属性ToolStripMenuItem_Click(object sender, EventArgs e)
-	{
-		OpenFileDialog openFile = new()
+			var bytes = text.ToBytes();
+			CommonConvert CC = new(bytes);
+
+			if (CC.Length == 2) Txt_Decimal.Text = CC.Short1.ToString();
+			else if (CC.Length >= 8) Txt_Decimal.Text = CC.Long.ToString();
+			else Txt_Decimal.Text = CC.Int32.ToString();
+
+			label2.Text = "Short型：" + CC.Short1 + " | " + CC.Short2 + "\nFloat型：" + CC.Float;
+			lbl_Warning3.Text = null;
+		}
+		catch (Exception ee)
 		{
-			Filter = "所有文件|*",
-			Multiselect = true,
-		};
-
-		if (openFile.ShowDialog() == DialogResult.OK)
-		{
-			List<string> attrs = new();
-			foreach (var f in openFile.FileNames)
-			{
-				XmlDocument xmlDocument = new();
-				xmlDocument.Load(openFile.FileName);
-
-				foreach (var node in xmlDocument.SelectNodes("table/*").OfType<XmlElement>())
-				{
-					foreach (XmlAttribute attr in node.Attributes)
-					{
-						if (!attrs.Contains(attr.Name))
-							attrs.Add(attr.Name);
-					}
-				}
-			}
-
-			attrs.Sort(new SortByString());
-			attrs.ForEach(a => Console.WriteLine("#notime#" + a));
+			lbl_Warning3.Text = ee.Message;
 		}
 	}
 
-	private void 列出指定属性范围ToolStripMenuItem_Click(object sender, EventArgs e)
+	private void Btn_DecimalToHex_Click(object sender, EventArgs e)
 	{
-		OpenFileDialog openFile = new()
-		{
-			Filter = "所有文件|*",
-			Multiselect = true,
-		};
+		lbl_Warning3.Text = null;
+		label2.Text = null;
 
-		if (openFile.ShowDialog() == DialogResult.OK)
+		try
 		{
-			List<string> Range = new();
-			string AttrName = "skill-result-rule";
-
-			foreach (var f in openFile.FileNames)
+			if (radioButton2.Checked)
 			{
-				XmlDocument xmlDocument = new();
-				xmlDocument.Load(openFile.FileName);
-				foreach (var node in xmlDocument.SelectNodes("table/*").OfType<XmlElement>())
+				if (long.TryParse(Txt_Decimal.Text, out long LResult))
 				{
-					if (node.Attributes[AttrName] != null)
-					{
-						var Value = node.Attributes[AttrName].Value;
-						if (!Range.Contains(Value)) Range.Add(Value);
-					}
+					Txt_HEX.Text = LResult.ToString("X");
 				}
+				else throw new Exception("转换失败");
+
+				return;
 			}
 
-			//排序整理
-			//attrs.Sort(new Xylia.Sort.SortByString());
-			Range.ForEach(a => Console.WriteLine("#notime#" + a));
+
+
+			if (long.TryParse(Txt_Decimal.Text, out long result))
+			{
+				CommonConvert CC = new(result);
+				if (result < int.MaxValue) CC = new((int)result);
+
+				label2.Text = "Short型：" + CC.Short1 + " | " + CC.Short2 + "\nFloat型：" + CC.Float;
+			}
+		}
+		catch (Exception ee)
+		{
+			lbl_Warning3.Text = ee.Message;
+			Console.WriteLine(ee.Message);
 		}
 	}
 
-	private void 合并文档ToolStripMenuItem_Click(object sender, EventArgs e)
+	private void button12_Click(object sender, EventArgs e) => richTextBox1.Text = CreateClass.Instance(richTextBox1.Text);
+
+	private void button5_Click(object sender, EventArgs e) => richTextBox1.Text = CreateEnum.Instance(richTextBox1.Text?.Trim());
+
+	private void button16_Click(object sender, EventArgs e)
 	{
-		OpenFileDialog openFile = new()
+		var sb = new StringBuilder();
+		foreach (var line in this.richTextBox1.Text.Split('\n').Where(l => !string.IsNullOrWhiteSpace(l)))
 		{
-			Filter = "所有文件|*",
-			Multiselect = true
-		};
+			string[] ls = Regex.Split(line, "\\s+");
+			sb.Append($"{ls[0]}=\"{ls[1].Replace("%", null)}\" ");
+		}
+
+		this.richTextBox1.Text = $"  <record {sb}/>\n";
+	}
+
+	private void button15_Click(object sender, EventArgs e)
+	{
+		XmlDocument tmp = new();
+		tmp.LoadXml($"<?xml version=\"1.0\"?>\n<table>{richTextBox1.Text?.Trim()}</table>");
+
+		var record = tmp.SelectSingleNode("table/*");
+		if (record is null) return;
 
 
+		StringBuilder rtf = new();
+		rtf.Append(@"{\rtf1 ");
 
-		if (openFile.ShowDialog() == DialogResult.OK)
+		foreach (XmlAttribute attr in record.Attributes)
 		{
-			Console.WriteLine("正在处理中...");
+			rtf.Append(@"\trowd");
+			for (int j = 1; j <= 2; j++) rtf.Append($@"\cellx{j * 4000}");
 
-			new Thread(() =>
+			//create row
+			rtf.Append($@"\intbl {GetAsc2Code(attr.Name)}\cell {GetAsc2Code(attr.Value)}\row");
+		}
+
+		rtf.Append(@"\pard ");
+		rtf.Append('}');
+
+		this.richTextBox1.Clear();
+		this.richTextBox1.SelectedRtf = rtf.ToString();
+	}
+
+	public static string GetAsc2Code(string txt)
+	{
+		string result = null;
+		foreach (var t in txt) result += "\\u" + (int)t + "  ";
+
+		return result;
+	}
+
+	private void Btn_Split_Click(object sender, EventArgs e)
+	{
+		try
+		{
+			var data = richTextBox1.Text
+				.Replace("\r\n", null)
+				.Replace(" ", null)
+				.Replace("-", null)
+				.UnCompress()
+				.ToBytes();
+
+
+			StringBuilder output = new();
+			for (int idx = 0; idx < data.Length; idx += 4)
 			{
-				try
-				{
-					#region 读取数据
-					var Group = new Dictionary<int, List<XmlElement>>();
-					var AliasGroup = new Dictionary<string, XmlElement>();
+				output.Append(idx);
+				output.Append("    |   ");
+				output.Append(BitConverter.ToString(data, idx, 4));
+				output.Append("    |   ");
+				output.Append(BitConverter.ToInt32(data, idx));
+				output.Append('\n');
+			}
 
-
-					bool Status = false;
-					openFile.FileNames.ToList().ForEach(f =>
-					{
-						XmlDocument xmlDocument = new();
-						xmlDocument.Load(f);
-
-						if (!Status)
-						{
-							//xi = new XmlInfo(xmlDocument.DocumentElement);
-							Status = true;
-						}
-
-						foreach (XmlElement record in xmlDocument.SelectNodes("table/*"))
-						{
-							string alias = record.Attributes["alias"]?.Value;
-
-
-							string MajorKey = null; // xp.Attributes["id", "zone"];
-							if (string.IsNullOrWhiteSpace(MajorKey))
-							{
-								if (!AliasGroup.ContainsKey(alias)) AliasGroup[alias] = record;
-								else Console.WriteLine("重复的alias => " + alias);
-							}
-							else
-							{
-								int Key = MajorKey.ToInt32();
-								if (!Group.ContainsKey(Key)) Group.Add(Key, new());
-
-								Group[Key].Add(record);
-							}
-						}
-					});
-					#endregion
-
-
-					if (Group.Count == 0)
-					{
-						foreach (var t in AliasGroup)
-						{
-							//XmlProperty xp = t.Value.Property();
-
-							//t.Value.Attributes.RemoveAll();
-							//foreach (var a in xp.Attributes)
-							//	t.Value.SetAttribute(a.Name, a.Value.ToString());
-
-							//xi.AppendChild(t.Value);
-						}
-					}
-					else
-					{
-						var tmpGroup = Group.ToList();
-
-						//tmpGroup.Sort(new SortByKeyNum<List<XmlElement>>());
-						tmpGroup.ForEach(g => g.Value.ToList().ForEach(t =>
-						{
-							//属性筛选
-							//XmlProperty xp = t.Property();
-							//t.Attributes.RemoveAll();
-
-							//foreach (var a in xp.Attrs)
-							//{
-							//	if (a.Name != "alias"
-							//	&& !a.Name.MyStartsWith("cast-caster-dispel-attribute-")
-							//	&& !a.Name.MyStartsWith("melee-counter-dir-")
-							//	&& a.Name != "skill-modify-limit"
-							//	) continue;
-
-							//	t.SetAttr(a.Name, a.Value);
-							//}
-
-							//xi.AppendChild(t);
-						}));
-					}
-
-
-					string CombinePath = Path.GetDirectoryName(Path.GetDirectoryName(openFile.FileNames[0])) + @"\" +
-							 Regex.Replace(openFile.SafeFileNames[0], "[0-9]", "", RegexOptions.IgnoreCase).Replace("..", ".");
-
-
-					//xi.Save($@"{CombinePath}");
-
-					Console.WriteLine("完成");
-				}
-				catch (Exception ee)
-				{
-					MessageBox.Show(ee.ToString());
-				}
-
-			}).Start();
+			richTextBox1.Text = output.ToString();
+		}
+		catch (Exception ee)
+		{
+			Console.WriteLine(ee.Message);
 		}
 	}
 	#endregion
-
-
-
-
-	public static IEnumerable<string> OpenPath(Control link, string Filter = null, bool Multiselect = false)
-	{
-		var openFile = new OpenFileDialog();
-
-		string FilePath = link.Text;
-		if (!string.IsNullOrWhiteSpace(FilePath) && !FilePath.Contains('|'))
-		{
-			openFile.InitialDirectory = Directory.Exists(FilePath) ? FilePath : new FileInfo(FilePath).DirectoryName;
-		}
-
-
-		openFile.Filter = (Filter == null ? null : Filter + "|") + "所有文件|*";
-		openFile.Multiselect = Multiselect;
-
-		if (openFile.ShowDialog() == DialogResult.OK)
-		{
-			if (openFile.FileNames.Length == 1) link.Text = openFile.FileName;
-			else
-			{
-				StringBuilder sb = new();
-
-				foreach (var f in openFile.FileNames)
-					sb.Append(f + "|");
-
-				link.Text = sb.ToString();
-			}
-
-			return openFile.FileNames;
-		}
-
-		return null;
-	}
-
-	private static void OpenFolder(Control link)
-	{
-		var dialog = new FolderBrowserDialog();
-		if (dialog.ShowDialog() == DialogResult.OK) link.Text = dialog.SelectedPath;
-	}
 }

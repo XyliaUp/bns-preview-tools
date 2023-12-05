@@ -14,13 +14,13 @@ using Xylia.Preview.Data.Models;
 
 namespace Xylia.Preview.UI.Controls;
 
-[TemplatePart(Name = ElementItemsControl, Type = typeof(ItemsControl))]
+[TemplatePart(Name = ElementItemsControl, Type = typeof(PropertyItemsControl))]
 [TemplatePart(Name = ElementSearchBar, Type = typeof(SearchBar))]
 public class AttributeGrid : Control
 {
 	private const string ElementItemsControl = "PART_ItemsControl";
 	private const string ElementSearchBar = "PART_SearchBar";
-	private ItemsControl _itemsControl;
+	private PropertyItemsControl _itemsControl;
 	private ICollectionView _dataView;
 	private SearchBar _searchBar;
 
@@ -82,7 +82,7 @@ public class AttributeGrid : Control
 
 		base.OnApplyTemplate();
 
-		_itemsControl = GetTemplateChild(ElementItemsControl) as ItemsControl;
+		_itemsControl = GetTemplateChild(ElementItemsControl) as PropertyItemsControl;
 		_searchBar = GetTemplateChild(ElementSearchBar) as SearchBar;
 
 		if (_searchBar != null)

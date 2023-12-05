@@ -1,5 +1,2 @@
 ﻿namespace Xylia.Preview.Data.Models;
-public sealed class PcInitialSetting : Record
-{
-	
-}
+public sealed class PcInitialSetting : Record { }

@@ -10,11 +10,9 @@ using Xylia.Preview.UI.ViewModels;
 namespace Xylia.Preview.UI.Views;
 public partial class SettingsView : Window
 {
-	UserSettings settings;
-
 	public SettingsView()
 	{
-		DataContext = settings = new UserSettings();
+		DataContext = UserSettings.Default;
 		InitializeComponent();
 	}
 
@@ -31,7 +29,7 @@ public partial class SettingsView : Window
 
 		this.Activate();
 
-		settings.GameFolder = path;
+		UserSettings.Default.GameFolder = path;
 		var Locale = new Locale(new DirectoryInfo(path));
 		if (Locale._language != null)
 		{
@@ -41,14 +39,14 @@ public partial class SettingsView : Window
 
 	private void OnBrowseDirectories2(object sender, RoutedEventArgs e)
 	{
-		if (TryBrowseFolder(out var path)) settings.OutputFolder = path;
+		if (TryBrowseFolder(out var path)) UserSettings.Default.OutputFolder = path;
 
 		this.Activate();
 	}
 
 	private void OnBrowseDirectories3(object sender, RoutedEventArgs e)
 	{
-		if (TryBrowseFolder(out var path)) settings.OutputFolderResource = path;
+		if (TryBrowseFolder(out var path)) UserSettings.Default.OutputFolderResource = path;
 
 		this.Activate();
 	}

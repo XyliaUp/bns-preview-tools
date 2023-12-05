@@ -1,5 +1,4 @@
 ﻿using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Data;
 
 using HandyControl.Controls;
@@ -29,6 +28,8 @@ public class IconAttributeEditor : ReferenceAttributeEditor
 				Source = ReferedTable,
 				Mode = BindingMode.OneWay,
 				UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged,
+				IsAsync = true,
+				Delay = 100,
 			});
 
 		return element;

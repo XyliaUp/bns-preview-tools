@@ -4,9 +4,6 @@ using Xylia.Preview.Data.Common.DataStruct;
 namespace Xylia.Preview.Data.Models;
 public class VehicleAppearance : Record
 {
-	public string Alias;
-
-
 	public ObjectPath AnimSetName;
 	public ObjectPath MoveAnimSetName;
 	public ObjectPath AnimTreeName;

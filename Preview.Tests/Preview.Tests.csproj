@@ -16,5 +16,6 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Preview.Core\Preview.Core.csproj" />
+    <ProjectReference Include="..\Preview.UI\Preview.UI.csproj" />
   </ItemGroup>
 </Project>

@@ -8,7 +8,6 @@ namespace Xylia.Preview.Data.Engine.BinData.Definitions;
 public partial class AttributeDefinition
 {
 	public string Name { get; set; }
-	public string OriginalName { get; set; }
 	public AttributeType Type { get; set; }
 	public string DefaultValue { get; set; }
 	public ushort Repeat { get; set; }
@@ -19,51 +18,20 @@ public partial class AttributeDefinition
 	public bool IsKey { get; set; }
 	public bool IsRequired { get; set; }
 	public bool IsHidden { get; set; }
-
 	public AttributeDefaultValues AttributeDefaultValues { get; set; }
+	public SequenceDefinition Sequence { get; set; }
 
-	public List<string> Sequence { get; set; } = new List<string>();
-	public SequenceDefinition SequenceDef { get; set; }
 
-	public AttributeDefinition DuplicateOffseted(int offset)
-	{
-		return new AttributeDefinition
-		{
-			Name = Name,
-			OriginalName = OriginalName,
-			Type = Type,
-			DefaultValue = DefaultValue,
-			Repeat = Repeat,
-			ReferedTable = ReferedTable,
-			Offset = (ushort)(Offset + offset),
-			Size = Size,
-			IsKey = IsKey,
-			IsRequired = IsRequired,
-			IsHidden = IsHidden,
-			AttributeDefaultValues = AttributeDefaultValues,
-			Sequence = Sequence
-		};
-	}
-}
-
-public partial class AttributeDefinition
-{
-	#region Properties
 	public string ReferedTableName { get; set; }
 	public double Max { get; set; }
 	public double Min { get; set; }
-
-
 	public bool CanOutput { get; set; } = true;
-
 	public bool CanInput { get; set; } = true;
-
 	public bool Server { get; set; } = true;
-
 	public bool Client { get; set; } = true;
-	#endregion
 
-	#region Methods
+
+	#region Load Methods
 	public AttributeDefinition Clone() => (AttributeDefinition)MemberwiseClone();
 
 	public static AttributeDefinition LoadFrom(XmlElement node, ITableDefinition table, Func<SequenceDefinition> seqfun)
@@ -76,7 +44,7 @@ public partial class AttributeDefinition
 
 		#region Type & Ref
 		var TypeName = node.Attributes["type"]?.Value;
-		var Type = GetType(TypeName);
+		var Type = Enum.TryParse("T" + TypeName?.Trim(), true, out AttributeType ParseVType) ? ParseVType : default;
 
 		var RefTable = node.Attributes["ref"]?.Value;
 		if (RefTable != null) Type = AttributeType.TRef;
@@ -174,7 +142,7 @@ public partial class AttributeDefinition
 			case AttributeType.TProp_field:
 			{
 				if (Name.Contains("forwarding-types"))
-					seq.Default = seq.Sequence.FirstOrDefault();
+					seq.Default = seq.FirstOrDefault();
 
 				attrDefDefaults.DString = DefaultValue ?? seq?.Default;
 				break;
@@ -214,7 +182,6 @@ public partial class AttributeDefinition
 		return new AttributeDefinition
 		{
 			Name = Name,
-			OriginalName = Name,
 
 			//IsDeprecated = (node.Attributes["deprecated"]?.Value).ToBool(),
 			IsKey = (node.Attributes["key"]?.Value).ToBool(),
@@ -225,8 +192,7 @@ public partial class AttributeDefinition
 			Offset = (ushort)(node.Attributes["offset"]?.Value).ToInt16(),
 			Repeat = ushort.TryParse(node.Attributes["repeat"]?.Value, out var tmp) ? tmp : (ushort)1,
 			ReferedTableName = RefTable,
-			Sequence = seq?.Sequence ?? new List<string>(),
-			SequenceDef = seq,
+			Sequence = seq,
 			DefaultValue = attrDefDefaults.DString,
 			AttributeDefaultValues = attrDefDefaults,
 			Max = MaxValue,
@@ -238,8 +204,6 @@ public partial class AttributeDefinition
 			CanOutput = node.Attributes["output"]?.Value.ToBool() ?? true,
 		};
 	}
-
-	public static AttributeType GetType(string Info) => Enum.TryParse("T" + Info?.Trim(), true, out AttributeType ParseVType) ? ParseVType : default;
 
 	public static ushort GetSize(AttributeType attributeType, bool is64 = false)
 	{

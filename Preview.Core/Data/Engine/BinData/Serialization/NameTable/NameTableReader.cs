@@ -34,20 +34,10 @@ public class NameTableReader : INameTableReader
 
 		var entryCount = reader.Read<int>();
 
-		if (_is64Bit)
-        {
-            for (var i = 0; i < entryCount; i++)
-            {
-                table.Entries.Add(ReadEntry64(reader));
-            }
-        }
-        else
-        {
-            for (var i = 0; i < entryCount; i++)
-            {
-                table.Entries.Add(ReadEntry(reader));
-            }
-        }
+		for (var i = 0; i < entryCount; i++)
+		{
+			table.Entries.Add(_is64Bit ? ReadEntry64(reader) : ReadEntry(reader));
+		}
 
         var stringTableSize = reader.Read<uint>(); // Total size of string table
         var stringTable = reader.ReadBytes(stringTableSize);

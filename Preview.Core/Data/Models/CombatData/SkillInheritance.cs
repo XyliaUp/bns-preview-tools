@@ -1,5 +1,2 @@
 ﻿namespace Xylia.Preview.Data.Models;
-public sealed class SkillInheritance : Record
-{
-	
-}
+public sealed class SkillInheritance : Record { }

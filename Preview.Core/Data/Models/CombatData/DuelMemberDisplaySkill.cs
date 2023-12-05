@@ -3,7 +3,4 @@
 namespace Xylia.Preview.Data.Models;
 
 [Side(ReleaseSide.Client)]
-public sealed class DuelMemberDisplaySkill : Record
-{
-	
-}
+public sealed class DuelMemberDisplaySkill : Record { }

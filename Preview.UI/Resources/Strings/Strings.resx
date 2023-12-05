@@ -208,7 +208,7 @@
     <value>Task completed, taking {0: hh} hours {0: mm} minutes {0: ss} seconds.</value>
   </data>
   <data name="IconOut_TaskException" xml:space="preserve">
-    <value>Task unexpectedly terminated, because {0}.</value>
+    <value>Task unexpectedly terminated, because {0}</value>
   </data>
   <data name="IconOut_UseBackground" xml:space="preserve">
     <value>Grade Background</value>
@@ -368,7 +368,7 @@
     <value>Save</value>
   </data>
   <data name="Text_SaveAs" xml:space="preserve">
-    <value>Save As</value>
+    <value>Save As...</value>
   </data>
   <data name="Text_PublishOn" xml:space="preserve">
     <value>Publish at</value>
@@ -378,5 +378,17 @@
   </data>
   <data name="ItemList_TaskCompleted2" xml:space="preserve">
     <value>Task completed, taking {1} seconds.</value>
+  </data>
+  <data name="Text_Edit" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="Text_Search" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="Text_Replace" xml:space="preserve">
+    <value>Replace</value>
+  </data>
+  <data name="Text_ReplaceInFiles" xml:space="preserve">
+    <value>Replace in Files</value>
   </data>
 </root>

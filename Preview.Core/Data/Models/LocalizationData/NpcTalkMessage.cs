@@ -5,43 +5,6 @@ namespace Xylia.Preview.Data.Models;
 [Side(ReleaseSide.Client)]
 public class NpcTalkMessage : Record
 {
-	public string Alias;
-
-
-
-	public Ref<Text> Name2;
-
-	[Name("required-faction")]
-	public Ref<Faction> RequiredFaction;
-
-	[Name("required-complete-quest")]
-	public string RequiredCompleteQuest;
-
-	[Name("function-step")]
-	public sbyte FunctionStep;
-
-
-	[Name("step-text"), Repeat(30)]
-	public Ref<Text>[] StepText;
-	[Name("step-subtext"), Repeat(30)]
-	public Ref<Text>[] StepSubtext;
-	[Name("step-next"), Repeat(30)]
-	public Ref<Text>[] StepNext;
-	[Name("step-kismet"), Repeat(30)]
-	public string[] StepKismet;
-	[Name("step-cinematic"), Repeat(30)]
-	public Ref<Cinematic>[] StepCinematic;
-	[Name("step-show"), Repeat(30)]
-	public ObjectPath[] StepShow;
-	[Name("step-camera-show"), Repeat(30)]
-	public ObjectPath[] StepCameraShow;
-
-	[Name("end-talk-social")]
-	public Ref<TalkSocial>EndTalkSocial;
-	[Name("end-talk-sound")]
-	public string EndTalkSound;
-
-
 	#region Sub	
 	[Name("branch")]
 	public sealed class Branch : NpcTalkMessage 

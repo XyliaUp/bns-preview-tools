@@ -1,6 +1,7 @@
 ﻿<Window x:Class="Xylia.Preview.UI.Views.TableView"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+		xmlns:cv="clr-namespace:Xylia.Preview.UI.Common.Converters"
 		xmlns:hc="https://handyorg.github.io/handycontrol"
         Height="400" Width="550">
 	<Window.Resources>
@@ -29,7 +30,7 @@
 				<DataTemplate>
 					<Border MinHeight="40" BorderBrush="{StaticResource BorderBrush}" BorderThickness="0 1 0 0" ToolTip="{Binding}" ContextMenu="{StaticResource ItemMenu}">
 						<Grid VerticalAlignment="Center">
-							<TextBlock Text="{Binding GetText}" Foreground="{StaticResource PrimaryTextBrush}" FontSize="12" Margin="20,0" />
+							<TextBlock Text="{Binding Converter={cv:RecordNameConverter},Mode=OneWay}" Foreground="{StaticResource PrimaryTextBrush}" FontSize="12" Margin="20,0" />
 							<!-- <TextBlock Text="{Binding Map}" Foreground="{StaticResource SecondaryTextBrush}" FontSize="12" Margin="6,0" HorizontalAlignment="Right" /> -->
 						</Grid>
 					</Border>

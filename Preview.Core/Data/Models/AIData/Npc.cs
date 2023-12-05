@@ -22,14 +22,14 @@ public sealed class Npc : Record
 
 
 	#region Public Properties
-	public override string GetText => Name2.GetText();
+	public string Text => Name2.GetText();
 
 	public string Map
 	{
 		get
 		{
-			var MapUnit = FileCache.Data.MapUnit.Where(x => x.Alias != null && x.Alias.Contains(this.Alias, StringComparison.OrdinalIgnoreCase)).FirstOrDefault();
-			return MapUnit is null ? null : FileCache.Data.MapInfo[MapUnit.Mapid]?.GetText;
+			var MapUnit = FileCache.Data.MapUnit.Where(x => x.ToString() != null && x.ToString().Contains(this.Alias, StringComparison.OrdinalIgnoreCase)).FirstOrDefault();
+			return MapUnit is null ? null : FileCache.Data.MapInfo[MapUnit.Mapid]?.Text;
 		}
 	}
 	#endregion

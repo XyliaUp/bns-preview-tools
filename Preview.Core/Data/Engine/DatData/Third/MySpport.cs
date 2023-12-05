@@ -1,6 +1,4 @@
-﻿using System.Collections.Concurrent;
-using System.Data;
-using System.Diagnostics;
+﻿using System.Data;
 using System.Text.RegularExpressions;
 
 namespace Xylia.Preview.Data.Engine.DatData.Third;
@@ -16,7 +14,6 @@ public static class MySpport
 			 Convert.FromBase64String("6fXfeI2dhsT173QVhtOpYLqEQazrsf9opL8cps8j6XH5AzGpRDh0PePoXzhWTZA36nbyEJY0yqDrrBVBEQwRnQ=="),
 			 Convert.FromBase64String("99Y0G0QkA62/hFBFmg5fI4vdsesCYGMZw+QwhdSJW87Z5fTZ8r8PamYzNudQPeiJhgQgAVjpFBG7K6Um6JRj2w=="));
 
-
 	public class PackParam
 	{
 		public string FolderPath;
@@ -25,74 +22,83 @@ public static class MySpport
 
 		public bool Bit64;
 
-		public byte[] Aes;
-
-		//public byte[] Xor;
+		public byte[] Aes = KeyInfo.AES_2020_05;
 
 		public BnsCompression.CompressionLevel CompressionLevel = BnsCompression.CompressionLevel.Normal;
 	}
 
-	public static void Pack(PackParam param, ConcurrentDictionary<string, byte[]> replaces = null, bool IgnoreExist = false)
+
+
+	public static void Extract(PackParam param)
 	{
 		#region Initialize
 		if (string.IsNullOrWhiteSpace(param.FolderPath) && string.IsNullOrWhiteSpace(param.PackagePath))
-			throw new ArgumentException("请填写dat路径和文件夹路径");
+		{
+			throw new ArgumentException("invalid path");
+		}
+		else if (string.IsNullOrWhiteSpace(param.FolderPath))
+		{
+			param.FolderPath = Path.GetDirectoryName(param.PackagePath) + @"\Export\" + Path.GetFileNameWithoutExtension(param.PackagePath);
+		}
+		#endregion
 
+		Parallel.ForEach(new BNSDat(param.PackagePath, param.Bit64).FileTable, file =>
+		{
+			string path = Path.Combine(param.FolderPath, file.FilePath);
+			Directory.CreateDirectory(Path.GetDirectoryName(path));
+
+			File.WriteAllBytes(path, file.Data);
+		});
+	}
+
+	public static void Pack(PackParam param, IReadOnlyDictionary<string, byte[]> replaces = null, bool IgnoreExist = false)
+	{
+		#region Initialize
+		if (string.IsNullOrWhiteSpace(param.FolderPath) && string.IsNullOrWhiteSpace(param.PackagePath))
+		{
+			throw new ArgumentException("invalid path");
+		}
 		else if (string.IsNullOrWhiteSpace(param.PackagePath))
 		{
 			var dir = new DirectoryInfo(param.FolderPath);
 			param.PackagePath = dir.Parent.FullName + "\\" + dir.Name + ".dat";
 		}
-
 		else if (string.IsNullOrWhiteSpace(param.FolderPath))
-			param.FolderPath = Path.GetDirectoryName(param.PackagePath) + @"\Export\" + Path.GetFileNameWithoutExtension(param.PackagePath) + @"\files";
+		{
+			param.FolderPath = Path.GetDirectoryName(param.PackagePath) + @"\Export\" + Path.GetFileNameWithoutExtension(param.PackagePath);
+		}
 		#endregion
 
-		#region 替换文件
+		#region Replace
 		if (replaces != null)
 		{
 			var FilePath = new BNSDat(param.PackagePath, param.Bit64).FileTable.Select(Fte => Fte.FilePath).ToList();
 			foreach (var replace in replaces)
 			{
-				#region 判断需要修改的目标
-				//需要修改的对象
+				#region target
 				var Target = new List<string>();
-
-				//如果直接包含
 				if (FilePath.Contains(replace.Key)) Target.Add(replace.Key);
-
-				//进行通配符匹配
-				else if (replace.Key.Contains("*") || replace.Key.Contains("?"))
+				else if (replace.Key.Contains('*') || replace.Key.Contains('?'))
 				{
 					Target.AddRange(FilePath.Where(f => new Regex(replace.Key, RegexOptions.IgnoreCase).Match(f).Success));
 				}
-
 				else if (IgnoreExist) Target.Add(replace.Key);
 
-				if (!Target.Any()) continue;
+				if (Target.Count == 0) continue;
 				#endregion
 
-				foreach (var t in Target)
-				{
-					File.WriteAllBytes(param.FolderPath + "\\" + t, replace.Value);
-				}
+				Target.ForEach(x => File.WriteAllBytes(param.FolderPath + "\\" + x, replace.Value));
 			}
 		}
 		#endregion
 
-		#region 压缩文件
-		Trace.WriteLine("dll may loss");
 
-		//string DllName = nameof(Properties.Resource.bnscompression) + ".dll";
-		//if (!File.Exists(DllName)) File.WriteAllBytes(DllName, Properties.Resource.bnscompression);
-
+		#region Execute
 		var rsa = RSA3;
 		double value = BnsCompression.CreateFromDirectory(param.FolderPath, param.PackagePath, param.Bit64, param.CompressionLevel,
 			param.Aes, (uint)param.Aes.Length, rsa, (uint)rsa.Length,
-			BnsCompression.BinaryXmlVersion.Version4, delegate (string fileName, ulong fileSize)
-			{
-				return BnsCompression.DelegateResult.Continue;
-			});
+			BnsCompression.BinaryXmlVersion.Version4,
+			(string fileName, ulong fileSize) => BnsCompression.DelegateResult.Continue);
 		#endregion
 	}
 }

@@ -1,6 +1,4 @@
-﻿using System.Diagnostics;
-
-using CUE4Parse.BNS.AssetRegistry;
+﻿using CUE4Parse.BNS.AssetRegistry;
 using CUE4Parse.Encryption.Aes;
 using CUE4Parse.FileProvider;
 using CUE4Parse.FileProvider.Objects;
@@ -151,9 +149,7 @@ public sealed class GameFileProvider : DefaultFileProvider, IDisposable
 		AssetRegistryModule = new FAssetRegistryState(archive);
 		archive.Dispose();
 
-		string msg = $"Initialize asset registry, toked {(DateTime.Now - dt).Seconds}s";
-		Console.WriteLine(msg);
-		Debug.WriteLine(msg);
+		Console.WriteLine($"Initialize asset registry, taked {(DateTime.Now - dt).Seconds}s");
 	}
 	#endregion
 

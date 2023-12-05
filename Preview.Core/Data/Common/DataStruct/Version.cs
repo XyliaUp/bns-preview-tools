@@ -16,6 +16,15 @@ public struct Version
 		this.Revision = ushort.Parse(strings[3]);
 	}
 
+	public Version(ushort major, ushort minor, ushort build, ushort revision)
+	{
+		this.Major = major;
+		this.Minor = minor;
+		this.Build = build;
+		this.Revision = revision;
+	}
+
+
 
 	public readonly override string ToString() => $"{Major}.{Minor}.{Build}.{Revision}";
 }

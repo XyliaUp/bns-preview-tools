@@ -2,13 +2,15 @@
 
 using Xylia.Preview.Data.Helpers;
 using Xylia.Preview.Data.Helpers.Output;
-using Xylia.Preview.Data.Models;
 
 namespace Xylia.Preview.UI.Helpers.Output.Quests;
 public sealed class QuestOut : OutSet
 {
     protected override void CreateData(ExcelWorksheet sheet)
     {
+        throw new NotImplementedException();
+
+
         #region Title
         sheet.SetColumn(Column++, "任务序号", 10);
         sheet.SetColumn(Column++, "任务别名", 15);
@@ -23,21 +25,21 @@ public sealed class QuestOut : OutSet
         #endregion
 
 
-        foreach (var Quest in FileCache.Data.Quest.OrderBy(o => o.id))
+        foreach (var Quest in FileCache.Data.Quest.OrderBy(o => o.RecordId))
         {
             Row++;
             int column = 1;
 
-            sheet.Cells[Row, column++].SetValue(Quest.id);
-            sheet.Cells[Row, column++].SetValue(Quest.Alias);
-			sheet.Cells[Row, column++].SetValue(Quest.Name2.GetText());
-			sheet.Cells[Row, column++].SetValue(Quest.Group2.GetText());
-			sheet.Cells[Row, column++].SetValue(Quest.Category);
-			sheet.Cells[Row, column++].SetValue(Quest.ContentType);
-			sheet.Cells[Row, column++].SetValue(Quest.ResetType);
-			sheet.Cells[Row, column++].SetValue(Quest.Retired);
-			sheet.Cells[Row, column++].SetValue(Quest.Tutorial);
-			sheet.Cells[Row, column++].SetValue(Quest.AttractionInfo.Instance?.GetText ?? Quest.AttractionInfo.ToString());
+   //         sheet.Cells[Row, column++].SetValue(Quest.id);
+   //         sheet.Cells[Row, column++].SetValue(Quest.Alias);
+			//sheet.Cells[Row, column++].SetValue(Quest.Name2.GetText());
+			//sheet.Cells[Row, column++].SetValue(Quest.Group2.GetText());
+			//sheet.Cells[Row, column++].SetValue(Quest.Category);
+			//sheet.Cells[Row, column++].SetValue(Quest.ContentType);
+			//sheet.Cells[Row, column++].SetValue(Quest.ResetType);
+			//sheet.Cells[Row, column++].SetValue(Quest.Retired);
+			//sheet.Cells[Row, column++].SetValue(Quest.Tutorial);
+			//sheet.Cells[Row, column++].SetValue(Quest.AttractionInfo.Instance?.ToString() ?? Quest.AttractionInfo.ToString());
 		}
     }
 }

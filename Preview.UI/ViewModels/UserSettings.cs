@@ -14,7 +14,7 @@ using Xylia.Preview.UI.Controls;
 namespace Xylia.Preview.UI.ViewModels;
 public partial class UserSettings : Settings
 {
-	public static UserSettings Default => new();
+	public static UserSettings Default { get; } = new();
 
 
 	#region Model

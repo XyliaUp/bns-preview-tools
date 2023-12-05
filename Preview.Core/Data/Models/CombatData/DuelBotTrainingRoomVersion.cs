@@ -1,5 +1,2 @@
 ﻿namespace Xylia.Preview.Data.Models;
-public sealed class DuelBotTrainingRoomVersion : Record
-{
-	
-}
+public sealed class DuelBotTrainingRoomVersion : Record { }

@@ -11,11 +11,6 @@ public partial class Skill3 : Record
 	[Name("variation-id")]
 	public sbyte VariationId = 1;
 
-
-	public string Alias;
-
-
-
 	[Name("revised-effect-equip-probability-in-exec") , Repeat(5)] 
 	public short[] RevisedEffectEquipProbabilityInExec1;
 
@@ -25,8 +20,6 @@ public partial class Skill3 : Record
 	[Name("damage-rate-standard-stats")]
 	public short DamageRateStandardStats = 1000;
 
-
-	public string Name;
 
 	public Ref<Text> Name2;
 

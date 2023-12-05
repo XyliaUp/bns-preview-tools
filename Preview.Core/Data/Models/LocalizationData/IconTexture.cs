@@ -11,8 +11,6 @@ using Xylia.Preview.Data.Helpers;
 namespace Xylia.Preview.Data.Models;
 public sealed class IconTexture : Record
 {
-	public string Alias;
-
 	public string iconTexture;
 
 	public short IconHeight;

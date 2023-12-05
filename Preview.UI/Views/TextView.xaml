@@ -21,9 +21,18 @@
 		<Menu Background="#20808080" FontSize="14" Grid.ColumnSpan="2" Visibility="Visible">
 			<MenuItem Header="{DynamicResource Text_File}">
 				<MenuItem Header="{DynamicResource Text_Left}"  Click="OpenLeftFileMenuItem_Click" />
-				<MenuItem Header="{DynamicResource Text_Left}" Click="OpenRightFileMenuItem_Click" />
+				<MenuItem Header="{DynamicResource Text_Right}" Click="OpenRightFileMenuItem_Click" />
 				<MenuItem Header="{DynamicResource TextView_LoadLastOnStartup}" IsCheckable="True" IsChecked="{Binding Text_LoadPrevious, Source={x:Static VM:UserSettings.Default}}"/>
+				<Separator />
+				<MenuItem Header="{DynamicResource Text_Save}" Command="ApplicationCommands.Save" />
 			</MenuItem>
+			<MenuItem Header="{DynamicResource Text_Edit}">
+				<MenuItem Header="{DynamicResource Text_Search}" Command="ApplicationCommands.Find" />
+				<Separator />
+				<MenuItem Header="{DynamicResource Text_ReplaceInFiles}" Command="ApplicationCommands.Replace" />
+			</MenuItem>
+			
+			
 			<MenuItem Header="Mode" Visibility="Collapsed">
 				<MenuItem Header="Inline Mode" Click="InlineModeToggle_Click" />
 				<MenuItem Header="SideBySide Mode" Click="SideBySideModeToggle_Click" />

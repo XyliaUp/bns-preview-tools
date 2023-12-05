@@ -1,5 +1,2 @@
 ﻿namespace Xylia.Preview.Data.Models;
-public sealed class ExpandSkillPage : Record 
-{
-	
-}
+public sealed class ExpandSkillPage : Record { }

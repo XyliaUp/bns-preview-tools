@@ -14,6 +14,8 @@ public struct Native
 		Offset = offset;
 	}
 
+
+
 	public static bool operator ==(Native a, Native b)
 	{
 		return
@@ -21,23 +23,14 @@ public struct Native
 			a.Offset == b.Offset;
 	}
 
-	public static bool operator !=(Native a, Native b)
-	{
-		return !(a == b);
-	}
+	public static bool operator !=(Native a, Native b) => !(a == b);
 
 	public bool Equals(Native other)
 	{
 		return StringSize == other.StringSize && Offset == other.Offset;
 	}
 
-	public override bool Equals(object obj)
-	{
-		return obj is Native other && Equals(other);
-	}
+	public override bool Equals(object obj) => obj is Native other && Equals(other);
 
-	public override int GetHashCode()
-	{
-		return HashCode.Combine(StringSize, Offset);
-	}
+	public override int GetHashCode() => HashCode.Combine(StringSize, Offset);
 }

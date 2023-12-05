@@ -1,18 +1,13 @@
-﻿using Xylia.Preview.Data.Common.Attribute;
+﻿using Xylia.Preview.Data.Common.Abstractions;
+using Xylia.Preview.Data.Common.Attribute;
 using Xylia.Preview.Data.Common.DataStruct;
-using Xylia.Preview.Data.Common.Interface;
 
 namespace Xylia.Preview.Data.Models;
 public sealed class Duel : Record, IAttraction
 {
-	public string Alias;
-
 	public Ref<Text> DuelName2;
 
 	public Ref<Text> DuelDesc;
-
-	public Ref<AttractionRewardSummary> RewardSummary;
-
 
 	public enum DuelType
 	{
@@ -30,8 +25,8 @@ public sealed class Duel : Record, IAttraction
 
 
 	#region Interface
-	public override string GetText => this.DuelName2.GetText();
+	public string Text => this.DuelName2.GetText();
 
-	public string GetDescribe() => this.DuelDesc.GetText();
+	public string Describe => this.DuelDesc.GetText();
 	#endregion
 }

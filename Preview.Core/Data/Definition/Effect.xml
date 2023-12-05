@@ -246,8 +246,6 @@
 		<attribute name="linkee-abnormal" type="Ref" ref="linkmoveanim" />
 		<attribute name="link-attach-duration" type="Msec" default="0" min="0" max="1800000" />
 		<attribute name="link-detach-duration" type="Msec" default="0" min="0" max="1800000" />
-		
-		
 		<attribute name="catch-legs-physics" type="Bool" />
 		<attribute name="catch-arms-physics" type="Bool" />
 		<attribute name="catch-body-physics" type="Bool" />

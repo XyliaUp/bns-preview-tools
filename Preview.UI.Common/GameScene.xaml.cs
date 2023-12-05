@@ -40,12 +40,11 @@ public abstract class GameScene : Window, INotifyPropertyChanged
 
 	public GameScene()
 	{
-		DataContext = this;
-		Loaded += (s, e) => OnLoaded(e);
+		this.OnLoading();
 	}
 	#endregion
 
-	#region Property
+	#region Properties
 	public static readonly DependencyProperty TitleForegroundProperty = DependencyProperty.Register(nameof(TitleForeground), typeof(Brush), typeof(GameScene));
 	public static readonly DependencyProperty SysButtonColorProperty = DependencyProperty.Register(nameof(SysButtonColor), typeof(Brush), typeof(GameScene));
 
@@ -53,22 +52,6 @@ public abstract class GameScene : Window, INotifyPropertyChanged
 	public Brush SysButtonColor { get { return (Brush)GetValue(SysButtonColorProperty); } set { SetValue(SysButtonColorProperty, value); } }
 	#endregion
 	
-
-	#region	PropertyChange
-
-	public event PropertyChangedEventHandler PropertyChanged;
-
-	protected bool SetProperty<T>(ref T storage, T value, [CallerMemberName] string propertyName = null)
-	{
-		if (EqualityComparer<T>.Default.Equals(storage, value))
-			return false;
-
-		storage = value;
-		PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-		return true;
-	}
-	#endregion
-
 	#region Methods
 	public override void OnApplyTemplate()
 	{
@@ -89,23 +72,27 @@ public abstract class GameScene : Window, INotifyPropertyChanged
 			_CloseButton.Click += delegate { this.Close(); };
 	}
 
+	protected virtual void OnLoading()
+	{
+
+	}
+
 	protected override void OnInitialized(EventArgs e)
 	{
-		base.OnInitialized(e);
-
-		WindowStartupLocation = WindowStartupLocation.CenterScreen;
-		if (WindowStyle == WindowStyle.None)
-		{
-			WindowStyle = WindowStyle.SingleBorderWindow;
-		}
-
-		// determine content alignment 
+		// determine content alignment after initialization 
 		if (double.IsNaN(this.Width) && double.IsNaN(this.Height))
 		{
+			ResizeMode = ResizeMode.NoResize;
 			SizeToContent = SizeToContent.WidthAndHeight;
 			HorizontalAlignment = HorizontalAlignment.Left;
 			VerticalAlignment = VerticalAlignment.Top;
-		}	
+		}
+
+		// initialized
+		base.OnInitialized(e);			  
+
+		WindowStartupLocation = WindowStartupLocation.CenterScreen;
+		if (WindowStyle == WindowStyle.None) WindowStyle = WindowStyle.SingleBorderWindow;
 	}
 
 	protected override void OnStateChanged(EventArgs e)
@@ -129,16 +116,27 @@ public abstract class GameScene : Window, INotifyPropertyChanged
 		}
 	}
 
-	protected virtual void OnLoaded(EventArgs e)
-	{
-
-	}
-
 	protected override void OnContentRendered(EventArgs e)
 	{
 		base.OnContentRendered(e);
 		if (SizeToContent == SizeToContent.WidthAndHeight)
 			InvalidateMeasure();
+	}
+	#endregion
+
+
+	#region	PropertyChange
+
+	public event PropertyChangedEventHandler PropertyChanged;
+
+	protected bool SetProperty<T>(ref T storage, T value, [CallerMemberName] string propertyName = null)
+	{
+		if (EqualityComparer<T>.Default.Equals(storage, value))
+			return false;
+
+		storage = value;
+		PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+		return true;
 	}
 	#endregion
 }

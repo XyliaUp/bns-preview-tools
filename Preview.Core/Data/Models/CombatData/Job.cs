@@ -1,5 +1,4 @@
 ﻿using Xylia.Extension;
-using Xylia.Preview.Data.Common.DataStruct;
 using Xylia.Preview.Data.Common.Seq;
 using Xylia.Preview.Data.Helpers;
 
@@ -7,14 +6,6 @@ namespace Xylia.Preview.Data.Models;
 public sealed class Job : Record
 {
 	public JobSeq job;
-
-
-	public Ref<Text> Name2;
-
-	public string Icon;
-
-	public Ref<Text> Desc;
-
 
 
 	#region Functions

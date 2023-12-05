@@ -9,10 +9,6 @@ using static Xylia.Preview.Data.Models.Item.Accessory;
 namespace Xylia.Preview.Data.Models;
 public sealed class ItemTransformRecipe : Record
 {
-	public string Alias;
-
-
-
 	[Name("money-cost")]
 	public int MoneyCost;
 

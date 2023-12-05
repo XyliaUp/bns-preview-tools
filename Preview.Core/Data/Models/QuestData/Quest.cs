@@ -4,6 +4,8 @@ using CUE4Parse_Conversion.Textures;
 
 using SkiaSharp;
 
+using Xylia.Extension;
+using Xylia.Preview.Data.Common.Abstractions;
 using Xylia.Preview.Data.Common.Attribute;
 using Xylia.Preview.Data.Common.DataStruct;
 using Xylia.Preview.Data.Common.Seq;
@@ -12,254 +14,62 @@ using Xylia.Preview.Data.Models.QuestData;
 using Xylia.Preview.Data.Models.QuestData.Enums;
 
 namespace Xylia.Preview.Data.Models;
-public sealed class Quest : Record
+public sealed class Quest : Record, IHaveName
 {
 	#region Fields
-	public int id;
-	public string Alias;
-
-
-
-	public sbyte MaxRepeat;
-
-	[Side(ReleaseSide.Client)]
-	public string Name;
-
-	[Side(ReleaseSide.Client)]
-	public Ref<Text> Name2;
-
-	[Repeat(2)]
-	public Ref<District>[] District;
-
-	[Repeat(2)]
-	public Ref<MapGroup1>[] Map_Group_1;
-
-	[Side(ReleaseSide.Client)]
-	public string Group;
-
-	[Side(ReleaseSide.Client)]
-	public Ref<Text> Group2;
-
-	[Side(ReleaseSide.Client)]
-	public Ref<Text> Desc;
-
-	[Side(ReleaseSide.Client)]
-	public Ref<Text> CompletedDesc;
-
-	public Category Category;
-
-	public bool CompletedList;
-
-	[Side(ReleaseSide.Client)]
-	public /*Grade*/ sbyte Grade;
-
-	public bool Tutorial;
-
-	[Side(ReleaseSide.Client)]
-	public bool ShowTutorialTag;
-
-	public sbyte LastMissionStep;
-
-	public bool EffectExist;
-
-
-	public QuestDayOfWeekSeq DayOfWeek;
-
-	public enum QuestDayOfWeekSeq
-	{
-		None,
-
-		Daily,
-
-		Weekly,
-
-		Monthly,
-
-		Mon,
-
-		Tue,
-
-		Wed,
-
-		The,
-
-		Fri,
-
-		Sat,
-
-		Sun,
-
-		[Name("sat-sun")]
-		SatSun,
-
-		[Name("fri-sat-sun")]
-		FriSatSun,
-	}
-
-
-
-	public ResetType ResetType;
-	public ResetType2 ResetByAcquireTime;
-	public BDayOfWeek ResetDayOfWeek;
-	public sbyte ResetDayOfMonth;
-
-	public Ref<Faction> ActivatedFaction;
-	public Ref<Faction> MainFaction;
-
-	public ProductionType Production;
-
-	public SaveType SaveType;
-
-	[Side(ReleaseSide.Client)]
-	public bool InvokeFxMsg;
-
-	public Ref<Dungeon> Dungeon;
-
-	public DungeonTypeSeq DungeonType;
-
-	public enum DungeonTypeSeq
-	{
-		unbind,
-
-		bind,
-	}
-
-	[Deprecated]
-	public CraftType CraftType;
-
-	public ContentType ContentType;
-
-	public bool Retired;
-
-	[Repeat(3)]
-	public bool[] ProgressDifficultyType;
-
-	public bool ProgressDifficultyTypeAlways = true;
-
-	[Repeat(4)]
-	public Ref<Record>[] Attraction;
-
-	public Ref<Record> AttractionInfo;
-
-	[Obsolete]
-	public bool ResetEnable;
-
-	[Obsolete]
-	public bool ResetMoney;
-
-	[Repeat(4), Obsolete]
-	public Ref<Item>[] ResetItem;
-
-	[Repeat(4), Obsolete]
-	public sbyte[] ResetItemCount;
-
-	[Side(ReleaseSide.Client)]
-	public Ref<TalkSocial> AcquireTalksocial;
-
-	[Side(ReleaseSide.Client)]
-	public float AcquireTalksocialDelay;
-
-	[Side(ReleaseSide.Client)]
-	public Ref<TalkSocial> CompleteTalksocial;
-
-	[Side(ReleaseSide.Client)]
-	public float CompleteTalksocialDelay;
-
-	public bool CheckVitality;
-
-	public short ValidDateStartYear;
-	public sbyte ValidDateStartMonth;
-	public sbyte ValidDateStartDay;
-
-	public short ValidDateEndYear;
-	public sbyte ValidDateEndMonth;
-	public sbyte ValidDateEndDay;
-
-	public sbyte ValidTimeStartHour;
-	public sbyte ValidTimeEndHour;
-
-	public bool ValidDayofweekSun;
-	public bool ValidDayofweekMon;
-	public bool ValidDayofweekTue;
-	public bool ValidDayofweekWed;
-	public bool ValidDayofweekThu;
-	public bool ValidDayofweekFri;
-	public bool ValidDayofweekSat;
-
-	[Deprecated]
-	public Ref<Quest> ReplayEpicOriginal;
-	public bool ReplayEpicStartPoint;
-
-	public Ref<ZonePcSpawn> ReplayEpicPcspawn;
-
-	public Ref<Dungeon> Dungeon2;
-
-	public sbyte DuelMissionSteps;
-	public sbyte DuelMissions;
-	public sbyte DuelCases;
-	public short DuelCaseSubtypes;
-
-	public sbyte ExceedLevelNextLevel;
-
-	public Ref<ContentsReset> ContentsReset;
-
-	public bool CinemaCheck;
-
-	public bool ReplayCheck;
-
-
 	[Side(ReleaseSide.Server)]
 	public BroadcastCategory BroadcastCategory;
 
-	[Side(ReleaseSide.Server) , Repeat(3)]
+	[Side(ReleaseSide.Server), Repeat(3)]
 	public Ref<Achievement>[] ExtraQuestCompleteAchievement;
 
 	[Side(ReleaseSide.Server)]
 	public Ref<Cinematic> ReplayEpicZoneLeaveCinematic;
-	#endregion
 
-	#region Elements
-	public List<Acquisition> Acquisition { get; set; }
+	public LazyList<Acquisition> Acquisition { get; set; }
 
-	public List<MissionStep> MissionStep { get; set; }
+	public LazyList<MissionStep> MissionStep { get; set; }
 
-	public List<Completion> Completion { get; set; }
+	public LazyList<Completion> Completion { get; set; }
 
-	public List<Transit> Transit { get; set; }
-
-	public List<GiveupLoss> GiveupLoss { get; set; }
+	public LazyList<Transit> Transit { get; set; }
 	#endregion
 
 
-	#region	Properties
-	public override string GetText => Name2.GetText();
+	#region Properties
+	public string Text => this.Attributes["name2"]?.GetText();
 
-	public string Title => Group2.GetText();
+	public string Title => this.Attributes["group2"]?.GetText();
 
 	public SKBitmap FrontIcon
 	{
 		get
 		{
-			string respath()
-			{
-				bool IsRepeat = ResetType != ResetType.None;
-				switch (Category)
-				{
-					case Category.Epic: return "Map_Epic_Start";
-					case Category.Job: return "Map_Job_Start";
-					case Category.Dungeon: return null;
-					case Category.Attraction: return "Map_attraction_start";
-					case Category.TendencySimple: return "Map_System_start";
-					case Category.TendencyTendency: return "Map_System_start";
-					case Category.Mentoring: return "mento_mentoring_start";
-					case Category.Hunting: return IsRepeat ? "Map_Hunting_repeat_start" : "Map_Hunting_start";
-					case Category.Normal:
-					{
-						//faction quest
-						if (!MainFaction.IsNull)
-							return IsRepeat ? "Map_Faction_repeat_start" : "Map_Faction_start";
+			bool IsRepeat = Attributes["reset-type"].ToEnum<ResetType>() != ResetType.None;
+			var Category = Attributes["category"].ToEnum<Category>();
+			var ContentType = Attributes["content-type"].ToEnum<ContentType>();
 
-						return ContentType switch
+			string res;
+			switch (Category)
+			{
+				case Category.Epic: res = "Map_Epic_Start"; break;
+				case Category.Job: res = "Map_Job_Start"; break;
+				case Category.Dungeon: return null;
+				case Category.Attraction: res = "Map_attraction_start"; break;
+				case Category.TendencySimple: res = "Map_System_start"; break;
+				case Category.TendencyTendency: res = "Map_System_start"; break;
+				case Category.Mentoring: res = "mento_mentoring_start"; break;
+				case Category.Hunting: res = IsRepeat ? "Map_Hunting_repeat_start" : "Map_Hunting_start"; break;
+				case Category.Normal:
+				{
+					//faction quest
+					if (Attributes["main-faction"] != null)
+					{
+						res = IsRepeat ? "Map_Faction_repeat_start" : "Map_Faction_start";
+					}
+					else
+					{
+						res = ContentType switch
 						{
 							ContentType.Festival => IsRepeat ? "Map_Festival_repeat_start" : "Map_Festival_start",
 							ContentType.Duel or ContentType.PartyBattle => IsRepeat ? "Map_Faction_repeat_start" : "Map_Faction_start",
@@ -269,14 +79,11 @@ public sealed class Quest : Record
 							_ => IsRepeat ? "Map_Repeat_start" : "Map_Normal_Start",
 						};
 					}
-
-					default: throw new NotImplementedException();
 				}
+				break;
+
+				default: throw new NotImplementedException();
 			}
-
-
-			var res = respath();
-			if (res is null) return null;
 
 			return FileCache.Provider.LoadObject<UTexture>($"BNSR/Content/Art/UI/GameUI/Resource/GameUI_Map_Indicator/{res}")?.Decode();
 		}

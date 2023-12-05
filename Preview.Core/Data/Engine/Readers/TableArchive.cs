@@ -10,6 +10,7 @@ public class TableArchive
 	private readonly RecordCompressedReader _recordCompressedReader;
 	private readonly RecordUncompressedReader _recordUncompressedReader;
 	private readonly bool _is64Bit;
+	private DatafileArchive Source;
 
 	public TableArchive(
 		RecordCompressedReader recordCompressedReader = null,
@@ -21,20 +22,17 @@ public class TableArchive
 		_is64Bit = is64bit;
 	}
 
-
-
-	public DatafileArchive Source { get; set; }
-
-	public static Table LazyLoad(DatafileArchive reader, bool _is64Bit)
+	public static Table LazyLoad(DatafileArchive reader, bool is64Bit)
 	{
 		var table = new Table();
 		var tableStart = reader.Position;
 		table.ReadHeaderFrom(reader);
-		table.Archive = new TableArchive(is64bit: _is64Bit) { Source = reader.OffsetedSource(tableStart, table.Size + 11), };
+		table.Archive = new TableArchive(is64bit: is64Bit) { Source = reader.OffsetedSource(tableStart, table.Size + 11), };
 		reader.Seek(table.Size - 1, SeekOrigin.Current);
 
 		return table;
 	}
+
 
 	public void ReadFrom(Table table)
 	{

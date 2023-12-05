@@ -9,7 +9,7 @@ public sealed class GoodIcon : IconOutBase
 
 	protected override void AnalyseSourceData(DefaultFileProvider provider, string format, CancellationToken cancellationToken)
 	{
-		Parallel.ForEach(set.GoodsIcon, record =>
+		Parallel.ForEach(set.Get<GoodsIcon>(), record =>
 		{
 			cancellationToken.ThrowIfCancellationRequested();
 

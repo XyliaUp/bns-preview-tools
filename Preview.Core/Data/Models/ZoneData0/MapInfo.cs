@@ -1,9 +1,10 @@
-﻿using Xylia.Preview.Data.Common.Attribute;
+﻿using Xylia.Preview.Data.Common.Abstractions;
+using Xylia.Preview.Data.Common.Attribute;
 using Xylia.Preview.Data.Common.DataStruct;
 
 namespace Xylia.Preview.Data.Models;
 [Side(ReleaseSide.Client)]
-public sealed class MapInfo : Record
+public sealed class MapInfo : Record  ,IHaveName
 {
 	public int Id;
 	public string Alias;
@@ -20,14 +21,6 @@ public sealed class MapInfo : Record
 	public Ref<MapInfo> ParentMapinfo;
 
 	public float Scale;
-
-	public Ref<District> District;
-
-	[Name("map-group-1")]
-	public Ref<MapGroup1> MapGroup1;
-
-	[Name("map-group-2")]
-	public Ref<MapGroup2> MapGroup2;
 
 	[Name("local-axis-x")]
 	public float LocalAxisX;
@@ -59,10 +52,6 @@ public sealed class MapInfo : Record
 	[Name("sort-no")]
 	public short SortNo;
 
-	[Name("show-navigaion-list")]
-	public bool ShowNavigaionList;
-
-
 	[Name("arena-dungeon-parent-mapinfo")]
 	public string ArenaDungeonParentMapinfo;
 
@@ -77,7 +66,7 @@ public sealed class MapInfo : Record
 
 
 	#region Methods
-	public override string GetText => Name2.GetText();
+	public string Text => Name2.GetText();
 
 	public static MapUnit.MapDepthSeq GetMapDepth(MapInfo MapInfo)
 	{

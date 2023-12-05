@@ -1,23 +1,27 @@
-﻿namespace Xylia.Preview.Tests.DatTool.Utils.DevTools;
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Xylia.Preview.Tests.DatTool.Utils.DevTools;
 public class CommonConvert
 {
-    public CommonConvert(long LongVal) : this(BitConverter.GetBytes(LongVal)) { }
+	readonly byte[] data;
 
-    public CommonConvert(int Int32Val) : this(BitConverter.GetBytes(Int32Val)) { }
+	public CommonConvert(long value) : this(BitConverter.GetBytes(value)) { }
 
-    public CommonConvert(byte[] data) => Data = data;
+    public CommonConvert(int value) : this(BitConverter.GetBytes(value)) { }
+
+    public CommonConvert(byte[] value) => data = value;
 
 
-    public readonly byte[] Data;
 
+    public int Length => data.Length;
 
-    public int? Int32 => Data.Length >= 4 ? BitConverter.ToInt32(Data, 0) : null;
+	public int? Int32 => data.Length >= 4 ? BitConverter.ToInt32(data, 0) : null;
 
-    public long? Long => Data.Length >= 8 ? BitConverter.ToInt64(Data, 0) : null;
+    public long? Long => data.Length >= 8 ? BitConverter.ToInt64(data, 0) : null;
 
-    public short? Short1 => Data.Length >= 2 ? BitConverter.ToInt16(Data, 0) : null;
+    public short? Short1 => data.Length >= 2 ? BitConverter.ToInt16(data, 0) : null;
 
-    public short? Short2 => Data.Length >= 4 ? BitConverter.ToInt16(Data, 2) : null;
+    public short? Short2 => data.Length >= 4 ? BitConverter.ToInt16(data, 2) : null;
 
-    public float? Float => Data.Length >= 4 ? BitConverter.ToSingle(Data, 0) : null;
+    public float? Float => data.Length >= 4 ? BitConverter.ToSingle(data, 0) : null;
 }

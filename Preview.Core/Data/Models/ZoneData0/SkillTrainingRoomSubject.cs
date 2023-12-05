@@ -1,5 +1,2 @@
 ﻿namespace Xylia.Preview.Data.Models;
-public sealed class SkillTrainingRoomSubject : Record
-{
-	
-}
+public sealed class SkillTrainingRoomSubject : Record { }

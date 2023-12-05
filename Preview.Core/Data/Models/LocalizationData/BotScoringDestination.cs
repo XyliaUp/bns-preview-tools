@@ -3,7 +3,4 @@
 namespace Xylia.Preview.Data.Models;
 
 [Side(ReleaseSide.Server)]
-public sealed class BotScoringDestination : Record
-{
-	
-}
+public sealed class BotScoringDestination : Record { }

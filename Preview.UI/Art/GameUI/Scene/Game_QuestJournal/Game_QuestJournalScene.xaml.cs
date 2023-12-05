@@ -10,23 +10,20 @@ using Xylia.Preview.UI.ViewModels;
 namespace Xylia.Preview.UI.Art.GameUI.Scene.Game_QuestJournal;
 public partial class Game_QuestJournalScene
 {
-	#region Ctor
-	public Game_QuestJournalScene()
+	#region Window
+	protected override void OnLoading()
 	{
 		InitializeComponent();
-	}
 
-	protected override void OnLoaded(EventArgs e)
-	{
-		// Quest
-		QuestJournal_ProgressQuestList.ItemsSource = FileCache.Data.Quest.OrderBy(q => q.id);
+		// Progress
+		QuestJournal_ProgressQuestList.ItemsSource = FileCache.Data.Quest.OrderBy(q => q.RecordId);
 
 		// Completed
 		List<Quest> CompletedQuest = new();
 		QuestEpic.GetEpic(CompletedQuest.Add);
-		TreeView2.ItemsSource = CompletedQuest.GroupBy(o => o.Group2).Select(o => new TreeViewItem
+		TreeView2.ItemsSource = CompletedQuest.GroupBy(o => o.Title).Select(o => new TreeViewItem
 		{
-			Header = o.Key.GetText(),
+			Header = o.Key,
 			ItemsSource = o.ToList(),
 		});
 	}
@@ -38,24 +35,13 @@ public partial class Game_QuestJournalScene
 	}
 	#endregion
 
-
-	#region ProgressTab
-	private void ProgressTab_SelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
-	{   
-		QuestJournal_CurrentQuest_Info.DataContext = e.NewValue as Quest;
-
-		// HACK: binding can use? 
-		QuestJournal_Content.Params[2] = e.NewValue;
-	}
-	#endregion
-
 	#region CompletedTab 
 	private void CompletedTab_SelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
 	{
 		if (e.OldValue == e.NewValue) return;
 		if (e.NewValue is not Quest quest) return;
 
-		TextBlock2.Text = quest.CompletedDesc.GetText();
+		TextBlock2.Text = quest.Attributes["completed-desc"].GetText();
 	}
 	#endregion
 

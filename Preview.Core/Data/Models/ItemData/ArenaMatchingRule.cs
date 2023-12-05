@@ -1,5 +1,2 @@
 ﻿namespace Xylia.Preview.Data.Models;
-public sealed class ArenaMatchingRule : Record
-{
-
-}
+public sealed class ArenaMatchingRule : Record { }

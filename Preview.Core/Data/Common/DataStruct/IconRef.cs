@@ -7,35 +7,33 @@ public struct IconRef
 {
 	public int IconTextureRecordId;
 	public int IconTextureVariantId;
-	public int _unk_i32_0;
+	public int IconTextureIndex;
 
-	public IconRef(int iconTextureRecordId, int iconTextureVariantId = 0, int unk_i32_0 = 1) : this()
+	public IconRef(int iconTextureRecordId, int iconTextureVariantId = 0, ushort iconTextureVariantIndex = 1)
 	{
 		IconTextureRecordId = iconTextureRecordId;
 		IconTextureVariantId = iconTextureVariantId;
-		_unk_i32_0 = unk_i32_0;
+		IconTextureIndex = iconTextureVariantIndex;
 	}
 
-	public IconRef(Ref @ref, int unk_i32_0 = 1) : this()
+	public IconRef(Ref @ref, int iconTextureVariantIndex = 1)
 	{
 		IconTextureRecordId = @ref.Id;
 		IconTextureVariantId = @ref.Variant;
-		_unk_i32_0 = unk_i32_0;
+		IconTextureIndex = iconTextureVariantIndex;
 	}
 
 	public override string ToString()
 	{
-		return $"(Id: {IconTextureRecordId}, Variant: {IconTextureVariantId}, Unk.: {_unk_i32_0})";
+		return $"(Id: {IconTextureRecordId}, Variant: {IconTextureVariantId}, Index.: {IconTextureIndex})";
 	}
-
-	public static implicit operator int(IconRef r) => r.IconTextureRecordId;
 
 	public static bool operator ==(IconRef a, IconRef b)
 	{
 		return
 			a.IconTextureRecordId == b.IconTextureRecordId &&
 			a.IconTextureVariantId == b.IconTextureVariantId &&
-			a._unk_i32_0 == b._unk_i32_0;
+			a.IconTextureIndex == b.IconTextureIndex;
 	}
 
 	public static bool operator !=(IconRef a, IconRef b)
@@ -45,7 +43,9 @@ public struct IconRef
 
 	public bool Equals(IconRef other)
 	{
-		return IconTextureRecordId == other.IconTextureRecordId && IconTextureVariantId == other.IconTextureVariantId && _unk_i32_0 == other._unk_i32_0;
+		return IconTextureRecordId == other.IconTextureRecordId && 
+			IconTextureVariantId == other.IconTextureVariantId && 
+			IconTextureIndex == other.IconTextureIndex;
 	}
 
 	public override bool Equals(object obj)
@@ -55,6 +55,6 @@ public struct IconRef
 
 	public override int GetHashCode()
 	{
-		return HashCode.Combine(IconTextureRecordId, IconTextureVariantId, _unk_i32_0);
+		return HashCode.Combine(IconTextureRecordId, IconTextureVariantId, IconTextureIndex);
 	}
 }

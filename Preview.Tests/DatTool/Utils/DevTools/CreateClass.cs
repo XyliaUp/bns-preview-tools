@@ -62,7 +62,7 @@ public static class CreateClass
             AttributeType.TSub => $"Sub<{ attribute.ReferedTableName?.TitleCase() }>",
 
             AttributeType.TSeq or AttributeType.TSeq16 or AttributeType.TProp_seq or AttributeType.TProp_field
-                => attribute.SequenceDef?.Name?.TitleCase() ?? attribute.Name.TitleCase() + "Seq",
+                => attribute.Sequence?.Name?.TitleCase() ?? attribute.Name.TitleCase() + "Seq",
 
             _ => attribute.Type.ToString(),
         };

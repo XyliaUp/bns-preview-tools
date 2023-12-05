@@ -117,7 +117,7 @@
 				<!-- Right -->
 				<hc:ButtonGroup Grid.Column="2" Orientation="Vertical">
 					<Button Content="{DynamicResource Text_Reset}" Click="Reset_Click"/>
-					<Button Content="{DynamicResource Text_SaveAs}" Command="{Binding MergeIcon_SaveCommand}" />
+					<Button Content="{DynamicResource Text_Save}" Command="{Binding MergeIcon_SaveCommand}" />
 				</hc:ButtonGroup>
 			</Grid>
 		</TabItem>

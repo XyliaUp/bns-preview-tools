@@ -85,16 +85,20 @@ public partial class DatabaseStudio : Window
 
 	private async Task ExecuteSql(string sql)
 	{
-		grdResult.Columns.Clear();
-		grdResult.ItemsSource = null;
+		QueryResult.Columns.Clear();
+		QueryResult.ItemsSource = null;
 
 		await Task.Run(() => parser.Execute(sql));
 
 		var source = parser.Source;
 		if (source is null) return;
 
-		Array.ForEach(parser.Fields, x => grdResult.Columns.Add(new DataGridTextColumn { Header = x, Binding = new Binding($"Attributes[{x}]") }));
-		grdResult.ItemsSource = source;
+		Array.ForEach(parser.Fields, x => QueryResult.Columns.Add(new DataGridTextColumn { Header = x, Binding = new Binding($"Attributes[{x}]") }));
+		QueryResult.ItemsSource = source;
+
+		// update tip
+		QueryResult.Visibility = source.Length == 0 ? Visibility.Hidden : Visibility.Visible;
+		QueryEmpty.Visibility = source.Length != 0 ? Visibility.Hidden : Visibility.Visible;
 	}
 
 
@@ -216,9 +220,6 @@ public partial class DatabaseStudio : Window
 
 	private void OutputExcel_Click(object sender, RoutedEventArgs e)
 	{
-		if (grdResult.Items.Count == 0)
-			throw new Exception("no data");
-
 		var save = new VistaSaveFileDialog
 		{
 			Filter = "Excel Files|*.xlsx",
@@ -239,28 +240,26 @@ public partial class DatabaseStudio : Window
 
 		#region Title
 		int Column = 1;
-		for (int i = 0; i < grdResult.Columns.Count; i++)
+		for (int i = 0; i < QueryResult.Columns.Count; i++)
 		{
-			sheet.SetColumn(Column++, grdResult.Columns[i].Header.ToString());
+			sheet.SetColumn(Column++, QueryResult.Columns[i].Header.ToString());
 		}
 		#endregion
 
 		#region Row
 		int Row = 1;
-		for (int i = 0; i < grdResult.Items.Count; i++)
+		for (int i = 0; i < QueryResult.Items.Count; i++)
 		{
 			Row++;
 			int column = 1;
 
-			var item = grdResult.Items[i] as Record;
-			for (int j = 0; j < grdResult.Columns.Count; j++)
+			var item = QueryResult.Items[i] as Record;
+			for (int j = 0; j < QueryResult.Columns.Count; j++)
 			{
-				var col = grdResult.Columns[j];
+				var col = QueryResult.Columns[j];
 				sheet.Cells[Row, column++].SetValue(item.Attributes[col.Header.ToString()]);
 			}
 		}
-
-
 		#endregion
 
 		package.SaveAs(save.FileName);
@@ -280,7 +279,7 @@ public partial class DatabaseStudio : Window
 		{
 			var window = new TableView { Table = table };
 			window.Show();
-		}	
+		}
 	}
 	#endregion
 }

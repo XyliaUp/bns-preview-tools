@@ -1,5 +1,2 @@
 ﻿namespace Xylia.Preview.Data.Models;
-public sealed class WeaponAppearanceChangeCost : Record 
-{
-	
-}
+public sealed class WeaponAppearanceChangeCost : Record { }

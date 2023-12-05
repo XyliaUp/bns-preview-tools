@@ -1,7 +1,4 @@
-﻿using System.Drawing;
-using System.Windows.Forms;
-
-namespace Xylia.Preview.Tests.DatTool
+﻿namespace Xylia.Preview.Tests.DatTool
 {
 	partial class MainForm
 	{
@@ -37,28 +34,7 @@ namespace Xylia.Preview.Tests.DatTool
 			groupBox2 = new GroupBox();
 			button39 = new Button();
 			MainMenu = new ContextMenuStrip(components);
-			MenuItem_DevTools = new ToolStripMenuItem();
 			ToolStripMenuItem_NumSelect = new ToolStripMenuItem();
-			重新排列ToolStripMenuItem = new ToolStripMenuItem();
-			xml操作ToolStripMenuItem = new ToolStripMenuItem();
-			列出所有属性ToolStripMenuItem = new ToolStripMenuItem();
-			列出指定属性范围ToolStripMenuItem = new ToolStripMenuItem();
-			合并文档ToolStripMenuItem = new ToolStripMenuItem();
-			tabPage1 = new TabPage();
-			Compare_Diff = new Button();
-			textBox6 = new TextBox();
-			label8 = new Label();
-			button17 = new Button();
-			checkBox14 = new CheckBox();
-			button11 = new Button();
-			checkBox12 = new CheckBox();
-			checkBox11 = new CheckBox();
-			textBox2 = new TextBox();
-			textBox4 = new TextBox();
-			label4 = new Label();
-			button9 = new Button();
-			label5 = new Label();
-			button10 = new Button();
 			Page_Region = new TabPage();
 			label13 = new Label();
 			label12 = new Label();
@@ -78,12 +54,6 @@ namespace Xylia.Preview.Tests.DatTool
 			label31 = new Label();
 			button31 = new Button();
 			label29 = new Label();
-			tabPage5 = new TabPage();
-			groupBox3 = new GroupBox();
-			button13 = new Button();
-			label11 = new Label();
-			button14 = new Button();
-			textBox8 = new TextBox();
 			ModifyBin = new TabPage();
 			groupBox5 = new GroupBox();
 			textBox3 = new TextBox();
@@ -116,18 +86,32 @@ namespace Xylia.Preview.Tests.DatTool
 			lbRfolder = new Label();
 			bntSearchOut = new Button();
 			tabControl1 = new TabControl();
+			tabPage2 = new TabPage();
+			radioButton2 = new RadioButton();
+			radioButton1 = new RadioButton();
+			lbl_Warning3 = new Label();
+			Btn_DecimalToHex = new Button();
+			Txt_Decimal = new TextBox();
+			Btn_HexToDecimal = new Button();
+			Txt_HEX = new TextBox();
+			tabPage3 = new TabPage();
+			Btn_Split = new Button();
+			button5 = new Button();
+			button12 = new Button();
+			button15 = new Button();
+			button16 = new Button();
+			richTextBox1 = new RichTextBox();
 			groupBox2.SuspendLayout();
 			MainMenu.SuspendLayout();
-			tabPage1.SuspendLayout();
 			Page_Region.SuspendLayout();
-			tabPage5.SuspendLayout();
-			groupBox3.SuspendLayout();
 			ModifyBin.SuspendLayout();
 			groupBox5.SuspendLayout();
 			groupBox4.SuspendLayout();
 			ModifyData.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)trackBar1).BeginInit();
 			tabControl1.SuspendLayout();
+			tabPage2.SuspendLayout();
+			tabPage3.SuspendLayout();
 			SuspendLayout();
 			// 
 			// richOut
@@ -135,7 +119,7 @@ namespace Xylia.Preview.Tests.DatTool
 			richOut.BackColor = Color.White;
 			richOut.BorderStyle = BorderStyle.None;
 			richOut.Dock = DockStyle.Fill;
-			richOut.Font = new Font("微软雅黑", 10.5F, FontStyle.Regular, GraphicsUnit.Point);
+			richOut.Font = new Font("微软雅黑", 10.5F);
 			richOut.HideSelection = false;
 			richOut.Location = new Point(4, 20);
 			richOut.Margin = new Padding(4);
@@ -163,7 +147,7 @@ namespace Xylia.Preview.Tests.DatTool
 			// 
 			// button39
 			// 
-			button39.Font = new Font("微软雅黑", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+			button39.Font = new Font("微软雅黑", 11.25F);
 			button39.Location = new Point(781, 20);
 			button39.Margin = new Padding(4);
 			button39.Name = "button39";
@@ -175,239 +159,16 @@ namespace Xylia.Preview.Tests.DatTool
 			// 
 			// MainMenu
 			// 
-			MainMenu.Items.AddRange(new ToolStripItem[] { MenuItem_DevTools, ToolStripMenuItem_NumSelect, 重新排列ToolStripMenuItem, xml操作ToolStripMenuItem });
+			MainMenu.Items.AddRange(new ToolStripItem[] { ToolStripMenuItem_NumSelect });
 			MainMenu.Name = "MainMenu";
-			MainMenu.Size = new Size(175, 92);
-			// 
-			// MenuItem_DevTools
-			// 
-			MenuItem_DevTools.Name = "MenuItem_DevTools";
-			MenuItem_DevTools.Size = new Size(174, 22);
-			MenuItem_DevTools.Text = "开发工具";
-			MenuItem_DevTools.Click += MenuItem_DevTools_Click;
+			MainMenu.Size = new Size(125, 26);
 			// 
 			// ToolStripMenuItem_NumSelect
 			// 
 			ToolStripMenuItem_NumSelect.Name = "ToolStripMenuItem_NumSelect";
-			ToolStripMenuItem_NumSelect.Size = new Size(174, 22);
+			ToolStripMenuItem_NumSelect.Size = new Size(124, 22);
 			ToolStripMenuItem_NumSelect.Text = "属性生成";
 			ToolStripMenuItem_NumSelect.Click += ToolStripMenuItem_NumSelect_Click;
-			// 
-			// 重新排列ToolStripMenuItem
-			// 
-			重新排列ToolStripMenuItem.Name = "重新排列ToolStripMenuItem";
-			重新排列ToolStripMenuItem.Size = new Size(174, 22);
-			重新排列ToolStripMenuItem.Text = "重新排列XML文件";
-			重新排列ToolStripMenuItem.Click += 重新排列ToolStripMenuItem_Click;
-			// 
-			// xml操作ToolStripMenuItem
-			// 
-			xml操作ToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { 列出所有属性ToolStripMenuItem, 列出指定属性范围ToolStripMenuItem, 合并文档ToolStripMenuItem });
-			xml操作ToolStripMenuItem.Name = "xml操作ToolStripMenuItem";
-			xml操作ToolStripMenuItem.Size = new Size(174, 22);
-			xml操作ToolStripMenuItem.Text = "Xml操作";
-			// 
-			// 列出所有属性ToolStripMenuItem
-			// 
-			列出所有属性ToolStripMenuItem.Name = "列出所有属性ToolStripMenuItem";
-			列出所有属性ToolStripMenuItem.Size = new Size(172, 22);
-			列出所有属性ToolStripMenuItem.Text = "列出所有属性";
-			列出所有属性ToolStripMenuItem.Click += 列出所有属性ToolStripMenuItem_Click;
-			// 
-			// 列出指定属性范围ToolStripMenuItem
-			// 
-			列出指定属性范围ToolStripMenuItem.Name = "列出指定属性范围ToolStripMenuItem";
-			列出指定属性范围ToolStripMenuItem.Size = new Size(172, 22);
-			列出指定属性范围ToolStripMenuItem.Text = "列出指定属性范围";
-			列出指定属性范围ToolStripMenuItem.Click += 列出指定属性范围ToolStripMenuItem_Click;
-			// 
-			// 合并文档ToolStripMenuItem
-			// 
-			合并文档ToolStripMenuItem.Name = "合并文档ToolStripMenuItem";
-			合并文档ToolStripMenuItem.Size = new Size(172, 22);
-			合并文档ToolStripMenuItem.Text = "合并文档";
-			合并文档ToolStripMenuItem.Click += 合并文档ToolStripMenuItem_Click;
-			// 
-			// tabPage1
-			// 
-			tabPage1.Controls.Add(Compare_Diff);
-			tabPage1.Controls.Add(textBox6);
-			tabPage1.Controls.Add(label8);
-			tabPage1.Controls.Add(button17);
-			tabPage1.Controls.Add(checkBox14);
-			tabPage1.Controls.Add(button11);
-			tabPage1.Controls.Add(checkBox12);
-			tabPage1.Controls.Add(checkBox11);
-			tabPage1.Controls.Add(textBox2);
-			tabPage1.Controls.Add(textBox4);
-			tabPage1.Controls.Add(label4);
-			tabPage1.Controls.Add(button9);
-			tabPage1.Controls.Add(label5);
-			tabPage1.Controls.Add(button10);
-			tabPage1.Location = new Point(4, 26);
-			tabPage1.Margin = new Padding(4);
-			tabPage1.Name = "tabPage1";
-			tabPage1.Padding = new Padding(4);
-			tabPage1.Size = new Size(873, 273);
-			tabPage1.TabIndex = 11;
-			tabPage1.Text = "合并数据源";
-			tabPage1.UseVisualStyleBackColor = true;
-			// 
-			// Compare_Diff
-			// 
-			Compare_Diff.Location = new Point(741, 75);
-			Compare_Diff.Margin = new Padding(4);
-			Compare_Diff.Name = "Compare_Diff";
-			Compare_Diff.Size = new Size(95, 37);
-			Compare_Diff.TabIndex = 113;
-			Compare_Diff.Text = "比对差异";
-			Compare_Diff.UseVisualStyleBackColor = true;
-			// 
-			// textBox6
-			// 
-			textBox6.Location = new Point(111, 106);
-			textBox6.Margin = new Padding(4);
-			textBox6.Name = "textBox6";
-			textBox6.Size = new Size(518, 23);
-			textBox6.TabIndex = 112;
-			textBox6.TextChanged += SaveConfig;
-			// 
-			// label8
-			// 
-			label8.AutoSize = true;
-			label8.Location = new Point(20, 111);
-			label8.Margin = new Padding(4, 0, 4, 0);
-			label8.Name = "label8";
-			label8.Size = new Size(56, 17);
-			label8.TabIndex = 111;
-			label8.Text = "公共配置";
-			// 
-			// button17
-			// 
-			button17.Location = new Point(646, 100);
-			button17.Margin = new Padding(4);
-			button17.Name = "button17";
-			button17.Size = new Size(75, 34);
-			button17.TabIndex = 110;
-			button17.Text = "浏览";
-			button17.UseVisualStyleBackColor = true;
-			button17.Click += button17_Click;
-			// 
-			// checkBox14
-			// 
-			checkBox14.AutoSize = true;
-			checkBox14.Checked = true;
-			checkBox14.CheckState = CheckState.Checked;
-			checkBox14.Location = new Point(582, 192);
-			checkBox14.Margin = new Padding(4);
-			checkBox14.Name = "checkBox14";
-			checkBox14.Size = new Size(132, 21);
-			checkBox14.TabIndex = 109;
-			checkBox14.Text = "只合并服务端Fields";
-			checkBox14.UseVisualStyleBackColor = true;
-			checkBox14.CheckedChanged += checkBox14_CheckedChanged;
-			// 
-			// button11
-			// 
-			button11.Location = new Point(741, 11);
-			button11.Margin = new Padding(4);
-			button11.Name = "button11";
-			button11.Size = new Size(95, 44);
-			button11.TabIndex = 108;
-			button11.Text = "执行";
-			button11.UseVisualStyleBackColor = true;
-			button11.Click += button11_Click;
-			// 
-			// checkBox12
-			// 
-			checkBox12.AutoSize = true;
-			checkBox12.Checked = true;
-			checkBox12.CheckState = CheckState.Checked;
-			checkBox12.Location = new Point(582, 163);
-			checkBox12.Margin = new Padding(4);
-			checkBox12.Name = "checkBox12";
-			checkBox12.Size = new Size(101, 21);
-			checkBox12.TabIndex = 107;
-			checkBox12.Text = "alias作为主键";
-			checkBox12.UseVisualStyleBackColor = true;
-			checkBox12.CheckedChanged += checkBox12_CheckedChanged;
-			// 
-			// checkBox11
-			// 
-			checkBox11.AutoSize = true;
-			checkBox11.Checked = true;
-			checkBox11.CheckState = CheckState.Checked;
-			checkBox11.Location = new Point(703, 163);
-			checkBox11.Margin = new Padding(4);
-			checkBox11.Name = "checkBox11";
-			checkBox11.Size = new Size(168, 21);
-			checkBox11.TabIndex = 106;
-			checkBox11.Text = "重复Fields应用合并源数据";
-			checkBox11.UseVisualStyleBackColor = true;
-			checkBox11.CheckedChanged += SaveCheckStatus;
-			// 
-			// textBox2
-			// 
-			textBox2.Location = new Point(111, 57);
-			textBox2.Margin = new Padding(4);
-			textBox2.MaxLength = 999999999;
-			textBox2.Name = "textBox2";
-			textBox2.Size = new Size(518, 23);
-			textBox2.TabIndex = 105;
-			textBox2.TextChanged += textBox2_TextChanged;
-			textBox2.DoubleClick += DoubleClickPath;
-			// 
-			// textBox4
-			// 
-			textBox4.Location = new Point(111, 16);
-			textBox4.Margin = new Padding(4);
-			textBox4.Name = "textBox4";
-			textBox4.Size = new Size(518, 23);
-			textBox4.TabIndex = 102;
-			textBox4.TextChanged += SaveConfig;
-			textBox4.DoubleClick += DoubleClickPath;
-			// 
-			// label4
-			// 
-			label4.AutoSize = true;
-			label4.Location = new Point(10, 60);
-			label4.Margin = new Padding(4, 0, 4, 0);
-			label4.Name = "label4";
-			label4.Size = new Size(68, 17);
-			label4.TabIndex = 104;
-			label4.Text = "合并源文件";
-			// 
-			// button9
-			// 
-			button9.Location = new Point(645, 52);
-			button9.Margin = new Padding(4);
-			button9.Name = "button9";
-			button9.Size = new Size(75, 34);
-			button9.TabIndex = 103;
-			button9.Text = "浏览";
-			button9.UseVisualStyleBackColor = true;
-			button9.Click += button9_Click;
-			// 
-			// label5
-			// 
-			label5.AutoSize = true;
-			label5.Location = new Point(10, 20);
-			label5.Margin = new Padding(4, 0, 4, 0);
-			label5.Name = "label5";
-			label5.Size = new Size(80, 17);
-			label5.TabIndex = 101;
-			label5.Text = "主要数据文件";
-			// 
-			// button10
-			// 
-			button10.Location = new Point(646, 11);
-			button10.Margin = new Padding(4);
-			button10.Name = "button10";
-			button10.Size = new Size(75, 34);
-			button10.TabIndex = 100;
-			button10.Text = "浏览";
-			button10.UseVisualStyleBackColor = true;
-			button10.Click += button10_Click;
 			// 
 			// Page_Region
 			// 
@@ -432,7 +193,7 @@ namespace Xylia.Preview.Tests.DatTool
 			Page_Region.Location = new Point(4, 26);
 			Page_Region.Margin = new Padding(4);
 			Page_Region.Name = "Page_Region";
-			Page_Region.Size = new Size(873, 273);
+			Page_Region.Size = new Size(873, 270);
 			Page_Region.TabIndex = 10;
 			Page_Region.Text = "区域数据";
 			Page_Region.UseVisualStyleBackColor = true;
@@ -440,7 +201,7 @@ namespace Xylia.Preview.Tests.DatTool
 			// label13
 			// 
 			label13.AutoSize = true;
-			label13.Font = new Font("微软雅黑", 11F, FontStyle.Regular, GraphicsUnit.Point);
+			label13.Font = new Font("微软雅黑", 11F);
 			label13.Location = new Point(727, 65);
 			label13.Margin = new Padding(4, 0, 4, 0);
 			label13.Name = "label13";
@@ -451,7 +212,7 @@ namespace Xylia.Preview.Tests.DatTool
 			// label12
 			// 
 			label12.AutoSize = true;
-			label12.Font = new Font("微软雅黑", 11F, FontStyle.Regular, GraphicsUnit.Point);
+			label12.Font = new Font("微软雅黑", 11F);
 			label12.Location = new Point(728, 24);
 			label12.Margin = new Padding(4, 0, 4, 0);
 			label12.Name = "label12";
@@ -505,7 +266,7 @@ namespace Xylia.Preview.Tests.DatTool
 			// label27
 			// 
 			label27.AutoSize = true;
-			label27.Font = new Font("微软雅黑", 11F, FontStyle.Regular, GraphicsUnit.Point);
+			label27.Font = new Font("微软雅黑", 11F);
 			label27.Location = new Point(33, 129);
 			label27.Margin = new Padding(4, 0, 4, 0);
 			label27.Name = "label27";
@@ -563,7 +324,7 @@ namespace Xylia.Preview.Tests.DatTool
 			// label33
 			// 
 			label33.AutoSize = true;
-			label33.Font = new Font("微软雅黑", 11F, FontStyle.Regular, GraphicsUnit.Point);
+			label33.Font = new Font("微软雅黑", 11F);
 			label33.Location = new Point(31, 176);
 			label33.Margin = new Padding(4, 0, 4, 0);
 			label33.Name = "label33";
@@ -585,7 +346,7 @@ namespace Xylia.Preview.Tests.DatTool
 			// label31
 			// 
 			label31.AutoSize = true;
-			label31.Font = new Font("微软雅黑", 11F, FontStyle.Regular, GraphicsUnit.Point);
+			label31.Font = new Font("微软雅黑", 11F);
 			label31.Location = new Point(31, 20);
 			label31.Margin = new Padding(4, 0, 4, 0);
 			label31.Name = "label31";
@@ -607,85 +368,13 @@ namespace Xylia.Preview.Tests.DatTool
 			// label29
 			// 
 			label29.AutoSize = true;
-			label29.Font = new Font("微软雅黑", 11F, FontStyle.Regular, GraphicsUnit.Point);
+			label29.Font = new Font("微软雅黑", 11F);
 			label29.Location = new Point(31, 67);
 			label29.Margin = new Padding(4, 0, 4, 0);
 			label29.Name = "label29";
 			label29.Size = new Size(46, 20);
 			label29.TabIndex = 1;
 			label29.Text = "Zone";
-			// 
-			// tabPage5
-			// 
-			tabPage5.Controls.Add(groupBox3);
-			tabPage5.Location = new Point(4, 26);
-			tabPage5.Margin = new Padding(4);
-			tabPage5.Name = "tabPage5";
-			tabPage5.Padding = new Padding(4);
-			tabPage5.Size = new Size(873, 273);
-			tabPage5.TabIndex = 5;
-			tabPage5.Text = "服务端data";
-			tabPage5.UseVisualStyleBackColor = true;
-			// 
-			// groupBox3
-			// 
-			groupBox3.Controls.Add(button13);
-			groupBox3.Controls.Add(label11);
-			groupBox3.Controls.Add(button14);
-			groupBox3.Controls.Add(textBox8);
-			groupBox3.Dock = DockStyle.Top;
-			groupBox3.Location = new Point(4, 4);
-			groupBox3.Margin = new Padding(4);
-			groupBox3.Name = "groupBox3";
-			groupBox3.Padding = new Padding(4);
-			groupBox3.Size = new Size(865, 69);
-			groupBox3.TabIndex = 72;
-			groupBox3.TabStop = false;
-			groupBox3.Text = "加解密操作";
-			// 
-			// button13
-			// 
-			button13.Location = new Point(690, 21);
-			button13.Margin = new Padding(4);
-			button13.Name = "button13";
-			button13.Size = new Size(75, 34);
-			button13.TabIndex = 24;
-			button13.Text = "解密";
-			button13.UseVisualStyleBackColor = true;
-			button13.Click += button13_Click;
-			// 
-			// label11
-			// 
-			label11.AutoSize = true;
-			label11.Font = new Font("微软雅黑", 10F, FontStyle.Regular, GraphicsUnit.Point);
-			label11.Location = new Point(4, 28);
-			label11.Margin = new Padding(4, 0, 4, 0);
-			label11.Name = "label11";
-			label11.Size = new Size(65, 20);
-			label11.TabIndex = 30;
-			label11.Text = "解包目录";
-			// 
-			// button14
-			// 
-			button14.Location = new Point(773, 21);
-			button14.Margin = new Padding(4);
-			button14.Name = "button14";
-			button14.Size = new Size(75, 34);
-			button14.TabIndex = 28;
-			button14.Text = "加密";
-			button14.UseVisualStyleBackColor = true;
-			button14.Click += button14_Click;
-			// 
-			// textBox8
-			// 
-			textBox8.Location = new Point(99, 27);
-			textBox8.Margin = new Padding(4);
-			textBox8.Name = "textBox8";
-			textBox8.Size = new Size(578, 23);
-			textBox8.TabIndex = 26;
-			textBox8.Text = "D:\\剑灵_NT\\contents\\Local\\TENCENT\\data\\xml.dat.files";
-			textBox8.TextChanged += textBox8_TextChanged;
-			textBox8.DoubleClick += DoubleClickPath;
 			// 
 			// ModifyBin
 			// 
@@ -695,7 +384,7 @@ namespace Xylia.Preview.Tests.DatTool
 			ModifyBin.Margin = new Padding(4);
 			ModifyBin.Name = "ModifyBin";
 			ModifyBin.Padding = new Padding(4);
-			ModifyBin.Size = new Size(873, 273);
+			ModifyBin.Size = new Size(873, 270);
 			ModifyBin.TabIndex = 3;
 			ModifyBin.Text = "Bin File";
 			ModifyBin.UseVisualStyleBackColor = true;
@@ -711,7 +400,7 @@ namespace Xylia.Preview.Tests.DatTool
 			groupBox5.Controls.Add(label1);
 			groupBox5.Controls.Add(button8);
 			groupBox5.Dock = DockStyle.Bottom;
-			groupBox5.Location = new Point(4, 138);
+			groupBox5.Location = new Point(4, 135);
 			groupBox5.Margin = new Padding(4);
 			groupBox5.Name = "groupBox5";
 			groupBox5.Padding = new Padding(4);
@@ -732,7 +421,7 @@ namespace Xylia.Preview.Tests.DatTool
 			// label2
 			// 
 			label2.AutoSize = true;
-			label2.Font = new Font("微软雅黑", 10F, FontStyle.Regular, GraphicsUnit.Point);
+			label2.Font = new Font("微软雅黑", 10F);
 			label2.Location = new Point(7, 73);
 			label2.Margin = new Padding(4, 0, 4, 0);
 			label2.Name = "label2";
@@ -785,7 +474,7 @@ namespace Xylia.Preview.Tests.DatTool
 			// label1
 			// 
 			label1.AutoSize = true;
-			label1.Font = new Font("微软雅黑", 10F, FontStyle.Regular, GraphicsUnit.Point);
+			label1.Font = new Font("微软雅黑", 10F);
 			label1.Location = new Point(7, 30);
 			label1.Margin = new Padding(4, 0, 4, 0);
 			label1.Name = "label1";
@@ -821,7 +510,7 @@ namespace Xylia.Preview.Tests.DatTool
 			// label3
 			// 
 			label3.AutoSize = true;
-			label3.Font = new Font("微软雅黑", 10F, FontStyle.Regular, GraphicsUnit.Point);
+			label3.Font = new Font("微软雅黑", 10F);
 			label3.Location = new Point(6, 24);
 			label3.Margin = new Padding(4, 0, 4, 0);
 			label3.Name = "label3";
@@ -893,7 +582,7 @@ namespace Xylia.Preview.Tests.DatTool
 			ModifyData.Margin = new Padding(4);
 			ModifyData.Name = "ModifyData";
 			ModifyData.Padding = new Padding(4);
-			ModifyData.Size = new Size(873, 273);
+			ModifyData.Size = new Size(873, 270);
 			ModifyData.TabIndex = 0;
 			ModifyData.Text = "Dat File";
 			ModifyData.UseVisualStyleBackColor = true;
@@ -903,7 +592,7 @@ namespace Xylia.Preview.Tests.DatTool
 			checkBox1.AutoSize = true;
 			checkBox1.Checked = true;
 			checkBox1.CheckState = CheckState.Checked;
-			checkBox1.Font = new Font("微软雅黑", 10F, FontStyle.Regular, GraphicsUnit.Point);
+			checkBox1.Font = new Font("微软雅黑", 10F);
 			checkBox1.Location = new Point(137, 179);
 			checkBox1.Margin = new Padding(4);
 			checkBox1.Name = "checkBox1";
@@ -927,7 +616,7 @@ namespace Xylia.Preview.Tests.DatTool
 			// label6
 			// 
 			label6.AutoSize = true;
-			label6.Font = new Font("微软雅黑", 12F, FontStyle.Regular, GraphicsUnit.Point);
+			label6.Font = new Font("微软雅黑", 12F);
 			label6.Location = new Point(606, 203);
 			label6.Margin = new Padding(4, 0, 4, 0);
 			label6.Name = "label6";
@@ -949,7 +638,7 @@ namespace Xylia.Preview.Tests.DatTool
 			// lbDat
 			// 
 			lbDat.AutoSize = true;
-			lbDat.Font = new Font("微软雅黑", 10F, FontStyle.Regular, GraphicsUnit.Point);
+			lbDat.Font = new Font("微软雅黑", 10F);
 			lbDat.Location = new Point(13, 14);
 			lbDat.Margin = new Padding(4, 0, 4, 0);
 			lbDat.Name = "lbDat";
@@ -970,7 +659,7 @@ namespace Xylia.Preview.Tests.DatTool
 			// 
 			// txbDatFile
 			// 
-			txbDatFile.Font = new Font("微软雅黑", 10F, FontStyle.Regular, GraphicsUnit.Point);
+			txbDatFile.Font = new Font("微软雅黑", 10F);
 			txbDatFile.Location = new Point(120, 13);
 			txbDatFile.Margin = new Padding(4);
 			txbDatFile.Name = "txbDatFile";
@@ -981,7 +670,7 @@ namespace Xylia.Preview.Tests.DatTool
 			// 
 			// txbRpFolder
 			// 
-			txbRpFolder.Font = new Font("微软雅黑", 10F, FontStyle.Regular, GraphicsUnit.Point);
+			txbRpFolder.Font = new Font("微软雅黑", 10F);
 			txbRpFolder.Location = new Point(120, 60);
 			txbRpFolder.Margin = new Padding(4);
 			txbRpFolder.Name = "txbRpFolder";
@@ -995,7 +684,7 @@ namespace Xylia.Preview.Tests.DatTool
 			cB_output.AutoSize = true;
 			cB_output.Checked = true;
 			cB_output.CheckState = CheckState.Checked;
-			cB_output.Font = new Font("微软雅黑", 10F, FontStyle.Regular, GraphicsUnit.Point);
+			cB_output.Font = new Font("微软雅黑", 10F);
 			cB_output.Location = new Point(16, 135);
 			cB_output.Margin = new Padding(4);
 			cB_output.Name = "cB_output";
@@ -1021,7 +710,7 @@ namespace Xylia.Preview.Tests.DatTool
 			Cb_back.AutoSize = true;
 			Cb_back.Checked = true;
 			Cb_back.CheckState = CheckState.Checked;
-			Cb_back.Font = new Font("微软雅黑", 10F, FontStyle.Regular, GraphicsUnit.Point);
+			Cb_back.Font = new Font("微软雅黑", 10F);
 			Cb_back.Location = new Point(16, 179);
 			Cb_back.Margin = new Padding(4);
 			Cb_back.Name = "Cb_back";
@@ -1045,7 +734,7 @@ namespace Xylia.Preview.Tests.DatTool
 			// lbRfolder
 			// 
 			lbRfolder.AutoSize = true;
-			lbRfolder.Font = new Font("微软雅黑", 10F, FontStyle.Regular, GraphicsUnit.Point);
+			lbRfolder.Font = new Font("微软雅黑", 10F);
 			lbRfolder.Location = new Point(13, 62);
 			lbRfolder.Margin = new Padding(4, 0, 4, 0);
 			lbRfolder.Name = "lbRfolder";
@@ -1067,17 +756,196 @@ namespace Xylia.Preview.Tests.DatTool
 			// 
 			tabControl1.Controls.Add(ModifyData);
 			tabControl1.Controls.Add(ModifyBin);
-			tabControl1.Controls.Add(tabPage5);
 			tabControl1.Controls.Add(Page_Region);
-			tabControl1.Controls.Add(tabPage1);
+			tabControl1.Controls.Add(tabPage2);
+			tabControl1.Controls.Add(tabPage3);
 			tabControl1.Dock = DockStyle.Top;
-			tabControl1.Font = new Font("微软雅黑", 9F, FontStyle.Regular, GraphicsUnit.Point);
+			tabControl1.Font = new Font("微软雅黑", 9F);
 			tabControl1.Location = new Point(0, 0);
 			tabControl1.Margin = new Padding(4);
 			tabControl1.Name = "tabControl1";
 			tabControl1.SelectedIndex = 0;
-			tabControl1.Size = new Size(881, 303);
+			tabControl1.Size = new Size(881, 300);
 			tabControl1.TabIndex = 24;
+			// 
+			// tabPage2
+			// 
+			tabPage2.Controls.Add(radioButton2);
+			tabPage2.Controls.Add(radioButton1);
+			tabPage2.Controls.Add(lbl_Warning3);
+			tabPage2.Controls.Add(Btn_DecimalToHex);
+			tabPage2.Controls.Add(Txt_Decimal);
+			tabPage2.Controls.Add(Btn_HexToDecimal);
+			tabPage2.Controls.Add(Txt_HEX);
+			tabPage2.Location = new Point(4, 26);
+			tabPage2.Name = "tabPage2";
+			tabPage2.Padding = new Padding(3);
+			tabPage2.Size = new Size(873, 270);
+			tabPage2.TabIndex = 12;
+			tabPage2.Text = "tabPage2";
+			tabPage2.UseVisualStyleBackColor = true;
+			// 
+			// radioButton2
+			// 
+			radioButton2.AutoSize = true;
+			radioButton2.BackColor = Color.Transparent;
+			radioButton2.Location = new Point(102, 109);
+			radioButton2.Name = "radioButton2";
+			radioButton2.Size = new Size(86, 21);
+			radioButton2.TabIndex = 64;
+			radioButton2.Text = "单字节转换";
+			radioButton2.UseVisualStyleBackColor = false;
+			// 
+			// radioButton1
+			// 
+			radioButton1.AutoSize = true;
+			radioButton1.BackColor = Color.Transparent;
+			radioButton1.Checked = true;
+			radioButton1.Location = new Point(13, 109);
+			radioButton1.Name = "radioButton1";
+			radioButton1.Size = new Size(86, 21);
+			radioButton1.TabIndex = 63;
+			radioButton1.TabStop = true;
+			radioButton1.Text = "多字节转换";
+			radioButton1.UseVisualStyleBackColor = false;
+			// 
+			// lbl_Warning3
+			// 
+			lbl_Warning3.AutoSize = true;
+			lbl_Warning3.BackColor = Color.Transparent;
+			lbl_Warning3.Font = new Font("微软雅黑", 10F);
+			lbl_Warning3.ForeColor = Color.Red;
+			lbl_Warning3.Location = new Point(13, 146);
+			lbl_Warning3.Name = "lbl_Warning3";
+			lbl_Warning3.Size = new Size(65, 20);
+			lbl_Warning3.TabIndex = 61;
+			lbl_Warning3.Text = "提示信息";
+			lbl_Warning3.Visible = false;
+			// 
+			// Btn_DecimalToHex
+			// 
+			Btn_DecimalToHex.Location = new Point(400, 46);
+			Btn_DecimalToHex.Margin = new Padding(3, 4, 3, 4);
+			Btn_DecimalToHex.Name = "Btn_DecimalToHex";
+			Btn_DecimalToHex.Size = new Size(112, 32);
+			Btn_DecimalToHex.TabIndex = 60;
+			Btn_DecimalToHex.Text = "10进制转HEX";
+			Btn_DecimalToHex.UseVisualStyleBackColor = true;
+			Btn_DecimalToHex.Click += Btn_DecimalToHex_Click;
+			// 
+			// Txt_Decimal
+			// 
+			Txt_Decimal.Location = new Point(10, 50);
+			Txt_Decimal.Margin = new Padding(3, 4, 3, 4);
+			Txt_Decimal.Name = "Txt_Decimal";
+			Txt_Decimal.Size = new Size(364, 23);
+			Txt_Decimal.TabIndex = 59;
+			// 
+			// Btn_HexToDecimal
+			// 
+			Btn_HexToDecimal.Location = new Point(401, 2);
+			Btn_HexToDecimal.Margin = new Padding(3, 4, 3, 4);
+			Btn_HexToDecimal.Name = "Btn_HexToDecimal";
+			Btn_HexToDecimal.Size = new Size(112, 32);
+			Btn_HexToDecimal.TabIndex = 58;
+			Btn_HexToDecimal.Text = "HEX转10进制";
+			Btn_HexToDecimal.UseVisualStyleBackColor = true;
+			Btn_HexToDecimal.Click += Btn_HexToDecimal_Click;
+			// 
+			// Txt_HEX
+			// 
+			Txt_HEX.Location = new Point(10, 7);
+			Txt_HEX.Margin = new Padding(3, 4, 3, 4);
+			Txt_HEX.Name = "Txt_HEX";
+			Txt_HEX.Size = new Size(364, 23);
+			Txt_HEX.TabIndex = 57;
+			Txt_HEX.Text = "00 e4 0b 54 02 00 00 00";
+			// 
+			// tabPage3
+			// 
+			tabPage3.Controls.Add(Btn_Split);
+			tabPage3.Controls.Add(button5);
+			tabPage3.Controls.Add(button12);
+			tabPage3.Controls.Add(button15);
+			tabPage3.Controls.Add(button16);
+			tabPage3.Controls.Add(richTextBox1);
+			tabPage3.Location = new Point(4, 26);
+			tabPage3.Name = "tabPage3";
+			tabPage3.Padding = new Padding(3);
+			tabPage3.Size = new Size(873, 270);
+			tabPage3.TabIndex = 13;
+			tabPage3.Text = "tabPage3";
+			tabPage3.UseVisualStyleBackColor = true;
+			// 
+			// Btn_Split
+			// 
+			Btn_Split.Location = new Point(787, 230);
+			Btn_Split.Margin = new Padding(3, 4, 3, 4);
+			Btn_Split.Name = "Btn_Split";
+			Btn_Split.Size = new Size(83, 30);
+			Btn_Split.TabIndex = 47;
+			Btn_Split.Text = "4字节拆分";
+			Btn_Split.UseVisualStyleBackColor = true;
+			Btn_Split.Click += Btn_Split_Click;
+			// 
+			// button5
+			// 
+			button5.Location = new Point(787, 39);
+			button5.Margin = new Padding(3, 4, 3, 4);
+			button5.Name = "button5";
+			button5.Size = new Size(86, 34);
+			button5.TabIndex = 46;
+			button5.Text = "生成实枚举";
+			button5.UseVisualStyleBackColor = false;
+			button5.Click += button5_Click;
+			// 
+			// button12
+			// 
+			button12.Location = new Point(787, -3);
+			button12.Margin = new Padding(3, 4, 3, 4);
+			button12.Name = "button12";
+			button12.Size = new Size(86, 34);
+			button12.TabIndex = 45;
+			button12.Text = "生成实字段";
+			button12.UseVisualStyleBackColor = false;
+			button12.Click += button12_Click;
+			// 
+			// button15
+			// 
+			button15.Location = new Point(787, 162);
+			button15.Margin = new Padding(3, 4, 3, 4);
+			button15.Name = "button15";
+			button15.Size = new Size(86, 34);
+			button15.TabIndex = 44;
+			button15.Text = "标记转表格";
+			button15.UseVisualStyleBackColor = false;
+			button15.Click += button15_Click;
+			// 
+			// button16
+			// 
+			button16.Location = new Point(787, 120);
+			button16.Margin = new Padding(3, 4, 3, 4);
+			button16.Name = "button16";
+			button16.Size = new Size(86, 34);
+			button16.TabIndex = 43;
+			button16.Text = "表格转标记";
+			button16.UseVisualStyleBackColor = false;
+			button16.Click += button16_Click;
+			// 
+			// richTextBox1
+			// 
+			richTextBox1.BackColor = Color.PapayaWhip;
+			richTextBox1.BorderStyle = BorderStyle.None;
+			richTextBox1.ContextMenuStrip = MainMenu;
+			richTextBox1.Dock = DockStyle.Fill;
+			richTextBox1.Font = new Font("微软雅黑", 9F);
+			richTextBox1.Location = new Point(3, 3);
+			richTextBox1.Margin = new Padding(3, 4, 3, 4);
+			richTextBox1.Name = "richTextBox1";
+			richTextBox1.Size = new Size(867, 264);
+			richTextBox1.TabIndex = 42;
+			richTextBox1.Text = "  <record name=\"TX_Gold_200716_001_Rare_0102_6\" id=\"686\" item=\"GB_General_Grocery_Coin_0067\" item-count=\"10\" item-price-money=\"100000\" />";
+			richTextBox1.ZoomFactor = 1.3F;
 			// 
 			// MainForm
 			// 
@@ -1097,13 +965,8 @@ namespace Xylia.Preview.Tests.DatTool
 			Text = "Test GUI";
 			groupBox2.ResumeLayout(false);
 			MainMenu.ResumeLayout(false);
-			tabPage1.ResumeLayout(false);
-			tabPage1.PerformLayout();
 			Page_Region.ResumeLayout(false);
 			Page_Region.PerformLayout();
-			tabPage5.ResumeLayout(false);
-			groupBox3.ResumeLayout(false);
-			groupBox3.PerformLayout();
 			ModifyBin.ResumeLayout(false);
 			groupBox5.ResumeLayout(false);
 			groupBox5.PerformLayout();
@@ -1113,6 +976,9 @@ namespace Xylia.Preview.Tests.DatTool
 			ModifyData.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)trackBar1).EndInit();
 			tabControl1.ResumeLayout(false);
+			tabPage2.ResumeLayout(false);
+			tabPage2.PerformLayout();
+			tabPage3.ResumeLayout(false);
 			ResumeLayout(false);
 		}
 
@@ -1120,22 +986,7 @@ namespace Xylia.Preview.Tests.DatTool
 		private RichTextBox richOut;
 		private GroupBox groupBox2;
 		private ContextMenuStrip MainMenu;
-		private ToolStripMenuItem MenuItem_DevTools;
-		private ToolStripMenuItem 重新排列ToolStripMenuItem;
-		private ToolStripMenuItem xml操作ToolStripMenuItem;
-		private ToolStripMenuItem 列出所有属性ToolStripMenuItem;
-		private ToolStripMenuItem 合并文档ToolStripMenuItem;
 		internal Button button39;
-		private TabPage tabPage1;
-		private Button button11;
-		private CheckBox checkBox12;
-		private CheckBox checkBox11;
-		private TextBox textBox2;
-		private TextBox textBox4;
-		private Label label4;
-		private Button button9;
-		private Label label5;
-		private Button button10;
 		private TabPage Page_Region;
 		private Button button36;
 		private Label label27;
@@ -1149,12 +1000,6 @@ namespace Xylia.Preview.Tests.DatTool
 		private Label label31;
 		private Button button31;
 		private Label label29;
-		private TabPage tabPage5;
-		private GroupBox groupBox3;
-		private Button button13;
-		private Label label11;
-		private Button button14;
-		private TextBox textBox8;
 		private TabPage ModifyBin;
 		private Button button38;
 		private Button HeadDump;
@@ -1181,13 +1026,7 @@ namespace Xylia.Preview.Tests.DatTool
 		private CheckBox checkBox1;
 		private Button button7;
 		private CheckBox checkBox13;
-		private TextBox textBox6;
-		private Label label8;
-		private Button button17;
-		private CheckBox checkBox14;
-		private ToolStripMenuItem 列出指定属性范围ToolStripMenuItem;
 		private Button button16;
-		private Button Compare_Diff;
 		private Label label13;
 		private Label label12;
 		private TextBox Region_YMax_input;
@@ -1204,5 +1043,19 @@ namespace Xylia.Preview.Tests.DatTool
 		private TextBox textBox3;
 		private Label label2;
 		private Button button4;
+		private TabPage tabPage2;
+		private RadioButton radioButton2;
+		private RadioButton radioButton1;
+		private Label lbl_Warning3;
+		private Button Btn_DecimalToHex;
+		private TextBox Txt_Decimal;
+		private Button Btn_HexToDecimal;
+		private TextBox Txt_HEX;
+		private TabPage tabPage3;
+		private Button button5;
+		private Button button12;
+		private Button button15;
+		private RichTextBox richTextBox1;
+		private Button Btn_Split;
 	}
 }

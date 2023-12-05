@@ -1,7 +1,7 @@
 ﻿using System.Text;
 
 namespace Xylia.Preview.Data.Engine.DatData;
-public class FileTableEntry : IDisposable
+public class FileTableEntry
 {
 	#region Fields
 	public string FilePath;
@@ -56,6 +56,7 @@ public class FileTableEntry : IDisposable
 			if (CompressedBuffer != null)
 			{
 				byte[] UncompressedBuffer = BNSDat.Unpack(CompressedBuffer, FileDataSizeStored, FileDataSizeSheared, FileDataSizeUnpacked, IsEncrypted, IsCompressed, KeyInfo);
+				CompressedBuffer = null;
 
 				if (FilePath.EndsWith(".xml") || FilePath.EndsWith(".x16"))
 				{
@@ -63,20 +64,13 @@ public class FileTableEntry : IDisposable
 					Xml.Read(UncompressedBuffer);
 
 					_data = Xml.ConvertToString();
+					UncompressedBuffer = null;
 				}
 				else _data = UncompressedBuffer;
-
-				CompressedBuffer = null;
 			}
 
 			return _data;
 		}
-	}
-
-	public void Dispose()
-	{
-		CompressedBuffer = Data = null;
-		GC.SuppressFinalize(this);
 	}
 	#endregion
 }

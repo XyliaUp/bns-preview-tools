@@ -1,5 +1,2 @@
 ﻿namespace Xylia.Preview.Data.Models;
-public class RandomStoreItemGroup : Record
-{
-	public string Alias;
-}
+public class RandomStoreItemGroup : Record { }

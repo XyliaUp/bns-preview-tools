@@ -1,5 +1,2 @@
 ﻿namespace Xylia.Preview.Data.Models;
-public sealed class WeaponGemSlot : Record 
-{
-	
-}
+public sealed class WeaponGemSlot : Record { }

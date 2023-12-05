@@ -5,20 +5,6 @@ using Xylia.Preview.Data.Common.Seq;
 namespace Xylia.Preview.Data.Models;
 public class QuestBonusRewardSetting : Record
 {
-	public string Alias;
-
-
-
-	public Ref<Quest> Quest;
-
-	public Ref<QuestBonusReward> Reward;
-
-	public Ref<ContentQuota> BasicQuota;
-
-	[Repeat(10)]
-	public Ref<ContentsReset>[] ContentsReset;
-
-
 	#region Sub
 	public sealed class SealedLevel : QuestBonusRewardSetting
 	{

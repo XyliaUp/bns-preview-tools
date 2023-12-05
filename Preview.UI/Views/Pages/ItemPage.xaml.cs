@@ -1,8 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 
-using HandyControl.Tools.Extension;
-
+using Xylia.Preview.Common;
 using Xylia.Preview.Data.Helpers;
 using Xylia.Preview.UI.Helpers.Output.Items;
 using Xylia.Preview.UI.ViewModels;
@@ -22,7 +21,7 @@ public partial class ItemPage : Page
 	private void ClearCacheData_Click(object sender, RoutedEventArgs e)
 	{
 		FileCache.Clear();
-		ProcessEx.ClearMemory();
+		ProcessHelper.ClearMemory();
 	}
 
 	private void BuyPrice_Click(object sender, RoutedEventArgs e) => ItemPageViewModel.StartOutput<ItemBuyPriceOut>();

@@ -14,7 +14,6 @@ using Xylia.Preview.Data.Engine.Readers;
 using Xylia.Preview.Data.Models;
 
 namespace Xylia.Preview.Data.Engine.BinData.Models;
-
 /// <summary>
 /// bns data table
 /// </summary>
@@ -33,15 +32,48 @@ public class Table : TableHeader, IDisposable
 	public BnsDatabase Owner { get; set; }
 
 	/// <summary>
-	/// data struct definition
-	/// </summary>
-	public TableDefinition Definition { get; set; }
-
-
-	/// <summary>
 	/// path
 	/// </summary>
 	public string XmlPath { get; set; }
+
+
+	private TableDefinition definition;
+
+	/// <summary>
+	/// data struct definition
+	/// </summary>
+	public TableDefinition Definition
+	{
+		set
+		{
+			definition = value;
+			this.CheckVersion(definition);
+		}
+		get
+		{
+			if (definition is null)
+			{
+				var definition = new TableDefinition() { Type = this.Type, Name = this.Type.ToString() };
+				var autoIdAttr = new AttributeDefinition
+				{
+					Name = "auto-id",
+					Size = 8,
+					Offset = 8,
+					Type = AttributeType.TInt64,
+					IsKey = true,
+					IsRequired = true,
+					Repeat = 1
+				};
+
+				definition.ElRecord = new();
+				definition.ElRecord.ExpandedAttributes.Add(autoIdAttr);
+				definition.ElRecord.Size = 16;
+				this.definition = definition;
+			}
+
+			return definition;
+		}
+	}
 	#endregion
 
 	#region Data
@@ -117,11 +149,11 @@ public class Table : TableHeader, IDisposable
 
 
 	#region Load Methods
-	public virtual Task LoadAsync() => Task.Run(() =>
+	public virtual Task LoadAsync(bool Reload = false) => Task.Run(() =>
 	{
 		lock (this)
 		{
-			if (_records != null) return;
+			if (_records != null && !Reload) return;
 
 			if (XmlPath is null) LoadData();
 			else
@@ -133,7 +165,7 @@ public class Table : TableHeader, IDisposable
 					x.Close();
 
 					return xml.DocumentElement.SelectNodes($"./" + Definition.ElRecord.Name).OfType<XmlElement>();
-				}).ToList());
+				}), Reload);
 			}
 		}
 	});
@@ -147,27 +179,30 @@ public class Table : TableHeader, IDisposable
 			ByRef[record.Ref] = record;
 	}
 
-	internal void LoadXml(IEnumerable<XmlElement> elements)
+	internal void LoadXml(IEnumerable<XmlElement> elements, bool build = false)
 	{
 		_records = new();
 		foreach (var element in elements)
 		{
-			var type = element.Attributes["type"]?.Value;
+			var definition = Definition.ElRecord.SubtableByName(element.GetAttribute("type"));
 			var record = new Record
 			{
 				Owner = this,
-				Data = new byte[16],
-				SubclassType = Definition.ElRecord.GetSubtableType(type),
+				Data = new byte[definition.Size],
+				DataSize = definition.Size,
+				XmlNodeType = 1,
+				SubclassType = definition.SubclassType,
 			};
-			record.Attributes = new(record, element, Definition.ElRecord);
+			record.Attributes = new(record, element, Definition.ElRecord, _records.Count + 1);
+			record.StringLookup = new();  // TODO: IsPerTable
 
 			#region build ref
-			if (Definition.ElRecord.AutoKey) record.RecordId = _records.Count + 1;
-			else record.ElDefinition.ExpandedAttributes.Where(attr => attr.IsKey).ForEach(record.Attributes.Set);
+			if (build) definition.ExpandedAttributes.ForEach(record.Attributes.Set);
+			else definition.ExpandedAttributes.Where(attr => attr.IsKey).ForEach(record.Attributes.Set);
 			#endregion
 
-			ByRef[record.Ref] = record;
 			_records.Add(record);
+			ByRef[record.Ref] = record;
 		}
 	}
 	#endregion
@@ -214,34 +249,27 @@ public class Table : TableHeader, IDisposable
 	#endregion
 
 	#region Serialize Methods
-	public byte[] ToArray(bool is64Bit)
-	{
-		#region build
-		//var builder = Owner.converter.Builder;
-		//builder.InitializeTable(IsCompressed);
+	//public byte[] ToArray(bool is64Bit)
+	//{
+	//	//var builder = new RecordBuilder();
+	//	//builder.InitializeTable(IsCompressed);
 
-		//// Clear old records
-		//base.Records.Clear();
-		//foreach (var record in Records)
-		//{
-		//    record.Serialize(builder);
-		//    base.Records.Add(record);
-		//}
+	//	//foreach (var record in Records)
+	//	//{
+	//	//	record.Serialize(builder);
+	//	//}
 
-		//builder.FinalizeTable();
-		#endregion
+	//	//builder.FinalizeTable();
 
 
-		//using var memoryStream = new MemoryStream();
-		//using var writer = new BinaryWriter(memoryStream);
+	//	using var memoryStream = new MemoryStream();
+	//	using var writer = new BinaryWriter(memoryStream);
 
-		//var bnsTableWriter = new TableWriter();
-		//bnsTableWriter.WriteTo(writer, this, is64Bit);
+	//	var bnsTableWriter = new TableWriter();
+	//	bnsTableWriter.WriteTo(writer, this, is64Bit);
 
-		//return memoryStream.ToArray();
-
-		return null;
-	}
+	//	return memoryStream.ToArray();
+	//}
 
 
 	public void WriteXml(string folder)
@@ -260,14 +288,15 @@ public class Table : TableHeader, IDisposable
 		using var writer = XmlWriter.Create(ms, new XmlWriterSettings() { Indent = true, IndentChars = "\t" });
 
 		writer.WriteStartDocument();
-		writer.WriteStartElement(Definition.Els.FirstOrDefault().Name);
+		writer.WriteStartElement(Definition.ElRoot.Name);
 		writer.WriteAttributeString("release-module", Moudle.LocalizationData.ToString());
 		writer.WriteAttributeString("release-side", side.ToString().ToLower());
 		writer.WriteAttributeString("type", Definition.Name);
 		writer.WriteAttributeString("version", MajorVersion + "." + MinorVersion);
 		writer.WriteComment($" {Name}.xml ");
 
-		foreach (var record in records.Any() ? records.ToList() : _records)
+		if (records.Length == 0) records = [.. _records];
+		foreach (var record in records)
 			record.WriteXml(writer, Definition.ElRecord);
 
 		writer.WriteEndElement();

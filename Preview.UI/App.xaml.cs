@@ -22,6 +22,7 @@ using HandyControl.Controls;
 using Serilog;
 
 using Xylia.Configure;
+using Xylia.Preview.Common;
 using Xylia.Preview.Common.Extension;
 using Xylia.Preview.Data.Helpers;
 using Xylia.Preview.UI.Services;
@@ -50,31 +51,24 @@ public partial class App : Application
 			.CreateLogger();
 		#endregion
 
+		#region Service 
+		Console.SetOut(new ConsoleRedirect());
 		new JumpListService().CreateAsync();
+		#endregion
 
 #if DEV
 		//FileCache.Data = new Data.Engine.DatData.FolderProvider(@"D:\资源\客户端相关\Auto\data");
-		//MainWindow = new Views.Editor.PropertyEditor() { Source = FileCache.Data.Store2[80087] };
 		//MainWindow = new Xylia.Preview.UI.Art.GameUI.Scene.Game_Broadcasting.Game_BroadcastingScene();
 
-		//MainWindow = new TableView()
-		//{
-		//	Table = FileCache.Data.Social,
-		//};
+		//using var provider = DefaultProvider.Load(UserSettings.Default.GameFolder);
+		//provider.LoadData([]);
+
+		//GC.Collect();
+		//return;
 #endif
 		MainWindow = new MainWindow();
 		MainWindow.Show();
-
-
-
-		//using var provider = DefaultProvider.Load(UserSettings.Default.GameFolder);
-		//var o = provider.XmlData.EnumerateFiles("datafile64.bin").FirstOrDefault()?.Data;
-		//o = null;
-
-		//GC.Collect();
-		//provider.LoadData(null);
 	}
-
 
 
 	#region Exception	

@@ -56,14 +56,13 @@ public sealed class BNSDat : IDisposable
 
 	public List<FileTableEntry> FileTable
 	{
-		set => _files = value;
+		private set => _files = value;
 		get
 		{
 			if (_files is null)
 				this.Read();
 
 			return _files;
-
 		}
 	}
 
@@ -393,9 +392,10 @@ public sealed class BNSDat : IDisposable
 	{
 		Magic = null;
 		Signature = null;
+		Unknown_001 = null;
+		Unknown_002 = null;
 
-		_files?.ForEach(file => file.Dispose());
-		_files = null;
+		_files?.Clear();
 
 		GC.SuppressFinalize(this);
 	}

@@ -159,7 +159,7 @@ public partial class DatSelectDialog : Window , IDatSelect
 				list_xml = Xml,
 				list_local = Local,
 			};
-			if (dialog.ShowDialog() != true) throw new UserExitException();
+			if (dialog.ShowDialog() != true) throw new OperationCanceledException();
 
 			return new DefaultProvider()
 			{

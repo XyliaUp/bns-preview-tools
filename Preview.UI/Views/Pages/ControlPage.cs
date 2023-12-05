@@ -1,17 +1,15 @@
 ﻿using System.Windows;
 
 namespace Xylia.Preview.UI.Views.Pages;
-internal class ControlPage
+internal interface IControlPage
 {
-	private readonly string name;
-	private readonly Type type;
-	private object _content;
+	object Content { set; get; }
+}
 
-	public ControlPage(Type type, string name = null)
-	{
-		this.name = name ?? type.Name;
-		this.type = type;
-	}
+internal class ControlPage<T>(string name = null) : IControlPage
+{
+	private readonly string name = name ?? typeof(T).Name;
+	private object _content;
 
 
 	//public string Icon;
@@ -21,14 +19,6 @@ internal class ControlPage
 	public object Content
 	{
 		set => _content = value;
-		get => _content ??= Activator.CreateInstance(type);
-	}
-}
-
-internal class ControlPage<T> : ControlPage
-{
-	public ControlPage(string name = null) : base(typeof(T), name)
-	{
-
+		get => _content ??= Activator.CreateInstance(typeof(T));
 	}
 }

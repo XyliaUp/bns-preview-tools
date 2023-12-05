@@ -64,9 +64,6 @@ public static class BNSFileHelper
     }
 
 
-
-
-
     #region SeriFile
     public static string SeriSourceFolder = @"F:\Bns";
 

@@ -9,23 +9,6 @@ using Xylia.Preview.Data.Helpers;
 namespace Xylia.Preview.Data.Models;
 public sealed class KeyCap : Record
 {
-	#region Fields	
-	[Name("key-code")]
-	public KeyCode KeyCode;
-
-	public Ref<Text> Name;
-
-	[Name("short-name")]
-	public Ref<Text> ShortName;
-
-	[Name("scroll-imageset")]
-	public string ScrollImageset;
-
-	[Name("scroll-imageset-scale")]
-	public float ScrollImagesetScale;
-	#endregion
-
-
 	#region Methods
 	public SKBitmap Icon => this.Attributes["icon"].GetIcon();
 

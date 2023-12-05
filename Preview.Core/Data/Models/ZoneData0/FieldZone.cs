@@ -1,34 +1,17 @@
-﻿using Xylia.Preview.Data.Common.Attribute;
+﻿using Xylia.Preview.Data.Common.Abstractions;
 using Xylia.Preview.Data.Common.DataStruct;
-using Xylia.Preview.Data.Common.Interface;
 
 namespace Xylia.Preview.Data.Models;
 public class FieldZone : Record, IAttraction
 {
 	#region Fields
-	public string Alias;
-
-
-
-	[Repeat(30)]
-	public Ref<Zone>[] Zone;
-
-	public Ref<AttractionGroup> Group;
-
-	[Repeat(5)]
-	public Ref<Quest>[] AttractionQuest;
-
-	public bool UiFilterAttractionQuestOnly;
-
-	public Ref<Text> RespawnConfirmText;
-
 	public Ref<Text> Name2;
 
 	public Ref<Text> Desc;
 
-	public sbyte UiTextGrade;
+	public string Text => this.Name2.GetText();
 
-	public Ref<AttractionRewardSummary> RewardSummary;
+	public string Describe => this.Desc.GetText();
 	#endregion
 
 
@@ -42,11 +25,4 @@ public class FieldZone : Record, IAttraction
 
 		public sbyte MinFixedChannel;
 	}
-
-
-	#region Interface
-	public override string GetText => this.Name2.GetText();
-
-	public string GetDescribe() => this.Desc.GetText();
-	#endregion
 }

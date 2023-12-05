@@ -18,10 +18,8 @@ public class Paragraph : Element
 
 	public Paragraph(string InnerText) : this()
 	{
-		if (InnerText is null) return;
-
 		var doc = new HtmlDocument();
-		doc.LoadHtml(InnerText.Replace("\n", "<br/>"));
+		doc.LoadHtml(InnerText);
 
 		this.Children = doc.DocumentNode.ChildNodes.Select(TextDocument.ToElement)
 			.Where(x => x is not null)

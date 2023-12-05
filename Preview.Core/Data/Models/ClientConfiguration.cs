@@ -122,9 +122,7 @@ public class ClientConfiguration : ConfigTable
 		//foreach (var control in controls)
 		//{
 		//	var w = control.x * (lprect.Width - control.size.Width);
-		//	var h = control.y * (lprect.Height - control.size.Height);
-
-		//	// TODO
+		//	var h = control.y * (lprect.Height - control.size.Height);	 
 		//}
 		#endregion
 

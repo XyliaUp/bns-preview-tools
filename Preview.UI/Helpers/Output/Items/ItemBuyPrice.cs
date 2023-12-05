@@ -1,6 +1,5 @@
 ﻿using OfficeOpenXml;
 
-using Xylia.Preview.Data.Common.Cast;
 using Xylia.Preview.Data.Helpers;
 using Xylia.Preview.Data.Helpers.Output;
 using Xylia.Preview.Data.Models;
@@ -67,9 +66,9 @@ public sealed class ItemBuyPriceOut : OutSet
 			sheet.Cells[Row, column++].SetValue(record.RequiredLifeContentsPoint);
 			sheet.Cells[Row, column++].SetValue(record.RequiredAchievementScore);
 
-			#region 获取成就名称
+			#region achievemen
 			string AchievementName = record.RequiredAchievementId == 0 ? null :
-                FileCache.Data.Achievement.FirstOrDefault(o => o.Id == record.RequiredAchievementId && o.Step == record.RequiredAchievementStepMin)?.Name2.GetText();
+                FileCache.Data.Achievement.FirstOrDefault(o => o.Id == record.RequiredAchievementId && o.Step == record.RequiredAchievementStepMin)?.Text;
             sheet.Cells[Row, column++].SetValue(AchievementName);
             #endregion
 

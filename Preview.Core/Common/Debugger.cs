@@ -1,4 +1,5 @@
-﻿using System.Net;
+﻿using System.Diagnostics;
+using System.Net;
 using System.Text;
 
 namespace Xylia.Preview.Common;
@@ -6,7 +7,7 @@ public class Debugger
 {
 	private HttpListener _listener;
 	private readonly int _port = new Random().Next(8000, 9000);
-	
+
 	public string Host => $"http://localhost:{_port}/";
 
 	public Task Start() => Task.Run(() =>
@@ -45,5 +46,19 @@ public class Debugger
 	{
 		status = 404;
 		return "Url not found";
+	}
+}
+
+/// <summary>
+/// redirect console to debug
+/// </summary>
+public class ConsoleRedirect : TextWriter
+{
+	public override Encoding Encoding => Encoding.UTF8;
+
+	public override void WriteLine(string value)
+	{
+		// base.WriteLine(value);
+		Debug.WriteLine(value);
 	}
 }

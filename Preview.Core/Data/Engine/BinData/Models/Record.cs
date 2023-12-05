@@ -1,12 +1,10 @@
-﻿using System.Collections;
-using System.Globalization;
+﻿using System.Globalization;
 using System.Runtime.Serialization;
 using System.Xml;
 using System.Xml.Linq;
 
 using Newtonsoft.Json;
 
-using Xylia.Extension;
 using Xylia.Preview.Common.Extension;
 using Xylia.Preview.Data.Common.DataStruct;
 using Xylia.Preview.Data.Database;
@@ -100,27 +98,22 @@ public unsafe class Record : IDisposable
 	public StringLookup StringLookup { get; set; }
 
 	[IgnoreDataMember]
-	public int SizeWithLookup
-	{
-		get
-		{
-			var size = Data.Length;
-
-			if (StringLookup?.Data != null)
-				size += StringLookup.Data.Length;
-
-			return size;
-		}
-	}
-
-	[IgnoreDataMember]
 	public Table Owner { get; internal set; }
 
 	[IgnoreDataMember]
 	public Ref Ref => Data is null ? default : new(RecordId, RecordVariationId);
 
 	[IgnoreDataMember]
-	public ITableDefinition ElDefinition => Owner?.Definition.ElRecord?.SubtableByType(SubclassType);
+	public ITableDefinition ElDefinition
+	{
+		get
+		{
+			var def = Owner?.Definition.ElRecord?.SubtableByType(SubclassType);
+			if (def != null) this.CheckSize(def);
+
+			return def;
+		}
+	}
 
 	[IgnoreDataMember]
 	public AttributeCollection Attributes { get; internal set; }
@@ -151,11 +144,8 @@ public unsafe class Record : IDisposable
 		}
 	}
 
-
 	public void WriteXml(XmlWriter writer, ElDefinition el)
 	{
-		Attributes.Synchronize();
-
 		writer.WriteStartElement(el.Name);
 
 		// attribute
@@ -163,11 +153,12 @@ public unsafe class Record : IDisposable
 		{
 			writer.WriteAttributeString("type", SubclassType < el.Subtables.Count ? el.Subtables[SubclassType].Name : SubclassType.ToString());
 		}
+
 		foreach (var attribute in Attributes.OrderBy(o => o.Key))
 		{
 			// avoid duplicate (only cause when from xml)
 			if (SubclassType > -1 && attribute.Key == "type") continue;
-
+			if (attribute.Key == "auto-id") continue;
 
 			// check default
 			var attributeDef = el[attribute.Key];
@@ -194,19 +185,10 @@ public unsafe class Record : IDisposable
 		}
 
 		// children
-		foreach (var child in el.Children)
+		foreach (var el_child in el.Children)
 		{
-			var field = this.GetInfo(child.Name, true);
-			if (field is null || !field.GetMemberType().IsList()) continue;
-
-			var value = field.GetValue(this);
-			if (value is null) continue;
-
-			foreach (var element in (IEnumerable)value)
-			{
-				if (element is Record record)
-					record.WriteXml(writer, child);
-			}
+			if (this.Children.TryGetValue(el_child.Name, out var childs))
+				childs.ForEach(child => child.WriteXml(writer, el_child));
 		}
 
 		writer.WriteEndElement();
@@ -246,16 +228,8 @@ public unsafe class Record : IDisposable
 	}
 	#endregion
 
-
-	#region Instance
-	/// XXX: https://zhuanlan.zhihu.com/p/430728295
-	public Lazy<Record> Model { get; set; }
-	#endregion
-
 	#region Interface
 	public override string ToString() => this.Attributes["alias"] ?? Ref.ToString();
-
-	public virtual string GetText => this.Attributes["name2"]?.GetText() ?? ToString();
 
 	public static bool operator ==(Record a, Record b)
 	{
@@ -289,5 +263,12 @@ public unsafe class Record : IDisposable
 
 		GC.SuppressFinalize(this);
 	}
+	#endregion
+
+
+	#region Instance
+	/// XXX: https://zhuanlan.zhihu.com/p/430728295
+	[IgnoreDataMember]
+	public Lazy<Record> Model { get; set; }
 	#endregion
 }

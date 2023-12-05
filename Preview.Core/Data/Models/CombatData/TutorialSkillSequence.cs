@@ -6,8 +6,6 @@ namespace Xylia.Preview.Data.Models;
 [Side(ReleaseSide.Client)]
 public sealed class TutorialSkillSequence : Record
 {
-	public string Alias;
-
 	public List<Step> step { get; set; }
 
 	public sealed class Step

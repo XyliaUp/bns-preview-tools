@@ -4,6 +4,8 @@ using System.Windows.Media;
 
 using CUE4Parse.BNS.Assets.Exports;
 
+using HtmlAgilityPack;
+
 using Xylia.Preview.Data.Helpers;
 
 namespace Xylia.Preview.UI.Documents;
@@ -31,6 +33,12 @@ public class Font : Element
 
 
 	#region Methods
+	protected override void Load(HtmlNode node)
+	{
+		base.Load(node);
+		//this.Name = node.Attributes[nameof(Name)]?.Value;
+	}
+
 	protected override Size MeasureCore(Size availableSize)
 	{
 		GetFont(Name);

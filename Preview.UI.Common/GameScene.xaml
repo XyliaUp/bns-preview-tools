@@ -55,7 +55,7 @@
 	<Style TargetType="{x:Type UI:GameScene}">
 		<Setter Property="FocusVisualStyle" Value="{x:Null}" />
 		<Setter Property="SnapsToDevicePixels" Value="True" />
-		
+
 		<Setter Property="Background" Value="#FFF3F3F3" />
 		<Setter Property="WindowStyle" Value="SingleBorderWindow" />
 		<Setter Property="BorderBrush" Value="{StaticResource Brush}" />
@@ -79,68 +79,65 @@
 			<Setter.Value>
 				<ControlTemplate TargetType="{x:Type UI:GameScene}">
 					<Border x:Name="PART_WindowBorder" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
-						<Grid x:Name="WindowGrid">
-							<Border Margin="-1" BorderBrush="#000000" BorderThickness="{Binding BorderThickness, ElementName=border}" Opacity="0.15" />
-							<Grid x:Name="WIdowGrid" >
-								<Grid.RowDefinitions>
-									<RowDefinition x:Name="TitleHeight" Height="40" />
-									<RowDefinition Height="*" />
-								</Grid.RowDefinitions>
-		
-								<Grid x:Name="PART_Title" Background="{TemplateBinding BorderBrush}">
-									<Grid.ColumnDefinitions>
-										<ColumnDefinition Width="Auto" />
-										<ColumnDefinition />
-										<ColumnDefinition Width="Auto" />
-									</Grid.ColumnDefinitions>
+						<Grid x:Name="WIdowGrid" >
+							<Grid.RowDefinitions>
+								<RowDefinition x:Name="TitleHeight" Height="40" />
+								<RowDefinition Height="*" />
+							</Grid.RowDefinitions>
 
-									<c:BnsCustomCaptionWidget Grid.Column="0" BaseImage="{TemplateBinding Icon}" 
-											Foreground="{TemplateBinding TitleForeground}" FontSize="20"/>
-									<Grid Grid.Column="2" x:Name="PART_SysButton" WindowChrome.IsHitTestVisibleInChrome="True">
-										<StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
-											<Button x:Name="PART_QuestionButton" Style="{StaticResource buttonStyle}" ToolTip="{TemplateBinding ToolTip}">
-												<Button.Content>
-													<Grid HorizontalAlignment="Center" VerticalAlignment="Center">
-														<Path Width="8.25" Height="11" Margin="0,0,0,0" Shape.Fill="{TemplateBinding SysButtonColor}" Shape.Stretch="Fill" Path.Data="{StaticResource Icon_Question}" />
-													</Grid>
-												</Button.Content>
-											</Button>
+							<Grid x:Name="PART_Title" Background="{TemplateBinding BorderBrush}">
+								<Grid.ColumnDefinitions>
+									<ColumnDefinition Width="Auto" />
+									<ColumnDefinition />
+									<ColumnDefinition Width="Auto" />
+								</Grid.ColumnDefinitions>
 
-											<Button x:Name="PART_MinimizedButton" Style="{StaticResource buttonStyle}">
-												<Button.Content>
-													<Path Width="11" Height="2" Data="{StaticResource Icon_SysMin}" Fill="{TemplateBinding SysButtonColor}"  Stretch="Fill"/>
-												</Button.Content>
-											</Button>
-											<Button x:Name="PART_MaximizedButton" Foreground="{TemplateBinding TitleForeground}" Style="{StaticResource buttonStyle}" Visibility="Collapsed">
-												<Button.Content>
-													<Grid HorizontalAlignment="Center" VerticalAlignment="Center">
-														<Path Width="11" Height="11" Margin="0,0,0,0" Shape.Fill="{TemplateBinding SysButtonColor}" Shape.Stretch="Fill" Path.Data="{StaticResource Icon_SysMax}" />
-													</Grid>
-												</Button.Content>
-											</Button>
-											<Button x:Name="PART_NormalButton" Foreground="{TemplateBinding TitleForeground}" Style="{StaticResource buttonStyle}">
-												<Button.Content>
-													<Grid Margin="0,2,3,0" HorizontalAlignment="Center" VerticalAlignment="Center">
-														<Path  Width="11" Height="11" Margin="0,0,0,0" Shape.Fill="{TemplateBinding SysButtonColor}" Shape.Stretch="Fill" Path.Data="{StaticResource Icon_SystemRestore}" />
-													</Grid>
-												</Button.Content>
-											</Button>
-											<Button x:Name="PART_CloseButton" Foreground="{TemplateBinding TitleForeground}" Style="{StaticResource buttonStyle}">
-												<Button.Content>
-													<Grid HorizontalAlignment="Center" VerticalAlignment="Center">
-														<Path Width="11" Height="11" Margin="0,0,0,0" Shape.Fill="{TemplateBinding SysButtonColor}" Shape.Stretch="Fill" Path.Data="{StaticResource Icon_SystemClose}" />
-													</Grid>
-												</Button.Content>
-											</Button>
-										</StackPanel>
-									</Grid>
+								<c:BnsCustomCaptionWidget Grid.Column="0" BaseImage="{TemplateBinding Icon}" 
+										Foreground="{TemplateBinding TitleForeground}" FontSize="20"/>
+								<Grid Grid.Column="2" x:Name="PART_SysButton" WindowChrome.IsHitTestVisibleInChrome="True">
+									<StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+										<Button x:Name="PART_QuestionButton" Style="{StaticResource buttonStyle}" ToolTip="{TemplateBinding ToolTip}">
+											<Button.Content>
+												<Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+													<Path Width="8.25" Height="11" Margin="0,0,0,0" Shape.Fill="{TemplateBinding SysButtonColor}" Shape.Stretch="Fill" Path.Data="{StaticResource Icon_Question}" />
+												</Grid>
+											</Button.Content>
+										</Button>
+
+										<Button x:Name="PART_MinimizedButton" Style="{StaticResource buttonStyle}">
+											<Button.Content>
+												<Path Width="11" Height="2" Data="{StaticResource Icon_SysMin}" Fill="{TemplateBinding SysButtonColor}"  Stretch="Fill"/>
+											</Button.Content>
+										</Button>
+										<Button x:Name="PART_MaximizedButton" Foreground="{TemplateBinding TitleForeground}" Style="{StaticResource buttonStyle}" Visibility="Collapsed">
+											<Button.Content>
+												<Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+													<Path Width="11" Height="11" Margin="0,0,0,0" Shape.Fill="{TemplateBinding SysButtonColor}" Shape.Stretch="Fill" Path.Data="{StaticResource Icon_SysMax}" />
+												</Grid>
+											</Button.Content>
+										</Button>
+										<Button x:Name="PART_NormalButton" Foreground="{TemplateBinding TitleForeground}" Style="{StaticResource buttonStyle}">
+											<Button.Content>
+												<Grid Margin="0,2,3,0" HorizontalAlignment="Center" VerticalAlignment="Center">
+													<Path  Width="11" Height="11" Margin="0,0,0,0" Shape.Fill="{TemplateBinding SysButtonColor}" Shape.Stretch="Fill" Path.Data="{StaticResource Icon_SystemRestore}" />
+												</Grid>
+											</Button.Content>
+										</Button>
+										<Button x:Name="PART_CloseButton" Foreground="{TemplateBinding TitleForeground}" Style="{StaticResource buttonStyle}">
+											<Button.Content>
+												<Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+													<Path Width="11" Height="11" Margin="0,0,0,0" Shape.Fill="{TemplateBinding SysButtonColor}" Shape.Stretch="Fill" Path.Data="{StaticResource Icon_SystemClose}" />
+												</Grid>
+											</Button.Content>
+										</Button>
+									</StackPanel>
 								</Grid>
-								<Grid x:Name="PART_Content" Grid.Row="1" Background="{TemplateBinding Background}" 
-									  HorizontalAlignment="{TemplateBinding HorizontalAlignment}" VerticalAlignment="{TemplateBinding VerticalAlignment}">
-									<AdornerDecorator>
-										<ContentPresenter/>
-									</AdornerDecorator>
-								</Grid>
+							</Grid>
+							<Grid x:Name="PART_Content" Grid.Row="1" Background="{TemplateBinding Background}" 
+								  HorizontalAlignment="{TemplateBinding HorizontalAlignment}" VerticalAlignment="{TemplateBinding VerticalAlignment}">
+								<AdornerDecorator>
+									<ContentPresenter/>
+								</AdornerDecorator>
 							</Grid>
 						</Grid>
 						<VisualStateManager.VisualStateGroups>

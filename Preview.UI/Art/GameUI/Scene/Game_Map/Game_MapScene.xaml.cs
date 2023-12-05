@@ -5,8 +5,8 @@ using System.Windows.Controls;
 using CUE4Parse.BNS.Assets.Exports;
 
 using Xylia.Preview.Common.Extension;
+using Xylia.Preview.Data.Common.Abstractions;
 using Xylia.Preview.Data.Common.DataStruct;
-using Xylia.Preview.Data.Common.Interface;
 using Xylia.Preview.Data.Helpers;
 using Xylia.Preview.Data.Models;
 using Xylia.Preview.UI.Controls;
@@ -33,7 +33,7 @@ public partial class Game_MapScene
 	private MapUnit.MapDepthSeq depth;
 
 	public void LoadData(MapInfo MapInfo)
-	{	
+	{
 		// get current map depth
 		if (MapInfo is null) return;
 		depth = MapInfo.GetMapDepth(MapInfo);
@@ -56,7 +56,7 @@ public partial class Game_MapScene
 		if (MapInfo.Alias == "World") return;
 		FileCache.Data.MapInfo
 			.Where(x => x.ParentMapinfo == MapInfo)
-			.ForEach( x => this.LoadMapUint(x, new(MapTree)));
+			.ForEach(x => this.LoadMapUint(x, new(MapTree)));
 	}
 
 	private void GetMapUnit(MapInfo MapInfo, List<MapInfo> MapTree)
@@ -86,17 +86,19 @@ public partial class Game_MapScene
 			if (mapunit is MapUnit.Attraction)
 			{
 				var obj = new Ref<Record>(mapunit.Attributes["attraction"]).Instance;
-				if (obj != null)
+				if (obj is IAttraction attraction)
 				{
-					tooltip = obj.GetText;
-					if (obj is IAttraction attraction) tooltip += "\n" + attraction.GetDescribe();
+					tooltip = attraction.Text + "\n" + attraction.Describe;
 				}
-
+				else if (obj != null)
+				{
+					tooltip = obj.ToString();
+				}
 			}
 			else if (mapunit is MapUnit.Npc or MapUnit.Boss)
 			{
 				var Npc = FileCache.Data.Npc[mapunit.Attributes["npc"]];
-				if (Npc != null) tooltip = Npc.GetText;
+				if (Npc != null) tooltip = Npc.Text;
 			}
 			else if (mapunit is MapUnit.Link)
 			{

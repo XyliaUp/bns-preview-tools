@@ -1,8 +1,7 @@
-﻿using System.Reflection;
-using System.Text;
+﻿using System.Text;
 using System.Text.RegularExpressions;
 
-namespace Xylia.Preview.Tests.DatTool;
+namespace Xylia.Preview.Tests.DatTool.Utils;
 public class StrWriter : TextWriter
 {
     #region Fields
@@ -19,7 +18,6 @@ public class StrWriter : TextWriter
         _output = output;
 
         Console.SetOut(this);
-        Console.WriteLine($"#cFF6600#版本信息：{Assembly.GetExecutingAssembly().GetName().Version} (内部版本 NT2.0)");
     }
     #endregion
 
@@ -58,7 +56,7 @@ public class StrWriter : TextWriter
         bool Repeat = false;       //指示在重复时不进行合并
         #endregion
 
-        #region 处理扩展选项
+        #region extra
         if (!string.IsNullOrEmpty(value))
         {
             var regex = new Regex("#.*?#");
@@ -93,16 +91,12 @@ public class StrWriter : TextWriter
                 }
             }
 
-            //清除额外标记信息
             OriVal = value = regex.Replace(value, string.Empty);
         }
         #endregion
 
-        #region 输出内容
-        //空文本异常处理
+        #region output
         if (string.IsNullOrEmpty(value)) return;
-
-        //重复文本进行合并显示
         else if (!Repeat && LastVal == value)
         {
             _output.SelectionColor = ColorTranslator.FromHtml("#FF0066");
@@ -124,12 +118,9 @@ public class StrWriter : TextWriter
         }
         #endregion
 
-        #region 最后处理
-        //恢复原来颜色
+        // resume
         _output.SelectionColor = Color.Black;
-
         base.WriteLine(LastVal = OriVal);
-        #endregion
     }
 
 

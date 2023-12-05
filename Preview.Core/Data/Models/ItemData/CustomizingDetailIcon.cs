@@ -1,5 +1,2 @@
 ﻿namespace Xylia.Preview.Data.Models;
-public sealed class CustomizingDetailIcon : Record 
-{
-	
-}
+public sealed class CustomizingDetailIcon : Record { }

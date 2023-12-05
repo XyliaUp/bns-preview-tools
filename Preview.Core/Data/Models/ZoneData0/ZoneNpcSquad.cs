@@ -2,7 +2,4 @@
 
 namespace Xylia.Preview.Data.Models;
 [Side(ReleaseSide.Server)]
-public sealed class ZoneNpcSquad : Record
-{
-	public string Alias;
-}
+public sealed class ZoneNpcSquad : Record { }

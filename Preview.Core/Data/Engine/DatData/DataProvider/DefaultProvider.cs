@@ -13,9 +13,9 @@ public class DefaultProvider : Datafile, IDataProvider
 	public BNSDat XmlData;
 	public BNSDat LocalData;
 	public BNSDat ConfigData;
-	public DatafileDetect Detect;
+	public ITableParseType Detect;
 
-	public string Name { get; protected set; }
+	public virtual string Name { get; protected set; }
 	public Locale Locale { get; protected set; }
 	#endregion
 
@@ -25,14 +25,12 @@ public class DefaultProvider : Datafile, IDataProvider
 
 	public virtual void LoadData(List<TableDefinition> definitions)
 	{
-		this.Tables = new();
+		#region Tables
+		this.Tables = [];
 
-		#region bin
 		ReadFrom(XmlData.EnumerateFiles(is64Bit ? "datafile64.bin" : $"datafile.bin").FirstOrDefault()?.Data, is64Bit);
 		ReadFrom(LocalData.EnumerateFiles(is64Bit ? "localfile64.bin" : "localfile.bin").FirstOrDefault()?.Data, is64Bit);
-		#endregion
 
-		#region xml
 		Tables.Add(new() { Name = "quest", XmlPath = @"quest\questdata*.xml" });
 		Tables.Add(new() { Name = "contextscript", XmlPath = @"skill3_contextscriptdata*.xml" });
 		Tables.Add(new() { Name = "skilltrainingsequence", XmlPath = @"skilltrainingsequencedata*.xml" });
@@ -41,13 +39,18 @@ public class DefaultProvider : Datafile, IDataProvider
 		#endregion
 
 
-		#region detect
-		// auto detect type
-		// Actually, it is directly defined in the game program, but we cannot get it.
-		Detect = new DatafileDetect();
-		Detect.Read(this);
-
-		if (definitions != null) Detect.Convert(definitions);
+		#region ParseType
+		if (true)
+		{
+			// auto detect type
+			// Actually, it is directly defined in the game program, but we cannot get it.
+			Detect = new DatafileDetect(this);
+			Detect.ParseType(definitions);
+		}
+		else
+		{
+			// when known define
+		}
 		#endregion
 	}
 
@@ -69,27 +72,56 @@ public class DefaultProvider : Datafile, IDataProvider
 	#endregion
 
 	#region Protected Methods
-	protected void ReadFrom(byte[] bytes, bool _is64bit)
+	protected void ReadFrom(byte[] bytes, bool is64bit)
 	{
 		using var reader = new DatafileArchive(bytes);
 
 		var bin = new DatafileHeader();
-		bin.ReadHeaderFrom(reader, _is64bit);
+		bin.ReadHeaderFrom(reader, is64bit);
 
 		if (bin.ReadTableCount > 10)
 		{
 			this.DatafileVersion = bin.DatafileVersion;
 			this.ClientVersion = bin.ClientVersion;
 			this.CreatedAt = bin.CreatedAt;
-
-			var _nameTableReader = new NameTableReader(is64Bit: _is64bit) { };
-			this.NameTable = _nameTableReader.ReadFrom(reader);
+			this.NameTable = new NameTableReader(is64bit).ReadFrom(reader);
 		}
 
 		for (var tableId = 0; tableId < bin.ReadTableCount; tableId++)
 		{
-			this.Tables.Add(TableArchive.LazyLoad(reader, _is64bit));
+			this.Tables.Add(TableArchive.LazyLoad(reader, is64bit));
 		}
+	}
+
+	public byte[] WriteTo(bool is64bit)
+	{
+		using var memoryStream = new MemoryStream();
+		using var writer = new BinaryWriter(memoryStream);
+
+		#region builder
+		var datafileHeader = new DatafileHeader
+		{
+			Magic = "TADBOSLB",
+			Reserved = new byte[58],
+			CreatedAt = DateTime.Now,
+			DatafileVersion = 5,
+			ClientVersion = new Common.DataStruct.Version(0, 2, 2000, 367),
+			AliasMapSize = 60318528,
+			MaxBufferSize = 60318528,
+			TotalTableSize = 20113543,
+		};
+		datafileHeader.WriteHeaderTo(writer, this.Tables.Count, 0, is64bit);
+
+		var tableWriter = new TableWriter();
+		foreach (var table in this.Tables)
+		{
+			tableWriter.WriteTo(writer, table, is64bit);
+		}
+
+		writer.Flush();
+		#endregion
+
+		return memoryStream.ToArray();
 	}
 	#endregion
 

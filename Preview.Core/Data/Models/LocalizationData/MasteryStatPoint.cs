@@ -1,5 +1,2 @@
 ﻿namespace Xylia.Preview.Data.Models;
-public sealed class MasteryStatPointPick : Record
-{
-	
-}
+public sealed class MasteryStatPointPick : Record { }

@@ -41,6 +41,9 @@ public class PreviewModel : RecordCommand
 
 	private static async Task Load(Record record, List<ModelData> models)
 	{
+		if (record is null) return;
+
+		// accordin table name
 		switch (record.Owner.Name)
 		{
 			case "npc":

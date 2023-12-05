@@ -4,8 +4,12 @@
 /// </summary>
 public sealed class Achievement : LinkId
 {
-	internal override void Load(ContentParams data)
+	public string alias;
+
+	internal override void Load(string text)
 	{
-		var alias = data[1];
+		var data = text.Split('.');
+
+		alias = data[0];
 	}
 }

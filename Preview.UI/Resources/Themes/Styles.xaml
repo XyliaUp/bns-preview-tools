@@ -1,7 +1,9 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-					xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+					xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+					xmlns:UI="https://github.com/xyliaup/bns-preview-tools">
 	<FontFamily x:Key="SegoeAssets">pack://application:,,,/Preview.UI;component/Resources/Fonts/#Segoe MDL2 Assets</FontFamily>
-	
+	<UI:DataParamsConverter x:Key="DataParamsConverter" />
+
 	<Style x:Key="SegoeIcon">
 		<Setter Property="TextElement.FontFamily" Value="{StaticResource SegoeAssets}" />
 		<Setter Property="Control.FontFamily" Value="{StaticResource SegoeAssets}" />
@@ -26,6 +28,19 @@
 							<Setter Property="Opacity"  Value="0.5"/>
 						</Trigger>
 					</ControlTemplate.Triggers>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+
+
+	<Style x:Key="BnsTooltip" TargetType="ToolTip">
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate>
+					<Border Background="{DynamicResource BackgroundBrush}" BorderThickness="1" Padding="2 3">
+						<UI:BnsCustomLabelWidget Text="{TemplateBinding ContentControl.Content}" Foreground="White" FontSize="13.5"/>
+					</Border>
 				</ControlTemplate>
 			</Setter.Value>
 		</Setter>

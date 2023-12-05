@@ -1,5 +1,2 @@
 ﻿namespace Xylia.Preview.Data.Models;
-public sealed class SkillCombo : Record
-{
-	
-}
+public sealed class SkillCombo : Record { }

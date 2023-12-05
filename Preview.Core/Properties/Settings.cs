@@ -73,7 +73,6 @@ public class Settings : INotifyPropertyChanged
 
 	public string OutputFolderResource { get => GetValue(); set => SetValue(value); }
 
-
 	public bool UseUserDefinition { get => GetValue().ToBool(); set => SetValue(value); }
 	#endregion
 }

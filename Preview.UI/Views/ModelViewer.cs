@@ -22,7 +22,7 @@ public class MyTest
 				new GameWindowSettings { UpdateFrequency = htz },
 				new NativeWindowSettings
 				{
-					Size = new OpenTK.Mathematics.Vector2i(
+					ClientSize = new OpenTK.Mathematics.Vector2i(
 						Convert.ToInt32(SystemParameters.MaximizedPrimaryScreenWidth * .75 * scale),
 						Convert.ToInt32(SystemParameters.MaximizedPrimaryScreenHeight * .85 * scale)),
 					NumberOfSamples = 4,
@@ -55,7 +55,7 @@ public class MyTest
 					new GameWindowSettings { UpdateFrequency = htz },
 					new NativeWindowSettings
 					{
-						Size = new OpenTK.Mathematics.Vector2i(
+						ClientSize = new OpenTK.Mathematics.Vector2i(
 							Convert.ToInt32(SystemParameters.MaximizedPrimaryScreenWidth * .45 * scale),
 							Convert.ToInt32(SystemParameters.MaximizedPrimaryScreenHeight * .85 * scale)),
 						NumberOfSamples = 4,

@@ -20,20 +20,13 @@ public class NameTable
 	public List<AliasCollection> CreateTable()
 	{
 		var tables = new Dictionary<string, AliasCollection>(StringComparer.OrdinalIgnoreCase);
-
-		CreateNode(this.RootEntry, tables: tables);
-		Entries.Clear();
-
-		foreach (var table in tables.Values)
-		{
-			table.ByRef = table.ToLookup(x => x.Ref, x => x).ToDictionary(x => x.Key, x => x.First());
-			table.ByAlias = table.DistinctBy(x => x.Alias).ToDictionary(x => x.Alias, StringComparer.OrdinalIgnoreCase);
-		}
+		CreateNode(this.RootEntry, String.Empty, tables);
+		Clear();
 
 		return tables.Values.ToList();
 	}
 
-	private void CreateNode(NameTableEntry entry, string path = null, Dictionary<string, AliasCollection> tables = null)
+	private void CreateNode(NameTableEntry entry, string path, Dictionary<string, AliasCollection> tables = null)
 	{
 		path += entry.String;
 
@@ -44,16 +37,16 @@ public class NameTable
 		}
 		else
 		{
-			var tmp = path.Split(':', 2);
-			if (tmp.Length < 2) return;
+			var ls = path.Split(':', 2);
+			if (ls.Length < 2) return;
 
-			var table = tmp[0];
-			var alias = tmp[1];
+			var table = ls[0];
+			var alias = ls[1];
 
-			if (!tables.TryGetValue(table, out var infos))
-				tables.TryAdd(table, infos = new() { Table = table });
+			if (!tables.TryGetValue(table, out var collection))
+				collection = tables[table] = new(table);
 
-			infos.Add(new AliasEntry(entry.ToRef(), table, alias));
+			collection.Add(new AliasEntry(entry.ToRef(), table, alias));
 		}
 	}
 

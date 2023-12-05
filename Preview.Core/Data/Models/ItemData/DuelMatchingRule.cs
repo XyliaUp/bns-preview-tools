@@ -2,7 +2,4 @@
 
 namespace Xylia.Preview.Data.Models;
 [Side(ReleaseSide.Server)]
-public sealed class DuelMatchingRule : Record
-{
-	
-}
+public sealed class DuelMatchingRule : Record { }

@@ -18,7 +18,7 @@ data element
 | :----:  | :----: |
 | Owner | Parent table |
 | ElDefinition |  |
-| Attributes | [Collection of attribute](#AttributeCollection) |
+| Attributes | [Collection of attribute](#id-attributes) |
 | Children |  |
 | |
 | Data         | Raw data |
@@ -30,15 +30,18 @@ data element
 ### Model Record
 Model record is the entity of record, it has the same data as the original record, but it has instance fields.
 
-It was designed for interface presentation, so should not be directly modified.
+It was designed for interface presentation, is equal a ViewModel between record with UI.
+<font color=red>so not recommended for using it on other usages.</font>
 
 
-### AttributeCollection
+<h2 id=id-attributes>AttributeCollection</h2>
+
 attributes of the record
 
-This is a dynamic object, so it supports WPF data binding.<br/>
-eg. {Binding Record.Attributes.alias}
-
+This is a dynamic object, so it supports WPF data binding, such as
+```
+<TextBlock Text="{Binding Record.Attributes.alias}" />
+```
 
 #### attribute type
 + Int8

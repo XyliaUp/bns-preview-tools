@@ -27,7 +27,7 @@ public sealed class ItemTransformRecipeOut : OutSet
             int column = 1;
 
 
-            sheet.Cells[Row, column++].SetValue(Info.Alias);
+            sheet.Cells[Row, column++].SetValue(Info);
 
             #region MainIngredient
             var MainIngredient = Info.MainIngredient.Instance;

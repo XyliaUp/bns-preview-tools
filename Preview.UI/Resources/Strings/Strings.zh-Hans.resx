@@ -208,7 +208,7 @@
     <value>任务已经完成, 总耗{0:hh}小时{0:mm}分{0:ss}秒。</value>
   </data>
   <data name="IconOut_TaskException" xml:space="preserve">
-    <value>任务意外终止, 由于 {0}。</value>
+    <value>任务意外终止, 由于 {0}</value>
   </data>
   <data name="IconOut_UseBackground" xml:space="preserve">
     <value>生成品质背景</value>
@@ -361,10 +361,10 @@
     <value>右</value>
   </data>
   <data name="Text_Save" xml:space="preserve">
-    <value>存储</value>
+    <value>保存</value>
   </data>
   <data name="Text_SaveAs" xml:space="preserve">
-    <value>存储为</value>
+    <value>另存为...</value>
   </data>
   <data name="Text_PublishOn" xml:space="preserve">
     <value>发布于</value>
@@ -374,5 +374,17 @@
   </data>
   <data name="ItemList_TaskCompleted2" xml:space="preserve">
     <value>任务已经完成, 总耗{1}秒。</value>
+  </data>
+  <data name="Text_Edit" xml:space="preserve">
+    <value>编辑</value>
+  </data>
+  <data name="Text_Search" xml:space="preserve">
+    <value>查找</value>
+  </data>
+  <data name="Text_Replace" xml:space="preserve">
+    <value>替换</value>
+  </data>
+  <data name="Text_ReplaceInFiles" xml:space="preserve">
+    <value>在文件中替换</value>
   </data>
 </root>

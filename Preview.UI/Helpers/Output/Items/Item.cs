@@ -2,8 +2,6 @@
 using System.IO;
 using System.Net;
 using System.Text;
-using System.Web;
-using System.Xml;
 
 using OfficeOpenXml;
 
@@ -235,7 +233,7 @@ class ItemSimple
 		{
 			switch (node.Name)
 			{
-				case "#text": builder.Append(HttpUtility.HtmlDecode(XmlConvert.DecodeName(node.InnerText))); break;
+				case "#text": builder.Append(node.InnerText); break;
 				case "image":
 				{
 					var ImagesetPath = node.Attributes["imagesetpath"]?.Value;

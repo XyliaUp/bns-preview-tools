@@ -1,5 +1,2 @@
 ﻿namespace Xylia.Preview.Data.Models;
-public sealed class EnergyPointReward : Record 
-{
-	
-}
+public sealed class EnergyPointReward : Record { }

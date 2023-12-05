@@ -1,5 +1,2 @@
 ﻿namespace Xylia.Preview.Data.Models;
-public sealed class SkillMasteryLevelModify : Record
-{
-	
-}
+public sealed class SkillMasteryLevelModify : Record { }

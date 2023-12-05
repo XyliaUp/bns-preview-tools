@@ -25,11 +25,6 @@ public abstract partial class Item : Record
 	public Ref<ItemBrand> Brand;
 
 
-	public int Price;
-
-	[Name("base-fee")]
-	public int BaseFee;
-
 
 	[Name("game-category-2")]
 	public GameCategory2Seq GameCategory2;
@@ -132,17 +127,6 @@ public abstract partial class Item : Record
 	}
 
 
-
-	public RecycleGroup UseGlobalRecycleGroup => this.Attributes["use-global-recycle-group"].ToEnum<RecycleGroup>();
-	public sbyte UseGlobalRecycleGroupID => this.Attributes["use-global-recycle-group-id"].ToInt8();
-	public Msec UseGlobalRecycleGroupDuration => this.Attributes["use-global-recycle-group-duration"].ToInt32();
-	public RecycleGroup UseRecycleGroup => this.Attributes["use-recycle-group"].ToEnum<RecycleGroup>();
-	public sbyte UseRecycleGroupID => this.Attributes["use-recycle-group-id"].ToInt8();
-	public Msec UseRecycleGroupDuration => this.Attributes.Get<Msec>("use-recycle-group-duration");
-
-
-
-	public string ItemSoundMove => this.Attributes["item-sound-move"];
 
 	public MainAbility MainAbility1 => this.Attributes["main-ability-1"].ToEnum<MainAbility>();
 	public MainAbility MainAbility2 => this.Attributes["main-ability-2"].ToEnum<MainAbility>();

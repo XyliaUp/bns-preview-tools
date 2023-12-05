@@ -1,16 +1,34 @@
-﻿using Xylia.Preview.Data.Common.DataStruct;
+﻿using System.Collections.ObjectModel;
+
+using Xylia.Preview.Data.Common.DataStruct;
 
 namespace Xylia.Preview.Data.Engine.BinData.Models;
-public sealed class AliasCollection : List<AliasEntry>
+public sealed class AliasCollection : Collection<AliasEntry>
 {
-	public string Table;
+	public AliasCollection(string name)
+	{
+		Name = name;
+		ByRef = [];
+	}
+
+	public string Name;
 	public bool HasCheck = false;
 
-	public Dictionary<Ref, AliasEntry> ByRef;
-	public Dictionary<string, AliasEntry> ByAlias;
+	private Dictionary<Ref, AliasEntry> ByRef;
 
 	public AliasEntry this[Ref Ref] => ByRef.GetValueOrDefault(Ref, null);
-	public AliasEntry this[string alias] => ByAlias.GetValueOrDefault(alias, null);
+
+	protected override void InsertItem(int index, AliasEntry item)
+	{
+		base.InsertItem(index, item);
+		ByRef[item.Ref] = item;
+	}
+
+	protected override void ClearItems()
+	{
+		base.ClearItems();
+		ByRef.Clear();
+	}
 }
 
 public sealed class AliasEntry
@@ -30,6 +48,4 @@ public sealed class AliasEntry
 	{
 
 	}
-
-	public override string ToString() => Table + ":" + Alias;
 }

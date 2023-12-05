@@ -77,7 +77,7 @@ public class BXML_CONTENT
 	#region Methods
 	public void Read(byte[] buffer)
 	{
-		var br = new BinaryReader(new MemoryStream(buffer));
+		using var br = new BinaryReader(new MemoryStream(buffer));
 		Signature = br.ReadBytes(8);
 		Version = br.ReadUInt32();
 		FileSize = br.ReadInt32();

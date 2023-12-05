@@ -53,7 +53,7 @@ public partial class TableView
 	{
 		if (item is Record record)
 		{
-			return record.GetText.Contains(rule, StringComparison.OrdinalIgnoreCase);
+			return record.ToString().Contains(rule, StringComparison.OrdinalIgnoreCase);
 		}
 
 		return false;

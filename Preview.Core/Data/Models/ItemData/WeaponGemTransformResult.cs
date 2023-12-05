@@ -2,7 +2,4 @@
 
 namespace Xylia.Preview.Data.Models;
 [Side(ReleaseSide.Server)]
-public sealed class WeaponGemTransformResult : Record 
-{
-	
-}
+public sealed class WeaponGemTransformResult : Record { }

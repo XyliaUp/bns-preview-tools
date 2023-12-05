@@ -7,6 +7,7 @@ using System.Windows;
 
 using HtmlAgilityPack;
 
+using Xylia.Extension;
 using Xylia.Preview.Data.Common.Cast;
 using Xylia.Preview.Data.Common.DataStruct;
 using Xylia.Preview.Data.Common.Seq;
@@ -19,6 +20,14 @@ public class Arg : Element
 	public string p;
 	public string id;
 	public string seq;
+
+	protected override void Load(HtmlNode node)
+	{
+		this.p = node.Attributes[nameof(p)]?.Value;
+		this.id = node.Attributes[nameof(id)]?.Value;
+		this.seq = node.Attributes[nameof(seq)]?.Value;
+	}
+
 
 	internal object GetObject()
 	{
@@ -65,7 +74,7 @@ public class Arg : Element
 
 	protected override Size MeasureCore(Size availableSize)
 	{
-		this.Children.Clear();
+		this.Children = new();
 
 		var result = this.GetObject();
 		if (result is null) return new Size();
@@ -112,6 +121,7 @@ public sealed class ArgItem
 	public void ValidType(ref object value)
 	{
 		var target = Target?.ToLower();
+		if (target is null) return;
 
 		if (value is null) return;
 		if (value is Enum)
@@ -152,14 +162,13 @@ public sealed class ArgItem
 			value = temp;
 			return;
 		}
-
 		else
 		{
-			target = target?.Replace("-", null);
+			target = target.Replace("-", null).Replace("_", null);
 			if (target.Equals(type.Name, StringComparison.OrdinalIgnoreCase)) return;
 			else if (target.Equals(type.BaseType?.Name, StringComparison.OrdinalIgnoreCase)) return;
 
-			throw new InvalidCastException($"Valid Failed: {Target} > {type}");
+			throw new InvalidCastException($"Valid failed: {Target} > {type}");
 		}
 	}
 
@@ -179,7 +188,37 @@ public sealed class ArgItem
 
 public static class ArgExtension
 {
-	public static string Handle(this ContentParams collection, string Text)
+	public static bool TryGetParam<T>(this T instance, string name, out object value)
+	{
+		if (name == instance.GetType().Name)
+		{
+			value = instance;
+			return true;
+		}
+
+		// record
+		if (instance is Record record && record.Attributes.TryGetMember(name, true, out value))
+		{
+			if (value is Record @ref && @ref.Owner.Name == "text")
+				value = @ref.Attributes["text"];
+
+			return true;
+		}
+
+		// instance
+		var Member = instance.GetInfo(name, true);
+		if (Member != null)
+		{
+			var obj = Member.GetValue(instance);
+			value = obj is Ref<Text> text ? text.GetText() : obj;
+			return true;
+		}
+
+		value = null;
+		return false;
+	}
+
+	public static string Handle(this DataParams collection, string Text)
 	{
 		foreach (Match m in new Regex("<arg.*?/>").Matches(Text).Cast<Match>())
 		{
