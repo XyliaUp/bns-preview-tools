@@ -1,6 +1,8 @@
 ﻿using System.IO;
 using System.Windows;
 
+using Microsoft.Win32;
+
 using Ookii.Dialogs.Wpf;
 
 using Xylia.Extension;
@@ -54,14 +56,14 @@ public partial class SettingsView : Window
 
 	public static bool TryBrowseFolder(out string path)
 	{
-		var dialog = new VistaFolderBrowserDialog()
+		var dialog = new OpenFolderDialog()
 		{
 
 		};
 
 		if (dialog.ShowDialog() == true)
 		{
-			path = dialog.SelectedPath;
+			path = dialog.FolderName;
 			return true;
 		}
 

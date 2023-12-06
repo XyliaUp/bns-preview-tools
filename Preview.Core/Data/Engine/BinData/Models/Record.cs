@@ -1,5 +1,4 @@
-﻿using System.Globalization;
-using System.Runtime.Serialization;
+﻿using System.Runtime.Serialization;
 using System.Xml;
 using System.Xml.Linq;
 
@@ -154,34 +153,17 @@ public unsafe class Record : IDisposable
 			writer.WriteAttributeString("type", SubclassType < el.Subtables.Count ? el.Subtables[SubclassType].Name : SubclassType.ToString());
 		}
 
-		foreach (var attribute in Attributes.OrderBy(o => o.Key))
+		foreach (var attribute in Attributes.OrderBy(o => o.Key.Name))
 		{
 			// avoid duplicate (only cause when from xml)
-			if (SubclassType > -1 && attribute.Key == "type") continue;
-			if (attribute.Key == "auto-id") continue;
-
-			// check default
-			var attributeDef = el[attribute.Key];
-
-			var value = attribute.Value;
-			if (value is bool bol)
-			{
-				if (attributeDef is null && !bol)
-					continue;
-
-				value = bol ? "y" : "n";
-			}
-			else if (value is float f)
-			{
-				//if (attributeDef != null && Math.Abs(f - attributeDef.AttributeDefaultValues.DString) < 0.001)
-				//	continue;
-
-				value = f.ToString(CultureInfo.InvariantCulture);
-			}
+			if (SubclassType > -1 && attribute.Key.Name == "type") continue;
+			if (attribute.Key.Name == "auto-id") continue;
+			if (AttributeDefinition.IsDefault(attribute.Key, attribute.Value)) continue;
 
 			// set value
-			if (value?.ToString() != attributeDef?.DefaultValue)
-				writer.WriteAttributeString(attribute.Key, value?.ToString());
+			var value = AttributeDefinition.ToString(attribute.Value);
+			if (attribute.Key.Type == AttributeType.TNative) writer.WriteRaw(value);
+			else writer.WriteAttributeString(attribute.Key.Name, value);
 		}
 
 		// children

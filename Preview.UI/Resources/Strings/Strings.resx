@@ -391,4 +391,13 @@
   <data name="Text_ReplaceInFiles" xml:space="preserve">
     <value>Replace in Files</value>
   </data>
+  <data name="AbilityPage_Level" xml:space="preserve">
+    <value>Level</value>
+  </data>
+  <data name="AbilityPage_Value" xml:space="preserve">
+    <value>Value</value>
+  </data>
+  <data name="AbilityPage_Result" xml:space="preserve">
+    <value>&lt;arg p="2"/&gt; converted percent in Lv&lt;arg p="1"/&gt;</value>
+  </data>
 </root>

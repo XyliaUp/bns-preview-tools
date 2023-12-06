@@ -6,6 +6,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 
 using HandyControl.Controls;
+using HandyControl.Data;
 
 using ICSharpCode.AvalonEdit.Document;
 using ICSharpCode.AvalonEdit.Folding;
@@ -20,7 +21,7 @@ using Xylia.Preview.UI.Helpers;
 using Xylia.Preview.UI.ViewModels;
 
 namespace Xylia.Preview.UI.Views;
-public partial class TextView 
+public partial class TextView
 {
 	#region Constructor
 	private readonly FoldingManager foldingManager;
@@ -83,7 +84,7 @@ public partial class TextView
 		var dialog = new SaveFileDialog
 		{
 			FileName = "TextData",
-			Filter = "xml file|*.xml",
+			Filter = "xml file|*.x16",
 		};
 		if (dialog.ShowDialog() == true)
 		{
@@ -93,12 +94,25 @@ public partial class TextView
 
 	private void ReplaceInFilesCommand(object sender, RoutedEventArgs e)
 	{
-		if (OpenTextFile(out var file))
+		var dialog = new OpenFolderDialog();
+		if (dialog.ShowDialog() == true)
 		{
-			using var source1 = new BnsDatabase(new LocalProvider(OldSource));
-			(source1.Provider as LocalProvider).Rewrite(file);
+			var files = new DirectoryInfo(dialog.FolderName).GetFiles("*.x16", SearchOption.AllDirectories);
 
-			Growl.InfoGlobal("Replace completed");
+			Task.Run(() =>
+			{
+				try
+				{
+					using var source1 = new BnsDatabase(new LocalProvider(OldSource));
+					(source1.Provider as LocalProvider).Rewrite(files);
+
+					Growl.SuccessGlobal(new GrowlInfo() { Message = "Replace completed", StaysOpen = true });
+				}
+				catch (Exception ex)
+				{
+					Growl.WarningGlobal(ex.Message);
+				}
+			});
 		}
 	}
 
@@ -117,6 +131,7 @@ public partial class TextView
 	{
 
 	}
+
 
 	private bool OpenTextFile(out string file)
 	{
@@ -205,6 +220,7 @@ public partial class TextView
 		}
 		#endregion
 	}
+
 
 	private void OnPositionChanged(Control sender)
 	{

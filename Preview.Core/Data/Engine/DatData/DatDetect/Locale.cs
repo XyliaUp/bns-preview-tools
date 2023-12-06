@@ -24,7 +24,15 @@ public sealed class Locale
 		if (Publisher == Publisher.Tencent)
 		{
 			int game = 0;
-			var rail_game = directory.GetDirectories("rail_files", SearchOption.AllDirectories).FirstOrDefault()?.GetFiles("rail_game_identify.json").FirstOrDefault();
+
+			FileInfo rail_game = null;
+			do
+			{
+				rail_game = directory.GetDirectories("rail_files", SearchOption.AllDirectories).FirstOrDefault()?.GetFiles("rail_game_identify.json").FirstOrDefault();
+				directory = directory.Parent;
+			}
+			while (directory != null && rail_game is null);
+
 			if (rail_game != null) game = JToken.ReadFrom(new JsonTextReader(File.OpenText(rail_game.FullName)))["game_id"]?.Value<int>() ?? 0;
 #if !DEBUG
 			if (game != 48 && game != 10048 && game != 10148 && game != 10248)
@@ -60,7 +68,7 @@ public sealed class Locale
 		#endregion
 
 		#region mode2
-		var temp = directory.GetDirectories("Content", SearchOption.AllDirectories).FirstOrDefault()?
+		var temp = (directory.GetDirectories("Content", SearchOption.AllDirectories).FirstOrDefault() ?? directory)
 			.GetDirectories("local").FirstOrDefault()?
 			.GetDirectories().FirstOrDefault();
 		if (temp is not null)

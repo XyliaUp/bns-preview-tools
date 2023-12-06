@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
 using System.Dynamic;
 using System.Xml;
 using System.Xml.Linq;
@@ -15,10 +16,14 @@ namespace Xylia.Preview.Data.Database;
 /// <summary>
 /// attributes of data record 
 /// </summary>
-public class AttributeCollection : DynamicObject, IDisposable, IEnumerable, IEnumerable<KeyValuePair<string, object>>
+public class AttributeCollection : DynamicObject, IDisposable, IEnumerable, IReadOnlyDictionary<AttributeDefinition, object>
 {
 	#region Constructor
 	private readonly Record record;
+
+	/// <summary>
+	/// for xml element
+	/// </summary>
 	private readonly Dictionary<string, object> _attributes = new();
 
 	internal AttributeCollection(Record record)
@@ -26,10 +31,26 @@ public class AttributeCollection : DynamicObject, IDisposable, IEnumerable, IEnu
 		this.record = record;
 	}
 
-	internal AttributeCollection(Record record, XmlElement element, ElDefinition definition, int index = -1)
+	internal AttributeCollection(Record record, XElement element) : this(record)
 	{
-		this.record = record;
+		#region attribute
+		foreach (var item in element.Attributes())
+		{
+			if (!string.IsNullOrEmpty(item.Value))
+				_attributes[item.Name.LocalName] = item.Value;
+		}
 
+		// text record
+		var reader = element.CreateReader();
+		reader.MoveToContent();
+
+		var inner = reader.ReadInnerXml();
+		if (inner != null) _attributes["text"] = inner;
+		#endregion
+	}
+
+	internal AttributeCollection(Record record, XmlElement element, ElDefinition definition, int index = -1) : this(record)
+	{
 		#region attribute
 		foreach (XmlAttribute item in element.Attributes)
 		{
@@ -51,46 +72,8 @@ public class AttributeCollection : DynamicObject, IDisposable, IEnumerable, IEnu
 		}
 		#endregion
 	}
-
-	internal AttributeCollection(Record record, XElement element)
-	{
-		this.record = record;
-
-		#region attribute
-		foreach (var item in element.Attributes())
-		{
-			if (!string.IsNullOrEmpty(item.Value))
-				_attributes[item.Name.LocalName] = item.Value;
-		}
-		#endregion
-	}
 	#endregion
 
-
-	#region Interface
-	IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
-
-	public IEnumerator<KeyValuePair<string, object>> GetEnumerator()
-	{
-		if (_attributes.Count != 0)
-		{
-			foreach (var attribute in _attributes)
-				yield return new(attribute.Key, attribute.Value);
-			yield break;
-		}
-
-		foreach (var attribute in record.ElDefinition.ExpandedAttributes)
-			yield return new(attribute.Name, AttributeConverter.ConvertTo(record, attribute, record.Owner.Owner));
-	}
-
-	public override string ToString() => GetEnumerator().ToIEnumerable().Aggregate("<record ", (sum, now) => sum + $"{now.Key}=\"{now.Value}\" ", result => result + "/>");
-
-	public void Dispose()
-	{
-		_attributes.Clear();
-		GC.SuppressFinalize(this);
-	}
-	#endregion
 
 	#region Get
 	public bool TryGetMember(string name, bool ignoreCase, out object result)
@@ -218,4 +201,53 @@ public class AttributeCollection : DynamicObject, IDisposable, IEnumerable, IEnu
 		Set(attribute, AttributeConverter.ConvertBack(value, attribute, record.Owner.Owner));
 	}
 	#endregion
+
+
+	#region Interface
+	public void Dispose()
+	{
+		_attributes.Clear();
+		GC.SuppressFinalize(this);
+	}
+
+	IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
+
+	public IEnumerator<KeyValuePair<AttributeDefinition, object>> GetEnumerator()
+	{
+		if (_attributes.Count != 0)
+		{
+			foreach (var attribute in _attributes)
+			{
+				var definition = record.ElDefinition?[attribute.Key] ?? new AttributeDefinition() { Name = attribute.Key };
+				yield return new(definition, attribute.Value);
+			}
+
+			yield break;
+		}
+
+		foreach (var attribute in record.ElDefinition.ExpandedAttributes)
+			yield return new(attribute, AttributeConverter.ConvertTo(record, attribute, record.Owner.Owner));
+	}
+
+	public override string ToString() => GetEnumerator().ToIEnumerable().Aggregate("<record ", (sum, now) => sum + $"{now.Key}=\"{now.Value}\" ", result => result + "/>");
+
+	public IEnumerable<AttributeDefinition> Keys => throw new NotImplementedException();
+
+	public IEnumerable<object> Values => throw new NotImplementedException();
+
+	public int Count => throw new NotImplementedException();
+
+	public object this[AttributeDefinition key] => throw new NotImplementedException();
+
+	public bool ContainsKey(AttributeDefinition key)
+	{
+		throw new NotImplementedException();
+	}
+
+	public bool TryGetValue(AttributeDefinition key, [MaybeNullWhen(false)] out object value)
+	{
+		throw new NotImplementedException();
+	}
+	#endregion
+
 }

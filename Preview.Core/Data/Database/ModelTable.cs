@@ -146,7 +146,7 @@ public class ModelTypeHelper
 		table.Owner = source.Owner;
 		table.Type = source.Type;
 		table.MajorVersion = source.MajorVersion;
-		table.MinorVersion = source.MajorVersion;
+		table.MinorVersion = source.MinorVersion;
 		table.Size = source.Size;
 		table.Definition = source.Definition;
 		table.Records = source.Records;

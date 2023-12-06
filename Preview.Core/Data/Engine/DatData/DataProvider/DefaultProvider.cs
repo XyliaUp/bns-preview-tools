@@ -1,4 +1,6 @@
-﻿using CUE4Parse.Utils;
+﻿using System.ComponentModel;
+
+using CUE4Parse.Utils;
 
 using Xylia.Preview.Data.Engine.BinData.Definitions;
 using Xylia.Preview.Data.Engine.BinData.Helpers;
@@ -130,7 +132,7 @@ public class DefaultProvider : Datafile, IDataProvider
 	public static DefaultProvider Load(string FolderPath, ResultMode mode = ResultMode.SelectDat)
 	{
 		if (string.IsNullOrWhiteSpace(FolderPath) || !Directory.Exists(FolderPath))
-			throw new Exception("invalid game folder, please to set.");
+			throw new WarningException("invalid game folder, please to set.");
 
 		//get all
 		var datas = new DataCollection(FolderPath);
@@ -140,7 +142,7 @@ public class DefaultProvider : Datafile, IDataProvider
 
 		//get target
 		DefaultProvider provider;
-		if (xmls.Count == 0) throw new Exception("invalid game data, possible specified directory incorrect");
+		if (xmls.Count == 0) throw new WarningException("invalid game data, possible specified directory incorrect");
 		if (xmls.Count == 1 && locals.Count <= 1)
 		{
 			provider = new DefaultProvider() { XmlData = xmls.FirstOrDefault(), LocalData = locals.FirstOrDefault() };

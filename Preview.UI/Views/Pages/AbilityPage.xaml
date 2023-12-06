@@ -2,11 +2,8 @@
 	  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 	  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 	  xmlns:hc="https://handyorg.github.io/handycontrol"
-	  xmlns:VM="clr-namespace:Xylia.Preview.UI.ViewModels">
-	<Page.DataContext>
-		<VM:AbilityViewModel />
-	</Page.DataContext>
-	
+	  xmlns:LiveCharts="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
+	  xmlns:UI="https://github.com/xyliaup/bns-preview-tools">
 	<Grid>
 		<Grid.ColumnDefinitions>
 			<ColumnDefinition Width="230"/>
@@ -20,7 +17,7 @@
 				</DataTemplate>
 			</TreeView.ItemTemplate>
 		</TreeView>
-		
+
 		<Grid Grid.Column="1">
 			<Grid.RowDefinitions>
 				<RowDefinition Height="7*"/>
@@ -28,37 +25,38 @@
 				<RowDefinition Height="40"/>
 				<RowDefinition Height="40"/>
 				<RowDefinition Height="*"/>
-				<RowDefinition Height="*"/>
 			</Grid.RowDefinitions>
 			<Grid.ColumnDefinitions>
 				<ColumnDefinition Width="*"/>
 			</Grid.ColumnDefinitions>
 
 
-			<LiveCharts:CartesianChart Grid.Row="0" Grid.ColumnSpan="3" x:Name="Chart" xmlns:LiveCharts="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"/>
-
+			<LiveCharts:CartesianChart Grid.Row="0" Grid.ColumnSpan="3" x:Name="Chart" />
 
 
 			<hc:UniformSpacingPanel Grid.Row="2" Grid.Column="0" Spacing="20">
-				<TextBlock Text="等级" />
+				<TextBlock Text="{DynamicResource AbilityPage_Level}" />
 				<hc:NumericUpDown x:Name="LevelText" MinWidth="100" Value="{Binding Level}" />
 			</hc:UniformSpacingPanel>
 			<hc:UniformSpacingPanel Grid.Row="3" Grid.Column="0" Spacing="20">
-				<TextBlock Text="数值" />
+				<TextBlock Text="{DynamicResource AbilityPage_Value}" />
 				<hc:NumericUpDown x:Name="AbilityText" MinWidth="100" Value="{Binding Value}" />
 			</hc:UniformSpacingPanel>
 
 
 
-			<TextBlock Grid.Row="4" x:Name="ResultText" Margin="5 10 0 0">
-				<TextBlock.Text>
-					<MultiBinding StringFormat="{}在{0}级时所对应的 {1}率:&#x0a;{2:P3}">
-						<Binding Path="Level" />
-						<Binding Path="Selected.Text" />
-						<Binding Path="Percent" />
-					</MultiBinding>
-				</TextBlock.Text>
-			</TextBlock>
+			<StackPanel Grid.Row="4">
+				<UI:BnsCustomLabelWidget Text="{DynamicResource AbilityPage_Result}">
+					<UI:BnsCustomLabelWidget.Params>
+						<MultiBinding Converter="{StaticResource DataParamsConverter}">
+							<Binding Path="Level" />
+							<Binding Path="Selected.Text" />
+							<Binding Path="Percent" />				
+						</MultiBinding>
+					</UI:BnsCustomLabelWidget.Params>
+				</UI:BnsCustomLabelWidget>
+				<TextBlock Text="{Binding Percent,StringFormat=P3}" />
+			</StackPanel>
 		</Grid>
 	</Grid>
 </Page>

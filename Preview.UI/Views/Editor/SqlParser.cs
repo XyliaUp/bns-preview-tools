@@ -357,6 +357,8 @@ public sealed class SqlParser
 			{
 				var key = Id[0];
 				var value = Id[1];
+				if (value == "null") value = null;
+
 				var _value = record.Attributes[key];
 
 				// TODO: String.Equal

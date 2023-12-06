@@ -387,4 +387,13 @@
   <data name="Text_ReplaceInFiles" xml:space="preserve">
     <value>在文件中替换</value>
   </data>
+  <data name="AbilityPage_Level" xml:space="preserve">
+    <value>等级</value>
+  </data>
+  <data name="AbilityPage_Value" xml:space="preserve">
+    <value>数值</value>
+  </data>
+  <data name="AbilityPage_Result" xml:space="preserve">
+    <value>在&lt;arg p="1"/&gt;级时所对应的 &lt;arg p="2"/&gt;率</value>
+  </data>
 </root>

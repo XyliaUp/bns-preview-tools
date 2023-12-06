@@ -244,4 +244,33 @@ public partial class AttributeDefinition
 		};
 	}
 	#endregion
+
+
+	#region Static Methods
+	public static bool IsDefault(AttributeDefinition attribute, object value)
+	{
+		//if (value is bool bol)
+		//{
+		//	value = bol ? "y" : "n";
+		//}
+		//else if (value is float f)
+		//{
+		//	//if (attributeDef != null && Math.Abs(f - attributeDef.AttributeDefaultValues.DString) < 0.001)
+		//	//	continue;
+
+		//	value = f.ToString(CultureInfo.InvariantCulture);
+		//}
+
+
+		return value?.ToString() == attribute.DefaultValue;
+	}
+
+	public static string ToString(object value)
+	{
+		// bool is special
+		if (value is bool Boolean) return Boolean ? "y" : "n";
+
+		return value?.ToString();
+	}
+	#endregion
 }

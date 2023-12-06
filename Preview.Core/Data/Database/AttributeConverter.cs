@@ -172,9 +172,10 @@ public class AttributeConverter
 			Trace.WriteLine($"Seq `{type.Name}` cast failed: {value}");
 			return default;
 		}
+		else if (type == typeof(bool)) return value.ToBool();
 		else if (type.IsGenericType && type.GetGenericTypeDefinition() == typeof(Ref<>)) return Activator.CreateInstance(type, value, database);
 		else if (type.IsGenericType && type.GetGenericTypeDefinition() == typeof(Sub<>)) return Activator.CreateInstance(type, value, database);
-
+		
 
 		if (TypeCode.TryGetValue(type, out var code)) return ConvertBack(value, new AttributeDefinition() { Type = code }, database);
 

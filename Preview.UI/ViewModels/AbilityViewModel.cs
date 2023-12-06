@@ -15,20 +15,28 @@ public class AbilityViewModel : ObservableObject
 		private set => SetProperty(ref source, value);
 	}
 
-	public AbilityFunction Selected { get; set; }
 
-	sbyte level;
-	public sbyte Level
+	AbilityFunction selected;
+
+	public AbilityFunction Selected
 	{
-		get => level;
-		set { level = value; GetPercent(); }
+		get => selected;
+		set => SetProperty(ref selected, value);
 	}
 
-	int value;
+
+	sbyte _level;
+	public sbyte Level
+	{
+		get => _level;
+		set { SetProperty(ref _level, value); GetPercent(); }
+	}
+
+	int _value;
 	public int Value
 	{
-		get => value;
-		set { this.value = value; GetPercent(); }
+		get => _value;
+		set { SetProperty(ref _value, value); GetPercent(); }
 	}
 
 	double percent;
@@ -38,6 +46,7 @@ public class AbilityViewModel : ObservableObject
 		get => percent;
 		private set => SetProperty(ref percent, value);
 	}
+
 
 
 	#region Methods

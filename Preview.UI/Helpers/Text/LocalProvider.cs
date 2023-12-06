@@ -1,5 +1,4 @@
 ﻿using System.IO;
-using System.Net;
 using System.Xml;
 
 using Xylia.Preview.Data.Engine.BinData.Definitions;
@@ -50,33 +49,33 @@ public class LocalProvider(string Source) : DefaultProvider
 	/// <summary>
 	/// <see langword="Source"/> must be a dat file
 	/// </summary>
-	/// <param name="file">replace data path</param>
+	/// <param name="files">replace data path</param>
 	/// <param name="full">determin full-replace mode</param>
-	public void Rewrite(string file, bool full = false)
+	public void Rewrite(FileInfo[] files, bool full = false)
 	{
 		var table = this.Tables["text"];
 
 		if (full)
 		{
-			// Reload records
-			table.XmlPath = file;
+			// HACK: Reload records
+			table.XmlPath = files.FirstOrDefault().FullName;
 			table.LoadAsync(true);
 		}
 		else
 		{
-			XmlDocument xml = new();
-			xml.Load(file);
-
-			foreach (XmlElement element in xml.DocumentElement.SelectNodes($"./" + table.Definition.ElRecord.Name))
+			foreach(var file in files)
 			{
-				var alias = element.Attributes["alias"]?.Value;
-				var text =  element.Attributes["text"]?.Value ?? element.InnerXml;
+				XmlDocument xml = new();
+				xml.Load(file.FullName);
 
-				// HACK: reslove html tags, transcoding should not be done in output
-				text = WebUtility.HtmlDecode(text);
+				foreach (XmlElement element in xml.DocumentElement.SelectNodes($"./" + table.Definition.ElRecord.Name))
+				{
+					var alias = element.Attributes["alias"]?.Value;
+					var text = element.InnerXml;
 
-				var record = table[alias];
-				if (record != null) record.StringLookup.Strings = [alias, text];
+					var record = table[alias];
+					if (record != null) record.StringLookup.Strings = [alias, text];
+				}
 			}
 		}
 
