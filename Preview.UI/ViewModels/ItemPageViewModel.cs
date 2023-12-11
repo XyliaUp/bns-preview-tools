@@ -9,8 +9,6 @@ using HandyControl.Data;
 using HandyControl.Tools.Extension;
 
 using Ookii.Dialogs.Wpf;
-
-using Xylia.Configure;
 using Xylia.Preview.Data.Helpers.Output;
 using Xylia.Preview.UI.Art.GameUI.Scene.Game_Auction;
 using Xylia.Preview.UI.Helpers.Output.Items;
@@ -110,8 +108,6 @@ public partial class ItemPageViewModel : ObservableObject
 		{
 			Filter = "Excel Files|*.xlsx",
 			FileName = $"{instance.Name} ({DateTime.Now:yyyyMM}).xlsx",
-
-			InitialDirectory = Ini.Instance.ReadValue("Folder", "OutputExcel")
 		};
 		if (save.ShowDialog() != true) return;
 

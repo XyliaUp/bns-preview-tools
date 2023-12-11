@@ -16,7 +16,7 @@ public partial class Game_QuestJournalScene
 		InitializeComponent();
 
 		// Progress
-		QuestJournal_ProgressQuestList.ItemsSource = FileCache.Data.Quest.OrderBy(q => q.RecordId);
+		QuestJournal_ProgressQuestList.ItemsSource = FileCache.Data.Quest.OrderBy(q => q.Source.RecordId);
 
 		// Completed
 		List<Quest> CompletedQuest = new();

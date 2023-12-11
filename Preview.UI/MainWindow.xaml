@@ -3,6 +3,7 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:hc="https://handyorg.github.io/handycontrol"
+	xmlns:UI="https://github.com/xyliaup/bns-preview-tools"
     xmlns:VM="clr-namespace:Xylia.Preview.UI.ViewModels"
 	Title="{DynamicResource ProductName}" Icon="{x:Null}"
 	Background="#FFF" Height="600" Width="900" ResizeMode="CanResize">
@@ -49,7 +50,7 @@
 											<Rectangle x:Name="Rect" Fill="{DynamicResource BorderBrush}" Width="4" HorizontalAlignment="Left" />
 											<DockPanel Margin="20 0 0 0">
 												<Image x:Name="PresenterIcon" HorizontalAlignment="Left" VerticalAlignment="Center" />
-												<TextBlock x:Name="PresenterHeader" Text="{Binding Text}" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="12" />
+												<TextBlock x:Name="PresenterHeader" Text="{UI:ResourceBinding Name}" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="12" />
 											</DockPanel>
 										</hc:SimplePanel>
 									</Border>

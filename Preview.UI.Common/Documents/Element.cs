@@ -10,10 +10,8 @@ using System.Windows.Markup;
 using System.Windows.Media;
 
 using HtmlAgilityPack;
-
-using Xylia.Extension;
-using Xylia.Preview.Data.Common.Cast;
-using Xylia.Preview.Data.Database;
+using Xylia.Preview.Common.Extension;
+using Xylia.Preview.Data.Engine.BinData.Models;
 using Xylia.Preview.UI.Controls;
 
 namespace Xylia.Preview.UI.Documents;
@@ -338,7 +336,7 @@ public abstract class Element : ContentElement
 
 	protected virtual void Load(HtmlNode node)
 	{
-		Children = node.ChildNodes.Select(TextDocument.ToElement).Where(x => x is not null).ToList();
+		Children = node.ChildNodes.Select(TextDocument.ToElement).ToList();
 
 		foreach (var field in GetType().GetMembers(BindingFlags.Instance | BindingFlags.Public | BindingFlags.DeclaredOnly))
 		{
@@ -347,7 +345,7 @@ public abstract class Element : ContentElement
 			if (field.ContainAttribute<IgnoreDataMemberAttribute>()) continue;
 
 			// props
-			var name = field.GetName();
+			var name = field.GetMemberName();
 			var type = field.GetMemberType();
 
 			var value = node.Attributes[name]?.Value;

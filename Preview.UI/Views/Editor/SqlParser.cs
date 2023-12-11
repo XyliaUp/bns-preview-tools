@@ -1,8 +1,8 @@
 ﻿using CUE4Parse.Utils;
 
 using Irony.Parsing;
-
 using Xylia.Preview.Data;
+using Xylia.Preview.Data.Helpers;
 using Xylia.Preview.Data.Models;
 
 namespace Xylia.Preview.UI.Views.Editor;
@@ -290,6 +290,7 @@ public sealed class SqlParser
 		Source = null;
 
 		var tree = parser.Parse(command);
+
 		var error = tree.ParserMessages.Where(m => m.Level == Irony.ErrorLevel.Error).Select(m => new Exception(m.Message));
 		if (error.Any()) throw new AggregateException(error);
 
@@ -324,7 +325,7 @@ public sealed class SqlParser
 		#endregion
 
 		#region Field
-		if (!fields.Any() && Source.Length > 0)
+		if (fields.Count == 0 && Source.Length > 0)
 		{
 			var firstType = source.First().SubclassType;
 			var IsMulti = source.FirstOrDefault(x => firstType != x.SubclassType) != null;
@@ -335,7 +336,7 @@ public sealed class SqlParser
 		if (table.Definition.ElRecord.Subtables.Count > 1)
 			fields.Insert(0, "type");
 
-		Fields = fields.ToArray();
+		Fields = [.. fields];
 		#endregion
 	}
 

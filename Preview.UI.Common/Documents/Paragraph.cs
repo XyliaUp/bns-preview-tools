@@ -21,9 +21,7 @@ public class Paragraph : Element
 		var doc = new HtmlDocument();
 		doc.LoadHtml(InnerText);
 
-		this.Children = doc.DocumentNode.ChildNodes.Select(TextDocument.ToElement)
-			.Where(x => x is not null)
-			.ToList();
+		this.Children = doc.DocumentNode.ChildNodes.Select(TextDocument.ToElement).ToList();
 	}
 	#endregion
 

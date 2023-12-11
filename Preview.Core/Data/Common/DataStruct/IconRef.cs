@@ -1,5 +1,7 @@
 ﻿using System.Runtime.InteropServices;
 
+using Xylia.Preview.Data.Models;
+
 namespace Xylia.Preview.Data.Common.DataStruct;
 
 [StructLayout(LayoutKind.Sequential)]
@@ -22,6 +24,17 @@ public struct IconRef
 		IconTextureVariantId = @ref.Variant;
 		IconTextureIndex = iconTextureVariantIndex;
 	}
+
+	public IconRef(Record record, ushort index)
+	{
+		if (record is null) return;
+
+		IconTextureRecordId = record.RecordId;
+		IconTextureVariantId = record.RecordVariationId;
+		IconTextureIndex = index;
+	}
+
+
 
 	public override string ToString()
 	{

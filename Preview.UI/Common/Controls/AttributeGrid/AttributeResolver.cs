@@ -38,7 +38,7 @@ public class AttributeResolver
 		AttributeType.TInt32 => new NumberAttributeEditor(attribute),
 		AttributeType.TInt64 => new NumberAttributeEditor(attribute),
 		AttributeType.TFloat32 => new NumberAttributeEditor(attribute),
-		AttributeType.TBool => new SwitchPropertyEditor(),
+		AttributeType.TBool => new BooleanPropertyEditor(),
 		AttributeType.TString => new PlainTextPropertyEditor(),
 		AttributeType.TSeq => new SequenceAttributeEditor(attribute.Sequence),
 		AttributeType.TSeq16 => new SequenceAttributeEditor(attribute.Sequence),

@@ -6,13 +6,11 @@ using System.Text.RegularExpressions;
 using System.Windows;
 
 using HtmlAgilityPack;
-
-using Xylia.Extension;
-using Xylia.Preview.Data.Common.Cast;
+using Xylia.Preview.Common.Extension;
 using Xylia.Preview.Data.Common.DataStruct;
-using Xylia.Preview.Data.Common.Seq;
 using Xylia.Preview.Data.Helpers;
 using Xylia.Preview.Data.Models;
+using Xylia.Preview.Data.Models.Sequence;
 
 namespace Xylia.Preview.UI.Documents;
 public class Arg : Element
@@ -39,7 +37,7 @@ public class Arg : Element
 		var type = p[0];
 		if (type is null) return null;
 		// Prevent text editors to load data
-		else if (type == "id") obj = FileCache.IsEmpty ? null : new Ref<Record>(this.id).Instance;
+		else if (type == "id") obj = FileCache.IsEmpty ? null : new Ref<ModelElement>(this.id).Instance;
 		else if (type == "seq")
 		{
 			var seq = this.seq?.Split(':');
@@ -197,7 +195,7 @@ public static class ArgExtension
 		}
 
 		// record
-		if (instance is Record record && record.Attributes.TryGetMember(name, true, out value))
+		if (instance is ModelElement record && record.Attributes.TryGetMember(name, true, out value))
 		{
 			if (value is Record @ref && @ref.Owner.Name == "text")
 				value = @ref.Attributes["text"];
@@ -206,7 +204,7 @@ public static class ArgExtension
 		}
 
 		// instance
-		var Member = instance.GetInfo(name, true);
+		var Member = instance.GetMember(name, true);
 		if (Member != null)
 		{
 			var obj = Member.GetValue(instance);

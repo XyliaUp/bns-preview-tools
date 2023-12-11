@@ -85,7 +85,7 @@ Global
 		RESX_ShowErrorsInErrorList = False
 		RESX_TaskErrorCategory = Message
 		RESX_ResXSortingComparison = Ordinal
-		RESX_SortFileContentOnSave = True
+		RESX_SortFileContentOnSave = False
 		SolutionGuid = {E692D4CD-1B89-448D-BED5-A4E1CFDEEB06}
 	EndGlobalSection
 EndGlobal

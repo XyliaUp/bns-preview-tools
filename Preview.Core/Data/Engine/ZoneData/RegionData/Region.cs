@@ -1,7 +1,6 @@
 ﻿using System.Diagnostics;
 using System.Xml;
-
-using Xylia.Extension;
+using Xylia.Preview.Common.Extension;
 
 namespace Xylia.Preview.Data.Engine.ZoneData.RegionData;
 public class RegionFile

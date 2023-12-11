@@ -37,7 +37,7 @@
 										<ColumnDefinition />
 									</Grid.ColumnDefinitions>
 
-									<TextBlock Grid.Column="0" Text="{Binding RecordId}" FontSize="12" Margin="-15 0 3 0"/>
+									<TextBlock Grid.Column="0" Text="{Binding Attributes[id]}" FontSize="12" Margin="-15 0 3 0"/>
 									<StackPanel Grid.Column="1" Orientation="Horizontal">
 										<UI:BnsCustomImageWidget Image="{Binding FrontIcon}" Width="20" Height="20" />
 										<UI:BnsCustomLabelWidget Text="{Binding Text}" FontSize="14" />

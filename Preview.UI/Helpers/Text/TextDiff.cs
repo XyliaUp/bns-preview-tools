@@ -49,7 +49,7 @@ public class TextDiff
 
 	private static Dictionary<string, Text> BuildPieceHashes(ModelTable<Text> table)
 	{
-		return table.ToLookup(x => x.Alias)
+		return table.ToLookup(x => x.alias)
 			.Where(x => x.Key != null)
 			.ToDictionary(x => x.Key, x => x.First());
 	}

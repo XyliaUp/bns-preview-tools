@@ -1,7 +1,5 @@
-﻿using System.ComponentModel;
-
-namespace Xylia.Preview.Data.Common.Attribute;
-public sealed class Name : DescriptionAttribute
+﻿namespace Xylia.Preview.Data.Common.Attribute;
+public class NameAttribute(string name) : System.Attribute
 {
-    public Name(string Description) : base(Description) { }
+	public string Name { get; } = name;
 }

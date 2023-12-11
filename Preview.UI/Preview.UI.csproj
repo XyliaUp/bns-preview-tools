@@ -13,7 +13,6 @@
 		<!-- publish -->
 		<RuntimeIdentifier>win-x64</RuntimeIdentifier>
 		<OutputType>WinExe</OutputType>
-		<SelfContained>False</SelfContained>
 	</PropertyGroup>
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
 		<DebugType>none</DebugType>
@@ -134,7 +133,7 @@
 		<PackageReference Include="AvalonEdit" Version="6.3.0.90" />
 		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
 		<PackageReference Include="CSCore" Version="1.2.1.2" />
-		<PackageReference Include="EPPlus" Version="7.0.2" />
+		<PackageReference Include="EPPlus" Version="7.0.3" />
 		<PackageReference Include="ImGui.NET" Version="1.89.9.3" />
 		<PackageReference Include="Irony" Version="1.2.0" />
 		<PackageReference Include="LiveCharts.Wpf" Version="0.9.7" />
@@ -146,7 +145,8 @@
 		<PackageReference Include="Serilog.Sinks.Debug" Version="2.0.0" />
 		<PackageReference Include="Serilog.Sinks.File" Version="5.0.0" />
 		<PackageReference Include="LiveCharts" Version="0.9.7" />
-		<PackageReference Include="Xylia" Version="1.0.5.5" />
+		<PackageReference Include="Vanara.PInvoke.Kernel32" Version="3.4.17" />
+		<PackageReference Include="Vanara.PInvoke.User32" Version="3.4.17" />
 		<Reference Include="HandyControl">
 			<HintPath>..\..\..\..\HandyControl\HandyControl\src\Net_GE45\HandyControlDemo_Net_GE45\bin\Debug\net7.0-windows\HandyControl.dll</HintPath>
 		</Reference>

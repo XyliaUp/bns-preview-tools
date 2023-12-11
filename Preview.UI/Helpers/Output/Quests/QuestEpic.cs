@@ -1,9 +1,8 @@
 ﻿using OfficeOpenXml;
-
-using Xylia.Preview.Data.Common.Seq;
 using Xylia.Preview.Data.Helpers;
 using Xylia.Preview.Data.Helpers.Output;
 using Xylia.Preview.Data.Models;
+using Xylia.Preview.Data.Models.Sequence;
 
 namespace Xylia.Preview.UI.Helpers.Output.Quests;
 public sealed class QuestEpic : OutSet
@@ -22,7 +21,7 @@ public sealed class QuestEpic : OutSet
 			Row++;
 			int column = 1;
 
-			sheet.Cells[Row, column++].SetValue(data.RecordId);
+			sheet.Cells[Row, column++].SetValue(data.Source.RecordId);
 			sheet.Cells[Row, column++].SetValue(data);
 			sheet.Cells[Row, column++].SetValue(data.Text);
 			sheet.Cells[Row, column++].SetValue(data.Title);

@@ -1,4 +1,5 @@
 ﻿using System.Globalization;
+using System.Net;
 using System.Windows;
 using System.Windows.Markup;
 using System.Windows.Media;
@@ -38,7 +39,7 @@ public class Run : Element
 	#region Methods
 	protected override void Load(HtmlNode node)
 	{
-		Text = node.InnerText;
+		Text = WebUtility.HtmlDecode(node.OuterHtml);
 	}
 
 	private Typeface typeface => new(FontFamily, FontStyle, FontWeight, FontStretch);

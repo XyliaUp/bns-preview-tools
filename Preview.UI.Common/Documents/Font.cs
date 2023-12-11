@@ -1,5 +1,4 @@
-﻿using System.Linq;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Media;
 
 using CUE4Parse.BNS.Assets.Exports;
@@ -20,7 +19,7 @@ public class Font : Element
 	public Font(string Name, params Element[] elements)
 	{
 		this.Name = Name;
-		this.Children = elements.ToList();
+		this.Children = [.. elements];
 	}
 	#endregion
 

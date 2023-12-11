@@ -1,13 +1,10 @@
 ﻿using CUE4Parse.BNS.Conversion;
 using CUE4Parse.FileProvider;
 using CUE4Parse.UE4.Assets.Exports.Texture;
-
 using CUE4Parse_Conversion.Textures;
-
-using Xylia.Extension;
+using Xylia.Preview.Common.Extension;
 using Xylia.Preview.Data.Common.DataStruct;
 using Xylia.Preview.Data.Models;
-
 using static Xylia.Preview.Data.Models.Item.Grocery;
 
 namespace Xylia.Preview.UI.Helpers.Output.Textures;

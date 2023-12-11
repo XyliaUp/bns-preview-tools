@@ -2,19 +2,21 @@
 using Xylia.Preview.Data.Helpers;
 
 namespace Xylia.Preview.Data.Common.DataStruct;
-public struct Time64
+public struct Time64(long Ticks)
 {
 	const long epoch = 621355968000000000;
-	public long Ticks;
+	public long Ticks = Ticks;
 
-	public Time64(long Ticks) => this.Ticks = Ticks;
+	public readonly DateTime Time => new(epoch + Ticks * 10000000);
+	public readonly DateTime LocalTime => TimeZoneInfo.ConvertTimeFromUtc(Time, ZoneInfo());
 
-	public DateTime Time => new(epoch + Ticks * 10000000);
+	public readonly bool Equals(Time64 other) => Ticks == other.Ticks;
 
-	public DateTime LocalTime => TimeZoneInfo.ConvertTimeFromUtc(Time, ZoneInfo());
+	public override bool Equals(object obj) => obj is Time64 other && Equals(other);
 
+	public override string ToString() => this.LocalTime.ToString();
 
-	public static Time64 Parse(string s) => DateTime.Parse(s);
+	public override int GetHashCode() => HashCode.Combine(Ticks);
 
 
 	public static implicit operator Time64(long ticks) => new(ticks);
@@ -25,7 +27,6 @@ public struct Time64
 		return (time.Ticks - epoch) / 10000000;
 	}
 
-
 	public static bool operator ==(Time64 a, Time64 b) => a.Ticks == b.Ticks;
 
 	public static bool operator !=(Time64 a, Time64 b) => !(a == b);
@@ -33,20 +34,14 @@ public struct Time64
 	public static Msec operator -(Time64 a, Time64 b) => (int)((a.Ticks - b.Ticks) * 1000);
 
 
-	public bool Equals(Time64 other) => Ticks == other.Ticks;
 
-	public override bool Equals(object obj) => obj is Time64 other && Equals(other);
-
-	public override string ToString() => this.LocalTime.ToString();
-
-	public override int GetHashCode() => HashCode.Combine(Ticks);
+	#region Static Methods
+	public static Time64 Parse(string s) => DateTime.TryParse(s, out var result) ? (Time64)result : default;
 
 
-
-	#region ZoneInfo
-	private static TimeZoneInfo ZoneInfo()
+	private static TimeZoneInfo ZoneInfo(Publisher? publisher = null)
 	{
-		var publisher = FileCache.Data.Provider?.Locale?.Publisher;
+		publisher ??= FileCache.Data.Provider?.Locale?.Publisher;
 		var offset = publisher switch
 		{
 			Publisher.Default => new TimeSpan(9, 0, 0),   // Korea Standard Time

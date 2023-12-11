@@ -1,10 +1,8 @@
-﻿using System.Diagnostics;
-using System.Reflection;
+﻿using System.Reflection;
 using System.Xml;
 
 using CUE4Parse.Utils;
-
-using Xylia.Extension;
+using Xylia.Preview.Common.Extension;
 using Xylia.Preview.Data.Common.Exceptions;
 using Xylia.Preview.Data.Engine.BinData.Models;
 using Xylia.Preview.Data.Models;
@@ -22,42 +20,41 @@ public static class TableDefinitionHelper
 	}
 
 	#region Load Methods
-	/// <summary>
-	/// load <see cref="TableDefinition"/> from program
-	/// </summary>
-	public static List<TableDefinition> LoadTableDefinition()
+	public static DatafileDefinition LoadDefinition()
 	{
+		#region load from program
 		var _assembly = Assembly.GetExecutingAssembly();
 
-		//public
+		// public
 		var param = ConfigParam.LoadFrom(_assembly.GetManifestResourceNames()
 			.Where(name => name.StartsWith("Xylia.Preview.Data.Definition.Global"))
-			.Select(name => new StreamReader(_assembly.GetManifestResourceStream(name)).ReadToEnd())
-			.ToArray());
+			.Select(name => new StreamReader(_assembly.GetManifestResourceStream(name)).ReadToEnd()).ToArray());
 
-		//result
+		// result
 		var defs = _assembly.GetManifestResourceNames()
 			.Where(name => name.StartsWith("Xylia.Preview.Data.Definition.") && !name.Contains(".Global"))
-			.Select(name => name.GetResource())
-			.SelectMany(res => LoadTableDefinition(param, res))     //load config
-			.ToList();
+			.Select(name => name.GetResource()).SelectMany(res => LoadTableDefinition(param, res));
+		#endregion
 
-
-		// replace
-		var UserDefs = new DirectoryInfo(Path.Combine(Settings.Default.OutputFolder, "defs"));
+		#region custom
+		var definition = new DatafileDefinition();
+		var UserDefs = new DirectoryInfo(Path.Combine(Settings.Default.OutputFolder, "definition"));
 		if (Settings.Default.UseUserDefinition && UserDefs.Exists)
 		{
+			definition.Header = UserDefs.GetFiles("definition.ini").FirstOrDefault();
+
 			var temp = LoadTableDefinition(param, UserDefs.GetFiles("*.xml"));
-			if (temp.Any())
-			{
-				Trace.WriteLine("ATTENTION: activated user custome definitions");
-				defs.AddRange(temp);
-			}
+			if (temp.Count != 0) temp.ForEach(definition.Add);
 		}
 
+		// HACK: full defs?
+		if (definition.Count < 200) defs.ForEach(definition.Add);
+		#endregion
 
-		return defs.DistinctBy(def => def.Name, new TableNameComparer()).ToList();
+		return definition;
 	}
+
+
 
 	/// <summary>
 	/// load <see cref="TableDefinition"/> from files
@@ -216,12 +213,10 @@ public static class TableDefinitionHelper
 		{
 			var autoIdAttr = new AttributeDefinition
 			{
-				Name = "auto-id",
+				Name = AttributeCollection.s_autoid,
 				Size = 8,
 				Offset = 8,
 				Type = AttributeType.TInt64,
-				AttributeDefaultValues = new AttributeDefaultValues(),
-				DefaultValue = "0",
 				IsKey = true,
 				IsRequired = true,
 				Repeat = 1
@@ -259,16 +254,13 @@ public static class TableDefinitionHelper
 		return Attributes;
 	}
 
-
 	private static ushort GetOffsetAndSize(IEnumerable<AttributeDefinition> Attributes, bool is64, int Offset = 16)
 	{
 		int Offset_Key = 8;
-		foreach (var attribute in Attributes)
+		foreach (var attribute in Attributes.OrderBy(x => !x.IsKey))
 		{
-			if (attribute.IsDeprecated ||
-				attribute is AttributeDefinition def && !def.Client)
+			if (attribute.IsDeprecated || !attribute.Client)
 				continue;
-
 
 			#region set offset
 			int offset = 0;
@@ -288,11 +280,14 @@ public static class TableDefinitionHelper
 			if (attribute.Name.Equals("unk-")) attribute.Name = "unk" + attribute.Offset;
 			#endregion
 
-
 			#region next start offset
 			offset += attribute.Size;
 
-			if (attribute.IsKey) Offset_Key = offset;
+			if (attribute.IsKey)
+			{
+				Offset_Key = offset;
+				Offset = Math.Max(Offset, offset);
+			}
 			else Offset = offset;
 			#endregion
 		}
@@ -312,7 +307,7 @@ public static class TableDefinitionHelper
 		if (table.MajorVersion == definition.MajorVersion &&
 			table.MinorVersion == definition.MinorVersion) return;
 
-		Console.WriteLine($"[{DateTime.Now}] check table `{definition.Name}` type: {table.Type} " +
+		Serilog.Log.Warning($"check table `{definition.Name}` type: {table.Type} " +
 			$"version: {definition.MajorVersion}.{definition.MinorVersion} <> {table.MajorVersion}.{table.MinorVersion}");
 	}
 

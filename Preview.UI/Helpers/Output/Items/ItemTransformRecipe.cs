@@ -1,7 +1,6 @@
 ﻿using OfficeOpenXml;
 
 using Xylia.Preview.Common.Extension;
-using Xylia.Preview.Data.Common.Cast;
 using Xylia.Preview.Data.Helpers;
 using Xylia.Preview.Data.Helpers.Output;
 using Xylia.Preview.Data.Models;
@@ -39,7 +38,7 @@ public sealed class ItemTransformRecipeOut : OutSet
 			}
             else if (MainIngredient is ItemBrand)
             {
-                var key = MainIngredient.Ref.Id;
+                var key = MainIngredient.Source.Ref.Id;
                 var ItemBrandTooltip = FileCache.Data.ItemBrandTooltip[key, (byte)Info.MainIngredientConditionType];
 
                 sheet.Cells[Row, column++].SetValue("(组) " + (ItemBrandTooltip?.Name2.GetText() ?? key.ToString()));

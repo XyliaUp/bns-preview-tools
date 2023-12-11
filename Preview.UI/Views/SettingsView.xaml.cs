@@ -1,11 +1,8 @@
 ﻿using System.IO;
 using System.Windows;
-
 using Microsoft.Win32;
-
 using Ookii.Dialogs.Wpf;
-
-using Xylia.Extension;
+using Xylia.Preview.Common.Extension;
 using Xylia.Preview.Data.Engine.DatData;
 using Xylia.Preview.UI.ViewModels;
 

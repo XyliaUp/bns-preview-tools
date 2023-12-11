@@ -1,12 +1,13 @@
 ﻿using System.IO;
 using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Input;
 using System.Windows.Threading;
 
 using Xylia.Preview.Data.Engine.DatData;
-using Xylia.Preview.UI.Common;
 
 namespace Xylia.Preview.UI.Views.Selector;
-public partial class DatSelectDialog : Window , IDatSelect
+public partial class DatSelectDialog : Window, IDatSelect
 {
 	#region Constructor
 	private IEnumerable<FileInfo> list_xml;
@@ -22,7 +23,7 @@ public partial class DatSelectDialog : Window , IDatSelect
 	#endregion
 
 	#region Methods
-	private void Window_MouseEnter(object sender, System.Windows.Input.MouseEventArgs e)
+	private void Window_MouseEnter(object sender, MouseEventArgs e)
 	{
 		StopCountDown();
 		LastActTime = DateTime.Now;
@@ -57,7 +58,7 @@ public partial class DatSelectDialog : Window , IDatSelect
 		Load_Cmb(comboBox2, list_local);
 	}
 
-	private void Load_Cmb(System.Windows.Controls.ComboBox Cmb, IEnumerable<FileInfo> FileCollection)
+	private void Load_Cmb(ComboBox Cmb, IEnumerable<FileInfo> FileCollection)
 	{
 		Cmb.Items.Clear();
 
@@ -75,6 +76,10 @@ public partial class DatSelectDialog : Window , IDatSelect
 
 	private void Btn_Confirm_Click(object sender, RoutedEventArgs e)
 	{
+		// stop timer
+		NoResponse.Stop();
+		CountDown.Stop();
+
 		XML_Select = comboBox1.Text.Replace("...", @"contents\Local");
 		Local_Select = comboBox2.Text.Replace("...", @"contents\Local");
 
@@ -142,7 +147,7 @@ public partial class DatSelectDialog : Window , IDatSelect
 	private void Timer_Tick(object sender, EventArgs e)
 	{
 		int RemainSec = CountDownSec - (int)DateTime.Now.Subtract(dt).TotalSeconds;
-		TimeInfo.Text = $"将在 {RemainSec} 秒后自动选择";
+		TimeInfo.Text = string.Format(StringHelper.Get("DatSelector_CountDown"), RemainSec);
 
 		if (RemainSec <= 0) Btn_Confirm_Click(null, null);
 	}
@@ -150,7 +155,7 @@ public partial class DatSelectDialog : Window , IDatSelect
 
 
 	#region IDatSelect
-	public DefaultProvider Show(IEnumerable<FileInfo> Xml, IEnumerable<FileInfo> Local)
+	DefaultProvider IDatSelect.Show(IEnumerable<FileInfo> Xml, IEnumerable<FileInfo> Local)
 	{
 		return Application.Current.Dispatcher.Invoke(() =>
 		{
@@ -163,8 +168,8 @@ public partial class DatSelectDialog : Window , IDatSelect
 
 			return new DefaultProvider()
 			{
-				XmlData = XML_Select,
-				LocalData = Local_Select,
+				XmlData = dialog.XML_Select,
+				LocalData = dialog.Local_Select,
 			};
 		});
 	}

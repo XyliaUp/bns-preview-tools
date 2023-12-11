@@ -30,21 +30,22 @@ public class Image : Element
 	#endregion
 
 	#region UIElement 
-	private BitmapSource _source { get; set; }
+	private BitmapSource Source { get; set; }
 
 	protected override Size MeasureCore(Size availableSize)
 	{
+		// keep empty space
 		var image = FileCache.Provider.LoadObject<UImageSet>(Imagesetpath)?.GetImage();
-		if (image is null) return new Size();
+		if (image is null) return new Size(5, 5);
 
-		_source = image.ToWriteableBitmap();
-		double width = _source.Width;
-		double height = _source.Height;
+		Source = image.ToWriteableBitmap();
+		double width = Source.Width;
+		double height = Source.Height;
 
 		if (Enablescale)
 		{
 			height = FontSize * Scalerate;
-			width *= height / _source.Height;
+			width *= height / Source.Height;
 		}
 
 		return new Size(width, height);
@@ -52,8 +53,8 @@ public class Image : Element
 
 	internal override void Render(DrawingContext ctx)
 	{
-		if (_source != null)
-			ctx.DrawImage(_source, FinalRect);
+		if (Source != null)
+			ctx.DrawImage(Source, FinalRect);
 	}
 	#endregion
 }

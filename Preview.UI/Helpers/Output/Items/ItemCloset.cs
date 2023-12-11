@@ -1,10 +1,7 @@
 ﻿using OfficeOpenXml;
-
-using Xylia.Preview.Data.Common.Cast;
 using Xylia.Preview.Data.Helpers;
 using Xylia.Preview.Data.Helpers.Output;
 using Xylia.Preview.Data.Models;
-
 using static Xylia.Preview.Data.Models.Item;
 using static Xylia.Preview.Data.Models.Item.Accessory;
 
@@ -43,7 +40,7 @@ public sealed class ItemCloset : OutSet
             Row++;
             int column = 1;
 
-            sheet.Cells[Row, column++].SetValue(item.Ref.Id);
+            sheet.Cells[Row, column++].SetValue(item.Source.Ref.Id);
             sheet.Cells[Row, column++].SetValue(item.Alias);
 			sheet.Cells[Row, column++].SetValue(item.Name2);
 			sheet.Cells[Row, column++].SetValue(item.EquipType.GetName());

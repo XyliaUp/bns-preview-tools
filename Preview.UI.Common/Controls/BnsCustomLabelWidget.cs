@@ -111,6 +111,7 @@ public class BnsCustomLabelWidget : BnsCustomBaseWidget, IContentHost
 
 		var text = CopyMode switch
 		{
+			CopyMode.None => null,
 			CopyMode.Trimmed => CutText(Params.Handle(Text)),
 			CopyMode.Regular => Params.Handle(Text),
 			CopyMode.Original => Text,
@@ -393,6 +394,8 @@ public class BnsCustomLabelWidget : BnsCustomBaseWidget, IContentHost
 }
 public enum CopyMode
 {
+	None,
+
 	/// <summary>
 	/// Text after replacing parameters and remove other XML parameters 
 	/// </summary>

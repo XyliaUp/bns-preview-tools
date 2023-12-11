@@ -14,7 +14,7 @@ public sealed class GoodIcon : IconOutBase
 			cancellationToken.ThrowIfCancellationRequested();
 
 			var bitmap = record.Icon.GetIcon(set, provider);
-			Save(ref bitmap, record.Ref.Id.ToString());
+			Save(ref bitmap, record.Source.RecordId.ToString());
 		});
 	}
 }

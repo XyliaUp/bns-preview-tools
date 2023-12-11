@@ -99,6 +99,8 @@
 						<TextBlock Text="{DynamicResource Name_General}" VerticalAlignment="Center" />
 					</StackPanel>
 				</TabItem.Header>
+
+	
 				<Grid>
 					<Grid.RowDefinitions>
 						<RowDefinition Height="Auto" />
@@ -124,100 +126,60 @@
 						<ColumnDefinition Width="Auto" />
 						<ColumnDefinition Width="10" />
 						<ColumnDefinition Width="*" />
-						<ColumnDefinition Width="5" />
-						<ColumnDefinition Width="Auto" />
-						<ColumnDefinition Width="5" />
 						<ColumnDefinition Width="Auto" />
 					</Grid.ColumnDefinitions>
 
 
-					<hc:Divider Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="7" Margin="0 5" Content="Path" />
-					<TextBlock Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" Margin="0 0 0 5">
+					<hc:Divider Grid.Row="0" Grid.Column="0" Margin="0 5" Grid.ColumnSpan="7" Content="Path" />
+					<TextBlock Grid.Row="1" Grid.Column="0" Margin="0 0 0 5" VerticalAlignment="Center" >
 						<Run Text="{DynamicResource GameDirectory}" /> *
 					</TextBlock>
-					<TextBox Grid.Row="1" Grid.Column="2" Margin="0 0 0 5" Text="{Binding GameFolder}"/>
-					<Button Grid.Row="1" Grid.Column="4" Content="..." HorizontalAlignment="Right" Click="OnBrowseDirectories" Margin="0 0 0 5" />
+					<TextBox Grid.Row="1" Grid.Column="2" Margin="0 0 3 5" Text="{Binding GameFolder}" />
+					<Button Grid.Row="1" Grid.Column="4" Margin="0 0 0 5" Content="..." HorizontalAlignment="Right" Click="OnBrowseDirectories" />
 
-					<TextBlock Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" Margin="0 0 0 5" >
+					<TextBlock Grid.Row="2" Grid.Column="0" Margin="0 0 0 5" VerticalAlignment="Center">
 						<Run Text="{DynamicResource OutputDirectory}" /> *
 					</TextBlock>
-					<TextBox Grid.Row="2" Grid.Column="2" Margin="0 0 0 5" Text="{Binding OutputFolder}"/>
-					<Button Grid.Row="2" Grid.Column="4" Content="..." HorizontalAlignment="Right" Click="OnBrowseDirectories2" Margin="0 0 0 5" />
+					<TextBox Grid.Row="2" Grid.Column="2" Margin="0 0 3 5" Text="{Binding OutputFolder}" />
+					<Button Grid.Row="2" Grid.Column="4" Margin="0 0 0 5" Content="..." HorizontalAlignment="Right" Click="OnBrowseDirectories2" />
 
-					<TextBlock Grid.Row="3" Grid.Column="0" Text="{DynamicResource OutputDirectory_Resource}" VerticalAlignment="Center" Margin="0 0 0 5" />
-					<TextBox Grid.Row="3" Grid.Column="2" Margin="0 0 0 5" Text="{Binding OutputFolderResource}"/>
-					<Button Grid.Row="3" Grid.Column="4" Content="..." HorizontalAlignment="Right" Click="OnBrowseDirectories3" Margin="0 0 0 5" />
+					<TextBlock Grid.Row="3" Grid.Column="0" Text="{DynamicResource OutputDirectory_Resource}" VerticalAlignment="Center" />
+					<TextBox Grid.Row="3" Grid.Column="2" Margin="0 0 3 5" Text="{Binding OutputFolderResource}" />
+					<Button Grid.Row="3" Grid.Column="4" Margin="0 0 0 5" Content="..." HorizontalAlignment="Right" Click="OnBrowseDirectories3" />
 
 
 					<!-- Data Options -->
 					<hc:Divider Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="7" Margin="0 5" Content="Data Options" />
-					<TextBlock Grid.Row="6" Grid.Column="0" Text="{DynamicResource Settings_UseUserDefinition}" VerticalAlignment="Center" Margin="0 5 0 5" />
-					<CheckBox Grid.Row="6" Grid.Column="2" Grid.ColumnSpan="5" Margin="0 0 0 5" IsChecked="{Binding UseUserDefinition}" />
+					<TextBlock Grid.Row="6" Grid.Column="0" VerticalAlignment="Center" Margin="0 5 0 5" Text="{DynamicResource Settings_UseUserDefinition}" ToolTip="{DynamicResource Settings_UseUserDefinition_Tooltip}" />
+					<CheckBox Grid.Row="6" Grid.Column="2" Grid.ColumnSpan="5" IsChecked="{Binding UseUserDefinition}" ToolTip="{DynamicResource Settings_UseUserDefinition_Tooltip}" />
 
 
 					<!-- Preview Options -->
 					<hc:Divider Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="7" Margin="0 5" Content="Preview Options" />
-					<TextBlock Grid.Row="8" Grid.Column="0" Text="{DynamicResource Settings_CopyMode}" VerticalAlignment="Center" Margin="0 5 0 5" />
-					<ComboBox Grid.Row="8" Grid.Column="2" Grid.ColumnSpan="5" Margin="0 0 0 5" SelectedIndex="{Binding CopyMode, Converter={converters:EnumConverter}}">
-						<ComboBoxItem Content="Trimmed" />
-						<ComboBoxItem Content="Regular" />
-						<ComboBoxItem Content="Source" />
+
+					<TextBlock Grid.Row="8" Grid.Column="0" Text="{DynamicResource Settings_Language}" VerticalAlignment="Center" Margin="0 5 0 5" />
+					<ComboBox Grid.Row="8" Grid.Column="2" Grid.ColumnSpan="5" Margin="0 0 0 5" ItemsSource="{Binding Languages,Mode=OneTime}" SelectedItem="{Binding Language}">
+						<ComboBox.ItemTemplate>
+							<DataTemplate>
+								<TextBlock Text="{Binding Converter={converters:EnumConverter}}" />
+							</DataTemplate>
+						</ComboBox.ItemTemplate>
 					</ComboBox>
 
-					<TextBlock Grid.Row="9" Grid.Column="0" Text="{DynamicResource Settings_UsePerformanceMonitor}" VerticalAlignment="Center" Margin="0 5 0 5" />
-					<CheckBox Grid.Row="9" Grid.Column="2" Grid.ColumnSpan="5" Margin="0 0 0 5" IsChecked="{Binding UsePerformanceMonitor}" />
+					<TextBlock Grid.Row="9" Grid.Column="0" Text="{DynamicResource Settings_CopyMode}" VerticalAlignment="Center" Margin="0 5 0 5" />
+					<ComboBox Grid.Row="9" Grid.Column="2" Grid.ColumnSpan="5" Margin="0 0 0 5" SelectedIndex="{Binding CopyMode, Converter={converters:EnumConverter}}">
+						<ComboBoxItem Content="{DynamicResource Settings_CopyMode_None}" />
+						<ComboBoxItem Content="{DynamicResource Settings_CopyMode_Trimmed}" />
+						<ComboBoxItem Content="{DynamicResource Settings_CopyMode_Regular}" />
+						<ComboBoxItem Content="{DynamicResource Settings_CopyMode_Source}" />
+					</ComboBox>
+
+					<TextBlock Grid.Row="10" Grid.Column="0" Text="{DynamicResource Settings_UsePerformanceMonitor}" VerticalAlignment="Center" Margin="0 5 0 5" />
+					<CheckBox Grid.Row="10" Grid.Column="2" Grid.ColumnSpan="5" Margin="0 0 0 5" IsChecked="{Binding UsePerformanceMonitor}" />
 				</Grid>
 			</TabItem>
 			
 			
-			<TabItem Header="Creator" Visibility="Collapsed">
-				<Grid >
-					<Grid.ColumnDefinitions>
-						<ColumnDefinition Width="*" />
-						<ColumnDefinition Width="*" />
-						<ColumnDefinition Width="*" />
-						<ColumnDefinition Width="*" />
-						<ColumnDefinition Width="*" />
-						<ColumnDefinition Width="*" />
-						<ColumnDefinition Width="*" />
-						<ColumnDefinition Width="*" />
-					</Grid.ColumnDefinitions>
-
-					<Image Grid.Column="0" Grid.ColumnSpan="3" >
-						<Image.Style>
-							<Style TargetType="Image">
-
-							</Style>
-						</Image.Style>
-					</Image>
-					<Grid Grid.Column="3" Grid.ColumnSpan="5" Margin="10 0 0 0" VerticalAlignment="Top">
-						<Grid.RowDefinitions>
-							<RowDefinition Height="Auto" />
-							<RowDefinition Height="Auto" />
-						</Grid.RowDefinitions>
-						<Grid.ColumnDefinitions>
-							<ColumnDefinition Width="Auto" />
-							<ColumnDefinition Width="10" />
-							<ColumnDefinition Width="*" />
-						</Grid.ColumnDefinitions>
-
-						<TextBlock Grid.Row="0" Grid.Column="0" Text="Cosmetic Style" VerticalAlignment="Center" Margin="0 0 0 5" />
-						<ComboBox Grid.Row="0" Grid.Column="2" ItemsSource="{Binding CosmeticStyles}" SelectedItem="{Binding SelectedCosmeticStyle, Mode=TwoWay}"
-                      Margin="0 0 0 5">
-							<ComboBox.ItemTemplate>
-								<DataTemplate>
-
-								</DataTemplate>
-							</ComboBox.ItemTemplate>
-						</ComboBox>
-
-						<TextBlock Grid.Row="1" Grid.Column="0" Text="Cosmetic Shop Icon" VerticalAlignment="Center" Margin="0 0 0 5" />
-						<CheckBox Grid.Row="1" Grid.Column="2" 
-                       IsChecked="False"
-                      Margin="0 5 0 10"/>
-					</Grid>
-				</Grid>
-			</TabItem>
 			<TabItem Header="Models" Visibility="Collapsed">
 				<Grid >
 					<Grid.RowDefinitions>
@@ -309,54 +271,6 @@
 							</DataTemplate>
 						</ComboBox.ItemTemplate>
 					</ComboBox>
-				</Grid>
-			</TabItem>
-			<TabItem Header="Keybindings" Visibility="Collapsed">
-				<Grid >
-					<Grid.RowDefinitions>
-						<RowDefinition Height="Auto" />
-						<RowDefinition Height="Auto" />
-						<RowDefinition Height="Auto" />
-						<RowDefinition Height="Auto" />
-						<RowDefinition Height="Auto" />
-						<RowDefinition Height="Auto" />
-						<RowDefinition Height="Auto" />
-						<RowDefinition Height="Auto" />
-						<RowDefinition Height="Auto" />
-						<RowDefinition Height="Auto" />
-						<RowDefinition Height="Auto" />
-						<RowDefinition Height="Auto" />
-					</Grid.RowDefinitions>
-					<Grid.ColumnDefinitions>
-						<ColumnDefinition Width="Auto" />
-						<ColumnDefinition Width="10" />
-						<ColumnDefinition Width="*" />
-					</Grid.ColumnDefinitions>
-
-					<TextBlock Grid.Row="0" Grid.Column="0" Text="Left Switch on Directory Tab" VerticalAlignment="Center" Margin="0 0 0 5" />
-
-					<TextBlock Grid.Row="1" Grid.Column="0" Text="Right Switch on Directory Tab" VerticalAlignment="Center" />
-
-					<Separator Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3"/>
-
-					<TextBlock Grid.Row="3" Grid.Column="0" Text="Left Switch on Asset Tab" VerticalAlignment="Center" Margin="0 0 0 5" />
-
-					<TextBlock Grid.Row="4" Grid.Column="0" Text="Right Switch on Asset Tab" VerticalAlignment="Center" Margin="0 0 0 5" />
-
-					<TextBlock Grid.Row="5" Grid.Column="0" Text="Add Asset Tab" VerticalAlignment="Center" Margin="0 0 0 5" />
-
-					<TextBlock Grid.Row="6" Grid.Column="0" Text="Remove Selected Asset Tab" VerticalAlignment="Center" />
-
-					<Separator Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="3"/>
-
-					<TextBlock Grid.Row="8" Grid.Column="0" Text="Add Audio File" VerticalAlignment="Center" Margin="0 0 0 5" />
-
-					<TextBlock Grid.Row="9" Grid.Column="0" Text="Play / Pause Current Audio" VerticalAlignment="Center" Margin="0 0 0 5" />
-
-					<TextBlock Grid.Row="10" Grid.Column="0" Text="Previous Audio" VerticalAlignment="Center" Margin="0 0 0 5" />
-
-					<TextBlock Grid.Row="11" Grid.Column="0" Text="Next Audio" VerticalAlignment="Center" Margin="0 0 0 5" />
-
 				</Grid>
 			</TabItem>
 		</TabControl>

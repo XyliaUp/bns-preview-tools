@@ -9,6 +9,7 @@
 		<Setter Property="Control.FontFamily" Value="{StaticResource SegoeAssets}" />
 		<Setter Property="FrameworkElement.VerticalAlignment" Value="Center" />
 	</Style>
+	
 	<Style x:Key="TransparentButton" TargetType="{x:Type Button}">
 		<Setter Property="FocusVisualStyle" Value="{x:Null}" />
 		<Setter Property="OverridesDefaultStyle" Value="True" />
@@ -26,6 +27,30 @@
 						</Trigger>
 						<Trigger Property="IsPressed" Value="True">
 							<Setter Property="Opacity"  Value="0.5"/>
+						</Trigger>
+					</ControlTemplate.Triggers>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+	<Style x:Key="TransparentToggleButton" TargetType="{x:Type ToggleButton}">
+		<Setter Property="FocusVisualStyle" Value="{x:Null}" />
+		<Setter Property="OverridesDefaultStyle" Value="True" />
+		<Setter Property="HorizontalContentAlignment" Value="Center" />
+		<Setter Property="VerticalContentAlignment" Value="Center" />
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="{x:Type ToggleButton}">
+					<Border x:Name="PART_Border" Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" Background="{TemplateBinding Background}">
+						<ContentPresenter VerticalAlignment="{TemplateBinding VerticalContentAlignment}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Content="{TemplateBinding Content}"/>
+					</Border>
+					<ControlTemplate.Triggers>
+						<Trigger Property="IsMouseOver" Value="True">
+							<Setter Property="Opacity" Value="0.7"/>
+							<Setter Property="Background" Value="{DynamicResource SecondaryRegionBrush}" TargetName="PART_Border"/>
+						</Trigger>
+						<Trigger Property="IsPressed" Value="True">
+							<Setter Property="Opacity" Value="0.5"/>
 						</Trigger>
 					</ControlTemplate.Triggers>
 				</ControlTemplate>

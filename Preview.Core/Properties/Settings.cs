@@ -1,15 +1,27 @@
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
-
-using Xylia.Configure;
-using Xylia.Extension;
+using IniParser;
+using IniParser.Model;
+using Xylia.Preview.Common.Extension;
 
 namespace Xylia.Preview.Properties;
 public class Settings : INotifyPropertyChanged
 {
-	internal static Settings Default => new();
+	internal static Settings Default { get; } = new();
 
-	#region PropertyChange
+	public static string ApplicationData => Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Xylia");
+
+	protected Settings()
+	{
+		ConfigPath = Path.Combine(ApplicationData, "Settings.config");
+		Configuration = new FileIniDataParser().ReadFile(ConfigPath);
+	}
+
+
+	#region PropertyChange	 
+	protected string ConfigPath;
+	protected IniData Configuration;
+
 	public event PropertyChangedEventHandler PropertyChanged;
 
 	protected virtual bool SetProperty<T>(ref T storage, T value, [CallerMemberName] string propertyName = null)
@@ -22,30 +34,34 @@ public class Settings : INotifyPropertyChanged
 		return true;
 	}
 
-
-	protected static string GetValue(string section = "Common", [CallerMemberName] string Name = null)
+	protected string GetValue(string section = "Common", [CallerMemberName] string name = null)
 	{
-		if (Name.Contains('_'))
+		if (name.Contains('_'))
 		{
-			var split = Name.Split('_', 2);
-			section = split[0]; Name = split[1];
+			var split = name.Split('_', 2);
+			section = split[0];
+			name = split[1];
 		}
 
-		return Ini.Instance.ReadValue(section, Name);
+		return Configuration[section][name];
 	}
 
-	protected void SetValue(object value, string section = "Common", [CallerMemberName] string Name = null)
+	protected void SetValue(object value, string section = "Common", [CallerMemberName] string name = null)
 	{
-		if (Name.Contains('_'))
+		if (name.Contains('_'))
 		{
-			var split = Name.Split('_', 2);
-			section = split[0]; Name = split[1];
+			var split = name.Split('_', 2);
+			section = split[0];
+			name = split[1];
 		}
 
-		Ini.Instance.WriteValue(section, Name, value);
-		PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(Name));
+		Configuration[section][name] = value?.ToString();
+		new FileIniDataParser().WriteFile(ConfigPath, Configuration);
+
+		PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
 	}
 	#endregion
+
 
 	#region Common
 	public string GameFolder

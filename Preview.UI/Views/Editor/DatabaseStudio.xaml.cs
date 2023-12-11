@@ -5,12 +5,18 @@ using System.Windows.Data;
 using System.Windows.Input;
 using System.Windows.Media.Imaging;
 
+using HandyControl.Controls;
+using HandyControl.Data;
+
+using Microsoft.Win32;
+
 using OfficeOpenXml;
 
 using Ookii.Dialogs.Wpf;
 
 using Xylia.Preview.Data;
 using Xylia.Preview.Data.Engine.BinData.Models;
+using Xylia.Preview.Data.Engine.BinData.Serialization;
 using Xylia.Preview.Data.Helpers;
 using Xylia.Preview.Data.Helpers.Output;
 using Xylia.Preview.Data.Models;
@@ -18,21 +24,27 @@ using Xylia.Preview.UI.Controls;
 using Xylia.Preview.UI.ViewModels;
 
 namespace Xylia.Preview.UI.Views.Editor;
-public partial class DatabaseStudio : Window
+public partial class DatabaseStudio
 {
 	#region Constructor
 	private readonly SqlParser parser = new();
+	private ProviderSerialize serialize;
 
 	public DatabaseStudio()
 	{
-		TextEditor.Register();
 		InitializeComponent();
+		RegisterCommands(this.CommandBindings);
 
 		if (!FileCache.IsEmpty)
 		{
 			parser.Database = FileCache.Data;
 			LoadTreeView();
 		}
+	}
+
+	static DatabaseStudio()
+	{
+		TextEditor.Register();
 	}
 	#endregion
 
@@ -93,14 +105,13 @@ public partial class DatabaseStudio : Window
 		var source = parser.Source;
 		if (source is null) return;
 
-		Array.ForEach(parser.Fields, x => QueryResult.Columns.Add(new DataGridTextColumn { Header = x, Binding = new Binding($"Attributes[{x}]") }));
-		QueryResult.ItemsSource = source;
+		Array.ForEach(parser.Fields, x => QueryResult.Columns.Add(new DataGridTextColumn { Header = x, Binding = new Binding($"Attributes.{x}") }));
 
-		// update tip
+		// update
+		QueryResult.ItemsSource = source;
 		QueryResult.Visibility = source.Length == 0 ? Visibility.Hidden : Visibility.Visible;
 		QueryEmpty.Visibility = source.Length != 0 ? Visibility.Hidden : Visibility.Visible;
 	}
-
 
 	private void AddTab(string sql, string header = null)
 	{
@@ -125,6 +136,16 @@ public partial class DatabaseStudio : Window
 
 			return (item as ICSharpCode.AvalonEdit.TextEditor).Text;
 		}
+	}
+
+
+	private string SaveDataPath => UserSettings.Default.OutputFolder + "\\data";
+	#endregion
+
+	#region Command
+	private void RegisterCommands(CommandBindingCollection commandBindings)
+	{
+		commandBindings.Add(new CommandBinding(ApplicationCommands.Close, (_, _) => SaveMessage.Visibility = Visibility.Collapsed));
 	}
 	#endregion
 
@@ -172,7 +193,7 @@ public partial class DatabaseStudio : Window
 		}
 		catch (Exception ex)
 		{
-			HandyControl.Controls.MessageBox.Show(ex.Message);
+			Growl.Error(ex.Message, nameof(DatabaseStudio));
 		}
 		finally
 		{
@@ -265,20 +286,89 @@ public partial class DatabaseStudio : Window
 		package.SaveAs(save.FileName);
 	}
 
-
-	private void TableToXml_Click(object sender, RoutedEventArgs e)
-	{
-		// TODO: as sql result ?
-		if (tvwDatabase.SelectedItem is TreeViewItem item && item.DataContext is Table table)
-			table.WriteXml(UserSettings.Default.OutputFolder + "\\data");
-	}
-
 	private void TableView_Click(object sender, RoutedEventArgs e)
 	{
 		if (tvwDatabase.SelectedItem is TreeViewItem item && item.DataContext is Table table)
 		{
 			var window = new TableView { Table = table };
 			window.Show();
+		}
+	}
+
+
+	private async void TableExport_Click(object sender, RoutedEventArgs e)
+	{
+		if (tvwDatabase.SelectedItem is TreeViewItem item && item.DataContext is Table table)
+			await ExportAsync(table);
+	}
+
+	private async void TableExportAll_Click(object sender, RoutedEventArgs e)
+	{
+		await ExportAsync([.. parser.Database.Provider.Tables]);
+	}
+
+	private async Task ExportAsync(params Table[] tables)
+	{
+		var progress = new Action<int, int>((current, total) =>
+		{
+			Dispatcher.Invoke(() =>
+			{
+				SaveMessage.Visibility = Visibility.Visible;
+
+				if (current != tables.Length)
+				{
+					SaveMessage.Text = string.Format(StringHelper.Get("DatabaseStudio_TaskMessage1"), current, tables.Length, (double)current / tables.Length);
+				}
+				else
+				{
+					SaveMessage.Text = string.Format(StringHelper.Get("DatabaseStudio_TaskMessage2"), tables.Length);
+				}
+			});
+		});
+
+		serialize = new ProviderSerialize(parser.Database.Provider);
+		await serialize.ExportAsync(this.SaveDataPath, progress, tables);
+	}
+
+
+	private async void Import_Click(object sender, RoutedEventArgs e)
+	{
+		try
+		{
+			Growl.Info("Start import", nameof(DatabaseStudio));
+
+			DateTime dt = DateTime.Now;
+
+			serialize = new ProviderSerialize(parser.Database.Provider);
+			await serialize.ImportAsync(SaveDataPath);
+
+			Growl.Success(new GrowlInfo()
+			{
+				Token = nameof(DatabaseStudio),
+				Message = "Import finished, " + (DateTime.Now - dt).TotalSeconds,
+				StaysOpen = false,
+			});
+		}
+		catch (Exception ex)
+		{
+			Growl.Error(ex.Message, nameof(DatabaseStudio));
+		}
+	}
+
+	private async void Save_Click(object sender, RoutedEventArgs e)
+	{
+		var dialog = new OpenFolderDialog();
+		if (dialog.ShowDialog() == true)
+		{
+			serialize ??= new ProviderSerialize(parser.Database.Provider);
+			await serialize.SaveAsync(dialog.FolderName);
+
+			Growl.Success(new GrowlInfo()
+			{
+				Token = nameof(DatabaseStudio),
+				Message = "Save finished",
+				StaysOpen = true,
+			});
 		}
 	}
 	#endregion

@@ -3,8 +3,6 @@ using System.Text.RegularExpressions;
 using System.Xml;
 
 using CUE4Parse.Utils;
-
-using Xylia.Extension;
 using Xylia.Preview.Common.Extension;
 
 namespace Xylia.Preview.Tests.DatTool.Utils.DevTools;

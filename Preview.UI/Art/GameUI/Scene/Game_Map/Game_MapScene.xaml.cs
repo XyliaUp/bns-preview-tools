@@ -85,7 +85,7 @@ public partial class Game_MapScene
 			string tooltip = mapunit.Name2.GetText();
 			if (mapunit is MapUnit.Attraction)
 			{
-				var obj = new Ref<Record>(mapunit.Attributes["attraction"]).Instance;
+				var obj = new Ref<ModelElement>(mapunit.Attributes["attraction"]).Instance;
 				if (obj is IAttraction attraction)
 				{
 					tooltip = attraction.Text + "\n" + attraction.Describe;

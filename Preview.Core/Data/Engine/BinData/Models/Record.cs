@@ -1,12 +1,9 @@
-﻿using System.Runtime.Serialization;
-using System.Xml;
-using System.Xml.Linq;
+﻿using System.Xml;
 
 using Newtonsoft.Json;
 
 using Xylia.Preview.Common.Extension;
 using Xylia.Preview.Data.Common.DataStruct;
-using Xylia.Preview.Data.Database;
 using Xylia.Preview.Data.Engine.BinData.Definitions;
 using Xylia.Preview.Data.Engine.BinData.Helpers;
 using Xylia.Preview.Data.Engine.BinData.Models;
@@ -17,7 +14,7 @@ namespace Xylia.Preview.Data.Models;
 public unsafe class Record : IDisposable
 {
 	#region Ctor
-	public Record()
+	internal Record()
 	{
 		Attributes = new(this);
 	}
@@ -25,7 +22,6 @@ public unsafe class Record : IDisposable
 
 
 	#region Fields
-	[IgnoreDataMember]
 	public byte XmlNodeType
 	{
 		get
@@ -38,7 +34,6 @@ public unsafe class Record : IDisposable
 		}
 	}
 
-	[IgnoreDataMember]
 	public short SubclassType
 	{
 		get
@@ -51,7 +46,6 @@ public unsafe class Record : IDisposable
 		}
 	}
 
-	[IgnoreDataMember]
 	public ushort DataSize
 	{
 		get
@@ -64,7 +58,6 @@ public unsafe class Record : IDisposable
 		}
 	}
 
-	[IgnoreDataMember]
 	public int RecordId
 	{
 		get
@@ -77,7 +70,6 @@ public unsafe class Record : IDisposable
 		}
 	}
 
-	[IgnoreDataMember]
 	public int RecordVariationId
 	{
 		get
@@ -90,59 +82,36 @@ public unsafe class Record : IDisposable
 		}
 	}
 
-	[IgnoreDataMember]
 	public byte[] Data { get; set; }
 
-	[IgnoreDataMember]
 	public StringLookup StringLookup { get; set; }
 
-	[IgnoreDataMember]
 	public Table Owner { get; internal set; }
 
-	[IgnoreDataMember]
 	public Ref Ref => Data is null ? default : new(RecordId, RecordVariationId);
 
-	[IgnoreDataMember]
 	public ITableDefinition ElDefinition
 	{
 		get
 		{
-			var def = Owner?.Definition.ElRecord?.SubtableByType(SubclassType);
+			var def = Owner.Definition.ElRecord.SubtableByType(SubclassType);
 			if (def != null) this.CheckSize(def);
 
 			return def;
 		}
 	}
 
-	[IgnoreDataMember]
 	public AttributeCollection Attributes { get; internal set; }
 
-	[IgnoreDataMember]
 	internal Dictionary<string, Record[]> Children { get; set; } = new();
+
+
+	public bool HasChildren => Children.Count > 0;
+
+	internal Lazy<ModelElement> Model { get; set; }
 	#endregion
 
 	#region Serialize
-	/// <summary>
-	/// Convert XML text to record
-	/// </summary>
-	/// <remarks>This method is only used at convert fields</remarks>
-	/// <param name="xml"></param>
-	/// <returns></returns>
-	public static Record Parse(string xml)
-	{
-		try
-		{
-			var record = new Record();
-			record.Attributes = new AttributeCollection(record, XElement.Parse(xml));
-
-			return record;
-		}
-		catch
-		{
-			return default;
-		}
-	}
-
 	public void WriteXml(XmlWriter writer, ElDefinition el)
 	{
 		writer.WriteStartElement(el.Name);
@@ -150,18 +119,17 @@ public unsafe class Record : IDisposable
 		// attribute
 		if (SubclassType > -1)
 		{
-			writer.WriteAttributeString("type", SubclassType < el.Subtables.Count ? el.Subtables[SubclassType].Name : SubclassType.ToString());
+			writer.WriteAttributeString(AttributeCollection.s_type, SubclassType < el.Subtables.Count ? el.Subtables[SubclassType].Name : SubclassType.ToString());
 		}
 
-		foreach (var attribute in Attributes.OrderBy(o => o.Key.Name))
+		foreach (var attribute in Attributes)
 		{
-			// avoid duplicate (only cause when from xml)
-			if (SubclassType > -1 && attribute.Key.Name == "type") continue;
-			if (attribute.Key.Name == "auto-id") continue;
-			if (AttributeDefinition.IsDefault(attribute.Key, attribute.Value)) continue;
+			if (attribute.Key.Name == AttributeCollection.s_autoid) continue;
 
-			// set value
-			var value = AttributeDefinition.ToString(attribute.Value);
+			// set value, it seem that WriteRaw must be last  
+			var value = AttributeDefinition.ToString(attribute.Key, attribute.Value);
+			if (value is null) continue;
+
 			if (attribute.Key.Type == AttributeType.TNative) writer.WriteRaw(value);
 			else writer.WriteAttributeString(attribute.Key.Name, value);
 		}
@@ -174,39 +142,6 @@ public unsafe class Record : IDisposable
 		}
 
 		writer.WriteEndElement();
-	}
-
-	public void Serialize(RecordBuilder builder)
-	{
-		//Attributes.Synchronize();
-
-		//// check definition
-		//ArgumentNullException.ThrowIfNull(ElDefinition);
-
-		//// create record
-		//builder.InitializeRecord();
-
-		//Data = new byte[ElDefinition.Size];
-		//XmlNodeType = 1;
-		//SubclassType = ElDefinition.SubclassType;
-		//DataSize = ElDefinition.Size;
-		//StringLookup = builder.StringLookup;
-
-		//// Go through each attribute
-		////AttributeDefaultValues.SetRecordDefaults(record, this);
-		//foreach (var attr in ElDefinition.ExpandedAttributes)
-		//{
-		//	try
-		//	{
-		//		builder.SetAttribute(this, attr, Attributes[attr.Name]);
-		//	}
-		//	catch (Exception ex)
-		//	{
-		//		Debug.WriteLine(ex.Message);
-		//	}
-		//}
-
-		//builder.FinalizeRecord();
 	}
 	#endregion
 
@@ -245,12 +180,5 @@ public unsafe class Record : IDisposable
 
 		GC.SuppressFinalize(this);
 	}
-	#endregion
-
-
-	#region Instance
-	/// XXX: https://zhuanlan.zhihu.com/p/430728295
-	[IgnoreDataMember]
-	public Lazy<Record> Model { get; set; }
 	#endregion
 }

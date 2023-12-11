@@ -1,7 +1,5 @@
 ﻿using System.Xml;
 
-using Xylia.Extension;
-
 namespace Xylia.Preview.Tests.DatTool.Utils.ServerHandle;
 public class ZoneEnv2 : TableHandle
 {

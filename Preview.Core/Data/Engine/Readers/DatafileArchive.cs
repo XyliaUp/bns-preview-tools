@@ -5,12 +5,12 @@ public class DatafileArchive : Stream
 {
 	private readonly byte[] _data;
 
-	public DatafileArchive(byte[] data, int offset = 0, int size = -1)
+	public DatafileArchive(byte[] data, long offset = 0, long size = -1)
 	{
 		_data = data;
 
 		Position = offset;
-		Length = size == -1 ? _data.Length : size;
+		Length = size == -1 ? _data.Length : (offset + size);
 	}
 
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -104,6 +104,11 @@ public class DatafileArchive : Stream
 
 
 
+	public Stream CreateStream()
+	{
+		return new MemoryStream(_data, (int)Position, (int)(Length - Position));
+	}
+
 	public DatafileArchive OffsetedSource(long offset, long size)
 	{
 		if (Position + offset > int.MaxValue)
@@ -112,6 +117,6 @@ public class DatafileArchive : Stream
 		if (size > int.MaxValue)
 			throw new OverflowException("Size doesn't fit inside 32-bit integer");
 
-		return new DatafileArchive(this._data, (int)offset, (int)(offset + size));
+		return new DatafileArchive(this._data, offset, size);
 	}
 }

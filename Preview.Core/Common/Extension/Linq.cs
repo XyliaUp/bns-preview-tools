@@ -83,11 +83,5 @@ public static class Linq
 		ArgumentNullException.ThrowIfNull(strings);
 		return strings.Where(o => !string.IsNullOrEmpty(o)).SelectMany(o => o.Split(separator));
 	}
-
-	public static IEnumerable<T> ToIEnumerable<T>(this IEnumerator<T> enumerator)
-	{
-		while (enumerator.MoveNext())
-			yield return enumerator.Current;
-	}
 	#endregion
 }

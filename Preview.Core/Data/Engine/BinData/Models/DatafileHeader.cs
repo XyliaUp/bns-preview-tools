@@ -1,15 +1,14 @@
 ﻿using System.Text;
 
+using Xylia.Preview.Data.Common.DataStruct;
 using Xylia.Preview.Data.Engine.Readers;
-
-using Version = Xylia.Preview.Data.Common.DataStruct.Version;
 
 namespace Xylia.Preview.Data.Engine.BinData.Models;
 public class DatafileHeader
 {
     public string Magic { get; set; }
     public byte DatafileVersion { get; set; }
-    public Version ClientVersion { get; set; }
+    public BnsVersion ClientVersion { get; set; }
 	public long TotalTableSize { get; set; }
     public long ReadTableCount { get; private set; }
     public long AliasMapSize { get; set; }
@@ -18,11 +17,12 @@ public class DatafileHeader
     public DateTime CreatedAt { get; set; }
     public byte[] Reserved { get; set; }
 
+
     public void ReadHeaderFrom(DatafileArchive reader, bool is64Bit)
     {
         Magic = Encoding.ASCII.GetString(reader.ReadBytes(8));
         DatafileVersion = reader.Read<byte>();
-		ClientVersion = reader.Read<Version>();
+		ClientVersion = reader.Read<BnsVersion>();
 
 		if (is64Bit)
         {

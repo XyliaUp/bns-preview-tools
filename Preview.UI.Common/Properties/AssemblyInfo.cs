@@ -16,4 +16,5 @@ using System.Windows.Markup;
 [assembly: XmlnsDefinition("https://github.com/xyliaup/bns-preview-tools", "Xylia.Preview.UI")]
 [assembly: XmlnsDefinition("https://github.com/xyliaup/bns-preview-tools", "Xylia.Preview.UI.Controls")]
 [assembly: XmlnsDefinition("https://github.com/xyliaup/bns-preview-tools", "Xylia.Preview.UI.Documents")]
+[assembly: XmlnsDefinition("https://github.com/xyliaup/bns-preview-tools", "Xylia.Preview.UI.Extensions")]
 [assembly: XmlnsPrefix("https://github.com/xyliaup/bns-preview-tools", "Preview")]

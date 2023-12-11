@@ -1,10 +1,8 @@
 ﻿using System.Windows.Input;
 using System.Windows.Media;
-
 using CommunityToolkit.Mvvm.Input;
-
-using Xylia.Extension;
-using Xylia.Preview.Data.Common.Seq;
+using Xylia.Preview.Common.Extension;
+using Xylia.Preview.Data.Models.Sequence;
 
 namespace Xylia.Preview.UI.Art.GameUI.Scene.Game_ItemMap;
 public partial class Game_ItemMapScene

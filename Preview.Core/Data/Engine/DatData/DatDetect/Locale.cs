@@ -1,8 +1,7 @@
-﻿using Newtonsoft.Json;
+﻿using IniParser;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-
-using Xylia.Configure;
-using Xylia.Extension;
+using Xylia.Preview.Common.Extension;
 
 namespace Xylia.Preview.Data.Engine.DatData;
 public sealed class Locale
@@ -50,18 +49,18 @@ public sealed class Locale
 			var version = Win64?.GetFiles("version.ini").FirstOrDefault();
 			if (version is not null)
 			{
-				var config = new Ini(version.FullName);
-				ProductVersion = config.ReadValue("Version", "ProductVersion");
+				var config = new FileIniDataParser().ReadFile(version.FullName);
+				ProductVersion = config["Version"]["ProductVersion"];
 			}
 
 			var local = Win64?.GetFiles("local.ini").FirstOrDefault();
 			if (local is not null)
 			{
-				var config = new Ini(local.FullName);
-				_publisher = config.ReadValue("Locale", "Publisher");
-				_language = config.ReadValue("Locale", "Language");
-				Universe = config.ReadValue("Locale", "Universe");
+				var config = new FileIniDataParser().ReadFile(local.FullName);
 
+				_publisher = config["Locale"]["Publisher"];
+				_language = config["Locale"]["Language"];
+				Universe = config["Locale"]["Universe"];
 				return;
 			}
 		}

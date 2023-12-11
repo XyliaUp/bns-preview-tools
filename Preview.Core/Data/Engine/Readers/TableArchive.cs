@@ -33,6 +33,8 @@ public class TableArchive
 		return table;
 	}
 
+	public Stream LazyStream() => Source.CreateStream();
+
 
 	public void ReadFrom(Table table)
 	{
@@ -40,9 +42,6 @@ public class TableArchive
 
 		if (table.IsCompressed) ReadCompressed(Source, table);
 		else ReadUncompressed(Source, table);
-
-		Source.Dispose();
-		Source = null;
 	}
 
 	private unsafe void ReadCompressed(DatafileArchive reader, Table table)
@@ -86,7 +85,9 @@ public class TableArchive
 		while (_recordUncompressedReader.Read(reader, ref rowMemory))
 		{
 			if (rowMemory.DataSize == 6)
+			{
 				continue;
+			}
 
 			var row = new Record
 			{
@@ -110,7 +111,6 @@ public class TableArchive
 		_recordUncompressedReader.GetPadding(out var padding);
 		if (padding.Length > 0)
 			table.Padding = padding.ToArray();
-
 
 		table.Records = records;
 	}

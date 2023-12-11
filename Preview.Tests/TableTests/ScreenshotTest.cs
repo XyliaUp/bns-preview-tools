@@ -5,6 +5,7 @@ using System.Xml.Serialization;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 using Xylia.Preview.Data.Models;
+using Xylia.Preview.Data.Models.Config;
 
 namespace Xylia.Preview.Tests.TableTests;
 

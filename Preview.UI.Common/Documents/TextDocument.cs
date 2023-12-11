@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Diagnostics;
 using System.Windows;
 
 using HtmlAgilityPack;
@@ -97,8 +96,9 @@ public class TextDocument
 			case "p": element = new Paragraph(); break;
 
 			default:
-				Debug.WriteLine("unknown tag: " + node.Name);
-				return null;
+				element = new Run();
+				Serilog.Log.Warning("unknown tag: " + node.Name);
+				break;
 		}
 
 		element.InternalLoad(node);

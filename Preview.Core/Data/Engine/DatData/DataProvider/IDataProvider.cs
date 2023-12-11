@@ -1,4 +1,5 @@
-﻿using Xylia.Preview.Data.Engine.BinData.Definitions;
+﻿using Xylia.Preview.Data.Common.DataStruct;
+using Xylia.Preview.Data.Engine.BinData.Definitions;
 using Xylia.Preview.Data.Engine.BinData.Helpers;
 
 namespace Xylia.Preview.Data.Engine.DatData;
@@ -9,20 +10,24 @@ public interface IDataProvider : IDisposable
 {
 	#region Properties
 	/// <summary>
-	/// DataSource name
+	/// DataSource Name
 	/// </summary>
-	string Name => null;
+	string Name { get; }
 
-	bool is64Bit => true;
+	/// <summary>
+	/// DataSource Timestamp
+	/// </summary>
+	DateTime CreatedAt { get; }
 
-	DateTime CreatedAt => default;
-
-	Common.DataStruct.Version ClientVersion => default;
+	/// <summary>
+	/// DataSource Version
+	/// </summary>
+	BnsVersion ClientVersion { get; }
 
 	/// <summary>
 	/// bns data table
 	/// </summary>
-	TableCollection Tables { get; set; }
+	TableCollection Tables { get; }
 
 	/// <summary>
 	/// DataSource localized information
@@ -31,13 +36,25 @@ public interface IDataProvider : IDisposable
 	#endregion
 
 	#region Methods
+	/// <summary>
+	/// Get raw file
+	/// </summary>
+	/// <param name="pattern"></param>
+	/// <returns></returns>
 	Stream[] GetFiles(string pattern);
 
 	/// <summary>
-	/// Load table
-	/// In some cases, require automatic conversion
+	/// Load package
 	/// </summary>
+	/// <remarks>In some cases, require automatic parse <see langword="definitions"/></remarks>
 	/// <param name="definitions"></param>
-	public void LoadData(List<TableDefinition> definitions);
+	public void LoadData(DatafileDefinition definitions);
+	
+	/// <summary>
+	/// Write package data
+	/// </summary>
+	/// <param name="folder"></param>
+	/// <param name="is64bit"></param>
+	public void WriteData(string folder, bool is64bit) => throw new NotImplementedException();
 	#endregion
 }

@@ -1,11 +1,6 @@
 ﻿using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
-using Xylia.Extension;
-using Xylia.Preview.Data.Engine.BinData.Models;
-using Xylia.Preview.Data.Helpers;
-using Xylia.Preview.Data.Models;
-
 namespace Xylia.Preview.Data.Common.DataStruct;
 [StructLayout(LayoutKind.Sequential)]
 public struct Ref
@@ -81,90 +76,4 @@ public struct Ref
 	{
 		return HashCode.Combine(Id, Variant);
 	}
-}
-
-
-/// <summary>
-/// model reference
-/// </summary>
-/// <typeparam name="TRecord"></typeparam>
-public struct Ref<TRecord> where TRecord : Record
-{
-	public Ref(string value, BnsDatabase database = null)
-	{
-		if (value is null)
-		{
-			throw new Exception();
-		}
-		else if (value.Contains(':'))
-		{
-			Table = value.Split(':')[0];
-			Alias = value.Split(':')[1]?.Trim();
-		}
-		else if (typeof(TRecord) != typeof(Record))
-		{
-			Table = typeof(TRecord).Name;
-			Alias = value;
-		}
-
-		Database = database ?? FileCache.Data;
-	}
-
-	#region Field
-	private readonly BnsDatabase Database;
-
-	public readonly string Table;
-	public string Alias;
-	//public int Id;
-	//public int Variant;
-
-	public bool IsNull => Alias is null || Instance is null;
-
-	public override string ToString() => IsNull ? null : $"{Table}:{Alias}";
-	#endregion
-
-	#region	Instance
-	private TRecord _instance;
-
-	public TRecord Instance => _instance ??= CastObject<TRecord>(Table, Alias, Database);
-
-	public static T CastObject<T>(string table, string alias, BnsDatabase data) where T : Record
-	{
-		if (alias is null) return null;
-
-		// tref: need register on the database
-		// TODO: change to auto create ?
-		if (typeof(T) == typeof(Record))
-			return (T)(data.GetValue(table, true) as Table)?[alias]?.Model.Value;
-
-		// ref: create model table
-		return data.Get<T>(table)?[alias];
-	}
-	#endregion
-
-
-	#region Operator
-	public static bool operator ==(Ref<TRecord> a, Ref<TRecord> b)
-	{
-		// If one is null, but not both, return false.
-		if (a.GetType() != b.GetType()) return false;
-
-		// Return true if the fields match:
-		if (a.Alias is null && b.Alias is null) return false;
-		else if (a.Alias != null && a.Alias.Equals(b.Alias, StringComparison.OrdinalIgnoreCase)) return true;
-
-
-		return false;
-	}
-	public static bool operator !=(Ref<TRecord> a, Ref<TRecord> b) => !(a == b);
-
-	public static bool operator ==(Ref<TRecord> a, TRecord b)
-	{
-		return a.Instance == b;
-	}
-	public static bool operator !=(Ref<TRecord> a, TRecord b) => !(a == b);
-
-	public override readonly bool Equals(object other) => other is Ref<TRecord> record && this == record;
-	public override readonly int GetHashCode() => base.GetHashCode();
-	#endregion
 }

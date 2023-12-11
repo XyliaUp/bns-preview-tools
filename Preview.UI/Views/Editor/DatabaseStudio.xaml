@@ -3,17 +3,22 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 		xmlns:avalonEdit="http://icsharpcode.net/sharpdevelop/avalonedit"
 		xmlns:hc="https://handyorg.github.io/handycontrol"
-		x:Name="Wd" Title="Database Studio" Height="800" Width="1200">
+		Title="{DynamicResource DatabaseStudio_Name}" Height="800" Width="1200">
 	<Window.Resources>
 		<ContextMenu x:Key="TableMenu">
-			<MenuItem Header="View" Click="TableView_Click">
+			<MenuItem Header="{DynamicResource DatabaseStudio_ViewTable}" Click="TableView_Click">
 				<MenuItem.Icon>
 					<TextBlock Text="&#xE8FD;" Style="{StaticResource SegoeIcon}" />
 				</MenuItem.Icon>
 			</MenuItem>
-			<MenuItem Header="Output" Click="TableToXml_Click">
+			<MenuItem Header="{DynamicResource DatabaseStudio_Extract}" Click="TableExport_Click">
 				<MenuItem.Icon>
 					<TextBlock Text="&#xE74E;" Style="{StaticResource SegoeIcon}" />
+				</MenuItem.Icon>
+			</MenuItem>
+			<MenuItem Header="{DynamicResource DatabaseStudio_ExtractAll}" Click="TableExportAll_Click">
+				<MenuItem.Icon>
+					<TextBlock Text="&#xF12B;" Style="{StaticResource SegoeIcon}" />
 				</MenuItem.Icon>
 			</MenuItem>
 		</ContextMenu>
@@ -29,7 +34,7 @@
 
 	<Grid>
 		<Grid.RowDefinitions>
-			<RowDefinition Height="30" />
+			<RowDefinition Height="Auto" />
 			<RowDefinition Height="200" />
 			<RowDefinition Height="*" />
 		</Grid.RowDefinitions>
@@ -39,46 +44,64 @@
 		</Grid.ColumnDefinitions>
 
 		<!-- Function -->
-		<ToolBar Grid.ColumnSpan="2" ClipToBounds="False">
-			<Button Name="Connect" Click="Connect_Click" Tag="Connect" Style="{x:Null}">
-				<StackPanel Orientation="Horizontal">
-					<Image Source="/Resources/Images/database_connect.png" />
-					<TextBlock Margin="3,2,0,0" Text="{Binding Tag , ElementName=Connect}" />
-				</StackPanel>
-			</Button>
-			<Separator />
+		<ToolBarTray Grid.ColumnSpan="2" >
+			<ToolBar Band="0" BandIndex="0">
+				<Button Name="Connect" Click="Connect_Click" Tag="Connect" Style="{x:Null}">
+					<StackPanel Orientation="Horizontal">
+						<Image Source="/Resources/Images/database_connect.png" />
+						<TextBlock Margin="3,2,0,0" Text="{Binding Tag , ElementName=Connect}" />
+					</StackPanel>
+				</Button>
+				<Separator />
 
-			<Button Click="Refresh_Click" Style="{x:Null}">
-				<StackPanel Orientation="Horizontal">
-					<Image Source="/Resources/Images/arrow_refresh.png" />
-					<TextBlock Margin="3,2,3,0" Text="Refresh" />
-				</StackPanel>
-			</Button>
-			<Separator />
+				<Button Click="Refresh_Click" Style="{x:Null}">
+					<StackPanel Orientation="Horizontal">
+						<Image Source="/Resources/Images/arrow_refresh.png" />
+						<TextBlock Margin="3,2,3,0" Text="Refresh" />
+					</StackPanel>
+				</Button>
+				<Separator />
 
-			<Button x:Name="Run" Click="Run_Click" Style="{x:Null}">
-				<StackPanel Orientation="Horizontal">
-					<Image Source="/Resources/Images/resultset_next.png" />
-					<TextBlock Margin="3,2,10,0" Text="Run" />
-				</StackPanel>
-			</Button>
-			<Separator />
+				<Button x:Name="Run" Click="Run_Click" Style="{x:Null}">
+					<StackPanel Orientation="Horizontal">
+						<Image Source="/Resources/Images/resultset_next.png" />
+						<TextBlock Margin="3,2,10,0" Text="Run" />
+					</StackPanel>
+				</Button>
+				<Separator />
 
-			<Button Click="LoadSql_Click" Style="{x:Null}">
-				<StackPanel Orientation="Horizontal">
-					<Image Source="/Resources/Images/folder_page.png" />
-					<TextBlock Margin="3,2,0,0" Text="Load" />
-				</StackPanel>
-			</Button>
-			<Separator />
+				<Button Click="LoadSql_Click" Style="{x:Null}">
+					<StackPanel Orientation="Horizontal">
+						<Image Source="/Resources/Images/folder_page.png" />
+						<TextBlock Margin="3,2,0,0" Text="Load" />
+					</StackPanel>
+				</Button>
+				<Separator />
 
-			<Button Click="SaveSql_Click" Style="{x:Null}">
-				<StackPanel Orientation="Horizontal">
-					<Image Source="/Resources/Images/disk.png" />
-					<TextBlock Margin="3,2,0,0" Text="Save" />
-				</StackPanel>
-			</Button>
-		</ToolBar>
+				<Button Click="SaveSql_Click" Style="{x:Null}">
+					<StackPanel Orientation="Horizontal">
+						<Image Source="/Resources/Images/disk.png" />
+						<TextBlock Margin="3,2,0,0" Text="Save" />
+					</StackPanel>
+				</Button>
+			</ToolBar>
+
+			<ToolBar Band="0" BandIndex="0">
+				<Button Click="Import_Click" Style="{x:Null}">
+					<StackPanel Orientation="Horizontal">
+						<Image Source="/Resources/Images/disk.png" />
+						<TextBlock Margin="3,2,10,0" Text="Import" />
+					</StackPanel>
+				</Button>
+
+				<Button Click="Save_Click" Style="{x:Null}">
+					<StackPanel Orientation="Horizontal">
+						<Image Source="/Resources/Images/disk.png" />
+						<TextBlock Margin="3,2,10,0" Text="Save" />
+					</StackPanel>
+				</Button>
+			</ToolBar>
+		</ToolBarTray>
 
 
 		<!-- Tree -->
@@ -95,7 +118,7 @@
 				</Style>
 			</TabControl.Resources>
 		</hc:TabControl>
-		
+
 		<TabControl Grid.Row="2" Grid.Column="2" >
 			<TabItem Header="Grid" >
 				<Grid>
@@ -106,5 +129,30 @@
 			<TabItem Header="Text" Visibility="Hidden" />
 			<TabItem Header="Parameters" Visibility="Hidden" />
 		</TabControl>
+
+
+		<!-- Tooltip -->
+		<StackPanel Grid.RowSpan="99" Grid.ColumnSpan="99" Panel.ZIndex="99" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="5" hc:Growl.Token="DatabaseStudio">
+			<Grid Width="320" MinHeight="60" Margin="0 10 0 0" Visibility="{Binding Path=Visibility,ElementName=SaveMessage}">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="50" />
+					<ColumnDefinition />
+					<ColumnDefinition Width="Auto" />
+				</Grid.ColumnDefinitions>
+				<Grid.RowDefinitions>
+					<RowDefinition />
+					<RowDefinition Height="Auto" />
+				</Grid.RowDefinitions>
+				<Border Grid.ColumnSpan="3" Grid.RowSpan="2" Effect="{StaticResource EffectShadow2}" Background="{DynamicResource ThirdlyRegionBrush}" CornerRadius="8" />
+				<Path FlowDirection="LeftToRight" Grid.Row="0" Grid.Column="0" VerticalAlignment="Top" Margin="0,15,0,0" Width="30" Height="30" Stretch="Uniform" Data="{DynamicResource SaveGeometry}" Fill="LightSkyBlue"/>
+				<StackPanel VerticalAlignment="Center" Grid.Row="0" Grid.Column="1" Margin="0,10,10,10">
+					<TextBlock x:Name="SaveMessage" Style="{StaticResource TextBlockDefault}" HorizontalAlignment="Left" TextWrapping="Wrap" Visibility="Collapsed" />
+				</StackPanel>
+				<Button Grid.Row="0" Margin="11,0" Command="ApplicationCommands.Close" Grid.Column="2" Background="Transparent" Style="{StaticResource ButtonCustom}" VerticalAlignment="Center" HorizontalAlignment="Center" Width="18" Height="18">
+					<Path FlowDirection="LeftToRight" Data="{StaticResource ErrorGeometry}" Stretch="Uniform" Fill="{DynamicResource SecondaryTextBrush}" />
+				</Button>
+			</Grid>
+			
+		</StackPanel>
 	</Grid>
 </Window>

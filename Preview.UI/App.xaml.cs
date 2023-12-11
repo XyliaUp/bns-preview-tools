@@ -20,8 +20,6 @@ using CUE4Parse_Conversion.Textures;
 using HandyControl.Controls;
 
 using Serilog;
-
-using Xylia.Configure;
 using Xylia.Preview.Common;
 using Xylia.Preview.Common.Extension;
 using Xylia.Preview.Data.Helpers;
@@ -43,7 +41,7 @@ public partial class App : Application
 		InitializeArgs(e.Args);
 
 		#region Log
-		var foloder = UserSettings.Default.OutputFolder ?? PathDefine.MainFolder;
+		var foloder = UserSettings.Default.OutputFolder ?? UserSettings.ApplicationData;
 		string template = "{Timestamp:yyyy-MM-dd HH:mm:ss} [{Level}] {Message:lj}{NewLine}{Exception}";
 		Log.Logger = new LoggerConfiguration()
 			.WriteTo.Debug(Serilog.Events.LogEventLevel.Warning, outputTemplate: template)
@@ -66,8 +64,9 @@ public partial class App : Application
 		//GC.Collect();
 		//return;
 #endif
+
 		MainWindow = new MainWindow();
-		MainWindow.Show();
+		MainWindow.Show(); 
 	}
 
 

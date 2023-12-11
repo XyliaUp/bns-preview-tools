@@ -120,6 +120,15 @@
   <data name="AbilityPage" xml:space="preserve">
     <value>Role Ability</value>
   </data>
+  <data name="AbilityPage_Level" xml:space="preserve">
+    <value>Level</value>
+  </data>
+  <data name="AbilityPage_Result" xml:space="preserve">
+    <value>&lt;arg p="2"/&gt; converted percent in Lv&lt;arg p="1"/&gt;</value>
+  </data>
+  <data name="AbilityPage_Value" xml:space="preserve">
+    <value>Value</value>
+  </data>
   <data name="Application_ExitMessage" xml:space="preserve">
     <value>Are you sure you are closing the application?</value>
   </data>
@@ -144,6 +153,9 @@
   <data name="Command_QueryAsset2" xml:space="preserve">
     <value>Query Asset (old path)</value>
   </data>
+  <data name="DatSelector_CountDown" xml:space="preserve">
+    <value>Automatically select after {0} second</value>
+  </data>
   <data name="DatSelector_Name" xml:space="preserve">
     <value>DatSelector</value>
   </data>
@@ -155,6 +167,27 @@
   </data>
   <data name="DatSelector_Tooltip" xml:space="preserve">
     <value>Due to exists multiple files in your selected path, it is necessary to manually select.</value>
+  </data>
+  <data name="DatabaseStudio_Extract" xml:space="preserve">
+    <value>Extract</value>
+  </data>
+  <data name="DatabaseStudio_ExtractAll" xml:space="preserve">
+    <value>Extract All</value>
+  </data>
+  <data name="DatabaseStudio_ImportAll" xml:space="preserve">
+    <value>Import All</value>
+  </data>
+  <data name="DatabaseStudio_Name" xml:space="preserve">
+    <value>Database Studio</value>
+  </data>
+  <data name="DatabaseStudio_TaskMessage1" xml:space="preserve">
+    <value>Progress: {0}/{1} ({2:P0})</value>
+  </data>
+  <data name="DatabaseStudio_TaskMessage2" xml:space="preserve">
+    <value>Task completed!</value>
+  </data>
+  <data name="DatabaseStudio_ViewTable" xml:space="preserve">
+    <value>View</value>
   </data>
   <data name="GameDirectory" xml:space="preserve">
     <value>Game Directory</value>
@@ -234,6 +267,12 @@
   <data name="ItemList_Run" xml:space="preserve">
     <value>Create</value>
   </data>
+  <data name="ItemList_TaskCompleted" xml:space="preserve">
+    <value>Pull {0} piece(s) of data, taking {1} seconds.</value>
+  </data>
+  <data name="ItemList_TaskCompleted2" xml:space="preserve">
+    <value>Task completed, taking {1} seconds.</value>
+  </data>
   <data name="ItemPage" xml:space="preserve">
     <value>Item</value>
   </data>
@@ -310,6 +349,21 @@
   <data name="Settings_CopyMode" xml:space="preserve">
     <value>Text Copy Mode</value>
   </data>
+  <data name="Settings_CopyMode_None" xml:space="preserve">
+    <value>None</value>
+  </data>
+  <data name="Settings_CopyMode_Regular" xml:space="preserve">
+    <value>Regular</value>
+  </data>
+  <data name="Settings_CopyMode_Source" xml:space="preserve">
+    <value>Source</value>
+  </data>
+  <data name="Settings_CopyMode_Trimmed" xml:space="preserve">
+    <value>Trimmed</value>
+  </data>
+  <data name="Settings_Language" xml:space="preserve">
+    <value>Language</value>
+  </data>
   <data name="Settings_Name" xml:space="preserve">
     <value>Settings</value>
   </data>
@@ -320,7 +374,13 @@
     <value>Use Performance Monitor</value>
   </data>
   <data name="Settings_UseUserDefinition" xml:space="preserve">
-    <value>Activate user custome definitions</value>
+    <value>Enable custome definitions</value>
+  </data>
+  <data name="Settings_UseUserDefinition_Ask" xml:space="preserve">
+    <value>Are you sure to enable custom definition? This may cause reading exceptions.</value>
+  </data>
+  <data name="Settings_UseUserDefinition_Tooltip" xml:space="preserve">
+    <value>If you do not know the usage, do not check it!</value>
   </data>
   <data name="ShowObjectPlayer_Name" xml:space="preserve">
     <value>Show Object Player</value>
@@ -337,8 +397,14 @@
   <data name="TextView_LoadLastOnStartup" xml:space="preserve">
     <value>Load last on startup</value>
   </data>
+  <data name="TextView_ReadOnly" xml:space="preserve">
+    <value>ReadOnly</value>
+  </data>
   <data name="Text_Cancel" xml:space="preserve">
     <value>Cancel</value>
+  </data>
+  <data name="Text_Edit" xml:space="preserve">
+    <value>Edit</value>
   </data>
   <data name="Text_File" xml:space="preserve">
     <value>File</value>
@@ -358,6 +424,15 @@
   <data name="Text_Preview" xml:space="preserve">
     <value>Preview</value>
   </data>
+  <data name="Text_PublishOn" xml:space="preserve">
+    <value>Publish at</value>
+  </data>
+  <data name="Text_Replace" xml:space="preserve">
+    <value>Replace</value>
+  </data>
+  <data name="Text_ReplaceInFiles" xml:space="preserve">
+    <value>Replace in Files</value>
+  </data>
   <data name="Text_Reset" xml:space="preserve">
     <value>Reset</value>
   </data>
@@ -370,34 +445,25 @@
   <data name="Text_SaveAs" xml:space="preserve">
     <value>Save As...</value>
   </data>
-  <data name="Text_PublishOn" xml:space="preserve">
-    <value>Publish at</value>
-  </data>
-  <data name="ItemList_TaskCompleted" xml:space="preserve">
-    <value>Pull {0} piece(s) of data, taking {1} seconds.</value>
-  </data>
-  <data name="ItemList_TaskCompleted2" xml:space="preserve">
-    <value>Task completed, taking {1} seconds.</value>
-  </data>
-  <data name="Text_Edit" xml:space="preserve">
-    <value>Edit</value>
-  </data>
   <data name="Text_Search" xml:space="preserve">
     <value>Search</value>
   </data>
-  <data name="Text_Replace" xml:space="preserve">
-    <value>Replace</value>
+  <data name="Version_Tip1" xml:space="preserve">
+    <value>This is a preview version, some features may not work.</value>
   </data>
-  <data name="Text_ReplaceInFiles" xml:space="preserve">
-    <value>Replace in Files</value>
+  <data name="Version_Tip2" xml:space="preserve">
+    <value>The latest version of {0} is {1}. Do you want to update the application now?</value>
   </data>
-  <data name="AbilityPage_Level" xml:space="preserve">
-    <value>Level</value>
+  <data name="Version_Tip3" xml:space="preserve">
+    <value>There is a problem reaching the update server, please check your internet connection or try again later.</value>
   </data>
-  <data name="AbilityPage_Value" xml:space="preserve">
-    <value>Value</value>
+  <data name="TextView_ReadWrite" xml:space="preserve">
+    <value>ReadWrite</value>
   </data>
-  <data name="AbilityPage_Result" xml:space="preserve">
-    <value>&lt;arg p="2"/&gt; converted percent in Lv&lt;arg p="1"/&gt;</value>
+  <data name="Text_ColumnNumber" xml:space="preserve">
+    <value>Column</value>
+  </data>
+  <data name="Text_LineNumber" xml:space="preserve">
+    <value>Line</value>
   </data>
 </root>

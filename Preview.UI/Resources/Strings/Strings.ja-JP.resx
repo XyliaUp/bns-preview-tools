@@ -1,0 +1,450 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AbilityPage" xml:space="preserve">
+    <value>キャラクターアビリティ</value>
+  </data>
+  <data name="AbilityPage_Level" xml:space="preserve">
+    <value>レベル</value>
+  </data>
+  <data name="AbilityPage_Result" xml:space="preserve">
+    <value>対応する&lt;arg p="2"/&gt;レートが&lt;arg p="1"/&gt;レベルに達しました</value>
+  </data>
+  <data name="AbilityPage_Value" xml:space="preserve">
+    <value>数値</value>
+  </data>
+  <data name="Application_ExitMessage" xml:space="preserve">
+    <value>本当にアプリを閉じてもよろしいですか？ </value>
+  </data>
+  <data name="Asset_Extract" xml:space="preserve">
+    <value>計上する　積立てる　取り崩す</value>
+  </data>
+  <data name="Asset_FilterPah" xml:space="preserve">
+    <value>アセットパス</value>
+  </data>
+  <data name="Asset_OutputClassName" xml:space="preserve">
+    <value>オブジェクトクラス名を出力します</value>
+  </data>
+  <data name="Assets_Name" xml:space="preserve">
+    <value>資産の部</value>
+  </data>
+  <data name="AudioPlayer_Name" xml:space="preserve">
+    <value>オーディオプレーヤー</value>
+  </data>
+  <data name="Command_QueryAsset" xml:space="preserve">
+    <value>ゲームアセットをクエリ</value>
+  </data>
+  <data name="Command_QueryAsset2" xml:space="preserve">
+    <value>ゲームアセット（古いパス）をクエリ</value>
+  </data>
+  <data name="DatSelector_CountDown" xml:space="preserve">
+    <value>{0}秒後に自動選択</value>
+  </data>
+  <data name="DatSelector_Name" xml:space="preserve">
+    <value>データセレクター</value>
+  </data>
+  <data name="DatSelector_Source1" xml:space="preserve">
+    <value>データファイル</value>
+  </data>
+  <data name="DatSelector_Source2" xml:space="preserve">
+    <value>Hanhuaファイル</value>
+  </data>
+  <data name="DatSelector_Tooltip" xml:space="preserve">
+    <value>選択したパスの下に複数の関連ファイルがあるため、積極的に選択する必要があります。</value>
+  </data>
+  <data name="DatabaseStudio_Extract" xml:space="preserve">
+    <value>計上する　積立てる　取り崩す</value>
+  </data>
+  <data name="DatabaseStudio_ExtractAll" xml:space="preserve">
+    <value>すべて抽出</value>
+  </data>
+  <data name="DatabaseStudio_ImportAll" xml:space="preserve">
+    <value>すべてインポート</value>
+  </data>
+  <data name="DatabaseStudio_Name" xml:space="preserve">
+    <value>データベーススタジオ</value>
+  </data>
+  <data name="DatabaseStudio_TaskMessage1" xml:space="preserve">
+    <value>現在の保存進行状況{0}/{1}（{2:P0}）</value>
+  </data>
+  <data name="DatabaseStudio_TaskMessage2" xml:space="preserve">
+    <value>完了済み</value>
+  </data>
+  <data name="DatabaseStudio_ViewTable" xml:space="preserve">
+    <value>確認</value>
+  </data>
+  <data name="GameDirectory" xml:space="preserve">
+    <value>ゲームカタログ</value>
+  </data>
+  <data name="GameResourcePage" xml:space="preserve">
+    <value>リソース</value>
+  </data>
+  <data name="Game_QuestJournalScene" xml:space="preserve">
+    <value>クエスト</value>
+  </data>
+  <data name="IconOut_CreateList" xml:space="preserve">
+    <value>出力リスト</value>
+  </data>
+  <data name="IconOut_CreateList_Tooltip" xml:space="preserve">
+    <value>生成された画像からアイテムのリストを作成します</value>
+  </data>
+  <data name="IconOut_Error1" xml:space="preserve">
+    <value>リストファイルのパスが正しくないか、存在しません。再確認してください</value>
+  </data>
+  <data name="IconOut_Error2" xml:space="preserve">
+    <value>ホワイトリストモードを選択するときは、プロファイルを選択する必要があります</value>
+  </data>
+  <data name="IconOut_Error3" xml:space="preserve">
+    <value>出力フォーマットには、少なくとも1つの特別なルールが含まれている必要があります</value>
+  </data>
+  <data name="IconOut_FilterMode" xml:space="preserve">
+    <value>ホワイトリストスクリーニングモード</value>
+  </data>
+  <data name="IconOut_FilterMode_Tooltip" xml:space="preserve">
+    <value>チェックすると、アイテムのリスト内のオブジェクトのみが生成されます</value>
+  </data>
+  <data name="IconOut_Goods" xml:space="preserve">
+    <value>商品アイコンを取得</value>
+  </data>
+  <data name="IconOut_ItemList" xml:space="preserve">
+    <value>アイテムリストを選択してください</value>
+  </data>
+  <data name="IconOut_Items" xml:space="preserve">
+    <value>アイテムアイコンを抽出</value>
+  </data>
+  <data name="IconOut_Name" xml:space="preserve">
+    <value>を使って「</value>
+  </data>
+  <data name="IconOut_NameFormat" xml:space="preserve">
+    <value>出力名のフォーマット</value>
+  </data>
+  <data name="IconOut_TaskCancel" xml:space="preserve">
+    <value>すでに進行中のタスクがあります。キャンセルしてもよろしいですか？ </value>
+  </data>
+  <data name="IconOut_TaskCompleted" xml:space="preserve">
+    <value>タスクが完了し、{0:hh}時間{0:mm}分{0:ss}かかりました</value>
+  </data>
+  <data name="IconOut_TaskException" xml:space="preserve">
+    <value>{0}のため、ミッションが予期せず終了しました</value>
+  </data>
+  <data name="IconOut_UseBackground" xml:space="preserve">
+    <value>品質の背景を生成します</value>
+  </data>
+  <data name="ItemList_Name" xml:space="preserve">
+    <value>アイテムリスト</value>
+  </data>
+  <data name="ItemList_OnlyUpdate" xml:space="preserve">
+    <value>アップデートのみ</value>
+  </data>
+  <data name="ItemList_Path" xml:space="preserve">
+    <value>前のアイテムリストを選択してください</value>
+  </data>
+  <data name="ItemList_Run" xml:space="preserve">
+    <value>生成</value>
+  </data>
+  <data name="ItemList_TaskCompleted" xml:space="preserve">
+    <value>{0}データの取得には合計{1}秒かかりました。</value>
+  </data>
+  <data name="ItemList_TaskCompleted2" xml:space="preserve">
+    <value>タスクが完了しました。合計{1}秒かかります。</value>
+  </data>
+  <data name="ItemPage" xml:space="preserve">
+    <value>物品</value>
+  </data>
+  <data name="MergeIcon_BackgroundMode" xml:space="preserve">
+    <value>新しい背景</value>
+  </data>
+  <data name="MergeIcon_Grade1" xml:space="preserve">
+    <value>ラフ</value>
+  </data>
+  <data name="MergeIcon_Grade2" xml:space="preserve">
+    <value>ありふれ</value>
+  </data>
+  <data name="MergeIcon_Grade3" xml:space="preserve">
+    <value>すばらしい</value>
+  </data>
+  <data name="MergeIcon_Grade4" xml:space="preserve">
+    <value>エッセンス</value>
+  </data>
+  <data name="MergeIcon_Grade5" xml:space="preserve">
+    <value>プライム</value>
+  </data>
+  <data name="MergeIcon_Grade6" xml:space="preserve">
+    <value>進化</value>
+  </data>
+  <data name="MergeIcon_Grade7" xml:space="preserve">
+    <value>伝説</value>
+  </data>
+  <data name="MergeIcon_Grade8" xml:space="preserve">
+    <value>いにしえの</value>
+  </data>
+  <data name="MergeIcon_Grade9" xml:space="preserve">
+    <value>ユニーク</value>
+  </data>
+  <data name="MergeIcon_Name" xml:space="preserve">
+    <value>合成</value>
+  </data>
+  <data name="Message_Tip" xml:space="preserve">
+    <value>メッセージをお待ちしています</value>
+  </data>
+  <data name="Name_About" xml:space="preserve">
+    <value>について</value>
+  </data>
+  <data name="Name_General" xml:space="preserve">
+    <value>汎用</value>
+  </data>
+  <data name="OutputDirectory" xml:space="preserve">
+    <value>出力フォルダ</value>
+  </data>
+  <data name="OutputDirectory_Resource" xml:space="preserve">
+    <value>出力ディレクトリ（リソース） </value>
+  </data>
+  <data name="PreviewModel" xml:space="preserve">
+    <value>モデルを見る</value>
+  </data>
+  <data name="PreviewRaw" xml:space="preserve">
+    <value>ソースを表示</value>
+  </data>
+  <data name="PreviewShowObject" xml:space="preserve">
+    <value>何が表示されているか見てみましょう</value>
+  </data>
+  <data name="ProductName" xml:space="preserve">
+    <value>ブレード&amp;ソウルプレビューツール</value>
+  </data>
+  <data name="PropertyEditor_Name" xml:space="preserve">
+    <value>プロパティエディタ</value>
+  </data>
+  <data name="PropertyEditor_ViewSource_Tooltip" xml:space="preserve">
+    <value>生データをクリップボードにコピーし、利用できない場合はテキストエディタを開きます</value>
+  </data>
+  <data name="Repository" xml:space="preserve">
+    <value>项目</value>
+  </data>
+  <data name="Settings_CopyMode" xml:space="preserve">
+    <value>テキストコピーモード</value>
+  </data>
+  <data name="Settings_CopyMode_None" xml:space="preserve">
+    <value>コピーしないでください</value>
+  </data>
+  <data name="Settings_CopyMode_Regular" xml:space="preserve">
+    <value>一般テキスト</value>
+  </data>
+  <data name="Settings_CopyMode_Source" xml:space="preserve">
+    <value>原文</value>
+  </data>
+  <data name="Settings_CopyMode_Trimmed" xml:space="preserve">
+    <value>特殊文字を削除してください</value>
+  </data>
+  <data name="Settings_Language" xml:space="preserve">
+    <value>言語</value>
+  </data>
+  <data name="Settings_Name" xml:space="preserve">
+    <value>設定</value>
+  </data>
+  <data name="Settings_TestMode" xml:space="preserve">
+    <value>データテストモード</value>
+  </data>
+  <data name="Settings_UsePerformanceMonitor" xml:space="preserve">
+    <value>パフォーマンスモニタを有効にする</value>
+  </data>
+  <data name="Settings_UseUserDefinition" xml:space="preserve">
+    <value>カスタム構成の有効化</value>
+  </data>
+  <data name="Settings_UseUserDefinition_Ask" xml:space="preserve">
+    <value>カスタム設定を有効にしてもよろしいですか？これにより、読み取り例外が発生する可能性があります。!</value>
+  </data>
+  <data name="Settings_UseUserDefinition_Tooltip" xml:space="preserve">
+    <value>目的がわからない場合はダニしないでください！ </value>
+  </data>
+  <data name="ShowObjectPlayer_Name" xml:space="preserve">
+    <value>ショーオブジェクトプレーヤー</value>
+  </data>
+  <data name="TableView_Name" xml:space="preserve">
+    <value>テーブルを確認してください</value>
+  </data>
+  <data name="TextEditor_Name" xml:space="preserve">
+    <value>テキストエディター</value>
+  </data>
+  <data name="TextView" xml:space="preserve">
+    <value>テキストビュー</value>
+  </data>
+  <data name="TextView_LoadLastOnStartup" xml:space="preserve">
+    <value>起動時に最後に読み込まれたデータ</value>
+  </data>
+  <data name="TextView_ReadOnly" xml:space="preserve">
+    <value>読み取り専用</value>
+  </data>
+  <data name="Text_Cancel" xml:space="preserve">
+    <value>キャンセル</value>
+  </data>
+  <data name="Text_Edit" xml:space="preserve">
+    <value>編集</value>
+  </data>
+  <data name="Text_File" xml:space="preserve">
+    <value>ファイル</value>
+  </data>
+  <data name="Text_Left" xml:space="preserve">
+    <value>左</value>
+  </data>
+  <data name="Text_None" xml:space="preserve">
+    <value>なし</value>
+  </data>
+  <data name="Text_Ok" xml:space="preserve">
+    <value>確認</value>
+  </data>
+  <data name="Text_Output" xml:space="preserve">
+    <value>出力</value>
+  </data>
+  <data name="Text_Preview" xml:space="preserve">
+    <value>プレビュー</value>
+  </data>
+  <data name="Text_PublishOn" xml:space="preserve">
+    <value>掲示されています</value>
+  </data>
+  <data name="Text_Replace" xml:space="preserve">
+    <value>スポイト</value>
+  </data>
+  <data name="Text_ReplaceInFiles" xml:space="preserve">
+    <value>ファイル内で置き換えてください</value>
+  </data>
+  <data name="Text_Reset" xml:space="preserve">
+    <value>リセット</value>
+  </data>
+  <data name="Text_Right" xml:space="preserve">
+    <value>右</value>
+  </data>
+  <data name="Text_Save" xml:space="preserve">
+    <value>保存</value>
+  </data>
+  <data name="Text_SaveAs" xml:space="preserve">
+    <value>名前を付けて保存... </value>
+  </data>
+  <data name="Text_Search" xml:space="preserve">
+    <value>検索</value>
+  </data>
+  <data name="Version_Tip1" xml:space="preserve">
+    <value>現在プレビュー版では、一部の機能が正しく動作しない場合があります。</value>
+  </data>
+  <data name="Version_Tip2" xml:space="preserve">
+    <value>{0}の最新バージョンは{1}です。今すぐ更新しますか？</value>
+  </data>
+  <data name="Version_Tip3" xml:space="preserve">
+    <value>アップデートサーバーへのアクセス中に問題が発生しました。インターネット接続を確認するか、しばらくしてからもう一度お試しください。</value>
+  </data>
+</root>

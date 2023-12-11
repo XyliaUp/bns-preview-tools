@@ -31,8 +31,12 @@ public partial class TextEditor : Window
 	}
 	#endregion
 
-
 	#region Methods
+	private void Editor_TextChanged(object sender, EventArgs e)
+	{
+		foldingStrategy.UpdateFoldings(foldingManager, Editor.Document);
+	}
+
 	public static void Register()
 	{
 		using var stream = Application.GetResourceStream(new Uri($"/Views/Editor/Sql.xshd", UriKind.Relative)).Stream;
@@ -40,11 +44,6 @@ public partial class TextEditor : Window
 
 		var definition = HighlightingLoader.Load(reader, HighlightingManager.Instance);
 		HighlightingManager.Instance.RegisterHighlighting("SQL", new string[] { ".sql" }, definition);
-	}
-
-	private void Editor_TextChanged(object sender, EventArgs e)
-	{
-		foldingStrategy.UpdateFoldings(foldingManager, Editor.Document);
 	}
 	#endregion
 }

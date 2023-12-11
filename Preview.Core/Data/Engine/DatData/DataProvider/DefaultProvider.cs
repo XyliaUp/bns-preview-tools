@@ -5,8 +5,8 @@ using CUE4Parse.Utils;
 using Xylia.Preview.Data.Engine.BinData.Definitions;
 using Xylia.Preview.Data.Engine.BinData.Helpers;
 using Xylia.Preview.Data.Engine.BinData.Models;
-using Xylia.Preview.Data.Engine.BinData.Serialization;
-using Xylia.Preview.Data.Engine.Readers;
+
+using static Xylia.Preview.Data.Engine.BinData.Models.NameTable;
 
 namespace Xylia.Preview.Data.Engine.DatData;
 public class DefaultProvider : Datafile, IDataProvider
@@ -25,38 +25,71 @@ public class DefaultProvider : Datafile, IDataProvider
 	#region Methods
 	public virtual Stream[] GetFiles(string pattern) => this.XmlData.EnumerateFiles(pattern).Select(x => new MemoryStream(x.Data)).ToArray();
 
-	public virtual void LoadData(List<TableDefinition> definitions)
+	public virtual void LoadData(DatafileDefinition definitions)
 	{
 		#region Tables
 		this.Tables = [];
 
-		ReadFrom(XmlData.EnumerateFiles(is64Bit ? "datafile64.bin" : $"datafile.bin").FirstOrDefault()?.Data, is64Bit);
-		ReadFrom(LocalData.EnumerateFiles(is64Bit ? "localfile64.bin" : "localfile.bin").FirstOrDefault()?.Data, is64Bit);
+		//ReadFrom(File.ReadAllBytes("C:\\Users\\10565\\Desktop\\datafile.bin"), true);
+		ReadFrom(XmlData.EnumerateFiles(Is64Bit ? "datafile64.bin" : "datafile.bin").FirstOrDefault()?.Data, Is64Bit);
+		ReadFrom(LocalData.EnumerateFiles(Is64Bit ? "localfile64.bin" : "localfile.bin").FirstOrDefault()?.Data, Is64Bit);
 
 		Tables.Add(new() { Name = "quest", XmlPath = @"quest\questdata*.xml" });
 		Tables.Add(new() { Name = "contextscript", XmlPath = @"skill3_contextscriptdata*.xml" });
-		Tables.Add(new() { Name = "skilltrainingsequence", XmlPath = @"skilltrainingsequencedata*.xml" });
+		Tables.Add(new() { Name = "skill-training-sequence", XmlPath = @"skilltrainingsequencedata*.xml" });
 		Tables.Add(new() { Name = "summoned-sequence", XmlPath = @"summonedsequencedata*.xml" });
 		Tables.Add(new() { Name = "tutorialskillsequence", XmlPath = @"tutorialskillsequencedata*.xml" });
+
+		// surveyquestions
 		#endregion
 
-
 		#region ParseType
-		if (true)
-		{
-			// auto detect type
-			// Actually, it is directly defined in the game program, but we cannot get it.
-			Detect = new DatafileDetect(this);
-			Detect.ParseType(definitions);
-		}
-		else
-		{
-			// when known define
-		}
+		// auto detect type
+		// Actually, it is directly defined in the game program, but we cannot get it.
+		if (definitions.HasHeader) Detect = new DatafileDirect(definitions.Header);
+		else Detect = new DatafileDetect(this);
+
+		Detect?.ParseType(definitions);
 		#endregion
 	}
 
-	public void Dispose()
+	public virtual void WriteData(string folder, bool is64bit)
+	{
+		// Rebuild alias map when full build
+		if (false)
+		{
+			Serilog.Log.Information("Rebuilding alias map");
+			var rebuilder = new Rebuilder(this.NameTable);
+			foreach (var table in this.Tables)
+			{
+				// get alias definition
+				var aliasAttrDef = table.Definition.ElRecord["alias"];
+				if (aliasAttrDef == null) continue;
+
+				var tablePrefix = table.Name.ToLowerInvariant() + ":";
+				foreach (var record in table.Records)
+				{
+					var alias = record.Attributes["alias"];
+					if (alias == null) continue;
+
+					rebuilder.AddAliasManually(tablePrefix + alias.ToLowerInvariant(), record.Ref);
+				}
+			}
+
+			rebuilder.EndRebuilding();
+		}
+
+
+		// UserCommand remove at UE4
+		var raw = this.Tables.Where(x => x.XmlPath != null);
+		var local = this.Tables.Where(x => x.Name == "petition-faq-list" || x.Name == "survey" || x.Name == "text" || (true && x.Name == "user-command"));
+		var xml = this.Tables.Except(local).Except(raw);
+
+		File.WriteAllBytes(Path.Combine(folder, Is64Bit ? "datafile64.bin" : "datafile.bin"), WriteTo([.. xml], is64bit));
+		File.WriteAllBytes(Path.Combine(folder, Is64Bit ? "localfile64.bin" : "localfile.bin"), WriteTo([.. local], is64bit));
+	}
+
+	public virtual void Dispose()
 	{
 		Locale = null;
 
@@ -70,60 +103,6 @@ public class DefaultProvider : Datafile, IDataProvider
 		Tables = null;
 
 		GC.SuppressFinalize(this);
-	}
-	#endregion
-
-	#region Protected Methods
-	protected void ReadFrom(byte[] bytes, bool is64bit)
-	{
-		using var reader = new DatafileArchive(bytes);
-
-		var bin = new DatafileHeader();
-		bin.ReadHeaderFrom(reader, is64bit);
-
-		if (bin.ReadTableCount > 10)
-		{
-			this.DatafileVersion = bin.DatafileVersion;
-			this.ClientVersion = bin.ClientVersion;
-			this.CreatedAt = bin.CreatedAt;
-			this.NameTable = new NameTableReader(is64bit).ReadFrom(reader);
-		}
-
-		for (var tableId = 0; tableId < bin.ReadTableCount; tableId++)
-		{
-			this.Tables.Add(TableArchive.LazyLoad(reader, is64bit));
-		}
-	}
-
-	public byte[] WriteTo(bool is64bit)
-	{
-		using var memoryStream = new MemoryStream();
-		using var writer = new BinaryWriter(memoryStream);
-
-		#region builder
-		var datafileHeader = new DatafileHeader
-		{
-			Magic = "TADBOSLB",
-			Reserved = new byte[58],
-			CreatedAt = DateTime.Now,
-			DatafileVersion = 5,
-			ClientVersion = new Common.DataStruct.Version(0, 2, 2000, 367),
-			AliasMapSize = 60318528,
-			MaxBufferSize = 60318528,
-			TotalTableSize = 20113543,
-		};
-		datafileHeader.WriteHeaderTo(writer, this.Tables.Count, 0, is64bit);
-
-		var tableWriter = new TableWriter();
-		foreach (var table in this.Tables)
-		{
-			tableWriter.WriteTo(writer, table, is64bit);
-		}
-
-		writer.Flush();
-		#endregion
-
-		return memoryStream.ToArray();
 	}
 	#endregion
 
@@ -151,7 +130,7 @@ public class DefaultProvider : Datafile, IDataProvider
 
 		// set info
 		provider.Name = FolderPath.SubstringAfterLast('\\');
-		provider.is64Bit = provider.XmlData.Bit64;
+		provider.Is64Bit = provider.XmlData.Bit64;
 		provider.Locale = new Locale(new DirectoryInfo(FolderPath));
 		provider.ConfigData = configs.FirstOrDefault();
 

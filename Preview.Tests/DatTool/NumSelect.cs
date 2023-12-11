@@ -1,6 +1,5 @@
 ﻿using System.Xml.Linq;
-
-using Xylia.Extension;
+using Xylia.Preview.Common.Extension;
 using Xylia.Preview.Data.Engine.BinData.Definitions;
 
 namespace Xylia.Preview.Tests.DatTool;
@@ -32,13 +31,13 @@ public partial class NumSelect : Form
 		int Interval = AttributeDefinition.GetSize(type, true);
 		#endregion
 
-		#region 实际处理
+		#region Create
 		int CurIdx = StartVal;
 		while (true)
 		{
 			if (CurIdx > LoopOrEndVal) break;
 
-			var xe = new XElement("record");
+			var xe = new XElement("attribute");
 			xe.SetAttributeValue("name", "unk-");
 			xe.SetAttributeValue("type", type.ToString()[1..]);
 

@@ -6,6 +6,11 @@ using Xylia.Preview.Data.Helpers;
 using Xylia.Preview.Data.Models;
 
 namespace Xylia.Preview.UI.Controls;
+public interface IBnsCustomBaseWidget
+{
+
+}
+
 public abstract class BnsCustomBaseWidget : Control , IBnsCustomBaseWidget
 {
 	#region DependencyProperty 
@@ -64,9 +69,4 @@ public abstract class BnsCustomBaseWidget : Control , IBnsCustomBaseWidget
 		this.ToolTip = tooltip;
 	}
 	#endregion
-}
-
-public interface IBnsCustomBaseWidget
-{
-
 }

@@ -15,6 +15,7 @@ public class StringLookup
 	public bool IsPerTable { get; set; }
 
 
+	#region Methods
 	[MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
 	public string GetString(int offset)
 	{
@@ -24,33 +25,13 @@ public class StringLookup
 		return null;
 	}
 
-	public int AppendString(string str , out int size)
-	{
-		str ??= "";
-
-		var strBytes = Encoding.Unicode.GetBytes(str + "\0");
-
-		if (Data == null)
-			throw new InvalidOperationException("Attempted to append string on null string lookup data");
-
-		var position = Data.Length;
-		var data = Data;
-		Array.Resize(ref data, Data.Length + strBytes.Length);
-		Array.Copy(strBytes, 0, data, position, strBytes.Length);
-		Data = data;
-
-		size = strBytes.Length;
-		return position;
-	}
-
-
 	public string[] Strings
-	{ 
-		get => Encoding.Unicode.GetString(Data).Split('\0'); 
+	{
+		get => Encoding.Unicode.GetString(Data).Split('\0');
 		set
 		{
 			StringBuilder _stringBuilder = new();
-			foreach(var s in value)
+			foreach (var s in value)
 			{
 				_stringBuilder.Append(s);
 				_stringBuilder.Append('\0');
@@ -59,4 +40,22 @@ public class StringLookup
 			Data = Encoding.Unicode.GetBytes(_stringBuilder.ToString());
 		}
 	}
+
+	public int AppendString(string str, out int size)
+	{
+		ArgumentNullException.ThrowIfNull(Data, nameof(Data));
+
+		str ??= "";
+		var position = Data.Length;
+		var data = Data;
+
+		var strBytes = Encoding.Unicode.GetBytes(str + "\0");
+		Array.Resize(ref data, Data.Length + strBytes.Length);
+		Array.Copy(strBytes, 0, data, position, strBytes.Length);
+		Data = data;
+
+		size = strBytes.Length;
+		return position;
+	}
+	#endregion
 }

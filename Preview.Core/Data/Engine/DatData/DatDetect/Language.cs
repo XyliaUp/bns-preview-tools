@@ -1,24 +1,31 @@
 ﻿using System.ComponentModel;
 
+using Xylia.Preview.Data.Common.Attribute;
+
 namespace Xylia.Preview.Data.Engine.DatData;
 public enum ELanguage
 {
 	None,
 
-	[Description("中国大陆 (腾讯)")]
-	ChineseS,
+	[Name("ko-KR")]
+	[Description("한국어 (Korean)")]
+	Korean,
 
-	[Description("中國台灣 (NCT)")]
-	ChineseT,
-
+	[Name("en-US")]
 	[Description("English")]
 	English,
 
-	[Description("日本語")]
-	Japanese,
+	[Name("zh-CN")]
+	[Description("中文简体 (Chinese)")]
+	ChineseS,
 
-	[Description("한국어")]
-	Korean,
+	//[Name("zh-TW")]
+	[Description("中文繁體 (Traditional Chinese)")]
+	ChineseT,
+
+	[Name("ja-JP")]
+	[Description("日本語 (Japanese)")]
+	Japanese,
 }
 
 public enum Publisher
