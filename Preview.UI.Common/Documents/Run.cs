@@ -37,7 +37,7 @@ public class Run : Element
 	#endregion
 
 	#region Methods
-	protected override void Load(HtmlNode node)
+	protected internal override void Load(HtmlNode node)
 	{
 		Text = WebUtility.HtmlDecode(node.OuterHtml);
 	}

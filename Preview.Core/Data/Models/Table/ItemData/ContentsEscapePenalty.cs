@@ -3,7 +3,4 @@
 namespace Xylia.Preview.Data.Models;
 
 [Side(ReleaseSide.Server)]
-public sealed class ContentsEscapePenalty: Record
-{
-
-}
+public sealed class ContentsEscapePenalty : ModelElement { }

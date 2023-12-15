@@ -4,9 +4,9 @@ using System.Text.RegularExpressions;
 using System.Xml;
 using Newtonsoft.Json;
 using Xylia.Preview.Common.Extension;
-using Xylia.Preview.Data.Engine.BinData.Definitions;
 using Xylia.Preview.Data.Engine.DatData;
 using Xylia.Preview.Data.Engine.DatData.Third;
+using Xylia.Preview.Data.Engine.Definitions;
 using Xylia.Preview.Data.Engine.ZoneData.RegionData;
 using Xylia.Preview.Data.Engine.ZoneData.TerrainData;
 using Xylia.Preview.Tests.DatTool.Utils;
@@ -140,21 +140,21 @@ public partial class MainForm : Form
 
 	private void txbDatFile_TextChanged(object sender, EventArgs e)
 	{
-		//var s = (Control)sender;
-		//string Text = s.Text.Trim();
+		var s = (Control)sender;
+		string Text = s.Text.Trim();
 		//Ini.Instance.WriteValue("Path", "Data_DatFile", Text);
 
-		//if (Directory.Exists(Text))
-		//{
-		//	var dir = new DirectoryInfo(Text);
-		//	var files = dir.GetFiles("*.dat", SearchOption.AllDirectories);
+		if (Directory.Exists(Text))
+		{
+			var dir = new DirectoryInfo(Text);
+			var files = dir.GetFiles("*.dat", SearchOption.AllDirectories);
 
-		//	s.Text = files.FirstOrDefault()?.FullName;
-		//}
-		//else if (File.Exists(Text))
-		//{
-		//	txbRpFolder.Text = Path.GetDirectoryName(Text) + @"\Export\" + Path.GetFileNameWithoutExtension(Text);
-		//}
+			s.Text = files.FirstOrDefault()?.FullName;
+		}
+		else if (File.Exists(Text))
+		{
+			txbRpFolder.Text = Path.GetDirectoryName(Text) + @"\Export\" + Path.GetFileNameWithoutExtension(Text);
+		}
 	}
 
 	private void txbRpFolder_TextChanged(object sender, EventArgs e)

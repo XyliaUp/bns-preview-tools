@@ -145,7 +145,7 @@ public sealed class ItemTransformRecipe : ModelElement
 
 
 	#region Functions
-	public static IEnumerable<ItemTransformRecipe> QueryRecipe(Item Item) => FileCache.Data.ItemTransformRecipe.Where(o =>
+	public static IEnumerable<ItemTransformRecipe> QueryRecipe(Item Item) => FileCache.Data.Get<ItemTransformRecipe>().Where(o =>
 	{
 		var MainIngredient = o.MainIngredient.Instance;
 		if (MainIngredient is Item item) return item == Item;

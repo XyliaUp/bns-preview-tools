@@ -174,9 +174,6 @@
   <data name="DatabaseStudio_ExtractAll" xml:space="preserve">
     <value>Extract All</value>
   </data>
-  <data name="DatabaseStudio_ImportAll" xml:space="preserve">
-    <value>Import All</value>
-  </data>
   <data name="DatabaseStudio_Name" xml:space="preserve">
     <value>Database Studio</value>
   </data>
@@ -455,7 +452,7 @@
     <value>The latest version of {0} is {1}. Do you want to update the application now?</value>
   </data>
   <data name="Version_Tip3" xml:space="preserve">
-    <value>There is a problem reaching the update server, please check your internet connection or try again later.</value>
+    <value>There is a problem when check update, please try again later.</value>
   </data>
   <data name="TextView_ReadWrite" xml:space="preserve">
     <value>ReadWrite</value>
@@ -465,5 +462,9 @@
   </data>
   <data name="Text_LineNumber" xml:space="preserve">
     <value>Line</value>
+  </data>
+  <data name="TextView_ReadStatus" xml:space="preserve">
+    <value>When viewing single file, you can edit the file
+Please note that do not modify the order of nodes</value>
   </data>
 </root>

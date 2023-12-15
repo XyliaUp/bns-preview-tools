@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics;
+using System.Linq;
 using System.Windows.Input;
 
 using HtmlAgilityPack;
@@ -12,10 +13,9 @@ public class Link : Element
 	public bool IgnoreInput;
 	public LinkId Id;
 
-	protected override void Load(HtmlNode node)
+	protected internal override void Load(HtmlNode node)
 	{
-		// init
-		base.Load(node);
+		Children = node.ChildNodes.Select(TextDocument.ToElement).ToList();
 
 		//IgnoreInput = (node.Attributes[nameof(IgnoreInput)]?.Value).ToBool();
 		var data = node.Attributes[nameof(Id)]?.Value;

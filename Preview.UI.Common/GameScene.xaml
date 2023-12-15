@@ -93,7 +93,7 @@
 								</Grid.ColumnDefinitions>
 
 								<c:BnsCustomCaptionWidget Grid.Column="0" BaseImage="{TemplateBinding Icon}" 
-										Foreground="{TemplateBinding TitleForeground}" FontSize="20"/>
+										Foreground="{TemplateBinding TitleForeground}" FontSize="20" />
 								<Grid Grid.Column="2" x:Name="PART_SysButton" WindowChrome.IsHitTestVisibleInChrome="True">
 									<StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
 										<Button x:Name="PART_QuestionButton" Style="{StaticResource buttonStyle}" ToolTip="{TemplateBinding ToolTip}">

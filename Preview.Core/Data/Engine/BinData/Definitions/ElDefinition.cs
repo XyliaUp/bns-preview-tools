@@ -1,4 +1,6 @@
-﻿namespace Xylia.Preview.Data.Engine.BinData.Definitions;
+﻿using System.Text.RegularExpressions;
+
+namespace Xylia.Preview.Data.Engine.Definitions;
 public class ElDefinition : ITableDefinition
 {
 	private Dictionary<string, SubtableDefinition> _subtablesDictionary = new();
@@ -32,13 +34,13 @@ public class ElDefinition : ITableDefinition
 			if (_subtablesDictionary.TryGetValue(name, out var definition)) return definition;
 			else
 			{
-				Serilog.Log.Warning($"Invalid attribute: 'type', table: {this.Name} value: {name}");
+				Serilog.Log.Warning($"Invalid attribute: 'type', table: {this.Name}, value: {name}");
 				//throw new ArgumentOutOfRangeException(nameof(name));
 				return Subtables.First();  
 			}
 		}
 
-		throw new Exception($"Invalid attribute: 'type', table: {this.Name} value: null");
+		throw new Exception($"Invalid attribute: 'type', table: {this.Name}, value: null");
 	}
 
 	public ITableDefinition SubtableByType(short type)
@@ -73,7 +75,9 @@ public class ElDefinition : ITableDefinition
 		_expandedAttributesDictionary = ExpandedAttributes.ToDictionary(x => x.Name);
 
 		// execution is slow in Record.WriteXml, so move here
-		ExpandedAttributes = [.. ExpandedAttributes.OrderBy(o => o.Type == AttributeType.TNative).ThenBy(o => o.Name)];
+		// use naturally sort
+		ExpandedAttributes = [.. ExpandedAttributes.OrderBy(o => o.Type == AttributeType.TNative)
+			.ThenBy(o => Regex.Replace(o.Name, @"\d+", match => match.Value.PadLeft(4, '0')))];
 	}
 
 	public AttributeDefinition this[string name] => _expandedAttributesDictionary.GetValueOrDefault(name, null);

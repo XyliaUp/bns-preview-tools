@@ -7,7 +7,7 @@ using CUE4Parse.FileProvider;
 using Serilog;
 
 using SkiaSharp;
-using Xylia.Preview.Data;
+using Xylia.Preview.Data.Client;
 using Xylia.Preview.Data.Engine.DatData;
 using Xylia.Preview.UI.ViewModels;
 

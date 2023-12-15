@@ -3,7 +3,7 @@ using System.Xml;
 using Xylia.Preview.Common.Extension;
 using Xylia.Preview.Data.Common.Exceptions;
 
-namespace Xylia.Preview.Data.Engine.BinData.Definitions;
+namespace Xylia.Preview.Data.Engine.Definitions;
 public class SequenceDefinition : List<string>
 {
     public SequenceDefinition(string name, int size)

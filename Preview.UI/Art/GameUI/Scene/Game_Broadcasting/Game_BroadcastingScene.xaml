@@ -4,22 +4,29 @@
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 	xmlns="https://github.com/xyliaup/bns-preview-tools"
 	SizeToContent="WidthAndHeight" ResizeMode="NoResize" WindowStyle="None">
-	<TestPanel x:Name="BnsTvPanel" Width="1284" Height="813" Background="Gray">
-		<BnsCustomLabelWidget x:Name="BnsTvPanel_CloseButton"        Text="4" TestPanel.Anchor="1 0" TestPanel.Offset="-12 12 30 0" />
-		<BnsCustomLabelWidget x:Name="BnsTvPanel_AudioModeButton"    Text="3" ToolTip="UI.Tooltip.bnstv.audio" TestPanel.Offset="1143 12 30 0" />
-		<BnsCustomLabelWidget x:Name="BnsTvPanel_IncreaseSizeButton" Text="2" ToolTip="UI.Tooltip.bnstv.max" TestPanel.Offset="1176 12 30 0" />
-		<BnsCustomLabelWidget x:Name="BnsTvPanel_DecreaseSizeButton" Text="1" ToolTip="UI.Tooltip.bnstv.min" TestPanel.Offset="1209 12 30 0" />
-		<TestPanel Width="1256" Height="706">
-			<BnsWebBrowser x:Name="BnsTvPanel_Web" Width="1256" Height="706" TestPanel.Offset="0 50 366 44.999756" />
+	<AnchorPanel x:Name="BnsTvPanel" Width="1284" Height="813" Background="Gray">
+		<BnsCustomLabelWidget x:Name="BnsTvPanel_CloseButton"        Text="4" AnchorPanel.Anchor="1 0" AnchorPanel.Offset="-12 12 30 0" />
+		<BnsCustomLabelWidget x:Name="BnsTvPanel_AudioModeButton"    Text="3" ToolTip="UI.Tooltip.bnstv.audio" AnchorPanel.Offset="1143 12 30 0" />
+		<BnsCustomLabelWidget x:Name="BnsTvPanel_IncreaseSizeButton" Text="2" ToolTip="UI.Tooltip.bnstv.max" AnchorPanel.Offset="1176 12 30 0" />
+		<BnsCustomLabelWidget x:Name="BnsTvPanel_DecreaseSizeButton" Text="1" ToolTip="UI.Tooltip.bnstv.min" AnchorPanel.Offset="1209 12 30 0" />
+		<AnchorPanel Width="1256" Height="706">
+			<BnsWebBrowser x:Name="BnsTvPanel_Web" Width="1256" Height="706" AnchorPanel.Offset="0 50 366 44.999756" />
 			<BnsCustomImageWidget x:Name="BnsTvPanel_Web_Dummy_Size_1" />
 			<BnsCustomImageWidget x:Name="BnsTvPanel_Web_Dummy_Size_2" />
 			<BnsCustomImageWidget x:Name="BnsTvPanel_Web_Dummy_Size_3" />
 			<BnsCustomImageWidget x:Name="BnsTvPanel_LoadingImage" Width="128" Height="64"/>
 			<BnsCustomImageWidget x:Name="BnsTvPanel_LoadingImageSmall" Width="128" Height="64"/>
-			<BnsCustomLabelWidget x:Name="BnsTvPanel_ErrorLabel" Text="## 웹 서버111와 연결이 원활치 않습니다." TestPanel.Anchor="0.5 0.5" TestPanel.Offset="0 50.0 366.0 44.999756" />
-		</TestPanel>
+			<BnsCustomLabelWidget x:Name="BnsTvPanel_ErrorLabel" Text="## 웹 서버111와 연결이 원활치 않습니다." AnchorPanel.Anchor="0.5 0.5" AnchorPanel.Offset="0 50.0 366.0 44.999756" />
+		</AnchorPanel>
 
-		<BnsCustomCaptionWidget x:Name="BnsTvPanel_TitleBar" TestPanel.Offset="0 0 0 50" MetaData="textref=UI.ButtonTooltip.Hud.BnSTV" String="#BnS TV"/>
-		<BnsCustomImageWidget x:Name="BnsTvPanel_Background" TestPanel.Anchor="0 0 1 1" TestPanel.Offset="0 50 0 0" />
-	</TestPanel>
+		<!-- <BnsCustomCaptionWidget x:Name="BnsTvPanel_TitleBar" AnchorPanel.Offset="0 0 0 50" MetaData="textref=UI.ButtonTooltip.Hud.BnSTV" String="#BnS TV"/> -->
+		<BnsCustomImageWidget x:Name="BnsTvPanel_Background" AnchorPanel.Anchor="0 0 1 1" AnchorPanel.Offset="0 50 0 0" />
+
+
+
+		<BnsCustomLabelWidget Text="123" Width="25" Height="25" AnchorPanel.Anchor="0 0" >
+			<BnsCustomLabelWidget Text="8" AnchorPanel.Anchor="0 0" />
+			<BnsCustomLabelWidget Text="8" AnchorPanel.Anchor="0.5 0" />
+		</BnsCustomLabelWidget>
+	</AnchorPanel>
 </s:Window>

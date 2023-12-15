@@ -1,5 +1,4 @@
 ﻿using System.Text;
-
 using Newtonsoft.Json;
 using Xylia.Preview.Common.Extension;
 using Xylia.Preview.Data.Engine.BinData.Models;
@@ -108,6 +107,60 @@ public class StringLookupConverter : JsonConverter<StringLookup>
 	}
 
 	public override StringLookup ReadJson(JsonReader reader, Type objectType, StringLookup existingValue, bool hasExistingValue, JsonSerializer serializer)
+	{
+		throw new NotImplementedException();
+	}
+}
+
+
+
+public class AttributeValueConverter : JsonConverter<AttributeValue>
+{
+	public override void WriteJson(JsonWriter writer, AttributeValue value, JsonSerializer serializer)
+	{
+		serializer.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
+
+		if (value.IsArray)
+		{
+			WriteArray(writer, value.AsArray, serializer);
+		}
+		else if (value.IsDocument)
+		{
+			WriteObject(writer, value.AsDocument, serializer);
+		}
+		else
+		{
+			writer.WriteValue(value.RawValue);
+		}
+	}
+
+	private static void WriteObject(JsonWriter writer, AttributeDocument obj, JsonSerializer serializer)
+	{
+		writer.WriteStartObject();
+
+		foreach (var el in obj)
+		{
+			writer.WritePropertyName(el.Key);
+			serializer.Serialize(writer, el.Value);
+		}
+
+		writer.WriteEndObject();
+	}
+
+	private static void WriteArray(JsonWriter writer, AttributeArray arr, JsonSerializer serializer)
+	{
+		writer.WriteStartArray();
+
+		foreach (var item in arr)
+		{
+			serializer.Serialize(writer, item);
+		}
+
+		writer.WriteEndArray();
+	}
+
+
+	public override AttributeValue ReadJson(JsonReader reader, Type objectType, AttributeValue existingValue, bool hasExistingValue, JsonSerializer serializer)
 	{
 		throw new NotImplementedException();
 	}

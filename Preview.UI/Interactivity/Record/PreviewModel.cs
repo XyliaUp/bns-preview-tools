@@ -13,9 +13,7 @@ public class PreviewModel : RecordCommand
 {
     public override bool CanExecute(object parameter)
     {
-        if (parameter is not Record record) return false;
-
-        return CanExecute(record.Owner.Name);
+       return base.CanExecute(parameter);
     }
 
     public override bool CanExecute(string name) => name switch

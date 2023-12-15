@@ -79,19 +79,21 @@
 			</Grid>
 		</TabItem>
 
-		<TabItem Header="DEBUG" Visibility="Collapsed" IsSelected="False">
-			<Grid>
-				<UI:BnsCustomLabelWidget x:Name="Test">
+		<TabItem Header="DEBUG" IsSelected="True" 
+			Visibility="{Binding Path=IsSelected,Converter={StaticResource Boolean2VisibilityConverter},RelativeSource={RelativeSource self}}">
+			<StackPanel>
+				<UI:BnsCustomLabelWidget>
 					<UI:BnsCustomLabelWidget.Text>
-						<![CDATA[<arg p="1"/> <arg p="1"/>]]>
+						<![CDATA[<arg p="1"/> <arg p="2"/>]]>
 					</UI:BnsCustomLabelWidget.Text>
 					<UI:BnsCustomLabelWidget.Params>
-						<MultiBinding Converter="{StaticResource DataParamsConverter}">
-							<Binding Path="GameFolder" Source="{x:Static VM:UserSettings.Default}"/>
-						</MultiBinding>
+						<UI:ParamsBinding>
+							<Binding Path="GameFolder" Source="{x:Static VM:UserSettings.Default}" />
+							<Binding Path="GameFolder" Source="{x:Static VM:UserSettings.Default}" />
+						</UI:ParamsBinding>
 					</UI:BnsCustomLabelWidget.Params>
 				</UI:BnsCustomLabelWidget>
-			</Grid>
+			</StackPanel>
 		</TabItem>
 	</TabControl>
 </Page>

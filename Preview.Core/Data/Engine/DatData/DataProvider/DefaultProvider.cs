@@ -1,12 +1,8 @@
 ﻿using System.ComponentModel;
-
 using CUE4Parse.Utils;
-
-using Xylia.Preview.Data.Engine.BinData.Definitions;
 using Xylia.Preview.Data.Engine.BinData.Helpers;
 using Xylia.Preview.Data.Engine.BinData.Models;
-
-using static Xylia.Preview.Data.Engine.BinData.Models.NameTable;
+using Xylia.Preview.Data.Engine.Definitions;
 
 namespace Xylia.Preview.Data.Engine.DatData;
 public class DefaultProvider : Datafile, IDataProvider
@@ -44,7 +40,6 @@ public class DefaultProvider : Datafile, IDataProvider
 		#endregion
 
 		#region ParseType
-		// auto detect type
 		// Actually, it is directly defined in the game program, but we cannot get it.
 		if (definitions.HasHeader) Detect = new DatafileDirect(definitions.Header);
 		else Detect = new DatafileDetect(this);
@@ -56,10 +51,11 @@ public class DefaultProvider : Datafile, IDataProvider
 	public virtual void WriteData(string folder, bool is64bit)
 	{
 		// Rebuild alias map when full build
-		if (false)
+		bool FullBuild = !this.Tables.Any(x => x.Definition.IsDefault);
+		if (FullBuild && false)
 		{
 			Serilog.Log.Information("Rebuilding alias map");
-			var rebuilder = new Rebuilder(this.NameTable);
+			var rebuilder = new NameTable.Rebuilder(this.NameTable);
 			foreach (var table in this.Tables)
 			{
 				// get alias definition

@@ -11,7 +11,7 @@ public sealed class Race : ModelElement
 	public RaceSeq race;
 
 
-	public static Race Get(RaceSeq? seq) => FileCache.Data.Race.FirstOrDefault(record => record.race == seq);
+	public static Race Get(RaceSeq? seq) => FileCache.Data.Get<Race>().FirstOrDefault(record => record.race == seq);
 
 	public static Race Get(RaceSeq2 seq) => seq switch
 	{

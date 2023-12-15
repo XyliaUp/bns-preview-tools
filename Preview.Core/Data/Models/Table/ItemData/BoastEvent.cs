@@ -1,2 +1,2 @@
 ﻿namespace Xylia.Preview.Data.Models;
-public sealed class BoastEvent: Record { }
+public sealed class BoastEvent : ModelElement { }

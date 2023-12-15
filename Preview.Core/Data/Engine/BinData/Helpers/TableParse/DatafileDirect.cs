@@ -1,6 +1,6 @@
 ﻿using IniParser;
 
-using Xylia.Preview.Data.Engine.BinData.Definitions;
+using Xylia.Preview.Data.Engine.Definitions;
 
 namespace Xylia.Preview.Data.Engine.BinData.Helpers;
 /// <summary>

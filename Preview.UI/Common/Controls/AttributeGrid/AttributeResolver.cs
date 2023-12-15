@@ -1,7 +1,6 @@
 ﻿using HandyControl.Controls;
 using HandyControl.Properties.Langs;
-
-using Xylia.Preview.Data.Engine.BinData.Definitions;
+using Xylia.Preview.Data.Engine.Definitions;
 using Xylia.Preview.UI.Common.Controls.AttributeGrid.Editor;
 
 namespace Xylia.Preview.UI.Controls;

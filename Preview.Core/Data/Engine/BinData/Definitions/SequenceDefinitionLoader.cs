@@ -1,4 +1,4 @@
-﻿//namespace Xylia.Preview.Data.Engine.BinData.Definitions;
+﻿//namespace Xylia.Preview.Data.Engine.Definitions;
 //public class SequenceDefinitionLoader
 //{
 //	private readonly Dictionary<string, List<SequenceDefinition>> _duplicateSequences

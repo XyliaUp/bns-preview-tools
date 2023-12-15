@@ -20,7 +20,7 @@ public sealed class ItemTransformRecipeOut : OutSet
         sheet.SetColumn(Column++, "配方目录", 20);
         #endregion
 
-        FileCache.Data.ItemTransformRecipe.ForEach(Info =>
+        FileCache.Data.Get<ItemTransformRecipe>().ForEach(Info =>
         {
             Row++;
             int column = 1;
@@ -33,23 +33,23 @@ public sealed class ItemTransformRecipeOut : OutSet
             if (MainIngredient is Item Item)
             {
                 sheet.Cells[Row, column++].SetValue(Item.Name2);
-				sheet.Cells[Row, column++].SetValue(Item.EquipType.GetName());
+				sheet.Cells[Row, column++].SetValue(Item.EquipType.GetText());
 				sheet.Cells[Row, column++].SetValue(Item.ItemGrade);
 			}
             else if (MainIngredient is ItemBrand)
             {
                 var key = MainIngredient.Source.Ref.Id;
-                var ItemBrandTooltip = FileCache.Data.ItemBrandTooltip[key, (byte)Info.MainIngredientConditionType];
+                var ItemBrandTooltip = FileCache.Data.Get<ItemBrandTooltip>()[key, (byte)Info.MainIngredientConditionType];
 
                 sheet.Cells[Row, column++].SetValue("(组) " + (ItemBrandTooltip?.Name2.GetText() ?? key.ToString()));
-                sheet.Cells[Row, column++].SetValue(Info.MainIngredientConditionType.GetName());
+                sheet.Cells[Row, column++].SetValue(Info.MainIngredientConditionType.GetText());
                 sheet.Cells[Row, column++].SetValue(ItemBrandTooltip?.ItemGrade);
             }
             #endregion
 
             sheet.Cells[Row, column++].SetValue(Info.TitleItem.Instance?.Name2);
             sheet.Cells[Row, column++].SetValue(Info.UseRandom ? "随机" : "必成");
-            sheet.Cells[Row, column++].SetValue(Info.Category.GetName());
+            sheet.Cells[Row, column++].SetValue(Info.Category.GetText());
         });
     }
 }

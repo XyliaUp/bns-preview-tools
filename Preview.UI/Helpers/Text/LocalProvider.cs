@@ -1,10 +1,9 @@
 ﻿using System.IO;
 using System.Xml;
-
-using Xylia.Preview.Data.Engine.BinData.Definitions;
 using Xylia.Preview.Data.Engine.BinData.Helpers;
 using Xylia.Preview.Data.Engine.DatData;
 using Xylia.Preview.Data.Engine.DatData.Third;
+using Xylia.Preview.Data.Engine.Definitions;
 
 namespace Xylia.Preview.UI.Helpers;
 public class LocalProvider(string Source) : DefaultProvider

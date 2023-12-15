@@ -147,7 +147,7 @@ public partial class DatSelectDialog : Window, IDatSelect
 	private void Timer_Tick(object sender, EventArgs e)
 	{
 		int RemainSec = CountDownSec - (int)DateTime.Now.Subtract(dt).TotalSeconds;
-		TimeInfo.Text = string.Format(StringHelper.Get("DatSelector_CountDown"), RemainSec);
+		TimeInfo.Text = StringHelper.Get("DatSelector_CountDown", RemainSec);
 
 		if (RemainSec <= 0) Btn_Confirm_Click(null, null);
 	}

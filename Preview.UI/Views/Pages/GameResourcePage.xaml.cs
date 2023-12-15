@@ -63,7 +63,7 @@ public partial class GameResourcePage : Page
 			}
 			catch (Exception ex)
 			{
-				Debug.WriteLine(ex);
+				Debug.WriteLine(ex);	
 			}
 		});
 	});

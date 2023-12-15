@@ -5,7 +5,10 @@ using System.Windows.Media;
 using Xylia.Preview.UI.Converters;
 
 namespace Xylia.Preview.UI;
-public class TestPanel : Panel
+/// <summary>
+///  Defines an area that consists of anchor.
+/// </summary>
+public class AnchorPanel : Panel
 {
 	#region Public Methods
 	/// <summary>
@@ -55,7 +58,7 @@ public class TestPanel : Panel
 		UIElement uie = d as UIElement;
 		if (uie != null)
 		{
-			var p = VisualTreeHelper.GetParent(uie) as TestPanel;
+			var p = VisualTreeHelper.GetParent(uie) as AnchorPanel;
 			p?.InvalidateArrange();
 		}
 	}
@@ -68,14 +71,13 @@ public class TestPanel : Panel
 	/// Conflict between the Left and Right properties is resolved in favor of Left.
 	/// </summary>
 	public static readonly DependencyProperty OffsetProperty
-		= DependencyProperty.RegisterAttached("Offset", typeof(Rect), typeof(TestPanel),
+		= DependencyProperty.RegisterAttached("Offset", typeof(Rect), typeof(AnchorPanel),
 				new FrameworkPropertyMetadata((Rect)default, new PropertyChangedCallback(OnPositioningChanged)));
 
 	public static readonly DependencyProperty AnchorProperty
-		= DependencyProperty.RegisterAttached("Anchor", typeof(Anchor), typeof(TestPanel),
+		= DependencyProperty.RegisterAttached("Anchor", typeof(Anchor), typeof(AnchorPanel),
 			new FrameworkPropertyMetadata((Anchor)default, new PropertyChangedCallback(OnPositioningChanged)));
 	#endregion
-
 
 
 	#region Protected Methods

@@ -3,7 +3,7 @@ using Xylia.Preview.Common.Extension;
 using Xylia.Preview.Data.Common.DataStruct;
 using Xylia.Preview.Data.Common.Exceptions;
 
-namespace Xylia.Preview.Data.Engine.BinData.Definitions;
+namespace Xylia.Preview.Data.Engine.Definitions;
 public partial class AttributeDefinition
 {
 	public string Name { get; set; }

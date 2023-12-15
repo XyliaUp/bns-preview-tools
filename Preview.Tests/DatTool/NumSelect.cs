@@ -1,6 +1,6 @@
 ﻿using System.Xml.Linq;
 using Xylia.Preview.Common.Extension;
-using Xylia.Preview.Data.Engine.BinData.Definitions;
+using Xylia.Preview.Data.Engine.Definitions;
 
 namespace Xylia.Preview.Tests.DatTool;
 public partial class NumSelect : Form

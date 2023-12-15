@@ -21,9 +21,9 @@ public class PreviewRaw : RecordCommand
 			if (record.HasChildren || mode)
 			{
 				var editor = new TextEditor();
-
-				var settings = new TableWriterSettings() { Encoding = Encoding.Unicode };
+				var settings = new TableWriterSettings() { Encoding = Encoding.UTF8 };
 				editor.Text = settings.Encoding.GetString(record.Owner.WriteXml(settings, record));
+
 				editor.Show();
 			}
 			else

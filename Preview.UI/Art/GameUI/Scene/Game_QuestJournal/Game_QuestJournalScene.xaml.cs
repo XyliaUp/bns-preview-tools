@@ -1,4 +1,3 @@
-using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -16,22 +15,16 @@ public partial class Game_QuestJournalScene
 		InitializeComponent();
 
 		// Progress
-		QuestJournal_ProgressQuestList.ItemsSource = FileCache.Data.Quest.OrderBy(q => q.Source.RecordId);
+		QuestJournal_ProgressQuestList.ItemsSource = FileCache.Data.Get<Quest>().OrderBy(q => q.Source.RecordId);
 
 		// Completed
-		List<Quest> CompletedQuest = new();
+		List<Quest> CompletedQuest = [];
 		QuestEpic.GetEpic(CompletedQuest.Add);
 		TreeView2.ItemsSource = CompletedQuest.GroupBy(o => o.Title).Select(o => new TreeViewItem
 		{
 			Header = o.Key,
 			ItemsSource = o.ToList(),
 		});
-	}
-
-	protected override void OnClosing(CancelEventArgs e)
-	{
-		this.Hide();
-		e.Cancel = true;
 	}
 	#endregion
 

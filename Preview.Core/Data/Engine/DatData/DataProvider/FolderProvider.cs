@@ -1,15 +1,16 @@
 ﻿using Xylia.Preview.Common.Extension;
 using Xylia.Preview.Data.Common.DataStruct;
-using Xylia.Preview.Data.Engine.BinData.Definitions;
 using Xylia.Preview.Data.Engine.BinData.Helpers;
+using Xylia.Preview.Data.Engine.Definitions;
 
 namespace Xylia.Preview.Data.Engine.DatData;
-public class FolderProvider : IDataProvider
+public class FolderProvider(DirectoryInfo directory) : IDataProvider
 {
-	#region Constructor
-	private readonly DirectoryInfo directory;
-	public FolderProvider(string path) => directory = new(path);
-	#endregion
+	public FolderProvider(string path): this(new DirectoryInfo(path))
+	{
+
+	}
+
 
 	#region Properties
 	public string Name => directory.Name;	  
@@ -17,7 +18,6 @@ public class FolderProvider : IDataProvider
 	public BnsVersion ClientVersion => default;
 	public TableCollection Tables { get; private set; }
 	#endregion
-
 
 	#region Methods
 	Stream[] IDataProvider.GetFiles(string pattern) => directory.GetFiles(pattern, SearchOption.AllDirectories).Select(x => x.OpenRead()).ToArray();

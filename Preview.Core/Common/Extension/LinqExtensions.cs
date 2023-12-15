@@ -1,7 +1,5 @@
-﻿using System.Text.RegularExpressions;
-
-namespace Xylia.Preview.Common.Extension;
-public static class Linq
+﻿namespace Xylia.Preview.Common.Extension;
+public static class LinqExtensions
 {
 	public static List<T> Randomize<T>(this IEnumerable<T> list)
 	{
@@ -21,12 +19,6 @@ public static class Linq
 
 		return randomList;
 	}
-
-	public static IEnumerable<string> SortNaturally(this IEnumerable<string> strings)
-	{
-		return strings.OrderBy(x => Regex.Replace(x, @"\d+", match => match.Value.PadLeft(4, '0')));
-	}
-
 
 	#region Array
 	public static void For(int Num, Action<int> func)
@@ -82,6 +74,49 @@ public static class Linq
 	{
 		ArgumentNullException.ThrowIfNull(strings);
 		return strings.Where(o => !string.IsNullOrEmpty(o)).SelectMany(o => o.Split(separator));
+	}
+
+	public static IEnumerable<IEnumerable<T>> Batch<T>(this IEnumerable<T> source, int batchSize)
+	{
+		using (var enumerator = source.GetEnumerator())
+		{
+			while (enumerator.MoveNext())
+			{
+				yield return YieldBatchElements(enumerator, batchSize - 1);
+			}
+		}
+	}
+
+	private static IEnumerable<T> YieldBatchElements<T>(IEnumerator<T> source, int batchSize)
+	{
+		yield return source.Current;
+
+		for (int i = 0; i < batchSize && source.MoveNext(); i++)
+		{
+			yield return source.Current;
+		}
+	}
+
+	public static IEnumerable<TSource> DistinctBy<TSource, TKey>(this IEnumerable<TSource> source,
+		Func<TSource, TKey> keySelector, IEqualityComparer<TKey> comparer)
+	{
+		if (source == null) throw new ArgumentNullException(nameof(source));
+		if (keySelector == null) throw new ArgumentNullException(nameof(keySelector));
+
+		return _();
+
+		IEnumerable<TSource> _()
+		{
+			var knownKeys = new HashSet<TKey>(comparer);
+
+			foreach (var element in source)
+			{
+				if (knownKeys.Add(keySelector(element)))
+				{
+					yield return element;
+				}
+			}
+		}
 	}
 	#endregion
 }

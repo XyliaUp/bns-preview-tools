@@ -6,7 +6,6 @@ using CUE4Parse.BNS.Assets.Exports;
 
 using Xylia.Preview.Common.Extension;
 using Xylia.Preview.Data.Common.Abstractions;
-using Xylia.Preview.Data.Common.DataStruct;
 using Xylia.Preview.Data.Helpers;
 using Xylia.Preview.Data.Models;
 using Xylia.Preview.UI.Controls;
@@ -18,7 +17,7 @@ public partial class Game_MapScene
 	public Game_MapScene()
 	{
 		InitializeComponent();
-		TreeView.ItemsSource = FileCache.Data.MapInfo;
+		TreeView.ItemsSource = FileCache.Data.Get<MapInfo>();
 	}
 
 	private void TreeView_SelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
@@ -54,14 +53,14 @@ public partial class Game_MapScene
 		this.GetMapUnit(MapInfo, MapTree);
 
 		if (MapInfo.Alias == "World") return;
-		FileCache.Data.MapInfo
+		FileCache.Data.Get<MapInfo>()
 			.Where(x => x.ParentMapinfo == MapInfo)
 			.ForEach(x => this.LoadMapUint(x, new(MapTree)));
 	}
 
 	private void GetMapUnit(MapInfo MapInfo, List<MapInfo> MapTree)
 	{
-		var MapUnits = FileCache.Data.MapUnit.Where(o => o.Mapid == MapInfo.Id && o.MapDepth <= depth);
+		var MapUnits = FileCache.Data.Get<MapUnit>().Where(o => o.Mapid == MapInfo.Id && o.MapDepth <= depth);
 		foreach (var mapunit in MapUnits)
 		{
 			#region init
@@ -97,14 +96,14 @@ public partial class Game_MapScene
 			}
 			else if (mapunit is MapUnit.Npc or MapUnit.Boss)
 			{
-				var Npc = FileCache.Data.Npc[mapunit.Attributes["npc"]];
+				var Npc = FileCache.Data.Get<Npc>()[mapunit.Attributes["npc"]];
 				if (Npc != null) tooltip = Npc.Text;
 			}
 			else if (mapunit is MapUnit.Link)
 			{
 				temp.MouseLeftButtonDown += new((o, e) =>
 				{
-					var map = FileCache.Data.MapInfo[mapunit.Attributes["link-mapid"]];
+					var map = FileCache.Data.Get<MapInfo>()[mapunit.Attributes["link-mapid"]];
 					LoadData(map);
 				});
 			}

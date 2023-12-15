@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table name="act-sequence" version="0.1" autokey="true" module="270">
+	<el name="table" child="1" />
+	<el name="record" child="action">
+
+	</el>
+	<el name="action" />
+</table>

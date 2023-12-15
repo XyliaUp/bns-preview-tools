@@ -52,6 +52,6 @@ public sealed class KeyCommand : ModelElement
 
 	public SKBitmap GetIcon() => this.Key1?.Icon;
 
-	public static KeyCommand Cast(KeyCommandSeq KeyCommand) => FileCache.Data.KeyCommand.FirstOrDefault(o => o.Command == KeyCommand);
+	public static KeyCommand Cast(KeyCommandSeq KeyCommand) => FileCache.Data.Get<KeyCommand>().FirstOrDefault(o => o.Command == KeyCommand);
 	#endregion
 }

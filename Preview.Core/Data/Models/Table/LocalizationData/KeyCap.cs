@@ -21,6 +21,6 @@ public sealed class KeyCap : ModelElement
 
 	public static KeyCap Cast(string KeyCode) => Cast(GetKeyCode(KeyCode));
 
-	public static KeyCap Cast(KeyCode KeyCode) => FileCache.Data.KeyCap[(short)KeyCode];
+	public static KeyCap Cast(KeyCode KeyCode) => FileCache.Data.Get<KeyCap>()[(short)KeyCode];
 	#endregion
 }

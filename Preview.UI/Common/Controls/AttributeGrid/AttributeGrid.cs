@@ -8,8 +8,7 @@ using HandyControl.Controls;
 using HandyControl.Data;
 using HandyControl.Interactivity;
 using HandyControl.Tools.Extension;
-
-using Xylia.Preview.Data.Engine.BinData.Definitions;
+using Xylia.Preview.Data.Engine.Definitions;
 using Xylia.Preview.Data.Models;
 
 namespace Xylia.Preview.UI.Controls;
@@ -174,4 +173,9 @@ public class AttributeGrid : Control
 		base.OnRenderSizeChanged(sizeInfo);
 		TitleElement.SetTitleWidth(this, new GridLength(Math.Max(MinTitleWidth, Math.Min(MaxTitleWidth, ActualWidth / 3))));
 	}
+
+
+
+	// TODO: String 类型需要特殊处理
+	// 创建一个备份字典  退出编辑后比对差异项  将其写到最后
 }

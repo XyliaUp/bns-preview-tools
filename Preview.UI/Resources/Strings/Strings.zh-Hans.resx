@@ -174,9 +174,6 @@
   <data name="DatabaseStudio_ExtractAll" xml:space="preserve">
     <value>提取全部</value>
   </data>
-  <data name="DatabaseStudio_ImportAll" xml:space="preserve">
-    <value>Import All</value>
-  </data>
   <data name="DatabaseStudio_Name" xml:space="preserve">
     <value>Database Studio</value>
   </data>
@@ -451,7 +448,7 @@
     <value>{0} 的最新版本是{1}，你想要立刻更新吗?</value>
   </data>
   <data name="Version_Tip3" xml:space="preserve">
-    <value>访问更新服务器时出现问题，请检查您的互联网连接或稍后再试。</value>
+    <value>检查更新失败，请稍后再试</value>
   </data>
   <data name="TextView_ReadWrite" xml:space="preserve">
     <value>可编辑</value>
@@ -461,5 +458,9 @@
   </data>
   <data name="Text_LineNumber" xml:space="preserve">
     <value>行</value>
+  </data>
+  <data name="TextView_ReadStatus" xml:space="preserve">
+    <value>当查看单个文件时，可以启用编辑
+请注意不要修改节点顺序</value>
   </data>
 </root>

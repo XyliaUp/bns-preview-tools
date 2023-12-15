@@ -19,13 +19,25 @@ public class Arg : Element
 	public string id;
 	public string seq;
 
-	protected override void Load(HtmlNode node)
+	protected internal override void Load(HtmlNode node)
 	{
 		this.p = node.Attributes[nameof(p)]?.Value;
 		this.id = node.Attributes[nameof(id)]?.Value;
 		this.seq = node.Attributes[nameof(seq)]?.Value;
 	}
 
+	protected override Size MeasureCore(Size availableSize)
+	{
+		this.Children = new();
+
+		var result = this.GetObject();
+		if (result is null) return new Size();
+		//else if(result is ImageData b) FinalHeight = Math.Max(FinalHeight, DrawImage(param, ref LocX, ref LocY, b.source, BasicHeight, true /* , b.scale*/));
+		else if (result is int @int) this.Children.Add(new Run() { Text = @int.ToString("N0") });
+		else if (result is not null) this.Children.Add(new Paragraph(result.ToString()));
+
+		return base.MeasureCore(availableSize);
+	}
 
 	internal object GetObject()
 	{
@@ -68,19 +80,6 @@ public class Arg : Element
 
 
 		return obj;
-	}
-
-	protected override Size MeasureCore(Size availableSize)
-	{
-		this.Children = new();
-
-		var result = this.GetObject();
-		if (result is null) return new Size();
-		//else if(result is ImageData b) FinalHeight = Math.Max(FinalHeight, DrawImage(param, ref LocX, ref LocY, b.source, BasicHeight, true /* , b.scale*/));
-		else if (result is int @int) this.Children.Add(new Run() { Text = @int.ToString("N0") });
-		else if (result is not null) this.Children.Add(new Paragraph(result.ToString()));
-
-		return base.MeasureCore(availableSize);
 	}
 }
 
@@ -195,8 +194,10 @@ public static class ArgExtension
 		}
 
 		// record
-		if (instance is ModelElement record && record.Attributes.TryGetMember(name, true, out value))
+		if (instance is ModelElement record && record.Attributes.TryGetValue(name, out var _value))
 		{
+			value = _value;
+
 			if (value is Record @ref && @ref.Owner.Name == "text")
 				value = @ref.Attributes["text"];
 
@@ -204,7 +205,7 @@ public static class ArgExtension
 		}
 
 		// instance
-		var Member = instance.GetMember(name, true);
+		var Member = instance.GetProperty(name);
 		if (Member != null)
 		{
 			var obj = Member.GetValue(instance);

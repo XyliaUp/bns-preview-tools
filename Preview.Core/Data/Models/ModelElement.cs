@@ -1,6 +1,7 @@
 ﻿using System.Reflection;
 using System.Runtime.Serialization;
 using Xylia.Preview.Common.Extension;
+using Xylia.Preview.Data.Client;
 using Xylia.Preview.Data.Common.Attribute;
 using Xylia.Preview.Data.Engine.BinData.Models;
 using Xylia.Preview.Data.Helpers;
@@ -63,27 +64,25 @@ public abstract class ModelElement
 		element.Source = source;
 
 		#region	instance
-		foreach (var field in element.GetType().GetMembers(BindingFlags.Instance | BindingFlags.Public))
+		foreach (var prop in element.GetType().GetProperties(BindingFlags.Instance | BindingFlags.Public))
 		{
-			if (field is not FieldInfo &&
-			   (field is not PropertyInfo prop || !prop.CanWrite)) continue;
-			if (field.ContainAttribute<IgnoreDataMemberAttribute>()) continue;
+			if (!prop.CanWrite || prop.ContainAttribute<IgnoreDataMemberAttribute>()) continue;
 
 			// props
-			var name = field.GetMemberName().TitleLowerCase();
-			var type = field.GetMemberType();
-			var repeat = field.GetAttribute<Repeat>()?.Value ?? 1;
+			var type = prop.PropertyType;
+			var name = (prop.GetAttribute<NameAttribute>()?.Name ?? prop.Name).TitleLowerCase();
+			var repeat = prop.GetAttribute<Repeat>()?.Value ?? 1;
 			if (type.IsGenericType && type.GetGenericTypeDefinition() == typeof(LazyList<>))
 			{
 				var toType = typeof(List<>).MakeGenericType(type.GetGenericArguments()[0]);
 				var value = Activator.CreateInstance(type,
 					new Func<object>(() => Convert(element, name, toType, repeat)));
 
-				field.SetValue(element, value);
+				prop.SetValue(element, value);
 			}
 			else
 			{
-				field.SetValue(element, Convert(element, name, type, repeat));
+				prop.SetValue(element, Convert(element, name, type, repeat));
 			}
 		}
 		#endregion
@@ -118,7 +117,8 @@ public abstract class ModelElement
 
 			foreach (var child in children)
 			{
-				var _record = (ModelElement)subs.CreateInstance(child.Attributes[AttributeCollection.s_type], out _);
+				var type = child.Attributes[AttributeCollection.s_type];
+				var _record = (ModelElement)subs.CreateInstance(type, out _);
 				add.Invoke(records, new object[] { ModelElement.As(child, _record) });
 			}
 
@@ -193,7 +193,11 @@ public struct Ref<TElement> where TElement : ModelElement
 		// tref: need register on the database
 		// TODO: change to auto create ?
 		if (typeof(T) == typeof(ModelElement))
-			return (T)(data.GetValue(table, true) as Table)?[alias]?.Model.Value;
+		{
+			var prop = data.GetProperty(table);
+			return (T) (prop?.GetValue(data) as Table)?[alias]?.Model.Value;
+		}
+			
 
 		// ref: create model table
 		return data.Get<T>(table)?[alias];

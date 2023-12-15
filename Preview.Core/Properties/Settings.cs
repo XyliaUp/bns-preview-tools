@@ -13,8 +13,13 @@ public class Settings : INotifyPropertyChanged
 
 	protected Settings()
 	{
+		// prevent exception when save
+		Directory.CreateDirectory(ApplicationData);
+
 		ConfigPath = Path.Combine(ApplicationData, "Settings.config");
-		Configuration = new FileIniDataParser().ReadFile(ConfigPath);
+		Configuration = File.Exists(ConfigPath) ? 
+			new FileIniDataParser().ReadFile(ConfigPath) : 
+			new IniData();
 	}
 
 

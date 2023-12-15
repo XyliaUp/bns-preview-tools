@@ -39,6 +39,11 @@
 	</RuleSet>
 
 	<RuleSet  ignoreCase="true">
+		<Span color="String" multiline="true"  >
+			<Begin>`</Begin>
+			<End>`</End>
+		</Span>
+
 		<Span color="String" multiline="true" >
 			<Begin>'</Begin>
 			<End>'</End>
@@ -48,7 +53,8 @@
 			<Begin>"</Begin>
 			<End>"</End>
 		</Span>
-
+		
+		
 		<!-- span for escape sequences -->
 		<Span  color="Comment" begin="--" end="\n" ruleSet="CommentMarkerSet"/>
 		<Span color="Comment"  multiline="true" ruleSet="CommentMarkerSet">

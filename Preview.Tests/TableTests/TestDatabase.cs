@@ -1,6 +1,6 @@
-﻿using Xylia.Preview.Data;
-using Xylia.Preview.Data.Engine.BinData.Definitions;
+﻿using Xylia.Preview.Data.Client;
 using Xylia.Preview.Data.Engine.DatData;
+using Xylia.Preview.Data.Engine.Definitions;
 
 namespace Xylia.Preview.Tests.TableTests;
 public sealed class TestDatabase(IDataProvider provider, string outputPath) : BnsDatabase(provider)

@@ -48,11 +48,11 @@
 			<StackPanel Grid.Row="4">
 				<UI:BnsCustomLabelWidget Text="{DynamicResource AbilityPage_Result}">
 					<UI:BnsCustomLabelWidget.Params>
-						<MultiBinding Converter="{StaticResource DataParamsConverter}">
+						<UI:ParamsBinding>
 							<Binding Path="Level" />
 							<Binding Path="Selected.Text" />
-							<Binding Path="Percent" />				
-						</MultiBinding>
+							<Binding Path="Percent" />
+						</UI:ParamsBinding>
 					</UI:BnsCustomLabelWidget.Params>
 				</UI:BnsCustomLabelWidget>
 				<TextBlock Text="{Binding Percent,StringFormat=P3}" />

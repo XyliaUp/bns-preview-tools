@@ -6,14 +6,14 @@ using System.Windows.Input;
 using System.Windows.Media;
 
 using HandyControl.Controls;
-
+using HandyControl.Interactivity;
 using ICSharpCode.AvalonEdit.Document;
 using ICSharpCode.AvalonEdit.Folding;
 using ICSharpCode.AvalonEdit.Rendering;
 using ICSharpCode.AvalonEdit.Search;
 
 using Microsoft.Win32;
-using Xylia.Preview.Data;
+using Xylia.Preview.Data.Client;
 using Xylia.Preview.Data.Engine.BinData.Models;
 using Xylia.Preview.Data.Models;
 using Xylia.Preview.UI.Helpers;
@@ -42,6 +42,9 @@ public partial class TextView
 		commandBindings.Add(new CommandBinding(ApplicationCommands.Save, SaveCommand, CanExecuteSave));
 		commandBindings.Add(new CommandBinding(ApplicationCommands.SaveAs, SaveAsCommand, CanExecuteSave));
 		commandBindings.Add(new CommandBinding(ApplicationCommands.Replace, ReplaceInFilesCommand, CanExecuteSave));
+
+		// unable to edit in comparison mode
+		commandBindings.Add(new CommandBinding(ControlCommands.Switch, delegate{ }, CanExecuteSave));
 	}
 
 	private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -116,6 +119,8 @@ public partial class TextView
 
 	private void RenderView()
 	{
+		ReadStatus.IsChecked = false;
+
 		#region Source
 		var source1 = new BnsDatabase(new LocalProvider(OldSource));
 		var source2 = new BnsDatabase(new LocalProvider(NewSource));
@@ -142,9 +147,9 @@ public partial class TextView
 
 			// create diff
 			diffResult = TextDiff.Diff(source1.Text, source2.Text);
+
 			source?.Dispose();
 			source = null;
-
 			source1.Dispose();
 			source2.Dispose();
 

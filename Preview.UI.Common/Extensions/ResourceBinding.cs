@@ -70,7 +70,6 @@ public class ResourceBinding : MarkupExtension
 			return null;
 
 		#region binding
-
 		Binding binding = new Binding
 		{
 			Path = Path,
@@ -91,7 +90,6 @@ public class ResourceBinding : MarkupExtension
 
 		if (Source != null)
 			binding.Source = Source;
-
 		#endregion
 
 		var multiBinding = new MultiBinding

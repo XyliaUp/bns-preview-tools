@@ -4,6 +4,7 @@ using System.Windows.Data;
 using System.Windows.Media;
 using System.Windows.Shapes;
 using Xylia.Preview.Data.Helpers;
+using Xylia.Preview.Data.Models;
 using Xylia.Preview.Data.Models.Sequence;
 using static Xylia.Preview.Data.Models.ItemGraph;
 
@@ -30,7 +31,7 @@ public partial class BnsCustomGraphMapWidget : Panel
 		#region item
 		this.Children.Clear();
 
-		var table = FileCache.Data.ItemGraph;
+		var table = FileCache.Data.Get<ItemGraph>();
 		var seeds = table.Where(record => record is Seed seed && seed.ItemEquipType == value).Cast<Seed>();
 		if (!seeds.Any()) return;
 
@@ -55,7 +56,7 @@ public partial class BnsCustomGraphMapWidget : Panel
 			var startItem = item.Value;
 			foreach (var edges in table.Search(definition, item.Key).GroupBy(x => x.Attributes["end-item"]))
 			{
-				if (!items.TryGetValue(edges.Key, out var endItem)) continue;
+				if (!items.TryGetValue(edges.Key.ToString(), out var endItem)) continue;
 
 				startItem.Loaded += new((o, args) =>
 				{

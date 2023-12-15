@@ -1,11 +1,9 @@
 ﻿using System.Windows;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-
 using CUE4Parse.BNS.Assets.Exports;
-
+using HtmlAgilityPack;
 using SkiaSharp.Views.WPF;
-
 using Xylia.Preview.Data.Helpers;
 
 namespace Xylia.Preview.UI.Documents;
@@ -19,7 +17,7 @@ public class Image : Element
 	/// Relative to line height
 	/// </summary>
 	public bool Enablescale;
-	public float Scalerate = 1;
+	public float Scalerate;
 
 	public int U;
 	public int V;
@@ -31,6 +29,21 @@ public class Image : Element
 
 	#region UIElement 
 	private BitmapSource Source { get; set; }
+
+	protected internal override void Load(HtmlNode node)
+	{
+		Path = node.Attributes["path"]?.Value;
+		Imagesetpath = node.Attributes["imagesetpath"]?.Value;
+		Enablescale = node.GetAttributeValue("enablescale", false);
+		Scalerate = node.GetAttributeValue("scalerate", 1f);
+
+		U = node.GetAttributeValue("u", 0);
+		V = node.GetAttributeValue("v", 0);
+		UL = node.GetAttributeValue("ul", 0);
+		VL = node.GetAttributeValue("vl", 0);
+		Width = node.GetAttributeValue("width", 0);
+		Height = node.GetAttributeValue("height", 0);
+	}
 
 	protected override Size MeasureCore(Size availableSize)
 	{

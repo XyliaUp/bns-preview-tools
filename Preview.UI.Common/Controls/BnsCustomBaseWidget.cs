@@ -1,17 +1,16 @@
 ﻿using System;
 using System.Windows;
 using System.Windows.Controls;
-
 using Xylia.Preview.Data.Helpers;
 using Xylia.Preview.Data.Models;
 
 namespace Xylia.Preview.UI.Controls;
 public interface IBnsCustomBaseWidget
 {
-
+	//object Children { get; set; }
 }
 
-public abstract class BnsCustomBaseWidget : Control , IBnsCustomBaseWidget
+public abstract class BnsCustomBaseWidget : ItemsControl, IBnsCustomBaseWidget
 {
 	#region DependencyProperty 
 	public static readonly DependencyProperty MetaDataProperty = DependencyProperty.Register(nameof(MetaData), typeof(string), typeof(BnsCustomBaseWidget),
@@ -69,4 +68,11 @@ public abstract class BnsCustomBaseWidget : Control , IBnsCustomBaseWidget
 		this.ToolTip = tooltip;
 	}
 	#endregion
+
+
+	public BnsCustomBaseWidget()
+	{
+		this.ItemsPanel = new ItemsPanelTemplate();
+		this.ItemsPanel.VisualTree = new FrameworkElementFactory(typeof(AnchorPanel));
+	}
 }

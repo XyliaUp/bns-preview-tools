@@ -2,7 +2,6 @@
 					xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 					xmlns:UI="https://github.com/xyliaup/bns-preview-tools">
 	<FontFamily x:Key="SegoeAssets">pack://application:,,,/Preview.UI;component/Resources/Fonts/#Segoe MDL2 Assets</FontFamily>
-	<UI:DataParamsConverter x:Key="DataParamsConverter" />
 
 	<Style x:Key="SegoeIcon">
 		<Setter Property="TextElement.FontFamily" Value="{StaticResource SegoeAssets}" />

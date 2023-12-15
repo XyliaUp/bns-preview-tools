@@ -33,10 +33,6 @@ public enum AttachAbility : byte
     AbnormalAttackPowerValue,
 
 
-
-
-
-
     [Name("max-hp")]
     MaxHp = 29,
 

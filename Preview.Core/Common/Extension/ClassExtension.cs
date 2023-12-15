@@ -1,59 +1,20 @@
 ﻿using System.ComponentModel;
 using System.Reflection;
 using System.Runtime.CompilerServices;
-using Xylia.Preview.Data.Common.Attribute;
 
 namespace Xylia.Preview.Common.Extension;
 public static partial class ClassExtension
 {
-    public const BindingFlags Flags = BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.Public;
-
-	#region MemberInfo
-	public static MemberInfo GetMember<T>(this T Case, object Name, bool IgnoreCase = false)
+	#region PropertyInfo
+	public static PropertyInfo GetProperty<T>(this T instance, string name)
     {
-        #region init
-        if (Name is null) return null;
-        var _Name = Name.ToString();
+		var MyFlags = BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.IgnoreCase;
 
-        BindingFlags MyFlags = Flags;
-        if (IgnoreCase) MyFlags |= BindingFlags.IgnoreCase;    //判断是否需要忽略大小写
+		var type = instance.GetType();
+		var Members = type.GetProperty(name.Replace("-", null), MyFlags);
+        Members ??= type.GetProperty(name.Replace("-", "_"), MyFlags);
 
-        var type = Case.GetType();
-        #endregion
-
-        var Members = type.GetMember(_Name.Replace("-", null), MyFlags);
-        if (Members.Length == 0) Members = type.GetMember(_Name.Replace("-", "_"), MyFlags);
-
-        return Members.Where(m => m is FieldInfo || m is PropertyInfo).FirstOrDefault();
-    }
-
-    public static Type GetMemberType(this MemberInfo MemberInfo)
-    {
-        if (MemberInfo is PropertyInfo property) return property.PropertyType;
-        else if (MemberInfo is FieldInfo field) return field.FieldType;
-        else throw new InvalidDataException();
-    }
-
-	public static string GetMemberName(this MemberInfo member)
-	{
-		return member.GetAttribute<NameAttribute>()?.Name ?? member.Name;
-	}
-
-
-	public static object GetValue<T>(this T Case, object Name, bool IgnoreCase = false) => Case.GetMember(Name, IgnoreCase)?.GetValue(Case);
-
-    public static object GetValue(this MemberInfo member, object obj = null)
-    {
-        if (member is FieldInfo field) return field.GetValue(obj);
-        else if (member is PropertyInfo property) return property.GetValue(obj, null);
-        else throw new InvalidDataException();
-    }
-
-    public static void SetValue<T>(this MemberInfo member, T Case, object Value)
-    {
-        if (member is PropertyInfo property) property.SetValue(Case, Value);
-        else if (member is FieldInfo field) field.SetValue(Case, Value);
-        else throw new InvalidDataException();
+        return Members;
     }
 	#endregion
 

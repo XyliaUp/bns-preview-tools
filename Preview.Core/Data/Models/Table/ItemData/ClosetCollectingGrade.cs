@@ -1,2 +1,2 @@
 ﻿namespace Xylia.Preview.Data.Models;
-public sealed class ClosetCollectingGrade: Record { }
+public sealed class ClosetCollectingGrade : ModelElement { }

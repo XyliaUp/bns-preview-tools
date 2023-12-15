@@ -9,26 +9,6 @@ public partial class Item
 	{
 		[Name("weapon-type")]
 		public WeaponTypeSeq WeaponType;
-
-
-		[Name("weapon-appearance-change-type")]
-		public WeaponAppearanceChangeTypeSeq WeaponAppearanceChangeType => this.Attributes["weapon-appearance-change-type"]?.ToEnum<WeaponAppearanceChangeTypeSeq>() ?? 0;
-		public enum WeaponAppearanceChangeTypeSeq
-		{
-			None,
-
-			[Name("used-only-as-target-weapon")]
-			UsedOnlyAsTargetWeapon,
-
-			[Name("used-only-as-applying-weapon")]
-			UsedOnlyAsApplyingWeapon,
-
-			[Name("both")]
-			Both,
-		}
-
-		[Name("skill-by-equipment")]
-		public Ref<SkillByEquipment> SkillByEquipment;
 	}
 
 	public sealed class Costume : Item

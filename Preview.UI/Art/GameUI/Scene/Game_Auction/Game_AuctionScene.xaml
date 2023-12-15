@@ -64,8 +64,8 @@
 											<ColumnDefinition Width="54" />
 											<ColumnDefinition Width="*" />
 										</Grid.ColumnDefinitions>
-										<UI:BnsCustomImageWidget Grid.Column="0" Image="{Binding Model.Value.Icon}" />
-										<UI:BnsCustomLabelWidget Grid.Column="1" Text="{Binding Model.Value.ItemName}" VerticalAlignment="Center" Margin="5 0 0 0" />
+										<UI:BnsCustomImageWidget Grid.Column="0" Image="{Binding Icon}" />
+										<UI:BnsCustomLabelWidget Grid.Column="1" Text="{Binding ItemName}" VerticalAlignment="Center" Margin="5 0 0 0" />
 									</Grid>
 								</DataTemplate>
 							</GridViewColumn.CellTemplate>

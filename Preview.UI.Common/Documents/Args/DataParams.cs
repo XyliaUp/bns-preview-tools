@@ -1,14 +1,10 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Diagnostics;
-using System.Globalization;
 using System.Runtime.CompilerServices;
-using System.Windows.Data;
 
 namespace Xylia.Preview.UI.Documents;
-[TypeConverter(typeof(DataParamsConverter))]
 public sealed class DataParams : IEnumerable, ICollection, IList
 {
 	#region Fields
@@ -287,23 +283,4 @@ public sealed class DataParams : IEnumerable, ICollection, IList
 		}
 	}
 	#endregion
-}
-
-public class DataParamsConverter : IMultiValueConverter
-{
-	public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
-	{
-		return new DataParams(values);
-	}
-
-	public object[] ConvertBack(object value, Type[] targetTypes, object parameter, CultureInfo culture)
-	{
-		throw new NotImplementedException();
-
-		//var param = (DataParams)value;
-		//var values = new object[param.Count];
-		//param.CopyTo(values, 0);
-
-		//return values;
-	}
 }

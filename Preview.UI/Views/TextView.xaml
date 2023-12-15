@@ -147,7 +147,8 @@
 							<Run Name="ColumnNumber" Text="1" />
 						</TextBlock>
 					</ToggleButton>
-					<ToggleButton x:Name="ReadStatus">
+					<ToggleButton x:Name="ReadStatus" Command="hc:ControlCommands.Switch" ToolTip="{DynamicResource TextView_ReadStatus}"
+						ToolTipService.Placement="Top" ToolTipService.ShowOnDisabled="True" ToolTipService.HorizontalOffset="-120">
 						<StackPanel>
 							<TextBlock Text="{DynamicResource TextView_ReadWrite}" Visibility="{Binding IsChecked,ElementName=ReadStatus,Converter={StaticResource Boolean2VisibilityConverter}}"/>
 							<TextBlock Text="{DynamicResource TextView_ReadOnly}" Visibility="{Binding IsChecked,ElementName=ReadStatus,Converter={StaticResource Boolean2VisibilityReConverter}}" />

@@ -87,13 +87,14 @@ public class TextDocument
 		switch (node.Name)
 		{
 			case "#text": element = new Run(); break;
+			case "p": element = new Paragraph(); break;
 			case "arg": element = new Arg(); break;
 			case "br": element = new BR(); break;
 			case "ga": element = new GA(); break;
 			case "font": element = new Font(); break;
 			case "image": element = new Image(); break;
 			case "link": element = new Link(); break;
-			case "p": element = new Paragraph(); break;
+			case "timer": element = new Timer(); break;
 
 			default:
 				element = new Run();
@@ -101,7 +102,7 @@ public class TextDocument
 				break;
 		}
 
-		element.InternalLoad(node);
+		element.Load(node);
 		return element;
 	}
 }

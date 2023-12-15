@@ -43,14 +43,14 @@ public sealed class ItemCloset : OutSet
             sheet.Cells[Row, column++].SetValue(item.Source.Ref.Id);
             sheet.Cells[Row, column++].SetValue(item.Alias);
 			sheet.Cells[Row, column++].SetValue(item.Name2);
-			sheet.Cells[Row, column++].SetValue(item.EquipType.GetName());
-			sheet.Cells[Row, column++].SetValue(item.EquipSex.GetName());
+			sheet.Cells[Row, column++].SetValue(item.EquipType.GetText());
+			sheet.Cells[Row, column++].SetValue(item.EquipSex.GetText());
 			sheet.Cells[Row, column++].SetValue(item.EquipRace);
 			sheet.Cells[Row, column++].SetValue(item.ClosetGroupId);
 
 			if (item.ClosetGroupId != 0)
             {
-                var ClosetGroup = FileCache.Data.ClosetGroup[item.ClosetGroupId];
+                var ClosetGroup = FileCache.Data.Get<ClosetGroup>()[item.ClosetGroupId];
                 if (ClosetGroup != null) sheet.Cells[Row, column++].SetValue($"Name.closet-group.category.{ClosetGroup.Attributes["category"]}".GetText());
             }
         }

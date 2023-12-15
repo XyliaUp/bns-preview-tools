@@ -68,7 +68,16 @@ public sealed class StringHelper : ResourceDictionary
 
 	public static StringHelper Instance { get; private set; }
 
-	public static string Get(string key) => (Instance[key] as string) ?? key;
+	public static string Get(string key, params object[] args)
+	{
+		if (Instance[key] is string s)
+		{
+			return string.Format(s, args);
+		}
+
+		return key;
+	}
+
 
 	// add bns text help?
 	#endregion

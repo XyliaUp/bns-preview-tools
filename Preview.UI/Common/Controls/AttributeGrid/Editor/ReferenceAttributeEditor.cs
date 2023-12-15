@@ -1,12 +1,11 @@
 ﻿using System.Globalization;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Data;
 
 using HandyControl.Controls;
-
+using Xylia.Preview.Data.Engine.BinData.Models;
 using Xylia.Preview.Data.Helpers;
-
-using Models = Xylia.Preview.Data.Engine.BinData.Models;
 
 namespace Xylia.Preview.UI.Controls;
 public class ReferenceAttributeEditor : PropertyEditorBase, IValueConverter
@@ -16,7 +15,7 @@ public class ReferenceAttributeEditor : PropertyEditorBase, IValueConverter
 		ReferedTable = FileCache.Data.Provider.Tables[reference];
 	}
 
-	public Models.Table ReferedTable { get; set; }
+	public Table ReferedTable { get; set; }
 
 	public override FrameworkElement CreateElement(PropertyItem propertyItem)
 	{

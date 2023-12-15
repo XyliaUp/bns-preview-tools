@@ -21,7 +21,7 @@ public readonly struct BnsBoolean : IComparable, IComparable<bool>, IEquatable<b
 	}
 
 
-	public override string ToString() => m_value == 1 ? TrueLiteral : FalseLiteral;
+	public override string ToString() => m_value != 0 ? TrueLiteral : FalseLiteral;
 
 	public override int GetHashCode() => m_value;
 
@@ -35,7 +35,7 @@ public readonly struct BnsBoolean : IComparable, IComparable<bool>, IEquatable<b
 
 	public bool Equals(bool obj)
 	{
-		return m_value == (obj ? 1 : 0);
+		return m_value != 0 == obj;
 	}
 
 	// Compares this object to another object, returning an integer that
@@ -69,7 +69,7 @@ public readonly struct BnsBoolean : IComparable, IComparable<bool>, IEquatable<b
 
 	public int CompareTo(bool value)
 	{
-		if (m_value == (value ? 1 : 0))
+		if (m_value != 0 == value)
 		{
 			return 0;
 		}
@@ -191,5 +191,5 @@ public readonly struct BnsBoolean : IComparable, IComparable<bool>, IEquatable<b
 
 	public static implicit operator BnsBoolean(bool value) => new(value);
 
-	public static implicit operator bool(BnsBoolean value) => value.m_value == 1;
+	public static implicit operator bool(BnsBoolean value) => value.m_value != 0;
 }

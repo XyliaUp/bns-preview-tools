@@ -3,8 +3,7 @@ using System.Windows;
 using System.Windows.Data;
 
 using HandyControl.Controls;
-
-using Xylia.Preview.Data.Engine.BinData.Definitions;
+using Xylia.Preview.Data.Engine.Definitions;
 
 namespace Xylia.Preview.UI.Controls;
 public class NumberAttributeEditor : PropertyEditorBase

@@ -1,6 +1,5 @@
 ﻿using System.Windows.Input;
 using System.Windows.Markup;
-
 using Xylia.Preview.Data.Models;
 
 namespace Xylia.Preview.UI.Interactivity;
@@ -11,20 +10,28 @@ namespace Xylia.Preview.UI.Interactivity;
 /// </summary>
 public abstract class RecordCommand : MarkupExtension, ICommand
 {
-    public virtual string Name => GetType().Name;
+	public override object ProvideValue(IServiceProvider serviceProvider) => this;
+
+	public virtual string Name => GetType().Name;
 
     public event EventHandler? CanExecuteChanged;
 
-    public override object ProvideValue(IServiceProvider serviceProvider) => this;
 
-    public virtual bool CanExecute(object? parameter) => true;
+    public virtual bool CanExecute(object? parameter)
+	{
+		if (parameter is Record record) { }
+		else if (parameter is ModelElement model) record = model.Source;
+		else return false;
 
-    /// <summary>
-    /// Defines the method that determines whether the command can execute in its current state.
-    /// </summary>
-    /// <param name="name">owner table name</param>
-    /// <returns></returns>
-    public abstract bool CanExecute(string name);
+		return CanExecute(record.Owner.Name);
+	}
+
+	/// <summary>
+	/// Defines the method that determines whether the command can execute in its current state.
+	/// </summary>
+	/// <param name="name">owner table name</param>
+	/// <returns></returns>
+	public abstract bool CanExecute(string name);
 
     public void Execute(object? parameter) => Task.Run(() =>
     {
@@ -32,12 +39,9 @@ public abstract class RecordCommand : MarkupExtension, ICommand
 		if (parameter is ModelElement model) Execute(model.Source);
 	});
 
-    /// <summary>
-    /// Defines the method to be called when the command is invoked.
-    /// </summary>
-    /// <param name="record"></param>
-    public virtual void Execute(Record record)
-    {
-
-    }
+	/// <summary>
+	/// Defines the method to be called when the command is invoked.
+	/// </summary>
+	/// <param name="record"></param>
+	public abstract void Execute(Record record);
 }

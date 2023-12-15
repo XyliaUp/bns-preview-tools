@@ -24,17 +24,5 @@ public class Common
 		//	DateTime dt = DateTime.Now;
 		//	Debug.WriteLine(records.FirstOrDefault(o => o.Alias == "Effect.Name2.Weapon_Effect_CriPer_0582_1"));
 		//	Debug.WriteLine(DateTime.Now - dt);
-
-
-
-		var temp = new byte[20];
-		temp[1] = 1;
-
-		var test = new Xylia.Preview.Data.Common.DataStruct.BnsBoolean();
-		Console.WriteLine(test.Equals(false));
-
-		temp.Set(0, test);
-
-		Console.WriteLine(temp.ToHex());
 	}
 }

@@ -37,9 +37,10 @@ public partial class TextEditor : Window
 		foldingStrategy.UpdateFoldings(foldingManager, Editor.Document);
 	}
 
-	public static void Register()
+	public static void Register(string name)
 	{
-		using var stream = Application.GetResourceStream(new Uri($"/Views/Editor/Sql.xshd", UriKind.Relative)).Stream;
+		var resource = new Uri($"pack://application:,,,/Preview.UI;component/Resources/Xshd/{name}.xshd");
+		using var stream = Application.GetResourceStream(resource).Stream;
 		using var reader = new XmlTextReader(stream);
 
 		var definition = HighlightingLoader.Load(reader, HighlightingManager.Instance);

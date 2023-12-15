@@ -1,5 +1,5 @@
 ﻿using CUE4Parse.BNS;
-
+using Xylia.Preview.Data.Client;
 using Xylia.Preview.Data.Engine.DatData;
 using Xylia.Preview.Properties;
 

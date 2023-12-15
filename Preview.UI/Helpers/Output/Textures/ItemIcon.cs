@@ -65,7 +65,7 @@ public sealed class ItemIcon(string GameFolder, string OutputFolder) : IconOutBa
 				string OutName = format
 					   .Replace("[alias]", record.Alias)
 					   .Replace("[id]", MainId)
-					   .Replace("[name]", Text).Replace("[name2]", Text);
+					   .Replace("[name]", Text.ToString()).Replace("[name2]", Text.ToString());
 				#endregion
 
 				#region tags

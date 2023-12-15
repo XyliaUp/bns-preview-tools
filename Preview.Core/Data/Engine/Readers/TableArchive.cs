@@ -1,4 +1,5 @@
-﻿using System.Runtime.InteropServices;
+﻿using System.Diagnostics;
+using System.Runtime.InteropServices;
 
 using Xylia.Preview.Data.Engine.BinData.Models;
 using Xylia.Preview.Data.Engine.BinData.Serialization;
@@ -84,10 +85,7 @@ public class TableArchive
 
 		while (_recordUncompressedReader.Read(reader, ref rowMemory))
 		{
-			if (rowMemory.DataSize == 6)
-			{
-				continue;
-			}
+			if (rowMemory.DataSize == 6) continue;
 
 			var row = new Record
 			{
@@ -113,5 +111,12 @@ public class TableArchive
 			table.Padding = padding.ToArray();
 
 		table.Records = records;
+
+
+
+		if (true && table.RecordCountOffset != 0)
+		{
+			Debug.WriteLine($"RecordCountOffset {table.Name ?? table.Type.ToString()}");
+		}
 	}
 }

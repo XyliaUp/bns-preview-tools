@@ -1,7 +1,7 @@
 ﻿using OfficeOpenXml;
-
 using Xylia.Preview.Data.Helpers;
 using Xylia.Preview.Data.Helpers.Output;
+using Xylia.Preview.Data.Models;
 
 namespace Xylia.Preview.UI.Helpers.Output.Quests;
 public sealed class QuestOut : OutSet
@@ -21,7 +21,7 @@ public sealed class QuestOut : OutSet
         #endregion
 
 
-        foreach (var Quest in FileCache.Data.Quest.OrderBy(o => o.Source.RecordId))
+        foreach (var Quest in FileCache.Data.Get<Quest>().OrderBy(o => o.Source.RecordId))
         {
             Row++;
             int column = 1;

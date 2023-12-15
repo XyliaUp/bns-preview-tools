@@ -139,13 +139,8 @@ public abstract partial class Item : ModelElement
 
 
 
-
-
-
 	public int ImproveId => this.Attributes["improve-id"].ToInt32();
 	public sbyte ImproveLevel => this.Attributes["improve-level"].ToInt8();
-	public Ref<Item> ImproveNextItem => new(this.Attributes["improve-next-item"]);
-	public Ref<Item> ImprovePrevItem => new(this.Attributes["improve-prev-item"]);
 
 	public Ref<Text> Name2;
 
@@ -153,19 +148,6 @@ public abstract partial class Item : ModelElement
 	public string ItemNameOnly => this.Name2.GetText();
 
 
-	public string MainInfo => this.Attributes["main-info"].GetText();
-	public string SubInfo => this.Attributes["sub-info"].GetText();
-	public string IdentifyMainInfo => this.Attributes["identify-main-info"].GetText();
-	public string IdentifySubInfo => this.Attributes["identify-sub-info"].GetText();
-	public string IdentifyDescription => this.Attributes["identify-description"].GetText();
-	public string Description2 => this.Attributes["description2"].GetText();
-	public string Description4Title => this.Attributes["description4-title"].GetText();
-	public string Description5Title => this.Attributes["description5-title"].GetText();
-	public string Description6Title => this.Attributes["description6-title"].GetText();
-	public string Description4 => this.Attributes["description4"].GetText();
-	public string Description5 => this.Attributes["description5"].GetText();
-	public string Description6 => this.Attributes["description6"].GetText();
-	public string Description7 => this.Attributes["description7"].GetText();
 
 	public int ClosetGroupId => this.Attributes["closet-group-id"].ToInt32();
 
@@ -219,9 +201,4 @@ public abstract partial class Item : ModelElement
 			return bmp;
 		}
 	}
-
-
-
-	[Name("hidden-power-attach")]
-	public int HiddenPowerAttach;
 }

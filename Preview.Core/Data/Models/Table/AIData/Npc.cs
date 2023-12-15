@@ -28,8 +28,8 @@ public sealed class Npc : ModelElement
 	{
 		get
 		{
-			var MapUnit = FileCache.Data.MapUnit.Where(x => x.ToString() != null && x.ToString().Contains(this.Alias, StringComparison.OrdinalIgnoreCase)).FirstOrDefault();
-			return MapUnit is null ? null : FileCache.Data.MapInfo[MapUnit.Mapid]?.Text;
+			var MapUnit = FileCache.Data.Get<MapUnit>().Where(x => x.ToString() != null && x.ToString().Contains(this.Alias, StringComparison.OrdinalIgnoreCase)).FirstOrDefault();
+			return MapUnit is null ? null : FileCache.Data.Get<MapInfo>()[MapUnit.Mapid]?.Text;
 		}
 	}
 	#endregion

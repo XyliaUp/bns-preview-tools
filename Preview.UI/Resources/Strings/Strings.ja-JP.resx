@@ -133,7 +133,7 @@
     <value>本当にアプリを閉じてもよろしいですか？ </value>
   </data>
   <data name="Asset_Extract" xml:space="preserve">
-    <value>計上する　積立てる　取り崩す</value>
+    <value>抜粋</value>
   </data>
   <data name="Asset_FilterPah" xml:space="preserve">
     <value>アセットパス</value>
@@ -151,10 +151,10 @@
     <value>ゲームアセットをクエリ</value>
   </data>
   <data name="Command_QueryAsset2" xml:space="preserve">
-    <value>ゲームアセット（古いパス）をクエリ</value>
+    <value>ゲームアセットをクエリ（古いパス）</value>
   </data>
   <data name="DatSelector_CountDown" xml:space="preserve">
-    <value>{0}秒後に自動選択</value>
+    <value>{0} 秒後に自動選択</value>
   </data>
   <data name="DatSelector_Name" xml:space="preserve">
     <value>データセレクター</value>
@@ -173,9 +173,6 @@
   </data>
   <data name="DatabaseStudio_ExtractAll" xml:space="preserve">
     <value>すべて抽出</value>
-  </data>
-  <data name="DatabaseStudio_ImportAll" xml:space="preserve">
-    <value>すべてインポート</value>
   </data>
   <data name="DatabaseStudio_Name" xml:space="preserve">
     <value>データベーススタジオ</value>
@@ -444,7 +441,20 @@
   <data name="Version_Tip2" xml:space="preserve">
     <value>{0}の最新バージョンは{1}です。今すぐ更新しますか？</value>
   </data>
+  <data name="TextView_ReadWrite" xml:space="preserve">
+    <value>ReadWrite</value>
+  </data>
+  <data name="Text_ColumnNumber" xml:space="preserve">
+    <value>Column</value>
+  </data>
+  <data name="Text_LineNumber" xml:space="preserve">
+    <value>Line</value>
+  </data>
+  <data name="TextView_ReadStatus" xml:space="preserve">
+    <value>When viewing single file, you can edit the file
+Please note that do not modify the order of nodes</value>
+  </data>
   <data name="Version_Tip3" xml:space="preserve">
-    <value>アップデートサーバーへのアクセス中に問題が発生しました。インターネット接続を確認するか、しばらくしてからもう一度お試しください。</value>
+    <value>There is a problem when check update, please try again later.</value>
   </data>
 </root>

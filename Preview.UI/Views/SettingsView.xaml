@@ -87,7 +87,7 @@
 		</Grid.ColumnDefinitions>
 
 		<TabControl Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" TabStripPlacement="Left" Style="{StaticResource TabControlCapsule}">
-			<TabItem Tag="GeneralTemplate" IsSelected="True">
+			<TabItem Tag="General" IsSelected="True">
 				<TabItem.Header>
 					<StackPanel Orientation="Horizontal">
 						<Viewbox Width="16" Height="16" Margin="0 0 7.5 0">
@@ -99,87 +99,87 @@
 						<TextBlock Text="{DynamicResource Name_General}" VerticalAlignment="Center" />
 					</StackPanel>
 				</TabItem.Header>
+				<TabItem.Resources>
+					<Style TargetType="ItemsControl">
+						<Setter Property="ItemsPanel">
+							<Setter.Value>
+								<ItemsPanelTemplate>
+									<Grid>
+										<Grid.ColumnDefinitions>
+											<ColumnDefinition Width="Auto" SharedSizeGroup="Header" />
+											<ColumnDefinition Width="*" />
+											<ColumnDefinition Width="Auto" />
+										</Grid.ColumnDefinitions>
+									</Grid>
+								</ItemsPanelTemplate>
+							</Setter.Value>
+						</Setter>
+					</Style>
+					<Style TargetType="TextBlock">
+						<Setter Property="Margin" Value="0 0 5 0" />
+						<Setter Property="VerticalAlignment" Value="Center" />
+					</Style>
+				</TabItem.Resources>
 
-	
-				<Grid>
-					<Grid.RowDefinitions>
-						<RowDefinition Height="Auto" />
-						<RowDefinition Height="Auto" />
-						<RowDefinition Height="Auto" />
-						<RowDefinition Height="Auto" />
-						<RowDefinition Height="Auto" />
-						<RowDefinition Height="Auto" />
-						<RowDefinition Height="Auto" />
-						<RowDefinition Height="Auto" />
-						<RowDefinition Height="Auto" />
-						<RowDefinition Height="Auto" />
-						<RowDefinition Height="Auto" />
-						<RowDefinition Height="Auto" />
-						<RowDefinition Height="Auto" />
-						<RowDefinition Height="Auto" />
-						<RowDefinition Height="Auto" />
-						<RowDefinition Height="Auto" />
-						<RowDefinition Height="Auto" />
-						<RowDefinition Height="Auto" />
-					</Grid.RowDefinitions>
-					<Grid.ColumnDefinitions>
-						<ColumnDefinition Width="Auto" />
-						<ColumnDefinition Width="10" />
-						<ColumnDefinition Width="*" />
-						<ColumnDefinition Width="Auto" />
-					</Grid.ColumnDefinitions>
-
-
-					<hc:Divider Grid.Row="0" Grid.Column="0" Margin="0 5" Grid.ColumnSpan="7" Content="Path" />
-					<TextBlock Grid.Row="1" Grid.Column="0" Margin="0 0 0 5" VerticalAlignment="Center" >
-						<Run Text="{DynamicResource GameDirectory}" /> *
-					</TextBlock>
-					<TextBox Grid.Row="1" Grid.Column="2" Margin="0 0 3 5" Text="{Binding GameFolder}" />
-					<Button Grid.Row="1" Grid.Column="4" Margin="0 0 0 5" Content="..." HorizontalAlignment="Right" Click="OnBrowseDirectories" />
-
-					<TextBlock Grid.Row="2" Grid.Column="0" Margin="0 0 0 5" VerticalAlignment="Center">
-						<Run Text="{DynamicResource OutputDirectory}" /> *
-					</TextBlock>
-					<TextBox Grid.Row="2" Grid.Column="2" Margin="0 0 3 5" Text="{Binding OutputFolder}" />
-					<Button Grid.Row="2" Grid.Column="4" Margin="0 0 0 5" Content="..." HorizontalAlignment="Right" Click="OnBrowseDirectories2" />
-
-					<TextBlock Grid.Row="3" Grid.Column="0" Text="{DynamicResource OutputDirectory_Resource}" VerticalAlignment="Center" />
-					<TextBox Grid.Row="3" Grid.Column="2" Margin="0 0 3 5" Text="{Binding OutputFolderResource}" />
-					<Button Grid.Row="3" Grid.Column="4" Margin="0 0 0 5" Content="..." HorizontalAlignment="Right" Click="OnBrowseDirectories3" />
-
+				<hc:UniformSpacingPanel Orientation="Vertical" Spacing="5" Grid.IsSharedSizeScope="True" >
+					<!-- Path -->
+					<hc:Divider Grid.ColumnSpan="10" Margin="0 5" Content="Path" />
+					<ItemsControl>
+						<TextBlock>
+							<Run Text="{DynamicResource GameDirectory}" /> *
+						</TextBlock>
+						<TextBox Grid.Column="1" Text="{Binding GameFolder}" Margin="0 0 3 0" />
+						<Button Grid.Column="2" Content="..." HorizontalAlignment="Right" Click="OnBrowseDirectories" />
+					</ItemsControl>
+					<ItemsControl>
+						<TextBlock>
+							<Run Text="{DynamicResource OutputDirectory}" /> *
+						</TextBlock>
+						<TextBox Grid.Column="1" Text="{Binding OutputFolder}" Margin="0 0 3 0" />
+						<Button Grid.Column="2" Content="..." HorizontalAlignment="Right" Click="OnBrowseDirectories2" />
+					</ItemsControl>
+					<ItemsControl>
+						<TextBlock Grid.Column="0" Text="{DynamicResource OutputDirectory_Resource}" />
+						<TextBox Grid.Column="1" Text="{Binding OutputFolderResource}" Margin="0 0 3 0" />
+						<Button Grid.Column="2" Content="..." HorizontalAlignment="Right" Click="OnBrowseDirectories3" />
+					</ItemsControl>
 
 					<!-- Data Options -->
-					<hc:Divider Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="7" Margin="0 5" Content="Data Options" />
-					<TextBlock Grid.Row="6" Grid.Column="0" VerticalAlignment="Center" Margin="0 5 0 5" Text="{DynamicResource Settings_UseUserDefinition}" ToolTip="{DynamicResource Settings_UseUserDefinition_Tooltip}" />
-					<CheckBox Grid.Row="6" Grid.Column="2" Grid.ColumnSpan="5" IsChecked="{Binding UseUserDefinition}" ToolTip="{DynamicResource Settings_UseUserDefinition_Tooltip}" />
-
+					<hc:Divider Grid.ColumnSpan="10" Margin="0 5" Content="Data Options" />
+					<ItemsControl>
+						<TextBlock Text="{DynamicResource Settings_UseUserDefinition}" ToolTip="{DynamicResource Settings_UseUserDefinition_Tooltip}" />
+						<CheckBox Grid.Column="1" IsChecked="{Binding UseUserDefinition}" ToolTip="{DynamicResource Settings_UseUserDefinition_Tooltip}" />
+					</ItemsControl>
 
 					<!-- Preview Options -->
-					<hc:Divider Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="7" Margin="0 5" Content="Preview Options" />
-
-					<TextBlock Grid.Row="8" Grid.Column="0" Text="{DynamicResource Settings_Language}" VerticalAlignment="Center" Margin="0 5 0 5" />
-					<ComboBox Grid.Row="8" Grid.Column="2" Grid.ColumnSpan="5" Margin="0 0 0 5" ItemsSource="{Binding Languages,Mode=OneTime}" SelectedItem="{Binding Language}">
-						<ComboBox.ItemTemplate>
-							<DataTemplate>
-								<TextBlock Text="{Binding Converter={converters:EnumConverter}}" />
-							</DataTemplate>
-						</ComboBox.ItemTemplate>
-					</ComboBox>
-
-					<TextBlock Grid.Row="9" Grid.Column="0" Text="{DynamicResource Settings_CopyMode}" VerticalAlignment="Center" Margin="0 5 0 5" />
-					<ComboBox Grid.Row="9" Grid.Column="2" Grid.ColumnSpan="5" Margin="0 0 0 5" SelectedIndex="{Binding CopyMode, Converter={converters:EnumConverter}}">
-						<ComboBoxItem Content="{DynamicResource Settings_CopyMode_None}" />
-						<ComboBoxItem Content="{DynamicResource Settings_CopyMode_Trimmed}" />
-						<ComboBoxItem Content="{DynamicResource Settings_CopyMode_Regular}" />
-						<ComboBoxItem Content="{DynamicResource Settings_CopyMode_Source}" />
-					</ComboBox>
-
-					<TextBlock Grid.Row="10" Grid.Column="0" Text="{DynamicResource Settings_UsePerformanceMonitor}" VerticalAlignment="Center" Margin="0 5 0 5" />
-					<CheckBox Grid.Row="10" Grid.Column="2" Grid.ColumnSpan="5" Margin="0 0 0 5" IsChecked="{Binding UsePerformanceMonitor}" />
-				</Grid>
+					<hc:Divider Grid.ColumnSpan="10" Margin="0 5" Content="Preview Options" />
+					<ItemsControl>
+						<TextBlock Text="{DynamicResource Settings_Language}" />
+						<ComboBox Grid.Column="1" ItemsSource="{Binding Languages,Mode=OneTime}" SelectedItem="{Binding Language}">
+							<ComboBox.ItemTemplate>
+								<DataTemplate>
+									<TextBlock Text="{Binding Converter={converters:EnumConverter}}" />
+								</DataTemplate>
+							</ComboBox.ItemTemplate>
+						</ComboBox>
+					</ItemsControl>
+					<ItemsControl>
+						<TextBlock Text="{DynamicResource Settings_CopyMode}" />
+						<ComboBox Grid.Column="1" SelectedIndex="{Binding CopyMode, Converter={converters:EnumConverter}}">
+							<ComboBoxItem Content="{DynamicResource Settings_CopyMode_None}" />
+							<ComboBoxItem Content="{DynamicResource Settings_CopyMode_Trimmed}" />
+							<ComboBoxItem Content="{DynamicResource Settings_CopyMode_Regular}" />
+							<ComboBoxItem Content="{DynamicResource Settings_CopyMode_Source}" />
+						</ComboBox>
+					</ItemsControl>
+					<ItemsControl>
+						<TextBlock Text="{DynamicResource Settings_UsePerformanceMonitor}" />
+						<CheckBox Grid.Column="1" IsChecked="{Binding UsePerformanceMonitor}" />
+					</ItemsControl>
+				</hc:UniformSpacingPanel>
 			</TabItem>
-			
-			
+
+
 			<TabItem Header="Models" Visibility="Collapsed">
 				<Grid >
 					<Grid.RowDefinitions>

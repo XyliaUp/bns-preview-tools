@@ -1,9 +1,11 @@
+using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using Xylia.Preview.Common.Extension;
 using Xylia.Preview.Data.Helpers;
 using Xylia.Preview.Data.Models;
+using Xylia.Preview.Data.Models.Sequence;
 using Xylia.Preview.UI.Controls;
 using Xylia.Preview.UI.Helpers.Output;
 
@@ -21,9 +23,9 @@ public partial class Game_AuctionScene
 
 		foreach (var category2 in Item.MarketCategory2Group())
 		{
-			if (category2.Key == Item.MarketCategory2Seq.None) continue;
+			if (category2.Key == MarketCategory2Seq.None) continue;
 
-			var node = new TreeViewItem() { Tag = category2, Header = $"Name.item.game-category-2.{category2.Key.GetName()}".GetText() };
+			var node = new TreeViewItem() { Tag = category2, Header = category2.Key.GetText() };
 			TreeView.Items.Add(node);
 
 			foreach (var category3 in category2.Value)
@@ -31,14 +33,16 @@ public partial class Game_AuctionScene
 				node.Items.Add(new TreeViewItem()
 				{
 					Tag = category3,
-					Header = $"Name.item.game-category-3.{category3.GetName()}".GetText() ?? category3.ToString(),
+					Header = category3.GetText(),
 				});
 			}
 		}
 		#endregion
 
 		#region Source
-		source = new ListCollectionView(FileCache.Data.Item.Records) { Filter = (x) => Filter(x as Record) };
+		source = CollectionViewSource.GetDefaultView(FileCache.Data.Item);
+		source.Filter = Filter;
+
 		ItemList.ItemsSource = source;
 		#endregion
 	}
@@ -46,7 +50,7 @@ public partial class Game_AuctionScene
 
 
 	#region Fields
-	private readonly ListCollectionView source;
+	private readonly ICollectionView source;
 
 	private string _nameFilter;
 	public string NameFilter
@@ -84,12 +88,15 @@ public partial class Game_AuctionScene
 	}
 
 
-	private Item.MarketCategory2Seq marketCategory2;
-	private Item.MarketCategory3Seq marketCategory3;
+	private MarketCategory2Seq marketCategory2;
+	private MarketCategory3Seq marketCategory3;
 
 
-	private bool Filter(Record record)
+	private bool Filter(object obj)
 	{
+		if (obj is not ModelElement model) return false;
+
+		var record = model.Source;
 		if (_lst != null && _lst.Contains(record.RecordId)) return false;
 
 		var IsAll = marketCategory2 == default && marketCategory3 == default;
@@ -102,8 +109,8 @@ public partial class Game_AuctionScene
 		}
 		else
 		{
-			var MarketCategory2 = record.Attributes["market-category-2"].ToEnum<Item.MarketCategory2Seq>();
-			var MarketCategory3 = record.Attributes["market-category-3"].ToEnum<Item.MarketCategory3Seq>();
+			var MarketCategory2 = record.Attributes["market-category-2"].ToEnum<MarketCategory2Seq>();
+			var MarketCategory3 = record.Attributes["market-category-3"].ToEnum<MarketCategory3Seq>();
 
 			if (marketCategory3 != default && marketCategory3 != MarketCategory3) return false;
 			else if (marketCategory2 != default && marketCategory2 != MarketCategory2) return false;
@@ -143,11 +150,11 @@ public partial class Game_AuctionScene
 		if (e.OldValue == e.NewValue) return;
 		if (e.NewValue is not FrameworkElement item) return;
 
-		if (item.Tag is Item.MarketCategory2Seq seq2)
+		if (item.Tag is MarketCategory2Seq seq2)
 		{
 			marketCategory2 = seq2;
 		}
-		else if (item.Tag is Item.MarketCategory3Seq seq3)
+		else if (item.Tag is MarketCategory3Seq seq3)
 		{
 			marketCategory3 = seq3;
 		}

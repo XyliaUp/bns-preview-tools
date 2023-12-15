@@ -27,7 +27,7 @@ public sealed class ItemImproveSuccession : ModelElement
 
 
 	#region Functions
-	public static ItemImproveSuccession QuerySeedItem(Item ItemInfo) => FileCache.Data.ItemImproveSuccession.FirstOrDefault(o => o.SeedItemImproveId == ItemInfo.ImproveId && o.SeedItemImproveLevel == ItemInfo.ImproveLevel);
+	public static ItemImproveSuccession QuerySeedItem(Item ItemInfo) => FileCache.Data.Get<ItemImproveSuccession>().FirstOrDefault(o => o.SeedItemImproveId == ItemInfo.ImproveId && o.SeedItemImproveLevel == ItemInfo.ImproveLevel);
 
 
 	public Item GetFeedItem(Item ItemInfo) => FileCache.Data.Item.FirstOrDefault(o => 

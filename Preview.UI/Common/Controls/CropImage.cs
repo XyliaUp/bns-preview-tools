@@ -39,7 +39,6 @@ public class CropImage : Canvas
 	#endregion
 
 
-
 	#region Public Properties 
 	public ImageSource Source
 	{

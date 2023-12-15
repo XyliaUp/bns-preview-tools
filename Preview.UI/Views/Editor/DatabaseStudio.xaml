@@ -30,6 +30,18 @@
 				</MenuItem.Icon>
 			</MenuItem>
 		</ContextMenu>
+		<ContextMenu x:Key="TextMenu">
+			<MenuItem Header="Indent" IsCheckable="True" IsChecked="{Binding IndentText}">
+				<MenuItem.Icon>
+					<TextBlock Text="" Style="{StaticResource SegoeIcon}" />
+				</MenuItem.Icon>
+			</MenuItem>
+			<MenuItem Header="Output" Click="OutputText_Click">
+				<MenuItem.Icon>
+					<TextBlock Text="&#xE74E;" Style="{StaticResource SegoeIcon}" />
+				</MenuItem.Icon>
+			</MenuItem>
+		</ContextMenu>
 	</Window.Resources>
 
 	<Grid>
@@ -37,6 +49,7 @@
 			<RowDefinition Height="Auto" />
 			<RowDefinition Height="200" />
 			<RowDefinition Height="*" />
+			<RowDefinition Height="Auto" />
 		</Grid.RowDefinitions>
 		<Grid.ColumnDefinitions>
 			<ColumnDefinition Width="300" />
@@ -105,7 +118,7 @@
 
 
 		<!-- Tree -->
-		<TreeView x:Name="tvwDatabase" Grid.Row="1" Grid.RowSpan="2" MouseDoubleClick="tvwDatabase_MouseDoubleClick"/>
+		<TreeView x:Name="tvwDatabase" Grid.Row="1" Grid.RowSpan="2" MouseDoubleClick="TvwDatabase_MouseDoubleClick" ScrollViewer.HorizontalScrollBarVisibility="Disabled" />
 
 		<!-- SQL -->
 		<hc:TabControl Grid.Row="1" Grid.Column="2" Name="editors" IsAnimationEnabled="True" ShowCloseButton="True" IsDraggable="True" TabItemWidth="150" >
@@ -122,16 +135,23 @@
 		<TabControl Grid.Row="2" Grid.Column="2" >
 			<TabItem Header="Grid" >
 				<Grid>
-					<DataGrid x:Name="QueryResult" AutoGenerateColumns="False" IsReadOnly="True" HorizontalScrollBarVisibility="Auto" ContextMenu="{StaticResource GridMenu}" Style="{x:Null}" Visibility="Hidden"/>
-					<TextBlock x:Name="QueryEmpty" Text="No data" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="{StaticResource PrimaryTextBrush}" FontWeight="Bold"/>
+					<DataGrid x:Name="QueryGrid" HorizontalScrollBarVisibility="Auto" ContextMenu="{StaticResource GridMenu}" Style="{x:Null}" 
+						AutoGenerateColumns="True" IsReadOnly="True" SelectionUnit="CellOrRowHeader"
+						EnableRowVirtualization="True" EnableColumnVirtualization="True" VirtualizingPanel.IsContainerVirtualizable="True" VirtualizingPanel.VirtualizationMode="Recycling" />
 				</Grid>
 			</TabItem>
-			<TabItem Header="Text" Visibility="Hidden" />
-			<TabItem Header="Parameters" Visibility="Hidden" />
+			
+			<TabItem Header="Text">
+				<avalonEdit:TextEditor Name="QueryText" SyntaxHighlighting="JSON" IsReadOnly="True" Padding="5" ContextMenu="{StaticResource TextMenu}" />
+			</TabItem>
 		</TabControl>
 
 
 		<!-- Tooltip -->
+		<StackPanel Grid.Row="3" Grid.ColumnSpan="99">
+			<TextBlock x:Name="Status" HorizontalAlignment="Right" Margin="0 0 10 0" />
+		</StackPanel>
+		
 		<StackPanel Grid.RowSpan="99" Grid.ColumnSpan="99" Panel.ZIndex="99" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="5" hc:Growl.Token="DatabaseStudio">
 			<Grid Width="320" MinHeight="60" Margin="0 10 0 0" Visibility="{Binding Path=Visibility,ElementName=SaveMessage}">
 				<Grid.ColumnDefinitions>

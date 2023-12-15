@@ -74,7 +74,7 @@ public partial class ItemPageViewModel : ObservableObject
 
 		Growl.Success(new GrowlInfo()
 		{
-			Message = string.Format(StringHelper.Get("ItemList_TaskCompleted"), Out.Count, span),
+			Message = StringHelper.Get("ItemList_TaskCompleted", Out.Count, span),
 			StaysOpen = true,
 		});
 	}
@@ -114,7 +114,7 @@ public partial class ItemPageViewModel : ObservableObject
 		DateTime dt = DateTime.Now;
 		await instance.Output(new FileInfo(save.FileName));
 
-		Growl.Success(string.Format(StringHelper.Get("ItemList_TaskCompleted2"), 0, (DateTime.Now - dt).TotalSeconds));
+		Growl.Success(StringHelper.Get("ItemList_TaskCompleted2", 0, (DateTime.Now - dt).TotalSeconds));
 	}
 	#endregion
 }

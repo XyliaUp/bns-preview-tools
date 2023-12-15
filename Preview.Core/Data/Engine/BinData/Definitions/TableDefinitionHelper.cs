@@ -8,7 +8,7 @@ using Xylia.Preview.Data.Engine.BinData.Models;
 using Xylia.Preview.Data.Models;
 using Xylia.Preview.Properties;
 
-namespace Xylia.Preview.Data.Engine.BinData.Definitions;
+namespace Xylia.Preview.Data.Engine.Definitions;
 public static class TableDefinitionHelper
 {
 	public static string GetResource(this string name)
@@ -331,10 +331,14 @@ public static class TableDefinitionHelper
 			var block = (size - definition.Size) / 4;
 			if (block == 0) return;
 
-			Console.WriteLine($"[{DateTime.Now}] check field size, " +
-				$"table: {record.Owner.Name} " +
-				$"type: {(record.SubclassType == -1 ? "null" : definition.Name)} " +
-				$"size: {definition.Size} <> {size} block: {block}");
+			// skip default definition
+			if (size > 8)
+			{
+				Console.WriteLine($"[{DateTime.Now}] check field size, " +
+					 $"table: {record.Owner.Name} " +
+					 $"type: {(record.SubclassType == -1 ? "null" : definition.Name)} " +
+					 $"size: {definition.Size} <> {size} block: {block}");
+			}
 
 			if (block > 0)
 			{

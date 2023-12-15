@@ -1,17 +1,14 @@
 ﻿using System.Data;
 using System.Diagnostics;
 using System.Xml;
-
 using K4os.Hash.xxHash;
-
 using Newtonsoft.Json;
-
 using Xylia.Preview.Common.Extension;
 using Xylia.Preview.Data.Common;
 using Xylia.Preview.Data.Common.DataStruct;
-using Xylia.Preview.Data.Engine.BinData.Definitions;
 using Xylia.Preview.Data.Engine.BinData.Helpers;
 using Xylia.Preview.Data.Engine.DatData;
+using Xylia.Preview.Data.Engine.Definitions;
 using Xylia.Preview.Data.Engine.Readers;
 using Xylia.Preview.Data.Helpers;
 using Xylia.Preview.Data.Models;
@@ -56,7 +53,6 @@ public class Table : TableHeader, IDisposable
 	#endregion
 
 
-
 	#region Data
 	internal TableArchive Archive { get; set; }
 
@@ -90,7 +86,7 @@ public class Table : TableHeader, IDisposable
 	/// <returns></returns>
 	public Record[] Search(AttributeDefinition attribute, string value)
 	{
-		if (attribute != null && attribute.IsRequired)
+		if (attribute != null /*&& attribute.IsRequired*/)
 		{
 			lock (ByRequired)
 			{
@@ -131,9 +127,6 @@ public class Table : TableHeader, IDisposable
 		}
 	}
 	#endregion
-
-
-
 
 
 	#region Load Methods

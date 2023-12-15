@@ -1,6 +1,4 @@
-﻿using Xylia.Preview.Data.Engine.BinData.Models;
-
-namespace Xylia.Preview.Data.Engine.BinData.Definitions;
+﻿namespace Xylia.Preview.Data.Engine.Definitions;
 public class TableDefinition
 {
 	/// <summary>
@@ -40,29 +38,40 @@ public class TableDefinition
 	/// </summary>
 	public ElDefinition ElRecord { get; set; }
 
+	/// <summary>
+	/// Has record element
+	/// </summary>
 	public bool IsEmpty => ElRecord is null;
+
+	/// <summary>
+	/// Is default definition 
+	/// </summary>
+	internal bool IsDefault { get; private set; } = false;
+
 
 
 	#region Static Methods
+	/// <summary>
+	/// create default <see cref="TableDefinition"/> if not found
+	/// </summary>
+	/// <param name="type"></param>
+	/// <returns></returns>
 	public static TableDefinition CreateDefault(short type)
 	{
-		var definition = new TableDefinition() { Type = type, Name = type.ToString() };
-		var autoIdAttr = new AttributeDefinition
+		var definition = new TableDefinition()
 		{
-			Name = AttributeCollection.s_autoid,
-			Size = 8,
-			Offset = 8,
-			Type = AttributeType.TInt64,
-			IsKey = true,
-			IsRequired = true,
-			Repeat = 1
+			IsDefault = true,
+			Type = type, 
+			Name = type.ToString() , 
 		};
 
-		var elRecord = new ElDefinition() { Name = "record" };
-		elRecord.ExpandedAttributes.Add(autoIdAttr);
-		elRecord.Size = 16;
-
 		var elRoot = new ElDefinition() { Name = "table" };
+		var elRecord = new ElDefinition
+		{
+			Name = "record",
+			Size = 8
+		};
+
 		elRoot.Children.Add(elRecord);
 
 		definition.Els.Add(elRoot);

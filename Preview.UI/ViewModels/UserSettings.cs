@@ -177,5 +177,8 @@ public partial class UserSettings : Settings
 			else ProcessFloatWindow.Instance.Close();
 		}
 	}
+
+
+	public int NoticeId { get => GetValue().ToInt32(); set => SetValue(value); }
 	#endregion
 }

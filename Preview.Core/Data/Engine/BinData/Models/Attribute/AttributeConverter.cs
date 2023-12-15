@@ -3,18 +3,17 @@ using System.Globalization;
 using Xylia.Preview.Common.Extension;
 using Xylia.Preview.Data.Common;
 using Xylia.Preview.Data.Common.DataStruct;
-using Xylia.Preview.Data.Engine.BinData.Definitions;
 using Xylia.Preview.Data.Engine.DatData;
-using Xylia.Preview.Data.Models;
+using Xylia.Preview.Data.Engine.Definitions;
 
-namespace Xylia.Preview.Data.Engine.BinData.Models;
+namespace Xylia.Preview.Data.Models;
 /// <summary>
 /// Provides converting attribute text to value, as well
 /// </summary>
 public class AttributeConverter
 {
     /// <summary>
-    /// equal AttributeCollection.Get
+    /// equal AttributeDocument.Get
     /// </summary>
     /// <param name="record"></param>
     /// <param name="attribute"></param>
@@ -119,7 +118,7 @@ public class AttributeConverter
         AttributeType.TInt64 => long.Parse(value),
         AttributeType.TFloat32 => float.Parse(value, NumberStyles.Float, CultureInfo.InvariantCulture),
         AttributeType.TBool => BnsBoolean.Parse(value),
-		AttributeType.TString => value,
+        AttributeType.TString => value,
         AttributeType.TSeq => value,
         AttributeType.TSeq16 => value,
         AttributeType.TRef => provider.Tables.GetRecord(attribute.ReferedTableName, value),
@@ -141,10 +140,10 @@ public class AttributeConverter
         AttributeType.TNative => value,
         AttributeType.TVersion => new Version(value),
         AttributeType.TIcon => value,
-		//AttributeType.TTime32 => value,
-		AttributeType.TTime64 => Time64.Parse(value),
-        AttributeType.TXUnknown1 => Time64.Parse(value),
-        AttributeType.TXUnknown2 => new ObjectPath(value),
+        //AttributeType.TTime32 => value,
+        AttributeType.TTime64 => Time64.Parse(value),
+        AttributeType.TXUnknown1 => Time64.Parse(value),     //	((DateTime)value).Truncate();
+		AttributeType.TXUnknown2 => new ObjectPath(value),
         _ => throw new Exception($"Unhandled type name: '{attribute.Type}'"),
     };
 
@@ -178,23 +177,24 @@ public class AttributeConverter
         //throw new NotSupportedException($"type not supported: {type}");
         Trace.WriteLine($"type not supported: {type}");
         return null;
-    }
+	}
 
 
-    private static readonly Dictionary<Type, AttributeType> TypeCode = new()
+    internal static readonly Dictionary<Type, AttributeType> TypeCode = new()
     {
         [typeof(sbyte)] = AttributeType.TInt8,
         [typeof(short)] = AttributeType.TInt16,
         [typeof(int)] = AttributeType.TInt32,
         [typeof(long)] = AttributeType.TInt64,
         [typeof(float)] = AttributeType.TFloat32,
-        [typeof(bool)] = AttributeType.TBool,
+		[typeof(double)] = AttributeType.TFloat32,
+		[typeof(bool)] = AttributeType.TBool,
         [typeof(string)] = AttributeType.TString,
-                         
 
-		[typeof(Sub)] = AttributeType.TSub,
 
-		[typeof(Vector16)] = AttributeType.TVector16,
+        [typeof(Sub)] = AttributeType.TSub,
+
+        [typeof(Vector16)] = AttributeType.TVector16,
         [typeof(Vector32)] = AttributeType.TVector32,
         [typeof(IColor)] = AttributeType.TIColor,
         //[typeof(FColor)] = AttributeType.TFColor,
@@ -208,6 +208,6 @@ public class AttributeConverter
         [typeof(BnsVersion)] = AttributeType.TVersion,
         [typeof(Time64)] = AttributeType.TXUnknown1,
         [typeof(ObjectPath)] = AttributeType.TXUnknown2,
-	};
+    };
     #endregion
 }

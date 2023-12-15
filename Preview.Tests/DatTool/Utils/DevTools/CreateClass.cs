@@ -3,7 +3,7 @@ using System.Text.RegularExpressions;
 using System.Xml;
 
 using Xylia.Preview.Common.Extension;
-using Xylia.Preview.Data.Engine.BinData.Definitions;
+using Xylia.Preview.Data.Engine.Definitions;
 
 namespace Xylia.Preview.Tests.DatTool.Utils.DevTools;
 public static class CreateClass

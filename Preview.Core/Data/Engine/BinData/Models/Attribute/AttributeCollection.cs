@@ -1,15 +1,13 @@
 ﻿using System.Collections;
-using System.Diagnostics.CodeAnalysis;
 using System.Dynamic;
 using System.Xml;
-
 using Xylia.Preview.Common.Extension;
 using Xylia.Preview.Data.Common;
 using Xylia.Preview.Data.Common.DataStruct;
-using Xylia.Preview.Data.Engine.BinData.Definitions;
-using Xylia.Preview.Data.Models;
+using Xylia.Preview.Data.Engine.BinData.Models;
+using Xylia.Preview.Data.Engine.Definitions;
 
-namespace Xylia.Preview.Data.Engine.BinData.Models;
+namespace Xylia.Preview.Data.Models;
 /// <summary>
 /// attributes of data record 
 /// </summary>
@@ -28,11 +26,10 @@ public class AttributeCollection : DynamicObject, IDisposable, IReadOnlyDictiona
 	/// <summary>
 	/// for xml element
 	/// </summary>
-	private readonly Dictionary<string, object> _attributes = new();
+	private readonly Dictionary<string, object> attributes = [];
 	#endregion
 
-
-	#region Constructor
+	#region Ctor
 	internal AttributeCollection(Record record)
 	{
 		this.record = record;
@@ -46,17 +43,17 @@ public class AttributeCollection : DynamicObject, IDisposable, IReadOnlyDictiona
 			var name = item.Name;
 			if (name == s_type) continue;
 
-			_attributes[name] = item.Value;
+			attributes[name] = item.Value;
 		}
 
 		// Native
 		if (!string.IsNullOrEmpty(element.InnerXml))
 		{
 			var attr = definition.Attributes.FirstOrDefault(a => a.Type == AttributeType.TNative);
-			if (attr != null) _attributes[attr.Name] = element.InnerXml;
+			if (attr != null) attributes[attr.Name] = element.InnerXml;
 		}
 
-		_attributes[s_autoid] = index;
+		attributes[s_autoid] = index;
 		#endregion
 
 
@@ -67,11 +64,12 @@ public class AttributeCollection : DynamicObject, IDisposable, IReadOnlyDictiona
 			var table = new Table() { Owner = provider, Definition = new TableDefinition() { ElRecord = child } };
 			table.LoadElement(element, null);
 
-			record.Children[child.Name] = table.Records.ToArray();
+			record.Children[child.Name] = [.. table.Records];
 		}
 		#endregion
 	}
 	#endregion
+
 
 	#region Methods
 	internal void CreateData(ITableDefinition definition, bool OnlyKey = false)
@@ -82,22 +80,21 @@ public class AttributeCollection : DynamicObject, IDisposable, IReadOnlyDictiona
 		}
 		else
 		{
-			Test = true;
-
 			definition.ExpandedAttributes.ForEach(record.Attributes.Set);
-			_attributes.Clear();
+			attributes.Clear();
 		}
 	}
+
+	public string this[string name] => Get(name)?.ToString();
+
+	public string this[string name, int index] => this[$"{name}-{index}"];
 	#endregion
 
 
-	bool Test = false;
-
-
 	#region Get
-	public override bool TryGetMember(GetMemberBinder binder, out object result) => TryGetMember(binder.Name, binder.IgnoreCase, out result);
+	public override bool TryGetMember(GetMemberBinder binder, out object result) => TryGetValue(binder.Name, out result);
 
-	public bool TryGetMember(string name, bool ignoreCase, out object result)
+	public bool TryGetValue(string name, out object result)
 	{
 		result = Get(name);
 		return result != null || record.ElDefinition?[name] != null;
@@ -108,12 +105,12 @@ public class AttributeCollection : DynamicObject, IDisposable, IReadOnlyDictiona
 	public object Get(string name)
 	{
 		if (name == s_type) return record.ElDefinition.Name;
-		var attribute = record.ElDefinition[name];
+		var attribute = record?.ElDefinition[name];
 
 		// from prev
-		if (_attributes.Count != 0)
+		if (attributes.Count != 0)
 		{
-			var value = _attributes.GetValueOrDefault(name, attribute?.DefaultValue);
+			var value = attributes.GetValueOrDefault(name, attribute?.DefaultValue);
 			if (value is string s && attribute != null) value = AttributeConverter.ConvertBack(s, attribute, record.Owner.Owner);
 
 			return value;
@@ -122,10 +119,6 @@ public class AttributeCollection : DynamicObject, IDisposable, IReadOnlyDictiona
 		// from definition
 		return AttributeConverter.ConvertTo(record, attribute, record.Owner.Owner);
 	}
-
-
-	public string this[string name] => Get(name)?.ToString();
-	public string this[string name, int index] => this[$"{name}-{index}"];
 	#endregion
 
 	#region Set
@@ -140,7 +133,7 @@ public class AttributeCollection : DynamicObject, IDisposable, IReadOnlyDictiona
 
 	internal void Set(AttributeDefinition attribute)
 	{
-		Set(attribute, this.Get(attribute.Name));
+		Set(attribute, Get(attribute.Name));
 	}
 
 	public void Set(AttributeDefinition attribute, object value)
@@ -220,7 +213,7 @@ public class AttributeCollection : DynamicObject, IDisposable, IReadOnlyDictiona
 	#region Interface
 	public void Dispose()
 	{
-		_attributes.Clear();
+		attributes.Clear();
 		GC.SuppressFinalize(this);
 	}
 
@@ -228,12 +221,23 @@ public class AttributeCollection : DynamicObject, IDisposable, IReadOnlyDictiona
 
 	public IEnumerator<KeyValuePair<AttributeDefinition, object>> GetEnumerator()
 	{
-		if (_attributes.Count != 0)
+		if (attributes.Count != 0)
 		{
-			foreach (var attribute in _attributes)
+			foreach (var attribute in attributes)
 			{
-				var definition = record.ElDefinition?[attribute.Key] ?? new AttributeDefinition() { Name = attribute.Key };
-				yield return new(definition, attribute.Value);
+				var value = attribute.Value;
+				var definition = record?.ElDefinition?[attribute.Key];
+
+				// convert type
+				if (value is string s && definition != null)
+				{
+					var temp = AttributeConverter.ConvertBack(s, definition, record.Owner.Owner);
+					if (temp != null) attributes[attribute.Key] = value = temp;
+				}
+
+				// virtual definition, ensure the name can be getted
+				definition ??= new AttributeDefinition() { Name = attribute.Key, Type = AttributeType.TString };
+				yield return new(definition, value);
 			}
 
 			yield break;
@@ -252,11 +256,11 @@ public class AttributeCollection : DynamicObject, IDisposable, IReadOnlyDictiona
 
 	public IEnumerable<object> Values => this.Select(x => x.Value);
 
-	public object this[AttributeDefinition key] => this.Get(key.Name);
+	public object this[AttributeDefinition key] => Get(key.Name);
 
 	public bool ContainsKey(AttributeDefinition key) => record.ElDefinition[key.Name] != null;
 
-	public bool TryGetValue(AttributeDefinition key, [MaybeNullWhen(false)] out object value)
+	public bool TryGetValue(AttributeDefinition key, out object value)
 	{
 		throw new NotImplementedException();
 	}
