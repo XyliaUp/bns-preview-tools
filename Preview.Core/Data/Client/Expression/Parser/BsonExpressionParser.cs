@@ -145,10 +145,10 @@ internal class BsonExpressionParser
 				var isLeftEnum = op.Key.StartsWith("ALL") || op.Key.StartsWith("ANY");
 
 				if (isLeftEnum && left.IsScalar) left = ConvertToEnumerable(left);
-				//if (isLeftEnum && left.IsScalar) throw new BnsException($"Left expression `{left.Source}` must return multiples values");
-				if (!isLeftEnum && !left.IsScalar) throw new BnsException($"Left expression `{left.Source}` returns more than one result. Try use ANY or ALL before operant.");
-				if (!isLeftEnum && !right.IsScalar) throw new BnsException($"Left expression `{right.Source}` must return a single value");
-				if (right.IsScalar == false) throw new BnsException($"Right expression `{right.Source}` must return a single value");
+				//if (isLeftEnum && left.IsScalar) throw new BnsDatabaseException($"Left expression `{left.Source}` must return multiples values");
+				if (!isLeftEnum && !left.IsScalar) throw new BnsDataException($"Left expression `{left.Source}` returns more than one result. Try use ANY or ALL before operant.");
+				if (!isLeftEnum && !right.IsScalar) throw new BnsDataException($"Left expression `{right.Source}` must return a single value");
+				if (right.IsScalar == false) throw new BnsDataException($"Right expression `{right.Source}` must return a single value");
 
 				BsonExpression result;
 
@@ -212,15 +212,15 @@ internal class BsonExpressionParser
 			TryParseBool(tokenizer, parameters) ??
 			TryParseNull(tokenizer, parameters) ??
 			TryParseString(tokenizer, parameters) ??
-			TryParseSource(tokenizer, context, parameters, scope) ??
 			TryParseDocument(tokenizer, context, parameters, scope) ??
 			TryParseArray(tokenizer, context, parameters, scope) ??
 			TryParseParameter(tokenizer, context, parameters, scope) ??
 			TryParseInnerExpression(tokenizer, context, parameters, scope) ??
 			TryParseFunction(tokenizer, context, parameters, scope) ??
 			TryParseMethodCall(tokenizer, context, parameters, scope) ??
+			TryParseSource(tokenizer, context, parameters, scope) ??
 			TryParsePath(tokenizer, context, parameters, scope) ??
-			throw BnsException.UnexpectedToken(token);
+			throw BnsDataException.UnexpectedToken(token);
 	}
 
 	/// <summary>
@@ -694,7 +694,8 @@ internal class BsonExpressionParser
 	/// </summary>
 	private static BsonExpression TryParseSource(Tokenizer tokenizer, ExpressionContext context, AttributeDocument parameters, DocumentScope scope)
 	{
-		if (tokenizer.Current.Type != TokenType.Asterisk) return null;
+		if (tokenizer.Current.Type != TokenType.Asterisk &&
+		   (tokenizer.Current.Type != TokenType.Word || scope != DocumentScope.Aggregate)) return null;
 
 		var sourceExpr = new BsonExpression
 		{
@@ -708,13 +709,37 @@ internal class BsonExpressionParser
 			Source = "*"
 		};
 
+		// check if is simple source fileds 
+		if (tokenizer.Current.Type == TokenType.Word)
+		{
+			tokenizer.Skip = true;
+			var pathExpr = BsonExpression.ParseAndCompile(tokenizer, BsonExpressionParserMode.Single, parameters, DocumentScope.Source)
+				?? throw BnsDataException.UnexpectedToken(tokenizer.Current);
+
+			return new BsonExpression
+			{
+				Type = BsonExpressionType.Map,
+				Parameters = parameters,
+				IsImmutable = pathExpr.IsImmutable,
+				UseSource = true,
+				IsScalar = false,
+				Fields = new HashSet<string>(StringComparer.OrdinalIgnoreCase).AddRange(pathExpr.Fields),
+				Expression = Expression.Call(BsonExpression.GetFunction("MAP"), context.Root, context.Collation, context.Parameters, sourceExpr.Expression, Expression.Constant(pathExpr)),
+				Source = "MAP(*=>" + pathExpr.Source + ")"
+			};
+		}
+		// checks if is fields from "SELECT * FROM"
+		else if (tokenizer.LookAhead(false).Type == TokenType.Whitespace)
+		{
+			return null;
+		}
 		// checks if next token is "." to shortcut from "*.Name" as "MAP(*, @.Name)"
-		if (tokenizer.LookAhead(false).Type == TokenType.Period)
+		else if (tokenizer.LookAhead(false).Type == TokenType.Period)
 		{
 			tokenizer.ReadToken(); // consume .
 
 			var pathExpr = BsonExpression.ParseAndCompile(tokenizer, BsonExpressionParserMode.Single, parameters, DocumentScope.Source)
-				?? throw BnsException.UnexpectedToken(tokenizer.Current);
+				?? throw BnsDataException.UnexpectedToken(tokenizer.Current);
 
 			return new BsonExpression
 			{
@@ -880,7 +905,8 @@ internal class BsonExpressionParser
 		var useSource = false;
 		var fields = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
 
-		src.Append(token.Value.ToUpperInvariant() + "(");
+		var tokenName = token.Value.ToUpperInvariant();
+		src.Append(tokenName + "(");
 
 		// method call with no parameters
 		if (tokenizer.LookAhead().Type == TokenType.CloseParenthesis)
@@ -889,9 +915,12 @@ internal class BsonExpressionParser
 		}
 		else
 		{
+			// test if is aggregate function 
+			bool IsAggregate = tokenName is "SUM" or "MAX" or "MIN" or "AVG" or "COUNT";
+
 			while (!tokenizer.CheckEOF())
 			{
-				var parameter = ParseFullExpression(tokenizer, context, parameters, scope);
+				var parameter = ParseFullExpression(tokenizer, context, parameters, IsAggregate ? DocumentScope.Aggregate : scope);
 
 				// update isImmutable only when came false
 				if (parameter.IsImmutable == false) isImmutable = false;
@@ -917,7 +946,7 @@ internal class BsonExpressionParser
 		}
 
 		var method = BsonExpression.GetMethod(token.Value, pars.Count)
-			?? throw BnsException.UnexpectedToken($"Method '{token.Value.ToUpperInvariant()}' does not exist or contains invalid parameters", token);
+			?? throw BnsDataException.UnexpectedToken($"Method '{token.Value.ToUpperInvariant()}' does not exist or contains invalid parameters", token);
 
 		// test if method are decorated with "Variable" (immutable = false)
 		if (method.GetCustomAttribute<VolatileAttribute>() != null)
@@ -974,13 +1003,16 @@ internal class BsonExpressionParser
 	private static BsonExpression TryParsePath(Tokenizer tokenizer, ExpressionContext context, AttributeDocument parameters, DocumentScope scope)
 	{
 		// test $ or @ or WORD
-		if (tokenizer.Current.Type != TokenType.At && tokenizer.Current.Type != TokenType.Dollar && tokenizer.Current.Type != TokenType.Word) return null;
+		if (tokenizer.Current.Type != TokenType.At && tokenizer.Current.Type != TokenType.Word &&
+			tokenizer.Current.Type != TokenType.Dollar && tokenizer.Current.Type != TokenType.Asterisk) return null;
 
 		var defaultScope = (scope == DocumentScope.Root ? TokenType.Dollar : TokenType.At);
 
-		if (tokenizer.Current.Type == TokenType.At || tokenizer.Current.Type == TokenType.Dollar)
+		if (tokenizer.Current.Type == TokenType.At ||
+			tokenizer.Current.Type == TokenType.Dollar || tokenizer.Current.Type == TokenType.Asterisk)
 		{
 			defaultScope = tokenizer.Current.Type;
+			if (tokenizer.Current.Type == TokenType.Asterisk) defaultScope = TokenType.Dollar;
 
 			var ahead = tokenizer.LookAhead(false);
 
@@ -1045,7 +1077,7 @@ internal class BsonExpressionParser
 			tokenizer.ReadToken(); // consume .
 
 			var mapExpr = BsonExpression.ParseAndCompile(tokenizer, BsonExpressionParserMode.Single, parameters, DocumentScope.Current)
-				?? throw BnsException.UnexpectedToken(tokenizer.Current);
+				?? throw BnsDataException.UnexpectedToken(tokenizer.Current);
 
 			return new BsonExpression
 			{
@@ -1121,7 +1153,7 @@ internal class BsonExpressionParser
 				// inner expression
 				inner = BsonExpression.ParseAndCompile(tokenizer, BsonExpressionParserMode.Full, parameters, DocumentScope.Current);
 
-				if (inner == null) throw BnsException.UnexpectedToken(tokenizer.Current);
+				if (inner == null) throw BnsDataException.UnexpectedToken(tokenizer.Current);
 
 				// if array filter is not immutable, update ref (update only when false)
 				if (inner.IsImmutable == false) isImmutable = false;
@@ -1274,8 +1306,8 @@ internal class BsonExpressionParser
 		var values = new Expression[] { item0.Expression, item1.Expression };
 
 		// both values must be scalar expressions
-		if (item0.IsScalar == false) throw new BnsException($"Expression `{item0.Source}` must be a scalar expression");
-		if (item1.IsScalar == false) throw new BnsException($"Expression `{item0.Source}` must be a scalar expression");
+		if (item0.IsScalar == false) throw new BnsDataException($"Expression `{item0.Source}` must be a scalar expression");
+		if (item1.IsScalar == false) throw new BnsDataException($"Expression `{item0.Source}` must be a scalar expression");
 
 		var arrValues = Expression.NewArrayInit(typeof(AttributeValue), values.ToArray());
 
@@ -1381,7 +1413,7 @@ internal class BsonExpressionParser
 
 			token = tokenizer.ReadToken();
 
-			if (token.IsOperand == false) throw BnsException.UnexpectedToken("Expected valid operand", token);
+			if (token.IsOperand == false) throw BnsDataException.UnexpectedToken("Expected valid operand", token);
 
 			return key + " " + token.Value;
 		}

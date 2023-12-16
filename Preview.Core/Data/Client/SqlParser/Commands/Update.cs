@@ -32,9 +32,8 @@ internal partial class SqlParser
         // read eof
         _tokenizer.ReadToken().Expect(TokenType.EOF, TokenType.SemiColon);
 
-        //var result = _engine.UpdateMany(collection, transform, where);
+        var result = _engine.UpdateMany(collection, transform, where);
 
-        //var test = new BsonDataReader(result);
-        return null;
+		return new DataReader(result);
     }
 }

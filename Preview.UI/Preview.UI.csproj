@@ -215,7 +215,7 @@
 		<Resource Include="Art\GameUI\Resource\GameUI_Window_R\ItemIcon_Bg_Grade_8.png" />
 		<Resource Include="Art\GameUI\Resource\GameUI_Window_R\ItemIcon_Bg_Grade_9.png" />
 		<Resource Include="Resources\Images\*" />
-		<Resource Include="Resources\Images\ue3\*" />
+		<Resource Include="Resources\Images\*\*" />
 		<Resource Include="Resources\Fonts\segmdl2.ttf" />
 		<Resource Include="Resources\Xshd\*.xshd" />
 	</ItemGroup>

@@ -5,7 +5,7 @@ using Xylia.Preview.UI.ViewModels;
 using Xylia.Preview.UI.Views.Selector;
 
 namespace Xylia.Preview.UI.Services;
-public static class RegisterService
+internal static class RegisterService
 {
 	public static void Create()
 	{

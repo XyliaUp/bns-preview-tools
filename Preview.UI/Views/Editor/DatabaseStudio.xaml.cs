@@ -44,11 +44,10 @@ public partial class DatabaseStudio
 			LoadTreeView();
 		}
 
-		// dev
-		database = new BnsDatabase(new FolderProvider(@"G:\新建文件夹"));
-		LoadTreeView();
-
-		ExecuteSql("SELECT COUNT(*) FROM store2  ");
+		#region DEV
+		database = new BnsDatabase(new FolderProvider("G:\\"));
+		ExecuteSql("SELECT 1+1");
+		#endregion
 	}
 	#endregion
 
@@ -300,7 +299,7 @@ public partial class DatabaseStudio
 				DataContext = table,
 				Header = text,
 				Image = ImageHelper.Table,
-				Tag = $"SELECT $ FROM \"{table.Name ?? table.Type.ToString()}\"\nLIMIT {TaskData.LIMITNUM}",
+				Tag = $"SELECT * FROM \"{table.Name ?? table.Type.ToString()}\"\nLIMIT {TaskData.LIMITNUM}",
 				ContextMenu = this.TryFindResource("TableMenu") as ContextMenu,
 
 				Margin = new Thickness(0, 0, 0, 2),

@@ -138,35 +138,35 @@ public class BnsDatabase : IEngine, IDisposable
 		return exec.ExecuteQuery();
 	}
 
-	//public int Insert(string collection, IEnumerable<AttributeDocument> docs)
-	//{
-	//	throw new NotImplementedException();
-	//}
+	public int Insert(string collection, IEnumerable<AttributeDocument> docs)
+	{
+		throw new NotImplementedException();
+	}
 
-	//public int Update(string collection, IEnumerable<AttributeDocument> docs)
-	//{
-	//	throw new NotImplementedException();
-	//}
+	public int Update(string collection, IEnumerable<AttributeDocument> docs)
+	{
+		throw new NotImplementedException();
+	}
 
-	//public int UpdateMany(string collection, BsonExpression transform, BsonExpression predicate)
-	//{
-	//	throw new NotImplementedException();
-	//}
+	public int UpdateMany(string collection, BsonExpression transform, BsonExpression predicate)
+	{
+		throw new NotImplementedException();
+	}
 
-	//public int Upsert(string collection, IEnumerable<AttributeDocument> docs)
-	//{
-	//	throw new NotImplementedException();
-	//}
+	public int Upsert(string collection, IEnumerable<AttributeDocument> docs)
+	{
+		throw new NotImplementedException();
+	}
 
-	//public int Delete(string collection, IEnumerable<AttributeValue> ids)
-	//{
-	//	throw new NotImplementedException();
-	//}
+	public int Delete(string collection, IEnumerable<AttributeValue> ids)
+	{
+		throw new NotImplementedException();
+	}
 
-	//public int DeleteMany(string collection, BsonExpression predicate)
-	//{
-	//	throw new NotImplementedException();
-	//}
+	public int DeleteMany(string collection, BsonExpression predicate)
+	{
+		throw new NotImplementedException();
+	}
 	#endregion
 
 

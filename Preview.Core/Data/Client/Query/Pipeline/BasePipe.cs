@@ -1,4 +1,5 @@
 ﻿using SharpGLTF.Schema2;
+using Xylia.Preview.Common;
 using Xylia.Preview.Data.Models;
 
 namespace Xylia.Preview.Data.Client;
@@ -16,6 +17,9 @@ internal abstract class BasePipe
 	// load documents from document loader
 	protected IEnumerable<AttributeDocument> LoadDocument(IEnumerable<Record> nodes)
 	{
+		//if(nodes is null) throw BnsDatabaseException.InvalidExpressionType
+			
+
 		foreach (var node in nodes)
 		{
 			yield return new AttributeDocument(node.Attributes);

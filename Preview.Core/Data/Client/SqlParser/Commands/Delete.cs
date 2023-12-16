@@ -24,8 +24,8 @@ internal partial class SqlParser
 
 		_tokenizer.ReadToken();
 
-		//var result = _engine.DeleteMany(collection, where);
-		//var test = new BsonDataReader(result);
-		return null;
+		var result = _engine.DeleteMany(collection, where);
+
+		return new DataReader(result);
 	}
 }

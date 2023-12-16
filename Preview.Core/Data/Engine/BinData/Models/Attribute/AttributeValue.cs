@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using Newtonsoft.Json;
 using Xylia.Preview.Data.Client;
+using Xylia.Preview.Data.Common.DataStruct;
 using Xylia.Preview.Data.Engine.BinData.Helpers;
 using Xylia.Preview.Data.Engine.Definitions;
 
@@ -124,7 +125,7 @@ public class AttributeValue : IComparable<AttributeValue>, IEquatable<AttributeV
 
 
 	[DebuggerBrowsable(DebuggerBrowsableState.Never)]
-	public bool AsBoolean => (bool)this.RawValue;
+	public bool AsBoolean => (bool)(BnsBoolean)this.RawValue;
 
 	[DebuggerBrowsable(DebuggerBrowsableState.Never)]
 	public string AsString => (string)this.RawValue;

@@ -53,7 +53,7 @@ public partial class AttributeDefinition
 			if (TypeName.Equals("struct", StringComparison.OrdinalIgnoreCase)) return null;
 			else if (TypeName.Equals("dictionary", StringComparison.OrdinalIgnoreCase)) return null;
 
-			throw new BnsDefinitionException($"Failed to determine attribute type: {table.Name}: {Name} ({TypeName})");
+			throw BnsDataException.InvalidDefinition($"Failed to determine attribute type: {table.Name}: {Name} ({TypeName})");
 		}
 		#endregion
 

@@ -3,5 +3,7 @@ internal enum DocumentScope
 {
     Source,
     Root,
-    Current
+    Current,
+
+	Aggregate,
 }

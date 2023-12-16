@@ -20,7 +20,7 @@ internal partial class BsonExpressionMethods
         //        value = JsonSerializer.Deserialize(json.AsString);
         //        isJson = true;
         //    }
-        //    catch (LiteException ex) when (ex.ErrorCode == BnsException.UNEXPECTED_TOKEN)
+        //    catch (LiteException ex) when (ex.ErrorCode == BnsDatabaseException.UNEXPECTED_TOKEN)
         //    {
         //    }
 

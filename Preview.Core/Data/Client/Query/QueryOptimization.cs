@@ -1,6 +1,6 @@
-﻿using Xylia.Preview.Data.Models;
-using Xylia.Preview.Common.Extension;
+﻿using Xylia.Preview.Common.Extension;
 using Xylia.Preview.Data.Common.Exceptions;
+using Xylia.Preview.Data.Models;
 
 namespace Xylia.Preview.Data.Client;
 
@@ -78,7 +78,7 @@ internal class QueryOptimization
 			// do not accept source * in WHERE
 			if (predicate.UseSource)
 			{
-				throw new BnsException($"WHERE filter can not use `*` expression in `{predicate.Source}");
+				throw new BnsDataException($"WHERE filter can not use `*` expression in `{predicate.Source}");
 			}
 
 			// add expression in where list breaking AND statments
@@ -96,7 +96,7 @@ internal class QueryOptimization
 			}
 			else
 			{
-				throw BnsException.InvalidExpressionTypePredicate(predicate);
+				throw BnsDataException.InvalidExpressionTypePredicate(predicate);
 			}
 		}
 

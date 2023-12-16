@@ -235,7 +235,7 @@ internal class BsonExpressionOperators
         // SELECT COUNT(*), $.pageID FROM $page_list IS invalid!
         if (value == null)
         {
-            throw new BnsException($"Field '{name}' is invalid in the select list because it is not contained in either an aggregate function or the GROUP BY clause.");
+            throw new BnsDataException($"Field '{name}' is invalid in the select list because it is not contained in either an aggregate function or the GROUP BY clause.");
         }
 
         if (string.IsNullOrEmpty(name))
@@ -272,7 +272,7 @@ internal class BsonExpressionOperators
             // get fixed position based on parameter value (must return int value)
             var indexValue = expr.ExecuteScalar(root, collation);
 
-            if (!indexValue.IsNumeric) throw new BnsException("Parameter expression must return number when called inside an array");
+            if (!indexValue.IsNumeric) throw new BnsDataException("Parameter expression must return number when called inside an array");
 
             index = indexValue.AsInt32;
         }

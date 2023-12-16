@@ -206,7 +206,7 @@ public static class TableDefinitionHelper
 		table.ElRecord.MaxId = (tableNode.Attributes["maxid"]?.Value).ToInt32();
 
 		if (type == 0 && string.IsNullOrWhiteSpace(table.Name))
-			throw new BnsDefinitionException("table must set `type` or `name` fields");
+			throw BnsDataException.InvalidDefinition("table must set `type` or `name` fields");
 
 		// Add auto key id
 		if (table.ElRecord.AutoKey)
@@ -247,7 +247,7 @@ public static class TableDefinitionHelper
 			}
 			catch (Exception ee)
 			{
-				throw new BnsDefinitionException($"attribute load failed: {node.OuterXml}", ee);
+				throw BnsDataException.InvalidDefinition($"attribute load failed: {node.OuterXml}");
 			}
 		}
 
@@ -387,7 +387,7 @@ public sealed class ConfigParam
 			{
 				string name = record.Attributes["name"]?.Value?.Trim();
 				if (param.PublicSeq.ContainsKey(name))
-					throw new BnsDefinitionException($"seq `{name}` has existed");
+					throw BnsDataException.InvalidSequence($"has existed" , name);
 
 				var seq = SequenceDefinition.LoadFrom(record, name);
 				if (seq != null) param.PublicSeq[name] = seq;

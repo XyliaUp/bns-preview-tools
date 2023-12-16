@@ -17,7 +17,6 @@ internal partial class SqlParser
 
         var result = _engine.Commit();
 
-        var test = new DataReader(result);
-        return null;
+        return new DataReader(result);
 	}
 }

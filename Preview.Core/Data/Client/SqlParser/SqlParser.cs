@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics;
-using Xylia.Preview.Data.Models;
 using Xylia.Preview.Data.Common.Exceptions;
+using Xylia.Preview.Data.Models;
 
 namespace Xylia.Preview.Data.Client;
 /// <summary>
@@ -41,7 +41,7 @@ internal partial class SqlParser
 			case "UPDATE": return this.ParseUpdate();
 			case "COMMIT": return this.ParseCommit();
 
-			default: throw BnsException.UnexpectedToken(ahead);
+			default: throw BnsDataException.UnexpectedToken(ahead);
 		}
 	}
 }

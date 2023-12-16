@@ -21,7 +21,7 @@ internal partial class SqlParser
 
         //var result = _engine.Insert(collection, docs, autoId);
 
-        //var test = new BsonDataReader(result);
+        //var test = new DataReader(result);
         return null;
     }
 }

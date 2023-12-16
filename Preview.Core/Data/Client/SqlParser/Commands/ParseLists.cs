@@ -1,5 +1,4 @@
 ﻿using Xylia.Preview.Data.Models;
-using Xylia.Preview.Document;
 
 namespace Xylia.Preview.Data.Client;
 internal partial class SqlParser
@@ -45,7 +44,7 @@ internal partial class SqlParser
         //    }
         //    else
         //    {
-        //        throw BnsException.UnexpectedToken("Value must be a valid document", _tokenizer.Current);
+        //        throw BnsDatabaseException.UnexpectedToken("Value must be a valid document", _tokenizer.Current);
         //    }
 
         //    var next = _tokenizer.LookAhead();

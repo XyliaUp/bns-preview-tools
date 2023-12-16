@@ -263,7 +263,7 @@ public sealed class BsonExpression
         }
         else
         {
-            throw new BnsException($"Expression `{this.Source}` is not a scalar expression and can return more than one result");
+            throw new BnsDataException($"Expression `{this.Source}` is not a scalar expression and can return more than one result");
         }
     }
     #endregion
