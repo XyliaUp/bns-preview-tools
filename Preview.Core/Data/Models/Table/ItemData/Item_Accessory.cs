@@ -1,5 +1,5 @@
 ﻿using Xylia.Preview.Common.Extension;
-using Xylia.Preview.Data.Common.Attribute;
+using Xylia.Preview.Common.Attributes;
 
 namespace Xylia.Preview.Data.Models;
 public partial class Item
@@ -7,20 +7,17 @@ public partial class Item
 	#region Sub
 	public sealed class Weapon : Item
 	{
-		[Name("weapon-type")]
-		public WeaponTypeSeq WeaponType;
+			public WeaponTypeSeq WeaponType { get; set; }
 	}
 
 	public sealed class Costume : Item
 	{
-		[Name("custom-dress-design-state")]
-		public CustomDressDesignStateSeq CustomDressDesignState;
+			public CustomDressDesignStateSeq CustomDressDesignState { get; set; }
 	}
 
 	public sealed class Grocery : Item
 	{
-		[Name("grocery-type")]
-		public GroceryTypeSeq GroceryType => this.Attributes["grocery-type"].ToEnum<GroceryTypeSeq>();
+			public GroceryTypeSeq GroceryType => this.Attributes["grocery-type"].ToEnum<GroceryTypeSeq>();
 		public enum GroceryTypeSeq
 		{
 			Other,
@@ -29,64 +26,51 @@ public partial class Item
 
 			Seal,
 
-			[Name("random-box")]
-			RandomBox,
+					RandomBox,
 
-			[Name("cave-escape")]
-			CaveEscape,
+					CaveEscape,
 
 			Key,
 
-			[Name("weapon-gem-slot-expander")]
-			WeaponGemSlotExpander,
+					WeaponGemSlotExpander,
 
 			Sealed,
 
-			[Name("weapon-gem-slot-adder")]
-			WeaponGemSlotAdder,
+					WeaponGemSlotAdder,
 
 			Messenger,
 
-			[Name("quest-replay-epic")]
-			QuestReplayEpic,
+					QuestReplayEpic,
 
-			[Name("base-camp-warp")]
-			BaseCampWarp,
+					BaseCampWarp,
 
-			[Name("pet-food")]
-			PetFood,
+					PetFood,
 
-			[Name("reset-dungeon")]
-			ResetDungeon,
+					ResetDungeon,
 
-			[Name("skill-book")]
-			SkillBook,
+					SkillBook,
 
-			[Name("fishing-paste")]
-			FishingPaste,
+					FishingPaste,
 
 			Badge,
 
 			Scroll,
 
-			[Name("fusion-subitem")]
-			FusionSubitem,
+					FusionSubitem,
 
 			Card,
 
 			Glyph,
 
-			[Name("soul-boost")]
-			SoulBoost,
+					SoulBoost,
 		}
 
-		[Name("stack-count")]
-		public short StackCount;
+			public short StackCount { get; set; }
 
 		
-		[Name("bonus-exp")] public int BonusExp;
-		[Name("bonus-mastery-exp")] public int BonusMasteryExp;
-		[Name("bonus-account-exp")] public int BonusAccountExp;
+		public int BonusExp { get; set; }
+		public int BonusMasteryExp { get; set; }
+		public int BonusAccountExp { get; set; }
 
 		public string UnsealAcquireItem1 => this.Attributes["unseal-acquire-item-1"];
 		public string UnsealAcquireItem2 => this.Attributes["unseal-acquire-item-2"];
@@ -94,17 +78,13 @@ public partial class Item
 		public string UnsealAcquireItem4 => this.Attributes["unseal-acquire-item-4"];
 
 
-		[Name("badge-gear-score")]
-		public int BadgeGearScore;
+			public int BadgeGearScore { get; set; }
 
-		[Name("badge-synthesis-score")]
-		public int BadgeSynthesisScore;
+			public int BadgeSynthesisScore { get; set; }
 
-		[Name("slate-scroll")]
-		public Ref<SlateScroll> SlateScroll;
+			public Ref<SlateScroll> SlateScroll { get; set; }
 
-		[Name("card")]
-		public Ref<WorldAccountCard> Card;
+			public Ref<WorldAccountCard> Card { get; set; }
 	}
 
 	public sealed class Gem : Item
@@ -114,7 +94,7 @@ public partial class Item
 
 	public sealed class Accessory : Item
 	{
-		public AccessoryTypeSeq AccessoryType;
+		public AccessoryTypeSeq AccessoryType { get; set; }
 		public enum AccessoryTypeSeq
 		{
 			Accessory,
@@ -161,8 +141,7 @@ public partial class Item
 		}
 
 
-		[Name("custom-dress-design-state")]
-		public CustomDressDesignStateSeq CustomDressDesignState;
+			public CustomDressDesignStateSeq CustomDressDesignState { get; set; }
 	}
 
 	public sealed class Enchant : Item

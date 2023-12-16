@@ -7,11 +7,20 @@ using Xylia.Preview.Data.Models;
 namespace Xylia.Preview.UI.Controls;
 public interface IBnsCustomBaseWidget
 {
-	//object Children { get; set; }
+	ChildCollection Items { get; }
 }
 
-public abstract class BnsCustomBaseWidget : ItemsControl, IBnsCustomBaseWidget
+public class BnsCustomBaseWidget : ItemsControl
 {
+	#region Constructor
+	public BnsCustomBaseWidget()
+	{
+		this.ItemsPanel = new ItemsPanelTemplate(new FrameworkElementFactory(typeof(AnchorPanel)));
+		this.ItemsPanel.Seal();
+	}
+	#endregion
+
+
 	#region DependencyProperty 
 	public static readonly DependencyProperty MetaDataProperty = DependencyProperty.Register(nameof(MetaData), typeof(string), typeof(BnsCustomBaseWidget),
 		new PropertyMetadata(null, OnMetaDataChanged));
@@ -54,9 +63,10 @@ public abstract class BnsCustomBaseWidget : ItemsControl, IBnsCustomBaseWidget
 	#region Protected Methods
 	protected override void OnInitialized(EventArgs e)
 	{
+		base.OnInitialized(e);
+
 		//SetText(this.String);
 	}
-
 
 	protected virtual void SetText(string text)
 	{
@@ -68,11 +78,4 @@ public abstract class BnsCustomBaseWidget : ItemsControl, IBnsCustomBaseWidget
 		this.ToolTip = tooltip;
 	}
 	#endregion
-
-
-	public BnsCustomBaseWidget()
-	{
-		this.ItemsPanel = new ItemsPanelTemplate();
-		this.ItemsPanel.VisualTree = new FrameworkElementFactory(typeof(AnchorPanel));
-	}
 }

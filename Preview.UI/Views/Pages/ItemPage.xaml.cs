@@ -13,6 +13,10 @@ public partial class ItemPage : Page
 	{
 		DataContext = new ItemPageViewModel();
 		InitializeComponent();
+
+#if DEV
+	   DEBUG.IsSelected = True;
+#endif
 	}
 
 	#region Preview

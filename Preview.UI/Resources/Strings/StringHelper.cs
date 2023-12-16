@@ -4,8 +4,8 @@ using System.Reflection;
 using System.Resources;
 using System.Windows;
 using HandyControl.Tools;
+using Xylia.Preview.Common.Attributes;
 using Xylia.Preview.Common.Extension;
-using Xylia.Preview.Data.Common.Attribute;
 using Xylia.Preview.Data.Engine.DatData;
 using Xylia.Preview.UI.ViewModels;
 

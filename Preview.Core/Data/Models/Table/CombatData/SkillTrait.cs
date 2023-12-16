@@ -1,46 +1,33 @@
-﻿using Xylia.Preview.Data.Common.Attribute;
-using Xylia.Preview.Data.Common.DataStruct;
-using Xylia.Preview.Data.Models.Sequence;
+﻿using Xylia.Preview.Data.Models.Sequence;
 
 namespace Xylia.Preview.Data.Models;
 public class SkillTrait : ModelElement
 {
-	public string Alias;
+	public JobSeq Job { get; set; }
 
+	public JobStyleSeq JobStyle { get; set; }
 
+	public sbyte Tier { get; set; }
 
-	public JobSeq Job;
-
-	[Name("job-style")]
-	public JobStyleSeq JobStyle;
-
-	public sbyte Tier;
-
-	[Name("tier-variation")]
-	public sbyte TierVariation;
+	public sbyte TierVariation { get; set; }
 
 
 
 
-	public bool Enable = true;
+	public bool Enable { get; set; } 
 
 
-	public Ref<Text> Name2;
+	public Ref<Text> Name2 { get; set; }
 
-	[Name("icon-texture")]
-	public Ref<IconTexture> IconTexture;
+	public Ref<IconTexture> IconTexture { get; set; }
 
-	[Name("icon-index")]
-	public short IconIndex;
+	public short IconIndex { get; set; }
 
 
 
-	[Name("tooltip-train-name")]
-	public Ref<Text> TooltipTrainName;
+	public Ref<Text> TooltipTrainName { get; set; }
 
-	[Name("tooltip-train-description")]
-	public Ref<Text> TooltipTrainDescription;
+	public Ref<Text> TooltipTrainDescription { get; set; }
 
-	[Name("tooltip-effect-description")]
-	public Ref<Text> TooltipEffectDescription;
+	public Ref<Text> TooltipEffectDescription { get; set; }
 }

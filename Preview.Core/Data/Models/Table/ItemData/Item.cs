@@ -4,8 +4,8 @@ using CUE4Parse.UE4.Assets.Exports.Texture;
 using CUE4Parse_Conversion.Textures;
 
 using SkiaSharp;
+using Xylia.Preview.Common.Attributes;
 using Xylia.Preview.Common.Extension;
-using Xylia.Preview.Data.Common.Attribute;
 using Xylia.Preview.Data.Common.DataStruct;
 using Xylia.Preview.Data.Helpers;
 using Xylia.Preview.Data.Models.Sequence;
@@ -14,67 +14,47 @@ using static Xylia.Preview.Data.Models.Item.Grocery;
 namespace Xylia.Preview.Data.Models;
 public abstract partial class Item : ModelElement
 {
-	public string Alias;
-
-
 	[Repeat(10)]
-	public Ref<ItemCombat>[] ItemCombat;
+	public Ref<ItemCombat>[] ItemCombat { get; set; }
 
-	public Ref<ItemBrand> Brand;
+	public Ref<ItemBrand> Brand { get; set; }
 
 
+	public GameCategory2Seq GameCategory2 { get; set; }
 
-	[Name("game-category-2")]
-	public GameCategory2Seq GameCategory2;
+	public GameCategory3Seq GameCategory3 { get; set; }
 
-	[Name("game-category-3")]
-	public GameCategory3Seq GameCategory3;
+	public MarketCategory2Seq MarketCategory2 { get; set; }
 
-	[Name("market-category-2")]
-	public MarketCategory2Seq MarketCategory2;
-
-	[Name("market-category-3")]
-	public MarketCategory3Seq MarketCategory3;
+	public MarketCategory3Seq MarketCategory3 { get; set; }
 
 
 
-	[Name("cannot-dispose")]
-	public bool CannotDispose;
+	public bool CannotDispose { get; set; }
 
-	[Name("cannot-sell")]
-	public bool CannotSell;
+	public bool CannotSell { get; set; }
 
-	[Name("cannot-trade")]
-	public bool CannotTrade;
+	public bool CannotTrade { get; set; }
 
-	[Name("cannot-depot")]
-	public bool CannotDepot;
+	public bool CannotDepot { get; set; }
 
-	[Name("cannot-use-restore-failed-enchant-cost")]
-	public bool CannotUseRestoreFailedEnchantCost;
+	public bool CannotUseRestoreFailedEnchantCost { get; set; }
 
-	[Name("consume-durability")]
-	public bool ConsumeDurability;
+	public bool ConsumeDurability { get; set; }
 
-	public bool Auctionable;
+	public bool Auctionable { get; set; }
 
-	[Name("seal-renewal-auctionable")]
-	public bool SealRenewalAuctionable;
+	public bool SealRenewalAuctionable { get; set; }
 
-	[Name("party-auction-exclusion")]
-	public bool PartyAuctionExclusion;
+	public bool PartyAuctionExclusion { get; set; }
 
-	[Name("acquire-used")]
-	public bool AcquireUsed;
+	public bool AcquireUsed { get; set; }
 
-	[Name("equip-used")]
-	public bool EquipUsed;
+	public bool EquipUsed { get; set; }
 
-	[Name("account-used")]
-	public bool AccountUsed;
+	public bool AccountUsed { get; set; }
 
-	[Name("equip-job-check"), Repeat(5)]
-	public JobSeq[] EquipJobCheck;
+	public JobSeq[] EquipJobCheck { get; set; }
 
 	public bool CheckEquipJob(JobSeq TargetJob)
 	{
@@ -89,23 +69,17 @@ public abstract partial class Item : ModelElement
 	}
 
 
-	[Name("equip-sex")]
-	public SexSeq2 EquipSex;
+	public SexSeq2 EquipSex { get; set; }
 
-	[Name("equip-race")]
 	public Race EquipRace => Race.Get(this.Attributes["equip-race"].ToEnum<RaceSeq2>());
 
-	[Name("equip-type")]
-	public EquipType EquipType;
+	public EquipType EquipType { get; set; }
 
-	[Name("equip-faction")]
-	public Ref<Faction> EquipFaction;
+	public Ref<Faction> EquipFaction { get; set; }
 
-	[Name("equip-faction-level")]
-	public short EquipFactionLevel;
+	public short EquipFactionLevel { get; set; }
 
-	[Name("item-grade")]
-	public sbyte ItemGrade;
+	public sbyte ItemGrade { get; set; }
 
 
 
@@ -114,14 +88,11 @@ public abstract partial class Item : ModelElement
 	{
 		None,
 
-		[Name("type-gold")]
-		TypeGold,
+			TypeGold,
 
-		[Name("type-redup")]
-		TypeRedup,
+			TypeRedup,
 
-		[Name("type-goldup")]
-		TypeGoldup,
+			TypeGoldup,
 	}
 
 
@@ -133,16 +104,16 @@ public abstract partial class Item : ModelElement
 
 
 	public Msec UsableDuration => this.Attributes["usable-duration"].ToInt32();
-	public Ref<ItemEvent> EventInfo;
+	public Ref<ItemEvent> EventInfo { get; set; }
 	public bool ShowRewardPreview => this.Attributes["show-reward-preview"].ToBool();
-	public Ref<AccountPostCharge> AccountPostCharge;
+	public Ref<AccountPostCharge> AccountPostCharge { get; set; }
 
 
 
 	public int ImproveId => this.Attributes["improve-id"].ToInt32();
 	public sbyte ImproveLevel => this.Attributes["improve-level"].ToInt8();
 
-	public Ref<Text> Name2;
+	public Ref<Text> Name2 { get; set; }
 
 	public string ItemName => $"<font name=\"00008130.Program.Fontset_ItemGrade_{this.ItemGrade}\">{this.Name2.GetText()}</font>";
 	public string ItemNameOnly => this.Name2.GetText();
@@ -154,7 +125,7 @@ public abstract partial class Item : ModelElement
 
 	public SKBitmap TagIconGrade => this.Attributes["tag-icon-grade"].GetIcon();
 
-	public string icon;
+	public string icon { get; set; }
 
 	public SKBitmap FrontIcon => icon.GetIcon();
 	public SKBitmap Icon => ItemGrade.GetBackground().Compose(FrontIcon);
@@ -189,7 +160,7 @@ public abstract partial class Item : ModelElement
 
 			#region BottomLeft
 			SKBitmap BottomLeft = null;
-			if (EventInfo.Instance?.IsExpiration ?? false) 
+			if (EventInfo.Instance?.IsExpiration ?? false)
 				BottomLeft = FileCache.Provider.LoadObject<UTexture>("BNSR/Content/Art/UI/GameUI_BNSR/Resource/GameUI_Icon3_R/unuseable_olditem_3")?.Decode();
 			else if (this is Grocery grocery && grocery.GroceryType == GroceryTypeSeq.Sealed)
 				BottomLeft = FileCache.Provider.LoadObject<UTexture>("BNSR/Content/Art/UI/GameUI_BNSR/Resource/GameUI_Icon3_R/Weapon_Lock_04")?.Decode();

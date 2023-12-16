@@ -1,27 +1,26 @@
-﻿using Xylia.Preview.Data.Common.Attribute;
-using Xylia.Preview.Data.Common.DataStruct;
+﻿using Xylia.Preview.Common.Attributes;
 using Xylia.Preview.Data.Models.Sequence;
 
 namespace Xylia.Preview.Data.Models;
 public sealed class ItemImproveOptionList : ModelElement
 {
-	public int Id;
-	public JobSeq Job;
+	public int Id { get; set; }
+	public JobSeq Job { get; set; }
 
 	[Repeat(50)]
-	public Ref<ItemImproveOption>[] Option;
+	public Ref<ItemImproveOption>[] Option { get; set; }
 
 	[Repeat(50)]
-	public short[] OptionProbWeight;
+	public short[] OptionProbWeight { get; set; }
 
 
 
-	[Name("draw-cost-money") , Repeat(4)]
-	public int[] DrawCostMoney;
+	[Name("draw-cost-money"), Repeat(4)]
+	public int[] DrawCostMoney { get; set; }
 
 	[Name("draw-cost-main-item"), Repeat(4)]
-	public Ref<Item>[] DrawCostMainItem;
+	public Ref<Item>[] DrawCostMainItem { get; set; }
 
 	[Name("draw-cost-main-item-count"), Repeat(4)]
-	public short[] DrawCostMainItemCount;
+	public short[] DrawCostMainItemCount { get; set; }
 }

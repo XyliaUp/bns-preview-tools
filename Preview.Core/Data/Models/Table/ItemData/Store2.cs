@@ -1,24 +1,21 @@
-﻿using Xylia.Preview.Data.Common.Attribute;
-using Xylia.Preview.Data.Common.DataStruct;
+﻿using Xylia.Preview.Common.Attributes;
 
 namespace Xylia.Preview.Data.Models;
 public sealed class Store2 : ModelElement
 {
-	public string Alias;
+	public Ref<Text> Name2 { get; set; }
 
-	public Ref<Text> Name2;
+	public string Icon { get; set; }
 
-	public string Icon;
+	public string NoneSelectedIcon { get; set; }
 
-	public string NoneSelectedIcon;
-
-	public Ref<Faction> Faction;
+	public Ref<Faction> Faction { get; set; }
 
 	[Name("item"), Repeat(127)]
-	public Ref<Item>[] Item;
+	public Ref<Item>[] Item { get; set; }
 
 	[Name("buy-price"), Repeat(127)]
-	public Ref<ItemBuyPrice>[] BuyPrice;
+	public Ref<ItemBuyPrice>[] BuyPrice { get; set; }
 
 
 	#region Properities

@@ -1,4 +1,5 @@
-﻿using Xylia.Preview.Data.Common.Attribute;
+﻿using Xylia.Preview.Common.Attributes;
+
 namespace Xylia.Preview.Data.Models.CombatSequenceData.Enums;
 
 /// <summary>
@@ -6,9 +7,6 @@ namespace Xylia.Preview.Data.Models.CombatSequenceData.Enums;
 /// </summary>
 public enum TransitCond
 {
-	/// <summary>
-	/// 手动转移
-	/// </summary>
 	Manual,
 
 

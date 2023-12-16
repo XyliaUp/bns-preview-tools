@@ -7,11 +7,8 @@ using Xylia.Preview.Common.Extension;
 using Xylia.Preview.Data.Engine.DatData;
 using Xylia.Preview.Data.Engine.DatData.Third;
 using Xylia.Preview.Data.Engine.Definitions;
-using Xylia.Preview.Data.Engine.ZoneData.RegionData;
-using Xylia.Preview.Data.Engine.ZoneData.TerrainData;
 using Xylia.Preview.Tests.DatTool.Utils;
 using Xylia.Preview.Tests.DatTool.Utils.DevTools;
-using Xylia.Preview.Tests.TableTests;
 using static Xylia.Preview.Data.Engine.DatData.Third.MySpport;
 
 namespace Xylia.Preview.Tests.DatTool;
@@ -42,13 +39,13 @@ public partial class MainForm : Form
 	#endregion
 
 	#region Static Methods
-	private static void SaveConfig(object sender, EventArgs e)
+	private void SaveConfig(object sender, EventArgs e)
 	{
 		//var c = (Control)sender;
 		//Ini.Instance.WriteValue("Config", $"{c.FindForm().Name}_{c.Name}", c.Text);
 	}
 
-	public static void ReadConfig(Control container)
+	public void ReadConfig(Control container)
 	{
 		//foreach (Control c in container.Controls)
 		//{
@@ -360,53 +357,6 @@ public partial class MainForm : Form
 				Console.WriteLine("[error] " + ex);
 			}
 		});
-	}
-	#endregion
-
-	#region Zone
-	private void button37_Click(object sender, EventArgs e) => OpenPath(Txt_Cterrain_Path);
-
-	private void button31_Click(object sender, EventArgs e) => OpenPath(Txt_Region_Path);
-
-	private void button36_Click(object sender, EventArgs e)
-	{
-		if (int.TryParse(textBox12.Text, out int result))
-		{
-			//.Cterrain
-			var CterrainFile = new CterrainFile();
-
-			BinaryReader br = new(new FileStream(Txt_Cterrain_Path.Text, FileMode.Open, FileAccess.ReadWrite, FileShare.ReadWrite));
-			CterrainFile.Read(br);
-
-			CterrainFile.TerrainID = result;
-
-			string Path = System.IO.Path.GetDirectoryName(Txt_Cterrain_Path.Text) + $"\\{result}.cterrain";
-			if (File.Exists(Path)) Path += "_new";
-
-			CterrainFile.Save(Path);
-		}
-	}
-
-	private void button32_Click(object sender, EventArgs e)
-	{
-		var ZoneInfo = Txt_Zone.Text;
-		if (short.TryParse(ZoneInfo, out var RegionID))
-		{
-			var regionFile = new RegionFile();
-			regionFile.Read(Txt_Region_Path.Text);
-
-			regionFile.RegionID = RegionID;
-			if (short.TryParse(Region_XMin_input.Text, out var tmp)) regionFile.Xmin = tmp;
-			if (short.TryParse(Region_XMax_input.Text, out tmp)) regionFile.Xmax = tmp;
-			if (short.TryParse(Region_YMin_input.Text, out tmp)) regionFile.Ymin = tmp;
-			if (short.TryParse(Region_YMax_input.Text, out tmp)) regionFile.Ymax = tmp;
-
-
-			string Path = System.IO.Path.GetDirectoryName(Txt_Region_Path.Text) + $"\\{RegionID}.region";
-			if (File.Exists(Path)) Path += "_new";
-
-			regionFile.Save(Path);
-		}
 	}
 	#endregion
 

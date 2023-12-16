@@ -1,28 +1,23 @@
-﻿using Xylia.Preview.Data.Common.Attribute;
+﻿using Xylia.Preview.Common.Attributes;
 using Xylia.Preview.Data.Common.DataStruct;
 
 namespace Xylia.Preview.Data.Models;
 [Side(ReleaseSide.Client)]
 public class MapUnit : ModelElement
 {
-	public short Mapid;
+	public short Mapid { get; set; }
 
-	[Name("zone-id")]
-	public int ZoneId;
+	public int ZoneId { get; set; }
 
-	[Name("is-phasing-unit")]
-	public bool IsPhasingUnit;
+	public bool IsPhasingUnit { get; set; }
 
-	[Name("position-x")]
-	public float PositionX;
+	public float PositionX { get; set; }
 
-	[Name("position-y")]
-	public float PositionY;
+	public float PositionY { get; set; }
 
-	[Name("position-z")]
-	public float PositionZ;
+	public float PositionZ { get; set; }
 
-	public CategorySeq Category;
+	public CategorySeq Category { get; set; }
 	public enum CategorySeq
 	{
 		None,
@@ -37,12 +32,10 @@ public class MapUnit : ModelElement
 
 		Friend,
 
-		[Name("revenge-enemy")]
 		RevengeEnemy,
 
 		Faction,
 
-		[Name("duel-enemy")]
 		DuelEnemy,
 
 		Quest,
@@ -59,7 +52,6 @@ public class MapUnit : ModelElement
 
 		Convoy,
 
-		[Name("spawned-env")]
 		SpawnedEnv,
 
 		Static,
@@ -70,68 +62,51 @@ public class MapUnit : ModelElement
 
 		Camp,
 
-		[Name("party-camp")]
-		PartyCamp,
+			PartyCamp,
 
 		Roulette,
 
-		[Name("field-boss")]
-		FieldBoss,
+			FieldBoss,
 
 		Gather,
 
 		Craft,
 
-		[Name("gather-env")]
-		GatherEnv,
+			GatherEnv,
 
 		Heart,
 
-		[Name("enter-arena")]
-		EnterArena,
+			EnterArena,
 
-		[Name("weapon-box")]
-		WeaponBox,
+			WeaponBox,
 
 		Refiner,
 
-		[Name("dungeon-3")]
-		Dungeon3,
+			Dungeon3,
 
-		[Name("dungeon-4")]
-		Dungeon4,
+			Dungeon4,
 
-		[Name("dungeon-5")]
-		Dungeon5,
+			Dungeon5,
 
-		[Name("raid-dungeon")]
-		RaidDungeon,
+			RaidDungeon,
 
-		[Name("classic-field")]
-		ClassicField,
+			ClassicField,
 
-		[Name("faction-battle-field")]
-		FactionBattleField,
+			FactionBattleField,
 
-		[Name("guild-battle-field")]
-		GuildBattleField,
+			GuildBattleField,
 
-		[Name("party-battle-startpoint")]
-		PartyBattleStartpoint,
+			PartyBattleStartpoint,
 
-		[Name("party-battle-enemy")]
-		PartyBattleEnemy,
+			PartyBattleEnemy,
 
-		[Name("fishing-field")]
-		FishingField,
+			FishingField,
 	}
 
 
-	[Name("map-depth")]
-	public MapDepthSeq MapDepth;
+	public MapDepthSeq MapDepth { get; set; }
 
-	[Name("arena-dungeon-map-depth")]
-	public MapDepthSeq ArenaDungeonMapDepth;
+	public MapDepthSeq ArenaDungeonMapDepth { get; set; }
 	public enum MapDepthSeq : byte
 	{
 		N1,
@@ -147,55 +122,43 @@ public class MapUnit : ModelElement
 
 
 
-	public bool Zoom;
+	public bool Zoom { get; set; }
 
-	public bool Rotate;
+	public bool Rotate { get; set; }
 
-	public bool Click;
+	public bool Click { get; set; }
 
-	public bool Front;
+	public bool Front { get; set; }
 
-	[Name("show-tooltip")]
-	public bool ShowTooltip;
+	public bool ShowTooltip { get; set; }
 
-	public Ref<Text> Name2;
+	public Ref<Text> Name2 { get; set; }
 
-	public short Opacity;
+	public short Opacity { get; set; }
 
-	[Name("size-x")]
-	public short SizeX;
+	public short SizeX { get; set; }
 
-	[Name("size-y")]
-	public short SizeY;
+	public short SizeY { get; set; }
 
-	[Name("oufofsight-size-x")]
-	public short OufofsightSizeX;
+	public short OufofsightSizeX { get; set; }
 
-	[Name("oufofsight-size-y")]
-	public short OufofsightSizeY;
+	public short OufofsightSizeY { get; set; }
 
-	public string Imageset;
+	public string Imageset { get; set; }
 
-	[Name("over-imageset")]
-	public string OverImageset;
+	public string OverImageset { get; set; }
 
-	[Name("pressed-imageset")]
-	public string PressedImageset;
+	public string PressedImageset { get; set; }
 
-	[Name("outofsight-imageset")]
-	public string OutofsightImageset;
+	public string OutofsightImageset { get; set; }
 
-	[Name("outofsight-over-imageset")]
-	public string OutofsightOverImageset;
+	public string OutofsightOverImageset { get; set; }
 
-	[Name("outofsight-pressed-imageset")]
-	public string OutofsightPressedImageset;
+	public string OutofsightPressedImageset { get; set; }
 
-	[Name("center-pos-x")]
-	public float CenterPosX;
+	public float CenterPosX { get; set; }
 
-	[Name("center-pos-y")]
-	public float CenterPosY;
+	public float CenterPosY { get; set; }
 
 
 	#region Sub

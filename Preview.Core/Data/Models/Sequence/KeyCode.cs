@@ -1,322 +1,267 @@
-﻿using Xylia.Preview.Data.Common.Attribute;
+﻿using Xylia.Preview.Common.Attributes;
 
 namespace Xylia.Preview.Data.Models.Sequence;
 public enum KeyCode
 {
-    None,
+	None,
 
-    N0,
+	N0,
 
-    N1,
+	N1,
 
-    N2,
+	N2,
 
-    N3,
+	N3,
 
-    N4,
+	N4,
 
-    N5,
+	N5,
 
-    N6,
+	N6,
 
-    N7,
+	N7,
 
-    N8,
+	N8,
 
-    N9,
+	N9,
 
-    [Name("numpad-0")]
-    Numpad0,
+	Numpad0,
 
-    [Name("numpad-1")]
-    Numpad1,
+	Numpad1,
 
-    [Name("numpad-2")]
-    Numpad2,
+	Numpad2,
 
-    [Name("numpad-3")]
-    Numpad3,
+	Numpad3,
 
-    [Name("numpad-4")]
-    Numpad4,
+	Numpad4,
 
-    [Name("numpad-5")]
-    Numpad5,
+	Numpad5,
 
-    [Name("numpad-6")]
-    Numpad6,
+	Numpad6,
 
-    [Name("numpad-7")]
-    Numpad7,
+	Numpad7,
 
-    [Name("numpad-8")]
-    Numpad8,
+	Numpad8,
 
-    [Name("numpad-9")]
-    Numpad9,
+	Numpad9,
 
-    F1,
+	F1,
 
-    F2,
+	F2,
 
-    F3,
+	F3,
 
-    F4,
+	F4,
 
-    F5,
+	F5,
 
-    F6,
+	F6,
 
-    F7,
+	F7,
 
-    F8,
+	F8,
 
-    F9,
+	F9,
 
-    F10,
+	F10,
 
-    F11,
+	F11,
 
-    F12,
+	F12,
 
-    A,
+	A,
 
-    B,
+	B,
 
-    C,
+	C,
 
-    D,
+	D,
 
-    E,
+	E,
 
-    F,
+	F,
 
-    G,
+	G,
 
-    H,
+	H,
 
-    I,
+	I,
 
-    J,
+	J,
 
-    K,
+	K,
 
-    L,
+	L,
 
-    M,
+	M,
 
-    N,
+	N,
 
-    O,
+	O,
 
-    P,
+	P,
 
-    Q,
+	Q,
 
-    R,
+	R,
 
-    S,
+	S,
 
-    T,
+	T,
 
-    U,
+	U,
 
-    V,
+	V,
 
-    W,
+	W,
 
-    X,
+	X,
 
-    Y,
+	Y,
 
-    Z,
+	Z,
 
-    [Name("back-space")]
-    BackSpace,
+	BackSpace,
 
-    Tab,
+	Tab,
 
-    [Name("caps-lock")]
-    CapsLock,
+	CapsLock,
 
-    Space,
+	Space,
 
-    [Name("page-up")]
-    PageUp,
+	PageUp,
 
-    [Name("page-down")]
-    PageDown,
+	PageDown,
 
-    End,
+	End,
 
-    Home,
+	Home,
 
-    Left,
+	Left,
 
-    Up,
+	Up,
 
-    Right,
+	Right,
 
-    Down,
+	Down,
 
-    Insert,
+	Insert,
 
-    Delete,
+	Delete,
 
-    Multiply,
+	Multiply,
 
-    Add,
+	Add,
 
-    Subtract,
+	Subtract,
 
-    Decimal,
+	Decimal,
 
-    Divide,
+	Divide,
 
-    [Name("num-lock")]
-    NumLock,
+	NumLock,
 
-    Shift,
+	Shift,
 
-    Control,
+	Control,
 
-    Alt,
+	Alt,
 
-    Semicolon,
+	Semicolon,
 
-    Equal,
+	Equal,
 
-    Minus,
+	Minus,
 
-    Comma,
+	Comma,
 
-    Period,
+	Period,
 
-    Slash,
+	Slash,
 
-    Tilde,
+	Tilde,
 
-    [Name("left-square-bracket")]
-    LeftSquareBracket,
+	LeftSquareBracket,
 
-    [Name("back-slash")]
-    BackSlash,
+	BackSlash,
 
-    [Name("right-square-bracket")]
-    RightSquareBracket,
+	RightSquareBracket,
 
-    [Name("single-quatation")]
-    SingleQuatation,
+	SingleQuatation,
 
-    [Name("mouse-left-button")]
-    MouseLeftButton,
+	MouseLeftButton,
 
-    [Name("mouse-middle-button")]
-    MouseMiddleButton,
+	MouseMiddleButton,
 
-    [Name("mouse-right-button")]
-    MouseRightButton,
+	MouseRightButton,
 
-    [Name("joybtn-a")]
-    JoybtnA,
+	JoybtnA,
 
-    [Name("joybtn-b")]
-    JoybtnB,
+	JoybtnB,
 
-    [Name("joybtn-x")]
-    JoybtnX,
+	JoybtnX,
 
-    [Name("joybtn-y")]
-    JoybtnY,
+	JoybtnY,
 
-    [Name("joybtn-dpad-up")]
-    JoybtnDpadUp,
+	JoybtnDpadUp,
 
-    [Name("joybtn-dpad-down")]
-    JoybtnDpadDown,
+	JoybtnDpadDown,
 
-    [Name("joybtn-dpad-left")]
-    JoybtnDpadLeft,
+	JoybtnDpadLeft,
 
-    [Name("joybtn-dpad-right")]
-    JoybtnDpadRight,
+	JoybtnDpadRight,
 
-    [Name("joybtn-leftstick-up")]
-    JoybtnLeftstickUp,
+	JoybtnLeftstickUp,
 
-    [Name("joybtn-leftstick-down")]
-    JoybtnLeftstickDown,
+	JoybtnLeftstickDown,
 
-    [Name("joybtn-leftstick-left")]
-    JoybtnLeftstickLeft,
+	JoybtnLeftstickLeft,
 
-    [Name("joybtn-leftstick-right")]
-    JoybtnLeftstickRight,
+	JoybtnLeftstickRight,
 
-    [Name("joybtn-rightstick-up")]
-    JoybtnRightstickUp,
+	JoybtnRightstickUp,
 
-    [Name("joybtn-rightstick-down")]
-    JoybtnRightstickDown,
+	JoybtnRightstickDown,
 
-    [Name("joybtn-rightstick-left")]
-    JoybtnRightstickLeft,
+	JoybtnRightstickLeft,
 
-    [Name("joybtn-rightstick-right")]
-    JoybtnRightstickRight,
+	JoybtnRightstickRight,
 
-    [Name("joybtn-leftshoulder")]
-    JoybtnLeftshoulder,
+	JoybtnLeftshoulder,
 
-    [Name("joybtn-rightshoulder")]
-    JoybtnRightshoulder,
+	JoybtnRightshoulder,
 
-    [Name("joybtn-start")]
-    JoybtnStart,
+	JoybtnStart,
 
-    [Name("joybtn-back")]
-    JoybtnBack,
+	JoybtnBack,
 
-    [Name("joybtn-leftthumbstick")]
-    JoybtnLeftthumbstick,
+	JoybtnLeftthumbstick,
 
-    [Name("joybtn-rightthumbstick")]
-    JoybtnRightthumbstick,
+	JoybtnRightthumbstick,
 
-    [Name("joybtn-lefttrigger")]
-    JoybtnLefttrigger,
+	JoybtnLefttrigger,
 
-    [Name("joybtn-righttrigger")]
-    JoybtnRighttrigger,
+	JoybtnRighttrigger,
 
-    [Name("joybtn-function1")]
-    JoybtnFunction1,
+	JoybtnFunction1,
 
-    [Name("joybtn-function2")]
-    JoybtnFunction2,
+	JoybtnFunction2,
 
-    Escape,
+	Escape,
 
-    Enter,
+	Enter,
 
-    [Name("shift-joypad-replaceable")]
-    ShiftJoypadReplaceable,
+	ShiftJoypadReplaceable,
 
-    [Name("shift-dash-forward-joypad-replaceable")]
-    ShiftDashForwardJoypadReplaceable,
+	ShiftDashForwardJoypadReplaceable,
 
-    [Name("control-joypad-replaceable")]
-    ControlJoypadReplaceable,
+	ControlJoypadReplaceable,
 
-    [Name("alt-joypad-replaceable")]
-    AltJoypadReplaceable,
+	AltJoypadReplaceable,
 
-    [Name("mouse-left-button-joypad-replaceable")]
-    MouseLeftButtonJoypadReplaceable,
+	MouseLeftButtonJoypadReplaceable,
 
-    [Name("mouse-right-button-joypad-replaceable")]
-    MouseRightButtonJoypadReplaceable,
+	MouseRightButtonJoypadReplaceable,
 
-    [Name("escape-joypad-replaceable")]
-    EscapeJoypadReplaceable,
+	EscapeJoypadReplaceable,
 }

@@ -1,11 +1,9 @@
-﻿using Xylia.Preview.Data.Common.DataStruct;
-
-namespace Xylia.Preview.Data.Models;
+﻿namespace Xylia.Preview.Data.Models;
 public sealed class SlateScrollStone : ModelElement
 {
-	public Ref<SlateScroll> scroll;
+	public Ref<SlateScroll> scroll { get; set; }
 
-	public Ref<SlateStone> stone; 
+	public Ref<SlateStone> stone { get; set; }
 
-	public bool tooltip; 
+	public bool tooltip { get; set; }
 }

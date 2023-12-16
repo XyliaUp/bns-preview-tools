@@ -1,95 +1,95 @@
-﻿using Xylia.Preview.Data.Common.Attribute;
+﻿using Xylia.Preview.Common.Attributes;
 
 namespace Xylia.Preview.Data.Models.Sequence;
 public enum AttachAbility : byte
 {
     None,
 
-    [Name("attack-power-creature-min-max")]
+    [Name("Name.Item.attack-power-equip")]
     AttackPowerCreatureMinMax,
 
-    [Name("pve-boss-level-npc-attack-power-creature-min-max")]
+    [Name("Name.Item.boss-attack-power-equip")]
     PveBossLevelNpcAttackPowerCreatureMinMax,
 
-    [Name("pvp-attack-power-creature-min-max")]
+    [Name("Name.Item.pc-attack-power-equip")]
     PvpAttackPowerCreatureMinMax,
 
-    [Name("attack-hit-value")]
+    [Name("Name.Item.attack-hit-value")]
     AttackHitValue,
 
-    [Name("attack-critical-value")]
+    [Name("Name.Item.attack-critical-value")]
     AttackCriticalValue,
 
-    [Name("attack-critical-damage-value")]
+    [Name("Name.Item.attack-critical-damage-value")]
     AttackCriticalDamageValue,
 
-    [Name("attack-attribute-value")]
+    [Name("Name.Item.attack-attribute-value")]
     AttackAttributeValue,
 
-    [Name("attack-pierce-value")]
+    [Name("Name.Item.attack-pierce-value")]
     AttackPierceValue,
 
-    [Name("abnormal-attack-power-value")]
+    [Name("Name.Item.abnormal-attack-power-value")]
     AbnormalAttackPowerValue,
 
 
-    [Name("max-hp")]
+    [Name("Name.Item.max-hp")]
     MaxHp = 29,
 
-    [Name("defend-power-creature-value")]
+    [Name("Name.Item.defend-power-equip-value")]
     DefendPowerCreatureValue,
 
-    [Name("pve-boss-level-npc-defend-power-creature-value")]
+    [Name("Name.Item.boss-defend-power-equip")]
     PveBossLevelNpcDefendPowerCreatureValue,
 
-    [Name("pvp-defend-power-creature-value")]
+    [Name("Name.Item.pc-defend-power-equip")]
     PvpDefendPowerCreatureValue,
 
-    [Name("defend-dodge-value")]
+    [Name("Name.Item.defend-dodge-value")]
     DefendDodgeValue,
 
-    [Name("defend-parry-value")]
+    [Name("Name.Item.defend-parry-value")]
     DefendParryValue,
 
-    [Name("defend-critical-value")]
+    [Name("Name.Item.defend-critical-value")]
     DefendCriticalValue,
 
-    [Name("hp-regen")]
+    [Name("Name.Item.hp-regen")]
     HpRegen,
 
-    [Name("heal-power-value")]
+    [Name("Name.Item.heal-power-value")]
     HealPowerValue,
 
-    [Name("abnormal-defend-power-value")]
+    [Name("Name.Item.abnormal-defend-power-value")]
     AbnormalDefendPowerValue,
 
-    [Name("r-attack-stiff-duration-value")]
+    [Name("Name.Item.r-attack-stiff-duration-value")]
     RAttackStiffDurationValue,
 
-    [Name("r-defend-stiff-duration-value")]
+    [Name("Name.Item.r-defend-stiff-duration-value")]
     RDefendStiffDurationValue,
 
-    [Name("r-attack-concentrate-value")]
+    [Name("Name.Item.r-attack-concentrate-value")]
     RAttackConcentrateValue,
 
-    [Name("r-aoe-defend-power-value")]
+    [Name("Name.Item.r-aoe-defend-power-value")]
     RAoeDefendPowerValue,
 
-    [Name("r-defend-strength-creature-value")]
+    [Name("Name.Item.r-defend-strength-creature-value")]
     RDefendStrengthCreatureValue,
 
-    [Name("r-attack-precise-creature-value")]
+    [Name("Name.Item.r-attack-precise-creature-value")]
     RAttackPreciseCreatureValue,
 
-    [Name("r-attack-aoe-pierce-value")]
+    [Name("Name.Item.r-attack-aoe-pierce-value")]
     RAttackAoePierceValue,
 
-    [Name("r-attack-abnormal-hit-value")]
+    [Name("Name.Item.r-attack-abnormal-hit-value")]
     RAttackAbnormalHitValue,
 
-    [Name("r-defend-abnormal-dodge-value")]
+    [Name("Name.Item.r-defend-abnormal-dodge-value")]
     RDefendAbnormalDodgeValue,
 
-    [Name("r-support-power-value")]
+    [Name("Name.Item.r-support-power-value")]
     RSupportPowerValue,
 }

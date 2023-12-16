@@ -1,24 +1,23 @@
-﻿using Xylia.Preview.Data.Common.Attribute;
-using Xylia.Preview.Data.Common.DataStruct;
+﻿using Xylia.Preview.Common.Attributes;
 using Xylia.Preview.Data.Models.Sequence;
 
 namespace Xylia.Preview.Data.Models;
 public sealed class ItemCombat : ModelElement
 {
 	[Name("job-style")]
-	public JobStyleSeq JobStyle;
+	public JobStyleSeq JobStyle { get; set; }
 
 	[Name("item-skill"), Repeat(16)]
-	public Ref<ItemSkill>[] ItemSkill;
+	public Ref<ItemSkill>[] ItemSkill { get; set; }
 
 	[Name("item-skill-second"), Repeat(16)]
-	public Ref<ItemSkill>[] ItemSkillSecond;
+	public Ref<ItemSkill>[] ItemSkillSecond { get; set; }
 
 	[Name("item-skill-third"), Repeat(16)]
-	public Ref<ItemSkill>[] ItemSkillThird;
+	public Ref<ItemSkill>[] ItemSkillThird { get; set; }
 
 	[Name("skill-modify-info-group")]
-	public Ref<SkillModifyInfoGroup> SkillModifyInfoGroup;
+	public Ref<SkillModifyInfoGroup> SkillModifyInfoGroup { get; set; }
 
 
 

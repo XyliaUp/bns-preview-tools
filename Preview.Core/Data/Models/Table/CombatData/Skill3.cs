@@ -1,6 +1,6 @@
 ﻿using SkiaSharp;
 
-using Xylia.Preview.Data.Common.Attribute;
+using Xylia.Preview.Common.Attributes;
 using Xylia.Preview.Data.Common.DataStruct;
 using Xylia.Preview.Data.Models.Sequence;
 
@@ -8,55 +8,44 @@ namespace Xylia.Preview.Data.Models;
 public partial class Skill3 : ModelElement
 {
 	#region Fields
-	[Name("variation-id")]
-	public sbyte VariationId = 1;
+	public sbyte VariationId { get; set; }
 
-	[Name("revised-effect-equip-probability-in-exec") , Repeat(5)] 
-	public short[] RevisedEffectEquipProbabilityInExec1;
+	public short[] RevisedEffectEquipProbabilityInExec { get; set; }
 
-	[Name("damage-rate-pvp")]
-	public short DamageRatePvp = 1000;
+	public short DamageRatePvp { get; set; }
 
-	[Name("damage-rate-standard-stats")]
-	public short DamageRateStandardStats = 1000;
+	public short DamageRateStandardStats { get; set; }
 
 
-	public Ref<Text> Name2;
+	public Ref<Text> Name2 { get; set; }
 
 
-	[Name("short-cut-key")]
-	public KeyCommandSeq ShortCutKey;
+	public KeyCommandSeq ShortCutKey { get; set; }
 
-	[Name("short-cut-key-classic")]
-	public KeyCommandSeq ShortCutKeyClassic;
+	public KeyCommandSeq ShortCutKeyClassic { get; set; }
 
-	[Name("short-cut-key-simple-context")]
-	public KeyCommandSeq ShortCutKeySimpleContext;
+	public KeyCommandSeq ShortCutKeySimpleContext { get; set; }
 
 
+	[Repeat(5)]
+	public Ref<SkillTooltip>[] MainTooltip1 { get; set; }
 
-	[Name("main-tooltip-1"), Repeat(5)]
-	public Ref<SkillTooltip>[] MainTooltip1;
+	[Repeat(5)]
+	public Ref<SkillTooltip>[] MainTooltip2 { get; set; }
 
-	[Name("main-tooltip-2"), Repeat(5)]
-	public Ref<SkillTooltip>[] MainTooltip2;
+	[Repeat(5)]
+	public Ref<SkillTooltip>[] SubTooltip { get; set; }
 
-	[Name("sub-tooltip"), Repeat(10)]
-	public Ref<SkillTooltip>[] SubTooltip;
+	[Repeat(5)]
+	public Ref<SkillTooltip>[] StanceTooltip { get; set; }
 
-	[Name("stance-tooltip"), Repeat(5)]
-	public Ref<SkillTooltip>[] StanceTooltip;
-
-	[Name("condition-tooltip"), Repeat(5)]
-	public Ref<SkillTooltip>[] ConditionTooltip;
-
+	[Repeat(5)]
+	public Ref<SkillTooltip>[] ConditionTooltip { get; set; }
 
 
-	[Name("icon-texture")]
-	public string IconTexture;
+	public string IconTexture { get; set; }
 
-	[Name("icon-index")]
-	public short IconIndex;
+	public short IconIndex { get; set; }
 	#endregion
 
 	#region Properties
@@ -69,7 +58,7 @@ public partial class Skill3 : ModelElement
 	#region Sub
 	public sealed class ActiveSkill : Skill3
 	{
-		public FlowTypeSeq FlowType;
+		public FlowTypeSeq FlowType { get; set; }
 		public enum FlowTypeSeq
 		{
 			KeepMainslot,
@@ -81,107 +70,79 @@ public partial class Skill3 : ModelElement
 
 
 
-		[Name("target-filter")]
-		public Ref<Filter> TargetFilter;
+		public Ref<Filter> TargetFilter { get; set; }
 
-		[Name("gather-range")]
-		public Ref<SkillGatherRange3> GatherRange;
+		public Ref<SkillGatherRange3> GatherRange { get; set; }
 
 
-		[Name("cast-condition")]
-		public Ref<SkillCastCondition3> CastCondition;
+		public Ref<SkillCastCondition3> CastCondition { get; set; }
 
-		[Name("cast-duration")]
-		public Msec CastDuration;
+		public Msec CastDuration { get; set; }
 
 
-		[Name("throw-link-target")]
-		public bool ThrowLinkTarget;
+		public bool ThrowLinkTarget { get; set; }
 
-		[Name("casting-delay")]
-		public bool CastingDelay = true;
+		public bool CastingDelay { get; set; }
 
-		[Name("fire-miss")]
-		public bool FireMiss;
+		public bool FireMiss { get; set; }
 
-		[Name("global-recycle-group")]
-		public sbyte GlobalRecycleGroup;
+		public sbyte GlobalRecycleGroup { get; set; }
 
-		[Name("global-recycle-group-duration")]
-		public Msec GlobalRecycleGroupDuration;
+		public Msec GlobalRecycleGroupDuration { get; set; }
 
-		[Name("recycle-group")]
-		public RecycleGroup RecycleGroup;
+		public RecycleGroup RecycleGroup { get; set; }
 
-		[Name("recycle-group-id")]
-		public sbyte RecycleGroupId;
+		public sbyte RecycleGroupId { get; set; }
 
-		[Name("recycle-group-duration")]
-		public Msec RecycleGroupDuration;
+		public Msec RecycleGroupDuration { get; set; }
 
-		[Name("bound-recycle-group")]
-		public RecycleGroup BoundRecycleGroup;
+		public RecycleGroup BoundRecycleGroup { get; set; }
 
-		[Name("bound-recycle-group-id")]
-		public sbyte BoundRecycleGroupId;
+		public sbyte BoundRecycleGroupId { get; set; }
 
 
 		public enum ConsumeType
 		{
 			Point,
 
-			[Name("point-below")]
 			PointBelow,
 
-			[Name("point-above")]
 			PointAbove,
 
-			[Name("base-max-percent")]
 			BaseMaxPercent,
 
-			[Name("total-max-percent")]
 			TotalMaxPercent,
 
-			[Name("current-percent")]
 			CurrentPercent,
 		}
 
-		[Name("consume-hp-value")]
-		public short ConsumeHpValue;
+		public short ConsumeHpValue { get; set; }
 
-		[Name("consume-hp-type")]
-		public ConsumeType ConsumeHpType;
+		public ConsumeType ConsumeHpType { get; set; }
 
-		[Name("consume-sp-value"), Repeat(2)]
-		public short[] ConsumeSpValue;
+		[Repeat(2)]
+		public short[] ConsumeSpValue { get; set; }
 
-		[Name("consume-sp-type"), Repeat(2)]
-		public ConsumeType[] ConsumeSpType;
+		[Repeat(2)]
+		public ConsumeType[] ConsumeSpType { get; set; }
 
 
-		[Name("consume-summoned-hp-value")]
-		public short ConsumeSummonedHpValue;
+		public short ConsumeSummonedHpValue { get; set; }
 
-		[Name("consume-summoned-hp-type")]
-		public ConsumeType ConsumeSummonedHpType;
+		public ConsumeType ConsumeSummonedHpType { get; set; }
 
 
 
 
 
-		[Name("flow-repeat")]
-		public sbyte FlowRepeat = 1;
+		public sbyte FlowRepeat { get; set; }
 
-		[Name("expanded-flow-repeat-count")]
-		public sbyte ExpandedFlowRepeatCount;
+		public sbyte ExpandedFlowRepeatCount { get; set; }
 
-		[Name("expanded-flow-repeat-start-flow-step")]
-		public sbyte ExpandedFlowRepeatStartFlowStep = 1;
+		public sbyte ExpandedFlowRepeatStartFlowStep { get; set; }
 
 
-
-		[Name("exec-gather-type") , Repeat(5)]
-		public GatherType[] ExecGatherType;
+		public GatherType[] ExecGatherType { get; set; }
 	}
 
 	public sealed class PassiveSkill : Skill3

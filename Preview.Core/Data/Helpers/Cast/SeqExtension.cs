@@ -1,5 +1,5 @@
-﻿using Xylia.Preview.Common.Extension;
-using Xylia.Preview.Data.Common.Attribute;
+﻿using Xylia.Preview.Common.Attributes;
+using Xylia.Preview.Common.Extension;
 using Xylia.Preview.Data.Models;
 using Xylia.Preview.Data.Models.Sequence;
 

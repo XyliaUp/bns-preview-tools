@@ -1,4 +1,4 @@
-﻿using Xylia.Preview.Data.Common.Attribute;
+﻿using Xylia.Preview.Common.Attributes;
 using Xylia.Preview.Data.Common.DataStruct;
 using Xylia.Preview.Data.Helpers;
 
@@ -6,18 +6,18 @@ namespace Xylia.Preview.Data.Models;
 public sealed class Npc : ModelElement
 {
 	#region Fields
-	public string Alias;
+	public string Alias { get; set; }
 
-	public Ref<Text> Name2;
+	public Ref<Text> Name2 { get; set; }
 
-	public Ref<Text> Title2;
+	public Ref<Text> Title2 { get; set; }
 
 	[Repeat(6)]
-	public Ref<Store2>[] Store2;
+	public Ref<Store2>[] Store2 { get; set; }
 
-	public Ref<CreatureAppearance> Appearance;
+	public Ref<CreatureAppearance> Appearance { get; set; }
 
-	public ObjectPath Animset;
+	public ObjectPath Animset { get; set; }
 	#endregion
 
 

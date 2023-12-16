@@ -7,14 +7,12 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Xylia.Preview.Data.Models;
 using Xylia.Preview.Data.Models.Config;
 
-namespace Xylia.Preview.Tests.TableTests;
-
-[TestClass]
-public class ScreenshotTest
+namespace Xylia.Preview.Tests;
+public partial class TableTests
 {
     [TestMethod]
     [DataRow(@"F:\Resources\Pictures\BnS\截图00000.jpg")]
-    public void LoadData(string FilePath)
+    public void Screenshot(string FilePath)
     {
         var bitmap = new Bitmap(FilePath);
 

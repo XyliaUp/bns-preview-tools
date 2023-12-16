@@ -4,7 +4,7 @@ using System.Windows.Input;
 
 using HtmlAgilityPack;
 
-using Xylia.Preview.Data.Common.Attribute;
+using Xylia.Preview.Common.Attributes;
 
 namespace Xylia.Preview.UI.Documents;
 public class Link : Element

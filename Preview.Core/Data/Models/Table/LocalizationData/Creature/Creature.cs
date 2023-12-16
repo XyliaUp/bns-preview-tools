@@ -1,6 +1,6 @@
 ﻿using System.Runtime.InteropServices;
 
-using Xylia.Preview.Data.Common.Attribute;
+using Xylia.Preview.Common.Attributes;
 using Xylia.Preview.Data.Models.Sequence;
 
 namespace Xylia.Preview.Data.Models.Creature;
@@ -17,7 +17,7 @@ public class Creature
     public Job Job;
 
     [Repeat(92)]
-    public sbyte[] Appearance;
+    public sbyte[] Appearance { get; set; }
 
 
 

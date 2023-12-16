@@ -1,19 +1,11 @@
-﻿using Xylia.Preview.Data.Common.Attribute;
-using Xylia.Preview.Data.Common.DataStruct;
-
-namespace Xylia.Preview.Data.Models;
+﻿namespace Xylia.Preview.Data.Models;
 public sealed class SealedDungeonGimmick : ModelElement
 {
-	public string Alias;
+	public Ref<Text> Name { get; set; }
 
+	public Ref<Text> IconName { get; set; }
 
-	public Ref<Text> Name;
+	public Ref<Text> IconTooltip { get; set; }
 
-	[Name("icon-name")]
-	public Ref<Text> IconName;
-
-	[Name("icon-tooltip")]
-	public Ref<Text> IconTooltip;
-
-	public string Icon;
+	public string Icon { get; set; }
 }

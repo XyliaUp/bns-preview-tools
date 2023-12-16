@@ -1,4 +1,4 @@
-﻿using Xylia.Preview.Data.Common.Attribute;
+﻿using Xylia.Preview.Common.Attributes;
 
 namespace Xylia.Preview.Data.Models.Sequence;
 public enum JumpingCharacterState

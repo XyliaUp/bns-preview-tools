@@ -1,68 +1,54 @@
-﻿using Xylia.Preview.Data.Common.Abstractions;
-using Xylia.Preview.Data.Common.Attribute;
+﻿using Xylia.Preview.Common.Attributes;
+using Xylia.Preview.Data.Common.Abstractions;
 using Xylia.Preview.Data.Common.DataStruct;
 
 namespace Xylia.Preview.Data.Models;
 [Side(ReleaseSide.Client)]
 public sealed class MapInfo : ModelElement  ,IHaveName
 {
-	public int Id;
-	public string Alias;
+	public int Id { get; set; }
+	public string Alias { get; set; }
 
 
-	[Name("group-id")]
-	public short GroupId;
+	public short GroupId { get; set; }
 
-	public short Floor;
+	public short Floor { get; set; }
 
-	public Ref<Text> Name2;
+	public Ref<Text> Name2 { get; set; }
 
-	[Name("parent-mapinfo")]
-	public Ref<MapInfo> ParentMapinfo;
+	public Ref<MapInfo> ParentMapinfo { get; set; }
 
-	public float Scale;
+	public float Scale { get; set; }
 
-	[Name("local-axis-x")]
-	public float LocalAxisX;
+	public float LocalAxisX { get; set; }
 
-	[Name("local-axis-y")]
-	public float LocalAxisY;
+	public float LocalAxisY { get; set; }
 
-	[Name("image-size")]
-	public short ImageSize;
+	public short ImageSize { get; set; }
 
-	public string Imageset;
+	public string Imageset { get; set; }
 
-	[Name("imageset-alphamap")]
-	public string ImagesetAlphamap;
+	public string ImagesetAlphamap { get; set; }
 
-	[Name("use-pos-in-parent")]
-	public bool UsePosInParent;
+	public bool UsePosInParent { get; set; }
 
-	[Name("pos-in-parent-x")]
-	public float PosInParentX;
+	public float PosInParentX { get; set; }
 
-	[Name("pos-in-parent-y")]
-	public float PosInParentY;
+	public float PosInParentY { get; set; }
 
-	public string Terrain;
+	public string Terrain { get; set; }
 
-	public float Zoom;
+	public float Zoom { get; set; }
 
-	[Name("sort-no")]
-	public short SortNo;
+	public short SortNo { get; set; }
 
-	[Name("arena-dungeon-parent-mapinfo")]
-	public string ArenaDungeonParentMapinfo;
+	public string ArenaDungeonParentMapinfo { get; set; }
 
-	[Name("arena-dungeon-use-pos-in-parent")]
-	public bool ArenaDungeonUsePosInParent;
+	public bool ArenaDungeonUsePosInParent { get; set; }
 
-	[Name("arena-dungeon-pos-in-parent-x")]
-	public float ArenaDungeonPosInParentX;
+	public float ArenaDungeonPosInParentX { get; set; }
 
-	[Name("arena-dungeon-pos-in-parent-y")]
-	public float ArenaDungeonPosInParentY;
+	public float ArenaDungeonPosInParentY { get; set; }
 
 
 	#region Methods

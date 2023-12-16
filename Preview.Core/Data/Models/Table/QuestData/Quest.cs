@@ -3,9 +3,9 @@
 using CUE4Parse_Conversion.Textures;
 
 using SkiaSharp;
+using Xylia.Preview.Common.Attributes;
 using Xylia.Preview.Common.Extension;
 using Xylia.Preview.Data.Common.Abstractions;
-using Xylia.Preview.Data.Common.Attribute;
 using Xylia.Preview.Data.Helpers;
 using Xylia.Preview.Data.Models.QuestData;
 using Xylia.Preview.Data.Models.QuestData.Enums;
@@ -16,13 +16,13 @@ public sealed class Quest : ModelElement, IHaveName
 {
 	#region Fields
 	[Side(ReleaseSide.Server)]
-	public BroadcastCategory BroadcastCategory;
+	public BroadcastCategory BroadcastCategory { get; set; }
 
 	[Side(ReleaseSide.Server), Repeat(3)]
-	public Ref<Achievement>[] ExtraQuestCompleteAchievement;
+	public Ref<Achievement>[] ExtraQuestCompleteAchievement { get; set; }
 
 	[Side(ReleaseSide.Server)]
-	public Ref<Cinematic> ReplayEpicZoneLeaveCinematic;
+	public Ref<Cinematic> ReplayEpicZoneLeaveCinematic { get; set; }
 
 	public LazyList<Acquisition> Acquisition { get; set; }
 

@@ -1,23 +1,15 @@
-﻿using Xylia.Preview.Data.Common.Attribute;
-using Xylia.Preview.Data.Common.DataStruct;
+﻿using Xylia.Preview.Common.Attributes;
 
 namespace Xylia.Preview.Data.Models;
 public sealed class RandomStore : ModelElement
 {
-	public string Alias;
+	public RandomStoreNumberSeq RandomStoreNumber { get; set; }
 
+	public Ref<Item> ChargeOfItemDraw { get; set; }
 
-	[Name("random-store-number")]
-	public RandomStoreNumberSeq RandomStoreNumber;
+	public long ChargeOfMoneyDraw { get; set; }
 
-	[Name("charge-of-item-draw")]
-	public Ref<Item> ChargeOfItemDraw;
-
-	[Name("charge-of-money-draw")]
-	public long ChargeOfMoneyDraw;
-
-	[Name("acquire-draw-reward-set-repeat-count")]
-	public int AcquireDrawRewardSetRepeatCount;
+	public int AcquireDrawRewardSetRepeatCount { get; set; }
 }
 
 public enum RandomStoreNumberSeq

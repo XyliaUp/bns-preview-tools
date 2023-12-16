@@ -1,4 +1,4 @@
-﻿using Xylia.Preview.Data.Common.Attribute;
+﻿using Xylia.Preview.Common.Attributes;
 using Xylia.Preview.Data.Models.QuestData.Enums;
 
 using static Xylia.Preview.Data.Models.Decision;
@@ -16,25 +16,25 @@ public partial class TutorialCase : ModelElement
 
 
 
-	public sbyte Prob;
+	public sbyte Prob { get; set; }
 
 	[Repeat(10)]
-	public Ref<MapUnit>[] MapUnit;
+	public Ref<MapUnit>[] MapUnit { get; set; }
 
-	public short RangeMax;
+	public short RangeMax { get; set; }
 
-	public short RangeMin;
+	public short RangeMin { get; set; }
 
-	public ProgressMission ProgressMission = ProgressMission.N;
+	public ProgressMission ProgressMission { get; set; }
 
 	[Repeat(2)]
-	public Ref<Zone>[] ValidZone;
+	public Ref<Zone>[] ValidZone { get; set; }
 
 	[Side(ReleaseSide.Server)]
-	public Ref<Zone> Zone;
+	public Ref<Zone> Zone { get; set; }
 
 	[Side(ReleaseSide.Server)]
-	public Ref<QuestDecision> QuestDecision;
+	public Ref<QuestDecision> QuestDecision { get; set; }
 
 
 	public virtual List<Ref<ModelElement>> Attractions { get; }
@@ -44,78 +44,77 @@ public partial class TutorialCase : ModelElement
 	public sealed class AcquireItem : TutorialCase
 	{
 		[Side(ReleaseSide.Client)]
-		public Ref<Item> Item;
+		public Ref<Item> Item { get; set; }
 	}
 
 	public sealed class EquipItem : TutorialCase
 	{
 		[Side(ReleaseSide.Client)]
-		public GameCategory2Seq ItemCategory;
+		public GameCategory2Seq ItemCategory { get; set; }
 
 		[Side(ReleaseSide.Client)]
-		public Ref<Item> Item;
+		public Ref<Item> Item { get; set; }
 	}
 
 	public sealed class UseItem : TutorialCase
 	{
 		[Side(ReleaseSide.Client)]
-		public Ref<Item> Item;
+		public Ref<Item> Item { get; set; }
 	}
 
 	public sealed class GrowItem : TutorialCase
 	{
 		[Side(ReleaseSide.Client)]
-		public Ref<Item> MaterialItem;
+		public Ref<Item> MaterialItem { get; set; }
 
 		[Side(ReleaseSide.Client)]
-		public Ref<Item> PrimaryItem;
+		public Ref<Item> PrimaryItem { get; set; }
 	}
 
 	public sealed class TransformItem : TutorialCase
 	{
 		[Side(ReleaseSide.Client)]
-		public Ref<ItemTransformRecipe> ItemTransformRecipe;
+		public Ref<ItemTransformRecipe> ItemTransformRecipe { get; set; }
 	}
 
 	public sealed class PickUpFielditem : TutorialCase
 	{
 		[Side(ReleaseSide.Client)]
-		public Ref<FieldItem> Fielditem;
+		public Ref<FieldItem> Fielditem { get; set; }
 	}
 
 	public sealed class PickDownFielditem : TutorialCase
 	{
 		[Side(ReleaseSide.Client)]
-		public Ref<FieldItem> Fielditem;
+		public Ref<FieldItem> Fielditem { get; set; }
 	}
 
 	public sealed class Targeting : TutorialCase
 	{
 		[Side(ReleaseSide.Client)]
-		public Ref<Npc> Npc;
+		public Ref<Npc> Npc { get; set; }
 	}
 
 	public sealed class TalkStart : TutorialCase
 	{
 		[Side(ReleaseSide.Client)]
-		public Ref<Npc> Npc;
+		public Ref<Npc> Npc { get; set; }
 	}
 
 	public sealed class WindowOpen : TutorialCase
 	{
 		[Side(ReleaseSide.Client)]
-		public WindowTypeSeq WindowType;
+		public WindowTypeSeq WindowType { get; set; }
 
 		[Side(ReleaseSide.Client)]
-		public WindowOpenWaySeq WindowOpenWay;
+		public WindowOpenWaySeq WindowOpenWay { get; set; }
 
 
 		public enum WindowTypeSeq
 		{
 			Inverntory,
 
-			[Name("quest-journal")]
-			QuestJournal,
+					QuestJournal,
 
 			Skill,
 
@@ -123,21 +122,18 @@ public partial class TutorialCase : ModelElement
 
 			Auction,
 
-			[Name("cash-shop")]
-			CashShop,
+					CashShop,
 
 			Wardrobe,
 
-			[Name("account-contents")]
-			AccountContents,
+					AccountContents,
 		}
 
 		public enum WindowOpenWaySeq
 		{
 			None,
 
-			[Name("by-npc-seller-button")]
-			ByNpcSellerButton,
+					ByNpcSellerButton,
 		}
 	}
 
@@ -148,14 +144,14 @@ public partial class TutorialCase : ModelElement
 
 	public sealed class NpcBleeding : TutorialCase
 	{
-		public Ref<Npc> Npc;
+		public Ref<Npc> Npc { get; set; }
 
-		public sbyte Percent;
+		public sbyte Percent { get; set; }
 	}
 
 	public sealed class PcBleeding : TutorialCase
 	{
-		public sbyte Percent;
+		public sbyte Percent { get; set; }
 	}
 
 	public sealed class Exhausted : TutorialCase
@@ -170,39 +166,39 @@ public partial class TutorialCase : ModelElement
 
 	public sealed class AcquireSp : TutorialCase
 	{
-		public sbyte Sp;
+		public sbyte Sp { get; set; }
 	}
 
 
 	public sealed class Skill : TutorialCase
 	{
 		[Repeat(16)]
-		public Ref<ModelElement>[] Object2;
+		public Ref<ModelElement>[] Object2 { get; set; }
 
-		public SkillCheckTypeSeq SkillCheckType;
+		public SkillCheckTypeSeq SkillCheckType { get; set; }
 		public enum SkillCheckTypeSeq
 		{
 			SkillKey,
 			SkillId,
 		}
 
-		public Ref<SkillModel> skill;
+		public Ref<SkillModel> skill { get; set; }
 
-		public Ref<Skill3Model> Skill3;
+		public Ref<Skill3Model> Skill3 { get; set; }
 
-		public int Skill3Id;
+		public int Skill3Id { get; set; }
 
-		public Ref<Effect> TargetRequiredEffect;
+		public Ref<Effect> TargetRequiredEffect { get; set; }
 
-		public sbyte TargetEffectCount;
+		public sbyte TargetEffectCount { get; set; }
 	}
 
 	public sealed class skillSequence : TutorialCase
 	{
 		[Repeat(16)]
-		public Ref<ModelElement>[] Object2;
+		public Ref<ModelElement>[] Object2 { get; set; }
 
-		public Ref<TutorialSkillSequence> SkillSequence;
+		public Ref<TutorialSkillSequence> SkillSequence { get; set; }
 	}
 
 	public sealed class SkillTraining : TutorialCase
@@ -218,13 +214,13 @@ public partial class TutorialCase : ModelElement
 	public sealed class RepairWithCampfire : TutorialCase
 	{
 		[Side(ReleaseSide.Client)]
-		public Ref<Item> Item;
+		public Ref<Item> Item { get; set; }
 	}
 
 	public sealed class Teleport : TutorialCase
 	{
 		[Side(ReleaseSide.Client)]
-		public Ref<Item> Item;
+		public Ref<Item> Item { get; set; }
 	}
 
 	public sealed class ExpandInventory : TutorialCase
@@ -235,43 +231,43 @@ public partial class TutorialCase : ModelElement
 	public sealed class GemCompose : TutorialCase
 	{
 		[Side(ReleaseSide.Client)]
-		public Ref<Item> PrimaryItem;
+		public Ref<Item> PrimaryItem { get; set; }
 
 		[Side(ReleaseSide.Client)]
-		public Ref<Item> MaterialItem;
+		public Ref<Item> MaterialItem { get; set; }
 	}
 
 	public sealed class GemDecompose : TutorialCase
 	{
 		[Side(ReleaseSide.Client)]
-		public Ref<Item> Item;
+		public Ref<Item> Item { get; set; }
 	}
 
 	public sealed class WeaponGem : TutorialCase
 	{
 		[Side(ReleaseSide.Client)]
-		public Ref<Item> Weapon;
+		public Ref<Item> Weapon { get; set; }
 
 		[Side(ReleaseSide.Client)]
-		public Ref<Item> Gem;
+		public Ref<Item> Gem { get; set; }
 	}
 
 	public sealed class DetachWeaponGem : TutorialCase
 	{
 		[Side(ReleaseSide.Client)]
-		public Ref<Item> Weapon;
+		public Ref<Item> Weapon { get; set; }
 
 		[Side(ReleaseSide.Client)]
-		public Ref<Item> Gem;
+		public Ref<Item> Gem { get; set; }
 	}
 
 	public sealed class Airdash : TutorialCase
 	{
 		[Side(ReleaseSide.Client)]
-		public Ref<ModelElement> Object2;
+		public Ref<ModelElement> Object2 { get; set; }
 
 		[Side(ReleaseSide.Client)]
-		public Ref<EnvResponse> EnvResponse;
+		public Ref<EnvResponse> EnvResponse { get; set; }
 
 
 		public override List<Ref<ModelElement>> Attractions => new() { Object2 };
@@ -295,16 +291,16 @@ public partial class TutorialCase : ModelElement
 	public sealed class MoveToPosition : TutorialCase
 	{
 		[Side(ReleaseSide.Client)]
-		public Ref<Npc> LinkNpc;
+		public Ref<Npc> LinkNpc { get; set; }
 
 		[Side(ReleaseSide.Client)]
-		public float LocationX;
+		public float LocationX { get; set; }
 
 		[Side(ReleaseSide.Client)]
-		public float LocationY;
+		public float LocationY { get; set; }
 
 		[Side(ReleaseSide.Client)]
-		public float ApproachRange;
+		public float ApproachRange { get; set; }
 	}
 
 	public sealed class UseHeartCount : TutorialCase
@@ -320,7 +316,7 @@ public partial class TutorialCase : ModelElement
 	public sealed class TeleportZone : TutorialCase
 	{
 		[Side(ReleaseSide.Client)]
-		public Ref<Teleport> TeleportID;
+		public Ref<Teleport> TeleportID { get; set; }
 	}
 	#endregion
 }

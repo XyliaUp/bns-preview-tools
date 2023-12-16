@@ -1,184 +1,184 @@
-﻿using Xylia.Preview.Data.Common.Attribute;
+﻿using Xylia.Preview.Common.Attributes;
 
 namespace Xylia.Preview.Data.Models.Sequence;
 public enum MainAbility : byte
 {
     None,
 
-    [Name("attack-power-equip-min-and-max")]
+    [Name("Name.Item.attack-power-equip")]
     AttackPowerEquipMinAndMax,
 
-    [Name("defend-power-equip-value")]
+    [Name("Name.Item.defend-power-equip-value")]
     DefendPowerEquipValue,
 
-    [Name("defend-resist-power-equip-value")]
+    [Name("Name.Item.defend-resist-power-equip-value")]
     DefendResistPowerEquipValue,
 
-    [Name("attack-hit-base-percent")]
+    [Name("Name.Item.attack-hit-base-percent")]
     AttackHitBasePercent,
 
-    [Name("attack-hit-value")]
+    [Name("Name.Item.attack-hit-value")]
     AttackHitValue,
 
-    [Name("attack-critical-base-percent")]
+    [Name("Name.Item.attack-critical-base-percent")]
     AttackCriticalBasePercent,
 
-    [Name("attack-critical-value")]
+    [Name("Name.Item.attack-critical-value")]
     AttackCriticalValue,
 
-    [Name("defend-critical-base-percent")]
+    [Name("Name.Item.defend-critical-base-percent")]
     DefendCriticalBasePercent,
 
-    [Name("defend-critical-value")]
+    [Name("Name.Item.defend-critical-value")]
     DefendCriticalValue,
 
-    [Name("defend-dodge-base-percent")]
+    [Name("Name.Item.defend-dodge-base-percent")]
     DefendDodgeBasePercent,
 
-    [Name("defend-dodge-value")]
+    [Name("Name.Item.defend-dodge-value")]
     DefendDodgeValue,
 
-    [Name("defend-parry-base-percent")]
+    [Name("Name.Item.defend-parry-base-percent")]
     DefendParryBasePercent,
 
-    [Name("defend-parry-value")]
+    [Name("Name.Item.defend-parry-value")]
     DefendParryValue,
 
-    [Name("attack-stiff-duration-base-percent")]
+    [Name("Name.Item.attack-stiff-duration-base-percent")]
     AttackStiffDurationBasePercent,
 
-    [Name("attack-stiff-duration-value")]
+    [Name("Name.Item.attack-stiff-duration-value")]
     AttackStiffDurationValue,
 
-    [Name("defend-stiff-duration-base-percent")]
+    [Name("Name.Item.defend-stiff-duration-base-percent")]
     DefendStiffDurationBasePercent,
 
-    [Name("defend-stiff-duration-value")]
+    [Name("Name.Item.defend-stiff-duration-value")]
     DefendStiffDurationValue,
 
-    [Name("cast-duration-base-percent")]
+    [Name("Name.Item.cast-duration-base-percent")]
     CastDurationBasePercent,
 
-    [Name("cast-duration-value")]
+    [Name("Name.Item.cast-duration-value")]
     CastDurationValue,
 
-    [Name("defend-physical-damage-reduce-percent")]
+    [Name("Name.Item.defend-physical-damage-reduce-percent")]
     DefendPhysicalDamageReducePercent,
 
-    [Name("defend-force-damage-reduce-percent")]
+    [Name("Name.Item.defend-force-damage-reduce-percent")]
     DefendForceDamageReducePercent,
 
-    [Name("attack-damage-modify-percent")]
+    [Name("Name.Item.attack-damage-modify-percent")]
     AttackDamageModifyPercent,
 
-    [Name("attack-damage-modify-diff")]
+    [Name("Name.Item.attack-damage-modify-diff")]
     AttackDamageModifyDiff,
 
-    [Name("defend-damage-modify-percent")]
+    [Name("Name.Item.defend-damage-modify-percent")]
     DefendDamageModifyPercent,
 
-    [Name("defend-damage-modify-diff")]
+    [Name("Name.Item.defend-damage-modify-diff")]
     DefendDamageModifyDiff,
 
-    [Name("max-hp")]
+    [Name("Name.Item.max-hp")]
     MaxHp,
 
-    [Name("hp-regen")]
+    [Name("Name.Item.hp-regen")]
     HpRegen,
 
-    [Name("hp-regen-combat")]
+    [Name("Name.Item.hp-regen-combat")]
     HpRegenCombat,
 
-    [Name("attack-pierce-value")]
+    [Name("Name.Item.attack-pierce-value")]
     AttackPierceValue,
 
-    [Name("attack-concentrate-value")]
+    [Name("Name.Item.attack-concentrate-value")]
     AttackConcentrateValue,
 
-    [Name("defend-perfect-parry-reduce-percent")]
+    [Name("Name.Item.defend-perfect-parry-reduce-percent")]
     DefendPerfectParryReducePercent,
 
-    [Name("defend-counter-reduce-percent")]
+    [Name("Name.Item.defend-counter-reduce-percent")]
     DefendCounterReducePercent,
 
-    [Name("attack-critical-damage-percent")]
+    [Name("Name.Item.attack-critical-damage-percent")]
     AttackCriticalDamagePercent,
 
-    [Name("pve-boss-level-npc-attack-power-equip-min-and-max")]
+    [Name("Name.Item.boss-attack-power-equip")]
     PveBossLevelNpcAttackPowerEquipMinAndMax,
 
-    [Name("pve-boss-level-npc-defend-power-equip-value")]
+    [Name("Name.Item.boss-defend-power-equip")]
     PveBossLevelNpcDefendPowerEquipValue,
 
-    [Name("pvp-attack-power-equip-min-and-max")]
+    [Name("Name.Item.pc-attack-power-equip")]
     PvpAttackPowerEquipMinAndMax,
 
-    [Name("pvp-defend-power-equip-value")]
+    [Name("Name.Item.pc-defend-power-equip")]
     PvpDefendPowerEquipValue,
 
-    [Name("attack-critical-damage-value")]
+    [Name("Name.Item.attack-critical-damage-value")]
     AttackCriticalDamageValue,
 
-    [Name("max-guard-gauge")]
+    [Name("Name.Item.max-guard-gauge")]
     MaxGuardGauge,
 
-    [Name("attack-attribute-value")]
+    [Name("Name.Item.attack-attribute-value")]
     AttackAttributeValue,
 
-    [Name("r-attack-stiff-duration-equip-value")]
+    [Name("Name.Item.r-attack-stiff-duration-equip-value")]
     RAttackStiffDurationEquipValue,
 
-    [Name("r-defend-stiff-duration-equip-value")]
+    [Name("Name.Item.r-defend-stiff-duration-equip-value")]
     RDefendStiffDurationEquipValue,
 
-    [Name("r-aoe-defend-power-value-equip")]
+    [Name("Name.Item.r-aoe-defend-power-value-equip")]
     RAoeDefendPowerValueEquip,
 
-    [Name("r-heal-power-equip-value")]
+    [Name("Name.Item.r-heal-power-equip-value")]
     RHealPowerEquipValue,
 
-    [Name("r-defend-strength-equip-value")]
+    [Name("Name.Item.r-defend-strength-equip-value")]
     RDefendStrengthEquipValue,
 
-    [Name("r-attack-precise-equip-value")]
+    [Name("Name.Item.r-attack-precise-equip-value")]
     RAttackPreciseEquipValue,
 
-    [Name("r-attack-aoe-pierce-value-equip")]
+    [Name("Name.Item.r-attack-aoe-pierce-value-equip")]
     RAttackAoePierceValueEquip,
 
-    [Name("r-attack-abnormal-hit-equip-value")]
+    [Name("Name.Item.r-attack-abnormal-hit-equip-value")]
     RAttackAbnormalHitEquipValue,
 
-    [Name("r-defend-abnormal-dodge-equip-value")]
+    [Name("Name.Item.r-defend-abnormal-dodge-equip-value")]
     RDefendAbnormalDodgeEquipValue,
 
-    [Name("r-support-power-equip-value")]
+    [Name("Name.Item.r-support-power-equip-value")]
     RSupportPowerEquipValue,
 
-    [Name("r-hypermove-power-equip-value")]
+    [Name("Name.Item.r-hypermove-power-equip-value")]
     RHypermovePowerEquipValue,
 
-    [Name("attack-attribute-base-percent")]
+    [Name("Name.Item.attack-attribute-base-percent")]
     AttackAttributeBasePercent,
 
-    [Name("defend-difficulty-type-damage-reduce-percent")]
+    [Name("Name.Item.defend-difficulty-type-damage-reduce-percent")]
     DefendDifficultyTypeDamageReducePercent,
 
-    [Name("attack-attribute-value-equip")]
+    [Name("Name.Item.attack-attribute-value-equip")]
     AttackAttributeValueEquip,
 
-    [Name("abnormal-attack-power-value")]
+    [Name("Name.Item.abnormal-attack-power-value")]
     AbnormalAttackPowerValue,
 
-    [Name("abnormal-defend-power-value")]
+    [Name("Name.Item.abnormal-defend-power-value")]
     AbnormalDefendPowerValue,
 
-    [Name("abnormal-attack-base-percent")]
+    [Name("Name.Item.abnormal-attack-base-percent")]
     AbnormalAttackBasePercent,
 
-    [Name("abnormal-defend-base-percent")]
+    [Name("Name.Item.abnormal-defend-base-percent")]
     AbnormalDefendBasePercent,
 
-    [Name("attack-pierce-base-percent")]
+    [Name("Name.Item.attack-pierce-base-percent")]
     AttackPierceBasePercent,
 }

@@ -17,7 +17,7 @@ internal class UpdateService
 		AutoUpdater.RemindLaterTimeSpan = 0;
 		AutoUpdater.ParseUpdateInfoEvent += ParseUpdateInfoEvent;
 		AutoUpdater.CheckForUpdateEvent += CheckForUpdateEvent;
-		AutoUpdater.Start("https://tools.bnszs.com/api/update?app=bns-preview-tools");
+		AutoUpdater.Start("https://tools.bnszs.com/api/update?app=bns-preview-tools&version=1");
 	}
 
 	private void ParseUpdateInfoEvent(ParseUpdateInfoEventArgs args)
@@ -60,6 +60,9 @@ internal class UpdateService
 		{
 			Log.Error(args.Error.Message);
 			Growl.Error(StringHelper.Get("Version_Tip3"));
+
+			HandyControl.Controls.MessageBox.Show(StringHelper.Get("Version_Tip3"), icon: MessageBoxImage.Error);
+			Environment.Exit(500);
 		}
 	}
 
@@ -68,5 +71,7 @@ internal class UpdateService
 	{
 		public int NoticeID { get; set; }
 		public string Notice { get; set; }
+
+		public string CheckSum { get; set; }
 	}
 }

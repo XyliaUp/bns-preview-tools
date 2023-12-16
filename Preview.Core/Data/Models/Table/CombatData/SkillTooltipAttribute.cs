@@ -1,44 +1,35 @@
-﻿using Xylia.Preview.Data.Common.Attribute;
-using Xylia.Preview.Data.Common.DataStruct;
+﻿using Xylia.Preview.Common.Attributes;
 
 namespace Xylia.Preview.Data.Models;
 public class SkillTooltipAttribute : ModelElement
 {
 	[Repeat(4)]
-	public ArgTypeSeq[] ArgType;
+	public ArgTypeSeq[] ArgType { get; set; }
 	public enum ArgTypeSeq
 	{
 		None,
 
-		[Name("damage-percent-min-max")]
-		DamagePercentMinMax,
+			DamagePercentMinMax,
 
-		[Name("damage-percent")]
-		DamagePercent,
+			DamagePercent,
 
 		Time,
 
-		[Name("stack-count")]
-		StackCount,
+			StackCount,
 
 		Effect,
 
-		[Name("heal-percent")]
-		HealPercent,
+			HealPercent,
 
-		[Name("drain-percent")]
-		DrainPercent,
+			DrainPercent,
 
 		Skill,
 
-		[Name("consume-percent")]
-		ConsumePercent,
+			ConsumePercent,
 
-		[Name("probability-percent")]
-		ProbabilityPercent,
+			ProbabilityPercent,
 
-		[Name("stance-type")]
-		StanceType,
+			StanceType,
 
 		Percent,
 
@@ -46,59 +37,45 @@ public class SkillTooltipAttribute : ModelElement
 
 		Distance,
 
-		[Name("key-command")]
-		KeyCommand,
+			KeyCommand,
 
 		Number,
 
-		[Name("text-alias")]
-		TextAlias,
+			TextAlias,
 
-		[Name("r-hypermove")]
-		rHypermove,
+			rHypermove,
 
-		[Name("r-heal-percent")]
-		rHealPercent,
+			rHealPercent,
 
-		[Name("r-heal-diff")]
-		rHealDiff,
+			rHealDiff,
 
-		[Name("r-shield-percent")]
-		rShieldPercent,
+			rShieldPercent,
 
-		[Name("r-shield-diff")]
-		rShieldDiff,
+			rShieldDiff,
 
-		[Name("r-support-percent")]
-		rSupportPercent,
+			rSupportPercent,
 
-		[Name("r-support-diff")]
-		rSupportDiff,
+			rSupportDiff,
 
 	}
 
-	public Ref<Text> Text;
+	public Ref<Text> Text { get; set; }
 
-	public string Icon;
+	public string Icon { get; set; }
 
-	public ModifyType SkillModifyType;
+	public ModifyType SkillModifyType { get; set; }
 	public enum ModifyType
 	{
 		None,
 
-		[Name("recycle-duration")]
-		RecycleDuration,
+			RecycleDuration,
 
-		[Name("sp-consume")]
-		SpConsume,
+			SpConsume,
 
-		[Name("damage")]
-		Damage,
+			Damage,
 
-		[Name("hp-drain")]
-		HpDrain,
+			HpDrain,
 
-		[Name("heal-percent")]
-		HealPercent,
+			HealPercent,
 	}
 }

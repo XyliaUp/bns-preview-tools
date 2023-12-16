@@ -1,4 +1,4 @@
-﻿using Xylia.Preview.Data.Common.Attribute;
+﻿using Xylia.Preview.Common.Attributes;
 using Xylia.Preview.Data.Common.DataStruct;
 using Xylia.Preview.Data.Models.Sequence;
 

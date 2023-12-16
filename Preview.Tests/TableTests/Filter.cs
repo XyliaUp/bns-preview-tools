@@ -1,11 +1,10 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Xylia.Preview.Tests.TableTests;
-
-[TestClass]
-public class Filter
+namespace Xylia.Preview.Tests;
+public partial class TableTests
 {
-	public void Test()
+	[TestMethod]
+	public void Filter()
 	{
 		//foreach (var record in Data.FileCache.Data.TextData.Where(r => 
 		//	r.alias.StartsWith("UI.ItemTooltip.") ||

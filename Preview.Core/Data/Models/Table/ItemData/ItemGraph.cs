@@ -1,4 +1,4 @@
-﻿using Xylia.Preview.Data.Common.Attribute;
+﻿using Xylia.Preview.Common.Attributes;
 using Xylia.Preview.Data.Models.Sequence;
 
 namespace Xylia.Preview.Data.Models;
@@ -6,21 +6,14 @@ public class ItemGraph : ModelElement
 {
 	public enum SeedItemSubGroupSeq
 	{
-		[Name("sub-group-1")]
 		SubGroup1,
-
-		[Name("sub-group-2")]
 		SubGroup2,
 	}
 
 	public enum AttributeGroupSeq
 	{
 		None,
-
-		[Name("attribute-group-1")]
 		AttributeGroup1,
-
-		[Name("attribute-group-2")]
 		AttributeGroup2,
 	}
 
@@ -28,16 +21,16 @@ public class ItemGraph : ModelElement
 	public sealed class Seed : ItemGraph
 	{
 		[Repeat(42)]
-		public Ref<Item>[] SeedItem;
-		public Ref<ItemGraphSeedGroup> SeedItemGroup;
+		public Ref<Item>[] SeedItem{ get; set; }
+		public Ref<ItemGraphSeedGroup> SeedItemGroup{ get; set; }
 		[Repeat(42)]
-		public SeedItemSubGroupSeq[] SeedItemSubGroup;
-		public NodeTypeSeq NodeType;
-		public AttributeGroupSeq AttributeGroup;
-		public EquipType ItemEquipType;
-		public GrowthCategorySeq GrowthCategory;
-		public short Row;
-		public short Column;
+		public SeedItemSubGroupSeq[] SeedItemSubGroup{ get; set; }
+		public NodeTypeSeq NodeType{ get; set; }
+		public AttributeGroupSeq AttributeGroup{ get; set; }
+		public EquipType ItemEquipType{ get; set; }
+		public GrowthCategorySeq GrowthCategory{ get; set; }
+		public short Row{ get; set; }
+		public short Column{ get; set; }
 
 
 
@@ -67,17 +60,17 @@ public class ItemGraph : ModelElement
 
 	public sealed class Edge : ItemGraph
 	{
-		public EdgeTypeSeq EdgeType;
-		public AttributeGroupSeq AttributeGroup;
-		public SeedItemSubGroupSeq SeedItemSubGroup;
-		public Ref<Item> FeedItem;
-		public Ref<ItemTransformRecipe> FeedRecipe;
-		public Ref<Item> StartItem;
-		public OrientationSeq StartOrientation;
-		public Ref<Item> EndItem;
-		public OrientationSeq EndOrientation;
-		public SuccessProbabilitySeq SuccessProbability;
-		public bool HasArrow;
+		public EdgeTypeSeq EdgeType{ get; set; }
+		public AttributeGroupSeq AttributeGroup{ get; set; }
+		public SeedItemSubGroupSeq SeedItemSubGroup{ get; set; }
+		public Ref<Item> FeedItem{ get; set; }
+		public Ref<ItemTransformRecipe> FeedRecipe{ get; set; }
+		public Ref<Item> StartItem{ get; set; }
+		public OrientationSeq StartOrientation{ get; set; }
+		public Ref<Item> EndItem{ get; set; }
+		public OrientationSeq EndOrientation{ get; set; }
+		public SuccessProbabilitySeq SuccessProbability{ get; set; }
+		public bool HasArrow{ get; set; }
 
 
 

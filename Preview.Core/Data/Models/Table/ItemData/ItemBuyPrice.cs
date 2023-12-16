@@ -1,6 +1,6 @@
 ﻿using System.Text;
 
-using Xylia.Preview.Data.Common.Attribute;
+using Xylia.Preview.Common.Attributes;
 using Xylia.Preview.Data.Common.DataStruct;
 using Xylia.Preview.Data.Helpers;
 using Xylia.Preview.Data.Models.Sequence;
@@ -9,81 +9,59 @@ namespace Xylia.Preview.Data.Models;
 public class ItemBuyPrice : ModelElement
 {
 	#region Fields
-	public string Alias;
+	public string Alias { get; set; }
 
-	public int money;
+	public int money { get; set; }
 
-	[Name("required-itembrand")]
-	public Ref<ItemBrand> RequiredItembrand;
+	public Ref<ItemBrand> RequiredItembrand { get; set; }
 
-	[Name("required-itembrand-condition-type")]
-	public ConditionType RequiredItembrandConditionType = ConditionType.All;
+	public ConditionType RequiredItembrandConditionType { get; set; }
 
-	[Name("required-item"), Repeat(4)]
-	public Ref<Item>[] RequiredItem;
+	[ Repeat(4)]
+	public Ref<Item>[] RequiredItem { get; set; }
 
-	[Name("required-item-count"), Repeat(4)]
-	public short[] RequiredItemCount;
+	[Repeat(4)]
+	public short[] RequiredItemCount { get; set; }
 
-	[Name("required-faction-score")]
-	public int RequiredFactionScore;
+	public int RequiredFactionScore { get; set; }
 
-	[Name("required-duel-point")]
-	public int RequiredDuelPoint;
+	public int RequiredDuelPoint { get; set; }
 
-	[Name("required-party-battle-point")]
-	public int RequiredPartyBattlePoint;
+	public int RequiredPartyBattlePoint { get; set; }
 
-	[Name("required-field-play-point")]
-	public int RequiredFieldPlayPoint;
+	public int RequiredFieldPlayPoint { get; set; }
 
-	[Name("required-life-contents-point")]
-	public int RequiredLifeContentsPoint;
+	public int RequiredLifeContentsPoint { get; set; }
 
-	[Name("required-achievement-score")]
-	public int RequiredAchievementScore;
+	public int RequiredAchievementScore { get; set; }
 
-	[Name("required-achievement-id")]
-	public int RequiredAchievementId;
+	public int RequiredAchievementId { get; set; }
 
-	[Name("required-achievement-step-min")]
-	public short RequiredAchievementStepMin;
+	public short RequiredAchievementStepMin { get; set; }
 
-	[Name("faction-level")]
-	public short FactionLevel;
+	public short FactionLevel { get; set; }
 
-	[Name("check-solo-duel-grade")]
-	public sbyte CheckSoloDuelGrade;
+	public sbyte CheckSoloDuelGrade { get; set; }
 
-	[Name("check-team-duel-grade")]
-	public sbyte CheckTeamDuelGrade;
+	public sbyte CheckTeamDuelGrade { get; set; }
 
-	[Name("check-battle-field-grade-occupation-war")]
-	public sbyte CheckBattleFieldGradeOccupationWar;
+	public sbyte CheckBattleFieldGradeOccupationWar { get; set; }
 
-	[Name("check-battle-field-grade-capture-the-flag")]
-	public sbyte CheckBattleFieldGradeCaptureTheFlag;
+	public sbyte CheckBattleFieldGradeCaptureTheFlag { get; set; }
 
-	[Name("check-battle-field-grade-lead-the-ball")]
-	public sbyte CheckBattleFieldGradeLeadTheBall;
+	public sbyte CheckBattleFieldGradeLeadTheBall { get; set; }
 
-	[Name("check-closet-collecting-grade")]
-	public sbyte CheckClosetCollectingGrade;
+	public sbyte CheckClosetCollectingGrade { get; set; }
 
-	[Name("check-content-quota")]
-	public Ref<ContentQuota> CheckContentQuota;
+	public Ref<ContentQuota> CheckContentQuota { get; set; }
 
-	[Name("check-soul-boost-season-bm")]
-	public int CheckSoulBoostSeasonBm;
+	public int CheckSoulBoostSeasonBm { get; set; }
 
-	[Name("required-level")]
-	public sbyte RequiredLevel;
+	public sbyte RequiredLevel { get; set; }
 
-	[Name("required-mastery-level")]
-	public sbyte RequiredMasteryLevel;
+	public sbyte RequiredMasteryLevel { get; set; }
 
-	[Name("required-account-level")]
-	public short RequiredAccountLevel;
+	public short RequiredAccountLevel { get; set; }
 	#endregion
 
 

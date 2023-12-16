@@ -38,7 +38,7 @@ public partial class Game_ItemStoreScene
 
 		foreach (var store2 in FileCache.Data.Get<Store2>())
 		{
-			var text = $"[{store2.Name2.GetText()}] {store2.Alias}";
+			var text = $"[{store2.Name2.GetText()}] {store2}";
 			var type = FileCache.Data.Get<UnlocatedStore>().FirstOrDefault(x => x.Store2 == store2)?.UnlocatedStoreType ?? UnlocatedStoreTypeSeq.UnlocatedNone;
 			if (type > UnlocatedStoreTypeSeq.SoulBoostStore1 && type <= UnlocatedStoreTypeSeq.SoulBoostStore6)
 				type = UnlocatedStoreTypeSeq.SoulBoostStore1;

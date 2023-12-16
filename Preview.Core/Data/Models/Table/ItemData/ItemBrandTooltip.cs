@@ -1,9 +1,7 @@
 ﻿using CUE4Parse.BNS.Conversion;
 
 using SkiaSharp;
-
-using Xylia.Preview.Data.Common.Attribute;
-using Xylia.Preview.Data.Common.DataStruct;
+using Xylia.Preview.Common.Attributes;
 using Xylia.Preview.Data.Models.Sequence;
 using static Xylia.Preview.Data.Models.Item;
 
@@ -11,34 +9,32 @@ namespace Xylia.Preview.Data.Models;
 public sealed class ItemBrandTooltip : ModelElement
 {
 	#region Fields
-	public int BrandId;
-	public ConditionType ItemConditionType;
+	public int BrandId { get; set; }
+	public ConditionType ItemConditionType { get; set; }
 
-	public Ref<Text> Name2;
+	public Ref<Text> Name2 { get; set; }
 
-	[Name("game-category-3")]
-	public GameCategory3Seq GameCategory3;
+	public GameCategory3Seq GameCategory3 { get; set; }
 
-	[Name("item-grade")]
-	public sbyte ItemGrade;
+	public sbyte ItemGrade { get; set; }
 
-	[Name("equip-job-check") , Repeat(4)]
-	public JobSeq[] EquipJobCheck;
+	[Repeat(4)]
+	public JobSeq[] EquipJobCheck { get; set; }
 
 	[Name("equip-sex")]
-	public SexSeq2 EquipSex;
+	public SexSeq2 EquipSex { get; set; }
 
 	[Name("equip-race")]
-	public RaceSeq2 EquipRace;
+	public RaceSeq2 EquipRace { get; set; }
 
 
-	public string icon;
+	public string icon { get; set; }
 
 	[Name("tag-icon")]
-	public string TagIcon;
+	public string TagIcon { get; set; }
 
 	[Name("tag-icon-grade")]
-	public string TagIconGrade;
+	public string TagIconGrade { get; set; }
 	#endregion
 
 	#region Properties

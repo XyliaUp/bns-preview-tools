@@ -131,6 +131,8 @@ public class BnsCustomLabelWidget : BnsCustomBaseWidget, IContentHost
 
 	protected override Size ArrangeOverride(Size arrangeBounds)
 	{
+		base.ArrangeOverride(arrangeBounds);
+
 		Document?.Arrange(new Rect(arrangeBounds));
 		return arrangeBounds;
 	}

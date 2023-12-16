@@ -1,5 +1,5 @@
-﻿using Xylia.Preview.Common.Extension;
-using Xylia.Preview.Data.Common.Attribute;
+﻿using Xylia.Preview.Common.Attributes;
+using Xylia.Preview.Common.Extension;
 using Xylia.Preview.Data.Models.Sequence;
 
 namespace Xylia.Preview.Data.Models.QuestData;
@@ -69,16 +69,16 @@ public class MissionStepFail : ModelElement
 
 
 	[Side(ReleaseSide.Client)]
-	public Ref<TalkSocial> FailTalksocial;
+	public Ref<TalkSocial> FailTalksocial { get; set; }
 
 	[Side(ReleaseSide.Client)]
-	public float FailTalksocialDelay;
+	public float FailTalksocialDelay { get; set; }
 
 	[Side(ReleaseSide.Server)]
-	public Ref<Decision.QuestDecision> QuestDecision;
+	public Ref<Decision.QuestDecision> QuestDecision { get; set; }
 
 	[Side(ReleaseSide.Server), Repeat(2)]
-	public Ref<Zone>[] Zone;
+	public Ref<Zone>[] Zone { get; set; }
 }
 
 public class Completion : ModelElement
@@ -88,12 +88,12 @@ public class Completion : ModelElement
 
 public class NextQuest : ModelElement
 {
-	public Ref<Faction> Faction;
+	public Ref<Faction> Faction { get; set; }
 
 	[Repeat(15)]
-	public JobSeq[] Job;
+	public JobSeq[] Job { get; set; }
 
-	public Ref<Quest> Quest;
+	public Ref<Quest> Quest { get; set; }
 }
 
 public class Transit : ModelElement
@@ -105,26 +105,26 @@ public class Transit : ModelElement
 
 public class Destination : ModelElement
 {
-	public sbyte MissionStepId;
+	public sbyte MissionStepId { get; set; }
 
-	public sbyte ZoneIndex;
+	public sbyte ZoneIndex { get; set; }
 
 	[Side(ReleaseSide.Client)]
-	public string Kismet;
+	public string Kismet { get; set; }
 }
 
 public class Complete : ModelElement
 {
-	public sbyte ZoneIndex;
+	public sbyte ZoneIndex { get; set; }
 
 	[Side(ReleaseSide.Client)]
-	public string Kismet;
+	public string Kismet { get; set; }
 }
 
 public class NotAcquire : ModelElement
 {
-	public sbyte ZoneIndex;
+	public sbyte ZoneIndex { get; set; }
 
 	[Side(ReleaseSide.Client)]
-	public string Kismet;
+	public string Kismet { get; set; }
 }

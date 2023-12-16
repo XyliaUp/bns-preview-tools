@@ -1,6 +1,6 @@
 ﻿using SkiaSharp;
 
-using Xylia.Preview.Data.Common.Attribute;
+using Xylia.Preview.Common.Attributes;
 using Xylia.Preview.Data.Helpers;
 using Xylia.Preview.Data.Models.Sequence;
 
@@ -8,10 +8,10 @@ namespace Xylia.Preview.Data.Models;
 public sealed class KeyCommand : ModelElement
 {
 	#region Field
-	public KeyCommandSeq Command;
+	public KeyCommandSeq Command { get; set; }
 
 	[Name("default-keycap")]
-	public string DefaultKeycap;
+	public string DefaultKeycap { get; set; }
 	#endregion
 
 	#region Methods

@@ -1,6 +1,5 @@
 ﻿using System.Text;
-
-using Xylia.Preview.Data.Common.Attribute;
+using Xylia.Preview.Common.Attributes;
 
 namespace Xylia.Preview.Data.Engine.BinData.Models;
 /// <summary>

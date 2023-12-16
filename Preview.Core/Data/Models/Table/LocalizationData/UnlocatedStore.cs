@@ -1,16 +1,13 @@
-﻿using Xylia.Preview.Data.Common.Attribute;
-using Xylia.Preview.Data.Common.DataStruct;
+﻿using Xylia.Preview.Common.Attributes;
 
 namespace Xylia.Preview.Data.Models;
 public class UnlocatedStore : ModelElement
 {
-	public Ref<Store2> Store2;
+	public Ref<Store2> Store2 { get; set; }
 
-	[Name("no-more-use")]
-	public bool NoMoreUse;
+	public bool NoMoreUse { get; set; }
 
-	[Name("unlocated-store-type")]
-	public UnlocatedStoreTypeSeq UnlocatedStoreType;
+	public UnlocatedStoreTypeSeq UnlocatedStoreType { get; set; }
 
 	public enum UnlocatedStoreTypeSeq
 	{

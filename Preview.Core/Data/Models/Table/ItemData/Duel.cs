@@ -1,6 +1,4 @@
 ﻿using Xylia.Preview.Data.Common.Abstractions;
-using Xylia.Preview.Data.Common.Attribute;
-using Xylia.Preview.Data.Common.DataStruct;
 
 namespace Xylia.Preview.Data.Models;
 public sealed class Duel : ModelElement, IAttraction
@@ -13,14 +11,11 @@ public sealed class Duel : ModelElement, IAttraction
 	{
 		None,
 
-		[Name("death-match-1vs1")]
-		DeathMatch1VS1,
+			DeathMatch1VS1,
 
-		[Name("tag-match-3vs3")]
-		TagMatch3VS3,
+			TagMatch3VS3,
 
-		[Name("sudden-death-3vs3")]
-		SuddenDeath3VS3,
+			SuddenDeath3VS3,
 	}
 
 

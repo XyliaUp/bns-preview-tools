@@ -1,21 +1,12 @@
 ﻿using Xylia.Preview.Data.Common.Abstractions;
-using Xylia.Preview.Data.Common.Attribute;
-using Xylia.Preview.Data.Common.DataStruct;
+using Xylia.Preview.Common.Attributes;
 
 namespace Xylia.Preview.Data.Models;
 public sealed class WorldAccountCard : ModelElement, IHaveName
 {
-	public string Alias;
+	public Ref<Item> Item { get; set; }
 
-	public Ref<Item> Item;
-
-	public bool Disabled;
-
-	[Name("sort-no")]
-	public short SortNo;
-
-	[Name("card-image")]
-	public string CardImage;
+	public string CardImage { get; set; }
 
 
 	#region Interface

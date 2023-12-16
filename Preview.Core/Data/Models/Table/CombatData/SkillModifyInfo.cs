@@ -1,40 +1,31 @@
-﻿using Xylia.Preview.Data.Common.Attribute;
+﻿using Xylia.Preview.Common.Attributes;
 
 namespace Xylia.Preview.Data.Models;
 public class SkillModifyInfo : ModelElement
 {
 	#region Fields
-	[Name("recycle-duration-modify-percent")]
-	public short RecycleDurationModifyPercent;
+	public short RecycleDurationModifyPercent { get; set; }
 
-	[Name("recycle-duration-modify-diff")]
-	public int RecycleDurationModifyDiff;
+	public int RecycleDurationModifyDiff { get; set; }
 
-	[Name("sp-consume-modify-diff"), Repeat(2)]
-	public short[] SpConsumeModifyDiff;
+	public short[] SpConsumeModifyDiff { get; set; }
 
-	[Name("damage-power-percent-modify-percent")]
-	public short DamagePowerPercentModifyPercent;
+	public short DamagePowerPercentModifyPercent { get; set; }
 
-	[Name("damage-power-percent-modify-diff")]
-	public int DamagePowerPercentModifyDiff;
+	public int DamagePowerPercentModifyDiff { get; set; }
 
-	[Name("hp-drain-percent-modify-percent")]
-	public short HpDrainPercentModifyPercent;
+	public short HpDrainPercentModifyPercent { get; set; }
 
-	[Name("hp-drain-percent-modify-diff")]
-	public int HpDrainPercentModifyDiff;
+	public int HpDrainPercentModifyDiff { get; set; }
 
-	[Name("heal-percent-modify-percent")]
-	public short HealPercentModifyPercent;
+	public short HealPercentModifyPercent { get; set; }
 
-	[Name("heal-percent-modify-diff")]
-	public int HealPercentModifyDiff;
+	public int HealPercentModifyDiff { get; set; }
 
-	public Ref<Text> Description;
+	public Ref<Text> Description { get; set; }
 
-	[Name("parent-skill3-id"), Repeat(4)]
-	public int[] ParentSkill3Id;
+	[Repeat(4)]
+	public int[] ParentSkill3Id { get; set; }
 	#endregion
 
 	#region Methods

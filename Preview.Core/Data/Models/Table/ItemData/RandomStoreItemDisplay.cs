@@ -1,28 +1,24 @@
 ﻿using System.ComponentModel;
 
-using Xylia.Preview.Data.Common.Attribute;
-using Xylia.Preview.Data.Common.DataStruct;
+using Xylia.Preview.Common.Attributes;
 
 namespace Xylia.Preview.Data.Models;
 public sealed class RandomStoreItemDisplay : ModelElement
 {
-	public string Alias;
-
-
 	[Name("random-store-type")]
-	public RandomStoreTypeSeq RandomStoreType;
+	public RandomStoreTypeSeq RandomStoreType { get; set; }
 
 	[Name("display-item")]
-	public Ref<Item> DisplayItem;
+	public Ref<Item> DisplayItem { get; set; }
 
 	[Name("draw-group")]
-	public DrawGroupSeq DrawGroup;
+	public DrawGroupSeq DrawGroup { get; set; }
 
 	[Name("probability-group")]
-	public ProbabilityGroupSeq ProbabilityGroup;
+	public ProbabilityGroupSeq ProbabilityGroup { get; set; }
 
 	[Name("new-arrival")]
-	public bool NewArrival;
+	public bool NewArrival { get; set; }
 
 
 

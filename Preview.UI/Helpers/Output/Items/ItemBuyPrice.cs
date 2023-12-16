@@ -54,7 +54,7 @@ public sealed class ItemBuyPriceOut : OutSet
                 var count = record.RequiredItemCount[i];
 
                 if (item is null) sheet.Cells[Row, column++].SetValue("");
-                else sheet.Cells[Row, column++].SetValue((item.Name2.GetText() ?? item.Alias) + " " + count);
+                else sheet.Cells[Row, column++].SetValue((item.Name2.GetText() ?? item.ToString()) + " " + count);
             }
             #endregion
 

@@ -1,560 +1,375 @@
-﻿using Xylia.Preview.Data.Common.Attribute;
+﻿using Xylia.Preview.Common.Attributes;
 
 namespace Xylia.Preview.Data.Models.Sequence;
 public enum KeyCommandSeq
 {
-    [Name("none")]
-    None,
+	None,
 
-    [Name("action1")]
-    Action1,
+	Action1,
 
-    [Name("action2")]
-    Action2,
+	Action2,
 
-    [Name("action3")]
-    Action3,
+	Action3,
 
-    [Name("classic-action1")]
-    ClassicAction1,
+	ClassicAction1,
 
-    [Name("classic-action2")]
-    ClassicAction2,
+	ClassicAction2,
 
-    [Name("classic-action3")]
-    ClassicAction3,
+	ClassicAction3,
 
-    [Name("skill-recommend")]
-    SkillRecommend,
+	SkillRecommend,
 
-    [Name("skill-stance")]
-    SkillStance,
+	SkillStance,
 
-    [Name("skill-slot1")]
-    SkillSlot1,
+	SkillSlot1,
 
-    [Name("skill-slot2")]
-    SkillSlot2,
+	SkillSlot2,
 
-    [Name("skill-slot3")]
-    SkillSlot3,
+	SkillSlot3,
 
-    [Name("skill-slot4")]
-    SkillSlot4,
+	SkillSlot4,
 
-    [Name("skill-slot5")]
-    SkillSlot5,
+	SkillSlot5,
 
-    [Name("skill-slot6")]
-    SkillSlot6,
+	SkillSlot6,
 
-    [Name("skill-slot7")]
-    SkillSlot7,
+	SkillSlot7,
 
-    [Name("skill-slot8")]
-    SkillSlot8,
+	SkillSlot8,
 
-    [Name("skill-slot9")]
-    SkillSlot9,
+	SkillSlot9,
 
-    [Name("skill-slot10")]
-    SkillSlot10,
+	SkillSlot10,
 
-    [Name("skill-slot11")]
-    SkillSlot11,
+	SkillSlot11,
 
-    [Name("skill-slot12")]
-    SkillSlot12,
+	SkillSlot12,
 
-    [Name("skill-q")]
-    SkillQ,
+	SkillQ,
 
-    [Name("skill-e")]
-    SkillE,
+	SkillE,
 
-    [Name("skill-special-1")]
-    SkillSpecial1,
+	SkillSpecial1,
 
-    [Name("skill-special-2")]
-    SkillSpecial2,
+	SkillSpecial2,
 
-    [Name("item-slot1")]
-    ItemSlot1,
+	ItemSlot1,
 
-    [Name("item-slot2")]
-    ItemSlot2,
+	ItemSlot2,
 
-    [Name("item-slot3")]
-    ItemSlot3,
+	ItemSlot3,
 
-    [Name("item-slot4")]
-    ItemSlot4,
+	ItemSlot4,
 
-    [Name("extra-skill-slot5")]
-    ExtraSkillSlot5,
+	ExtraSkillSlot5,
 
-    [Name("skill-duel-tag")]
-    SkillDuelTag,
+	SkillDuelTag,
 
-    [Name("toggle-help")]
-    ToggleHelp,
+	ToggleHelp,
 
-    [Name("toggle-dungeon-guide")]
-    ToggleDungeonGuide,
+	ToggleDungeonGuide,
 
-    [Name("toggle-inventory")]
-    ToggleInventory,
+	ToggleInventory,
 
-    [Name("toggle-gem")]
-    ToggleGem,
+	ToggleGem,
 
-    [Name("toggle-equipped")]
-    ToggleEquipped,
+	ToggleEquipped,
 
-    [Name("toggle-skill-book")]
-    ToggleSkillBook,
+	ToggleSkillBook,
 
-    [Name("toggle-quest-journal")]
-    ToggleQuestJournal,
+	ToggleQuestJournal,
 
-    [Name("toggle-minimap-scale")]
-    ToggleMinimapScale,
+	ToggleMinimapScale,
 
-    [Name("toggle-minimap-visible")]
-    ToggleMinimapVisible,
+	ToggleMinimapVisible,
 
-    [Name("toggle-quest-quick-slot")]
-    ToggleQuestQuickSlot,
+	ToggleQuestQuickSlot,
 
-    [Name("toggle-collect-manufacture")]
-    ToggleCollectManufacture,
+	ToggleCollectManufacture,
 
-    [Name("toggle-petition")]
-    TogglePetition,
+	TogglePetition,
 
-    [Name("toggle-option")]
-    ToggleOption,
+	ToggleOption,
 
-    [Name("toggle-minimap-alpha")]
-    ToggleMinimapAlpha,
+	ToggleMinimapAlpha,
 
-    [Name("toggle-party-panel")]
-    TogglePartyPanel,
+	TogglePartyPanel,
 
-    [Name("toggle-party-mark")]
-    TogglePartyMark,
+	TogglePartyMark,
 
-    [Name("toggle-party-search")]
-    TogglePartySearch,
+	TogglePartySearch,
 
-    [Name("toggle-hud-customize")]
-    ToggleHudCustomize,
+	ToggleHudCustomize,
 
-    [Name("party-match")]
-    PartyMatch,
+	PartyMatch,
 
-    [Name("manual-targeting")]
-    ManualTargeting,
+	ManualTargeting,
 
-    [Name("strafe-left")]
-    StrafeLeft,
+	StrafeLeft,
 
-    [Name("strafe-right")]
-    StrafeRight,
+	StrafeRight,
 
-    [Name("dash-forward")]
-    DashForward,
+	DashForward,
 
-    [Name("move-forward")]
-    MoveForward,
+	MoveForward,
 
-    [Name("move-backward")]
-    MoveBackward,
+	MoveBackward,
 
-    [Name("turn-left")]
-    TurnLeft,
+	TurnLeft,
 
-    [Name("turn-right")]
-    TurnRight,
+	TurnRight,
 
-    [Name("jump-up")]
-    JumpUp,
+	JumpUp,
 
-    [Name("toggle-walk-run")]
-    ToggleWalkRun,
+	ToggleWalkRun,
 
-    [Name("social-action1")]
-    SocialAction1,
+	SocialAction1,
 
-    [Name("social-action2")]
-    SocialAction2,
+	SocialAction2,
 
-    [Name("social-action3")]
-    SocialAction3,
+	SocialAction3,
 
-    [Name("social-action4")]
-    SocialAction4,
+	SocialAction4,
 
-    [Name("social-action5")]
-    SocialAction5,
+	SocialAction5,
 
-    [Name("social-action6")]
-    SocialAction6,
+	SocialAction6,
 
-    [Name("social-action7")]
-    SocialAction7,
+	SocialAction7,
 
-    [Name("social-action8")]
-    SocialAction8,
+	SocialAction8,
 
-    [Name("social-action9")]
-    SocialAction9,
+	SocialAction9,
 
-    [Name("social-action10")]
-    SocialAction10,
+	SocialAction10,
 
-    [Name("toggle-auto-move-forward")]
-    ToggleAutoMoveForward,
+	ToggleAutoMoveForward,
 
-    [Name("enter-slash-chatting")]
-    EnterSlashChatting,
+	EnterSlashChatting,
 
-    [Name("enter-normal-chatting")]
-    EnterNormalChatting,
+	EnterNormalChatting,
 
-    [Name("enter-party-chatting")]
-    EnterPartyChatting,
+	EnterPartyChatting,
 
-    [Name("enter-local-chatting")]
-    EnterLocalChatting,
+	EnterLocalChatting,
 
-    [Name("enter-private-chatting")]
-    EnterPrivateChatting,
+	EnterPrivateChatting,
 
-    [Name("toggle-hud")]
-    ToggleHud,
+	ToggleHud,
 
-    [Name("toggle-light-hud-mode")]
-    ToggleLightHudMode,
+	ToggleLightHudMode,
 
-    [Name("camera-up")]
-    CameraUp,
+	CameraUp,
 
-    [Name("camera-down")]
-    CameraDown,
+	CameraDown,
 
-    [Name("camera-zoomin")]
-    CameraZoomin,
+	CameraZoomin,
 
-    [Name("camera-zoomout")]
-    CameraZoomout,
+	CameraZoomout,
 
-    [Name("toggle-voice-chat-option")]
-    ToggleVoiceChatOption,
+	ToggleVoiceChatOption,
 
-    [Name("mark1")]
-    Mark1,
+	Mark1,
 
-    [Name("mark2")]
-    Mark2,
+	Mark2,
 
-    [Name("mark3")]
-    Mark3,
+	Mark3,
 
-    [Name("mark4")]
-    Mark4,
+	Mark4,
 
-    [Name("mark5")]
-    Mark5,
+	Mark5,
 
-    [Name("mark6")]
-    Mark6,
+	Mark6,
 
-    [Name("mark7")]
-    Mark7,
+	Mark7,
 
-    [Name("mark8")]
-    Mark8,
+	Mark8,
 
-    [Name("mark-timer")]
-    MarkTimer,
+	MarkTimer,
 
-    [Name("mark-timer-immune-break-down")]
-    MarkTimerImmuneBreakDown,
+	MarkTimerImmuneBreakDown,
 
-    [Name("mark-timer-immune-break-kneel")]
-    MarkTimerImmuneBreakKneel,
+	MarkTimerImmuneBreakKneel,
 
-    [Name("mark-timer-immune-break-stun")]
-    MarkTimerImmuneBreakStun,
+	MarkTimerImmuneBreakStun,
 
-    [Name("mark-timer-immune-break-knockback")]
-    MarkTimerImmuneBreakKnockback,
+	MarkTimerImmuneBreakKnockback,
 
-    [Name("unmark")]
-    Unmark,
+	Unmark,
 
-    [Name("headline-start-timer")]
-    HeadlineStartTimer,
+	HeadlineStartTimer,
 
-    [Name("minimap-depth-plus")]
-    MinimapDepthPlus,
+	MinimapDepthPlus,
 
-    [Name("minimap-depth-minus")]
-    MinimapDepthMinus,
+	MinimapDepthMinus,
 
-    [Name("rotate-camera")]
-    RotateCamera,
+	RotateCamera,
 
-    [Name("rotate-player")]
-    RotatePlayer,
+	RotatePlayer,
 
-    [Name("reset-camera")]
-    ResetCamera,
+	ResetCamera,
 
-    [Name("toggle-bns")]
-    ToggleBns,
+	ToggleBns,
 
-    [Name("notification-accept")]
-    NotificationAccept,
+	NotificationAccept,
 
-    [Name("notification-decline")]
-    NotificationDecline,
+	NotificationDecline,
 
-    [Name("toggle-joypad-ui-mode")]
-    ToggleJoypadUiMode,
+	ToggleJoypadUiMode,
 
-    [Name("close-floating-panels")]
-    CloseFloatingPanels,
+	CloseFloatingPanels,
 
-    [Name("joypad-esc")]
-    JoypadEsc,
+	JoypadEsc,
 
-    [Name("joypad-set-mouse-position")]
-    JoypadSetMousePosition,
+	JoypadSetMousePosition,
 
-    [Name("joypad-toggle-rotate-type")]
-    JoypadToggleRotateType,
+	JoypadToggleRotateType,
 
-    [Name("turn-on-social-mode")]
-    TurnOnSocialMode,
+	TurnOnSocialMode,
 
-    [Name("enter-party-search-channel-in-party-match")]
-    EnterPartySearchChannelInPartyMatch,
+	EnterPartySearchChannelInPartyMatch,
 
-    [Name("toggle-sns")]
-    ToggleSns,
+	ToggleSns,
 
-    [Name("toggle-powerbook")]
-    TogglePowerbook,
+	TogglePowerbook,
 
-    [Name("toggle-skill-powerbook")]
-    ToggleSkillPowerbook,
+	ToggleSkillPowerbook,
 
-    [Name("toggle-nshop")]
-    ToggleNshop,
+	ToggleNshop,
 
-    [Name("toggle-character-info")]
-    ToggleCharacterInfo,
+	ToggleCharacterInfo,
 
-    [Name("toggle-market")]
-    ToggleMarket,
+	ToggleMarket,
 
-    [Name("toggle-money-market")]
-    ToggleMoneyMarket,
+	ToggleMoneyMarket,
 
-    [Name("toggle-postbox")]
-    TogglePostbox,
+	TogglePostbox,
 
-    [Name("toggle-tencent-in-game-shop")]
-    ToggleTencentInGameShop,
+	ToggleTencentInGameShop,
 
-    [Name("toggle-tencent-cross")]
-    ToggleTencentCross,
+	ToggleTencentCross,
 
-    [Name("toggle-second-password")]
-    ToggleSecondPassword,
+	ToggleSecondPassword,
 
-    [Name("toggle-achievement")]
-    ToggleAchievement,
+	ToggleAchievement,
 
-    [Name("toggle-pc-filter-hidden")]
-    TogglePcFilterHidden,
+	TogglePcFilterHidden,
 
-    [Name("toggle-guild2")]
-    ToggleGuild2,
+	ToggleGuild2,
 
-    [Name("toggle-economy-communication")]
-    ToggleEconomyCommunication,
+	ToggleEconomyCommunication,
 
-    [Name("cancel-order")]
-    CancelOrder,
+	CancelOrder,
 
-    [Name("invite-party")]
-    InviteParty,
+	InviteParty,
 
-    [Name("duel-start")]
-    DuelStart,
+	DuelStart,
 
-    [Name("toggle-friend")]
-    ToggleFriend,
+	ToggleFriend,
 
-    [Name("toggle-wardrobe")]
-    ToggleWardrobe,
+	ToggleWardrobe,
 
-    [Name("toggle-dragon-jade-shop")]
-    ToggleDragonJadeShop,
+	ToggleDragonJadeShop,
 
-    [Name("toggle-ranking")]
-    ToggleRanking,
+	ToggleRanking,
 
-    [Name("toggle-ingame-notice")]
-    ToggleIngameNotice,
+	ToggleIngameNotice,
 
-    [Name("change-item-bar-page")]
-    ChangeItemBarPage,
+	ChangeItemBarPage,
 
-    [Name("duel-tag-order-first")]
-    DuelTagOrderFirst,
+	DuelTagOrderFirst,
 
-    [Name("duel-tag-order-random")]
-    DuelTagOrderRandom,
+	DuelTagOrderRandom,
 
-    [Name("leave-arena-square")]
-    LeaveArenaSquare,
+	LeaveArenaSquare,
 
-    [Name("quick-turn")]
-    QuickTurn,
+	QuickTurn,
 
-    [Name("joypad-special-function1")]
-    JoypadSpecialFunction1,
+	JoypadSpecialFunction1,
 
-    [Name("joypad-special-function2")]
-    JoypadSpecialFunction2,
+	JoypadSpecialFunction2,
 
-    [Name("accelerate-mouse-cursor-speed")]
-    AccelerateMouseCursorSpeed,
+	AccelerateMouseCursorSpeed,
 
-    [Name("joypad-mouse-left-button")]
-    JoypadMouseLeftButton,
+	JoypadMouseLeftButton,
 
-    [Name("joypad-mouse-right-button")]
-    JoypadMouseRightButton,
+	JoypadMouseRightButton,
 
-    [Name("change-pet-filter-hidden")]
-    ChangePetFilterHidden,
+	ChangePetFilterHidden,
 
-    [Name("toggle-damage-meter")]
-    ToggleDamageMeter,
+	ToggleDamageMeter,
 
-    [Name("toggle-item-graph")]
-    ToggleItemGraph,
+	ToggleItemGraph,
 
-    [Name("duel-camera-fitpawn-new")]
-    DuelCameraFitpawnNew,
+	DuelCameraFitpawnNew,
 
-    [Name("duel-camera-free-new")]
-    DuelCameraFreeNew,
+	DuelCameraFreeNew,
 
-    [Name("duel-camera-quater-new")]
-    DuelCameraQuaterNew,
+	DuelCameraQuaterNew,
 
-    [Name("duel-camera-alpha-new")]
-    DuelCameraAlphaNew,
+	DuelCameraAlphaNew,
 
-    [Name("duel-camera-beta-new")]
-    DuelCameraBetaNew,
+	DuelCameraBetaNew,
 
-    [Name("duel-camera-free-up-new")]
-    DuelCameraFreeUpNew,
+	DuelCameraFreeUpNew,
 
-    [Name("duel-camera-free-down-new")]
-    DuelCameraFreeDownNew,
+	DuelCameraFreeDownNew,
 
-    [Name("toggle-goods-store")]
-    ToggleGoodsStore,
+	ToggleGoodsStore,
 
-    [Name("enter-skill-training-room")]
-    EnterSkillTrainingRoom,
+	EnterSkillTrainingRoom,
 
-    [Name("toggle-arena-entrance")]
-    ToggleArenaEntrance,
+	ToggleArenaEntrance,
 
-    [Name("toggle-appearance-pictorial")]
-    ToggleAppearancePictorial,
+	ToggleAppearancePictorial,
 
-    [Name("toggle-hybrid-mode")]
-    ToggleHybridMode,
+	ToggleHybridMode,
 
-    [Name("toggle-personal-customize")]
-    TogglePersonalCustomize,
+	TogglePersonalCustomize,
 
-    [Name("toggle-context-simple-mode")]
-    ToggleContextSimpleMode,
+	ToggleContextSimpleMode,
 
-    [Name("toggle-mentoring")]
-    ToggleMentoring,
+	ToggleMentoring,
 
-    [Name("toggle-pvp-enable")]
-    TogglePvpEnable,
+	TogglePvpEnable,
 
-    [Name("nova-equip-skill-quick-slot")]
-    NovaEquipSkillQuickSlot,
+	NovaEquipSkillQuickSlot,
 
-    [Name("toggle-account-contents")]
-    ToggleAccountContents,
+	ToggleAccountContents,
 
-    [Name("toggle-contents-journal-2")]
-    ToggleContentsJournal2,
+	ToggleContentsJournal2,
 
-    [Name("toggle-fish-collecting")]
-    ToggleFishCollecting,
+	ToggleFishCollecting,
 
-    [Name("toggle-slate")]
-    ToggleSlate,
+	ToggleSlate,
 
-    [Name("toggle-auto-mode")]
-    ToggleAutoMode,
+	ToggleAutoMode,
 
-    [Name("toggle-auto-mode-option")]
-    ToggleAutoModeOption,
+	ToggleAutoModeOption,
 
-    [Name("toggle-auto-mode-enable-item-support")]
-    ToggleAutoModeEnableItemSupport,
+	ToggleAutoModeEnableItemSupport,
 
-    [Name("toggle-pvp-data")]
-    TogglePvpData,
+	TogglePvpData,
 
-    [Name("toggle-ride-vehicle")]
-    ToggleRideVehicle,
+	ToggleRideVehicle,
 
-    [Name("toggle-museum")]
-    ToggleMuseum,
+	ToggleMuseum,
 
-    [Name("equip-spare-item")]
-    EquipSpareItem,
+	EquipSpareItem,
 
-    [Name("toggle-spare-item")]
-    ToggleSpareItem,
+	ToggleSpareItem,
 
-    [Name("unk-")]
-    Unk178,
+	Unk178,
 
-    [Name("toggle-glyph-inventory")]
-    ToggleGlyphInventory,
+	ToggleGlyphInventory,
 
-    [Name("toggle-constellation")]
-    ToggleConstellation,
+	ToggleConstellation,
 
-    [Name("toggle-sealed-scroll")]
-    ToggleSealedScroll,
+	ToggleSealedScroll,
 
-    [Name("toggle-inter-battle-field")]
-    ToggleInterBattleField,
+	ToggleInterBattleField,
 
-    [Name("toggle-wanted-mission")]
-    ToggleWantedMission,
+	ToggleWantedMission,
 
-    [Name("toggle-expedition")]
-    ToggleExpedition,
+	ToggleExpedition,
 }

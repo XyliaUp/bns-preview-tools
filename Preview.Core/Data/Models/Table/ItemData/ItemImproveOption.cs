@@ -1,34 +1,33 @@
-﻿using Xylia.Preview.Common.Extension;
-using Xylia.Preview.Data.Common.Attribute;
-using Xylia.Preview.Data.Common.DataStruct;
+﻿using Xylia.Preview.Common.Attributes;
+using Xylia.Preview.Common.Extension;
 using Xylia.Preview.Data.Models.Creature;
 using Xylia.Preview.Data.Models.Sequence;
 
 namespace Xylia.Preview.Data.Models;
 public sealed class ItemImproveOption : ModelElement
 {
-	public int Id;
-	public sbyte Level;
+	public int Id { get; set; }
+	public sbyte Level { get; set; }
 
 
 
-	public MainAbility Ability;
+	public MainAbility Ability { get; set; }
 
 	[Name("ability-value")]
-	public int AbilityValue;
+	public int AbilityValue { get; set; }
 
-	public Ref<Effect> Effect;
+	public Ref<Effect> Effect { get; set; }
 
 	[Name("effect-description")]
-	public Ref<Text> EffectDescription;
+	public Ref<Text> EffectDescription { get; set; }
 
 	[Name("skill-modify-info-group"), Repeat(10)]
-	public Ref<SkillModifyInfoGroup>[] SkillModifyInfoGroup;
+	public Ref<SkillModifyInfoGroup>[] SkillModifyInfoGroup { get; set; }
 
-	public Ref<Text> Additional;
+	public Ref<Text> Additional { get; set; }
 
 	[Name("draw-option-icon")]
-	public string DrawOptionIcon;
+	public string DrawOptionIcon { get; set; }
 
 
 

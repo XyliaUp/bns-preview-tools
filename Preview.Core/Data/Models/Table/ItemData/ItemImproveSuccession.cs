@@ -1,29 +1,19 @@
-﻿using Xylia.Preview.Data.Common.Attribute;
-using Xylia.Preview.Data.Helpers;
+﻿using Xylia.Preview.Data.Helpers;
 
 namespace Xylia.Preview.Data.Models;
 public sealed class ItemImproveSuccession : ModelElement
 {
-	public string Alias;
+	public int FeedItemImproveId { get; set; }
 
+	public sbyte FeedItemImproveLevel { get; set; }
 
-	[Name("feed-item-improve-id")]
-	public int FeedItemImproveId;
+	public int ResultItemImproveId { get; set; }
 
-	[Name("feed-item-improve-level")]
-	public sbyte FeedItemImproveLevel;
+	public sbyte ResultItemImproveLevel { get; set; }
 
-	[Name("result-item-improve-id")]
-	public int ResultItemImproveId;
+	public int SeedItemImproveId { get; set; }
 
-	[Name("result-item-improve-level")]
-	public sbyte ResultItemImproveLevel;
-
-	[Name("seed-item-improve-id")]
-	public int SeedItemImproveId;
-
-	[Name("seed-item-improve-level")]
-	public sbyte SeedItemImproveLevel;
+	public sbyte SeedItemImproveLevel { get; set; }
 
 
 	#region Functions

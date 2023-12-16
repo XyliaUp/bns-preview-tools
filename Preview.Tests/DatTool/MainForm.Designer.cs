@@ -35,25 +35,6 @@
 			button39 = new Button();
 			MainMenu = new ContextMenuStrip(components);
 			ToolStripMenuItem_NumSelect = new ToolStripMenuItem();
-			Page_Region = new TabPage();
-			label13 = new Label();
-			label12 = new Label();
-			Region_YMax_input = new TextBox();
-			Region_YMin_input = new TextBox();
-			Region_XMax_input = new TextBox();
-			Region_XMin_input = new TextBox();
-			button36 = new Button();
-			label27 = new Label();
-			Txt_Cterrain_Path = new TextBox();
-			textBox12 = new TextBox();
-			Txt_Region_Path = new TextBox();
-			Txt_Zone = new TextBox();
-			button37 = new Button();
-			label33 = new Label();
-			button32 = new Button();
-			label31 = new Label();
-			button31 = new Button();
-			label29 = new Label();
 			ModifyBin = new TabPage();
 			groupBox5 = new GroupBox();
 			textBox3 = new TextBox();
@@ -103,7 +84,6 @@
 			richTextBox1 = new RichTextBox();
 			groupBox2.SuspendLayout();
 			MainMenu.SuspendLayout();
-			Page_Region.SuspendLayout();
 			ModifyBin.SuspendLayout();
 			groupBox5.SuspendLayout();
 			groupBox4.SuspendLayout();
@@ -169,212 +149,6 @@
 			ToolStripMenuItem_NumSelect.Size = new Size(124, 22);
 			ToolStripMenuItem_NumSelect.Text = "属性生成";
 			ToolStripMenuItem_NumSelect.Click += ToolStripMenuItem_NumSelect_Click;
-			// 
-			// Page_Region
-			// 
-			Page_Region.Controls.Add(label13);
-			Page_Region.Controls.Add(label12);
-			Page_Region.Controls.Add(Region_YMax_input);
-			Page_Region.Controls.Add(Region_YMin_input);
-			Page_Region.Controls.Add(Region_XMax_input);
-			Page_Region.Controls.Add(Region_XMin_input);
-			Page_Region.Controls.Add(button36);
-			Page_Region.Controls.Add(label27);
-			Page_Region.Controls.Add(Txt_Cterrain_Path);
-			Page_Region.Controls.Add(textBox12);
-			Page_Region.Controls.Add(Txt_Region_Path);
-			Page_Region.Controls.Add(Txt_Zone);
-			Page_Region.Controls.Add(button37);
-			Page_Region.Controls.Add(label33);
-			Page_Region.Controls.Add(button32);
-			Page_Region.Controls.Add(label31);
-			Page_Region.Controls.Add(button31);
-			Page_Region.Controls.Add(label29);
-			Page_Region.Location = new Point(4, 26);
-			Page_Region.Margin = new Padding(4);
-			Page_Region.Name = "Page_Region";
-			Page_Region.Size = new Size(873, 270);
-			Page_Region.TabIndex = 10;
-			Page_Region.Text = "区域数据";
-			Page_Region.UseVisualStyleBackColor = true;
-			// 
-			// label13
-			// 
-			label13.AutoSize = true;
-			label13.Font = new Font("微软雅黑", 11F);
-			label13.Location = new Point(727, 65);
-			label13.Margin = new Padding(4, 0, 4, 0);
-			label13.Name = "label13";
-			label13.Size = new Size(50, 20);
-			label13.TabIndex = 83;
-			label13.Text = "XMax";
-			// 
-			// label12
-			// 
-			label12.AutoSize = true;
-			label12.Font = new Font("微软雅黑", 11F);
-			label12.Location = new Point(728, 24);
-			label12.Margin = new Padding(4, 0, 4, 0);
-			label12.Name = "label12";
-			label12.Size = new Size(47, 20);
-			label12.TabIndex = 82;
-			label12.Text = "XMin";
-			// 
-			// Region_YMax_input
-			// 
-			Region_YMax_input.Location = new Point(789, 142);
-			Region_YMax_input.Margin = new Padding(4);
-			Region_YMax_input.Name = "Region_YMax_input";
-			Region_YMax_input.Size = new Size(66, 23);
-			Region_YMax_input.TabIndex = 81;
-			// 
-			// Region_YMin_input
-			// 
-			Region_YMin_input.Location = new Point(789, 101);
-			Region_YMin_input.Margin = new Padding(4);
-			Region_YMin_input.Name = "Region_YMin_input";
-			Region_YMin_input.Size = new Size(66, 23);
-			Region_YMin_input.TabIndex = 80;
-			// 
-			// Region_XMax_input
-			// 
-			Region_XMax_input.Location = new Point(789, 60);
-			Region_XMax_input.Margin = new Padding(4);
-			Region_XMax_input.Name = "Region_XMax_input";
-			Region_XMax_input.Size = new Size(66, 23);
-			Region_XMax_input.TabIndex = 79;
-			// 
-			// Region_XMin_input
-			// 
-			Region_XMin_input.Location = new Point(789, 19);
-			Region_XMin_input.Margin = new Padding(4);
-			Region_XMin_input.Name = "Region_XMin_input";
-			Region_XMin_input.Size = new Size(66, 23);
-			Region_XMin_input.TabIndex = 78;
-			// 
-			// button36
-			// 
-			button36.Location = new Point(322, 175);
-			button36.Margin = new Padding(4);
-			button36.Name = "button36";
-			button36.Size = new Size(88, 33);
-			button36.TabIndex = 75;
-			button36.Text = "修改区域id";
-			button36.UseVisualStyleBackColor = true;
-			button36.Click += button36_Click;
-			// 
-			// label27
-			// 
-			label27.AutoSize = true;
-			label27.Font = new Font("微软雅黑", 11F);
-			label27.Location = new Point(33, 129);
-			label27.Margin = new Padding(4, 0, 4, 0);
-			label27.Name = "label27";
-			label27.Size = new Size(39, 20);
-			label27.TabIndex = 74;
-			label27.Text = "文件";
-			// 
-			// Txt_Cterrain_Path
-			// 
-			Txt_Cterrain_Path.Location = new Point(96, 133);
-			Txt_Cterrain_Path.Margin = new Padding(4);
-			Txt_Cterrain_Path.Name = "Txt_Cterrain_Path";
-			Txt_Cterrain_Path.Size = new Size(510, 23);
-			Txt_Cterrain_Path.TabIndex = 73;
-			Txt_Cterrain_Path.TextChanged += SaveConfig;
-			Txt_Cterrain_Path.DoubleClick += DoubleClickPath;
-			// 
-			// textBox12
-			// 
-			textBox12.Location = new Point(96, 175);
-			textBox12.Margin = new Padding(4);
-			textBox12.Name = "textBox12";
-			textBox12.Size = new Size(195, 23);
-			textBox12.TabIndex = 70;
-			// 
-			// Txt_Region_Path
-			// 
-			Txt_Region_Path.Location = new Point(94, 24);
-			Txt_Region_Path.Margin = new Padding(4);
-			Txt_Region_Path.Name = "Txt_Region_Path";
-			Txt_Region_Path.Size = new Size(512, 23);
-			Txt_Region_Path.TabIndex = 66;
-			Txt_Region_Path.TextChanged += SaveConfig;
-			Txt_Region_Path.DoubleClick += DoubleClickPath;
-			// 
-			// Txt_Zone
-			// 
-			Txt_Zone.Location = new Point(96, 66);
-			Txt_Zone.Margin = new Padding(4);
-			Txt_Zone.Name = "Txt_Zone";
-			Txt_Zone.Size = new Size(195, 23);
-			Txt_Zone.TabIndex = 0;
-			// 
-			// button37
-			// 
-			button37.Location = new Point(616, 129);
-			button37.Margin = new Padding(4);
-			button37.Name = "button37";
-			button37.Size = new Size(82, 37);
-			button37.TabIndex = 72;
-			button37.Text = "浏览";
-			button37.UseVisualStyleBackColor = true;
-			button37.Click += button37_Click;
-			// 
-			// label33
-			// 
-			label33.AutoSize = true;
-			label33.Font = new Font("微软雅黑", 11F);
-			label33.Location = new Point(31, 176);
-			label33.Margin = new Padding(4, 0, 4, 0);
-			label33.Name = "label33";
-			label33.Size = new Size(46, 20);
-			label33.TabIndex = 71;
-			label33.Text = "Zone";
-			// 
-			// button32
-			// 
-			button32.Location = new Point(322, 66);
-			button32.Margin = new Padding(4);
-			button32.Name = "button32";
-			button32.Size = new Size(88, 33);
-			button32.TabIndex = 69;
-			button32.Text = "修改区域id";
-			button32.UseVisualStyleBackColor = true;
-			button32.Click += button32_Click;
-			// 
-			// label31
-			// 
-			label31.AutoSize = true;
-			label31.Font = new Font("微软雅黑", 11F);
-			label31.Location = new Point(31, 20);
-			label31.Margin = new Padding(4, 0, 4, 0);
-			label31.Name = "label31";
-			label31.Size = new Size(39, 20);
-			label31.TabIndex = 68;
-			label31.Text = "文件";
-			// 
-			// button31
-			// 
-			button31.Location = new Point(614, 20);
-			button31.Margin = new Padding(4);
-			button31.Name = "button31";
-			button31.Size = new Size(82, 37);
-			button31.TabIndex = 65;
-			button31.Text = "浏览";
-			button31.UseVisualStyleBackColor = true;
-			button31.Click += button31_Click;
-			// 
-			// label29
-			// 
-			label29.AutoSize = true;
-			label29.Font = new Font("微软雅黑", 11F);
-			label29.Location = new Point(31, 67);
-			label29.Margin = new Padding(4, 0, 4, 0);
-			label29.Name = "label29";
-			label29.Size = new Size(46, 20);
-			label29.TabIndex = 1;
-			label29.Text = "Zone";
 			// 
 			// ModifyBin
 			// 
@@ -548,7 +322,7 @@
 			Txt_Bin_Data.Name = "Txt_Bin_Data";
 			Txt_Bin_Data.Size = new Size(530, 23);
 			Txt_Bin_Data.TabIndex = 64;
-			Txt_Bin_Data.TextChanged += SaveConfig;
+			Txt_Bin_Data.TextChanged += this.SaveConfig;
 			Txt_Bin_Data.DoubleClick += DoubleClickPath;
 			// 
 			// button1
@@ -756,7 +530,6 @@
 			// 
 			tabControl1.Controls.Add(ModifyData);
 			tabControl1.Controls.Add(ModifyBin);
-			tabControl1.Controls.Add(Page_Region);
 			tabControl1.Controls.Add(tabPage2);
 			tabControl1.Controls.Add(tabPage3);
 			tabControl1.Dock = DockStyle.Top;
@@ -782,7 +555,7 @@
 			tabPage2.Padding = new Padding(3);
 			tabPage2.Size = new Size(873, 270);
 			tabPage2.TabIndex = 12;
-			tabPage2.Text = "tabPage2";
+			tabPage2.Text = "Convert";
 			tabPage2.UseVisualStyleBackColor = true;
 			// 
 			// radioButton2
@@ -874,7 +647,7 @@
 			tabPage3.Padding = new Padding(3);
 			tabPage3.Size = new Size(873, 270);
 			tabPage3.TabIndex = 13;
-			tabPage3.Text = "tabPage3";
+			tabPage3.Text = "Else";
 			tabPage3.UseVisualStyleBackColor = true;
 			// 
 			// Btn_Split
@@ -965,8 +738,6 @@
 			Text = "Test GUI";
 			groupBox2.ResumeLayout(false);
 			MainMenu.ResumeLayout(false);
-			Page_Region.ResumeLayout(false);
-			Page_Region.PerformLayout();
 			ModifyBin.ResumeLayout(false);
 			groupBox5.ResumeLayout(false);
 			groupBox5.PerformLayout();
@@ -987,19 +758,6 @@
 		private GroupBox groupBox2;
 		private ContextMenuStrip MainMenu;
 		internal Button button39;
-		private TabPage Page_Region;
-		private Button button36;
-		private Label label27;
-		private TextBox Txt_Cterrain_Path;
-		private TextBox textBox12;
-		private TextBox Txt_Region_Path;
-		private TextBox Txt_Zone;
-		private Button button37;
-		private Label label33;
-		private Button button32;
-		private Label label31;
-		private Button button31;
-		private Label label29;
 		private TabPage ModifyBin;
 		private Button button38;
 		private Button HeadDump;
@@ -1027,12 +785,6 @@
 		private Button button7;
 		private CheckBox checkBox13;
 		private Button button16;
-		private Label label13;
-		private Label label12;
-		private TextBox Region_YMax_input;
-		private TextBox Region_YMin_input;
-		private TextBox Region_XMax_input;
-		private TextBox Region_XMin_input;
 		private GroupBox groupBox4;
 		private GroupBox groupBox5;
 		private Button button6;

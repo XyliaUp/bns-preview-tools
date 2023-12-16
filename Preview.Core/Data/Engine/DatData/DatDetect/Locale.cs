@@ -35,7 +35,7 @@ public sealed class Locale
 			if (rail_game != null) game = JToken.ReadFrom(new JsonTextReader(File.OpenText(rail_game.FullName)))["game_id"]?.Value<int>() ?? 0;
 #if !DEBUG
 			if (game != 48 && game != 10048 && game != 10148 && game != 10248)
-				throw new Xylia.Preview.Data.Common.Exceptions.BnsDefinitionException($"invalid game ({game})");
+				throw Xylia.Preview.Data.Common.Exceptions.BnsDataException.InvalidGame("invalid game");
 #endif
 		}
 	}

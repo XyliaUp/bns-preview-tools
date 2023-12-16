@@ -25,6 +25,11 @@ internal class BnsDataException : BnsException
 	{
 		return new BnsDataException($"seq `{name}` {message}");
 	}
+
+	internal static BnsDataException InvalidGame(string message, int game = -1)
+	{
+		return new BnsDataException(message);
+	}
 	#endregion
 
 	#region Expression

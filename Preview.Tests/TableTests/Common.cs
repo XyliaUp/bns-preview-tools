@@ -1,11 +1,9 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Xylia.Preview.Common.Extension;
-using Xylia.Preview.Data.Common;
 
-namespace Xylia.Preview.Tests.TableTests;
+namespace Xylia.Preview.Tests;
 
 [TestClass]
-public class Common
+public partial class TableTests
 {
 	[TestMethod]
 	public void SerializeTest()

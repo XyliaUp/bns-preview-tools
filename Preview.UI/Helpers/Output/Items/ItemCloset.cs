@@ -41,7 +41,7 @@ public sealed class ItemCloset : OutSet
             int column = 1;
 
             sheet.Cells[Row, column++].SetValue(item.Source.Ref.Id);
-            sheet.Cells[Row, column++].SetValue(item.Alias);
+            sheet.Cells[Row, column++].SetValue(item.ToString());
 			sheet.Cells[Row, column++].SetValue(item.Name2);
 			sheet.Cells[Row, column++].SetValue(item.EquipType.GetText());
 			sheet.Cells[Row, column++].SetValue(item.EquipSex.GetText());

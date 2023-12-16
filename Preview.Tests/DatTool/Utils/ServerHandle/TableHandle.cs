@@ -1,5 +1,4 @@
 ﻿using System.Xml;
-using Xylia.Preview.Tests.DatTool.Utils;
 
 namespace Xylia.Preview.Tests.DatTool.Utils.ServerHandle;
 public abstract class TableHandle
@@ -16,8 +15,6 @@ public abstract class TableHandle
     {
 
     }
-
-
 
 
     protected static void ReadTable(string table, Action<XmlElement> fix, bool save = false)

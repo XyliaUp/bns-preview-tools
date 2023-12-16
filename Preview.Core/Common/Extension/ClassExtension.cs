@@ -19,7 +19,7 @@ public static partial class ClassExtension
 	#endregion
 
 	#region Attribute
-	public static T GetAttribute<T>(this object value) where T : Attribute
+	public static T GetAttribute<T>(this object value) where T : System.Attribute
 	{
 		switch (value)
 		{
@@ -28,7 +28,7 @@ public static partial class ClassExtension
 			case Enum e:
 				return value.GetType().GetField(e.ToString()).GetAttribute<T>();
 			case MemberInfo m:
-				var attributes = Attribute.GetCustomAttributes(m, typeof(T), false);
+				var attributes = System.Attribute.GetCustomAttributes(m, typeof(T), false);
 				if (attributes.Length == 0) return default;
 
 				return (T)attributes[0];
@@ -39,9 +39,9 @@ public static partial class ClassExtension
 		}
 	}
 
-	public static bool ContainAttribute<T>(this object EnumItem) where T : Attribute => EnumItem.ContainAttribute(out T _);
+	public static bool ContainAttribute<T>(this object EnumItem) where T : System.Attribute => EnumItem.ContainAttribute(out T _);
 
-	public static bool ContainAttribute<T>(this object EnumItemm, out T Target) where T : Attribute => (Target = EnumItemm.GetAttribute<T>()) != null;
+	public static bool ContainAttribute<T>(this object EnumItemm, out T Target) where T : System.Attribute => (Target = EnumItemm.GetAttribute<T>()) != null;
 
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static string GetDescription(this object EnumItem, bool ReturnNull = false)

@@ -1,4 +1,5 @@
-﻿using Xylia.Preview.Data.Common.Attribute;
+﻿using Xylia.Preview.Common.Attributes;
+
 namespace Xylia.Preview.Data.Models.CombatSequenceData.Enums;
 public enum GatherRule
 {
@@ -10,7 +11,6 @@ public enum GatherRule
 	/// <summary>
 	/// 最小仇恨
 	/// </summary>
-	[Name("min-hate")]
 	MinHate,
 
 	/// <summary>

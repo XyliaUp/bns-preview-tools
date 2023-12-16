@@ -1,4 +1,4 @@
-﻿#define DEV
+﻿//#define DEV
 
 using System.Collections.Concurrent;
 using System.ComponentModel;
@@ -23,7 +23,6 @@ using Xylia.Preview.Common.Extension;
 using Xylia.Preview.Data.Helpers;
 using Xylia.Preview.UI.Services;
 using Xylia.Preview.UI.ViewModels;
-using Xylia.Preview.UI.Views.Editor;
 using Kernel32 = Vanara.PInvoke.Kernel32;
 
 namespace Xylia.Preview.UI;
@@ -54,10 +53,8 @@ public partial class App : Application
 
 #if DEV
 		//FileCache.Data = new(new Xylia.Preview.Data.Engine.DatData.FolderProvider(@"D:\资源\客户端相关\Auto\data"));
-		//MainWindow = new Xylia.Preview.UI.Art.GameUI.Scene.Game_Broadcasting.Game_BroadcastingScene();
-		//MainWindow.Show();
-
-		new DatabaseStudio().Show();
+		MainWindow = new Xylia.Preview.UI.Art.GameUI.Scene.Game_Broadcasting.Game_BroadcastingScene();
+		MainWindow.Show();
 		return;
 #endif
 

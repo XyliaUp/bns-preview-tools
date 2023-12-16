@@ -1,24 +1,15 @@
-﻿using Xylia.Preview.Data.Common.Attribute;
-using Xylia.Preview.Data.Common.DataStruct;
+﻿using Xylia.Preview.Common.Attributes;
 
 namespace Xylia.Preview.Data.Models;
 public sealed class RandomStoreItem : ModelElement
 {
-	public string Alias;
+	public Ref<Item> Item { get; set; }
 
+	public int ItemCount { get; set; }
 
-	[Name("item")]
-	public Ref<Item> Item;
+	public int ItemPriceMoney { get; set; }
 
-	[Name("item-count")]
-	public int ItemCount;
+	public Ref<Item> ItemPriceItem { get; set; }
 
-	[Name("item-price-money")]
-	public int ItemPriceMoney;
-
-	[Name("item-price-item")]
-	public Ref<Item> ItemPriceItem;
-
-	[Name("item-price-item-amount")]
-	public short ItemPriceItemAmount;
+	public short ItemPriceItemAmount { get; set; }
 }

@@ -1,14 +1,11 @@
-﻿using Xylia.Preview.Data.Common.Attribute;
+﻿using Xylia.Preview.Common.Attributes;
 
 namespace Xylia.Preview.Data.Models;
 public sealed class RandomStoreDrawReward : ModelElement
 {
-	public string Alias;
-
-
 	[Name("random-store-number")]
-	public RandomStoreNumberSeq RandomStoreNumber;
+	public RandomStoreNumberSeq RandomStoreNumber { get; set; }
 
 	[Name("required-draw-count")]
-	public int RequiredDrawCount;
+	public int RequiredDrawCount { get; set; }
 }

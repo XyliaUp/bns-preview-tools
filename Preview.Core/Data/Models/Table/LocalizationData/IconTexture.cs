@@ -11,13 +11,13 @@ using Xylia.Preview.Data.Helpers;
 namespace Xylia.Preview.Data.Models;
 public sealed class IconTexture : ModelElement
 {
-	public string iconTexture;
+	public string iconTexture { get; set; }
 
-	public short IconHeight;
-	public short IconWidth;
+	public short IconHeight { get; set; }
+	public short IconWidth { get; set; }
 
-	public short TextureHeight;
-	public short TextureWidth;
+	public short TextureHeight { get; set; }
+	public short TextureWidth { get; set; }
 }
 
 public static class IconTextureExt
@@ -73,6 +73,6 @@ public static class IconTextureExt
 	public static SKBitmap GetBackground(this sbyte grade, DefaultFileProvider pak = null)
 	{
 		pak ??= FileCache.Provider;
-		return Task.Run(() => pak.LoadObject<UTexture2D>($"BNSR/Content/Art/UI/GameUI/Resource/GameUI_Window_R/ItemIcon_Bg_Grade_{grade}")).Result.Decode();
+		return Task.Run(() => pak.LoadObject<UTexture2D>($"BNSR/Content/Art/UI/GameUI/Resource/GameUI_Window_R/ItemIcon_Bg_Grade_{grade}")).Result?.Decode();
 	}
 }

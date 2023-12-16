@@ -1,13 +1,10 @@
 ﻿using System.Diagnostics;
-
 using CUE4Parse.BNS;
 using CUE4Parse.BNS.Assets.Exports;
 using CUE4Parse.UE4.Assets.Exports;
 using CUE4Parse.UE4.Objects.Engine;
 using CUE4Parse.UE4.Objects.UObject;
-
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-
 using Newtonsoft.Json;
 using Xylia.Preview.Common.Extension;
 using Xylia.Preview.Data.Helpers;
@@ -21,7 +18,7 @@ public class SceneTest
 	public void Main()
 	{
 		using GameFileProvider Provider = new(new Common().GameFolder);
-		var AssetPath = "BNSR/Content/Art/UI/GameUI/Scene/Game_ItemMap/Game_ItemMapScene.uasset";
+		var AssetPath = "BNSR/Content/Art/UI/GameUI/Scene/Game_Broadcasting/Game_BroadcastingScene.uasset";
 		var Blueprint = Provider.LoadAllObjects(AssetPath).OfType<UWidgetBlueprintGeneratedClass>().First();
 
 		var dump = new WidgetDump() { Output = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "scene", Path.GetFileNameWithoutExtension(AssetPath)) };

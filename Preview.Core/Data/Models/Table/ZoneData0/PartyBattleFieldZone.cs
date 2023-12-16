@@ -1,5 +1,5 @@
 ﻿using Xylia.Preview.Data.Common.Abstractions;
-using Xylia.Preview.Data.Common.Attribute;
+using Xylia.Preview.Common.Attributes;
 
 namespace Xylia.Preview.Data.Models;
 public sealed class PartyBattleFieldZone : ModelElement, IAttraction
@@ -17,13 +17,10 @@ public sealed class PartyBattleFieldZone : ModelElement, IAttraction
 	{
 		None,
 
-		[Name("occupation-war")]
-		OccupationWar,
+			OccupationWar,
 
-		[Name("capture-the-flag")]
-		CaptureTheFlag,
+			CaptureTheFlag,
 
-		[Name("lead-the-ball")]
-		LeadTheBall,
+			LeadTheBall,
 	}
 }

@@ -1,16 +1,15 @@
-﻿using Xylia.Preview.Common.Extension;
-using Xylia.Preview.Data.Common.Attribute;
-using Xylia.Preview.Data.Common.DataStruct;
+﻿using Xylia.Preview.Common.Attributes;
+using Xylia.Preview.Common.Extension;
 using Xylia.Preview.Data.Models.Sequence;
 
 namespace Xylia.Preview.Data.Models;
 public class SkillModifyInfoGroup : ModelElement
 {
 	[Name("job-style")]
-	public JobStyleSeq JobStyle;
+	public JobStyleSeq JobStyle { get; set; }
 
 	[Name("skill-modify-info") , Repeat(4)]
-	public Ref<SkillModifyInfo>[] SkillModifyInfo;
+	public Ref<SkillModifyInfo>[] SkillModifyInfo { get; set; }
 
 
 

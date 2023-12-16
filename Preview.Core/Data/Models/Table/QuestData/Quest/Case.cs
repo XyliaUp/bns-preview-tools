@@ -1,6 +1,5 @@
 ﻿using System.ComponentModel;
-
-using Xylia.Preview.Data.Common.Attribute;
+using Xylia.Preview.Common.Attributes;
 using Xylia.Preview.Data.Models.QuestData.Enums;
 using Xylia.Preview.Data.Models.Sequence;
 using static Xylia.Preview.Data.Models.Decision;
@@ -18,74 +17,43 @@ public partial class Case : ModelElement
 	public List<ReactionSet> ReactionSet { get; set; }
 
 
-	public sbyte Prob;
-
 	[Repeat(10), Side(ReleaseSide.Client)]
-	public Ref<MapUnit>[] MapUnit;
-
-	public short RangeMax;
-
-	public short RangeMin;
-
-	public ProgressMission ProgressMission = ProgressMission.N;
-
-	[Name("progress-value")]
-	public int ProgressValue;
-
-	[Name("acquire-quest")]
-	public bool AcquireQuest;
-
-	[Name("gadget-required")]
-	public GadgetRequired GadgetRequired;
-
-	public Ref<FieldItem> Gadget;
+	public Ref<MapUnit>[] MapUnit { get; set; }
 
 	[Side(ReleaseSide.Client)]
-	public string UnloadMapNavigationObject;
-
-	[Repeat(2)]
-	public Ref<Zone>[] ValidZone;
-
-	[Name("completion-count")]
-	public sbyte CompletionCount;
-
-	[Name("completion-count-op")]
-	public Op CompletionCountOp = Op.ge;
+	public Indicator Indicator { get; set; }
 
 	[Side(ReleaseSide.Client)]
-	public Indicator Indicator;
+	public bool ShowInTooltip { get; set; }
 
 	[Side(ReleaseSide.Client)]
-	public bool ShowInTooltip;
+	public bool VisibleObject { get; set; }
 
 	[Side(ReleaseSide.Client)]
-	public bool VisibleObject;
+	public Ref<TalkSocial> CaseTalksocial { get; set; }
 
 	[Side(ReleaseSide.Client)]
-	public Ref<TalkSocial> CaseTalksocial;
-
-	[Side(ReleaseSide.Client)]
-	public float CaseTalksocialDelay;
+	public float CaseTalksocialDelay { get; set; }
 
 
 
 	[Side(ReleaseSide.Server)]
-	public Ref<Zone> Zone;
+	public Ref<Zone> Zone { get; set; }
 
 	[Side(ReleaseSide.Server)]
-	public Ref<QuestDecision> QuestDecision;
+	public Ref<QuestDecision> QuestDecision { get; set; }
 
 	[Side(ReleaseSide.Server)]
-	public Ref<QuestDecision> FailQuestDecision;
+	public Ref<QuestDecision> FailQuestDecision { get; set; }
 
 	[Side(ReleaseSide.Server)]
-	public Ref<FieldItem> DropGadget;
+	public Ref<FieldItem> DropGadget { get; set; }
 
 	[Side(ReleaseSide.Server)]
-	public bool PartyBroadcast;
+	public bool PartyBroadcast { get; set; }
 
 	[Side(ReleaseSide.Server)]
-	public bool TeamBroadcast;
+	public bool TeamBroadcast { get; set; }
 
 
 	public virtual List<Ref<ModelElement>> Attractions { get; }
@@ -94,195 +62,28 @@ public partial class Case : ModelElement
 	#region Sub
 	public sealed class Talk : Case
 	{
-		public Ref<ModelElement> Object;
-
-		[Repeat(2), Obsolete]
-		public int[] ConvoyMember;
-
-		[Side(ReleaseSide.Server)]
-		public Ref<ZoneConvoy> Convoy;
-
-
-		public Ref<NpcResponse> NpcResponse;
-
-		public Ref<NpcTalkMessage> Msg;
-
-		public Ref<NpcTalkMessage> StartMsg;
-
-		public Ref<IndicatorSocial> IndicatorSocial;
-
-		public Ref<IndicatorIdle> IndicatorIdle;
-
-		public Ref<Text> ButtonTextAccept;
-
-		public Ref<Text> ButtonTextCancel;
-
-		public Ref<Item> Grocery;
-
-		public short GroceryCount;
-
-		public bool RemoveGrocery;
-
-		public sbyte FactionKilledCountMin;
-
-		public sbyte FactionKilledCountMax;
-
-		public DuelType DuelType;
-
-		public ArenaMatchingRuleDetail ArenaMatchingRuleDetail;
-
-		public int DuelStraightWin;
-
-		public int RequiredMoney;       // 新版本物品消耗
-
-		public DepotType RequiredItemDepot;
-
-		[Repeat(4)]
-		public Ref<Item>[] RequiredItem;
-
-		[Repeat(4)]
-		public short[] RequiredItemCount;
-
-		public bool RequiredItemLoss;
-
-		[Repeat(2)]
-		public Ref<ItemBrand>[] RequiredItemBrand;
-
-		public Ref<SetItem> RequiredEquipGemSet;
-
-		public bool CheckInventoryFull;
-
-		public sbyte CheckEquipedDurabilityBelow;
-
-		public sbyte CheckExpBoostNormalBelow;
+		public Ref<ModelElement> Object { get; set; }
 	}
 
 	public sealed class TalkToItem : Case
 	{
-		public Ref<Item> Item;
+		public Ref<Item> Item { get; set; }
 
-		public Ref<NpcResponse> NpcResponse;
-
-		public Ref<NpcTalkMessage> Msg;
-
-		public Ref<NpcTalkMessage> StartMsg;
-
-		public Ref<IndicatorSocial> IndicatorSocial;
-
-		public Ref<IndicatorIdle> IndicatorIdle;
-
-		public Ref<Text> ButtonTextAccept;
-
-		public Ref<Text> ButtonTextCancel;
-
-		public Ref<Item> Grocery;
-
-		public short GroceryCount;
-
-		public bool RemoveGrocery;
-
-		public int RequiredMoney;
-
-		public DepotType RequiredItemDepot;
-
-		[Repeat(4)]
-		public Ref<Item>[] RequiredItem;
-
-		[Repeat(4)]
-		public short[] RequiredItemCount;
-
-		public bool RequiredItemLoss;
-
-		[Repeat(2)]
-		public Ref<ItemBrand>[] RequiredItemBrand;
-
-		public Ref<SetItem> RequiredEquipGemSet;
-
-		public bool CheckInventoryFull;
-
-		public sbyte CheckEquipedDurabilityBelow;
-
-		public sbyte CheckExpBoostNormalBelow;
-
-		public override List<Ref<ModelElement>> Attractions => new() { new Ref<ModelElement>("item:" + Item)  };
+		public override List<Ref<ModelElement>> Attractions => new() { new Ref<ModelElement>("item:" + Item) };
 	}
 
 	public sealed class TalkToSelf : Case
 	{
-		public Ref<VirtualItem> Item;
-
-		public Ref<NpcTalkMessage> Msg;
-
-		public sbyte FactionKilledCountMin;
-
-		public sbyte FactionKilledCountMax;
-
-		[Obsolete]
-		public bool Fee;
-
-		public int RequiredMoney;   
-
-		public DepotType RequiredItemDepot;
-
-		[Repeat(4)]
-		public Ref<Item>[] RequiredItem;
-
-		[Repeat(4)]
-		public short[] RequiredItemCount;
-
-		public bool RequiredItemLoss;
-
-		[Repeat(2)]
-		public Ref<ItemBrand>[] RequiredItemBrand;
-
-		public Ref<SetItem> RequiredEquipGemSet;
-
-		public bool CheckInventoryFull;
-
-		public sbyte CheckEquipedDurabilityBelow;
-
-		public sbyte CheckExpBoostNormalBelow;
-
-		public JumpingCharacterState RequiredJumpingCharacterState;
+		
 	}
 
 	public sealed class Manipulate : Case
 	{
-		public Ref<ModelElement> Object2;
+		public Ref<ModelElement> Object2  { get; set; }
 
 		[Repeat(16)]
-		public Ref<ModelElement>[] MultiObject;
+		public Ref<ModelElement>[] MultiObject  { get; set; }
 
-		public Ref<Item> Grocery;
-
-		public short GroceryCount;
-
-		public bool RemoveGrocery;
-
-		public Ref<VirtualItem> EnvLooting;
-
-		public sbyte FactionKilledCountMin;
-
-		public sbyte FactionKilledCountMax;
-
-		public Ref<Faction> JoinFaction2;
-
-		[Side(ReleaseSide.Server)]
-		public Ref<Faction> TransferFaction2;
-
-		public int RequiredMoney;
-
-		public DepotType RequiredItemDepot;
-
-		[Repeat(4)]
-		public Ref<Item>[] RequiredItem;
-
-		[Repeat(4)]
-		public short[] RequiredItemCount;
-
-		public bool RequiredItemLoss;
-
-		public int ConvoyMembers;
 
 
 		public override List<Ref<ModelElement>> Attractions
@@ -300,90 +101,44 @@ public partial class Case : ModelElement
 
 	public sealed class NpcManipulate : Case
 	{
-		public Ref<ModelElement> Object;
+		public Ref<ModelElement> Object { get; set; }
 
 		[Repeat(16)]
-		public Ref<ModelElement>[] MultiObject;
-
-		public Ref<NpcResponse> NpcResponse;
-
-		public Ref<Item> Grocery;
-
-		public short GroceryCount;
-
-		public bool RemoveGrocery;
-
-		public sbyte FactionKilledCountMin;
-
-		public sbyte FactionKilledCountMax;
-
-		public int RequiredMoney;       
-
-		public DepotType RequiredItemDepot;
-
-		[Repeat(4)]
-		public Ref<Item>[] RequiredItem;
-
-		[Repeat(4)]
-		public short[] RequiredItemCount;
-
-		public bool RequiredItemLoss;
-
-		public int ConvoyMembers;
-
+		public Ref<ModelElement>[] MultiObject { get; set; }
 
 		public override List<Ref<ModelElement>> Attractions => MultiObject.ToList();
 	}
 
 	public sealed class Approach : Case
 	{
-		public Ref<ModelElement> Object;
-
-		public Ref<NpcResponse> NpcResponse;
-
-		[Side(ReleaseSide.Client)]
-		public Ref<Social> ApproachSocial;
-
-		public Ref<IndicatorSocial> IndicatorSocial;
-
-		public Ref<IndicatorIdle> IndicatorIdle;
-
-		[Side(ReleaseSide.Client)]
-		public bool ApproachTalk;
-
-		public Ref<Item> Grocery;
-
-		public short GroceryCount;
-
-		public bool RemoveGrocery;
 	}
 
 	public sealed class Skill : Case
 	{
 		[Side(ReleaseSide.Client)]
-		public Ref<NpcResponse> NpcResponse;
+		public Ref<NpcResponse> NpcResponse { get; set; }
 
 		[Repeat(20)]
-		public Ref<ModelElement>[] Object2;
+		public Ref<ModelElement>[] Object2 { get; set; }
 
-		public Ref<SkillModel> skill;
+		public Ref<SkillModel> skill { get; set; }
 
-		public Ref<Skill3Model> skill3;
+		public Ref<Skill3Model> skill3 { get; set; }
 	}
 
 	public sealed class Loot : Case
 	{
-		public Ref<ModelElement> Object2;
+		public Ref<ModelElement> Object2 { get; set; }
 
 		[Repeat(16)]
-		public Ref<ModelElement>[] MultiObject;
+		public Ref<ModelElement>[] MultiObject { get; set; }
 
 		[Side(ReleaseSide.Client)]
-		public Ref<VirtualItem> Looting;
+		public Ref<VirtualItem> Looting { get; set; }
 
-		public sbyte QuestSymbolDropProb;
+		public sbyte QuestSymbolDropProb { get; set; }
 
-		public Ref<Item> LootItem;
+		public Ref<Item> LootItem { get; set; }
 
 
 		public override List<Ref<ModelElement>> Attractions
@@ -401,17 +156,17 @@ public partial class Case : ModelElement
 
 	public sealed class Killed : Case
 	{
-		public SpecifyObjectType SpecifyObjectType;
+		public SpecifyObjectType SpecifyObjectType { get; set; }
 
-		public Ref<ModelElement> Object2;
+		public Ref<ModelElement> Object2 { get; set; }
 
 		[Repeat(16)]
-		public Ref<ModelElement>[] MultiObject;
+		public Ref<ModelElement>[] MultiObject { get; set; }
 
-		public DifficultyTypeSeq KilledDifficultyType;
+		public DifficultyTypeSeq KilledDifficultyType { get; set; }
 
 		[Repeat(8), Obsolete]
-		public Ref<Skill3Model>[] Skill3;
+		public Ref<Skill3Model>[] Skill3 { get; set; }
 
 		public override List<Ref<ModelElement>> Attractions
 		{
@@ -428,19 +183,19 @@ public partial class Case : ModelElement
 
 	public sealed class FinishBlow : Case
 	{
-		public Ref<Npc> Npc;
+		public Ref<Npc> Npc { get; set; }
 
 		[Repeat(20)]
-		public int[] Skill3ID;
+		public int[] Skill3ID { get; set; }
 
 		public override List<Ref<ModelElement>> Attractions => new() { new Ref<ModelElement>("npc:" + Npc) };
 	}
 
 	public sealed class EnvEntered : Case
 	{
-		public Ref<ModelElement> Object2;
+		public Ref<ModelElement> Object2 { get; set; }
 
-		public Ref<EnvResponse> EnvResponse;
+		public Ref<EnvResponse> EnvResponse { get; set; }
 
 
 		public override List<Ref<ModelElement>> Attractions => new() { Object2 };
@@ -448,26 +203,26 @@ public partial class Case : ModelElement
 
 	public sealed class EnterZone : Case
 	{
-		public Ref<ModelElement> Object;
+		public Ref<ModelElement> Object { get; set; }
 
 		public override List<Ref<ModelElement>> Attractions => new() { Object };
 	}
 
 	public sealed class ConvoyArrived : Case
 	{
-		public Ref<ModelElement> Object;
+		public Ref<ModelElement> Object { get; set; }
 
 		[Side(ReleaseSide.Server)]
-		public Ref<ZoneConvoy> Convoy;
+		public Ref<ZoneConvoy> Convoy { get; set; }
 
 		public override List<Ref<ModelElement>> Attractions => new() { Object };
 	}
 
 	public sealed class ConvoyFailed : Case
 	{
-		public Ref<ModelElement> Object;
+		public Ref<ModelElement> Object { get; set; }
 
-		public Ref<ZoneConvoy> Convoy;
+		public Ref<ZoneConvoy> Convoy { get; set; }
 
 
 		public override List<Ref<ModelElement>> Attractions => new() { Object };
@@ -475,10 +230,10 @@ public partial class Case : ModelElement
 
 	public sealed class NpcBleedingOccured : Case
 	{
-		public Ref<ModelElement> Object;
+		public Ref<ModelElement> Object { get; set; }
 
 		[Side(ReleaseSide.Server)]
-		public sbyte idx;
+		public sbyte idx { get; set; }
 
 
 		public override List<Ref<ModelElement>> Attractions => new() { Object };
@@ -486,38 +241,38 @@ public partial class Case : ModelElement
 
 	public sealed class EnterPortal : Case
 	{
-		public Ref<ModelElement> Object2;
+		public Ref<ModelElement> Object2 { get; set; }
 
 		public override List<Ref<ModelElement>> Attractions => new() { Object2 };
 	}
 
 	public sealed class AcquireSummoned : Case
 	{
-		public Ref<ModelElement> Object;
+		public Ref<ModelElement> Object { get; set; }
 
-		public Ref<SummonedPreset> SummonedPreset;
+		public Ref<SummonedPreset> SummonedPreset { get; set; }
 
-		public Ref<NpcResponse> NpcResponse;
+		public Ref<NpcResponse> NpcResponse { get; set; }
 
-		public Ref<Text> ButtonTextAccept;
+		public Ref<Text> ButtonTextAccept { get; set; }
 
-		public Ref<Text> ButtonTextCancel;
+		public Ref<Text> ButtonTextCancel { get; set; }
 
 		public override List<Ref<ModelElement>> Attractions => new() { Object };
 	}
 
 	public sealed class PcSocial : Case
 	{
-		public Ref<ModelElement> Object2;
+		public Ref<ModelElement> Object2 { get; set; }
 
 		[Side(ReleaseSide.Client)]
-		public Ref<TalkSocial> Social;
+		public Ref<TalkSocial> Social { get; set; }
 
 		[Side(ReleaseSide.Client)]
-		public Ref<StateSocial> StateSocial;
+		public Ref<StateSocial> StateSocial { get; set; }
 
 		[Side(ReleaseSide.Client)]
-		public Ref<NpcResponse> NpcResponse;
+		public Ref<NpcResponse> NpcResponse { get; set; }
 
 
 		public override List<Ref<ModelElement>> Attractions => new() { Object2 };
@@ -525,22 +280,22 @@ public partial class Case : ModelElement
 
 	public sealed class JoinFaction : Case
 	{
-		public Ref<Faction> Faction;
+		public Ref<Faction> Faction { get; set; }
 
-		public Ref<ModelElement> Object;
+		public Ref<ModelElement> Object { get; set; }
 
 		[Repeat(3)]
-		public Ref<NpcResponse>[] NpcResponse;
+		public Ref<NpcResponse>[] NpcResponse { get; set; }
 
-		public Ref<Text> ButtonTextAccept;
+		public Ref<Text> ButtonTextAccept { get; set; }
 
-		public Ref<Text> ButtonTextCancel;
+		public Ref<Text> ButtonTextCancel { get; set; }
 
-		public Ref<Item> Grocery;
+		public Ref<Item> Grocery { get; set; }
 
-		public short GroceryCount;
+		public short GroceryCount { get; set; }
 
-		public bool RemoveGrocery;
+		public bool RemoveGrocery { get; set; }
 
 
 		public override List<Ref<ModelElement>> Attractions => new() { Object };
@@ -548,7 +303,7 @@ public partial class Case : ModelElement
 
 	public sealed class DuelFinish : Case
 	{
-		public ResultSeq DuelResult;
+		public ResultSeq DuelResult { get; set; }
 
 		[DefaultValue(All)]
 		public enum ResultSeq
@@ -564,27 +319,27 @@ public partial class Case : ModelElement
 
 
 
-		public DuelType DuelType;
+		public DuelType DuelType { get; set; }
 
-		public ArenaMatchingRuleDetail ArenaMatchingRuleDetail;
+		public ArenaMatchingRuleDetail ArenaMatchingRuleDetail { get; set; }
 
-		public int DuelStraightWin;
+		public int DuelStraightWin { get; set; }
 
-		public sbyte DuelGrade;
+		public sbyte DuelGrade { get; set; }
 	}
 
 	public sealed class PartyBattle : Case
 	{
-		public PartyBattleFieldZoneType PartyBattleType;
+		public PartyBattleFieldZoneType PartyBattleType { get; set; }
 
-		public DuelFinish.ResultSeq PartyBattleResult;
+		public DuelFinish.ResultSeq PartyBattleResult { get; set; }
 	}
 
 	public sealed class PartyBattleAction : Case
 	{
-		public PartyBattleFieldZoneType PartyBattleType;
+		public PartyBattleFieldZoneType PartyBattleType { get; set; }
 
-		public PartyBattleActionTypeSeq PartyBattleActionType;
+		public PartyBattleActionTypeSeq PartyBattleActionType { get; set; }
 
 		public enum PartyBattleActionTypeSeq
 		{
@@ -596,22 +351,22 @@ public partial class Case : ModelElement
 
 	public sealed class completeQuest : Case
 	{
-		public Ref<Quest> CompleteQuest;
+		public Ref<Quest> CompleteQuest { get; set; }
 	}
 
 	public sealed class PickUpFielditem : Case
 	{
-		public Ref<FieldItem> Fielditem;
+		public Ref<FieldItem> Fielditem { get; set; }
 	}
 
 	public sealed class BattleRoyal : Case
 	{
-		public Ref<BattleRoyalField> BattleRoyalField;
+		public Ref<BattleRoyalField> BattleRoyalField { get; set; }
 	}
 
 	public sealed class AttractionPopup : Case
 	{
-		public Ref<ZoneEnv2> AttractionPopupEnv;
+		public Ref<ZoneEnv2> AttractionPopupEnv { get; set; }
 	}
 
 	public sealed class PublicRaid : Case

@@ -1,11 +1,10 @@
 ﻿using Xylia.Preview.Data.Common.Abstractions;
-using Xylia.Preview.Data.Common.DataStruct;
 
 namespace Xylia.Preview.Data.Models;
 public sealed class ClassicFieldZone : ModelElement, IAttraction
 {
-	public Ref<Text> ClassicFieldZoneName2;
-	public Ref<Text> ClassicFieldZoneDesc;
+	public Ref<Text> ClassicFieldZoneName2 { get; set; }
+	public Ref<Text> ClassicFieldZoneDesc { get; set; }
 
 
 	#region Interface

@@ -1,70 +1,50 @@
-﻿using Xylia.Preview.Data.Common.Attribute;
-using Xylia.Preview.Data.Common.DataStruct;
+﻿using Xylia.Preview.Common.Attributes;
 
 namespace Xylia.Preview.Data.Models;
 public class SkillTooltip : ModelElement
 {
-	public Ref<Skill3> Skill;
+	public Ref<Skill3> Skill { get; set; }
 
-	[Name("tooltip-group")]
-	public TooltipGroup tooltipGroup;
+	public TooltipGroup tooltipGroup { get; set; }
 
-	[Name("ect-order")]
-	public ECTOrder EctOrder;
+	public ECTOrder EctOrder { get; set; }
 
-	[Name("ect-order-english")]
-	public ECTOrder EctOrderEnglish;
+	public ECTOrder EctOrderEnglish { get; set; }
 
-	[Name("ect-order-french")]
-	public ECTOrder EctOrderFrench;
+	public ECTOrder EctOrderFrench { get; set; }
 
-	[Name("ect-order-german")]
-	public ECTOrder EctOrderGerman;
+	public ECTOrder EctOrderGerman { get; set; }
 
-	[Name("ect-order-russian")]
-	public ECTOrder EctOrderRussian;
+	public ECTOrder EctOrderRussian { get; set; }
 
-	[Name("ect-order-bportuguese")]
-	public ECTOrder EctOrderBportuguese;
+	public ECTOrder EctOrderBportuguese { get; set; }
 
-	[Name("effect-attribute")] 
-	public Ref<SkillTooltipAttribute> EffectAttribute;
+	public Ref<SkillTooltipAttribute> EffectAttribute { get; set; }
 
-	[Name("effect-arg") , Repeat(4)] 
-	public string[] EffectArg;
+	[Repeat(4)] 
+	public string[] EffectArg { get; set; }
 
-	[Name("condition-attribute") ]
-	public Ref<SkillTooltipAttribute> ConditionAttribute;
+	public Ref<SkillTooltipAttribute> ConditionAttribute { get; set; }
 
-	[Name("condition-arg"), Repeat(2)]
-	public string[] ConditionArg;
+	public string[] ConditionArg { get; set; }
 
-	[Name("target-attribute")]
-	public Ref<SkillTooltipAttribute> TargetAttribute;
+	public Ref<SkillTooltipAttribute> TargetAttribute { get; set; }
 
-	[Name("before-stance-attribute")]
-	public Ref<SkillTooltipAttribute> BeforeStanceAttribute;
+	public Ref<SkillTooltipAttribute> BeforeStanceAttribute { get; set; }
 
-	[Name("after-stance-attribute")]
-	public Ref<SkillTooltipAttribute> AfterStanceAttribute;
+	public Ref<SkillTooltipAttribute> AfterStanceAttribute { get; set; }
 
-	[Name("default-text")]
-	public Ref<Text> DefaultText;
+	public Ref<Text> DefaultText { get; set; }
 
-	[Name("attribute-color-text")]
-	public Ref<Text> AttributeColorText;
+	public Ref<Text> AttributeColorText { get; set; }
 
-	[Name("skill-modify-diff-repeat-count")]
-	public sbyte SkillModifyDiffRepeatCount;
+	public sbyte SkillModifyDiffRepeatCount { get; set; }
 
-	[Name("skill-attack-attribute-coefficient-percent")]
-	public short SkillAttackAttributeCoefficientPercent;
+	public short SkillAttackAttributeCoefficientPercent { get; set; }
 
-	[Name("item-default-text")]
-	public Ref<Text> ItemDefaultText;
+	public Ref<Text> ItemDefaultText { get; set; }
 
-	[Name("item-replace-text")]
-	public Ref<Text> ItemReplaceText;
+	public Ref<Text> ItemReplaceText { get; set; }
 
 	#region Enums
 	public enum TooltipGroup

@@ -1,15 +1,13 @@
-﻿using Xylia.Preview.Data.Common.DataStruct;
-
-namespace Xylia.Preview.Data.Models;
+﻿namespace Xylia.Preview.Data.Models;
 public class UnlocatedStoreUi : ModelElement
 {
-	public UnlocatedStore.UnlocatedStoreTypeSeq UnlocatedStoreType;
+	public UnlocatedStore.UnlocatedStoreTypeSeq UnlocatedStoreType { get; set; }
 
-	public string TitleIcon;
+	public string TitleIcon { get; set; }
 
-	public Ref<Text> TitleText;
+	public Ref<Text> TitleText { get; set; }
 
-	public string ButtonIcon;
+	public string ButtonIcon { get; set; }
 
-	public Ref<Text> ButtonText;
+	public Ref<Text> ButtonText { get; set; }
 }

@@ -1,63 +1,10 @@
 ﻿using System.Diagnostics;
 using Xylia.Preview.Common.Extension;
-using Xylia.Preview.Data.Common.Attribute;
-using Xylia.Preview.Data.Common.DataStruct;
-using Xylia.Preview.Data.Models.Sequence;
 
 namespace Xylia.Preview.Data.Models;
 public sealed class CreatureAppearance : ModelElement
 {
-	public string Alias;
-
-
-	public RaceSeq Race;
-
-	public SexSeq Sex;
-
-	public ObjectPath FaceAnimSetName;
-
-	public ObjectPath AnimTreeName;
-
-	public ObjectPath FaceMeshName;
-
-	public ObjectPath BodyMeshName;
-
-	public ObjectPath VoiceSetName;
-
-	public ObjectPath NpcDialogueSet;
-
-	public ObjectPath AttachEffect;
-
-	public ObjectPath BodyMaterialName;
-
-	public ObjectPath FaceMaterialName;
-
-	public ObjectPath Npcattach1;
-
-	public ObjectPath Npcattach2;
-
-	public ObjectPath NpcattachMaterial1;
-
-	public ObjectPath NpcattachMaterial2;
-
-	public bool EnablePhysbrst;
-
-	public ObjectPath UniqueSoundcue;
-
-	public float UniqueSoundculldist;
-
-	public float UniqueSoundfadetime;
-
-	public float SoundAttenuationScale;
-
-	public float SoundVolumeScale;
-
-	[Repeat(92)]
-	public sbyte[] Param8;
-
-	public float DecalRadius;
-
-	public bool PcCustomize;
+															
 }
 
 public class Param8

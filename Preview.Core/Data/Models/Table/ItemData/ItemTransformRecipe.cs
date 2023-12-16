@@ -1,4 +1,4 @@
-﻿using Xylia.Preview.Data.Common.Attribute;
+﻿using Xylia.Preview.Common.Attributes;
 using Xylia.Preview.Data.Helpers;
 using Xylia.Preview.Data.Models.Sequence;
 using static Xylia.Preview.Data.Models.Item;
@@ -6,19 +6,17 @@ using static Xylia.Preview.Data.Models.Item.Accessory;
 
 namespace Xylia.Preview.Data.Models;
 public sealed class ItemTransformRecipe : ModelElement
-{
-	[Name("money-cost")]
-	public int MoneyCost;
+{	 
+	public int MoneyCost { get; set; }
 
-	[Name("title-item")]
-	public Ref<Item> TitleItem;
+	public Ref<Item> TitleItem { get; set; }
 
 
-	public Ref<ModelElement> MainIngredient;
+	public Ref<ModelElement> MainIngredient { get; set; }
 
-	public ConditionType MainIngredientConditionType = ConditionType.All;
+	public ConditionType MainIngredientConditionType { get; set; }
 
-	public CategorySeq Category;
+	public CategorySeq Category { get; set; }
 	public enum CategorySeq : byte
 	{
 		None,
@@ -31,16 +29,13 @@ public sealed class ItemTransformRecipe : ModelElement
 
 		Weapon,
 
-		[Name("legendary-weapon")]
-		LegendaryWeapon,
+			LegendaryWeapon,
 
 		Accessory,
 
-		[Name("weapon-gem-adder")]
-		WeaponGemAdder,
+			WeaponGemAdder,
 
-		[Name("weapon-gem2")]
-		WeaponGem2,
+			WeaponGem2,
 
 		Piece,
 
@@ -50,38 +45,29 @@ public sealed class ItemTransformRecipe : ModelElement
 
 		Pet,
 
-		[Name("pet-legend")]
-		PetLegend,
+			PetLegend,
 
-		[Name("pet-change")]
-		PetChange,
+			PetChange,
 
-		[Name("taiji-gem")]
-		TaijiGem,
+			TaijiGem,
 
 		Division,
 
-		[Name("weapon-enchant-gem")]
-		WeaponEnchantGem,
+			WeaponEnchantGem,
 
 		Sewing,
 
-		[Name("weapon-transform")]
-		WeaponTransform,
+			WeaponTransform,
 
-		[Name("accessory-transform")]
-		AccessoryTransform,
+			AccessoryTransform,
 
-		[Name("equip-gem")]
-		EquipGem,
+			EquipGem,
 	}
 
-
-	[Name("use-random")]
-	public bool UseRandom;
+	public bool UseRandom { get; set; }
 
 
-	public WarningSeq Warning;
+	public WarningSeq Warning { get; set; }
 	public enum WarningSeq : byte
 	{
 		None,
@@ -92,54 +78,41 @@ public sealed class ItemTransformRecipe : ModelElement
 
 		Gemslotreset,
 
-		[Name("fail-gemslotreset")]
-		FailGemslotreset,
+			FailGemslotreset,
 
-		[Name("stuck-gemslotreset")]
-		StuckGemslotreset,
+			StuckGemslotreset,
 
 		Change,
 
 		Lower,
 
-		[Name("lower-gemslotreset")]
-		LowerGemslotreset,
+			LowerGemslotreset,
 
 		Partialfail,
 
 		Tradeimpossible,
 
-		[Name("delete-particle")]
-		DeleteParticle,
+			DeleteParticle,
 
-		[Name("delete-design")]
-		DeleteDesign,
+			DeleteDesign,
 
 		Spiritreset,
 
-		[Name("fail-spiritreset")]
-		FailSpiritreset,
+			FailSpiritreset,
 
-		[Name("gemslotreset-spiritreset")]
-		GemslotresetSpiritreset,
+			GemslotresetSpiritreset,
 
-		[Name("fail-gemslotreset-spiritreset")]
-		FailGemslotresetSpiritreset,
+			FailGemslotresetSpiritreset,
 
-		[Name("lower-spiritreset")]
-		LowerSpiritreset,
+			LowerSpiritreset,
 
-		[Name("lower-gemslotreset-spiritreset")]
-		LowerGemslotresetSpiritreset,
+			LowerGemslotresetSpiritreset,
 
-		[Name("partialfail-spiritreset")]
-		PartialfailSpiritreset,
+			PartialfailSpiritreset,
 
-		[Name("cannot-division")]
-		CannotDivision,
+			CannotDivision,
 
-		[Name("fail-cannot-division")]
-		FailCannotDivision,
+			FailCannotDivision,
 	}
 
 

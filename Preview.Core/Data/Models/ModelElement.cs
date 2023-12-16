@@ -1,8 +1,8 @@
 ﻿using System.Reflection;
 using System.Runtime.Serialization;
+using Xylia.Preview.Common.Attributes;
 using Xylia.Preview.Common.Extension;
 using Xylia.Preview.Data.Client;
-using Xylia.Preview.Data.Common.Attribute;
 using Xylia.Preview.Data.Engine.BinData.Models;
 using Xylia.Preview.Data.Helpers;
 
@@ -14,6 +14,7 @@ public abstract class ModelElement
 
 	public AttributeCollection Attributes =>  Source.Attributes;
 
+	public override string ToString() => Source.ToString();
 
 
 	public void Serialize()
