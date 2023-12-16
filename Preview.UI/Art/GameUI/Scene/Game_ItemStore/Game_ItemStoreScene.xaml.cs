@@ -17,7 +17,7 @@ public partial class Game_ItemStoreScene
 
 		#region type
 		var group = new Dictionary<UnlocatedStoreTypeSeq, TreeViewItem>();
-		foreach (var record in FileCache.Data.UnlocatedStoreUi.Append(new UnlocatedStoreUi()
+		foreach (var record in FileCache.Data.Get<UnlocatedStoreUi>().Append(new UnlocatedStoreUi()
 		{
 			UnlocatedStoreType = UnlocatedStoreTypeSeq.UnlocatedNone,
 			TitleText = new("UI.ItemStore.Title"),
@@ -36,10 +36,10 @@ public partial class Game_ItemStoreScene
 		#endregion
 
 
-		foreach (var store2 in FileCache.Data.Store2)
+		foreach (var store2 in FileCache.Data.Get<Store2>())
 		{
-			var text = $"[{store2.Name2.GetText()}] {store2.Alias}";
-			var type = FileCache.Data.UnlocatedStore.FirstOrDefault(x => x.Store2 == store2)?.UnlocatedStoreType ?? UnlocatedStoreTypeSeq.UnlocatedNone;
+			var text = $"[{store2.Name2.GetText()}] {store2}";
+			var type = FileCache.Data.Get<UnlocatedStore>().FirstOrDefault(x => x.Store2 == store2)?.UnlocatedStoreType ?? UnlocatedStoreTypeSeq.UnlocatedNone;
 			if (type > UnlocatedStoreTypeSeq.SoulBoostStore1 && type <= UnlocatedStoreTypeSeq.SoulBoostStore6)
 				type = UnlocatedStoreTypeSeq.SoulBoostStore1;
 

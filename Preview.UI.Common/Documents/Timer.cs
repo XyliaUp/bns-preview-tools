@@ -1,6 +1,6 @@
 ﻿using System;
-
-using Xylia.Preview.Data.Common.Attribute;
+using HtmlAgilityPack;
+using Xylia.Preview.Common.Attributes;
 using Xylia.Preview.Data.Common.DataStruct;
 
 namespace Xylia.Preview.UI.Documents;
@@ -46,7 +46,14 @@ public class Timer : Element
 	public Msec Span => Value - DateTime.Now;
 	#endregion
 
+
 	#region Methods
+	protected internal override void Load(HtmlNode node)
+	{
+		Id = node.GetAttributeValue("id", 0);
+		Type = node.GetAttributeValue("type", (TimerType)default);
+	}
+
 	public override string ToString()
 	{
 		var span = this.Span;

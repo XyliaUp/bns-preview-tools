@@ -1,8 +1,7 @@
 ﻿using System.Diagnostics;
-
 using Xylia.Preview.Data.Common.DataStruct;
-using Xylia.Preview.Data.Engine.BinData.Definitions;
 using Xylia.Preview.Data.Engine.BinData.Models;
+using Xylia.Preview.Data.Engine.Definitions;
 using Xylia.Preview.Data.Models;
 
 namespace Xylia.Preview.Data.Engine.BinData.Helpers;
@@ -43,8 +42,6 @@ public class TableCollection : List<Table>
 
 
 
-
-
 	public Record GetRef(short type, Ref Ref)
 	{
 		if (Ref == default) return null;
@@ -64,8 +61,12 @@ public class TableCollection : List<Table>
 	{
 		if (Ref == default) return null;
 
+		// possible return null if it is a xml table
+		// actually, this is a definition issue
 		var table = this[(short)Ref.Table];
-		return $"{table.Name}:{table?[Ref, false]}";
+		if (table is null) return Ref.ToString();
+
+		return $"{table.Name}:{table[Ref, false]}";
 	}
 
 
@@ -73,10 +74,12 @@ public class TableCollection : List<Table>
 
 	public Record GetRecord(string value)
 	{
+		if (value is null) return null;
+
 		var array = value.Split(':', 2);
 		if (array.Length < 2)
 		{
-			Debug.WriteLine($"TRef get failed, value: {value}");
+			Serilog.Log.Warning($"TRef get failed, value: {value}");
 			return null;
 		}
 
@@ -86,12 +89,13 @@ public class TableCollection : List<Table>
 	public Record GetIconRecord(string value, out ushort index)
 	{
 		index = 0;
+		if (value is null) return null;
 
 		var colon = value.LastIndexOf(',');
 		if (colon == -1) return null;
 
-		var split = new[] { value[..colon], value[(colon + 1)..] };
-		index = ushort.Parse(split[1]);
-		return GetRecord("icontexture", split[0]);
+		var array = new[] { value[..colon], value[(colon + 1)..] };
+		index = ushort.Parse(array[1]);
+		return GetRecord("icontexture", array[0]);
 	}
 }

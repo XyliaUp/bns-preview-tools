@@ -1,4 +1,5 @@
-﻿using System.Runtime.InteropServices;
+﻿using System.Diagnostics;
+using System.Runtime.InteropServices;
 
 using Xylia.Preview.Data.Engine.BinData.Models;
 using Xylia.Preview.Data.Engine.BinData.Serialization;
@@ -33,6 +34,8 @@ public class TableArchive
 		return table;
 	}
 
+	public Stream LazyStream() => Source.CreateStream();
+
 
 	public void ReadFrom(Table table)
 	{
@@ -40,9 +43,6 @@ public class TableArchive
 
 		if (table.IsCompressed) ReadCompressed(Source, table);
 		else ReadUncompressed(Source, table);
-
-		Source.Dispose();
-		Source = null;
 	}
 
 	private unsafe void ReadCompressed(DatafileArchive reader, Table table)
@@ -85,8 +85,7 @@ public class TableArchive
 
 		while (_recordUncompressedReader.Read(reader, ref rowMemory))
 		{
-			if (rowMemory.DataSize == 6)
-				continue;
+			if (rowMemory.DataSize == 6) continue;
 
 			var row = new Record
 			{
@@ -111,7 +110,13 @@ public class TableArchive
 		if (padding.Length > 0)
 			table.Padding = padding.ToArray();
 
-
 		table.Records = records;
+
+
+
+		if (true && table.RecordCountOffset != 0)
+		{
+			Debug.WriteLine($"RecordCountOffset {table.Name ?? table.Type.ToString()}");
+		}
 	}
 }

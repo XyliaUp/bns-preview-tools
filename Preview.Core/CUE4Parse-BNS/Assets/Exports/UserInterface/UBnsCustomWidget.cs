@@ -2,10 +2,6 @@
 using CUE4Parse.UE4.Objects.UObject;
 
 namespace CUE4Parse.BNS.Assets.Exports;
-public class UBnsCustomWidget : UBnsCustomBaseWidget
-{
-}
-
 public class UBnsCustomColumnListWidget : UBnsCustomBaseWidget
 {
 

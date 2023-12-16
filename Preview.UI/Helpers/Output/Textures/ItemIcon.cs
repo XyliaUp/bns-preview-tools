@@ -1,13 +1,10 @@
 ﻿using CUE4Parse.BNS.Conversion;
 using CUE4Parse.FileProvider;
 using CUE4Parse.UE4.Assets.Exports.Texture;
-
 using CUE4Parse_Conversion.Textures;
-
-using Xylia.Extension;
+using Xylia.Preview.Common.Extension;
 using Xylia.Preview.Data.Common.DataStruct;
 using Xylia.Preview.Data.Models;
-
 using static Xylia.Preview.Data.Models.Item.Grocery;
 
 namespace Xylia.Preview.UI.Helpers.Output.Textures;
@@ -38,10 +35,9 @@ public sealed class ItemIcon(string GameFolder, string OutputFolder) : IconOutBa
 			if (!isWhiteList && lst != null && lst.Contains(Ref.Id)) return;
 
 			#region Get Data
-			var record = new Item.Grocery();
-			record.Alias = x.Attributes["alias"];
-			record.ItemGrade = x.Attributes.Get<sbyte>("item-grade");
-			record.icon = x.Attributes["icon"];
+			var alias = x.Attributes["alias"];
+			var ItemGrade = x.Attributes.Get<sbyte>("item-grade");
+			var icon = x.Attributes["icon"];
 
 			var Text = x.Attributes.Get<Record>("name2")?.Attributes["text"];	   
 			var GroceryType = x.SubclassType == 2 ? x.Attributes["grocery-type"]?.ToEnum<GroceryTypeSeq>() : null;
@@ -53,11 +49,11 @@ public sealed class ItemIcon(string GameFolder, string OutputFolder) : IconOutBa
 			try
 			{
 				#region process
-				var bitmap = record.icon.GetIcon(set, provider) ?? throw new Exception($"get resouce failed ({record.icon})");
+				var bitmap = icon.GetIcon(set, provider) ?? throw new Exception($"get resouce failed ({icon})");
 
 				if (UseBackground)
 				{
-					bitmap = record.ItemGrade.GetBackground(provider).Compose(bitmap);
+					bitmap = ItemGrade.GetBackground(provider).Compose(bitmap);
 
 					if (GroceryType == GroceryTypeSeq.Sealed) bitmap = bitmap.Compose(Weapon_Lock_04);
 				}
@@ -66,9 +62,9 @@ public sealed class ItemIcon(string GameFolder, string OutputFolder) : IconOutBa
 				#region file name
 				string MainId = Ref.Id.ToString();
 				string OutName = format
-					   .Replace("[alias]", record.Alias)
+					   .Replace("[alias]", alias)
 					   .Replace("[id]", MainId)
-					   .Replace("[name]", Text).Replace("[name2]", Text);
+					   .Replace("[name]", Text.ToString()).Replace("[name2]", Text.ToString());
 				#endregion
 
 				#region tags

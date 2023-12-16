@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace Xylia.Preview.Tests.DatTool.Utils.DevTools;
+﻿namespace Xylia.Preview.Tests.DatTool.Utils.DevTools;
 public class CommonConvert
 {
 	readonly byte[] data;

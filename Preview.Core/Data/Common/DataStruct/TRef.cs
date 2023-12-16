@@ -1,5 +1,7 @@
 ﻿using System.Runtime.InteropServices;
 
+using Xylia.Preview.Data.Models;
+
 namespace Xylia.Preview.Data.Common.DataStruct;
 
 [StructLayout(LayoutKind.Sequential)]
@@ -20,11 +22,19 @@ public struct TRef
 	{
 	}
 
-
-	public override string ToString()
+	public TRef(Record record)
 	{
-		return $"({Id}:{Variant}, table: {Table})";
+		if (record is null) return;
+
+		Table = record.Owner.Type;
+		Id = record.Ref.Id;
+		Variant = record.Ref.Variant;
 	}
+
+
+
+	public override string ToString() => $"{Table}:{Id}.{Variant}";
+
 
 	public static implicit operator int(TRef r) => r.Id;
 

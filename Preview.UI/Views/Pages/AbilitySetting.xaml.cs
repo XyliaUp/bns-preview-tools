@@ -1,6 +1,5 @@
 ﻿using System.Windows;
-
-using Xylia.Extension;
+using Xylia.Preview.Common.Extension;
 using Xylia.Preview.Data.Models.Creature;
 
 namespace Xylia.Preview.UI.Views.Pages;

@@ -1,6 +1,6 @@
-﻿using Xylia.Preview.Data.Common.Exceptions;
+﻿using System.Text.RegularExpressions;
 
-namespace Xylia.Preview.Data.Engine.BinData.Definitions;
+namespace Xylia.Preview.Data.Engine.Definitions;
 public class ElDefinition : ITableDefinition
 {
 	private Dictionary<string, SubtableDefinition> _subtablesDictionary = new();
@@ -15,7 +15,7 @@ public class ElDefinition : ITableDefinition
 
 
 	public List<AttributeDefinition> Attributes { get; } = [];
-	public List<AttributeDefinition> ExpandedAttributes { get; } = [];
+	public List<AttributeDefinition> ExpandedAttributes { get; private set; } = [];
 	public List<SubtableDefinition> Subtables { get; } = [];
 	public List<ElDefinition> Children { get; } = [];
 
@@ -26,15 +26,21 @@ public class ElDefinition : ITableDefinition
 		bool IsEmpty = string.IsNullOrEmpty(name);
 		if (Subtables.Count == 0)
 		{
-			if (IsEmpty) return this;
+			//Debug.Assert(IsEmpty);
+			return this;
 		}
 		else if (!IsEmpty)
 		{
-			return _subtablesDictionary.GetValueOrDefault(name, null) ?? 
-				Subtables.First();	//throw new ArgumentOutOfRangeException(nameof(name));
+			if (_subtablesDictionary.TryGetValue(name, out var definition)) return definition;
+			else
+			{
+				Serilog.Log.Warning($"Invalid attribute: 'type', table: {this.Name}, value: {name}");
+				//throw new ArgumentOutOfRangeException(nameof(name));
+				return Subtables.First();  
+			}
 		}
 
-		throw new BnsException($"Invalid attribute: 'type'");
+		throw new Exception($"Invalid attribute: 'type', table: {this.Name}, value: null");
 	}
 
 	public ITableDefinition SubtableByType(short type)
@@ -63,7 +69,17 @@ public class ElDefinition : ITableDefinition
 	}
 
 	public void CreateSubtableMap() => _subtablesDictionary = Subtables.ToDictionary(x => x.Name);
-	public void CreateExpandedAttributeMap() => _expandedAttributesDictionary = ExpandedAttributes.ToDictionary(x => x.Name);
+
+	public void CreateExpandedAttributeMap()
+	{
+		_expandedAttributesDictionary = ExpandedAttributes.ToDictionary(x => x.Name);
+
+		// execution is slow in Record.WriteXml, so move here
+		// use naturally sort
+		ExpandedAttributes = [.. ExpandedAttributes.OrderBy(o => o.Type == AttributeType.TNative)
+			.ThenBy(o => Regex.Replace(o.Name, @"\d+", match => match.Value.PadLeft(4, '0')))];
+	}
+
 	public AttributeDefinition this[string name] => _expandedAttributesDictionary.GetValueOrDefault(name, null);
 	#endregion
 }

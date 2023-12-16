@@ -1,17 +1,14 @@
-﻿using System.ComponentModel;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Media;
 using System.Windows.Shapes;
-
-using Xylia.Preview.Data.Common.Seq;
 using Xylia.Preview.Data.Helpers;
-
+using Xylia.Preview.Data.Models;
+using Xylia.Preview.Data.Models.Sequence;
 using static Xylia.Preview.Data.Models.ItemGraph;
 
 namespace Xylia.Preview.UI.Art.GameUI.Scene.Game_ItemMap;
-[DesignTimeVisible(false)]
 public partial class BnsCustomGraphMapWidget : Panel
 {
 	#region Constructor
@@ -34,7 +31,7 @@ public partial class BnsCustomGraphMapWidget : Panel
 		#region item
 		this.Children.Clear();
 
-		var table = FileCache.Data.ItemGraph;
+		var table = FileCache.Data.Get<ItemGraph>();
 		var seeds = table.Where(record => record is Seed seed && seed.ItemEquipType == value).Cast<Seed>();
 		if (!seeds.Any()) return;
 
@@ -59,7 +56,7 @@ public partial class BnsCustomGraphMapWidget : Panel
 			var startItem = item.Value;
 			foreach (var edges in table.Search(definition, item.Key).GroupBy(x => x.Attributes["end-item"]))
 			{
-				if (!items.TryGetValue(edges.Key, out var endItem)) continue;
+				if (!items.TryGetValue(edges.Key.ToString(), out var endItem)) continue;
 
 				startItem.Loaded += new((o, args) =>
 				{
@@ -82,18 +79,18 @@ public partial class BnsCustomGraphMapWidget : Panel
 
 
 					// get recipe total count between start with end
-					foreach (var edge in edges.Select(x => x.Model.Value).OfType<Edge>())
-					{
-						sour.X += 5;
-						dest.X += 5;
-						this.Children.Add(new Connector()
-						{
-							ToolTip = edge.FeedRecipe,
-							Source = sour,
-							Destination = dest,
-							Foreground = edge.SuccessProbability == Edge.SuccessProbabilitySeq.Definite ? Brushes.Green : Brushes.Blue,
-						});
-					}
+					//foreach (var edge in edges.Select(x => x.Model.Value).OfType<Edge>())
+					//{
+					//	sour.X += 5;
+					//	dest.X += 5;
+					//	this.Children.Add(new Connector()
+					//	{
+					//		ToolTip = edge.FeedRecipe,
+					//		Source = sour,
+					//		Destination = dest,
+					//		Foreground = edge.SuccessProbability == Edge.SuccessProbabilitySeq.Definite ? Brushes.Green : Brushes.Blue,
+					//	});
+					//}
 				});
 			}
 		}

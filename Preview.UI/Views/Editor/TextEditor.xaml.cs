@@ -31,20 +31,20 @@ public partial class TextEditor : Window
 	}
 	#endregion
 
-
 	#region Methods
-	public static void Register()
+	private void Editor_TextChanged(object sender, EventArgs e)
 	{
-		using var stream = Application.GetResourceStream(new Uri($"/Views/Editor/Sql.xshd", UriKind.Relative)).Stream;
+		foldingStrategy.UpdateFoldings(foldingManager, Editor.Document);
+	}
+
+	public static void Register(string name)
+	{
+		var resource = new Uri($"pack://application:,,,/Preview.UI;component/Resources/Xshd/{name}.xshd");
+		using var stream = Application.GetResourceStream(resource).Stream;
 		using var reader = new XmlTextReader(stream);
 
 		var definition = HighlightingLoader.Load(reader, HighlightingManager.Instance);
 		HighlightingManager.Instance.RegisterHighlighting("SQL", new string[] { ".sql" }, definition);
-	}
-
-	private void Editor_TextChanged(object sender, EventArgs e)
-	{
-		foldingStrategy.UpdateFoldings(foldingManager, Editor.Document);
 	}
 	#endregion
 }

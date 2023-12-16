@@ -1,4 +1,4 @@
-﻿namespace Xylia.Preview.Data.Engine.BinData.Definitions;
+﻿namespace Xylia.Preview.Data.Engine.Definitions;
 public interface ITableDefinition
 {
 	string Name { get; set; }

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<table name="soul-boost-mission" version="4.0" autokey="false" module="6">
+<table name="soul-boost-mission" version="5.0" autokey="false" module="6">
   <el name="table" child="1" />
   <el name="record">
     <attribute name="id" type="Int32" key="y" required="y" min="1" />
@@ -64,6 +64,7 @@
       <case name="sealed-dungeon-level" />
       <case name="value" />
     </attribute>
+    <attribute name="unk-" type="String" repeat="10" />
     <attribute name="condition" type="Int64" default="0" repeat="10" />
   </el>
 </table>

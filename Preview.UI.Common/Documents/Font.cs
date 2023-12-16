@@ -11,6 +11,13 @@ using Xylia.Preview.Data.Helpers;
 namespace Xylia.Preview.UI.Documents;
 public class Font : Element
 {
+	#region Property
+	/// <summary>
+	/// fontset path
+	/// </summary>
+	public string Name;
+	#endregion
+
 	#region Constructor
 	public Font()
 	{
@@ -20,23 +27,16 @@ public class Font : Element
 	public Font(string Name, params Element[] elements)
 	{
 		this.Name = Name;
-		this.Children = elements.ToList();
+		this.Children = [.. elements];
 	}
-	#endregion
-
-	#region Property
-	/// <summary>
-	/// fontset path
-	/// </summary>
-	public string Name;
 	#endregion
 
 
 	#region Methods
-	protected override void Load(HtmlNode node)
+	protected internal override void Load(HtmlNode node)
 	{
-		base.Load(node);
-		//this.Name = node.Attributes[nameof(Name)]?.Value;
+		Children = node.ChildNodes.Select(TextDocument.ToElement).ToList();
+		Name = node.Attributes["name"]?.Value;
 	}
 
 	protected override Size MeasureCore(Size availableSize)
@@ -47,23 +47,19 @@ public class Font : Element
 
 	private void GetFont(string name)
 	{
-		#region data
 		var FontSet = FileCache.Provider.LoadObject<UFontSet>(name);
 		if (FontSet is null) return;
-
-		var FontFace = FontSet.FontFace?.Load<UBNSFontFace>();
-		var FontAttribute = FontSet.FontAttribute?.Load<UFontAttribute>();
-		var FontColor = FontSet.FontColors?.Load<UFontColor>();
-		#endregion
 
 
 		//param.Font = new Font(param.Font.FontFamily, size, style);
 
+		var FontFace = FontSet.FontFace?.Load<UBNSFontFace>();
 		if (FontFace != null)
 		{
 			FontSize = FontFace.Height;
 		}
 
+		var FontAttribute = FontSet.FontAttribute?.Load<UFontAttribute>();
 		if (FontAttribute != null)
 		{
 			var style = System.Drawing.FontStyle.Regular;
@@ -74,6 +70,7 @@ public class Font : Element
 			if (FontAttribute.Underline) style |= System.Drawing.FontStyle.Underline;
 		}
 
+		var FontColor = FontSet.FontColors?.Load<UFontColor>();
 		if (FontColor != null)
 		{
 			var f = FontColor.FontColor.ToFColor(true);

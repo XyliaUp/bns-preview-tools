@@ -1,4 +1,4 @@
-﻿#define DEV
+﻿//#define DEV
 
 using System.Collections.Concurrent;
 using System.ComponentModel;
@@ -13,21 +13,16 @@ using CUE4Parse.BNS.Conversion;
 using CUE4Parse.UE4.Assets.Exports.Sound;
 using CUE4Parse.UE4.Assets.Objects;
 using CUE4Parse.UE4.VirtualFileSystem;
-
 using CUE4Parse_Conversion.Sounds;
 using CUE4Parse_Conversion.Textures;
 
 using HandyControl.Controls;
-
 using Serilog;
-
-using Xylia.Configure;
 using Xylia.Preview.Common;
 using Xylia.Preview.Common.Extension;
 using Xylia.Preview.Data.Helpers;
 using Xylia.Preview.UI.Services;
 using Xylia.Preview.UI.ViewModels;
-
 using Kernel32 = Vanara.PInvoke.Kernel32;
 
 namespace Xylia.Preview.UI;
@@ -43,7 +38,7 @@ public partial class App : Application
 		InitializeArgs(e.Args);
 
 		#region Log
-		var foloder = UserSettings.Default.OutputFolder ?? PathDefine.MainFolder;
+		var foloder = UserSettings.Default.OutputFolder ?? UserSettings.ApplicationData;
 		string template = "{Timestamp:yyyy-MM-dd HH:mm:ss} [{Level}] {Message:lj}{NewLine}{Exception}";
 		Log.Logger = new LoggerConfiguration()
 			.WriteTo.Debug(Serilog.Events.LogEventLevel.Warning, outputTemplate: template)
@@ -57,15 +52,12 @@ public partial class App : Application
 		#endregion
 
 #if DEV
-		//FileCache.Data = new Data.Engine.DatData.FolderProvider(@"D:\资源\客户端相关\Auto\data");
-		//MainWindow = new Xylia.Preview.UI.Art.GameUI.Scene.Game_Broadcasting.Game_BroadcastingScene();
-
-		//using var provider = DefaultProvider.Load(UserSettings.Default.GameFolder);
-		//provider.LoadData([]);
-
-		//GC.Collect();
-		//return;
+		//FileCache.Data = new(new Xylia.Preview.Data.Engine.DatData.FolderProvider(@"D:\资源\客户端相关\Auto\data"));
+		MainWindow = new Xylia.Preview.UI.Art.GameUI.Scene.Game_Broadcasting.Game_BroadcastingScene();
+		MainWindow.Show();
+		return;
 #endif
+
 		MainWindow = new MainWindow();
 		MainWindow.Show();
 	}

@@ -20,7 +20,7 @@ public static class MySpport
 
 		public string PackagePath;
 
-		public bool Bit64;
+		public bool? Bit64;
 
 		public byte[] Aes = KeyInfo.AES_2020_05;
 
@@ -49,6 +49,8 @@ public static class MySpport
 
 			File.WriteAllBytes(path, file.Data);
 		});
+
+		Console.WriteLine("Extract completed");
 	}
 
 	public static void Pack(PackParam param, IReadOnlyDictionary<string, byte[]> replaces = null, bool IgnoreExist = false)
@@ -95,7 +97,7 @@ public static class MySpport
 
 		#region Execute
 		var rsa = RSA3;
-		double value = BnsCompression.CreateFromDirectory(param.FolderPath, param.PackagePath, param.Bit64, param.CompressionLevel,
+		double value = BnsCompression.CreateFromDirectory(param.FolderPath, param.PackagePath, param.Bit64 ?? true, param.CompressionLevel,
 			param.Aes, (uint)param.Aes.Length, rsa, (uint)rsa.Length,
 			BnsCompression.BinaryXmlVersion.Version4,
 			(string fileName, ulong fileSize) => BnsCompression.DelegateResult.Continue);

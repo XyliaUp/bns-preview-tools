@@ -21,9 +21,7 @@ public class Paragraph : Element
 		var doc = new HtmlDocument();
 		doc.LoadHtml(InnerText);
 
-		this.Children = doc.DocumentNode.ChildNodes.Select(TextDocument.ToElement)
-			.Where(x => x is not null)
-			.ToList();
+		this.Children = doc.DocumentNode.ChildNodes.Select(TextDocument.ToElement).ToList();
 	}
 	#endregion
 
@@ -69,7 +67,7 @@ public class Paragraph : Element
 
 	#region Public Properties
 	public float TopMargin;
-	public float Leftmargin;
+	public float LeftMargin;
 	public float RightMargin;
 	public float BottomMargin;
 
@@ -77,6 +75,7 @@ public class Paragraph : Element
 	public JustificationTypeSeq JustificationType;
 	public enum JustificationTypeSeq
 	{
+		Default,
 		LineFeedByWidgetArea,
 		LineFeedByLineArea,
 	}
@@ -86,10 +85,24 @@ public class Paragraph : Element
 	public string BulletsFontset;
 	#endregion
 
+
 	#region Protected Methods
-	protected override void Load(HtmlNode node)
+	protected internal override void Load(HtmlNode node)
 	{
-		base.Load(node);
+		Children = node.ChildNodes.Select(TextDocument.ToElement).ToList();
+
+		TopMargin = node.GetAttributeValue("topmargin", 0f);
+		LeftMargin = node.GetAttributeValue("leftmargin", 0f);
+		RightMargin = node.GetAttributeValue("rightmargin", 0f);
+		BottomMargin = node.GetAttributeValue("bottommargin", 0f);
+
+		Justification = node.GetAttributeValue("justification", false);
+		JustificationType = node.GetAttributeValue("justificationtype", JustificationTypeSeq.Default);
+		HorizontalAlignment = node.GetAttributeValue("horizontalalignment", HorizontalAlignment.Left);
+		VerticalAlignment = node.GetAttributeValue("verticalalignment", VerticalAlignment.Top);
+
+		Bullets = node.Attributes["bullets"]?.Value;
+		BulletsFontset = node.Attributes["bulletsfontset"]?.Value;
 
 		if (Bullets != null) Children.Insert(0, new Font(BulletsFontset, new Run(Bullets)));
 	}
@@ -97,11 +110,8 @@ public class Paragraph : Element
 	protected override Size MeasureCore(Size availableSize)
 	{
 		var size = base.MeasureCore(availableSize);
-
-		if (TopMargin != 0) size.Height += TopMargin;
-		if (BottomMargin != 0) size.Height += BottomMargin;
-		if (Leftmargin != 0) size.Width += Leftmargin;
-		if (RightMargin != 0) size.Width += RightMargin;
+		size.Height += TopMargin + BottomMargin;
+		size.Width += LeftMargin + RightMargin;
 
 		return size;
 	}

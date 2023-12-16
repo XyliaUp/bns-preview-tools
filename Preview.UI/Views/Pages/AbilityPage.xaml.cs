@@ -16,8 +16,8 @@ public partial class AbilityPage : Page
 
 	public AbilityPage()
 	{
-		InitializeComponent();
 		DataContext = _viewModel = new AbilityViewModel();
+		InitializeComponent();
 	}
 
 	private void TreeView_SelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)

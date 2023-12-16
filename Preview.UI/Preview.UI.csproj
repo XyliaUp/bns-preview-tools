@@ -13,7 +13,6 @@
 		<!-- publish -->
 		<RuntimeIdentifier>win-x64</RuntimeIdentifier>
 		<OutputType>WinExe</OutputType>
-		<SelfContained>False</SelfContained>
 	</PropertyGroup>
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
 		<DebugType>none</DebugType>
@@ -98,7 +97,6 @@
 		<Resource Include="FModel\Resources\NoText.png" />
 		<Resource Include="FModel\Resources\Flat.png" />
 		<Resource Include="FModel\Resources\Cataba.png" />
-		<Resource Include="FModel\Resources\BurbankBigCondensed-Bold.ttf" />
 		<Resource Include="FModel\Resources\add_directory.png" />
 		<Resource Include="FModel\Resources\delete.png" />
 		<Resource Include="FModel\Resources\edit.png" />
@@ -134,11 +132,10 @@
 		<PackageReference Include="AvalonEdit" Version="6.3.0.90" />
 		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
 		<PackageReference Include="CSCore" Version="1.2.1.2" />
-		<PackageReference Include="EPPlus" Version="7.0.2" />
+		<PackageReference Include="EPPlus" Version="7.0.3" />
 		<PackageReference Include="ImGui.NET" Version="1.89.9.3" />
-		<PackageReference Include="Irony" Version="1.2.0" />
 		<PackageReference Include="LiveCharts.Wpf" Version="0.9.7" />
-		<PackageReference Include="Microsoft.Web.WebView2" Version="1.0.2151.40" />
+		<PackageReference Include="Microsoft.Web.WebView2" Version="1.0.2210.55" />
 		<PackageReference Include="NAudio.Vorbis" Version="1.5.0" />
 		<PackageReference Include="Ookii.Dialogs.Wpf" Version="5.0.1" />
 		<PackageReference Include="OpenTK" Version="4.8.2" />
@@ -146,7 +143,8 @@
 		<PackageReference Include="Serilog.Sinks.Debug" Version="2.0.0" />
 		<PackageReference Include="Serilog.Sinks.File" Version="5.0.0" />
 		<PackageReference Include="LiveCharts" Version="0.9.7" />
-		<PackageReference Include="Xylia" Version="1.0.5.5" />
+		<PackageReference Include="Vanara.PInvoke.Kernel32" Version="3.4.17" />
+		<PackageReference Include="Vanara.PInvoke.User32" Version="3.4.17" />
 		<Reference Include="HandyControl">
 			<HintPath>..\..\..\..\HandyControl\HandyControl\src\Net_GE45\HandyControlDemo_Net_GE45\bin\Debug\net7.0-windows\HandyControl.dll</HintPath>
 		</Reference>
@@ -217,8 +215,8 @@
 		<Resource Include="Art\GameUI\Resource\GameUI_Window_R\ItemIcon_Bg_Grade_8.png" />
 		<Resource Include="Art\GameUI\Resource\GameUI_Window_R\ItemIcon_Bg_Grade_9.png" />
 		<Resource Include="Resources\Images\*" />
-		<Resource Include="Resources\Images\ue3\*" />
+		<Resource Include="Resources\Images\*\*" />
 		<Resource Include="Resources\Fonts\segmdl2.ttf" />
-		<Resource Include="Views\Editor\Sql.xshd" />
+		<Resource Include="Resources\Xshd\*.xshd" />
 	</ItemGroup>
 </Project>

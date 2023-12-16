@@ -1,8 +1,8 @@
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Windows;
 
 using Xylia.Preview.UI.Art.GameUI.Scene.Game_QuestJournal;
-using Xylia.Preview.UI.Helpers;
 using Xylia.Preview.UI.Services;
 using Xylia.Preview.UI.Views;
 using Xylia.Preview.UI.Views.Pages;
@@ -31,14 +31,15 @@ public partial class MainWindow
 		#endregion
 
 		new UpdateService().CheckForUpdates();						 
-		Register.Create();
+		RegisterService.Create();
 	}
+
 
 	private void SideMenu_Switch(object sender, RoutedEventArgs e)
 	{
 		SideMenuContainer.IsOpen = false;
 		var page = SideMenu.SelectedItem as IControlPage;
-		
+
 		var content = page.Content;
 		if (content is Window window)
 		{

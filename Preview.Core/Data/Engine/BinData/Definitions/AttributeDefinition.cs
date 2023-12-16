@@ -1,10 +1,9 @@
 ﻿using System.Xml;
-
-using Xylia.Extension;
+using Xylia.Preview.Common.Extension;
 using Xylia.Preview.Data.Common.DataStruct;
 using Xylia.Preview.Data.Common.Exceptions;
 
-namespace Xylia.Preview.Data.Engine.BinData.Definitions;
+namespace Xylia.Preview.Data.Engine.Definitions;
 public partial class AttributeDefinition
 {
 	public string Name { get; set; }
@@ -18,7 +17,6 @@ public partial class AttributeDefinition
 	public bool IsKey { get; set; }
 	public bool IsRequired { get; set; }
 	public bool IsHidden { get; set; }
-	public AttributeDefaultValues AttributeDefaultValues { get; set; }
 	public SequenceDefinition Sequence { get; set; }
 
 
@@ -55,7 +53,7 @@ public partial class AttributeDefinition
 			if (TypeName.Equals("struct", StringComparison.OrdinalIgnoreCase)) return null;
 			else if (TypeName.Equals("dictionary", StringComparison.OrdinalIgnoreCase)) return null;
 
-			throw new BnsDefinitionException($"Failed to determine attribute type: {table.Name}: {Name} ({TypeName})");
+			throw BnsDataException.InvalidDefinition($"Failed to determine attribute type: {table.Name}: {Name} ({TypeName})");
 		}
 		#endregion
 
@@ -70,14 +68,10 @@ public partial class AttributeDefinition
 		string DefaultValue = node.Attributes["default"]?.Value?.Trim();
 		if (string.IsNullOrEmpty(DefaultValue)) DefaultValue = null;
 
-
-		var attrDefDefaults = new AttributeDefaultValues();
-
 		switch (Type)
 		{
 			case AttributeType.TInt8:
-				attrDefDefaults.DString = DefaultValue ?? "0";
-
+				DefaultValue ??= "0";
 				if (MinValue == 0) MinValue = sbyte.MinValue;
 				if (MaxValue == 0) MaxValue = sbyte.MaxValue;
 				break;
@@ -85,55 +79,50 @@ public partial class AttributeDefinition
 			case AttributeType.TInt16:
 			case AttributeType.TDistance:
 			case AttributeType.TAngle:
-				attrDefDefaults.DString = DefaultValue ?? "0";
-
+				DefaultValue ??= "0";
 				if (MinValue == 0) MinValue = short.MinValue;
 				if (MaxValue == 0) MaxValue = short.MaxValue;
 				break;
 
 			case AttributeType.TVelocity:
-				attrDefDefaults.DString = DefaultValue ?? "0";
+				DefaultValue ??= "0";
 				break;
 
 			case AttributeType.TInt32:
 			case AttributeType.TMsec:
-				attrDefDefaults.DString = DefaultValue ?? "0";
-
+				DefaultValue ??= "0";
 				if (MinValue == 0) MinValue = int.MinValue;
 				if (MaxValue == 0) MaxValue = int.MaxValue;
 				break;
 
 
 			case AttributeType.TInt64:
-				attrDefDefaults.DString = DefaultValue ?? "0";
-
+				DefaultValue ??= "0";
 				if (MinValue == 0) MinValue = long.MinValue;
 				if (MaxValue == 0) MaxValue = long.MaxValue;
 				break;
 
 			case AttributeType.TFloat32:
-				attrDefDefaults.DString = DefaultValue ?? "0";
-
+				DefaultValue ??= "0";
 				if (MinValue == 0) MinValue = float.MinValue;
 				if (MaxValue == 0) MaxValue = float.MaxValue;
 				break;
 
 			case AttributeType.TBool:
-				attrDefDefaults.DString = DefaultValue ?? "n";
+				DefaultValue ??= "n";
 				break;
 
 
 			case AttributeType.TRef:
 			case AttributeType.TIcon:
 			case AttributeType.TTRef:
-			case AttributeType.TNative:
-				attrDefDefaults.DString = DefaultValue;
 				break;
 
 
 			case AttributeType.TString:
+			case AttributeType.TNative:
 			case AttributeType.TXUnknown2:
-				attrDefDefaults.DString = DefaultValue ?? "";
+				DefaultValue ??= "";
 				break;
 
 			case AttributeType.TSeq:
@@ -144,36 +133,31 @@ public partial class AttributeDefinition
 				if (Name.Contains("forwarding-types"))
 					seq.Default = seq.FirstOrDefault();
 
-				attrDefDefaults.DString = DefaultValue ?? seq?.Default;
+				DefaultValue ??= seq?.Default;
 				break;
 			}
 
 			case AttributeType.TSub:
-				attrDefDefaults.DString = DefaultValue ?? "0";
+				DefaultValue ??= "0";
 				break;
 
 			case AttributeType.TVector16:
-				attrDefDefaults.DString = DefaultValue ?? "0,0,0";
+				DefaultValue ??= "0,0,0";
 				break;
 
 			case AttributeType.TVector32:
-				attrDefDefaults.DString = DefaultValue ?? "0,0,0";
+				DefaultValue ??= "0,0,0";
 				break;
 
 			case AttributeType.TIColor:
-				attrDefDefaults.DString = DefaultValue ?? new IColor().ToString();
+				DefaultValue ??= new IColor().ToString();
 				break;
 
 			case AttributeType.TScript_obj:
-				attrDefDefaults.DString = DefaultValue;
 				break;
 
 			case AttributeType.TTime64:
-				attrDefDefaults.DString = DefaultValue ?? "0";
-				break;
-
 			case AttributeType.TXUnknown1:
-				attrDefDefaults.DString = DefaultValue;
 				break;
 		}
 		#endregion
@@ -193,8 +177,7 @@ public partial class AttributeDefinition
 			Repeat = ushort.TryParse(node.Attributes["repeat"]?.Value, out var tmp) ? tmp : (ushort)1,
 			ReferedTableName = RefTable,
 			Sequence = seq,
-			DefaultValue = attrDefDefaults.DString,
-			AttributeDefaultValues = attrDefDefaults,
+			DefaultValue = DefaultValue,
 			Max = MaxValue,
 			Min = MinValue,
 
@@ -242,6 +225,21 @@ public partial class AttributeDefinition
 
 			_ => 4,
 		};
+	}
+	#endregion
+
+
+
+	#region Static Methods
+	public static string ToString(AttributeDefinition attribute, object value)
+	{
+		var text = value?.ToString();
+		if (value is float f) text = f.ToString("0.0");
+		if (value is Time64 { Ticks: 0 }) return null;
+
+		// check default
+		if (text == attribute.DefaultValue) return null;
+		return text;
 	}
 	#endregion
 }

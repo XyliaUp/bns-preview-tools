@@ -1,10 +1,9 @@
 ﻿using System.Diagnostics;
 using System.Xml;
-
-using Xylia.Extension;
+using Xylia.Preview.Common.Extension;
 using Xylia.Preview.Data.Common.Exceptions;
 
-namespace Xylia.Preview.Data.Engine.BinData.Definitions;
+namespace Xylia.Preview.Data.Engine.Definitions;
 public class SequenceDefinition : List<string>
 {
     public SequenceDefinition(string name, int size)
@@ -49,7 +48,7 @@ public class SequenceDefinition : List<string>
 				if ((node.Attributes["default"]?.Value).ToBool())
 				{
 					if (sequence.Default is not null)
-						throw new BnsDefinitionException($"seq `{name}` duplicate default value. (prev:{sequence.Default}, now:{text})");
+						throw BnsDataException.InvalidSequence($"duplicate default value. (prev:{sequence.Default}, now:{text})" , name);
 
 					sequence.Default = text;
 				}
@@ -84,14 +83,14 @@ public class SequenceDefinition : List<string>
 		if (type == AttributeType.TSeq || type == AttributeType.TProp_seq)
 		{
 			if (this.Count > sbyte.MaxValue)
-				throw new BnsDefinitionException($"{Name} -> seq exceeding maximum size, use `Seq16` instead.");
+				throw BnsDataException.InvalidSequence($"seq exceeding maximum size, use `Seq16` instead." , Name);
 		}
 		else if (type == AttributeType.TSeq16 || type == AttributeType.TProp_field)
 		{
 			if (this.Count > short.MaxValue)
-				throw new BnsDefinitionException($"{Name} -> seq exceeding maximum size, use `Seq32` instead.");
+				throw BnsDataException.InvalidSequence($"seq exceeding maximum size, use `Seq32` instead." , Name);
 		}
-		else throw new BnsDefinitionException($"{Name} -> invalid attribute type, use `Seq` instead.");
+		else throw BnsDataException.InvalidSequence($"invalid attribute type, use `Seq` instead." , Name);
 	}
 	#endregion
 }

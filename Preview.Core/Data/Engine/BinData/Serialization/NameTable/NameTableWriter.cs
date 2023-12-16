@@ -17,53 +17,53 @@ public class NameTableWriter : INameTableWriter
 	{
 		//if (table is LazyNameTable { EntriesLoaded: false } lazyBnsGlobalStringTable)
 		//{
-		//	using var stream =  lazyBnsGlobalStringTable.Source.CreateStream();
+		//	using var stream = lazyBnsGlobalStringTable.Source.CreateStream();
 		//	stream.CopyTo(writer.BaseStream);
 		//	return;
 		//}
 
-		//writer.Write(table.RootEntry.Begin);
-		//writer.Write(table.RootEntry.End);
-		//writer.Write(table.Entries.Count);
+		writer.Write(table.RootEntry.Begin);
+		writer.Write(table.RootEntry.End);
+		writer.Write(table.Entries.Count);
 
-		//var stringTableMemory = new MemoryStream();
-		//var stringTableWriter = new BinaryWriter(stringTableMemory, Encoding.Default, true);
+		var stringTableMemory = new MemoryStream();
+		var stringTableWriter = new BinaryWriter(stringTableMemory, Encoding.Default, true);
 
-		//if (is64Bit)
-		//{
-		//	foreach (var entry in table.Entries)
-		//	{
-		//		var offset = stringTableMemory.Position;
+		if (is64Bit)
+		{
+			foreach (var entry in table.Entries)
+			{
+				var offset = stringTableMemory.Position;
 
-		//		entry.StringOffset = (int)offset;
+				entry.StringOffset = (int)offset;
 
-		//		stringTableWriter.Write(KoreanEncoding.GetBytes(entry.String));
-		//		stringTableWriter.Write((byte)0);
+				stringTableWriter.Write(KoreanEncoding.GetBytes(entry.String));
+				stringTableWriter.Write((byte)0);
 
-		//		WriteEntry64(writer, entry);
-		//	}
-		//}
-		//else
-		//{
-		//	foreach (var entry in table.Entries)
-		//	{
-		//		var offset = stringTableWriter.BaseStream.Position;
+				WriteEntry64(writer, entry);
+			}
+		}
+		else
+		{
+			foreach (var entry in table.Entries)
+			{
+				var offset = stringTableWriter.BaseStream.Position;
 
-		//		entry.StringOffset = (int)offset;
+				entry.StringOffset = (int)offset;
 
-		//		stringTableWriter.Write(KoreanEncoding.GetBytes(entry.String));
-		//		stringTableWriter.Write((byte)0);
+				stringTableWriter.Write(KoreanEncoding.GetBytes(entry.String));
+				stringTableWriter.Write((byte)0);
 
-		//		WriteEntry(writer, entry);
-		//	}
-		//}
+				WriteEntry(writer, entry);
+			}
+		}
 
-		//stringTableWriter.Flush();
-		//writer.Write((uint)stringTableMemory.Length);
-		//writer.Flush();
+		stringTableWriter.Flush();
+		writer.Write((uint)stringTableMemory.Length);
+		writer.Flush();
 
-		//var buffer = stringTableMemory.GetBuffer();
-		//writer.Write(buffer, 0, (int)stringTableMemory.Length);
+		var buffer = stringTableMemory.GetBuffer();
+		writer.Write(buffer, 0, (int)stringTableMemory.Length);
 	}
 
 	private static void WriteEntry(BinaryWriter writer, NameTableEntry entry)

@@ -381,8 +381,6 @@ public sealed class BNSDat : IDisposable
 
 		fileStream.Close();
 		fileStream = null;
-
-		Console.WriteLine("完成");
 		#endregion
 	}
 

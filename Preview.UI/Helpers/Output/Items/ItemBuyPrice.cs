@@ -34,7 +34,7 @@ public sealed class ItemBuyPriceOut : OutSet
         #endregion
 
 
-        foreach (var record in FileCache.Data.ItemBuyPrice)
+        foreach (var record in FileCache.Data.Get<ItemBuyPrice>())
         {
             Row++;
             int column = 1;
@@ -45,7 +45,7 @@ public sealed class ItemBuyPriceOut : OutSet
 
             #region brand & item
             var ItemBrand = record.RequiredItembrand.Instance;
-            var ItemTooltip = FileCache.Data.ItemBrandTooltip[ItemBrand?.Id ?? 0, (byte)record.RequiredItembrandConditionType];
+            var ItemTooltip = FileCache.Data.Get<ItemBrandTooltip>()[ItemBrand?.Id ?? 0, (byte)record.RequiredItembrandConditionType];
             sheet.Cells[Row, column++].SetValue(ItemTooltip?.Name2.GetText() ?? ItemBrand?.ToString());
 
             for (int i = 0; i < 4; i++)
@@ -54,7 +54,7 @@ public sealed class ItemBuyPriceOut : OutSet
                 var count = record.RequiredItemCount[i];
 
                 if (item is null) sheet.Cells[Row, column++].SetValue("");
-                else sheet.Cells[Row, column++].SetValue((item.Name2.GetText() ?? item.Alias) + " " + count);
+                else sheet.Cells[Row, column++].SetValue((item.Name2.GetText() ?? item.ToString()) + " " + count);
             }
             #endregion
 
@@ -68,7 +68,7 @@ public sealed class ItemBuyPriceOut : OutSet
 
 			#region achievemen
 			string AchievementName = record.RequiredAchievementId == 0 ? null :
-                FileCache.Data.Achievement.FirstOrDefault(o => o.Id == record.RequiredAchievementId && o.Step == record.RequiredAchievementStepMin)?.Text;
+                FileCache.Data.Get<Achievement>().FirstOrDefault(o => o.Id == record.RequiredAchievementId && o.Step == record.RequiredAchievementStepMin)?.Text;
             sheet.Cells[Row, column++].SetValue(AchievementName);
             #endregion
 

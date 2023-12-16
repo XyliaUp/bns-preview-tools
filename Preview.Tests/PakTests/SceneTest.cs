@@ -1,17 +1,11 @@
 ﻿using System.Diagnostics;
-
 using CUE4Parse.BNS;
 using CUE4Parse.BNS.Assets.Exports;
-using CUE4Parse.BNS.Conversion;
 using CUE4Parse.UE4.Assets.Exports;
 using CUE4Parse.UE4.Objects.Engine;
 using CUE4Parse.UE4.Objects.UObject;
-
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-
 using Newtonsoft.Json;
-
-using Xylia.Configure;
 using Xylia.Preview.Common.Extension;
 using Xylia.Preview.Data.Helpers;
 
@@ -23,11 +17,11 @@ public class SceneTest
 	[TestMethod]
 	public void Main()
 	{
-		using GameFileProvider Provider = new(Common.Settings.GameFolder);
+		using GameFileProvider Provider = new(new Common().GameFolder);
 		var AssetPath = "BNSR/Content/Art/UI/GameUI/Scene/Game_Broadcasting/Game_BroadcastingScene.uasset";
 		var Blueprint = Provider.LoadAllObjects(AssetPath).OfType<UWidgetBlueprintGeneratedClass>().First();
 
-		var dump = new WidgetDump() { Output = Path.Combine(PathDefine.Desktop, "scene", Path.GetFileNameWithoutExtension(AssetPath)) };
+		var dump = new WidgetDump() { Output = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "scene", Path.GetFileNameWithoutExtension(AssetPath)) };
 		dump.LoadBlueprint(Blueprint);
 	}
 
@@ -141,17 +135,17 @@ public class WidgetDump
 			WriteLineIf(level, widget.StringProperty.LabelText?.Text);
 
 
-			Directory.CreateDirectory(Output);
-			widget.BaseImageProperty.Image?.Save(Output + $"/{obj.Name}.png");
-			widget.ExpansionComponentList?.ForEach(expansion =>
-			{
-				expansion.Image?.Save(Output + $"/{obj.Name}.{expansion.ExpansionName}.png");
-			});
+			//Directory.CreateDirectory(Output);
+			//widget.BaseImageProperty.Image?.Save(Output + $"/{obj.Name}.png");
+			//widget.ExpansionComponentList?.ForEach(expansion =>
+			//{
+			//	expansion.Image?.Save(Output + $"/{obj.Name}.{expansion.ExpansionName}.png");
+			//});
 		}
 
 		// children
 		var Slots = obj.GetOrDefault<UBnsCustomBaseWidgetSlot[]>("Slots");
-		Slots?.ForEach(slot => LoadWidget(slot.Content.Load(), slot, level + 1));
+		Slots?.Where(slot => slot != null).ForEach(slot => LoadWidget(slot.Content.Load(), slot, level + 1));
 	}
 
 
@@ -162,7 +156,6 @@ public class WidgetDump
 
 	private static void WriteLineIf(int level, string message)
 	{
-		if (message != null)
-			WriteLine(level, message);
+		if (message != null) WriteLine(level, message);
 	}
 }

@@ -6,13 +6,11 @@ using System.Text.RegularExpressions;
 using System.Windows;
 
 using HtmlAgilityPack;
-
-using Xylia.Extension;
-using Xylia.Preview.Data.Common.Cast;
+using Xylia.Preview.Common.Extension;
 using Xylia.Preview.Data.Common.DataStruct;
-using Xylia.Preview.Data.Common.Seq;
 using Xylia.Preview.Data.Helpers;
 using Xylia.Preview.Data.Models;
+using Xylia.Preview.Data.Models.Sequence;
 
 namespace Xylia.Preview.UI.Documents;
 public class Arg : Element
@@ -21,13 +19,25 @@ public class Arg : Element
 	public string id;
 	public string seq;
 
-	protected override void Load(HtmlNode node)
+	protected internal override void Load(HtmlNode node)
 	{
 		this.p = node.Attributes[nameof(p)]?.Value;
 		this.id = node.Attributes[nameof(id)]?.Value;
 		this.seq = node.Attributes[nameof(seq)]?.Value;
 	}
 
+	protected override Size MeasureCore(Size availableSize)
+	{
+		this.Children = new();
+
+		var result = this.GetObject();
+		if (result is null) return new Size();
+		//else if(result is ImageData b) FinalHeight = Math.Max(FinalHeight, DrawImage(param, ref LocX, ref LocY, b.source, BasicHeight, true /* , b.scale*/));
+		else if (result is int @int) this.Children.Add(new Run() { Text = @int.ToString("N0") });
+		else if (result is not null) this.Children.Add(new Paragraph(result.ToString()));
+
+		return base.MeasureCore(availableSize);
+	}
 
 	internal object GetObject()
 	{
@@ -39,7 +49,7 @@ public class Arg : Element
 		var type = p[0];
 		if (type is null) return null;
 		// Prevent text editors to load data
-		else if (type == "id") obj = FileCache.IsEmpty ? null : new Ref<Record>(this.id).Instance;
+		else if (type == "id") obj = FileCache.IsEmpty ? null : new Ref<ModelElement>(this.id).Instance;
 		else if (type == "seq")
 		{
 			var seq = this.seq?.Split(':');
@@ -70,19 +80,6 @@ public class Arg : Element
 
 
 		return obj;
-	}
-
-	protected override Size MeasureCore(Size availableSize)
-	{
-		this.Children = new();
-
-		var result = this.GetObject();
-		if (result is null) return new Size();
-		//else if(result is ImageData b) FinalHeight = Math.Max(FinalHeight, DrawImage(param, ref LocX, ref LocY, b.source, BasicHeight, true /* , b.scale*/));
-		else if (result is int @int) this.Children.Add(new Run() { Text = @int.ToString("N0") });
-		else if (result is not null) this.Children.Add(new Paragraph(result.ToString()));
-
-		return base.MeasureCore(availableSize);
 	}
 }
 
@@ -197,8 +194,10 @@ public static class ArgExtension
 		}
 
 		// record
-		if (instance is Record record && record.Attributes.TryGetMember(name, true, out value))
+		if (instance is ModelElement record && record.Attributes.TryGetValue(name, out var _value))
 		{
+			value = _value;
+
 			if (value is Record @ref && @ref.Owner.Name == "text")
 				value = @ref.Attributes["text"];
 
@@ -206,7 +205,7 @@ public static class ArgExtension
 		}
 
 		// instance
-		var Member = instance.GetInfo(name, true);
+		var Member = instance.GetProperty(name);
 		if (Member != null)
 		{
 			var obj = Member.GetValue(instance);

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<table name="soul-boost-season" version="3.1" autokey="false" module="6">
+<table name="soul-boost-season" version="4.1" autokey="false" module="6">
   <el name="table" child="1" />
   <el name="record">
     <attribute name="id" type="Int32" key="y" required="y" min="1" />
@@ -16,6 +16,13 @@
     <attribute name="required-level" type="Int8" default="0" min="0" max="100" />
     <attribute name="required-mastery-level" type="Int8" default="0" min="0" max="100" />
     <attribute name="required-preceding-quest" type="Ref" ref="quest" repeat="2" />
+    <attribute name="unk-" type="Int32" />
+    <attribute name="unk-" type="String" repeat="3" />
+    <attribute name="unk-" type="Int32" />
+    <attribute name="unk-" type="Int32" />
+    <attribute name="unk-" type="Int32" />
+    <attribute name="unk-" type="Int32" />
+    <attribute name="unk-" type="Int32" />
     <attribute name="purchase-grade-item" type="Ref" ref="item" repeat="10" hidden="y" />
   </el>
 </table>

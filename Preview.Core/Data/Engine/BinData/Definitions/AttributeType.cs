@@ -1,4 +1,4 @@
-﻿namespace Xylia.Preview.Data.Engine.BinData.Definitions;
+﻿namespace Xylia.Preview.Data.Engine.Definitions;
 public enum AttributeType
 {
     TNone,
@@ -33,5 +33,5 @@ public enum AttributeType
     TTime32,
     TTime64,
     TXUnknown1,
-    TXUnknown2
+    TXUnknown2,
 }

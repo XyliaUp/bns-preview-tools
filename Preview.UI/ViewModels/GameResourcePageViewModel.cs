@@ -88,13 +88,13 @@ public partial class GameResourcePageViewModel : ObservableObject
 
 			Growl.SuccessGlobal(new GrowlInfo()
 			{
-				Message = string.Format(StringHelper.Get("IconOut_TaskCompleted"), DateTime.Now - start),
+				Message = StringHelper.Get("IconOut_TaskCompleted", DateTime.Now - start),
 				StaysOpen = true,
 			});
 		}
 		catch (Exception ee)
 		{
-			Growl.Error(string.Format(StringHelper.Get("IconOut_TaskException"), ee.Message));
+			Growl.Error(StringHelper.Get("IconOut_TaskException", ee.Message));
 			Log.Error(ee, "Exception at IconOut");
 		}
 		finally

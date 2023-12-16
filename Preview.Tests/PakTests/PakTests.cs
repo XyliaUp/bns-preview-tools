@@ -10,22 +10,18 @@ using CUE4Parse.UE4.Assets.Exports.Texture;
 using CUE4Parse_Conversion.Textures;
 
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-
 using Newtonsoft.Json;
-
 using Xylia.Preview.Properties;
 
 namespace Xylia.Preview.Tests.PakTests;
 
 [TestClass]
-public class Common
+public class Common : Settings
 {
-	internal static Settings Settings => new();
-
 	[TestMethod]
 	public void ObjectTest()
 	{
-		using GameFileProvider Provider = new(Settings.GameFolder);
+		using GameFileProvider Provider = new(this.GameFolder);
 
 		//var obj = Provider.LoadObject(@"BNSR/Content/Art/FX/01_Source/05_SF/FXUI_03/Particle/UI_BIMUTag_EscapeNo.UI_BIMUTag_EscapeNo");
 		var obj = Provider.LoadObject(@"BNSR/Content/bns/Package/World/GameDesign/commonpackage/ShowData/indun/soc_etc_all_insdungeun/ME_ChungGakABoss_0005_soc_voice.ME_ChungGakABoss_0005_soc_voice");
@@ -54,7 +50,7 @@ public class Common
 
 	public void MapTest(string name)
 	{
-		using GameFileProvider Provider = new(Settings.GameFolder);
+		using GameFileProvider Provider = new(this.GameFolder);
 		var MapRegistry = Provider.LoadObject<UMapBuildDataRegistry>($"/Game/bns/Package/World/Area/{name}_BuiltData");
 
 		throw new Exception(MapRegistry.ToString());

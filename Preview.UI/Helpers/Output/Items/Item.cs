@@ -4,14 +4,13 @@ using System.Net;
 using System.Text;
 
 using OfficeOpenXml;
-
-using Xylia.Preview.Data;
-using Xylia.Preview.Data.Common.Cast;
+using Xylia.Preview.Data.Client;
 using Xylia.Preview.Data.Common.DataStruct;
-using Xylia.Preview.Data.Common.Seq;
 using Xylia.Preview.Data.Engine.DatData;
+using Xylia.Preview.Data.Helpers;
 using Xylia.Preview.Data.Helpers.Output;
 using Xylia.Preview.Data.Models;
+using Xylia.Preview.Data.Models.Sequence;
 using Xylia.Preview.UI.ViewModels;
 
 namespace Xylia.Preview.UI.Helpers.Output.Items;
@@ -102,7 +101,7 @@ public sealed class ItemOut : OutSet, IDisposable
 			sheet.Cells[Row, column++].SetValue(Item.Key);
 			sheet.Cells[Row, column++].SetValue(Item.Name2);
 			sheet.Cells[Row, column++].SetValue(Item.Alias);
-			sheet.Cells[Row, column++].SetValue(Item.Job.GetName());
+			sheet.Cells[Row, column++].SetValue(Item.Job.GetText());
 			sheet.Cells[Row, column++].SetValue(Item.Description);
 			sheet.Cells[Row, column++].SetValue(Item.Info);
 		}

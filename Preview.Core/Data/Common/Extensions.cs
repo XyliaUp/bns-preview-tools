@@ -73,11 +73,12 @@ public static class Extensions
 	}
 
 	[MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-	public static unsafe void Set<T>(this Span<byte> data, int offset, T value) where T : unmanaged
+	public static unsafe void Set(this byte[] data, int offset, object value)
 	{
 		fixed (byte* ptr = data)
 		{
-			*(T*)(ptr + offset) = value;
+			var ptr2 = new nint(ptr + offset);
+			Marshal.StructureToPtr(value, ptr2, true);
 		}
 	}
 }

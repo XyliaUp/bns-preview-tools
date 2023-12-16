@@ -3,7 +3,7 @@
 	<el name="table" child="1" />
 	<el name="record">
 		<attribute name="group" type="Ref" ref="equipitemgroup" />
-		<attribute name="ability" type="Seq" start-show="24" />
+		<attribute name="ability" type="Seq" start-show="24" seq="main-ability" />
 		<attribute name="ability-value" type="Int32" start-show="28" />
 		<attribute name="item" type="Ref" ref="Item" repeat="4" />
 		<attribute name="improve-main-feed-Item" type="Ref" ref="Item" repeat="15" />

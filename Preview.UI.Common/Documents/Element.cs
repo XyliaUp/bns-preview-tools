@@ -1,19 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Linq;
-using System.Reflection;
-using System.Runtime.Serialization;
 using System.Windows;
 using System.Windows.Markup;
 using System.Windows.Media;
 
 using HtmlAgilityPack;
-
-using Xylia.Extension;
-using Xylia.Preview.Data.Common.Cast;
-using Xylia.Preview.Data.Database;
 using Xylia.Preview.UI.Controls;
 
 namespace Xylia.Preview.UI.Documents;
@@ -210,7 +203,7 @@ public abstract class Element : ContentElement
 		{
 			// internal padding
 			availableSize = new Size(
-				availableSize.Width - p.Leftmargin - p.RightMargin,
+				availableSize.Width - p.LeftMargin - p.RightMargin,
 				availableSize.Height - p.TopMargin - p.BottomMargin);
 		}
 
@@ -317,7 +310,7 @@ public abstract class Element : ContentElement
 			if (this is Paragraph p)
 			{
 				var vect = p.ComputeAlignmentOffset(finalRect.Size, new Size(widget, height));
-				x += vect.X + p.Leftmargin;
+				x += vect.X + p.LeftMargin;
 			}
 
 			foreach (var element in line)
@@ -334,31 +327,11 @@ public abstract class Element : ContentElement
 	}
 
 
-
-
-	protected virtual void Load(HtmlNode node)
-	{
-		Children = node.ChildNodes.Select(TextDocument.ToElement).Where(x => x is not null).ToList();
-
-		foreach (var field in GetType().GetMembers(BindingFlags.Instance | BindingFlags.Public | BindingFlags.DeclaredOnly))
-		{
-			if (field is not FieldInfo &&
-			   (field is not PropertyInfo prop || !prop.CanWrite)) continue;
-			if (field.ContainAttribute<IgnoreDataMemberAttribute>()) continue;
-
-			// props
-			var name = field.GetName();
-			var type = field.GetMemberType();
-
-			var value = node.Attributes[name]?.Value;
-			field.SetValue(this, AttributeConverter.Convert(value, type, null));
-		}
-	}
-
-	internal void InternalLoad(HtmlNode node)
-	{
-		Load(node);
-	}
+	/// <summary>
+	/// Initialize element from html
+	/// </summary>
+	/// <param name="node"></param>
+	protected internal abstract void Load(HtmlNode node);
 
 	internal virtual void Render(DrawingContext ctx)
 	{

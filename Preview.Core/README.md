@@ -8,7 +8,7 @@ collection of record
 | Field | Describe | 
 | :----:  | :----: |
 | Name | name |
-| Owner | Parent database |
+| Owner | Parent pakcage provider |
 | Definition | data struct definition |
 | Records | element collection |
 

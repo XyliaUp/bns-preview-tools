@@ -1,4 +1,4 @@
-﻿namespace Xylia.Preview.Data.Engine.BinData.Definitions;
+﻿namespace Xylia.Preview.Data.Engine.Definitions;
 public class TableDefinition
 {
 	/// <summary>
@@ -38,6 +38,46 @@ public class TableDefinition
 	/// </summary>
 	public ElDefinition ElRecord { get; set; }
 
-
+	/// <summary>
+	/// Has record element
+	/// </summary>
 	public bool IsEmpty => ElRecord is null;
+
+	/// <summary>
+	/// Is default definition 
+	/// </summary>
+	internal bool IsDefault { get; private set; } = false;
+
+
+
+	#region Static Methods
+	/// <summary>
+	/// create default <see cref="TableDefinition"/> if not found
+	/// </summary>
+	/// <param name="type"></param>
+	/// <returns></returns>
+	public static TableDefinition CreateDefault(short type)
+	{
+		var definition = new TableDefinition()
+		{
+			IsDefault = true,
+			Type = type, 
+			Name = type.ToString() , 
+		};
+
+		var elRoot = new ElDefinition() { Name = "table" };
+		var elRecord = new ElDefinition
+		{
+			Name = "record",
+			Size = 8
+		};
+
+		elRoot.Children.Add(elRecord);
+
+		definition.Els.Add(elRoot);
+		definition.Els.Add(definition.ElRecord = elRecord);
+
+		return definition;
+	}
+	#endregion
 }

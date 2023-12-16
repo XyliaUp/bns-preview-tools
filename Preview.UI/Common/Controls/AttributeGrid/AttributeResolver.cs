@@ -1,7 +1,6 @@
 ﻿using HandyControl.Controls;
 using HandyControl.Properties.Langs;
-
-using Xylia.Preview.Data.Engine.BinData.Definitions;
+using Xylia.Preview.Data.Engine.Definitions;
 using Xylia.Preview.UI.Common.Controls.AttributeGrid.Editor;
 
 namespace Xylia.Preview.UI.Controls;
@@ -38,7 +37,7 @@ public class AttributeResolver
 		AttributeType.TInt32 => new NumberAttributeEditor(attribute),
 		AttributeType.TInt64 => new NumberAttributeEditor(attribute),
 		AttributeType.TFloat32 => new NumberAttributeEditor(attribute),
-		AttributeType.TBool => new SwitchPropertyEditor(),
+		AttributeType.TBool => new BooleanPropertyEditor(),
 		AttributeType.TString => new PlainTextPropertyEditor(),
 		AttributeType.TSeq => new SequenceAttributeEditor(attribute.Sequence),
 		AttributeType.TSeq16 => new SequenceAttributeEditor(attribute.Sequence),

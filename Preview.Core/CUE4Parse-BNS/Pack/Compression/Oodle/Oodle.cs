@@ -1,7 +1,5 @@
 ﻿using System.Runtime.InteropServices;
 
-using Xylia.Extension;
-
 using static CUE4Parse.Compression.Oodle;
 
 namespace CUE4Parse.Compression;

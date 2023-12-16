@@ -1,13 +1,10 @@
-using System.Reflection;
-
+using System.Collections.ObjectModel;
 using CUE4Parse.UE4.Assets.Exports.Material;
-
 using CUE4Parse_Conversion.Meshes;
 using CUE4Parse_Conversion.Textures;
-
 using FModel.Views.Snooper;
-
-using Xylia.Extension;
+using Xylia.Preview.Common.Extension;
+using Xylia.Preview.Data.Engine.DatData;
 using Xylia.Preview.Properties;
 using Xylia.Preview.UI.Controls;
 
@@ -15,7 +12,6 @@ namespace Xylia.Preview.UI.ViewModels;
 public partial class UserSettings : Settings
 {
 	public static UserSettings Default { get; } = new();
-
 
 	#region Model
 	private string _modelDirectory;
@@ -148,7 +144,13 @@ public partial class UserSettings : Settings
 	#endregion
 
 	#region Preview 
-	protected const string sp = "Preview";
+	public ObservableCollection<ELanguage> Languages => new(StringHelper.EnumerateLanguages());
+
+	public ELanguage Language
+	{
+		get => GetValue().ToEnum<ELanguage>();
+		set => SetValue(StringHelper.Instance.Language = value);
+	}
 
 	public CopyMode CopyMode
 	{
@@ -160,13 +162,10 @@ public partial class UserSettings : Settings
 		}
 	}
 
-
 	public bool Text_LoadPrevious { get => GetValue().ToBool(); set => SetValue(value); }
 	public string Text_OldPath { get => GetValue(); set => SetValue(value); }
 	public string Text_NewPath { get => GetValue(); set => SetValue(value); }
-	#endregion
 
-	#region Common
 	public bool UsePerformanceMonitor
 	{
 		get => GetValue().ToBool();
@@ -178,14 +177,8 @@ public partial class UserSettings : Settings
 			else ProcessFloatWindow.Instance.Close();
 		}
 	}
+
+
+	public int NoticeId { get => GetValue().ToInt32(); set => SetValue(value); }
 	#endregion
-}
-
-internal static class VersionHelper
-{
-	public static Version InternalVersion => Assembly.GetEntryAssembly().GetName().Version;
-
-	public static DateTime Time => new DateTime(2000, 1, 1).AddDays(InternalVersion.Revision);
-
-	public static Version Version => new Version(InternalVersion.Major, InternalVersion.Minor, InternalVersion.Build);
 }

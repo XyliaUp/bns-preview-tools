@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Net;
@@ -12,8 +11,6 @@ using System.Windows.Media;
 using Xylia.Preview.UI.Documents;
 
 namespace Xylia.Preview.UI.Controls;
-
-//[ContentProperty("Text")]
 public class BnsCustomLabelWidget : BnsCustomBaseWidget, IContentHost
 {
 	#region Ctor
@@ -111,6 +108,7 @@ public class BnsCustomLabelWidget : BnsCustomBaseWidget, IContentHost
 
 		var text = CopyMode switch
 		{
+			CopyMode.None => null,
 			CopyMode.Trimmed => CutText(Params.Handle(Text)),
 			CopyMode.Regular => Params.Handle(Text),
 			CopyMode.Original => Text,
@@ -133,6 +131,8 @@ public class BnsCustomLabelWidget : BnsCustomBaseWidget, IContentHost
 
 	protected override Size ArrangeOverride(Size arrangeBounds)
 	{
+		base.ArrangeOverride(arrangeBounds);
+
 		Document?.Arrange(new Rect(arrangeBounds));
 		return arrangeBounds;
 	}
@@ -155,14 +155,6 @@ public class BnsCustomLabelWidget : BnsCustomBaseWidget, IContentHost
 	//  IContentHost
 	//
 	//-------------------------------------------------------------------
-	protected override IEnumerator LogicalChildren
-	{
-		get
-		{
-			return this.Document.Children.GetEnumerator();
-		}
-	}
-
 	protected sealed override HitTestResult HitTestCore(PointHitTestParameters hitTestParameters)
 	{
 		ArgumentNullException.ThrowIfNull(hitTestParameters);
@@ -391,8 +383,11 @@ public class BnsCustomLabelWidget : BnsCustomBaseWidget, IContentHost
 	}
 	#endregion
 }
+
 public enum CopyMode
 {
+	None,
+
 	/// <summary>
 	/// Text after replacing parameters and remove other XML parameters 
 	/// </summary>

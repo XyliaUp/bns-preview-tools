@@ -2,20 +2,13 @@
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Xml;
-
 using Newtonsoft.Json;
-
-using Xylia.Configure;
-using Xylia.Extension;
-using Xylia.Preview.Data.Engine.BinData.Definitions;
+using Xylia.Preview.Common.Extension;
 using Xylia.Preview.Data.Engine.DatData;
 using Xylia.Preview.Data.Engine.DatData.Third;
-using Xylia.Preview.Data.Engine.ZoneData.RegionData;
-using Xylia.Preview.Data.Engine.ZoneData.TerrainData;
+using Xylia.Preview.Data.Engine.Definitions;
 using Xylia.Preview.Tests.DatTool.Utils;
 using Xylia.Preview.Tests.DatTool.Utils.DevTools;
-using Xylia.Preview.Tests.TableTests;
-
 using static Xylia.Preview.Data.Engine.DatData.Third.MySpport;
 
 namespace Xylia.Preview.Tests.DatTool;
@@ -37,39 +30,39 @@ public partial class MainForm : Form
 		new StrWriter(richOut);
 		CheckForIllegalCrossThreadCalls = false;
 
-		this.trackBar1.Value = this.trackBar1.Minimum;
-		this.txbDatFile.Text = Ini.Instance.ReadValue("Path", "Data_DatFile");
-		this.txbRpFolder.Text = Ini.Instance.ReadValue("Path", "Data_OutFolder");
+		//this.trackBar1.Value = this.trackBar1.Minimum;
+		//this.txbDatFile.Text = Ini.Instance.ReadValue("Path", "Data_DatFile");
+		//this.txbRpFolder.Text = Ini.Instance.ReadValue("Path", "Data_OutFolder");
 
 		ReadConfig(this);
 	}
 	#endregion
 
 	#region Static Methods
-	private static void SaveConfig(object sender, EventArgs e)
+	private void SaveConfig(object sender, EventArgs e)
 	{
-		var c = (Control)sender;
-		Ini.Instance.WriteValue("Config", $"{c.FindForm().Name}_{c.Name}", c.Text);
+		//var c = (Control)sender;
+		//Ini.Instance.WriteValue("Config", $"{c.FindForm().Name}_{c.Name}", c.Text);
 	}
 
-	public static void ReadConfig(Control container)
+	public void ReadConfig(Control container)
 	{
-		foreach (Control c in container.Controls)
-		{
-			ReadConfig(c);
+		//foreach (Control c in container.Controls)
+		//{
+		//	ReadConfig(c);
 
-			var val = Ini.Instance.ReadValue("Config", $"{c.FindForm().Name}_{c.Name}");
-			if (string.IsNullOrWhiteSpace(val)) continue;
+		//	var val = Ini.Instance.ReadValue("Config", $"{c.FindForm().Name}_{c.Name}");
+		//	if (string.IsNullOrWhiteSpace(val)) continue;
 
-			if (c is CheckBox checkBox) checkBox.Checked = val.ToBool();
-			else c.Text = val;
-		}
+		//	if (c is CheckBox checkBox) checkBox.Checked = val.ToBool();
+		//	else c.Text = val;
+		//}
 	}
 
 	private void SaveCheckStatus(object sender, EventArgs e)
 	{
-		var ctl = (CheckBox)sender;
-		Ini.Instance.WriteValue("Config", this.Name + "_" + ctl.Name, ctl.Checked);
+		//var ctl = (CheckBox)sender;
+		//Ini.Instance.WriteValue("Config", this.Name + "_" + ctl.Name, ctl.Checked);
 	}
 
 
@@ -146,7 +139,7 @@ public partial class MainForm : Form
 	{
 		var s = (Control)sender;
 		string Text = s.Text.Trim();
-		Ini.Instance.WriteValue("Path", "Data_DatFile", Text);
+		//Ini.Instance.WriteValue("Path", "Data_DatFile", Text);
 
 		if (Directory.Exists(Text))
 		{
@@ -163,7 +156,7 @@ public partial class MainForm : Form
 
 	private void txbRpFolder_TextChanged(object sender, EventArgs e)
 	{
-		Ini.Instance.WriteValue("Path", "Data_OutFolder", ((TextBox)sender).Text);
+		//Ini.Instance.WriteValue("Path", "Data_OutFolder", ((TextBox)sender).Text);
 	}
 
 	private void button3_Click(object sender, EventArgs e)
@@ -233,10 +226,11 @@ public partial class MainForm : Form
 				return;
 		}
 
+
 		Task.Run(() => MySpport.Extract(new PackParam()
 		{
 			PackagePath = txbDatFile.Text,
-			FolderPath = txbRpFolder.Text
+			FolderPath = txbRpFolder.Text,
 		}));
 	}
 
@@ -332,14 +326,14 @@ public partial class MainForm : Form
 		var defs = TableDefinitionHelper.LoadTableDefinition(null, new FileInfo(textBox1.Text));
 		foreach (var def in defs)
 		{
-			foreach (var attribute in def.ElRecord.ExpandedAttributes)
+			foreach (var attribute in def.ElRecord.ExpandedAttributes.OrderBy(x => x.Offset))
 			{
 				Console.WriteLine($"#notime#{attribute.Offset}  -  {attribute.Name}");
 			}
 
 			foreach (var sub in def.ElRecord.Subtables)
 			{
-				foreach (var attribute in sub.ExpandedAttributesSubOnly)
+				foreach (var attribute in sub.ExpandedAttributesSubOnly.OrderBy(x => x.Offset))
 				{
 					Console.WriteLine($"#notime#[{sub.Name}] {attribute.Offset}  -  {attribute.Name}");
 				}
@@ -363,53 +357,6 @@ public partial class MainForm : Form
 				Console.WriteLine("[error] " + ex);
 			}
 		});
-	}
-	#endregion
-
-	#region Zone
-	private void button37_Click(object sender, EventArgs e) => OpenPath(Txt_Cterrain_Path);
-
-	private void button31_Click(object sender, EventArgs e) => OpenPath(Txt_Region_Path);
-
-	private void button36_Click(object sender, EventArgs e)
-	{
-		if (int.TryParse(textBox12.Text, out int result))
-		{
-			//.Cterrain
-			var CterrainFile = new CterrainFile();
-
-			BinaryReader br = new(new FileStream(Txt_Cterrain_Path.Text, FileMode.Open, FileAccess.ReadWrite, FileShare.ReadWrite));
-			CterrainFile.Read(br);
-
-			CterrainFile.TerrainID = result;
-
-			string Path = System.IO.Path.GetDirectoryName(Txt_Cterrain_Path.Text) + $"\\{result}.cterrain";
-			if (File.Exists(Path)) Path += "_new";
-
-			CterrainFile.Save(Path);
-		}
-	}
-
-	private void button32_Click(object sender, EventArgs e)
-	{
-		var ZoneInfo = Txt_Zone.Text;
-		if (short.TryParse(ZoneInfo, out var RegionID))
-		{
-			var regionFile = new RegionFile();
-			regionFile.Read(Txt_Region_Path.Text);
-
-			regionFile.RegionID = RegionID;
-			if (short.TryParse(Region_XMin_input.Text, out var tmp)) regionFile.Xmin = tmp;
-			if (short.TryParse(Region_XMax_input.Text, out tmp)) regionFile.Xmax = tmp;
-			if (short.TryParse(Region_YMin_input.Text, out tmp)) regionFile.Ymin = tmp;
-			if (short.TryParse(Region_YMax_input.Text, out tmp)) regionFile.Ymax = tmp;
-
-
-			string Path = System.IO.Path.GetDirectoryName(Txt_Region_Path.Text) + $"\\{RegionID}.region";
-			if (File.Exists(Path)) Path += "_new";
-
-			regionFile.Save(Path);
-		}
 	}
 	#endregion
 

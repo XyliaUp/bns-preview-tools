@@ -406,8 +406,8 @@
 			<case name="skill-stone-2" />
 			<case name="amber-diamond" />
 			<case name="obsidian-garnet" />
-			<case name="name-plate" />
-			<case name="speech-bubble" />
+			<case name="name-plate-appearance" />
+			<case name="speech-bubble-appearance" />
 			<case name="instrument" />
 		</attribute>
 		<attribute name="cannot-dispose" type="Bool" />

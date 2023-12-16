@@ -1,22 +1,20 @@
 ﻿using System.IO;
-using System.Net;
 using System.Xml;
-
-using Xylia.Preview.Data.Engine.BinData.Definitions;
 using Xylia.Preview.Data.Engine.BinData.Helpers;
 using Xylia.Preview.Data.Engine.DatData;
 using Xylia.Preview.Data.Engine.DatData.Third;
+using Xylia.Preview.Data.Engine.Definitions;
 
 namespace Xylia.Preview.UI.Helpers;
 public class LocalProvider(string Source) : DefaultProvider
 {
 	public override string Name => Path.GetFileName(Source);
 
-	public override Stream[] GetFiles(string pattern) => new Stream[] { File.Open(pattern, FileMode.Open) };
+	public override Stream[] GetFiles(string pattern) => new Stream[] { File.OpenRead(pattern) };
 
-	public override void LoadData(List<TableDefinition> definitions)
+	public override void LoadData(DatafileDefinition definitions)
 	{
-		this.Tables = new();
+		this.Tables = [];
 
 		// invalid path
 		if (string.IsNullOrWhiteSpace(Source)) return;
@@ -24,69 +22,79 @@ public class LocalProvider(string Source) : DefaultProvider
 		var ext = Path.GetExtension(Source);
 		switch (ext)
 		{
+			case ".xml" or ".x16":
+				Tables.Add(new() { Owner = this, Name = "text", XmlPath = Source });
+				break;
+
 			case ".dat":
 			{
 				LocalData = new BNSDat(Source);
-				is64Bit = LocalData.Bit64;
-				ReadFrom(LocalData.EnumerateFiles(is64Bit ? "localfile64.bin" : "localfile.bin").FirstOrDefault()?.Data, is64Bit);
+				Is64Bit = LocalData.Bit64;
+				ReadFrom(LocalData.EnumerateFiles(Is64Bit ? "localfile64.bin" : "localfile.bin").FirstOrDefault()?.Data, Is64Bit);
 
 				// detect text table type
-				Detect = new DatafileDetect(this);
+				if (definitions.HasHeader) Detect = new DatafileDirect(definitions.Header);
+				else Detect = new DatafileDetect(this);
 				Detect.ParseType(definitions);
-				break;
 			}
+			break;
 
-			case ".xml":
-			{
-				var text = definitions.First(x => x.Name.Equals("text"));
-				Tables.Add(new() { Name = text.Name, XmlPath = Source });
-
-				break;
-			}
 		}
 	}
 
 
 	/// <summary>
-	/// <see langword="Source"/> must be a dat file
+	/// Replace existed text
 	/// </summary>
-	/// <param name="file">replace data path</param>
-	/// <param name="full">determin full-replace mode</param>
-	public void Rewrite(string file, bool full = false)
+	/// <param name="files">x16 file path</param>
+	public void ReplaceText(FileInfo[] files)
 	{
 		var table = this.Tables["text"];
+		ArgumentNullException.ThrowIfNull(table);
 
-		if (full)
-		{
-			// Reload records
-			table.XmlPath = file;
-			table.LoadAsync(true);
-		}
-		else
+		foreach (var file in files)
 		{
 			XmlDocument xml = new();
-			xml.Load(file);
+			xml.Load(file.FullName);
 
 			foreach (XmlElement element in xml.DocumentElement.SelectNodes($"./" + table.Definition.ElRecord.Name))
 			{
 				var alias = element.Attributes["alias"]?.Value;
-				var text =  element.Attributes["text"]?.Value ?? element.InnerXml;
-
-				// HACK: reslove html tags, transcoding should not be done in output
-				text = WebUtility.HtmlDecode(text);
+				var text = element.InnerXml;
 
 				var record = table[alias];
 				if (record != null) record.StringLookup.Strings = [alias, text];
 			}
 		}
+	}
 
-		#region Repack
+	/// <summary>
+	/// Save as dat
+	/// </summary>
+	/// <remarks>
+	/// <see langword="Source"/> must be a dat file
+	/// </remarks>
+	/// <param name="text"></param>
+	public void Save(byte[] data)
+	{
+		var table = this.Tables["text"];
+		ArgumentNullException.ThrowIfNull(table);
+
+		using var stream = new MemoryStream(data);
+		var actions = table.LoadXml(stream);
+		actions.ForEach(a => a.Invoke());
+
+		WriteData(Source, Is64Bit);
+	}
+
+
+	public override void WriteData(string folder, bool is64bit)
+	{
 		var replaces = new Dictionary<string, byte[]>();
-		replaces.Add("localfile64.bin", this.WriteTo(true));
+		replaces.Add(Is64Bit ? "localfile64.bin" : "localfile.bin", WriteTo([.. this.Tables], is64bit));
 
-		MySpport.PackParam param = new() { PackagePath = Source, Bit64 = true };
+		MySpport.PackParam param = new() { PackagePath = folder, Bit64 = true };
 		MySpport.Extract(param);
 		MySpport.Pack(param, replaces);
-		#endregion
 	}
 }

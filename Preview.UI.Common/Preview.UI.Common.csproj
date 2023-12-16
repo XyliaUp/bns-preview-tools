@@ -10,8 +10,8 @@
 		<DebugType>none</DebugType>
 	</PropertyGroup>
 	<ItemGroup>
-		<PackageReference Include="HtmlAgilityPack" Version="1.11.54" />
-		<PackageReference Include="Microsoft.Web.WebView2" Version="1.0.2151.40" />
+		<PackageReference Include="HtmlAgilityPack" Version="1.11.55" />
+		<PackageReference Include="Microsoft.Web.WebView2" Version="1.0.2210.55" />
 		<PackageReference Include="SkiaSharp.Views.WPF" Version="2.88.6" />
 	</ItemGroup>
 	<ItemGroup>

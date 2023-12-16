@@ -120,6 +120,15 @@
   <data name="AbilityPage" xml:space="preserve">
     <value>角色能力</value>
   </data>
+  <data name="AbilityPage_Level" xml:space="preserve">
+    <value>等级</value>
+  </data>
+  <data name="AbilityPage_Result" xml:space="preserve">
+    <value>在&lt;arg p="1"/&gt;级时所对应的 &lt;arg p="2"/&gt;率</value>
+  </data>
+  <data name="AbilityPage_Value" xml:space="preserve">
+    <value>数值</value>
+  </data>
   <data name="Application_ExitMessage" xml:space="preserve">
     <value>您正在关闭应用程序, 是否确认这么做吗？</value>
   </data>
@@ -144,6 +153,9 @@
   <data name="Command_QueryAsset2" xml:space="preserve">
     <value>查询游戏资产 (旧路径)</value>
   </data>
+  <data name="DatSelector_CountDown" xml:space="preserve">
+    <value>将在 {0} 秒后自动选择</value>
+  </data>
   <data name="DatSelector_Name" xml:space="preserve">
     <value>数据选择器</value>
   </data>
@@ -155,6 +167,24 @@
   </data>
   <data name="DatSelector_Tooltip" xml:space="preserve">
     <value>由于您选择的路径下存在多个相关文件，需要进行主动选择。</value>
+  </data>
+  <data name="DatabaseStudio_Extract" xml:space="preserve">
+    <value>提取</value>
+  </data>
+  <data name="DatabaseStudio_ExtractAll" xml:space="preserve">
+    <value>提取全部</value>
+  </data>
+  <data name="DatabaseStudio_Name" xml:space="preserve">
+    <value>Database Studio</value>
+  </data>
+  <data name="DatabaseStudio_TaskMessage1" xml:space="preserve">
+    <value>当前保存进度 {0}/{1} ({2:P0})</value>
+  </data>
+  <data name="DatabaseStudio_TaskMessage2" xml:space="preserve">
+    <value>已完成！</value>
+  </data>
+  <data name="DatabaseStudio_ViewTable" xml:space="preserve">
+    <value>查看</value>
   </data>
   <data name="GameDirectory" xml:space="preserve">
     <value>游戏目录</value>
@@ -231,6 +261,12 @@
   <data name="ItemList_Run" xml:space="preserve">
     <value>生成</value>
   </data>
+  <data name="ItemList_TaskCompleted" xml:space="preserve">
+    <value>拉取{0}条数据, 总耗{1}秒。</value>
+  </data>
+  <data name="ItemList_TaskCompleted2" xml:space="preserve">
+    <value>任务已经完成, 总耗{1}秒。</value>
+  </data>
   <data name="ItemPage" xml:space="preserve">
     <value>物品</value>
   </data>
@@ -306,6 +342,21 @@
   <data name="Settings_CopyMode" xml:space="preserve">
     <value>文本复制模式</value>
   </data>
+  <data name="Settings_CopyMode_None" xml:space="preserve">
+    <value>不复制</value>
+  </data>
+  <data name="Settings_CopyMode_Regular" xml:space="preserve">
+    <value>常规文本</value>
+  </data>
+  <data name="Settings_CopyMode_Source" xml:space="preserve">
+    <value>原始文本</value>
+  </data>
+  <data name="Settings_CopyMode_Trimmed" xml:space="preserve">
+    <value>去除特殊字符</value>
+  </data>
+  <data name="Settings_Language" xml:space="preserve">
+    <value>语言</value>
+  </data>
   <data name="Settings_Name" xml:space="preserve">
     <value>设置</value>
   </data>
@@ -318,6 +369,12 @@
   <data name="Settings_UseUserDefinition" xml:space="preserve">
     <value>允许用户自定义配置</value>
   </data>
+  <data name="Settings_UseUserDefinition_Ask" xml:space="preserve">
+    <value>确定启用自定义配置吗? 这可能会导致读取异常。</value>
+  </data>
+  <data name="Settings_UseUserDefinition_Tooltip" xml:space="preserve">
+    <value>如果不知道用途请不要勾选！</value>
+  </data>
   <data name="ShowObjectPlayer_Name" xml:space="preserve">
     <value>显示对象播放器</value>
   </data>
@@ -328,13 +385,19 @@
     <value>文本编辑器</value>
   </data>
   <data name="TextView" xml:space="preserve">
-    <value>文本</value>
+    <value>文本查看</value>
   </data>
   <data name="TextView_LoadLastOnStartup" xml:space="preserve">
     <value>启动时载入上次数据</value>
   </data>
+  <data name="TextView_ReadOnly" xml:space="preserve">
+    <value>只读</value>
+  </data>
   <data name="Text_Cancel" xml:space="preserve">
     <value>取消</value>
+  </data>
+  <data name="Text_Edit" xml:space="preserve">
+    <value>编辑</value>
   </data>
   <data name="Text_File" xml:space="preserve">
     <value>文件</value>
@@ -354,6 +417,15 @@
   <data name="Text_Preview" xml:space="preserve">
     <value>预览</value>
   </data>
+  <data name="Text_PublishOn" xml:space="preserve">
+    <value>发布于</value>
+  </data>
+  <data name="Text_Replace" xml:space="preserve">
+    <value>替换</value>
+  </data>
+  <data name="Text_ReplaceInFiles" xml:space="preserve">
+    <value>在文件中替换</value>
+  </data>
   <data name="Text_Reset" xml:space="preserve">
     <value>重置</value>
   </data>
@@ -366,25 +438,29 @@
   <data name="Text_SaveAs" xml:space="preserve">
     <value>另存为...</value>
   </data>
-  <data name="Text_PublishOn" xml:space="preserve">
-    <value>发布于</value>
-  </data>
-  <data name="ItemList_TaskCompleted" xml:space="preserve">
-    <value>拉取{0}条数据, 总耗{1}秒。</value>
-  </data>
-  <data name="ItemList_TaskCompleted2" xml:space="preserve">
-    <value>任务已经完成, 总耗{1}秒。</value>
-  </data>
-  <data name="Text_Edit" xml:space="preserve">
-    <value>编辑</value>
-  </data>
   <data name="Text_Search" xml:space="preserve">
     <value>查找</value>
   </data>
-  <data name="Text_Replace" xml:space="preserve">
-    <value>替换</value>
+  <data name="Version_Tip1" xml:space="preserve">
+    <value>当前是预览版本, 部分功能可能不会正常运行。</value>
   </data>
-  <data name="Text_ReplaceInFiles" xml:space="preserve">
-    <value>在文件中替换</value>
+  <data name="Version_Tip2" xml:space="preserve">
+    <value>{0} 的最新版本是{1}，你想要立刻更新吗?</value>
+  </data>
+  <data name="Version_Tip3" xml:space="preserve">
+    <value>检查更新失败，请稍后再试</value>
+  </data>
+  <data name="TextView_ReadWrite" xml:space="preserve">
+    <value>可编辑</value>
+  </data>
+  <data name="Text_ColumnNumber" xml:space="preserve">
+    <value>列</value>
+  </data>
+  <data name="Text_LineNumber" xml:space="preserve">
+    <value>行</value>
+  </data>
+  <data name="TextView_ReadStatus" xml:space="preserve">
+    <value>当查看单个文件时，可以启用编辑
+请注意不要修改节点顺序</value>
   </data>
 </root>

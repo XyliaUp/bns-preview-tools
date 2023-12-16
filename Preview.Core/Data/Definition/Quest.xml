@@ -940,6 +940,14 @@
 		<sub name="attraction-popup">
 			<attribute name="attraction-popup-env" type="Ref" ref="zoneenv2" required="y" />
 		</sub>
+		<sub name="public-raid">
+			<attribute name="public-raid" type="Ref" ref="public-raid" required="y" />
+			<attribute name="public-raid-result" type="Seq">
+				<case name="none" default="y" />
+				<case name="success" />
+				<case name="fail" />
+			</attribute>
+		</sub>
 	</el>
 	<el name="tutorial-case" child="filter-set, reaction-set">
 		<attribute name="prob" type="Int8" default="100" min="0" max="100" />

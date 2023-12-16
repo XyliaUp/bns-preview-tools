@@ -1,10 +1,7 @@
 ﻿using OfficeOpenXml;
-
-using Xylia.Preview.Data.Common.Cast;
 using Xylia.Preview.Data.Helpers;
 using Xylia.Preview.Data.Helpers.Output;
 using Xylia.Preview.Data.Models;
-
 using static Xylia.Preview.Data.Models.Item;
 using static Xylia.Preview.Data.Models.Item.Accessory;
 
@@ -43,17 +40,17 @@ public sealed class ItemCloset : OutSet
             Row++;
             int column = 1;
 
-            sheet.Cells[Row, column++].SetValue(item.Ref.Id);
-            sheet.Cells[Row, column++].SetValue(item.Alias);
+            sheet.Cells[Row, column++].SetValue(item.Source.Ref.Id);
+            sheet.Cells[Row, column++].SetValue(item.ToString());
 			sheet.Cells[Row, column++].SetValue(item.Name2);
-			sheet.Cells[Row, column++].SetValue(item.EquipType.GetName());
-			sheet.Cells[Row, column++].SetValue(item.EquipSex.GetName());
+			sheet.Cells[Row, column++].SetValue(item.EquipType.GetText());
+			sheet.Cells[Row, column++].SetValue(item.EquipSex.GetText());
 			sheet.Cells[Row, column++].SetValue(item.EquipRace);
 			sheet.Cells[Row, column++].SetValue(item.ClosetGroupId);
 
 			if (item.ClosetGroupId != 0)
             {
-                var ClosetGroup = FileCache.Data.ClosetGroup[item.ClosetGroupId];
+                var ClosetGroup = FileCache.Data.Get<ClosetGroup>()[item.ClosetGroupId];
                 if (ClosetGroup != null) sheet.Cells[Row, column++].SetValue($"Name.closet-group.category.{ClosetGroup.Attributes["category"]}".GetText());
             }
         }

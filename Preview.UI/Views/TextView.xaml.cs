@@ -6,21 +6,21 @@ using System.Windows.Input;
 using System.Windows.Media;
 
 using HandyControl.Controls;
-
+using HandyControl.Interactivity;
 using ICSharpCode.AvalonEdit.Document;
 using ICSharpCode.AvalonEdit.Folding;
 using ICSharpCode.AvalonEdit.Rendering;
 using ICSharpCode.AvalonEdit.Search;
 
 using Microsoft.Win32;
-
-using Xylia.Preview.Data;
+using Xylia.Preview.Data.Client;
+using Xylia.Preview.Data.Engine.BinData.Models;
 using Xylia.Preview.Data.Models;
 using Xylia.Preview.UI.Helpers;
 using Xylia.Preview.UI.ViewModels;
 
 namespace Xylia.Preview.UI.Views;
-public partial class TextView 
+public partial class TextView
 {
 	#region Constructor
 	private readonly FoldingManager foldingManager;
@@ -36,11 +36,15 @@ public partial class TextView
 	}
 	#endregion
 
-	#region Methods
+	#region Methods (UI)
 	private void RegisterCommands(CommandBindingCollection commandBindings)
 	{
 		commandBindings.Add(new CommandBinding(ApplicationCommands.Save, SaveCommand, CanExecuteSave));
+		commandBindings.Add(new CommandBinding(ApplicationCommands.SaveAs, SaveAsCommand, CanExecuteSave));
 		commandBindings.Add(new CommandBinding(ApplicationCommands.Replace, ReplaceInFilesCommand, CanExecuteSave));
+
+		// unable to edit in comparison mode
+		commandBindings.Add(new CommandBinding(ControlCommands.Switch, delegate{ }, CanExecuteSave));
 	}
 
 	private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -71,38 +75,6 @@ public partial class TextView
 		}
 	}
 
-
-	private void CanExecuteSave(object sender, CanExecuteRoutedEventArgs e)
-	{
-		// only single file and left source
-		e.CanExecute = OldSource != null && diffResult is null;
-	}
-
-	private void SaveCommand(object sender, RoutedEventArgs e)
-	{
-		var dialog = new SaveFileDialog
-		{
-			FileName = "TextData",
-			Filter = "xml file|*.xml",
-		};
-		if (dialog.ShowDialog() == true)
-		{
-			File.WriteAllText(dialog.FileName, Editor.Text);
-		}
-	}
-
-	private void ReplaceInFilesCommand(object sender, RoutedEventArgs e)
-	{
-		if (OpenTextFile(out var file))
-		{
-			using var source1 = new BnsDatabase(new LocalProvider(OldSource));
-			(source1.Provider as LocalProvider).Rewrite(file);
-
-			Growl.InfoGlobal("Replace completed");
-		}
-	}
-
-
 	private void InlineModeToggle_Click(object sender, RoutedEventArgs e)
 	{
 
@@ -117,12 +89,22 @@ public partial class TextView
 	{
 
 	}
+	#endregion
+
+
+	#region Methods
+	bool inloading = false;
+
+	private string OldSource;
+	private string NewSource;
+	private BnsDatabase source;
+	private List<TextDiffPiece> diffResult;
 
 	private bool OpenTextFile(out string file)
 	{
 		var dialog = new OpenFileDialog
 		{
-			Filter = @"All files|*.*|game text file|local*.dat|output text file|TextData*.xml"
+			Filter = @"All files|*.*|game text file|local*.dat|output text file|*.x16"
 		};
 
 		if (dialog.ShowDialog() == true)
@@ -134,19 +116,14 @@ public partial class TextView
 		file = null;
 		return false;
 	}
-	#endregion
-
-
-	#region Differ
-	private string OldSource;
-	private string NewSource;
-	private List<TextDiffPiece> diffResult;
 
 	private void RenderView()
 	{
+		ReadStatus.IsChecked = false;
+
 		#region Source
-		using var source1 = new BnsDatabase(new LocalProvider(OldSource));
-		using var source2 = new BnsDatabase(new LocalProvider(NewSource));
+		var source1 = new BnsDatabase(new LocalProvider(OldSource));
+		var source2 = new BnsDatabase(new LocalProvider(NewSource));
 
 		bool IsEmpty1 = source1.Text is null || !source1.Text.Any();
 		bool IsEmpty2 = source2.Text is null || !source2.Text.Any();
@@ -168,8 +145,16 @@ public partial class TextView
 			var strategy = new TextFoldingStrategy();
 			var builder = new StringBuilder();
 
+			// create diff
 			diffResult = TextDiff.Diff(source1.Text, source2.Text);
 
+			source?.Dispose();
+			source = null;
+			source1.Dispose();
+			source2.Dispose();
+
+
+			// areas
 			int areaStart = 0;
 			var areaType = ChangeType.Unchanged;
 			for (int i = 0; i < diffResult.Count; i++)
@@ -201,26 +186,110 @@ public partial class TextView
 		else
 		{
 			diffResult = null;
-			Editor.Text = (source1.Text ?? source2.Text).WriteXml();
+			source = IsEmpty2 ? source1 : source2;
+
+			var settings = new TableWriterSettings() { Encoding = Encoding.Unicode };
+			Editor.Text = settings.Encoding.GetString((source1.Text ?? source2.Text).WriteXml(settings));
 		}
 		#endregion
 	}
 
 	private void OnPositionChanged(Control sender)
 	{
-		// preview	
-		var index = Editor.TextArea.Caret.Line - 1;
+		#region Show
+		var caret = Editor.TextArea.Caret;
+		ColumnNumber.Text = caret.Column.ToString();
+
+		var lineNum = Editor.TextArea.Caret.Line.ToString();
+		if (LineNumber.Text == lineNum) return;
+		else LineNumber.Text = lineNum;
+		#endregion
+
+		#region Preview
+		var index = caret.Line - 1;
 		if (diffResult is null)
 		{
 			var line = Editor.Document.Lines[index];
 			var text = Editor.Document.Text.Substring(line.Offset, line.Length);
 
-			sender.Tag = Record.Parse(text)?.Attributes;
+			sender.Tag = Text.Parse(text);
 		}
 		else if (diffResult.Count <= index)
 		{
 			sender.Tag = diffResult[index];
 		}
+		#endregion
+	}
+
+
+	private void CanExecuteSave(object sender, CanExecuteRoutedEventArgs e)
+	{
+		// only single file and left source
+		e.CanExecute = source != null && !inloading;
+	}
+
+	private void SaveAsCommand(object sender, RoutedEventArgs e)
+	{
+		var dialog = new SaveFileDialog
+		{
+			FileName = "TextData",
+			Filter = "xml file|*.x16",
+		};
+		if (dialog.ShowDialog() == true)
+		{
+			File.WriteAllText(dialog.FileName, Editor.Text, Encoding.Unicode);
+		}
+	}
+
+	private void ReplaceInFilesCommand(object sender, RoutedEventArgs e)
+	{
+		var dialog = new OpenFolderDialog();
+		if (dialog.ShowDialog() == true)
+		{
+			var files = new DirectoryInfo(dialog.FolderName).GetFiles("*.x16", SearchOption.AllDirectories);
+
+			Task.Run(() =>
+			{
+				try
+				{
+					(source.Provider as LocalProvider).ReplaceText(files);
+
+					var settings = new TableWriterSettings() { Encoding = Encoding.Unicode };
+					var text = settings.Encoding.GetString(source.Text.WriteXml(settings));
+
+					this.Dispatcher.Invoke(() => Editor.Text = text);
+					Growl.Success("Replace completed", nameof(TextView));
+				}
+				catch (Exception ex)
+				{
+					Growl.Error(ex.Message, nameof(TextView));
+				}
+			});
+		}
+	}
+
+	private void SaveCommand(object sender, RoutedEventArgs e)
+	{
+		inloading = true;
+
+		Task.Run(() =>
+		{
+			try
+			{
+				var data = Encoding.Unicode.GetBytes(this.Dispatcher.Invoke(() => Editor.Text));
+				(source.Provider as LocalProvider).Save(data);
+
+				Growl.Success("Save completed", nameof(TextView));
+			}
+			catch (Exception ex)
+			{
+				Growl.Error(ex.Message, nameof(TextView));
+			}
+			finally
+			{
+				inloading = false;
+			}
+		});
 	}
 	#endregion
 }

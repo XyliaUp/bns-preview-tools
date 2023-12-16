@@ -77,7 +77,7 @@ public partial class Game_CharacterInfo_Scene
 
 	protected override void OnClosing(CancelEventArgs e)
 	{
-		CharacterInfoPanelWeb.Dispose();
+		//CharacterInfoPanelWeb.Dispose();
 		CharacterInfoPanelWeb = null;
 	}
 

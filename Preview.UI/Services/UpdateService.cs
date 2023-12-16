@@ -1,92 +1,77 @@
 ﻿using System.Windows;
-using System.Xml;
-
 using AutoUpdaterDotNET;
-
 using HandyControl.Controls;
+using HandyControl.Data;
+using Newtonsoft.Json;
+using Serilog;
+using Xylia.Preview.UI.ViewModels;
 
 namespace Xylia.Preview.UI.Services;
 internal class UpdateService
 {
-    public void CheckForUpdates()
+	public void CheckForUpdates()
 	{
 #if DEBUG
-        Growl.Info("This is a preview version, some features may not work.");
+		Growl.Info(StringHelper.Get("Version_Tip1"));
 #endif
 		AutoUpdater.RemindLaterTimeSpan = 0;
-        AutoUpdater.ParseUpdateInfoEvent += ParseUpdateInfoEvent;
-        AutoUpdater.CheckForUpdateEvent += CheckForUpdateEvent;
-        AutoUpdater.Start(Define.Update.ToString());
-    }
+		AutoUpdater.ParseUpdateInfoEvent += ParseUpdateInfoEvent;
+		AutoUpdater.CheckForUpdateEvent += CheckForUpdateEvent;
+		AutoUpdater.Start("https://tools.bnszs.com/api/update?app=bns-preview-tools&version=1");
+	}
 
-    private void ParseUpdateInfoEvent(ParseUpdateInfoEventArgs args)
-    {
-        XmlDocument doc = new();
-        doc.LoadXml(args.RemoteData);
+	private void ParseUpdateInfoEvent(ParseUpdateInfoEventArgs args)
+	{
+		args.UpdateInfo = JsonConvert.DeserializeObject<UpdateInfoArgs>(args.RemoteData);
+	}
 
-        var Update = doc.SelectSingleNode($"config/update[@app='Xylia.Match']");
-        if (Update is null) return;
-
-        Mandatory mandatory = null;
-        var mandatoryNode = Update.SelectSingleNode("./mandatory");
-        if (mandatoryNode != null)
-        {
-            mandatory = new Mandatory()
-            {
-                Value = Convert.ToBoolean(mandatoryNode.InnerText),
-                UpdateMode = (Mode)Convert.ToByte(mandatoryNode.Attributes["mode"]?.Value),
-                MinimumVersion = mandatoryNode.Attributes["minVersion"]?.Value
-            };
-        }
-
-
-        args.UpdateInfo = new UpdateInfoEventArgs
-        {
-            CurrentVersion = Update.SelectSingleNode("./version")?.InnerText,
-            ChangelogURL = Update.SelectSingleNode("./changelog")?.InnerText,
-            DownloadURL = Update.SelectSingleNode("./url")?.InnerText,
-            Mandatory = mandatory
-        };
-    }
-
-    private void CheckForUpdateEvent(UpdateInfoEventArgs args)
-    {
-        if (args is { CurrentVersion: { } })
-        {
-            var currentVersion = new Version(args.CurrentVersion);
-            if (currentVersion < args.InstalledVersion) return;
-
-
-			//var messageBox = new MessageBoxModel
-			//{
-			//	Text = $"The latest version of FModel {UserSettings.Default.UpdateMode} is {args.CurrentVersion}. You are using version {args.InstalledVersion}. Do you want to {(downgrade ? "downgrade" : "update")} the application now?",
-			//	Caption = $"{(downgrade ? "Downgrade" : "Update")} Available",
-			//	Icon = MessageBoxImage.Question,
-			//	Buttons = MessageBoxButtons.YesNo(),
-			//	IsSoundEnabled = false
-			//};
-
-			//HandyControl.Controls.MessageBox.Show(messageBox);
-			//if (messageBox.Result != MessageBoxResult.Yes) return;
-
-			if (AutoUpdater.DownloadUpdate(args))
-				Application.Current.Shutdown();
+	private void CheckForUpdateEvent(UpdateInfoEventArgs args)
+	{
+		if (args is UpdateInfoArgs arg)
+		{
+			if (arg.NoticeID < 0 || UserSettings.Default.NoticeId < arg.NoticeID)
+			{
+				UserSettings.Default.NoticeId = arg.NoticeID;
+				Growl.Info(new GrowlInfo()
+				{
+					Message = arg.Notice,
+					StaysOpen = true,
+				});
+			}
 		}
-        else
-        {
-			HandyControl.Controls.MessageBox.Show(
-                "There is a problem reaching the update server, please check your internet connection or try again later.",
-                "Update Check Failed", MessageBoxButton.OK, MessageBoxImage.Error);
-        }
-    }
-}
 
-internal static class Define
-{
-	public static Uri Update => ShareURI("abe3c5b63e52f552304fd547d69f22e8", "WEB924bfe515d51b6a37f130b609d3db285");
+		if (args.CurrentVersion != null)
+		{
+			var currentVersion = new Version(args.CurrentVersion);
+			if (currentVersion < args.InstalledVersion) return;
 
-	public static Uri PublicConfig => ShareURI("DDE6ACC65FF647C99B9D846FDAFBFB4B", "741857554343170134b88971a717c941");
+			Growl.Ask(StringHelper.Get("Version_Tip2",
+				StringHelper.Get("ProductName"),
+				args.CurrentVersion,
+				args.InstalledVersion), isConfirmed =>
+			{
+				if (isConfirmed && AutoUpdater.DownloadUpdate(args))
+					Application.Current.Shutdown();
+
+				return true;
+			});
+		}
+		else
+		{
+			Log.Error(args.Error.Message);
+			Growl.Error(StringHelper.Get("Version_Tip3"));
+
+			HandyControl.Controls.MessageBox.Show(StringHelper.Get("Version_Tip3"), icon: MessageBoxImage.Error);
+			Environment.Exit(500);
+		}
+	}
 
 
-	public static Uri ShareURI(string key, string p) => new UriBuilder("http://note.youdao.com/yws/api/personal/file/" + p) { Query = $"method=download&inline=true&shareKey={key}" }.Uri;
+	class UpdateInfoArgs : UpdateInfoEventArgs
+	{
+		public int NoticeID { get; set; }
+		public string Notice { get; set; }
+
+		public string CheckSum { get; set; }
+	}
 }
