@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Diagnostics;
 using System.Reflection;
-
 using Xylia.Preview.Common.Extension;
 using Xylia.Preview.Data.Common.DataStruct;
 using Xylia.Preview.Data.Engine.BinData.Models;
@@ -11,7 +10,7 @@ namespace Xylia.Preview.Data.Models;
 /// entity model table
 /// </summary>
 /// <typeparam name="T"></typeparam>
-public sealed class ModelTable<T> : Table, IEnumerable<T>, IEnumerable where T : ModelElement
+public class ModelTable<T> : Table, IEnumerable<T>, IEnumerable where T : ModelElement
 {
 	#region Load Methods
 	bool _loaded;
@@ -23,11 +22,8 @@ public sealed class ModelTable<T> : Table, IEnumerable<T>, IEnumerable where T :
 		var subs = ModelTypeHelper.Get(typeof(T));
 		foreach (var record in _records)
 		{
-			record.Model = new(() =>
-			{
-				var Object = subs.CreateInstance(record.SubclassType) as T;
-				return ModelElement.As(record, Object);
-			});
+			var type = record.SubclassType == -1 ? null : record.ElDefinition.Name;
+			record.Model = new(() => ModelElement.As(record, subs.CreateInstance(type)));
 		}
 
 		Trace.WriteLine($"[{DateTime.Now}] load table `{Name}` successful ({_records.Count})");
@@ -58,83 +54,23 @@ public sealed class ModelTable<T> : Table, IEnumerable<T>, IEnumerable where T :
 
 
 
-	//public byte[] ToArray(bool is64Bit)
-	//{
-	//	//var builder = new RecordBuilder();
-	//	//builder.InitializeTable(IsCompressed);
+	public virtual void LoadHiddenField()
+	{
 
-	//	//foreach (var record in Records)
-	//	//{
-	//	//	record.Serialize(builder);
-	//	//}
-
-	//	//builder.FinalizeTable();
-
-
-	//	using var memoryStream = new MemoryStream();
-	//	using var writer = new BinaryWriter(memoryStream);
-
-	//	var bnsTableWriter = new TableWriter();
-	//	bnsTableWriter.WriteTo(writer, this, is64Bit);
-
-	//	return memoryStream.ToArray();
-	//}
+	}
 }
+
 
 /// <summary>
 /// entity model helper
 /// </summary>
 public class ModelTypeHelper
 {
-	#region Load Methods
-	readonly Dictionary<short, Type> Types = new();
-	readonly Dictionary<string, short> Types_Name = new(StringComparer.OrdinalIgnoreCase);
-
-	private void GetSubType(Type baseType)
-	{
-		short typeIndex = -1;
-		AddType(typeIndex, baseType);
-
-		foreach (var instance in Assembly.GetExecutingAssembly().GetTypes())
-		{
-			if (!instance.IsAbstract && baseType.IsAssignableFrom(instance) && instance != baseType)
-				AddType(++typeIndex, instance);
-		}
-	}
-
-	private void AddType(short type, Type instance)
-	{
-		Types[type] = instance;
-		Types_Name[instance.Name.TitleLowerCase()] = type;
-	}
-	#endregion
-
-	#region Instance 
-	public object CreateInstance(short type) => Activator.CreateInstance(Types.GetValueOrDefault(type, Types[-1]));
-
-	public object CreateInstance(string typeString, out short type)
-	{
-		type = -1;
-		if (!string.IsNullOrWhiteSpace(typeString) &&
-			!Types_Name.TryGetValue(typeString, out type))
-		{
-			type = -1;
-			Trace.WriteLine($"cast object subclass failed: {Types[-1]} -> {typeString}");
-		}
-
-		return CreateInstance(type);
-	}
-	#endregion
-
-
 	#region Helper
-	private static readonly Dictionary<Type, ModelTypeHelper> helpers = new();
+	private static readonly Dictionary<Type, ModelTypeHelper> helpers = [];
 
 	public static ModelTypeHelper Get(Type baseType)
 	{
-		Debug.Assert(baseType != typeof(Record));
-
-		// result 
 		lock (helpers)
 		{
 			if (!helpers.TryGetValue(baseType, out var subs))
@@ -146,10 +82,6 @@ public class ModelTypeHelper
 			return subs;
 		}
 	}
-	#endregion
-
-
-
 
 	/// <summary>
 	/// Convert original table to ModelTable
@@ -174,4 +106,34 @@ public class ModelTypeHelper
 
 		return table;
 	}
+	#endregion
+
+
+	#region Methods
+	private Type BaseType;
+	private Dictionary<string, Type> _subs = new(StringComparer.OrdinalIgnoreCase);
+
+	private void GetSubType(Type baseType)
+	{
+		this.BaseType = baseType;
+
+		foreach (var instance in Assembly.GetExecutingAssembly().GetTypes())
+		{
+			if (!instance.IsAbstract && baseType.IsAssignableFrom(instance) && instance != baseType)
+				_subs[instance.Name.TitleLowerCase()] = instance;
+		}
+	}
+
+	public ModelElement CreateInstance(string type)
+	{
+		Type _type = null;
+
+		if (!string.IsNullOrWhiteSpace(type) && !_subs.TryGetValue(type, out _type))
+		{
+			Trace.WriteLine($"cast object subclass failed: {BaseType} -> {type}");
+		}
+
+		return (ModelElement)Activator.CreateInstance(_type ?? BaseType);
+	}
+	#endregion
 }

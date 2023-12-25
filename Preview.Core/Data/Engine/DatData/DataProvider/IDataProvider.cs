@@ -1,5 +1,6 @@
 ﻿using Xylia.Preview.Data.Common.DataStruct;
 using Xylia.Preview.Data.Engine.BinData.Helpers;
+using Xylia.Preview.Data.Engine.BinData.Serialization;
 using Xylia.Preview.Data.Engine.Definitions;
 
 namespace Xylia.Preview.Data.Engine.DatData;
@@ -35,6 +36,7 @@ public interface IDataProvider : IDisposable
 	Locale Locale => null;
 	#endregion
 
+
 	#region Methods
 	/// <summary>
 	/// Get raw file
@@ -49,12 +51,12 @@ public interface IDataProvider : IDisposable
 	/// <remarks>In some cases, require automatic parse <see langword="definitions"/></remarks>
 	/// <param name="definitions"></param>
 	public void LoadData(DatafileDefinition definitions);
-	
+
 	/// <summary>
-	/// Write package data
+	/// Write package
 	/// </summary>
 	/// <param name="folder"></param>
-	/// <param name="is64bit"></param>
-	public void WriteData(string folder, bool is64bit) => throw new NotImplementedException();
+	/// <param name="settings"></param>
+	public void WriteData(string folder, PublishSettings settings) => throw new NotImplementedException();
 	#endregion
 }

@@ -1,5 +1,4 @@
-﻿using Xylia.Preview.Common.Attributes;
-using Xylia.Preview.Data.Common.DataStruct;
+﻿using Xylia.Preview.Data.Common.DataStruct;
 using Xylia.Preview.Data.Helpers;
 
 namespace Xylia.Preview.Data.Models;
@@ -12,7 +11,6 @@ public sealed class Npc : ModelElement
 
 	public Ref<Text> Title2 { get; set; }
 
-	[Repeat(6)]
 	public Ref<Store2>[] Store2 { get; set; }
 
 	public Ref<CreatureAppearance> Appearance { get; set; }
@@ -22,7 +20,7 @@ public sealed class Npc : ModelElement
 
 
 	#region Public Properties
-	public string Text => Name2.GetText();
+	public string Text => this.Attributes["name2"].GetText();
 
 	public string Map
 	{

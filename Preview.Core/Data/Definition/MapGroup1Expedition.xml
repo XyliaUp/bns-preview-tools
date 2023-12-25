@@ -2,8 +2,8 @@
 <table name="map-group-1-expedition" version="0.4" autokey="true" module="12">
   <el name="table" child="1" />
   <el name="record">
-	<attribute name="group" ref="MapGroup1" />
-	<attribute name="describe" ref="Text" />
+	<attribute name="group" type="Ref" ref="MapGroup1" />
+	<attribute name="describe" type="Ref" ref="Text" />
 	<attribute name="image" type="String" />
   </el>
 </table>

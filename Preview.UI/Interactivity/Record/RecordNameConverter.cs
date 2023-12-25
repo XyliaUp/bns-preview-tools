@@ -10,21 +10,26 @@ namespace Xylia.Preview.UI.Common.Converters;
 /// </summary>
 public class RecordNameConverter : MarkupExtension, IValueConverter
 {
-    public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
-    {
-        if (value is Record record)
-        {
-            var text = record.Attributes["name2"]?.GetText();
-            if (text != null) return text;
-        }
+	public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+	{
+		if (value is Record record)
+		{
+			if (record.Owner.Name == "text") return record.Attributes["text"];
+			else
+			{
+				var text = record.Attributes["name2"]?.GetText();
+				if (text != null) return text;
+			}
+		}
 
-        return value.ToString();
-    }
+		if (parameter is false) return null;
+		return value?.ToString();
+	}
 
-    public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
-    {
-        throw new NotImplementedException();
-    }
+	public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+	{
+		throw new NotImplementedException();
+	}
 
-    public override object ProvideValue(IServiceProvider serviceProvider) => this;
+	public override object ProvideValue(IServiceProvider serviceProvider) => this;
 }

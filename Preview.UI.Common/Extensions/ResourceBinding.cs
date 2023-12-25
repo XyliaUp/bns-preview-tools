@@ -25,11 +25,8 @@ public class ResourceBinding : MarkupExtension
 
 	static void ResourceKeyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
 	{
-		var target = d as FrameworkElement;
-		var newVal = e.NewValue as Tuple<object, DependencyProperty>;
-
-
-		if (target == null || newVal == null)
+		if (d is not FrameworkElement target || 
+			e.NewValue is not Tuple<object, DependencyProperty> newVal)
 			return;
 
 		var dp = newVal.Item2;
@@ -57,16 +54,14 @@ public class ResourceBinding : MarkupExtension
 	public override object ProvideValue(IServiceProvider serviceProvider)
 	{
 		var provideValueTargetService = (IProvideValueTarget)serviceProvider.GetService(typeof(IProvideValueTarget));
-		if (provideValueTargetService == null)
-			return null;
+		if (provideValueTargetService == null) return null;
 
 		if (provideValueTargetService.TargetObject != null &&
 			provideValueTargetService.TargetObject.GetType().FullName == "System.Windows.SharedDp")
 			return this;
 
-		var targetObject = provideValueTargetService.TargetObject as FrameworkElement;
-		var targetProperty = provideValueTargetService.TargetProperty as DependencyProperty;
-		if (targetObject == null || targetProperty == null)
+		if (provideValueTargetService.TargetObject is not FrameworkElement targetObject ||
+			provideValueTargetService.TargetProperty is not DependencyProperty targetProperty)
 			return null;
 
 		#region binding
@@ -94,8 +89,8 @@ public class ResourceBinding : MarkupExtension
 
 		var multiBinding = new MultiBinding
 		{
-			Converter = HelperConverter.Current,
-			ConverterParameter = targetProperty
+			Converter = new HelperConverter(this),
+			ConverterParameter = targetProperty,
 		};
 
 		multiBinding.Bindings.Add(binding);
@@ -152,7 +147,7 @@ public class ResourceBinding : MarkupExtension
 	/// Culture in which to evaluate the converter
 	/// </summary>
 	[DefaultValue(null)]
-	[TypeConverter(typeof(System.Windows.CultureInfoIetfLanguageTagConverter))]
+	[TypeConverter(typeof(CultureInfoIetfLanguageTagConverter))]
 	public CultureInfo ConverterCulture { get; set; }
 
 	/// <summary>
@@ -166,7 +161,6 @@ public class ResourceBinding : MarkupExtension
 	/// </summary>
 	[DefaultValue(null)]
 	public string ElementName { get; set; }
-
 	#endregion
 
 	#region BindingBase Members
@@ -178,17 +172,22 @@ public class ResourceBinding : MarkupExtension
 	/// will return target property's default when Binding cannot get a real value.
 	/// </remarks>
 	public object FallbackValue { get; set; }
+
+	/// <summary>
+	/// Resource key prefix
+	/// </summary>
+	public string Prefix { get; set; }
 	#endregion
 
 	#region Nested types
-	private class HelperConverter : IMultiValueConverter
+	private class HelperConverter(ResourceBinding owner) : IMultiValueConverter
 	{
-		public static readonly HelperConverter Current = new HelperConverter();
-
 		public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
 		{
-			return Tuple.Create(values[0], (DependencyProperty)parameter);
+			object key = owner.Prefix + values[0];
+			return Tuple.Create(key, (DependencyProperty)parameter);
 		}
+
 		public object[] ConvertBack(object value, Type[] targetTypes, object parameter, CultureInfo culture)
 		{
 			throw new NotImplementedException();

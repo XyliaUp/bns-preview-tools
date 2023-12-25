@@ -5,11 +5,10 @@ using System.Xml;
 using Newtonsoft.Json;
 using Xylia.Preview.Common.Extension;
 using Xylia.Preview.Data.Engine.DatData;
-using Xylia.Preview.Data.Engine.DatData.Third;
 using Xylia.Preview.Data.Engine.Definitions;
 using Xylia.Preview.Tests.DatTool.Utils;
 using Xylia.Preview.Tests.DatTool.Utils.DevTools;
-using static Xylia.Preview.Data.Engine.DatData.Third.MySpport;
+using Xylia.Preview.Tests.Utils;
 
 namespace Xylia.Preview.Tests.DatTool;
 public partial class MainForm : Form
@@ -30,39 +29,31 @@ public partial class MainForm : Form
 		new StrWriter(richOut);
 		CheckForIllegalCrossThreadCalls = false;
 
-		//this.trackBar1.Value = this.trackBar1.Minimum;
-		//this.txbDatFile.Text = Ini.Instance.ReadValue("Path", "Data_DatFile");
-		//this.txbRpFolder.Text = Ini.Instance.ReadValue("Path", "Data_OutFolder");
-
 		ReadConfig(this);
 	}
 	#endregion
 
 	#region Static Methods
-	private void SaveConfig(object sender, EventArgs e)
-	{
-		//var c = (Control)sender;
-		//Ini.Instance.WriteValue("Config", $"{c.FindForm().Name}_{c.Name}", c.Text);
-	}
-
 	public void ReadConfig(Control container)
 	{
-		//foreach (Control c in container.Controls)
-		//{
-		//	ReadConfig(c);
+		string SECTION = "Test";
 
-		//	var val = Ini.Instance.ReadValue("Config", $"{c.FindForm().Name}_{c.Name}");
-		//	if (string.IsNullOrWhiteSpace(val)) continue;
+		foreach (Control c in container.Controls)
+		{
+			ReadConfig(c);
 
-		//	if (c is CheckBox checkBox) checkBox.Checked = val.ToBool();
-		//	else c.Text = val;
-		//}
-	}
-
-	private void SaveCheckStatus(object sender, EventArgs e)
-	{
-		//var ctl = (CheckBox)sender;
-		//Ini.Instance.WriteValue("Config", this.Name + "_" + ctl.Name, ctl.Checked);
+			var value = IniHelper.Instance.ReadValue(SECTION, $"{c.FindForm().Name}_{c.Name}");
+			if (c is CheckBox checkBox)
+			{
+				if (!string.IsNullOrWhiteSpace(value)) checkBox.Checked = value.ToBool();
+				checkBox.CheckedChanged += (s, e) => IniHelper.Instance.WriteValue(SECTION, this.Name + "_" + c.Name, checkBox.Checked);
+			}
+			else if (c is TextBox textBox)
+			{
+				if (!string.IsNullOrWhiteSpace(value)) c.Text = value;
+				c.TextChanged += (s, e) => IniHelper.Instance.WriteValue(SECTION, $"{c.FindForm().Name}_{c.Name}", c.Text);
+			}
+		}
 	}
 
 
@@ -139,7 +130,6 @@ public partial class MainForm : Form
 	{
 		var s = (Control)sender;
 		string Text = s.Text.Trim();
-		//Ini.Instance.WriteValue("Path", "Data_DatFile", Text);
 
 		if (Directory.Exists(Text))
 		{
@@ -152,11 +142,6 @@ public partial class MainForm : Form
 		{
 			txbRpFolder.Text = Path.GetDirectoryName(Text) + @"\Export\" + Path.GetFileNameWithoutExtension(Text);
 		}
-	}
-
-	private void txbRpFolder_TextChanged(object sender, EventArgs e)
-	{
-		//Ini.Instance.WriteValue("Path", "Data_OutFolder", ((TextBox)sender).Text);
 	}
 
 	private void button3_Click(object sender, EventArgs e)
@@ -227,11 +212,7 @@ public partial class MainForm : Form
 		}
 
 
-		Task.Run(() => MySpport.Extract(new PackParam()
-		{
-			PackagePath = txbDatFile.Text,
-			FolderPath = txbRpFolder.Text,
-		}));
+		Task.Run(() => ThirdSupport.Extract(new PackageParam(txbDatFile.Text) { FolderPath = txbRpFolder.Text }));
 	}
 
 	private void btnRepack_Click(object sender, EventArgs e)
@@ -247,17 +228,16 @@ public partial class MainForm : Form
 		{
 			try
 			{
-				PackParam param = new()
+				var param = new PackageParam(txbDatFile.Text)
 				{
-					Aes = KeyInfo.AES_2020_05,
 					FolderPath = outdir,
-					PackagePath = txbDatFile.Text,
-					Bit64 = txbDatFile.Text.Judge64Bit(),
-					CompressionLevel = (BnsCompression.CompressionLevel)this.trackBar1.Value,
+					CompressionLevel = (CompressionLevel)this.trackBar1.Value,
 				};
 
-				if (checkBox1.Checked) MySpport.Pack(param);
-				else BNSDat.Pack(param);
+				if (checkBox1.Checked) ThirdSupport.Pack(param);
+				else BNSDat.CreateFromDirectory(param);
+
+				Console.WriteLine("Pack completed");
 			}
 			catch (Exception ee)
 			{

@@ -1,21 +1,16 @@
-﻿using Xylia.Preview.Common.Attributes;
-using Xylia.Preview.Data.Common.Abstractions;
+﻿using Xylia.Preview.Data.Common.Abstractions;
 
 namespace Xylia.Preview.Data.Models;
 public sealed class BossChallenge : ModelElement, IAttraction
 {
-	public Ref<Text> BossChallengeName2 { get; set; }
-
-	public Ref<Text> BossChallengeDesc { get; set; }
-
 	public sbyte UiTextGrade { get; set; }
 
 	public Ref<AttractionRewardSummary> RewardSummary { get; set; }
 
 
-	#region Interface
-	public string Text => this.BossChallengeName2.GetText();
+	#region IAttraction
+	public string Text => this.Attributes["boss-challenge-name2"].GetText();
 
-	public string Describe => this.BossChallengeDesc.GetText();
+	public string Describe => this.Attributes["boss-challenge-desc"].GetText();
 	#endregion
 }

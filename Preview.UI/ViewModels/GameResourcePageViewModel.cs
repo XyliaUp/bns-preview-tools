@@ -1,34 +1,167 @@
-﻿using System.IO;
+﻿using System.Collections.ObjectModel;
+using System.Diagnostics;
+using System.IO;
 using System.Windows;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-
+using CUE4Parse.BNS;
 using CUE4Parse.BNS.Conversion;
+using CUE4Parse.BNS.Pak;
+using CUE4Parse.Compression;
 using CUE4Parse.Utils;
-
 using HandyControl.Controls;
 using HandyControl.Data;
-
+using HandyControl.Tools.Extension;
+using Newtonsoft.Json;
 using Ookii.Dialogs.Wpf;
-
 using Serilog;
-
 using SkiaSharp;
 using SkiaSharp.Views.WPF;
-
 using Xylia.Preview.Common;
+using Xylia.Preview.Common.Extension;
 using Xylia.Preview.UI.Common;
 using Xylia.Preview.UI.Helpers.Output.Textures;
 using Xylia.Preview.UI.Views;
-
+using Xylia.Preview.UI.Views.Selector;
 using MessageBox = HandyControl.Controls.MessageBox;
 
 namespace Xylia.Preview.UI.ViewModels;
 public partial class GameResourcePageViewModel : ObservableObject
 {
+	#region Asset
+	[ObservableProperty]
+	ObservableCollection<PackageParam> packages;
+
+	[ObservableProperty]
+	PackageParam selectedPackage;
+
+	[ObservableProperty]
+	PackageParam.FileParam selectedFile;
+
+
+	[RelayCommand]
+	public void LoadPackageInfo(string? path = null)
+	{
+		if (path is null)
+		{
+			var dialog = new VistaOpenFileDialog()
+			{
+				Filter = "configuration file|*.json",
+			};
+			if (dialog.ShowDialog() != true) return;
+
+			path = dialog.FileName;
+		}
+
+		var pkg = JsonConvert.DeserializeObject<PackageParam[]>(File.ReadAllText(path));
+		foreach (var p in pkg) p.Files.ForEach(f => f.Owner = p);
+
+		// update
+		this.Packages = new(pkg);
+		this.SelectedPackage = pkg.FirstOrDefault();
+	}
+
+	[RelayCommand]
+	public void SavePackageInfo()
+	{
+		var dialog = new VistaSaveFileDialog()
+		{
+			Filter = "configuration file|*.json",
+			FileName = "RepackInfo.json",
+		};
+		if (dialog.ShowDialog() != true) return;
+
+		File.WriteAllText($"{dialog.FileName}", JsonConvert.SerializeObject(Packages, Formatting.Indented));
+	}
+
+	[RelayCommand]
+	public void AddPackageInfo()
+	{
+		this.Packages ??= [];
+		this.Packages.Add(new());
+	}
+
+	[RelayCommand]
+	public void RemovePackageInfo()
+	{
+		this.Packages.Remove(SelectedPackage);
+	}
+
+
+	[RelayCommand]
+	public async Task AddFileInfo()
+	{
+		var file = await Dialog.Show<FileInfoDialog>().GetResultAsync<PackageParam.FileParam>();
+		if (file is null) return;
+
+		file.Owner = this.SelectedPackage;
+		this.SelectedPackage?.Files.Add(file);
+	}
+
+	[RelayCommand]
+	public async Task UpdateFileInfo()
+	{
+		var dialog = new FileInfoDialog() { Result = SelectedFile };
+		if (dialog.Result is null) return;
+
+		await Dialog.Show(dialog).GetResultAsync<PackageParam.FileParam>();
+
+		// update
+		var temp = SelectedPackage;
+		SelectedPackage = null;
+		SelectedPackage = temp;
+	}
+
+	[RelayCommand]
+	public void RemoveFileInfo()
+	{
+		this.SelectedPackage?.Files.Remove(SelectedFile);
+	}
+
+
+
+	public async Task UeExporter(string filter, bool ContainType) => await Task.Run(() =>
+	{
+		using var provider = new GameFileProvider(UserSettings.Default.GameFolder);
+		filter = provider.FixPath(filter, false) ?? filter;
+
+		Parallel.ForEach(provider.Files.Values, gamefile =>
+		{
+			if (gamefile.Extension != "uasset" || !gamefile.Path.Contains(filter, StringComparison.OrdinalIgnoreCase))
+				return;
+
+			try
+			{
+				new Exporter(UserSettings.Default.OutputFolderResource)
+					.Run(provider.LoadPackage(gamefile), ContainType);
+			}
+			catch (Exception ex)
+			{
+				Debug.WriteLine(ex);
+			}
+		});
+	});
+
+	public async Task UeRepack(string folder, List<PackageParam> packages) => await Task.Run(() =>
+	{
+		foreach (var package in packages)
+		{
+			var reader = new MyPakFileReader(package.MountPoint);
+			foreach (var file in package.Files)
+			{
+				if (!file.IsValid) continue;
+
+				reader.Add(file.Path, file.Vfs, file.Compression);
+			}
+
+			reader.WriteToDir(folder, package.Name + ".pak");
+		}
+	});
+	#endregion
+
+
 	#region Icon
 	[ObservableProperty]
 	string icon_OutputFolder = UserSettings.Default.OutputFolderResource;
@@ -108,7 +241,6 @@ public partial class GameResourcePageViewModel : ObservableObject
 	#endregion
 
 
-
 	#region Merge
 	SKBitmap _mergeIcon_Source;
 	public SKBitmap MergeIcon_Source
@@ -133,8 +265,8 @@ public partial class GameResourcePageViewModel : ObservableObject
 	}
 
 
-	QuoteItem<sbyte> _mergeIcon_Grade;
-	public QuoteItem<sbyte> MergeIcon_Grade
+	NameObject<sbyte> _mergeIcon_Grade;
+	public NameObject<sbyte> MergeIcon_Grade
 	{
 		get => _mergeIcon_Grade;
 		set
@@ -143,7 +275,7 @@ public partial class GameResourcePageViewModel : ObservableObject
 			MergeIcon();
 		}
 	}
-	public List<QuoteItem<sbyte>> GradeList => new()
+	public List<NameObject<sbyte>> GradeList => new()
 	{
 		{ new(1, StringHelper.Get("MergeIcon_Grade1")) },
 		{ new(2, StringHelper.Get("MergeIcon_Grade2")) },
@@ -157,8 +289,8 @@ public partial class GameResourcePageViewModel : ObservableObject
 	};
 
 
-	QuoteItem<SKBitmap> _mergeIcon_BottomLeft;
-	public QuoteItem<SKBitmap> MergeIcon_BottomLeft
+	NameObject<SKBitmap> _mergeIcon_BottomLeft;
+	public NameObject<SKBitmap> MergeIcon_BottomLeft
 	{
 		get => _mergeIcon_BottomLeft;
 		set
@@ -167,7 +299,7 @@ public partial class GameResourcePageViewModel : ObservableObject
 			MergeIcon();
 		}
 	}
-	public List<QuoteItem<SKBitmap>> BottomLeftList => new()
+	public List<NameObject<SKBitmap>> BottomLeftList => new()
 	{
 		GetImage("None"),
 		GetImage("Art/GameUI/Resource/GameUI_Icon3_R/Weapon_Lock_01"),
@@ -182,8 +314,8 @@ public partial class GameResourcePageViewModel : ObservableObject
 	};
 
 
-	QuoteItem<SKBitmap> _mergeIcon_TopRight;
-	public QuoteItem<SKBitmap> MergeIcon_TopRight
+	NameObject<SKBitmap> _mergeIcon_TopRight;
+	public NameObject<SKBitmap> MergeIcon_TopRight
 	{
 		get => _mergeIcon_TopRight;
 		set
@@ -192,7 +324,7 @@ public partial class GameResourcePageViewModel : ObservableObject
 			MergeIcon();
 		}
 	}
-	public List<QuoteItem<SKBitmap>> TopRightList => new()
+	public List<NameObject<SKBitmap>> TopRightList => new()
 	{
 		GetImage("None"),
 		GetImage("Art/GameUI/Resource/GameUI_Icon3_R/SlotItem_marketBusiness"),
@@ -244,12 +376,41 @@ public partial class GameResourcePageViewModel : ObservableObject
 
 
 
-	public static QuoteItem<SKBitmap> GetImage(string path)
+	public static NameObject<SKBitmap> GetImage(string path)
 	{
-		if (path == "None") return new(null, Application.Current.TryFindResource("Text_None"));
+		if (path == "None") return new(null, StringHelper.Get("Text_None"));
 
 		var info = Application.GetResourceStream(new Uri($"/Preview.UI;component/{path}.png", UriKind.Relative));
 		return new(SKBitmap.Decode(info.Stream), StringHelper.Get(path.SubstringAfterLast('/')));
 	}
 	#endregion
+}
+
+
+public class PackageParam
+{
+	public string Name { get; set; } = "Xylia_P";
+
+	public string MountPoint { get; set; } = @"BNSR\Content";
+
+	public ObservableCollection<FileParam> Files { get; set; } = [];
+
+
+	public class FileParam
+	{
+		public string Path { get; set; }
+
+		public string Vfs { get; set; }
+
+		public CompressionMethod Compression { get; set; }
+
+
+		[JsonIgnore]
+		public bool IsValid => File.Exists(Path);
+
+		[JsonIgnore]
+		internal PackageParam Owner { get; set; }
+
+		public override string ToString() => System.IO.Path.Combine(Owner.MountPoint, Vfs);
+	}
 }

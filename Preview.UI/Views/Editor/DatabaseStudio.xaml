@@ -99,7 +99,7 @@
 				</Button>
 			</ToolBar>
 
-			<ToolBar Band="0" BandIndex="0">
+			<ToolBar Band="0" BandIndex="1" Visibility="Visible">
 				<Button Click="Import_Click" Style="{x:Null}">
 					<StackPanel Orientation="Horizontal">
 						<Image Source="/Resources/Images/disk.png" />

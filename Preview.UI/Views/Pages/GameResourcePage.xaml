@@ -17,6 +17,7 @@
 					<RowDefinition Height="Auto" />
 					<RowDefinition Height="Auto" />
 					<RowDefinition Height="Auto" />
+					<RowDefinition Height="Auto" />
 					<RowDefinition Height="*" />
 				</Grid.RowDefinitions>
 
@@ -36,8 +37,47 @@
 					<ComboBoxItem Content="Game/Art/UI/V2/Resource" />
 				</hc:ComboBox>
 				<CheckBox Grid.Row="4" Name="OutputClassName" Content="{DynamicResource Asset_OutputClassName}" VerticalAlignment="Bottom" Margin="0 20 0 0"/>
+				<Button Grid.Row="1" Grid.Column="1" Margin="0 20 0 0" Content="{DynamicResource Asset_Extract}" Click="Extract_Click"/>
 
-				<Button Grid.Row="1" Name="Extract" Grid.Column="1" Margin="0 20 0 0" Content="{DynamicResource Asset_Extract}" Click="Extract_Click"/>
+
+				<Grid Grid.Row="6" Margin="0 50 0 0" AllowDrop="True" DragDrop.DragEnter="AssetRepack_DragEnter" DragDrop.Drop="AssetRepack_DragDrop" Background="Transparent">
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="*" />
+						<ColumnDefinition Width="2*" />
+					</Grid.ColumnDefinitions>
+
+					<ListBox Grid.Column="0" ItemsSource="{Binding Packages}" SelectedItem="{Binding SelectedPackage}" DisplayMemberPath="Name">
+						<ListBox.ContextMenu>
+							<ContextMenu>
+								<MenuItem Header="Add" Command="{Binding AddPackageInfoCommand}" />
+								<MenuItem Header="Remove" Command="{Binding RemovePackageInfoCommand}" />
+								<MenuItem Header="Load" Command="{Binding LoadPackageInfoCommand}" />
+								<MenuItem Header="Save" Command="{Binding SavePackageInfoCommand}" />
+							</ContextMenu>
+						</ListBox.ContextMenu>
+					</ListBox>
+
+					<ListBox Grid.Column="1" ItemsSource="{Binding SelectedPackage.Files}" SelectedItem="{Binding SelectedFile}" Margin="5 0 0 0">
+						<ListBox.ContextMenu>
+							<ContextMenu>
+								<MenuItem Header="Update" Command="{Binding UpdateFileInfoCommand}" />
+								<MenuItem Header="Add" Command="{Binding AddFileInfoCommand}" />
+								<MenuItem Header="Remove" Command="{Binding RemoveFileInfoCommand}" />
+							</ContextMenu>
+						</ListBox.ContextMenu>
+						<ListBox.ItemTemplate>
+							<DataTemplate>
+								<TextBlock x:Name="PART_TextBlock" Text="{Binding }"/>
+								<DataTemplate.Triggers>
+									<DataTrigger Binding="{Binding IsValid}" Value="False">
+										<Setter TargetName="PART_TextBlock" Property="TextDecorations" Value="Strikethrough" />
+									</DataTrigger>
+								</DataTemplate.Triggers>
+							</DataTemplate>
+						</ListBox.ItemTemplate>
+					</ListBox>
+				</Grid>
+				<Button Grid.Row="6" Grid.Column="1" Margin="0 20 0 0" Content="{DynamicResource Asset_Repack}" Click="Repack_Click"/>
 			</Grid>
 		</TabItem>
 

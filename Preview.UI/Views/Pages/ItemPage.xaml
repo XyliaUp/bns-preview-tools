@@ -79,7 +79,7 @@
 			</Grid>
 		</TabItem>
 
-		<TabItem x:Name="DEBUG" Header="DEBUG" Visibility="{Binding Path=IsSelected,Converter={StaticResource Boolean2VisibilityConverter},RelativeSource={RelativeSource self}}">
+		<TabItem x:Name="DEBUG" Header="DEBUG" Visibility="Collapsed">
 			<StackPanel>
 				<UI:BnsCustomLabelWidget>
 					<UI:BnsCustomLabelWidget.Text>

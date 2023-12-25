@@ -1,35 +1,32 @@
-﻿using Xylia.Preview.Common.Attributes;
-
-namespace Xylia.Preview.Data.Models;
+﻿namespace Xylia.Preview.Data.Models;
 public class SkillTooltipAttribute : ModelElement
 {
-	[Repeat(4)]
 	public ArgTypeSeq[] ArgType { get; set; }
 	public enum ArgTypeSeq
 	{
 		None,
 
-			DamagePercentMinMax,
+		DamagePercentMinMax,
 
-			DamagePercent,
+		DamagePercent,
 
 		Time,
 
-			StackCount,
+		StackCount,
 
 		Effect,
 
-			HealPercent,
+		HealPercent,
 
-			DrainPercent,
+		DrainPercent,
 
 		Skill,
 
-			ConsumePercent,
+		ConsumePercent,
 
-			ProbabilityPercent,
+		ProbabilityPercent,
 
-			StanceType,
+		StanceType,
 
 		Percent,
 
@@ -37,25 +34,25 @@ public class SkillTooltipAttribute : ModelElement
 
 		Distance,
 
-			KeyCommand,
+		KeyCommand,
 
 		Number,
 
-			TextAlias,
+		TextAlias,
 
-			rHypermove,
+		rHypermove,
 
-			rHealPercent,
+		rHealPercent,
 
-			rHealDiff,
+		rHealDiff,
 
-			rShieldPercent,
+		rShieldPercent,
 
-			rShieldDiff,
+		rShieldDiff,
 
-			rSupportPercent,
+		rSupportPercent,
 
-			rSupportDiff,
+		rSupportDiff,
 
 	}
 
@@ -68,14 +65,14 @@ public class SkillTooltipAttribute : ModelElement
 	{
 		None,
 
-			RecycleDuration,
+		RecycleDuration,
 
-			SpConsume,
+		SpConsume,
 
-			Damage,
+		Damage,
 
-			HpDrain,
+		HpDrain,
 
-			HealPercent,
+		HealPercent,
 	}
 }

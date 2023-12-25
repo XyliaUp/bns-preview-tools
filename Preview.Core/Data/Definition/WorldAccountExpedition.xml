@@ -15,11 +15,11 @@
 		<attribute name="unk-" type="Int32" />
 		<attribute name="unk-" type="Int32" />
 		<attribute name="unk-" type="Int32" />
-		<attribute name="name" ref="Text" />
-		<attribute name="description" ref="Text" />
-		<attribute name="story" ref="Text" />
-		<attribute name="unk-" ref="0" />
+		<attribute name="name" type="Ref" ref="Text" />
+		<attribute name="description" type="Ref" ref="Text" />
+		<attribute name="story" type="Ref" ref="Text" />
+		<attribute name="unk-" type="Ref" ref="0" />
 		<attribute name="icon" type="Icon" repeat="5" />
-		<attribute name="tooltip" ref="Text" repeat="5" />
+		<attribute name="tooltip" type="Ref" ref="Text" repeat="5" />
 	</el>
 </table>

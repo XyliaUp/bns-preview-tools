@@ -11,7 +11,9 @@ internal class UpdateService
 {
 	public void CheckForUpdates()
 	{
-#if DEBUG
+#if DEV
+		return;
+#elif DEBUG
 		Growl.Info(StringHelper.Get("Version_Tip1"));
 #endif
 		AutoUpdater.RemindLaterTimeSpan = 0;
@@ -71,7 +73,5 @@ internal class UpdateService
 	{
 		public int NoticeID { get; set; }
 		public string Notice { get; set; }
-
-		public string CheckSum { get; set; }
 	}
 }

@@ -4,7 +4,6 @@ using Xylia.Preview.Data.Engine.Definitions;
 using Xylia.Preview.UI.Common.Controls.AttributeGrid.Editor;
 
 namespace Xylia.Preview.UI.Controls;
-
 public class AttributeResolver
 {
 	public string ResolveCategory(AttributeDefinition attribute)
@@ -24,9 +23,7 @@ public class AttributeResolver
 
 	public string ResolveDescription(AttributeDefinition attribute) => $"{attribute.Type}";
 
-	public bool ResolveIsBrowsable(AttributeDefinition attribute) => !attribute.IsDeprecated;
-
-	public bool ResolveIsReadOnly(AttributeDefinition attribute) => true;
+	public bool ResolveIsBrowsable(AttributeDefinition attribute) => !attribute.IsDeprecated && attribute.CanInput;
 
 	public object ResolveDefaultValue(AttributeDefinition attribute) => attribute.DefaultValue;
 
@@ -38,32 +35,32 @@ public class AttributeResolver
 		AttributeType.TInt64 => new NumberAttributeEditor(attribute),
 		AttributeType.TFloat32 => new NumberAttributeEditor(attribute),
 		AttributeType.TBool => new BooleanPropertyEditor(),
-		AttributeType.TString => new PlainTextPropertyEditor(),
+		AttributeType.TString => new StringPropertyEditor(),
 		AttributeType.TSeq => new SequenceAttributeEditor(attribute.Sequence),
 		AttributeType.TSeq16 => new SequenceAttributeEditor(attribute.Sequence),
 		AttributeType.TRef => new ReferenceAttributeEditor(attribute.ReferedTableName),
 		AttributeType.TTRef => new ReferenceAttributeEditor(null),
-		//AttributeType.TSub => new PlainTextPropertyEditor(),
-		//AttributeType.TSu => new PlainTextPropertyEditor(),
-		//AttributeType.TVector16 => new PlainTextPropertyEditor(),
-		//AttributeType.TVector32 => new PlainTextPropertyEditor(),
-		//AttributeType.TIColor => new PlainTextPropertyEditor(),
-		//AttributeType.TFColor => new PlainTextPropertyEditor(),
-		//AttributeType.TBox => new PlainTextPropertyEditor(),
-		//AttributeType.TAngle => new PlainTextPropertyEditor(),
-		//AttributeType.TMsec => new PlainTextPropertyEditor(),
-		//AttributeType.TDistance => new PlainTextPropertyEditor(),
-		//AttributeType.TVelocity => new PlainTextPropertyEditor(),
+		//AttributeType.TSub => new tex(),
+		//AttributeType.TSu => new TextPropertyEditor(),
+		//AttributeType.TVector16 => new TextPropertyEditor(),
+		//AttributeType.TVector32 => new TextPropertyEditor(),
+		//AttributeType.TIColor => new TextPropertyEditor(),
+		//AttributeType.TFColor => new TextPropertyEditor(),
+		//AttributeType.TBox => new TextPropertyEditor(),
+		//AttributeType.TAngle => new TextPropertyEditor(),
+		//AttributeType.TMsec => new TextPropertyEditor(),
+		//AttributeType.TDistance => new TextPropertyEditor(),
+		//AttributeType.TVelocity => new TextPropertyEditor(),
 		AttributeType.TProp_seq => new SequenceAttributeEditor(attribute.Sequence),
 		AttributeType.TProp_field => new SequenceAttributeEditor(attribute.Sequence),
 		AttributeType.TScript_obj => new ReadOnlyTextPropertyEditor(),
-		AttributeType.TNative => new PlainTextPropertyEditor(),
-		//AttributeType.TVersion => new PlainTextPropertyEditor(),
+		AttributeType.TNative => new StringPropertyEditor(),
+		//AttributeType.TVersion => new TextPropertyEditor(),
 		AttributeType.TIcon => new IconAttributeEditor(),
-		//AttributeType.TTime32 => new PlainTextPropertyEditor(),
+		//AttributeType.TTime32 => new TextPropertyEditor(),
 		AttributeType.TTime64 => new TimeAttributeEditor(),
 		AttributeType.TXUnknown1 => new TimeAttributeEditor(),
-		AttributeType.TXUnknown2 => new PlainTextPropertyEditor(),
+		AttributeType.TXUnknown2 => new StringPropertyEditor(),
 		_ => new ReadOnlyTextPropertyEditor()
 	};
 }

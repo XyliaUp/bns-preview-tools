@@ -13,10 +13,14 @@
 		<!-- publish -->
 		<RuntimeIdentifier>win-x64</RuntimeIdentifier>
 		<OutputType>WinExe</OutputType>
+		<SignAssembly>True</SignAssembly>
 	</PropertyGroup>
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
 		<DebugType>none</DebugType>
 		<IsPublishable>True</IsPublishable>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+	  <DefineConstants>$(DefineConstants);DEV</DefineConstants>
 	</PropertyGroup>
 	<!-- Temp Asset -->
 	<ItemGroup>
@@ -145,9 +149,6 @@
 		<PackageReference Include="LiveCharts" Version="0.9.7" />
 		<PackageReference Include="Vanara.PInvoke.Kernel32" Version="3.4.17" />
 		<PackageReference Include="Vanara.PInvoke.User32" Version="3.4.17" />
-		<Reference Include="HandyControl">
-			<HintPath>..\..\..\..\HandyControl\HandyControl\src\Net_GE45\HandyControlDemo_Net_GE45\bin\Debug\net7.0-windows\HandyControl.dll</HintPath>
-		</Reference>
 	</ItemGroup>
 	<ItemGroup>
 		<Content Include="Properties\Query.ico" />
@@ -218,5 +219,12 @@
 		<Resource Include="Resources\Images\*\*" />
 		<Resource Include="Resources\Fonts\segmdl2.ttf" />
 		<Resource Include="Resources\Xshd\*.xshd" />
+	</ItemGroup>
+
+
+	<ItemGroup>
+	  <Reference Include="HandyControl">
+	    <HintPath>..\..\..\..\..\HandyControl\HandyControl\src\Net_GE45\HandyControl_Net_GE45\bin\Debug\net7.0-windows\HandyControl.dll</HintPath>
+	  </Reference>
 	</ItemGroup>
 </Project>

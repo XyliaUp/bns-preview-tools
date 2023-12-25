@@ -3,44 +3,29 @@
 namespace Xylia.Preview.Common.Extension;
 public static partial class EnumExtension
 {
-    #region Cast
-    public static T ToEnum<T>(this string EnumItem, bool Extension = true) where T : Enum => EnumItem.TryParseToEnum(out T Val, Extension) ? Val : default;
+	public static T ToEnum<T>(this object str) where T : Enum
+	{
+		if (str is string s)
+		{
+			if (s.TryParseToEnum(typeof(T), out var value))
+				return (T)value;
+		}
 
-    public static bool TryParseToEnum<T>(this string EnumItem, out T Value, bool Extension = true, bool HideError = false) where T : Enum
-    {
-        Value = default;
+		return default;
+	}
 
-        if (EnumItem.TryParseToEnum(typeof(T), out var TempVal, Extension))
-        {
-            Value = (T)TempVal;
-            return true;
-        }
-        else
-        {
-            if (!string.IsNullOrWhiteSpace(EnumItem) && !HideError) Debug.WriteLine($"cast enum failed: {EnumItem} => {typeof(T)}"); 
-            return false;
-        }
-    }
+	public static bool TryParseToEnum(this string str, Type type, out object value)
+	{
+		value = default;
 
-    public static bool TryParseToEnum(this string EnumItem, Type type, out object value, bool Extension)
-    {
-        value = default;
-        if (string.IsNullOrWhiteSpace(EnumItem)) return false;
+		if (string.IsNullOrWhiteSpace(str)) return false;
+		if (str.Contains('-')) return Enum.TryParse(type, str.Replace("-", null), true, out value);
+		if (byte.TryParse(str, out _) && Enum.TryParse(type, "N" + str, true, out value)) return true;
 
-        bool flag = byte.TryParse(EnumItem, out var number);
+		// convert
+		var flag = Enum.TryParse(type, str, true, out value);
+		if (!flag) Debug.WriteLine($"cast enum failed: {str} => {type}");
 
-        #region extra
-        if (Extension)
-        {
-            if (EnumItem.Contains('-'))
-                return Enum.TryParse(type, EnumItem.Replace("-", null), true, out value);
-
-            if (flag && Enum.TryParse(type, "N" + EnumItem, true, out value))
-                return true;
-        }
-        #endregion
-
-        return Enum.TryParse(type, EnumItem, true, out value);
-    }
-    #endregion
+		return flag;
+	}
 }

@@ -73,7 +73,6 @@ public partial class AudioPlayerViewModel : ObservableObject, IDisposable
 
 
 
-
 	#region Ctors
 	public AudioPlayerViewModel()
 	{

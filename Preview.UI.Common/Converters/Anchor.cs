@@ -15,7 +15,6 @@ public struct Anchor
 
 public class AnchorConverter : TypeConverter
 {
-
     public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
     {
         if (sourceType == typeof(string)) return true;

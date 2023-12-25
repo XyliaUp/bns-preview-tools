@@ -1,5 +1,6 @@
 ﻿using System.Collections.Concurrent;
-
+using System.Text.RegularExpressions;
+using System.Xml;
 using CUE4Parse.Utils;
 
 using K4os.Hash.xxHash;
@@ -42,6 +43,7 @@ public class ProviderSerialize(IDataProvider Provider)
 
 	public async Task ImportAsync(string folder) => await Task.Run(() =>
 	{
+		// load cached hash
 		var root = new DirectoryInfo(folder);
 		var hashes = new Dictionary<string, ulong>();
 		var modifiedHashes = new ConcurrentBag<HashInfo>();
@@ -107,6 +109,45 @@ public class ProviderSerialize(IDataProvider Provider)
 			actions.ForEach(a => a.Invoke());
 		}
 
+
+		// load replace information
+		var Replace = root.GetDirectories("Replace").FirstOrDefault();
+		if (Replace != null)
+		{
+			foreach (var xml in Replace.GetFiles("*.xml"))
+			{
+				XmlDocument doc = new();
+				doc.Load(xml.FullName);
+
+				foreach (XmlElement _table in doc.SelectNodes("table"))
+				{
+					var type = _table.GetAttribute("type");
+					var table = Provider.Tables[type];
+					if (table is null) continue;
+
+					foreach (XmlElement _record in _table.SelectNodes("./record"))
+					{
+						var alias = new Regex(_record.GetAttribute("alias"));
+						var attributes =
+							from element in _record.SelectNodes("./attribute").OfType<XmlElement>()
+							select (element.GetAttribute("name"), element.GetAttribute("value"));
+
+						// HACK: 
+						Parallel.ForEach(table.Records, record =>
+						{
+							if (!alias.IsMatch(record.ToString())) return;
+
+							foreach (var attr in attributes)
+							{
+								record.Attributes.Set(record.ElDefinition[attr.Item1], attr.Item2);
+							}
+						});
+					}
+				}
+			}
+		}
+
+
 		// invoke save action
 		DataSaved = new Action(() =>
 		{
@@ -119,7 +160,7 @@ public class ProviderSerialize(IDataProvider Provider)
 
 	public async Task SaveAsync(string savePath) => await Task.Run(() =>
 	{
-		Provider.WriteData(savePath, true);
+		Provider.WriteData(savePath, new PublishSettings() { Is64bit = true, Mode = Mode.Package });
 		DataSaved?.Invoke();
 	});
 }

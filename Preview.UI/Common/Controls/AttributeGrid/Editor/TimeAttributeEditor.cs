@@ -7,7 +7,7 @@ using HandyControl.Controls;
 using Xylia.Preview.Data.Common.DataStruct;
 
 namespace Xylia.Preview.UI.Controls;
-public class TimeAttributeEditor : PropertyEditorBase , IValueConverter
+internal class TimeAttributeEditor : PropertyEditorBase , IValueConverter
 {
 	public override FrameworkElement CreateElement(PropertyItem propertyItem) => new DateTimePicker
 	{

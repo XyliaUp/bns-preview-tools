@@ -26,20 +26,10 @@ public partial class Skill3 : ModelElement
 
 	public KeyCommandSeq ShortCutKeySimpleContext { get; set; }
 
-
-	[Repeat(5)]
 	public Ref<SkillTooltip>[] MainTooltip1 { get; set; }
-
-	[Repeat(5)]
 	public Ref<SkillTooltip>[] MainTooltip2 { get; set; }
-
-	[Repeat(5)]
 	public Ref<SkillTooltip>[] SubTooltip { get; set; }
-
-	[Repeat(5)]
 	public Ref<SkillTooltip>[] StanceTooltip { get; set; }
-
-	[Repeat(5)]
 	public Ref<SkillTooltip>[] ConditionTooltip { get; set; }
 
 

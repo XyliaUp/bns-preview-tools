@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics;
+using Xylia.Preview.Common.Extension;
 using Xylia.Preview.Data.Common.Exceptions;
 using Xylia.Preview.Data.Models;
 
@@ -148,21 +149,18 @@ internal class BsonExpressionOperators
     /// </summary>
     public static AttributeValue LIKE(Collation collation, AttributeValue left, AttributeValue right)
     {
-        //if (left.IsString && right.IsString)
-        //{
-        //    return left.AsString.SqlLike(right.AsString, collation);
-        //}
-        //else
-        //{
-        //    return false;
-        //}
-
-
-		return false;
+        if (left.IsString && right.IsString)
+        {
+            return left.AsString.SqlLike(right.AsString, collation);
+        }
+        else
+        {
+            return false;
+        }
 	}
 
-    public static AttributeValue LIKE_ANY(Collation collation, IEnumerable<AttributeValue> left, AttributeValue right) => left.Any(x => LIKE(collation, x, right) == true);
-    public static AttributeValue LIKE_ALL(Collation collation, IEnumerable<AttributeValue> left, AttributeValue right) => left.All(x => LIKE(collation, x, right) == true);
+    public static AttributeValue LIKE_ANY(Collation collation, IEnumerable<AttributeValue> left, AttributeValue right) => left.Any(x => LIKE(collation, x, right));
+    public static AttributeValue LIKE_ALL(Collation collation, IEnumerable<AttributeValue> left, AttributeValue right) => left.All(x => LIKE(collation, x, right));
 
     /// <summary>
     /// Test if left is between right-array. Returns true or false. Right value must be an array. Support multiple values
@@ -182,8 +180,8 @@ internal class BsonExpressionOperators
         return collation.Compare(left, start) >= 0 && collation.Compare(left, end) <= 0;
     }
 
-    public static AttributeValue BETWEEN_ANY(Collation collation, IEnumerable<AttributeValue> left, AttributeValue right) => left.Any(x => BETWEEN(collation, x, right) == true);
-    public static AttributeValue BETWEEN_ALL(Collation collation, IEnumerable<AttributeValue> left, AttributeValue right) => left.All(x => BETWEEN(collation, x, right) == true);
+    public static AttributeValue BETWEEN_ANY(Collation collation, IEnumerable<AttributeValue> left, AttributeValue right) => left.Any(x => BETWEEN(collation, x, right));
+    public static AttributeValue BETWEEN_ALL(Collation collation, IEnumerable<AttributeValue> left, AttributeValue right) => left.All(x => BETWEEN(collation, x, right));
 
     /// <summary>
     /// Test if left are in any value in right side (when right side is an array). If right side is not an array, just implement a simple Equals (=). Returns true or false
@@ -312,7 +310,7 @@ internal class BsonExpressionOperators
                 // execute for each child value and except a first bool value (returns if true)
                 var c = filterExpr.ExecuteScalar(new AttributeDocument[] { root }, root, item, collation);
 
-                if (c.IsBoolean && c.AsBoolean == true)
+                if (c.IsBoolean && c.AsBoolean)
                 {
                     yield return item;
                 }

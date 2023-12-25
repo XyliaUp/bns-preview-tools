@@ -1,0 +1,36 @@
+﻿<Border x:Class="Xylia.Preview.UI.Views.Selector.FileInfoDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+		xmlns:hc="https://handyorg.github.io/handycontrol"
+		xmlns:valid="clr-namespace:Xylia.Preview.UI.Common.Validation"
+		CornerRadius="10"
+        Height="230" Width="500"
+		Background="{DynamicResource RegionBrush}">
+	<Grid>
+		<Grid Margin="5 0" VerticalAlignment="Center">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="100"/>
+				<ColumnDefinition Width="*"/>
+				<ColumnDefinition Width="Auto"/>
+			</Grid.ColumnDefinitions>
+			<Grid.RowDefinitions>
+				<RowDefinition Height="Auto"/>
+				<RowDefinition Height="Auto"/>
+				<RowDefinition Height="Auto"/>
+			</Grid.RowDefinitions>
+
+			<TextBlock Grid.Row="0" Grid.Column="0" Margin="5" Text="Path" />
+			<TextBox Grid.Row="0" Grid.Column="1" Margin="5" Text="{Binding Result.Path, ValidatesOnNotifyDataErrors=True}" />
+			<Button Grid.Row="0" Grid.Column="2" Content="..." Click="OnBrowseFile" />
+
+			<TextBlock Grid.Row="1" Grid.Column="0" Margin="5" Text="Vfs Path" />
+			<TextBox Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Margin="5" Text="{Binding Result.Vfs, ValidatesOnNotifyDataErrors=True}" />
+
+			<TextBlock Grid.Row="2" Grid.Column="0" Margin="5" Text="Compression" />
+			<ComboBox Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Margin="5" ItemsSource="{Binding CompressionModes}" Text="{Binding Result.Compression}" />
+		</Grid>
+
+		<Button Content="{DynamicResource Text_Ok}" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="10 10" Click="Ok_Click" />
+		<Button Width="30" Height="30" Command="hc:ControlCommands.Close" Style="{StaticResource ButtonIcon}" Foreground="{DynamicResource PrimaryBrush}" hc:IconElement.Geometry="{StaticResource ErrorGeometry}" Padding="0" HorizontalAlignment="Right" VerticalAlignment="Top" Grid.ColumnSpan="2" />
+	</Grid>
+</Border>

@@ -3,16 +3,15 @@
 using Xylia.Preview.Data.Common.DataStruct;
 
 namespace Xylia.Preview.Data.Engine.BinData.Models;
-public sealed class AliasCollection : Collection<AliasEntry>
+public sealed class AliasTable : Collection<AliasEntry>
 {
-	public AliasCollection(string name)
+	public AliasTable(string name)
 	{
 		Name = name;
 		ByRef = [];
 	}
 
 	public string Name;
-	public bool HasCheck = false;
 
 	private Dictionary<Ref, AliasEntry> ByRef;
 
@@ -29,6 +28,9 @@ public sealed class AliasCollection : Collection<AliasEntry>
 		base.ClearItems();
 		ByRef.Clear();
 	}
+
+
+	internal bool HasCheck = false;
 }
 
 public sealed class AliasEntry

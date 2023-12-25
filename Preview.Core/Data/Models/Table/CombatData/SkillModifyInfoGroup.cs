@@ -8,7 +8,7 @@ public class SkillModifyInfoGroup : ModelElement
 	[Name("job-style")]
 	public JobStyleSeq JobStyle { get; set; }
 
-	[Name("skill-modify-info") , Repeat(4)]
+	[Name("skill-modify-info")]
 	public Ref<SkillModifyInfo>[] SkillModifyInfo { get; set; }
 
 
@@ -18,7 +18,7 @@ public class SkillModifyInfoGroup : ModelElement
 	{
 		var objs = SkillModifyInfo.Select(o => o.Instance?.ToString()).Where(o => o is not null);
 		if (!objs.Any()) return null;
-		return $"<font name=\"00008130.UI.Label_Green03_12\">{ objs.Aggregate("<br/>") }</font>";
+		return $"<font name=\"00008130.UI.Label_Green03_12\">{objs.Aggregate("<br/>")}</font>";
 	}
 	#endregion
 }

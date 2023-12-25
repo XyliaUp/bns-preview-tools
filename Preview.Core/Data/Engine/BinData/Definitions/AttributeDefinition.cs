@@ -19,11 +19,9 @@ public partial class AttributeDefinition
 	public bool IsHidden { get; set; }
 	public SequenceDefinition Sequence { get; set; }
 
-
 	public string ReferedTableName { get; set; }
 	public double Max { get; set; }
 	public double Min { get; set; }
-	public bool CanOutput { get; set; } = true;
 	public bool CanInput { get; set; } = true;
 	public bool Server { get; set; } = true;
 	public bool Client { get; set; } = true;
@@ -45,9 +43,6 @@ public partial class AttributeDefinition
 		var Type = Enum.TryParse("T" + TypeName?.Trim(), true, out AttributeType ParseVType) ? ParseVType : default;
 
 		var RefTable = node.Attributes["ref"]?.Value;
-		if (RefTable != null) Type = AttributeType.TRef;
-
-		if (Type == AttributeType.TIcon) RefTable = "IconTexture";
 		if (Type == AttributeType.TNone)
 		{
 			if (TypeName.Equals("struct", StringComparison.OrdinalIgnoreCase)) return null;
@@ -167,7 +162,7 @@ public partial class AttributeDefinition
 		{
 			Name = Name,
 
-			//IsDeprecated = (node.Attributes["deprecated"]?.Value).ToBool(),
+			IsDeprecated = (node.Attributes["deprecated"]?.Value).ToBool(),
 			IsKey = (node.Attributes["key"]?.Value).ToBool(),
 			IsRequired = (node.Attributes["required"]?.Value).ToBool(),
 			IsHidden = (node.Attributes["hidden"]?.Value).ToBool(),
@@ -184,7 +179,6 @@ public partial class AttributeDefinition
 			Server = node.Attributes["server"]?.Value.ToBool() ?? true,
 			Client = node.Attributes["client"]?.Value.ToBool() ?? true,
 			CanInput = node.Attributes["input"]?.Value.ToBool() ?? true,
-			CanOutput = node.Attributes["output"]?.Value.ToBool() ?? true,
 		};
 	}
 
@@ -204,9 +198,7 @@ public partial class AttributeDefinition
 			AttributeType.TSeq16 or
 			AttributeType.TProp_field => 2,
 
-
 			AttributeType.TIColor => 3,
-
 
 			AttributeType.TInt64 or
 			AttributeType.TTime64 or

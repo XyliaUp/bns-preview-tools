@@ -7,6 +7,7 @@ public class DatafileArchive : Stream
 
 	public DatafileArchive(byte[] data, long offset = 0, long size = -1)
 	{
+		ArgumentNullException.ThrowIfNull(data);
 		_data = data;
 
 		Position = offset;

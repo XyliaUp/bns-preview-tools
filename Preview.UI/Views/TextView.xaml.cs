@@ -4,17 +4,17 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
-
+using System.Xml;
 using HandyControl.Controls;
 using HandyControl.Interactivity;
-using ICSharpCode.AvalonEdit.Document;
 using ICSharpCode.AvalonEdit.Folding;
 using ICSharpCode.AvalonEdit.Rendering;
 using ICSharpCode.AvalonEdit.Search;
 
 using Microsoft.Win32;
+using Xylia.Preview.Common.Extension;
 using Xylia.Preview.Data.Client;
-using Xylia.Preview.Data.Engine.BinData.Models;
+using Xylia.Preview.Data.Engine.BinData.Serialization;
 using Xylia.Preview.Data.Models;
 using Xylia.Preview.UI.Helpers;
 using Xylia.Preview.UI.ViewModels;
@@ -23,7 +23,7 @@ namespace Xylia.Preview.UI.Views;
 public partial class TextView
 {
 	#region Constructor
-	private readonly FoldingManager foldingManager;
+	private FoldingManager manager;
 
 	public TextView()
 	{
@@ -31,7 +31,7 @@ public partial class TextView
 		RegisterCommands(this.CommandBindings);
 
 		var search = SearchPanel.Install(Editor);
-		foldingManager = FoldingManager.Install(Editor.TextArea);
+		manager = FoldingManager.Install(Editor.TextArea);
 		Editor.TextArea.Caret.PositionChanged += (s, e) => OnPositionChanged(search);
 	}
 	#endregion
@@ -40,38 +40,38 @@ public partial class TextView
 	private void RegisterCommands(CommandBindingCollection commandBindings)
 	{
 		commandBindings.Add(new CommandBinding(ApplicationCommands.Save, SaveCommand, CanExecuteSave));
-		commandBindings.Add(new CommandBinding(ApplicationCommands.SaveAs, SaveAsCommand, CanExecuteSave));
-		commandBindings.Add(new CommandBinding(ApplicationCommands.Replace, ReplaceInFilesCommand, CanExecuteSave));
+		commandBindings.Add(new CommandBinding(ApplicationCommands.SaveAs, SaveAsCommand, CanExecuteSaveAs));
+		commandBindings.Add(new CommandBinding(ApplicationCommands.Replace, ReplaceInFilesCommand, CanExecuteSaveAs));
 
 		// unable to edit in comparison mode
-		commandBindings.Add(new CommandBinding(ControlCommands.Switch, delegate{ }, CanExecuteSave));
+		commandBindings.Add(new CommandBinding(ControlCommands.Switch, delegate { }, CanExecuteSaveAs));
 	}
 
-	private void Window_Loaded(object sender, RoutedEventArgs e)
+	private async void Window_Loaded(object sender, RoutedEventArgs e)
 	{
 		if (UserSettings.Default.Text_LoadPrevious)
 		{
 			OldSource = UserSettings.Default.Text_OldPath;
 			NewSource = UserSettings.Default.Text_NewPath;
-			RenderView();
+			await RenderView();
 		}
 	}
 
-	private void OpenLeftFileMenuItem_Click(object sender, RoutedEventArgs e)
+	private async void OpenLeftFileMenuItem_Click(object sender, RoutedEventArgs e)
 	{
 		if (OpenTextFile(out var file))
 		{
 			UserSettings.Default.Text_OldPath = OldSource = file;
-			RenderView();
+			await RenderView();
 		}
 	}
 
-	private void OpenRightFileMenuItem_Click(object sender, RoutedEventArgs e)
+	private async void OpenRightFileMenuItem_Click(object sender, RoutedEventArgs e)
 	{
 		if (OpenTextFile(out var file))
 		{
 			UserSettings.Default.Text_NewPath = NewSource = file;
-			RenderView();
+			await RenderView();
 		}
 	}
 
@@ -97,7 +97,7 @@ public partial class TextView
 
 	private string OldSource;
 	private string NewSource;
-	private BnsDatabase source;
+	private LocalProvider source;
 	private List<TextDiffPiece> diffResult;
 
 	private bool OpenTextFile(out string file)
@@ -117,36 +117,29 @@ public partial class TextView
 		return false;
 	}
 
-	private void RenderView()
+	private async Task RenderView()
 	{
 		ReadStatus.IsChecked = false;
 
 		#region Source
-		var source1 = new BnsDatabase(new LocalProvider(OldSource));
-		var source2 = new BnsDatabase(new LocalProvider(NewSource));
+		var source1 = await Task.Run(() => new BnsDatabase(new LocalProvider(OldSource)));
+		var source2 = await Task.Run(() => new BnsDatabase(new LocalProvider(NewSource)));
 
-		bool IsEmpty1 = source1.Text is null || !source1.Text.Any();
-		bool IsEmpty2 = source2.Text is null || !source2.Text.Any();
+		var TextTable1 = source1.Get<Text>();
+		var TextTable2 = source2.Get<Text>();
 
-		// HeaderText
-		if (IsEmpty1 && IsEmpty2) return;
-		else if (!IsEmpty1 && !IsEmpty2) this.InlineHeaderText.Text = source1.Provider.Name + " → " + source2.Provider.Name;
-		else
-		{
-			if (IsEmpty1) this.InlineHeaderText.Text = source2.Provider.Name;
-			if (IsEmpty2) this.InlineHeaderText.Text = source1.Provider.Name;
-		}
+		var IsEmpty1 = TextTable1.IsEmpty();
+		var IsEmpty2 = TextTable2.IsEmpty();
 		#endregion
 
 		#region Lines
-		// compare
-		if (!IsEmpty1 && !IsEmpty2)
+		if (IsEmpty1 && IsEmpty2) return;
+		else if (!IsEmpty1 && !IsEmpty2)
 		{
-			var strategy = new TextFoldingStrategy();
-			var builder = new StringBuilder();
+			this.InlineHeaderText.Text = source1.Provider.Name + " → " + source2.Provider.Name;
 
 			// create diff
-			diffResult = TextDiff.Diff(source1.Text, source2.Text);
+			diffResult = await Task.Run(() => TextDiff.Diff(TextTable1, TextTable2));
 
 			source?.Dispose();
 			source = null;
@@ -155,6 +148,9 @@ public partial class TextView
 
 
 			// areas
+			var builder = new StringBuilder();
+			var strategy = new TextAreaManager(this.Editor);
+
 			int areaStart = 0;
 			var areaType = ChangeType.Unchanged;
 			for (int i = 0; i < diffResult.Count; i++)
@@ -169,27 +165,28 @@ public partial class TextView
 				// handle
 				if (line.Type != areaType)
 				{
-					strategy.Lines.Add(new TextArea() { Type = areaType, StartLine = areaStart, EndLine = i - 1 });
+					strategy.Add(new() { Type = areaType, StartLine = areaStart, EndLine = i - 1 });
 
 					areaType = line.Type;
 					areaStart = i;
 				}
 			}
 
-			strategy.Lines.Add(new TextArea() { Type = areaType, StartLine = areaStart, EndLine = diffResult.Count - 1 });
-
+			strategy.Add(new() { Type = areaType, StartLine = areaStart, EndLine = diffResult.Count - 1 });
 
 			Editor.Text = builder.ToString();
-			strategy.UpdateFoldings(foldingManager, Editor.Document);
-			strategy.UpdateRenders(Editor.TextArea.TextView);
+			strategy.UpdateFoldings(manager);
+			strategy.UpdateRenders();
 		}
 		else
 		{
 			diffResult = null;
-			source = IsEmpty2 ? source1 : source2;
+
+			this.source = (IsEmpty2 ? source1 : source2).Provider as LocalProvider;
+			this.InlineHeaderText.Text = source.Name;
 
 			var settings = new TableWriterSettings() { Encoding = Encoding.Unicode };
-			Editor.Text = settings.Encoding.GetString((source1.Text ?? source2.Text).WriteXml(settings));
+			Editor.Text = await Task.Run(() => settings.Encoding.GetString((TextTable1 ?? TextTable2).WriteXml(settings)));
 		}
 		#endregion
 	}
@@ -214,7 +211,7 @@ public partial class TextView
 
 			sender.Tag = Text.Parse(text);
 		}
-		else if (diffResult.Count <= index)
+		else if (diffResult.Count > index)
 		{
 			sender.Tag = diffResult[index];
 		}
@@ -222,10 +219,17 @@ public partial class TextView
 	}
 
 
+
+
 	private void CanExecuteSave(object sender, CanExecuteRoutedEventArgs e)
 	{
 		// only single file and left source
-		e.CanExecute = source != null && !inloading;
+		e.CanExecute = !inloading && source != null && source.CanSave;
+	}
+
+	private void CanExecuteSaveAs(object sender, CanExecuteRoutedEventArgs e)
+	{
+		e.CanExecute = !inloading && source != null;
 	}
 
 	private void SaveAsCommand(object sender, RoutedEventArgs e)
@@ -244,28 +248,33 @@ public partial class TextView
 	private void ReplaceInFilesCommand(object sender, RoutedEventArgs e)
 	{
 		var dialog = new OpenFolderDialog();
-		if (dialog.ShowDialog() == true)
+		if (dialog.ShowDialog() != true) return;
+
+		Task.Run(() =>
 		{
-			var files = new DirectoryInfo(dialog.FolderName).GetFiles("*.x16", SearchOption.AllDirectories);
-
-			Task.Run(() =>
+			try
 			{
-				try
-				{
-					(source.Provider as LocalProvider).ReplaceText(files);
+				var files = new DirectoryInfo(dialog.FolderName).GetFiles("*.x16", SearchOption.AllDirectories);
+				if (files.Length == 0) throw new Exception(StringHelper.Get("TextView_NotExist_x16"));
 
-					var settings = new TableWriterSettings() { Encoding = Encoding.Unicode };
-					var text = settings.Encoding.GetString(source.Text.WriteXml(settings));
+				source.ReplaceText(files);
 
-					this.Dispatcher.Invoke(() => Editor.Text = text);
-					Growl.Success("Replace completed", nameof(TextView));
-				}
-				catch (Exception ex)
-				{
-					Growl.Error(ex.Message, nameof(TextView));
-				}
-			});
-		}
+				// reload text
+				var settings = new TableWriterSettings() { Encoding = Encoding.Unicode };
+				var text = settings.Encoding.GetString(source.TextTable.WriteXml(settings));
+
+				Dispatcher.Invoke(() => Editor.Text = text);
+				Growl.Success(StringHelper.Get("TextView_ReplaceCompleted", nameof(TextView)));
+			}
+			catch (XmlException ex)
+			{
+				Growl.Error(string.Format("{1}\n{0}", ex.Message, ex.SourceUri), nameof(TextView));
+			}
+			catch (Exception ex)
+			{
+				Growl.Error(string.Format("{0}", ex.Message), nameof(TextView));
+			}
+		});
 	}
 
 	private void SaveCommand(object sender, RoutedEventArgs e)
@@ -277,9 +286,9 @@ public partial class TextView
 			try
 			{
 				var data = Encoding.Unicode.GetBytes(this.Dispatcher.Invoke(() => Editor.Text));
-				(source.Provider as LocalProvider).Save(data);
+				source.Save(data);
 
-				Growl.Success("Save completed", nameof(TextView));
+				Growl.Success(StringHelper.Get("TextView_SaveCompleted"), nameof(TextView));
 			}
 			catch (Exception ex)
 			{
@@ -296,27 +305,28 @@ public partial class TextView
 
 
 #region Area
-internal class TextArea
+internal class TextAreaManager
 {
-	public ChangeType Type;
+	ICSharpCode.AvalonEdit.TextEditor _editor;
+	List<TextArea> _areas;
 
-	public int StartLine;
-	public int EndLine;
-}
-
-internal class TextFoldingStrategy
-{
-	public List<TextArea> Lines { get; }
-
-	public TextFoldingStrategy()
+	public TextAreaManager(ICSharpCode.AvalonEdit.TextEditor TextEditor)
 	{
-		Lines = new();
+		_areas = new();
+		_editor = TextEditor;
 	}
 
 
-	public void UpdateFoldings(FoldingManager manager, TextDocument document)
+	public void Add(TextArea area)
 	{
-		var foldings = Lines.Where(x => x.StartLine < x.EndLine).Select(x => new NewFolding()
+		_areas.Add(area);
+	}
+
+	public void UpdateFoldings(FoldingManager manager)
+	{
+		var document = _editor.Document;
+
+		var foldings = _areas.Where(x => x.StartLine < x.EndLine).Select(x => new NewFolding()
 		{
 			StartOffset = document.Lines[x.StartLine].Offset,
 			EndOffset = document.Lines[x.EndLine].EndOffset,
@@ -328,83 +338,88 @@ internal class TextFoldingStrategy
 		manager.UpdateFoldings(foldings, -1);
 	}
 
-	public void UpdateRenders(ICSharpCode.AvalonEdit.Rendering.TextView textView)
+	public void UpdateRenders()
 	{
+		var textView = _editor.TextArea.TextView;
 		textView.BackgroundRenderers.Clear();
 
-		foreach (var x in Lines)
+		foreach (var x in _areas)
 		{
 			if (x.Type == ChangeType.Unchanged) continue;
 			textView.BackgroundRenderers.Add(new TextAreaRenderer(x));
 		}
 	}
-}
-
-internal class TextAreaRenderer : IBackgroundRenderer
-{
-	#region Fields	
-	public static readonly Color DefaultBorder = Color.FromArgb(52, 0, 255, 110);
-	public static readonly Color InsertedBackground = Color.FromArgb(64, 96, 216, 32);
-	public static readonly Color ModifyedBackground = Color.FromArgb(64, 216, 32, 32);
-	public static readonly Color DeletedBackground = Color.FromArgb(64, 216, 32, 32);
-
-	public KnownLayer Layer => KnownLayer.Selection;
-	private Pen BorderPen { get; set; }
-	private SolidColorBrush BackgroundBrush { get; set; }
-
-	private TextArea Area { get; set; }
-	#endregion
 
 
-	public TextAreaRenderer(TextArea area)
+	internal class TextArea
 	{
-		this.Area = area;
+		public ChangeType Type;
 
-		this.BorderPen = new Pen(new SolidColorBrush(DefaultBorder), 1);
-		this.BorderPen.Freeze();
-
-		this.BackgroundBrush = area.Type switch
-		{
-			ChangeType.Inserted => new SolidColorBrush(InsertedBackground),
-			ChangeType.Modified => new SolidColorBrush(ModifyedBackground),
-			ChangeType.Deleted => new SolidColorBrush(DeletedBackground),
-			_ => null
-		};
-		this.BackgroundBrush?.Freeze();
+		public int StartLine;
+		public int EndLine;
 	}
 
-	public void Draw(ICSharpCode.AvalonEdit.Rendering.TextView textView, DrawingContext drawingContext)
+	internal class TextAreaRenderer : IBackgroundRenderer
 	{
-		// valid
-		ArgumentNullException.ThrowIfNull(textView);
-		ArgumentNullException.ThrowIfNull(drawingContext);
+		#region Fields	
+		public static readonly Color DefaultBorder = Color.FromArgb(52, 0, 255, 110);
+		public static readonly Color InsertedBackground = Color.FromArgb(64, 96, 216, 32);
+		public static readonly Color ModifyedBackground = Color.FromArgb(64, 216, 32, 32);
+		public static readonly Color DeletedBackground = Color.FromArgb(64, 216, 32, 32);
 
-		// view area
-		if (textView.VisualLines is null ||
-			textView.VisualLines.First().FirstDocumentLine.LineNumber > Area.EndLine ||
-			textView.VisualLines.Last().LastDocumentLine.LineNumber < Area.StartLine) return;
+		public KnownLayer Layer => KnownLayer.Selection;
+		private Pen BorderPen { get; set; }
+		private SolidColorBrush BackgroundBrush { get; set; }
 
-		var line1 = textView.GetVisualLine(Area.StartLine + 1);
-		var line2 = textView.GetVisualLine(Area.EndLine + 1);
+		private TextArea Area { get; set; }
+		#endregion
 
 
-		// rect
-		double posY = line1 is null ? 0 : (line1.VisualTop - textView.ScrollOffset.Y);
-		double height = 0;
-		if (line1 == null && line2 == null) height = textView.ActualHeight;
-		if (line1 != null && line2 == null) height = textView.ActualHeight - posY;
-		if (line1 == null && line2 != null) height = line2.VisualTop + line2.Height - textView.ScrollOffset.Y;
-		if (line1 != null && line2 != null) height = line2.VisualTop + line2.Height - line1.VisualTop;
+		public TextAreaRenderer(TextArea area)
+		{
+			this.Area = area;
 
-		// background
-		if (height < 0) return;
-		var geometry = new RectangleGeometry(new Rect(0, posY, textView.ActualWidth, height));
-		if (geometry != null) drawingContext.DrawGeometry(BackgroundBrush, this.BorderPen, geometry);
+			this.BorderPen = new Pen(new SolidColorBrush(DefaultBorder), 1);
+			this.BorderPen.Freeze();
 
-		// text
-		//var format = new FormattedText(Area.Type.ToString(), CultureInfo.CurrentCulture, FlowDirection.LeftToRight, new Typeface("Arial"), 12, BackgroundBrush, 96);
-		//format.SetFontWeight(FontWeights.UltraBold);
-		//drawingContext.DrawText(format, new Point((textView.ActualWidth - format.Width) / 2, posY));
+			this.BackgroundBrush = area.Type switch
+			{
+				ChangeType.Inserted => new SolidColorBrush(InsertedBackground),
+				ChangeType.Modified => new SolidColorBrush(ModifyedBackground),
+				ChangeType.Deleted => new SolidColorBrush(DeletedBackground),
+				_ => null
+			};
+			this.BackgroundBrush?.Freeze();
+		}
+
+		public void Draw(ICSharpCode.AvalonEdit.Rendering.TextView textView, DrawingContext drawingContext)
+		{
+			// valid
+			ArgumentNullException.ThrowIfNull(textView);
+			ArgumentNullException.ThrowIfNull(drawingContext);
+
+			// view area
+			if (textView.VisualLines is null ||
+				textView.VisualLines.First().FirstDocumentLine.LineNumber > Area.EndLine ||
+				textView.VisualLines.Last().LastDocumentLine.LineNumber <= Area.StartLine) return;
+
+			var line1 = textView.GetVisualLine(Area.StartLine + 1);
+			var line2 = textView.GetVisualLine(Area.EndLine + 1);
+
+
+			// rect
+			double posY = line1 is null ? 0 : (line1.VisualTop - textView.ScrollOffset.Y);
+			double height = 0;
+			if (line1 == null && line2 == null) height = textView.ActualHeight;
+			if (line1 != null && line2 == null) height = textView.ActualHeight - posY;
+			if (line1 == null && line2 != null) height = line2.VisualTop + line2.Height - textView.ScrollOffset.Y;
+			if (line1 != null && line2 != null) height = line2.VisualTop + line2.Height - line1.VisualTop;
+
+			// background
+			if (height < 0) return;
+			var geometry = new RectangleGeometry(new Rect(0, posY, textView.ActualWidth, height));
+			if (geometry != null) drawingContext.DrawGeometry(BackgroundBrush, this.BorderPen, geometry);
+		}
 	}
 }
 #endregion

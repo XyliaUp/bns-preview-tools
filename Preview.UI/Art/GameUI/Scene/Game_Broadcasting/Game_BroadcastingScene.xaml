@@ -1,25 +1,27 @@
-﻿<s:Window
-	x:Class="Xylia.Preview.UI.Art.GameUI.Scene.Game_Broadcasting.Game_BroadcastingScene"
-	xmlns:s="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+﻿<BnsCustomUISceneWidget 
 	xmlns="https://github.com/xyliaup/bns-preview-tools"
-	SizeToContent="WidthAndHeight" ResizeMode="NoResize" WindowStyle="None">
-	 
-	<AnchorPanel x:Name="BnsTvPanel" Width="1284" Height="813" Background="Gray">
-		<BnsCustomLabelWidget x:Name="BnsTvPanel_CloseButton"        Text="4" AnchorPanel.Anchor="1 0" AnchorPanel.Offset="-12 12 30 0" />
-		<BnsCustomLabelWidget x:Name="BnsTvPanel_AudioModeButton"    Text="3" ToolTip="UI.Tooltip.bnstv.audio" AnchorPanel.Offset="1143 12 30 0" />
-		<BnsCustomLabelWidget x:Name="BnsTvPanel_IncreaseSizeButton" Text="2" ToolTip="UI.Tooltip.bnstv.max" AnchorPanel.Offset="1176 12 30 0" />
-		<BnsCustomLabelWidget x:Name="BnsTvPanel_DecreaseSizeButton" Text="1" ToolTip="UI.Tooltip.bnstv.min" AnchorPanel.Offset="1209 12 30 0" />
-		<BnsWebBrowser x:Name="BnsTvPanel_Web" Width="1256" Height="706" AnchorPanel.Offset="0 50 366 44.999756" Source="http://www.baidu.com/">
-			<BnsCustomImageWidget x:Name="BnsTvPanel_Web_Dummy_Size_1" />
-			<BnsCustomImageWidget x:Name="BnsTvPanel_Web_Dummy_Size_2" />
-			<BnsCustomImageWidget x:Name="BnsTvPanel_Web_Dummy_Size_3" />
-			<BnsCustomImageWidget x:Name="BnsTvPanel_LoadingImage" Width="128" Height="64"/>
-			<BnsCustomImageWidget x:Name="BnsTvPanel_LoadingImageSmall" Width="128" Height="64"/>
-			<BnsCustomLabelWidget x:Name="BnsTvPanel_ErrorLabel" Text="## 웹 서버111와 연결이 원활치 않습니다." AnchorPanel.Anchor="0.5 0.5" AnchorPanel.Offset="0 50.0 366.0 44.999756" />
-		</BnsWebBrowser>
+    xmlns:s="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	x:Class="Xylia.Preview.UI.Art.GameUI.Scene.Game_Broadcasting.Game_BroadcastingScene">
 
-		<!-- <BnsCustomCaptionWidget x:Name="BnsTvPanel_TitleBar" AnchorPanel.Offset="0 0 0 50" MetaData="textref=UI.ButtonTooltip.Hud.BnSTV" String="#BnS TV"/> -->
-		<BnsCustomImageWidget x:Name="BnsTvPanel_Background" AnchorPanel.Anchor="0 0 1 1" AnchorPanel.Offset="0 50 0 0" />
-	</AnchorPanel>
-</s:Window>
+	<BnsCustomWindowWidget x:Name="ItemMapPanel_C" SizeToContent="WidthAndHeight" ResizeMode="NoResize" WindowStyle="None" Width="1284" Height="813">
+		<AnchorPanel>
+			<BnsCustomLabelWidget x:Name="BnsTvPanel_CloseButton"        Text="4" AnchorPanel.Anchor="1 0" AnchorPanel.Offset="-12 12 30 0" />
+			<BnsCustomLabelWidget x:Name="BnsTvPanel_AudioModeButton"    Text="3" ToolTip="UI.Tooltip.bnstv.audio" AnchorPanel.Offset="1143 12 30 0" />
+			<BnsCustomLabelWidget x:Name="BnsTvPanel_IncreaseSizeButton" Text="2" ToolTip="UI.Tooltip.bnstv.max" AnchorPanel.Offset="1176 12 30 0" />
+			<BnsCustomLabelWidget x:Name="BnsTvPanel_DecreaseSizeButton" Text="1" ToolTip="UI.Tooltip.bnstv.min" AnchorPanel.Offset="1209 12 30 0" />
+			<BnsWebBrowser x:Name="BnsTvPanel_Web" Width="1256" Height="706" AnchorPanel.Offset="0 50 366 44.999756" Source="http://www.baidu.com/">
+				<BnsCustomImageWidget x:Name="BnsTvPanel_Web_Dummy_Size_1" />
+				<BnsCustomImageWidget x:Name="BnsTvPanel_Web_Dummy_Size_2" />
+				<BnsCustomImageWidget x:Name="BnsTvPanel_Web_Dummy_Size_3" />
+				<BnsCustomImageWidget x:Name="BnsTvPanel_LoadingImage" Width="128" Height="64"/>
+				<BnsCustomImageWidget x:Name="BnsTvPanel_LoadingImageSmall" Width="128" Height="64"/>
+				<BnsCustomLabelWidget x:Name="BnsTvPanel_ErrorLabel" Text="## 웹 서버111와 연결이 원활치 않습니다." AnchorPanel.Anchor="0.5 0.5" AnchorPanel.Offset="0 50.0 366.0 44.999756" />
+			</BnsWebBrowser>
+
+			<!-- <BnsCustomCaptionWidget x:Name="BnsTvPanel_TitleBar" AnchorPanel.Offset="0 0 0 50" MetaData="textref=UI.ButtonTooltip.Hud.BnSTV" String="#BnS TV"/> -->
+			<BnsCustomImageWidget x:Name="BnsTvPanel_Background" AnchorPanel.Anchor="0 0 1 1" AnchorPanel.Offset="0 50 0 0" />
+		</AnchorPanel>
+	</BnsCustomWindowWidget>
+</BnsCustomUISceneWidget>

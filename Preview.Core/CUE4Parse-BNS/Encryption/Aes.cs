@@ -1,12 +1,11 @@
 ﻿using System.Runtime.CompilerServices;
 using System.Security.Cryptography;
-
 using CUE4Parse.Utils;
 
 using AesProvider = System.Security.Cryptography.Aes;
 
 namespace CUE4Parse.Encryption.Aes;
-public static partial class Aes2
+public static partial class AesEncrypt
 {
 	private static readonly AesProvider Provider;
 
@@ -34,7 +33,7 @@ public static partial class Aes2
 	}
 
 
-	static Aes2()
+	static AesEncrypt()
 	{
 		Provider = AesProvider.Create();
 		Provider.Mode = CipherMode.ECB;

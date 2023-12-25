@@ -76,8 +76,7 @@ public abstract class Datafile
 				throw new NullReferenceException("NameTable was null on main datafile");
 
 			var oldPosition = writer.BaseStream.Position;
-			var _nameTableWriter = new NameTableWriter();
-			_nameTableWriter.WriteTo(writer, this.NameTable, is64bit);
+			new NameTableWriter().WriteTo(writer, this.NameTable, is64bit);
 
 			var nameTableSize = writer.BaseStream.Position - oldPosition;
 			this.AliasMapSize = nameTableSize;

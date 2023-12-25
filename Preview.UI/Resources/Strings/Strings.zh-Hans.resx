@@ -463,4 +463,25 @@
     <value>当查看单个文件时，可以启用编辑
 请注意不要修改节点顺序</value>
   </data>
+  <data name="Asset_Repack" xml:space="preserve">
+    <value>打包</value>
+  </data>
+  <data name="Text_Add" xml:space="preserve">
+    <value>增加</value>
+  </data>
+  <data name="Text_Remove" xml:space="preserve">
+    <value>移除</value>
+  </data>
+  <data name="Text_Update" xml:space="preserve">
+    <value>更新</value>
+  </data>
+  <data name="TextView_NotExist_x16" xml:space="preserve">
+    <value>选择的文件夹中没有x16文件。</value>
+  </data>
+  <data name="TextView_ReplaceCompleted" xml:space="preserve">
+    <value>替换成功！</value>
+  </data>
+  <data name="TextView_SaveCompleted" xml:space="preserve">
+    <value>保存成功！</value>
+  </data>
 </root>

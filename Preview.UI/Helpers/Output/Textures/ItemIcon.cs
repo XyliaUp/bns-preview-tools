@@ -35,9 +35,9 @@ public sealed class ItemIcon(string GameFolder, string OutputFolder) : IconOutBa
 			if (!isWhiteList && lst != null && lst.Contains(Ref.Id)) return;
 
 			#region Get Data
-			var alias = x.Attributes["alias"];
+			var alias = x.Attributes.Get<string>("alias");
 			var ItemGrade = x.Attributes.Get<sbyte>("item-grade");
-			var icon = x.Attributes["icon"];
+			var icon = x.Attributes["icon"]?.ToString();
 
 			var Text = x.Attributes.Get<Record>("name2")?.Attributes["text"];	   
 			var GroceryType = x.SubclassType == 2 ? x.Attributes["grocery-type"]?.ToEnum<GroceryTypeSeq>() : null;

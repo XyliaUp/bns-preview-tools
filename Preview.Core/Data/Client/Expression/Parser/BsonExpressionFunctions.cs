@@ -24,7 +24,7 @@ internal class BsonExpressionFunctions
             // execute for each child value and except a first bool value (returns if true)
             var c = filterExpr.ExecuteScalar(new AttributeDocument[] { root }, root, item, collation);
 
-            if (c.IsBoolean && c.AsBoolean == true)
+            if (c.IsBoolean && c.AsBoolean)
             {
                 yield return item;
             }

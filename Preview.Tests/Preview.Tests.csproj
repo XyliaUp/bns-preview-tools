@@ -15,7 +15,6 @@
     <PackageReference Include="MSTest.TestFramework" Version="3.1.1" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Preview.Core\Preview.Core.csproj" />
     <ProjectReference Include="..\Preview.UI\Preview.UI.csproj" />
   </ItemGroup>
 </Project>

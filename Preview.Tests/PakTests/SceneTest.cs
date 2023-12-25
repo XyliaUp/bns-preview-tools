@@ -8,6 +8,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Newtonsoft.Json;
 using Xylia.Preview.Common.Extension;
 using Xylia.Preview.Data.Helpers;
+using Xylia.Preview.Tests.Utils;
 
 namespace Xylia.Preview.Tests.PakTests;
 
@@ -17,7 +18,7 @@ public class SceneTest
 	[TestMethod]
 	public void Main()
 	{
-		using GameFileProvider Provider = new(new Common().GameFolder);
+		using GameFileProvider Provider = new(IniHelper.Instance.GameFolder);
 		var AssetPath = "BNSR/Content/Art/UI/GameUI/Scene/Game_Broadcasting/Game_BroadcastingScene.uasset";
 		var Blueprint = Provider.LoadAllObjects(AssetPath).OfType<UWidgetBlueprintGeneratedClass>().First();
 

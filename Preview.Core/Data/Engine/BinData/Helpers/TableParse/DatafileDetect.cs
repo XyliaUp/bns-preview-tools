@@ -1,6 +1,6 @@
 ﻿using Xylia.Preview.Common.Extension;
-using Xylia.Preview.Data.Engine.Definitions;
 using Xylia.Preview.Data.Engine.BinData.Models;
+using Xylia.Preview.Data.Engine.Definitions;
 using Xylia.Preview.Data.Models;
 
 namespace Xylia.Preview.Data.Engine.BinData.Helpers;
@@ -124,7 +124,7 @@ public sealed class DatafileDetect : ITableParseType
 	/// </summary>
 	/// <param name="tables"></param>
 	/// <param name="AliasTable"></param>
-	private void Read(IEnumerable<Table> tables, List<AliasCollection> AliasTable)
+	private void Read(IEnumerable<Table> tables, List<AliasTable> AliasTable)
 	{
 		tables.ForEach(table => by_id[table.Type] = "");
 		Parallel.ForEach(tables, table =>

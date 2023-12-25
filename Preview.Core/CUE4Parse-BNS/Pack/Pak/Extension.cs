@@ -5,9 +5,9 @@ using CUE4Parse.Utils;
 namespace CUE4Parse.BNS.Pak;
 public static class Extension
 {
-	public static void WriteToDir(this MyPakFileReader pak, string folder)
+	public static void WriteToDir(this MyPakFileReader pak, string folder, string name)
 	{
-		var path = Path.Combine(folder + "\\Xylia_P.pak");
+		var path = Path.Combine(folder, name);
 		Directory.CreateDirectory(folder);
 
 		pak.Write(new BinaryWriter(new FileStream(path, FileMode.Create)));
@@ -52,4 +52,4 @@ public static class Extension
 
 		return paks;
 	}
-}
+}						    

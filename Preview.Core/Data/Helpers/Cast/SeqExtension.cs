@@ -8,9 +8,10 @@ public static partial class SeqExtension
 {
 	public static object CastSeq(this string value, string name)
 	{
-		if (!name.TryParseToEnum<SeqType>(out var SeqType)) return null;
-		else if (SeqType == SeqType.KeyCap) return KeyCap.Cast(KeyCap.GetKeyCode(value));
-		else if (SeqType == SeqType.KeyCommand) return KeyCommand.Cast(value.ToEnum<KeyCommandSeq>());
+		var type = name.ToEnum<SequenceType>();
+		if (type == SequenceType.None) return null;
+		else if (type == SequenceType.KeyCap) return KeyCap.Cast(KeyCap.GetKeyCode(value));
+		else if (type == SequenceType.KeyCommand) return KeyCommand.Cast(value.ToEnum<KeyCommandSeq>());
 
 		throw new InvalidCastException($"Cast Failed: {name} > {value}");
 	}
@@ -25,7 +26,7 @@ public static partial class SeqExtension
 }
 
 
-public enum SeqType
+public enum SequenceType
 {
 	None,
 

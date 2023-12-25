@@ -5,6 +5,7 @@
 		<Nullable>enable</Nullable>
 		<UseWPF>true</UseWPF>
 		<PlatformTarget>x64</PlatformTarget>
+		<SignAssembly>True</SignAssembly>
 	</PropertyGroup>
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
 		<DebugType>none</DebugType>
@@ -15,7 +16,7 @@
 		<PackageReference Include="SkiaSharp.Views.WPF" Version="2.88.6" />
 	</ItemGroup>
 	<ItemGroup>
-		<ProjectReference Include="..\Preview.Core\Preview.Core.csproj" />
+	  <ProjectReference Include="..\Preview.Core\Preview.Core.csproj" />
 	</ItemGroup>
 	<ItemGroup>
 		<Resource Include="Resources\a.png" />

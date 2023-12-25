@@ -68,7 +68,6 @@ public class AnchorPanel : Panel
 	/// 
 	/// The Offset property is read by a AnchorPanel on its children to determine where to position them.
 	/// The child's offset from this property does not have an effect on the AnchorPanel' own size.
-	/// Conflict between the Offset and Right properties is resolved in favor of Offset.
 	/// </summary>
 	public static readonly DependencyProperty OffsetProperty
 		= DependencyProperty.RegisterAttached("Offset", typeof(Rect), typeof(AnchorPanel),
@@ -77,6 +76,10 @@ public class AnchorPanel : Panel
 	public static readonly DependencyProperty AnchorProperty
 		= DependencyProperty.RegisterAttached("Anchor", typeof(Anchor), typeof(AnchorPanel),
 			new FrameworkPropertyMetadata((Anchor)default, new PropertyChangedCallback(OnPositioningChanged)));
+
+	public static readonly DependencyProperty AlignmentProperty
+	= DependencyProperty.RegisterAttached("Alignment", typeof(Vector), typeof(AnchorPanel),
+		new FrameworkPropertyMetadata((Vector)default, new PropertyChangedCallback(OnPositioningChanged)));
 	#endregion
 
 

@@ -467,4 +467,25 @@
     <value>When viewing single file, you can edit the file
 Please note that do not modify the order of nodes</value>
   </data>
+  <data name="Asset_Repack" xml:space="preserve">
+    <value>Repack</value>
+  </data>
+  <data name="Text_Add" xml:space="preserve">
+    <value>Add</value>
+  </data>
+  <data name="Text_Remove" xml:space="preserve">
+    <value>Remove</value>
+  </data>
+  <data name="Text_Update" xml:space="preserve">
+    <value>Update</value>
+  </data>
+  <data name="TextView_NotExist_x16" xml:space="preserve">
+    <value>There is no .x16 files in selected directory.</value>
+  </data>
+  <data name="TextView_ReplaceCompleted" xml:space="preserve">
+    <value>Replace completed!</value>
+  </data>
+  <data name="TextView_SaveCompleted" xml:space="preserve">
+    <value>Save completed!</value>
+  </data>
 </root>

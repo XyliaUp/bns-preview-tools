@@ -7,7 +7,7 @@ namespace Xylia.Preview.Data.Models;
 public sealed class KeyCap : ModelElement
 {
 	#region Methods
-	public SKBitmap Icon => this.Attributes["icon"].GetIcon();
+	public SKBitmap Icon => this.Attributes["icon"]?.ToString().GetIcon();
 
 	public string Image => this.Attributes["image"].GetText();
 

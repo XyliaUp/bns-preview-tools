@@ -1,12 +1,11 @@
 ﻿using Xylia.Preview.Data.Common.Abstractions;
-using Xylia.Preview.Data.Common.DataStruct;
 
 namespace Xylia.Preview.Data.Models;
 public sealed class GuildBattleFieldZone : ModelElement, IAttraction
 {
-	public Ref<Text> GuildBattleFieldZoneName2;
-	public Ref<Text> GuildBattleFieldZoneDesc;
+	#region IAttraction
+	public string Text => this.Attributes["guild-battle-field-zone-name2"].GetText();
 
-	public string Text => this.GuildBattleFieldZoneName2.GetText();
-	public string Describe => this.GuildBattleFieldZoneDesc.GetText();
+	public string Describe => this.Attributes["guild-battle-field-zone-desc"].GetText();
+	#endregion
 }

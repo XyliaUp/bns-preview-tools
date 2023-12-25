@@ -51,9 +51,9 @@ public class PreviewModel : RecordCommand
 
                     models.Add(new()
                     {
-                        Export = await FileCache.Provider.LoadObjectAsync<UObject>(appearance.Attributes["body-mesh-name"]),
-                        Cols = new string[] { appearance.Attributes["body-material-name"] },
-                        AnimSet = await FileCache.Provider.LoadObjectAsync<UAnimSet>(record.Attributes["animset"]),
+                        Export = await FileCache.Provider.LoadObjectAsync<UObject>(appearance.Attributes["body-mesh-name"]?.ToString()),
+                        Cols = new string[] { appearance.Attributes["body-material-name"]?.ToString() },
+                        AnimSet = await FileCache.Provider.LoadObjectAsync<UAnimSet>(record.Attributes["animset"]?.ToString()),
                     });
                 }
                 break;
@@ -66,13 +66,13 @@ public class PreviewModel : RecordCommand
                         models.Add(new ModelData()
                         {
                             DisplayName = Mesh,
-                            Export = FileCache.Provider.LoadObject<UObject>(record.Attributes[Mesh]),
-                            Cols = new string[] { record.Attributes[Col, 1], record.Attributes[Col, 2], record.Attributes[Col, 3] },
+                            Export = FileCache.Provider.LoadObject<UObject>(record.Attributes[Mesh]?.ToString()),
+                            Cols = new string[] { record.Attributes[Col, 1]?.ToString(), record.Attributes[Col, 2]?.ToString(), record.Attributes[Col, 3]?.ToString() },
                         });
                     }
 
                     var MeshId = record.Attributes["mesh-id"];
-                    if (!string.IsNullOrEmpty(MeshId))
+                    if (!string.IsNullOrEmpty(MeshId?.ToString()))
                     {
                         //"mesh-id"
                         //"mesh-id-2"
@@ -87,8 +87,8 @@ public class PreviewModel : RecordCommand
 
                         models.Add(new ModelData()
                         {
-                            Export = FileCache.Provider.LoadObject<UObject>(record.Attributes["talk-mesh"]),
-                            AnimSet = FileCache.Provider.LoadObject<UAnimSet>(record.Attributes["talk-animset"]),
+                            Export = FileCache.Provider.LoadObject<UObject>(record.Attributes["talk-mesh"]?.ToString()),
+                            AnimSet = FileCache.Provider.LoadObject<UAnimSet>(record.Attributes["talk-animset"]?.ToString()),
                         });
                     }
                     else
@@ -115,7 +115,7 @@ public class PreviewModel : RecordCommand
                             await Load(pet, models);
 
                             var equipshow = record.Attributes["equip-show"];
-                            if (!string.IsNullOrEmpty(equipshow))
+                            if (!string.IsNullOrEmpty(equipshow?.ToString()))
                             {
                                 //var EquipShow = FileCache.Pakitem.LoadObject<UShowObject>(equipshow);
                             }
@@ -136,9 +136,9 @@ public class PreviewModel : RecordCommand
                 {
                     models.Add(new()
                     {
-                        Export = await FileCache.Provider.LoadObjectAsync<UObject>(record.Attributes["mesh-name"]),
-                        AnimSet = await FileCache.Provider.LoadObjectAsync<UAnimSet>(record.Attributes["anim-set-name"]),
-                        Cols = [record.Attributes["material-name-1"], record.Attributes["material-name-2"], record.Attributes["material-name-3"]],
+                        Export = await FileCache.Provider.LoadObjectAsync<UObject>(record.Attributes["mesh-name"]?.ToString()),
+                        AnimSet = await FileCache.Provider.LoadObjectAsync<UAnimSet>(record.Attributes["anim-set-name"]?.ToString()),
+                        Cols = [record.Attributes["material-name-1"]?.ToString(), record.Attributes["material-name-2"]?.ToString(), record.Attributes["material-name-3"]?.ToString()],
                     });
                     break;
                 }
@@ -147,9 +147,9 @@ public class PreviewModel : RecordCommand
                 {
                     models.Add(new ModelData()
                     {
-                        Export = FileCache.Provider.LoadObject<UObject>(record.Attributes["mesh-name"]),
-                        AnimSet = FileCache.Provider.LoadObject<UAnimSet>(record.Attributes["anim-set-name"]),
-                        Cols = [record.Attributes["material-name-1"], record.Attributes["material-name-2"], record.Attributes["material-name-3"]],
+                        Export = FileCache.Provider.LoadObject<UObject>(record.Attributes["mesh-name"]?.ToString()),
+                        AnimSet = FileCache.Provider.LoadObject<UAnimSet>(record.Attributes["anim-set-name"]?.ToString()),
+                        Cols = [record.Attributes["material-name-1"]?.ToString(), record.Attributes["material-name-2"]?.ToString(), record.Attributes["material-name-3"]?.ToString()],
                     });
                     break;
                 }

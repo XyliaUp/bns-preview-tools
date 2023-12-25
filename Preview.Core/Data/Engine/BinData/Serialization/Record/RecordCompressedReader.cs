@@ -1,9 +1,6 @@
 ﻿using System.Runtime.InteropServices;
-
-using Xylia.Preview.Data.Common.Abstractions;
-
 using ICSharpCode.SharpZipLib.Zip.Compression.Streams;
-
+using Xylia.Preview.Data.Common.Abstractions;
 using Xylia.Preview.Data.Engine.Readers;
 
 namespace Xylia.Preview.Data.Engine.BinData.Serialization;

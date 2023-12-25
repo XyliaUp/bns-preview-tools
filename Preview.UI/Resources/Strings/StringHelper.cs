@@ -46,7 +46,7 @@ public sealed class StringHelper : ResourceDictionary
 
 
 			// resource
-			this.Clear();
+			//this.Clear();
 
 			ConfigHelper.Instance.SetLang(_cultureInfo.Name);
 			var manager = new ResourceManager("Xylia.Preview.UI.Resources.Strings.Strings", Assembly.GetExecutingAssembly());
@@ -55,7 +55,7 @@ public sealed class StringHelper : ResourceDictionary
 				string resourceKey = entry.Key.ToString();
 				object resource = entry.Value;
 
-				this.Add(resourceKey, resource);
+				this[resourceKey] = resource;
 			}
 		}
 	}

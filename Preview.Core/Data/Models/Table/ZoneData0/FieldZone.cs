@@ -3,14 +3,10 @@
 namespace Xylia.Preview.Data.Models;
 public class FieldZone : ModelElement, IAttraction
 {
-	#region Fields
-	public Ref<Text> Name2 { get; set; }
+	#region IAttraction
+	public string Text => this.Attributes["name2"].GetText();
 
-	public Ref<Text> Desc { get; set; }
-
-	public string Text => this.Name2.GetText();
-
-	public string Describe => this.Desc.GetText();
+	public string Describe => this.Attributes["desc"].GetText();
 	#endregion
 
 

@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿#define DEV
+using System.Windows;
 using System.Windows.Controls;
 using Xylia.Preview.Common;
 using Xylia.Preview.Data.Helpers;
@@ -15,7 +16,8 @@ public partial class ItemPage : Page
 		InitializeComponent();
 
 #if DEV
-	   DEBUG.IsSelected = True;
+		DEBUG.Visibility = Visibility.Visible;
+		DEBUG.IsSelected = true;
 #endif
 	}
 

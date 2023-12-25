@@ -2,6 +2,7 @@
 using System.Xml;
 
 using CUE4Parse.Utils;
+using Serilog;
 using Xylia.Preview.Common.Extension;
 using Xylia.Preview.Data.Common.Exceptions;
 using Xylia.Preview.Data.Engine.BinData.Models;
@@ -27,12 +28,12 @@ public static class TableDefinitionHelper
 
 		// public
 		var param = ConfigParam.LoadFrom(_assembly.GetManifestResourceNames()
-			.Where(name => name.StartsWith("Xylia.Preview.Data.Definition.Global"))
+			.Where(name => name.StartsWith("Xylia.Preview.Data.Definition.Sequence"))
 			.Select(name => new StreamReader(_assembly.GetManifestResourceStream(name)).ReadToEnd()).ToArray());
 
 		// result
 		var defs = _assembly.GetManifestResourceNames()
-			.Where(name => name.StartsWith("Xylia.Preview.Data.Definition.") && !name.Contains(".Global"))
+			.Where(name => name.StartsWith("Xylia.Preview.Data.Definition.") && !name.Contains(".Sequence"))
 			.Select(name => name.GetResource()).SelectMany(res => LoadTableDefinition(param, res));
 		#endregion
 
@@ -94,7 +95,7 @@ public static class TableDefinitionHelper
 
 
 		#region els
-		List<ElDefinition> els = new();
+		List<ElDefinition> els = [];
 		foreach (var el in tableNode.SelectNodes("./el").OfType<XmlElement>())
 		{
 			var def = new ElDefinition();
@@ -121,7 +122,7 @@ public static class TableDefinitionHelper
 				}
 			}
 			def.Size = GetOffsetAndSize(def.ExpandedAttributes, true);
-			def.CreateExpandedAttributeMap();
+			def.CreateAttributeMap();
 
 
 			short subIndex = 0;
@@ -165,7 +166,7 @@ public static class TableDefinitionHelper
 				}
 
 				subtable.Size = GetOffsetAndSize(subtable.ExpandedAttributesSubOnly, true, def.Size);
-				subtable.CreateExpandedAttributeMap();
+				subtable.CreateAttributeMap();
 			}
 			def.CreateSubtableMap();
 			#endregion
@@ -219,12 +220,13 @@ public static class TableDefinitionHelper
 				Type = AttributeType.TInt64,
 				IsKey = true,
 				IsRequired = true,
-				Repeat = 1
+				CanInput = false,
+				Repeat = 1,
 			};
 
 			table.ElRecord.Attributes.Insert(0, autoIdAttr);
 			table.ElRecord.ExpandedAttributes.Insert(0, autoIdAttr);
-			table.ElRecord.CreateExpandedAttributeMap();
+			table.ElRecord.CreateAttributeMap();
 		}
 
 		return table;
@@ -245,9 +247,9 @@ public static class TableDefinitionHelper
 
 				Attributes.Add(record);
 			}
-			catch (Exception ee)
+			catch (Exception ex)
 			{
-				throw BnsDataException.InvalidDefinition($"attribute load failed: {node.OuterXml}");
+				throw BnsDataException.InvalidDefinition($"attribute load failed: {node.OuterXml}\n{ex.Message}");
 			}
 		}
 
@@ -307,7 +309,7 @@ public static class TableDefinitionHelper
 		if (table.MajorVersion == definition.MajorVersion &&
 			table.MinorVersion == definition.MinorVersion) return;
 
-		Serilog.Log.Warning($"check table `{definition.Name}` type: {table.Type} " +
+		Log.Warning($"check table `{definition.Name}` type: {table.Type} " +
 			$"version: {definition.MajorVersion}.{definition.MinorVersion} <> {table.MajorVersion}.{table.MinorVersion}");
 	}
 
@@ -359,7 +361,7 @@ public static class TableDefinitionHelper
 				}
 
 				definition.Size = size;
-				definition.CreateExpandedAttributeMap();
+				definition.CreateAttributeMap();
 			}
 			else
 			{

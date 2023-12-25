@@ -1,13 +1,10 @@
-﻿//#define DEV
-
-using System.Collections.Concurrent;
+﻿using System.Collections.Concurrent;
 using System.ComponentModel;
 using System.IO;
 using System.Reflection;
 using System.Windows;
 using System.Windows.Shell;
 using System.Windows.Threading;
-
 using CUE4Parse.BNS;
 using CUE4Parse.BNS.Conversion;
 using CUE4Parse.UE4.Assets.Exports.Sound;
@@ -52,9 +49,11 @@ public partial class App : Application
 		#endregion
 
 #if DEV
-		//FileCache.Data = new(new Xylia.Preview.Data.Engine.DatData.FolderProvider(@"D:\资源\客户端相关\Auto\data"));
-		MainWindow = new Xylia.Preview.UI.Art.GameUI.Scene.Game_Broadcasting.Game_BroadcastingScene();
-		MainWindow.Show();
+		FileCache.Data = new(new Xylia.Preview.Data.Engine.DatData.FolderProvider(@"D:\资源\客户端相关\Auto\data"));
+		//MainWindow = new Xylia.Preview.UI.Art.GameUI.Scene.Game_Broadcasting.Game_BroadcastingScene();
+
+		var scene = new Xylia.Preview.UI.Art.GameUI.Scene.Game_ItemMap.Game_ItemMapScene();
+		scene.ItemMapPanel_C.Show();
 		return;
 #endif
 

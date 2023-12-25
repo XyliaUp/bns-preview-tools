@@ -18,10 +18,10 @@
 								</Grid.RowDefinitions>
 								<DockPanel LastChildFill="True" Margin="0,0,0,6">
 									<hc:ButtonGroup Margin="0,0,6,0" Style="{StaticResource ButtonGroupSolid}">
-										<RadioButton Command="hc:ControlCommands.SortByCategory" IsChecked="True">
+										<RadioButton Command="hc:ControlCommands.SortByCategory">
 											<Rectangle Width="16" Height="16" Fill="{StaticResource SortByCategoryDrawingBrush}" />
 										</RadioButton>
-										<RadioButton Command="hc:ControlCommands.SortByName">
+										<RadioButton Command="hc:ControlCommands.SortByName" IsChecked="True">
 											<Rectangle Width="16" Height="16" Fill="{StaticResource SortByNameDrawingBrush}" />
 										</RadioButton>
 									</hc:ButtonGroup>

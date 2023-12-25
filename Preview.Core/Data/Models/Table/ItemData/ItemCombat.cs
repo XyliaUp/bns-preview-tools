@@ -7,13 +7,13 @@ public sealed class ItemCombat : ModelElement
 	[Name("job-style")]
 	public JobStyleSeq JobStyle { get; set; }
 
-	[Name("item-skill"), Repeat(16)]
+	[Name("item-skill")]
 	public Ref<ItemSkill>[] ItemSkill { get; set; }
 
-	[Name("item-skill-second"), Repeat(16)]
+	[Name("item-skill-second")]
 	public Ref<ItemSkill>[] ItemSkillSecond { get; set; }
 
-	[Name("item-skill-third"), Repeat(16)]
+	[Name("item-skill-third")]
 	public Ref<ItemSkill>[] ItemSkillThird { get; set; }
 
 	[Name("skill-modify-info-group")]

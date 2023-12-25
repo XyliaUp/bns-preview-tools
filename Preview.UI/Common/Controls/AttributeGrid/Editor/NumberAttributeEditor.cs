@@ -6,7 +6,7 @@ using HandyControl.Controls;
 using Xylia.Preview.Data.Engine.Definitions;
 
 namespace Xylia.Preview.UI.Controls;
-public class NumberAttributeEditor : PropertyEditorBase
+internal class NumberAttributeEditor : PropertyEditorBase
 {
 	public NumberAttributeEditor(AttributeDefinition attribute)
 	{

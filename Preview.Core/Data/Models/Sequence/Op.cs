@@ -1,8 +1,4 @@
-﻿using System.ComponentModel;
-
-namespace Xylia.Preview.Data.Models.Sequence;
-
-[DefaultValue(eq)]
+﻿namespace Xylia.Preview.Data.Models.Sequence;
 public enum Op
 {
     /// <summary>
@@ -34,22 +30,4 @@ public enum Op
     /// less than or equal
     /// </summary>
     le,
-}
-
-
-
-
-[DefaultValue(and)]
-public enum OpCheck
-{
-    and,
-
-    or,
-}
-
-public enum OpCheck2
-{
-    or,
-
-    and,
 }

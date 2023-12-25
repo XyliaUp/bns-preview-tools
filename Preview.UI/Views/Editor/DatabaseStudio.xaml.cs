@@ -44,10 +44,10 @@ public partial class DatabaseStudio
 			LoadTreeView();
 		}
 
-		#region DEV
+#if DEV
 		database = new BnsDatabase(new FolderProvider("G:\\"));
 		ExecuteSql("SELECT 1+1");
-		#endregion
+#endif
 	}
 	#endregion
 

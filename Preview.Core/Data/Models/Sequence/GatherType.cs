@@ -1,35 +1,33 @@
-﻿using Xylia.Preview.Common.Attributes;
-
-namespace Xylia.Preview.Data.Models.Sequence;
+﻿namespace Xylia.Preview.Data.Models.Sequence;
 public enum GatherType
 {
-    Target,
+	Target,
 
-        Target360,
+	Target360,
 
-        TargetFront180,
+	TargetFront180,
 
-        TargetBack180,
+	TargetBack180,
 
-        TargetFront90,
+	TargetFront90,
 
-        TargetBack90,
+	TargetBack90,
 
-        TargetFront15,
+	TargetFront15,
 
-        TargetFront30,
+	TargetFront30,
 
-        TargetFront45,
+	TargetFront45,
 
-        TargetFront60,
+	TargetFront60,
 
-        TargetFront120,
+	TargetFront120,
 
-        TargetFront270,
+	TargetFront270,
 
-        Laser,
+	Laser,
 
-        TargetAndLinkTarget,
+	TargetAndLinkTarget,
 
-        ShiftingLaser,
+	ShiftingLaser,
 }

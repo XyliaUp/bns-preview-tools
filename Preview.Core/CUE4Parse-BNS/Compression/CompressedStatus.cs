@@ -1,4 +1,4 @@
-﻿namespace CUE4Parse.BNS.Pack;
+﻿namespace CUE4Parse.Compression;
 public enum CompressedStatus
 {
 	/// <summary>

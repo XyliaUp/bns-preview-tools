@@ -1,6 +1,6 @@
 ﻿namespace CUE4Parse.Compression
 {
-    public enum OodleCompressionLevel : ulong
+	public enum OodleCompressionLevel : ulong
     {
         None,
         SuperFast,

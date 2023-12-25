@@ -140,7 +140,7 @@ public partial class IconPicker : AutoCompleteTextBox
 
 	private void SetData()
 	{
-		string Text = this.Text.Split(',').First();
+		string Text = this.Text?.Split(',').First();
 
 		var record = FileCache.Data.IconTexture[Text];
 		if (record is null) return;

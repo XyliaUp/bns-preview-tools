@@ -3,7 +3,6 @@ using System.Runtime.Serialization;
 using Xylia.Preview.Common.Attributes;
 using Xylia.Preview.Common.Extension;
 using Xylia.Preview.Data.Client;
-using Xylia.Preview.Data.Engine.BinData.Models;
 using Xylia.Preview.Data.Helpers;
 
 namespace Xylia.Preview.Data.Models;
@@ -12,44 +11,9 @@ public abstract class ModelElement
 	[IgnoreDataMember]
 	public Record Source { get; private set; }
 
-	public AttributeCollection Attributes =>  Source.Attributes;
+	public AttributeCollection Attributes => Source.Attributes;
 
 	public override string ToString() => Source.ToString();
-
-
-	public void Serialize()
-	{
-		//Attributes.Synchronize();
-
-		//// check definition
-		//ArgumentNullException.ThrowIfNull(ElDefinition);
-
-		//// create record
-		//builder.InitializeRecord();
-
-		//Data = new byte[ElDefinition.Size];
-		//XmlNodeType = 1;
-		//SubclassType = ElDefinition.SubclassType;
-		//DataSize = ElDefinition.Size;
-		//StringLookup = builder.StringLookup;
-
-		//// Go through each attribute
-		////AttributeDefaultValues.SetRecordDefaults(record, this);
-		//foreach (var attr in ElDefinition.ExpandedAttributes)
-		//{
-		//	try
-		//	{
-		//		builder.SetAttribute(this, attr, Attributes[attr.Name]);
-		//	}
-		//	catch (Exception ex)
-		//	{
-		//		Debug.WriteLine(ex.Message);
-		//	}
-		//}
-
-		//builder.FinalizeRecord();
-	}
-
 
 
 
@@ -58,7 +22,7 @@ public abstract class ModelElement
 	/// </summary>
 	/// <typeparam name="T"></typeparam>
 	/// <param name="source"></param>
-	/// <param name="record"></param>
+	/// <param name="element"></param>
 	/// <returns></returns>
 	public static T As<T>(Record source, T element) where T : ModelElement
 	{
@@ -72,18 +36,16 @@ public abstract class ModelElement
 			// props
 			var type = prop.PropertyType;
 			var name = (prop.GetAttribute<NameAttribute>()?.Name ?? prop.Name).TitleLowerCase();
-			var repeat = prop.GetAttribute<Repeat>()?.Value ?? 1;
 			if (type.IsGenericType && type.GetGenericTypeDefinition() == typeof(LazyList<>))
 			{
 				var toType = typeof(List<>).MakeGenericType(type.GetGenericArguments()[0]);
-				var value = Activator.CreateInstance(type,
-					new Func<object>(() => Convert(element, name, toType, repeat)));
+				var value = Activator.CreateInstance(type, new Func<object>(() => Convert(element, name, toType)));
 
 				prop.SetValue(element, value);
 			}
 			else
 			{
-				prop.SetValue(element, Convert(element, name, type, repeat));
+				prop.SetValue(element, Convert(element, name, type));
 			}
 		}
 		#endregion
@@ -100,9 +62,10 @@ public abstract class ModelElement
 	/// <param name="repeat"></param>
 	/// <returns></returns>
 	/// <exception cref="Exception"></exception>
-	private static object Convert(ModelElement element, string name, Type toType, ushort repeat)
+	private static object Convert(ModelElement element, string name, Type toType)
 	{
 		var record = element.Source;
+		var attribute = record.ElDefinition.GetAttribute(name);
 
 		if (toType.IsGenericType && toType.GetGenericTypeDefinition() == typeof(List<>))
 		{
@@ -118,17 +81,17 @@ public abstract class ModelElement
 
 			foreach (var child in children)
 			{
-				var type = child.Attributes[AttributeCollection.s_type];
-				var _record = (ModelElement)subs.CreateInstance(type, out _);
-				add.Invoke(records, new object[] { ModelElement.As(child, _record) });
+				var type = child.Attributes.Get<string>(AttributeCollection.s_type);
+				add.Invoke(records, new object[] { As(child, subs.CreateInstance(type)) });
 			}
 
 			return records;
 		}
 
-		if (repeat == 1)
+		// load attribute
+		if (attribute is null || attribute.Repeat == 1)
 		{
-			return AttributeConverter.Convert(record.Attributes[name], toType, record.Owner?.Owner);
+			return AttributeConverter.Convert(record.Attributes[name], toType);
 		}
 		else
 		{
@@ -136,10 +99,10 @@ public abstract class ModelElement
 				throw new Exception($"Repeatable object must to use array type: {record.GetType()} -> {name}");
 
 			toType = toType.GetElementType();
-			var value = Array.CreateInstance(toType, repeat);
+			var value = Array.CreateInstance(toType, attribute.Repeat);
 
-			for (int i = 0; i < repeat; i++)
-				value.SetValue(AttributeConverter.Convert(record.Attributes[name, i + 1], toType, record.Owner.Owner), i);
+			for (int i = 0; i < attribute.Repeat; i++)
+				value.SetValue(AttributeConverter.Convert(record.Attributes[name, i + 1], toType), i);
 
 			return value;
 		}
@@ -149,85 +112,32 @@ public abstract class ModelElement
 
 public struct Ref<TElement> where TElement : ModelElement
 {
+	public Ref(Record value)
+	{
+		source = value;
+	}
+
 	public Ref(string value, BnsDatabase database = null)
 	{
-		if (value is null)
-		{
-			throw new Exception();
-		}
-		else if (value.Contains(':'))
-		{
-			Table = value.Split(':')[0];
-			Alias = value.Split(':')[1]?.Trim();
-		}
-		else if (typeof(TElement) != typeof(Record))
-		{
-			Table = typeof(TElement).Name;
-			Alias = value;
-		}
+		var provider = (database ?? FileCache.Data).Provider;
 
-		Database = database ?? FileCache.Data;
+		if (value.Contains(':')) source = provider.Tables.GetRecord(value);
+		else source = provider.Tables.GetRecord(typeof(TElement).Name, value);
 	}
 
-	#region Field
-	private readonly BnsDatabase Database;
-
-	public readonly string Table;
-	public string Alias;
-	//public int Id;
-	//public int Variant;
-
-	public bool IsNull => Alias is null || Instance is null;
-
-	public override string ToString() => IsNull ? null : $"{Table}:{Alias}";
-	#endregion
 
 	#region	Instance
+	private readonly Record source;
 	private TElement _instance;
 
-	public TElement Instance => _instance ??= CastObject<TElement>(Table, Alias, Database);
+	public TElement Instance => _instance ??= CastObject<TElement>();
 
-	public static T CastObject<T>(string table, string alias, BnsDatabase data) where T : ModelElement
+	private readonly T CastObject<T>() where T : ModelElement
 	{
-		if (alias is null) return null;
+		if (source is null) return null;
 
-		// tref: need register on the database
-		// TODO: change to auto create ?
-		if (typeof(T) == typeof(ModelElement))
-		{
-			var prop = data.GetProperty(table);
-			return (T) (prop?.GetValue(data) as Table)?[alias]?.Model.Value;
-		}
-			
-
-		// ref: create model table
-		return data.Get<T>(table)?[alias];
+		var subs = ModelTypeHelper.Get(typeof(T));
+		return ModelElement.As(source, (T)subs.CreateInstance(source.Attributes["type"]?.ToString()));
 	}
-	#endregion
-
-
-	#region Operator
-	public static bool operator ==(Ref<TElement> a, Ref<TElement> b)
-	{
-		// If one is null, but not both, return false.
-		if (a.GetType() != b.GetType()) return false;
-
-		// Return true if the fields match:
-		if (a.Alias is null && b.Alias is null) return false;
-		else if (a.Alias != null && a.Alias.Equals(b.Alias, StringComparison.OrdinalIgnoreCase)) return true;
-
-
-		return false;
-	}
-	public static bool operator !=(Ref<TElement> a, Ref<TElement> b) => !(a == b);
-
-	public static bool operator ==(Ref<TElement> a, TElement b)
-	{
-		return a.Instance == b;
-	}
-	public static bool operator !=(Ref<TElement> a, TElement b) => !(a == b);
-
-	public override readonly bool Equals(object other) => other is Ref<TElement> record && this == record;
-	public override readonly int GetHashCode() => base.GetHashCode();
 	#endregion
 }

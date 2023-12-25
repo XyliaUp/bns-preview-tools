@@ -6,7 +6,7 @@ using HandyControl.Controls;
 using Xylia.Preview.Data.Common.DataStruct;
 
 namespace Xylia.Preview.UI.Common.Controls.AttributeGrid.Editor;
-public class BooleanPropertyEditor : SwitchPropertyEditor, IValueConverter
+internal class BooleanPropertyEditor : SwitchPropertyEditor, IValueConverter
 {
 	protected override IValueConverter GetConverter(PropertyItem propertyItem) => this;
 

@@ -302,7 +302,6 @@
 			checkBox13.TabIndex = 93;
 			checkBox13.Text = "直接处理bin文件";
 			checkBox13.UseVisualStyleBackColor = true;
-			checkBox13.CheckedChanged += SaveCheckStatus;
 			// 
 			// button2
 			// 
@@ -322,7 +321,6 @@
 			Txt_Bin_Data.Name = "Txt_Bin_Data";
 			Txt_Bin_Data.Size = new Size(530, 23);
 			Txt_Bin_Data.TabIndex = 64;
-			Txt_Bin_Data.TextChanged += this.SaveConfig;
 			Txt_Bin_Data.DoubleClick += DoubleClickPath;
 			// 
 			// button1
@@ -374,7 +372,6 @@
 			checkBox1.TabIndex = 25;
 			checkBox1.Text = "第三方封包";
 			checkBox1.UseVisualStyleBackColor = true;
-			checkBox1.CheckedChanged += SaveCheckStatus;
 			// 
 			// button3
 			// 
@@ -391,7 +388,7 @@
 			// 
 			label6.AutoSize = true;
 			label6.Font = new Font("微软雅黑", 12F);
-			label6.Location = new Point(606, 203);
+			label6.Location = new Point(486, 203);
 			label6.Margin = new Padding(4, 0, 4, 0);
 			label6.Name = "label6";
 			label6.Size = new Size(256, 21);
@@ -450,7 +447,6 @@
 			txbRpFolder.Name = "txbRpFolder";
 			txbRpFolder.Size = new Size(507, 25);
 			txbRpFolder.TabIndex = 4;
-			txbRpFolder.TextChanged += txbRpFolder_TextChanged;
 			txbRpFolder.DoubleClick += DoubleClickPath;
 			// 
 			// cB_output
@@ -466,7 +462,6 @@
 			cB_output.TabIndex = 14;
 			cB_output.Text = "自动获得文件夹位置";
 			cB_output.UseVisualStyleBackColor = true;
-			cB_output.CheckedChanged += SaveCheckStatus;
 			// 
 			// bntUnpack
 			// 
@@ -492,7 +487,6 @@
 			Cb_back.TabIndex = 20;
 			Cb_back.Text = "备份原文件";
 			Cb_back.UseVisualStyleBackColor = true;
-			Cb_back.CheckedChanged += SaveCheckStatus;
 			// 
 			// btnRepack
 			// 

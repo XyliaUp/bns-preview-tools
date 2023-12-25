@@ -7,6 +7,7 @@ using Xylia.Preview.Common.Extension;
 using Xylia.Preview.Data.Common;
 using Xylia.Preview.Data.Common.DataStruct;
 using Xylia.Preview.Data.Engine.BinData.Helpers;
+using Xylia.Preview.Data.Engine.BinData.Serialization;
 using Xylia.Preview.Data.Engine.DatData;
 using Xylia.Preview.Data.Engine.Definitions;
 using Xylia.Preview.Data.Engine.Readers;
@@ -56,6 +57,8 @@ public class Table : TableHeader, IDisposable
 	#region Data
 	internal TableArchive Archive { get; set; }
 
+	internal StringLookup GlobalString { get; set; }
+
 	/// <summary>
 	/// TODO: Hack because the table seems to offset it randomly?
 	/// </summary>
@@ -66,15 +69,12 @@ public class Table : TableHeader, IDisposable
 	/// </summary>
 	internal byte[] Padding { get; set; }
 
-	internal StringLookup GlobalString { get; set; }
-
-
 
 
 
 	internal Dictionary<Ref, Record> ByRef = new();
 
-	internal Dictionary<AttributeDefinition, Dictionary<string, Record[]>> ByRequired = new();
+	internal Dictionary<AttributeDefinition, Dictionary<object, Record[]>> ByRequired = new();
 
 
 	/// <summary>
@@ -84,7 +84,7 @@ public class Table : TableHeader, IDisposable
 	/// <param name="attribute"></param>
 	/// <param name="value"></param>
 	/// <returns></returns>
-	public Record[] Search(AttributeDefinition attribute, string value)
+	public Record[] Search(AttributeDefinition attribute, object value)
 	{
 		if (attribute != null /*&& attribute.IsRequired*/)
 		{
@@ -93,11 +93,10 @@ public class Table : TableHeader, IDisposable
 				// find group
 				if (!ByRequired.TryGetValue(attribute, out var index))
 				{
-					var comparer = StringComparer.OrdinalIgnoreCase;
 					index = _records
-						.ToLookup(record => record.Attributes.Get(attribute.Name)?.ToString(), comparer)
+						.ToLookup(record => record.Attributes.Get(attribute.Name))
 						.Where(record => record.Key is not null)
-						.ToDictionary(record => record.Key, record => record.ToArray(), comparer);
+						.ToDictionary(record => record.Key, record => record.ToArray());
 
 					ByRequired[attribute] = index;
 				}

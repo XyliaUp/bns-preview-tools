@@ -49,37 +49,37 @@ public class ChallengeList : ModelElement
 
 
 
-	[Name("challenge-quest-basic"), Repeat(20)]
+	[Name("challenge-quest-basic")]
 	public Ref<Quest>[] ChallengeQuestBasic { get; set; }
 
-	[Name("challenge-quest-expansion"), Repeat(20)]
+	[Name("challenge-quest-expansion")]
 	public Ref<Quest>[] ChallengeQuestExpansion { get; set; }
 
-	[Name("challenge-quest-grade"), Repeat(20)]
+	[Name("challenge-quest-grade")]
 	public Grade[] ChallengeQuestGrade { get; set; }
 
 	[Name("challenge-quest-complete-count")]
 	public sbyte ChallengeQuestCompleteCount { get; set; }
 
-	[Name("challenge-quest-attraction"), Repeat(20)]
+	[Name("challenge-quest-attraction")]
 	public Ref<ModelElement>[] ChallengeQuestAttraction { get; set; }
 
 	[Name("challenge-quest-count"), Side(ReleaseSide.Client)]
 	public sbyte ChallengeQuestCount { get; set; }
 
-	[Name("challenge-npc-difficulty"), Repeat(20)]
+	[Name("challenge-npc-difficulty")]
 	public DifficultyTypeSeq[] ChallengeNpcDifficulty { get; set; }
 
-	[Name("challenge-npc-kill"), Repeat(20)]
+	[Name("challenge-npc-kill")]
 	public Ref<Npc>[] ChallengeNpcKill { get; set; }
 
-	[Name("challenge-npc-attraction"), Repeat(20)]
+	[Name("challenge-npc-attraction")]
 	public Ref<ModelElement>[] ChallengeNpcAttraction { get; set; }
 
-	[Name("challenge-npc-grade"), Repeat(20)]
+	[Name("challenge-npc-grade")]
 	public Grade[] ChallengeNpcGrade { get; set; }
 
-	[Name("challenge-npc-quest"), Repeat(20)]
+	[Name("challenge-npc-quest")]
 	public Ref<Quest>[] ChallengeNpcQuest { get; set; }
 
 	[Name("challenge-npc-total-count"), Side(ReleaseSide.Client)]
@@ -88,10 +88,9 @@ public class ChallengeList : ModelElement
 	[Name("challenge-reward-total-count"), Side(ReleaseSide.Client)]
 	public sbyte ChallengeRewardTotalCount { get; set; }
 
-	[Name("challenge-count-for-reward"), Repeat(20)]
+	[Name("challenge-count-for-reward")]
 	public sbyte[] ChallengeCountForReward { get; set; }
 
-	[Repeat(20)]
 	public Ref<ChallengeListReward>[] Reward { get; set; }
 
 

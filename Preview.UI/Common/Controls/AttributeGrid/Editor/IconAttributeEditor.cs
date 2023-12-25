@@ -7,7 +7,7 @@ using HandyControl.Controls;
 using Xylia.Preview.UI.Controls;
 
 namespace Xylia.Preview.UI.Common.Controls.AttributeGrid.Editor;
-public class IconAttributeEditor : ReferenceAttributeEditor
+internal class IconAttributeEditor : ReferenceAttributeEditor
 {
 	public IconAttributeEditor() : base("IconTexture")
 	{

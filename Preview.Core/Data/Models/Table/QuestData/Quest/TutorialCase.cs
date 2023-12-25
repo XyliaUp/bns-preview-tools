@@ -15,11 +15,7 @@ public partial class TutorialCase : ModelElement
 	public List<ReactionSet> ReactionSet { get; set; }
 
 
-
 	public sbyte Prob { get; set; }
-
-	[Repeat(10)]
-	public Ref<MapUnit>[] MapUnit { get; set; }
 
 	public short RangeMax { get; set; }
 
@@ -27,8 +23,6 @@ public partial class TutorialCase : ModelElement
 
 	public ProgressMission ProgressMission { get; set; }
 
-	[Repeat(2)]
-	public Ref<Zone>[] ValidZone { get; set; }
 
 	[Side(ReleaseSide.Server)]
 	public Ref<Zone> Zone { get; set; }
@@ -37,7 +31,7 @@ public partial class TutorialCase : ModelElement
 	public Ref<QuestDecision> QuestDecision { get; set; }
 
 
-	public virtual List<Ref<ModelElement>> Attractions { get; }
+	public virtual List<Record> Attractions { get; }
 	#endregion
 
 	#region Sub
@@ -114,7 +108,7 @@ public partial class TutorialCase : ModelElement
 		{
 			Inverntory,
 
-					QuestJournal,
+			QuestJournal,
 
 			Skill,
 
@@ -122,18 +116,18 @@ public partial class TutorialCase : ModelElement
 
 			Auction,
 
-					CashShop,
+			CashShop,
 
 			Wardrobe,
 
-					AccountContents,
+			AccountContents,
 		}
 
 		public enum WindowOpenWaySeq
 		{
 			None,
 
-					ByNpcSellerButton,
+			ByNpcSellerButton,
 		}
 	}
 
@@ -270,7 +264,7 @@ public partial class TutorialCase : ModelElement
 		public Ref<EnvResponse> EnvResponse { get; set; }
 
 
-		public override List<Ref<ModelElement>> Attractions => new() { Object2 };
+		public override List<Record> Attractions => new() { Object2.Instance?.Source };
 	}
 
 	public sealed class EnlargeMiniMap : TutorialCase

@@ -9,11 +9,6 @@ public struct Vector32
     public int Y;
     public int Z;
 
-    public override string ToString()
-    {
-        return $"{X},{Y},{Z}";
-    }
-
     public Vector32(int x, int y, int z)
     {
         X = x;
@@ -58,8 +53,7 @@ public struct Vector32
         return obj is Vector32 other && Equals(other);
     }
 
-    public override int GetHashCode()
-    {
-        return HashCode.Combine(X, Y, Z);
-    }
+    public override int GetHashCode()  => HashCode.Combine(X, Y, Z);
+
+	public override string ToString() => $"{X},{Y},{Z}";
 }

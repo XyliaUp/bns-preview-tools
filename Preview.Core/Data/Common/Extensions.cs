@@ -1,6 +1,5 @@
 ﻿using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
-
 using Xylia.Preview.Data.Models;
 
 namespace Xylia.Preview.Data.Common;

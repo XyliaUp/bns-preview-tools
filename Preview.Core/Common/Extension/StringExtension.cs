@@ -129,7 +129,7 @@ public static class StringExtension
 	/// https://stackoverflow.com/a/8583383/3286260
 	/// I remove support for [ and ] to avoid missing close brackets
 	/// </summary>
-	public static bool SqlLike(this string str, string pattern)
+	public static bool SqlLike(this string str, string pattern, Collation collation)
 	{
 		var isMatch = true;
 		var isWildCardOn = false;
@@ -145,7 +145,7 @@ public static class StringExtension
 		{
 			var c = str[i];
 
-			endOfPattern = patternIndex >= pattern.Length;
+			endOfPattern = (patternIndex >= pattern.Length);
 
 			if (!endOfPattern)
 			{
@@ -179,7 +179,7 @@ public static class StringExtension
 
 			if (isWildCardOn)
 			{
-				if (c.ToString().CompareTo(p.ToString()) == 0)
+				if (collation.Compare(c.ToString(), p.ToString()) == 0)
 				{
 					isWildCardOn = false;
 					patternIndex++;
@@ -211,7 +211,7 @@ public static class StringExtension
 			}
 			else
 			{
-				if (c.ToString().CompareTo(p.ToString()) == 0)
+				if (collation.Compare(c.ToString(), p.ToString()) == 0)
 				{
 					patternIndex++;
 				}
@@ -232,7 +232,7 @@ public static class StringExtension
 			}
 		}
 
-		endOfPattern = patternIndex >= pattern.Length;
+		endOfPattern = (patternIndex >= pattern.Length);
 
 		if (isMatch && !endOfPattern)
 		{

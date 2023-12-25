@@ -9,7 +9,7 @@
 		<attribute name="ability-max" type="Int32" />
     </sub>
     <sub name="effect">
-		<attribute name="effect" ref="Effect" />
+		<attribute name="effect" type="Ref" ref="Effect" />
     </sub>
   </el>
 </table>

@@ -4,7 +4,6 @@ using CUE4Parse.UE4.Assets.Exports.Texture;
 using CUE4Parse_Conversion.Textures;
 
 using SkiaSharp;
-using Xylia.Preview.Common.Attributes;
 using Xylia.Preview.Common.Extension;
 using Xylia.Preview.Data.Common.DataStruct;
 using Xylia.Preview.Data.Helpers;
@@ -14,9 +13,6 @@ using static Xylia.Preview.Data.Models.Item.Grocery;
 namespace Xylia.Preview.Data.Models;
 public abstract partial class Item : ModelElement
 {
-	[Repeat(10)]
-	public Ref<ItemCombat>[] ItemCombat { get; set; }
-
 	public Ref<ItemBrand> Brand { get; set; }
 
 
@@ -29,28 +25,7 @@ public abstract partial class Item : ModelElement
 	public MarketCategory3Seq MarketCategory3 { get; set; }
 
 
-
-	public bool CannotDispose { get; set; }
-
-	public bool CannotSell { get; set; }
-
-	public bool CannotTrade { get; set; }
-
-	public bool CannotDepot { get; set; }
-
-	public bool CannotUseRestoreFailedEnchantCost { get; set; }
-
-	public bool ConsumeDurability { get; set; }
-
 	public bool Auctionable { get; set; }
-
-	public bool SealRenewalAuctionable { get; set; }
-
-	public bool PartyAuctionExclusion { get; set; }
-
-	public bool AcquireUsed { get; set; }
-
-	public bool EquipUsed { get; set; }
 
 	public bool AccountUsed { get; set; }
 
@@ -75,10 +50,6 @@ public abstract partial class Item : ModelElement
 
 	public EquipType EquipType { get; set; }
 
-	public Ref<Faction> EquipFaction { get; set; }
-
-	public short EquipFactionLevel { get; set; }
-
 	public sbyte ItemGrade { get; set; }
 
 
@@ -96,34 +67,24 @@ public abstract partial class Item : ModelElement
 	}
 
 
-
 	public MainAbility MainAbility1 => this.Attributes["main-ability-1"].ToEnum<MainAbility>();
 	public MainAbility MainAbility2 => this.Attributes["main-ability-2"].ToEnum<MainAbility>();
 
 
-
-
-	public Msec UsableDuration => this.Attributes["usable-duration"].ToInt32();
+	public Msec UsableDuration => (Msec)this.Attributes["usable-duration"];
 	public Ref<ItemEvent> EventInfo { get; set; }
-	public bool ShowRewardPreview => this.Attributes["show-reward-preview"].ToBool();
+	public bool ShowRewardPreview => (bool)this.Attributes["show-reward-preview"];
 	public Ref<AccountPostCharge> AccountPostCharge { get; set; }
 
-
-
-	public int ImproveId => this.Attributes["improve-id"].ToInt32();
-	public sbyte ImproveLevel => this.Attributes["improve-level"].ToInt8();
+	public int ImproveId => (int)this.Attributes["improve-id"];
+	public sbyte ImproveLevel => (sbyte)this.Attributes["improve-level"];
 
 	public Ref<Text> Name2 { get; set; }
 
 	public string ItemName => $"<font name=\"00008130.Program.Fontset_ItemGrade_{this.ItemGrade}\">{this.Name2.GetText()}</font>";
 	public string ItemNameOnly => this.Name2.GetText();
 
-
-
-	public int ClosetGroupId => this.Attributes["closet-group-id"].ToInt32();
-
-
-	public SKBitmap TagIconGrade => this.Attributes["tag-icon-grade"].GetIcon();
+	public int ClosetGroupId => (int)this.Attributes["closet-group-id"];
 
 	public string icon { get; set; }
 

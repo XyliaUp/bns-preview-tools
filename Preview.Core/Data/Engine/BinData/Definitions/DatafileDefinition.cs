@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Diagnostics.CodeAnalysis;
+using Xylia.Preview.Document;
 
 namespace Xylia.Preview.Data.Engine.Definitions;
 public class DatafileDefinition : Collection<TableDefinition>
@@ -14,21 +15,20 @@ public class DatafileDefinition : Collection<TableDefinition>
 
 	#region Helpers
 	private Dictionary<string, TableDefinition> _definitionsByName;
-	private Dictionary<int, TableDefinition> _definitionsByType;
+	private Dictionary<short, TableDefinition> _definitionsByType;
 
-	public new TableDefinition this[int index] => _definitionsByType.GetValueOrDefault(index, null);
+	public TableDefinition this[short index] => _definitionsByType.GetValueOrDefault(index, null);
 	public TableDefinition this[string index] => _definitionsByName.GetValueOrDefault(index, null);
 
 
 	public void CreateMap()
 	{
 		// this.DistinctBy(def => def.Name, new TableNameComparer());
-		_definitionsByType = this.ToLookup(x => (int)x.Type, x => x).ToDictionary(o => o.Key, o => o.First());
-		_definitionsByName = this.ToLookup(x => x.Name, x => x, new TableNameComparer()).ToDictionary(o => o.Key, o => o.First());
+		_definitionsByType = this.ToDistinctDictionary(x => x.Type, null);
+		_definitionsByName = this.ToDistinctDictionary(x => x.Name, new TableNameComparer());
 	}
 	#endregion
 }
-
 public sealed class TableNameComparer : IEqualityComparer<string>
 {
 	public bool Equals(string x, string y)

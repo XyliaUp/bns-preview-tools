@@ -3,6 +3,7 @@ using Xylia.Preview.Data.Common.DataStruct;
 using Xylia.Preview.Data.Engine.BinData.Models;
 using Xylia.Preview.Data.Engine.Definitions;
 using Xylia.Preview.Data.Models;
+using Xylia.Preview.Document;
 
 namespace Xylia.Preview.Data.Engine.BinData.Helpers;
 public class TableCollection : List<Table>
@@ -16,7 +17,7 @@ public class TableCollection : List<Table>
 		{
 			lock (this)
 			{
-				return (_tableByType ??= this.Where(x => x.Type > 0).ToDictionary(o => o.Type))
+				return (_tableByType ??= this.Where(x => x.Type > 0).ToDistinctDictionary(o => o.Type, null))
 					 .GetValueOrDefault(index);
 			}
 		}
@@ -32,7 +33,7 @@ public class TableCollection : List<Table>
 				if (short.TryParse(index, out var type)) return this[type];
 				if (index.Equals("skill", StringComparison.OrdinalIgnoreCase)) index = "skill3";
 
-				var table = (_tableByName ??= this.ToDictionary(x => x.Name, new TableNameComparer())).GetValueOrDefault(index);
+				var table = (_tableByName ??= this.ToDistinctDictionary(x => x.Name, new TableNameComparer())).GetValueOrDefault(index);
 				if (table is null) Debug.WriteLine($"Invalid typed reference, refered table doesn't exist: '{index}'");
 
 				return table;
@@ -68,6 +69,14 @@ public class TableCollection : List<Table>
 
 		return $"{table.Name}:{table[Ref, false]}";
 	}
+
+	public string GetSub(short type, Sub sub)
+	{
+		if (sub == default) return null;
+
+		return this[type]?.Definition.ElRecord.SubtableByType(sub.Type).Name;
+	}
+
 
 
 	public Record GetRecord(string table, string alias) => this[table]?[alias];

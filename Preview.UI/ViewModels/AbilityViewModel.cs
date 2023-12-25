@@ -1,4 +1,5 @@
-﻿using System.Reflection;
+﻿using System.Collections.ObjectModel;
+using System.Reflection;
 
 using CommunityToolkit.Mvvm.ComponentModel;
 
@@ -7,13 +8,18 @@ using Xylia.Preview.Data.Models.Creature;
 namespace Xylia.Preview.UI.ViewModels;
 public class AbilityViewModel : ObservableObject
 {
-	List<AbilityFunction> source;
-
-	public List<AbilityFunction> Source
+	public AbilityViewModel()
 	{
-		get => source;
-		private set => SetProperty(ref source, value);
+		var source = typeof(AbilityFunction)
+			.GetProperties(BindingFlags.Static | BindingFlags.Public)
+			.Select(x => x.GetValue(null))
+			.Where(x => x is AbilityFunction ability && ability.K != 0)
+			.OfType<AbilityFunction>();
+
+		this.Source = new(source);
 	}
+
+	public ObservableCollection<AbilityFunction> Source { get; private set; }
 
 
 	AbilityFunction selected;
@@ -50,17 +56,6 @@ public class AbilityViewModel : ObservableObject
 
 
 	#region Methods
-	public AbilityViewModel()
-	{
-		var source = typeof(AbilityFunction)
-			.GetProperties(BindingFlags.Static | BindingFlags.Public)
-			.Select(x => x.GetValue(null))
-			.Where(x => x is AbilityFunction ability && ability.K != 0)
-			.OfType<AbilityFunction>();
-
-		this.Source = source.ToList();
-	}
-
 	public void GetPercent()
 	{
 		if (Selected == null) return;

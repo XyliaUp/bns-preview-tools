@@ -11,10 +11,10 @@ public sealed class Store2 : ModelElement
 
 	public Ref<Faction> Faction { get; set; }
 
-	[Name("item"), Repeat(127)]
+	[Name("item")]
 	public Ref<Item>[] Item { get; set; }
 
-	[Name("buy-price"), Repeat(127)]
+	[Name("buy-price")]
 	public Ref<ItemBuyPrice>[] BuyPrice { get; set; }
 
 

@@ -66,10 +66,12 @@ public class MyPakFileReader : AbstractAesVfsReader
 
 	public void Add(string filePath, string VfsPath = null, CompressionMethod Method = CompressionMethod.None, CompressedStatus Status = CompressedStatus.None)
 	{
-		VfsPath ??= System.IO.Path.GetFileName(filePath);
-
 		//实际上 VfsPath 是完整路径（MountPoint + FileName）
 		//由于输出时有一个写 FileName 的操作，因此这里直接传递 FileName 部分
+		VfsPath ??= System.IO.Path.GetFileName(filePath);
+		VfsPath = VfsPath.Replace("\\", "/");
+
+
 		if (Method != CompressionMethod.None && Status == CompressedStatus.None)
 			Status = CompressedStatus.IsCompressed;
 
@@ -170,7 +172,7 @@ public class MyPakFileReader : AbstractAesVfsReader
 		if (!isEncrypted) return bytes;
 		if (AesKey != null)   //序列化时不需要校验密钥
 		{
-			Aes2.Align(ref bytes);
+			AesEncrypt.Align(ref bytes);
 			return bytes.Encrypt(AesKey);
 		}
 

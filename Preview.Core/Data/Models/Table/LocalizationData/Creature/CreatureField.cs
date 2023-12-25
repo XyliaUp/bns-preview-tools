@@ -587,7 +587,7 @@ public enum CreatureField
 
     HpRegenCombatEquip,
 
-    AttackHitBasePercent,
+	AttackHitBasePercent,
 
     AttackHitValue,
 

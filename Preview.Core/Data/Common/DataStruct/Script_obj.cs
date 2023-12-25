@@ -1,22 +1,22 @@
 ﻿using System.Runtime.InteropServices;
+using System.Text;
 
 namespace Xylia.Preview.Data.Common.DataStruct;
 
-[StructLayout(LayoutKind.Sequential)]
+[StructLayout(LayoutKind.Sequential, Size = 20)]
 public struct Script_obj
 {
-	public string Full { get; set; }
+	string Full;
 
-	public Script_obj(string Text) => Full = Text;
-}
+	public Script_obj(string text)
+	{
+		Full = text;
 
+		if(text != null)
+		{
+			var x = Encoding.UTF8.GetBytes(Full);
+		}
+	}
 
-[StructLayout(LayoutKind.Sequential)]
-public struct Script_obj_Test
-{
-	public int p1;
-	public int p2;
-	public int p3;
-	public int p4;
-	public int p5;
+	public override string ToString() => this.Full;
 }

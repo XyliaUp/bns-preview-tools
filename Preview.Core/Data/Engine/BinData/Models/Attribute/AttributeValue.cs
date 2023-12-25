@@ -46,6 +46,11 @@ public class AttributeValue : IComparable<AttributeValue>, IEquatable<AttributeV
 			this.Type = v.Type;
 			this.RawValue = v.RawValue;
 		}
+		else if (value is bool b)
+		{
+			this.RawValue = (BnsBoolean)b;
+			this.Type = AttributeType.TBool;
+		}
 		else if (AttributeConverter.TypeCode.TryGetValue(value.GetType(), out var code)) this.Type = code;
 		else
 		{
@@ -125,7 +130,7 @@ public class AttributeValue : IComparable<AttributeValue>, IEquatable<AttributeV
 
 
 	[DebuggerBrowsable(DebuggerBrowsableState.Never)]
-	public bool AsBoolean => (bool)(BnsBoolean)this.RawValue;
+	public bool AsBoolean => (BnsBoolean)this.RawValue;
 
 	[DebuggerBrowsable(DebuggerBrowsableState.Never)]
 	public string AsString => (string)this.RawValue;

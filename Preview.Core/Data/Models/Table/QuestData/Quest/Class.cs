@@ -1,5 +1,4 @@
 ﻿using Xylia.Preview.Common.Attributes;
-using Xylia.Preview.Common.Extension;
 using Xylia.Preview.Data.Models.Sequence;
 
 namespace Xylia.Preview.Data.Models.QuestData;
@@ -25,16 +24,6 @@ public class MissionStep : ModelElement
 	public string Text => Attributes["desc"].GetText();
 }
 
-public partial class Case
-{
-	
-
-}
-
-public partial class TutorialCase
-{
-
-}
 
 
 public class Mission : ModelElement
@@ -44,7 +33,7 @@ public class Mission : ModelElement
 	public List<TutorialCase> TutorialCase { get; set; }
 
 
-	public sbyte id => Attributes["id"].ToInt8();
+	public sbyte id => (sbyte)Attributes["id"];
 
 	public string Text => Attributes["name2"]?.GetText();
 

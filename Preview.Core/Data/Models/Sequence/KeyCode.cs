@@ -1,6 +1,4 @@
-﻿using Xylia.Preview.Common.Attributes;
-
-namespace Xylia.Preview.Data.Models.Sequence;
+﻿namespace Xylia.Preview.Data.Models.Sequence;
 public enum KeyCode
 {
 	None,

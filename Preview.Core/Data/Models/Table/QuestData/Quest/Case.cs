@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
 using Xylia.Preview.Common.Attributes;
+using Xylia.Preview.Common.Extension;
 using Xylia.Preview.Data.Models.QuestData.Enums;
-using Xylia.Preview.Data.Models.Sequence;
 using static Xylia.Preview.Data.Models.Decision;
 using static Xylia.Preview.Data.Models.Duel;
 using static Xylia.Preview.Data.Models.PartyBattleFieldZone;
@@ -16,9 +16,6 @@ public partial class Case : ModelElement
 	public List<FilterSet> FilterSet { get; set; }
 	public List<ReactionSet> ReactionSet { get; set; }
 
-
-	[Repeat(10), Side(ReleaseSide.Client)]
-	public Ref<MapUnit>[] MapUnit { get; set; }
 
 	[Side(ReleaseSide.Client)]
 	public Indicator Indicator { get; set; }
@@ -56,7 +53,7 @@ public partial class Case : ModelElement
 	public bool TeamBroadcast { get; set; }
 
 
-	public virtual List<Ref<ModelElement>> Attractions { get; }
+	public virtual List<Record> Attractions { get; }
 	#endregion
 
 	#region Sub
@@ -69,30 +66,30 @@ public partial class Case : ModelElement
 	{
 		public Ref<Item> Item { get; set; }
 
-		public override List<Ref<ModelElement>> Attractions => new() { new Ref<ModelElement>("item:" + Item) };
+		public override List<Record> Attractions => new() { Item.Instance?.Source };
 	}
 
 	public sealed class TalkToSelf : Case
 	{
-		
+
 	}
 
 	public sealed class Manipulate : Case
 	{
-		public Ref<ModelElement> Object2  { get; set; }
+		public Ref<ModelElement> Object2 { get; set; }
 
 		[Repeat(16)]
-		public Ref<ModelElement>[] MultiObject  { get; set; }
+		public Ref<ModelElement>[] MultiObject { get; set; }
 
 
 
-		public override List<Ref<ModelElement>> Attractions
+		public override List<Record> Attractions
 		{
 			get
 			{
-				var result = new List<Ref<ModelElement>>();
-				result.Add(Object2);
-				result.AddRange(MultiObject);
+				var result = new List<Record>();
+				result.Add(Object2.Instance?.Source);
+				MultiObject.ForEach(x => result.Add(x.Instance?.Source));
 
 				return result;
 			}
@@ -106,7 +103,16 @@ public partial class Case : ModelElement
 		[Repeat(16)]
 		public Ref<ModelElement>[] MultiObject { get; set; }
 
-		public override List<Ref<ModelElement>> Attractions => MultiObject.ToList();
+		public override List<Record> Attractions
+		{
+			get
+			{
+				var result = new List<Record>();
+				MultiObject.ForEach(x => result.Add(x.Instance?.Source));
+
+				return result;
+			}
+		}
 	}
 
 	public sealed class Approach : Case
@@ -136,18 +142,13 @@ public partial class Case : ModelElement
 		[Side(ReleaseSide.Client)]
 		public Ref<VirtualItem> Looting { get; set; }
 
-		public sbyte QuestSymbolDropProb { get; set; }
-
-		public Ref<Item> LootItem { get; set; }
-
-
-		public override List<Ref<ModelElement>> Attractions
+		public override List<Record> Attractions
 		{
 			get
 			{
-				var result = new List<Ref<ModelElement>>();
-				result.Add(Object2);
-				result.AddRange(MultiObject);
+				var result = new List<Record>();
+				result.Add(Object2.Instance?.Source);
+				MultiObject.ForEach(x => result.Add(x.Instance?.Source));
 
 				return result;
 			}
@@ -156,25 +157,19 @@ public partial class Case : ModelElement
 
 	public sealed class Killed : Case
 	{
-		public SpecifyObjectType SpecifyObjectType { get; set; }
-
 		public Ref<ModelElement> Object2 { get; set; }
 
 		[Repeat(16)]
 		public Ref<ModelElement>[] MultiObject { get; set; }
 
-		public DifficultyTypeSeq KilledDifficultyType { get; set; }
 
-		[Repeat(8), Obsolete]
-		public Ref<Skill3Model>[] Skill3 { get; set; }
-
-		public override List<Ref<ModelElement>> Attractions
+		public override List<Record> Attractions
 		{
 			get
 			{
-				var result = new List<Ref<ModelElement>>();
-				result.Add(Object2);
-				result.AddRange(MultiObject);
+				var result = new List<Record>();
+				result.Add(Object2.Instance?.Source);
+				MultiObject.ForEach(x => result.Add(x.Instance?.Source));
 
 				return result;
 			}
@@ -185,10 +180,7 @@ public partial class Case : ModelElement
 	{
 		public Ref<Npc> Npc { get; set; }
 
-		[Repeat(20)]
-		public int[] Skill3ID { get; set; }
-
-		public override List<Ref<ModelElement>> Attractions => new() { new Ref<ModelElement>("npc:" + Npc) };
+		public override List<Record> Attractions => new() { Npc.Instance?.Source };
 	}
 
 	public sealed class EnvEntered : Case
@@ -198,14 +190,14 @@ public partial class Case : ModelElement
 		public Ref<EnvResponse> EnvResponse { get; set; }
 
 
-		public override List<Ref<ModelElement>> Attractions => new() { Object2 };
+		public override List<Record> Attractions => new() { Object2.Instance?.Source };
 	}
 
 	public sealed class EnterZone : Case
 	{
 		public Ref<ModelElement> Object { get; set; }
 
-		public override List<Ref<ModelElement>> Attractions => new() { Object };
+		public override List<Record> Attractions => new() { Object.Instance?.Source };
 	}
 
 	public sealed class ConvoyArrived : Case
@@ -215,7 +207,7 @@ public partial class Case : ModelElement
 		[Side(ReleaseSide.Server)]
 		public Ref<ZoneConvoy> Convoy { get; set; }
 
-		public override List<Ref<ModelElement>> Attractions => new() { Object };
+		public override List<Record> Attractions => new() { Object.Instance?.Source };
 	}
 
 	public sealed class ConvoyFailed : Case
@@ -225,7 +217,7 @@ public partial class Case : ModelElement
 		public Ref<ZoneConvoy> Convoy { get; set; }
 
 
-		public override List<Ref<ModelElement>> Attractions => new() { Object };
+		public override List<Record> Attractions => new() { Object.Instance?.Source };
 	}
 
 	public sealed class NpcBleedingOccured : Case
@@ -236,14 +228,14 @@ public partial class Case : ModelElement
 		public sbyte idx { get; set; }
 
 
-		public override List<Ref<ModelElement>> Attractions => new() { Object };
+		public override List<Record> Attractions => new() { Object.Instance?.Source };
 	}
 
 	public sealed class EnterPortal : Case
 	{
 		public Ref<ModelElement> Object2 { get; set; }
 
-		public override List<Ref<ModelElement>> Attractions => new() { Object2 };
+		public override List<Record> Attractions => new() { Object2.Instance?.Source };
 	}
 
 	public sealed class AcquireSummoned : Case
@@ -258,7 +250,7 @@ public partial class Case : ModelElement
 
 		public Ref<Text> ButtonTextCancel { get; set; }
 
-		public override List<Ref<ModelElement>> Attractions => new() { Object };
+		public override List<Record> Attractions => new() { Object.Instance?.Source };
 	}
 
 	public sealed class PcSocial : Case
@@ -275,7 +267,7 @@ public partial class Case : ModelElement
 		public Ref<NpcResponse> NpcResponse { get; set; }
 
 
-		public override List<Ref<ModelElement>> Attractions => new() { Object2 };
+		public override List<Record> Attractions => new() { Object2.Instance?.Source };
 	}
 
 	public sealed class JoinFaction : Case
@@ -298,7 +290,7 @@ public partial class Case : ModelElement
 		public bool RemoveGrocery { get; set; }
 
 
-		public override List<Ref<ModelElement>> Attractions => new() { Object };
+		public override List<Record> Attractions => new() { Object.Instance?.Source };
 	}
 
 	public sealed class DuelFinish : Case

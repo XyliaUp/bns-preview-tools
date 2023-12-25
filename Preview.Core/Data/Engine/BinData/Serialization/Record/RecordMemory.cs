@@ -5,9 +5,9 @@ namespace Xylia.Preview.Data.Engine.BinData.Serialization;
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct RecordMemory
 {
-	public byte* DataBegin;
-	public byte* StringBufferBegin;
-	public int DataSize;
-	public int StringBufferSize;
-	public short Type;
+    public byte* DataBegin;
+    public byte* StringBufferBegin;
+    public int DataSize;
+    public int StringBufferSize;
+    public short Type;
 }

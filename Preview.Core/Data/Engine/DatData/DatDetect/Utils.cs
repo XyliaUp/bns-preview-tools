@@ -11,12 +11,6 @@ public static partial class Utils
 		return Path.GetFileNameWithoutExtension(FilePath).Contains("64");
 	}
 
-
-	public static bool Has32bit(this IEnumerable<FileInfo> files) => files.FirstOrDefault(f => !f.Judge64Bit()) != null;
-
-	public static bool Has64bit(this IEnumerable<FileInfo> files) => files.FirstOrDefault(f => f.Judge64Bit()) != null;
-
-
 	public static IEnumerable<FileInfo> GetFiles(this IEnumerable<FileInfo> files, bool? is64 = null)
 	{
 		if (is64 is null) return files;

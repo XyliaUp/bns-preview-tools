@@ -15,12 +15,12 @@ public class NameTableWriter : INameTableWriter
 
 	public void WriteTo(BinaryWriter writer, NameTable table, bool is64Bit)
 	{
-		//if (table is LazyNameTable { EntriesLoaded: false } lazyBnsGlobalStringTable)
-		//{
-		//	using var stream = lazyBnsGlobalStringTable.Source.CreateStream();
-		//	stream.CopyTo(writer.BaseStream);
-		//	return;
-		//}
+		if (table is LazyNameTable { EntriesLoaded: false } lazyBnsGlobalStringTable)
+		{
+			using var stream = lazyBnsGlobalStringTable.Source.CreateStream();
+			stream.CopyTo(writer.BaseStream);
+			return;
+		}
 
 		writer.Write(table.RootEntry.Begin);
 		writer.Write(table.RootEntry.End);

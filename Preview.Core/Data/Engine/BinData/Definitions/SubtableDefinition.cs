@@ -11,11 +11,17 @@ public class SubtableDefinition : ITableDefinition
 
 
 	#region Helper
-
+	private Dictionary<string, AttributeDefinition> _attributesDictionary = new();
 	private Dictionary<string, AttributeDefinition> _expandedAttributesDictionary = new();
+
+	public void CreateAttributeMap()
+	{
+		_attributesDictionary = Attributes.ToDictionary(x => x.Name);
+		_expandedAttributesDictionary = ExpandedAttributes.ToDictionary(x => x.Name);
+	}
 
 	public AttributeDefinition this[string name] => _expandedAttributesDictionary.GetValueOrDefault(name, null);
 
-    public void CreateExpandedAttributeMap() => _expandedAttributesDictionary = ExpandedAttributes.ToDictionary(x => x.Name);
+	public AttributeDefinition GetAttribute(string name) => _attributesDictionary.GetValueOrDefault(name, null);
 	#endregion
 }

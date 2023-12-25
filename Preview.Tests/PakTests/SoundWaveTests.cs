@@ -1,7 +1,7 @@
 ﻿namespace Xylia.Preview.Tests.PakTests;
-public class SoundWaveTests
+public partial class AssetExport
 {
-	public void Main()
+	public void SoundWaveTests()
 	{
 		
 	}

@@ -1,5 +1,5 @@
 ﻿namespace CUE4Parse.UE4.Objects.UObject;
-											 
+
 [AttributeUsage(AttributeTargets.Field)]
 public class UPROPERTY : Attribute
 {

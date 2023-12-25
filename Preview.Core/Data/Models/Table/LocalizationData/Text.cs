@@ -1,5 +1,6 @@
 ﻿using System.Xml.Linq;
 using Xylia.Preview.Common.Attributes;
+using Xylia.Preview.Data.Helpers;
 
 namespace Xylia.Preview.Data.Models;
 
@@ -41,12 +42,11 @@ public sealed class Text : ModelElement
 
 public static class TextExtension
 {
-	public static string GetText(this string alias, bool Nullable = false) => new Ref<Text>(alias).GetText(Nullable);
-
-	public static string GetText(this Ref<Text> @ref, bool Nullable = false)
+	public static string GetText(this object obj)
 	{
-		var record = @ref.Instance;
-
-		return record?.text ?? (Nullable ? null : @ref.ToString());
+		if (obj is null) return null;
+		else if (obj is Record record) return record.Attributes["text"].ToString();
+		else if (obj is Ref<Text> reference) return reference.Instance?.text;
+		else return FileCache.Data.Text[obj.ToString()]?.text;
 	}
 }

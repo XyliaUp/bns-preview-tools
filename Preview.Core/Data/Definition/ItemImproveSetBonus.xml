@@ -4,7 +4,7 @@
   <el name="record" >
 		<attribute name="id" type="Int32" key="y" required="y" />
 		<attribute name="alias" type="String" required="y" />
-		<attribute name="name" ref="Text" />
+		<attribute name="name" type="Ref" ref="Text" />
 		<attribute name="target-item" repeat="12" type="TRef" />
 		<attribute name="target-item-condition-type" type="Seq" seq="condition-type" repeat="12" />
 		<attribute name="target-equip-pos" type="Seq" repeat="12" >
@@ -66,16 +66,16 @@
 		<attribute name="target-equip-pos-icon" repeat="12" type="Icon" />
 		<attribute name="min-item-grade" type="Int8" max="8" min="0" />
 		<attribute name="total-improve-level" type="Int16" repeat="30" />
-		<attribute name="total-improve-level-effect" ref="Effect" repeat="30" />
-		<attribute name="total-improve-level-effect-description" ref="Text" repeat="30" />
+		<attribute name="total-improve-level-effect" type="Ref" ref="Effect" repeat="30" />
+		<attribute name="total-improve-level-effect-description" type="Ref" ref="Text" repeat="30" />
 		<attribute name="total-improve-level-ability" type="Seq" seq="attach-ability" repeat="30" />
 		<attribute name="total-improve-level-ability-value" type="Int32" repeat="30" />
-		<attribute name="total-improve-level-condition-event" ref="condition-event" repeat="30" />
+		<attribute name="total-improve-level-condition-event" type="Ref" ref="condition-event" repeat="30" />
 		<attribute name="min-improve-level" type="Int16" repeat="30" />
-		<attribute name="min-improve-level-effect" ref="Effect" repeat="30" />
-		<attribute name="min-improve-level-effect-description" ref="Text" repeat="30" />
+		<attribute name="min-improve-level-effect" type="Ref" ref="Effect" repeat="30" />
+		<attribute name="min-improve-level-effect-description" type="Ref" ref="Text" repeat="30" />
 		<attribute name="min-improve-level-ability" type="Seq" seq="attach-ability" repeat="30" />
 		<attribute name="min-improve-level-ability-value" type="Int32" repeat="30" />
-		<attribute name="min-improve-level-condition-event" ref="ConditionEvent" repeat="30" />
+		<attribute name="min-improve-level-condition-event" type="Ref" ref="ConditionEvent" repeat="30" />
   </el>
 </table>

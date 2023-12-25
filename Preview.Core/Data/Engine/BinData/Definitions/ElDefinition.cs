@@ -4,6 +4,7 @@ namespace Xylia.Preview.Data.Engine.Definitions;
 public class ElDefinition : ITableDefinition
 {
 	private Dictionary<string, SubtableDefinition> _subtablesDictionary = new();
+	private Dictionary<string, AttributeDefinition> _attributesDictionary = new();
 	private Dictionary<string, AttributeDefinition> _expandedAttributesDictionary = new();
 
 
@@ -36,7 +37,7 @@ public class ElDefinition : ITableDefinition
 			{
 				Serilog.Log.Warning($"Invalid attribute: 'type', table: {this.Name}, value: {name}");
 				//throw new ArgumentOutOfRangeException(nameof(name));
-				return Subtables.First();  
+				return Subtables.First();
 			}
 		}
 
@@ -61,7 +62,7 @@ public class ElDefinition : ITableDefinition
 				// Add parent expanded attributes
 				subtable.ExpandedAttributes.AddRange(this.ExpandedAttributes);
 				subtable.Size = this.Size;
-				subtable.CreateExpandedAttributeMap();
+				subtable.CreateAttributeMap();
 			}
 		}
 
@@ -70,8 +71,9 @@ public class ElDefinition : ITableDefinition
 
 	public void CreateSubtableMap() => _subtablesDictionary = Subtables.ToDictionary(x => x.Name);
 
-	public void CreateExpandedAttributeMap()
+	public void CreateAttributeMap()
 	{
+		_attributesDictionary = Attributes.ToDictionary(x => x.Name);
 		_expandedAttributesDictionary = ExpandedAttributes.ToDictionary(x => x.Name);
 
 		// execution is slow in Record.WriteXml, so move here
@@ -80,6 +82,9 @@ public class ElDefinition : ITableDefinition
 			.ThenBy(o => Regex.Replace(o.Name, @"\d+", match => match.Value.PadLeft(4, '0')))];
 	}
 
+
 	public AttributeDefinition this[string name] => _expandedAttributesDictionary.GetValueOrDefault(name, null);
+
+	public AttributeDefinition GetAttribute(string name) => _attributesDictionary.GetValueOrDefault(name, null);
 	#endregion
 }

@@ -16,7 +16,7 @@ public sealed class Job : ModelElement
 		if (Job == JobSeq.JobNone) return null;
 
 		var o = FileCache.Data.Get<JobStyle>().FirstOrDefault(o => o.Job == Job && o.jobStyle == JobStyle);
-		if (o != null) return o.IntroduceJobStyleName.GetText();
+		if (o != null) return o.IntroduceJobStyleName;
 
 		return null;
 	}

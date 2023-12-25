@@ -1,13 +1,9 @@
 ﻿using System.ComponentModel;
-using System.Diagnostics;
 using System.IO;
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
-
-using CUE4Parse.BNS;
-using CUE4Parse.BNS.Conversion;
-
+using HandyControl.Controls;
 using SkiaSharp;
 
 using Xylia.Preview.UI.Helpers.Output.Textures;
@@ -17,7 +13,7 @@ namespace Xylia.Preview.UI.Views.Pages;
 public partial class GameResourcePage : Page
 {
 	#region Constructor
-	GameResourcePageViewModel _viewModel;
+	readonly GameResourcePageViewModel _viewModel;
 
 	public GameResourcePage()
 	{
@@ -35,38 +31,52 @@ public partial class GameResourcePage : Page
 
 
 	#region Asset
+	private void AssetRepack_DragEnter(object sender, DragEventArgs e)
+	{
+		if (e.Data.GetDataPresent(DataFormats.FileDrop))
+			e.Effects = DragDropEffects.Copy;
+	}
+
+	private void AssetRepack_DragDrop(object sender, DragEventArgs e)
+	{
+		if (e.Data.GetDataPresent(DataFormats.FileDrop))
+		{
+			var files = (string[])e.Data.GetData(DataFormats.FileDrop);
+			if (files.Length == 0) return;
+
+			_viewModel.LoadPackageInfo(files[0]);
+		}
+	}
+
+
 	private async void Extract_Click(object sender, RoutedEventArgs e)
 	{
 		if (string.IsNullOrWhiteSpace(Selector.Text))
 			return;
 
-		this.Extract.IsEnabled = false;
-		await UeExporter(Selector.Text, OutputClassName.IsChecked ?? true);
+		(sender as Control).IsEnabled = false;
+		await _viewModel.UeExporter(Selector.Text, OutputClassName.IsChecked ?? true);
 
-		this.Extract.IsEnabled = true;
+		(sender as Control).IsEnabled = true;
+		Growl.Success("task completed");
 	}
 
-	private async Task UeExporter(string FilterText, bool ContainType) => await Task.Run(() =>
+	private async void Repack_Click(object sender, RoutedEventArgs e)
 	{
-		using var provider = new GameFileProvider(UserSettings.Default.GameFolder);
-		var filter = provider.FixPath(FilterText, false) ?? FilterText;
+		ArgumentNullException.ThrowIfNull(_viewModel.Packages);
 
-		Parallel.ForEach(provider.Files.Values, gamefile =>
-		{
-			if (gamefile.Extension != "uasset" || !gamefile.Path.Contains(filter, StringComparison.OrdinalIgnoreCase))
-				return;
+		var folder = new DirectoryInfo(UserSettings.Default.GameFolder)
+			.GetDirectories("Paks", SearchOption.AllDirectories)
+			.FirstOrDefault()?.FullName ?? throw new DirectoryNotFoundException();
+		folder = Path.Combine(folder, "Mods");
 
-			try
-			{
-				new Exporter(UserSettings.Default.OutputFolderResource)
-					.Run(provider.LoadPackage(gamefile), ContainType);
-			}
-			catch (Exception ex)
-			{
-				Debug.WriteLine(ex);	
-			}
-		});
-	});
+
+		(sender as Control).IsEnabled = false;
+		await _viewModel.UeRepack(folder, [.. _viewModel.Packages]);
+
+		(sender as Control).IsEnabled = true;
+		Growl.Success("task completed");
+	}
 	#endregion
 
 	#region Icon

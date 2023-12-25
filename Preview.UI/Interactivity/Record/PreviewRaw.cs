@@ -1,7 +1,6 @@
 ﻿using System.Text;
 using System.Windows;
-
-using Xylia.Preview.Data.Engine.BinData.Models;
+using Xylia.Preview.Data.Engine.BinData.Serialization;
 using Xylia.Preview.Data.Models;
 using Xylia.Preview.UI.Views.Editor;
 

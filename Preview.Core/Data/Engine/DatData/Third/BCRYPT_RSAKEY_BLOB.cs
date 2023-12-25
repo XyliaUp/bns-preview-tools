@@ -1,21 +1,16 @@
-﻿namespace Xylia.Preview.Data.Engine.DatData.Third;
+﻿namespace Xylia.Preview.Data.Engine.DatData;
 public struct BCRYPT_RSAKEY_BLOB
 {
-	// Token: 0x04000004 RID: 4
-	public KeyBlobMagicNumber Magic;
+    public KeyBlobMagicNumber Magic;
+    public int BitLength;
+    public int cbPublicExp;
+    public int cbModulus;
+    public int cbPrime1;
+    public int cbPrime2;
+}
 
-	// Token: 0x04000005 RID: 5
-	public int BitLength;
-
-	// Token: 0x04000006 RID: 6
-	public int cbPublicExp;
-
-	// Token: 0x04000007 RID: 7
-	public int cbModulus;
-
-	// Token: 0x04000008 RID: 8
-	public int cbPrime1;
-
-	// Token: 0x04000009 RID: 9
-	public int cbPrime2;
+public enum KeyBlobMagicNumber
+{
+    BCRYPT_RSAPUBLIC_MAGIC = 826364754,
+    BCRYPT_RSAPRIVATE_MAGIC = 843141970
 }

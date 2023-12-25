@@ -10,7 +10,7 @@ using Xylia.Preview.UI.Controls;
 using Xylia.Preview.UI.Helpers.Output;
 
 namespace Xylia.Preview.UI.Art.GameUI.Scene.Game_Auction;
-public partial class Game_AuctionScene 
+public partial class Game_AuctionScene
 {
 	#region Constructor
 	public Game_AuctionScene()
@@ -40,7 +40,7 @@ public partial class Game_AuctionScene
 		#endregion
 
 		#region Source
-		source = CollectionViewSource.GetDefaultView(FileCache.Data.Item);
+		source = CollectionViewSource.GetDefaultView(FileCache.Data.Get<Item>());
 		source.Filter = Filter;
 
 		ItemList.ItemsSource = source;
@@ -91,12 +91,13 @@ public partial class Game_AuctionScene
 	private MarketCategory2Seq marketCategory2;
 	private MarketCategory3Seq marketCategory3;
 
-
 	private bool Filter(object obj)
 	{
-		if (obj is not ModelElement model) return false;
+		if (obj is Record record) { }
+		else if (obj is ModelElement model) record = model.Source;
+		else return false;
 
-		var record = model.Source;
+
 		if (_lst != null && _lst.Contains(record.RecordId)) return false;
 
 		var IsAll = marketCategory2 == default && marketCategory3 == default;
@@ -126,13 +127,13 @@ public partial class Game_AuctionScene
 		if (IsEmpty) return true;
 		else
 		{
-			if(int.TryParse(_nameFilter , out int id)) return record.RecordId == id;
+			if (int.TryParse(_nameFilter, out int id)) return record.RecordId == id;
 
 
-			var alias = record.Attributes["alias"];
+			var alias = record.Attributes.Get<string>("alias");
 			if (alias != null && alias.IndexOf(_nameFilter, StringComparison.OrdinalIgnoreCase) > 0) return true;
 
-			var name = record.Attributes.Get<Record>("name2")?.Attributes["text"];
+			var name = record.Attributes.Get<Record>("name2").GetText();
 			if (name != null && name.IndexOf(_nameFilter, StringComparison.OrdinalIgnoreCase) > 0) return true;
 
 			return false;

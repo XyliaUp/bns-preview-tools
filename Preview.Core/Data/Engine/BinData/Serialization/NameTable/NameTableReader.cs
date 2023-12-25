@@ -11,8 +11,7 @@ public interface INameTableReader
 
 public class NameTableReader : INameTableReader
 {
-    private static readonly Encoding KoreanEncoding
-        = CodePagesEncodingProvider.Instance.GetEncoding(949);
+    private static readonly Encoding KoreanEncoding = CodePagesEncodingProvider.Instance.GetEncoding(949);
 
     public DatafileArchive LazyLoadSource { get; init; }
 
@@ -22,6 +21,7 @@ public class NameTableReader : INameTableReader
     }
 
     private readonly bool _is64Bit;
+
 
     public NameTable ReadFrom(DatafileArchive reader)
     {

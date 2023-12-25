@@ -102,7 +102,7 @@ public class AttributeGrid : Control
 			.Select(CreatePropertyItem)
 			.Do(item => item.InitElement()));
 
-		SortByCategory(null, null);
+		SortByName(null, null);
 		_itemsControl.ItemsSource = _dataView;
 	}
 
@@ -159,12 +159,12 @@ public class AttributeGrid : Control
 		Category = PropertyResolver.ResolveCategory(attribute),
 		DisplayName = PropertyResolver.ResolveDisplayName(attribute),
 		Description = PropertyResolver.ResolveDescription(attribute),
-		IsReadOnly = PropertyResolver.ResolveIsReadOnly(attribute),
 		DefaultValue = PropertyResolver.ResolveDefaultValue(attribute),
 		Editor = PropertyResolver.ResolveEditor(attribute),
 		Value = SelectedObject.Attributes,
-		PropertyName = attribute.Name,
-		
+		PropertyName = $"[{attribute.Name}]",
+
+		IsReadOnly = false,
 		Tag = attribute.Offset,
 	};
 
@@ -173,9 +173,4 @@ public class AttributeGrid : Control
 		base.OnRenderSizeChanged(sizeInfo);
 		TitleElement.SetTitleWidth(this, new GridLength(Math.Max(MinTitleWidth, Math.Min(MaxTitleWidth, ActualWidth / 3))));
 	}
-
-
-
-	// TODO: String 类型需要特殊处理
-	// 创建一个备份字典  退出编辑后比对差异项  将其写到最后
 }

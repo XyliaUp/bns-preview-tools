@@ -5,7 +5,7 @@ using CUE4Parse.UE4.Assets.Utils;
 using CUE4Parse.UE4.Objects.UObject;
 
 namespace CUE4Parse.UE4.Assets.Exports;
-public class USerializeObject : UObject
+public abstract class USerializeObject : UObject
 {
 	public override void Deserialize(FAssetArchive Ar, long validPos)
 	{

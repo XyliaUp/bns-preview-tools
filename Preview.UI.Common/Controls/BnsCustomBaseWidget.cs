@@ -5,7 +5,7 @@ using Xylia.Preview.Data.Helpers;
 using Xylia.Preview.Data.Models;
 
 namespace Xylia.Preview.UI.Controls;
-public interface IBnsCustomBaseWidget
+interface IBnsCustomBaseWidget
 {
 	ChildCollection Items { get; }
 }

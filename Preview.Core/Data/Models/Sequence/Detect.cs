@@ -1,17 +1,15 @@
-﻿using Xylia.Preview.Common.Attributes;
-
-namespace Xylia.Preview.Data.Models.Sequence;
+﻿namespace Xylia.Preview.Data.Models.Sequence;
 public enum Detect
 {
-    None,
+	None,
 
-        Both360,
+	Both360,
 
-        Pc180,
+	Pc180,
 
-        Npc180,
+	Npc180,
 
-        Pc360,
+	Pc360,
 
-        Npc360,
+	Npc360,
 }

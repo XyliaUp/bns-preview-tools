@@ -1,5 +1,4 @@
 ﻿using System.Diagnostics;
-
 using CUE4Parse.BNS.Assets.Exports;
 using CUE4Parse.UE4.Assets;
 using CUE4Parse.UE4.Assets.Exports;
@@ -8,13 +7,10 @@ using CUE4Parse.UE4.Assets.Exports.Sound;
 using CUE4Parse.UE4.Assets.Exports.StaticMesh;
 using CUE4Parse.UE4.Assets.Exports.Texture;
 using CUE4Parse.Utils;
-
 using CUE4Parse_Conversion;
 using CUE4Parse_Conversion.Sounds;
 using CUE4Parse_Conversion.Textures;
-
 using Newtonsoft.Json;
-
 using Xylia.Preview.Common.Extension;
 
 namespace CUE4Parse.BNS.Conversion;
@@ -34,7 +30,6 @@ public class Exporter
 
 		return fullPath;
 	}
-
 
 	public void Run(IPackage package, bool ContainType = true)
 	{

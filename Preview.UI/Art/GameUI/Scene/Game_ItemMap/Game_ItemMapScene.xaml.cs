@@ -1,20 +1,24 @@
 ﻿using System.Windows.Input;
-using System.Windows.Media;
 using CommunityToolkit.Mvvm.Input;
 using Xylia.Preview.Common.Extension;
 using Xylia.Preview.Data.Models.Sequence;
 
 namespace Xylia.Preview.UI.Art.GameUI.Scene.Game_ItemMap;
-public partial class Game_ItemMapScene
+public partial class Game_ItemMapScene 
 {
 	public Game_ItemMapScene()
 	{
 		InitializeComponent();
+
+
+		ItemMapPanel_MapField.EquipType = EquipType.Earring;
 	}
 
 
-	#region Properties
-	double scale { get; set; } = 1;
+
+
+	#region Fields
+	double scale = 1;
 	#endregion
 
 	#region Methods
@@ -40,7 +44,7 @@ public partial class Game_ItemMapScene
 			scale += 0.1;
 		}
 
-		ItemMapPanel.LayoutTransform = new ScaleTransform() { ScaleX = scale, ScaleY = scale, };
+		//ItemMapPanel.LayoutTransform = new ScaleTransform() { ScaleX = scale, ScaleY = scale, };
 		e.Handled = true;
 	}
 	#endregion

@@ -63,6 +63,9 @@ public enum AttachAbility : byte
     [Name("Name.Item.abnormal-defend-power-value")]
     AbnormalDefendPowerValue,
 
+
+
+
     [Name("Name.Item.r-attack-stiff-duration-value")]
     RAttackStiffDurationValue,
 

@@ -1,7 +1,9 @@
 ﻿using System.ComponentModel;
 using CUE4Parse.Utils;
+using Serilog;
 using Xylia.Preview.Data.Engine.BinData.Helpers;
 using Xylia.Preview.Data.Engine.BinData.Models;
+using Xylia.Preview.Data.Engine.BinData.Serialization;
 using Xylia.Preview.Data.Engine.Definitions;
 
 namespace Xylia.Preview.Data.Engine.DatData;
@@ -26,9 +28,8 @@ public class DefaultProvider : Datafile, IDataProvider
 		#region Tables
 		this.Tables = [];
 
-		//ReadFrom(File.ReadAllBytes("C:\\Users\\10565\\Desktop\\datafile.bin"), true);
-		ReadFrom(XmlData.EnumerateFiles(Is64Bit ? "datafile64.bin" : "datafile.bin").FirstOrDefault()?.Data, Is64Bit);
-		ReadFrom(LocalData.EnumerateFiles(Is64Bit ? "localfile64.bin" : "localfile.bin").FirstOrDefault()?.Data, Is64Bit);
+		ReadFrom(XmlData.EnumerateFiles(PATH.Datafile(Is64Bit)).FirstOrDefault()?.Data, Is64Bit);
+		ReadFrom(LocalData.EnumerateFiles(PATH.Localfile(Is64Bit)).FirstOrDefault()?.Data, Is64Bit);
 
 		Tables.Add(new() { Name = "quest", XmlPath = @"quest\questdata*.xml" });
 		Tables.Add(new() { Name = "contextscript", XmlPath = @"skill3_contextscriptdata*.xml" });
@@ -48,41 +49,76 @@ public class DefaultProvider : Datafile, IDataProvider
 		#endregion
 	}
 
-	public virtual void WriteData(string folder, bool is64bit)
+	public virtual void WriteData(string folder, PublishSettings settings)
 	{
-		// Rebuild alias map when full build
-		bool FullBuild = !this.Tables.Any(x => x.Definition.IsDefault);
-		if (FullBuild && false)
+		#region Rebuild alias map  
+		if (settings.RebuildAliasMap)
 		{
-			Serilog.Log.Information("Rebuilding alias map");
-			var rebuilder = new NameTable.Rebuilder(this.NameTable);
+			Log.Information("Rebuilding alias map");
+			var rebuilder = new NameTableBuilder(NameTable);
+			var haveAlias = new HashSet<string>();
+
+			// get alias
 			foreach (var table in this.Tables)
 			{
-				// get alias definition
 				var aliasAttrDef = table.Definition.ElRecord["alias"];
 				if (aliasAttrDef == null) continue;
+
+				haveAlias.Add(table.Name.ToLowerInvariant());
 
 				var tablePrefix = table.Name.ToLowerInvariant() + ":";
 				foreach (var record in table.Records)
 				{
-					var alias = record.Attributes["alias"];
+					var alias = record.Attributes.Get<string>("alias");
 					if (alias == null) continue;
 
 					rebuilder.AddAliasManually(tablePrefix + alias.ToLowerInvariant(), record.Ref);
 				}
 			}
 
+			// If not complete definition, read the raw alias data
+			if (this.Tables.Any(x => x.Definition.IsDefault))
+			{
+				foreach (var table in NameTable.CreateTable())
+				{
+					if (haveAlias.Contains(table.Name)) continue;
+
+					foreach (var record in table)
+						rebuilder.AddAliasManually(record);
+				}
+			}
+
 			rebuilder.EndRebuilding();
 		}
+		#endregion
 
 
+		// Due to incomplete definition, local may missing table
 		// UserCommand remove at UE4
 		var raw = this.Tables.Where(x => x.XmlPath != null);
-		var local = this.Tables.Where(x => x.Name == "petition-faq-list" || x.Name == "survey" || x.Name == "text" || (true && x.Name == "user-command"));
+		var local = this.Tables.Where(x => x.Name == "petition-faq-list" || x.Name == "survey" || x.Name == "text" || (false && x.Name == "user-command"));
 		var xml = this.Tables.Except(local).Except(raw);
 
-		File.WriteAllBytes(Path.Combine(folder, Is64Bit ? "datafile64.bin" : "datafile.bin"), WriteTo([.. xml], is64bit));
-		File.WriteAllBytes(Path.Combine(folder, Is64Bit ? "localfile64.bin" : "localfile.bin"), WriteTo([.. local], is64bit));
+		// write mode
+		if (settings.Mode == Mode.Datafile)
+		{
+			File.WriteAllBytes(Path.Combine(folder, PATH.Datafile(Is64Bit)), WriteTo([.. xml], settings.Is64bit));
+			File.WriteAllBytes(Path.Combine(folder, PATH.Localfile(Is64Bit)), WriteTo([.. local], settings.Is64bit));
+		}
+		else if (settings.Mode == Mode.Package)
+		{
+			XmlData.Add(PATH.Datafile(Is64Bit), WriteTo([.. xml], settings.Is64bit));
+			XmlData.Write(settings.Is64bit, CompressionLevel.Normal);
+			
+			LocalData.Add(PATH.Localfile(Is64Bit), WriteTo([.. local], settings.Is64bit));
+		}
+		else if (settings.Mode == Mode.PackageThird)
+		{
+			var replaces = new Dictionary<string, byte[]>();
+			replaces.Add(PATH.Datafile(Is64Bit), WriteTo([.. xml], settings.Is64bit));
+
+			ThirdSupport.Pack(XmlData.Params, replaces);
+		}
 	}
 
 	public virtual void Dispose()

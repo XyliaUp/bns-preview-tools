@@ -7,8 +7,6 @@ using CUE4Parse.BNS.Conversion;
 using HandyControl.Data;
 
 using Newtonsoft.Json;
-
-using Xylia.Preview.Data.Helpers;
 using Xylia.Preview.UI.Audio;
 using Xylia.Preview.UI.ViewModels;
 

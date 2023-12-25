@@ -20,7 +20,7 @@ public class PreviewShowObject : RecordCommand
     {
         if (record.Owner.Name == "social")
         {
-            var source = FileCache.Provider.LoadObject<UShowObject>(record.Attributes["show"]);
+            var source = FileCache.Provider.LoadObject<UShowObject>(record.Attributes["show"]?.ToString());
             if (source is null)
             {
                 Debug.WriteLine("no data");

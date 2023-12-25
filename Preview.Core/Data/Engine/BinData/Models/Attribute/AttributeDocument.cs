@@ -118,7 +118,7 @@ public class AttributeDocument : AttributeValue, IDictionary<string, AttributeVa
 		}
 	}
 
-	public void Add(string key, AttributeValue value) => this.RawValue.Add(key, value ?? AttributeValue.Null);
+	public void Add(string key, AttributeValue value) => this.RawValue.Add(key, value ?? Null);
 
 	public bool Remove(string key) => this.RawValue.Remove(key);
 

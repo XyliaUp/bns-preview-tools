@@ -2,12 +2,12 @@
 
 using CUE4Parse.UE4.Assets.Objects;
 using CUE4Parse.UE4.Assets.Objects.Properties;
-using CUE4Parse.UE4.Serialize;
+using CUE4Parse.UE4.Writers;
 
 namespace CUE4Parse.BNS.Pack.Objects;
 public static class PropertyTag
 {
-	public static void Serialize(this FPropertyTag property, BinaryWriter writer, SerializeOption option)
+	public static void Serialize(this FPropertyTag property, FArchiveWriter writer)
 	{
 		property.Name.Serialize(writer);
 		property.PropertyType.Serialize(writer);
@@ -15,7 +15,7 @@ public static class PropertyTag
 		writer.Write(property.ArrayIndex);
 
 		// 写属性实际数据
-		property.Tag.Serialize(writer, option);
+		property.Tag.Serialize(writer);
 
 		//if (Version >= UE4Version.VER_UE4_PROPERTY_GUID_IN_PROPERTY_TAG)
 		//{
@@ -28,7 +28,7 @@ public static class PropertyTag
 	}
 
 
-	public static void Serialize(this FPropertyTagData instance, BinaryWriter writer, SerializeOption option)
+	public static void Serialize(this FPropertyTagData instance, FArchiveWriter writer)
 	{
 		//switch (instance.Type)
 		{
@@ -66,12 +66,12 @@ public static class PropertyTag
 	}
 
 	// is abstract
-	public static void Serialize(this FPropertyTagType instance, BinaryWriter writer, SerializeOption option)
+	public static void Serialize(this FPropertyTagType instance, FArchiveWriter writer)
 	{
 
 	}
 
-	public static void Serialize<T>(this FPropertyTagType<T> instance, BinaryWriter writer, SerializeOption option)
+	public static void Serialize<T>(this FPropertyTagType<T> instance, FArchiveWriter writer)
 	{
 		var value = instance.Value;
 
@@ -90,17 +90,10 @@ public static class PropertyTag
 		writer.Write(_data);
 	}
 
-	public static void Serialize(this EnumProperty instance, BinaryWriter writer, SerializeOption option)
+	public static void Serialize(this EnumProperty instance, FArchiveWriter writer)
 	{
 		// !HasUnversionedProperties
 
-		if (option.HasUnversionedProperties)
-		{
-			throw new NotImplementedException();
-		}
-		else
-		{
-			instance.Value.Serialize(writer);
-		}
+		instance.Value.Serialize(writer);
 	}
 }

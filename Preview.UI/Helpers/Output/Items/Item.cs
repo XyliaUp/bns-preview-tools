@@ -43,7 +43,7 @@ public sealed class ItemOut : OutSet, IDisposable
 		var outdir = Path.Combine(
 			UserSettings.Default.OutputFolder, "output", "item",
 			time.ToString("yyyyMM"),
-			time.ToString("dd -HHmm"));
+			time.ToString("dd HHmm"));
 
 		Directory.CreateDirectory(outdir);
 		Path_ItemList = Path.Combine(outdir, $@"{time:yyyy-MM-dd HH-mm}.chv");
@@ -177,18 +177,19 @@ class ItemSimple
 		Ref = record.Ref;
 		Alias = record.StringLookup.GetString(0);
 
-		Name2 = GetName2(tables);
-		Info = GetInfo(tables);
-		Description = GetDesc(tables);
+		var TextTable = tables?.Get<Text>();
+		Name2 = GetName2(TextTable);
+		Info = GetInfo(TextTable);
+		Description = GetDesc(TextTable);
 		Job = GetJob(Alias);
 	}
 	#endregion
 
 
 	#region Text
-	private string GetName2(BnsDatabase Tables = null)
+	private string GetName2(ModelTable<Text> text)
 	{
-		string Text = Tables?.Text[$"Item.Name2.{Alias}"]?.text;
+		string Text = text?[$"Item.Name2.{Alias}"]?.text;
 
 		// replace rule when error status
 		if (Text is null)
@@ -199,21 +200,21 @@ class ItemSimple
 		return Text is null ? null : Text + GetEquipGem(Alias);
 	}
 
-	private string GetDesc(BnsDatabase Tables = null)
+	private string GetDesc(ModelTable<Text> text)
 	{
 		string Text = null;
-		Text += Tables?.Text[$"Item.Desc2.{Alias}"]?.text;
-		Text += Tables?.Text[$"Item.Desc5.{Alias}"]?.text;
+		Text += text?[$"Item.Desc2.{Alias}"]?.text;
+		Text += text?[$"Item.Desc5.{Alias}"]?.text;
 
 		return BNS_Cut(Text);
 	}
 
-	private string GetInfo(BnsDatabase Tables = null)
+	private string GetInfo(ModelTable<Text> text)
 	{
 		string Text = null;
-		Text += Tables?.Text[$"Item.MainInfo.{Alias}"]?.text;
-		Text += Tables?.Text[$"Item.IdentifyMain.{Alias}"]?.text;
-		Text += Tables?.Text[$"Item.IdentifySub.{Alias}"]?.text;
+		Text += text?[$"Item.MainInfo.{Alias}"]?.text;
+		Text += text?[$"Item.IdentifyMain.{Alias}"]?.text;
+		Text += text?[$"Item.IdentifySub.{Alias}"]?.text;
 
 		return BNS_Cut(Text);
 	}

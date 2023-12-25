@@ -20,7 +20,6 @@ public class Creature
     public sbyte[] Appearance { get; set; }
 
 
-
     public string Name;
 
     public short GeoZone;

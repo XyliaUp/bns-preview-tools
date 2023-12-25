@@ -4,7 +4,7 @@ using System.Windows.Controls.Primitives;
 using HandyControl.Controls;
 
 namespace Xylia.Preview.UI.Controls;
-public class SequenceAttributeEditor : PropertyEditorBase
+internal class SequenceAttributeEditor : PropertyEditorBase
 {
 	public SequenceAttributeEditor(List<string> sequence)
 	{

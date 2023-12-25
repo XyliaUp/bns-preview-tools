@@ -143,7 +143,7 @@ public sealed unsafe class Record : IDisposable
 	#endregion
 
 	#region Interface
-	public override string ToString() => this.Attributes["alias"] ?? Ref.ToString();
+	public override string ToString() => this.Attributes.Get<string>("alias") ?? Ref.ToString();
 
 	public static bool operator ==(Record a, Record b)
 	{
@@ -171,8 +171,6 @@ public sealed unsafe class Record : IDisposable
 
 		Data = null;
 		StringLookup = null;
-
-		Attributes?.Dispose();
 		Attributes = null;
 
 		GC.SuppressFinalize(this);

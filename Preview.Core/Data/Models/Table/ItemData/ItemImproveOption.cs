@@ -1,5 +1,4 @@
-﻿using Xylia.Preview.Common.Attributes;
-using Xylia.Preview.Common.Extension;
+﻿using Xylia.Preview.Common.Extension;
 using Xylia.Preview.Data.Models.Creature;
 using Xylia.Preview.Data.Models.Sequence;
 
@@ -13,20 +12,16 @@ public sealed class ItemImproveOption : ModelElement
 
 	public MainAbility Ability { get; set; }
 
-	[Name("ability-value")]
 	public int AbilityValue { get; set; }
 
 	public Ref<Effect> Effect { get; set; }
 
-	[Name("effect-description")]
 	public Ref<Text> EffectDescription { get; set; }
 
-	[Name("skill-modify-info-group"), Repeat(10)]
 	public Ref<SkillModifyInfoGroup>[] SkillModifyInfoGroup { get; set; }
 
 	public Ref<Text> Additional { get; set; }
 
-	[Name("draw-option-icon")]
 	public string DrawOptionIcon { get; set; }
 
 

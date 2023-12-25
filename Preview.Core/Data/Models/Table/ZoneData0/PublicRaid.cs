@@ -1,13 +1,11 @@
 ﻿using Xylia.Preview.Data.Common.Abstractions;
-using Xylia.Preview.Data.Common.DataStruct;
 
 namespace Xylia.Preview.Data.Models;
 public sealed class PublicRaid : ModelElement, IAttraction
 {
-	public Ref<Text> PublicraidName2;
-	public Ref<Text> PublicraidDesc;
+	#region IAttraction
+	public string Text => this.Attributes["publicraid-name2"].GetText();
 
-	public string Text => this.PublicraidName2.GetText();
-
-	public string Describe => this.PublicraidDesc.GetText();
+	public string Describe => this.Attributes["publicraid-desc"].GetText();
+	#endregion
 }

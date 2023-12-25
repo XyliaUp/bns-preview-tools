@@ -1,17 +1,11 @@
 ﻿using Xylia.Preview.Data.Common.Abstractions;
-using Xylia.Preview.Data.Common.DataStruct;
 
 namespace Xylia.Preview.Data.Models;
 public sealed class TendencyField : ModelElement, IAttraction
 {
-	#region Fields
-	public Ref<Text> TendencyFieldName2;
-	public Ref<Text> TendencyFieldDesc;
-	#endregion
+	#region Attraction
+	public string Text => this.Attributes["tendency-field-name2"].GetText();
 
-	#region Interface Methdos
-	public string Text => this.TendencyFieldName2.GetText();
-
-	public string Describe => this.TendencyFieldDesc.GetText();
+	public string Describe => this.Attributes["tendency-field-desc"].GetText();
 	#endregion
 }

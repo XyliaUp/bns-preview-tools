@@ -54,7 +54,7 @@ public partial class Game_MapScene
 
 		if (MapInfo.Alias == "World") return;
 		FileCache.Data.Get<MapInfo>()
-			.Where(x => x.ParentMapinfo == MapInfo)
+			.Where(x => x.ParentMapinfo.Instance == MapInfo)
 			.ForEach(x => this.LoadMapUint(x, new(MapTree)));
 	}
 
@@ -84,7 +84,7 @@ public partial class Game_MapScene
 			string tooltip = mapunit.Name2.GetText();
 			if (mapunit is MapUnit.Attraction)
 			{
-				var obj = new Ref<ModelElement>(mapunit.Attributes["attraction"]).Instance;
+				var obj = new Ref<ModelElement>(mapunit.Attributes["attraction"]?.ToString()).Instance;
 				if (obj is IAttraction attraction)
 				{
 					tooltip = attraction.Text + "\n" + attraction.Describe;
@@ -96,14 +96,14 @@ public partial class Game_MapScene
 			}
 			else if (mapunit is MapUnit.Npc or MapUnit.Boss)
 			{
-				var Npc = FileCache.Data.Get<Npc>()[mapunit.Attributes["npc"]];
+				var Npc = FileCache.Data.Get<Npc>()[mapunit.Attributes["npc"]?.ToString()];
 				if (Npc != null) tooltip = Npc.Text;
 			}
 			else if (mapunit is MapUnit.Link)
 			{
 				temp.MouseLeftButtonDown += new((o, e) =>
 				{
-					var map = FileCache.Data.Get<MapInfo>()[mapunit.Attributes["link-mapid"]];
+					var map = FileCache.Data.Get<MapInfo>()[mapunit.Attributes["link-mapid"]?.ToString()];
 					LoadData(map);
 				});
 			}

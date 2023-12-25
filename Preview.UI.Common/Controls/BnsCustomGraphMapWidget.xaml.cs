@@ -1,4 +1,7 @@
-﻿using System.Windows;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Media;
@@ -8,7 +11,7 @@ using Xylia.Preview.Data.Models;
 using Xylia.Preview.Data.Models.Sequence;
 using static Xylia.Preview.Data.Models.ItemGraph;
 
-namespace Xylia.Preview.UI.Art.GameUI.Scene.Game_ItemMap;
+namespace Xylia.Preview.UI.Controls;
 public partial class BnsCustomGraphMapWidget : Panel
 {
 	#region Constructor
@@ -35,7 +38,7 @@ public partial class BnsCustomGraphMapWidget : Panel
 		var seeds = table.Where(record => record is Seed seed && seed.ItemEquipType == value).Cast<Seed>();
 		if (!seeds.Any()) return;
 
-		var items = new Dictionary<string, ContentControl>();
+		var items = new Dictionary<Item, ContentControl>();
 		foreach (var seed in seeds)
 		{
 			var item = seed.SeedItem.First();
@@ -44,19 +47,20 @@ public partial class BnsCustomGraphMapWidget : Panel
 			Grid.SetRow(widget, seed.Row);
 			Grid.SetColumn(widget, seed.Column);
 
-			items[item.Alias] = widget;
+			items[item.Instance] = widget;
 			this.Children.Add(widget);
 		}
 		#endregion
 
 		#region path
+		// create index
 		var definition = table.Definition.ElRecord.SubtableByType(1)?["start-item"];
 		foreach (var item in items)
 		{
 			var startItem = item.Value;
 			foreach (var edges in table.Search(definition, item.Key).GroupBy(x => x.Attributes["end-item"]))
 			{
-				if (!items.TryGetValue(edges.Key.ToString(), out var endItem)) continue;
+				if (!items.TryGetValue((Item)edges.Key, out var endItem)) continue;
 
 				startItem.Loaded += new((o, args) =>
 				{

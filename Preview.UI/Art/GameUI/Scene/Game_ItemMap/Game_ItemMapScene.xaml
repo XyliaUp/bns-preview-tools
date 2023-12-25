@@ -1,84 +1,26 @@
-<UI:GameScene
-		x:Class="Xylia.Preview.UI.Art.GameUI.Scene.Game_ItemMap.Game_ItemMapScene"
-		xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-		xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-		xmlns:hc="https://handyorg.github.io/handycontrol"
-		xmlns:local="clr-namespace:Xylia.Preview.UI.Art.GameUI.Scene.Game_ItemMap"
-		xmlns:UI="https://github.com/xyliaup/bns-preview-tools"
-		DataContext="{Binding RelativeSource={RelativeSource Self}}"
-		Title="textref=UI.ItemGraph.Title">
-	<Grid x:Name="ItemMapPanel" Width="1100" Height="800">
-		<Grid.RowDefinitions>
-			<RowDefinition Height="40" />
-			<RowDefinition Height="*"/>
-		</Grid.RowDefinitions>
+﻿<BnsCustomUISceneWidget 
+	xmlns="https://github.com/xyliaup/bns-preview-tools"
+    xmlns:s="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	x:Class="Xylia.Preview.UI.Art.GameUI.Scene.Game_ItemMap.Game_ItemMapScene">
 
-		<StackPanel Grid.Row="0" x:Name="ItemMapPanel_Tab" Orientation="Horizontal" >
-			<RadioButton Command="{Binding EquipTypeChangeCommand}" CommandParameter="Weapon" ToolTip="UI.ButtonTooltip.Weapon" />
-			<RadioButton Command="{Binding EquipTypeChangeCommand}" CommandParameter="Necklace" ToolTip="UI.ButtonTooltip.Necklace" />
-			<RadioButton Command="{Binding EquipTypeChangeCommand}" CommandParameter="Earring" ToolTip="UI.ButtonTooltip.Earring"/>
-			<RadioButton Command="{Binding EquipTypeChangeCommand}" CommandParameter="Ring" ToolTip="UI.ButtonTooltip.Ring"/>
-			<RadioButton Command="{Binding EquipTypeChangeCommand}" CommandParameter="Bracelet" ToolTip="UI.ButtonTooltip.Bracelet"/>
-			<RadioButton Command="{Binding EquipTypeChangeCommand}" CommandParameter="Belt" ToolTip="UI.ButtonTooltip.Belt"/>
-			<RadioButton Command="{Binding EquipTypeChangeCommand}" CommandParameter="Soul" ToolTip="UI.ButtonTooltip.Soul"/>
-			<RadioButton Command="{Binding EquipTypeChangeCommand}" CommandParameter="Gloves" ToolTip="UI.ButtonTooltip.Gloves"/>
-			<RadioButton Command="{Binding EquipTypeChangeCommand}" CommandParameter="Pet1" ToolTip="UI.ButtonTooltip.Pet"/>
-			<RadioButton Command="{Binding EquipTypeChangeCommand}" CommandParameter="" ToolTip="UI.ButtonTooltip.SubGem1"/>
-			<RadioButton Command="{Binding EquipTypeChangeCommand}" CommandParameter="" ToolTip="UI.ButtonTooltip.SubGem2"/>
-			<RadioButton Command="{Binding EquipTypeChangeCommand}" CommandParameter="Soul2" ToolTip="UI.ButtonTooltip.soul-2"/>
-			<RadioButton Command="{Binding EquipTypeChangeCommand}" CommandParameter="Nova" ToolTip="UI.ButtonTooltip.Nova"/>
-		</StackPanel>
-		<Grid Grid.Row="1" >
-			<Grid.ColumnDefinitions>
-				<ColumnDefinition Width="200" />
-				<ColumnDefinition Width="*"/>
-			</Grid.ColumnDefinitions>
-
-			<!-- Nag -->
-			<Grid Grid.Column="0" >
-				<Grid>
-					<Grid.RowDefinitions>
-						<RowDefinition Height="50" />
-						<RowDefinition Height="50"/>
-						<RowDefinition Height="35"/>
-					</Grid.RowDefinitions>
-					<Grid.ColumnDefinitions>
-						<ColumnDefinition Width="80" />
-						<ColumnDefinition Width="*"/>
-					</Grid.ColumnDefinitions>
+	<BnsCustomWindowWidget x:Name="ItemMapPanel_C" WindowStyle="ToolWindow" Width="1284" Height="813">
+		<AnchorPanel>
+			<BnsCustomLabelWidget x:Name="BnsTvPanel_CloseButton"        Text="4" AnchorPanel.Anchor="1 0" AnchorPanel.Offset="-12 12 30 0" />
+			<BnsCustomLabelWidget x:Name="BnsTvPanel_AudioModeButton"    Text="3" ToolTip="UI.Tooltip.bnstv.audio" AnchorPanel.Offset="1143 12 30 0" />
+			<BnsCustomLabelWidget x:Name="BnsTvPanel_IncreaseSizeButton" Text="2" ToolTip="UI.Tooltip.bnstv.max" AnchorPanel.Offset="1176 12 30 0" />
+			<BnsCustomLabelWidget x:Name="BnsTvPanel_DecreaseSizeButton" Text="1" ToolTip="UI.Tooltip.bnstv.min" AnchorPanel.Offset="1209 12 30 0" />
 
 
-					<Label Grid.Row="0" Grid.Column="0"  x:Name="Test1" Content="Start Item" />
-					<TextBox Grid.Row="0" Grid.Column="1" Text=""/>
-
-					<Label Grid.Row="1" x:Name="Test2" Content="End Item" />
-					<TextBox Grid.Row="1" Grid.Column="1" Text=""/>
-
-					<Button Grid.Row="2" Grid.ColumnSpan="2" Content="All Clear" Width="80" />
-				</Grid>
+			<s:ScrollViewer x:Name="Scroller" PreviewMouseWheel="PanelMouseWheel" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" >
+				<BnsCustomGraphMapWidget x:Name="ItemMapPanel_MapField" />
+			</s:ScrollViewer>
 
 
-			</Grid>
-
-			<Grid Grid.Column="1" >
-				<Grid.RowDefinitions>
-					<RowDefinition Height="30" />
-					<RowDefinition Height="*"/>
-				</Grid.RowDefinitions>
-
-				<StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-					<TextBox Width="200" Text="Searcher" />
-					<ComboBox Width="200">
-						<ComboBoxItem Content="123" />
-					</ComboBox>
-				</StackPanel>
-
-				<Grid x:Name="ItemMapPanel_MapFieldHolder" Grid.Row="1">
-					<ScrollViewer x:Name="Scroller" PreviewMouseWheel="PanelMouseWheel" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" >
-						<local:BnsCustomGraphMapWidget x:Name="ItemMapPanel_MapField"/>
-					</ScrollViewer>
-				</Grid>
-			</Grid>
-		</Grid>
-	</Grid>
-</UI:GameScene>
+			<AnchorPanel x:Name="ItemMapPanel_Tab" AnchorPanel.Offset="12 50 12 40" AnchorPanel.Anchor="0 0 1 0">
+				<BnsCustomToggleButtonWidget x:Name="ItemMapPanel_Tab_RadioButton_13" ToolTip="tooltip=UI.ButtonTooltip.Nova" AnchorPanel.Offset="552.0117 0 45.000977 40.0" Content="12345" />
+			</AnchorPanel>
+		</AnchorPanel>
+	</BnsCustomWindowWidget>
+</BnsCustomUISceneWidget>

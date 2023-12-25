@@ -168,8 +168,8 @@ public partial class DatSelectDialog : Window, IDatSelect
 
 			return new DefaultProvider()
 			{
-				XmlData = dialog.XML_Select,
-				LocalData = dialog.Local_Select,
+				XmlData = new FileInfo(dialog.XML_Select),
+				LocalData = new FileInfo(dialog.Local_Select),
 			};
 		});
 	}

@@ -89,14 +89,13 @@ public struct Msec : IFormattable
 	{
 		if (value == 0) return null;
 
+		var MorningName = "Name.Time.Morning".GetText();
+		var AfternoonName = "Name.Time.Afternoon".GetText();
 
-		var MorningName = new Ref<Text>("Name.Time.Morning").GetText();
-		var AfternoonName = new Ref<Text>("Name.Time.Afternoon").GetText();
-
-		var DayName = new Ref<Text>("Name.Time.day").GetText() ?? ":";
-		var HourName = new Ref<Text>("Name.Time.hour").GetText() ?? ":";
-		var MinuteName = new Ref<Text>("Name.Time.minute").GetText() ?? ":";
-		var SecondName = new Ref<Text>("Name.Time.second").GetText();
+		var DayName = "Name.Time.day".GetText() ?? ":";
+		var HourName = "Name.Time.hour".GetText() ?? ":";
+		var MinuteName = "Name.Time.minute".GetText() ?? ":";
+		var SecondName = "Name.Time.second".GetText();
 
 
 		var sb = new StringBuilder(256);

@@ -1,5 +1,4 @@
 ﻿using Xylia.Preview.Data.Common.Abstractions;
-using Xylia.Preview.Common.Attributes;
 
 namespace Xylia.Preview.Data.Models;
 public sealed class PartyBattleFieldZone : ModelElement, IAttraction

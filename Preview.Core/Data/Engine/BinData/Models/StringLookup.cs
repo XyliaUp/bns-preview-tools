@@ -25,22 +25,6 @@ public class StringLookup
 		return null;
 	}
 
-	public string[] Strings
-	{
-		get => Encoding.Unicode.GetString(Data).Split('\0');
-		set
-		{
-			StringBuilder _stringBuilder = new();
-			foreach (var s in value)
-			{
-				_stringBuilder.Append(s);
-				_stringBuilder.Append('\0');
-			}
-
-			Data = Encoding.Unicode.GetBytes(_stringBuilder.ToString());
-		}
-	}
-
 	public int AppendString(string str, out int size)
 	{
 		ArgumentNullException.ThrowIfNull(Data, nameof(Data));
@@ -56,6 +40,23 @@ public class StringLookup
 
 		size = strBytes.Length;
 		return position;
+	}
+
+
+	public string[] Strings
+	{
+		get => Encoding.Unicode.GetString(Data).Split('\0');
+		set
+		{
+			StringBuilder _stringBuilder = new();
+			foreach (var s in value)
+			{
+				_stringBuilder.Append(s);
+				_stringBuilder.Append('\0');
+			}
+
+			Data = Encoding.Unicode.GetBytes(_stringBuilder.ToString());
+		}
 	}
 	#endregion
 }

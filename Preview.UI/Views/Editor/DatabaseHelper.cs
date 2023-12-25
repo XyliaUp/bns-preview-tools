@@ -11,10 +11,10 @@ public class TaskData
 {
 	public const int LIMITNUM = 1000;
 
-
-	public List<AttributeValue> Result { get; set; } = null;
-
 	public bool LimitExceeded { get; set; }
+
+	private List<AttributeValue> Result { get; set; }
+
 
 	public void ReadResult(IDataReader reader)
 	{
@@ -25,7 +25,6 @@ public class TaskData
 			this.Result.Add(reader.Current);
 		}
 	}
-
 
 	public void BindData(DataGrid grd)
 	{

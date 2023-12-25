@@ -76,6 +76,12 @@ public static class LinqExtensions
 		return strings.Where(o => !string.IsNullOrEmpty(o)).SelectMany(o => o.Split(separator));
 	}
 
+	public static bool IsEmpty<T>(this IEnumerable<T> source)
+	{
+		return source == null || !source.Any();
+	}
+
+
 	public static IEnumerable<IEnumerable<T>> Batch<T>(this IEnumerable<T> source, int batchSize)
 	{
 		using (var enumerator = source.GetEnumerator())

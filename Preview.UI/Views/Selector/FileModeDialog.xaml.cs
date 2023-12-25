@@ -20,8 +20,8 @@ public partial class FileModeDialog : IDialogResultable<FileModeDialog.FileMode>
 
 	public FileModeDialog()
 	{
-		InitializeComponent();
 		DataContext = this;
+		InitializeComponent();
 	}
 	#endregion
 

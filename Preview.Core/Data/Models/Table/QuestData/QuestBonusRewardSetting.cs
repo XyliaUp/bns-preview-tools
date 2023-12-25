@@ -1,6 +1,4 @@
-﻿using Xylia.Preview.Common.Attributes;
-using Xylia.Preview.Data.Common.DataStruct;
-using Xylia.Preview.Data.Models.Sequence;
+﻿using Xylia.Preview.Data.Models.Sequence;
 
 namespace Xylia.Preview.Data.Models;
 public class QuestBonusRewardSetting : ModelElement

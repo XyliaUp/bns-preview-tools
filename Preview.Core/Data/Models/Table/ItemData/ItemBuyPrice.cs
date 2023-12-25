@@ -1,6 +1,4 @@
 ﻿using System.Text;
-
-using Xylia.Preview.Common.Attributes;
 using Xylia.Preview.Data.Common.DataStruct;
 using Xylia.Preview.Data.Helpers;
 using Xylia.Preview.Data.Models.Sequence;
@@ -17,10 +15,8 @@ public class ItemBuyPrice : ModelElement
 
 	public ConditionType RequiredItembrandConditionType { get; set; }
 
-	[ Repeat(4)]
 	public Ref<Item>[] RequiredItem { get; set; }
 
-	[Repeat(4)]
 	public short[] RequiredItemCount { get; set; }
 
 	public int RequiredFactionScore { get; set; }
@@ -82,7 +78,7 @@ public class ItemBuyPrice : ModelElement
 	{
 		get
 		{
-			if (RequiredItembrand.IsNull) return null;
+			if (RequiredItembrand.Instance is null) return null;
 			return FileCache.Data.Get<ItemBrandTooltip>().FirstOrDefault(x =>
 				x.BrandId == RequiredItembrand.Instance.Id && 
 				x.ItemConditionType == RequiredItembrandConditionType);
