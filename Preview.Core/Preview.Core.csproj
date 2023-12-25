@@ -10,8 +10,6 @@
 		<FileVersion>1.0.9</FileVersion>
 		<AssemblyVersion>1.0.9</AssemblyVersion>
 		<Lisence>MIT</Lisence>
-		<SignAssembly>True</SignAssembly>
-		<DelaySign>False</DelaySign>
 	</PropertyGroup>
 	<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
 		<DebugSymbols>false</DebugSymbols>

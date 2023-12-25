@@ -14,13 +14,15 @@
 		<RuntimeIdentifier>win-x64</RuntimeIdentifier>
 		<OutputType>WinExe</OutputType>
 		<SignAssembly>True</SignAssembly>
+		<IncludeSymbols>False</IncludeSymbols>
+		<Configurations>Debug;Release;Develop</Configurations>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Develop|AnyCPU'">
+		<DefineConstants>$(DefineConstants);DEV</DefineConstants>
 	</PropertyGroup>
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
 		<DebugType>none</DebugType>
 		<IsPublishable>True</IsPublishable>
-	</PropertyGroup>
-	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-	  <DefineConstants>$(DefineConstants);DEV</DefineConstants>
 	</PropertyGroup>
 	<!-- Temp Asset -->
 	<ItemGroup>
