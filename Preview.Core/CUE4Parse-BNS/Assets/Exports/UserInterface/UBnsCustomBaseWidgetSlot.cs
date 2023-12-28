@@ -35,6 +35,8 @@ public struct FLayoutData
 		public float Top;
 		public float Right;
 		public float Bottom;
+
+		public override string ToString() => $"{Left} {Top} {Right} {Bottom}";
 	}
 
 	[StructFallback]
@@ -42,6 +44,8 @@ public struct FLayoutData
 	{
 		public FVector2D Minimum;
 		public FVector2D Maximum;
+
+		public override string ToString() => $"{Minimum.X} {Minimum.Y} {Maximum.X} {Maximum.Y}";
 	}
 
 	[StructFallback]

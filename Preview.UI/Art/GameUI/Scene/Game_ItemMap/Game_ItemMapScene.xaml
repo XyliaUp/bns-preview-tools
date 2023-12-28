@@ -1,26 +1,8 @@
 ﻿<BnsCustomUISceneWidget 
 	xmlns="https://github.com/xyliaup/bns-preview-tools"
-    xmlns:s="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:l="clr-namespace:Xylia.Preview.UI.Art.GameUI.Scene.Game_ItemMap"
 	x:Class="Xylia.Preview.UI.Art.GameUI.Scene.Game_ItemMap.Game_ItemMapScene">
 
-	<BnsCustomWindowWidget x:Name="ItemMapPanel_C" WindowStyle="ToolWindow" Width="1284" Height="813">
-		<AnchorPanel>
-			<BnsCustomLabelWidget x:Name="BnsTvPanel_CloseButton"        Text="4" AnchorPanel.Anchor="1 0" AnchorPanel.Offset="-12 12 30 0" />
-			<BnsCustomLabelWidget x:Name="BnsTvPanel_AudioModeButton"    Text="3" ToolTip="UI.Tooltip.bnstv.audio" AnchorPanel.Offset="1143 12 30 0" />
-			<BnsCustomLabelWidget x:Name="BnsTvPanel_IncreaseSizeButton" Text="2" ToolTip="UI.Tooltip.bnstv.max" AnchorPanel.Offset="1176 12 30 0" />
-			<BnsCustomLabelWidget x:Name="BnsTvPanel_DecreaseSizeButton" Text="1" ToolTip="UI.Tooltip.bnstv.min" AnchorPanel.Offset="1209 12 30 0" />
-
-
-			<s:ScrollViewer x:Name="Scroller" PreviewMouseWheel="PanelMouseWheel" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" >
-				<BnsCustomGraphMapWidget x:Name="ItemMapPanel_MapField" />
-			</s:ScrollViewer>
-
-
-			<AnchorPanel x:Name="ItemMapPanel_Tab" AnchorPanel.Offset="12 50 12 40" AnchorPanel.Anchor="0 0 1 0">
-				<BnsCustomToggleButtonWidget x:Name="ItemMapPanel_Tab_RadioButton_13" ToolTip="tooltip=UI.ButtonTooltip.Nova" AnchorPanel.Offset="552.0117 0 45.000977 40.0" Content="12345" />
-			</AnchorPanel>
-		</AnchorPanel>
-	</BnsCustomWindowWidget>
+	<l:ItemMapPanel x:Name="ItemMapPanel_C" Width="1284" Height="813" />
 </BnsCustomUISceneWidget>

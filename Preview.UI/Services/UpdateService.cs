@@ -1,5 +1,7 @@
-﻿using System.Windows;
+﻿using System.Text;
+using System.Windows;
 using AutoUpdaterDotNET;
+using CUE4Parse.UE4.Pak;
 using HandyControl.Controls;
 using HandyControl.Data;
 using Newtonsoft.Json;
@@ -11,7 +13,7 @@ internal class UpdateService
 {
 	public void CheckForUpdates()
 	{
-#if DEV
+#if DEVELOP
 		return;
 #elif DEBUG
 		Growl.Info(StringHelper.Get("Version_Tip1"));
@@ -29,14 +31,16 @@ internal class UpdateService
 
 	private void CheckForUpdateEvent(UpdateInfoEventArgs args)
 	{
-		if (args is UpdateInfoArgs arg)
+		if (args is UpdateInfoArgs arg2)
 		{
-			if (arg.NoticeID < 0 || UserSettings.Default.NoticeId < arg.NoticeID)
+			IPlatformFilePak.Signature = Encoding.UTF8.GetBytes(arg2.Signature);
+
+			if (arg2.NoticeID < 0 || UserSettings.Default.NoticeId < arg2.NoticeID)
 			{
-				UserSettings.Default.NoticeId = arg.NoticeID;
+				UserSettings.Default.NoticeId = arg2.NoticeID;
 				Growl.Info(new GrowlInfo()
 				{
-					Message = arg.Notice,
+					Message = arg2.Notice,
 					StaysOpen = true,
 				});
 			}
@@ -73,5 +77,6 @@ internal class UpdateService
 	{
 		public int NoticeID { get; set; }
 		public string Notice { get; set; }
+		public string Signature { get; set; }
 	}
 }

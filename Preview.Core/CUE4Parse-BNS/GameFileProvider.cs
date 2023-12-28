@@ -6,6 +6,7 @@ using CUE4Parse.FileProvider.Vfs;
 using CUE4Parse.UE4.Assets;
 using CUE4Parse.UE4.Assets.Exports;
 using CUE4Parse.UE4.Objects.Core.Misc;
+using CUE4Parse.UE4.Pak;
 using CUE4Parse.UE4.Versions;
 using CUE4Parse.Utils;
 
@@ -26,6 +27,8 @@ public sealed class GameFileProvider : DefaultFileProvider, IDisposable
 		GameDirectory, SearchOption.AllDirectories, true,
 		new() { Game = EGame.GAME_BladeAndSoul })
 	{
+		IPlatformFilePak.DoSignatureCheck();
+
 		this.Initialize();
 		this.SubmitKey(new FGuid(), new FAesKey(_aesKey));
 		this.LoadLocalization(ELanguage.Korean);

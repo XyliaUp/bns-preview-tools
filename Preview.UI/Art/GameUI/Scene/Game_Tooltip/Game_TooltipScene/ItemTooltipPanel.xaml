@@ -1,0 +1,5 @@
+﻿<BnsCustomWindowWidget x:Class="Xylia.Preview.UI.Art.GameUI.Scene.Game_Tooltip.ItemTooltipPanel"
+	xmlns="https://github.com/xyliaup/bns-preview-tools"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+	<BnsCustomLabelWidget Text="debug" />
+</BnsCustomWindowWidget>

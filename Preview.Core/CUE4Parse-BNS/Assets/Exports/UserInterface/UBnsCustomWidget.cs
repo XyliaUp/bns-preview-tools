@@ -73,6 +73,7 @@ public class UBnsCustomWindowWidget : UBnsCustomBaseWidget
 	[UPROPERTY] public FPackageIndex WidgetPreset;
 }
 
+
 public class UBnsUISceneGroupUserWidget : USerializeObject
 {
 

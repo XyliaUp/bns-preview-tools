@@ -59,7 +59,6 @@ public partial class Skill3 : ModelElement
 
 
 
-
 		public Ref<Filter> TargetFilter { get; set; }
 
 		public Ref<SkillGatherRange3> GatherRange { get; set; }
@@ -120,7 +119,6 @@ public partial class Skill3 : ModelElement
 		public short ConsumeSummonedHpValue { get; set; }
 
 		public ConsumeType ConsumeSummonedHpType { get; set; }
-
 
 
 

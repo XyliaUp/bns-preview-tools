@@ -43,7 +43,7 @@ public class DefaultProvider : Datafile, IDataProvider
 		#region ParseType
 		// Actually, it is directly defined in the game program, but we cannot get it.
 		if (definitions.HasHeader) Detect = new DatafileDirect(definitions.Header);
-		else Detect = new DatafileDetect(this);
+		else Detect = new DatafileDetect(this, definitions);
 
 		Detect?.ParseType(definitions);
 		#endregion
@@ -109,7 +109,7 @@ public class DefaultProvider : Datafile, IDataProvider
 		{
 			XmlData.Add(PATH.Datafile(Is64Bit), WriteTo([.. xml], settings.Is64bit));
 			XmlData.Write(settings.Is64bit, CompressionLevel.Normal);
-			
+
 			LocalData.Add(PATH.Localfile(Is64Bit), WriteTo([.. local], settings.Is64bit));
 		}
 		else if (settings.Mode == Mode.PackageThird)
@@ -123,8 +123,6 @@ public class DefaultProvider : Datafile, IDataProvider
 
 	public virtual void Dispose()
 	{
-		Locale = null;
-
 		XmlData?.Dispose();
 		LocalData?.Dispose();
 		ConfigData?.Dispose();

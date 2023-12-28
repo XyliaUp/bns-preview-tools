@@ -9,10 +9,10 @@ namespace Xylia.Preview.Data.Engine.BinData.Helpers;
 public sealed class DatafileDirect : ITableParseType
 {
 	#region Helper
-	readonly Dictionary<string, short> by_name = new(new TableNameComparer());
+	readonly Dictionary<string, ushort> by_name = new(new TableNameComparer());
 
-	public bool TryGetName(short key, out string name) => throw new NotSupportedException();
-	public bool TryGetKey(string name, out short key) => by_name.TryGetValue(name, out key);
+	public bool TryGetName(ushort key, out string name) => throw new NotSupportedException();
+	public bool TryGetKey(string name, out ushort key) => by_name.TryGetValue(name, out key);
 	#endregion
 
 
@@ -22,7 +22,7 @@ public sealed class DatafileDirect : ITableParseType
 
 		foreach (var table in data["table"])
 		{
-			var type = short.Parse(table.KeyName);
+			var type = ushort.Parse(table.KeyName);
 			by_name[table.Value] = type;
 		}
 

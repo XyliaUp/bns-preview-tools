@@ -95,4 +95,6 @@ public enum AttachAbility : byte
 
     [Name("Name.Item.r-support-power-value")]
     RSupportPowerValue,
+
+	COUNT
 }

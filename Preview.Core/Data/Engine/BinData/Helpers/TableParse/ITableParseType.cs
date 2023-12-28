@@ -9,7 +9,7 @@ public interface ITableParseType
     /// <param name="key"></param>
     /// <param name="name"></param>
     /// <returns></returns>
-    bool TryGetName(short key, out string name);
+    bool TryGetName(ushort key, out string name);
 
     /// <summary>
     /// Get table type from name
@@ -17,7 +17,7 @@ public interface ITableParseType
     /// <param name="name"></param>
     /// <param name="key"></param>
     /// <returns></returns>
-    bool TryGetKey(string name, out short key);
+    bool TryGetKey(string name, out ushort key);
 
 
     /// <summary>

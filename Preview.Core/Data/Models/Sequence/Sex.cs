@@ -14,4 +14,6 @@ public enum SexSeq
 
 	[Name("Name.sex.female")]
 	중,
+
+	COUNT
 }

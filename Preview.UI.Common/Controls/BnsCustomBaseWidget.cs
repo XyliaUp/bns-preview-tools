@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Windows;
 using System.Windows.Controls;
 using Xylia.Preview.Data.Helpers;
@@ -7,7 +8,11 @@ using Xylia.Preview.Data.Models;
 namespace Xylia.Preview.UI.Controls;
 interface IBnsCustomBaseWidget
 {
-	ChildCollection Items { get; }
+	/// <summary>
+	/// collection of child element
+	/// unlike WPF control, widget both have child elements
+	/// </summary>
+	IList Items { get; }
 }
 
 public class BnsCustomBaseWidget : ItemsControl

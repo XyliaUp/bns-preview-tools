@@ -33,5 +33,7 @@ public enum RaceSeq
 	[Name("Race.Name2.AdventSoul")]
 	강림체,
 
-    악귀
+    악귀,
+
+	COUNT
 }

@@ -154,4 +154,6 @@ public enum ConditionType
 
 	[Name("Name.item.equip-type.vehicle")]
 	Vehicle,
+
+	COUNT
 }

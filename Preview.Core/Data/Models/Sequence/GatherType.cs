@@ -30,4 +30,6 @@ public enum GatherType
 	TargetAndLinkTarget,
 
 	ShiftingLaser,
+
+	COUNT
 }

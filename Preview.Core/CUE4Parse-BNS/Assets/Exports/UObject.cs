@@ -1,6 +1,6 @@
-﻿using CUE4Parse.BNS.Pack.Objects;
-using CUE4Parse.UE4.Assets.Exports;
+﻿using CUE4Parse.UE4.Assets.Exports;
 using CUE4Parse.UE4.Assets.Objects;
+using CUE4Parse.UE4.Objects;
 using CUE4Parse.UE4.Writers;
 
 namespace CUE4Parse.UE4.Assets.Exports;

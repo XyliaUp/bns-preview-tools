@@ -16,6 +16,7 @@ public class Side : Attribute
 [Flags]
 public enum ReleaseSide
 {
+    None = -1,
     Client,
 
     Server,

@@ -15,7 +15,7 @@ public partial class ItemPage : Page
 		DataContext = new ItemPageViewModel();
 		InitializeComponent();
 
-#if DEV
+#if DEVELOP
 		DEBUG.Visibility = Visibility.Visible;
 		DEBUG.IsSelected = true;
 #endif

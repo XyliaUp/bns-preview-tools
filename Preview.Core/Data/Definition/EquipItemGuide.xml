@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table name="equip-item-guide" version="1.1" autokey="true" module="6">
+	<el name="table" child="1" />
+	<el name="record">
+		<attribute name="item-group" type="Ref" ref="equip-item-group" />
+		<attribute name="ability" type="Seq" start-show="24" seq="main-ability" />
+		<attribute name="ability-value" type="Int32" start-show="28" />
+		<attribute name="representative-item" type="Ref" ref="Item" />
+		<attribute name="next-item-guide-list" type="Ref" ref="Item" repeat="3" />
+		<attribute name="improve-main-feed-list" type="Ref" ref="Item" repeat="15" />
+		<attribute name="improve-sub-feed-list" type="Ref" ref="Item" repeat="15" />
+		<attribute name="transfrom-main-feed-list" type="Ref" ref="Item" repeat="15" />
+		<attribute name="transfrom-sub-feed-list" type="Ref" ref="Item" repeat="15" />
+		<attribute name="growth-main-feed-list" type="Ref" ref="Item" repeat="15" />
+		<attribute name="growth-sub-feed-list" type="Ref" ref="Item" repeat="15" />
+		<attribute name="improve-set-list" type="Ref" ref="item-improve-set-bonus" repeat="4" />
+		<attribute name="improve-option-acquire-level-list" type="Int8" repeat="5" />
+	</el>
+</table>

@@ -1,5 +1,4 @@
-﻿using Xylia.Preview.Common.Attributes;
-using Xylia.Preview.Data.Models.Sequence;
+﻿using Xylia.Preview.Data.Models.Sequence;
 
 namespace Xylia.Preview.Data.Models;
 public class ItemGraph : ModelElement
@@ -80,7 +79,6 @@ public class ItemGraph : ModelElement
 
 			Transform,
 
-			[Name("jump-transform")]
 			JumpTransform,
 
 			Purification,

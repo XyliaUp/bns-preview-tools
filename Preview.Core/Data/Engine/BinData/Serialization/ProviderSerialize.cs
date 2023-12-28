@@ -139,7 +139,7 @@ public class ProviderSerialize(IDataProvider Provider)
 
 							foreach (var attr in attributes)
 							{
-								record.Attributes.Set(record.ElDefinition[attr.Item1], attr.Item2);
+								record.Attributes.Set(record.Definition[attr.Item1], attr.Item2);
 							}
 						});
 					}

@@ -1,5 +1,4 @@
-﻿using System.Diagnostics;
-using System.Net;
+﻿using System.Net;
 using System.Text;
 
 namespace Xylia.Preview.Common;
@@ -46,19 +45,5 @@ public class Debugger
 	{
 		status = 404;
 		return "Url not found";
-	}
-}
-
-/// <summary>
-/// redirect console to debug
-/// </summary>
-public class ConsoleRedirect : TextWriter
-{
-	public override Encoding Encoding => Encoding.UTF8;
-
-	public override void WriteLine(string value)
-	{
-		// base.WriteLine(value);
-		Debug.WriteLine(value);
 	}
 }

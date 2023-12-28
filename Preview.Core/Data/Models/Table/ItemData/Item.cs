@@ -31,22 +31,9 @@ public abstract partial class Item : ModelElement
 
 	public JobSeq[] EquipJobCheck { get; set; }
 
-	public bool CheckEquipJob(JobSeq TargetJob)
-	{
-		if (TargetJob == JobSeq.JobNone) return true;
-		else if (EquipJobCheck[0] == JobSeq.JobNone) return true;
-
-		foreach (var seq in EquipJobCheck)
-			if (seq == TargetJob)
-				return true;
-
-		return false;
-	}
-
-
 	public SexSeq2 EquipSex { get; set; }
 
-	public Race EquipRace => Race.Get(this.Attributes["equip-race"].ToEnum<RaceSeq2>());
+	public Race EquipRace => Race.Get(Attributes["equip-race"].ToEnum<RaceSeq2>());
 
 	public EquipType EquipType { get; set; }
 
@@ -54,7 +41,7 @@ public abstract partial class Item : ModelElement
 
 
 
-	public LegendGradeBackgroundParticleTypeSeq LegendGradeBackgroundParticleType => this.Attributes["legend-grade-background-particle-type"].ToEnum<LegendGradeBackgroundParticleTypeSeq>();
+	public LegendGradeBackgroundParticleTypeSeq LegendGradeBackgroundParticleType => Attributes["legend-grade-background-particle-type"].ToEnum<LegendGradeBackgroundParticleTypeSeq>();
 	public enum LegendGradeBackgroundParticleTypeSeq
 	{
 		None,
@@ -67,28 +54,22 @@ public abstract partial class Item : ModelElement
 	}
 
 
-	public MainAbility MainAbility1 => this.Attributes["main-ability-1"].ToEnum<MainAbility>();
-	public MainAbility MainAbility2 => this.Attributes["main-ability-2"].ToEnum<MainAbility>();
+	public MainAbility MainAbility1 => Attributes["main-ability-1"].ToEnum<MainAbility>();
+	public MainAbility MainAbility2 => Attributes["main-ability-2"].ToEnum<MainAbility>();
 
 
-	public Msec UsableDuration => (Msec)this.Attributes["usable-duration"];
+	public Msec UsableDuration => Attributes.Get<Msec>("usable-duration");
 	public Ref<ItemEvent> EventInfo { get; set; }
-	public bool ShowRewardPreview => (bool)this.Attributes["show-reward-preview"];
-	public Ref<AccountPostCharge> AccountPostCharge { get; set; }
 
-	public int ImproveId => (int)this.Attributes["improve-id"];
-	public sbyte ImproveLevel => (sbyte)this.Attributes["improve-level"];
+	public int ImproveId => Attributes.Get<int>("improve-id");
+	public sbyte ImproveLevel => Attributes.Get<sbyte>("improve-level");
 
-	public Ref<Text> Name2 { get; set; }
+	public string ItemName => $"<font name=\"00008130.Program.Fontset_ItemGrade_{this.ItemGrade}\">{ItemNameOnly}</font>";
+	public string ItemNameOnly => Attributes["name2"].GetText();
 
-	public string ItemName => $"<font name=\"00008130.Program.Fontset_ItemGrade_{this.ItemGrade}\">{this.Name2.GetText()}</font>";
-	public string ItemNameOnly => this.Name2.GetText();
+	public int ClosetGroupId => Attributes.Get<int>("closet-group-id");
 
-	public int ClosetGroupId => (int)this.Attributes["closet-group-id"];
-
-	public string icon { get; set; }
-
-	public SKBitmap FrontIcon => icon.GetIcon();
+	public SKBitmap FrontIcon => Attributes["icon"].ToString().GetIcon();
 	public SKBitmap Icon => ItemGrade.GetBackground().Compose(FrontIcon);
 	public SKBitmap IconExtra
 	{

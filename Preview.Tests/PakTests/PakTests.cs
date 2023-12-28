@@ -2,12 +2,11 @@
 
 using CUE4Parse.BNS;
 using CUE4Parse.BNS.Assets.Exports;
-using CUE4Parse.BNS.Pack.Objects;
-using CUE4Parse.BNS.Pak;
 using CUE4Parse.Compression;
 using CUE4Parse.UE4.Assets;
 using CUE4Parse.UE4.Assets.Exports.BuildData;
 using CUE4Parse.UE4.Assets.Exports.Texture;
+using CUE4Parse.UE4.Pak;
 using CUE4Parse.UE4.Writers;
 using CUE4Parse_Conversion.Textures;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -87,7 +86,7 @@ public partial class AssetExport
 #if true
 		var provider = new GameFileProvider(OutDir);
 		if (provider.TrySaveAsset(pak.MountPoint + @"\lisence.txt", out var data))
-			Debug.WriteLine("data: " + BitConverter.ToString(data));
+			Console.WriteLine("data: " + BitConverter.ToString(data));
 #endif
 	}
 }

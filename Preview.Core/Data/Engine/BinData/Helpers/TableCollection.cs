@@ -1,23 +1,23 @@
 ﻿using System.Diagnostics;
+using Xylia.Preview.Common.Extension;
 using Xylia.Preview.Data.Common.DataStruct;
 using Xylia.Preview.Data.Engine.BinData.Models;
 using Xylia.Preview.Data.Engine.Definitions;
 using Xylia.Preview.Data.Models;
-using Xylia.Preview.Document;
 
 namespace Xylia.Preview.Data.Engine.BinData.Helpers;
 public class TableCollection : List<Table>
 {
-	Dictionary<short, Table> _tableByType;
+	Dictionary<ushort, Table> _tableByType;
 	Dictionary<string, Table> _tableByName;
 
-	public Table this[short index]
+	public Table this[ushort index]
 	{
 		get
 		{
 			lock (this)
 			{
-				return (_tableByType ??= this.Where(x => x.Type > 0).ToDistinctDictionary(o => o.Type, null))
+				return (_tableByType ??= this.Where(x => x.Type > 0).ToDistinctDictionary(o => o.Type))
 					 .GetValueOrDefault(index);
 			}
 		}
@@ -30,7 +30,7 @@ public class TableCollection : List<Table>
 			lock (this)
 			{
 				if (string.IsNullOrWhiteSpace(index)) return default;
-				if (short.TryParse(index, out var type)) return this[type];
+				if (ushort.TryParse(index, out var type)) return this[type];
 				if (index.Equals("skill", StringComparison.OrdinalIgnoreCase)) index = "skill3";
 
 				var table = (_tableByName ??= this.ToDistinctDictionary(x => x.Name, new TableNameComparer())).GetValueOrDefault(index);
@@ -43,7 +43,7 @@ public class TableCollection : List<Table>
 
 
 
-	public Record GetRef(short type, Ref Ref)
+	public Record GetRef(ushort type, Ref Ref)
 	{
 		if (Ref == default) return null;
 
@@ -70,11 +70,9 @@ public class TableCollection : List<Table>
 		return $"{table.Name}:{table[Ref, false]}";
 	}
 
-	public string GetSub(short type, Sub sub)
+	public string GetSub(ushort type, Sub sub)
 	{
-		if (sub == default) return null;
-
-		return this[type]?.Definition.ElRecord.SubtableByType(sub.Type).Name;
+		return this[type]?.Definition.ElRecord.SubtableByType(sub.Subclass).Name;
 	}
 
 

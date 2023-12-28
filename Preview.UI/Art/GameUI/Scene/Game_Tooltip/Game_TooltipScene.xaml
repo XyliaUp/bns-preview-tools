@@ -1,12 +1,60 @@
 ﻿<BnsCustomUISceneWidget
-	x:Class="Xylia.Preview.UI.Art.GameUI.Scene.Game_Tooltip.Game_TooltipScene"
 	xmlns="https://github.com/xyliaup/bns-preview-tools"
 	xmlns:s="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:l="clr-namespace:Xylia.Preview.UI.Art.GameUI.Scene.Game_Tooltip"
+	x:Class="Xylia.Preview.UI.Art.GameUI.Scene.Game_Tooltip.Game_TooltipScene">
 
-	<s:Grid x:Name="Tooltip_LinkDummy" />
-	
-	<s:Grid x:Name="ItemTooltipPanel" Width="352" Height="3330">
+	<BnsCustomWindowWidget x:Name="Tooltip_LinkDummy_C" />
+	<BnsCustomWindowWidget x:Name="BalloonTooltipPanel_C" />
+	<BnsCustomWindowWidget x:Name="TooltipPanel_C" />
+	<BnsCustomWindowWidget x:Name="GadgetSkillToolTipPanel_C" />
+	<BnsCustomWindowWidget x:Name="GadgetActionToolTipPanel_C" />
+	<BnsCustomWindowWidget x:Name="RepairCostToolTipPanel_C" />
+	<BnsCustomWindowWidget x:Name="GadgetDropActionToolTipPanel_C" />
+	<BnsCustomWindowWidget x:Name="PartyToolTipPanel_C" />
+	<BnsCustomWindowWidget x:Name="ItemPouchToolTipPanel_C" />
+	<BnsCustomWindowWidget x:Name="QuestLootingToolTipPanel_C" />
+	<BnsCustomWindowWidget x:Name="GadgetToolTipPanel_C" />
+	<BnsCustomWindowWidget x:Name="GuildMemberToolTipPanel_C" />
+	<BnsCustomWindowWidget x:Name="StylepointTooltipPanel_C" />
+	<BnsCustomWindowWidget x:Name="StylepointNotificationPanel_C" />
+	<BnsCustomWindowWidget x:Name="ExpToolTipPanel_C" />
+
+	<l:ItemTooltipPanel x:Name="ItemTooltipPanel_C" Width="352" Height="3330">
 		<BnsCustomLabelWidget Text="debug" />
-	</s:Grid>
+	</l:ItemTooltipPanel>
+
+	<BnsCustomWindowWidget x:Name="ItemTooltipPanel_Sub_1_C" />
+
+	<BnsCustomWindowWidget x:Name="ItemBrandTooltipPanel_C" />
+	<BnsCustomWindowWidget x:Name="ExpandInventorySlotTooltipPanel_C" />
+
+	<BnsCustomWindowWidget x:Name="SkillToolTipPanel_1_C" />
+	<BnsCustomWindowWidget x:Name="SkillToolTipPanel_2_C" />
+	<l:Skill3ToolTipPanel_1 x:Name="Skill3ToolTipPanel_1_C" />
+	<l:Skill3ToolTipPanel_2 x:Name="Skill3ToolTipPanel_2_C" />
+
+	<BnsCustomWindowWidget x:Name="PartySearchRecruitToolTipPanel_C" />
+	<BnsCustomWindowWidget x:Name="AttractionMapUnitToolTipPanel_C" />
+	<BnsCustomWindowWidget x:Name="EnvObjectToolTipPanel_C" />
+	<BnsCustomWindowWidget x:Name="RefinerEnvToolTipPanel_C" />
+	<BnsCustomWindowWidget x:Name="GoodsTooltipPanel_C" />
+	<BnsCustomWindowWidget x:Name="Guild2MemberToolTipPanel_C" />
+	<BnsCustomWindowWidget x:Name="GuildSearchRecruitToolTipPanel_C" />
+	<BnsCustomWindowWidget x:Name="GuildCustomizeTooltipPanel_C" />
+	<BnsCustomWindowWidget x:Name="PersonalCustomizeTooltipPanel_C" />
+	<BnsCustomWindowWidget x:Name="NpcToolTipPanel_C" />
+	<BnsCustomWindowWidget x:Name="RaidDungeonUnbindCostToolTipPanel_C" />
+	<BnsCustomWindowWidget x:Name="IngameShopGoodsTooltipPanel_C" />
+	<BnsCustomWindowWidget x:Name="SkillTrainToolTipPanel_C" />
+	<BnsCustomWindowWidget x:Name="SkillTrainSystematizationStateTooltipPanel_C" />
+	<BnsCustomWindowWidget x:Name="TeleportTooltipPanel_C" />
+	<BnsCustomWindowWidget x:Name="PcToolTipPanel_C" />
+	<BnsCustomWindowWidget x:Name="AccountContentsGradeTooltipPanel_C" />
+	<BnsCustomWindowWidget x:Name="PotantialTooltipPanel_C" />
+	<BnsCustomWindowWidget x:Name="StoneTooltipPanel_C" />
+	<BnsCustomWindowWidget x:Name="EnergyTooltipPanel_C" />
+	<BnsCustomWindowWidget x:Name="EnergyMagnificationToolTipPanel_C" />
+	<BnsCustomWindowWidget x:Name="EnergyBoxTooltipPanel_C" />
 </BnsCustomUISceneWidget>

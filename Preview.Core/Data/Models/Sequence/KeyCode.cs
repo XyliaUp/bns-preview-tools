@@ -262,4 +262,6 @@ public enum KeyCode
 	MouseRightButtonJoypadReplaceable,
 
 	EscapeJoypadReplaceable,
+
+	COUNT
 }

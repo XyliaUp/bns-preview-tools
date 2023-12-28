@@ -5,117 +5,124 @@ public enum StanceSeq
 {
 	StanceNone,
 
+	[Name("Stance.Name2.NPC")]
 	Npc기본자세,
 
-	[Name("剑术")]
+	[Name("Stance.Name2.Standard")]
 	천검세,
 
-	[Name("御剑")]
+	[Name("Stance.Name2.Phantom")]
 	검령세,
 
-	[Name("体术")]
+	[Name("Stance.Name2.BigHit")]
 	단타,
 
-	[Name("烈虎拳")]
+	[Name("Stance.Name2.Combo")]
 	연계,
 
-	[Name("冰虎拳")]
+	[Name("Stance.Name2.Mount")]
 	체술,
 
-	[Name("拔剑")]
+	[Name("Stance.Name2.HideBlade")]
 	납도,
 
-	[Name("气功")]
+	[Name("Stance.Name2.Hard")]
 	경기공,
 
-	[Name("柔气功")]
+	[Name("Stance.Name2.Soft")]
 	연기공,
 
-	[Name("刚气功")]
+	[Name("Stance.Name2.intensity")]
 	강기공,
 
+	[Name("Stance.Name2.Sniper")]
 	스나이퍼모드,
 
+	[Name("Stance.Name2.Gunner")]
 	건너모드,
 
-	[Name("毁灭")]
+	[Name("Stance.Name2.Destruction")]
 	파괴,
 
-	[Name("怜悯")]
+	[Name("Stance.Name2.Protection")]
 	보호,
 
-	[Name("金刚不坏")]
+	[Name("Stance.Name2.impregnable")]
 	철벽,
 
-	[Name("追随")]
+	[Name("Stance.Name2.Summon")]
 	소환,
 
-	[Name("扰乱")]
+	[Name("Stance.Name2.Disturb")]
 	교란,
 
-	[Name("隐身")]
+	[Name("Stance.Name2.Hide")]
 	은신,
 
 	암살,
 
-	[Name("剑术")]
+	[Name("Stance.Name2.Standard")]
 	검술,
 
-	[Name("御剑")]
+	[Name("Stance.Name2.Phantom")]
 	어검,
 
-	[Name("拔剑")]
+	[Name("Stance.Name2.HideBlade")]
 	발도,
 
+	[Name("Stance.Name2.NPC1")]
 	Npc자세1,
 
+	[Name("Stance.Name2.NPC2")]
 	Npc자세2,
 
+	[Name("Stance.Name2.NPC3")]
 	Npc자세3,
 
-	[Name("追随")]
+	[Name("Stance.Name2.summonedfollow")]
 	소환수Follow,
 
-	[Name("战斗")]
+	[Name("Stance.Name2.summonedcommand")]
 	소환수Command1,
 
+	[Name("Stance.Name2.summonedcommand")]
 	소환수Flying,
 
-	[Name("幻术")]
+	[Name("Stance.Name2.Spell")]
 	주술,
 
-	[Name("降临")]
+	[Name("Stance.Name2.Advent")]
 	강림,
 
-	[Name("拳击")]
+	[Name("Stance.Name2.Kungfu")]
 	유권,
 
-	[Name("气击")]
+	[Name("Stance.Name2.Soul")]
 	기공,
 
-	[Name("冷静")]
+	[Name("Stance.Name2.Cool")]
 	냉정,
 
-	[Name("狂暴")]
+	[Name("Stance.Name2.Madness")]
 	광기,
 
 	장궁,
 
 	정령궁,
 
-	[Name("毁灭")]
+	[Name("Stance.Name2.Destruction")]
 	찌르기,
 
-	[Name("毁灭")]
+	[Name("Stance.Name2.Destruction")]
 	베기,
 
-	[Name("毁灭")]
+	[Name("Stance.Name2.Destruction")]
 	청뢰,
 
-	[Name("毁灭")]
+	[Name("Stance.Name2.Destruction")]
 	혈뢰,
 
-	[Name("御剑")]
+	[Name("Stance.Name2.Phantom")]
 	어검세,
 
 	정수,
@@ -137,10 +144,11 @@ public enum StanceSeq
 	Npc주시자세3,
 
 
-	//新增的, 未确认排序
 	간이연주,
 	우퍼,
 	연주,
 	권총모드,
 	런처모드,
+
+	COUNT
 }

@@ -22,4 +22,6 @@ public enum RecycleGroup
 
     [Name("gadget")]
     Gadget,
+
+	COUNT
 }

@@ -63,8 +63,8 @@ public class MissionStepFail : ModelElement
 	[Side(ReleaseSide.Client)]
 	public float FailTalksocialDelay { get; set; }
 
-	[Side(ReleaseSide.Server)]
-	public Ref<Decision.QuestDecision> QuestDecision { get; set; }
+	//[Side(ReleaseSide.Server)]
+	//public Ref<Decision.QuestDecision> QuestDecision { get; set; }
 
 	[Side(ReleaseSide.Server), Repeat(2)]
 	public Ref<Zone>[] Zone { get; set; }

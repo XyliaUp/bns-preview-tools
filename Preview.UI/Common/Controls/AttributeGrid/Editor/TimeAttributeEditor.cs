@@ -20,14 +20,14 @@ internal class TimeAttributeEditor : PropertyEditorBase , IValueConverter
 
 	public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
 	{
-		if (value is Time64 Time64) return Time64.LocalTime;
+		//if (value is Time64 Time64) return Time64.LocalTime;
 
 		throw new NotImplementedException();
 	}
 
 	public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
 	{
-		if (value is DateTime time) return (Time64)time;
+		//if (value is DateTime time) return (Time64)time;
 
 		throw new NotImplementedException();
 	}

@@ -1,11 +1,25 @@
-﻿using System.Windows;
+﻿using System.Collections;
+using System.Windows;
+using System.Windows.Markup;
 
 namespace Xylia.Preview.UI.Controls;
-public class BnsCustomWindowWidget : Window
+
+[ContentProperty("Items")]
+public class BnsCustomWindowWidget : Window, IBnsCustomBaseWidget
 {
+	#region Constructors
+	private readonly AnchorPanel ItemsPanel;
+
 	public BnsCustomWindowWidget()
 	{
-		ResizeMode = ResizeMode.NoResize;
-		WindowStyle = WindowStyle.None;
+		this.Content = this.ItemsPanel = new AnchorPanel();
+
+		this.ResizeMode = ResizeMode.NoResize;
+		this.WindowStyle = WindowStyle.ToolWindow;
 	}
+	#endregion
+
+	#region Properies
+	public IList Items => ItemsPanel.Children;
+	#endregion
 }

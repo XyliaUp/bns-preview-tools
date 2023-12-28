@@ -35,4 +35,9 @@
 			</Style.Triggers>
 		</Style>
 	</Panel.Resources>
+
+
+	<!-- ItemMapPanel_MapField_NodeTemplate -->
+	<!-- ItemMapPanel_MapField_HorizontalRulerItemTemplate -->
+	<!-- ItemMapPanel_MapField_VerticalRulerItemTemplate -->
 </Panel>

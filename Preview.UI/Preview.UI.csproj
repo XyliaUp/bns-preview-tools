@@ -17,8 +17,9 @@
 		<IncludeSymbols>False</IncludeSymbols>
 		<Configurations>Debug;Release;Develop</Configurations>
 	</PropertyGroup>
+
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Develop|AnyCPU'">
-		<DefineConstants>$(DefineConstants);DEV</DefineConstants>
+		<XamlDebuggingInformation>True</XamlDebuggingInformation>
 	</PropertyGroup>
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
 		<DebugType>none</DebugType>
@@ -160,24 +161,17 @@
 
 		<Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
 		<None Update="Properties\AssemblyVersion.tt" Generator="TextTemplatingFileGenerator" LastGenOutput="AssemblyVersion.cs" />
+		<Compile Update="Art\GameUI\Scene\Game_Tooltip\Game_TooltipScene\Skill3ToolTipPanel_2.xaml.cs">
+		  <SubType>Code</SubType>
+		</Compile>
+		<Compile Update="Art\GameUI\Scene\Game_Tooltip\Game_TooltipScene\Skill3ToolTipPanel_1.xaml.cs">
+		  <SubType>Code</SubType>
+		</Compile>
 		<Compile Update="Properties\AssemblyVersion.cs" AutoGen="True" DesignTime="True" DependentUpon="AssemblyVersion.tt" />
 	</ItemGroup>
 
 
 	<ItemGroup>
-		<Resource Include="Art\GameUI\Scene\Game_ItemMap\ItemMapPanel_Tab_RadioButton_1.png" />
-		<Resource Include="Art\GameUI\Scene\Game_ItemMap\ItemMapPanel_Tab_RadioButton_10.png" />
-		<Resource Include="Art\GameUI\Scene\Game_ItemMap\ItemMapPanel_Tab_RadioButton_11.png" />
-		<Resource Include="Art\GameUI\Scene\Game_ItemMap\ItemMapPanel_Tab_RadioButton_12.png" />
-		<Resource Include="Art\GameUI\Scene\Game_ItemMap\ItemMapPanel_Tab_RadioButton_13.png" />
-		<Resource Include="Art\GameUI\Scene\Game_ItemMap\ItemMapPanel_Tab_RadioButton_2.png" />
-		<Resource Include="Art\GameUI\Scene\Game_ItemMap\ItemMapPanel_Tab_RadioButton_3.png" />
-		<Resource Include="Art\GameUI\Scene\Game_ItemMap\ItemMapPanel_Tab_RadioButton_4.png" />
-		<Resource Include="Art\GameUI\Scene\Game_ItemMap\ItemMapPanel_Tab_RadioButton_5.png" />
-		<Resource Include="Art\GameUI\Scene\Game_ItemMap\ItemMapPanel_Tab_RadioButton_6.png" />
-		<Resource Include="Art\GameUI\Scene\Game_ItemMap\ItemMapPanel_Tab_RadioButton_7.png" />
-		<Resource Include="Art\GameUI\Scene\Game_ItemMap\ItemMapPanel_Tab_RadioButton_8.png" />
-		<Resource Include="Art\GameUI\Scene\Game_ItemMap\ItemMapPanel_Tab_RadioButton_9.png" />
 		<Resource Include="Art\GameUI\Resource\GameUI_Icon3_R\SlotItem_marketBusiness.png" />
 		<Resource Include="Art\GameUI\Resource\GameUI_Icon3_R\SlotItem_privateSale.png" />
 		<Resource Include="Art\GameUI\Resource\GameUI_Icon3_R\unuseable_AccountContents.png" />

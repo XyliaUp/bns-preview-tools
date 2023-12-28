@@ -43,7 +43,7 @@ public class Exporter
 			File.WriteAllText($"{FixPath(Folder, package.Name)}.json", JsonConvert.SerializeObject(objs, Formatting.Indented));
 		}
 
-#if (DEBUG)
+#if DEBUG
 		objs.Where(o => o.GetType() == typeof(UObject))
 			.ForEach(o => Debug.WriteLine("not supported class: " + o.Class.GetFullName()));
 #endif

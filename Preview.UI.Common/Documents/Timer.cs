@@ -1,7 +1,7 @@
 ﻿using System;
 using HtmlAgilityPack;
-using Xylia.Preview.Common.Attributes;
 using Xylia.Preview.Data.Common.DataStruct;
+using static Xylia.Preview.Data.Common.DataStruct.MsecFormat;
 
 namespace Xylia.Preview.UI.Documents;
 public class Timer : Element
@@ -9,34 +9,7 @@ public class Timer : Element
 	#region Fields
 	public int Id;
 
-	public TimerType Type;
-
-	public enum TimerType
-	{
-		[Name("dhm-plusonesec")]
-		dhmPlusonesec,
-
-		[Name("dhms-plusonesec")]
-		dhmsPlusonesec,
-
-		[Name("hms-plusonesec")]
-		hmsPlusonesec,
-
-		[Name("min-plusonesec")]
-		minPlusonesec,
-
-		[Name("dhms-rounddown")]
-		dhmsRounddown,
-
-		[Name("hms-rounddown-plusonesec")]
-		hmsRounddownPlusonesec,
-
-		[Name("hms-format-colon")]
-		hmsFormatColon,
-
-		[Name("hm-format-colon-plusonemin")]
-		hmFormatColonPlusonemin,
-	}
+	public MsecFormatType Type;
 	#endregion
 
 
@@ -51,19 +24,10 @@ public class Timer : Element
 	protected internal override void Load(HtmlNode node)
 	{
 		Id = node.GetAttributeValue("id", 0);
-		Type = node.GetAttributeValue("type", (TimerType)default);
+		Type = node.GetAttributeValue("type", (MsecFormatType)default);
 	}
 
-	public override string ToString()
-	{
-		var span = this.Span;
-
-		var format = Type.ToString();
-		if (format.Contains("Plusonesec")) span -= new Msec(0, 1);
-		else if (format.Contains("Plusonemin")) span -= new Msec(1, 0);
-
-		return span.ToString(default, null);
-	}
+	public override string ToString() => Span.ToString(Type);
 
 	public static bool Valid(DayOfWeek DayOfWeek, int ResetTime, out Time64 Time)
 	{

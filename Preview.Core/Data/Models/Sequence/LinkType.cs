@@ -10,4 +10,6 @@ public enum LinkType
     CatchFriend,
     InhalationCatch,
     RangeCatch,
+
+	COUNT
 }

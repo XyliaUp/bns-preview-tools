@@ -1,5 +1,4 @@
 ﻿namespace Xylia.Preview.Common.Extension;
-
 internal static class DateExtensions
 {
     /// <summary>

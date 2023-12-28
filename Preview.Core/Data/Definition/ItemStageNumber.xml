@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table name="item-stage-number" version="0.1" autokey="true" module="0">
+  <el name="table" child="1" />
+  <el name="record" />
+</table>

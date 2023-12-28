@@ -2,20 +2,20 @@
 using System.ComponentModel;
 using System.IO;
 using System.Reflection;
+using System.Security.Cryptography.Xml;
 using System.Windows;
-using System.Windows.Shell;
 using System.Windows.Threading;
 using CUE4Parse.BNS;
 using CUE4Parse.BNS.Conversion;
 using CUE4Parse.UE4.Assets.Exports.Sound;
 using CUE4Parse.UE4.Assets.Objects;
+using CUE4Parse.UE4.Pak;
 using CUE4Parse.UE4.VirtualFileSystem;
 using CUE4Parse_Conversion.Sounds;
 using CUE4Parse_Conversion.Textures;
 
 using HandyControl.Controls;
 using Serilog;
-using Xylia.Preview.Common;
 using Xylia.Preview.Common.Extension;
 using Xylia.Preview.Data.Helpers;
 using Xylia.Preview.UI.Services;
@@ -27,34 +27,23 @@ public partial class App : Application
 {
 	protected override void OnStartup(StartupEventArgs e)
 	{
-		// Create a jump-list and assign it to the current application
-		JumpList.SetJumpList(Current, new JumpList());
 		AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
 
 		// Process the command-line arguments
 		InitializeArgs(e.Args);
 
-		#region Log
-		var foloder = UserSettings.Default.OutputFolder ?? UserSettings.ApplicationData;
-		string template = "{Timestamp:yyyy-MM-dd HH:mm:ss} [{Level}] {Message:lj}{NewLine}{Exception}";
-		Log.Logger = new LoggerConfiguration()
-			.WriteTo.Debug(Serilog.Events.LogEventLevel.Warning, outputTemplate: template)
-			.WriteTo.File(Path.Combine(foloder, "Logs", $"{DateTime.Now:yyyy-MM-dd}.log"), outputTemplate: template)
-			.CreateLogger();
+		#region Service
+		LogService.Create();
+		JumpListService.CreateAsync();
 		#endregion
 
-		#region Service 
-		Console.SetOut(new ConsoleRedirect());
-		new JumpListService().CreateAsync();
-		#endregion
+#if DEVELOP
+		IPlatformFilePak.Signature = new byte[20];
 
-#if DEV
 		FileCache.Data = new(new Xylia.Preview.Data.Engine.DatData.FolderProvider(@"D:\资源\客户端相关\Auto\data"));
-		//MainWindow = new Xylia.Preview.UI.Art.GameUI.Scene.Game_Broadcasting.Game_BroadcastingScene();
-
 		var scene = new Xylia.Preview.UI.Art.GameUI.Scene.Game_ItemMap.Game_ItemMapScene();
 		scene.ItemMapPanel_C.Show();
-		return;
+		return;	 
 #endif
 
 		MainWindow = new MainWindow();

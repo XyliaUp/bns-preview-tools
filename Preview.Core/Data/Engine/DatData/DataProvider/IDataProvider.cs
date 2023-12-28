@@ -33,7 +33,7 @@ public interface IDataProvider : IDisposable
 	/// <summary>
 	/// DataSource localized information
 	/// </summary>
-	Locale Locale => null;
+	Locale Locale => default;
 	#endregion
 
 

@@ -24,9 +24,10 @@ public class FolderProvider(DirectoryInfo directory) : IDataProvider
 
 	public void LoadData(DatafileDefinition definitions)
 	{
-		this.Tables = new();
+		this.Tables = [];
 
-		foreach (var definition in definitions)
+		// TODO: ignore server table
+		foreach (var definition in definitions.OrderBy(x => x.Name))
 		{
 			string path = definition.Name switch
 			{

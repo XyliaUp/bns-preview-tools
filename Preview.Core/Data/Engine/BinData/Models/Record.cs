@@ -87,7 +87,7 @@ public sealed unsafe class Record : IDisposable
 
 	public Ref Ref => Data is null ? default : new(RecordId, RecordVariationId);
 
-	public ITableDefinition ElDefinition
+	public ElementBaseDefinition Definition
 	{
 		get
 		{
@@ -109,16 +109,11 @@ public sealed unsafe class Record : IDisposable
 	#endregion
 
 	#region Serialize
-	public void WriteXml(XmlWriter writer, ElDefinition el)
+	public void WriteXml(XmlWriter writer, ElementDefinition el)
 	{
 		writer.WriteStartElement(el.Name);
 
 		// attribute
-		if (SubclassType > -1)
-		{
-			writer.WriteAttributeString(AttributeCollection.s_type, SubclassType < el.Subtables.Count ? el.Subtables[SubclassType].Name : SubclassType.ToString());
-		}
-
 		foreach (var attribute in Attributes)
 		{
 			if (attribute.Key.Name == AttributeCollection.s_autoid) continue;

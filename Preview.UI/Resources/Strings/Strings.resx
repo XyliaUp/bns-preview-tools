@@ -488,4 +488,7 @@ Please note that do not modify the order of nodes</value>
   <data name="TextView_SaveCompleted" xml:space="preserve">
     <value>Save completed!</value>
   </data>
+  <data name="PreviewTooltip" xml:space="preserve">
+    <value>View Detail</value>
+  </data>
 </root>

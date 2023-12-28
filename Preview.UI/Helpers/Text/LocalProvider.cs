@@ -38,7 +38,7 @@ public class LocalProvider(string Source) : DefaultProvider
 
 				// detect text table type
 				if (definitions.HasHeader) Detect = new DatafileDirect(definitions.Header);
-				else Detect = new DatafileDetect(this);
+				else Detect = new DatafileDetect(this, definitions);
 				Detect.ParseType(definitions);
 			}
 			break;

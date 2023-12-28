@@ -581,26 +581,44 @@
 		<attribute name="pvp-attack-power-equip-min" type="Int16" default="0" min="0" max="30000" />
 		<attribute name="pvp-attack-power-equip-max" type="Int16" default="0" min="0" max="30000" />
 		<attribute name="pvp-defend-power-equip-value" type="Int16" default="0" min="0" max="30000" />
-		<attribute name="unk-" type="Int32" default="0" min="0" max="2000000000" />
-		<attribute name="unk-" type="Int32" default="0" min="0" max="2000000000" />
-		<attribute name="unk-" type="Int32" default="0" min="0" max="2000000000" />
-		<attribute name="unk-" type="Int32" default="0" min="0" max="2000000000" />
-		<attribute name="unk-" type="Int32" default="0" min="0" max="2000000000" />
-		<attribute name="unk-" type="Int32" default="0" min="0" max="2000000000" />
-		<attribute name="unk-" type="Int32" default="0" min="0" max="2000000000" />
-		<attribute name="unk-" type="Int32" default="0" min="0" max="2000000000" />
-		<attribute name="unk-" type="Int32" default="0" min="0" max="2000000000" />
-		<attribute name="unk-" type="Int32" default="0" min="0" max="2000000000" />
-		<attribute name="unk-" type="Int32" default="0" min="0" max="2000000000" />
-		<attribute name="unk-" type="Int32" default="0" min="0" max="2000000000" />
-		<attribute name="unk-" type="Int32" default="0" min="0" max="2000000000" />
-		<attribute name="unk-" type="Int32" default="0" min="0" max="2000000000" />
-		<attribute name="unk-" type="Int32" default="0" min="0" max="2000000000" />
-		<attribute name="unk-" type="Int32" default="0" min="0" max="2000000000" />
-		<attribute name="unk-" type="Int32" default="0" min="0" max="2000000000" />
-		<attribute name="unk-" type="Int32" default="0" min="0" max="2000000000" />
-		<attribute name="unk-" type="Int32" default="0" min="0" max="2000000000" />
-
+		<attribute name="race-type-1-attack-damage-modify-percent" type="Int16" default="0" min="0" max="1000" />
+		<attribute name="race-type-2-attack-damage-modify-percent" type="Int16" default="0" min="0" max="1000" />
+		<attribute name="race-type-3-attack-damage-modify-percent" type="Int16" default="0" min="0" max="1000" />
+		<attribute name="race-type-4-attack-damage-modify-percent" type="Int16" default="0" min="0" max="1000" />
+		<attribute name="race-type-5-attack-damage-modify-percent" type="Int16" default="0" min="0" max="1000" />
+		<attribute name="race-type-6-attack-damage-modify-percent" type="Int16" default="0" min="0" max="1000" />
+		<attribute name="race-type-7-attack-damage-modify-percent" type="Int16" default="0" min="0" max="1000" />
+		<attribute name="race-type-1-defend-damage-modify-percent" type="Int16" default="0" min="0" max="1000" />
+		<attribute name="race-type-2-defend-damage-modify-percent" type="Int16" default="0" min="0" max="1000" />
+		<attribute name="race-type-3-defend-damage-modify-percent" type="Int16" default="0" min="0" max="1000" />
+		<attribute name="race-type-4-defend-damage-modify-percent" type="Int16" default="0" min="0" max="1000" />
+		<attribute name="race-type-5-defend-damage-modify-percent" type="Int16" default="0" min="0" max="1000" />
+		<attribute name="race-type-6-defend-damage-modify-percent" type="Int16" default="0" min="0" max="1000" />
+		<attribute name="race-type-7-defend-damage-modify-percent" type="Int16" default="0" min="0" max="1000" />
+		<attribute name="attribute-type-1-attack-damage-modify-percent" type="Int16" default="0" min="0" max="1000" />
+		<attribute name="attribute-type-2-attack-damage-modify-percent" type="Int16" default="0" min="0" max="1000" />
+		<attribute name="attribute-type-3-attack-damage-modify-percent" type="Int16" default="0" min="0" max="1000" />
+		<attribute name="attribute-type-4-attack-damage-modify-percent" type="Int16" default="0" min="0" max="1000" />
+		<attribute name="attribute-type-5-attack-damage-modify-percent" type="Int16" default="0" min="0" max="1000" />
+		<attribute name="attribute-type-6-attack-damage-modify-percent" type="Int16" default="0" min="0" max="1000" />
+		<attribute name="attribute-type-7-attack-damage-modify-percent" type="Int16" default="0" min="0" max="1000" />
+		<attribute name="attribute-type-8-attack-damage-modify-percent" type="Int16" default="0" min="0" max="1000" />
+		<attribute name="attribute-type-9-attack-damage-modify-percent" type="Int16" default="0" min="0" max="1000" />
+		<attribute name="attribute-type-10-attack-damage-modify-percent" type="Int16" default="0" min="0" max="1000" />
+		<attribute name="attribute-type-11-attack-damage-modify-percent" type="Int16" default="0" min="0" max="1000" />
+		<attribute name="attribute-type-12-attack-damage-modify-percent" type="Int16" default="0" min="0" max="1000" />
+		<attribute name="attribute-type-1-defend-damage-modify-percent" type="Int16" default="0" min="0" max="1000" />
+		<attribute name="attribute-type-2-defend-damage-modify-percent" type="Int16" default="0" min="0" max="1000" />
+		<attribute name="attribute-type-3-defend-damage-modify-percent" type="Int16" default="0" min="0" max="1000" />
+		<attribute name="attribute-type-4-defend-damage-modify-percent" type="Int16" default="0" min="0" max="1000" />
+		<attribute name="attribute-type-5-defend-damage-modify-percent" type="Int16" default="0" min="0" max="1000" />
+		<attribute name="attribute-type-6-defend-damage-modify-percent" type="Int16" default="0" min="0" max="1000" />
+		<attribute name="attribute-type-7-defend-damage-modify-percent" type="Int16" default="0" min="0" max="1000" />
+		<attribute name="attribute-type-8-defend-damage-modify-percent" type="Int16" default="0" min="0" max="1000" />
+		<attribute name="attribute-type-9-defend-damage-modify-percent" type="Int16" default="0" min="0" max="1000" />
+		<attribute name="attribute-type-10-defend-damage-modify-percent" type="Int16" default="0" min="0" max="1000" />
+		<attribute name="attribute-type-11-defend-damage-modify-percent" type="Int16" default="0" min="0" max="1000" />
+		<attribute name="attribute-type-12-defend-damage-modify-percent" type="Int16" default="0" min="0" max="1000" />
 		<attribute name="r-attack-stiff-duration-equip-value" type="Int16" default="0" min="0" max="30000" />
 		<attribute name="r-defend-stiff-duration-equip-value" type="Int16" default="0" min="0" max="30000" />
 		<attribute name="r-aoe-defend-power-value-equip" type="Int16" default="0" min="0" max="30000" />
@@ -650,16 +668,17 @@
 		<attribute name="potential-max-guard-gauge" type="Int32" default="0" min="0" max="2000000000" />
 		<attribute name="potential-pve-boss-level-npc-attack-power-equip-min" type="Int16" default="0" min="0" max="30000" />
 		<attribute name="potential-pve-boss-level-npc-attack-power-equip-max" type="Int16" default="0" min="0" max="30000" />
-		<attribute name="unk-" type="Int32" default="0" min="0" max="2000000000" />
-		<attribute name="unk-" type="Int32" default="0" min="0" max="2000000000" />
-		<attribute name="unk-" type="Int16" default="0" min="0" max="30000" />
-		<attribute name="unk-" type="Int16" default="0" min="0" max="30000" />
-		<attribute name="unk-" type="Int16" default="0" min="0" max="30000" />
-		<attribute name="unk-" type="Int16" default="0" min="0" max="30000" />
-		<attribute name="unk-" type="Int16" default="0" min="0" max="30000" />
+		<attribute name="potential-pve-boss-level-npc-defend-power-equip-value" type="Int16" default="0" min="0" max="30000" />
+		<attribute name="potential-pvp-attack-power-equip-min" type="Int16" default="0" min="0" max="30000" />
+		<attribute name="potential-pvp-attack-power-equip-max" type="Int16" default="0" min="0" max="30000" />
+		<attribute name="potential-pvp-attack-power-equip-value" type="Int16" default="0" min="0" max="30000" />
+		<attribute name="potential-attack-attribute-value-equip" type="Int16" default="0" min="0" max="30000" />
+		<attribute name="potential-abnormal-attack-power-value-equip" type="Int16" default="0" min="0" max="30000" />
+		<attribute name="potential-abnormal-defend-power-value" type="Int16" default="0" min="0" max="30000" />
+		<attribute name="potential-heal-power-value" type="Int16" default="0" min="0" max="30000" />
+		<attribute name="potential-attack-critical-damage-value-equip" type="Int16" default="0" min="0" max="30000" />
 		<attribute name="job-ability-1" type="Int16" default="0" min="0" max="30000" />
 		<attribute name="job-ability-2" type="Int16" default="0" min="0" max="30000" />
-		<attribute name="unk-" type="Int16" default="0" min="0" max="30000" />
 		<attribute name="heal-power-base-percent" type="Int16" default="0" min="0" max="10000" />
 		<attribute name="heal-power-value" type="Int16" default="0" min="0" max="30000" />
 		<attribute name="heal-power-diff" type="Int32" default="0" min="0" max="2000000000" />
@@ -670,12 +689,16 @@
 		<attribute name="abnormal-attack-power-value-equip" type="Int16" default="0" min="0" max="30000" />
 		<attribute name="abnormal-defend-base-percent" type="Int16" default="0" min="0" max="10000" />
 		<attribute name="abnormal-defend-power-value" type="Int16" default="0" min="0" max="30000" />
+		<attribute name="hate-base-percent" type="Int16" default="0" min="0" max="10000" />
+		<attribute name="hate-power-creature-value" type="Int16" default="0" min="0" max="30000" />
 		<attribute name="hate-power-equip-value" type="Int16" default="0" min="0" max="30000" />
-		<attribute name="unk-" type="Int32" default="0" min="0" max="2000000000" />
-		<attribute name="unk-" type="Int32" default="0" min="0" max="2000000000" />
-		<attribute name="unk-" type="Int32" default="0" min="0" max="2000000000" />
 		<attribute name="additional-exp-diff-by-kill" type="Int16" default="0" min="0" max="30000" />
 		<attribute name="additional-exp-percent-by-kill" type="Int16" default="0" min="0" max="1000" />
+		<attribute name="additional-mastery-exp-diff-by-kill" type="Int16" default="0" min="0" max="30000" />
+		<attribute name="additional-mastery-exp-percent-by-kill" type="Int16" default="0" min="0" max="1000" />
+		<!-- <attribute name="additional-faction-score-max-percent" type="Int16" default="0" min="0" max="1000" /> -->
+		<attribute name="additional-sealed-dungeon-exp-diff-by-kill" type="Int16" default="0" min="0" max="30000" />
+		<attribute name="additional-sealed-dungeon-exp-percent-by-kill" type="Int16" default="0" min="0" max="1000" />
 		<attribute name="item-sound-move" type="XUnknown2" />
 		<attribute name="item-sound-dragstart" type="XUnknown2" />
 		<attribute name="item-sound-itemdrop" type="XUnknown2" />

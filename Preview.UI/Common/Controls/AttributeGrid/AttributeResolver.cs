@@ -23,7 +23,7 @@ public class AttributeResolver
 
 	public string ResolveDescription(AttributeDefinition attribute) => $"{attribute.Type}";
 
-	public bool ResolveIsBrowsable(AttributeDefinition attribute) => !attribute.IsDeprecated && attribute.CanInput;
+	public bool ResolveIsBrowsable(AttributeDefinition attribute) => !attribute.IsDeprecated && attribute.CanInput;  // should use IsHidden
 
 	public object ResolveDefaultValue(AttributeDefinition attribute) => attribute.DefaultValue;
 

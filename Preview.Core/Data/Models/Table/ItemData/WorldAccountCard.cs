@@ -1,5 +1,4 @@
 ﻿using Xylia.Preview.Data.Common.Abstractions;
-using Xylia.Preview.Common.Attributes;
 
 namespace Xylia.Preview.Data.Models;
 public sealed class WorldAccountCard : ModelElement, IHaveName
@@ -10,6 +9,6 @@ public sealed class WorldAccountCard : ModelElement, IHaveName
 
 
 	#region Interface
-	public string Text => Item.Instance?.Name2.GetText();
+	public string Text => Item.Instance?.ItemNameOnly;
 	#endregion
 }

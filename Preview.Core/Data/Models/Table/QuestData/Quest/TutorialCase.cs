@@ -1,7 +1,5 @@
 ﻿using Xylia.Preview.Common.Attributes;
 using Xylia.Preview.Data.Models.QuestData.Enums;
-
-using static Xylia.Preview.Data.Models.Decision;
 using static Xylia.Preview.Data.Models.Item;
 
 using Skill3Model = Xylia.Preview.Data.Models.Skill3;
@@ -27,8 +25,8 @@ public partial class TutorialCase : ModelElement
 	[Side(ReleaseSide.Server)]
 	public Ref<Zone> Zone { get; set; }
 
-	[Side(ReleaseSide.Server)]
-	public Ref<QuestDecision> QuestDecision { get; set; }
+	//[Side(ReleaseSide.Server)]
+	//public Ref<QuestDecision> QuestDecision { get; set; }
 
 
 	public virtual List<Record> Attractions { get; }

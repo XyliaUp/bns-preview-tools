@@ -1,0 +1,24 @@
+﻿<BnsCustomWindowWidget
+	x:Class="Xylia.Preview.UI.Art.GameUI.Scene.Game_ItemMap.ItemMapPanel" 
+	xmlns="https://github.com/xyliaup/bns-preview-tools"
+	xmlns:s="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+	<BnsCustomImageWidget x:Name="ItemMapPanel_MapFieldHolder" AnchorPanel.Anchor="0 1 0 1" AnchorPanel.Offset="321 -15 767 645">
+		<s:ScrollViewer AnchorPanel.Anchor="0 0 1 1" HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Visible" >
+			<BnsCustomGraphMapWidget x:Name="ItemMapPanel_MapField" ShowLines="True">
+				<BnsCustomLabelWidget Text="1112333323" s:Grid.Column="1" s:Grid.Row="12"/>
+			</BnsCustomGraphMapWidget>
+		</s:ScrollViewer>
+	</BnsCustomImageWidget>
+
+	<BnsCustomRadioButtonWidget x:Name="ItemMapPanel_Tab" AnchorPanel.Offset="12 50 12 40" AnchorPanel.Anchor="0 0 1 0">
+		<BnsCustomToggleButtonWidget x:Name="ItemMapPanel_Tab_RadioButton_13" ToolTip="tooltip=UI.ButtonTooltip.Nova" AnchorPanel.Offset="552 0 45 40" Command="{s:Binding EquipTypeChangeCommand}" CommandParameter="Soul" >
+			<BnsCustomLabelWidget x:Name="ItemMapPanel_Tab_RadioButton_13_Badge" Text="Nova" AnchorPanel.Anchor="1 0" AnchorPanel.Offset="4 -8 20 20" />
+		</BnsCustomToggleButtonWidget>
+
+		<BnsCustomToggleButtonWidget x:Name="ItemMapPanel_Tab_RadioButton_9" ToolTip="tooltip=UI.ButtonTooltip.Pet" AnchorPanel.Offset="506 0 45 40" Command="{s:Binding EquipTypeChangeCommand}" CommandParameter="Pet1" >
+			<BnsCustomLabelWidget x:Name="ItemMapPanel_Tab_RadioButton_9_Badge" Text="Pet" AnchorPanel.Anchor="1 0" AnchorPanel.Offset="4 -8 20 20" />
+		</BnsCustomToggleButtonWidget>
+	</BnsCustomRadioButtonWidget>
+</BnsCustomWindowWidget>

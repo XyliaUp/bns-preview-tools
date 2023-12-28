@@ -370,4 +370,6 @@ public enum KeyCommandSeq
 	ToggleWantedMission,
 
 	ToggleExpedition,
+
+	COUNT
 }

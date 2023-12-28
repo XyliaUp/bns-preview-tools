@@ -4,6 +4,7 @@ using Xylia.Preview.Common.Extension;
 using Xylia.Preview.Data.Helpers;
 using Xylia.Preview.Data.Helpers.Output;
 using Xylia.Preview.Data.Models;
+using Xylia.Preview.Data.Models.Sequence;
 
 namespace Xylia.Preview.UI.Helpers.Output.Items;
 public sealed class ItemTransformRecipeOut : OutSet
@@ -32,7 +33,7 @@ public sealed class ItemTransformRecipeOut : OutSet
             var MainIngredient = Info.MainIngredient.Instance;
             if (MainIngredient is Item Item)
             {
-                sheet.Cells[Row, column++].SetValue(Item.Name2);
+                sheet.Cells[Row, column++].SetValue(Item.ItemNameOnly);
 				sheet.Cells[Row, column++].SetValue(Item.EquipType.GetText());
 				sheet.Cells[Row, column++].SetValue(Item.ItemGrade);
 			}
@@ -47,7 +48,7 @@ public sealed class ItemTransformRecipeOut : OutSet
             }
             #endregion
 
-            sheet.Cells[Row, column++].SetValue(Info.TitleItem.Instance?.Name2);
+            sheet.Cells[Row, column++].SetValue(Info.TitleItem.Instance?.ItemNameOnly);
             sheet.Cells[Row, column++].SetValue(Info.UseRandom ? "随机" : "必成");
             sheet.Cells[Row, column++].SetValue(Info.Category.GetText());
         });

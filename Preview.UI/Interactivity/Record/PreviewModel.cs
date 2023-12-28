@@ -9,6 +9,9 @@ using Xylia.Preview.UI.FModel.Views;
 using Xylia.Preview.UI.Views;
 
 namespace Xylia.Preview.UI.Interactivity;
+/// <summary>
+/// Provide a command to show Model
+/// </summary>
 public class PreviewModel : RecordCommand
 {
     public override bool CanExecute(object parameter)
@@ -109,7 +112,7 @@ public class PreviewModel : RecordCommand
                             return;
                         }
 
-                        else if (record.ElDefinition.Name == "weapon")
+                        else if (record.Definition.Name == "weapon")
                         {
                             var pet = record.Attributes.Get<Record>("pet");
                             await Load(pet, models);
@@ -120,7 +123,7 @@ public class PreviewModel : RecordCommand
                                 //var EquipShow = FileCache.Pakitem.LoadObject<UShowObject>(equipshow);
                             }
                         }
-                        else if (record.ElDefinition.Name == "accessory")
+                        else if (record.Definition.Name == "accessory")
                         {
                             var VehicleDetail = record.Attributes.Get<Record>("vehicle-detail");
                             var VehicleAppearance = VehicleDetail?.Attributes.Get<Record>("appearance");

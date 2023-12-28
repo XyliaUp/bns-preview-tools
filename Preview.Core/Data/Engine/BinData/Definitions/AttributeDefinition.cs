@@ -1,4 +1,5 @@
 ﻿using System.Xml;
+using Xylia.Preview.Common.Attributes;
 using Xylia.Preview.Common.Extension;
 using Xylia.Preview.Data.Common.DataStruct;
 using Xylia.Preview.Data.Common.Exceptions;
@@ -6,11 +7,12 @@ using Xylia.Preview.Data.Common.Exceptions;
 namespace Xylia.Preview.Data.Engine.Definitions;
 public partial class AttributeDefinition
 {
+	#region Metadata
 	public string Name { get; set; }
 	public AttributeType Type { get; set; }
 	public string DefaultValue { get; set; }
 	public ushort Repeat { get; set; }
-	public short ReferedTable { get; set; }
+	public ushort ReferedTable { get; set; }
 	public ushort Offset { get; set; }
 	public ushort Size { get; set; }
 	public bool IsDeprecated { get; set; }
@@ -18,19 +20,24 @@ public partial class AttributeDefinition
 	public bool IsRequired { get; set; }
 	public bool IsHidden { get; set; }
 	public SequenceDefinition Sequence { get; set; }
+	public ReleaseSide Side { get; set; } = ReleaseSide.Client | ReleaseSide.Server;
+	#endregion
+
 
 	public string ReferedTableName { get; set; }
+	public string ReferedElement { get; set; }
+
 	public double Max { get; set; }
 	public double Min { get; set; }
 	public bool CanInput { get; set; } = true;
-	public bool Server { get; set; } = true;
-	public bool Client { get; set; } = true;
 
 
 	#region Load Methods
+	public override string ToString() => this.Name;
+
 	public AttributeDefinition Clone() => (AttributeDefinition)MemberwiseClone();
 
-	public static AttributeDefinition LoadFrom(XmlElement node, ITableDefinition table, Func<SequenceDefinition> seqfun)
+	public static AttributeDefinition LoadFrom(XmlElement node, ElementBaseDefinition table, Func<SequenceDefinition> seqfun)
 	{
 		if ((node.Attributes["deprecated"]?.Value).ToBool())
 			return null;
@@ -132,10 +139,6 @@ public partial class AttributeDefinition
 				break;
 			}
 
-			case AttributeType.TSub:
-				DefaultValue ??= "0";
-				break;
-
 			case AttributeType.TVector16:
 				DefaultValue ??= "0,0,0";
 				break;
@@ -158,6 +161,11 @@ public partial class AttributeDefinition
 		#endregion
 
 
+		var side = ReleaseSide.None;
+		if (node.Attributes["client"]?.Value.ToBool() ?? true) side |= ReleaseSide.Client;
+		if (node.Attributes["server"]?.Value.ToBool() ?? true) side |= ReleaseSide.Server;
+
+
 		return new AttributeDefinition
 		{
 			Name = Name,
@@ -175,10 +183,7 @@ public partial class AttributeDefinition
 			DefaultValue = DefaultValue,
 			Max = MaxValue,
 			Min = MinValue,
-
-			Server = node.Attributes["server"]?.Value.ToBool() ?? true,
-			Client = node.Attributes["client"]?.Value.ToBool() ?? true,
-			CanInput = node.Attributes["input"]?.Value.ToBool() ?? true,
+			Side = side,
 		};
 	}
 

@@ -32,17 +32,19 @@ public class AttributeCollection : IReadOnlyDictionary<AttributeDefinition, obje
 	#endregion
 
 	#region Ctor
-	internal void CreateData(ITableDefinition definition, bool OnlyKey = false)
+	internal void BuildData(ElementBaseDefinition definition, bool OnlyKey = false)
 	{
 		void SetData(AttributeDefinition attribute) =>
 			record.Attributes.Set(attribute, record.Attributes.Get(attribute.Name));
 
 		if (OnlyKey)
 		{
+			// create primary key
 			definition.ExpandedAttributes.Where(attr => attr.IsKey).ForEach(SetData);
 		}
 		else
-		{
+		{     
+			// create data
 			definition.ExpandedAttributes.ForEach(SetData);
 			attributes.Clear();
 		}
@@ -53,13 +55,12 @@ public class AttributeCollection : IReadOnlyDictionary<AttributeDefinition, obje
 		this.record = record;
 	}
 
-	internal AttributeCollection(Record record, XmlElement element, ElDefinition definition, int index = -1) : this(record)
+	internal AttributeCollection(Record record, XmlElement element, ElementDefinition definition, int index = -1) : this(record)
 	{
 		#region attribute
 		foreach (XmlAttribute item in element.Attributes)
 		{
 			var name = item.Name;
-			if (name == s_type) continue;
 
 			attributes[name] = item.Value;
 		}
@@ -92,11 +93,7 @@ public class AttributeCollection : IReadOnlyDictionary<AttributeDefinition, obje
 	#region Methods
 	public object this[string name, int index] => this[$"{name}-{index}"];
 
-	public object this[string name] 
-	{ 
-		get => Get(name); 
-		set => Set(name, value); 
-	}
+	public object this[string name] { get => Get(name); set => Set(name, value); }
 
 	public object this[AttributeDefinition key] { get => Get(key.Name); set => Set(key, value); }
 	#endregion
@@ -106,15 +103,15 @@ public class AttributeCollection : IReadOnlyDictionary<AttributeDefinition, obje
 	public bool TryGetValue(string name, out object result)
 	{
 		result = Get(name);
-		return result != null || record.ElDefinition?[name] != null;
+		return result != null || record.Definition?[name] != null;
 	}
 
 	public T Get<T>(string name) => (T)Get(name);
 
 	public object Get(string name)
 	{
-		if (name == s_type) return record.ElDefinition.Name;
-		var attribute = record?.ElDefinition[name];
+		var definition = record.Definition;
+		var attribute = definition[name];
 
 		// from prev
 		if (attributes.Count != 0)
@@ -133,7 +130,7 @@ public class AttributeCollection : IReadOnlyDictionary<AttributeDefinition, obje
 	#region Set
 	public object Set(string name, object value)
 	{
-		var attribute = record?.ElDefinition[name];
+		var attribute = record?.Definition[name];
 		if (attribute is null) return value;
 
 		if (value is string s)
@@ -227,7 +224,7 @@ public class AttributeCollection : IReadOnlyDictionary<AttributeDefinition, obje
 			foreach (var attribute in attributes)
 			{
 				var value = attribute.Value;
-				var definition = record?.ElDefinition?[attribute.Key];
+				var definition = record?.Definition?[attribute.Key];
 
 				// convert type
 				if (value is string s && definition != null)
@@ -243,7 +240,7 @@ public class AttributeCollection : IReadOnlyDictionary<AttributeDefinition, obje
 		}
 		else
 		{
-			foreach (var attribute in record.ElDefinition.ExpandedAttributes)
+			foreach (var attribute in record.Definition.ExpandedAttributes)
 				yield return new(attribute, AttributeConverter.ConvertTo(record, attribute, record.Owner.Owner));
 		}
 	}
@@ -254,7 +251,7 @@ public class AttributeCollection : IReadOnlyDictionary<AttributeDefinition, obje
 
 	public IEnumerable<object> Values => this.Select(x => x.Value);
 
-	public bool ContainsKey(AttributeDefinition key) => record.ElDefinition[key.Name] != null;
+	public bool ContainsKey(AttributeDefinition key) => record.Definition[key.Name] != null;
 
 	public bool TryGetValue(AttributeDefinition key, out object value)
 	{

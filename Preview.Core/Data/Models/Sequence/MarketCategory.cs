@@ -16,6 +16,8 @@ public enum MarketCategorySeq
 	Exchange,
 
 	Box,
+
+	COUNT
 }
 
 public enum MarketCategory2Seq
@@ -473,4 +475,6 @@ public enum MarketCategory3Seq
 
 	[Name("Name.item.game-category-3.instrument")]
 	Instrument,
+
+	COUNT
 }

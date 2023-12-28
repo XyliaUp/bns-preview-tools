@@ -27,7 +27,8 @@ public class AttributeGrid : Control
 
 	public AttributeGrid()
 	{
-		CommandBindings.Add(new CommandBinding(ControlCommands.SortByCategory, SortByCategory));
+		// register sort mode
+		CommandBindings.Add(new CommandBinding(ControlCommands.SortByCategory, SortByOffset));
 		CommandBindings.Add(new CommandBinding(ControlCommands.SortByName, SortByName));
 	}
 
@@ -97,16 +98,16 @@ public class AttributeGrid : Control
 		if (obj == null || _itemsControl == null) return;
 		if (obj is not Record record) return;
 
-		_dataView = CollectionViewSource.GetDefaultView(record.ElDefinition.ExpandedAttributes
+		_dataView = CollectionViewSource.GetDefaultView(record.Definition.ExpandedAttributes
 			.Where(PropertyResolver.ResolveIsBrowsable)
 			.Select(CreatePropertyItem)
 			.Do(item => item.InitElement()));
 
-		SortByName(null, null);
+		SortByOffset(null, null);
 		_itemsControl.ItemsSource = _dataView;
 	}
 
-	private void SortByCategory(object sender, ExecutedRoutedEventArgs e)
+	private void SortByOffset(object sender, ExecutedRoutedEventArgs e)
 	{
 		if (_dataView == null) return;
 
@@ -114,9 +115,8 @@ public class AttributeGrid : Control
 		{
 			_dataView.GroupDescriptions.Clear();
 			_dataView.SortDescriptions.Clear();
-			_dataView.SortDescriptions.Add(new SortDescription(PropertyItem.CategoryProperty.Name, ListSortDirection.Ascending));
-			_dataView.SortDescriptions.Add(new SortDescription(PropertyItem.DisplayNameProperty.Name, ListSortDirection.Ascending));
-			_dataView.GroupDescriptions.Add(new PropertyGroupDescription(PropertyItem.CategoryProperty.Name));
+			_dataView.SortDescriptions.Add(new SortDescription(PropertyItem.TagProperty.Name, ListSortDirection.Ascending));
+			_dataView.SortDescriptions.Add(new SortDescription(PropertyItem.PropertyNameProperty.Name, ListSortDirection.Ascending));
 		}
 	}
 
@@ -128,8 +128,9 @@ public class AttributeGrid : Control
 		{
 			_dataView.GroupDescriptions.Clear();
 			_dataView.SortDescriptions.Clear();
-			_dataView.SortDescriptions.Add(new SortDescription(PropertyItem.TagProperty.Name, ListSortDirection.Ascending));
-			_dataView.SortDescriptions.Add(new SortDescription(PropertyItem.PropertyNameProperty.Name, ListSortDirection.Ascending));
+			_dataView.SortDescriptions.Add(new SortDescription(PropertyItem.CategoryProperty.Name, ListSortDirection.Ascending));
+			_dataView.SortDescriptions.Add(new SortDescription(PropertyItem.DisplayNameProperty.Name, ListSortDirection.Ascending));
+			_dataView.GroupDescriptions.Add(new PropertyGroupDescription(PropertyItem.CategoryProperty.Name));
 		}
 	}
 

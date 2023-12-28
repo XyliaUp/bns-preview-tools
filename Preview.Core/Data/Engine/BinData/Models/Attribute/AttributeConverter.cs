@@ -67,7 +67,7 @@ public class AttributeConverter
 			case AttributeType.TRef: return provider.Tables.GetRef(attribute.ReferedTable, record.Get<Ref>(attribute.Offset));
 			case AttributeType.TTRef: return provider.Tables.GetRef(record.Get<TRef>(attribute.Offset));
 			case AttributeType.TSub: return provider.Tables.GetSub(attribute.ReferedTable, record.Get<Sub>(attribute.Offset));
-			case AttributeType.TSu: throw new NotSupportedException();
+			case AttributeType.TSu: return record.Get<Su>(attribute.Offset);
 			case AttributeType.TVector16: throw new NotSupportedException();
 			case AttributeType.TVector32: return record.Get<Vector32>(attribute.Offset);
 			case AttributeType.TIColor: return record.Get<IColor>(attribute.Offset);
@@ -97,7 +97,7 @@ public class AttributeConverter
 			case AttributeType.TXUnknown1: return record.Get<Time64>(attribute.Offset);
 			case AttributeType.TXUnknown2: return record.StringLookup.GetString(record.Get<int>(attribute.Offset));
 
-			default: throw new Exception($"Unhandled type name: '{attribute.Type}'");
+			default: throw new Exception($"Unhandled type: '{attribute.Type}'");
 		}
 	}
 
@@ -123,8 +123,8 @@ public class AttributeConverter
 		AttributeType.TSeq16 => value,
 		AttributeType.TRef => provider.Tables.GetRecord(attribute.ReferedTableName, value),
 		AttributeType.TTRef => provider.Tables.GetRecord(value),
-		AttributeType.TSub => short.Parse(value),
-		//AttributeType.TSu => value,
+		AttributeType.TSub => value,
+		AttributeType.TSu => value,
 		AttributeType.TVector16 => Vector16.Parse(value),
 		AttributeType.TVector32 => Vector32.Parse(value),
 		AttributeType.TIColor => IColor.Parse(value),

@@ -12,7 +12,7 @@ public struct Script_obj
 	{
 		Full = text;
 
-		if(text != null)
+		if (text != null)
 		{
 			var x = Encoding.UTF8.GetBytes(Full);
 		}

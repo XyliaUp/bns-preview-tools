@@ -2,8 +2,9 @@
 <table name="reaction-set" version="0.1" autokey="true" module="270">
 	<el name="table" child="1" />
 	<el name="record" child="reaction">
-		<attribute name="probability" type="Int8" required="y" min="0" max="100" />
-		<attribute name="probability10000" type="Int16" required="y" min="0" max="10000" />
+		<attribute name="probability" type="Int8" default="100" min="0" max="100" />
+		<attribute name="probability10000" type="Int16" min="0" max="10000" client="n" />
+		<attribute name="name" type="String" default="noname" max="15" />
 	</el>
 	<el name="reaction" client="n">
 		<attribute name="probability" type="Int8" required="y" min="0" max="100" />

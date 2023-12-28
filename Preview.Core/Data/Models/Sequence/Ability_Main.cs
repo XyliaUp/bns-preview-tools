@@ -181,4 +181,6 @@ public enum MainAbility : byte
 
     [Name("Name.Item.attack-pierce-base-percent")]
     AttackPierceBasePercent,
+
+	COUNT
 }

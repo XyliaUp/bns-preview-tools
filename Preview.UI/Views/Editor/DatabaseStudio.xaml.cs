@@ -12,7 +12,6 @@ using Ookii.Dialogs.Wpf;
 using Xylia.Preview.Data.Client;
 using Xylia.Preview.Data.Engine.BinData.Models;
 using Xylia.Preview.Data.Engine.BinData.Serialization;
-using Xylia.Preview.Data.Engine.DatData;
 using Xylia.Preview.Data.Helpers;
 using Xylia.Preview.Data.Helpers.Output;
 using Xylia.Preview.UI.Controls;
@@ -33,7 +32,6 @@ public partial class DatabaseStudio
 	public DatabaseStudio()
 	{
 		DataContext = this;
-
 		InitializeComponent();
 		RegisterCommands(this.CommandBindings);
 
@@ -43,11 +41,6 @@ public partial class DatabaseStudio
 			database = FileCache.Data;
 			LoadTreeView();
 		}
-
-#if DEV
-		database = new BnsDatabase(new FolderProvider("G:\\"));
-		ExecuteSql("SELECT 1+1");
-#endif
 	}
 	#endregion
 

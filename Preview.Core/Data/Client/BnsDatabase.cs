@@ -1,4 +1,5 @@
-﻿using Xylia.Preview.Data.Engine.BinData.Models;
+﻿using CUE4Parse.UE4.Pak;
+using Xylia.Preview.Data.Engine.BinData.Models;
 using Xylia.Preview.Data.Engine.DatData;
 using Xylia.Preview.Data.Engine.Definitions;
 using Xylia.Preview.Data.Models;
@@ -19,6 +20,8 @@ public class BnsDatabase : IEngine, IDisposable
 		ArgumentNullException.ThrowIfNull(Provider);
 
 		#region Definition
+		IPlatformFilePak.DoSignatureCheck();
+
 		var definitions = TableDefinitionHelper.LoadDefinition();
 		Provider.LoadData(definitions);
 		definitions.CreateMap();

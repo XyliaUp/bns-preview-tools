@@ -149,7 +149,6 @@
 			<case name="joypad-mouse-right-button" />
 			<case name="change-pet-filter-hidden" />
 			<case name="toggle-damage-meter" />
-			<case name="toggle-item-graph" />
 			<case name="duel-camera-fitpawn-new" />
 			<case name="duel-camera-free-new" />
 			<case name="duel-camera-quater-new" />
@@ -178,13 +177,16 @@
 			<case name="toggle-ride-vehicle" />
 			<case name="toggle-museum" />
 			<case name="equip-spare-item" />
-			<case name="toggle-spare-item" />
-			<case name="unk-" />
+			<case name="toggle-chat-minimize" />
+			<case name="toggle-ranking2" />
 			<case name="toggle-glyph-inventory" />
 			<case name="toggle-constellation" />
 			<case name="toggle-sealed-scroll" />
 			<case name="toggle-inter-battle-field" />
 			<case name="toggle-wanted-mission" />
 			<case name="toggle-expedition" />
+			<case name="toggle-game-information" />
+			<case name="toggle-mark-mode" />
+			<case name="toggle-relic-inventory" />
 		</record>
 </table>

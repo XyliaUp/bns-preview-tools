@@ -5,6 +5,9 @@ using Xylia.Preview.Data.Models;
 using Xylia.Preview.UI.Views.Editor;
 
 namespace Xylia.Preview.UI.Interactivity;
+/// <summary>
+///  Provide a command to show record attributes
+/// </summary>
 public class PreviewRaw : RecordCommand
 {
 	public override bool CanExecute(string name) => true;

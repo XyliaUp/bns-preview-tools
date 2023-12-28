@@ -22,7 +22,7 @@ public class ModelTable<T> : Table, IEnumerable<T>, IEnumerable where T : ModelE
 		var subs = ModelTypeHelper.Get(typeof(T));
 		foreach (var record in _records)
 		{
-			var type = record.SubclassType == -1 ? null : record.ElDefinition.Name;
+			var type = record.SubclassType == -1 ? null : record.Definition.Name;
 			record.Model = new(() => ModelElement.As(record, subs.CreateInstance(type)));
 		}
 
@@ -101,7 +101,7 @@ public class ModelTypeHelper
 		table.Definition = source.Definition;
 		table.Records = source.Records;
 		table.ByRef = source.ByRef;
-		table.ByRequired = source.ByRequired;
+		table.IndexNodes = source.IndexNodes;
 		table.LoadAsync().Wait();
 
 		return table;

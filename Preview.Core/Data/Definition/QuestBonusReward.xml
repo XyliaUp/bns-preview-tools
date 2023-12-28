@@ -14,8 +14,8 @@
 		<attribute name="random-item-selected-count" type="Int8" default="0" min="0" max="4" />
 		<attribute name="random-item-total-input-count" type="Int8" default="0" hidden="y" />
 		<attribute name="random-item-tooltip-text" type="Ref" ref="text" />
-		<attribute name="unk-" type="Int8" default="0" />
-		<attribute name="unk-" type="Int32" default="0" />
+		<attribute name="paid-bonus-reward-total-count" type="Int8" default="0" />
+		<attribute name="paid-item-cost" type="Int32" default="0" />
 		<attribute name="paid-fixed-item" type="Ref" ref="item" repeat="4" />
 		<attribute name="paid-fixed-item-count" type="Int16" default="0" repeat="4" min="0" max="10000" />
 		<attribute name="paid-fixed-item-total-count" type="Int8" default="0" hidden="y" />

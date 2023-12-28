@@ -1,33 +1,6 @@
-﻿using Xylia.Preview.Common.Attributes;
-
-namespace Xylia.Preview.Data.Models;
+﻿namespace Xylia.Preview.Data.Models;
 public class SkillModifyInfo : ModelElement
 {
-	#region Fields
-	public short RecycleDurationModifyPercent { get; set; }
-
-	public int RecycleDurationModifyDiff { get; set; }
-
-	public short[] SpConsumeModifyDiff { get; set; }
-
-	public short DamagePowerPercentModifyPercent { get; set; }
-
-	public int DamagePowerPercentModifyDiff { get; set; }
-
-	public short HpDrainPercentModifyPercent { get; set; }
-
-	public int HpDrainPercentModifyDiff { get; set; }
-
-	public short HealPercentModifyPercent { get; set; }
-
-	public int HealPercentModifyDiff { get; set; }
-
-	public Ref<Text> Description { get; set; }
-
-	[Repeat(4)]
-	public int[] ParentSkill3Id { get; set; }
-	#endregion
-
 	#region Methods
 	private enum TextType
 	{

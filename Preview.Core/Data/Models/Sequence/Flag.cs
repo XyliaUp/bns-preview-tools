@@ -237,4 +237,6 @@ public enum Flag
 	ConditionEvent8,
 	ConditionEvent9,
 	ConditionEvent10,
+
+	COUNT
 }

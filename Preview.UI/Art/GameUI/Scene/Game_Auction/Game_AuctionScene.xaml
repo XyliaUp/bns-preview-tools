@@ -38,6 +38,7 @@
 				<ListView.Resources>
 					<ContextMenu x:Key="ItemMenu">
 						<MenuItem Header="{DynamicResource PreviewRaw}" Command="{i:PreviewRaw}" CommandParameter="{Binding}"/>
+						<MenuItem Header="{DynamicResource PreviewTooltip}" Command="{i:PreviewTooltip}" CommandParameter="{Binding}"/>
 						<MenuItem Header="{DynamicResource PreviewModel}" Command="{i:PreviewModel}" CommandParameter="{Binding}"/>
 					</ContextMenu>
 				</ListView.Resources>

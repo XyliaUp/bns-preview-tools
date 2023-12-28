@@ -168,7 +168,7 @@
 		<attribute name="cinema-check" type="Bool" />
 	    <attribute name="replay-check" type="Bool" />
 	</el>
-	<el name="filter">
+	<el name="filter" inherit="false">
 		<attribute name="id" type="Int64" key="y" required="y" />
 		<attribute name="alias" type="String" required="y" max="70" />
 		<attribute name="subject" type="Script_obj" />
@@ -322,7 +322,7 @@
 			<attribute name="value" type="Ref" ref="cinematic" required="y" />
 		</sub>
 	</el>
-	<el name="filter-set" child="filter">
+	<el name="filter-set" child="filter" inherit="false">
 		<attribute name="name" type="String" default="noname" max="15" />
 	</el>
 	<el name="reaction-set">

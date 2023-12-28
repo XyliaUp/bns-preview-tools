@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<table name="equipitemgroup" version="1.1" autokey="true" module="6">
+<table name="equip-item-group" version="1.1" autokey="true" module="6">
 	<el name="table" child="1" />
 	<el name="record">
-		<attribute name="name" type="Ref" ref="text" />
-		<attribute name="category" type="Seq">
+		<attribute name="item-group-name" type="Ref" ref="text" />
+		<attribute name="item-group-category" type="Seq">
 			<case name="none" default="y" />
 			<case name="dungeon" />
 			<case name="raid" />

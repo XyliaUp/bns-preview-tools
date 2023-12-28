@@ -184,4 +184,6 @@ public enum EffectAttributeSeq
 	기믹4,
 	기믹5,
 	던전보스1,
+
+	COUNT
 }

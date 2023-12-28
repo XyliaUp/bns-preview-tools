@@ -1,4 +1,5 @@
-﻿using Xylia.Preview.Common.Extension;
+﻿using System.Collections.ObjectModel;
+using Xylia.Preview.Common.Extension;
 using Xylia.Preview.Data.Engine.BinData.Models;
 using Xylia.Preview.Data.Engine.Definitions;
 using Xylia.Preview.Data.Models;
@@ -13,21 +14,17 @@ public sealed class DatafileDetect : ITableParseType
 {
 	#region Helpers
 	readonly Dictionary<int, string> by_id = new();
-	readonly Dictionary<string, short> by_name = new(new TableNameComparer());
+	readonly Dictionary<string, ushort> by_name = new(new TableNameComparer());
 
-	public bool TryGetName(short key, out string name) => by_id.TryGetValue(key, out name);
+	public bool TryGetName(ushort key, out string name) => by_id.TryGetValue(key, out name);
 
-	public bool TryGetKey(string name, out short key) => by_name.TryGetValue(name, out key);
+	public bool TryGetKey(string name, out ushort key) => by_name.TryGetValue(name, out key);
 
 	private void AddList(string name, int type)
 	{
 		by_id[type] = name;
 
-		if (name == "account-post-charge")
-		{
-			AddList("account-level", type - 1);
-		}
-		else if (name == "board-gacha") AddList("board-gacha-reward", type + 1);
+		if (name == "board-gacha") AddList("board-gacha-reward", type + 1);
 		else if (name == "challengelistreward") AddList("challengelist", type - 1);
 		else if (name == "collecting")
 		{
@@ -37,8 +34,8 @@ public sealed class DatafileDetect : ITableParseType
 		else if (name == "equip-gem-piece")
 		{
 			AddList("equipitemgroup", type + 1);
-			AddList("equipment-guide", type + 2);
-			AddList("equipment-guide-item", type + 3);
+			AddList("equip-item-guide", type + 2);
+			AddList("equip-item-guide-item-list", type + 3);
 		}
 		else if (name == "faction") AddList("faction-level", type + 1);
 		else if (name == "glyph") AddList("glyph-page", type + 1);
@@ -84,40 +81,66 @@ public sealed class DatafileDetect : ITableParseType
 		}
 		else if (name == "skilltooltipattribute") AddList("skilltooltip", type + 1);
 		else if (name == "skill-train-combo-action") AddList("skill-train-category", type - 1);
-		else if (name == "slatestone")
-		{
-			AddList("slatescroll", type - 2);
-			AddList("slatescrollstone", type - 1);
-		}
 		else if (name == "unlocated-store") AddList("unlocated-store-ui", type + 1);
-		else if (name == "vehicle" && by_id.GetValueOrDefault(type + 1, null) == "vehicle-appearance")
+		else if (name == "vehicle" && by_id.GetValueOrDefault(type + 1) == "vehicle-appearance")
 		{
 			by_id[type] = "vehicle-appearance";
 			by_id[type + 1] = "vehicle";
 		}
-		else if (name == "vehicle-appearance" && by_id.GetValueOrDefault(type - 1, null) == "vehicle")
+		else if (name == "vehicle-appearance" && by_id.GetValueOrDefault(type - 1) == "vehicle")
 		{
 			by_id[type - 1] = "vehicle-appearance";
 			by_id[type] = "vehicle";
 		}
 	}
 
-	private void CreateNameMap()
+	private void CreateNameMap(IList<TableDefinition> definitions)
 	{
 		by_name.Clear();
+
+		int LastId = 1;
+		string LastName = null;
 		foreach (var o in by_id)
 		{
-			if (string.IsNullOrWhiteSpace(o.Value))
-				continue;
+			if (string.IsNullOrEmpty(o.Value)) continue;
 
-			by_name[o.Value] = (short)o.Key;
+			for (int i = 0; i < definitions.Count; i++)
+			{
+				if (definitions[i].Name == LastName || LastName == null)
+				{
+					int j;
+					for (j = i; j < definitions.Count; j++)
+					{
+						if (definitions[j].Name == o.Value) break;
+					}
+
+					if (j - i  == o.Key - LastId)
+					{
+						for (; i < j; i++)
+						{
+							var d = definitions[i];
+							by_name[d.Name] = (ushort)(LastId + j - i + 1);
+						}
+					}
+
+					break;
+				}
+			}
+
+			by_name[o.Value] = (ushort)o.Key;
+			LastId = o.Key;
+			LastName = o.Value;
 		}
 	}
 	#endregion
 
 
 	#region Load Methods
-	public DatafileDetect(Datafile data) => Read(data.Tables, data.NameTable?.CreateTable());
+	public DatafileDetect(Datafile data, Collection<TableDefinition> definitions)
+	{
+		Read(data.Tables, data.NameTable?.CreateTable());
+		CreateNameMap(definitions);
+	}
 
 	/// <summary>
 	/// create map by detect data
@@ -201,11 +224,7 @@ public sealed class DatafileDetect : ITableParseType
 			#endregion
 		});
 
-		CreateNameMap();
 		GC.Collect();
-
-
-		// foreach(var x in by_id) Console.WriteLine(x.Key + "," + x.Value);
 	}
 	#endregion
 }

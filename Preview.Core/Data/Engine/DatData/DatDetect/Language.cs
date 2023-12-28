@@ -27,9 +27,10 @@ public enum ELanguage
 	Japanese,
 }
 
-public enum Publisher
+public enum Publisher 
 {
-	Default,  //NcKorean
+	None = -1,
+	NcKorean,
 	Tencent,
 	Innova,
 	NcJapan,

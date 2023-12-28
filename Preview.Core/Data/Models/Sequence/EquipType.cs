@@ -127,4 +127,6 @@ public enum EquipType
 
     [Name("Name.EquipSlot.SpeechBubble")]
     AppearanceSpeechBubble,
+
+	COUNT
 }

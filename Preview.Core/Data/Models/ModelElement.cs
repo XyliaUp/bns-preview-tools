@@ -15,6 +15,12 @@ public abstract class ModelElement
 
 	public override string ToString() => Source.ToString();
 
+	public override bool Equals(object obj)
+	{
+		return obj is ModelElement other && this.Source == other.Source;
+	}
+
+	public override int GetHashCode() => Source.GetHashCode();
 
 
 	/// <summary>
@@ -65,7 +71,7 @@ public abstract class ModelElement
 	private static object Convert(ModelElement element, string name, Type toType)
 	{
 		var record = element.Source;
-		var attribute = record.ElDefinition.GetAttribute(name);
+		var attribute = record.Definition.GetAttribute(name);
 
 		if (toType.IsGenericType && toType.GetGenericTypeDefinition() == typeof(List<>))
 		{
@@ -136,6 +142,7 @@ public struct Ref<TElement> where TElement : ModelElement
 	{
 		if (source is null) return null;
 
+		// NOTE: create new object
 		var subs = ModelTypeHelper.Get(typeof(T));
 		return ModelElement.As(source, (T)subs.CreateInstance(source.Attributes["type"]?.ToString()));
 	}

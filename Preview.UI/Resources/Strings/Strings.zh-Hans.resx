@@ -484,4 +484,7 @@
   <data name="TextView_SaveCompleted" xml:space="preserve">
     <value>保存成功！</value>
   </data>
+  <data name="PreviewTooltip" xml:space="preserve">
+    <value>查看详细</value>
+  </data>
 </root>

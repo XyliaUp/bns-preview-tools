@@ -22,6 +22,7 @@ public class RecordNameConverter : MarkupExtension, IValueConverter
 			}
 		}
 
+		// if parameter exists and its value is BooleanBox.False means that return Null
 		if (parameter is false) return null;
 		return value?.ToString();
 	}

@@ -1,38 +1,36 @@
-﻿using System.Diagnostics;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Shell;
 
 namespace Xylia.Preview.UI.Services;
 internal class JumpListService
 {
-	private JumpList jumpList => JumpList.GetJumpList(Application.Current);
-
-	private string Current => Process.GetCurrentProcess().MainModule.FileName;
-
-
-	public async void CreateAsync()
+	public static async void CreateAsync()
 	{
+		// Create a jump-list and assign it to the current application
+		var jumpList = new JumpList();
+		JumpList.SetJumpList(Application.Current, jumpList);
+
 		await Task.Run(() =>
 		{
-			if (this.jumpList != null)
+			if (jumpList != null)
 			{
-				this.jumpList.JumpItems.Clear();
-				this.jumpList.ShowFrequentCategory = false;
-				this.jumpList.ShowRecentCategory = false;
+				jumpList.JumpItems.Clear();
+				jumpList.ShowFrequentCategory = false;
+				jumpList.ShowRecentCategory = false;
 
 				#region Items
-				this.jumpList.JumpItems.Add(new JumpTask
+				jumpList.JumpItems.Add(new JumpTask
 				{
 					Title = StringHelper.Get("Command_QueryAsset"),
-					ApplicationPath = Current,
+					ApplicationPath = Environment.ProcessPath,
 					Arguments = "-command=query -type=ue4",
 					IconResourcePath = null,
 				});
 
-				this.jumpList.JumpItems.Add(new JumpTask
+				jumpList.JumpItems.Add(new JumpTask
 				{
 					Title = StringHelper.Get("Command_QueryAsset2"),
-					ApplicationPath = Current,
+					ApplicationPath = Environment.ProcessPath,
 					Arguments = "-command=query -type=ue",
 					IconResourcePath = null,
 				});
@@ -40,6 +38,6 @@ internal class JumpListService
 			}
 		});
 
-		this.jumpList?.Apply();
+		jumpList.Apply();
 	}
 }

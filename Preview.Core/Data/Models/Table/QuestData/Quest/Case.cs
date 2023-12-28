@@ -2,7 +2,6 @@
 using Xylia.Preview.Common.Attributes;
 using Xylia.Preview.Common.Extension;
 using Xylia.Preview.Data.Models.QuestData.Enums;
-using static Xylia.Preview.Data.Models.Decision;
 using static Xylia.Preview.Data.Models.Duel;
 using static Xylia.Preview.Data.Models.PartyBattleFieldZone;
 
@@ -37,11 +36,11 @@ public partial class Case : ModelElement
 	[Side(ReleaseSide.Server)]
 	public Ref<Zone> Zone { get; set; }
 
-	[Side(ReleaseSide.Server)]
-	public Ref<QuestDecision> QuestDecision { get; set; }
+	//[Side(ReleaseSide.Server)]
+	//public Ref<QuestDecision> QuestDecision { get; set; }
 
-	[Side(ReleaseSide.Server)]
-	public Ref<QuestDecision> FailQuestDecision { get; set; }
+	//[Side(ReleaseSide.Server)]
+	//public Ref<QuestDecision> FailQuestDecision { get; set; }
 
 	[Side(ReleaseSide.Server)]
 	public Ref<FieldItem> DropGadget { get; set; }

@@ -2,23 +2,24 @@
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Xylia.Preview.Common.Extension;
+using Xylia.Preview.Data.Common;
 
 namespace Xylia.Preview.Data.Engine.DatData;
-public sealed class Locale
+public struct Locale
 {
 	private string _publisher;
 	public string _language;
 	public string Universe;
 	public string ProductVersion;
 
-	public ELanguage Language => _language.ToEnum<ELanguage>();
-	public Publisher Publisher => _publisher.ToEnum<Publisher>();
+	public readonly ELanguage Language => _language.ToEnum<ELanguage>();
+	public readonly Publisher Publisher => _publisher.ToEnum<Publisher>();
 
 
 	public Locale(DirectoryInfo directory)
 	{
 		Load(directory);
-
+		BnsTimeZoneInfo.Current = Publisher;
 
 		if (Publisher == Publisher.Tencent)
 		{

@@ -11,15 +11,17 @@
 	<attribute name="star" type="Int8" />
 	<attribute name="unk-" type="Int32" start-show="40" />
 	<attribute name="unk-" type="Int32" start-show="44" />
-	<attribute name="unk-" type="Int32" start-show="48" />
-	<attribute name="unk-" type="Int32" start-show="52" />
-	<attribute name="open-ingredient-money" type="Int32" />
-	<attribute name="open-ingredient-item" type="Ref" ref="Item" repeat="6" />
-	<attribute name="open-ingredient-count" type="Int16" repeat="6" />
-	<attribute name="reset-ingredient-money" type="Int32" />
-	<attribute name="reset-ingredient-item" type="Ref" ref="Item" repeat="6" />
-	<attribute name="reset-ingredient-count" type="Int16" repeat="6" />
-	<attribute name="option-assured-count" type="Int8" />
-	<attribute name="option" type="Ref" ref="constellation-star-option" repeat="63" />
+	<attribute name="required-achievement-id" type="Int32" />
+	<attribute name="required-achievement-step" type="Int16" />
+	<attribute name="activate-probability" type="Int16" />
+	<attribute name="activate-cost-money" type="Int32" />
+	<attribute name="activate-cost-item" type="Ref" ref="Item" repeat="6" />
+	<attribute name="activate-cost-item-count" type="Int16" repeat="6" />
+	<attribute name="draw-option-cost-money" type="Int32" />
+	<attribute name="draw-option-cost-item" type="Ref" ref="Item" repeat="6" />
+	<attribute name="draw-option-cost-item-count" type="Int16" repeat="6" />
+	<attribute name="option-select-count" type="Int8" />
+	<attribute name="option" type="Ref" ref="constellation-star-option" repeat="50" />
+	<attribute name="option-weight" type="Int8" repeat="50" />
   </el>
 </table>

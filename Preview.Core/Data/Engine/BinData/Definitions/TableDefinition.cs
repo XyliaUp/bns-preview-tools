@@ -1,42 +1,22 @@
-﻿namespace Xylia.Preview.Data.Engine.Definitions;
-public class TableDefinition
+﻿using Xylia.Preview.Data.Engine.BinData.Models;
+
+namespace Xylia.Preview.Data.Engine.Definitions;
+public class TableDefinition : TableHeader
 {
-	/// <summary>
-	/// Name of table
-	/// </summary>
-    public string Name { get; set; }
-
-	/// <summary>
-	/// Identifier of table
-	/// </summary>
-	/// <remarks>generated automatically according to the sorting of the table name</remarks>
-	public short Type { get; set; }
-
-	/// <summary>
-	/// major version of table
-	/// </summary>
-	public ushort MajorVersion { get; set; }
-
-	/// <summary>
-	/// minor version of table
-	/// </summary>
-	public ushort MinorVersion { get; set; }
-
-
 	/// <summary>
 	/// element definitions
 	/// </summary>
-	public List<ElDefinition> Els { get; } = new();
+	public List<ElementDefinition> Els { get; internal set; } = new();
 
 	/// <summary>
 	/// root element
 	/// </summary>
-	public ElDefinition ElRoot => Els.FirstOrDefault();
+	public ElementDefinition ElRoot => Els.FirstOrDefault();
 
 	/// <summary>
 	/// main element
 	/// </summary>
-	public ElDefinition ElRecord { get; set; }
+	public ElementDefinition ElRecord { get; set; }
 
 	/// <summary>
 	/// Has record element
@@ -51,22 +31,24 @@ public class TableDefinition
 
 
 	#region Static Methods
+	public override string ToString() => this.Name;
+
 	/// <summary>
 	/// create default <see cref="TableDefinition"/> if not found
 	/// </summary>
 	/// <param name="type"></param>
 	/// <returns></returns>
-	public static TableDefinition CreateDefault(short type)
+	public static TableDefinition CreateDefault(ushort type)
 	{
 		var definition = new TableDefinition()
 		{
 			IsDefault = true,
-			Type = type, 
-			Name = type.ToString() , 
+			Type = type,
+			Name = type.ToString(),
 		};
 
-		var elRoot = new ElDefinition() { Name = "table" };
-		var elRecord = new ElDefinition
+		var elRoot = new ElementDefinition() { Name = "table" };
+		var elRecord = new ElementDefinition
 		{
 			Name = "record",
 			Size = 8

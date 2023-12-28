@@ -1,4 +1,5 @@
-﻿using System.Data;
+﻿using System.Collections.Concurrent;
+using System.Data;
 using System.Diagnostics;
 using System.Xml;
 using K4os.Hash.xxHash;
@@ -24,12 +25,6 @@ public class Table : TableHeader, IDisposable
 	#region Constructor
 	private TableDefinition definition;
 
-
-	/// <summary>
-	/// table name
-	/// </summary>
-	public string Name { get; set; }
-
 	/// <summary>
 	/// table owner
 	/// </summary>
@@ -44,8 +39,10 @@ public class Table : TableHeader, IDisposable
 		get => definition ??= TableDefinition.CreateDefault(this.Type);
 		set
 		{
+			if (value is null) return;
+
 			definition = value;
-			this.CheckVersion(definition);
+			this.CheckVersion((definition.MajorVersion, definition.MinorVersion));
 		}
 	}
 
@@ -70,47 +67,6 @@ public class Table : TableHeader, IDisposable
 	internal byte[] Padding { get; set; }
 
 
-
-
-	internal Dictionary<Ref, Record> ByRef = new();
-
-	internal Dictionary<AttributeDefinition, Dictionary<object, Record[]>> ByRequired = new();
-
-
-	/// <summary>
-	/// the table index
-	/// should use hashmap
-	/// </summary>
-	/// <param name="attribute"></param>
-	/// <param name="value"></param>
-	/// <returns></returns>
-	public Record[] Search(AttributeDefinition attribute, object value)
-	{
-		if (attribute != null /*&& attribute.IsRequired*/)
-		{
-			lock (ByRequired)
-			{
-				// find group
-				if (!ByRequired.TryGetValue(attribute, out var index))
-				{
-					index = _records
-						.ToLookup(record => record.Attributes.Get(attribute.Name))
-						.Where(record => record.Key is not null)
-						.ToDictionary(record => record.Key, record => record.ToArray());
-
-					ByRequired[attribute] = index;
-				}
-
-				// search item
-				if (value != null && index.TryGetValue(value, out var result))
-					return result;
-			}
-		}
-
-		return [];
-	}
-
-
 	protected List<Record> _records;
 
 	/// <summary>
@@ -125,6 +81,11 @@ public class Table : TableHeader, IDisposable
 			return _records;
 		}
 	}
+
+
+	internal Dictionary<Ref, Record> ByRef = new();
+
+	internal Dictionary<AttributeDefinition, Dictionary<object, Record>> IndexNodes = new();
 	#endregion
 
 
@@ -140,7 +101,6 @@ public class Table : TableHeader, IDisposable
 		}
 	});
 
-
 	private void LoadData()
 	{
 		Archive.ReadFrom(this);
@@ -153,7 +113,6 @@ public class Table : TableHeader, IDisposable
 	/// <summary>
 	/// load data from xml
 	/// </summary>
-	/// <param name="streams"></param>
 	/// <returns>data build actions</returns>
 	public List<Action> LoadXml(params Stream[] streams)
 	{
@@ -172,13 +131,25 @@ public class Table : TableHeader, IDisposable
 		return actions;
 	}
 
+	/// <summary>
+	/// load xml element
+	/// </summary>
+	/// <param name="parent"></param>
+	/// <param name="actions">data build action collection</param>
 	internal void LoadElement(XmlElement parent, ICollection<Action> actions)
 	{
-		_records ??= [];	 
+		CheckVersion(ParseVersion(parent.GetAttribute("version")));
+		_records ??= [];
 
-		var elements = parent.SelectNodes($"./" + Definition.ElRecord.Name).OfType<XmlElement>();
-		foreach (var element in elements)
+		var length = _records.Count;
+		var elements = parent.SelectNodes($"./" + Definition.ElRecord.Name).OfType<XmlElement>().ToArray();
+
+		// load data
+		ConcurrentBag<Tuple<int, Record>> records = new();
+		Parallel.For(0, elements.Length, index =>
 		{
+			var element = elements[index];
+
 			// get definition
 			var definition = Definition.ElRecord.SubtableByName(element.GetAttribute(AttributeCollection.s_type));
 			var record = new Record
@@ -191,16 +162,20 @@ public class Table : TableHeader, IDisposable
 				StringLookup = IsCompressed ? new StringLookup() : GlobalString,
 			};
 
-			// create attributes
-			record.Attributes = new(record, element, Definition.ElRecord, _records.Count + 1);
-			record.Attributes.CreateData(definition , true);
+			// create attributes and primary key
+			record.Attributes = new(record, element, Definition.ElRecord, length + index + 1);
+			record.Attributes.BuildData(definition, true);
 
-			// create primary key
-			_records.Add(record);
-			ByRef[record.Ref] = record;
+			records.Add(new Tuple<int, Record>(index, record));
+		});
+
+		// insert element
+		foreach (var record in records.OrderBy(x => x.Item1).Select(x => x.Item2))
+		{
+			_records.Add(ByRef[record.Ref] = record);
 
 			// The ref is not determined at this time
-			actions?.Add(new Action(() => record.Attributes.CreateData(definition)));
+			actions?.Add(new Action(() => record.Attributes.BuildData(record.Definition)));
 		}
 	}
 	#endregion
@@ -208,6 +183,21 @@ public class Table : TableHeader, IDisposable
 
 
 	#region Get Methods
+	public Record this[Ref Ref, bool message = true]
+	{
+		get
+		{
+			if (Ref == default) return null;
+			if (_records == null) LoadAsync().Wait();
+
+			if (ByRef.TryGetValue(Ref, out var item)) return item;
+			else if (_records.Count != 0 && message)
+				Debug.WriteLine($"[{Name}] get failed, id: {Ref.Id} variation: {Ref.Variant}");
+
+			return null;
+		}
+	}
+
 	public Record this[string alias]
 	{
 		get
@@ -216,8 +206,8 @@ public class Table : TableHeader, IDisposable
 
 			if (string.IsNullOrEmpty(alias)) return null;
 
-			var objs = Search(Definition.ElRecord["alias"], alias);
-			if (objs.Length > 0) return objs.FirstOrDefault();
+			var obj = Search(Definition.ElRecord["alias"], alias);
+			if (obj != null) return obj;
 			else if (int.TryParse(alias, out var MainID)) return this[new Ref(MainID)];
 			else if (alias.Contains('.'))
 			{
@@ -231,18 +221,20 @@ public class Table : TableHeader, IDisposable
 		}
 	}
 
-	public Record this[Ref Ref, bool message = true]
+	public Record Search(AttributeDefinition attribute, object value)
 	{
-		get
+		if (value is null || attribute is null) return null;
+
+		lock (IndexNodes)
 		{
-			if (Ref == default) return null;
-			if (_records == null) LoadAsync().Wait();
+			// find group
+			if (!IndexNodes.TryGetValue(attribute, out var index))
+			{
+				index = IndexNodes[attribute] = _records.ToDistinctDictionary(record => record.Attributes.Get(attribute.Name));
+			}
 
-			if (ByRef.TryGetValue(Ref, out var item)) return item;
-			else if (_records.Any() && message)
-				Debug.WriteLine($"[{Name}] get failed, id: {Ref.Id} variation: {Ref.Variant}");
-
-			return null;
+			// search item
+			return index.GetValueOrDefault(value);
 		}
 	}
 	#endregion
@@ -303,7 +295,7 @@ public class Table : TableHeader, IDisposable
 		_records = [];
 
 		ByRef.Clear();
-		ByRequired.Clear();
+		IndexNodes.Clear();
 	}
 
 	public void Dispose()

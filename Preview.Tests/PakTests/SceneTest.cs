@@ -1,6 +1,7 @@
-﻿using System.Diagnostics;
+﻿using System.Xml.Linq;
 using CUE4Parse.BNS;
 using CUE4Parse.BNS.Assets.Exports;
+using CUE4Parse.BNS.Conversion;
 using CUE4Parse.UE4.Assets.Exports;
 using CUE4Parse.UE4.Objects.Engine;
 using CUE4Parse.UE4.Objects.UObject;
@@ -16,16 +17,19 @@ namespace Xylia.Preview.Tests.PakTests;
 public class SceneTest
 {
 	[TestMethod]
-	public void Main()
+	public void SceneInformation()
 	{
+		var Output = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "scene");
+
 		using GameFileProvider Provider = new(IniHelper.Instance.GameFolder);
-		var AssetPath = "BNSR/Content/Art/UI/GameUI/Scene/Game_Broadcasting/Game_BroadcastingScene.uasset";
+		var AssetPath = "BNSR/Content/Art/UI/GameUI/Scene/Game_ToolTip/Game_ToolTipScene/Skill3ToolTipPanel_2.uasset";
 		var Blueprint = Provider.LoadAllObjects(AssetPath).OfType<UWidgetBlueprintGeneratedClass>().First();
 
-		var dump = new WidgetDump() { Output = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "scene", Path.GetFileNameWithoutExtension(AssetPath)) };
+		var dump = new WidgetDump() { Output = Path.Combine(Output, Path.GetFileNameWithoutExtension(AssetPath)) };
 		dump.LoadBlueprint(Blueprint);
-	}
 
+		Console.WriteLine(dump.Root);
+	}
 
 	//[TestMethod]
 	public void Create()
@@ -52,53 +56,31 @@ public class SceneTest
 					}
 					else
 					{
-						File.WriteAllText($"{current}/{name}.xaml", $$"""
-							<Window
-							        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-							        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-							        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-							        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-							        xmlns:local="clr-namespace:Xylia.Preview.UI.Art.GameUI.Scene.{{temp[0]}}"
-								                      x:Class="Xylia.Preview.UI.Art.GameUI.Scene.{{temp[0]}}.{{name}}"
-							        mc:Ignorable="d"
-							        Title="" Height="450" Width="800" >
-							    <Grid>
-
-								</Grid>
-							</Window>
-							""");
-						File.WriteAllText($"{current}/{name}.xaml.cs", $$"""
-							namespace Xylia.Preview.UI.Art.GameUI.Scene.{{temp[0]}};
-							public partial class {{name}} : Window
-							{
-								public {{name}}()
-								{
-							        DataContext = new {{name}}ViewModel();
-									InitializeComponent();
-								}
-							}
-							""");
-
-						File.WriteAllText($"{current}/{name}ViewModel.cs", $$"""
-							using CommunityToolkit.Mvvm.ComponentModel;
-
-							namespace Xylia.Preview.UI.Art.GameUI.Scene.{{temp[0]}};
-							public partial class {{name}}ViewModel : ObservableObject
-							{
-
-							}
-							""");
+						//File.WriteAllText($"{current}/{name}.xaml.cs", $$"""
+						//	namespace Xylia.Preview.UI.Art.GameUI.Scene.{{temp[0]}};
+						//	public partial class {{name}} 
+						//	{
+						//		public {{name}}()
+						//		{
+						//	        DataContext = new {{name}}ViewModel();
+						//			InitializeComponent();
+						//		}
+						//	}
+						//	""");
 					}
 				}
 			}
 		}
 	}
 }
-
-
 public class WidgetDump
 {
-	public string Output;
+	public string Output { get; set; }
+
+	public bool ExtractImage = false;
+
+	public XElement Root = new XElement("temp");
+
 
 
 	public void LoadBlueprint(UWidgetBlueprintGeneratedClass blueprint, int level = 0)
@@ -116,7 +98,7 @@ public class WidgetDump
 
 	public void LoadWidget(UObject obj, UBnsCustomBaseWidgetSlot widgetslot, int level)
 	{
-		WriteLine(level, $"{obj.ExportType}  {obj.Name}");
+		WriteLine(level++, $"{obj.ExportType}  {obj.Name}");
 
 		if (obj.Template != null)
 		{
@@ -124,10 +106,17 @@ public class WidgetDump
 			return;
 		}
 
+		var el = new XElement(obj.ExportType);
+		el.Add(new XAttribute("name", obj.Name));
+		Root.Add(el);
+
 
 		if (widgetslot != null)
 		{
 			WriteLine(level, JsonConvert.SerializeObject(widgetslot.LayoutData));
+
+			el.AddAttribute("AnchorPanel.Anchor", widgetslot.LayoutData.Anchors);
+			el.AddAttribute("AnchorPanel.Offset", widgetslot.LayoutData.Offsets);
 		}
 
 		if (obj is UBnsCustomBaseWidget widget)
@@ -135,24 +124,30 @@ public class WidgetDump
 			WriteLineIf(level, widget.MetaData);
 			WriteLineIf(level, widget.StringProperty.LabelText?.Text);
 
+			el.AddAttribute("MetaData", widget.MetaData);
+			el.AddAttribute("String", widget.StringProperty.LabelText?.Text);
 
-			//Directory.CreateDirectory(Output);
-			//widget.BaseImageProperty.Image?.Save(Output + $"/{obj.Name}.png");
-			//widget.ExpansionComponentList?.ForEach(expansion =>
-			//{
-			//	expansion.Image?.Save(Output + $"/{obj.Name}.{expansion.ExpansionName}.png");
-			//});
+			if (ExtractImage)
+			{
+				Directory.CreateDirectory(Output);
+				widget.BaseImageProperty.Image?.Save(Output + $"/{obj.Name}.png");
+				widget.ExpansionComponentList?.ForEach(expansion =>
+				{
+					expansion.Image?.Save(Output + $"/{obj.Name}.{expansion.ExpansionName}.png");
+				});
+			}
 		}
+
 
 		// children
 		var Slots = obj.GetOrDefault<UBnsCustomBaseWidgetSlot[]>("Slots");
-		Slots?.Where(slot => slot != null).ForEach(slot => LoadWidget(slot.Content.Load(), slot, level + 1));
+		Slots?.Where(slot => slot != null).ForEach(slot => LoadWidget(slot.Content.Load(), slot, level));
 	}
 
 
 	private static void WriteLine(int level, string message)
 	{
-		Debug.WriteLine(new string('\t', level) + message);
+		Console.WriteLine(new string('\t', level) + message);
 	}
 
 	private static void WriteLineIf(int level, string message)
