@@ -18,7 +18,7 @@ public interface IDataProvider : IDisposable
 	/// <summary>
 	/// DataSource Timestamp
 	/// </summary>
-	DateTime CreatedAt { get; }
+	DateTimeOffset CreatedAt { get; }
 
 	/// <summary>
 	/// DataSource Version

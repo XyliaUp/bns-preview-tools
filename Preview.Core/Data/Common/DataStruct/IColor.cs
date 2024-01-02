@@ -9,11 +9,6 @@ public struct IColor
 	public byte G;
 	public byte B;
 
-	public override string ToString()
-	{
-		return $"{R},{G},{B}";
-	}
-
 	public IColor(byte r, byte g, byte b)
 	{
 		R = r;
@@ -62,4 +57,6 @@ public struct IColor
 	{
 		return HashCode.Combine(R, G, B);
 	}
+
+	public override string ToString() => $"{R},{G},{B}";
 }

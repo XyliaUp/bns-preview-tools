@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<table name="skill-inheritance" version="0.4" autokey="false" module="2318">
-  <el name="table" child="1" />
-  <el name="record">
-    <attribute name="skill-id" type="Int32" key="y" required="y" />
-    <attribute name="parent-skill-id" type="Int32" required="y" />
-  </el>
-</table>

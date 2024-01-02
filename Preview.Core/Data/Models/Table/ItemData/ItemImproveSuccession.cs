@@ -3,29 +3,22 @@
 namespace Xylia.Preview.Data.Models;
 public sealed class ItemImproveSuccession : ModelElement
 {
-	public int FeedItemImproveId { get; set; }
-
-	public sbyte FeedItemImproveLevel { get; set; }
-
-	public int ResultItemImproveId { get; set; }
-
-	public sbyte ResultItemImproveLevel { get; set; }
-
-	public int SeedItemImproveId { get; set; }
-
-	public sbyte SeedItemImproveLevel { get; set; }
+	public int SeedImproveId { get; set; }
+	public sbyte SeedImproveLevel { get; set; }
+	public int ResultImproveId { get; set; }
+	public sbyte ResultImproveLevel { get; set; }
+	public int FeedMainImproveId { get; set; }
+	public sbyte FeedMainImproveLevel { get; set; }
 
 
-	#region Functions
-	public static ItemImproveSuccession QuerySeedItem(Item ItemInfo) => FileCache.Data.Get<ItemImproveSuccession>().FirstOrDefault(o => o.SeedItemImproveId == ItemInfo.ImproveId && o.SeedItemImproveLevel == ItemInfo.ImproveLevel);
+	internal IEnumerable<ItemRecipeHelper> CreateRecipe(out Item ResultItem)
+	{
+		var recipe = new ItemRecipeHelper();
+		ResultItem = FileCache.Data.Get<Item>().FirstOrDefault(item =>
+			item.ImproveId == ResultImproveId && item.ImproveLevel == ResultImproveLevel);
 
+		recipe.SuccessProbability = 1000;
 
-	public Item GetFeedItem(Item ItemInfo) => FileCache.Data.Item.FirstOrDefault(o => 
-		o.ImproveId == this.FeedItemImproveId && o.ImproveLevel == this.FeedItemImproveLevel &&
-		o.Brand.Instance == ItemInfo.Brand.Instance);
-	
-	public Item GetResultItem(Item ItemInfo) => FileCache.Data.Item.FirstOrDefault(o =>
-		o.ImproveId == this.ResultItemImproveId && o.ImproveLevel == this.ResultItemImproveLevel &&
-		o.Brand.Instance == ItemInfo.Brand.Instance);
-	#endregion
+		return [recipe];
+	}
 }

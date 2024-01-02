@@ -75,7 +75,7 @@ public sealed class XList
 		XList cache = new();
 		cache.Load(path);
 
-		if (!cache.datas.Any()) return null;
+		if (cache.datas.Count == 0) return null;
 		return new HashSet<int>(cache.datas);
 	}
 

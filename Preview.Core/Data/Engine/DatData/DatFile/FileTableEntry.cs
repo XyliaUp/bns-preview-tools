@@ -10,10 +10,10 @@ public class FileTableEntry
 	public bool IsCompressed;
 	public bool IsEncrypted;
 
-	public int FileDataOffset;        // (relative) offset
-	public int FileDataSizeSheared;   // without padding for AES
-	public int FileDataSizeStored;
-	public int FileDataSizeUnpacked;
+	public long FileDataOffset;        // (relative) offset
+	public long FileDataSizeSheared;   // without padding for AES
+	public long FileDataSizeStored;
+	public long FileDataSizeUnpacked;
 
 	public byte[] Padding;
 	#endregion
@@ -21,22 +21,22 @@ public class FileTableEntry
 	#region Constructor
 	private BNSDat Owner { get; init; }
 
-	internal FileTableEntry(BNSDat owner, BinaryReader reader, bool is64)
+	internal FileTableEntry(BNSDat owner, DataArchive archive)
 	{
 		Owner = owner;
 
-		int FilePathLength = (int)(is64 ? reader.ReadInt64() : reader.ReadInt32());
-		FilePath = Encoding.Unicode.GetString(reader.ReadBytes(FilePathLength * 2));
+		var FilePathLength = (int)archive.ReadLongInt();
+		FilePath = Encoding.Unicode.GetString(archive.ReadBytes(FilePathLength * 2));
 
-		Unknown_001 = reader.ReadByte();
-		IsCompressed = reader.ReadByte() == 1;
-		IsEncrypted = reader.ReadByte() == 1;
-		Unknown_002 = reader.ReadByte();
-		FileDataSizeUnpacked = (int)(is64 ? reader.ReadInt64() : reader.ReadInt32());
-		FileDataSizeSheared = (int)(is64 ? reader.ReadInt64() : reader.ReadInt32());
-		FileDataSizeStored = (int)(is64 ? reader.ReadInt64() : reader.ReadInt32());
-		FileDataOffset = (int)(is64 ? reader.ReadInt64() : reader.ReadInt32());
-		Padding = reader.ReadBytes(60);
+		Unknown_001 = archive.Read<byte>();
+		IsCompressed = archive.Read<bool>();
+		IsEncrypted = archive.Read<bool>();
+		Unknown_002 = archive.Read<byte>();
+		FileDataSizeUnpacked = archive.ReadLongInt();
+		FileDataSizeSheared = archive.ReadLongInt();
+		FileDataSizeStored = archive.ReadLongInt();
+		FileDataOffset = archive.ReadLongInt();
+		Padding = archive.ReadBytes(60);
 	}
 
 	internal FileTableEntry(BNSDat owner, string path, byte[] data)
@@ -53,31 +53,32 @@ public class FileTableEntry
 	}
 	#endregion
 
-
 	#region DATA
+	internal DataArchive DataArchive { get; set; }
+
 	private byte[] _data;
 
-
-	public byte[] CompressedBuffer;
 	public byte[] Data
 	{
-		set => _data = value;
+		set
+		{
+			_data = value;
+			DataArchive = null;
+		}
 		get
 		{
-			if (CompressedBuffer != null)
+			if (DataArchive != null)
 			{
-				byte[] UncompressedBuffer = BNSDat.Unpack(CompressedBuffer, FileDataSizeStored, FileDataSizeSheared, FileDataSizeUnpacked, IsEncrypted, IsCompressed, Owner.Params.AES_KEY);
-				CompressedBuffer = null;
+				var buffer = BNSDat.Unpack(DataArchive.CreateStream().ToArray(), FileDataSizeStored, FileDataSizeSheared, FileDataSizeUnpacked, IsEncrypted, IsCompressed, Owner.Params.AES_KEY);
 
 				if (FilePath.EndsWith(".xml") || FilePath.EndsWith(".x16"))
 				{
 					var Xml = new BXML_CONTENT(Owner.Params.XOR_KEY);
-					Xml.Read(UncompressedBuffer);
+					Xml.Read(buffer);
 
 					_data = Xml.ConvertToString();
-					UncompressedBuffer = null;
 				}
-				else _data = UncompressedBuffer;
+				else _data = buffer;
 			}
 
 			return _data;
@@ -87,12 +88,9 @@ public class FileTableEntry
 
 
 
-
-
-	public void WriteHeader(BinaryWriter writer, bool Is64bit, CompressionLevel level, ref int FileDataOffset)
+	public void WriteHeader(BinaryWriter writer, bool Is64bit, CompressionLevel level, ref long FileDataOffset)
 	{
-		// Lazy
-		if (CompressedBuffer is null)
+		if (DataArchive is null)
 		{
 			var data = _data;
 			if (FilePath.EndsWith(".xml") || FilePath.EndsWith(".x16"))
@@ -103,7 +101,7 @@ public class FileTableEntry
 			}
 
 			FileDataSizeUnpacked = data.Length;
-			CompressedBuffer = BNSDat.Pack(data, FileDataSizeUnpacked, out FileDataSizeSheared, out FileDataSizeStored, IsEncrypted, IsCompressed, level, Owner.Params.AES_KEY);
+			DataArchive = new DataArchive(BNSDat.Pack(data, FileDataSizeUnpacked, out FileDataSizeSheared, out FileDataSizeStored, IsEncrypted, IsCompressed, level, Owner.Params.AES_KEY), Is64bit);
 		}
 
 		byte[] _filePath = Encoding.Unicode.GetBytes(FilePath);
@@ -125,10 +123,10 @@ public class FileTableEntry
 		}
 		else
 		{
-			writer.Write(FileDataSizeUnpacked);
-			writer.Write(FileDataSizeSheared);
-			writer.Write(FileDataSizeStored);
-			writer.Write(FileDataOffset);
+			writer.Write((int)FileDataSizeUnpacked);
+			writer.Write((int)FileDataSizeSheared);
+			writer.Write((int)FileDataSizeStored);
+			writer.Write((int)FileDataOffset);
 		}
 
 		writer.Write(Padding);

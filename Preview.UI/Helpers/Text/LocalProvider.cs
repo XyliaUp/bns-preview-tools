@@ -25,7 +25,7 @@ public class LocalProvider(string Source) : DefaultProvider
 		switch (ext)
 		{
 			case ".xml" or ".x16":
-				Tables.Add(new() { Owner = this, Name = "text", XmlPath = Source });
+				Tables.Add(new() { Owner = this, Name = "text", SearchPattern = Source });
 				break;
 
 			case ".dat":
@@ -64,7 +64,7 @@ public class LocalProvider(string Source) : DefaultProvider
 
 		foreach (var file in files)
 		{
-			XmlDocument xml = new();
+			XmlDocument xml = new() { PreserveWhitespace = true };
 			xml.Load(file.FullName);
 
 			foreach (XmlElement element in xml.DocumentElement.SelectNodes($"./" + table.Definition.ElRecord.Name))

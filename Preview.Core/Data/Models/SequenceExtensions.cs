@@ -1,4 +1,6 @@
-﻿using Xylia.Preview.Common.Attributes;
+﻿using System.ComponentModel;
+using System.Reflection;
+using Xylia.Preview.Common.Attributes;
 using Xylia.Preview.Common.Extension;
 
 namespace Xylia.Preview.Data.Models.Sequence;
@@ -31,6 +33,29 @@ public static partial class SequenceExtensions
 		return value.ToString();
 	}
 
+
+
+	public static object LoadSequence(Type type, string val)
+	{
+		return Enum.Parse(type, val.Replace('-', '_'), true);
+	}
+
+	public static object LoadPropSeq(Type type, string val)
+	{
+		foreach (string text in Enum.GetNames(type))
+		{
+			MemberInfo[] member = type.GetMember(text);
+			if (member != null && member.Length != 0)
+			{
+				object[] customAttributes = member[0].GetCustomAttributes(typeof(DescriptionAttribute), false);
+				if (customAttributes != null && customAttributes.Length != 0 && string.Compare(((DescriptionAttribute)customAttributes[0]).Description, val) == 0)
+				{
+					return Enum.Parse(type, text);
+				}
+			}
+		}
+		return null;
+	}
 }
 
 

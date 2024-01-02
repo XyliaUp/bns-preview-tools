@@ -79,13 +79,11 @@ public sealed unsafe class Record : IDisposable
 		}
 	}
 
-	public byte[] Data { get; set; }
+	public byte[] Data { get; internal set; }
 
 	public StringLookup StringLookup { get; set; }
 
 	public Table Owner { get; internal set; }
-
-	public Ref Ref => Data is null ? default : new(RecordId, RecordVariationId);
 
 	public ElementBaseDefinition Definition
 	{
@@ -104,8 +102,6 @@ public sealed unsafe class Record : IDisposable
 
 
 	public bool HasChildren => Children.Count > 0;
-
-	internal Lazy<ModelElement> Model { get; set; }
 	#endregion
 
 	#region Serialize
@@ -138,32 +134,19 @@ public sealed unsafe class Record : IDisposable
 	#endregion
 
 	#region Interface
-	public override string ToString() => this.Attributes.Get<string>("alias") ?? Ref.ToString();
+	public override string ToString() => this.Attributes.Get<string>("alias") ?? ((Ref)this).ToString();
 
-	public static bool operator ==(Record a, Record b)
+	public T As<T>(Type type = null) where T : ModelElement
 	{
-		// If both are null, or both are same instance, return true.
-		if (ReferenceEquals(a, b)) return true;
+		// NOTE: create new object
+		var subs = ModelTypeHelper.Get(type ?? typeof(T), this.Owner.Name);
+		var subtype = this.Attributes[AttributeCollection.s_type]?.ToString();
 
-		// If one is null, but not both, return false.
-		if (a is null || b is null) return false;
-		if (a.GetType() != b.GetType()) return false;
-
-		// Return true if the fields match:
-		return a.Ref == b.Ref;
+		return ModelElement.As(this, subs.CreateInstance<T>(subtype));
 	}
-
-	public static bool operator !=(Record a, Record b) => !(a == b);
-
-	public override bool Equals(object other) => other is Record record && this == record;
-
-	public override int GetHashCode() => HashCode.Combine(GetType(), Ref);
-
 
 	public void Dispose()
 	{
-		Model = null;
-
 		Data = null;
 		StringLookup = null;
 		Attributes = null;

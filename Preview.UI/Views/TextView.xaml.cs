@@ -186,7 +186,7 @@ public partial class TextView
 			this.InlineHeaderText.Text = source.Name;
 
 			var settings = new TableWriterSettings() { Encoding = Encoding.Unicode };
-			Editor.Text = await Task.Run(() => settings.Encoding.GetString((TextTable1 ?? TextTable2).WriteXml(settings)));
+			Editor.Text = await Task.Run(() => settings.Encoding.GetString((TextTable1 ?? TextTable2).Source.WriteXml(settings)));
 		}
 		#endregion
 	}

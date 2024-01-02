@@ -9,8 +9,11 @@ public sealed class ItemBuyPriceOut : OutSet
 {
     protected override void CreateData(ExcelWorksheet sheet)
     {
-        #region Title
-        sheet.SetColumn(Column++, "alias", 70);
+		var ItemBuyPriceTable = FileCache.Data.Get<ItemBuyPrice>();
+		var ItemBrandTooltiptTable = FileCache.Data.Get<ItemBrandTooltip>();
+
+		#region Title
+		sheet.SetColumn(Column++, "alias", 70);
         sheet.SetColumn(Column++, "钱币", 15);
         sheet.SetColumn(Column++, "物品组", 20);
         sheet.SetColumn(Column++, "物品1", 25);
@@ -33,8 +36,7 @@ public sealed class ItemBuyPriceOut : OutSet
         sheet.SetColumn(Column++, "限购设置");
         #endregion
 
-
-        foreach (var record in FileCache.Data.Get<ItemBuyPrice>())
+		foreach (var record in ItemBuyPriceTable)
         {
             Row++;
             int column = 1;
@@ -43,10 +45,11 @@ public sealed class ItemBuyPriceOut : OutSet
             sheet.Cells[Row, column++].SetValue(record.Alias);
             sheet.Cells[Row, column++].SetValue(record.money);
 
-            #region brand & item
-            var ItemBrand = record.RequiredItembrand.Instance;
-            var ItemTooltip = FileCache.Data.Get<ItemBrandTooltip>()[ItemBrand?.Id ?? 0, (byte)record.RequiredItembrandConditionType];
-            sheet.Cells[Row, column++].SetValue(ItemTooltip?.Name2.GetText() ?? ItemBrand?.ToString());
+			#region brand & item
+			ItemBrandTooltip ItemBrandTooltip = null;
+			var ItemBrand = record.RequiredItembrand.Instance;
+			if (ItemBrand != null) ItemBrandTooltip = ItemBrandTooltiptTable.FirstOrDefault(x => x.BrandId == ItemBrand.Id && x.ItemConditionType == record.RequiredItembrandConditionType);
+            sheet.Cells[Row, column++].SetValue(ItemBrandTooltip?.Name2.GetText() ?? ItemBrand?.ToString());
 
             for (int i = 0; i < 4; i++)
             {
@@ -78,7 +81,7 @@ public sealed class ItemBuyPriceOut : OutSet
 			sheet.Cells[Row, column++].SetValue(record.CheckBattleFieldGradeOccupationWar);
 			sheet.Cells[Row, column++].SetValue(record.CheckBattleFieldGradeCaptureTheFlag);
 			sheet.Cells[Row, column++].SetValue(record.CheckBattleFieldGradeLeadTheBall);
-			sheet.Cells[Row, column++].SetValue(record.CheckContentQuota);
+			sheet.Cells[Row, column++].SetValue(record.CheckContentQuota.Instance);
 		}
     }
 }

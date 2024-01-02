@@ -1,9 +1,20 @@
 ﻿namespace Xylia.Preview.Common.Extension;
 public static class LinqExtensions
 {
-	public static List<T> Randomize<T>(this IEnumerable<T> list)
+	public static void ForEach<T>(this IEnumerable<T> collection, Action<T> action)
 	{
-		var originalList = new List<T>(list); // Create a new list, so no operation performed here affects the original list object.
+		foreach (var item in collection)
+			action(item);
+	}
+
+	public static bool IsEmpty<T>(this IEnumerable<T> source)
+	{
+		return source == null || !source.Any();
+	}
+
+	public static List<T> Randomize<T>(this IEnumerable<T> source)
+	{
+		var originalList = new List<T>(source); // Create a new list, so no operation performed here affects the original list object.
 		var randomList = new List<T>();
 
 		var r = new Random();
@@ -20,30 +31,12 @@ public static class LinqExtensions
 		return randomList;
 	}
 
-	#region Array
-	public static void For(int Num, Action<int> func)
+	public static IEnumerable<string> Split(this IEnumerable<string> strings, char separator)
 	{
-		for (int INDEX = 0; INDEX < Num; INDEX++)
-			func(INDEX);
+		ArgumentNullException.ThrowIfNull(strings);
+		return strings.Where(o => !string.IsNullOrEmpty(o)).SelectMany(o => o.Split(separator));
 	}
 
-	public static void For<T>(ref T[] array, Func<int, T> func)
-	{
-		ArgumentNullException.ThrowIfNull(array);
-		array = For(array.Length, func);
-	}
-
-	public static T[] For<T>(int Num, Func<int, T> func)
-	{
-		var array = new T[Num];
-		for (int INDEX = 0; INDEX < Num; INDEX++)
-			array[INDEX] = func(INDEX + 1);
-
-		return array;
-	}
-	#endregion
-
-	#region Linq
 	public static string Aggregate(this IEnumerable<string> source, string comma, Func<string, string> func = null)
 	{
 		ArgumentNullException.ThrowIfNull(source);
@@ -64,42 +57,31 @@ public static class LinqExtensions
 		return result;
 	}
 
-	public static void ForEach<T>(this IEnumerable<T> collection, Action<T> action)
+
+
+	#region Array
+	public static void For<T>(ref T[] array, int size, Func<int, T> func)
 	{
-		foreach (var item in collection)
-			action(item);
+		array = For(size, func);
 	}
 
-	public static IEnumerable<string> Split(this IEnumerable<string> strings, char separator)
+	public static T[] For<T>(int Num, Func<int, T> func)
 	{
-		ArgumentNullException.ThrowIfNull(strings);
-		return strings.Where(o => !string.IsNullOrEmpty(o)).SelectMany(o => o.Split(separator));
+		var array = new T[Num];
+		for (int INDEX = 0; INDEX < Num; INDEX++)
+			array[INDEX] = func(INDEX + 1);
+
+		return array;
 	}
 
-	public static bool IsEmpty<T>(this IEnumerable<T> source)
+	public static void ForEach<T, TSource>(this TSource[] array, Func<TSource, T> selector, Action<T, int> func)
 	{
-		return source == null || !source.Any();
-	}
-
-	public static IEnumerable<TSource> DistinctBy<TSource, TKey>(this IEnumerable<TSource> source,
-		Func<TSource, TKey> keySelector, IEqualityComparer<TKey> comparer)
-	{
-		if (source == null) throw new ArgumentNullException(nameof(source));
-		if (keySelector == null) throw new ArgumentNullException(nameof(keySelector));
-
-		return _();
-
-		IEnumerable<TSource> _()
+		for (int idx = 0; idx < array.Length; idx++)
 		{
-			var knownKeys = new HashSet<TKey>(comparer);
+			var item = selector(array[idx]);
+			if (item is null) continue;
 
-			foreach (var element in source)
-			{
-				if (knownKeys.Add(keySelector(element)))
-				{
-					yield return element;
-				}
-			}
+			func(item, idx);
 		}
 	}
 	#endregion

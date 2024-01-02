@@ -11,7 +11,6 @@ using CUE4Parse.UE4.Pak.Objects;
 using CUE4Parse.UE4.Readers;
 using CUE4Parse.UE4.Versions;
 using CUE4Parse.UE4.VirtualFileSystem;
-using CUE4Parse.UE4.Writers;
 using CUE4Parse.Utils;
 
 namespace CUE4Parse.UE4.Pak;
@@ -80,12 +79,12 @@ public class MyPakFileReader : AbstractAesVfsReader
 	{
 		#region init
 		this.AesKey ??= new FAesKey(GameFileProvider._aesKey);
-		if (!this.Files.Any()) throw new ArgumentNullException(nameof(Files), "至少需要一个文件");
+		if (!this.Files.Any()) throw new NullReferenceException("Empty file");
 
 		// MountPoint
 		if ((MountPoint.IsUnicode() && (MountPoint.Length + 1) * 2 > MAX_MOUNTPOINT_TEST_LENGTH) ||
 		   (!MountPoint.IsUnicode() && ((MountPoint.Length + 1) > MAX_MOUNTPOINT_TEST_LENGTH)))
-			throw new ArgumentOutOfRangeException(nameof(MountPoint), "MountPoint length out of range");
+			throw new IndexOutOfRangeException("MountPoint length out of range");
 
 		MountPoint = MountPoint.Replace("\\", "/");
 		if (!MountPoint.EndsWith("/")) MountPoint += "/";
@@ -129,17 +128,18 @@ public class MyPakFileReader : AbstractAesVfsReader
 		#region File Index Section
 		this.Info.IndexOffset = writer.BaseStream.Position;
 
-		var IndexWriter = new FArchiveWriter();
+		var ms = new MemoryStream();
+		var IndexWriter = new BinaryWriter(ms);
 		IndexWriter.WriteFString("../../../" + this.MountPoint);
 		IndexWriter.Write(this.Files.Count);
 
-		foreach (var file in Files.Values.Cast<MyFPakEntry>())
+		foreach (var file in Files.Values)
 		{
 			IndexWriter.WriteFString(file.Path);
-			file.WriteInfo(this.Info, IndexWriter, true);
+			(file as MyFPakEntry).WriteInfo(this.Info, IndexWriter, true);
 		}
 
-		byte[] temp = IndexWriter.GetBuffer();
+		byte[] temp = ms.GetBuffer();
 		var IndexData = this.EncryptIfEncrypted(temp);
 		writer.Write(IndexData);
 

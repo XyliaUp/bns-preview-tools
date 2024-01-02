@@ -26,19 +26,10 @@ public sealed class ItemBrandTooltip : ModelElement
 
 	[Name("equip-race")]
 	public RaceSeq2 EquipRace { get; set; }
-
-
-	public string icon { get; set; }
-
-	[Name("tag-icon")]
-	public string TagIcon { get; set; }
-
-	[Name("tag-icon-grade")]
-	public string TagIconGrade { get; set; }
 	#endregion
 
 	#region Properties
-	public SKBitmap FrontIcon => icon.GetIcon();
+	public SKBitmap FrontIcon => this.Attributes["icon"]?.ToString().GetIcon();
 
 	public SKBitmap Icon => ItemGrade.GetBackground().Compose(FrontIcon);
 	#endregion

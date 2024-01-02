@@ -1,10 +1,8 @@
 ﻿using System.Runtime.InteropServices;
 using ICSharpCode.SharpZipLib.Zip.Compression.Streams;
-using Xylia.Preview.Data.Common.Abstractions;
-using Xylia.Preview.Data.Engine.Readers;
 
 namespace Xylia.Preview.Data.Engine.BinData.Serialization;
-public unsafe class RecordCompressedReader : IRecordReader
+internal unsafe class RecordCompressedReader : IRecordReader
 {
 	private const ushort BufferSize = ushort.MaxValue;
 	private readonly nint _decompressedBufferHandle = Marshal.AllocHGlobal(BufferSize);
@@ -37,7 +35,7 @@ public unsafe class RecordCompressedReader : IRecordReader
 #endif
 	}
 
-	public bool Initialize(DatafileArchive reader, bool is64Bit)
+	public bool Initialize(DataArchive reader, bool is64Bit)
 	{
 		_compressedBlockCount = -1;
 		_currentBlock = -1;
@@ -53,7 +51,7 @@ public unsafe class RecordCompressedReader : IRecordReader
 		return BeginReadBlock(reader);
 	}
 
-	public bool Read(DatafileArchive reader, ref RecordMemory recordMemory)
+	public bool Read(DataArchive reader, ref RecordMemory recordMemory)
 	{
 		if (_compressedBlockCount == -1)
 			throw new Exception("Uninitialized");
@@ -80,7 +78,7 @@ public unsafe class RecordCompressedReader : IRecordReader
 		return true;
 	}
 
-	private bool BeginReadBlock(DatafileArchive reader)
+	private bool BeginReadBlock(DataArchive reader)
 	{
 		if (++_currentBlock >= _compressedBlockCount)
 			return false;

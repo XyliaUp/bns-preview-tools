@@ -10,7 +10,6 @@
 					<ColumnDefinition Width="4*" />
 					<ColumnDefinition Width="*" />
 				</Grid.ColumnDefinitions>
-
 				<Grid.RowDefinitions>
 					<RowDefinition Height="Auto" />
 					<RowDefinition Height="Auto" />
@@ -31,6 +30,7 @@
 					<ComboBoxItem Content="Game/Art/UI/GameUI/Resource/GameUI_Icon4th" />
 					<ComboBoxItem Content="Game/Art/UI/GameUI/Resource/GameUI_Icon5th" />
 					<ComboBoxItem Content="Game/Art/UI/GameUI/Resource/GameUI_Icon6th" />
+					<ComboBoxItem Content="Game/Art/UI/GameUI/Resource/GameUI_Tag" />
 					<ComboBoxItem Content="Game/Art/UI/GameUI/Resource/GameUI_TitleImage" />
 					<ComboBoxItem Content="Game/Art/UI/GameUI/Resource/GameUI_ImageSet" />
 					<ComboBoxItem Content="Game/Art/UI/GameUI/Resource/GameUI_ImageSet_R" />

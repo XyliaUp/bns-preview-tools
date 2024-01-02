@@ -10,7 +10,7 @@ using HandyControl.Tools.Extension;
 
 using Ookii.Dialogs.Wpf;
 using Xylia.Preview.Data.Helpers.Output;
-using Xylia.Preview.UI.Art.GameUI.Scene.Game_Auction;
+using Xylia.Preview.UI.GameUI.Scene.Game_Auction;
 using Xylia.Preview.UI.Helpers.Output.Items;
 using Xylia.Preview.UI.Views;
 using Xylia.Preview.UI.Views.Selector;
@@ -84,7 +84,7 @@ public partial class ItemPageViewModel : ObservableObject
 	[RelayCommand]
 	private void Preview(string name)
 	{
-		name = $"Xylia.Preview.UI.Art.GameUI.Scene.{name}";
+		name = $"Xylia.Preview.UI.GameUIne.{name}";
 
 		var type = Type.GetType(name);
 		if (type is null) return;

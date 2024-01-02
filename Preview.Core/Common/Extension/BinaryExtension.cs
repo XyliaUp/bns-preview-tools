@@ -31,6 +31,22 @@ public static class BinaryExtension
 	}
 
 
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	public static string GetReadableSize(double size)
+	{
+		if (size == 0) return "0 B";
+
+		string[] sizes = { "B", "KB", "MB", "GB", "TB" };
+		var order = 0;
+		while (size >= 1024 && order < sizes.Length - 1)
+		{
+			order++;
+			size /= 1024;
+		}
+
+		return $"{size:# ###.##} {sizes[order]}".TrimStart();
+	}
+
 
 	public static string ToHex(this byte[] value, bool original = true)
 	{
@@ -72,7 +88,6 @@ public static class BinaryExtension
 		Hex = Hex.UnCompress();
 		if (string.IsNullOrWhiteSpace(Hex))
 			return [];
-
 
 		var inputByteArray = new byte[Hex.Length / 2];
 		for (var x = 0; x < inputByteArray.Length; x++)

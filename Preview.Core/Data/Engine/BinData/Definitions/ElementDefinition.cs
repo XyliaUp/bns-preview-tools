@@ -60,20 +60,17 @@ public class ElementDefinition : ElementBaseDefinition
 			Debug.Assert(IsEmpty);
 			return this;
 		}
-		else if (!IsEmpty)
+		else
 		{
-			if (_subtablesDictionary.TryGetValue(name, out var definition)) return definition;
+			if (!IsEmpty && _subtablesDictionary.TryGetValue(name, out var definition)) return definition;
 			else
 			{
-				Debug.Assert(false);
 				Serilog.Log.Warning($"Invalid attribute: 'type', table: {this.Name}, value: {name}");
 				//throw new ArgumentOutOfRangeException(nameof(name));
 
 				return Subtables.First();
 			}
 		}
-
-		throw new Exception($"Invalid attribute: 'type', table: {this.Name}, value: null");
 	}
 
 	public ElementBaseDefinition SubtableByType(short type)

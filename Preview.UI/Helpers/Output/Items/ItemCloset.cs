@@ -1,4 +1,5 @@
 ﻿using OfficeOpenXml;
+using Xylia.Preview.Data.Common.DataStruct;
 using Xylia.Preview.Data.Helpers;
 using Xylia.Preview.Data.Helpers.Output;
 using Xylia.Preview.Data.Models;
@@ -11,8 +12,8 @@ public sealed class ItemCloset : OutSet
 {
     protected override void CreateData(ExcelWorksheet sheet)
     {
-        #region Title
-        sheet.SetColumn(Column++, "物品编号", 15);
+		#region Title
+		sheet.SetColumn(Column++, "物品编号", 15);
         sheet.SetColumn(Column++, "物品别名", 40);
         sheet.SetColumn(Column++, "物品名称", 25);
         sheet.SetColumn(Column++, "装备类型", 15);
@@ -34,14 +35,14 @@ public sealed class ItemCloset : OutSet
 
 
             if (!Flag) continue;
-            else if (item.UsableDuration != 0) continue;
+            else if (item.Attributes.Get<int>("usable-duration") != 0) continue;
             #endregion
 
 
             Row++;
             int column = 1;
 
-            sheet.Cells[Row, column++].SetValue(item.Source.Ref.Id);
+            sheet.Cells[Row, column++].SetValue((Ref)item.Source);
             sheet.Cells[Row, column++].SetValue(item.ToString());
 			sheet.Cells[Row, column++].SetValue(item.ItemNameOnly);
 			sheet.Cells[Row, column++].SetValue(item.EquipType.GetText());
@@ -49,11 +50,11 @@ public sealed class ItemCloset : OutSet
 			sheet.Cells[Row, column++].SetValue(item.EquipRace);
 			sheet.Cells[Row, column++].SetValue(item.ClosetGroupId);
 
-			if (item.ClosetGroupId != 0)
-            {
-                var ClosetGroup = FileCache.Data.Get<ClosetGroup>()[item.ClosetGroupId];
-                if (ClosetGroup != null) sheet.Cells[Row, column++].SetValue($"Name.closet-group.category.{ClosetGroup.Attributes["category"]}".GetText());
-            }
+			//if (item.ClosetGroupId != 0)
+   //         {
+   //             var ClosetGroup = FileCache.Data.Get<ClosetGroup>()[item.ClosetGroupId];
+   //             if (ClosetGroup != null) sheet.Cells[Row, column++].SetValue($"Name.closet-group.category.{ClosetGroup.Attributes["category"]}".GetText());
+   //         }
         }
     }
 }

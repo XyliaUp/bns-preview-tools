@@ -8,11 +8,6 @@ public struct Vector16
     public short Y;
     public short Z;
 
-    public override string ToString()
-    {
-        return $"{X},{Y},{Z}";
-    }
-
     public Vector16(short x, short y, short z)
     {
         X = x;
@@ -61,4 +56,20 @@ public struct Vector16
     {
         return HashCode.Combine(X, Y, Z);
     }
+
+    public override string ToString() => $"{X},{Y},{Z}";
+
+
+	public static double Distance(Vector16 v1, Vector16 v2)
+	{
+		return Math.Sqrt(SquareDistance(v1, v2));
+	}
+
+	public static long SquareDistance(Vector16 v1, Vector16 v2)
+	{
+		var num = v1.X - v2.X;
+		var num2 = v1.Y - v2.Y;
+		var num3 = v1.Z - v2.Z;
+		return Math.BigMul(num, num) + Math.BigMul(num2, num2) + Math.BigMul(num3, num3);
+	}
 }

@@ -41,7 +41,6 @@ public class BnsDatabase : IEngine, IDisposable
 			else
 			{
 				table.Definition = definitions[table.Type];
-				table.Name = table.Definition.Name;
 			}
 		}
 		#endregion
@@ -52,25 +51,25 @@ public class BnsDatabase : IEngine, IDisposable
 	#region Model Collections
 	readonly Dictionary<Table, object> _tables = new();
 
-	public ModelTable<T> Get<T>(string name = null) where T : ModelElement => Get<T>(Provider.Tables[name ?? typeof(T).Name]);
+	public GameDataTable<T> Get<T>(string name = null, bool reload = false) where T : ModelElement => Get<T>(Provider.Tables[name ?? typeof(T).Name], reload);
 
-	public ModelTable<T> Get<T>(Table table) where T : ModelElement
+	public GameDataTable<T> Get<T>(Table table, bool reload) where T : ModelElement
 	{
 		if (table is null) return null;
 
 		lock (_tables)
 		{
-			if (!_tables.TryGetValue(table, out var Models))
-				_tables[table] = Models = ModelTypeHelper.As<T>(table);
+			if (reload || !_tables.TryGetValue(table, out var Models))
+				_tables[table] = Models = new GameDataTable<T>(table);
 
-			return Models as ModelTable<T>;
+			return Models as GameDataTable<T>;
 		}
 	}
 
 
-	public ModelTable<IconTexture> IconTexture => Get<IconTexture>();
-	public ModelTable<Item> Item => Get<Item>();
-	public ModelTable<Text> Text => Get<Text>();
+	public GameDataTable<IconTexture> IconTexture => Get<IconTexture>();
+	public GameDataTable<Item> Item => Get<Item>();
+	public GameDataTable<Text> Text => Get<Text>();
 	#endregion
 
 	#region Execute

@@ -73,21 +73,21 @@ public sealed class DataParams : IEnumerable, ICollection, IList
 	/// <summary>
 	/// Gets or sets the element at the specified index.
 	/// </summary>
-	/// <param name="ArgIndex">The one-based index of the element to get or set.</param>
+	/// <param name="index">The one-based index of the element to get or set.</param>
 	/// <returns></returns>
-	public object this[int ArgIndex]
+	public object this[int index]
 	{
-		get => ArgIndex > _size ? default : _items[ArgIndex - 1];
+		get => index > _size ? default : _items[index - 1];
 		set
 		{
-			if (ArgIndex > _size)
+			if (index > _size)
 			{
-				if (ArgIndex > _items.Length) Grow(ArgIndex);
+				if (index > _items.Length) Grow(index);
 
-				_size = ArgIndex;
+				_size = index;
 			}
 
-			_items[ArgIndex - 1] = value;
+			_items[index - 1] = value;
 			Changed?.Invoke(this, EventArgs.Empty);
 		}
 	}

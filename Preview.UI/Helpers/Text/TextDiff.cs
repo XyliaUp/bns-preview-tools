@@ -9,7 +9,7 @@ public class TextDiff
 	/// <param name="oldText"></param>
 	/// <param name="newText"></param>
 	/// <returns></returns>
-	public static List<TextDiffPiece> Diff(ModelTable<Text> oldText, ModelTable<Text> newText)
+	public static List<TextDiffPiece> Diff(GameDataTable<Text> oldText, GameDataTable<Text> newText)
 	{
 		var model = new List<TextDiffPiece>();
 		if (oldText != null && oldText != null)
@@ -19,7 +19,7 @@ public class TextDiff
 	}
 
 
-	private static void BuildDiffPieces(ModelTable<Text> oldText, ModelTable<Text> newText, List<TextDiffPiece> pieces)
+	private static void BuildDiffPieces(GameDataTable<Text> oldText, GameDataTable<Text> newText, List<TextDiffPiece> pieces)
 	{
 		ArgumentNullException.ThrowIfNull(oldText, nameof(oldText));
 		ArgumentNullException.ThrowIfNull(newText, nameof(newText));
@@ -46,7 +46,7 @@ public class TextDiff
 		}
 	}
 
-	private static Dictionary<string, Text> BuildPieceHashes(ModelTable<Text> table)
+	private static Dictionary<string, Text> BuildPieceHashes(GameDataTable<Text> table)
 	{
 		return table.ToLookup(x => x.alias)
 			.Where(x => x.Key != null)

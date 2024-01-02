@@ -148,7 +148,6 @@ public class AttributeConverter
 	};
 
 
-
 	#region Model Extension Method		
 
 	internal static readonly Dictionary<Type, AttributeType> TypeCode = new()
@@ -203,9 +202,8 @@ public class AttributeConverter
 			if (item == typeof(Ref<>)) return Activator.CreateInstance(type, value);
 		}
 
-		//throw new NotSupportedException($"type not supported: {type}");
-		Trace.WriteLine($"type not supported: {type}");
-		return null;
+		Trace.WriteLine($"convert type failed: {value} -> {type.Name}");
+		return value;
 	}
 	#endregion
 }

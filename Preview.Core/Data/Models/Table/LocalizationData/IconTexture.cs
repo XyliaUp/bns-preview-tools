@@ -1,9 +1,7 @@
 ﻿using CUE4Parse.BNS.Conversion;
 using CUE4Parse.FileProvider;
 using CUE4Parse.UE4.Assets.Exports.Texture;
-
 using CUE4Parse_Conversion.Textures;
-
 using SkiaSharp;
 using Xylia.Preview.Data.Client;
 using Xylia.Preview.Data.Helpers;
@@ -18,43 +16,21 @@ public sealed class IconTexture : ModelElement
 
 	public short TextureHeight { get; set; }
 	public short TextureWidth { get; set; }
-}
 
-public static class IconTextureExt
-{
-	public static SKBitmap GetIcon(this string @ref, BnsDatabase set = null, DefaultFileProvider pak = null)
+
+	#region Methods
+	public SKBitmap GetIcon(short index, DefaultFileProvider pak = null)
 	{
-		if (!string.IsNullOrWhiteSpace(@ref) && @ref.Contains(','))
-		{
-			var split = @ref.Split(',', 2);
-			var alias = split[0];
-			if (!short.TryParse(split[^1], out var index))
-				throw new Exception("get icon index failed: " + @ref);
-
-			return GetIcon(alias, index, set, pak);
-		}
-
-		return null;
-	}
-
-	public static SKBitmap GetIcon(this string alias, short index, BnsDatabase set = null, DefaultFileProvider pak = null)
-	{
-		if (alias is null) return null;
-
-		set ??= FileCache.Data;
-		return GetIcon(set.IconTexture[alias], index, pak);
-	}
-
-	public static SKBitmap GetIcon(this IconTexture record, short index, DefaultFileProvider pak = null)
-	{
-		if (record is null) return null;
-
-		var raw = Task.Run(() => (pak ?? FileCache.Provider).LoadObject<UTexture2D>(record.iconTexture)).Result?.Decode();
+		var raw = Task.Run(() => (pak ?? FileCache.Provider).LoadObject<UTexture2D>(this.iconTexture)).Result?.Decode();
 		if (raw is null || index == 0) return raw;
 
-		#region get sub
-		// get index
-		int amountRow = record.TextureWidth / record.IconWidth;
+		var rect = this.GetRect(index);
+		return raw.Clone(rect.Item1, rect.Item2, rect.Item3, rect.Item4);
+	}
+
+	public (float, float, float, float) GetRect(short index)
+	{
+		int amountRow = this.TextureWidth / this.IconWidth;
 		int row = index % amountRow;
 		int col = index / amountRow;
 
@@ -65,10 +41,35 @@ public static class IconTextureExt
 		}
 		row--;
 
-		return raw.Clone(row * record.IconWidth, col * record.IconHeight, record.IconWidth, record.IconHeight);
-		#endregion
+		return new(row * IconWidth, col * IconHeight, IconWidth, IconHeight);
 	}
 
+	public static IconTexture Parse(string value, out short index, BnsDatabase set = null)
+	{
+		if (!string.IsNullOrWhiteSpace(value) && value.Contains(','))
+		{
+			var split = value.Split(',', 2);
+			var alias = split[0];
+			if (!short.TryParse(split[^1], out index))
+				throw new Exception("get icon index failed: " + value);
+
+			set ??= FileCache.Data;
+			return set.IconTexture[alias];
+		}
+
+		index = 0;
+		return null;
+	}
+	#endregion
+}
+
+public static class IconTextureExt
+{
+	public static SKBitmap GetIcon(this string value, BnsDatabase set = null, DefaultFileProvider pak = null)
+	{
+		var record = IconTexture.Parse(value, out var index, set);
+		return record?.GetIcon(index, pak);
+	}
 
 	public static SKBitmap GetBackground(this sbyte grade, DefaultFileProvider pak = null)
 	{

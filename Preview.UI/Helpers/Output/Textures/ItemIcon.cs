@@ -26,11 +26,11 @@ public sealed class ItemIcon(string GameFolder, string OutputFolder) : IconOutBa
 		var lst = XList.LoadData(ChvPath); 
 		var Weapon_Lock_04 = provider.LoadObject<UTexture>("BNSR/Content/Art/UI/GameUI_BNSR/Resource/GameUI_Icon3_R/Weapon_Lock_04")?.Decode();
 
-		Parallel.ForEach(set.Item.Records, (x) =>
+		Parallel.ForEach(set.Item, (x) =>
 		{
 			token.ThrowIfCancellationRequested();
 
-			var Ref = x.Ref;
+			var Ref = (Ref)x.Source;
 			if (isWhiteList && (lst is null || !lst.Contains(Ref.Id))) return;
 			if (!isWhiteList && lst != null && lst.Contains(Ref.Id)) return;
 
@@ -40,9 +40,9 @@ public sealed class ItemIcon(string GameFolder, string OutputFolder) : IconOutBa
 			var icon = x.Attributes["icon"]?.ToString();
 
 			var Text = x.Attributes.Get<Record>("name2")?.Attributes["text"];	   
-			var GroceryType = x.SubclassType == 2 ? x.Attributes["grocery-type"]?.ToEnum<GroceryTypeSeq>() : null;
+			var GroceryType = x.Source.SubclassType == 2 ? x.Attributes["grocery-type"]?.ToEnum<GroceryTypeSeq>() : null;
 
-			x.Dispose();
+			x.Source.Dispose();
 			#endregion
 
 

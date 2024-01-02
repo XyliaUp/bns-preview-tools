@@ -27,7 +27,6 @@ public struct ImageProperty : IUStruct
 	public string SperateImageType;
 	public object[] CoordinatesArray;
 
-
 	public readonly SKBitmap Image
 	{
 		get

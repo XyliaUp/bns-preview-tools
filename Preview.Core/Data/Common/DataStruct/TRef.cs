@@ -11,14 +11,14 @@ public struct TRef
 	public int Id;
 	public int Variant;
 
-	public TRef(int table, int id, int variant = 0)
+	public TRef(ushort table, int id, int variant = 0)
 	{
 		Table = table;
 		Id = id;
 		Variant = variant;
 	}
 
-	public TRef(int table, Ref Ref) : this(table, Ref.Id, Ref.Variant)
+	public TRef(ushort table, Ref Ref) : this(table, Ref.Id, Ref.Variant)
 	{
 	}
 
@@ -27,8 +27,8 @@ public struct TRef
 		if (record is null) return;
 
 		Table = record.Owner.Type;
-		Id = record.Ref.Id;
-		Variant = record.Ref.Variant;
+		Id = ((Ref)record).Id;
+		Variant = ((Ref)record).Variant;
 	}
 
 
@@ -56,13 +56,7 @@ public struct TRef
 		return Table == other.Table && Id == other.Id && Variant == other.Variant;
 	}
 
-	public override bool Equals(object obj)
-	{
-		return obj is TRef other && Equals(other);
-	}
+	public override bool Equals(object obj) => obj is TRef other && Equals(other);
 
-	public override int GetHashCode()
-	{
-		return HashCode.Combine(Table, Id, Variant);
-	}
+	public override int GetHashCode() => HashCode.Combine(Table, Id, Variant);
 }

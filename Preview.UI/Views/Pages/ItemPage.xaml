@@ -34,49 +34,26 @@
 		</TabItem>
 
 		<TabItem Header="{DynamicResource Text_Preview}">
-			<Grid>
-				<Grid.ColumnDefinitions>
-					<ColumnDefinition Width="*" />
-					<ColumnDefinition Width="*" />
-				</Grid.ColumnDefinitions>
-
-				<GroupBox Header="{DynamicResource Text_Preview}" Grid.Column="0">
-					<WrapPanel Orientation="Vertical">
-						<WrapPanel.Resources>
-							<Style TargetType="{x:Type Button}">
-								<Setter Property="FrameworkElement.Margin" Value="5"/>
-								<Setter Property="MinHeight" Value="35"/>
-							</Style>
-						</WrapPanel.Resources>
+			<WrapPanel Orientation="Vertical">
+				<WrapPanel.Resources>
+					<Style TargetType="{x:Type Button}">
+						<Setter Property="FrameworkElement.Margin" Value="5"/>
+						<Setter Property="MinHeight" Value="35"/>
+					</Style>
+				</WrapPanel.Resources>
 
 
-						<hc:SearchBar x:Name="SearchItem_Rule" Style="{StaticResource SearchBarExtend}" Width="250" Margin="0 0 0 20" 
-							hc:InfoElement.Title="Search Item" hc:InfoElement.Placeholder="input item info  (id / alias / name)" 
-							Command="{Binding PreviewItemCommand}" CommandParameter="{Binding Text,RelativeSource={RelativeSource Self}}" />
-						<Button Content="ItemStore"     Command="{Binding PreviewCommand}" CommandParameter="Game_ItemStore.Game_ItemStoreScene" />
-						<Button Content="ItemMap"       Command="{Binding PreviewCommand}" CommandParameter="Game_ItemMap.Game_ItemMapScene" />
-						<Button Content="Map"           Command="{Binding PreviewCommand}" CommandParameter="Game_Map.Game_MapScene" />
-						<Button Content="CharacterInfo" Command="{Binding PreviewCommand}" CommandParameter="Game_CharacterInfo.Game_CharacterInfo_Scene" />
-						<Button Content="clear data"    Click="ClearCacheData_Click" Background="Orange"/>
-					</WrapPanel>
-				</GroupBox>
+				<hc:SearchBar x:Name="SearchItem_Rule" Style="{StaticResource SearchBarExtend}" Width="250" Margin="0 0 0 20" 
+					hc:InfoElement.Title="Search Item" hc:InfoElement.Placeholder="input item info  (id / alias / name)" 
+					Command="{Binding PreviewItemCommand}" CommandParameter="{Binding Text,RelativeSource={RelativeSource Self}}" />
+				<Button Content="ItemStore"     Command="{Binding PreviewCommand}" CommandParameter="Game_ItemStore.Game_ItemStoreScene" />
+				<Button Content="ItemMap"       Command="{Binding PreviewCommand}" CommandParameter="Game_ItemMap.ItemMapPanel" />
+				<Button Content="Map"           Command="{Binding PreviewCommand}" CommandParameter="Game_Map.Game_MapScene" />
+				<Button Content="CharacterInfo" Command="{Binding PreviewCommand}" CommandParameter="Game_CharacterInfo.Game_CharacterInfo_Scene" />
 
-				<GroupBox Header="{DynamicResource Text_Output}" Grid.Column="1">
-					<WrapPanel Orientation="Vertical">
-						<WrapPanel.Resources>
-							<Style TargetType="{x:Type Button}">
-								<Setter Property="Margin" Value="5"/>
-								<Setter Property="MinHeight" Value="35"/>
-							</Style>
-						</WrapPanel.Resources>
-
-						<Button Content="BuyPrice"	Click="BuyPrice_Click"/>
-						<Button Content="Transform"	Click="ItemTransform_Click"/>
-						<Button Content="Closet"	Click="ItemCloset_Main_Click"/>
-						<Button Content="Data GUI"	Click="DatabaseGui_Click" Background="Orange"/>
-					</WrapPanel>
-				</GroupBox>
-			</Grid>
+				<Button Content="Data GUI"	Click="DatabaseGui_Click" Background="Orange"/>
+				<Button Content="Data Clear"    Click="ClearCacheData_Click" Background="Orange"/>
+			</WrapPanel>
 		</TabItem>
 
 		<TabItem x:Name="DEBUG" Header="DEBUG" Visibility="Collapsed">

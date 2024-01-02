@@ -32,8 +32,7 @@ public class Mission : ModelElement
 
 	public List<TutorialCase> TutorialCase { get; set; }
 
-
-	public sbyte id => (sbyte)Attributes["id"];
+	public sbyte Id => Attributes.Get<sbyte>("id");
 
 	public string Text => Attributes["name2"]?.GetText();
 
@@ -56,7 +55,6 @@ public class MissionStepFail : ModelElement
 	public List<TutorialCase> TutorialCase { get; set; }
 
 
-
 	[Side(ReleaseSide.Client)]
 	public Ref<TalkSocial> FailTalksocial { get; set; }
 
@@ -64,7 +62,7 @@ public class MissionStepFail : ModelElement
 	public float FailTalksocialDelay { get; set; }
 
 	//[Side(ReleaseSide.Server)]
-	//public Ref<Decision.QuestDecision> QuestDecision { get; set; }
+	//public Ref<QuestDecision> QuestDecision { get; set; }
 
 	[Side(ReleaseSide.Server), Repeat(2)]
 	public Ref<Zone>[] Zone { get; set; }

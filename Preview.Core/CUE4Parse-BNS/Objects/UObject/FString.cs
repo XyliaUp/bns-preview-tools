@@ -5,7 +5,7 @@ public static class FString
 {
 	public static bool IsUnicode(this string String) => String.Any(c => c > 255);
 
-	public static void WriteFString(this FArchiveWriter writer, string String)
+	public static void WriteFString(this BinaryWriter writer, string String)
 	{
 		// > 0 for ANSICHAR, < 0 for UCS2CHAR serialization
 		if (String.IsUnicode())

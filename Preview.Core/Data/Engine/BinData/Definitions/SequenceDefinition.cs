@@ -6,14 +6,12 @@ using Xylia.Preview.Data.Common.Exceptions;
 namespace Xylia.Preview.Data.Engine.Definitions;
 public class SequenceDefinition : List<string>
 {
-    public SequenceDefinition(string name, int size)
+    public SequenceDefinition(string name)
     {
         Name = name;
-        Size = size;
     }
 
     public string Name { get; set; }
-    public int Size { get; set; }
 	public string Default { get; set; }
 
 
@@ -22,13 +20,11 @@ public class SequenceDefinition : List<string>
 	public static SequenceDefinition LoadFrom(XmlElement element, string name, 
 		Dictionary<string, SequenceDefinition> globalSeq = null)
 	{
-		SequenceDefinition sequence;
+		SequenceDefinition sequence = new(name);
 
 		var nodes = element.ChildNodes.OfType<XmlElement>();
 		if (nodes.Any())
 		{
-			sequence = new SequenceDefinition(name , nodes.Count());
-
 			short key = 0;
 			foreach (var node in nodes)
 			{

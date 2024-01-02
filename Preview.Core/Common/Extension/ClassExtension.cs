@@ -39,9 +39,9 @@ public static partial class ClassExtension
 		}
 	}
 
-	public static bool ContainAttribute<T>(this object EnumItem) where T : System.Attribute => EnumItem.ContainAttribute(out T _);
+	public static bool ContainAttribute<T>(this object EnumItem) where T : Attribute => EnumItem.ContainAttribute(out T _);
 
-	public static bool ContainAttribute<T>(this object EnumItemm, out T Target) where T : System.Attribute => (Target = EnumItemm.GetAttribute<T>()) != null;
+	public static bool ContainAttribute<T>(this object EnumItemm, out T Target) where T : Attribute => (Target = EnumItemm.GetAttribute<T>()) != null;
 
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static string GetDescription(this object EnumItem, bool ReturnNull = false)

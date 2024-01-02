@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<table name="zoneconvoy" version="0.6" autokey="false" module="6" maxid="127">
-  <el name="table" child="1" />
-  <el name="record">
-    <attribute name="zone" type="Int32" key="y" required="y" />
-    <attribute name="id" type="Int16" key="y" required="y" max="127" />
-    <attribute name="alias" type="String" required="y" max="70" />
-  </el>
-</table>

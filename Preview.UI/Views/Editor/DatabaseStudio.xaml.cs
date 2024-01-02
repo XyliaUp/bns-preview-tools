@@ -216,7 +216,7 @@ public partial class DatabaseStudio
 
 	private async void TableExportAll_Click(object sender, RoutedEventArgs e)
 	{
-		await ExportAsync([.. database.Provider.Tables]);
+		await ExportAsync([.. database.Provider.Tables.Where(x => x.SearchPattern is null)]);
 	}
 
 	private async void Import_Click(object sender, RoutedEventArgs e)

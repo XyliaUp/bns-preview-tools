@@ -7,8 +7,6 @@
 	<Converters:EnumConverter x:Key="EnumConverter" />
 	<Converters:RatioConverter x:Key="RatioConverter" />
 
-
-
 	<Style x:Key="SegoeIcon">
 		<Setter Property="TextElement.FontFamily" Value="{StaticResource SegoeAssets}" />
 		<Setter Property="Control.FontFamily" Value="{StaticResource SegoeAssets}" />

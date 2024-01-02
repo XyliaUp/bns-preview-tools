@@ -8,11 +8,11 @@ namespace Xylia.Preview.UI.Controls;
 public class BnsCustomWindowWidget : Window, IBnsCustomBaseWidget
 {
 	#region Constructors
-	private readonly AnchorPanel ItemsPanel;
+	private readonly Anchor ItemsPanel;
 
 	public BnsCustomWindowWidget()
 	{
-		this.Content = this.ItemsPanel = new AnchorPanel();
+		this.Content = this.ItemsPanel = new Anchor();
 
 		this.ResizeMode = ResizeMode.NoResize;
 		this.WindowStyle = WindowStyle.ToolWindow;

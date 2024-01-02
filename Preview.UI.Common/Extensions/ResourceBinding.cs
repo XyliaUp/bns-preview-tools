@@ -25,7 +25,7 @@ public class ResourceBinding : MarkupExtension
 
 	static void ResourceKeyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
 	{
-		if (d is not FrameworkElement target || 
+		if (d is not FrameworkElement target ||
 			e.NewValue is not Tuple<object, DependencyProperty> newVal)
 			return;
 
@@ -77,14 +77,9 @@ public class ResourceBinding : MarkupExtension
 			FallbackValue = FallbackValue
 		};
 
-		if (RelativeSource != null)
-			binding.RelativeSource = RelativeSource;
-
-		if (ElementName != null)
-			binding.ElementName = ElementName;
-
-		if (Source != null)
-			binding.Source = Source;
+		if (RelativeSource != null) binding.RelativeSource = RelativeSource;
+		if (ElementName != null) binding.ElementName = ElementName;
+		if (Source != null) binding.Source = Source;
 		#endregion
 
 		var multiBinding = new MultiBinding

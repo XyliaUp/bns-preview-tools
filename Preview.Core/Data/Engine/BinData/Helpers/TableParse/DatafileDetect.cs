@@ -1,11 +1,12 @@
 ﻿using System.Collections.ObjectModel;
 using Xylia.Preview.Common.Extension;
+using Xylia.Preview.Data.Common.DataStruct;
+using Xylia.Preview.Data.Engine.BinData.Definitions;
 using Xylia.Preview.Data.Engine.BinData.Models;
 using Xylia.Preview.Data.Engine.Definitions;
 using Xylia.Preview.Data.Models;
 
 namespace Xylia.Preview.Data.Engine.BinData.Helpers;
-
 /// <summary>
 /// parse by auto detect  
 /// </summary>
@@ -24,77 +25,10 @@ public sealed class DatafileDetect : ITableParseType
 	{
 		by_id[type] = name;
 
-		if (name == "board-gacha") AddList("board-gacha-reward", type + 1);
-		else if (name == "challengelistreward") AddList("challengelist", type - 1);
-		else if (name == "collecting")
-		{
-			AddList("closet-collecting-grade", type - 2);
-			AddList("closet-group", type - 1);
-		}
-		else if (name == "equip-gem-piece")
-		{
-			AddList("equipitemgroup", type + 1);
-			AddList("equip-item-guide", type + 2);
-			AddList("equip-item-guide-item-list", type + 3);
-		}
-		else if (name == "faction") AddList("faction-level", type + 1);
-		else if (name == "glyph") AddList("glyph-page", type + 1);
-		else if (name == "item-graph-seed-group") AddList("item-graph", type - 1);
-		else if (name == "item-brand") AddList("item-brand-tooltip", type + 1);
-		else if (name == "item-improve-option")
-		{
-			AddList("item-improve", type - 1);
-			AddList("item-improve-option-list", type + 1);
-		}
-		else if (name == "job-style")
-		{
-			AddList("job", type - 2);
-			AddList("jobskillset", type - 1);
-		}
-		else if (name == "jumpingcharacter") AddList("jumpingcharacter2", type - 1);
-		else if (name == "linkmoveanim") AddList("level", type - 1);
-		else if (name == "mapinfo")
-		{
-			AddList("mapoverlay", type + 1);
-			AddList("mapunit", type + 2);
-		}
-		else if (name == "map-group-1") AddList("map-group-1-expedition", type + 1);
-		else if (name == "mentoring")
-		{
-			AddList("mastery-level", type - 3);
-			AddList("mastery-stat-point", type - 2);
-			AddList("mastery-stat-point-pick", type - 1);
-		}
-		else if (name == "npc")
-		{
-			AddList("npccombatmoveanim", type - 1);
-
-			AddList("npcindicatormoveanim", type + 1);
-			AddList("npcmoveanim", type + 2);
-		}
-		else if (name == "questbonusrewardsetting") AddList("questbonusreward", type - 1);
-		else if (name == "random-store-item") AddList("random-store-item-display", type + 1);
-		else if (name == "skillskin")
-		{
-			AddList("skillshow3", type - 1);
-			AddList("skillskineffect", type + 1);
-		}
-		else if (name == "skilltooltipattribute") AddList("skilltooltip", type + 1);
-		else if (name == "skill-train-combo-action") AddList("skill-train-category", type - 1);
-		else if (name == "unlocated-store") AddList("unlocated-store-ui", type + 1);
-		else if (name == "vehicle" && by_id.GetValueOrDefault(type + 1) == "vehicle-appearance")
-		{
-			by_id[type] = "vehicle-appearance";
-			by_id[type + 1] = "vehicle";
-		}
-		else if (name == "vehicle-appearance" && by_id.GetValueOrDefault(type - 1) == "vehicle")
-		{
-			by_id[type - 1] = "vehicle-appearance";
-			by_id[type] = "vehicle";
-		}
+		 if (name == "unlocated-store") AddList("unlocated-store-ui", type + 1);
 	}
 
-	private void CreateNameMap(IList<TableDefinition> definitions)
+	private void CreateNameMap(TableDefinition[] definitions)
 	{
 		by_name.Clear();
 
@@ -104,22 +38,24 @@ public sealed class DatafileDetect : ITableParseType
 		{
 			if (string.IsNullOrEmpty(o.Value)) continue;
 
-			for (int i = 0; i < definitions.Count; i++)
+			for (int i = 0; i < definitions.Length; i++)
 			{
+				if (o.Key - LastId <= 1) break;
+
 				if (definitions[i].Name == LastName || LastName == null)
 				{
 					int j;
-					for (j = i; j < definitions.Count; j++)
+					for (j = i; j < definitions.Length; j++)
 					{
 						if (definitions[j].Name == o.Value) break;
 					}
 
-					if (j - i  == o.Key - LastId)
+					if (j - i == o.Key - LastId)
 					{
-						for (; i < j; i++)
+						for (int x = i; x < j; x++)
 						{
-							var d = definitions[i];
-							by_name[d.Name] = (ushort)(LastId + j - i + 1);
+							var d = definitions[x];
+							by_name[d.Name] = (ushort)(LastId + x - i);
 						}
 					}
 
@@ -138,8 +74,8 @@ public sealed class DatafileDetect : ITableParseType
 	#region Load Methods
 	public DatafileDetect(Datafile data, Collection<TableDefinition> definitions)
 	{
-		Read(data.Tables, data.NameTable?.CreateTable());
-		CreateNameMap(definitions);
+		Read(data.Tables, AliasTableUnit.Split(data.AliasTable));
+		CreateNameMap(definitions.Where(x => x.Module != TableModule.Server).ToArray());
 	}
 
 	/// <summary>
@@ -147,12 +83,12 @@ public sealed class DatafileDetect : ITableParseType
 	/// </summary>
 	/// <param name="tables"></param>
 	/// <param name="AliasTable"></param>
-	private void Read(IEnumerable<Table> tables, List<AliasTable> AliasTable)
+	private void Read(IEnumerable<Table> tables, List<AliasTableUnit> AliasTable)
 	{
 		tables.ForEach(table => by_id[table.Type] = "");
 		Parallel.ForEach(tables, table =>
 		{
-			if (table.XmlPath != null || table.Records.Count == 0) return;
+			if (table.SearchPattern != null || table.Records.Count == 0) return;
 
 			static HashSet<string> GetLookup(Record record) =>
 			   record.StringLookup.Strings.ToHashSet(StringComparer.OrdinalIgnoreCase);
@@ -165,17 +101,20 @@ public sealed class DatafileDetect : ITableParseType
 			#region common
 			// local provider not has 
 			if (AliasTable != null)
-			{
+			{    
+				var lsts = new List<string>();
 				foreach (var lst in AliasTable)
 				{
-					if (lst.HasCheck) continue;
-					if (!str1.Contains(lst[record1.Ref]?.Alias)) continue;
-					if (!str2.Contains(lst[record2.Ref]?.Alias)) continue;
+					if (!str1.Contains(lst[record1])) continue;
+					if (!str2.Contains(lst[record2])) continue;
 
-					lst.HasCheck = true;
-					AddList(lst.Name, table.Type);
-					return;
+					// do not directly return
+					// because exist issue if tables with identical aliases 
+					lsts.Add(lst.Name);
 				}
+
+				lsts.ForEach(x => AddList(x, table.Type));
+				return;
 			}
 			#endregion
 
@@ -227,4 +166,48 @@ public sealed class DatafileDetect : ITableParseType
 		GC.Collect();
 	}
 	#endregion
+}
+
+internal class AliasTableUnit
+{
+	public string Name;
+
+	public Dictionary<Ref, string> Table { get; } = [];
+
+	public AliasTableUnit(string name)
+	{
+		Name = name;
+	}
+
+	public string this[Ref Ref] => Table.GetValueOrDefault(Ref);
+
+	public void Add(Ref Ref, string alias)
+	{
+		Table[Ref] = alias;
+	}
+
+
+	internal static List<AliasTableUnit> Split(AliasTable aliasTable)
+	{
+		if (aliasTable is null) return null;
+
+
+		var tables = new Dictionary<string, AliasTableUnit>(StringComparer.OrdinalIgnoreCase);
+
+		foreach (var table in aliasTable.Table)
+		{
+			var ls = table.Key.Split(':', 2);
+			if (ls.Length < 2) continue;
+
+			var name = ls[0];
+			var alias = ls[1];
+
+			if (!tables.TryGetValue(name, out var collection))
+				tables[name] = collection = new(name);
+
+			collection.Add(table.Value, alias);
+		}
+
+		return [.. tables.Values];
+	}
 }

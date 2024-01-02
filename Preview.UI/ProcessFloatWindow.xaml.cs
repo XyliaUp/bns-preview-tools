@@ -1,10 +1,10 @@
 ﻿using System.Diagnostics;
-using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Interop;
 
 using Vanara.PInvoke;
+using Xylia.Preview.Common.Extension;
 
 namespace Xylia.Preview.UI;
 public partial class ProcessFloatWindow 
@@ -55,7 +55,7 @@ public partial class ProcessFloatWindow
 			Application.Current.Dispatcher.Invoke(() =>
 			{
 				UsedCPU.Text = value.ToString("P0");
-				UsedMemory.Text = GetReadableSize(size);
+				UsedMemory.Text = BinaryExtension.GetReadableSize(size);
 			});
 		});
 
@@ -70,23 +70,6 @@ public partial class ProcessFloatWindow
 			timer.Enabled = false;
 			timer = null;
 		}
-	}
-
-
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	public static string GetReadableSize(double size)
-	{
-		if (size == 0) return "0 B";
-
-		string[] sizes = { "B", "KB", "MB", "GB", "TB" };
-		var order = 0;
-		while (size >= 1024 && order < sizes.Length - 1)
-		{
-			order++;
-			size /= 1024;
-		}
-
-		return $"{size:# ###.##} {sizes[order]}".TrimStart();
 	}
 	#endregion
 }

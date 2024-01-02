@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<table name="benefit-ability" version="0.4" autokey="true" module="6">
-  <el name="table" child="1" />
-  <el name="record" />
-</table>

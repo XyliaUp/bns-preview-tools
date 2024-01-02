@@ -1,9 +1,9 @@
-﻿using System.Reflection;
-using System.Xml;
+﻿using System.Xml;
 using CUE4Parse.Utils;
 using Xylia.Preview.Common.Attributes;
 using Xylia.Preview.Common.Extension;
 using Xylia.Preview.Data.Common.Exceptions;
+using Xylia.Preview.Data.Engine.BinData.Definitions;
 using Xylia.Preview.Data.Engine.BinData.Models;
 using Xylia.Preview.Data.Models;
 using Xylia.Preview.Properties;
@@ -13,7 +13,7 @@ public static class TableDefinitionHelper
 {
 	public static string GetResource(this string name)
 	{
-		var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream(name);
+		var stream = System.Reflection.Assembly.GetExecutingAssembly().GetManifestResourceStream(name);
 		if (stream is null) return null;
 
 		return new StreamReader(stream).ReadToEnd();
@@ -23,7 +23,7 @@ public static class TableDefinitionHelper
 	internal static DatafileDefinition LoadDefinition()
 	{
 		#region load from program
-		var _assembly = Assembly.GetExecutingAssembly();
+		var _assembly = System.Reflection.Assembly.GetExecutingAssembly();
 
 		// public
 		var param = ConfigParam.LoadFrom(_assembly.GetManifestResourceNames()
@@ -91,6 +91,7 @@ public static class TableDefinitionHelper
 		var autokey = (tableNode.Attributes["autokey"]?.Value).ToBool();
 		var maxid = (tableNode.Attributes["maxid"]?.Value).ToInt32();
 		var version = TableHeader.ParseVersion(tableNode.GetAttribute("version"));
+		var module = (TableModule)(tableNode.Attributes["module"]?.Value).ToInt32();
 		#endregion
 
 
@@ -255,7 +256,7 @@ public static class TableDefinitionHelper
 		return new TableDefinition
 		{
 			Name = name,
-			//Module = tableNode.Attributes["module"]?.Value;
+			Module = module,
 			Type = type,
 			MajorVersion = version.Item1,
 			MinorVersion = version.Item2,

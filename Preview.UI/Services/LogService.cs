@@ -1,5 +1,6 @@
 ﻿using System.IO;
 using Serilog;
+using Serilog.Events;
 using Xylia.Preview.UI.Helpers;
 using Xylia.Preview.UI.ViewModels;
 
@@ -13,7 +14,7 @@ internal class LogService
 		var foloder = UserSettings.Default.OutputFolder ?? UserSettings.ApplicationData;
 		string template = "{Timestamp:yyyy-MM-dd HH:mm:ss} [{Level}] {Message:lj}{NewLine}{Exception}";
 		Log.Logger = new LoggerConfiguration()
-			.WriteTo.Debug(Serilog.Events.LogEventLevel.Warning, outputTemplate: template)
+			.WriteTo.Debug(LogEventLevel.Warning, outputTemplate: template)
 			.WriteTo.File(Path.Combine(foloder, "Logs", $"{DateTime.Now:yyyy-MM-dd}.log"), outputTemplate: template)
 			.CreateLogger();
 	}

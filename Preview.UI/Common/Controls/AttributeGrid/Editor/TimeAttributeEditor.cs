@@ -7,7 +7,7 @@ using HandyControl.Controls;
 using Xylia.Preview.Data.Common.DataStruct;
 
 namespace Xylia.Preview.UI.Controls;
-internal class TimeAttributeEditor : PropertyEditorBase , IValueConverter
+internal class TimeAttributeEditor : PropertyEditorBase, IValueConverter
 {
 	public override FrameworkElement CreateElement(PropertyItem propertyItem) => new DateTimePicker
 	{
@@ -20,14 +20,14 @@ internal class TimeAttributeEditor : PropertyEditorBase , IValueConverter
 
 	public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
 	{
-		//if (value is Time64 Time64) return Time64.LocalTime;
+		if (value is Time64 Time64) return DateTime.Parse(Time64.ToString());
 
 		throw new NotImplementedException();
 	}
 
 	public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
 	{
-		//if (value is DateTime time) return (Time64)time;
+		if (value is DateTime time) return (Time64)time;
 
 		throw new NotImplementedException();
 	}

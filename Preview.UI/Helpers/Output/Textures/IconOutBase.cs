@@ -45,15 +45,15 @@ public abstract class IconOutBase : IDisposable
 
 
 	#region Methods
-	public async Task LoadData(CancellationToken cancellationToken)
+	public void LoadData(CancellationToken cancellationToken)
 	{
 		set = new BnsDatabase(DefaultProvider.Load(UserSettings.Default.GameFolder));
-		await set.IconTexture.LoadAsync();
+		//await set.IconTexture.LoadAsync();
 
 		cancellationToken.ThrowIfCancellationRequested();
 	}
 
-	public async Task Output(string format, CancellationToken cancellationToken)
+	public void Output(string format, CancellationToken cancellationToken)
 	{
 		using var provider = new GameFileProvider(_gameDirectory, true);
 		Directory.CreateDirectory(_outputDirectory);

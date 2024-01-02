@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<table name="filter-set" version="0.1" autokey="true" module="2310">
-	<el name="table" child="1" />
-	<el name="record" child="filter">
-		<attribute name="name" type="String" default="noname" max="15" />
-	</el>
-	<el name="filter" inherit="true" />
-</table>

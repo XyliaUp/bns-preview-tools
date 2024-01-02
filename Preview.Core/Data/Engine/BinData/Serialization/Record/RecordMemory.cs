@@ -3,7 +3,7 @@
 namespace Xylia.Preview.Data.Engine.BinData.Serialization;
 
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct RecordMemory
+internal unsafe struct RecordMemory
 {
     public byte* DataBegin;
     public byte* StringBufferBegin;

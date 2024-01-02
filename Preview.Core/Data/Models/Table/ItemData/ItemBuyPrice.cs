@@ -47,7 +47,7 @@ public class ItemBuyPrice : ModelElement
 
 	public sbyte CheckBattleFieldGradeLeadTheBall { get; set; }
 
-	public sbyte CheckClosetCollectingGrade { get; set; }
+	public short CheckClosetCollectingGrade { get; set; }
 
 	public Ref<ContentQuota> CheckContentQuota { get; set; }
 
@@ -105,20 +105,7 @@ public class ItemBuyPrice : ModelElement
 		}
 	}
 
-	public string Money
-	{
-		get
-		{
-			// 999<image enablescale="true" imagesetpath="00009076.GuildBank_Coin_Gold" scalerate="1.2"/>99<image enablescale="true" imagesetpath="00009076.GuildBank_Coin_Silver" scalerate="1.2"/>99<image enablescale="true" imagesetpath="00009076.GuildBank_Coin_Bronze" scalerate="1.2"/>
-
-			var result = new StringBuilder();
-			var money = (Money)this.money;
-			if (money.Gold > 0) result.Append(money.Gold + """<image enablescale="true" imagesetpath="00009076.GuildBank_Coin_Gold" scalerate="1.2"/>""");
-			if (money.Silver > 0) result.Append(money.Silver + """<image enablescale="true" imagesetpath="00009076.GuildBank_Coin_Silver" scalerate="1.2"/>""");
-			if (money.Copper > 0) result.Append(money.Copper + """<image enablescale="true" imagesetpath="00009076.GuildBank_Coin_Bronze" scalerate="1.2"/>""");
-
-			return result.ToString();
-		}
-	}
+	// 999<image enablescale="true" imagesetpath="00009076.GuildBank_Coin_Gold" scalerate="1.2"/>99<image enablescale="true" imagesetpath="00009076.GuildBank_Coin_Silver" scalerate="1.2"/>99<image enablescale="true" imagesetpath="00009076.GuildBank_Coin_Bronze" scalerate="1.2"/>
+	public string Money => new Integer(money).Money;
 	#endregion
 }

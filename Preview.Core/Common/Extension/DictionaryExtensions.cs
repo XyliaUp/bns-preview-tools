@@ -11,7 +11,8 @@ internal static class DictionaryExtensions
 		return defaultValue;
 	}
 
-	public static Dictionary<TKey, TSource> ToDistinctDictionary<TSource, TKey>(this IEnumerable<TSource> source, Func<TSource, TKey> keySelector, IEqualityComparer<TKey> comparer = null)
+	public static Dictionary<TKey, TSource> ToDistinctDictionary<TSource, TKey>(this IEnumerable<TSource> source,
+		Func<TSource, TKey> keySelector, IEqualityComparer<TKey> comparer = null)
 	{
 		return source
 			.ToLookup(x => keySelector(x), x => x, comparer)

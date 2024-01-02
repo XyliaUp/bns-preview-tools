@@ -73,9 +73,8 @@ internal class MyFPakEntry : VfsEntry
 				while (tempReader.BaseStream.Position < tempReader.BaseStream.Length)
 				{
 					var BlockLength = (int)Math.Min(this.CompressionBlockSize, tempReader.BaseStream.Length - tempReader.BaseStream.Position);
-					var BlockData = reader.EncryptIfEncrypted(Compression.Compression2.Compress(tempReader.ReadBytes(BlockLength), BlockLength, Method, 9), this.IsEncrypted);
+					var BlockData = reader.EncryptIfEncrypted(Compression2.Compress(tempReader.ReadBytes(BlockLength), BlockLength, Method, 9), this.IsEncrypted);
 
-					//这是存储临时偏移
 					CompressionBlocks.Add(new(new FPakCompressedBlock()
 					{
 						CompressedStart = this.CompressedSize,

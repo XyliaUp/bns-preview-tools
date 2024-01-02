@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 using Xylia.Preview.Data.Models;
-using Xylia.Preview.UI.Art.GameUI.Scene.Game_Tooltip;
+using Xylia.Preview.UI.GameUI.Scene.Game_Tooltip;
 
 namespace Xylia.Preview.UI.Interactivity;
 /// <summary>
@@ -32,7 +32,7 @@ public class PreviewTooltip : RecordCommand
             {
                 var scene = new Game_TooltipScene();
 				scene.ItemTooltipPanel_C.DataContext = record;
-                scene.ItemTooltipPanel_C.Show();
+                //scene.ItemTooltipPanel_C.Show();
 			});
         }
     }

@@ -1,6 +1,4 @@
-﻿using SkiaSharp;
-
-using Xylia.Preview.Common.Attributes;
+﻿using Xylia.Preview.Common.Attributes;
 using Xylia.Preview.Data.Common.DataStruct;
 using Xylia.Preview.Data.Models.Sequence;
 
@@ -41,7 +39,7 @@ public partial class Skill3 : ModelElement
 	#region Properties
 	public KeyCommand CurrentShortCutKey => KeyCommand.Cast(this.ShortCutKey);
 
-	public SKBitmap Icon => IconTexture.GetIcon(IconIndex);
+	//public SKBitmap Icon => IconTexture.GetIcon(IconIndex);
 	#endregion
 
 
@@ -119,8 +117,6 @@ public partial class Skill3 : ModelElement
 		public short ConsumeSummonedHpValue { get; set; }
 
 		public ConsumeType ConsumeSummonedHpType { get; set; }
-
-
 
 
 		public sbyte FlowRepeat { get; set; }

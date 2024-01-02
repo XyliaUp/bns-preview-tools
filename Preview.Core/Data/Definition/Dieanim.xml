@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<table name="dieanim" version="0.3" autokey="false" module="12">
-  <el name="table" child="1" />
-  <el name="record">
-    <attribute name="idle-type" type="Seq" seq="idle-type" key="y" required="y" />
-    <attribute name="die-anim" type="String" max="80" />
-  </el>
-</table>

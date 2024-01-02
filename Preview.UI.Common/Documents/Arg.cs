@@ -8,7 +8,6 @@ using System.Windows;
 using HtmlAgilityPack;
 using Xylia.Preview.Common.Extension;
 using Xylia.Preview.Data.Common.DataStruct;
-using Xylia.Preview.Data.Helpers;
 using Xylia.Preview.Data.Models;
 using Xylia.Preview.Data.Models.Sequence;
 
@@ -39,61 +38,62 @@ public class Arg : Element
 		return base.MeasureCore(availableSize);
 	}
 
+
 	internal object GetObject()
 	{
-		object obj;
-
-		#region source
-		var p = this.p?.Split(':');
-
-		var type = p[0];
-		if (type is null) return null;
-		// Prevent text editors to load data
-		else if (type == "id") obj = FileCache.IsEmpty ? null : new Ref<ModelElement>(this.id).Instance;
-		else if (type == "seq")
+		try
 		{
-			var seq = this.seq?.Split(':');
-			obj = seq[1].CastSeq(seq[0]);
-		}
-		else
-		{
-			if (!byte.TryParse(type, out var index))
-				throw new InvalidCastException("bad param, must be byte value: " + type);
+			object obj;
 
-			obj = Params?[index];
-		}
-
-		if (obj is null) return null;
-		#endregion
-
-		#region child
-		foreach (var pl in p.Skip(1))
-		{
-			var args = ArgItem.GetArgs(pl);
-			for (int x = 0; x < args.Length; x++)
+			#region source
+			var p = this.p?.Split(':');
+			var type = p?[0];
+			if (type is null) return null;
+			else if (type == "id") obj = new Ref<ModelElement>(this.id).Instance;
+			else if (type == "seq")
 			{
-				if (x == 0) args[0].ValidType(ref obj);
-				else obj = args[x].GetObject(obj);
+				var seq = this.seq?.Split(':');
+				obj = seq[1].CastSeq(seq[0]);
 			}
+			else
+			{
+				if (!byte.TryParse(type, out var index))
+					throw new InvalidCastException("bad param, must be byte value: " + type);
+
+				obj = Params?[index];
+			}
+
+			if (obj is null) return null;
+			#endregion
+
+			#region child
+			foreach (var pl in p.Skip(1))
+			{
+				var args = ArgItem.GetArgs(pl);
+				for (int x = 0; x < args.Length; x++)
+				{
+					if (x == 0) args[0].ValidType(ref obj);
+					else obj = args[x].GetObject(obj);
+				}
+			}
+			#endregion
+
+			return obj;
 		}
-		#endregion
-
-
-		return obj;
+		catch(Exception ex)
+		{
+			Debug.WriteLine($"handle arg failed: {p}\n\t{ex.Message}");
+			return null;
+		}
 	}
 }
 
-
-public sealed class ArgItem
+internal sealed class ArgItem(string Target)
 {
-	#region Constructor
-	public ArgItem(string target) => Target = target;
+	#region Props
+	public ArgItem Prev { get; private set; }
 
-	public readonly string Target;
-
-	public ArgItem Prev;
-
-	public ArgItem Next;
+	public ArgItem Next { get; private set; }
 	#endregion
 
 	#region Methods		
@@ -113,7 +113,6 @@ public sealed class ArgItem
 
 		return args;
 	}
-
 
 	public void ValidType(ref object value)
 	{
@@ -141,11 +140,7 @@ public sealed class ArgItem
 		}
 		else if (target == "integer")
 		{
-			if (type == typeof(int)) value = new Integer((int)value);
-			else if (type == typeof(float)) value = new Integer((float)value);
-			else if (type == typeof(short)) value = new Integer((short)value);
-			else if (type == typeof(byte)) value = new Integer((byte)value);
-
+			value = new Integer(Convert.ToDouble(value));
 			return;
 		}
 		else if (target.Equals("skill") && value is Skill3) return;
@@ -165,7 +160,7 @@ public sealed class ArgItem
 			if (target.Equals(type.Name, StringComparison.OrdinalIgnoreCase)) return;
 			else if (target.Equals(type.BaseType?.Name, StringComparison.OrdinalIgnoreCase)) return;
 
-			throw new InvalidCastException($"Valid failed: {Target} > {type}");
+			throw new InvalidCastException($"valid failed: {Target} > {type}");
 		}
 	}
 
@@ -198,7 +193,7 @@ public static class ArgExtension
 		{
 			value = _value;
 
-			if (value is Record @ref && @ref.Owner.Name == "text")
+			if (value is Record @ref /*&& @ref.Owner.Name == "text"*/)
 				value = @ref.Attributes["text"];
 
 			return true;
@@ -217,30 +212,25 @@ public static class ArgExtension
 		return false;
 	}
 
-	public static string Handle(this DataParams collection, string Text)
+	public static string Handle(this DataParams collection, string text)
 	{
-		foreach (Match m in new Regex("<arg.*?/>").Matches(Text).Cast<Match>())
+		foreach (Match m in new Regex("<arg.*?/>").Matches(text).Cast<Match>())
 		{
-			string html = m.ToString();
+			var doc = new HtmlDocument();
+			string html = m.Value;
+			doc.LoadHtml(html);
 
-			var doc2 = new HtmlDocument();
-			doc2.LoadHtml(html);
+			// element
+			var arg = new Arg();
+			arg.Load(doc.DocumentNode.FirstChild);
+			arg.Params = collection;
 
-			try
-			{
-				var arg = TextDocument.ToElement(doc2.DocumentNode.FirstChild) as Arg;
-				arg.Params = collection;
-
-				var result = arg.GetObject();
-				var text = result is int @int ? @int.ToString("N0") : result?.ToString();
-				Text = Text.Replace(html, text);
-			}
-			catch (Exception ex)
-			{
-				Debug.WriteLine($"handle arg failed: {html}\n\t{ex.Message}");
-			}
+			// result
+			var result = arg.GetObject();
+			var current = result is int @int ? @int.ToString("N0") : result?.ToString();
+			text = text.Replace(html, current);
 		}
 
-		return Text;
+		return text;
 	}
 }

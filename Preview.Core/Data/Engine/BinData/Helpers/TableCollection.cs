@@ -42,7 +42,7 @@ public class TableCollection : List<Table>
 	}
 
 
-
+	#region Methods
 	public Record GetRef(ushort type, Ref Ref)
 	{
 		if (Ref == default) return null;
@@ -63,11 +63,11 @@ public class TableCollection : List<Table>
 		if (Ref == default) return null;
 
 		// possible return null if it is a xml table
-		// actually, this is a definition issue
-		var table = this[(short)Ref.Table];
+		// cause due to definition issue 
+		var table = this[(ushort)Ref.Table];
 		if (table is null) return Ref.ToString();
 
-		return $"{table.Name}:{table[Ref, false]}";
+		return $"{table.Name}:{table[Ref]}";
 	}
 
 	public string GetSub(ushort type, Sub sub)
@@ -105,4 +105,5 @@ public class TableCollection : List<Table>
 		index = ushort.Parse(array[1]);
 		return GetRecord("icontexture", array[0]);
 	}
+	#endregion
 }

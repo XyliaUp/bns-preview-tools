@@ -193,7 +193,7 @@ public partial class GameResourcePageViewModel : ObservableObject
 
 	readonly CancellationTokenSource[] Sources = new CancellationTokenSource[20];
 
-	public void Run(IconOutBase Out, string format, int id) => Task.Run(async () =>
+	public void Run(IconOutBase Out, string format, int id) => Task.Run(() =>
 	{
 		#region Token
 		var source = this.Sources[id];
@@ -215,8 +215,8 @@ public partial class GameResourcePageViewModel : ObservableObject
 		{
 			DateTime start = DateTime.Now;
 
-			await Out.LoadData(source.Token);
-			await Out.Output(format, source.Token);
+			Out.LoadData(source.Token);
+			Out.Output(format, source.Token);
 			Out.Dispose();
 
 			Growl.SuccessGlobal(new GrowlInfo()
@@ -339,11 +339,11 @@ public partial class GameResourcePageViewModel : ObservableObject
 	public void MergeIcon()
 	{
 		var grade = _mergeIcon_Grade?.Value ?? 1;
-		var info = Application.GetResourceStream(new Uri(MergeIcon_BackgroundMode ?
-			 $"/Preview.UI;component/Art/GameUI/Resource/GameUI_Window_R/ItemIcon_Bg_Grade_{grade}.png" :
-			 $"/Preview.UI;component/Resources/Images/ue3/ItemIcon_Bg_Grade_{grade}.png", UriKind.Relative));
+		var info = GetImage(MergeIcon_BackgroundMode ?
+			$"Art/GameUI/Resource/GameUI_Window_R/ItemIcon_Bg_Grade_{grade}" :
+			$"Art/GameUI/Resource/GameUI_Window/ItemIcon_Bg_Grade_{grade}");
 
-		var bitmap = SKBitmap.Decode(info.Stream);
+		var bitmap = info.Value;
 
 		if (_mergeIcon_Source != null)
 			bitmap = bitmap.Compose(_mergeIcon_Source);
@@ -374,14 +374,13 @@ public partial class GameResourcePageViewModel : ObservableObject
 	}
 
 
-
-
 	public static NameObject<SKBitmap> GetImage(string path)
 	{
 		if (path == "None") return new(null, StringHelper.Get("Text_None"));
 
-		var info = Application.GetResourceStream(new Uri($"/Preview.UI;component/{path}.png", UriKind.Relative));
-		return new(SKBitmap.Decode(info.Stream), StringHelper.Get(path.SubstringAfterLast('/')));
+		var resource = new Uri($"/Preview.UI;component/Content/{path}.png", UriKind.Relative);
+		using var stream = Application.GetResourceStream(resource).Stream;
+		return new(SKBitmap.Decode(stream), StringHelper.Get(path.SubstringAfterLast('/')));
 	}
 	#endregion
 }

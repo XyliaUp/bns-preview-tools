@@ -1,4 +1,5 @@
-﻿using System.Reflection;
+﻿using System.Diagnostics;
+using System.Reflection;
 using System.Runtime.Serialization;
 using Xylia.Preview.Common.Attributes;
 using Xylia.Preview.Common.Extension;
@@ -11,7 +12,7 @@ public abstract class ModelElement
 	[IgnoreDataMember]
 	public Record Source { get; private set; }
 
-	public AttributeCollection Attributes => Source.Attributes;
+	public AttributeCollection Attributes => Source?.Attributes;
 
 	public override string ToString() => Source.ToString();
 
@@ -22,7 +23,13 @@ public abstract class ModelElement
 
 	public override int GetHashCode() => Source.GetHashCode();
 
+	protected internal virtual void LoadHiddenField()
+	{
 
+	}
+
+
+	#region Helper
 	/// <summary>
 	/// Convert original record to ModelRecord
 	/// </summary>
@@ -30,7 +37,7 @@ public abstract class ModelElement
 	/// <param name="source"></param>
 	/// <param name="element"></param>
 	/// <returns></returns>
-	public static T As<T>(Record source, T element) where T : ModelElement
+	internal static T As<T>(Record source, T element) where T : ModelElement
 	{
 		element.Source = source;
 
@@ -83,13 +90,7 @@ public abstract class ModelElement
 			// create instance
 			var records = Activator.CreateInstance(toType);
 			var add = records.GetType().GetMethod("Add", BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.Public);
-			var subs = ModelTypeHelper.Get(recordType);
-
-			foreach (var child in children)
-			{
-				var type = child.Attributes.Get<string>(AttributeCollection.s_type);
-				add.Invoke(records, new object[] { As(child, subs.CreateInstance(type)) });
-			}
+			children.ForEach(child => add.Invoke(records, new object[] { child.As<ModelElement>(recordType) }));
 
 			return records;
 		}
@@ -108,11 +109,12 @@ public abstract class ModelElement
 			var value = Array.CreateInstance(toType, attribute.Repeat);
 
 			for (int i = 0; i < attribute.Repeat; i++)
-				value.SetValue(AttributeConverter.Convert(record.Attributes[name, i + 1], toType), i);
+				value.SetValue(AttributeConverter.Convert(record.Attributes[$"{name}-{i + 1}"], toType), i);
 
 			return value;
 		}
 	}
+	#endregion
 }
 
 
@@ -125,8 +127,14 @@ public struct Ref<TElement> where TElement : ModelElement
 
 	public Ref(string value, BnsDatabase database = null)
 	{
+		// prevent designer request to load data
+		if (database is null && 
+			FileCache.IsEmpty) return;
+
+		// get available package
 		var provider = (database ?? FileCache.Data).Provider;
 
+		// get source
 		if (value.Contains(':')) source = provider.Tables.GetRecord(value);
 		else source = provider.Tables.GetRecord(typeof(TElement).Name, value);
 	}
@@ -134,17 +142,74 @@ public struct Ref<TElement> where TElement : ModelElement
 
 	#region	Instance
 	private readonly Record source;
+
 	private TElement _instance;
+	public TElement Instance => _instance ??= source?.As<TElement>();
 
-	public TElement Instance => _instance ??= CastObject<TElement>();
 
-	private readonly T CastObject<T>() where T : ModelElement
+	public static implicit operator TElement(Ref<TElement> value) => value.Instance;
+
+	public static implicit operator Ref<TElement>(TElement value) => new() { _instance = value };
+
+	public static implicit operator Ref<TElement>(Record value) => new(value);
+	#endregion
+}
+
+internal class ModelTypeHelper
+{
+	#region Helper
+	private static readonly Dictionary<Type, ModelTypeHelper> helpers = [];
+
+	public static ModelTypeHelper Get(Type baseType, string name = null)
 	{
-		if (source is null) return null;
+		lock (helpers)
+		{
+			if (!helpers.TryGetValue(baseType, out var subs))
+			{
+				subs = helpers[baseType] = new ModelTypeHelper();
+				subs.GetSubType(baseType);
+			}
 
-		// NOTE: create new object
-		var subs = ModelTypeHelper.Get(typeof(T));
-		return ModelElement.As(source, (T)subs.CreateInstance(source.Attributes["type"]?.ToString()));
+			// convert real type
+			if (baseType == typeof(ModelElement))
+			{
+				Debug.Assert(name != null);
+
+				baseType = subs._subs[name];
+				return Get(baseType);
+			}
+
+			return subs;
+		}
+	}
+	#endregion
+
+	#region Methods
+	private Type BaseType;
+	private Dictionary<string, Type> _subs = new(StringComparer.OrdinalIgnoreCase);
+
+	private void GetSubType(Type baseType)
+	{
+		var flag = baseType == typeof(ModelElement);
+		this.BaseType = baseType;
+
+		foreach (var instance in Assembly.GetExecutingAssembly().GetTypes())
+		{
+			if ((flag || !instance.IsAbstract) && baseType.IsAssignableFrom(instance) && instance != baseType)
+				_subs[instance.Name.TitleLowerCase()] = instance;
+		}
+	}
+
+	public T CreateInstance<T>(string type)
+	{
+		Type _type = null;
+
+		if (!string.IsNullOrWhiteSpace(type) && !_subs.TryGetValue(type, out _type))
+		{
+			Trace.WriteLine($"cast object subclass failed: {BaseType} -> {type}");
+		}
+
+		return (T)Activator.CreateInstance(_type ?? BaseType);
 	}
 	#endregion
 }

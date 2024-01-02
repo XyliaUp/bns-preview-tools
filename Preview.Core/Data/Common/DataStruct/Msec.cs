@@ -54,7 +54,7 @@ public struct Msec : IFormattable
 	#endregion
 
 	#region Methods	   	
-	public override readonly string ToString() => ToString(MsecFormatType.hmsFormatColon, null);
+	public override readonly string ToString() => value.ToString();
 	public readonly string ToString(string format, IFormatProvider formatProvider) => ToString(format.ToEnum<MsecFormatType>(), formatProvider);
 	public readonly string ToString(MsecFormatType format, IFormatProvider formatProvider = null) => MsecFormat.Format(this, format, formatProvider);
 
@@ -149,7 +149,7 @@ public static class MsecFormat
 
 		if (format == MsecFormatType.hmsFormatColon) return $"{value.Days}.{value.Hours:00}:{value.Minutes:00}:{value.Seconds:00}";
 
-
+		// load text resource
 		var MorningName = "Name.Time.Morning".GetText();
 		var AfternoonName = "Name.Time.Afternoon".GetText();
 		var DayName = "Name.Time.day".GetText() ?? ":";
@@ -186,7 +186,7 @@ public static class MsecFormat
 				break;
 			case MsecFormatType.minPlusonesec:
 				break;
-			case MsecFormatType.secPlusonesec: 
+			case MsecFormatType.secPlusonesec:
 				break;
 			case MsecFormatType.dhmPlusonesec:
 				break;

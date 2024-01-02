@@ -4,6 +4,7 @@ using Xylia.Preview.Data.Client;
 namespace Xylia.Preview.Data.Common.Exceptions;
 internal class BnsDataException : BnsException
 {
+	#region Ctor
 	public BnsDataException(string message) : base(message)
 	{
 
@@ -13,9 +14,15 @@ internal class BnsDataException : BnsException
 	{
 
 	}
-
+	#endregion
 
 	#region	Definition
+	internal static BnsDataException InvalidGame(string message, int game = 0)
+	{
+		if (game == 0) return new BnsDataException(message);
+		else return new BnsDataException($"{message} ({game})");
+	}
+
 	internal static BnsDataException InvalidDefinition(string message)
 	{
 		return new BnsDataException(message);
@@ -24,11 +31,6 @@ internal class BnsDataException : BnsException
 	internal static BnsDataException InvalidSequence(string message, string name)
 	{
 		return new BnsDataException($"seq `{name}` {message}");
-	}
-
-	internal static BnsDataException InvalidGame(string message, int game = -1)
-	{
-		return new BnsDataException(message);
 	}
 	#endregion
 

@@ -4,7 +4,6 @@ using System.Collections.ObjectModel;
 using System.Net;
 using System.Text.RegularExpressions;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 
@@ -42,7 +41,7 @@ public class BnsCustomLabelWidget : BnsCustomBaseWidget, IContentHost
 	/// </summary>
 	protected Paragraph Document { get; set; }
 
-	public Dictionary<int, Timer> Timers { get; } = new();
+	public Dictionary<int, Timer> Timers { get; } = [];
 	#endregion
 
 	#region Dependency Properties
@@ -51,11 +50,10 @@ public class BnsCustomLabelWidget : BnsCustomBaseWidget, IContentHost
 	/// <summary>
 	/// DependencyProperty for <see cref="Text" /> property.
 	/// </summary>
-	public static readonly DependencyProperty TextProperty =
-		DependencyProperty.Register("Text", typeof(string), typeof(BnsCustomLabelWidget),
-			new FrameworkPropertyMetadata(string.Empty,
-			   FrameworkPropertyMetadataOptions.AffectsMeasure | FrameworkPropertyMetadataOptions.AffectsRender,
-			   OnTextChanged));
+	public static readonly DependencyProperty TextProperty = DependencyProperty.Register("Text",
+		typeof(string), typeof(BnsCustomLabelWidget),
+		  new FrameworkPropertyMetadata(string.Empty,
+			  FrameworkPropertyMetadataOptions.AffectsMeasure | FrameworkPropertyMetadataOptions.AffectsRender, OnTextChanged));
 
 	/// <summary>
 	/// The Text property defines the content (text) to be displayed.
@@ -67,11 +65,10 @@ public class BnsCustomLabelWidget : BnsCustomBaseWidget, IContentHost
 		set { SetValue(TextProperty, value); }
 	}
 
-	public static readonly DependencyProperty ParamsProperty =
-		DependencyProperty.Register("Params", typeof(DataParams), typeof(BnsCustomLabelWidget),
-			   new FrameworkPropertyMetadata(new DataParams(),
-			   FrameworkPropertyMetadataOptions.AffectsRender | FrameworkPropertyMetadataOptions.Inherits,
-			   OnParamsChanged));
+	public static readonly DependencyProperty ParamsProperty = DependencyProperty.Register("Params",
+		typeof(DataParams), typeof(BnsCustomLabelWidget),
+		  new FrameworkPropertyMetadata(new DataParams(),
+			  FrameworkPropertyMetadataOptions.AffectsRender | FrameworkPropertyMetadataOptions.Inherits, OnParamsChanged));
 
 	public DataParams Params
 	{
@@ -79,21 +76,15 @@ public class BnsCustomLabelWidget : BnsCustomBaseWidget, IContentHost
 		set { SetValue(ParamsProperty, value); }
 	}
 
-	/// <summary>
-	/// DependencyProperty for <see cref="Orientation" /> property.
-	/// </summary>
-	public static readonly DependencyProperty OrientationProperty =
-		DependencyProperty.Register("Orientation", typeof(Orientation), typeof(BnsCustomLabelWidget),
-			new FrameworkPropertyMetadata(Orientation.Vertical,
-				FrameworkPropertyMetadataOptions.AffectsMeasure));
+	public static readonly DependencyProperty TextAlignmentProperty = DependencyProperty.Register("TextAlignment",
+		typeof(TextAlignment), typeof(BnsCustomLabelWidget),
+		  new FrameworkPropertyMetadata(TextAlignment.Left,
+			  FrameworkPropertyMetadataOptions.AffectsRender | FrameworkPropertyMetadataOptions.Inherits));
 
-	/// <summary>
-	/// Specifies dimension of children stacking.
-	/// </summary>
-	public Orientation Orientation
+	public TextAlignment TextAlignment
 	{
-		get { return (Orientation)GetValue(OrientationProperty); }
-		set { SetValue(OrientationProperty, value); }
+		get { return (TextAlignment)GetValue(TextAlignmentProperty); }
+		set { SetValue(TextAlignmentProperty, value); }
 	}
 	#endregion
 

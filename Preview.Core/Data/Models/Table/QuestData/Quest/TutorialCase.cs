@@ -1,6 +1,6 @@
 ﻿using Xylia.Preview.Common.Attributes;
 using Xylia.Preview.Data.Models.QuestData.Enums;
-using static Xylia.Preview.Data.Models.Item;
+using Xylia.Preview.Data.Models.Sequence;
 
 using Skill3Model = Xylia.Preview.Data.Models.Skill3;
 using SkillModel = Xylia.Preview.Data.Models.Skill;

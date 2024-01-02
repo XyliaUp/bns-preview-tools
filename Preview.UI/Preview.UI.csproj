@@ -161,10 +161,7 @@
 
 		<Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
 		<None Update="Properties\AssemblyVersion.tt" Generator="TextTemplatingFileGenerator" LastGenOutput="AssemblyVersion.cs" />
-		<Compile Update="Art\GameUI\Scene\Game_Tooltip\Game_TooltipScene\Skill3ToolTipPanel_2.xaml.cs">
-		  <SubType>Code</SubType>
-		</Compile>
-		<Compile Update="Art\GameUI\Scene\Game_Tooltip\Game_TooltipScene\Skill3ToolTipPanel_1.xaml.cs">
+		<Compile Update="Content\Art\GameUI\Scene\Game_ItemMap\BnsCustomGraphMapWidget.xaml.cs">
 		  <SubType>Code</SubType>
 		</Compile>
 		<Compile Update="Properties\AssemblyVersion.cs" AutoGen="True" DesignTime="True" DependentUpon="AssemblyVersion.tt" />
@@ -172,50 +169,13 @@
 
 
 	<ItemGroup>
-		<Resource Include="Art\GameUI\Resource\GameUI_Icon3_R\SlotItem_marketBusiness.png" />
-		<Resource Include="Art\GameUI\Resource\GameUI_Icon3_R\SlotItem_privateSale.png" />
-		<Resource Include="Art\GameUI\Resource\GameUI_Icon3_R\unuseable_AccountContents.png" />
-		<Resource Include="Art\GameUI\Resource\GameUI_Icon3_R\unuseable_Achievement.png" />
-		<Resource Include="Art\GameUI\Resource\GameUI_Icon3_R\unuseable_Area.png" />
-		<Resource Include="Art\GameUI\Resource\GameUI_Icon3_R\unuseable_Awaken.png" />
-		<Resource Include="Art\GameUI\Resource\GameUI_Icon3_R\unuseable_DuelRating.png" />
-		<Resource Include="Art\GameUI\Resource\GameUI_Icon3_R\unuseable_expired.png" />
-		<Resource Include="Art\GameUI\Resource\GameUI_Icon3_R\unuseable_growth_NotEnoughGem.png" />
-		<Resource Include="Art\GameUI\Resource\GameUI_Icon3_R\unuseable_growth_NotEnoughgrowth.png" />
-		<Resource Include="Art\GameUI\Resource\GameUI_Icon3_R\unuseable_growth_NotEnoughItem.png" />
-		<Resource Include="Art\GameUI\Resource\GameUI_Icon3_R\unuseable_growth_NotEnoughLevel.png" />
-		<Resource Include="Art\GameUI\Resource\GameUI_Icon3_R\unuseable_KeyLock.png" />
-		<Resource Include="Art\GameUI\Resource\GameUI_Icon3_R\unuseable_lock.png" />
-		<Resource Include="Art\GameUI\Resource\GameUI_Icon3_R\unuseable_lock_2.png" />
-		<Resource Include="Art\GameUI\Resource\GameUI_Icon3_R\unuseable_olditem_1.png" />
-		<Resource Include="Art\GameUI\Resource\GameUI_Icon3_R\unuseable_olditem_2.png" />
-		<Resource Include="Art\GameUI\Resource\GameUI_Icon3_R\unuseable_olditem_3.png" />
-		<Resource Include="Art\GameUI\Resource\GameUI_Icon3_R\unuseable_package.png" />
-		<Resource Include="Art\GameUI\Resource\GameUI_Icon3_R\unuseable_PcRoomOnly.png" />
-		<Resource Include="Art\GameUI\Resource\GameUI_Icon3_R\unuseable_seal.png" />
-		<Resource Include="Art\GameUI\Resource\GameUI_Icon3_R\unuseable_X1.png" />
-		<Resource Include="Art\GameUI\Resource\GameUI_Icon3_R\unuseable_X2.png" />
-		<Resource Include="Art\GameUI\Resource\GameUI_Icon3_R\useable_PcRoomOnly.png" />
-		<Resource Include="Art\GameUI\Resource\GameUI_Icon3_R\Weapon_Lock_01.png" />
-		<Resource Include="Art\GameUI\Resource\GameUI_Icon3_R\Weapon_Lock_02.png" />
-		<Resource Include="Art\GameUI\Resource\GameUI_Icon3_R\Weapon_Lock_03.png" />
-		<Resource Include="Art\GameUI\Resource\GameUI_Icon3_R\Weapon_Lock_04.png" />
-		<Resource Include="Art\GameUI\Resource\GameUI_Icon3_R\Weapon_Lock_05.png" />
-		<Resource Include="Art\GameUI\Resource\GameUI_Icon3_R\Weapon_Lock_06.png" />
-		<Resource Include="Art\GameUI\Resource\GameUI_Window_R\ItemIcon_Bg_Grade_1.png" />
-		<Resource Include="Art\GameUI\Resource\GameUI_Window_R\ItemIcon_Bg_Grade_2.png" />
-		<Resource Include="Art\GameUI\Resource\GameUI_Window_R\ItemIcon_Bg_Grade_3.png" />
-		<Resource Include="Art\GameUI\Resource\GameUI_Window_R\ItemIcon_Bg_Grade_4.png" />
-		<Resource Include="Art\GameUI\Resource\GameUI_Window_R\ItemIcon_Bg_Grade_5.png" />
-		<Resource Include="Art\GameUI\Resource\GameUI_Window_R\ItemIcon_Bg_Grade_6.png" />
-		<Resource Include="Art\GameUI\Resource\GameUI_Window_R\ItemIcon_Bg_Grade_7.png" />
-		<Resource Include="Art\GameUI\Resource\GameUI_Window_R\ItemIcon_Bg_Grade_8.png" />
-		<Resource Include="Art\GameUI\Resource\GameUI_Window_R\ItemIcon_Bg_Grade_9.png" />
 		<Resource Include="Resources\Images\*" />
 		<Resource Include="Resources\Images\*\*" />
 		<Resource Include="Resources\Fonts\segmdl2.ttf" />
 		<Resource Include="Resources\Xshd\*.xshd" />
+		<Resource Include="Content\Art\GameUI\Resource\*\*" />
 	</ItemGroup>
+
 
 
 	<ItemGroup>

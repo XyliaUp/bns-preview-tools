@@ -52,10 +52,10 @@ public class MyFPakInfo
 
 		if (Version < EPakFileVersion.PakFile_Version_FNameBasedCompressionMethod)
 		{
-			CompressionMethods = new List<CompressionMethod>
-			{
+			CompressionMethods =
+			[
 				CompressionMethod.None, CompressionMethod.Zlib, CompressionMethod.Gzip, CompressionMethod.Oodle, CompressionMethod.LZ4, CompressionMethod.Zstd
-			};
+			];
 		}
 		else
 		{

@@ -18,7 +18,6 @@ public class ProviderSerialize(IDataProvider Provider)
 	private event Action DataSaved;
 
 
-
 	public async Task ExportAsync(string folder, Action<int, int> progress, params Table[] tables) => await Task.Run(() =>
 	{
 		var hashes = new ConcurrentBag<HashInfo>();
@@ -62,7 +61,7 @@ public class ProviderSerialize(IDataProvider Provider)
 		foreach (var table in Provider.Tables)
 		{
 			Stream[] files = null;
-			string pattern = table.XmlPath ?? $"{table.Name.TitleCase()}Data*.xml";
+			string pattern = table.SearchPattern ?? $"{table.Name.TitleCase()}Data*.xml";
 
 			try
 			{
@@ -160,7 +159,7 @@ public class ProviderSerialize(IDataProvider Provider)
 
 	public async Task SaveAsync(string savePath) => await Task.Run(() =>
 	{
-		Provider.WriteData(savePath, new PublishSettings() { Is64bit = true, Mode = Mode.Package });
+		Provider.WriteData(savePath, new() { Is64bit = true, Mode = Mode.Datafile });
 		DataSaved?.Invoke();
 	});
 }

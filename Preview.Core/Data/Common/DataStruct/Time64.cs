@@ -7,7 +7,7 @@ namespace Xylia.Preview.Data.Common.DataStruct;
 /// </summary>
 /// <param name="Ticks"></param>
 /// <param name="Publisher"></param>
-public struct Time64(ulong ticks) : IFormattable
+public struct Time64(long ticks) : IFormattable
 {
 	#region Properties
 	private const int HoursPerDay = 24;
@@ -50,7 +50,7 @@ public struct Time64(ulong ticks) : IFormattable
 	private const int March1BasedDayOfNewYear = 306;              // Days between March 1 and January 1
 
 
-	public readonly ulong Ticks => ticks;
+	public readonly ulong Ticks => (ulong)ticks;
 
 	// Returns the year part of this DateTime. The returned value is an
 	// integer between 1 and 9999.
@@ -130,14 +130,14 @@ public struct Time64(ulong ticks) : IFormattable
 	public static Msec operator -(Time64 a, Time64 b) => (int)((a.Ticks - b.Ticks) * 1000);
 	public static Msec operator +(Time64 a, Time64 b) => (int)((a.Ticks + b.Ticks) * 1000);
 
-	public static Time64 operator -(Time64 a, Msec b) => (ulong)((long)a.Ticks - b.TotalSeconds);
-	public static Time64 operator +(Time64 a, Msec b) => (ulong)((long)a.Ticks + b.TotalSeconds);
+	public static Time64 operator -(Time64 a, Msec b) => (long)(a.Ticks - b.TotalSeconds);
+	public static Time64 operator +(Time64 a, Msec b) => (long)(a.Ticks + b.TotalSeconds);
 	#endregion
 
 
 	#region Static Methods
-	public static implicit operator ulong(Time64 time) => time.Ticks;
-	public static implicit operator Time64(ulong ticks) => new Time64(ticks);
+	public static implicit operator long(Time64 time) => (long)time.Ticks;
+	public static implicit operator Time64(long ticks) => new Time64(ticks);
 
 	public static implicit operator Time64(DateTime dateTime) => Parse(dateTime);
 
@@ -145,9 +145,7 @@ public struct Time64(ulong ticks) : IFormattable
 
 	public static Time64 Parse(DateTime time)
 	{
-		return new Time64(
-			(ulong)(time - new DateTime(1970, 1, 1)).Ticks / 10000000)
-			- BnsTimeZoneInfo.FromPublisher()!.Offset;
+		return new Time64((time - new DateTime(1970, 1, 1)).Ticks / 10000000) - BnsTimeZoneInfo.FromPublisher()!.Offset;
 	}
 	#endregion
 }

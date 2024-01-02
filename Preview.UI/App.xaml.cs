@@ -2,7 +2,6 @@
 using System.ComponentModel;
 using System.IO;
 using System.Reflection;
-using System.Security.Cryptography.Xml;
 using System.Windows;
 using System.Windows.Threading;
 using CUE4Parse.BNS;
@@ -41,7 +40,7 @@ public partial class App : Application
 		IPlatformFilePak.Signature = new byte[20];
 
 		FileCache.Data = new(new Xylia.Preview.Data.Engine.DatData.FolderProvider(@"D:\资源\客户端相关\Auto\data"));
-		var scene = new Xylia.Preview.UI.Art.GameUI.Scene.Game_ItemMap.Game_ItemMapScene();
+		var scene = new Xylia.Preview.UI.GameUI.Scene.Game_ItemMap.Game_ItemMapScene();
 		scene.ItemMapPanel_C.Show();
 		return;	 
 #endif

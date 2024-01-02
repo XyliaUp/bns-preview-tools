@@ -53,5 +53,7 @@ public struct FLayoutData
 	{
 		public float X;
 		public float Y;
+
+		public override string ToString() => $"{X} {Y}";
 	}
 }

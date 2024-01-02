@@ -25,11 +25,9 @@ public abstract class Element : ContentElement
 	/// <summary>
 	/// DependencyProperty for <see cref="FontFamily" /> property.
 	/// </summary>
-	public static readonly DependencyProperty FontFamilyProperty =
-		BnsCustomBaseWidget.FontFamilyProperty.AddOwner(typeof(Element),
-			new FrameworkPropertyMetadata(
-				SystemFonts.MessageFontFamily,
-				FrameworkPropertyMetadataOptions.AffectsMeasure | FrameworkPropertyMetadataOptions.AffectsRender | FrameworkPropertyMetadataOptions.Inherits));
+	public static readonly DependencyProperty FontFamilyProperty =BnsCustomBaseWidget.FontFamilyProperty.AddOwner(typeof(Element),
+		   new FrameworkPropertyMetadata(SystemFonts.MessageFontFamily,
+			   FrameworkPropertyMetadataOptions.AffectsMeasure | FrameworkPropertyMetadataOptions.AffectsRender | FrameworkPropertyMetadataOptions.Inherits));
 
 	/// <summary>
 	/// The FontFamily property specifies the name of font family.
@@ -44,11 +42,9 @@ public abstract class Element : ContentElement
 	/// <summary>
 	/// DependencyProperty for <see cref="FontStyle" /> property.
 	/// </summary>
-	public static readonly DependencyProperty FontStyleProperty =
-		BnsCustomBaseWidget.FontStyleProperty.AddOwner(typeof(Element),
-			new FrameworkPropertyMetadata(
-				SystemFonts.MessageFontStyle,
-				FrameworkPropertyMetadataOptions.AffectsMeasure | FrameworkPropertyMetadataOptions.AffectsRender | FrameworkPropertyMetadataOptions.Inherits));
+	public static readonly DependencyProperty FontStyleProperty = BnsCustomBaseWidget.FontStyleProperty.AddOwner(typeof(Element),
+		new FrameworkPropertyMetadata(SystemFonts.MessageFontStyle,
+			FrameworkPropertyMetadataOptions.AffectsMeasure | FrameworkPropertyMetadataOptions.AffectsRender | FrameworkPropertyMetadataOptions.Inherits));
 
 	/// <summary>
 	/// The FontStyle property requests normal, italic, and oblique faces within a font family.
@@ -62,11 +58,9 @@ public abstract class Element : ContentElement
 	/// <summary>
 	/// DependencyProperty for <see cref="FontWeight" /> property.
 	/// </summary>
-	public static readonly DependencyProperty FontWeightProperty =
-		BnsCustomBaseWidget.FontWeightProperty.AddOwner(typeof(Element),
-			new FrameworkPropertyMetadata(
-				SystemFonts.MessageFontWeight,
-				FrameworkPropertyMetadataOptions.AffectsMeasure | FrameworkPropertyMetadataOptions.AffectsRender | FrameworkPropertyMetadataOptions.Inherits));
+	public static readonly DependencyProperty FontWeightProperty = BnsCustomBaseWidget.FontWeightProperty.AddOwner(typeof(Element),
+		new FrameworkPropertyMetadata(SystemFonts.MessageFontWeight,
+			FrameworkPropertyMetadataOptions.AffectsMeasure | FrameworkPropertyMetadataOptions.AffectsRender | FrameworkPropertyMetadataOptions.Inherits));
 
 	/// <summary>
 	/// The FontWeight property specifies the weight of the font.
@@ -80,11 +74,9 @@ public abstract class Element : ContentElement
 	/// <summary>
 	/// DependencyProperty for <see cref="FontStretch" /> property.
 	/// </summary>
-	public static readonly DependencyProperty FontStretchProperty =
-		BnsCustomBaseWidget.FontStretchProperty.AddOwner(typeof(Element),
-			new FrameworkPropertyMetadata(
-				FontStretches.Normal,
-				FrameworkPropertyMetadataOptions.AffectsMeasure | FrameworkPropertyMetadataOptions.AffectsRender | FrameworkPropertyMetadataOptions.Inherits));
+	public static readonly DependencyProperty FontStretchProperty = BnsCustomBaseWidget.FontStretchProperty.AddOwner(typeof(Element),
+		new FrameworkPropertyMetadata(FontStretches.Normal,
+			FrameworkPropertyMetadataOptions.AffectsMeasure | FrameworkPropertyMetadataOptions.AffectsRender | FrameworkPropertyMetadataOptions.Inherits));
 
 	/// <summary>
 	/// The FontStretch property selects a normal, condensed, or extended face from a font family.
@@ -98,10 +90,9 @@ public abstract class Element : ContentElement
 	/// <summary>
 	/// DependencyProperty for <see cref="FontSize" /> property.
 	/// </summary>
-	public static readonly DependencyProperty FontSizeProperty =
-		BnsCustomBaseWidget.FontSizeProperty.AddOwner(typeof(Element),
-			new FrameworkPropertyMetadata(SystemFonts.MessageFontSize,
-				FrameworkPropertyMetadataOptions.AffectsMeasure | FrameworkPropertyMetadataOptions.AffectsRender | FrameworkPropertyMetadataOptions.Inherits));
+	public static readonly DependencyProperty FontSizeProperty = BnsCustomBaseWidget.FontSizeProperty.AddOwner(typeof(Element),
+		new FrameworkPropertyMetadata(SystemFonts.MessageFontSize,
+			FrameworkPropertyMetadataOptions.AffectsMeasure | FrameworkPropertyMetadataOptions.AffectsRender | FrameworkPropertyMetadataOptions.Inherits));
 
 	/// <summary>
 	/// The FontSize property specifies the size of the font.
@@ -117,10 +108,9 @@ public abstract class Element : ContentElement
 	/// <summary>
 	/// DependencyProperty for <see cref="Foreground" /> property.
 	/// </summary>
-	public static readonly DependencyProperty ForegroundProperty =
-		BnsCustomBaseWidget.ForegroundProperty.AddOwner(typeof(Element),
-			  new FrameworkPropertyMetadata(SystemColors.ControlTextBrush,
-				  FrameworkPropertyMetadataOptions.AffectsRender | FrameworkPropertyMetadataOptions.SubPropertiesDoNotAffectRender | FrameworkPropertyMetadataOptions.Inherits));
+	public static readonly DependencyProperty ForegroundProperty = BnsCustomBaseWidget.ForegroundProperty.AddOwner(typeof(Element),
+		new FrameworkPropertyMetadata(SystemColors.ControlTextBrush,
+			FrameworkPropertyMetadataOptions.AffectsRender | FrameworkPropertyMetadataOptions.SubPropertiesDoNotAffectRender | FrameworkPropertyMetadataOptions.Inherits));
 
 	/// <summary>
 	/// The Foreground property specifies the foreground brush of an element's text content.
@@ -131,15 +121,28 @@ public abstract class Element : ContentElement
 		set { SetValue(ForegroundProperty, value); }
 	}
 
+	public static readonly DependencyProperty ParamsProperty = BnsCustomLabelWidget.ParamsProperty.AddOwner(typeof(Element),
+		new FrameworkPropertyMetadata(null, FrameworkPropertyMetadataOptions.Inherits));
+
 	public DataParams Params
 	{
 		get { return (DataParams)GetValue(ParamsProperty); }
 		set { SetValue(ParamsProperty, value); }
 	}
 
-	public static readonly DependencyProperty ParamsProperty =
-		BnsCustomLabelWidget.ParamsProperty.AddOwner(typeof(Element),
-			   new FrameworkPropertyMetadata(null, FrameworkPropertyMetadataOptions.Inherits));
+
+	/// <summary>
+	/// DependencyProperty for <see cref="TextAlignment" /> property.
+	/// </summary>
+	public static readonly DependencyProperty TextAlignmentProperty = BnsCustomLabelWidget.TextAlignmentProperty.AddOwner(typeof(Element),
+		new FrameworkPropertyMetadata(TextAlignment.Left,
+			FrameworkPropertyMetadataOptions.AffectsMeasure | FrameworkPropertyMetadataOptions.AffectsRender | FrameworkPropertyMetadataOptions.Inherits));
+
+	public TextAlignment TextAlignment
+	{
+		get { return (TextAlignment)GetValue(TextAlignmentProperty); }
+		set { SetValue(TextAlignmentProperty, value); }
+	}
 	#endregion
 
 
@@ -373,6 +376,7 @@ public abstract class Element : ContentElement
 		current.SetValue(FontSizeProperty, parent.GetValue(FontSizeProperty));
 		current.SetValue(ForegroundProperty, parent.GetValue(ForegroundProperty));
 		current.SetValue(ParamsProperty, parent.GetValue(ParamsProperty));
+		current.SetValue(TextAlignmentProperty, parent.GetValue(TextAlignmentProperty));
 	}
 
 	private TextDocument EnsureTextContainer() => null;

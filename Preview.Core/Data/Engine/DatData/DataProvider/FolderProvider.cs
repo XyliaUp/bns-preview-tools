@@ -1,26 +1,22 @@
-﻿using Xylia.Preview.Common.Extension;
+﻿using CUE4Parse.Utils;
+using Xylia.Preview.Common.Extension;
 using Xylia.Preview.Data.Common.DataStruct;
 using Xylia.Preview.Data.Engine.BinData.Helpers;
+using Xylia.Preview.Data.Engine.BinData.Models;
 using Xylia.Preview.Data.Engine.Definitions;
 
 namespace Xylia.Preview.Data.Engine.DatData;
-public class FolderProvider(DirectoryInfo directory) : IDataProvider
+public class FolderProvider(string path) : IDataProvider
 {
-	public FolderProvider(string path): this(new DirectoryInfo(path))
-	{
-
-	}
-
-
 	#region Properties
-	public string Name => directory.Name;	  
-	public DateTime CreatedAt => default;
-	public BnsVersion ClientVersion => default;
+	public virtual string Name => path.SubstringAfterLast('\\');	  
+	public virtual DateTimeOffset CreatedAt => default;
+	public virtual BnsVersion ClientVersion => default;
 	public TableCollection Tables { get; private set; }
 	#endregion
 
 	#region Methods
-	Stream[] IDataProvider.GetFiles(string pattern) => directory.GetFiles(pattern, SearchOption.AllDirectories).Select(x => x.OpenRead()).ToArray();
+	public virtual Stream[] GetFiles(string pattern) => new DirectoryInfo(path).GetFiles(pattern, SearchOption.AllDirectories).Select(x => x.OpenRead()).ToArray();
 
 	public void LoadData(DatafileDefinition definitions)
 	{
@@ -37,7 +33,7 @@ public class FolderProvider(DirectoryInfo directory) : IDataProvider
 				_ => $"{definition.Name.TitleCase()}Data*.xml",
 			};
 
-			Tables.Add(new() { Owner = this, Name = definition.Name, XmlPath = path });
+			Tables.Add(new() { Owner = this, Name = definition.Name, SearchPattern = path });
 		}
 	}
 
@@ -49,4 +45,13 @@ public class FolderProvider(DirectoryInfo directory) : IDataProvider
 		GC.SuppressFinalize(this);
 	}
 	#endregion
+}
+
+
+public class CompressProvider(string filepath) : FolderProvider(filepath)
+{
+	public override Stream[] GetFiles(string pattern)
+	{
+		return base.GetFiles(pattern);
+	}
 }

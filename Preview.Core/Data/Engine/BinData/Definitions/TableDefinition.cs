@@ -1,4 +1,5 @@
-﻿using Xylia.Preview.Data.Engine.BinData.Models;
+﻿using Xylia.Preview.Data.Engine.BinData.Definitions;
+using Xylia.Preview.Data.Engine.BinData.Models;
 
 namespace Xylia.Preview.Data.Engine.Definitions;
 public class TableDefinition : TableHeader
@@ -26,7 +27,10 @@ public class TableDefinition : TableHeader
 	/// <summary>
 	/// Is default definition 
 	/// </summary>
-	internal bool IsDefault { get; private set; } = false;
+	internal bool IsDefault { get; private set; }
+
+	public TableModule Module { get; set; }
+
 
 
 

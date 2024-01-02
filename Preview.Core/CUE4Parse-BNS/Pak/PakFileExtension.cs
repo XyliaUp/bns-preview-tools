@@ -10,7 +10,11 @@ public static class PakFileExtension
 		var path = Path.Combine(folder, name);
 		Directory.CreateDirectory(folder);
 
-		pak.Write(new BinaryWriter(new FileStream(path, FileMode.Create)));
+
+		var ms = new MemoryStream();
+		pak.Write(new BinaryWriter(ms));
+
+		File.WriteAllBytes(path , ms.ToArray());
 	}
 
 

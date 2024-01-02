@@ -1,6 +1,0 @@
-﻿<BnsCustomWindowWidget x:Class="Xylia.Preview.UI.Art.GameUI.Scene.Game_Tooltip.Skill3ToolTipPanel_2"
-	xmlns="https://github.com/xyliaup/bns-preview-tools"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-
-	<BnsCustomLabelWidget x:Name="Skill3ToolTipPanel_1_SkillSkinDescription_Title" />
-</BnsCustomWindowWidget>

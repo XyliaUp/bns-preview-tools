@@ -38,7 +38,6 @@ public static class StringExtension
 
 
 
-
 	public static byte ToByte(this string s) => byte.TryParse(s, out var result) ? result : (byte)0;
 	public static sbyte ToInt8(this string s) => sbyte.TryParse(s, out var result) ? result : (sbyte)0;
 	public static short ToInt16(this string s) => short.TryParse(s, out var result) ? result : (short)0;

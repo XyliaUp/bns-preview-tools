@@ -1,74 +1,89 @@
-﻿using Xylia.Preview.Common.Attributes;
+﻿using System.ComponentModel;
+using Xylia.Preview.Common.Attributes;
 using Xylia.Preview.Data.Helpers;
 
 namespace Xylia.Preview.Data.Models.Sequence;
 public enum JobSeq
 {
-	[Name("job-none")]
+	[Description("job-none")]
 	JobNone,
 
-	[Name("blade-master")]
+	[Description("blade-master")]
+	[Name("Name.job.BladeMaster")]
 	검사,
 
-	[Name("kung-fu-fighter")]
+	[Description("kung-fu-fighter")]
+	[Name("Name.job.KungFuFighter")]
 	권사,
 
-	[Name("force-master")]
+	[Description("force-master")]
+	[Name("Name.job.ForceMaster")]
 	기공사,
 
-	[Name("shooter")]
+	[Description("shooter")]
+	[Name("Name.job.Shooter")]
 	격사,
 
-	[Name("destroyer")]
+	[Description("destroyer")]
+	[Name("Name.job.Destroyer")]
 	역사,
 
-	[Name("summoner")]
+	[Description("summoner")]
+	[Name("Name.job.Summoner")]
 	소환사,
 
-	[Name("assassin")]
+	[Description("assassin")]
+	[Name("Name.job.Assassin")]
 	암살자,
 
-	[Name("sword-master")]
+	[Description("sword-master")]
+	[Name("Name.job.SwordMaster")]
 	귀검사,
 
-	[Name("warlock")]
+	[Description("warlock")]
+	[Name("Name.job.Warlock")]
 	주술사,
 
-	[Name("soul-fighter")]
+	[Description("soul-fighter")]
+	[Name("Name.job.SoulFighter")]
 	기권사,
 
-	[Name("warroir")]
+	[Description("warroir")]
+	[Name("Name.job.Warrior")]
 	투사,
 
-	[Name("archer")]
+	[Description("archer")]
+	[Name("Name.job.Archer")]
 	궁사,
 
-	[Name("spear-master")]
+	[Description("spear-master")]
 	창술사,
 
-	[Name("thunderer")]
+	[Description("thunderer")]
+	[Name("Name.job.Thunderer")]
 	뇌전술사,
 
-	[Name("dual-blader")]
+	[Description("dual-blader")]
+	[Name("Name.job.Dual-Blader")]
 	쌍검사,
 
-	[Name("bard")]
+	[Description("bard")]
+	[Name("Name.job.Bard")]
 	악사,
 
-	[Name("pc-max")]
+	[Description("pc-max")]
 	PcMax,
 
-
-	[Name("소환수-루키")]
+	[Description("소환수-루키")]
 	소환수루키,
 
-	[Name("소환수-striker")]
+	[Description("소환수-striker")]
 	소환수striker,
 
-	[Name("소환수-defender")]
+	[Description("소환수-defender")]
 	소환수defender,
 
-	[Name("소환수-controller")]
+	[Description("소환수-controller")]
 	소환수controller,
 
 	COUNT

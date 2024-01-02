@@ -2,7 +2,7 @@ using System.ComponentModel;
 using System.Diagnostics;
 using System.Windows;
 
-using Xylia.Preview.UI.Art.GameUI.Scene.Game_QuestJournal;
+using Xylia.Preview.UI.GameUI.Scene.Game_QuestJournal;
 using Xylia.Preview.UI.Services;
 using Xylia.Preview.UI.Views;
 using Xylia.Preview.UI.Views.Pages;

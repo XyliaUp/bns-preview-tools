@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<table name="weapon-tempered" version="1.0" autokey="false" module="4">
-  <el name="table" child="1" />
-  <el name="record">
-    <attribute name="weapon-type" type="Seq" seq="weapon-type" key="y" required="y" />
-    <attribute name="level" type="Int8" key="y" required="y" min="1" max="20" />
-    <attribute name="show" type="String" max="100" />
-  </el>
-</table>

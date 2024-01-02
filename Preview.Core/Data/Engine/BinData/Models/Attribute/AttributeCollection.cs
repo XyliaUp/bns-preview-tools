@@ -1,7 +1,4 @@
 ﻿using System.Collections;
-using System.Dynamic;
-using System.Linq.Expressions;
-using System.Reflection;
 using System.Xml;
 using Xylia.Preview.Common.Extension;
 using Xylia.Preview.Data.Common;
@@ -13,12 +10,11 @@ namespace Xylia.Preview.Data.Models;
 /// <summary>
 /// attributes of data record 
 /// </summary>
-public class AttributeCollection : IReadOnlyDictionary<AttributeDefinition, object>, IDynamicMetaObjectProvider
+public class AttributeCollection : IReadOnlyDictionary<AttributeDefinition, object>
 {
 	#region Fields
 	internal const string s_autoid = "auto-id";
 	internal const string s_type = "type";
-
 
 	/// <summary>
 	/// Owner element
@@ -37,13 +33,17 @@ public class AttributeCollection : IReadOnlyDictionary<AttributeDefinition, obje
 		void SetData(AttributeDefinition attribute) =>
 			record.Attributes.Set(attribute, record.Attributes.Get(attribute.Name));
 
+		// implement IGameDataKeyParser
 		if (OnlyKey)
 		{
-			// create primary key
-			definition.ExpandedAttributes.Where(attr => attr.IsKey).ForEach(SetData);
+			var keys = definition.ExpandedAttributes.Where(attr => attr.IsKey);
+			// TODO: ignore children element
+			// if (!keys.Any()) throw new Exception("invalid key attribute");
+
+			keys.ForEach(SetData);
 		}
 		else
-		{     
+		{
 			// create data
 			definition.ExpandedAttributes.ForEach(SetData);
 			attributes.Clear();
@@ -61,7 +61,6 @@ public class AttributeCollection : IReadOnlyDictionary<AttributeDefinition, obje
 		foreach (XmlAttribute item in element.Attributes)
 		{
 			var name = item.Name;
-
 			attributes[name] = item.Value;
 		}
 
@@ -91,11 +90,21 @@ public class AttributeCollection : IReadOnlyDictionary<AttributeDefinition, obje
 
 
 	#region Methods
-	public object this[string name, int index] => this[$"{name}-{index}"];
-
 	public object this[string name] { get => Get(name); set => Set(name, value); }
 
 	public object this[AttributeDefinition key] { get => Get(key.Name); set => Set(key, value); }
+
+
+	public void CheckAttribute(params string[] attrNames)
+	{
+		foreach (string text in attrNames)
+		{
+			if (this[text] == null)
+			{
+				throw new Exception(string.Format("{0} Attribute is Required Field", text));
+			}
+		}
+	}
 	#endregion
 
 
@@ -128,16 +137,16 @@ public class AttributeCollection : IReadOnlyDictionary<AttributeDefinition, obje
 	#endregion
 
 	#region Set
-	public object Set(string name, object value)
+	public void Set(string name, object value)
 	{
 		var attribute = record?.Definition[name];
-		if (attribute is null) return value;
+		if (attribute is null) return;
 
 		if (value is string s)
 			value = AttributeConverter.ConvertBack(s, attribute, record.Owner.Owner);
 
 		Set(attribute, value);
-		return value;
+		return;
 	}
 
 	public void Set(AttributeDefinition attribute, object value)
@@ -175,7 +184,7 @@ public class AttributeCollection : IReadOnlyDictionary<AttributeDefinition, obje
 			case AttributeType.TRef:
 			{
 				var record = value as Record;
-				value = record?.Ref ?? new Ref();
+				value = (Ref?)record ?? new Ref();
 				break;
 			}
 			case AttributeType.TTRef:
@@ -201,6 +210,11 @@ public class AttributeCollection : IReadOnlyDictionary<AttributeDefinition, obje
 			{
 				var offset = record.StringLookup.AppendString((string)value, out var size);
 				value = new Native(size, offset);
+				break;
+			}
+			case AttributeType.TXUnknown2:
+			{
+				value = record.StringLookup.AppendString((ObjectPath)value, out _);
 				break;
 			}
 		}
@@ -258,56 +272,6 @@ public class AttributeCollection : IReadOnlyDictionary<AttributeDefinition, obje
 		throw new NotImplementedException();
 	}
 	#endregion
-
-	#region IDynamicMetaObjectProvider
-	public DynamicMetaObject GetMetaObject(Expression parameter) => new MetaDynamic(parameter, this);
-
-	class MetaDynamic : DynamicMetaObject
-	{
-		MethodInfo _getMethod = typeof(AttributeCollection).GetMethods().First(x => !x.IsGenericMethod && x.Name == nameof(Get));
-		MethodInfo _setMethod = typeof(AttributeCollection).GetMethods().First(x => !x.IsGenericMethod && x.Name == nameof(Set));
-
-		internal MetaDynamic(Expression expression, AttributeCollection value)
-			: base(expression, BindingRestrictions.Empty, value)
-		{
-
-		}
-
-		public override DynamicMetaObject BindGetMember(GetMemberBinder binder)
-		{
-			// setup the binding restrictions.
-			var restrictions = BindingRestrictions.GetTypeRestriction(Expression, LimitType);
-
-			// setup the parameters
-			var args = new Expression[] { Expression.Constant(binder.Name) };
-			Expression call = Expression.Call(Expression.Convert(Expression, LimitType), _getMethod, args);
-
-			var fallback = new DynamicMetaObject(call, restrictions);
-			return binder.FallbackGetMember(this, fallback);
-		}
-
-		public override DynamicMetaObject BindSetMember(SetMemberBinder binder, DynamicMetaObject value)
-		{
-			// setup the binding restrictions.
-			var restrictions = BindingRestrictions.GetTypeRestriction(Expression, LimitType);
-
-			// setup the parameters
-			var args = new Expression[]
-			{
-				Expression.Constant(binder.Name),
-				Expression.Convert(value.Expression, typeof(object))
-			};
-
-			// Setup the method call expression
-			Expression call = Expression.Call(Expression.Convert(Expression, LimitType), _setMethod, args);
-
-			// Create a meta object to invoke Set later
-			var fallback = new DynamicMetaObject(call, restrictions);
-			return binder.FallbackSetMember(this, value, fallback);
-		}
-	}
-	#endregion
-
 
 	#region Interface
 	public override string ToString() => this.Aggregate("<record ", (sum, now) => sum + $"{now.Key.Name}=\"{now.Value}\" ", result => result + "/>");

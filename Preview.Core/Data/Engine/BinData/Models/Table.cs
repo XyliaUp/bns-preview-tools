@@ -4,14 +4,13 @@ using System.Diagnostics;
 using System.Xml;
 using K4os.Hash.xxHash;
 using Newtonsoft.Json;
+using Serilog;
 using Xylia.Preview.Common.Extension;
-using Xylia.Preview.Data.Common;
 using Xylia.Preview.Data.Common.DataStruct;
 using Xylia.Preview.Data.Engine.BinData.Helpers;
 using Xylia.Preview.Data.Engine.BinData.Serialization;
 using Xylia.Preview.Data.Engine.DatData;
 using Xylia.Preview.Data.Engine.Definitions;
-using Xylia.Preview.Data.Engine.Readers;
 using Xylia.Preview.Data.Helpers;
 using Xylia.Preview.Data.Models;
 
@@ -35,19 +34,20 @@ public class Table : TableHeader, IDisposable
 	/// </summary>
 	public TableDefinition Definition
 	{
-		// create default def if null
-		get => definition ??= TableDefinition.CreateDefault(this.Type);
+		get => definition;
 		set
 		{
-			if (value is null) return;
+			// create default def if null
+			value ??= TableDefinition.CreateDefault(this.Type);
 
 			definition = value;
+			Name = value.Name;
+
 			this.CheckVersion((definition.MajorVersion, definition.MinorVersion));
 		}
 	}
 
-
-	public string XmlPath { get; set; }
+	public string SearchPattern { get; set; }
 	#endregion
 
 
@@ -83,9 +83,9 @@ public class Table : TableHeader, IDisposable
 	}
 
 
-	internal Dictionary<Ref, Record> ByRef = new();
+	private Dictionary<Ref, Record> ByRef = new();
 
-	internal Dictionary<AttributeDefinition, Dictionary<object, Record>> IndexNodes = new();
+	private AliasTable AliasTable;
 	#endregion
 
 
@@ -96,8 +96,8 @@ public class Table : TableHeader, IDisposable
 		{
 			if (_records != null) return;
 
-			if (XmlPath is null) LoadData();
-			else LoadXml(Owner.GetFiles(XmlPath));
+			if (SearchPattern is null) LoadData();
+			else LoadXml(Owner.GetFiles(SearchPattern));
 		}
 	});
 
@@ -107,7 +107,7 @@ public class Table : TableHeader, IDisposable
 		Archive = null;
 
 		foreach (var record in _records)
-			ByRef[record.Ref] = record;
+			ByRef[record] = record;
 	}
 
 	/// <summary>
@@ -121,11 +121,23 @@ public class Table : TableHeader, IDisposable
 		var actions = new List<Action>();
 		foreach (var stream in streams)
 		{
-			XmlDocument xml = new();
+			XmlDocument xml = new() { PreserveWhitespace = true };
 			xml.Load(stream);
 			stream.Close();
 
-			LoadElement(xml.DocumentElement, actions);
+			var documentElement = xml.DocumentElement;
+			string type = documentElement.Attributes["type"]?.Value;
+			string version = documentElement.Attributes["version"]?.Value;
+
+			CheckVersion(ParseVersion(version));
+
+			// ignore step data
+			if (type != null && string.Compare(type, Name, true) != 0)
+			{
+				Log.Error($"[game-data-loader], load error. invalid type, fileName:{0}, type:{type}");
+			}
+
+			LoadElement(documentElement, actions);
 		}
 
 		return actions;
@@ -138,7 +150,6 @@ public class Table : TableHeader, IDisposable
 	/// <param name="actions">data build action collection</param>
 	internal void LoadElement(XmlElement parent, ICollection<Action> actions)
 	{
-		CheckVersion(ParseVersion(parent.GetAttribute("version")));
 		_records ??= [];
 
 		var length = _records.Count;
@@ -167,12 +178,14 @@ public class Table : TableHeader, IDisposable
 			record.Attributes.BuildData(definition, true);
 
 			records.Add(new Tuple<int, Record>(index, record));
+
+			//Log.Warning($"[game-data-loader], load {Name} error, msg:{0}, fileName:{1}, nodeName:{element.Name}, record:{element.OuterXml}");
 		});
 
 		// insert element
 		foreach (var record in records.OrderBy(x => x.Item1).Select(x => x.Item2))
 		{
-			_records.Add(ByRef[record.Ref] = record);
+			_records.Add(ByRef[record] = record);
 
 			// The ref is not determined at this time
 			actions?.Add(new Action(() => record.Attributes.BuildData(record.Definition)));
@@ -204,37 +217,18 @@ public class Table : TableHeader, IDisposable
 		{
 			if (_records == null) LoadAsync().Wait();
 
-			if (string.IsNullOrEmpty(alias)) return null;
-
-			var obj = Search(Definition.ElRecord["alias"], alias);
-			if (obj != null) return obj;
-			else if (int.TryParse(alias, out var MainID)) return this[new Ref(MainID)];
-			else if (alias.Contains('.'))
+			lock (this)
 			{
-				var o = alias.Split('.');
-				if (o.Length == 2 && int.TryParse(o[0], out var id) && int.TryParse(o[1], out var variant))
-					return this[new Ref(id, variant)];
+				if (AliasTable is null)
+				{
+					AliasTable = new();
+
+					var def = this.Definition.ElRecord["alias"];
+					if (def != null) _records?.ForEach(x => AliasTable.Add(x));
+				}
 			}
 
-			if (Name != "text") Serilog.Log.Warning($"[{Name}] get failed, alias: {alias}");
-			return null;
-		}
-	}
-
-	public Record Search(AttributeDefinition attribute, object value)
-	{
-		if (value is null || attribute is null) return null;
-
-		lock (IndexNodes)
-		{
-			// find group
-			if (!IndexNodes.TryGetValue(attribute, out var index))
-			{
-				index = IndexNodes[attribute] = _records.ToDistinctDictionary(record => record.Attributes.Get(attribute.Name));
-			}
-
-			// search item
-			return index.GetValueOrDefault(value);
+			return this[AliasTable.Find(AliasTable.MakeKey(Name, alias))];
 		}
 	}
 	#endregion
@@ -265,7 +259,7 @@ public class Table : TableHeader, IDisposable
 
 		writer.WriteStartDocument();
 		writer.WriteStartElement(Definition.ElRoot.Name);
-		writer.WriteAttributeString("release-module", Moudle.LocalizationData.ToString());
+		writer.WriteAttributeString("release-module", Definition.Module.ToString());
 		writer.WriteAttributeString("release-side", settings.ReleaseSide.ToString().ToLower());
 		writer.WriteAttributeString("type", Definition.Name);
 		writer.WriteAttributeString("version", MajorVersion + "." + MinorVersion);
@@ -285,23 +279,23 @@ public class Table : TableHeader, IDisposable
 
 
 	#region Interface
-	public void Clear()
+	public virtual void Clear()
 	{
 		// prevent reload
 		Archive = null;
 		GlobalString = new StringLookup();
 
 		_records?.Clear();
-		_records = [];
+		_records = null;
 
 		ByRef.Clear();
-		IndexNodes.Clear();
+		AliasTable?.Table.Clear();
 	}
 
 	public void Dispose()
 	{
 		this.Clear();
-		Definition = null;
+		definition = null;
 
 		GC.SuppressFinalize(this);
 	}

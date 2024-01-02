@@ -1,7 +1,6 @@
 ﻿using Xylia.Preview.Data.Common.DataStruct;
 using Xylia.Preview.Data.Engine.BinData.Helpers;
 using Xylia.Preview.Data.Engine.BinData.Serialization;
-using Xylia.Preview.Data.Engine.Readers;
 
 namespace Xylia.Preview.Data.Engine.BinData.Models;
 public abstract class Datafile
@@ -10,12 +9,11 @@ public abstract class Datafile
 
 	public byte DatafileVersion { get; set; } = 5;
 	public BnsVersion ClientVersion { get; set; }
-	public DateTime CreatedAt { get; set; }
+	public DateTimeOffset CreatedAt { get; set; }
 
 	public long AliasCount { get; set; }
 	public long AliasMapSize { get; set; }
-
-	public NameTable NameTable { get; set; }
+	public AliasTable AliasTable { get; set; }
 
 	public TableCollection Tables { get; set; }
 
@@ -24,10 +22,10 @@ public abstract class Datafile
 	#region	Serialize
 	protected void ReadFrom(byte[] bytes, bool is64bit)
 	{
-		using var reader = new DatafileArchive(bytes);
+		using var reader = new DataArchive(bytes, is64bit);
 
 		var bin = new DatafileHeader();
-		bin.ReadHeaderFrom(reader, is64bit);
+		bin.ReadHeaderFrom(reader);
 
 		if (bin.ReadTableCount > 10)
 		{
@@ -36,26 +34,25 @@ public abstract class Datafile
 			this.CreatedAt = bin.CreatedAt;
 			this.AliasCount = bin.AliasCount;
 			this.AliasMapSize = bin.AliasMapSize;
-			this.NameTable = new NameTableReader(is64bit).ReadFrom(reader);
+			this.AliasTable = AliasTableArchive.LazyLoad(reader);
 		}
 
 		// TotalTableSize = bytes.Length - reader.Position - bin.ReadTableCount * 4
 
 		for (var tableId = 0; tableId < bin.ReadTableCount; tableId++)
 		{
-			this.Tables.Add(TableArchive.LazyLoad(reader, is64bit));
+			this.Tables.Add(TableArchive.LazyLoad(reader));
 		}
 	}
 
 	protected byte[] WriteTo(Table[] tables, bool is64bit)
 	{
-		using var memoryStream = new MemoryStream();
-		using var writer = new BinaryWriter(memoryStream);
+		using var writer = new DataArchiveWriter(is64bit);
 
 		var datafileHeader = new DatafileHeader
 		{
 			Magic = "TADBOSLB",
-			Reserved = new byte[58],
+			Reserved = new byte[54],
 			CreatedAt = DateTime.Now,
 			DatafileVersion = DatafileVersion,
 			ClientVersion = ClientVersion,
@@ -64,23 +61,22 @@ public abstract class Datafile
 			TotalTableSize = 0x1,  //TotalTableSize 好像等于               必须 >0 但是无所谓值
 		};
 
-		var overwriteNameTableSize = datafileHeader.WriteHeaderTo(writer, tables.Length,
-			NameTable?.Entries.Count ?? this.AliasCount, is64bit);
+		var overwriteNameTableSize = datafileHeader.WriteHeaderTo(writer, tables.Length, this.AliasCount, is64bit);
 
-		if (this.NameTable == null)
+		if (this.AliasTable == null)
 			overwriteNameTableSize(this.AliasMapSize);
 
 		if (tables.Length > 10)
 		{
-			if (this.NameTable == null)
+			if (this.AliasTable is not AliasTableArchive alias)
 				throw new NullReferenceException("NameTable was null on main datafile");
 
-			var oldPosition = writer.BaseStream.Position;
-			new NameTableWriter().WriteTo(writer, this.NameTable, is64bit);
+			var oldPosition = writer.Position;
+			AliasTableWriter.WriteTo(writer, alias, is64bit);
 
-			var nameTableSize = writer.BaseStream.Position - oldPosition;
+			var nameTableSize = writer.Position - oldPosition;
 			this.AliasMapSize = nameTableSize;
-			this.AliasCount = this.NameTable.Entries.Count;
+			this.AliasCount = alias.Entries.Count;
 			overwriteNameTableSize(nameTableSize);
 		}
 
@@ -92,7 +88,7 @@ public abstract class Datafile
 		}
 
 		writer.Flush();
-		return memoryStream.ToArray();
+		return writer.ToArray();
 	}
 	#endregion
 }

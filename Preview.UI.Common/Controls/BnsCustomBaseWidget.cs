@@ -2,7 +2,6 @@
 using System.Collections;
 using System.Windows;
 using System.Windows.Controls;
-using Xylia.Preview.Data.Helpers;
 using Xylia.Preview.Data.Models;
 
 namespace Xylia.Preview.UI.Controls;
@@ -20,15 +19,15 @@ public class BnsCustomBaseWidget : ItemsControl
 	#region Constructor
 	public BnsCustomBaseWidget()
 	{
-		this.ItemsPanel = new ItemsPanelTemplate(new FrameworkElementFactory(typeof(AnchorPanel)));
+		this.ItemsPanel = new ItemsPanelTemplate(new FrameworkElementFactory(typeof(Anchor)));
 		this.ItemsPanel.Seal();
 	}
 	#endregion
 
 
 	#region DependencyProperty 
-	public static readonly DependencyProperty MetaDataProperty = DependencyProperty.Register(nameof(MetaData), typeof(string), typeof(BnsCustomBaseWidget),
-		new PropertyMetadata(null, OnMetaDataChanged));
+	public static readonly DependencyProperty MetaDataProperty = DependencyProperty.Register(nameof(MetaData),
+		typeof(string), typeof(BnsCustomBaseWidget), new PropertyMetadata(null, OnMetaDataChanged));
 
 	public string MetaData
 	{
@@ -37,7 +36,8 @@ public class BnsCustomBaseWidget : ItemsControl
 	}
 
 
-	public static readonly DependencyProperty StringProperty = DependencyProperty.Register(nameof(String), typeof(string), typeof(BnsCustomBaseWidget));
+	public static readonly DependencyProperty StringProperty = DependencyProperty.Register(nameof(String), 
+		typeof(string), typeof(BnsCustomBaseWidget), new PropertyMetadata(null, OnStringChanged));
 
 	public string String
 	{
@@ -56,11 +56,17 @@ public class BnsCustomBaseWidget : ItemsControl
 			var ls = meta.Split('=', 2);
 			if (ls.Length < 2) return;
 
-			await FileCache.Data.Text.LoadAsync();
+			//await FileCache.Data.Text.LoadAsync();
 
 			if (ls[0] == "textref") widget.SetText(ls[1].GetText());
 			if (ls[0] == "tooltip") widget.SetTooltip(ls[1].GetText());
 		}
+	}
+
+	private static void OnStringChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+	{
+		var widget = (BnsCustomBaseWidget)d;
+		if (e.NewValue is string s) widget.SetText(s);
 	}
 	#endregion
 

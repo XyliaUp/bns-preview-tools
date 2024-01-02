@@ -4,7 +4,7 @@ public class IPlatformFilePak
 	public static byte[] Signature;
 
 	public static void DoSignatureCheck()
-	{          
+	{
 		// ComputeHash
 		if (Signature == null) throw new Exception("package error");
 	}

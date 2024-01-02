@@ -2,6 +2,7 @@
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Xml;
+using CUE4Parse.UE4.Pak;
 using Newtonsoft.Json;
 using Xylia.Preview.Common.Extension;
 using Xylia.Preview.Data.Engine.DatData;
@@ -241,6 +242,7 @@ public partial class MainForm : Form
 			}
 			catch (Exception ee)
 			{
+				throw;
 				MessageBox.Show(ee.ToString());
 			}
 
@@ -274,7 +276,7 @@ public partial class MainForm : Form
 				Parallel.ForEach(provider.Tables, table =>
 				{
 					Console.WriteLine($"输出配置文件: {Count++,-3}/{provider.Tables.Count}...{Count * 100 / provider.Tables.Count,3}%  (ListId: {table.Type})");
-					if (table.XmlPath is not null) return;
+					if (table.SearchPattern is not null) return;
 
 
 					string FilePath = $@"{folder}\{table.Type}";
@@ -329,6 +331,7 @@ public partial class MainForm : Form
 		{
 			try
 			{
+				IPlatformFilePak.Signature = new byte[20];
 				set ??= new TestDatabase(DefaultProvider.Load(Txt_Bin_Data.Text), textBox3.Text);
 				set.Output(textBox1.Text.Split('|').Select(o => new FileInfo(o)).Where(o => o.Exists).ToArray());
 			}

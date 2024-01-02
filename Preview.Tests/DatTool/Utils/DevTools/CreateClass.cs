@@ -40,9 +40,6 @@ public static class CreateClass
 
     private static void InstanceAttribute(AttributeDefinition attribute, StringBuilder result, bool SubClass = false)
     {
-        if (attribute.Name == "auto-id")
-            return;
-
         var prefix = new string('\t', SubClass ? 1 : 0);
 
         #region type
@@ -58,7 +55,7 @@ public static class CreateClass
             AttributeType.TXUnknown1 or AttributeType.TTime64 => "DateTime",
             AttributeType.TXUnknown2 => "FPath",
             AttributeType.TRef => $"Ref<{ attribute.ReferedTableName?.TitleCase() }>",
-            AttributeType.TTRef => $"Ref<Record>",
+            AttributeType.TTRef => $"Ref<ModelElement>",
             AttributeType.TSub => $"Sub<{ attribute.ReferedTableName?.TitleCase() }>",
 
             AttributeType.TSeq or AttributeType.TSeq16 or AttributeType.TProp_seq or AttributeType.TProp_field
@@ -72,18 +69,18 @@ public static class CreateClass
         #region sys_attr
         List<string> sys_attr = new();
         if (new Regex(@"-\d+$").Match(attribute.Name).Success) 
-            sys_attr.Add($"Signal(\"{attribute.Name}\")");
+            sys_attr.Add($"Name(\"{attribute.Name}\")");
 
         if (attribute.Repeat > 1)
         {
             TypeInfo = $"{TypeInfo}[]";
-            sys_attr.Add($"Repeat({attribute.Repeat})");
+            ///sys_attr.Add($"Repeat({attribute.Repeat})");
         }
 
         if (sys_attr.Any()) result.AppendLine($"{prefix}[{sys_attr.Aggregate(", ")}]");
         #endregion
 
 
-        result.Append($"{prefix}public {TypeInfo} {attribute.Name.TitleCase()};\n");
+        result.AppendLine($"{prefix}public {TypeInfo} {attribute.Name.TitleCase()} {{ get; set; }}\n");
     }
 }

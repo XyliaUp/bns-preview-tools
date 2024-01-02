@@ -1,0 +1,10 @@
+﻿<GameScene x:Class="Xylia.Preview.UI.GameUI.Scene.Game_CharacterInfo.Game_CharacterInfo_Scene"
+		xmlns="https://github.com/xyliaup/bns-preview-tools"
+		xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+		xmlns:s="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        Title="CharacterInfo_Scene" ResizeMode="NoResize">
+	<Anchor x:Name="CharacterInfoPanel" Width="1200" Height="765">
+		<BnsWebBrowser x:Name="CharacterInfoPanelWeb" Initialized="WebView_WebBrowserInitialized" PostMessage="WebView_PostMessage" Width="1200" Height="765"/>
+		<BnsCustomLabelWidget x:Name="CharacterInfoPanelErrorLabel" />
+	</Anchor>
+</GameScene>

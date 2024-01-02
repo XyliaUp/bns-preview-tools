@@ -1,5 +1,4 @@
-﻿using Xylia.Preview.Data.Helpers;
-using Xylia.Preview.Data.Models.Sequence;
+﻿using Xylia.Preview.Data.Models.Sequence;
 
 namespace Xylia.Preview.Data.Models.Creature;
 public static class AbilityEx
@@ -17,7 +16,6 @@ public static class AbilityEx
 
 		return ability.GetText().Combine(Value);
 	}
-
 
 
 	private static string Combine(this string text, long Value)

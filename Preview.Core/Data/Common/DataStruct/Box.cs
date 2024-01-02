@@ -5,54 +5,32 @@ namespace Xylia.Preview.Data.Common.DataStruct;
 [StructLayout(LayoutKind.Sequential)]
 public struct Box
 {
-	public Vector32 Start;
-	public Vector32 End;
+	public Vector16 L;
+	public Vector16 U;
 
-	public Box(short x1, short y1, short z1, short x2, short y2, short z2)
+	public Box(Vector16 l, Vector16 u)
 	{
-		Start.X = x1;
-		Start.Y = y1;
-		Start.Z = z1;
-		End.X = x2;
-		End.Y = y2;
-		End.Z = z2;
+		this.L = l;
+		this.U = u;
 	}
 
-	public static bool operator ==(Box a, Box b)
-	{
-		return a.Start == b.Start && a.End == b.End;
-	}
-
-	public static bool operator !=(Box a, Box b)
-	{
-		return !(a == b);
-	}
 
 	public static Box Parse(string input)
 	{
-		var items = input.Split(',');
-
+		var items = input.Split([',', '/']);
 		if (items.Length != 6)
 			throw new ArgumentException("Invalid Box string input");
 
-		return new Box(
-			short.Parse(items[0]),
-			short.Parse(items[1]),
-			short.Parse(items[2]),
-			short.Parse(items[3]),
-			short.Parse(items[4]),
-			short.Parse(items[5])
-		);
+		short x = Convert.ToInt16(items[0]);
+		short y = Convert.ToInt16(items[1]);
+		short z = Convert.ToInt16(items[2]);
+		short x2 = Convert.ToInt16(items[3]);
+		short y2 = Convert.ToInt16(items[4]);
+		short z2 = Convert.ToInt16(items[5]);
+		return new Box(new Vector16(x, y, z), new Vector16(x2, y2, z2));
 	}
 
-	public bool Equals(Box other) => this == other;
+	public override readonly int GetHashCode() => HashCode.Combine(L, U);
 
-	public override bool Equals(object obj)
-	{
-		return obj is Box other && Equals(other);
-	}
-
-	public override readonly int GetHashCode() => HashCode.Combine(Start, End);
-
-	public override readonly string ToString() => $"{Start},{End}";
+	public override readonly string ToString() => $"{L},{U}";
 }

@@ -1,14 +1,11 @@
 ﻿using System.Runtime.InteropServices;
 
-using Xylia.Preview.Data.Common.Abstractions;
-using Xylia.Preview.Data.Engine.Readers;
-
 namespace Xylia.Preview.Data.Engine.BinData.Serialization;
 
 /// <summary>
 /// Reads uncompressed table record by record
 /// </summary>
-public unsafe class RecordUncompressedReader : IRecordReader
+internal unsafe class RecordUncompressedReader : IRecordReader
 {
     private int _stringLookupBufferSize = 0x4000;
     private nint _stringLookupBufferHandle = Marshal.AllocHGlobal(0x4000);
@@ -40,19 +37,19 @@ public unsafe class RecordUncompressedReader : IRecordReader
         Marshal.FreeHGlobal(_recordBufferHandle);
     }
 
-    public bool Initialize(DatafileArchive reader, bool is64Bit)
+    public bool Initialize(DataArchive reader, bool is64Bit)
     {
         _currentRecord = 0;
-        _recordCount = reader.Read<Int32>();
+        _recordCount = reader.Read<int>();
 
         if (is64Bit)
         {
-            if (reader.Read<Int32>() != 0)
+            if (reader.Read<int>() != 0)
                  throw new Exception("Unexpected integer");
         }
 
-        _recordsSize = reader.Read<Int32>();
-        _stringLookupSize = reader.Read<Int32>();
+        _recordsSize = reader.Read<int>();
+        _stringLookupSize = reader.Read<int>();
         _paddingSize = 0;
 
         EnsureBufferSize(ref _stringLookupBufferHandle, ref _stringLookupBuffer, ref _stringLookupBufferSize, _stringLookupSize);
@@ -75,7 +72,7 @@ public unsafe class RecordUncompressedReader : IRecordReader
         return true;
     }
 
-    public bool Read(DatafileArchive reader, ref RecordMemory recordMemory)
+    public bool Read(DataArchive reader, ref RecordMemory recordMemory)
     {
         if (_recordCount == -1)
 			throw new Exception("Uninitialized");

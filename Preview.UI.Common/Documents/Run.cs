@@ -48,6 +48,7 @@ public class Run : Element
 	{
 		var format = new FormattedText(Text, CultureInfo.CurrentCulture, FlowDirection.LeftToRight, typeface, FontSize, Foreground, 96);
 		format.MaxTextWidth = double.IsInfinity(availableSize.Width) ? 0 : availableSize.Width;
+		format.TextAlignment = TextAlignment.Center;
 
 		return new Size(format.WidthIncludingTrailingWhitespace, format.Height);
 	}
@@ -56,6 +57,7 @@ public class Run : Element
 	{
 		var format = new FormattedText(Text, CultureInfo.CurrentCulture, FlowDirection.LeftToRight, typeface, FontSize, Foreground, 96);
 		format.MaxTextWidth = DesiredSize.Width;
+		format.TextAlignment = this.TextAlignment;
 
 		// Draw the formatted text string to the DrawingContext of the control.
 		ctx.DrawText(format, new Point(this.FinalRect.X, this.FinalRect.Y));

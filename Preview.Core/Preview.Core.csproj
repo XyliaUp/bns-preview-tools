@@ -27,9 +27,7 @@
 	<ItemGroup>
 		<EmbeddedResource Include="Data\Definition\*" />
 		<EmbeddedResource Include="Data\Definition\*\*" />
-		<None Remove="Data\Definition\FilterSet.xml" />
-		<None Remove="Data\Definition\Server\Script.xml" />
-
+		
 		<None Update="Dlls\bnscompression.dll">
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 			<TargetPath>bnscompression.dll</TargetPath>

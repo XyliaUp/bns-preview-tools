@@ -1,29 +1,13 @@
 ﻿namespace Xylia.Preview.Data.Models;
 public sealed class ZoneEnv2 : ModelElement
 {
+	protected internal override void LoadHiddenField()
+	{
+		if (this.Attributes["script"] != null) return;
 
-}
+		var type = this.Attributes["type"];
+		if (type == "portal" ||type == "oceanic-region"||type == "fall-death" || type == "attraction-popup" || type == "enter-arena-dungeonlobby") return;
 
-public enum EnvOperation
-{
-	None,
-	Open,
-	Close,
-	Enable,
-	Disable,
-}
-
-public enum EnvState
-{
-	None,
-	Open,
-	Close,
-	Empty,
-	Step1,
-	Step2,
-	Step3,
-	Step4,
-	Step5,
-	Step6,
-	Step7,
+		this.Attributes["script"] = this.Attributes["alias"] + "_ai";
+	}
 }

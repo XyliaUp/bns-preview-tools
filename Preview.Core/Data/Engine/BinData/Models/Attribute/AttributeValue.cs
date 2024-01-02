@@ -130,7 +130,7 @@ public class AttributeValue : IComparable<AttributeValue>, IEquatable<AttributeV
 
 
 	[DebuggerBrowsable(DebuggerBrowsableState.Never)]
-	public bool AsBoolean => (BnsBoolean)this.RawValue;
+	public bool AsBoolean => (BnsBoolean?)this.RawValue ?? false;
 
 	[DebuggerBrowsable(DebuggerBrowsableState.Never)]
 	public string AsString => (string)this.RawValue;

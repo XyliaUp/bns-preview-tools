@@ -76,10 +76,7 @@ public partial class Case : ModelElement
 	public sealed class Manipulate : Case
 	{
 		public Ref<ModelElement> Object2 { get; set; }
-
-		[Repeat(16)]
 		public Ref<ModelElement>[] MultiObject { get; set; }
-
 
 
 		public override List<Record> Attractions
@@ -98,8 +95,6 @@ public partial class Case : ModelElement
 	public sealed class NpcManipulate : Case
 	{
 		public Ref<ModelElement> Object { get; set; }
-
-		[Repeat(16)]
 		public Ref<ModelElement>[] MultiObject { get; set; }
 
 		public override List<Record> Attractions
@@ -134,8 +129,6 @@ public partial class Case : ModelElement
 	public sealed class Loot : Case
 	{
 		public Ref<ModelElement> Object2 { get; set; }
-
-		[Repeat(16)]
 		public Ref<ModelElement>[] MultiObject { get; set; }
 
 		[Side(ReleaseSide.Client)]
@@ -157,8 +150,6 @@ public partial class Case : ModelElement
 	public sealed class Killed : Case
 	{
 		public Ref<ModelElement> Object2 { get; set; }
-
-		[Repeat(16)]
 		public Ref<ModelElement>[] MultiObject { get; set; }
 
 
@@ -275,7 +266,6 @@ public partial class Case : ModelElement
 
 		public Ref<ModelElement> Object { get; set; }
 
-		[Repeat(3)]
 		public Ref<NpcResponse>[] NpcResponse { get; set; }
 
 		public Ref<Text> ButtonTextAccept { get; set; }

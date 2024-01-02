@@ -31,11 +31,11 @@ public class DefaultProvider : Datafile, IDataProvider
 		ReadFrom(XmlData.EnumerateFiles(PATH.Datafile(Is64Bit)).FirstOrDefault()?.Data, Is64Bit);
 		ReadFrom(LocalData.EnumerateFiles(PATH.Localfile(Is64Bit)).FirstOrDefault()?.Data, Is64Bit);
 
-		Tables.Add(new() { Name = "quest", XmlPath = @"quest\questdata*.xml" });
-		Tables.Add(new() { Name = "contextscript", XmlPath = @"skill3_contextscriptdata*.xml" });
-		Tables.Add(new() { Name = "skill-training-sequence", XmlPath = @"skilltrainingsequencedata*.xml" });
-		Tables.Add(new() { Name = "summoned-sequence", XmlPath = @"summonedsequencedata*.xml" });
-		Tables.Add(new() { Name = "tutorialskillsequence", XmlPath = @"tutorialskillsequencedata*.xml" });
+		Tables.Add(new() { Name = "quest", SearchPattern = @"quest\questdata*.xml" });
+		Tables.Add(new() { Name = "contextscript", SearchPattern = @"skill3_contextscriptdata*.xml" });
+		Tables.Add(new() { Name = "skill-training-sequence", SearchPattern = @"skilltrainingsequencedata*.xml" });
+		Tables.Add(new() { Name = "summoned-sequence", SearchPattern = @"summonedsequencedata*.xml" });
+		Tables.Add(new() { Name = "tutorialskillsequence", SearchPattern = @"tutorialskillsequencedata*.xml" });
 
 		// surveyquestions
 		#endregion
@@ -54,48 +54,54 @@ public class DefaultProvider : Datafile, IDataProvider
 		#region Rebuild alias map  
 		if (settings.RebuildAliasMap)
 		{
+			// If not complete definition, read the raw AliasMap
+			var units = AliasTableUnit.Split(Tables.Any(x => x.Definition.IsDefault) ? AliasTable : null);
+
+			AliasTable = new AliasTable();
+
 			Log.Information("Rebuilding alias map");
-			var rebuilder = new NameTableBuilder(NameTable);
 			var haveAlias = new HashSet<string>();
 
 			// get alias
 			foreach (var table in this.Tables)
 			{
 				var aliasAttrDef = table.Definition.ElRecord["alias"];
-				if (aliasAttrDef == null) continue;
+				if (aliasAttrDef == null || table.Archive != null) continue;
 
-				haveAlias.Add(table.Name.ToLowerInvariant());
+				var tableDefName = table.Name.ToLowerInvariant();
+				haveAlias.Add(tableDefName);
 
-				var tablePrefix = table.Name.ToLowerInvariant() + ":";
 				foreach (var record in table.Records)
 				{
 					var alias = record.Attributes.Get<string>("alias");
 					if (alias == null) continue;
 
-					rebuilder.AddAliasManually(tablePrefix + alias.ToLowerInvariant(), record.Ref);
+					AliasTable.Add(record, AliasTable.MakeKey(tableDefName, alias));
 				}
 			}
 
-			// If not complete definition, read the raw alias data
-			if (this.Tables.Any(x => x.Definition.IsDefault))
+			// If not complete definition, read the raw AliasMap
+			if (units != null)
 			{
-				foreach (var table in NameTable.CreateTable())
+				foreach (var table in units)
 				{
 					if (haveAlias.Contains(table.Name)) continue;
 
-					foreach (var record in table)
-						rebuilder.AddAliasManually(record);
+					foreach (var record in table.Table)
+						AliasTable.Add(record.Key, AliasTable.MakeKey(table.Name, record.Value));
 				}
 			}
 
-			rebuilder.EndRebuilding();
+			var temp = new AliasTableBuilder(AliasTable).EndRebuilding();
+			AliasTable = temp;
+			AliasCount = temp.Entries.Count;
 		}
 		#endregion
 
 
 		// Due to incomplete definition, local may missing table
 		// UserCommand remove at UE4
-		var raw = this.Tables.Where(x => x.XmlPath != null);
+		var raw = this.Tables.Where(x => x.SearchPattern != null);
 		var local = this.Tables.Where(x => x.Name == "petition-faq-list" || x.Name == "survey" || x.Name == "text" || (false && x.Name == "user-command"));
 		var xml = this.Tables.Except(local).Except(raw);
 

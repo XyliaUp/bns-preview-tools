@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<table name="skilltargetfilter3" version="0.3" autokey="true" module="2062">
-  <el name="table" child="1" />
-  <el name="record">
-    <attribute name="alias" type="String" required="y" max="70" />
-  </el>
-</table>

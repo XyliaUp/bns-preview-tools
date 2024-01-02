@@ -1,6 +1,7 @@
 ﻿using System.Xml.Linq;
 using Xylia.Preview.Common.Attributes;
 using Xylia.Preview.Data.Helpers;
+using Xylia.Preview.Data.Models.Sequence;
 
 namespace Xylia.Preview.Data.Models;
 
@@ -45,6 +46,7 @@ public static class TextExtension
 	public static string GetText(this object obj)
 	{
 		if (obj is null) return null;
+		else if (obj is Enum sequence) return SequenceExtensions.GetText(sequence);
 		else if (obj is Record record) return record.Attributes["text"].ToString();
 		else if (obj is Ref<Text> reference) return reference.Instance?.text;
 		else return FileCache.Data.Text[obj.ToString()]?.text;

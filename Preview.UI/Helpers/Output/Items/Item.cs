@@ -50,7 +50,7 @@ public sealed class ItemOut : OutSet, IDisposable
 		Path_MainFile = Path.Combine(outdir, @"output." + (UseExcel ? "xlsx" : "txt"));
 
 
-		XList cache = new() { TimeStamp = CreatedAt?.Ticks ?? 0 };
+		XList cache = new() { TimeStamp = time.Ticks };
 		if (CacheList != null) cache.datas.AddRange(CacheList);
 		cache.datas.AddRange(ItemDatas.Select(item => item.Ref.Id));
 		cache.Save(Path_ItemList);
@@ -121,7 +121,7 @@ public sealed class ItemOut : OutSet, IDisposable
 
 
 	#region Data
-	DateTime? CreatedAt;
+	DateTimeOffset? CreatedAt;
 
 	List<ItemSimple> ItemDatas;
 
@@ -133,11 +133,11 @@ public sealed class ItemOut : OutSet, IDisposable
 		CreatedAt = set.Provider.CreatedAt;
 
 		var Result = new BlockingCollection<ItemSimple>();
-		Parallel.ForEach(set.Item.Records, (record) =>
+		Parallel.ForEach(set.Item, (record) =>
 		{
-			if (CacheList != null && CacheList.Contains(record.RecordId)) return;
+			if (CacheList != null && CacheList.Contains(record.Source.RecordId)) return;
 
-			var data = new ItemSimple(record, set);
+			var data = new ItemSimple(record.Source, set);
 			Result.Add(data);
 		});
 
@@ -173,7 +173,7 @@ class ItemSimple
 
 	public ItemSimple(Record record, BnsDatabase tables = null)
 	{
-		Ref = record.Ref;
+		Ref = record;
 		Alias = record.StringLookup.GetString(0);
 
 		var TextTable = tables?.Get<Text>();
@@ -186,7 +186,7 @@ class ItemSimple
 
 
 	#region Text
-	private string GetName2(ModelTable<Text> text)
+	private string GetName2(GameDataTable<Text> text)
 	{
 		string Text = text?[$"Item.Name2.{Alias}"]?.text;
 
@@ -199,7 +199,7 @@ class ItemSimple
 		return Text is null ? null : Text + GetEquipGem(Alias);
 	}
 
-	private string GetDesc(ModelTable<Text> text)
+	private string GetDesc(GameDataTable<Text> text)
 	{
 		string Text = null;
 		Text += text?[$"Item.Desc2.{Alias}"]?.text;
@@ -208,7 +208,7 @@ class ItemSimple
 		return BNS_Cut(Text);
 	}
 
-	private string GetInfo(ModelTable<Text> text)
+	private string GetInfo(GameDataTable<Text> text)
 	{
 		string Text = null;
 		Text += text?[$"Item.MainInfo.{Alias}"]?.text;

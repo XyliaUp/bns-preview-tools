@@ -1,6 +1,5 @@
 ﻿using Serilog;
 using Xylia.Preview.Common.Extension;
-using Xylia.Preview.Data.Engine.Readers;
 
 namespace Xylia.Preview.Data.Engine.BinData.Models;
 public abstract class TableHeader
@@ -33,7 +32,7 @@ public abstract class TableHeader
 	public bool IsCompressed { get; set; }
 
 
-	public void ReadHeaderFrom(DatafileArchive reader)
+	internal void ReadHeaderFrom(DataArchive reader)
 	{
 		ElementCount = reader.Read<byte>();
 		Type = reader.Read<ushort>();
@@ -43,7 +42,7 @@ public abstract class TableHeader
 		IsCompressed = reader.Read<bool>();
 	}
 
-	public void WriteHeaderTo(BinaryWriter writer)
+	internal void WriteHeaderTo(BinaryWriter writer)
 	{
 		writer.Write(ElementCount);
 		writer.Write(Type);
@@ -77,8 +76,14 @@ public abstract class TableHeader
 		}
 		else if (this.MajorVersion != version.Item1 || this.MinorVersion != version.Item2)
 		{
-			Log.Warning($"check table `{this.Name}` type: {this.Type} " +
-				$"version: {version.Item1}.{version.Item2} <> {this.MajorVersion}.{this.MinorVersion}");
+			Log.Warning($"check table `{this.Name}` version: {version.Item1}.{version.Item2} <> {this.MajorVersion}.{this.MinorVersion}");
+
+			// non binary table
+			if (this.Size == 0)
+			{
+				this.MajorVersion = version.Item1;
+				this.MinorVersion = version.Item2;
+			}
 		}
 	}
 }

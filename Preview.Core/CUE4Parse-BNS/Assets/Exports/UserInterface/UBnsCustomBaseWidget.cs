@@ -34,6 +34,6 @@ public abstract class UBnsCustomBaseWidget : UUserWidget
 
 
 	[UPROPERTY] public StringProperty StringProperty;
-	[UPROPERTY] public ImageProperty BaseImageProperty;
+	[UPROPERTY] public ImageProperty? BaseImageProperty;
 	[UPROPERTY] public ExpansionComponent[] ExpansionComponentList;
 }
