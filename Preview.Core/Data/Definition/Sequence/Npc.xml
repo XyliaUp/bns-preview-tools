@@ -32,4 +32,8 @@
 		<case name="dead-exhaustion" />
 		<case name="not-dead-restoration-exhaustion" />
 	</record>
+
+	<record name="detect" >
+		<case name="none" />
+	</record>
 </table>

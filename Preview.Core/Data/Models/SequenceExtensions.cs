@@ -27,12 +27,13 @@ public static partial class SequenceExtensions
 
 	public static string GetText<T>(this T value) where T : Enum
 	{
-		var name = value.GetAttribute<NameAttribute>()?.Name;
-		if (name != null) return name.GetText();
+		// get text according attribute
+		var TextAlias = value.GetAttribute<TextAttribute>()?.Alias;
+		if (TextAlias != null) return TextAlias.GetText();
 
-		return value.ToString();
+		// don't return default
+		return value is 0 ? null : value.ToString();
 	}
-
 
 
 	public static object LoadSequence(Type type, string val)

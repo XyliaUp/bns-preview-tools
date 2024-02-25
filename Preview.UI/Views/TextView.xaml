@@ -8,6 +8,7 @@
         Title="{DynamicResource TextView}" Icon="{x:Null}" Height="450" Width="800" 
 		Loaded="Window_Loaded">
 	<Window.Resources>
+		<!-- SearchPanel -->
 		<Style TargetType="avalonEdit:SearchPanel">
 			<Setter Property="Template">
 				<Setter.Value>
@@ -68,8 +69,8 @@
 								</StackPanel>
 
 								<StackPanel Grid.Row="2" Margin="5">
-									<UI:BnsCustomLabelWidget Text="{Binding Tag.alias ,Mode=OneWay}" FontWeight="Bold" Margin="0 0 0 5"/>
-									<UI:BnsCustomLabelWidget Text="{Binding Tag.text ,Mode=OneWay}" />
+									<UI:BnsCustomLabelWidget Text="{Binding Tag.alias ,Mode=OneWay}" FontWeight="Bold" Margin="0 0 0 5" AutoSize="True" />
+									<UI:BnsCustomLabelWidget Text="{Binding Tag.text ,Mode=OneWay}" AutoSize="True" />
 								</StackPanel>
 							</StackPanel>
 						</Border>

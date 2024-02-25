@@ -26,7 +26,7 @@ public static class TableDefinitionHelper
 		var _assembly = System.Reflection.Assembly.GetExecutingAssembly();
 
 		// public
-		var param = ConfigParam.LoadFrom(_assembly.GetManifestResourceNames()
+		var param = SequenceDefinitionLoader.LoadFrom(_assembly.GetManifestResourceNames()
 			.Where(name => name.StartsWith("Xylia.Preview.Data.Definition.Sequence"))
 			.Select(name => new StreamReader(_assembly.GetManifestResourceStream(name)).ReadToEnd()).ToArray());
 
@@ -38,13 +38,16 @@ public static class TableDefinitionHelper
 
 		#region custom
 		var definition = new DatafileDefinition();
-		var UserDefs = new DirectoryInfo(Path.Combine(Settings.Default.OutputFolder, "definition"));
-		if (Settings.Default.UseUserDefinition && UserDefs.Exists)
+		if (Settings.Default.OutputFolder != null)
 		{
-			definition.Header = UserDefs.GetFiles("definition.ini").FirstOrDefault();
+			var UserDefs = new DirectoryInfo(Path.Combine(Settings.Default.OutputFolder, "definition"));
+			if (Settings.Default.UseUserDefinition && UserDefs.Exists)
+			{
+				definition.Header = UserDefs.GetFiles("definition.ini").FirstOrDefault();
 
-			var temp = LoadTableDefinition(param, UserDefs.GetFiles("*.xml"));
-			if (temp.Count != 0) temp.ForEach(definition.Add);
+				var temp = LoadTableDefinition(param, UserDefs.GetFiles("*.xml"));
+				if (temp.Count != 0) temp.ForEach(definition.Add);
+			}
 		}
 
 		// HACK: full defs?
@@ -55,14 +58,13 @@ public static class TableDefinitionHelper
 	}
 
 
-
 	/// <summary>
 	/// load <see cref="TableDefinition"/> from files
 	/// </summary>
-	public static List<TableDefinition> LoadTableDefinition(ConfigParam param, params FileInfo[] files) =>
+	public static List<TableDefinition> LoadTableDefinition(SequenceDefinitionLoader param, params FileInfo[] files) =>
 		LoadTableDefinition(param, files.Select(f => File.ReadAllText(f.FullName)).ToArray());
 
-	public static List<TableDefinition> LoadTableDefinition(ConfigParam param, params string[] XmlContents)
+	public static List<TableDefinition> LoadTableDefinition(SequenceDefinitionLoader param, params string[] XmlContents)
 	{
 		var tables = new List<TableDefinition>();
 		foreach (var Content in XmlContents)
@@ -80,7 +82,7 @@ public static class TableDefinitionHelper
 	}
 
 
-	public static TableDefinition LoadFrom(ConfigParam param, XmlElement tableNode)
+	public static TableDefinition LoadFrom(SequenceDefinitionLoader param, XmlElement tableNode)
 	{
 		#region config 
 		var type = (ushort)(tableNode.Attributes["type"]?.Value).ToInt16();
@@ -267,16 +269,16 @@ public static class TableDefinitionHelper
 		#endregion
 	}
 
-	private static List<AttributeDefinition> LoadAttribute(IEnumerable<XmlElement> els, ConfigParam param, ElementDefinition def)
+	private static List<AttributeDefinition> LoadAttribute(IEnumerable<XmlElement> els, SequenceDefinitionLoader param, ElementDefinition def)
 	{
 		var Attributes = new List<AttributeDefinition>();
 		foreach (XmlElement node in els)
 		{
 			try
 			{
-				string name = node.Attributes["alias"]?.Value;
+				string name = node.Attributes["name"]?.Value;
 
-				var record = AttributeDefinition.LoadFrom(node, def, () => SequenceDefinition.LoadFrom(node, name, param?.PublicSeq));
+				var record = AttributeDefinition.LoadFrom(node, def, () => param?.Load(node, name));
 				if (record is null) continue;
 
 				Attributes.Add(record);
@@ -391,31 +393,4 @@ public static class TableDefinitionHelper
 		}
 	}
 	#endregion
-}
-
-public sealed class ConfigParam
-{
-	public readonly Dictionary<string, SequenceDefinition> PublicSeq = new(StringComparer.OrdinalIgnoreCase);
-
-	public static ConfigParam LoadFrom(params string[] XmlContents)
-	{
-		var param = new ConfigParam();
-		foreach (var content in XmlContents)
-		{
-			var xmlDoc = new XmlDocument();
-			xmlDoc.LoadXml(content);
-
-			foreach (XmlElement record in xmlDoc.SelectNodes("table/record"))
-			{
-				string name = record.Attributes["name"]?.Value?.Trim();
-				if (param.PublicSeq.ContainsKey(name))
-					throw BnsDataException.InvalidSequence($"has existed", name);
-
-				var seq = SequenceDefinition.LoadFrom(record, name);
-				if (seq != null) param.PublicSeq[name] = seq;
-			}
-		}
-
-		return param;
-	}
 }

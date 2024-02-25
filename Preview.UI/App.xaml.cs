@@ -8,11 +8,9 @@ using CUE4Parse.BNS;
 using CUE4Parse.BNS.Conversion;
 using CUE4Parse.UE4.Assets.Exports.Sound;
 using CUE4Parse.UE4.Assets.Objects;
-using CUE4Parse.UE4.Pak;
 using CUE4Parse.UE4.VirtualFileSystem;
 using CUE4Parse_Conversion.Sounds;
 using CUE4Parse_Conversion.Textures;
-
 using HandyControl.Controls;
 using Serilog;
 using Xylia.Preview.Common.Extension;
@@ -26,27 +24,21 @@ public partial class App : Application
 {
 	protected override void OnStartup(StartupEventArgs e)
 	{
-		AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
-
 		// Process the command-line arguments
+		AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
 		InitializeArgs(e.Args);
 
 		#region Service
-		LogService.Create();
-		JumpListService.CreateAsync();
+		new LogService().Register();
+		new JumpListService().Register();
 		#endregion
 
 #if DEVELOP
-		IPlatformFilePak.Signature = new byte[20];
-
-		FileCache.Data = new(new Xylia.Preview.Data.Engine.DatData.FolderProvider(@"D:\资源\客户端相关\Auto\data"));
-		var scene = new Xylia.Preview.UI.GameUI.Scene.Game_ItemMap.Game_ItemMapScene();
-		scene.ItemMapPanel_C.Show();
-		return;	 
-#endif
-
+		new Content.TestPanel().Show();
+#else
 		MainWindow = new MainWindow();
 		MainWindow.Show();
+#endif
 	}
 
 
@@ -67,11 +59,10 @@ public partial class App : Application
 
 	private void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
 	{
-		var error = e.ExceptionObject as Exception;
+		var exception = e.ExceptionObject as Exception;
+		string str = StringHelper.Get("Application_CrashMessage", exception!.Message);
 
-		string str = $"The program crashed and is about to exit.\n{error.Message};\nat {DateTime.Now}";
-
-		Log.Fatal(str);
+		Log.Fatal(exception, "OnCrash");
 		HandyControl.Controls.MessageBox.Show(str, "Crash", MessageBoxButton.OK, MessageBoxImage.Stop);
 	}
 	#endregion
@@ -90,7 +81,7 @@ public partial class App : Application
 			.ToDictionary(x => x.Key, x => x.First());
 
 
-		if (_flagValue.TryGetValue("command", out string command))
+		if (_flagValue.TryGetValue("command", out var command))
 		{
 			Kernel32.AllocConsole();
 			Kernel32.SetConsoleCP(65001);
@@ -111,7 +102,7 @@ public partial class App : Application
 		}
 	}
 
-	private static void Command(string command)
+	private static void Command(string? command)
 	{
 		if (command == "query")
 		{

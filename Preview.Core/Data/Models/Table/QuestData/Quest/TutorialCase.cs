@@ -164,7 +164,7 @@ public partial class TutorialCase : ModelElement
 
 	public sealed class Skill : TutorialCase
 	{
-		[Repeat(16)]
+		//[Repeat(16)]
 		public Ref<ModelElement>[] Object2 { get; set; }
 
 		public SkillCheckTypeSeq SkillCheckType { get; set; }
@@ -185,12 +185,12 @@ public partial class TutorialCase : ModelElement
 		public sbyte TargetEffectCount { get; set; }
 	}
 
-	public sealed class skillSequence : TutorialCase
+	public sealed class SkillSequence : TutorialCase
 	{
-		[Repeat(16)]
+		//[Repeat(16)]
 		public Ref<ModelElement>[] Object2 { get; set; }
 
-		public Ref<TutorialSkillSequence> SkillSequence { get; set; }
+		public Ref<TutorialSkillSequence> skillSequence { get; set; }
 	}
 
 	public sealed class SkillTraining : TutorialCase

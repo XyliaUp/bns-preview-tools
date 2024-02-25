@@ -6,6 +6,7 @@ using System.Text;
 using OfficeOpenXml;
 using Xylia.Preview.Data.Client;
 using Xylia.Preview.Data.Common.DataStruct;
+using Xylia.Preview.Data.Engine.BinData.Helpers;
 using Xylia.Preview.Data.Engine.DatData;
 using Xylia.Preview.Data.Helpers.Output;
 using Xylia.Preview.Data.Models;
@@ -24,13 +25,13 @@ public sealed class ItemOut : OutSet, IDisposable
 	#region Cache
 	public bool OnlyUpdate;
 
-	private HashSet<int> CacheList = null;
+	private HashList? CacheList = null;
 
 	public void LoadCache(string path)
 	{
 		if (!OnlyUpdate) return;
 
-		CacheList = XList.LoadData(path);
+		CacheList = new HashList(path);
 	}
 	#endregion
 
@@ -49,12 +50,13 @@ public sealed class ItemOut : OutSet, IDisposable
 		Path_Failure = Path.Combine(outdir, @"no_text.txt");
 		Path_MainFile = Path.Combine(outdir, @"output." + (UseExcel ? "xlsx" : "txt"));
 
+		#region Cache
+		var refs = new List<Ref>();
+		if (CacheList != null) refs.AddRange(CacheList.HashMap);
+		refs.AddRange(ItemDatas.Select(item => item.Ref));
 
-		XList cache = new() { TimeStamp = time.Ticks };
-		if (CacheList != null) cache.datas.AddRange(CacheList);
-		cache.datas.AddRange(ItemDatas.Select(item => item.Ref.Id));
-		cache.Save(Path_ItemList);
-
+		new HashList(refs).Save(Path_ItemList);
+		#endregion
 
 		#region Output
 		if (!UseExcel) CreateText();
@@ -133,19 +135,16 @@ public sealed class ItemOut : OutSet, IDisposable
 		CreatedAt = set.Provider.CreatedAt;
 
 		var Result = new BlockingCollection<ItemSimple>();
-		Parallel.ForEach(set.Item, (record) =>
+		Parallel.ForEach(set.Get<Item>(), (record) =>
 		{
-			if (CacheList != null && CacheList.Contains(record.Source.RecordId)) return;
+			if (CacheList != null && CacheList.CheckFailed(record.Source.PrimaryKey)) return;
 
 			var data = new ItemSimple(record.Source, set);
 			Result.Add(data);
 		});
 
-		set.Item.Dispose();
-		set.Text.Dispose();
 		set.Dispose();
-
-		ItemDatas = Result.OrderBy(o => o.Ref.Id).ToList();
+		ItemDatas = [.. Result.OrderBy(o => o.Ref.Id)];
 	}
 
 	public void Dispose()
@@ -173,7 +172,7 @@ class ItemSimple
 
 	public ItemSimple(Record record, BnsDatabase tables = null)
 	{
-		Ref = record;
+		Ref = record.PrimaryKey;
 		Alias = record.StringLookup.GetString(0);
 
 		var TextTable = tables?.Get<Text>();

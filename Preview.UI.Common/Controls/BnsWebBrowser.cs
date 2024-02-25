@@ -2,25 +2,41 @@
 using System.Windows.Data;
 using Microsoft.Web.WebView2.Core;
 using Microsoft.Web.WebView2.Wpf;
+using Xylia.Preview.UI.Controls.Primitives;
 
 namespace Xylia.Preview.UI.Controls;
 public class BnsWebBrowser : BnsCustomBaseWidget
 {
-	private WebView2 _webView;
-	public event EventHandler<string> PostMessage;
-	public new event EventHandler<CoreWebView2> Initialized;
-
+	#region Constructorss
 	public BnsWebBrowser()
 	{
 		_webView = new WebView2();
 		_webView.CoreWebView2InitializationCompleted += InitializationCompleted;
 
-		BindingOperations.SetBinding(_webView, HeightProperty,new Binding("Height") { Source = this });
+		BindingOperations.SetBinding(_webView, HeightProperty, new Binding("Height") { Source = this });
 		BindingOperations.SetBinding(_webView, WidthProperty, new Binding("Width") { Source = this });
 
-		this.Items.Add(_webView);
+		this.Children.Add(_webView);
 	}
+	#endregion
 
+	#region Event
+	public event EventHandler<string>? PostMessage;
+	public new event EventHandler<CoreWebView2>? Initialized;
+	#endregion
+
+	#region Properties
+
+	private readonly WebView2 _webView;
+
+	public Uri Source
+	{
+		get => _webView.Source;
+		set => _webView.Source = value;
+	}
+	#endregion
+
+	#region Methods
 	private void InitializationCompleted(object sender, CoreWebView2InitializationCompletedEventArgs e)
 	{
 		if (!e.IsSuccess) return;
@@ -40,10 +56,5 @@ public class BnsWebBrowser : BnsCustomBaseWidget
 		if (meaasge is null) return;
 		PostMessage?.Invoke(this, meaasge);
 	}
-
-	public Uri Source
-	{
-		get => _webView.Source;
-		set => _webView.Source = value;
-	}
+	#endregion
 }

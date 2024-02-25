@@ -50,7 +50,7 @@
 											<Rectangle x:Name="Rect" Fill="{DynamicResource BorderBrush}" Width="4" HorizontalAlignment="Left" />
 											<DockPanel Margin="20 0 0 0">
 												<Image x:Name="PresenterIcon" HorizontalAlignment="Left" VerticalAlignment="Center" />
-												<TextBlock x:Name="PresenterHeader" Text="{UI:ResourceBinding Name}" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="12" />
+												<TextBlock x:Name="PresenterHeader" Text="{UI:DynamicBinding Name}" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="12" />
 											</DockPanel>
 										</hc:SimplePanel>
 									</Border>
@@ -75,16 +75,15 @@
 						</ListBox>
 
 						<TextBlock VerticalAlignment="Bottom" Margin="10 5" Foreground="Gray">
+							<TextBlock.ToolTip>
+								<TextBlock>
+									<Run Text="{DynamicResource Text_PublishOn}" />
+									<Run Text="{Binding Source={x:Static VM:VersionHelper.Time},Mode=OneWay,StringFormat={}{0:D}}" />
+								</TextBlock>
+							</TextBlock.ToolTip>
+				
 							<Run Text="Version" />
-							<Run Text="{Binding Source={x:Static VM:VersionHelper.Version},Mode=OneWay}">
-								<Run.ToolTip>
-									 <TextBlock>
-										 <Run Text="{DynamicResource Text_PublishOn}" />
-										 <Run Text="{Binding Source={x:Static VM:VersionHelper.Time},Mode=OneWay,StringFormat={}{0:D}}" />
-									 </TextBlock>
-								</Run.ToolTip>
-							</Run>
-
+							<Run Text="{Binding Source={x:Static VM:VersionHelper.Version},Mode=OneWay}"/>
 							<LineBreak />
 							<Run Text="Powered by Xylia" Foreground="{StaticResource DarkPrimaryBrush}"/>
 						</TextBlock>

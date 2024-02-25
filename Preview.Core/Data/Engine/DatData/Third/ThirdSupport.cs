@@ -78,7 +78,7 @@ public static class ThirdSupport
 		var rsa = BnsCompression.GetRSAKeyBlob(param.RSA_KEY);
 		double value = BnsCompression.CreateFromDirectory(param.FolderPath, param.PackagePath, param.Bit64, param.CompressionLevel,
 			param.AES_KEY, (uint)param.AES_KEY.Length, rsa, (uint)rsa.Length,
-			BnsCompression.BinaryXmlVersion.Version4, (string fileName, ulong fileSize) => BnsCompression.DelegateResult.Continue);
+			param.BinaryXmlVersion, (string fileName, ulong fileSize) => BnsCompression.DelegateResult.Continue);
 		#endregion
 	}
 }

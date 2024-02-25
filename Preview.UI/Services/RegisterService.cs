@@ -5,8 +5,14 @@ using Xylia.Preview.UI.ViewModels;
 using Xylia.Preview.UI.Views.Selector;
 
 namespace Xylia.Preview.UI.Services;
-internal static class RegisterService
+internal class RegisterService : IService
 {
+	bool IService.Register()
+	{
+		Create();
+		return true;
+	}
+
 	public static void Create()
 	{
 		IDatSelect.Default = new DatSelectDialog();

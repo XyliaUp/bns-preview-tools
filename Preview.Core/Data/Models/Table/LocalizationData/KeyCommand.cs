@@ -1,5 +1,4 @@
-﻿using SkiaSharp;
-
+﻿using CUE4Parse.BNS.Assets.Exports;
 using Xylia.Preview.Common.Attributes;
 using Xylia.Preview.Data.Helpers;
 using Xylia.Preview.Data.Models.Sequence;
@@ -50,7 +49,7 @@ public sealed class KeyCommand : ModelElement
 
 	public string GetImage() => this.Key1?.Image;
 
-	public SKBitmap GetIcon() => this.Key1?.Icon;
+	public ImageProperty GetIcon() => this.Key1?.Icon;
 
 	public static KeyCommand Cast(KeyCommandSeq KeyCommand) => FileCache.Data.Get<KeyCommand>().FirstOrDefault(o => o.Command == KeyCommand);
 	#endregion

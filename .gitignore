@@ -3,3 +3,5 @@ obj
 .vs
 *.testlog
 *.user
+*.pfx
+/*.dll

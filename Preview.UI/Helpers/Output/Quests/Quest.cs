@@ -21,12 +21,12 @@ public sealed class QuestOut : OutSet
         #endregion
 
 
-        foreach (var Quest in FileCache.Data.Get<Quest>().OrderBy(o => o.Source.RecordId))
+        foreach (var Quest in FileCache.Data.Get<Quest>().OrderBy(o => o.Source.PrimaryKey))
         {
             Row++;
             int column = 1;
 
-            sheet.Cells[Row, column++].SetValue(Quest.Source.RecordId);
+            sheet.Cells[Row, column++].SetValue(Quest.Source.PrimaryKey);
             sheet.Cells[Row, column++].SetValue(Quest.Attributes["alias"]);
             sheet.Cells[Row, column++].SetValue(Quest.Text);
             sheet.Cells[Row, column++].SetValue(Quest.Title);

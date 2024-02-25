@@ -12,7 +12,7 @@ using Xylia.Preview.UI.ViewModels;
 namespace Xylia.Preview.UI.Views;
 public partial class AudioPlayer
 {
-	#region Ctor
+	#region Constructors
 	AudioPlayerViewModel _viewModel;
 
 	public AudioPlayer()
@@ -43,9 +43,8 @@ public partial class AudioPlayer
 			this.VolumeButtonPopup.IsOpen = true;
 		}
 
-		int scrollVolumePercentage = 1;
-		this._viewModel.Volume = Convert.ToSingle(this._viewModel.Volume +
-			(double)scrollVolumePercentage / 100 * Math.Sign(e.Delta));
+		var StepValue = (float)1 / 100;
+		this._viewModel.Volume += StepValue * Math.Sign(e.Delta);
 	}
 
 	private void VolumeButton_Click(object sender, RoutedEventArgs e)

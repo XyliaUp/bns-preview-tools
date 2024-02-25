@@ -1,22 +1,16 @@
 ﻿using System.Windows;
-using System.Windows.Controls;
-
 using LiveCharts;
 using LiveCharts.Defaults;
 using LiveCharts.Wpf;
-
 using Xylia.Preview.Data.Models.Creature;
 using Xylia.Preview.UI.ViewModels;
 
 namespace Xylia.Preview.UI.Views.Pages;
-public partial class AbilityPage : Page
+public partial class AbilityPage
 {
-	private AbilityViewModel _viewModel;
-	const sbyte DEFAULT_LEVEL = 60;
-
 	public AbilityPage()
 	{
-		DataContext = _viewModel = new AbilityViewModel();
+		DataContext = _viewModel = new AbilityPageViewModel();
 		InitializeComponent();
 	}
 
@@ -36,15 +30,21 @@ public partial class AbilityPage : Page
 		for (int i = 0; i <= CHART_MAX_VALUE; i += CHART_INTERVAL)
 			values.Add(new(i, ability.GetPercent(i, DEFAULT_LEVEL)));
 
-		Chart.Series = new SeriesCollection
-		{
+		Chart.Series =
+		[
 			new LineSeries
 			{
 				Title = $"{ability.Type} converted percent in Lv{DEFAULT_LEVEL}",
 				Values = values,
 				LineSmoothness = 1,
 			}
-		};
+		];
 		#endregion
 	}
+
+
+	#region Private Fields
+	private AbilityPageViewModel _viewModel;
+	const sbyte DEFAULT_LEVEL = 60;
+	#endregion
 }

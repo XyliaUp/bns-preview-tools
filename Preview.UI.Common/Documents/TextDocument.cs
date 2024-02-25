@@ -4,7 +4,7 @@ using System.Windows;
 using HtmlAgilityPack;
 
 namespace Xylia.Preview.UI.Documents;
-public class TextDocument
+internal class TextDocument
 {
 	#region Constructors
 	/// <summary>
@@ -81,9 +81,9 @@ public class TextDocument
 	#endregion
 
 
-	public static Element ToElement(HtmlNode node)
+	public static BaseElement ToElement(HtmlNode node)
 	{
-		Element element;
+		BaseElement element;
 		switch (node.Name)
 		{
 			case "#text": element = new Run(); break;

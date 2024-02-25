@@ -12,6 +12,7 @@ internal class BooleanPropertyEditor : SwitchPropertyEditor, IValueConverter
 
 	public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
 	{
+		if (value is null) return false;
 		if (value is BnsBoolean boolean) return (bool)boolean;
 
 		throw new NotImplementedException();

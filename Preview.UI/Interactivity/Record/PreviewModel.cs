@@ -10,7 +10,7 @@ using Xylia.Preview.UI.Views;
 
 namespace Xylia.Preview.UI.Interactivity;
 /// <summary>
-/// Provide a command to show Model
+/// Provide a command to show model
 /// </summary>
 public class PreviewModel : RecordCommand
 {
@@ -21,32 +21,43 @@ public class PreviewModel : RecordCommand
 
 	public override bool CanExecute(string name) => name switch
 	{
-		"npc" or
-		"item" or
-		"pet" or
-		"vehicle-appearance" => true,
+		"creatureappearance" or "npc" or
+		"item" or "pet" or "vehicle-appearance" => true,
 		_ => false,
 	};
 
 	public override async void Execute(Record record)
 	{
-		List<ModelData> models = new();
+		List<ModelData> models = [];
 		await Load(record, models);
 
 		// show
 		var view = MyTest.ModelViewer;
-		view.Models = [.. models];
-		if (view.TryLoadExport(default)) view.Run();
-		else Debug.WriteLine(record?.GetType());
+		lock (view)
+		{
+			view.Models = [.. models];
+			if (view.TryLoadExport(default)) view.Run();
+			else Debug.WriteLine(record?.GetType());
+		}
 	}
 
 	private static async Task Load(Record record, List<ModelData> models)
 	{
 		if (record is null) return;
 
-		// accordin table name
+		// According table name
 		switch (record.Owner.Name)
 		{
+			case "creatureappearance":
+			{
+				models.Add(new()
+				{
+					Export = await FileCache.Provider.LoadObjectAsync<UObject>(record.Attributes["body-mesh-name"]?.ToString()),
+					Cols = new string[] { record.Attributes["body-material-name"]?.ToString() },
+				});
+			}
+			break;
+
 			case "npc":
 			{
 				var appearance = record.Attributes.Get<Record>("appearance");
@@ -60,6 +71,7 @@ public class PreviewModel : RecordCommand
 				});
 			}
 			break;
+
 
 			case "item":
 			{
@@ -133,7 +145,6 @@ public class PreviewModel : RecordCommand
 
 				break;
 			}
-
 
 			case "pet":
 			{

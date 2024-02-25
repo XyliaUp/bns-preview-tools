@@ -72,7 +72,7 @@ public class RegionFile
         #region 获取区块信息
         //区块长度  XRange * YRange * 4
         var AreaReader = new BinaryReader(new MemoryStream(br.ReadBytes((int)(AreaOffset - InfoSize))));
-        RegionArea = new();
+        RegionArea = [];
 
         if (AreaReader.BaseStream.Length != XRange * YRange * 4)
             throw new Exception("缺失区块");
@@ -196,7 +196,7 @@ public class RegionFile
 
         if (true)
         {
-            RegionArea = new();
+            RegionArea = [];
             for (int i = 0; i < XRange * YRange; i++) RegionArea.Add(new RegionArea());
         }
 
@@ -300,7 +300,7 @@ public class RegionFile
     public void InputTest(string Path)
     {
         #region Initialize
-        RegionArea = new List<RegionArea>();
+        RegionArea = [];
 
         XmlDocument XmlDoc = new();
         XmlDoc.Load(Path);
@@ -313,7 +313,7 @@ public class RegionFile
         #endregion
 
         #region Area
-        RegionArea = new List<RegionArea>();
+        RegionArea = [];
         foreach (var Area in Region.SelectNodes("./area").OfType<XmlElement>())
         {
             //实际不会使用到，只是给用户看的

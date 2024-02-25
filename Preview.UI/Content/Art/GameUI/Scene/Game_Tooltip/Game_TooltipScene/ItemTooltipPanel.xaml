@@ -1,4 +1,4 @@
-﻿<Anchor x:Class="Xylia.Preview.UI.GameUI.Scene.Game_Tooltip.ItemTooltipPanel" Name="ROOT" 
+﻿<BnsCustomWindowWidget x:Class="Xylia.Preview.UI.GameUI.Scene.Game_Tooltip.ItemTooltipPanel" Name="ROOT" 
 	xmlns="https://github.com/xyliaup/bns-preview-tools"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 	xmlns:s="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
@@ -6,18 +6,19 @@
 	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 	mc:Ignorable="d" d:DesignWidth="300" d:DesignHeight="500" Width="350" Height="450">
 	<BnsCustomImageWidget Name="LegendGradeBackground">
-		<BnsCustomLabelWidget Name="ItemName" Text="{s:Binding ItemName}" String="Item Name Item Name" FontSize="18" />
-		<BnsCustomLabelWidget Name="Category" String="카테고리카테" Anchor.Anchors="1 0 0 0"/>
-		<BnsCustomImageWidget Name="ItemIcon" Width="80" Height="80" Image="{s:Binding Icon}" Anchor.Offsets="3 30 0 0" BorderThickness="0.2" BorderBrush="Black"/>
+		<BnsCustomLabelWidget Name="ItemName" Text="{Binding ItemName}" String="Item Name Item Name" FontSize="18" />
+		<BnsCustomLabelWidget Name="Category" Text="{Binding GameCategory3, Converter={TextResource}}" String="카테고리카테" LayoutData.Anchors="1 0 0 0"/>
+		<BnsCustomImageWidget Name="ItemIcon" Width="80" Height="80" BaseImageProperty="{Binding Icon}" LayoutData.Offsets="3 30 0 0" BorderThickness="0.2" BorderBrush="Black"/>
 
-		<s:StackPanel Anchor.Offsets="95 30 0 0" >
-			<BnsCustomLabelWidget Name="CollectionSubstituteText" Text="{s:Binding CollectionSubstitute.Item1}" String="만으로도 완료 할 수 있습니다." FontSize="15" />
-			<BnsCustomLabelWidget Name="CollectionSubstitute2Text" Text="{s:Binding CollectionSubstitute.Item2}" String="만으로도 완료 할 수 있습니다." />
+		<s:StackPanel LayoutData.Offsets="95 30 0 0" >
+			<BnsCustomLabelWidget Name="CollectionSubstituteText" Text="{Binding CollectionSubstitute.Item1}" String="만으로도 완료 할 수 있습니다." FontSize="15" />
+			<BnsCustomLabelWidget Name="CollectionSubstitute2Text" Text="{Binding CollectionSubstitute.Item2}" String="만으로도 완료 할 수 있습니다." />
 		</s:StackPanel>
 
-		<s:StackPanel Anchor.Offsets="3 130 0 0">
-			<BnsCustomLabelWidget Name="DecomposeDescription_Title" Text="{s:Binding INVALID}" String="Decompose Result Description Title" />
-			<BnsCustomLabelWidget Name="DecomposeDescription" Text="{s:Binding Test,ElementName=ROOT}" String="Decompose Result Description" />
+		<s:StackPanel LayoutData.Offsets="3 130 0 0">
+			<BnsCustomLabelWidget Name="ItemDescription7" Text="{TextResource Attributes[description7]}" String="Item Description7" />
+			<BnsCustomLabelWidget Name="DecomposeDescription_Title" String="Decompose Result Description Title" />
+			<BnsCustomLabelWidget Name="DecomposeDescription" String="Decompose Result Description" />
 
 			<BnsCustomLabelWidget Name="ItemDescription_4_Title" Text="{TextResource Attributes[description4-title]}" String="Item Description 4 Title" />
 			<BnsCustomLabelWidget Name="ItemDescription_4" Text="{TextResource Attributes[description4]}" String="Item Description4" />
@@ -28,4 +29,4 @@
 			<BnsCustomLabelWidget Name="ItemDescription" Text="{TextResource Attributes[description2]}" String="Item Description2" />
 		</s:StackPanel>
 	</BnsCustomImageWidget>
-</Anchor>
+</BnsCustomWindowWidget>

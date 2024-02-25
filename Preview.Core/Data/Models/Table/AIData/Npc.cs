@@ -3,7 +3,7 @@
 namespace Xylia.Preview.Data.Models;
 public sealed class Npc : ModelElement
 {
-	#region Public Properties
+	#region Properties
 	public string Text => this.Attributes["name2"].GetText();
 
 	public string Map
@@ -43,4 +43,15 @@ public sealed class Npc : ModelElement
 		}
 	}
 	#endregion
+
+
+	// Baekcheong
+	// Chicken_A
+	// Daesamak
+	// Dungeon
+	// Jeryongrim
+	// Pizza_A
+	// Summer_A
+	// Suweol
+	// Winter_A
 }

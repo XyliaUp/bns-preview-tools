@@ -1,11 +1,8 @@
-﻿using CUE4Parse.UE4.Assets.Exports.Texture;
-using CUE4Parse_Conversion.Textures;
-
-using SkiaSharp;
+﻿using CUE4Parse.BNS.Assets.Exports;
+using CUE4Parse.UE4.Objects.UObject;
 using Xylia.Preview.Common.Attributes;
 using Xylia.Preview.Common.Extension;
 using Xylia.Preview.Data.Common.Abstractions;
-using Xylia.Preview.Data.Helpers;
 using Xylia.Preview.Data.Models.QuestData;
 using Xylia.Preview.Data.Models.QuestData.Enums;
 using Xylia.Preview.Data.Models.Sequence;
@@ -38,7 +35,7 @@ public sealed class Quest : ModelElement, IHaveName
 
 	public string Title => this.Attributes["group2"]?.GetText();
 
-	public SKBitmap FrontIcon
+	public ImageProperty FrontIcon
 	{
 		get
 		{
@@ -82,7 +79,10 @@ public sealed class Quest : ModelElement, IHaveName
 				default: throw new NotImplementedException();
 			}
 
-			return FileCache.Provider.LoadObject<UTexture>($"BNSR/Content/Art/UI/GameUI/Resource/GameUI_Map_Indicator/{res}")?.Decode();
+			return new ImageProperty()
+			{
+				BaseImageTexture = new MyFPackageIndex($"BNSR/Content/Art/UI/GameUI/Resource/GameUI_Map_Indicator/{res}"),
+			};
 		}
 	}
 	#endregion

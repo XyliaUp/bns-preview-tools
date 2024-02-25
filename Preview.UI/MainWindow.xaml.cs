@@ -1,5 +1,4 @@
 using System.ComponentModel;
-using System.Diagnostics;
 using System.Windows;
 
 using Xylia.Preview.UI.GameUI.Scene.Game_QuestJournal;
@@ -20,27 +19,28 @@ public partial class MainWindow
 		#region page
 		SideMenu.ItemsSource = new List<object>()
 		{
-			new ControlPage<ItemPage>(),
-			new ControlPage<TextView>(),
-			new ControlPage<Game_QuestJournalScene>(),
-			new ControlPage<GameResourcePage>(),
-			new ControlPage<AbilityPage>(),
+			new PageController<ItemPage>(),
+			new PageController<TextView>(),
+			new PageController<Game_QuestJournalScene>(),
+			new PageController<GameResourcePage>(),
+			new PageController<AbilityPage>(),
 		};
 		SideMenu.SelectedIndex = 0;
 		SideMenu_Switch(SideMenu, null);
 		#endregion
 
-		new UpdateService().CheckForUpdates();						 
+		new UpdateService().Register();
 		RegisterService.Create();
 	}
 
 
+	#region Methods
 	private void SideMenu_Switch(object sender, RoutedEventArgs e)
 	{
 		SideMenuContainer.IsOpen = false;
-		var page = SideMenu.SelectedItem as IControlPage;
+		var page = (IPageController)SideMenu.SelectedItem;
 
-		var content = page.Content;
+		var content = page!.Content;
 		if (content is Window window)
 		{
 			window.Closed += (s, e) => page.Content = null;
@@ -70,4 +70,5 @@ public partial class MainWindow
 
 		Application.Current.Shutdown();
 	}
+	#endregion
 }

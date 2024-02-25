@@ -38,17 +38,15 @@ public interface IDataProvider : IDisposable
 
 
 	#region Methods
-	/// <summary>
-	/// Get raw file
-	/// </summary>
-	/// <param name="pattern"></param>
+	/// <summary>Get raw file stream</summary>
+	/// <remarks>The result will not be null</remarks>
 	/// <returns></returns>
 	Stream[] GetFiles(string pattern);
 
 	/// <summary>
 	/// Load package
 	/// </summary>
-	/// <remarks>In some cases, require automatic parse <see langword="definitions"/></remarks>
+	/// <remarks>In some case, require automatic parse <see langword="definitions"/></remarks>
 	/// <param name="definitions"></param>
 	public void LoadData(DatafileDefinition definitions);
 

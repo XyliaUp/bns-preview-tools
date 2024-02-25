@@ -76,14 +76,13 @@ public abstract class TableHeader
 		}
 		else if (this.MajorVersion != version.Item1 || this.MinorVersion != version.Item2)
 		{
-			Log.Warning($"check table `{this.Name}` version: {version.Item1}.{version.Item2} <> {this.MajorVersion}.{this.MinorVersion}");
+			var msg = $"check table `{this.Name}` version: {version.Item1}.{version.Item2} <> {this.MajorVersion}.{this.MinorVersion}";
+			if (Message.Contains(msg)) return;
 
-			// non binary table
-			if (this.Size == 0)
-			{
-				this.MajorVersion = version.Item1;
-				this.MinorVersion = version.Item2;
-			}
+			Message.Add(msg);
+			Log.Warning(msg);
 		}
 	}
+
+	internal HashSet<string> Message = new();
 }

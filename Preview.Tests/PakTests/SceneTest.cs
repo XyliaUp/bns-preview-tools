@@ -5,11 +5,11 @@ using CUE4Parse.BNS.Conversion;
 using CUE4Parse.UE4.Assets.Exports;
 using CUE4Parse.UE4.Objects.Engine;
 using CUE4Parse.UE4.Objects.UObject;
-using CUE4Parse.UE4.Pak;
+using CUE4Parse.Utils;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Xylia.Preview.Common.Extension;
 using Xylia.Preview.Data.Helpers;
-using Xylia.Preview.Tests.Utils;
+using Xylia.Preview.Tests.Extensions;
 
 namespace Xylia.Preview.Tests.PakTests;
 
@@ -19,18 +19,35 @@ public class SceneTest
 	[TestMethod]
 	public void SceneInformation()
 	{
-		IPlatformFilePak.Signature = new byte[20];
-
 		var Output = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "scene");
 
 		using GameFileProvider Provider = new(IniHelper.Instance.GameFolder);
-		var AssetPath = "BNSR/Content/Art/UI/GameUI/Scene/Game_ToolTip/Game_ToolTipScene/ItemTooltipPanel.uasset";
+		var AssetPath = "BNSR/Content/Art/UI/GameUI/Scene/Game_Tooltip/Game_TooltipScene/ItemTooltipPanel.uasset";
 		var Blueprint = Provider.LoadAllObjects(AssetPath).OfType<UWidgetBlueprintGeneratedClass>().First();
 
 		var dump = new WidgetDump() { Output = Path.Combine(Output, Path.GetFileNameWithoutExtension(AssetPath)) };
 		dump.LoadBlueprint(Blueprint);
 
-		Console.WriteLine(dump.Root);
+
+		#region Output
+		var FirstNode = (XElement)dump.Root.FirstNode;
+		FirstNode.Attribute("Name").Value = "#TEMP#";
+
+		// get class name
+		var FullClassName = $"Xylia.Preview" + AssetPath.SubstringBeforeLast(".")
+			.Replace("BNSR/Content/Art", null).Replace("/", ".");
+
+		var ClassName = FullClassName.SubstringAfterLast(".");
+		FullClassName = FullClassName.SubstringBeforeLast(".").SubstringBeforeWithLast('.') + ClassName;
+
+		Console.WriteLine(FirstNode.ToString().Replace(" Name=\"#TEMP#\"",
+			$"""
+				x:Class="{FullClassName}"
+				xmlns="https://github.com/xyliaup/bns-preview-tools"
+				xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+				xmlns:s="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+			"""));
+		#endregion
 	}
 
 	//[TestMethod]
@@ -124,36 +141,40 @@ public class WidgetDump
 
 		if (widgetslot != null)
 		{
-			el.AddAttribute("Anchor.Anchors", widgetslot.LayoutData.Anchors);
-			el.AddAttribute("Anchor.Offsets", widgetslot.LayoutData.Offsets);
-			el.AddAttribute("Anchor.Alignments", widgetslot.LayoutData.Alignments);
+			el.AddAttribute("LayoutData.Anchors", widgetslot.LayoutData.Anchors);
+			el.AddAttribute("LayoutData.Offsets", widgetslot.LayoutData.Offsets);
+			el.AddAttribute("LayoutData.Alignments", widgetslot.LayoutData.Alignments);
 		}
 
 		if (obj is UBnsCustomBaseWidget widget)
 		{
 			el.AddAttribute("MetaData", widget.MetaData);
-			el.AddAttribute("String", widget.StringProperty.LabelText?.Text);
 
-			if (widget.BaseImageProperty != null)
+			if (widget.StringProperty != null) el.AddElement($"{el.Name}.String").AddElement("StringProperty").Write(widget.StringProperty);
+			if (widget.BaseImageProperty != null) el.AddElement($"{el.Name}.BaseImageProperty").AddElement("ImageProperty").Write(widget.BaseImageProperty);
+
+
+			if (widget is UBnsCustomLabelButtonWidget buttonWidget)
 			{
-				var image = widget.BaseImageProperty!.Value;
-				el.AddAttribute("BaseImageProperty", image.BaseImageTexture.ResolvedObject.GetPathName());
-				el.AddAttribute("ImageUV", image.ImageUV);
-				el.AddAttribute("ImageUVSize", image.ImageUVSize);
+				el.AddElement($"{el.Name}.NormalImageProperty").AddElement("ImageProperty").Write(buttonWidget.NormalImageProperty);
+				//Write(el, buttonWidget.ActivatedImageProperty);
 			}
+
+			Write(el, widget.ExpansionComponentList);
 
 			if (ExtractImage)
 			{
 				Directory.CreateDirectory(Output);
-				widget.BaseImageProperty?.Image?.Save(Output + $"/{obj.Name}.png");
-				widget.ExpansionComponentList?.ForEach(expansion => expansion.Image?.Save(Output + $"/{obj.Name}.{expansion.ExpansionName}.png"));
+				widget.BaseImageProperty.Image?.Save(Output + $"/{obj.Name}.png");
+				widget.ExpansionComponentList?.ForEach(expansion => expansion.ImageProperty.Image?.Save(Output + $"/{obj.Name}.{expansion.ExpansionName}.png"));
 			}
 		}
 
 
 		// children
 		var Slots = obj.GetOrDefault<UBnsCustomBaseWidgetSlot[]>("Slots");
-		Slots?.Where(slot => slot != null).ForEach(slot => LoadWidget(slot.Content.Load(), slot, level, el));
+		Slots?.Where(slot => slot != null).Reverse()
+			.ForEach(slot => LoadWidget(slot.Content.Load(), slot, level, el));
 	}
 
 
@@ -162,5 +183,13 @@ public class WidgetDump
 		if (message is null) return;
 
 		Console.WriteLine(new string('\t', level) + message);
+	}
+
+	private static void Write(XElement el, ExpansionComponent[] expansions)
+	{
+		if (expansions is null) return;
+
+		var element = el.AddElement($"{el.Name}.ExpansionComponentList");
+		expansions.ForEach(e => element.AddElement("ExpansionComponent").Write(e));
 	}
 }

@@ -3,9 +3,10 @@ using Xylia.Preview.Data.Common.Abstractions;
 
 namespace Xylia.Preview.Data.Models;
 [Side(ReleaseSide.Client)]
-public sealed class MapInfo : ModelElement  ,IHaveName
+public sealed class MapInfo : ModelElement, IHaveName
 {
-	public int Id { get; set; }
+	#region Attributes
+	public short Id { get; set; }
 	public string Alias { get; set; }
 
 
@@ -48,7 +49,7 @@ public sealed class MapInfo : ModelElement  ,IHaveName
 	public float ArenaDungeonPosInParentX { get; set; }
 
 	public float ArenaDungeonPosInParentY { get; set; }
-
+	#endregion
 
 	#region Methods
 	public string Text => Name2.GetText();

@@ -11,7 +11,7 @@ using CUE4Parse.UE4.Writers;
 using CUE4Parse_Conversion.Textures;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Newtonsoft.Json;
-using Xylia.Preview.Tests.Utils;
+using Xylia.Preview.Tests.Extensions;
 
 namespace Xylia.Preview.Tests.PakTests;
 

@@ -9,6 +9,7 @@ using Serilog;
 using SkiaSharp;
 using Xylia.Preview.Data.Client;
 using Xylia.Preview.Data.Engine.DatData;
+using Xylia.Preview.Data.Models;
 using Xylia.Preview.UI.ViewModels;
 
 namespace Xylia.Preview.UI.Helpers.Output.Textures;
@@ -19,7 +20,7 @@ public abstract class IconOutBase : IDisposable
 	private readonly string _outputDirectory;
 	private readonly char[] _invalidChars = Path.GetInvalidFileNameChars();
 
-	protected BnsDatabase set;
+	protected BnsDatabase db;
 	protected readonly ILogger logger;
 
 	public IconOutBase(string GameFolder, string OutputFolder)
@@ -36,9 +37,9 @@ public abstract class IconOutBase : IDisposable
 			.WriteTo.Logger(lc => lc
 				//.Filter.ByIncludingOnly(p => p.Level == LogEventLevel.Information)
 				.WriteTo.File(Path.Combine(folder, $"{DateTime.Now:yyyyMMdd}.log"), outputTemplate: template))
-		  // .WriteTo.Logger(lc => lc
-				//.Filter.ByIncludingOnly(p => p.Level == LogEventLevel.Error)
-				//.WriteTo.File(Path.Combine(folder, $"{DateTime.Now:yyyyMMdd}_error.log"), outputTemplate: template))
+		   // .WriteTo.Logger(lc => lc
+		   //.Filter.ByIncludingOnly(p => p.Level == LogEventLevel.Error)
+		   //.WriteTo.File(Path.Combine(folder, $"{DateTime.Now:yyyyMMdd}_error.log"), outputTemplate: template))
 		   .CreateLogger();
 	}
 	#endregion
@@ -47,8 +48,9 @@ public abstract class IconOutBase : IDisposable
 	#region Methods
 	public void LoadData(CancellationToken cancellationToken)
 	{
-		set = new BnsDatabase(DefaultProvider.Load(UserSettings.Default.GameFolder));
-		//await set.IconTexture.LoadAsync();
+		// init table
+		db = new BnsDatabase(DefaultProvider.Load(UserSettings.Default.GameFolder));
+		_ = db.Get<IconTexture>();
 
 		cancellationToken.ThrowIfCancellationRequested();
 	}
@@ -59,12 +61,12 @@ public abstract class IconOutBase : IDisposable
 		Directory.CreateDirectory(_outputDirectory);
 
 		cancellationToken.ThrowIfCancellationRequested();
-		AnalyseSourceData(provider, format, cancellationToken);
+		Output(provider, format, cancellationToken);
 	}
 
-	protected abstract void AnalyseSourceData(DefaultFileProvider provider, string format, CancellationToken cancellationToken);
+	protected abstract void Output(DefaultFileProvider provider, string format, CancellationToken cancellationToken);
 
-	protected void Save(ref SKBitmap source, string name)
+	protected void Save(SKBitmap source, string name)
 	{
 		if (source is null) return;
 
@@ -75,17 +77,16 @@ public abstract class IconOutBase : IDisposable
 				name = name.Replace(c.ToString(), "_");
 		}
 
-		source.Save(_outputDirectory + @"\" + name + ".png");
+		source.Save(_outputDirectory + $@"\{name}.png");
 		source.Dispose();
-		source = null;
 	}
 	#endregion
 
 	#region Dispose
 	public void Dispose()
 	{
-		set?.Dispose();
-		set = null;
+		db?.Dispose();
+		db = null;
 
 		GC.SuppressFinalize(this);
 		GC.Collect();

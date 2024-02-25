@@ -1,15 +1,16 @@
-﻿using System.Windows.Input;
+﻿using System.ComponentModel;
+using System.Windows.Input;
 
 using CommunityToolkit.Mvvm.ComponentModel;
-
 using HandyControl.Tools.Extension;
 
 namespace Xylia.Preview.UI.Views.Selector;
 
 [ObservableObject]
+[DesignTimeVisible(false)]
 public partial class FileModeDialog : IDialogResultable<FileModeDialog.FileMode>
 {
-	#region Ctor
+	#region Constructors
 	public enum FileMode
 	{
 		None,

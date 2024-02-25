@@ -21,15 +21,21 @@ public class DefaultProvider : Datafile, IDataProvider
 
 
 	#region Methods
-	public virtual Stream[] GetFiles(string pattern) => this.XmlData.EnumerateFiles(pattern).Select(x => new MemoryStream(x.Data)).ToArray();
+	public virtual Stream[] GetFiles(string pattern)
+	{
+		return (XmlData.SearchFiles(pattern) ?? []).Concat(
+			ConfigData?.SearchFiles(pattern) ?? []).Concat(
+			LocalData?.SearchFiles(pattern) ?? []).Select(x => 
+			new MemoryStream(x.Data)).ToArray();
+	}
 
 	public virtual void LoadData(DatafileDefinition definitions)
 	{
 		#region Tables
 		this.Tables = [];
 
-		ReadFrom(XmlData.EnumerateFiles(PATH.Datafile(Is64Bit)).FirstOrDefault()?.Data, Is64Bit);
-		ReadFrom(LocalData.EnumerateFiles(PATH.Localfile(Is64Bit)).FirstOrDefault()?.Data, Is64Bit);
+		ReadFrom(XmlData.SearchFiles(PATH.Datafile(Is64Bit)).FirstOrDefault()?.Data, Is64Bit);
+		ReadFrom(LocalData.SearchFiles(PATH.Localfile(Is64Bit)).FirstOrDefault()?.Data, Is64Bit);
 
 		Tables.Add(new() { Name = "quest", SearchPattern = @"quest\questdata*.xml" });
 		Tables.Add(new() { Name = "contextscript", SearchPattern = @"skill3_contextscriptdata*.xml" });
@@ -76,7 +82,7 @@ public class DefaultProvider : Datafile, IDataProvider
 					var alias = record.Attributes.Get<string>("alias");
 					if (alias == null) continue;
 
-					AliasTable.Add(record, AliasTable.MakeKey(tableDefName, alias));
+					AliasTable.Add(record.PrimaryKey, AliasTable.MakeKey(tableDefName, alias));
 				}
 			}
 
@@ -158,10 +164,7 @@ public class DefaultProvider : Datafile, IDataProvider
 		//get target
 		DefaultProvider provider;
 		if (xmls.Count == 0) throw new WarningException("invalid game data, possible specified directory incorrect");
-		if (xmls.Count == 1 && locals.Count <= 1)
-		{
-			provider = new DefaultProvider() { XmlData = xmls.FirstOrDefault(), LocalData = locals.FirstOrDefault() };
-		}
+		if (xmls.Count == 1 && locals.Count <= 1) provider = new DefaultProvider() { XmlData = xmls.FirstOrDefault(), LocalData = locals.FirstOrDefault() };
 		else provider = IDatSelect.Default.Show(xmls, locals);
 
 		// set info

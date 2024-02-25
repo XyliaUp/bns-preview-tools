@@ -25,15 +25,12 @@ public class AbilityFunction
     /// <summary>
     /// 当未计算出μ、Φ数值时, 可以使用特定等级数值进行临时替代
     /// </summary>
-    public List<LevelFactor> LevelFactors = new();
+    public List<LevelFactor> LevelFactors = [];
     #endregion
 
-    #region Properties
-    public string Text => this.Type.ToString();
-	#endregion
+    #region Methods
+    public override string ToString() => this.Type.ToString();
 
-
-	#region Methods
 	public double GetPercent(double value, byte level)
     {
         double factor = 0;
@@ -122,7 +119,7 @@ public class AbilityFunction
         Type = CreatureField.AttackHitBasePercent,
         C = 85,
         K = 96,
-        LevelFactors = new() { new(60, 6081.99) }
+        LevelFactors = [new(60, 6081.99)]
     };
 
     public static AbilityFunction AttackPierce => new()
@@ -139,14 +136,14 @@ public class AbilityFunction
         //格挡穿刺
         Type = CreatureField.AttackParryPiercePercent,
         K = 95,
-        LevelFactors = new() { new(60, 20963.86) }
+        LevelFactors = [new(60, 20963.86)]
     };
 
     public static AbilityFunction AttackCritical => new()
     {
         Type = CreatureField.AttackCriticalBasePercent,
         K = 97,
-        LevelFactors = new() { new(60, 7937.55) }
+        LevelFactors = [new(60, 7937.55)]
     };
 
     public static AbilityFunction AttackCriticalDamage => new()
@@ -154,21 +151,21 @@ public class AbilityFunction
         Type = CreatureField.AttackCriticalDamagePercent,
         C = 125,
         K = 291,
-        LevelFactors = new() { new(60, 7201.28) }
+        LevelFactors = [new(60, 7201.28)]
     };
 
     public static AbilityFunction DefendCritical => new()
     {
         Type = CreatureField.DefendCriticalBasePercent,
         K = 25,
-        LevelFactors = new() { new(60, -19.47) }
+        LevelFactors = [new(60, -19.47)]
     };
 
     public static AbilityFunction DefendCriticalDamage => new()
     {
         Type = CreatureField.DefendCriticalDamagePercent,
         K = 291,
-        LevelFactors = new() { new(60, 2374.28) }
+        LevelFactors = [new(60, 2374.28)]
     };
 
     public static AbilityFunction DefendBounce => new()
@@ -180,14 +177,14 @@ public class AbilityFunction
     {
         Type = CreatureField.DefendDodgeBasePercent,
         K = 95,
-        LevelFactors = new() { new(60, 10464.33) }
+        LevelFactors = [new(60, 10464.33)]
     };
 
     public static AbilityFunction DefendParry => new()
     {
         Type = CreatureField.DefendParryBasePercent,
         K = 97,
-        LevelFactors = new() { new(60, 5239.02) }
+        LevelFactors = [new(60, 5239.02)]
     };
 
     public static AbilityFunction DefendParryReducePercent => new()
@@ -196,7 +193,7 @@ public class AbilityFunction
         Type = CreatureField.DefendParryReducePercent,
         C = 30,
         K = 98,
-        LevelFactors = new() { new(60, 21701.77) }
+        LevelFactors = [new(60, 21701.77)]
     };
 
     public static AbilityFunction DefendPerfectParry => new()
@@ -227,17 +224,17 @@ public class AbilityFunction
     //反击武功强化
     //public static AbilityFunction CounterEnhance => new()
     //{
-    //	Type = CreatureField.CounterEnhance,
-    //	K = 285,
-    //	LevelFactors = new() { new(60, 9835.18) }
+    //    Type = CreatureField.CounterEnhance,
+    //    K = 285,
+    //    LevelFactors = [new(60, 9835.18)]
     //};
 
     //防御武功 强化
     //public static AbilityFunction DefenceParryDamageReducePercent => new()
     //{
-    //	Type = CreatureField.DefenceParryDamageReduce,
-    //	K = 291,
-    //	LevelFactors = new() { new(60, 10042.45) }
+    //    Type = CreatureField.DefenceParryDamageReduce,
+    //    K = 291,
+    //    LevelFactors = [new(60, 10042.45)]
     //};
 
 
@@ -247,7 +244,7 @@ public class AbilityFunction
         Type = CreatureField.HealPowerBasePercent,
         C = 100,
         K = 54,
-        LevelFactors = new() { new(60, 2796.48) }
+        LevelFactors = [new(60, 2796.48)]
     };
 
     public static AbilityFunction AoeDefend => new()
@@ -260,7 +257,7 @@ public class AbilityFunction
         Type = CreatureField.AbnormalAttackBasePercent,
         C = 100,
         K = 291,
-        LevelFactors = new() { new(60, 12744.27) }
+        LevelFactors = [new(60, 12744.27)]
     };
 
     public static AbilityFunction AbnormalDefend => new()
@@ -278,7 +275,7 @@ public class AbilityFunction
         Type = CreatureField.AttackAttributeBasePercent,
         C = 100,
         K = 291,
-        LevelFactors = new() { new(60, 12002.79) }
+        LevelFactors = [new(60, 12002.79)]
     };
 
     public static AbilityFunction AttackAbnormalHit => new()

@@ -3,9 +3,10 @@
 	  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 	  xmlns:hc="https://handyorg.github.io/handycontrol"
 	  xmlns:VM="clr-namespace:Xylia.Preview.UI.ViewModels"
-	  xmlns:UI="https://github.com/xyliaup/bns-preview-tools">
+	  xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d">
 	<TabControl BorderThickness="0">
-		<TabItem Header="{DynamicResource ItemList_Name}" >
+		<TabItem Header="{DynamicResource ItemList_Name}" d:Header="ItemList">
 			<Grid >
 				<Grid.RowDefinitions>
 					<RowDefinition Height="Auto" />
@@ -26,14 +27,13 @@
 						Style="{StaticResource SearchBarExtend}" hc:InfoElement.Title="{DynamicResource ItemList_Path}"
 						Text="{Binding ItemListPath}" Command="{Binding BrowerItemListCommand}"
 						Visibility="{Binding OnlyUpdate, Converter={StaticResource Boolean2VisibilityConverter}}" />
-				<CheckBox Grid.Row="2" Content="{DynamicResource ItemList_OnlyUpdate}" IsChecked="{Binding OnlyUpdate}" Margin="0 15 0 0"/>
-
+				<CheckBox Grid.Row="2" IsChecked="{Binding OnlyUpdate}" Margin="0 15 0 0" d:Content="OnlyUpdate" Content="{DynamicResource ItemList_OnlyUpdate}" />
 
 				<Button Grid.Row="0" Grid.Column="1" Content="{DynamicResource ItemList_Run}" Command="{Binding CreateItemListCommand}" Margin="0 20 0 0" />
 			</Grid>
 		</TabItem>
 
-		<TabItem Header="{DynamicResource Text_Preview}">
+		<TabItem Header="{DynamicResource Text_Preview}" d:Header="Preview">
 			<WrapPanel Orientation="Vertical">
 				<WrapPanel.Resources>
 					<Style TargetType="{x:Type Button}">
@@ -44,32 +44,17 @@
 
 
 				<hc:SearchBar x:Name="SearchItem_Rule" Style="{StaticResource SearchBarExtend}" Width="250" Margin="0 0 0 20" 
-					hc:InfoElement.Title="Search Item" hc:InfoElement.Placeholder="input item info  (id / alias / name)" 
-					Command="{Binding PreviewItemCommand}" CommandParameter="{Binding Text,RelativeSource={RelativeSource Self}}" />
-				<Button Content="ItemStore"     Command="{Binding PreviewCommand}" CommandParameter="Game_ItemStore.Game_ItemStoreScene" />
-				<Button Content="ItemMap"       Command="{Binding PreviewCommand}" CommandParameter="Game_ItemMap.ItemMapPanel" />
+					Command="{Binding PreviewItemCommand}" CommandParameter="{Binding Text,RelativeSource={RelativeSource Self}}"
+					hc:InfoElement.Title="{DynamicResource ItemPage_SearchItemRule_Title}" 
+					hc:InfoElement.Placeholder="{DynamicResource ItemPage_SearchItemRule_Placeholder}"/>
+
+				<Button Content="ItemStore"     Command="{Binding PreviewCommand}" CommandParameter="Game_ItemStore.LegacyItemStorePanel" />
 				<Button Content="Map"           Command="{Binding PreviewCommand}" CommandParameter="Game_Map.Game_MapScene" />
 				<Button Content="CharacterInfo" Command="{Binding PreviewCommand}" CommandParameter="Game_CharacterInfo.Game_CharacterInfo_Scene" />
 
-				<Button Content="Data GUI"	Click="DatabaseGui_Click" Background="Orange"/>
-				<Button Content="Data Clear"    Click="ClearCacheData_Click" Background="Orange"/>
+				<Button Click="DatabaseGui_Click" Background="Orange"	d:Content="Data GUI"	Content="{DynamicResource ItemPage_DataGUI}"/>
+				<Button Click="ClearCacheData_Click" Background="Orange" d:Content="Data Clear" Content="{DynamicResource ItemPage_DataClear}"/>
 			</WrapPanel>
-		</TabItem>
-
-		<TabItem x:Name="DEBUG" Header="DEBUG" Visibility="Collapsed">
-			<StackPanel>
-				<UI:BnsCustomLabelWidget>
-					<UI:BnsCustomLabelWidget.Text>
-						<![CDATA[<arg p="1"/> <arg p="2"/>]]>
-					</UI:BnsCustomLabelWidget.Text>
-					<UI:BnsCustomLabelWidget.Params>
-						<UI:ParamsBinding>
-							<Binding Path="GameFolder" Source="{x:Static VM:UserSettings.Default}" />
-							<Binding Path="GameFolder" Source="{x:Static VM:UserSettings.Default}" />
-						</UI:ParamsBinding>
-					</UI:BnsCustomLabelWidget.Params>
-				</UI:BnsCustomLabelWidget>
-			</StackPanel>
 		</TabItem>
 	</TabControl>
 </Page>

@@ -5,9 +5,9 @@ using Xylia.Preview.UI.Helpers;
 using Xylia.Preview.UI.ViewModels;
 
 namespace Xylia.Preview.UI.Services;
-internal class LogService
+internal class LogService : IService
 {
-	public static void Create()
+	public bool Register()
 	{
 		Console.SetOut(new ConsoleRedirect());
 
@@ -17,5 +17,8 @@ internal class LogService
 			.WriteTo.Debug(LogEventLevel.Warning, outputTemplate: template)
 			.WriteTo.File(Path.Combine(foloder, "Logs", $"{DateTime.Now:yyyy-MM-dd}.log"), outputTemplate: template)
 			.CreateLogger();
+
+
+		return true;
 	}
 }

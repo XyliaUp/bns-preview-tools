@@ -179,7 +179,7 @@ internal class BsonExpressionParser
 						UseSource = left.UseSource || right.UseSource,
 						IsScalar = true,
 						Fields = new HashSet<string>(StringComparer.OrdinalIgnoreCase).AddRange(left.Fields).AddRange(right.Fields),
-						Expression = Expression.Call(method, args.ToArray()),
+						Expression = Expression.Call(method, [.. args]),
 						Left = left,
 						Right = right,
 						Source = left.Source + src + right.Source
@@ -383,8 +383,8 @@ internal class BsonExpressionParser
 
 		src.Append("}");
 
-		var arrKeys = Expression.NewArrayInit(typeof(string), keys.ToArray());
-		var arrValues = Expression.NewArrayInit(typeof(AttributeValue), values.ToArray());
+		var arrKeys = Expression.NewArrayInit(typeof(string), [.. keys]);
+		var arrValues = Expression.NewArrayInit(typeof(AttributeValue), [.. values]);
 
 		// create linq expression for "{ doc }"
 		var docExpr = Expression.Call(_documentInitMethod, new Expression[] { arrKeys, arrValues });
@@ -673,8 +673,8 @@ internal class BsonExpressionParser
 			}
 		}
 
-		var arrKeys = Expression.NewArrayInit(typeof(string), keys.ToArray());
-		var arrValues = Expression.NewArrayInit(typeof(AttributeValue), values.ToArray());
+		var arrKeys = Expression.NewArrayInit(typeof(string), [.. keys]);
+		var arrValues = Expression.NewArrayInit(typeof(AttributeValue), [.. values]);
 
 		return new BsonExpression
 		{
@@ -810,7 +810,7 @@ internal class BsonExpressionParser
 			}
 		}
 
-		var arrValues = Expression.NewArrayInit(typeof(AttributeValue), values.ToArray());
+		var arrValues = Expression.NewArrayInit(typeof(AttributeValue), [.. values]);
 
 		return new BsonExpression
 		{
@@ -992,7 +992,7 @@ internal class BsonExpressionParser
 			UseSource = useSource,
 			IsScalar = method.ReturnType.IsEnumerable() == false,
 			Fields = fields,
-			Expression = Expression.Call(method, args.ToArray()),
+			Expression = Expression.Call(method, [.. args]),
 			Source = src.ToString()
 		};
 	}
@@ -1293,7 +1293,7 @@ internal class BsonExpressionParser
 			UseSource = useSource,
 			IsScalar = false,
 			Fields = fields,
-			Expression = Expression.Call(method, args.ToArray()),
+			Expression = Expression.Call(method, [.. args]),
 			Source = src.ToString()
 		};
 	}
@@ -1309,7 +1309,7 @@ internal class BsonExpressionParser
 		if (item0.IsScalar == false) throw new BnsDataException($"Expression `{item0.Source}` must be a scalar expression");
 		if (item1.IsScalar == false) throw new BnsDataException($"Expression `{item0.Source}` must be a scalar expression");
 
-		var arrValues = Expression.NewArrayInit(typeof(AttributeValue), values.ToArray());
+		var arrValues = Expression.NewArrayInit(typeof(AttributeValue), [.. values]);
 
 		return new BsonExpression
 		{

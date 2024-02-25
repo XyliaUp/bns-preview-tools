@@ -25,6 +25,7 @@
 		<DebugType>none</DebugType>
 		<IsPublishable>True</IsPublishable>
 	</PropertyGroup>
+
 	<!-- Temp Asset -->
 	<ItemGroup>
 		<EmbeddedResource Include="FModel\Resources\Json.xshd" />
@@ -139,7 +140,7 @@
 		<PackageReference Include="AvalonEdit" Version="6.3.0.90" />
 		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
 		<PackageReference Include="CSCore" Version="1.2.1.2" />
-		<PackageReference Include="EPPlus" Version="7.0.3" />
+		<PackageReference Include="EPPlus" Version="7.0.6" />
 		<PackageReference Include="ImGui.NET" Version="1.89.9.3" />
 		<PackageReference Include="LiveCharts.Wpf" Version="0.9.7" />
 		<PackageReference Include="Microsoft.Web.WebView2" Version="1.0.2210.55" />
@@ -154,33 +155,22 @@
 		<PackageReference Include="Vanara.PInvoke.User32" Version="3.4.17" />
 	</ItemGroup>
 	<ItemGroup>
-		<Content Include="Properties\Query.ico" />
-		<ApplicationDefinition Update="App.xaml" SubType="Designer" />
-		<EmbeddedResource Update="Resources\Strings\Strings.resx" />
-		<EmbeddedResource Update="Resources\Strings\Strings.zh-Hans.resx" />
-
-		<Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
-		<None Update="Properties\AssemblyVersion.tt" Generator="TextTemplatingFileGenerator" LastGenOutput="AssemblyVersion.cs" />
-		<Compile Update="Content\Art\GameUI\Scene\Game_ItemMap\BnsCustomGraphMapWidget.xaml.cs">
-		  <SubType>Code</SubType>
-		</Compile>
-		<Compile Update="Properties\AssemblyVersion.cs" AutoGen="True" DesignTime="True" DependentUpon="AssemblyVersion.tt" />
+		<Reference Include="HandyControl">
+			<HintPath>..\..\..\..\C#\HandyControl\HandyControl\src\Net_GE45\HandyControl_Net_GE45\bin\Debug\net7.0-windows\HandyControl.dll</HintPath>
+		</Reference>
 	</ItemGroup>
-
 
 	<ItemGroup>
 		<Resource Include="Resources\Images\*" />
 		<Resource Include="Resources\Images\*\*" />
-		<Resource Include="Resources\Fonts\segmdl2.ttf" />
+		<Resource Include="Resources\Fonts\*" />
 		<Resource Include="Resources\Xshd\*.xshd" />
 		<Resource Include="Content\Art\GameUI\Resource\*\*" />
 	</ItemGroup>
 
-
-
 	<ItemGroup>
-	  <Reference Include="HandyControl">
-	    <HintPath>..\..\..\..\..\HandyControl\HandyControl\src\Net_GE45\HandyControl_Net_GE45\bin\Debug\net7.0-windows\HandyControl.dll</HintPath>
-	  </Reference>
+		<Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
+		<None Update="Properties\AssemblyVersion.tt" Generator="TextTemplatingFileGenerator" LastGenOutput="AssemblyVersion.cs" />
+		<Compile Update="Properties\AssemblyVersion.cs" AutoGen="True" DesignTime="True" DependentUpon="AssemblyVersion.tt" />
 	</ItemGroup>
 </Project>

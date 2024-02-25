@@ -52,7 +52,7 @@ public partial class ProcessFloatWindow
 			var value = (process.TotalProcessorTime - prevCpuTime).TotalMilliseconds / Interval / Environment.ProcessorCount;
 			prevCpuTime = process.TotalProcessorTime;
 
-			Application.Current.Dispatcher.Invoke(() =>
+			Dispatcher.Invoke(() =>
 			{
 				UsedCPU.Text = value.ToString("P0");
 				UsedMemory.Text = BinaryExtension.GetReadableSize(size);

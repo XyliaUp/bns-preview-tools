@@ -27,9 +27,9 @@ public struct Integer(double Value)
 
 	private readonly string ToMoney(bool IsDefault, bool Tooltip = true)
 	{
-		var gold = Value / 10000;
-		var silver = Value % 10000 / 100;
-		var copper = Value % 100;
+		var gold = (int)(Value / 10000);
+		var silver = (int)(Value % 10000 / 100);
+		var copper = (int)(Value % 100);
 
 		var builder = new StringBuilder();
 		if (IsDefault || gold > 0)

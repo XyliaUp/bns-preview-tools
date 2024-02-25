@@ -1,4 +1,6 @@
-﻿using Xylia.Preview.Data.Helpers;
+﻿using Xylia.Preview.Common.Attributes;
+using Xylia.Preview.Data.Common.DataStruct;
+using Xylia.Preview.Data.Helpers;
 using Xylia.Preview.Data.Models.Sequence;
 using static Xylia.Preview.Data.Models.Item;
 using static Xylia.Preview.Data.Models.Item.Accessory;
@@ -121,8 +123,81 @@ public sealed class ItemTransformRecipe : ModelElement
 	public Ref<RandomboxPreview> TitleReward { get; set; }
 
 	public bool UseRandom { get; set; }
+
+	public WarningSeq Warning { get; set; }
 	#endregion
 
+	#region Sequence
+	public enum WarningSeq
+	{
+		None,
+
+		[Text("Transform.Warning.fail")]
+		Fail,
+
+		[Text("Transform.Warning.stuck")]
+		Stuck,
+
+		[Text("Transform.Warning.gemslotreset")]
+		Gemslotreset,
+
+		[Text("Transform.Warning.fail-gemslotreset")]
+		FailGemslotreset,
+
+		[Text("Transform.Warning.stuck-gemslotreset")]
+		StuckGemslotreset,
+
+		[Text("Transform.Warning.change")]
+		Change,
+
+		[Text("Transform.Warning.lower")]
+		Lower,
+
+		[Text("Transform.Warning.lower-gemslotreset")]
+		LowerGemslotreset,
+
+		[Text("Transform.Warning.partialfail")]
+		Partialfail,
+
+		[Text("Transform.Warning.tradeimpossible")]
+		Tradeimpossible,
+
+		[Text("UI.Sewing.Warning.DeleteParticle")]
+		DeleteParticle,
+
+		[Text("UI.Sewing.Warning.DeleteDesign")]
+		DeleteDesign,
+
+		[Text("Transform.Warning.spiritreset")]
+		Spiritreset,
+
+		[Text("Transform.Warning.fail-spiritreset")]
+		FailSpiritreset,
+
+		[Text("Transform.Warning.gemslotreset-spiritreset")]
+		GemslotresetSpiritreset,
+
+		[Text("Transform.Warning.fail-gemslotreset-spiritreset")]
+		FailGemslotresetSpiritreset,
+
+		[Text("Transform.Warning.lower-spiritreset")]
+		LowerSpiritreset,
+
+		[Text("Transform.Warning.lower-gemslotreset-spiritreset")]
+		LowerGemslotresetSpiritreset,
+
+		[Text("Transform.Warning.partialfail-spiritreset")]
+		PartialfailSpiritreset,
+
+		[Text("Transform.Warning.cannot-division")]
+		CannotDivision,
+
+		[Text("Transform.Warning.fail-cannot-division")]
+		FailCannotDivision,
+
+		COUNT
+	}
+	#endregion
 
 	#region Methods
 	protected internal override void LoadHiddenField()
@@ -139,12 +214,12 @@ public sealed class ItemTransformRecipe : ModelElement
 		{
 			if (this.Attributes["fixed-ingredient-" + i] != null && this.Attributes["fixed-ingredient-stack-count-" + i] is null)
 			{
-				this.Attributes["fixed-ingredient-stack-count-" + i]  = 1;
+				this.Attributes["fixed-ingredient-stack-count-" + i] = 1;
 			}
 		}
 
 
-		var UseRandom = this.Attributes["use-random"] == "y";
+		var UseRandom = this.Attributes.Get<BnsBoolean>("use-random");
 		if (UseRandom)
 		{
 			if (this.Attributes["random-item-success-probability"] != null)
@@ -229,6 +304,22 @@ public sealed class ItemTransformRecipe : ModelElement
 				}
 			}
 		}
+	}
+
+	internal ItemRecipeHelper CreateRecipe()
+	{
+		var MainItem = SubIngredient.Select(ingredient => ingredient.Instance).FirstOrDefault() as Item;
+		var MainItemCount = SubIngredientStackCount.FirstOrDefault();
+
+		return new ItemRecipeHelper
+		{
+			MainItem = MainItem,
+			MainItemCount = MainItemCount,
+			SubItem = this.FixedIngredient.Select(x => x.Instance).ToArray(),
+			SubItemCount = this.FixedIngredientStackCount,
+			Money = MoneyCost,
+			Guide = Warning.GetText(),
+		};
 	}
 
 	public static IEnumerable<ItemTransformRecipe> QueryRecipe(Item Item) => FileCache.Data.Get<ItemTransformRecipe>().Where(o =>

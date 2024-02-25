@@ -1,8 +1,0 @@
-﻿<BnsCustomUISceneWidget 
-	xmlns="https://github.com/xyliaup/bns-preview-tools"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-	xmlns:l="clr-namespace:Xylia.Preview.UI.GameUI.Scene.Game_ItemMap"
-	x:Class="Xylia.Preview.UI.GameUI.Scene.Game_ItemMap.Game_ItemMapScene">
-
-	<l:ItemMapPanel x:Name="ItemMapPanel_C" Width="1284" Height="813" />
-</BnsCustomUISceneWidget>

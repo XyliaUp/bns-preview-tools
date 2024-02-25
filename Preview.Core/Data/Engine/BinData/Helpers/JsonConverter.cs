@@ -43,10 +43,10 @@ public class RecordConverter : JsonConverter<Record>
 		writer.WriteStartObject();
 
 		writer.WritePropertyName("id");
-		serializer.Serialize(writer, value.RecordId);
+		serializer.Serialize(writer, value.PrimaryKey.Id);
 
 		writer.WritePropertyName("variation");
-		serializer.Serialize(writer, value.RecordVariationId);
+		serializer.Serialize(writer, value.PrimaryKey.Variant);
 
 		if (value.SubclassType != -1)
 		{

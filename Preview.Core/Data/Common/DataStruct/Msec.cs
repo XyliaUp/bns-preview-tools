@@ -80,7 +80,6 @@ public struct Msec : IFormattable
 }
 
 
-
 public static class MsecFormat
 {
 	public enum MsecFormatType

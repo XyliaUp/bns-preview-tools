@@ -1,1 +1,2 @@
 dotnet publish -c Release -p:PublishProfile="/Properties/PublishProfiles/FolderProfile.pubxml" Preview.UI
+"D:\Windows Kits\10\bin\10.0.22621.0\x64\signtool.exe" sign /n "Ω£¡È–°÷˙ ÷" /fd SHA256 /t http://timestamp.digicert.com "Preview.UI\bin\Release\Preview.UI.exe"

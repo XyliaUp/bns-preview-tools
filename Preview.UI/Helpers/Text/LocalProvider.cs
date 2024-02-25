@@ -34,7 +34,7 @@ public class LocalProvider(string Source) : DefaultProvider
 
 				LocalData = new FileInfo(Source);
 				Is64Bit = LocalData.Bit64;
-				ReadFrom(LocalData.EnumerateFiles(Is64Bit ? "localfile64.bin" : "localfile.bin").FirstOrDefault()?.Data, Is64Bit);
+				ReadFrom(LocalData.SearchFiles(Is64Bit ? "localfile64.bin" : "localfile.bin").FirstOrDefault()?.Data, Is64Bit);
 
 				// detect text table type
 				if (definitions.HasHeader) Detect = new DatafileDirect(definitions.Header);

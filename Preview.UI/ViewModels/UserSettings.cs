@@ -147,12 +147,18 @@ public partial class UserSettings : Settings
 	#region Preview 
 	public ObservableCollection<ELanguage> Languages => new(StringHelper.EnumerateLanguages());
 
+	/// <summary>
+	/// Gets or sets public language
+	/// </summary>
 	public ELanguage Language
 	{
 		get => GetValue().ToEnum<ELanguage>();
-		set => SetValue(StringHelper.Instance.Language = value);
+		set => SetValue(StringHelper.Current.Language = value);
 	}
 
+	/// <summary>
+	/// Gets or sets <see cref="BnsCustomLabelWidget"/> Copy Mode
+	/// </summary>
 	public CopyMode CopyMode
 	{
 		get => (CopyMode)GetValue().ToInt32();
@@ -178,7 +184,6 @@ public partial class UserSettings : Settings
 			else ProcessFloatWindow.Instance.Close();
 		}
 	}
-
 
 	public int NoticeId { get => GetValue().ToInt32(); set => SetValue(value); }
 	#endregion

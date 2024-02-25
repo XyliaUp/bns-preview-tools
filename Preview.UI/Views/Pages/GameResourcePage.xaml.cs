@@ -10,7 +10,7 @@ using Xylia.Preview.UI.Helpers.Output.Textures;
 using Xylia.Preview.UI.ViewModels;
 
 namespace Xylia.Preview.UI.Views.Pages;
-public partial class GameResourcePage : Page
+public partial class GameResourcePage
 {
 	#region Constructor
 	readonly GameResourcePageViewModel _viewModel;

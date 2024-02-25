@@ -9,18 +9,22 @@ using HandyControl.Data;
 
 using Xylia.Preview.Data.Engine.BinData.Models;
 using Xylia.Preview.Data.Models;
+using Xylia.Preview.UI.Common.Converters;
 using Xylia.Preview.UI.Interactivity;
 
 namespace Xylia.Preview.UI.Views;
 public partial class TableView
 {
-	#region Ctors
-	private ContextMenu ItemMenu;
+	#region Constructorss
+	private readonly ContextMenu ItemMenu;
+	private readonly RecordNameConverter NameConverter;
 
 	public TableView()
 	{
 		InitializeComponent();
+
 		ItemMenu = (ContextMenu)this.TryFindResource("ItemMenu");
+		NameConverter = new RecordNameConverter();
 	}
 	#endregion
 
@@ -49,11 +53,13 @@ public partial class TableView
 	/// <summary>
 	/// filter item
 	/// </summary>	
-	public static bool Filter(object item, string rule)
+	public bool Filter(object item, string rule)
 	{
 		if (item is Record record)
 		{
-			return record.ToString().Contains(rule, StringComparison.OrdinalIgnoreCase);
+			if (record.ToString().Contains(rule, StringComparison.OrdinalIgnoreCase)) return true;
+			if (record.PrimaryKey.ToString().Contains(rule, StringComparison.OrdinalIgnoreCase)) return true;
+			if (NameConverter.Convert(record).Contains(rule, StringComparison.OrdinalIgnoreCase)) return true;
 		}
 
 		return false;

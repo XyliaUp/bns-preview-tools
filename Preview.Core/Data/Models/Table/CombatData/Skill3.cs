@@ -88,37 +88,6 @@ public partial class Skill3 : ModelElement
 		public sbyte BoundRecycleGroupId { get; set; }
 
 
-		public enum ConsumeType
-		{
-			Point,
-
-			PointBelow,
-
-			PointAbove,
-
-			BaseMaxPercent,
-
-			TotalMaxPercent,
-
-			CurrentPercent,
-		}
-
-		public short ConsumeHpValue { get; set; }
-
-		public ConsumeType ConsumeHpType { get; set; }
-
-		[Repeat(2)]
-		public short[] ConsumeSpValue { get; set; }
-
-		[Repeat(2)]
-		public ConsumeType[] ConsumeSpType { get; set; }
-
-
-		public short ConsumeSummonedHpValue { get; set; }
-
-		public ConsumeType ConsumeSummonedHpType { get; set; }
-
-
 		public sbyte FlowRepeat { get; set; }
 
 		public sbyte ExpandedFlowRepeatCount { get; set; }

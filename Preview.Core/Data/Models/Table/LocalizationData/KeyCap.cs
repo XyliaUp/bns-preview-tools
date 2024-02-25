@@ -1,4 +1,4 @@
-﻿using SkiaSharp;
+﻿using CUE4Parse.BNS.Assets.Exports;
 using Xylia.Preview.Common.Extension;
 using Xylia.Preview.Data.Helpers;
 using Xylia.Preview.Data.Models.Sequence;
@@ -9,7 +9,7 @@ public sealed class KeyCap : ModelElement
 	#region Methods
 	public KeyCode KeyCode => this.Attributes["key-code"].ToEnum<KeyCode>();
 
-	public SKBitmap Icon => this.Attributes["icon"]?.ToString().GetIcon();
+	public ImageProperty Icon => IconTexture.Parse(Attributes.Get<string>("icon"));
 
 	public string Image => this.Attributes["image"].GetText();
 

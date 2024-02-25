@@ -102,11 +102,26 @@ public partial class Item
 	{
 		public WeaponEnchantGemSlotTypeSeq WeaponEnchantGemSlotType { get; set; }
 
+		public AccessoryEnchantGemEquipAccessoryTypeSeq AccessoryEnchantGemEquipAccessoryType { get; set; }
+
+
+
 		public enum WeaponEnchantGemSlotTypeSeq
 		{
 			None,
 			First,
 			Second,
+		}
+
+		public enum AccessoryEnchantGemEquipAccessoryTypeSeq
+		{
+			None,
+			Ring,
+			Earring,
+			Necklace,
+			Belt,
+			Bracelet,
+			Gloves,
 		}
 	}
 

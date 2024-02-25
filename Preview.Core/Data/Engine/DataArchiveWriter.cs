@@ -1,4 +1,5 @@
 ﻿using System.Runtime.CompilerServices;
+using System.Text;
 
 [assembly: InternalsVisibleTo("Preview.Tests")]
 namespace Xylia.Preview.Data.Engine;
@@ -6,7 +7,7 @@ internal class DataArchiveWriter : MemoryStream
 {
 	public bool Is64Bit { get; set; }
 
-	public DataArchiveWriter(bool is64Bit)
+	public DataArchiveWriter(bool is64Bit = false)
 	{
 		Is64Bit = is64Bit;
 	}
@@ -34,6 +35,15 @@ internal class DataArchiveWriter : MemoryStream
 	public virtual void Write(byte[] data)
 	{
 		this.Write(data, 0, data.Length);
+	}
+
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	public void WriteString(string value)
+	{
+		var buffer = Encoding.UTF8.GetBytes(value);
+
+		Write(buffer.Length);
+		Write(buffer);
 	}
 
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]

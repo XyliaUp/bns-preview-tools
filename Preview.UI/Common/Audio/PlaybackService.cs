@@ -181,7 +181,7 @@ public class PlaybackService
 	}
 	#endregion
 
-	#region Ctors
+	#region Constructorss
 	public PlaybackService()
 	{
 		this.context = SynchronizationContext.Current;
@@ -633,11 +633,10 @@ public class PlaybackService
 		return audioDevices;
 	}
 
-	public async Task SwitchAudioDeviceAsync(AudioDevice device)
+	public void SwitchAudioDevice(AudioDevice device)
 	{
 		this.audioDevice = device;
-
-		await Task.Run(() => this.player?.SwitchAudioDevice(this.audioDevice));
+		this.player?.SwitchAudioDevice(this.audioDevice);
 	}
 
 	private async Task SetAudioDeviceAsync()

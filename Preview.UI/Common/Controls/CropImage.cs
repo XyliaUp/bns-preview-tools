@@ -18,7 +18,7 @@ public class CropImage : Canvas
 	private double offsetX, offsetY;
 	#endregion
 
-	#region Ctor
+	#region Constructors
 	public CropImage()
 	{
 		_border = new Border()
@@ -283,7 +283,7 @@ public class CropAdorner : Adorner
 	private readonly FrameworkElement parent;
 	#endregion
 
-	#region Ctor
+	#region Constructors
 	public CropAdorner(UIElement adorned) : base(adorned)
 	{
 		parent = FindParent(adorned) as FrameworkElement;

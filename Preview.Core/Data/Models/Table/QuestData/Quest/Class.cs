@@ -77,7 +77,6 @@ public class NextQuest : ModelElement
 {
 	public Ref<Faction> Faction { get; set; }
 
-	[Repeat(15)]
 	public JobSeq[] Job { get; set; }
 
 	public Ref<Quest> Quest { get; set; }

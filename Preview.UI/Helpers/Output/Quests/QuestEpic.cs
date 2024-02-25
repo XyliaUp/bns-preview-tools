@@ -21,7 +21,7 @@ public sealed class QuestEpic : OutSet
 			Row++;
 			int column = 1;
 
-			sheet.Cells[Row, column++].SetValue(data.Source.RecordId);
+			sheet.Cells[Row, column++].SetValue(data.Source.PrimaryKey);
 			sheet.Cells[Row, column++].SetValue(data);
 			sheet.Cells[Row, column++].SetValue(data.Text);
 			sheet.Cells[Row, column++].SetValue(data.Title);

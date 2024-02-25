@@ -19,9 +19,9 @@ public static class PackageKey
 	#endregion
 
 	#region XOR
-	public static byte[] XOR_KEY_2014 => new byte[] { 240, 200, 186, 170, 18, 31, 130, 159, 172, 24, 84, 33, 138, 58 };
+	public static byte[] XOR_KEY_2014 => new byte[] { 164, 159, 216, 179, 246, 142, 57, 194, 45, 224, 97, 117, 92, 75, 26, 7 };
 
-	public static byte[] XOR_KEY_2021 => new byte[] { 164, 159, 216, 179, 246, 142, 57, 194, 45, 224, 97, 117, 92, 75, 26, 7 };
+	public static byte[] XOR_KEY_2021 => new byte[] { 15, 19, 93, 85, 72, 248, 65, 249, 53, 24, 42, 132, 81, 92 };
 	#endregion
 
 	#region RSA

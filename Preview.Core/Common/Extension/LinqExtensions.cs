@@ -1,15 +1,19 @@
-﻿namespace Xylia.Preview.Common.Extension;
+﻿using System.Collections;
+
+namespace Xylia.Preview.Common.Extension;
 public static class LinqExtensions
 {
+	#region IEnumerable
 	public static void ForEach<T>(this IEnumerable<T> collection, Action<T> action)
 	{
 		foreach (var item in collection)
 			action(item);
 	}
 
-	public static bool IsEmpty<T>(this IEnumerable<T> source)
+	public static void ForEach(this IEnumerable collection, Action<object> action)
 	{
-		return source == null || !source.Any();
+		foreach (var item in collection)
+			action(item);
 	}
 
 	public static List<T> Randomize<T>(this IEnumerable<T> source)
@@ -58,6 +62,11 @@ public static class LinqExtensions
 	}
 
 
+	public static bool IsEmpty<T>(this IEnumerable<T> source) => source == null || !source.Any();
+
+	public static bool IsEmpty<T>(this ICollection<T> source) => source == null || source.Count == 0;
+	#endregion
+
 
 	#region Array
 	public static void For<T>(ref T[] array, int size, Func<int, T> func)
@@ -83,6 +92,17 @@ public static class LinqExtensions
 
 			func(item, idx);
 		}
+	}
+
+	public static Tuple<T1, T2>[] Combine<T1, T2>(T1[] array1, T2[] array2)
+	{
+		if (array1 is null) return null;
+
+		var source = For(array1.Length, (x) => new Tuple<T1, T2>(
+			array1[x - 1],
+			array2[x - 1]));
+
+		return source.Where(x => x.Item1 != null && x.Item2 != null).ToArray();
 	}
 	#endregion
 }

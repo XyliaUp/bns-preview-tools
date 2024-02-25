@@ -1,7 +1,6 @@
 using System.ComponentModel;
 using System.Diagnostics;
-
-using Xylia.Preview.Data.Engine.DatData;
+using System.IO;
 using Xylia.Preview.Data.Helpers;
 using Xylia.Preview.Data.Models.Config;
 using Xylia.Preview.Data.Models.Creature;
@@ -21,9 +20,8 @@ public partial class Game_CharacterInfo_Scene
 	{
 		InitializeComponent();
 
-		var config = (FileCache.Data.Provider as DefaultProvider)?.ConfigData.EnumerateFiles("release.config2.xml").FirstOrDefault();
-		var release = ConfigTable.LoadFrom<Release>(config?.Data);
-		if (release is null) throw new Exception("invalid define");
+		var config = FileCache.Data.Provider?.GetFiles("release.config2.xml").FirstOrDefault();
+		var release = ConfigTable.LoadFrom<Release>(config) ?? throw new FileNotFoundException();
 
 		var group = release.group.First(x => x.name == "in-game-web");
 		CharacterInfoUrl = group["character-info-url"]?.value;
@@ -80,7 +78,6 @@ public partial class Game_CharacterInfo_Scene
 		//CharacterInfoPanelWeb.Dispose();
 		CharacterInfoPanelWeb = null;
 	}
-
 
 	public void InitUrl(Creature creature)
 	{

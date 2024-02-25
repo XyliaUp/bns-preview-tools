@@ -8,7 +8,7 @@ using Xylia.Preview.Properties;
 namespace Xylia.Preview.Data.Client;
 public class BnsDatabase : IEngine, IDisposable
 {
-	#region Ctor
+	#region Constructorss
 	public IDataProvider Provider { get; protected set; }
 
 	/// <summary>
@@ -47,11 +47,13 @@ public class BnsDatabase : IEngine, IDisposable
 	}
 	#endregion
 
-
-	#region Model Collections
+	#region GameDataTable
 	readonly Dictionary<Table, object> _tables = new();
 
-	public GameDataTable<T> Get<T>(string name = null, bool reload = false) where T : ModelElement => Get<T>(Provider.Tables[name ?? typeof(T).Name], reload);
+	public Table Get(string name) => Provider.Tables[name];
+
+	public GameDataTable<T> Get<T>(string name = null, bool reload = false) where T : ModelElement => 
+		Get<T>(Provider.Tables[name ?? typeof(T).Name], reload);
 
 	public GameDataTable<T> Get<T>(Table table, bool reload) where T : ModelElement
 	{
@@ -65,14 +67,9 @@ public class BnsDatabase : IEngine, IDisposable
 			return Models as GameDataTable<T>;
 		}
 	}
-
-
-	public GameDataTable<IconTexture> IconTexture => Get<IconTexture>();
-	public GameDataTable<Item> Item => Get<Item>();
-	public GameDataTable<Text> Text => Get<Text>();
 	#endregion
 
-	#region Execute
+	#region Database
 	/// <summary>
 	/// Execute SQL commands and return as data reader
 	/// </summary>
@@ -172,12 +169,16 @@ public class BnsDatabase : IEngine, IDisposable
 	#endregion
 
 
+	#region Interface
 	public void Dispose()
 	{
 		Provider.Dispose();
 		Provider = null;
 
+		_tables.Clear();
+
 		GC.SuppressFinalize(this);
 		GC.Collect();
 	}
+	#endregion
 }

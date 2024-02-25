@@ -115,7 +115,7 @@
 				<StackPanel Grid.Row="5" Grid.ColumnSpan="2">
 					<hc:UniformSpacingPanel Margin="0 15 0 0" Spacing="10">
 						<CheckBox x:Name="FilterMode" Content="{DynamicResource IconOut_FilterMode}" ToolTip="{DynamicResource IconOut_FilterMode_Tooltip}" />
-						<CheckBox x:Name="UseBackground" Content="{DynamicResource IconOut_UseBackground}" ToolTip="{DynamicResource IconOut_UseBackground_Tooltip}" />
+						<CheckBox x:Name="UseBackground" Content="{DynamicResource IconOut_UseBackground}" ToolTip="{DynamicResource IconOut_UseBackground_Tooltip}" IsChecked="True"/>
 					</hc:UniformSpacingPanel>
 
 					<hc:Divider />

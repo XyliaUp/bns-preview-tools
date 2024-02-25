@@ -1,0 +1,146 @@
+﻿<BnsCustomWindowWidget x:Class="Xylia.Preview.UI.GameUI.Scene.Game_Tooltip2.ItemGraphReceipeTooltipPanel"
+	xmlns="https://github.com/xyliaup/bns-preview-tools"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:s="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d" d:DesignWidth="350" d:DesignHeight="250" Width="350" Height="250">
+	<BnsCustomWindowWidget.BaseImageProperty>
+		<ImageProperty BaseImageTexture="BNSR/Content/Art/UI/GameUI/Resource/GameUI_Window_R/BNSR_Window.BNSR_Window" ImageUV="7 7" ImageUVSize="49 49" Opacity="0" />
+	</BnsCustomWindowWidget.BaseImageProperty>
+	<BnsCustomImageWidget Name="ItemGraphReceipeTooltipPanel_1" LayoutData.Anchors="0.5 0 0.5 0" LayoutData.Offsets="0 15 350.00018 241.00002" LayoutData.Alignments="0 0">
+		<!--
+		<BnsCustomImageWidget.BaseImageProperty>
+			<ImageProperty Path="BNSR/Content/Art/UI/GameUI/Resource/GameUI_Window/GameUI_New_Scene_00.GameUI_New_Scene_00" ImageUV="588 2" ImageUVSize="27 28" Opacity="0" />
+		</BnsCustomImageWidget.BaseImageProperty>
+		-->
+		<BnsCustomLabelWidget Name="ItemGraphReceipeTooltipPanel_1_Title" LayoutData.Anchors="0 0 1 0" LayoutData.Offsets="10 10 10 35.00099" LayoutData.Alignments="0 0" String="Item Name성장 재료Item Name성장 재료Item Name성장 재료" Text="{Binding Title}" />
+		<BnsCustomWindowWidget Name="ItemGraphReceipeTooltipPanel_1_ItemHolder" LayoutData.Anchors="0 0 0 0" LayoutData.Offsets="12 55.00099 299.99982 53" LayoutData.Alignments="0 0">
+			<BnsCustomImageWidget Name="ItemGraphReceipeTooltipPanel_1_ItemIcon" LayoutData.Anchors="0 0 0 0" LayoutData.Offsets="3 0 50 50.000015" LayoutData.Alignments="0 0" BaseImageProperty="{Binding Recipe.MainItem.Icon}" />
+			<BnsCustomLabelWidget Name="ItemGraphReceipeTooltipPanel_1_ItemIcon_Name" LayoutData.Anchors="0 0 0 0" LayoutData.Offsets="65 0 235.00012 16.00161" LayoutData.Alignments="0 0" String="Item Name" Text="{Binding Recipe.MainItem.ItemName}" />
+			<BnsCustomLabelWidget Name="ItemGraphReceipeTooltipPanel_1_ItemIcon_Desc" LayoutData.Anchors="0 0 0 0" LayoutData.Offsets="65 21.00161 235.00012 14.00222" LayoutData.Alignments="0 0" String="획득처 1" Text="{Binding Recipe.MainItem.AcquireRoute}" />
+		</BnsCustomWindowWidget>
+		<BnsCustomImageWidget Name="ItemGraphReceipeTooltipPanel_1_MeterialItemHolder" LayoutData.Anchors="0 0 0 0" LayoutData.Offsets="12 113.00099 298 32.00003" LayoutData.Alignments="0 0">
+			<s:ItemsControl ItemsSource="{Binding Recipe.SubItemList}" >
+				<s:ItemsControl.ItemsPanel>
+					<s:ItemsPanelTemplate>
+						<s:StackPanel Orientation="Horizontal"/>
+					</s:ItemsPanelTemplate>
+				</s:ItemsControl.ItemsPanel>
+				<s:ItemsControl.ItemTemplate>
+					<s:DataTemplate>
+						<BnsCustomImageWidget BaseImageProperty="{Binding Item1.Icon}" ToolTip="{Binding Item1.ItemNameOnly}" Height="32" Width="32" Margin="3 0 0 0" />
+					</s:DataTemplate>
+				</s:ItemsControl.ItemTemplate>
+			</s:ItemsControl>
+		</BnsCustomImageWidget>
+		<BnsCustomLabelWidget Name="ItemGraphReceipeTooltipPanel_1_Price" LayoutData.Anchors="0 0 1 0" LayoutData.Offsets="10 150.00102 10 20.001007" LayoutData.Alignments="0 0" String="Price" Text="{Binding Recipe.Price}"/>
+		<BnsCustomLabelWidget Name="ItemGraphReceipeTooltipPanel_1_Guide" LayoutData.Anchors="0 0 1 0" LayoutData.Offsets="10 195.00362 10 12.001007" LayoutData.Alignments="0 0" String="Guide" Text="{Binding Recipe.Guide}"/>
+		<BnsCustomLabelWidget Name="ItemGraphReceipeTooltipPanel_1_DiscountPrice" LayoutData.Anchors="0 0 1 0" LayoutData.Offsets="10 170.00203 10 20.001587" LayoutData.Alignments="0 0" String="Price" Text="{Binding Recipe.DiscountPrice}"/>
+		<BnsCustomImageWidget Name="ItemGraphReceipeTooltipPanel_1_HorizontalLine" LayoutData.Anchors="0 1 1 1" LayoutData.Offsets="0 0 0 1" LayoutData.Alignments="0 0">
+			<BnsCustomImageWidget.BaseImageProperty>
+				<ImageProperty BaseImageTexture="BNSR/Content/Art/UI/GameUI/Resource/GameUI_Window_R/BNSR_UIElement.BNSR_UIElement" ImageUV="199 61" ImageUVSize="5 1" Opacity="0.1" />
+			</BnsCustomImageWidget.BaseImageProperty>
+		</BnsCustomImageWidget>
+	</BnsCustomImageWidget>
+	<BnsCustomImageWidget Name="ItemGraphReceipeTooltipPanel_2" LayoutData.Anchors="0.5 0 0.5 0" LayoutData.Offsets="0 255.99998 350.00018 241.00006" LayoutData.Alignments="0 0">
+		<BnsCustomImageWidget.BaseImageProperty>
+			<ImageProperty BaseImageTexture="BNSR/Content/Art/UI/GameUI/Resource/GameUI_Window/GameUI_New_Scene_00.GameUI_New_Scene_00" ImageUV="588 2" ImageUVSize="27 28" Opacity="0" />
+		</BnsCustomImageWidget.BaseImageProperty>
+		<BnsCustomLabelWidget Name="ItemGraphReceipeTooltipPanel_2_Title" LayoutData.Anchors="0 0 1 0" LayoutData.Offsets="10 10 10 35.001007" LayoutData.Alignments="0 0" String="Item Name성장 재료Item Name성장 재료Item Name성장 재료" />
+		<BnsCustomWindowWidget Name="ItemGraphReceipeTooltipPanel_2_ItemHolder" LayoutData.Anchors="0 0 0 0" LayoutData.Offsets="12 55.001007 299.9997 53" LayoutData.Alignments="0 0">
+			<BnsCustomImageWidget Name="ItemGraphReceipeTooltipPanel_2_ItemIcon" LayoutData.Anchors="0 0 0 0" LayoutData.Offsets="3 0 50 49.99994" LayoutData.Alignments="0 0">
+				<BnsCustomImageWidget.BaseImageProperty>
+					<ImageProperty BaseImageTexture="BNSR/Content/Art/UI/GameUI/Resource/GameUI_Window/GameUI_New_Scene_00.GameUI_New_Scene_00" ImageUV="133 1" ImageUVSize="46 46" Opacity="0" />
+				</BnsCustomImageWidget.BaseImageProperty>
+			</BnsCustomImageWidget>
+			<BnsCustomLabelWidget Name="ItemGraphReceipeTooltipPanel_2_ItemIcon_Name" LayoutData.Anchors="0 0 0 0" LayoutData.Offsets="65 0 235.00012 16.001617" LayoutData.Alignments="0 0" String="Item Name" />
+			<BnsCustomLabelWidget Name="ItemGraphReceipeTooltipPanel_2_ItemIcon_Desc" LayoutData.Anchors="0 0 0 0" LayoutData.Offsets="65 21.001617 235.00012 14.002228" LayoutData.Alignments="0 0" String="획득처 1" />
+		</BnsCustomWindowWidget>
+		<BnsCustomImageWidget Name="ItemGraphReceipeTooltipPanel_2_MeterialItemHolder" LayoutData.Anchors="0 0 0 0" LayoutData.Offsets="12 113.00101 298 32" LayoutData.Alignments="0 0">
+			<BnsCustomImageWidget Name="ItemGraphReceipeTooltipPanel_2_MeterialItem_1" LayoutData.Anchors="0 0 0 0" LayoutData.Offsets="0 0 32 32" LayoutData.Alignments="0 0" />
+			<BnsCustomImageWidget Name="ItemGraphReceipeTooltipPanel_2_MeterialItem_2" LayoutData.Anchors="0 0 0 0" LayoutData.Offsets="38 0 32.00006 32" LayoutData.Alignments="0 0" />
+			<BnsCustomImageWidget Name="ItemGraphReceipeTooltipPanel_2_MeterialItem_3" LayoutData.Anchors="0 0 0 0" LayoutData.Offsets="76.00006 0 31.999878 32" LayoutData.Alignments="0 0" />
+			<BnsCustomImageWidget Name="ItemGraphReceipeTooltipPanel_2_MeterialItem_4" LayoutData.Anchors="0 0 0 0" LayoutData.Offsets="113.99988 0 32.000122 32" LayoutData.Alignments="0 0" />
+			<BnsCustomImageWidget Name="ItemGraphReceipeTooltipPanel_2_MeterialItem_5" LayoutData.Anchors="0 0 0 0" LayoutData.Offsets="152 0 32.000122 32" LayoutData.Alignments="0 0" />
+			<BnsCustomImageWidget Name="ItemGraphReceipeTooltipPanel_2_MeterialItem_6" LayoutData.Anchors="0 0 0 0" LayoutData.Offsets="190.00012 0 31.999878 32" LayoutData.Alignments="0 0" />
+			<BnsCustomImageWidget Name="ItemGraphReceipeTooltipPanel_2_MeterialItem_7" LayoutData.Anchors="0 0 0 0" LayoutData.Offsets="228 0 32.000122 32" LayoutData.Alignments="0 0" />
+			<BnsCustomImageWidget Name="ItemGraphReceipeTooltipPanel_2_MeterialItem_8" LayoutData.Anchors="0 0 0 0" LayoutData.Offsets="266.00012 0 32.000122 32" LayoutData.Alignments="0 0" />
+		</BnsCustomImageWidget>
+		<BnsCustomLabelWidget Name="ItemGraphReceipeTooltipPanel_2_Price" LayoutData.Anchors="0 0 1 0" LayoutData.Offsets="10 150.001 10 20.001007" LayoutData.Alignments="0 0" String="Price" />
+		<BnsCustomLabelWidget Name="ItemGraphReceipeTooltipPanel_2_Guide" LayoutData.Anchors="0 0 1 0" LayoutData.Offsets="10 195.00363 10 12.001007" LayoutData.Alignments="0 0" String="Guide" />
+		<BnsCustomLabelWidget Name="ItemGraphReceipeTooltipPanel_2_DiscountPrice" LayoutData.Anchors="0 0 1 0" LayoutData.Offsets="10 170.00201 10 20.001617" LayoutData.Alignments="0 0" String="Price" />
+		<BnsCustomImageWidget Name="ItemGraphReceipeTooltipPanel_2_HorizontalLine" LayoutData.Anchors="0 1 1 1" LayoutData.Offsets="0 0 0 1" LayoutData.Alignments="0 0">
+			<BnsCustomImageWidget.BaseImageProperty>
+				<ImageProperty BaseImageTexture="BNSR/Content/Art/UI/GameUI/Resource/GameUI_Window_R/BNSR_UIElement.BNSR_UIElement" ImageUV="199 61" ImageUVSize="5 1" Opacity="0.1" />
+			</BnsCustomImageWidget.BaseImageProperty>
+		</BnsCustomImageWidget>
+	</BnsCustomImageWidget>
+	<BnsCustomImageWidget Name="ItemGraphReceipeTooltipPanel_3" LayoutData.Anchors="0.5 0 0.5 0" LayoutData.Offsets="0 497.00006 350.00018 241.00006" LayoutData.Alignments="0 0">
+		<BnsCustomImageWidget.BaseImageProperty>
+			<ImageProperty BaseImageTexture="BNSR/Content/Art/UI/GameUI/Resource/GameUI_Window/GameUI_New_Scene_00.GameUI_New_Scene_00" ImageUV="588 2" ImageUVSize="27 28" Opacity="0" />
+		</BnsCustomImageWidget.BaseImageProperty>
+		<BnsCustomLabelWidget Name="ItemGraphReceipeTooltipPanel_3_Title" LayoutData.Anchors="0 0 1 0" LayoutData.Offsets="10 10 10 35.000977" LayoutData.Alignments="0 0" String="Item Name성장 재료Item Name성장 재료Item Name성장 재료" />
+		<BnsCustomWindowWidget Name="ItemGraphReceipeTooltipPanel_3_ItemHolder" LayoutData.Anchors="0 0 0 0" LayoutData.Offsets="12 55.000977 299.9997 53" LayoutData.Alignments="0 0">
+			<BnsCustomImageWidget Name="ItemGraphReceipeTooltipPanel_3_ItemIcon" LayoutData.Anchors="0 0 0 0" LayoutData.Offsets="3 0 50 50" LayoutData.Alignments="0 0">
+				<BnsCustomImageWidget.BaseImageProperty>
+					<ImageProperty BaseImageTexture="BNSR/Content/Art/UI/GameUI/Resource/GameUI_Window/GameUI_New_Scene_00.GameUI_New_Scene_00" ImageUV="133 1" ImageUVSize="46 46" Opacity="0" />
+				</BnsCustomImageWidget.BaseImageProperty>
+			</BnsCustomImageWidget>
+			<BnsCustomLabelWidget Name="ItemGraphReceipeTooltipPanel_3_ItemIcon_Name" LayoutData.Anchors="0 0 0 0" LayoutData.Offsets="65 0 235.00012 16.001587" LayoutData.Alignments="0 0" String="Item Name" />
+			<BnsCustomLabelWidget Name="ItemGraphReceipeTooltipPanel_3_ItemIcon_Desc" LayoutData.Anchors="0 0 0 0" LayoutData.Offsets="65 21.001587 235.00012 14.002197" LayoutData.Alignments="0 0" String="획득처 1" />
+		</BnsCustomWindowWidget>
+		<BnsCustomImageWidget Name="ItemGraphReceipeTooltipPanel_3_MeterialItemHolder" LayoutData.Anchors="0 0 0 0" LayoutData.Offsets="12 113.00098 298 32" LayoutData.Alignments="0 0">
+			<BnsCustomImageWidget Name="ItemGraphReceipeTooltipPanel_3_MeterialItem_1" LayoutData.Anchors="0 0 0 0" LayoutData.Offsets="0 0 32 32" LayoutData.Alignments="0 0" />
+			<BnsCustomImageWidget Name="ItemGraphReceipeTooltipPanel_3_MeterialItem_2" LayoutData.Anchors="0 0 0 0" LayoutData.Offsets="38 0 32.00006 32" LayoutData.Alignments="0 0" />
+			<BnsCustomImageWidget Name="ItemGraphReceipeTooltipPanel_3_MeterialItem_3" LayoutData.Anchors="0 0 0 0" LayoutData.Offsets="76.00006 0 31.999878 32" LayoutData.Alignments="0 0" />
+			<BnsCustomImageWidget Name="ItemGraphReceipeTooltipPanel_3_MeterialItem_4" LayoutData.Anchors="0 0 0 0" LayoutData.Offsets="113.99988 0 32.000122 32" LayoutData.Alignments="0 0" />
+			<BnsCustomImageWidget Name="ItemGraphReceipeTooltipPanel_3_MeterialItem_5" LayoutData.Anchors="0 0 0 0" LayoutData.Offsets="152 0 32.000122 32" LayoutData.Alignments="0 0" />
+			<BnsCustomImageWidget Name="ItemGraphReceipeTooltipPanel_3_MeterialItem_6" LayoutData.Anchors="0 0 0 0" LayoutData.Offsets="190.00012 0 31.999878 32" LayoutData.Alignments="0 0" />
+			<BnsCustomImageWidget Name="ItemGraphReceipeTooltipPanel_3_MeterialItem_7" LayoutData.Anchors="0 0 0 0" LayoutData.Offsets="228 0 32.000122 32" LayoutData.Alignments="0 0" />
+			<BnsCustomImageWidget Name="ItemGraphReceipeTooltipPanel_3_MeterialItem_8" LayoutData.Anchors="0 0 0 0" LayoutData.Offsets="266.00012 0 32.000122 32" LayoutData.Alignments="0 0" />
+		</BnsCustomImageWidget>
+		<BnsCustomLabelWidget Name="ItemGraphReceipeTooltipPanel_3_Price" LayoutData.Anchors="0 0 1 0" LayoutData.Offsets="10 150.00098 10 20.000977" LayoutData.Alignments="0 0" String="Price" />
+		<BnsCustomLabelWidget Name="ItemGraphReceipeTooltipPanel_3_Guide" LayoutData.Anchors="0 0 1 0" LayoutData.Offsets="10 195.00354 10 12.000977" LayoutData.Alignments="0 0" String="Guide" />
+		<BnsCustomLabelWidget Name="ItemGraphReceipeTooltipPanel_3_DiscountPrice" LayoutData.Anchors="0 0 1 0" LayoutData.Offsets="10 170.00195 10 20.001587" LayoutData.Alignments="0 0" String="Price" />
+		<BnsCustomImageWidget Name="ItemGraphReceipeTooltipPanel_3_HorizontalLine" LayoutData.Anchors="0 1 1 1" LayoutData.Offsets="0 0 0 1" LayoutData.Alignments="0 0">
+			<BnsCustomImageWidget.BaseImageProperty>
+				<ImageProperty BaseImageTexture="BNSR/Content/Art/UI/GameUI/Resource/GameUI_Window_R/BNSR_UIElement.BNSR_UIElement" ImageUV="199 61" ImageUVSize="5 1" Opacity="0.1" />
+			</BnsCustomImageWidget.BaseImageProperty>
+		</BnsCustomImageWidget>
+	</BnsCustomImageWidget>
+	<BnsCustomImageWidget Name="ItemGraphReceipeTooltipPanel_4" LayoutData.Anchors="0.5 0 0.5 0" LayoutData.Offsets="0 738.0001 350.00018 241" LayoutData.Alignments="0 0">
+		<BnsCustomImageWidget.BaseImageProperty>
+			<ImageProperty BaseImageTexture="BNSR/Content/Art/UI/GameUI/Resource/GameUI_Window/GameUI_New_Scene_00.GameUI_New_Scene_00" ImageUV="588 2" ImageUVSize="27 28" Opacity="0" />
+		</BnsCustomImageWidget.BaseImageProperty>
+		<BnsCustomLabelWidget Name="ItemGraphReceipeTooltipPanel_4_Title" LayoutData.Anchors="0 0 1 0" LayoutData.Offsets="10 10 10 35.000977" LayoutData.Alignments="0 0" String="Item Name성장 재료Item Name성장 재료Item Name성장 재료" />
+		<BnsCustomWindowWidget Name="ItemGraphReceipeTooltipPanel_4_ItemHolder" LayoutData.Anchors="0 0 0 0" LayoutData.Offsets="12 55.000977 299.9997 53.00006" LayoutData.Alignments="0 0">
+			<BnsCustomImageWidget Name="ItemGraphReceipeTooltipPanel_4_ItemIcon" LayoutData.Anchors="0 0 0 0" LayoutData.Offsets="3 0 50 50" LayoutData.Alignments="0 0">
+				<BnsCustomImageWidget.BaseImageProperty>
+					<ImageProperty BaseImageTexture="BNSR/Content/Art/UI/GameUI/Resource/GameUI_Window/GameUI_New_Scene_00.GameUI_New_Scene_00" ImageUV="133 1" ImageUVSize="46 46" Opacity="0" />
+				</BnsCustomImageWidget.BaseImageProperty>
+			</BnsCustomImageWidget>
+			<BnsCustomLabelWidget Name="ItemGraphReceipeTooltipPanel_4_ItemIcon_Name" LayoutData.Anchors="0 0 0 0" LayoutData.Offsets="65 0 235.00012 16.001587" LayoutData.Alignments="0 0" String="Item Name" />
+			<BnsCustomLabelWidget Name="ItemGraphReceipeTooltipPanel_4_ItemIcon_Desc" LayoutData.Anchors="0 0 0 0" LayoutData.Offsets="65 21.001587 235.00012 14.002197" LayoutData.Alignments="0 0" String="획득처 1" />
+		</BnsCustomWindowWidget>
+		<BnsCustomImageWidget Name="ItemGraphReceipeTooltipPanel_4_MeterialItemHolder" LayoutData.Anchors="0 0 0 0" LayoutData.Offsets="12 113.00104 298 32" LayoutData.Alignments="0 0">
+			<BnsCustomImageWidget Name="ItemGraphReceipeTooltipPanel_4_MeterialItem_1" LayoutData.Anchors="0 0 0 0" LayoutData.Offsets="0 0 32 32" LayoutData.Alignments="0 0" />
+			<BnsCustomImageWidget Name="ItemGraphReceipeTooltipPanel_4_MeterialItem_2" LayoutData.Anchors="0 0 0 0" LayoutData.Offsets="38 0 32.00006 32" LayoutData.Alignments="0 0" />
+			<BnsCustomImageWidget Name="ItemGraphReceipeTooltipPanel_4_MeterialItem_3" LayoutData.Anchors="0 0 0 0" LayoutData.Offsets="76.00006 0 31.999878 32" LayoutData.Alignments="0 0" />
+			<BnsCustomImageWidget Name="ItemGraphReceipeTooltipPanel_4_MeterialItem_4" LayoutData.Anchors="0 0 0 0" LayoutData.Offsets="113.99988 0 32.000122 32" LayoutData.Alignments="0 0" />
+			<BnsCustomImageWidget Name="ItemGraphReceipeTooltipPanel_4_MeterialItem_5" LayoutData.Anchors="0 0 0 0" LayoutData.Offsets="152 0 32.000122 32" LayoutData.Alignments="0 0" />
+			<BnsCustomImageWidget Name="ItemGraphReceipeTooltipPanel_4_MeterialItem_6" LayoutData.Anchors="0 0 0 0" LayoutData.Offsets="190.00012 0 31.999878 32" LayoutData.Alignments="0 0" />
+			<BnsCustomImageWidget Name="ItemGraphReceipeTooltipPanel_4_MeterialItem_7" LayoutData.Anchors="0 0 0 0" LayoutData.Offsets="228 0 32.000122 32" LayoutData.Alignments="0 0" />
+			<BnsCustomImageWidget Name="ItemGraphReceipeTooltipPanel_4_MeterialItem_8" LayoutData.Anchors="0 0 0 0" LayoutData.Offsets="266.00012 0 32.000122 32" LayoutData.Alignments="0 0" />
+		</BnsCustomImageWidget>
+		<BnsCustomLabelWidget Name="ItemGraphReceipeTooltipPanel_4_Price" LayoutData.Anchors="0 0 1 0" LayoutData.Offsets="10 150.00104 10 20.000977" LayoutData.Alignments="0 0" String="Price" />
+		<BnsCustomLabelWidget Name="ItemGraphReceipeTooltipPanel_4_Guide" LayoutData.Anchors="0 0 1 0" LayoutData.Offsets="10 195.0036 10 12.000977" LayoutData.Alignments="0 0" String="Guide" />
+		<BnsCustomLabelWidget Name="ItemGraphReceipeTooltipPanel_4_DiscountPrice" LayoutData.Anchors="0 0 1 0" LayoutData.Offsets="10 170.00201 10 20.001587" LayoutData.Alignments="0 0" String="Price" />
+		<BnsCustomImageWidget Name="ItemGraphReceipeTooltipPanel_4_HorizontalLine" LayoutData.Anchors="0 1 1 1" LayoutData.Offsets="0 0 0 1" LayoutData.Alignments="0 0">
+			<BnsCustomImageWidget.BaseImageProperty>
+				<ImageProperty BaseImageTexture="BNSR/Content/Art/UI/GameUI/Resource/GameUI_Window_R/BNSR_UIElement.BNSR_UIElement" ImageUV="199 61" ImageUVSize="5 1" Opacity="0.1" />
+			</BnsCustomImageWidget.BaseImageProperty>
+		</BnsCustomImageWidget>
+	</BnsCustomImageWidget>
+	<BnsCustomLabelWidget Name="ItemGraphReceipeTooltipPanel_Guide" LayoutData.Anchors="0 0 1 0" LayoutData.Offsets="15 984.0001 15 30.000427" LayoutData.Alignments="0 0" String="N개의 경로가 더 있습니다." />
+</BnsCustomWindowWidget>

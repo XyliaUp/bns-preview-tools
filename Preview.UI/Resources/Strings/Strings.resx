@@ -491,4 +491,136 @@ Please note that do not modify the order of nodes</value>
   <data name="PreviewTooltip" xml:space="preserve">
     <value>View Detail</value>
   </data>
+  <data name="Application_CrashMessage" xml:space="preserve">
+    <value>an unrecoverable exception was encountered, the application is about to exit. {0}</value>
+  </data>
+  <data name="AbilityName.AbnormalAttackBasePercent" xml:space="preserve">
+    <value>AbnormalAttackBasePercent</value>
+  </data>
+  <data name="AbilityName.AbnormalDefendBasePercent" xml:space="preserve">
+    <value>AbnormalDefendBasePercent</value>
+  </data>
+  <data name="AbilityName.AoeDefendBasePercent" xml:space="preserve">
+    <value>AoeDefendBasePercent</value>
+  </data>
+  <data name="AbilityName.AttackAbnormalHitBasePercent" xml:space="preserve">
+    <value>AttackAbnormalHitBasePercent</value>
+  </data>
+  <data name="AbilityName.AttackAttributeBasePercent" xml:space="preserve">
+    <value>AttackAttributeBasePercent</value>
+  </data>
+  <data name="AbilityName.AttackCriticalBasePercent" xml:space="preserve">
+    <value>AttackCriticalBasePercent</value>
+  </data>
+  <data name="AbilityName.AttackCriticalDamagePercent" xml:space="preserve">
+    <value>AttackCriticalDamagePercent</value>
+  </data>
+  <data name="AbilityName.AttackHitBasePercent" xml:space="preserve">
+    <value>AttackHitBasePercent</value>
+  </data>
+  <data name="AbilityName.AttackParryPiercePercent" xml:space="preserve">
+    <value>AttackParryPiercePercent</value>
+  </data>
+  <data name="AbilityName.AttackPierceBasePercent" xml:space="preserve">
+    <value>AttackPierceBasePercent</value>
+  </data>
+  <data name="AbilityName.CounterEnhance" xml:space="preserve">
+    <value>CounterEnhance</value>
+  </data>
+  <data name="AbilityName.DefenceParryDamageReduce" xml:space="preserve">
+    <value>DefenceParryDamageReduce</value>
+  </data>
+  <data name="AbilityName.DefendAbnormalDodgeBasePercent" xml:space="preserve">
+    <value>DefendAbnormalDodgeBasePercent</value>
+  </data>
+  <data name="AbilityName.DefendBouncePercent" xml:space="preserve">
+    <value>DefendBouncePercent</value>
+  </data>
+  <data name="AbilityName.DefendCounterReducePercent" xml:space="preserve">
+    <value>DefendCounterReducePercent</value>
+  </data>
+  <data name="AbilityName.DefendCriticalBasePercent" xml:space="preserve">
+    <value>DefendCriticalBasePercent</value>
+  </data>
+  <data name="AbilityName.DefendCriticalDamagePercent" xml:space="preserve">
+    <value>DefendCriticalDamagePercent</value>
+  </data>
+  <data name="AbilityName.DefendDodgeBasePercent" xml:space="preserve">
+    <value>DefendDodgeBasePercent</value>
+  </data>
+  <data name="AbilityName.DefendImmuneBasePercent" xml:space="preserve">
+    <value>DefendImmuneBasePercent</value>
+  </data>
+  <data name="AbilityName.DefendMissBasePercent" xml:space="preserve">
+    <value>DefendMissBasePercent</value>
+  </data>
+  <data name="AbilityName.DefendParryBasePercent" xml:space="preserve">
+    <value>DefendParryBasePercent</value>
+  </data>
+  <data name="AbilityName.DefendParryReducePercent" xml:space="preserve">
+    <value>DefendParryReducePercent</value>
+  </data>
+  <data name="AbilityName.DefendPerfectParryBasePercent" xml:space="preserve">
+    <value>DefendPerfectParryBasePercent</value>
+  </data>
+  <data name="AbilityName.DefendPerfectParryReducePercent" xml:space="preserve">
+    <value>DefendPerfectParryReducePercent</value>
+  </data>
+  <data name="AbilityName.HateBasePercent" xml:space="preserve">
+    <value>HateBasePercent</value>
+  </data>
+  <data name="AbilityName.HealPowerBasePercent" xml:space="preserve">
+    <value>HealPowerBasePercent</value>
+  </data>
+  <data name="AbilityName.SupportPowerBasePercent" xml:space="preserve">
+    <value>SupportPowerBasePercent</value>
+  </data>
+  <data name="Text_Refresh" xml:space="preserve">
+    <value>Refresh</value>
+  </data>
+  <data name="Text_Run" xml:space="preserve">
+    <value>Run</value>
+  </data>
+  <data name="DatabaseStudio_ViewDefinition" xml:space="preserve">
+    <value>View Definition</value>
+  </data>
+  <data name="DatabaseStudio_ViewDefinitions" xml:space="preserve">
+    <value>View Definitions</value>
+  </data>
+  <data name="DatabaseStudio_Connect" xml:space="preserve">
+    <value>Connect</value>
+  </data>
+  <data name="DatabaseStudio_Disconnect" xml:space="preserve">
+    <value>Disconnect</value>
+  </data>
+  <data name="DatabaseStudio_Grid" xml:space="preserve">
+    <value>Grid</value>
+  </data>
+  <data name="DatabaseStudio_SqlLoad" xml:space="preserve">
+    <value>Load</value>
+  </data>
+  <data name="DatabaseStudio_SqlSave" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="DatabaseStudio_Text" xml:space="preserve">
+    <value>Text</value>
+  </data>
+  <data name="Text_Export" xml:space="preserve">
+    <value>Export</value>
+  </data>
+  <data name="Text_Import" xml:space="preserve">
+    <value>Import</value>
+  </data>
+  <data name="ItemPage_SearchItemRule_Placeholder" xml:space="preserve">
+    <value>Input item info  (id / alias / name)</value>
+  </data>
+  <data name="ItemPage_SearchItemRule_Title" xml:space="preserve">
+    <value>Search Item</value>
+  </data>
+  <data name="ItemPage_DataClear" xml:space="preserve">
+    <value>Data Clear</value>
+  </data>
+  <data name="ItemPage_DataGUI" xml:space="preserve">
+    <value>Data GUI</value>
+  </data>
 </root>

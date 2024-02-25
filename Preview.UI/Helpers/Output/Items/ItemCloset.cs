@@ -1,5 +1,4 @@
 ﻿using OfficeOpenXml;
-using Xylia.Preview.Data.Common.DataStruct;
 using Xylia.Preview.Data.Helpers;
 using Xylia.Preview.Data.Helpers.Output;
 using Xylia.Preview.Data.Models;
@@ -23,7 +22,7 @@ public sealed class ItemCloset : OutSet
         sheet.SetColumn(Column++, "衣柜目录", 20);
         #endregion
 
-        foreach (var item in FileCache.Data.Item)
+        foreach (var item in FileCache.Data.Get<Item>())
         {
             #region Check
             bool Flag = false;
@@ -42,7 +41,7 @@ public sealed class ItemCloset : OutSet
             Row++;
             int column = 1;
 
-            sheet.Cells[Row, column++].SetValue((Ref)item.Source);
+            sheet.Cells[Row, column++].SetValue(item.Source.PrimaryKey);
             sheet.Cells[Row, column++].SetValue(item.ToString());
 			sheet.Cells[Row, column++].SetValue(item.ItemNameOnly);
 			sheet.Cells[Row, column++].SetValue(item.EquipType.GetText());

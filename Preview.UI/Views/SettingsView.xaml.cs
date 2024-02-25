@@ -26,8 +26,6 @@ public partial class SettingsView : Window
 		if (!TryBrowseFolder(out var path))
 			return;
 
-		this.Activate();
-
 		UserSettings.Default.GameFolder = path;
 		var Locale = new Locale(new DirectoryInfo(path));
 		if (Locale._language != null)
@@ -39,15 +37,11 @@ public partial class SettingsView : Window
 	private void OnBrowseDirectories2(object sender, RoutedEventArgs e)
 	{
 		if (TryBrowseFolder(out var path)) UserSettings.Default.OutputFolder = path;
-
-		this.Activate();
 	}
 
 	private void OnBrowseDirectories3(object sender, RoutedEventArgs e)
 	{
 		if (TryBrowseFolder(out var path)) UserSettings.Default.OutputFolderResource = path;
-
-		this.Activate();
 	}
 
 

@@ -10,7 +10,7 @@ namespace Xylia.Preview.Data.Models;
 [JsonConverter(typeof(RecordConverter))]
 public sealed unsafe class Record : IDisposable
 {
-	#region Ctor
+	#region Constructors
 	internal Record()
 	{
 		Attributes = new(this);
@@ -55,27 +55,15 @@ public sealed unsafe class Record : IDisposable
 		}
 	}
 
-	public int RecordId
+	public Ref PrimaryKey
 	{
 		get
 		{
-			fixed (byte* ptr = Data) return ((int*)(ptr + 8))[0];
+			fixed (byte* ptr = Data) return ((Ref*)(ptr + 8))[0];
 		}
 		set
 		{
-			fixed (byte* ptr = Data) ((int*)(ptr + 8))[0] = value;
-		}
-	}
-
-	public int RecordVariationId
-	{
-		get
-		{
-			fixed (byte* ptr = Data) return ((int*)(ptr + 12))[0];
-		}
-		set
-		{
-			fixed (byte* ptr = Data) ((int*)(ptr + 12))[0] = value;
+			fixed (byte* ptr = Data) ((Ref*)(ptr + 8))[0] = value;
 		}
 	}
 
@@ -98,8 +86,7 @@ public sealed unsafe class Record : IDisposable
 
 	public AttributeCollection Attributes { get; internal set; }
 
-	internal Dictionary<string, Record[]> Children { get; set; } = new();
-
+	internal Dictionary<string, Record[]> Children { get; set; } = [];
 
 	public bool HasChildren => Children.Count > 0;
 	#endregion
@@ -134,7 +121,7 @@ public sealed unsafe class Record : IDisposable
 	#endregion
 
 	#region Interface
-	public override string ToString() => this.Attributes.Get<string>("alias") ?? ((Ref)this).ToString();
+	public override string ToString() => this.Attributes.Get<string>("alias") ?? this.PrimaryKey.ToString();
 
 	public T As<T>(Type type = null) where T : ModelElement
 	{

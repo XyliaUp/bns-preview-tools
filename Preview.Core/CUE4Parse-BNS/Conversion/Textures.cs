@@ -1,10 +1,11 @@
 ﻿using CUE4Parse.UE4.Objects.Core.Math;
-
 using SkiaSharp;
 
 namespace CUE4Parse.BNS.Conversion;
 public static class Textures
 {
+	public static SKBitmap Clone(this SKBitmap source, FVector2D UV, FVector2D UVSize) => source.Clone(UV.X, UV.Y, UVSize.X, UVSize.Y);
+
 	public static SKBitmap Clone(this SKBitmap source, float u, float v, float ul, float vl)
 	{
 		if (ul == 0) ul = source.Width - u;
@@ -19,14 +20,14 @@ public static class Textures
 			{
 				if (source.Height < v + j) continue;
 
-				output.SetPixel(i, j, source.GetPixel((int)(u + i), (int)(v + j)));
+				// pixel
+				var p = source.GetPixel((int)(u + i), (int)(v + j));
+				output.SetPixel(i, j, p);
 			}
 		}
 
 		return output;
 	}
-
-	public static SKBitmap Clone(this SKBitmap source, FVector2D UV, FVector2D UVSize) => source.Clone(UV.X, UV.Y, UVSize.X, UVSize.Y);
 
 
 	public static SKBitmap Compose(this SKBitmap imgBack, SKBitmap img)
@@ -42,7 +43,6 @@ public static class Textures
 
 		return bitmap;
 	}
-
 
 	public static void Save(this SKBitmap source, string path, SKEncodedImageFormat format = SKEncodedImageFormat.Png)
 	{

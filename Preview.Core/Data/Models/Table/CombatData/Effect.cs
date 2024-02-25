@@ -6,7 +6,7 @@ public sealed class Effect : ModelElement
 		if (this.Attributes["power-percent-max"] is not null)
 			return;
 
-		var type = this.Attributes["type"];
+		var type = this.Attributes.Get<string>("type");
 		if (type == "melee-physical-attack" ||
 			type == "melee-physical-attack-hate" ||
 			type == "melee-physical-attack-drain" ||

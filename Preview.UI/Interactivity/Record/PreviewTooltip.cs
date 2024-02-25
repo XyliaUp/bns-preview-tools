@@ -20,7 +20,7 @@ public class PreviewTooltip : RecordCommand
 
 	public override bool CanExecute(string name) => name switch
     {
-        "item" => true,
+        //"item" => true,
         _ => false,
     };
 

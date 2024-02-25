@@ -1,4 +1,5 @@
 ﻿using System.Text;
+using CUE4Parse.BNS.Assets.Exports;
 using CUE4Parse.BNS.Conversion;
 using CUE4Parse.UE4.Assets.Exports.Texture;
 using CUE4Parse_Conversion.Textures;
@@ -8,7 +9,6 @@ using Xylia.Preview.Data.Common.DataStruct;
 using Xylia.Preview.Data.Helpers;
 using Xylia.Preview.Data.Models.Creature;
 using Xylia.Preview.Data.Models.Sequence;
-using static Xylia.Preview.Data.Models.Item.Grocery;
 
 namespace Xylia.Preview.Data.Models;
 public abstract partial class Item : ModelElement
@@ -19,6 +19,8 @@ public abstract partial class Item : ModelElement
 	public bool Auctionable { get; set; }
 
 	public bool AccountUsed { get; set; }
+
+	public GameCategory3Seq GameCategory3 => Attributes["game-category-3"].ToEnum<GameCategory3Seq>();
 
 	public JobSeq[] EquipJobCheck { get; set; }
 
@@ -31,8 +33,8 @@ public abstract partial class Item : ModelElement
 	public sbyte ItemGrade { get; set; }
 	public LegendGradeBackgroundParticleTypeSeq LegendGradeBackgroundParticleType => Attributes["legend-grade-background-particle-type"].ToEnum<LegendGradeBackgroundParticleTypeSeq>();
 
-	public int ImproveId => Attributes.Get<int>("improve-id");
-	public sbyte ImproveLevel => Attributes.Get<sbyte>("improve-level");
+	public int ImproveId { get; set; }
+	public sbyte ImproveLevel { get; set; }
 	public string ItemName => $"""<font name="00008130.Program.Fontset_ItemGrade_{ItemGrade}">{ItemNameOnly}</font>""";
 	public string ItemNameOnly => Attributes["name2"].GetText();
 
@@ -53,17 +55,14 @@ public abstract partial class Item : ModelElement
 		}
 	}
 
-	public SKBitmap FrontIcon => Attributes.Get<string>("icon").GetIcon();
+	public ImageProperty FrontIcon => IconTexture.Parse(Attributes.Get<string>("icon"));
 
-	public SKBitmap Icon => ItemGrade.GetBackground().Compose(FrontIcon);
-
-	public SKBitmap IconExtra
+	public SKBitmap Icon
 	{
 		get
 		{
-			var bmp = Icon;
+			var bmp = IconTexture.GetBackground(ItemGrade).Compose(FrontIcon?.Image);
 			if (bmp is null) return null;
-
 
 			#region TopLeft
 			//SKImage TopLeft = null;
@@ -90,7 +89,7 @@ public abstract partial class Item : ModelElement
 			SKBitmap BottomLeft = null;
 			if (IsExpiration)
 				BottomLeft = FileCache.Provider.LoadObject<UTexture>("BNSR/Content/Art/UI/GameUI_BNSR/Resource/GameUI_Icon3_R/unuseable_olditem_3")?.Decode();
-			else if (this is Grocery grocery && grocery.GroceryType == GroceryTypeSeq.Sealed)
+			else if (this is Grocery grocery && grocery.GroceryType == Grocery.GroceryTypeSeq.Sealed)
 				BottomLeft = FileCache.Provider.LoadObject<UTexture>("BNSR/Content/Art/UI/GameUI_BNSR/Resource/GameUI_Icon3_R/Weapon_Lock_04")?.Decode();
 			//else BottomLeft = new DecomposeInfo(item).GetExtra();
 
@@ -129,18 +128,20 @@ public abstract partial class Item : ModelElement
 			var PvpAttackPowerEquipMax = this.Attributes.Get<short>("pvp-attack-power-equip-max");
 			data[MainAbility.PvpAttackPowerEquipMinAndMax] = (PvpAttackPowerEquipMin + PvpAttackPowerEquipMax) / 2;
 
+			// HACK: Actually, the ability value is single get
 			foreach (var seq in Enum.GetValues<MainAbility>())
 			{
 				if (seq == MainAbility.None) continue;
 
 				var name = seq.ToString().TitleLowerCase();
 				var value = Convert.ToInt32(this.Attributes[name]);
-				var value2 = Convert.ToInt32(this.Attributes[name + "-equip"]);
-
 				if (value != 0) data[seq] = value;
-				else if (value2 != 0) data[seq] = value2;
+				else if (seq != MainAbility.AttackAttributeValue)
+				{
+					var value2 = Convert.ToInt32(this.Attributes[name + "-equip"]);
+					if (value2 != 0) data[seq] = value2;
+				}
 			}
-
 
 			// HACK: Actually, the MainAbility is not this sequence
 			var MainAbility1 = Attributes["main-ability-1"].ToEnum<MainAbility>();
@@ -173,6 +174,18 @@ public abstract partial class Item : ModelElement
 			return new(
 				Substitute1.ToString().TrimEnd('\n'),
 				Substitute2.ToString().TrimEnd('\n'));
+		}
+	}
+
+	public string AcquireRoute
+	{
+		get
+		{
+			// the original method is a little stupid
+			// I want to retrieve the desc6 text
+
+			// Item.DescTitle.0001
+			return this.Attributes["description6"]?.GetText();
 		}
 	}
 	#endregion

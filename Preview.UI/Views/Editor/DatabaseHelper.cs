@@ -7,7 +7,7 @@ using Xylia.Preview.Data.Client;
 using Xylia.Preview.Data.Models;
 
 namespace Xylia.Preview.UI.Views.Editor;
-public class TaskData
+internal class TaskData
 {
 	public const int LIMITNUM = 1000;
 
@@ -99,7 +99,7 @@ public class TaskData
 	}
 }
 
-public static class ImageHelper
+internal static class ImageHelper
 {
 	public static BitmapImage Table { get; } = new BitmapImage(new Uri("/Resources/Images/table2.png", UriKind.Relative));
 

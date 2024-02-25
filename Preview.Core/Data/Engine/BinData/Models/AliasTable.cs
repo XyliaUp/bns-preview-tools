@@ -1,5 +1,4 @@
-﻿using Serilog;
-using Xylia.Preview.Data.Common.DataStruct;
+﻿using Xylia.Preview.Data.Common.DataStruct;
 using Xylia.Preview.Data.Models;
 
 namespace Xylia.Preview.Data.Engine.BinData.Models;
@@ -21,7 +20,7 @@ public class AliasTable
 	public void Add(Record record)
 	{
 		var alias = record.Attributes.Get<string>("alias");
-		Add(record, MakeKey(record.Owner.Name, alias));
+		Add(record.PrimaryKey, MakeKey(record.Owner.Name, alias));
 	}
 
 
@@ -30,7 +29,7 @@ public class AliasTable
 		if (!string.IsNullOrEmpty(fullAlias))
 		{
 			if (Table.TryGetValue(fullAlias, out var value)) return value;
-			Log.Warning($"cannot found alias map: {fullAlias}");
+			// Log.Warning($"cannot found alias map: {fullAlias}");
 		}
 
 		return default;

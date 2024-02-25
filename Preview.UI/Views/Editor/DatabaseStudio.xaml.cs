@@ -21,9 +21,6 @@ namespace Xylia.Preview.UI.Views.Editor;
 public partial class DatabaseStudio
 {
 	#region Constructor
-	private BnsDatabase database;
-	private ProviderSerialize serialize;
-
 	static DatabaseStudio()
 	{
 		TextEditor.Register("Sql");
@@ -31,9 +28,12 @@ public partial class DatabaseStudio
 
 	public DatabaseStudio()
 	{
-		DataContext = this;
+		DataContext = _viewModel = new DatabaseStudioViewModel();
 		InitializeComponent();
 		RegisterCommands(this.CommandBindings);
+
+		// Remove design time information 
+		PageHolder.SelectedItem = Page_SQL;
 
 		// load cache data if exists
 		if (!FileCache.IsEmpty)
@@ -44,13 +44,38 @@ public partial class DatabaseStudio
 	}
 	#endregion
 
-
 	#region Command
 	private void RegisterCommands(CommandBindingCollection commandBindings)
 	{
 		commandBindings.Add(new CommandBinding(ApplicationCommands.Close, (_, _) => SaveMessage.Visibility = Visibility.Collapsed));
+		commandBindings.Add(new CommandBinding(ApplicationCommands.Print, RunCommand, CanExecuteRun));
+	}
+
+
+	private void CanExecuteRun(object sender, CanExecuteRoutedEventArgs e)
+	{
+		e.CanExecute = database != null && !string.IsNullOrEmpty(ActivateSql);
+	}
+
+	private async void RunCommand(object sender, RoutedEventArgs e)
+	{
+		try
+		{
+			this.Run.IsEnabled = false;
+			await ExecuteSql(ActivateSql);
+		}
+		catch (Exception ex)
+		{
+			Growl.Error(ex.Message, nameof(DatabaseStudio));
+		}
+		finally
+		{
+			this.Run.IsEnabled = true;
+		}
 	}
 	#endregion
+
+
 
 	#region Methods (UI)
 	private async void Connect_Click(object sender, RoutedEventArgs e)
@@ -67,8 +92,6 @@ public partial class DatabaseStudio
 				if (FileCache.IsEmpty) FileCache.Data = database;
 			});
 
-			Connect.Tag = "Disconnect";
-
 			LoadTreeView();
 			Connect.IsEnabled = true;
 		}
@@ -78,30 +101,12 @@ public partial class DatabaseStudio
 			database = null;
 
 			tvwDatabase.Items.Clear();
-			Connect.Tag = "Connect";
 		}
 	}
 
 	private void Refresh_Click(object sender, RoutedEventArgs e)
 	{
 		LoadTreeView();
-	}
-
-	private async void Run_Click(object sender, RoutedEventArgs e)
-	{
-		try
-		{
-			this.Run.IsEnabled = false;
-			await ExecuteSql(ActivateSql);
-		}
-		catch (Exception ex)
-		{
-			Growl.Error(ex.Message, nameof(DatabaseStudio));
-		}
-		finally
-		{
-			this.Run.IsEnabled = true;
-		}
 	}
 
 	private void LoadSql_Click(object sender, RoutedEventArgs e)
@@ -178,7 +183,7 @@ public partial class DatabaseStudio
 				var col = QueryGrid.Columns[j];
 
 				var cell = sheet.Cells[row, j + 1];
-				cell.SetValue(item[col.Header.ToString()]);
+				cell.SetValue(item![col.Header.ToString()!]);
 			}
 		}
 		#endregion
@@ -199,14 +204,30 @@ public partial class DatabaseStudio
 	}
 
 
-	private void TableView_Click(object sender, RoutedEventArgs e)
+	private void ViewTable_Click(object sender, RoutedEventArgs e)
 	{
-		if (tvwDatabase.SelectedItem is TreeViewItem item && item.DataContext is Table table)
+		if (tvwDatabase.SelectedItem is FrameworkElement item && item.DataContext is Table table)
 		{
 			var window = new TableView { Table = table };
 			window.Show();
 		}
 	}
+
+	private void ViewDefinition_Click(object sender, RoutedEventArgs e)
+	{
+		if (tvwDatabase.SelectedItem is FrameworkElement item && item.DataContext is Table table)
+		{
+			_viewModel.CurrentDefinition = table.Definition;
+			PageHolder.SelectedItem = Page_Definition;
+		}
+	}
+
+	private void ReturnBtn_MouseDownClick(object sender, MouseButtonEventArgs e)
+	{
+		PageHolder.SelectedItem = Page_SQL;
+	}
+
+
 
 	private async void TableExport_Click(object sender, RoutedEventArgs e)
 	{
@@ -228,7 +249,7 @@ public partial class DatabaseStudio
 			DateTime dt = DateTime.Now;
 
 			serialize = new ProviderSerialize(database.Provider);
-			await serialize.ImportAsync(SaveDataPath);
+			await serialize.ImportAsync(_viewModel.SaveDataPath);
 
 			Growl.Success(new GrowlInfo()
 			{
@@ -260,7 +281,6 @@ public partial class DatabaseStudio
 		}
 	}
 	#endregion
-
 
 	#region Methods
 	private void LoadTreeView()
@@ -300,7 +320,21 @@ public partial class DatabaseStudio
 		}
 	}
 
-	private void AddTab(string sql, string header = null)
+	/// <summary>
+	/// update right-bottom message
+	/// </summary>
+	/// <param name="text"></param>
+	private void UpdateMessage(string text)
+	{
+		Status.Text = text;
+	}
+
+	/// <summary>
+	/// append new sql tab
+	/// </summary>
+	/// <param name="sql"></param>
+	/// <param name="header"></param>
+	private void AddTab(string sql, string? header = null)
 	{
 		header ??= ("TabItem" + (editors.Items.Count + 1));
 		var item = new HandyControl.Controls.TabItem()
@@ -319,29 +353,25 @@ public partial class DatabaseStudio
 		get
 		{
 			var item = (editors.SelectedItem as ContentControl)?.Content;
-			if (item is null) return null;
+			if (item is not ICSharpCode.AvalonEdit.TextEditor editor) return string.Empty;
 
-			return (item as ICSharpCode.AvalonEdit.TextEditor).Text;
+			return editor.Text;
 		}
 	}
 
-	public bool IndentText { get; set; } = true;
-
-	private string SaveDataPath => UserSettings.Default.OutputFolder + "\\data";
-
-
 	private async Task ExecuteSql(string sql)
 	{
+		ArgumentNullException.ThrowIfNull(database);
 		DateTime dt = DateTime.Now;
 
 		var task = new TaskData();
-		await Task.Run(() => task.ReadResult(database.Execute(sql)));
+		await Task.Run(() => task.ReadResult(database!.Execute(sql)));
 
 		// update
 		task.BindData(this.QueryGrid);
-		task.BindData(this.QueryText, IndentText);
+		task.BindData(this.QueryText, _viewModel.IndentText);
 
-		Status.Text = string.Format("Execution Time: {0:g}", DateTime.Now - dt);
+		UpdateMessage(string.Format("Execution Time: {0:g}", DateTime.Now - dt));
 	}
 
 	private async Task ExportAsync(params Table[] tables)
@@ -351,20 +381,22 @@ public partial class DatabaseStudio
 			Dispatcher.Invoke(() =>
 			{
 				SaveMessage.Visibility = Visibility.Visible;
-
-				if (current != tables.Length)
-				{
-					SaveMessage.Text = StringHelper.Get("DatabaseStudio_TaskMessage1", current, tables.Length, (double)current / tables.Length);
-				}
-				else
-				{
-					SaveMessage.Text = StringHelper.Get("DatabaseStudio_TaskMessage2", tables.Length);
-				}
+				SaveMessage.Text = current != tables.Length ?
+					StringHelper.Get("DatabaseStudio_TaskMessage1", current, tables.Length, (double)current / tables.Length) :
+					StringHelper.Get("DatabaseStudio_TaskMessage2", tables.Length);
 			});
 		});
 
 		serialize = new ProviderSerialize(database.Provider);
-		await serialize.ExportAsync(this.SaveDataPath, progress, tables);
+		await serialize.ExportAsync(_viewModel.SaveDataPath, progress, tables);
 	}
+	#endregion
+
+
+	#region Private Fields
+	private readonly DatabaseStudioViewModel _viewModel;
+
+	private BnsDatabase? database;
+	private ProviderSerialize serialize;
 	#endregion
 }

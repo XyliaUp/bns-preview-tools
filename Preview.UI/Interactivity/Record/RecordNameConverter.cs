@@ -10,7 +10,7 @@ namespace Xylia.Preview.UI.Common.Converters;
 /// </summary>
 public class RecordNameConverter : MarkupExtension, IValueConverter
 {
-	public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+	public object? Convert(object value, Type targetType, object? parameter, CultureInfo? culture)
 	{
 		if (value is Record record)
 		{
@@ -22,12 +22,17 @@ public class RecordNameConverter : MarkupExtension, IValueConverter
 			}
 		}
 
-		// if parameter exists and its value is BooleanBox.False means that return Null
+		// if parameter exists and its value is BooleanBoxes.False means that return Null
 		if (parameter is false) return null;
 		return value?.ToString();
 	}
 
-	public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+	public string Convert(object value)
+	{
+		return Convert(value, typeof(string), null, null) as string ?? "";
+	}
+
+	public object ConvertBack(object value, Type targetType, object? parameter, CultureInfo? culture)
 	{
 		throw new NotImplementedException();
 	}

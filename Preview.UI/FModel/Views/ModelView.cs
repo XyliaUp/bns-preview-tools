@@ -12,15 +12,15 @@ public class ModelView : Snooper
 
 
 	public ModelData[] Models { get; set; }
-	public ModelData SelectedData { get; private set; }
+	public ModelData? SelectedData { get; private set; }
 
-	public bool TryLoadExport(CancellationToken cancellationToken, ModelData models = null)
+	public bool TryLoadExport(CancellationToken token, ModelData? models = null)
 	{
 		SelectedData = models ?? Models.FirstOrDefault();
 		if (SelectedData is null) return false;
 
 		// render
-		Renderer.Load(cancellationToken, SelectedData.Export);
+		Renderer.Load(token, SelectedData.Export);
 		SelectedData.Materials?.ForEach(Renderer.Swap);
 
 		return Renderer.Options.Models.Count > 0;

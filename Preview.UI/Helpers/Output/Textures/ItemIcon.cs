@@ -3,7 +3,7 @@ using CUE4Parse.FileProvider;
 using CUE4Parse.UE4.Assets.Exports.Texture;
 using CUE4Parse_Conversion.Textures;
 using Xylia.Preview.Common.Extension;
-using Xylia.Preview.Data.Common.DataStruct;
+using Xylia.Preview.Data.Engine.BinData.Helpers;
 using Xylia.Preview.Data.Models;
 using static Xylia.Preview.Data.Models.Item.Grocery;
 
@@ -21,50 +21,47 @@ public sealed class ItemIcon(string GameFolder, string OutputFolder) : IconOutBa
 
 
 	#region Methods
-	protected override void AnalyseSourceData(DefaultFileProvider provider, string format, CancellationToken token)
+	protected override void Output(DefaultFileProvider provider, string format, CancellationToken token)
 	{
-		var lst = XList.LoadData(ChvPath); 
+		var lst = new HashList(ChvPath);
 		var Weapon_Lock_04 = provider.LoadObject<UTexture>("BNSR/Content/Art/UI/GameUI_BNSR/Resource/GameUI_Icon3_R/Weapon_Lock_04")?.Decode();
 
-		Parallel.ForEach(set.Item, (x) =>
+		Parallel.ForEach(db.Get("Item"), (record) =>
 		{
 			token.ThrowIfCancellationRequested();
 
-			var Ref = (Ref)x.Source;
-			if (isWhiteList && (lst is null || !lst.Contains(Ref.Id))) return;
-			if (!isWhiteList && lst != null && lst.Contains(Ref.Id)) return;
-
 			#region Get Data
-			var alias = x.Attributes.Get<string>("alias");
-			var ItemGrade = x.Attributes.Get<sbyte>("item-grade");
-			var icon = x.Attributes["icon"]?.ToString();
+			var @ref = record.PrimaryKey;
+			if (lst.CheckFailed(@ref, isWhiteList)) return;
 
-			var Text = x.Attributes.Get<Record>("name2")?.Attributes["text"];	   
-			var GroceryType = x.Source.SubclassType == 2 ? x.Attributes["grocery-type"]?.ToEnum<GroceryTypeSeq>() : null;
+			var alias = record.Attributes.Get<string>("alias");
+			var ItemGrade = record.Attributes.Get<sbyte>("item-grade");
+			var icon = record.Attributes["icon"]?.ToString();
 
-			x.Source.Dispose();
+			var Text = record.Attributes.Get<Record>("name2")?.Attributes["text"]?.ToString();
+			var GroceryType = record.SubclassType == 2 ? record.Attributes["grocery-type"]?.ToEnum<GroceryTypeSeq>() : null;
+
+			record.Dispose();
 			#endregion
 
 
 			try
 			{
 				#region process
-				var bitmap = icon.GetIcon(set, provider) ?? throw new Exception($"get resouce failed ({icon})");
+				var bitmap = IconTexture.Parse(icon, db, provider)?.Image ??
+					throw new Exception($"get resouce failed ({icon})");
 
 				if (UseBackground)
 				{
-					bitmap = ItemGrade.GetBackground(provider).Compose(bitmap);
+					bitmap = IconTexture.GetBackground(ItemGrade, provider).Compose(bitmap);
 
 					if (GroceryType == GroceryTypeSeq.Sealed) bitmap = bitmap.Compose(Weapon_Lock_04);
 				}
 				#endregion
 
 				#region file name
-				string MainId = Ref.Id.ToString();
-				string OutName = format
-					   .Replace("[alias]", alias)
-					   .Replace("[id]", MainId)
-					   .Replace("[name]", Text.ToString()).Replace("[name2]", Text.ToString());
+				string MainId = @ref.Id.ToString();
+				string OutName = format.Replace("[alias]", alias).Replace("[id]", MainId).Replace("[name]", Text);
 				#endregion
 
 				#region tags
@@ -74,11 +71,11 @@ public sealed class ItemIcon(string GameFolder, string OutputFolder) : IconOutBa
 				#endregion
 
 
-				Save(ref bitmap, OutName);
+				Save(bitmap, OutName);
 			}
 			catch (Exception ee)
 			{
-				logger.Error($"id: {Ref} [{Text}]  " + ee.Message);
+				logger.Error($"id: {@ref} [{Text}]  " + ee.Message);
 			}
 		});
 	}

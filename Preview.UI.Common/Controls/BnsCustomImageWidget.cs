@@ -1,68 +1,17 @@
-﻿using System.Globalization;
+﻿using System;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Media;
-
+using System.Windows.Media.Animation;
+using CUE4Parse.BNS.Conversion;
+using CUE4Parse.UE4.Objects.Core.Math;
 using SkiaSharp;
 using SkiaSharp.Views.WPF;
+using Xylia.Preview.UI.Controls.Primitives;
+using Xylia.Preview.UI.Converters;
 
 namespace Xylia.Preview.UI.Controls;
 public class BnsCustomImageWidget : BnsCustomBaseWidget
 {
-	#region Public Properties
-	/// <summary>
-	/// Gets/Sets the Source on this Image.
-	///
-	/// The Source property is the ImageSource that holds the actual image drawn.
-	/// </summary>
-	public ImageSource Source
-	{
-		get { return (ImageSource)GetValue(SourceProperty); }
-		set { SetValue(SourceProperty, value); }
-	}
-
-	/// <summary>
-	/// DependencyProperty for Image Source property.
-	/// </summary>
-	/// <seealso cref="Image.Source" />
-	public static readonly DependencyProperty SourceProperty =
-		DependencyProperty.Register("Source", typeof(ImageSource), typeof(BnsCustomImageWidget),
-			new FrameworkPropertyMetadata(null,
-				FrameworkPropertyMetadataOptions.AffectsMeasure | FrameworkPropertyMetadataOptions.AffectsRender));
-
-	public SKBitmap Image
-	{
-		get { return (SKBitmap)GetValue(ImageProperty); }
-		set { SetValue(ImageProperty, value); }
-	}
-
-	public static DependencyProperty ImageProperty =
-		DependencyProperty.Register(nameof(Image), typeof(SKBitmap), typeof(BnsCustomImageWidget),
-		new FrameworkPropertyMetadata(null,
-			FrameworkPropertyMetadataOptions.AffectsMeasure | FrameworkPropertyMetadataOptions.AffectsRender,
-			OnImageChanged));
-
-	public ushort? Count
-	{
-		get { return (ushort?)GetValue(CountProperty); }
-		set { SetValue(CountProperty, value); }
-	}
-
-	public static DependencyProperty CountProperty =
-		DependencyProperty.Register(nameof(Count), typeof(ushort?), typeof(BnsCustomImageWidget),
-		new FrameworkPropertyMetadata(default,
-			FrameworkPropertyMetadataOptions.AffectsMeasure | FrameworkPropertyMetadataOptions.AffectsRender));
-
-	public static void OnImageChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
-	{
-		var widget = (BnsCustomImageWidget)d;
-		var value = (SKBitmap)e.NewValue;
-
-		widget.Source = value?.ToWriteableBitmap();
-	}
-	#endregion
-
-
 	#region Private Methods
 	/// <summary>
 	/// Contains the code common for MeasureOverride and ArrangeOverride.
@@ -71,15 +20,15 @@ public class BnsCustomImageWidget : BnsCustomBaseWidget
 	/// <returns>Image's desired size.</returns>
 	private Size MeasureArrangeHelper(Size inputSize)
 	{
-		ImageSource imageSource = Source;
-		if (imageSource == null) return inputSize;
+		if (!double.IsInfinity(inputSize.Width) && !double.IsInfinity(inputSize.Height))
+			return inputSize;
 
 		//get computed scale factor
-		Size naturalSize = new Size(imageSource.Width, imageSource.Height);
-		Size scaleFactor = ComputeScaleFactor(inputSize, naturalSize);
+		var naturalSize = BaseImageProperty?.ImageUVSize ?? default;
+		var scaleFactor = ComputeScaleFactor(inputSize, naturalSize);
 
 		// Returns our minimum size & sets DesiredSize.
-		return new Size(naturalSize.Width * scaleFactor.Width, naturalSize.Height * scaleFactor.Height);
+		return new Size(naturalSize.X * scaleFactor.Width, naturalSize.Y * scaleFactor.Height);
 	}
 
 	/// <summary>
@@ -87,7 +36,7 @@ public class BnsCustomImageWidget : BnsCustomBaseWidget
 	/// </summary>
 	/// <param name="availableSize">Size into which the content is being fitted.</param>
 	/// <param name="contentSize">Size of the content, measured natively (unconstrained).</param>
-	private static Size ComputeScaleFactor(Size availableSize, Size contentSize)
+	private static Size ComputeScaleFactor(Size availableSize, FVector2D contentSize)
 	{
 		// Compute scaling factors to use for axes
 		double scaleX = 1.0;
@@ -99,8 +48,8 @@ public class BnsCustomImageWidget : BnsCustomBaseWidget
 		if (isConstrainedWidth || isConstrainedHeight)
 		{
 			// Compute scaling factors for both axes
-			scaleX = double.IsInfinity(contentSize.Width) ? 0.0 : availableSize.Width / contentSize.Width;
-			scaleY = double.IsInfinity(contentSize.Height) ? 0.0 : availableSize.Height / contentSize.Height;
+			scaleX = contentSize.X > 0 ? availableSize.Width / contentSize.X : 0;
+			scaleY = contentSize.Y > 0 ? availableSize.Height / contentSize.Y : 0;
 
 			if (!isConstrainedWidth) scaleX = scaleY;
 			else if (!isConstrainedHeight) scaleY = scaleX;
@@ -109,54 +58,80 @@ public class BnsCustomImageWidget : BnsCustomBaseWidget
 		//Return this as a size now
 		return new Size(scaleX, scaleY);
 	}
+
+	public static AnimationTimeline Flipbook(SKBitmap source, FVector2D size, int FramesPerSec = 25)
+	{
+		// init
+		var count = (int)(source.Width / size.X * source.Height / size.Y);
+		(float, float) pos = default;
+
+		var span = 1000 / FramesPerSec;
+		var frames = new ObjectAnimationUsingKeyFrames() { RepeatBehavior = RepeatBehavior.Forever };
+
+		for (int index = 0; index < count; index++)
+		{
+			var frame = source.Clone(new FVector2D(pos.Item1, pos.Item2), size);
+			frames.KeyFrames.Add(new DiscreteObjectKeyFrame
+			{
+				KeyTime = KeyTime.FromTimeSpan(TimeSpan.FromMilliseconds(index * span)),
+				Value = new ImageBrush(frame.ToWriteableBitmap()),
+			});
+
+			// next pos
+			if ((pos.Item1 += size.X) >= source.Width)
+			{
+				pos.Item1 = 0;
+				pos.Item2 += size.Y;
+			}
+		}
+
+		return frames;
+	}
 	#endregion
 
 	#region	Protected Methods
-	/// <summary>
-	/// Updates DesiredSize of the Image.  Called by parent UIElement.  This is the first pass of layout.
-	/// </summary>
-	/// <remarks>
-	/// Image will always return its natural size, if it fits within the constraint.  If not, it will return
-	/// as large a size as it can.  Remember that image can later arrange at any size and stretch/align.
-	/// </remarks>
-	/// <param name="constraint">Constraint size is an "upper limit" that Image should not exceed.</param>
-	/// <returns>Image's desired size.</returns>
 	protected override Size MeasureOverride(Size constraint)
 	{
 		constraint = MeasureArrangeHelper(constraint);
-		return base.MeasureOverride(constraint);
+		base.MeasureOverride(constraint);
+
+		return constraint;
 	}
 
-	/// <summary>
-	/// Override for <seealso cref="FrameworkElement.ArrangeOverride" />.
-	/// </summary>
-	protected override Size ArrangeOverride(Size arrangeSize)
-	{
-		base.ArrangeOverride(arrangeSize);
-
-		return arrangeSize;
-	}
-
-	/// <summary>
-	/// Render control
-	/// </summary>
-	/// <param name="dc"></param>
 	protected override void OnRender(DrawingContext dc)
 	{
-		var imageSource = Source;
-		if (imageSource is null) return;
+		base.OnRender(dc);
 
-		// computed from the ArrangeOverride return size
-		dc.DrawImage(imageSource, new Rect(new Point(), RenderSize));
+		//// draw count string
+		//if (!string.IsNullOrEmpty(Extra))
+		//{
+		//	var format = new FormattedText(Extra, CultureInfo.CurrentCulture,
+		//		FlowDirection.LeftToRight, new Typeface("Arial"), 10, Brushes.White, VisualTreeHelper.GetDpi(this).PixelsPerDip);
+		//	dc.DrawText(format, new Point(
+		//		RenderSize.Width - format.Width - 3,
+		//		RenderSize.Height - format.Height - 2));
+		//}
+	}
 
-		// draw count string
-		if (Count is null) return;
-		var format = new FormattedText(Count.ToString(), CultureInfo.CurrentCulture,
-			FlowDirection.LeftToRight, new Typeface("Arial"), 10, Brushes.White,
-			VisualTreeHelper.GetDpi(this).PixelsPerDip);
-		dc.DrawText(format, new Point(
-			RenderSize.Width - format.Width - 3,
-			RenderSize.Height - format.Height - 2));
+
+	/// <summary>
+	/// Generate widget from a template widget
+	/// </summary>
+	/// <returns></returns>
+	internal BnsCustomImageWidget Clone()
+	{
+		var widget = new BnsCustomImageWidget();
+
+		// clone basic layout
+		LayoutData.SetAnchors(widget, LayoutData.GetAnchors(this));
+		LayoutData.SetOffsets(widget, LayoutData.GetOffsets(this));
+		LayoutData.SetAlignments(widget, LayoutData.GetAlignments(this));
+
+		// clone properties from template
+		if (Expansion != null) widget.Expansion = [.. Expansion];
+		widget.ExpansionComponentList = new(ExpansionComponentList);
+
+		return widget;
 	}
 	#endregion
 }

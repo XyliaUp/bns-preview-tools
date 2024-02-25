@@ -1,4 +1,5 @@
 ﻿using System.Runtime.CompilerServices;
+using System.Text;
 
 namespace Xylia.Preview.Data.Engine;
 internal class DataArchive : Stream
@@ -6,7 +7,7 @@ internal class DataArchive : Stream
     private readonly byte[] _data;
     public bool Is64Bit { get; set; }
 
-    public DataArchive(byte[] data, bool is64Bit, long offset = 0, long size = -1)
+    public DataArchive(byte[] data, bool is64Bit = false, long offset = 0, long size = -1)
     {
         ArgumentNullException.ThrowIfNull(data);
         _data = data;
@@ -79,6 +80,13 @@ internal class DataArchive : Stream
 	}
 
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	public string ReadString()
+	{
+        var count = Read<int>();
+        return Encoding.UTF8.GetString(ReadBytes(count));
+	}
+
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public long ReadLongInt()
 	{
 		if (Is64Bit) return Read<long>();
@@ -87,8 +95,7 @@ internal class DataArchive : Stream
 
 
 
-
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
     public virtual unsafe void Serialize(byte* ptr, int length)
     {
         Unsafe.CopyBlockUnaligned(ref ptr[0], ref _data[Position], (uint)length);

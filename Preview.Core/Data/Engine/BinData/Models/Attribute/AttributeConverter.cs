@@ -38,30 +38,18 @@ public class AttributeConverter
 			case AttributeType.TProp_seq:
 			{
 				var idx = record.Get<sbyte>(attribute.Offset);
-				if (idx >= 0 && idx < attribute.Sequence.Count)
-				{
-					return attribute.Sequence[idx];
-				}
-				else
-				{
-					if (!_noValidate) throw new Exception("Invalid sequence index");
-					return idx.ToString();
-				}
+				if (idx >= 0 && attribute.Sequence != null && idx < attribute.Sequence.Count) return attribute.Sequence[idx];
+				else if (!_noValidate) throw new Exception("Invalid sequence index");
+				else return idx.ToString();
 			}
 
 			case AttributeType.TSeq16:
 			case AttributeType.TProp_field:
 			{
 				var idx = record.Get<short>(attribute.Offset);
-				if (idx >= 0 && idx < attribute.Sequence.Count)
-				{
-					return attribute.Sequence[idx];
-				}
-				else
-				{
-					if (!_noValidate) throw new Exception("Invalid sequence index");
-					return idx.ToString();
-				}
+				if (idx >= 0 && attribute.Sequence != null && idx < attribute.Sequence.Count) return attribute.Sequence[idx];
+				else if (!_noValidate) throw new Exception("Invalid sequence index");
+				else return idx.ToString();
 			}
 
 			case AttributeType.TRef: return provider.Tables.GetRef(attribute.ReferedTable, record.Get<Ref>(attribute.Offset));
@@ -122,7 +110,7 @@ public class AttributeConverter
 		AttributeType.TSeq => value,
 		AttributeType.TSeq16 => value,
 		AttributeType.TRef => provider.Tables.GetRecord(attribute.ReferedTableName, value),
-		AttributeType.TTRef => provider.Tables.GetRecord(value),
+		AttributeType.TTRef => value,
 		AttributeType.TSub => value,
 		AttributeType.TSu => value,
 		AttributeType.TVector16 => Vector16.Parse(value),
@@ -142,7 +130,7 @@ public class AttributeConverter
 		AttributeType.TIcon => value,
 		//AttributeType.TTime32 => value,
 		AttributeType.TTime64 => Time64.Parse(value),
-		AttributeType.TXUnknown1 => Time64.Parse(value),     //	((DateTime)value).Truncate();
+		AttributeType.TXUnknown1 => Time64.Parse(value),
 		AttributeType.TXUnknown2 => new ObjectPath(value),
 		_ => throw new Exception($"Unhandled type name: '{attribute.Type}'"),
 	};
@@ -193,6 +181,7 @@ public class AttributeConverter
 		else if (type == typeof(bool))
 		{
 			if (value is BnsBoolean b) return (bool)b;
+			if (value is string s) return s.ToBool();
 		}
 		else if (type == typeof(string)) return value.ToString();
 		else if (type.IsEnum) return value.ToString().TryParseToEnum(type, out var seq) ? seq : default;

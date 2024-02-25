@@ -1,16 +1,14 @@
-﻿using System.ComponentModel;
-using System.Text;
-using System.Windows;
+﻿using System.Windows;
+using System.Windows.Controls;
 using Xylia.Preview.Common.Extension;
 using Xylia.Preview.Data.Models;
 using Xylia.Preview.Data.Models.Sequence;
+using Xylia.Preview.UI.Controls;
 using Xylia.Preview.UI.Documents;
 
 namespace Xylia.Preview.UI.GameUI.Scene.Game_Tooltip;
-public partial class ItemTooltipPanel : INotifyPropertyChanged
+public partial class ItemTooltipPanel
 {
-	public event PropertyChangedEventHandler PropertyChanged;
-
 	public ItemTooltipPanel()
 	{
 		InitializeComponent();
@@ -19,28 +17,19 @@ public partial class ItemTooltipPanel : INotifyPropertyChanged
 
 	private void OnLoaded(object sender, RoutedEventArgs e)
 	{
-		PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Test)));
-	}
+		if (DataContext is not Item record) return;
 
-
-
-	public string Test
-	{
-		get
+		#region Decompose 
+		var pages = DecomposePage.LoadFrom(record.DecomposeInfo);
+		if (pages.Count > 0)
 		{
-			if (DataContext is not Item record) return null;
-
-			var pages = DecomposePage.LoadFrom(record.DecomposeInfo);
-			if (pages.Count > 0)
-			{
-				var page = pages[0];
-				return page.GetDescription();
-			}
-
-			return null;
+			var page = pages[0];
+			page.Update(DecomposeDescription.Children);
 		}
+		#endregion
 	}
 }
+
 
 internal sealed class DecomposePage
 {
@@ -91,9 +80,9 @@ internal sealed class DecomposePage
 		return pages;
 	}
 
-	public string GetDescription()
+	public void Update(UIElementCollection collection)
 	{
-		var builder = new StringBuilder();
+		collection.Clear();
 
 		DecomposeReward.FixedItem.ForEach(x => x.Instance, (item, i) =>
 		{
@@ -101,26 +90,32 @@ internal sealed class DecomposePage
 			var max = DecomposeReward.FixedItemMax[i];
 			var param = new DataParams { [2] = item, [3] = min, [4] = max };
 
-			builder.AppendLine(ArgExtension.Handle(param, (min == max ? min == 1 ?
-			"UI.ItemTooltip.RandomboxPreview.Fixed" :
-			"UI.ItemTooltip.RandomboxPreview.Fixed.Min" :
-			"UI.ItemTooltip.RandomboxPreview.Fixed.MinMax").GetText()));
+			collection.Add(new BnsCustomLabelWidget()
+			{
+				Params = param,
+				Text = (min == max ? min == 1 ?
+					"UI.ItemTooltip.RandomboxPreview.Fixed" :
+					"UI.ItemTooltip.RandomboxPreview.Fixed.Min" :
+					"UI.ItemTooltip.RandomboxPreview.Fixed.MinMax").GetText(),
+			});
 		});
-
 		DecomposeReward.SelectedItem.ForEach(x => x.Instance, (item, i) =>
 		{
 			var count = DecomposeReward.SelectedItemCount[i];
-			var param = new DataParams { [2] = item, [3] = count };
-			builder.AppendLine(ArgExtension.Handle(param, "UI.ItemTooltip.RandomboxPreview.Selected".GetText()));
+			collection.Add(new BnsCustomLabelWidget()
+			{
+				Text = "UI.ItemTooltip.RandomboxPreview.Selected".GetText(),
+				Params = new DataParams { [2] = item, [3] = count }
+			});
 		});
-
 		DecomposeReward.RandomItem.ForEach(x => x.Instance, (item, i) =>
 		{
-			var param = new DataParams { [2] = item };
-			builder.AppendLine(ArgExtension.Handle(param, "UI.ItemTooltip.RandomboxPreview.Random".GetText()));
+			collection.Add(new BnsCustomLabelWidget()
+			{
+				Text = "UI.ItemTooltip.RandomboxPreview.Random".GetText(),
+				Params = new DataParams { [2] = item }
+			});
 		});
-
-		return builder.ToString().TrimEnd('\n');
 	}
 	#endregion
 }

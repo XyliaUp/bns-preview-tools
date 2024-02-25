@@ -1,16 +1,24 @@
 ﻿<Window x:Class="Xylia.Preview.UI.Views.Editor.DatabaseStudio"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+		xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+		xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d"
 		xmlns:avalonEdit="http://icsharpcode.net/sharpdevelop/avalonedit"
 		xmlns:hc="https://handyorg.github.io/handycontrol"
 		Title="{DynamicResource DatabaseStudio_Name}" Height="800" Width="1200">
 	<Window.Resources>
 		<ContextMenu x:Key="TableMenu">
-			<MenuItem Header="{DynamicResource DatabaseStudio_ViewTable}" Click="TableView_Click">
+			<MenuItem Header="{DynamicResource DatabaseStudio_ViewTable}" Click="ViewTable_Click">
 				<MenuItem.Icon>
 					<TextBlock Text="&#xE8FD;" Style="{StaticResource SegoeIcon}" />
 				</MenuItem.Icon>
 			</MenuItem>
+			<MenuItem Header="{DynamicResource DatabaseStudio_ViewDefinition}" Click="ViewDefinition_Click" Visibility="Collapsed">
+				<MenuItem.Icon>
+					<TextBlock Text="&#xE8FD;" Style="{StaticResource SegoeIcon}" />
+				</MenuItem.Icon>
+			</MenuItem>
+
 			<MenuItem Header="{DynamicResource DatabaseStudio_Extract}" Click="TableExport_Click">
 				<MenuItem.Icon>
 					<TextBlock Text="&#xE74E;" Style="{StaticResource SegoeIcon}" />
@@ -47,7 +55,6 @@
 	<Grid>
 		<Grid.RowDefinitions>
 			<RowDefinition Height="Auto" />
-			<RowDefinition Height="200" />
 			<RowDefinition Height="*" />
 			<RowDefinition Height="Auto" />
 		</Grid.RowDefinitions>
@@ -59,42 +66,29 @@
 		<!-- Function -->
 		<ToolBarTray Grid.ColumnSpan="2" >
 			<ToolBar Band="0" BandIndex="0">
-				<Button Name="Connect" Click="Connect_Click" Tag="Connect" Style="{x:Null}">
+				<Button Name="Connect" Click="Connect_Click" Style="{x:Null}">
 					<StackPanel Orientation="Horizontal">
 						<Image Source="/Resources/Images/database_connect.png" />
-						<TextBlock Margin="3,2,0,0" Text="{Binding Tag , ElementName=Connect}" />
+
+						<TextBlock Margin="3,2,0,0" d:Text="Connect" Text="{DynamicResource DatabaseStudio_Connect}" Visibility="{Binding ConnectStatus,Converter={StaticResource Boolean2VisibilityReConverter}}"/>
+						<TextBlock Margin="3,2,0,0" d:Text="Disconnect" Text="{DynamicResource DatabaseStudio_Disconnect}" Visibility="{Binding ConnectStatus,Converter={StaticResource Boolean2VisibilityConverter}}" d:Visibility="Collapsed"/>
 					</StackPanel>
 				</Button>
 				<Separator />
+
 
 				<Button Click="Refresh_Click" Style="{x:Null}">
 					<StackPanel Orientation="Horizontal">
 						<Image Source="/Resources/Images/arrow_refresh.png" />
-						<TextBlock Margin="3,2,3,0" Text="Refresh" />
+						<TextBlock Margin="3,2,3,0" d:Text="Refresh" Text="{DynamicResource Text_Refresh}"/>
 					</StackPanel>
 				</Button>
 				<Separator />
 
-				<Button x:Name="Run" Click="Run_Click" Style="{x:Null}">
+				<Button x:Name="Run" Style="{x:Null}" Command="ApplicationCommands.Print">
 					<StackPanel Orientation="Horizontal">
 						<Image Source="/Resources/Images/resultset_next.png" />
-						<TextBlock Margin="3,2,10,0" Text="Run" />
-					</StackPanel>
-				</Button>
-				<Separator />
-
-				<Button Click="LoadSql_Click" Style="{x:Null}">
-					<StackPanel Orientation="Horizontal">
-						<Image Source="/Resources/Images/folder_page.png" />
-						<TextBlock Margin="3,2,0,0" Text="Load" />
-					</StackPanel>
-				</Button>
-				<Separator />
-
-				<Button Click="SaveSql_Click" Style="{x:Null}">
-					<StackPanel Orientation="Horizontal">
-						<Image Source="/Resources/Images/disk.png" />
-						<TextBlock Margin="3,2,0,0" Text="Save" />
+						<TextBlock Margin="3,2,10,0" d:Text="Run" Text="{DynamicResource Text_Run}"/>
 					</StackPanel>
 				</Button>
 			</ToolBar>
@@ -103,55 +97,171 @@
 				<Button Click="Import_Click" Style="{x:Null}">
 					<StackPanel Orientation="Horizontal">
 						<Image Source="/Resources/Images/disk.png" />
-						<TextBlock Margin="3,2,10,0" Text="Import" />
+						<TextBlock Margin="3,2,10,0" d:Text="Import" Text="{DynamicResource Text_Import}"/>
 					</StackPanel>
 				</Button>
 
 				<Button Click="Save_Click" Style="{x:Null}">
 					<StackPanel Orientation="Horizontal">
 						<Image Source="/Resources/Images/disk.png" />
-						<TextBlock Margin="3,2,10,0" Text="Save" />
+						<TextBlock Margin="3,2,10,0" d:Text="Save" Text="{DynamicResource Text_Save}"/>
 					</StackPanel>
 				</Button>
 			</ToolBar>
 		</ToolBarTray>
 
-
 		<!-- Tree -->
-		<TreeView x:Name="tvwDatabase" Grid.Row="1" Grid.RowSpan="2" MouseDoubleClick="TvwDatabase_MouseDoubleClick" ScrollViewer.HorizontalScrollBarVisibility="Disabled" />
+		<TreeView x:Name="tvwDatabase" Grid.Row="1" Grid.RowSpan="3" MouseDoubleClick="TvwDatabase_MouseDoubleClick" ScrollViewer.HorizontalScrollBarVisibility="Disabled" />
 
-		<!-- SQL -->
-		<hc:TabControl Grid.Row="1" Grid.Column="2" Name="editors" IsAnimationEnabled="True" ShowCloseButton="True" IsDraggable="True" TabItemWidth="150" >
-			<TabControl.Resources>
-				<Style TargetType="avalonEdit:TextEditor">
-					<Setter Property="FontFamily" Value="Consolas" />
-					<Setter Property="FontSize" Value="14" />
-					<Setter Property="SyntaxHighlighting" Value="SQL" />
-					<Setter Property="WordWrap" Value="False" />
-				</Style>
-			</TabControl.Resources>
-		</hc:TabControl>
-
-		<TabControl Grid.Row="2" Grid.Column="2" >
-			<TabItem Header="Grid" >
+		<TabControl x:Name="PageHolder" Grid.Row="1" Grid.Column="2">
+			<TabItem x:Name="Page_SQL" Visibility="Collapsed">
 				<Grid>
-					<DataGrid x:Name="QueryGrid" HorizontalScrollBarVisibility="Auto" ContextMenu="{StaticResource GridMenu}" Style="{x:Null}" 
-						AutoGenerateColumns="True" IsReadOnly="True" SelectionUnit="CellOrRowHeader"
-						EnableRowVirtualization="True" EnableColumnVirtualization="True" VirtualizingPanel.IsContainerVirtualizable="True" VirtualizingPanel.VirtualizationMode="Recycling" />
+					<Grid.RowDefinitions>
+						<RowDefinition Height="200" />
+						<RowDefinition Height="*" />
+						<RowDefinition Height="Auto" />
+					</Grid.RowDefinitions>
+					<Grid.Resources>
+						<ContextMenu x:Key="EditorsMenu">
+							<MenuItem d:Header="Load" Header="{DynamicResource DatabaseStudio_SqlLoad}" Click="LoadSql_Click" />
+							<MenuItem d:Header="Save" Header="{DynamicResource DatabaseStudio_SqlSave}" Click="SaveSql_Click" />
+						</ContextMenu>
+					</Grid.Resources>
+
+					<!-- Input -->
+					<hc:TabControl Name="editors" ContextMenu="{StaticResource EditorsMenu}" 
+								   IsAnimationEnabled="True" ShowCloseButton="True" IsDraggable="True" TabItemWidth="150">
+						<TabControl.Resources>
+							<Style TargetType="avalonEdit:TextEditor">
+								<Setter Property="FontFamily" Value="Consolas" />
+								<Setter Property="FontSize" Value="14" />
+								<Setter Property="SyntaxHighlighting" Value="SQL" />
+								<Setter Property="WordWrap" Value="False" />
+							</Style>
+						</TabControl.Resources>
+					</hc:TabControl>
+
+					<!-- Result -->
+					<TabControl Grid.Row="1" Grid.Column="2" >
+						<TabItem d:Header="Grid" Header="{DynamicResource DatabaseStudio_Grid}">
+							<Grid>
+								<DataGrid x:Name="QueryGrid" HorizontalScrollBarVisibility="Auto" ContextMenu="{StaticResource GridMenu}" Style="{x:Null}" 
+				AutoGenerateColumns="True" IsReadOnly="True" SelectionUnit="CellOrRowHeader"
+				EnableRowVirtualization="True" EnableColumnVirtualization="True" VirtualizingPanel.IsContainerVirtualizable="True" VirtualizingPanel.VirtualizationMode="Recycling" />
+							</Grid>
+						</TabItem>
+
+						<TabItem d:Header="Text" Header="{DynamicResource DatabaseStudio_Text}">
+							<avalonEdit:TextEditor Name="QueryText" SyntaxHighlighting="JSON" IsReadOnly="True" Padding="5" ContextMenu="{StaticResource TextMenu}" />
+						</TabItem>
+					</TabControl>
 				</Grid>
 			</TabItem>
-			
-			<TabItem Header="Text">
-				<avalonEdit:TextEditor Name="QueryText" SyntaxHighlighting="JSON" IsReadOnly="True" Padding="5" ContextMenu="{StaticResource TextMenu}" />
+
+			<TabItem x:Name="Page_Definition" Visibility="Collapsed">
+				<Grid>
+					<Grid.RowDefinitions>
+						<RowDefinition Height="Auto" />
+						<RowDefinition Height="*" />
+					</Grid.RowDefinitions>
+
+					<Grid Grid.Row="0" >
+						<Image Source="/Resources/Images/database_connect.png" MouseDown="ReturnBtn_MouseDownClick" Width="20" Height="20" />
+					</Grid>
+
+					<ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+						<ItemsControl ItemsSource="{Binding CurrentDefinition.Els}" ScrollViewer.VerticalScrollBarVisibility="Auto">
+							<ItemsControl.ItemTemplate>
+								<DataTemplate>
+									<StackPanel>
+										<!-- Element -->
+										<ToggleButton Content="{Binding Name}" x:Name="ElName" HorizontalAlignment="Left"/>
+
+										<!-- Attributes -->
+										<ListView Grid.Row="1" HorizontalContentAlignment="Stretch" VirtualizingStackPanel.IsVirtualizing="True"
+												ItemsSource="{Binding Attributes}" Visibility="{Binding IsChecked,ElementName=ElName,Converter={StaticResource Boolean2VisibilityConverter}}">
+											<ListView.ItemContainerStyle>
+												<Style TargetType="{x:Type ListViewItem}">
+													<Setter Property="Focusable" Value="False"/>
+												</Style>
+											</ListView.ItemContainerStyle>
+											<ListView.View>
+												<GridView>
+													<GridView.ColumnHeaderContainerStyle>
+														<Style TargetType="GridViewColumnHeader">
+															<Setter Property="Foreground" Value="Black" />
+															<Setter Property="Background" Value="Transparent" />
+														</Style>
+													</GridView.ColumnHeaderContainerStyle>
+
+													<GridViewColumn Header="Name">
+														<GridViewColumn.CellTemplate>
+															<DataTemplate>
+																<TextBlock Text="{Binding Name}" />
+															</DataTemplate>
+														</GridViewColumn.CellTemplate>
+													</GridViewColumn>
+													<GridViewColumn Header="Type">
+														<GridViewColumn.CellTemplate>
+															<DataTemplate>
+																<TextBlock Text="{Binding Type}" />
+															</DataTemplate>
+														</GridViewColumn.CellTemplate>
+													</GridViewColumn>
+
+													<GridViewColumn Header="IsDeprecated">
+														<GridViewColumn.CellTemplate>
+															<DataTemplate>
+																<CheckBox IsChecked="{Binding IsDeprecated}" />
+															</DataTemplate>
+														</GridViewColumn.CellTemplate>
+													</GridViewColumn>
+													<GridViewColumn Header="IsKey">
+														<GridViewColumn.CellTemplate>
+															<DataTemplate>
+																<CheckBox IsChecked="{Binding IsKey}" />
+															</DataTemplate>
+														</GridViewColumn.CellTemplate>
+													</GridViewColumn>
+													<GridViewColumn Header="IsRequired">
+														<GridViewColumn.CellTemplate>
+															<DataTemplate>
+																<CheckBox IsChecked="{Binding IsRequired}" />
+															</DataTemplate>
+														</GridViewColumn.CellTemplate>
+													</GridViewColumn>
+													<GridViewColumn Header="IsHidden">
+														<GridViewColumn.CellTemplate>
+															<DataTemplate>
+																<CheckBox IsChecked="{Binding IsHidden}" />
+															</DataTemplate>
+														</GridViewColumn.CellTemplate>
+													</GridViewColumn>
+
+													<GridViewColumn Header="Binary Offset">
+														<GridViewColumn.CellTemplate>
+															<DataTemplate>
+																<TextBlock Text="{Binding Offset}" />
+															</DataTemplate>
+														</GridViewColumn.CellTemplate>
+													</GridViewColumn>
+												</GridView>
+											</ListView.View>
+										</ListView>
+									</StackPanel>
+								</DataTemplate>
+							</ItemsControl.ItemTemplate>
+						</ItemsControl>
+					</ScrollViewer>
+				</Grid>
 			</TabItem>
 		</TabControl>
 
 
 		<!-- Tooltip -->
-		<StackPanel Grid.Row="3" Grid.ColumnSpan="99">
-			<TextBlock x:Name="Status" HorizontalAlignment="Right" Margin="0 0 10 0" />
+		<StackPanel Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="99">
+			<TextBlock x:Name="Status" HorizontalAlignment="Right" Margin="0 0 10 0" d:Text="Message" />
 		</StackPanel>
-		
 		<StackPanel Grid.RowSpan="99" Grid.ColumnSpan="99" Panel.ZIndex="99" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="5" hc:Growl.Token="DatabaseStudio">
 			<Grid Width="320" MinHeight="60" Margin="0 10 0 0" Visibility="{Binding Path=Visibility,ElementName=SaveMessage}">
 				<Grid.ColumnDefinitions>
@@ -172,7 +282,7 @@
 					<Path FlowDirection="LeftToRight" Data="{StaticResource ErrorGeometry}" Stretch="Uniform" Fill="{DynamicResource SecondaryTextBrush}" />
 				</Button>
 			</Grid>
-			
+
 		</StackPanel>
 	</Grid>
 </Window>

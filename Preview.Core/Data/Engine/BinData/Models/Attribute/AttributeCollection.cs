@@ -27,7 +27,7 @@ public class AttributeCollection : IReadOnlyDictionary<AttributeDefinition, obje
 	protected readonly Dictionary<string, object> attributes = [];
 	#endregion
 
-	#region Ctor
+	#region Constructors
 	internal void BuildData(ElementBaseDefinition definition, bool OnlyKey = false)
 	{
 		void SetData(AttributeDefinition attribute) =>
@@ -115,6 +115,7 @@ public class AttributeCollection : IReadOnlyDictionary<AttributeDefinition, obje
 		return result != null || record.Definition?[name] != null;
 	}
 
+	// TODO: Value convert
 	public T Get<T>(string name) => (T)Get(name);
 
 	public object Get(string name)
@@ -184,12 +185,13 @@ public class AttributeCollection : IReadOnlyDictionary<AttributeDefinition, obje
 			case AttributeType.TRef:
 			{
 				var record = value as Record;
-				value = (Ref?)record ?? new Ref();
+				value = record.PrimaryKey;
 				break;
 			}
 			case AttributeType.TTRef:
 			{
-				var record = value as Record;
+				var provider = this.record.Owner.Owner;
+				var record = provider.Tables.GetRecord((string)value);
 				value = new TRef(record);
 				break;
 			}

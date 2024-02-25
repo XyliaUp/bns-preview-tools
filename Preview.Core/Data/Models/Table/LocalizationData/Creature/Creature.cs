@@ -17,7 +17,7 @@ public class Creature
     public Job Job;
 
     [Repeat(92)]
-    public sbyte[] Appearance { get; set; }
+    public sbyte[] Appearance;
 
 
     public string Name;

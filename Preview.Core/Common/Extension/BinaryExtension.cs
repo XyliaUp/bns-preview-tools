@@ -36,7 +36,7 @@ public static class BinaryExtension
 	{
 		if (size == 0) return "0 B";
 
-		string[] sizes = { "B", "KB", "MB", "GB", "TB" };
+		string[] sizes = ["B", "KB", "MB", "GB", "TB"];
 		var order = 0;
 		while (size >= 1024 && order < sizes.Length - 1)
 		{
@@ -47,7 +47,7 @@ public static class BinaryExtension
 		return $"{size:# ###.##} {sizes[order]}".TrimStart();
 	}
 
-
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static string ToHex(this byte[] value, bool original = true)
 	{
 		if (value.Length == 0)
@@ -83,6 +83,7 @@ public static class BinaryExtension
 		return sb.ToString();
 	}
 
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static byte[] ToBytes(this string Hex)
 	{
 		Hex = Hex.UnCompress();
@@ -96,6 +97,7 @@ public static class BinaryExtension
 		return inputByteArray;
 	}
 
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static string UnCompress(this string Cipher)
 	{
 		if (string.IsNullOrWhiteSpace(Cipher))

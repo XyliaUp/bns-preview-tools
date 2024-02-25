@@ -2,7 +2,6 @@
 using Xylia.Preview.Common.Extension;
 using Xylia.Preview.Data.Common.DataStruct;
 using Xylia.Preview.Data.Engine.BinData.Helpers;
-using Xylia.Preview.Data.Engine.BinData.Models;
 using Xylia.Preview.Data.Engine.Definitions;
 
 namespace Xylia.Preview.Data.Engine.DatData;
@@ -45,13 +44,4 @@ public class FolderProvider(string path) : IDataProvider
 		GC.SuppressFinalize(this);
 	}
 	#endregion
-}
-
-
-public class CompressProvider(string filepath) : FolderProvider(filepath)
-{
-	public override Stream[] GetFiles(string pattern)
-	{
-		return base.GetFiles(pattern);
-	}
 }

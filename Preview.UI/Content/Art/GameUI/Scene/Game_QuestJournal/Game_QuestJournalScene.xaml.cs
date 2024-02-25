@@ -1,6 +1,5 @@
 using System.Windows;
 using System.Windows.Controls;
-
 using Xylia.Preview.Data.Helpers;
 using Xylia.Preview.Data.Models;
 using Xylia.Preview.UI.Helpers.Output.Quests;
@@ -13,9 +12,9 @@ public partial class Game_QuestJournalScene
 	protected override void OnLoading()
 	{
 		InitializeComponent();
-
+		
 		// Progress
-		QuestJournal_ProgressQuestList.ItemsSource = FileCache.Data.Get<Quest>().OrderBy(q => q.Source.RecordId);
+		QuestJournal_ProgressQuestList.ItemsSource = FileCache.Data.Get<Quest>().OrderBy(x => x.Source.PrimaryKey);
 
 		// Completed
 		List<Quest> CompletedQuest = [];

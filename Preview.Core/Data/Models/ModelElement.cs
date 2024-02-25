@@ -3,7 +3,6 @@ using System.Reflection;
 using System.Runtime.Serialization;
 using Xylia.Preview.Common.Attributes;
 using Xylia.Preview.Common.Extension;
-using Xylia.Preview.Data.Client;
 using Xylia.Preview.Data.Helpers;
 
 namespace Xylia.Preview.Data.Models;
@@ -12,7 +11,7 @@ public abstract class ModelElement
 	[IgnoreDataMember]
 	public Record Source { get; private set; }
 
-	public AttributeCollection Attributes => Source?.Attributes;
+	public AttributeCollection Attributes => Source.Attributes;
 
 	public override string ToString() => Source.ToString();
 
@@ -21,13 +20,15 @@ public abstract class ModelElement
 		return obj is ModelElement other && this.Source == other.Source;
 	}
 
-	public override int GetHashCode() => Source.GetHashCode();
+	public override int GetHashCode() => Source?.GetHashCode() ?? base.GetHashCode();
 
+
+	#region Methods
 	protected internal virtual void LoadHiddenField()
 	{
 
 	}
-
+	#endregion
 
 	#region Helper
 	/// <summary>
@@ -100,11 +101,12 @@ public abstract class ModelElement
 		{
 			return AttributeConverter.Convert(record.Attributes[name], toType);
 		}
+		else if (!toType.IsArray)
+		{
+			throw new Exception($"Repeatable object must to use array type: {record.GetType()} -> {name}");
+		}
 		else
 		{
-			if (!toType.IsArray)
-				throw new Exception($"Repeatable object must to use array type: {record.GetType()} -> {name}");
-
 			toType = toType.GetElementType();
 			var value = Array.CreateInstance(toType, attribute.Repeat);
 
@@ -120,24 +122,38 @@ public abstract class ModelElement
 
 public struct Ref<TElement> where TElement : ModelElement
 {
+	#region Constructors
 	public Ref(Record value)
 	{
 		source = value;
 	}
 
-	public Ref(string value, BnsDatabase database = null)
+	public Ref(TElement value)
+	{
+		_instance = value;
+		source = value.Source;
+	}
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <remarks>Not recommended to use the constructor</remarks>
+	public Ref(string value)
 	{
 		// prevent designer request to load data
-		if (database is null && 
-			FileCache.IsEmpty) return;
+		if (FileCache.IsEmpty) return;
 
 		// get available package
-		var provider = (database ?? FileCache.Data).Provider;
+		var provider = FileCache.Data.Provider;
 
 		// get source
 		if (value.Contains(':')) source = provider.Tables.GetRecord(value);
 		else source = provider.Tables.GetRecord(typeof(TElement).Name, value);
+
+
+		if (source is null) Serilog.Log.Warning("invalid ref: " + value);
 	}
+	#endregion
 
 
 	#region	Instance
@@ -149,9 +165,18 @@ public struct Ref<TElement> where TElement : ModelElement
 
 	public static implicit operator TElement(Ref<TElement> value) => value.Instance;
 
-	public static implicit operator Ref<TElement>(TElement value) => new() { _instance = value };
+	public static implicit operator Ref<TElement>(TElement value) => new(value);
 
 	public static implicit operator Ref<TElement>(Record value) => new(value);
+
+
+	public override readonly int GetHashCode() => source?.GetHashCode() ?? 0;
+
+	public override readonly bool Equals(object obj) => obj is Ref<TElement> other && this.source == other.source;
+
+	public static bool operator ==(Ref<TElement> left, Ref<TElement> right) => left.Equals(right);
+
+	public static bool operator !=(Ref<TElement> left, Ref<TElement> right) => !(left == right);
 	#endregion
 }
 
@@ -170,7 +195,7 @@ internal class ModelTypeHelper
 				subs.GetSubType(baseType);
 			}
 
-			// convert real type
+			// Convert to real type
 			if (baseType == typeof(ModelElement))
 			{
 				Debug.Assert(name != null);
@@ -186,7 +211,7 @@ internal class ModelTypeHelper
 
 	#region Methods
 	private Type BaseType;
-	private Dictionary<string, Type> _subs = new(StringComparer.OrdinalIgnoreCase);
+	private readonly Dictionary<string, Type> _subs = new(StringComparer.OrdinalIgnoreCase);
 
 	private void GetSubType(Type baseType)
 	{

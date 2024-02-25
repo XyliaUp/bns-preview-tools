@@ -137,6 +137,8 @@ public partial class ModelGui : SnimGui
 			_viewportFocus = false;
 			foreach (var model in view.Models)
 			{
+				if (model.Export is null) continue;
+
 				if (ImGui.MenuItem(model.DisplayName))
 				{
 					view.Renderer.Options = new Options();   //clear model 

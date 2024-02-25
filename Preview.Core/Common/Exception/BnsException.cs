@@ -1,7 +1,7 @@
 ﻿namespace Xylia.Preview.Common;
 public class BnsException : Exception
 {
-    #region Ctor
+    #region Constructors
     public BnsException()
     {
 

@@ -1,9 +1,8 @@
 using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
-
 using CUE4Parse.BNS.Assets.Exports;
-
+using CUE4Parse.UE4.Objects.UObject;
 using Xylia.Preview.Common.Extension;
 using Xylia.Preview.Data.Common.Abstractions;
 using Xylia.Preview.Data.Helpers;
@@ -13,7 +12,7 @@ using Xylia.Preview.UI.Controls;
 namespace Xylia.Preview.UI.GameUI.Scene.Game_Map;
 public partial class Game_MapScene
 {
-	#region Ctor
+	#region Constructors
 	public Game_MapScene()
 	{
 		InitializeComponent();
@@ -24,30 +23,24 @@ public partial class Game_MapScene
 	{
 		if (e.OldValue == e.NewValue) return;
 
-		LoadData(e.NewValue as MapInfo);
+		LoadData((MapInfo)e.NewValue);
 	}
 	#endregion
 
 	#region Map
-	private MapUnit.MapDepthSeq depth;
-
 	public void LoadData(MapInfo MapInfo)
 	{
 		// get current map depth
 		if (MapInfo is null) return;
-		depth = MapInfo.GetMapDepth(MapInfo);
 
-		// layout
-		MapPanel.Children.Clear();
-		MapPanel.Children.Add(MapSource);
-
-		this.MapSource.Image = FileCache.Provider.LoadObject<UImageSet>(MapInfo.Imageset)?.GetImage();
+		this.MapDepth = MapInfo.GetMapDepth(MapInfo);
+		this.MapPanel.BaseImageProperty = new ImageProperty() { ImageSet = new MyFPackageIndex(MapInfo.Imageset) };
 		this.LoadMapUint(MapInfo);
 	}
 
-	private void LoadMapUint(MapInfo MapInfo, List<MapInfo> MapTree = null)
+	private void LoadMapUint(MapInfo MapInfo, List<MapInfo>? MapTree = null)
 	{
-		MapTree ??= new();
+		MapTree ??= [];
 		MapTree.Add(MapInfo);
 
 		this.GetMapUnit(MapInfo, MapTree);
@@ -60,7 +53,7 @@ public partial class Game_MapScene
 
 	private void GetMapUnit(MapInfo MapInfo, List<MapInfo> MapTree)
 	{
-		var MapUnits = FileCache.Data.Get<MapUnit>().Where(o => o.Mapid == MapInfo.Id && o.MapDepth <= depth);
+		var MapUnits = FileCache.Data.Get<MapUnit>().Where(o => o.Mapid == MapInfo.Id && o.MapDepth <= this.MapDepth);
 		foreach (var mapunit in MapUnits)
 		{
 			#region init
@@ -72,11 +65,11 @@ public partial class Game_MapScene
 
 			var temp = new BnsCustomImageWidget()
 			{
-				Tag = mapunit,
-				Image = res,
+				//Tag = mapunit,
+				//BaseImageProperty = res,
 
-				Width = mapunit.SizeX,
-				Height = mapunit.SizeY,
+				//Width = mapunit.SizeX,
+				//Height = mapunit.SizeY,
 			};
 			#endregion
 
@@ -84,7 +77,7 @@ public partial class Game_MapScene
 			string tooltip = mapunit.Name2.GetText();
 			if (mapunit is MapUnit.Attraction)
 			{
-				var obj = new Ref<ModelElement>(mapunit.Attributes["attraction"]?.ToString()).Instance;
+				var obj = mapunit.Attributes.Get<Record>("attraction")?.As<ModelElement>();
 				if (obj is IAttraction attraction)
 				{
 					tooltip = attraction.Text + "\n" + attraction.Describe;
@@ -135,5 +128,10 @@ public partial class Game_MapScene
 			#endregion
 		}
 	}
+	#endregion
+
+
+	#region Private Fields
+	private MapUnit.MapDepthSeq MapDepth;
 	#endregion
 }

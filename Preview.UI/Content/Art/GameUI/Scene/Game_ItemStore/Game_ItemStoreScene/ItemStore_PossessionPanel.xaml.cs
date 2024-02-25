@@ -1,9 +1,5 @@
-﻿using System.ComponentModel;
-using System.Windows.Controls;
-
-namespace Xylia.Preview.UI.GameUI.Scene.Game_ItemStore;
-[DesignTimeVisible(false)]
-public partial class ItemStore_PossessionPanel : UserControl
+﻿namespace Xylia.Preview.UI.GameUI.Scene.Game_ItemStore;
+public partial class ItemStore_PossessionPanel
 {
 	public ItemStore_PossessionPanel()
 	{

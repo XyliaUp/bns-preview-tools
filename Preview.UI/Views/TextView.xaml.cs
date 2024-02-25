@@ -10,7 +10,6 @@ using HandyControl.Interactivity;
 using ICSharpCode.AvalonEdit.Folding;
 using ICSharpCode.AvalonEdit.Rendering;
 using ICSharpCode.AvalonEdit.Search;
-
 using Microsoft.Win32;
 using Xylia.Preview.Common.Extension;
 using Xylia.Preview.Data.Client;

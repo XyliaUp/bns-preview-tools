@@ -9,19 +9,23 @@ using Serilog;
 using Xylia.Preview.UI.ViewModels;
 
 namespace Xylia.Preview.UI.Services;
-internal class UpdateService
+internal class UpdateService : IService
 {
-	public void CheckForUpdates()
+	const string APP_NAME = "bns-preview-tools";
+	const float APP_VERSION = 1F;
+
+	public bool Register()
 	{
 #if DEVELOP
-		return;
+		return false;
 #elif DEBUG
 		Growl.Info(StringHelper.Get("Version_Tip1"));
 #endif
 		AutoUpdater.RemindLaterTimeSpan = 0;
 		AutoUpdater.ParseUpdateInfoEvent += ParseUpdateInfoEvent;
 		AutoUpdater.CheckForUpdateEvent += CheckForUpdateEvent;
-		AutoUpdater.Start("https://tools.bnszs.com/api/update?app=bns-preview-tools&version=1");
+		AutoUpdater.Start($"https://tools.bnszs.com/api/update?app={APP_NAME}&version={APP_VERSION}");
+		return true;
 	}
 
 	private void ParseUpdateInfoEvent(ParseUpdateInfoEventArgs args)
@@ -76,7 +80,7 @@ internal class UpdateService
 	class UpdateInfoArgs : UpdateInfoEventArgs
 	{
 		public int NoticeID { get; set; }
-		public string Notice { get; set; }
-		public string Signature { get; set; }
+		public string? Notice { get; set; }
+		public string? Signature { get; set; }
 	}
 }

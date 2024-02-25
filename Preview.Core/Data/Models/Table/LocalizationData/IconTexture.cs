@@ -1,6 +1,8 @@
-﻿using CUE4Parse.BNS.Conversion;
+﻿using CUE4Parse.BNS.Assets.Exports;
 using CUE4Parse.FileProvider;
 using CUE4Parse.UE4.Assets.Exports.Texture;
+using CUE4Parse.UE4.Objects.Core.Math;
+using CUE4Parse.UE4.Objects.UObject;
 using CUE4Parse_Conversion.Textures;
 using SkiaSharp;
 using Xylia.Preview.Data.Client;
@@ -19,16 +21,7 @@ public sealed class IconTexture : ModelElement
 
 
 	#region Methods
-	public SKBitmap GetIcon(short index, DefaultFileProvider pak = null)
-	{
-		var raw = Task.Run(() => (pak ?? FileCache.Provider).LoadObject<UTexture2D>(this.iconTexture)).Result?.Decode();
-		if (raw is null || index == 0) return raw;
-
-		var rect = this.GetRect(index);
-		return raw.Clone(rect.Item1, rect.Item2, rect.Item3, rect.Item4);
-	}
-
-	public (float, float, float, float) GetRect(short index)
+	public (FVector2D, FVector2D) GetRect(short index)
 	{
 		int amountRow = this.TextureWidth / this.IconWidth;
 		int row = index % amountRow;
@@ -41,39 +34,43 @@ public sealed class IconTexture : ModelElement
 		}
 		row--;
 
-		return new(row * IconWidth, col * IconHeight, IconWidth, IconHeight);
+		return (
+			new FVector2D(row * IconWidth, col * IconHeight),
+			new FVector2D(IconWidth, IconHeight));
 	}
 
-	public static IconTexture Parse(string value, out short index, BnsDatabase set = null)
+	public ImageProperty GetIcon(short index, DefaultFileProvider pak = null)
+	{
+		var rect = this.GetRect(index);
+		return new ImageProperty()
+		{
+			BaseImageTexture = new MyFPackageIndex(iconTexture, pak),
+			ImageUV = rect.Item1,
+			ImageUVSize = rect.Item2,
+		};
+	}
+
+
+	public static ImageProperty Parse(string value, BnsDatabase db = null, DefaultFileProvider pak = null)
 	{
 		if (!string.IsNullOrWhiteSpace(value) && value.Contains(','))
 		{
 			var split = value.Split(',', 2);
 			var alias = split[0];
-			if (!short.TryParse(split[^1], out index))
+			if (!short.TryParse(split[^1], out var index))
 				throw new Exception("get icon index failed: " + value);
 
-			set ??= FileCache.Data;
-			return set.IconTexture[alias];
+			db ??= FileCache.Data;
+			return db.Get<IconTexture>()[alias]?.GetIcon(index, pak);
 		}
 
-		index = 0;
 		return null;
 	}
-	#endregion
-}
 
-public static class IconTextureExt
-{
-	public static SKBitmap GetIcon(this string value, BnsDatabase set = null, DefaultFileProvider pak = null)
-	{
-		var record = IconTexture.Parse(value, out var index, set);
-		return record?.GetIcon(index, pak);
-	}
-
-	public static SKBitmap GetBackground(this sbyte grade, DefaultFileProvider pak = null)
+	public static SKBitmap GetBackground(sbyte grade, DefaultFileProvider pak = null)
 	{
 		pak ??= FileCache.Provider;
 		return Task.Run(() => pak.LoadObject<UTexture2D>($"BNSR/Content/Art/UI/GameUI/Resource/GameUI_Window_R/ItemIcon_Bg_Grade_{grade}")).Result?.Decode();
 	}
+	#endregion
 }

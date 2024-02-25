@@ -118,7 +118,7 @@ public partial class Case : ModelElement
 		[Side(ReleaseSide.Client)]
 		public Ref<NpcResponse> NpcResponse { get; set; }
 
-		[Repeat(20)]
+		//[Repeat(20)]
 		public Ref<ModelElement>[] Object2 { get; set; }
 
 		public Ref<SkillModel> skill { get; set; }

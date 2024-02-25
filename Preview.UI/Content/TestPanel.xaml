@@ -1,0 +1,324 @@
+﻿<BnsCustomWindowWidget x:Class="Xylia.Preview.UI.Content.TestPanel"
+		xmlns="https://github.com/xyliaup/bns-preview-tools"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+		xmlns:s="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+		Height="400" Width="497">
+<!--	
+	<BnsCustomImageWidget Name="ItemMapPanel_MapFieldHolder" LayoutData.Anchors="0 0 1 1" >
+		<BnsCustomImageWidget.BaseImageProperty>
+			<ImageProperty BaseImageTexture="BNSR/Content/Art/UI/GameUI/Resource/GameUI_Window_R/BNSR_UIElement.BNSR_UIElement" ImageUV="0 116" ImageUVSize="18 18" Opacity="0.3" />
+		</BnsCustomImageWidget.BaseImageProperty>
+		<BnsCustomImageWidget Name="ItemMapPanel_MapFieldTopImage" LayoutData.Anchors="0 0 1 1" LayoutData.Offsets="-1 -1 -1 -1">
+			<BnsCustomImageWidget.BaseImageProperty>
+				<ImageProperty BaseImageTexture="BNSR/Content/Art/UI/GameUI/Resource/GameUI_Window/GameUI_New_Scene_15.GameUI_New_Scene_15" ImageUV="612 711" ImageUVSize="61 56" EnableSkinColor="true" Opacity="0.3" />
+			</BnsCustomImageWidget.BaseImageProperty>
+		</BnsCustomImageWidget>
+		<BnsCustomGraphMapWidget Name="ItemMapPanel_MapField" LayoutData.Anchors="0 0 1 1" ShowLines="True">
+			<BnsCustomImageWidget Name="ItemMapPanel_MapField_NodeTemplate" LayoutData.Offsets="0 55.99997 50 70" BnsCustomGraphMapWidget.Row="1" BnsCustomGraphMapWidget.Column="1" Expansion="Node_Icon , Node_ItemName">
+				<BnsCustomImageWidget.ExpansionComponentList>
+					<ExpansionComponent bShow="true" ExpansionType="IMAGE" ExpansionName="Node_SubGroupImage" MetaData="">
+						<ExpansionComponent.ImageProperty>
+							<ImageProperty BaseImageTexture="BNSR/Content/Art/UI/GameUI/Resource/GameUI_Window_R/BNSR_UIElement_01.BNSR_UIElement_01" ImageUV="551 353" ImageUVSize="40 40" EnableDrawImage="true" EnableResourceSize="true" GrayWeightValue="0.15" Offset="4 9" Opacity="1" ImageScale="1" HorizontalAlignment="HAlign_Center" />
+						</ExpansionComponent.ImageProperty>
+					</ExpansionComponent>
+					<ExpansionComponent bShow="true" ExpansionType="IMAGE" ExpansionName="Node_BackImage" MetaData="" bPostExpansitonRender="true">
+						<ExpansionComponent.ImageProperty>
+							<ImageProperty BaseImageTexture="BNSR/Content/Art/UI/GameUI/Resource/GameUI_Window/GameUI_New_Scene_15.GameUI_New_Scene_15" ImageUV="931 713" ImageUVSize="52 52" EnableResourceSize="true" GrayWeightValue="0.15" Opacity="1" ImageScale="1" HorizontalAlignment="HAlign_Center" />
+						</ExpansionComponent.ImageProperty>
+					</ExpansionComponent>
+					<ExpansionComponent bShow="true" ExpansionType="IMAGE" ExpansionName="Node_BackImage2" MetaData="" bPostExpansitonRender="true">
+						<ExpansionComponent.ImageProperty>
+							<ImageProperty BaseImageTexture="BNSR/Content/Art/UI/GameUI/Resource/GameUI_Window/GameUI_New_Scene_15.GameUI_New_Scene_15" ImageUV="693 726" ImageUVSize="16 16" EnableResourceSize="true" EnableDrawColor="true" GrayWeightValue="0.15" Offset="0 5" Opacity="0.5" ImageScale="2.6" HorizontalAlignment="HAlign_Center" />
+						</ExpansionComponent.ImageProperty>
+					</ExpansionComponent>
+					<ExpansionComponent bShow="true" ExpansionType="IMAGE" ExpansionName="Node_Icon" MetaData="" bPostExpansitonRender="true">
+						<ExpansionComponent.ImageProperty>
+							<ImageProperty BaseImageTexture="BNSR/Content/Art/UI/GameUI_BNSR/Resource/GameUI_Icon1_R/Attach_010006_All_2.Attach_010006_All_2" ImageUVSize="128 128" EnableDrawImage="true" EnableResourceSize="true" EnableMultiImage="true" GrayWeightValue="0.15" Offset="0 5" Opacity="1" ImageScale="0.313" HorizontalAlignment="HAlign_Center" />
+						</ExpansionComponent.ImageProperty>
+					</ExpansionComponent>
+					<ExpansionComponent bShow="true" ExpansionType="IMAGE" ExpansionName="Node_ViaImage" MetaData="" bPostExpansitonRender="true">
+						<ExpansionComponent.ImageProperty>
+							<ImageProperty BaseImageTexture="BNSR/Content/Art/UI/GameUI/Resource/GameUI_Window_R/BNSR_UIElement_01.BNSR_UIElement_01" ImageUV="464 411" ImageUVSize="44 45" EnableDrawImage="true" EnableResourceSize="true" GrayWeightValue="0.15" Offset="0 3" Opacity="1" ImageScale="1" HorizontalAlignment="HAlign_Center" />
+						</ExpansionComponent.ImageProperty>
+					</ExpansionComponent>
+					<ExpansionComponent bShow="true" ExpansionType="IMAGE" ExpansionName="Node_PurposeImage" MetaData="" bPostExpansitonRender="true">
+						<ExpansionComponent.ImageProperty>
+							<ImageProperty BaseImageTexture="BNSR/Content/Art/UI/GameUI/Resource/GameUI_Window_R/BNSR_UIElement_01.BNSR_UIElement_01" ImageUV="464 411" ImageUVSize="44 45" EnableDrawImage="true" EnableResourceSize="true" GrayWeightValue="0.15" Offset="0 3" Opacity="1" ImageScale="1" HorizontalAlignment="HAlign_Center" />
+						</ExpansionComponent.ImageProperty>
+					</ExpansionComponent>
+					<ExpansionComponent bShow="true" ExpansionType="IMAGE" ExpansionName="Node_StartImage" MetaData="" bPostExpansitonRender="true">
+						<ExpansionComponent.ImageProperty>
+							<ImageProperty BaseImageTexture="BNSR/Content/Art/UI/GameUI/Resource/GameUI_Window_R/BNSR_UIElement_01.BNSR_UIElement_01" ImageUV="464 411" ImageUVSize="44 45" EnableDrawImage="true" EnableResourceSize="true" GrayWeightValue="0.15" Offset="0 3" Opacity="1" ImageScale="1" HorizontalAlignment="HAlign_Center" />
+						</ExpansionComponent.ImageProperty>
+					</ExpansionComponent>
+					<ExpansionComponent bShow="true" ExpansionType="STRING" ExpansionName="Node_ItemName" MetaData="" bPostExpansitonRender="true">
+						<ExpansionComponent.ImageProperty>
+							<ImageProperty ImageUVSize="1 1" EnableDrawImage="true" GrayWeightValue="0.15" Opacity="1" ImageScale="1" HorizontalAlignment="HAlign_Center" VerticalAlignment="VAlign_Center" />
+						</ExpansionComponent.ImageProperty>
+						<ExpansionComponent.StringProperty>
+							<StringProperty fontset="BNSR/Content/Art/UI/GameUI_BNSR/Resource/GameUI_FontSet_R/UI/Normal_Out_12.Normal_Out_12" LabelText="ItemName" HorizontalAlignment="HAlign_Center" VerticalAlignment="VAlign_Bottom" ClippingBound="0 75" Padding="-25 -25" Opacity="1" TextScale="1" AnimScale="1" />
+						</ExpansionComponent.StringProperty>
+					</ExpansionComponent>
+					<ExpansionComponent bShow="true" ExpansionType="IMAGE" ExpansionName="Node_EquipedImage" MetaData="" bPostExpansitonRender="true">
+						<ExpansionComponent.ImageProperty>
+							<ImageProperty BaseImageTexture="BNSR/Content/Art/UI/GameUI/Resource/GameUI_Window_R/BNSR_UIElement_01.BNSR_UIElement_01" ImageUV="400 411" ImageUVSize="61 54" EnableDrawImage="true" EnableResourceSize="true" GrayWeightValue="0.15" Offset="-10 -1" Opacity="1" ImageScale="1" />
+						</ExpansionComponent.ImageProperty>
+					</ExpansionComponent>
+					<ExpansionComponent bShow="true" ExpansionType="IMAGE" ExpansionName="Node_OverImage" MetaData="" bPostExpansitonRender="true">
+						<ExpansionComponent.ImageProperty>
+							<ImageProperty BaseImageTexture="BNSR/Content/Art/UI/GameUI/Resource/GameUI_Window/GameUI_New_Scene_15.GameUI_New_Scene_15" ImageUV="876 715" ImageUVSize="52 52" EnableResourceSize="true" GrayWeightValue="0.15" Offset="0 -0.5" Opacity="1" ImageScale="1" HorizontalAlignment="HAlign_Center" />
+						</ExpansionComponent.ImageProperty>
+					</ExpansionComponent>
+					<ExpansionComponent bShow="true" ExpansionType="IMAGE" ExpansionName="Node_OverImage2" MetaData="" bPostExpansitonRender="true">
+						<ExpansionComponent.ImageProperty>
+							<ImageProperty BaseImageTexture="BNSR/Content/Art/UI/GameUI/Resource/GameUI_Window/GameUI_New_Scene_15.GameUI_New_Scene_15" ImageUV="876 715" ImageUVSize="52 52" EnableResourceSize="true" GrayWeightValue="0.15" Offset="0 -0.5" Opacity="1" ImageScale="1" HorizontalAlignment="HAlign_Center" />
+						</ExpansionComponent.ImageProperty>
+					</ExpansionComponent>
+					<ExpansionComponent bShow="true" ExpansionType="IMAGE" ExpansionName="Node_PressedImage" MetaData="" bPostExpansitonRender="true">
+						<ExpansionComponent.ImageProperty>
+							<ImageProperty BaseImageTexture="BNSR/Content/Art/UI/GameUI/Resource/GameUI_Window/GameUI_New_Scene_15.GameUI_New_Scene_15" ImageUV="876 715" ImageUVSize="52 52" EnableDrawImage="true" EnableResourceSize="true" GrayWeightValue="0.15" Offset="0 -0.5" Opacity="1" ImageScale="1" HorizontalAlignment="HAlign_Center" />
+						</ExpansionComponent.ImageProperty>
+					</ExpansionComponent>
+					<ExpansionComponent bShow="true" ExpansionType="IMAGE" ExpansionName="Node_SearchedImage" MetaData="" bPostExpansitonRender="true">
+						<ExpansionComponent.ImageProperty>
+							<ImageProperty BaseImageTexture="BNSR/Content/Art/UI/GameUI/Resource/GameUI_Window_R/BNSR_UIElement_01.BNSR_UIElement_01" ImageUV="511 411" ImageUVSize="44 44" EnableDrawImage="true" EnableResourceSize="true" GrayWeightValue="0.15" Offset="0 3" Opacity="1" ImageScale="1" HorizontalAlignment="HAlign_Center" />
+						</ExpansionComponent.ImageProperty>
+					</ExpansionComponent>
+					<ExpansionComponent bShow="true" ExpansionType="IMAGE" ExpansionName="Node_PossessionImage" MetaData="" bPostExpansitonRender="true">
+						<ExpansionComponent.ImageProperty>
+							<ImageProperty BaseImageTexture="BNSR/Content/Art/UI/GameUI/Resource/GameUI_Window_R/BNSR_UIButtonIcon.BNSR_UIButtonIcon" ImageUV="230 326" ImageUVSize="20 21" EnableDrawImage="true" EnableResourceSize="true" GrayWeightValue="0.15" Offset="-6 -16" Opacity="1" ImageScale="1" VerticalAlignment="VAlign_Bottom" />
+						</ExpansionComponent.ImageProperty>
+					</ExpansionComponent>
+				</BnsCustomImageWidget.ExpansionComponentList>
+			</BnsCustomImageWidget>
+
+			<BnsCustomImageWidget Name="ItemMapPanel_MapField_VerticalRulerItemTemplate" LayoutData.Offsets="0 55.99997 32 32">
+				<BnsCustomImageWidget.BaseImageProperty>
+					<ImageProperty ImageUV="611 359" ImageUVSize="32 32" EnableResourceSize="true" />
+				</BnsCustomImageWidget.BaseImageProperty>
+				<BnsCustomImageWidget Name="ItemMapPanel_MapField_VerticalRulerItemTemplate_Main" LayoutData.Offsets="0 0 32 26">
+					<BnsCustomImageWidget.BaseImageProperty>
+						<ImageProperty BaseImageTexture="BNSR/Content/Art/UI/GameUI/Resource/GameUI_Window/GameUI_New_Scene_00.GameUI_New_Scene_00" ImageUV="611 359" ImageUVSize="32 32" EnableResourceSize="true" />
+					</BnsCustomImageWidget.BaseImageProperty>
+					<BnsCustomImageWidget.ExpansionComponentList>
+						<ExpansionComponent bShow="true" ExpansionType="IMAGE" ExpansionName="Main_Level" MetaData="">
+							<ExpansionComponent.ImageProperty>
+								<ImageProperty BaseImageTexture="BNSR/Content/Art/UI/GameUI/Resource/GameUI_Window_R/BNSR_UIElement_01.BNSR_UIElement_01" ImageUV="556 395" ImageUVSize="26 26" EnableDrawImage="true" EnableResourceSize="true" GrayWeightValue="0.15" Opacity="1" ImageScale="1" HorizontalAlignment="HAlign_Center" VerticalAlignment="VAlign_Center" />
+							</ExpansionComponent.ImageProperty>
+						</ExpansionComponent>
+						<ExpansionComponent bShow="true" ExpansionType="IMAGE" ExpansionName="Main_MasteryLevel" MetaData="">
+							<ExpansionComponent.ImageProperty>
+								<ImageProperty BaseImageTexture="BNSR/Content/Art/UI/GameUI/Resource/GameUI_Window_R/BNSR_UIElement_01.BNSR_UIElement_01" ImageUV="481 383" ImageUVSize="26 26" EnableDrawImage="true" EnableResourceSize="true" GrayWeightValue="0.15" Opacity="1" ImageScale="1" HorizontalAlignment="HAlign_Center" VerticalAlignment="VAlign_Center" />
+							</ExpansionComponent.ImageProperty>
+						</ExpansionComponent>
+						<ExpansionComponent bShow="true" ExpansionType="IMAGE" ExpansionName="Main_MyLevel" MetaData="">
+							<ExpansionComponent.ImageProperty>
+								<ImageProperty BaseImageTexture="BNSR/Content/Art/UI/GameUI/Resource/GameUI_Window_R/BNSR_UIElement_01.BNSR_UIElement_01" ImageUV="508 383" ImageUVSize="26 26" EnableDrawImage="true" EnableResourceSize="true" GrayWeightValue="0.15" Opacity="1" ImageScale="1" HorizontalAlignment="HAlign_Center" VerticalAlignment="VAlign_Center" />
+							</ExpansionComponent.ImageProperty>
+						</ExpansionComponent>
+						<ExpansionComponent bShow="true" ExpansionType="STRING" ExpansionName="Main_Count" MetaData="" bPostExpansitonRender="true">
+							<ExpansionComponent.ImageProperty>
+								<ImageProperty ImageUVSize="1 1" EnableDrawImage="true" GrayWeightValue="0.15" Opacity="1" ImageScale="1" HorizontalAlignment="HAlign_Center" VerticalAlignment="VAlign_Center" />
+							</ExpansionComponent.ImageProperty>
+							<ExpansionComponent.StringProperty>
+								<StringProperty fontset="BNSR/Content/Art/UI/GameUI_BNSR/Resource/GameUI_FontSet_R/UI/Normal_Out_12.Normal_Out_12" LabelText="99" SpaceBetweenLines="3" HorizontalAlignment="HAlign_Center" VerticalAlignment="VAlign_Center" Opacity="1" TextScale="1" AnimScale="1" />
+							</ExpansionComponent.StringProperty>
+						</ExpansionComponent>
+					</BnsCustomImageWidget.ExpansionComponentList>
+				</BnsCustomImageWidget>
+				<BnsCustomLabelWidget Name="ItemMapPanel_MapField_VerticalRulerItemTemplate_Sub" LayoutData.Anchors="0 0.5 0 0.5" LayoutData.Offsets="-0.00079345703 0 31.002228 20.001007">
+					<BnsCustomLabelWidget.String>
+						<StringProperty fontset="BNSR/Content/Art/UI/GameUI_BNSR/Resource/GameUI_FontSet_R/UI/Normal_Out_12.Normal_Out_12" LabelText="999" SpaceBetweenLines="3" VerticalAlignment="VAlign_Center" />
+					</BnsCustomLabelWidget.String>
+					<BnsCustomLabelWidget.ExpansionComponentList>
+						<ExpansionComponent bShow="true" ExpansionType="IMAGE" ExpansionName="Sub_Icon" MetaData="" bPostExpansitonRender="true">
+							<ExpansionComponent.ImageProperty>
+								<ImageProperty BaseImageTexture="BNSR/Content/Art/UI/GameUI/Resource/GameUI_Window/GameUI_New_Scene_15.GameUI_New_Scene_15" ImageUV="555 201" ImageUVSize="13 13" EnableResourceSize="true" GrayWeightValue="0.15" Opacity="1" ImageScale="1" VerticalAlignment="VAlign_Center" />
+							</ExpansionComponent.ImageProperty>
+						</ExpansionComponent>
+					</BnsCustomLabelWidget.ExpansionComponentList>
+				</BnsCustomLabelWidget>
+			</BnsCustomImageWidget>
+			<BnsCustomScrollBarWidget Name="ItemMapPanel_MapField_ScrollBar" LayoutData.Anchors="1 0 1 0" LayoutData.Offsets="-20 20 22 196">
+				<BnsCustomSliderBarWidget Name="ItemMapPanel_MapField_ScrollBar_SliderBar" LayoutData.Anchors="0.5 0 0.5 0" LayoutData.Offsets="0 27 8 140">
+					<BnsCustomLabelButtonWidget Name="ItemMapPanel_MapField_ScrollBar_SliderBar_Marker" LayoutData.Anchors="0.5 0 0.5 0" LayoutData.Offsets="0 49 13 13">
+						<BnsCustomLabelButtonWidget.NormalImageProperty>
+							<ImageProperty BaseImageTexture="BNSR/Content/Art/UI/GameUI/Resource/GameUI_Window_R/BNSR_UIElement.BNSR_UIElement" ImageUV="0 166" ImageUVSize="20 20" />
+						</BnsCustomLabelButtonWidget.NormalImageProperty>
+					</BnsCustomLabelButtonWidget>
+				</BnsCustomSliderBarWidget>
+				<BnsCustomLabelButtonWidget Name="ItemMapPanel_MapField_ScrollBar_IncrementButton" LayoutData.Anchors="0.5 0 0.5 0" LayoutData.Offsets="0 0 22 22" MetaData="tooltip=UI.ButtonTooltip.Minus:widget_face_right">
+					<BnsCustomLabelButtonWidget.NormalImageProperty>
+						<ImageProperty BaseImageTexture="BNSR/Content/Art/UI/GameUI/Resource/GameUI_Window_R/BNSR_UIElement.BNSR_UIElement" ImageUV="41 118" ImageUVSize="15 16" />
+					</BnsCustomLabelButtonWidget.NormalImageProperty>
+					<BnsCustomLabelButtonWidget.ExpansionComponentList>
+						<ExpansionComponent bShow="true" ExpansionType="IMAGE" ExpansionName="Icon" MetaData="" bPostExpansitonRender="true">
+							<ExpansionComponent.ImageProperty>
+								<ImageProperty BaseImageTexture="BNSR/Content/Art/UI/GameUI/Resource/GameUI_Window_R/BNSR_UIButtonIcon.BNSR_UIButtonIcon" ImageUV="9 168" ImageUVSize="14 14" EnableDrawImage="true" EnableResourceSize="true" GrayWeightValue="0.15" Opacity="1" ImageScale="0.7" HorizontalAlignment="HAlign_Center" VerticalAlignment="VAlign_Center" />
+							</ExpansionComponent.ImageProperty>
+						</ExpansionComponent>
+					</BnsCustomLabelButtonWidget.ExpansionComponentList>
+				</BnsCustomLabelButtonWidget>
+				<BnsCustomLabelButtonWidget Name="ItemMapPanel_MapField_ScrollBar_DecrementButton" LayoutData.Anchors="0.5 1 0.5 1" LayoutData.Offsets="0 0 22 22" MetaData="tooltip=UI.ButtonTooltip.Plus:widget_face_right">
+					<BnsCustomLabelButtonWidget.NormalImageProperty>
+						<ImageProperty BaseImageTexture="BNSR/Content/Art/UI/GameUI/Resource/GameUI_Window_R/BNSR_UIElement.BNSR_UIElement" ImageUV="41 118" ImageUVSize="15 16" />
+					</BnsCustomLabelButtonWidget.NormalImageProperty>
+					<BnsCustomLabelButtonWidget.ExpansionComponentList>
+						<ExpansionComponent bShow="true" ExpansionType="IMAGE" ExpansionName="Icon" MetaData="" bPostExpansitonRender="true">
+							<ExpansionComponent.ImageProperty>
+								<ImageProperty BaseImageTexture="BNSR/Content/Art/UI/GameUI/Resource/GameUI_Window_R/BNSR_UIButtonIcon.BNSR_UIButtonIcon" ImageUV="41 175" ImageUVSize="15 2" EnableDrawImage="true" EnableResourceSize="true" GrayWeightValue="0.15" Opacity="1" ImageScale="0.7" HorizontalAlignment="HAlign_Center" VerticalAlignment="VAlign_Center" />
+							</ExpansionComponent.ImageProperty>
+						</ExpansionComponent>
+					</BnsCustomLabelButtonWidget.ExpansionComponentList>
+				</BnsCustomLabelButtonWidget>
+			</BnsCustomScrollBarWidget>
+		</BnsCustomGraphMapWidget>
+		<BnsCustomLabelButtonWidget Name="ItemMapPanel_ControlHolder_Navigate" LayoutData.Anchors="1 0 1 0" LayoutData.Offsets="-20 220 22 22">
+			<BnsCustomLabelButtonWidget.String>
+				<StringProperty SpaceBetweenLines="3" HorizontalAlignment="HAlign_Center" VerticalAlignment="VAlign_Center" ClippingBound="0 20" />
+			</BnsCustomLabelButtonWidget.String>
+			<BnsCustomLabelButtonWidget.NormalImageProperty>
+				<ImageProperty BaseImageTexture="BNSR/Content/Art/UI/GameUI/Resource/GameUI_Window_R/BNSR_UIElement.BNSR_UIElement" ImageUV="41 118" ImageUVSize="15 16" />
+			</BnsCustomLabelButtonWidget.NormalImageProperty>
+			<BnsCustomLabelButtonWidget.ExpansionComponentList>
+				<ExpansionComponent bShow="true" ExpansionType="IMAGE" ExpansionName="Icon" MetaData="" bPostExpansitonRender="true">
+					<ExpansionComponent.ImageProperty>
+						<ImageProperty BaseImageTexture="BNSR/Content/Art/UI/GameUI/Resource/GameUI_Window_R/BNSR_UIElement.BNSR_UIElement" ImageUV="54 232" ImageUVSize="20 20" EnableDrawImage="true" EnableResourceSize="true" GrayWeightValue="0.15" Opacity="1" ImageScale="0.7" HorizontalAlignment="HAlign_Center" VerticalAlignment="VAlign_Center" />
+					</ExpansionComponent.ImageProperty>
+				</ExpansionComponent>
+			</BnsCustomLabelButtonWidget.ExpansionComponentList>
+		</BnsCustomLabelButtonWidget>
+	</BnsCustomImageWidget>
+
+	<BnsCustomImageWidget Name="ItemMapPanel_MapField_HorizontalRulerItemTemplate" LayoutData.Offsets="96.00012 128 180 65" Expansion="">
+		<BnsCustomImageWidget.BaseImageProperty>
+			<ImageProperty BaseImageTexture="BNSR/Content/Art/UI/GameUI/Resource/GameUI_Window/GameUI_New_Scene_10.GameUI_New_Scene_10" ImageUV="274 342" ImageUVSize="175 45" TintColor="FF000000" Offset="7 0" />
+		</BnsCustomImageWidget.BaseImageProperty>
+	</BnsCustomImageWidget>
+-->
+
+	<BnsCustomImageWidget Name="ItemMapPanel_SearchHolder" LayoutData.Offsets="0 20 310 0" Expansion="">
+		<BnsCustomImageWidget.BaseImageProperty>
+			<ImageProperty BaseImageTexture="BNSR/Content/Art/UI/GameUI/Resource/GameUI_Window_R/BNSR_UIElement.BNSR_UIElement" ImageUV="128 0" ImageUVSize="18 27" Opacity="0.5" />
+		</BnsCustomImageWidget.BaseImageProperty>
+		<BnsCustomImageWidget.ExpansionComponentList>
+			<ExpansionComponent bShow="true" ExpansionType="IMAGE" ExpansionName="Wrong" MetaData="">
+				<ExpansionComponent.ImageProperty>
+					<ImageProperty BaseImageTexture="BNSR/Content/Art/UI/GameUI/Resource/GameUI_Window_R/BNSR_UIElement.BNSR_UIElement" ImageUV="20 116" ImageUVSize="18 18" EnableDrawImage="true" EnableDrawColor="true" TintColor="FFFF0000" GrayWeightValue="0.15" Opacity="0.5" ImageScale="1" />
+				</ExpansionComponent.ImageProperty>
+			</ExpansionComponent>
+			<ExpansionComponent bShow="true" ExpansionType="IMAGE" ExpansionName="Correct" MetaData="">
+				<ExpansionComponent.ImageProperty>
+					<ImageProperty BaseImageTexture="BNSR/Content/Art/UI/GameUI/Resource/GameUI_Window_R/BNSR_UIElement.BNSR_UIElement" ImageUV="20 116" ImageUVSize="18 18" EnableDrawImage="true" EnableDrawColor="true" TintColor="FF54ACFF" GrayWeightValue="0.15" Opacity="0.5" ImageScale="1" />
+				</ExpansionComponent.ImageProperty>
+			</ExpansionComponent>
+		</BnsCustomImageWidget.ExpansionComponentList>
+		<BnsCustomImageWidget Name="ItemMapPanel_Search_Image" LayoutData.Anchors="0 0.5 0 0.5" LayoutData.Offsets="5.0026855 0 19 19">
+			<BnsCustomImageWidget.BaseImageProperty>
+				<ImageProperty BaseImageTexture="BNSR/Content/Art/UI/GameUI/Resource/GameUI_Window_R/BNSR_UIElement.BNSR_UIElement" ImageUV="235 23" ImageUVSize="15 15" EnableResourceSize="true" Opacity="0.3" />
+			</BnsCustomImageWidget.BaseImageProperty>
+		</BnsCustomImageWidget>
+		<BnsCustomToggleButtonWidget Name="ItemMapPanel_ClearSearchTextBtn" LayoutData.Anchors="1 0.5 1 0.5" LayoutData.Offsets="-7 0 15 15">
+			<BnsCustomToggleButtonWidget.NormalImageProperty>
+				<ImageProperty BaseImageTexture="BNSR/Content/Art/UI/GameUI/Resource/GameUI_Window_R/BNSR_UIElement.BNSR_UIElement" ImageUV="156 50" ImageUVSize="18 18" Opacity="0.5" />
+			</BnsCustomToggleButtonWidget.NormalImageProperty>
+		</BnsCustomToggleButtonWidget>
+		<BnsCustomEditBoxWidget Name="ItemMapPanel_Search" LayoutData.Anchors="0 0.5 1 0.5" LayoutData.Offsets="28 0 23 24">
+			<BnsCustomEditBoxWidget.String>
+				<StringProperty fontset="BNSR/Content/Art/UI/GameUI_BNSR/Resource/GameUI_FontSet_R/UI/Normal_12.Normal_12" SpaceBetweenLines="3" VerticalAlignment="VAlign_Center" ClippingBound="0 -1" MaxCharacters="31" />
+			</BnsCustomEditBoxWidget.String>
+		</BnsCustomEditBoxWidget>
+	</BnsCustomImageWidget>
+
+	<BnsCustomComboBoxWidget Name="ItemMapPanel_JobComboBox" LayoutData.Anchors="1 0 1 0" LayoutData.Offsets="-12 20 150 0">
+		<BnsCustomListCtrlWidget Name="ItemMapPanel_JobComboBox_List" LayoutData.Anchors="0 0 1 0" LayoutData.Offsets="0 31 0 334">
+			<BnsCustomScrollBarWidget Name="ItemMapPanel_JobComboBox_List_ScrollBar" LayoutData.Anchors="1 0 1 1" LayoutData.Offsets="0 0 8 0">
+				<BnsCustomLabelButtonWidget Name="ItemMapPanel_JobComboBox_List_ScrollBar_IncrementButton" LayoutData.Anchors="0.5 1 0.5 1">
+					<BnsCustomLabelButtonWidget.NormalImageProperty>
+						<ImageProperty BaseImageTexture="BNSR/Content/Art/UI/GameUI/Resource/GameUI_Window/GameUI_New_Scene_00.GameUI_New_Scene_00" ImageUV="28 167" ImageUVSize="19 18" EnableResourceSize="true" EnableSkinColor="true" />
+					</BnsCustomLabelButtonWidget.NormalImageProperty>
+					<BnsCustomLabelButtonWidget.ExpansionComponentList>
+						<ExpansionComponent bShow="true" ExpansionType="IMAGE" ExpansionName="Down" MetaData="" bPostExpansitonRender="true">
+							<ExpansionComponent.ImageProperty>
+								<ImageProperty BaseImageTexture="BNSR/Content/Art/UI/GameUI/Resource/GameUI_Window/GameUI_New_Scene_00.GameUI_New_Scene_00" ImageUV="344 578" ImageUVSize="11 8" EnableDrawImage="true" EnableResourceSize="true" TintColor="FFFFFFFF" GrayWeightValue="0.15" Opacity="1" ImageScale="1" HorizontalAlignment="HAlign_Center" VerticalAlignment="VAlign_Center" />
+							</ExpansionComponent.ImageProperty>
+						</ExpansionComponent>
+					</BnsCustomLabelButtonWidget.ExpansionComponentList>
+				</BnsCustomLabelButtonWidget>
+				<BnsCustomLabelButtonWidget Name="ItemMapPanel_JobComboBox_List_ScrollBar_DecrementButton" LayoutData.Anchors="0.5 0 0.5 0" LayoutData.Offsets="0 -0.00018310547 0 0">
+					<BnsCustomLabelButtonWidget.NormalImageProperty>
+						<ImageProperty BaseImageTexture="BNSR/Content/Art/UI/GameUI/Resource/GameUI_Window/GameUI_New_Scene_00.GameUI_New_Scene_00" ImageUV="28 167" ImageUVSize="19 18" EnableSkinColor="true" />
+					</BnsCustomLabelButtonWidget.NormalImageProperty>
+					<BnsCustomLabelButtonWidget.ExpansionComponentList>
+						<ExpansionComponent bShow="true" ExpansionType="IMAGE" ExpansionName="Normal" MetaData="" bPostExpansitonRender="true">
+							<ExpansionComponent.ImageProperty>
+								<ImageProperty BaseImageTexture="BNSR/Content/Art/UI/GameUI/Resource/GameUI_Window/GameUI_New_Scene_00.GameUI_New_Scene_00" ImageUV="344 568" ImageUVSize="11 9" EnableDrawImage="true" EnableResourceSize="true" TintColor="FFFFFFFF" GrayWeightValue="0.15" Opacity="1" ImageScale="1" HorizontalAlignment="HAlign_Center" VerticalAlignment="VAlign_Center" />
+							</ExpansionComponent.ImageProperty>
+						</ExpansionComponent>
+					</BnsCustomLabelButtonWidget.ExpansionComponentList>
+				</BnsCustomLabelButtonWidget>
+				<BnsCustomSliderBarWidget Name="ItemMapPanel_JobComboBox_List_ScrollBar_SliderBar" LayoutData.Anchors="0.5 0 0.5 1" LayoutData.Offsets="0 1 8 1">
+					<BnsCustomLabelButtonWidget Name="ItemMapPanel_JobComboBox_List_ScrollBar_SliderBar_Marker" LayoutData.Anchors="0.5 0 0.5 0" LayoutData.Offsets="0 -6.1035156E-05 4 62.999695">
+						<BnsCustomLabelButtonWidget.NormalImageProperty>
+							<ImageProperty BaseImageTexture="BNSR/Content/Art/UI/GameUI/Resource/GameUI_Window_R/BNSR_UIElement.BNSR_UIElement" ImageUV="142 30" ImageUVSize="4 13" />
+						</BnsCustomLabelButtonWidget.NormalImageProperty>
+					</BnsCustomLabelButtonWidget>
+				</BnsCustomSliderBarWidget>
+			</BnsCustomScrollBarWidget>
+			<BnsCustomListCtrlWidget.ItemTemplate>
+				<s:DataTemplate>
+					<BnsCustomImageWidget LayoutData.Anchors="0 0 1 0" LayoutData.Offsets="0 66 9 33">
+						<BnsCustomImageWidget.BaseImageProperty>
+							<ImageProperty />
+						</BnsCustomImageWidget.BaseImageProperty>
+						<BnsCustomImageWidget.ExpansionComponentList>
+							<ExpansionComponent bShow="true" ExpansionType="IMAGE" ExpansionName="MouseOver" MetaData="" bPostExpansitonRender="true">
+								<ExpansionComponent.ImageProperty>
+									<ImageProperty BaseImageTexture="BNSR/Content/Art/UI/GameUI/Resource/GameUI_Window_R/BNSR_UIElement.BNSR_UIElement" ImageUV="205 0" ImageUVSize="11 20" EnableDrawImage="true" TintColor="FFFFFFFF" GrayWeightValue="0.15" Opacity="1" ImageScale="1" />
+								</ExpansionComponent.ImageProperty>
+							</ExpansionComponent>
+							<ExpansionComponent bShow="true" ExpansionType="IMAGE" ExpansionName="Pressed" MetaData="" bPostExpansitonRender="true">
+								<ExpansionComponent.ImageProperty>
+									<ImageProperty BaseImageTexture="BNSR/Content/Art/UI/GameUI/Resource/GameUI_Window_R/BNSR_UIElement.BNSR_UIElement" ImageUV="205 0" ImageUVSize="11 20" EnableDrawImage="true" TintColor="FFFFFFFF" GrayWeightValue="0.15" Opacity="1" ImageScale="1" />
+								</ExpansionComponent.ImageProperty>
+							</ExpansionComponent>
+							<ExpansionComponent bShow="true" ExpansionType="STRING" ExpansionName="JobLabel" MetaData=" " bPostExpansitonRender="true">
+								<ExpansionComponent.ImageProperty>
+									<ImageProperty ImageUVSize="1 1" EnableDrawImage="true" TintColor="FFFFFFFF" GrayWeightValue="0.15" Opacity="1" ImageScale="1" HorizontalAlignment="HAlign_Center" VerticalAlignment="VAlign_Center" />
+								</ExpansionComponent.ImageProperty>
+								<ExpansionComponent.StringProperty>
+									<StringProperty fontset="BNSR/Content/Art/UI/GameUI_BNSR/Resource/GameUI_FontSet_R/UI/Normal_12.Normal_12" LabelText="직업" SpaceBetweenLines="3" VerticalAlignment="VAlign_Center" ClippingBound="10 0" Padding="0 -5" Opacity="1" TextScale="1" AnimScale="1" />
+								</ExpansionComponent.StringProperty>
+							</ExpansionComponent>
+						</BnsCustomImageWidget.ExpansionComponentList>
+					</BnsCustomImageWidget>
+				</s:DataTemplate>
+			</BnsCustomListCtrlWidget.ItemTemplate>
+		</BnsCustomListCtrlWidget>
+
+		<BnsCustomToggleButtonWidget Name="ItemMapPanel_JobComboBox_Button" LayoutData.Anchors="0 0 1 0" LayoutData.Offsets="0 6.1035156E-05 0 31">
+			<BnsCustomToggleButtonWidget.NormalImageProperty>
+				<ImageProperty BaseImageTexture="BNSR/Content/Art/UI/GameUI/Resource/GameUI_Window_R/BNSR_UIElement.BNSR_UIElement" ImageUV="22 42" ImageUVSize="20 20" />
+			</BnsCustomToggleButtonWidget.NormalImageProperty>
+			<BnsCustomToggleButtonWidget.ExpansionComponentList>
+				<ExpansionComponent bShow="true" ExpansionType="IMAGE" ExpansionName="Icon" MetaData="" bPostExpansitonRender="true">
+					<ExpansionComponent.ImageProperty>
+						<ImageProperty BaseImageTexture="BNSR/Content/Art/UI/GameUI/Resource/GameUI_Window_R/BNSR_UIElement.BNSR_UIElement" ImageUV="193 39" ImageUVSize="14 8" EnableDrawImage="true" EnableResourceSize="true" TintColor="FFFFFFFF" GrayWeightValue="0.15" Offset="-10 0" Opacity="1" ImageScale="1" HorizontalAlignment="HAlign_Right" VerticalAlignment="VAlign_Center" />
+					</ExpansionComponent.ImageProperty>
+				</ExpansionComponent>
+			</BnsCustomToggleButtonWidget.ExpansionComponentList>
+		</BnsCustomToggleButtonWidget>
+		<BnsCustomLabelWidget Name="ItemMapPanel_JobComboBox_Label" LayoutData.Anchors="0 0 1 0" LayoutData.Offsets="0 6.1035156E-05 0 31">
+			<BnsCustomLabelWidget.String>
+				<StringProperty fontset="BNSR/Content/Art/UI/GameUI_BNSR/Resource/GameUI_FontSet_R/UI/Normal_12.Normal_12" LabelText="직업" SpaceBetweenLines="3" VerticalAlignment="VAlign_Center" Padding="20 0" />
+			</BnsCustomLabelWidget.String>
+			<BnsCustomLabelWidget.ExpansionComponentList>
+				<ExpansionComponent bShow="true" ExpansionType="STRING" ExpansionName="SelectedLabel" MetaData="" bPostExpansitonRender="true">
+					<ExpansionComponent.ImageProperty>
+						<ImageProperty ImageUVSize="1 1" EnableDrawImage="true" TintColor="FFFFFFFF" GrayWeightValue="0.15" Opacity="1" ImageScale="1" HorizontalAlignment="HAlign_Center" VerticalAlignment="VAlign_Center" />
+					</ExpansionComponent.ImageProperty>
+				</ExpansionComponent>
+			</BnsCustomLabelWidget.ExpansionComponentList>
+		</BnsCustomLabelWidget>
+	</BnsCustomComboBoxWidget>
+</BnsCustomWindowWidget>

@@ -34,9 +34,12 @@ public struct Locale
 			while (directory != null && rail_game is null);
 
 			if (rail_game != null) game = JToken.ReadFrom(new JsonTextReader(File.OpenText(rail_game.FullName)))["game_id"]?.Value<int>() ?? 0;
-#if !DEBUG
-			if (game != 48 && game != 10048 && game != 10148 && game != 10248)
-				throw Xylia.Preview.Data.Common.Exceptions.BnsDataException.InvalidGame("invalid game", game);
+#if !DEVELOP
+			if (game != 48 &&
+				game != 10048 && game != 10148 && game != 10248 &&  //TEST
+				game != 2002085  //NEO
+			)
+				throw Common.Exceptions.BnsDataException.InvalidGame(game);
 #endif
 		}
 	}

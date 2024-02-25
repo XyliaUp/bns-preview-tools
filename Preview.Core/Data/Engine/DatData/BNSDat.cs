@@ -1,7 +1,6 @@
 ﻿using System.Security.Cryptography;
 using System.Text.RegularExpressions;
 using CUE4Parse.Compression;
-using Ionic.Zlib;
 
 namespace Xylia.Preview.Data.Engine.DatData;
 public sealed class BNSDat(PackageParam Params) : IDisposable
@@ -16,7 +15,7 @@ public sealed class BNSDat(PackageParam Params) : IDisposable
 	public uint Version;
 	public byte[] Unknown_001;
 	public byte[] Unknown_002;
-	public bool IsCompressed;
+	public CompressionMethod IsCompressed;  // Original is boolean, this is my extension
 	public bool IsEncrypted;
 
 	private List<FileTableEntry> _files;
@@ -46,7 +45,7 @@ public sealed class BNSDat(PackageParam Params) : IDisposable
 		Unknown_001 = archive.ReadBytes(5);
 		var FileDataSizePacked = archive.ReadLongInt();
 		var FileCount = archive.ReadLongInt();
-		IsCompressed = archive.Read<bool>();
+		IsCompressed = (CompressionMethod)archive.Read<byte>();
 		IsEncrypted = archive.Read<bool>();
 
 		// Update 200429																
@@ -57,7 +56,7 @@ public sealed class BNSDat(PackageParam Params) : IDisposable
 			var rsa = new RSACryptoServiceProvider();
 			rsa.ImportParameters(Params.RSA_KEY);
 			rsa.VerifyData(data, signature, HashAlgorithmName.SHA256, RSASignaturePadding.Pkcs1);
-			var x = rsa.Decrypt(signature, false);
+			//var x = rsa.Decrypt(signature, false);
 		}
 
 		Unknown_002 = archive.ReadBytes(62);
@@ -72,7 +71,7 @@ public sealed class BNSDat(PackageParam Params) : IDisposable
 		#endregion
 
 		#region files
-		var archive2 = new DataArchive(Unpack(FileTablePacked, FileTableSizePacked, FileTableSizePacked, FileTableSizeUnpacked, IsEncrypted, IsCompressed, Params.AES_KEY), Bit64);
+		var archive2 = new DataArchive(Unpack(FileTablePacked, FileTableSizePacked, FileTableSizePacked, FileTableSizeUnpacked, IsEncrypted, IsCompressed, Params), Bit64);
 
 		var files = new FileTableEntry[FileCount];
 		for (int i = 0; i < FileCount; i++)
@@ -85,9 +84,11 @@ public sealed class BNSDat(PackageParam Params) : IDisposable
 		#endregion
 	}
 
-	public void Write(bool Is64bit, CompressionLevel level)
+	public void Write(bool Is64bit, CompressionLevel Level)
 	{
 		#region head
+		int level = (int)Level * 3;
+
 		using var writer = new DataArchiveWriter(Is64bit);
 		writer.Write(Magic);
 		writer.Write(Version);
@@ -96,7 +97,7 @@ public sealed class BNSDat(PackageParam Params) : IDisposable
 		long FileDataSizePacked = 0;
 		writer.WriteLongInt(FileDataSizePacked);  // size
 		writer.WriteLongInt(_files.Count);        // count
-		writer.Write(IsCompressed);
+		writer.Write((byte)IsCompressed);
 		writer.Write(IsEncrypted);
 
 		// Signature
@@ -108,15 +109,14 @@ public sealed class BNSDat(PackageParam Params) : IDisposable
 
 		#region file summary
 		long FileDataOffset = 0;
-		using MemoryStream ms = new();
-		using BinaryWriter mosTable = new(ms);
+		using var mosTable = new DataArchiveWriter(Is64bit);
 		foreach (FileTableEntry item in _files)
 		{
 			item.WriteHeader(mosTable, Is64bit, level, ref FileDataOffset);
 		}
 
-		long FileTableSizeUnpacked = mosTable.BaseStream.Length;
-		var FileTablePacked = Pack(ms.ToArray(), FileTableSizeUnpacked, out var FileTableSizeSheared, out var FileTableSizePacked, IsEncrypted, IsCompressed, level, Params.AES_KEY);
+		long FileTableSizeUnpacked = mosTable.Length;
+		var FileTablePacked = Pack(mosTable.ToArray(), FileTableSizeUnpacked, out var FileTableSizeSheared, out var FileTableSizePacked, IsEncrypted, IsCompressed != CompressionMethod.None, level, Params);
 		writer.WriteLongInt(FileTableSizePacked);
 		writer.WriteLongInt(FileTableSizeUnpacked);
 		writer.Write(FileTablePacked);
@@ -152,10 +152,9 @@ public sealed class BNSDat(PackageParam Params) : IDisposable
 		#endregion
 	}
 
-
-	public IEnumerable<FileTableEntry> EnumerateFiles(string searchPattern)
+	public IEnumerable<FileTableEntry> SearchFiles(string searchPattern)
 	{
-		var regex = new Regex(searchPattern
+		var regex = new Regex("^" + searchPattern
 			.Replace("/", "\\")
 			.Replace("\\", "\\\\")
 			.Replace("*", ".*?"), RegexOptions.IgnoreCase);
@@ -200,7 +199,6 @@ public sealed class BNSDat(PackageParam Params) : IDisposable
 		byte[] output = new byte[sizePadded];
 		byte[] temp = new byte[sizePadded];
 
-
 		Array.Copy(buffer, 0, temp, 0, buffer.Length);
 		buffer = null;
 
@@ -214,32 +212,17 @@ public sealed class BNSDat(PackageParam Params) : IDisposable
 		return output;
 	}
 
-	public static byte[] Inflate(byte[] buffer, long sizeDecompressed, CompressionLevel compression)
-	{
-		if (sizeDecompressed == 0)
-			sizeDecompressed = buffer.Length;
-
-		var level = (Ionic.Zlib.CompressionLevel)((byte)compression * 3);
-		var output = new MemoryStream();
-		var zs = new ZlibStream(output, CompressionMode.Compress, level, true);
-		zs.Write(buffer, 0, (int)sizeDecompressed);
-		zs.Flush();
-		zs.Close();
-
-		return output.ToArray();
-	}
-
-	public static byte[] Unpack(byte[] buffer, long sizeStored, long sizeSheared, long sizeUnpacked, bool isEncrypted, bool isCompressed, byte[] key)
+	public static byte[] Unpack(byte[] buffer, long sizeStored, long sizeSheared, long sizeUnpacked, bool isEncrypted, CompressionMethod isCompressed, PackageParam Params)
 	{
 		var output = buffer;
-		if (isEncrypted) output = Decrypt(buffer, sizeStored, key);
+		if (isEncrypted) output = Decrypt(buffer, sizeStored, Params.AES_KEY);
 
 		var uncompressedBuffer = new byte[sizeUnpacked];
-		Compression.Decompress(output, uncompressedBuffer, isCompressed ? CompressionMethod.Zlib : CompressionMethod.None);
+		Compression.Decompress(output, uncompressedBuffer, isCompressed);
 		return uncompressedBuffer;
 	}
 
-	public static byte[] Pack(byte[] buffer, long sizeUnpacked, out long sizeSheared, out long sizeStored, bool encrypt, bool compress, CompressionLevel compressionLevel, byte[] key)
+	public static byte[] Pack(byte[] buffer, long sizeUnpacked, out long sizeSheared, out long sizeStored, bool encrypt, bool compress, int compressionLevel, PackageParam Params)
 	{
 		byte[] output = buffer;
 
@@ -247,7 +230,7 @@ public sealed class BNSDat(PackageParam Params) : IDisposable
 
 		if (compress)
 		{
-			output = Inflate(output, sizeUnpacked, compressionLevel);
+			output = Compression2.Compress(output, (int)sizeUnpacked, Params.CompressionMethod, compressionLevel);
 
 			sizeSheared = output.Length;
 			sizeStored = output.Length;
@@ -255,20 +238,18 @@ public sealed class BNSDat(PackageParam Params) : IDisposable
 
 		if (encrypt)
 		{
-			output = Encrypt(output, output.Length, out sizeStored, key);
+			output = Encrypt(output, output.Length, out sizeStored, Params.AES_KEY);
 		}
 
 		return output;
 	}
-
-
 
 	public static void CreateFromDirectory(PackageParam param)
 	{
 		var package = new BNSDat(param);
 		package.Version = 3;
 		package.Unknown_001 = [0, 0, 0, 0, 0];
-		package.IsCompressed = true;
+		package.IsCompressed = param.CompressionMethod;
 		package.IsEncrypted = true;
 		package.Unknown_002 = new byte[62];
 		package.FileTable = Directory.EnumerateFiles(param.FolderPath, "*", SearchOption.AllDirectories).Select(x => new FileTableEntry(package,
@@ -280,9 +261,10 @@ public sealed class BNSDat(PackageParam Params) : IDisposable
 		package.Write(param.Bit64, param.CompressionLevel);
 	}
 
+
 	public static implicit operator BNSDat(FileInfo file)
 	{
-		if (!file.Exists) return null;
+		if (file is null || !file.Exists) return null;
 
 		var param = new PackageParam(file.FullName);
 		return new BNSDat(param);
