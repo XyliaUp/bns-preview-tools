@@ -186,7 +186,7 @@ public partial class App : Application
 				{
 					current++;
 
-					var Object = provider.LoadObject<USoundWave>(asset.ObjectPath.Text);
+					var Object = provider.LoadObject<USoundWave>(asset.ObjectPath);
 					if (Object != null)
 					{
 						Object.Decode(true, out var audioFormat, out var data);

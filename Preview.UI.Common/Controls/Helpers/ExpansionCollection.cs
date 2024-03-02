@@ -95,7 +95,7 @@ internal interface IMetaData
 		// MetaData
 		if (!string.IsNullOrEmpty(s))
 		{
-			await Task.Run(() => FileCache.Data.Get<Text>());
+			await Task.Run(() => FileCache.Data.Provider.GetTable<Text>());
 
 			foreach (var meta in s.Split(';'))
 			{

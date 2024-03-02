@@ -571,33 +571,6 @@ public abstract class BnsCustomTextBoxBaseWidget_Temp : BnsCustomBaseWidget
 		}
 	}
 
-
-	/// <summary>
-	/// Actual HorizontalOffset contains the ScrollViewer's current horizontal offset.
-	/// This is a computed value, depending on the state of ScrollViewer, its Viewport, Extent
-	/// and previous scrolling commands.
-	/// </summary>
-	public double HorizontalOffset
-	{
-		get
-		{
-			return (this.ScrollViewer != null) ? this.ScrollViewer.HorizontalOffset : 0.0;
-		}
-	}
-
-	/// <summary>
-	/// Actual VerticalOffset contains the ScrollViewer's current vertical offset.
-	/// This is a computed value, depending on the state of ScrollViewer, its Viewport, Extent
-	/// and previous scrolling commands.
-	/// </summary>
-	public double VerticalOffset
-	{
-		get
-		{
-			return (this.ScrollViewer != null) ? this.ScrollViewer.VerticalOffset : 0.0;
-		}
-	}
-
 	/// <summary>
 	/// Can the most recent action on the text box be undone?  Since we will frequently be called
 	/// during a TextChanged event when the undo stack hasn't yet been modified to reflect the

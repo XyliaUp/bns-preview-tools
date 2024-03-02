@@ -9,8 +9,8 @@ public sealed class ItemBuyPriceOut : OutSet
 {
     protected override void CreateData(ExcelWorksheet sheet)
     {
-		var ItemBuyPriceTable = FileCache.Data.Get<ItemBuyPrice>();
-		var ItemBrandTooltiptTable = FileCache.Data.Get<ItemBrandTooltip>();
+		var ItemBuyPriceTable = FileCache.Data.Provider.GetTable<ItemBuyPrice>();
+		var ItemBrandTooltiptTable = FileCache.Data.Provider.GetTable<ItemBrandTooltip>();
 
 		#region Title
 		sheet.SetColumn(Column++, "alias", 70);
@@ -71,7 +71,7 @@ public sealed class ItemBuyPriceOut : OutSet
 
 			#region achievemen
 			string AchievementName = record.RequiredAchievementId == 0 ? null :
-                FileCache.Data.Get<Achievement>().FirstOrDefault(o => o.Id == record.RequiredAchievementId && o.Step == record.RequiredAchievementStepMin)?.Text;
+                FileCache.Data.Provider.GetTable<Achievement>().FirstOrDefault(o => o.Id == record.RequiredAchievementId && o.Step == record.RequiredAchievementStepMin)?.Text;
             sheet.Cells[Row, column++].SetValue(AchievementName);
             #endregion
 

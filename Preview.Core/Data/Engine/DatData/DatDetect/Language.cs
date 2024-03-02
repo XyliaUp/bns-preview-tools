@@ -38,4 +38,6 @@ public enum Publisher
 	NcTaiwan,
 	NcWest,
 	Garena,
+
+	ZTX,
 }

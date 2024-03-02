@@ -6,8 +6,8 @@
 		<AllowUnsafeBlocks>True</AllowUnsafeBlocks>
 		<RootNamespace>Xylia.Preview</RootNamespace>
 		<ImplicitUsings>enable</ImplicitUsings>
-		<FileVersion>1.0.9.2</FileVersion>
-		<AssemblyVersion>1.0.9.2</AssemblyVersion>
+		<FileVersion>1.1.0</FileVersion>
+		<AssemblyVersion>1.1.0</AssemblyVersion>
 		<Lisence>MIT</Lisence>
 		<SignAssembly>True</SignAssembly>
 		<DelaySign>True</DelaySign>
@@ -26,22 +26,23 @@
 		<IsAotCompatible>True</IsAotCompatible>
 	</PropertyGroup>
 	<ItemGroup>
-		<PackageReference Include="CUE4Parse-Conversion" Version="1.1.0" />
+		<PackageReference Include="CUE4Parse" Version="9.1.1" />
+		<PackageReference Include="CUE4Parse-Conversion" Version="9.1.1" />
 		<PackageReference Include="HtmlAgilityPack" Version="1.11.57" />
 		<PackageReference Include="ini-parser-netstandard" Version="2.5.2" />
 		<PackageReference Include="SharpZipLib" Version="1.4.2" />
+		<Reference Include="System.Xaml">
+		  <HintPath>C:\Program Files\dotnet\packs\Microsoft.WindowsDesktop.App.Ref\8.0.0\ref\net8.0\System.Xaml.dll</HintPath>
+		</Reference>
 	</ItemGroup>
 	<ItemGroup>
 		<EmbeddedResource Include="Data\Definition\*.xml" />
 		<EmbeddedResource Include="Data\Definition\*\*.xml" />
+
 		<None Include="..\LICENSE">
 		  <Pack>True</Pack>
 		  <PackagePath>\</PackagePath>
 		</None>
-		<Reference Include="System.Xaml">
-		  <HintPath>C:\Program Files\dotnet\packs\Microsoft.WindowsDesktop.App.Ref\8.0.0\ref\net8.0\System.Xaml.dll</HintPath>
-		</Reference>
-		
 		<None Update="Dlls\bnscompression.dll">
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 			<TargetPath>bnscompression.dll</TargetPath>

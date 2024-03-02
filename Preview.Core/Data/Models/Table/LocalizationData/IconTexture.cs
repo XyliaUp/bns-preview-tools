@@ -61,7 +61,7 @@ public sealed class IconTexture : ModelElement
 				throw new Exception("get icon index failed: " + value);
 
 			db ??= FileCache.Data;
-			return db.Get<IconTexture>()[alias]?.GetIcon(index, pak);
+			return db.Provider.GetTable<IconTexture>()[alias]?.GetIcon(index, pak);
 		}
 
 		return null;

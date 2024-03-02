@@ -1,5 +1,4 @@
-﻿using Xylia.Preview.Common.Attributes;
-using Xylia.Preview.Data.Common.DataStruct;
+﻿using Xylia.Preview.Data.Common.DataStruct;
 
 namespace Xylia.Preview.Data.Models;
 public class Filter : ModelElement
@@ -11,19 +10,19 @@ public class Filter : ModelElement
 
 
 	#region Expand Sub
-	public sealed class NpcSpawn : Filter
-	{
-		[Side(ReleaseSide.Server)]
-		public string Spawn { get; set; }
-	}
+	//public sealed class NpcSpawn : Filter
+	//{
+	//	[Side(ReleaseSide.Server)]
+	//	public string Spawn { get; set; }
+	//}
 
-	public sealed class NpcParty : Filter
-	{
-		[Side(ReleaseSide.Server)]
-		public bool Leader { get; set; }
+	//public sealed class NpcParty : Filter
+	//{
+	//	[Side(ReleaseSide.Server)]
+	//	public bool Leader { get; set; }
 
-		[Side(ReleaseSide.Server)]
-		public Script_obj Party { get; set; }
-	}
+	//	[Side(ReleaseSide.Server)]
+	//	public Script_obj Party { get; set; }
+	//}
 	#endregion
 }

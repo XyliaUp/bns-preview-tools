@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel;
 using CUE4Parse.Utils;
 using Serilog;
+using Xylia.Preview.Common.Extension;
 using Xylia.Preview.Data.Engine.BinData.Helpers;
 using Xylia.Preview.Data.Engine.BinData.Models;
 using Xylia.Preview.Data.Engine.BinData.Serialization;
@@ -25,7 +26,7 @@ public class DefaultProvider : Datafile, IDataProvider
 	{
 		return (XmlData.SearchFiles(pattern) ?? []).Concat(
 			ConfigData?.SearchFiles(pattern) ?? []).Concat(
-			LocalData?.SearchFiles(pattern) ?? []).Select(x => 
+			LocalData?.SearchFiles(pattern) ?? []).Select(x =>
 			new MemoryStream(x.Data)).ToArray();
 	}
 

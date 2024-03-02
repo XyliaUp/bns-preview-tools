@@ -49,6 +49,6 @@ public static class TextExtension
 		else if (obj is Enum sequence) return SequenceExtensions.GetText(sequence);
 		else if (obj is Record record) return record.Attributes["text"].ToString();
 		else if (obj is Ref<Text> reference) return reference.Instance?.text;
-		else return FileCache.Data.Get<Text>()[obj.ToString()]?.text;
+		else return FileCache.Data.Provider.GetTable<Text>()[obj.ToString()]?.text;
 	}
 }

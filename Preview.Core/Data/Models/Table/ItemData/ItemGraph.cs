@@ -85,7 +85,7 @@ public class ItemGraph : ModelElement
 				var item = this.SeedItem.FirstOrDefault().Instance;
 				if (item is null) return;
 
-				var Improve = FileCache.Data.Get<ItemImprove>().FirstOrDefault(x => x.Id == item.ImproveId && x.Level == item.ImproveLevel);
+				var Improve = FileCache.Data.Provider.GetTable<ItemImprove>().FirstOrDefault(x => x.Id == item.ImproveId && x.Level == item.ImproveLevel);
 				if (Improve != null)
 				{
 					var NextItem = item.Attributes.Get<Record>("improve-next-item");

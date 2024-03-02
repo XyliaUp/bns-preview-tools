@@ -139,7 +139,7 @@ public partial class IconPicker : AutoCompleteTextBox
 	{
 		string Text = this.Text?.Split(',').First();
 
-		var record = FileCache.Data.Get<IconTexture>()[Text];
+		var record = FileCache.Data.Provider.GetTable<IconTexture>()[Text];
 		if (record is null) return;
 
 		_image.CellSize = new Size(record.IconWidth, record.IconHeight);

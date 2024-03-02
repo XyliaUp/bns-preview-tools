@@ -26,7 +26,7 @@ public sealed class ItemIcon(string GameFolder, string OutputFolder) : IconOutBa
 		var lst = new HashList(ChvPath);
 		var Weapon_Lock_04 = provider.LoadObject<UTexture>("BNSR/Content/Art/UI/GameUI_BNSR/Resource/GameUI_Icon3_R/Weapon_Lock_04")?.Decode();
 
-		Parallel.ForEach(db.Get("Item"), (record) =>
+		Parallel.ForEach(db!.Provider.GetTable("Item"), (record) =>
 		{
 			token.ThrowIfCancellationRequested();
 

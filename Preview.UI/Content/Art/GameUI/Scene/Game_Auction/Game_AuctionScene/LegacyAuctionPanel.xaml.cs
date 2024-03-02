@@ -41,7 +41,7 @@ public partial class LegacyAuctionPanel
 		#endregion
 
 		#region Source
-		source = CollectionViewSource.GetDefaultView(FileCache.Data.Get<Item>());
+		source = CollectionViewSource.GetDefaultView(FileCache.Data.Provider.GetTable<Item>());
 		source.Filter = Filter;
 
 		ItemList.ItemsSource = source;
@@ -60,7 +60,7 @@ public partial class LegacyAuctionPanel
 		set
 		{
 			SetProperty(ref _nameFilter, value);
-			Dispatcher.BeginInvoke(() => source.Refresh());
+			RefreshList();
 		}
 	}
 
@@ -72,7 +72,7 @@ public partial class LegacyAuctionPanel
 		set
 		{
 			SetProperty(ref _auctionable, value);
-			Dispatcher.BeginInvoke(() => source.Refresh());
+			RefreshList();
 		}
 	}
 
@@ -84,7 +84,7 @@ public partial class LegacyAuctionPanel
 		set
 		{
 			SetProperty(ref _lst, value);
-			Dispatcher.BeginInvoke(() => source.Refresh());
+			RefreshList();
 		}
 	}
 
@@ -140,6 +140,17 @@ public partial class LegacyAuctionPanel
 			return false;
 		}
 	}
+
+	private void RefreshList()
+	{
+		Dispatcher.BeginInvoke(() =>
+		{
+			source.Refresh();
+			source.MoveCurrentToFirst();
+
+			ItemList.ScrollIntoView(source.CurrentItem);
+		});
+	}
 	#endregion
 
 	#region Methods
@@ -170,7 +181,7 @@ public partial class LegacyAuctionPanel
 			marketCategory3 = default;
 		}
 
-		source.Refresh();
+		RefreshList();
 	}
 	#endregion
 }

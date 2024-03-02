@@ -13,7 +13,7 @@ public abstract class Datafile
 
 	public long AliasCount { get; set; }
 	public long AliasMapSize { get; set; }
-	public AliasTable AliasTable { get; set; }
+	internal AliasTable AliasTable { get; set; }
 
 	public TableCollection Tables { get; set; }
 

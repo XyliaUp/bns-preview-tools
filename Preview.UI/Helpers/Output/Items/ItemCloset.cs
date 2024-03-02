@@ -22,7 +22,7 @@ public sealed class ItemCloset : OutSet
         sheet.SetColumn(Column++, "衣柜目录", 20);
         #endregion
 
-        foreach (var item in FileCache.Data.Get<Item>())
+        foreach (var item in FileCache.Data.Provider.GetTable<Item>())
         {
             #region Check
             bool Flag = false;
@@ -51,7 +51,7 @@ public sealed class ItemCloset : OutSet
 
 			//if (item.ClosetGroupId != 0)
    //         {
-   //             var ClosetGroup = FileCache.Data.Get<ClosetGroup>()[item.ClosetGroupId];
+   //             var ClosetGroup = FileCache.Data.Provider.GetTable<ClosetGroup>()[item.ClosetGroupId];
    //             if (ClosetGroup != null) sheet.Cells[Row, column++].SetValue($"Name.closet-group.category.{ClosetGroup.Attributes["category"]}".GetText());
    //         }
         }

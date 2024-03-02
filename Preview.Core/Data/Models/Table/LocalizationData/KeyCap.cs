@@ -23,6 +23,6 @@ public sealed class KeyCap : ModelElement
 
 	public static KeyCap Cast(string KeyCode) => Cast(GetKeyCode(KeyCode));
 
-	public static KeyCap Cast(KeyCode KeyCode) => FileCache.Data.Get<KeyCap>().FirstOrDefault(x => x.KeyCode == KeyCode) ;
+	public static KeyCap Cast(KeyCode KeyCode) => FileCache.Data.Provider.GetTable<KeyCap>().FirstOrDefault(x => x.KeyCode == KeyCode) ;
 	#endregion
 }

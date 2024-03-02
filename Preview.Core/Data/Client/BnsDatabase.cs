@@ -1,5 +1,4 @@
 ﻿using CUE4Parse.UE4.Pak;
-using Xylia.Preview.Data.Engine.BinData.Models;
 using Xylia.Preview.Data.Engine.DatData;
 using Xylia.Preview.Data.Engine.Definitions;
 using Xylia.Preview.Data.Models;
@@ -44,28 +43,6 @@ public class BnsDatabase : IEngine, IDisposable
 			}
 		}
 		#endregion
-	}
-	#endregion
-
-	#region GameDataTable
-	readonly Dictionary<Table, object> _tables = new();
-
-	public Table Get(string name) => Provider.Tables[name];
-
-	public GameDataTable<T> Get<T>(string name = null, bool reload = false) where T : ModelElement => 
-		Get<T>(Provider.Tables[name ?? typeof(T).Name], reload);
-
-	public GameDataTable<T> Get<T>(Table table, bool reload) where T : ModelElement
-	{
-		if (table is null) return null;
-
-		lock (_tables)
-		{
-			if (reload || !_tables.TryGetValue(table, out var Models))
-				_tables[table] = Models = new GameDataTable<T>(table);
-
-			return Models as GameDataTable<T>;
-		}
 	}
 	#endregion
 
@@ -174,8 +151,6 @@ public class BnsDatabase : IEngine, IDisposable
 	{
 		Provider.Dispose();
 		Provider = null;
-
-		_tables.Clear();
 
 		GC.SuppressFinalize(this);
 		GC.Collect();

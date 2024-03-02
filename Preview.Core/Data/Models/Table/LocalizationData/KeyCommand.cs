@@ -51,6 +51,6 @@ public sealed class KeyCommand : ModelElement
 
 	public ImageProperty GetIcon() => this.Key1?.Icon;
 
-	public static KeyCommand Cast(KeyCommandSeq KeyCommand) => FileCache.Data.Get<KeyCommand>().FirstOrDefault(o => o.Command == KeyCommand);
+	public static KeyCommand Cast(KeyCommandSeq KeyCommand) => FileCache.Data.Provider.GetTable<KeyCommand>().FirstOrDefault(o => o.Command == KeyCommand);
 	#endregion
 }

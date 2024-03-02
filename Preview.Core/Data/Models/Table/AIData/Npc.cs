@@ -12,8 +12,8 @@ public sealed class Npc : ModelElement
 		{
 			var alias = this.ToString();
 
-			var MapUnit = FileCache.Data.Get<MapUnit>().Where(x => x.ToString() != null && x.ToString().Contains(alias, StringComparison.OrdinalIgnoreCase)).FirstOrDefault();
-			return MapUnit is null ? null : FileCache.Data.Get<MapInfo>().FirstOrDefault(x => x.Id == MapUnit.Mapid)?.Text;
+			var MapUnit = FileCache.Data.Provider.GetTable<MapUnit>().Where(x => x.ToString() != null && x.ToString().Contains(alias, StringComparison.OrdinalIgnoreCase)).FirstOrDefault();
+			return MapUnit is null ? null : FileCache.Data.Provider.GetTable<MapInfo>().FirstOrDefault(x => x.Id == MapUnit.Mapid)?.Text;
 		}
 	}
 	#endregion

@@ -91,5 +91,5 @@ public enum JobSeq
 
 public static partial class SequenceExtensions
 {
-	public static Job Convert(this JobSeq seq) => FileCache.Data.Get<Job>().FirstOrDefault(o => o.job == seq);
+	public static Job Convert(this JobSeq seq) => FileCache.Data.Provider.GetTable<Job>().FirstOrDefault(o => o.job == seq);
 }

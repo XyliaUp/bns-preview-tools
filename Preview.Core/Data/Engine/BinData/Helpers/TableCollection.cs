@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using System.Collections.ObjectModel;
+using System.Diagnostics;
 using Xylia.Preview.Common.Extension;
 using Xylia.Preview.Data.Common.DataStruct;
 using Xylia.Preview.Data.Engine.BinData.Models;
@@ -6,11 +7,16 @@ using Xylia.Preview.Data.Engine.Definitions;
 using Xylia.Preview.Data.Models;
 
 namespace Xylia.Preview.Data.Engine.BinData.Helpers;
-public class TableCollection : List<Table>
+public class TableCollection : Collection<Table>
 {
+	#region Fields
 	Dictionary<ushort, Table> _tableByType;
 	Dictionary<string, Table> _tableByName;
 
+	readonly Dictionary<Table, object> _tables = [];
+	#endregion
+
+	#region Methods
 	public Table this[ushort index]
 	{
 		get
@@ -42,7 +48,6 @@ public class TableCollection : List<Table>
 	}
 
 
-	#region Methods
 	public Record GetRef(ushort type, Ref Ref)
 	{
 		if (Ref == default) return null;
@@ -76,7 +81,6 @@ public class TableCollection : List<Table>
 	}
 
 
-
 	public Record GetRecord(string table, string alias) => this[table]?[alias];
 
 	public Record GetRecord(string value)
@@ -104,6 +108,33 @@ public class TableCollection : List<Table>
 		var array = new[] { value[..colon], value[(colon + 1)..] };
 		index = ushort.Parse(array[1]);
 		return GetRecord("icontexture", array[0]);
+	}
+	#endregion
+
+	#region GameDataTable
+	public GameDataTable<T> Get<T>(string name = null, bool reload = false) where T : ModelElement =>
+		Get<T>(this[name ?? typeof(T).Name], reload);
+
+	public GameDataTable<T> Get<T>(Table table, bool reload) where T : ModelElement
+	{
+		if (table is null) return null;
+
+		lock (_tables)
+		{
+			if (reload || !_tables.TryGetValue(table, out var Models))
+				_tables[table] = Models = new GameDataTable<T>(table);
+
+			return Models as GameDataTable<T>;
+		}
+	}
+
+	protected override void ClearItems()
+	{
+		_tables.Clear();
+		_tableByType?.Clear();
+		_tableByName?.Clear();
+
+		base.ClearItems();
 	}
 	#endregion
 }

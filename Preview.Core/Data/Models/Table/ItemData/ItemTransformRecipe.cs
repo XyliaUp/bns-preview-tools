@@ -322,7 +322,7 @@ public sealed class ItemTransformRecipe : ModelElement
 		};
 	}
 
-	public static IEnumerable<ItemTransformRecipe> QueryRecipe(Item Item) => FileCache.Data.Get<ItemTransformRecipe>().Where(o =>
+	public static IEnumerable<ItemTransformRecipe> QueryRecipe(Item Item) => FileCache.Data.Provider.GetTable<ItemTransformRecipe>().Where(o =>
 	{
 		var MainIngredient = o.MainIngredient.Instance;
 		if (MainIngredient is Item item) return item == Item;

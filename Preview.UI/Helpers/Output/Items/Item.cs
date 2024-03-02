@@ -135,7 +135,7 @@ public sealed class ItemOut : OutSet, IDisposable
 		CreatedAt = set.Provider.CreatedAt;
 
 		var Result = new BlockingCollection<ItemSimple>();
-		Parallel.ForEach(set.Get<Item>(), (record) =>
+		Parallel.ForEach(set.Provider.GetTable<Item>(), (record) =>
 		{
 			if (CacheList != null && CacheList.CheckFailed(record.Source.PrimaryKey)) return;
 
@@ -168,14 +168,14 @@ class ItemSimple
 	public string Info;
 	public JobSeq Job;
 
-	public string Key => Convert.ToBase64String(BitConverter.GetBytes(IPAddress.HostToNetworkOrder(Ref.Id)));
+	public string Key => Convert.ToBase64String([.. BitConverter.GetBytes(Ref.Id).Reverse()]);
 
 	public ItemSimple(Record record, BnsDatabase tables = null)
 	{
 		Ref = record.PrimaryKey;
 		Alias = record.StringLookup.GetString(0);
 
-		var TextTable = tables?.Get<Text>();
+		var TextTable = tables?.Provider?.Tables.Get<Text>();
 		Name2 = GetName2(TextTable);
 		Info = GetInfo(TextTable);
 		Description = GetDesc(TextTable);

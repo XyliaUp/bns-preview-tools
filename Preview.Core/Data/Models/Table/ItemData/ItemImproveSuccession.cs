@@ -21,13 +21,13 @@ public sealed class ItemImproveSuccession : ModelElement
 	#region Methods
 	internal static ItemImproveSuccession FindBySeed(Item SeedItem)
 	{
-		return FileCache.Data.Get<ItemImproveSuccession>().FirstOrDefault(record =>
+		return FileCache.Data.Provider.GetTable<ItemImproveSuccession>().FirstOrDefault(record =>
 			SeedItem.ImproveId == record.SeedImproveId && SeedItem.ImproveLevel == record.SeedImproveLevel);
 	}
 
 	internal static ItemImproveSuccession FindByFeed(Item FeedItem, Item SeedItem = null)
 	{
-		return FileCache.Data.Get<ItemImproveSuccession>().FirstOrDefault(record =>
+		return FileCache.Data.Provider.GetTable<ItemImproveSuccession>().FirstOrDefault(record =>
 			FeedItem.ImproveId == record.FeedMainImproveId && FeedItem.ImproveLevel == record.FeedMainImproveLevel &&
 		   (SeedItem is null || SeedItem.ImproveId == record.ResultImproveId));
 	}
@@ -38,8 +38,8 @@ public sealed class ItemImproveSuccession : ModelElement
 		// This method is missing the seed, the result is inaccurate
 		if (SeedItem is null)
 		{
-			ResultItem = FileCache.Data.Get<Item>().FirstOrDefault(item => item.ImproveId == ResultImproveId && item.ImproveLevel == ResultImproveLevel);
-			SeedItem = FileCache.Data.Get<Item>().FirstOrDefault(item => item.ImproveId == SeedImproveId && item.ImproveLevel == SeedImproveLevel);
+			ResultItem = FileCache.Data.Provider.GetTable<Item>().FirstOrDefault(item => item.ImproveId == ResultImproveId && item.ImproveLevel == ResultImproveLevel);
+			SeedItem = FileCache.Data.Provider.GetTable<Item>().FirstOrDefault(item => item.ImproveId == SeedImproveId && item.ImproveLevel == SeedImproveLevel);
 		}
 		else
 		{

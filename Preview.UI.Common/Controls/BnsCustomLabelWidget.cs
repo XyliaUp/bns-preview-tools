@@ -35,19 +35,6 @@ public class BnsCustomLabelWidget : BnsCustomBaseWidget, IContentHost
 	}
 	#endregion
 
-
-	#region Public Properties
-	private TextDocument _container;
-
-	/// <summary>
-	/// content container
-	/// </summary>
-	protected Paragraph Document { get; set; }
-
-	public Dictionary<int, Timer> Timers { get; } = [];
-	#endregion
-
-
 	#region Dependency Properties
 	private static readonly Type Owner = typeof(BnsCustomLabelWidget);
 
@@ -100,7 +87,6 @@ public class BnsCustomLabelWidget : BnsCustomBaseWidget, IContentHost
 		set { SetValue(ParamsProperty, value); }
 	}
 	#endregion
-
 
 	#region Protected Methods
 	protected override void OnMouseDoubleClick(MouseButtonEventArgs e)
@@ -254,6 +240,18 @@ public class BnsCustomLabelWidget : BnsCustomBaseWidget, IContentHost
 		CopyTxt = new Regex(@"<\s*br\s*/\s*>").Replace(CopyTxt, "\n");
 		return new Regex(@"<.*?>").Replace(CopyTxt, "");
 	}
+	#endregion
+
+
+	#region Private Fields
+	private TextDocument _container;
+
+	/// <summary>
+	/// content container
+	/// </summary>
+	protected Paragraph Document { get; set; }
+
+	public Dictionary<int, Timer> Timers { get; } = [];
 	#endregion
 }
 

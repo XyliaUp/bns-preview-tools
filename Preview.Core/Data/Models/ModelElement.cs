@@ -150,7 +150,6 @@ public struct Ref<TElement> where TElement : ModelElement
 		if (value.Contains(':')) source = provider.Tables.GetRecord(value);
 		else source = provider.Tables.GetRecord(typeof(TElement).Name, value);
 
-
 		if (source is null) Serilog.Log.Warning("invalid ref: " + value);
 	}
 	#endregion

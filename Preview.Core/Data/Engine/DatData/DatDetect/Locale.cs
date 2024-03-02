@@ -7,15 +7,7 @@ using Xylia.Preview.Data.Common;
 namespace Xylia.Preview.Data.Engine.DatData;
 public struct Locale
 {
-	private string _publisher;
-	public string _language;
-	public string Universe;
-	public string ProductVersion;
-
-	public readonly ELanguage Language => _language.ToEnum<ELanguage>();
-	public readonly Publisher Publisher => _publisher.ToEnum<Publisher>();
-
-
+	#region Methods
 	public Locale(DirectoryInfo directory)
 	{
 		Load(directory);
@@ -83,4 +75,16 @@ public struct Locale
 		}
 		#endregion
 	}
+	#endregion
+
+	#region Fields
+	private string _publisher;
+	public string _language;
+	private string AdditionalPublisher;
+	public string Universe;
+	public string ProductVersion;
+
+	public readonly ELanguage Language => _language.ToEnum<ELanguage>();
+	public readonly Publisher Publisher => _publisher.ToEnum<Publisher>();
+	#endregion
 }

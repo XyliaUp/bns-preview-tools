@@ -34,12 +34,13 @@ public struct Ref : IComparable<Ref>
 	}
 
 	[MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-	public static explicit operator long(Ref r) => Unsafe.As<Ref, long>(ref r);
+	public static implicit operator long(Ref r) => Unsafe.As<Ref, long>(ref r);
 	[MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-	public static explicit operator Ref(long key) => Unsafe.As<long, Ref>(ref key);
+	public static implicit operator Ref(long key) => Unsafe.As<long, Ref>(ref key);
 
 	public static implicit operator Ref(TRef tref) => tref.Ref;
 	public static implicit operator Ref(IconRef iconRef) => iconRef.IconTextureRef;
+
 	public static bool operator ==(Ref a, Ref b) => Unsafe.As<Ref, long>(ref a) == Unsafe.As<Ref, long>(ref b);
 	public static bool operator !=(Ref a, Ref b) => !(a == b);
 

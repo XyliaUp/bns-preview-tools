@@ -1,5 +1,7 @@
+using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
 using Xylia.Preview.Data.Helpers;
 using Xylia.Preview.Data.Models;
 using Xylia.Preview.UI.Helpers.Output.Quests;
@@ -12,9 +14,12 @@ public partial class Game_QuestJournalScene
 	protected override void OnLoading()
 	{
 		InitializeComponent();
-		
+
 		// Progress
-		QuestJournal_ProgressQuestList.ItemsSource = FileCache.Data.Get<Quest>().OrderBy(x => x.Source.PrimaryKey);
+		source = CollectionViewSource.GetDefaultView(FileCache.Data.Provider.GetTable<Quest>().OrderBy(x => x.Source.PrimaryKey));
+		source.Filter = QuestFilter;
+		QuestJournal_ProgressQuestList.ItemsSource = source;
+
 
 		// Completed
 		List<Quest> CompletedQuest = [];
@@ -27,7 +32,44 @@ public partial class Game_QuestJournalScene
 	}
 	#endregion
 
-	#region CompletedTab 
+
+	#region Methods
+	// ------------------------------------------------------------------
+	// 
+	//  ProgressTab
+	// 
+	// ------------------------------------------------------------------
+	private void SearcherRule_TextChanged(object sender, TextChangedEventArgs e)
+	{
+		source.Refresh();
+	}
+
+	private bool QuestFilter(object obj)
+	{
+		if (obj is not Quest quest) return false;
+
+		// rule valid
+		var rule = SearcherRule.Text;
+
+		var IsEmpty = string.IsNullOrEmpty(rule);
+		if (IsEmpty) return true;
+
+		// filter 
+		if (int.TryParse(rule, out int id)) return quest.Source.PrimaryKey.Id == id;
+
+		if (quest.Text?.IndexOf(rule, StringComparison.OrdinalIgnoreCase) > 0) return true;
+		if (quest.Title?.IndexOf(rule, StringComparison.OrdinalIgnoreCase) > 0) return true;
+
+		return false;
+	}
+
+
+
+	// ------------------------------------------------------------------
+	// 
+	//  CompletedTab
+	// 
+	// ------------------------------------------------------------------
 	private void CompletedTab_SelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
 	{
 		if (e.OldValue == e.NewValue) return;
@@ -35,12 +77,18 @@ public partial class Game_QuestJournalScene
 
 		TextBlock2.Text = quest.Attributes["completed-desc"].GetText();
 	}
-	#endregion
 
-
-	#region Extract
+	// ------------------------------------------------------------------
+	// 
+	//  Extract
+	// 
+	// ------------------------------------------------------------------
 	private void Extract_QuestList_Click(object sender, RoutedEventArgs e) => ItemPageViewModel.StartOutput<QuestOut>();
 
 	private void Extract_EpicQuestList_Click(object sender, RoutedEventArgs e) => ItemPageViewModel.StartOutput<QuestEpic>();
+	#endregion
+
+	#region Private Fields
+	private ICollectionView source;
 	#endregion
 }

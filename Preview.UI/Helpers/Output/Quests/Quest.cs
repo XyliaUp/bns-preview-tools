@@ -21,7 +21,7 @@ public sealed class QuestOut : OutSet
         #endregion
 
 
-        foreach (var Quest in FileCache.Data.Get<Quest>().OrderBy(o => o.Source.PrimaryKey))
+        foreach (var Quest in FileCache.Data.Provider.GetTable<Quest>().OrderBy(o => o.Source.PrimaryKey))
         {
             Row++;
             int column = 1;

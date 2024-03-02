@@ -26,7 +26,7 @@ public abstract class USerializeObject : UObject
 		{
 			var props = src.Properties
 				.ToLookup(property => property.Name.Text)
-				.ToDictionary(property => property.Key, x => x.First());
+				.ToDictionary(property => property.Key, x => x.First(), StringComparer.OrdinalIgnoreCase);
 
 			foreach (var member in dst.GetType().GetMembers(BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.Public))
 			{

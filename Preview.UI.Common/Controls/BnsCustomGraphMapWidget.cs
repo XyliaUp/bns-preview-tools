@@ -127,7 +127,7 @@ public class BnsCustomGraphMapWidget : BnsCustomBaseWidget
 		this.Children.Clear();
 
 		#region Data
-		var table = FileCache.Data.Get<ItemGraph>();
+		var table = FileCache.Data.Provider.GetTable<ItemGraph>();
 		var seeds = table.Where(record => record is ItemGraph.Seed seed).Cast<ItemGraph.Seed>();
 
 		var seq = type.ToEnum<EquipType>();
@@ -217,7 +217,7 @@ public class BnsCustomGraphMapWidget : BnsCustomBaseWidget
 
 
 		//NodeTemplate.ExpansionComponentList["Node_Icon"].ImageProperty =
-		//	FileCache.Data.Get<Item>()[new Ref(2080002, 1)]?.Icon;
+		//	FileCache.Data.Provider.GetTable<Item>()[new Ref(2080002, 1)]?.Icon;
 	}
 
 	protected override void OnPreviewMouseWheel(MouseWheelEventArgs e)
@@ -360,7 +360,7 @@ public class BnsCustomGraphMapWidget : BnsCustomBaseWidget
 		widget.Starting = e.Source as BnsCustomImageWidget;
 		widget.Starting!.Expansion.Add("Node_StartImage");
 
-		//FileCache.Data.Get<GameMessage>()["Msg.ItemGraph.SetStartingPoint"]?.Instant();
+		//FileCache.Data.Provider.GetTable<GameMessage>()["Msg.ItemGraph.SetStartingPoint"]?.Instant();
 		widget.FindPath();
 	}
 
@@ -372,7 +372,7 @@ public class BnsCustomGraphMapWidget : BnsCustomBaseWidget
 		widget.Destination = e.Source as BnsCustomImageWidget;
 		widget.Destination!.Expansion.Add("Node_PurposeImage");
 
-		//FileCache.Data.Get<GameMessage>()["Msg.ItemGraph.SetDestination"]?.Instant();
+		//FileCache.Data.Provider.GetTable<GameMessage>()["Msg.ItemGraph.SetDestination"]?.Instant();
 		widget.FindPath();
 	}
 

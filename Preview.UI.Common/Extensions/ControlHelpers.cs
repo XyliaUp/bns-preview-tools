@@ -35,7 +35,7 @@ public static class ControlHelpers
 	#endregion
 
 	#region Property
-	public static DependencyProperty Register<T>(this Type ownerType, string name, T defaultValue = default,
+	public static DependencyProperty Register<T>(this Type ownerType, string name, T? defaultValue = default,
 		FrameworkPropertyMetadataOptions flags = FrameworkPropertyMetadataOptions.AffectsRender,
 		PropertyChangedCallback? callback = null)
 	{

@@ -29,7 +29,7 @@ public sealed class QuestEpic : OutSet
 	}
 
 
-	public static void GetEpic(Action<Quest> act, JobSeq TargetJob = JobSeq.소환사) => GetEpic(FileCache.Data.Get<Quest>()["q_epic_221"], act, TargetJob);
+	public static void GetEpic(Action<Quest> act, JobSeq TargetJob = JobSeq.소환사) => GetEpic(FileCache.Data.Provider.GetTable<Quest>()["q_epic_221"], act, TargetJob);
 
 	public static void GetEpic(Quest quest, Action<Quest> act, JobSeq TargetJob = JobSeq.소환사)
 	{

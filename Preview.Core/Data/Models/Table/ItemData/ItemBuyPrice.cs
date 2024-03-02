@@ -79,7 +79,7 @@ public class ItemBuyPrice : ModelElement
 		get
 		{
 			if (RequiredItembrand.Instance is null) return null;
-			return FileCache.Data.Get<ItemBrandTooltip>().FirstOrDefault(x =>
+			return FileCache.Data.Provider.GetTable<ItemBrandTooltip>().FirstOrDefault(x =>
 				x.BrandId == RequiredItembrand.Instance.Id && 
 				x.ItemConditionType == RequiredItembrandConditionType);
 		}

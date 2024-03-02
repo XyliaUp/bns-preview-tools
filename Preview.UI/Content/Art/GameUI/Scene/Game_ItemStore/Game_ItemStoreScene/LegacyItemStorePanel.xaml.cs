@@ -17,7 +17,7 @@ public partial class LegacyItemStorePanel
 
 		#region type
 		var group = new Dictionary<UnlocatedStoreTypeSeq, TreeViewItem>();
-		foreach (var record in FileCache.Data.Get<UnlocatedStoreUi>().Append(new UnlocatedStoreUi()
+		foreach (var record in FileCache.Data.Provider.GetTable<UnlocatedStoreUi>().Append(new UnlocatedStoreUi()
 		{
 			UnlocatedStoreType = UnlocatedStoreTypeSeq.UnlocatedNone,
 			TitleText = new("UI.ItemStore.Title"),
@@ -35,10 +35,10 @@ public partial class LegacyItemStorePanel
 		}
 		#endregion
 
-		foreach (var store2 in FileCache.Data.Get<Store2>())
+		foreach (var store2 in FileCache.Data.Provider.GetTable<Store2>())
 		{
 			var text = $"[{store2.Name2.GetText()}] {store2}";
-			var type = FileCache.Data.Get<UnlocatedStore>().FirstOrDefault(x => x.Store2.Instance == store2)?.UnlocatedStoreType ?? UnlocatedStoreTypeSeq.UnlocatedNone;
+			var type = FileCache.Data.Provider.GetTable<UnlocatedStore>().FirstOrDefault(x => x.Store2.Instance == store2)?.UnlocatedStoreType ?? UnlocatedStoreTypeSeq.UnlocatedNone;
 			if (type > UnlocatedStoreTypeSeq.SoulBoostStore1 && type <= UnlocatedStoreTypeSeq.SoulBoostStore6)
 				type = UnlocatedStoreTypeSeq.SoulBoostStore1;
 

@@ -20,7 +20,7 @@ public abstract class IconOutBase : IDisposable
 	private readonly string _outputDirectory;
 	private readonly char[] _invalidChars = Path.GetInvalidFileNameChars();
 
-	protected BnsDatabase db;
+	protected BnsDatabase? db;
 	protected readonly ILogger logger;
 
 	public IconOutBase(string GameFolder, string OutputFolder)
@@ -50,7 +50,7 @@ public abstract class IconOutBase : IDisposable
 	{
 		// init table
 		db = new BnsDatabase(DefaultProvider.Load(UserSettings.Default.GameFolder));
-		_ = db.Get<IconTexture>();
+		_ = db.Provider.GetTable<IconTexture>();
 
 		cancellationToken.ThrowIfCancellationRequested();
 	}

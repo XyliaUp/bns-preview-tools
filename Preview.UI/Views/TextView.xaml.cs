@@ -124,8 +124,8 @@ public partial class TextView
 		var source1 = await Task.Run(() => new BnsDatabase(new LocalProvider(OldSource)));
 		var source2 = await Task.Run(() => new BnsDatabase(new LocalProvider(NewSource)));
 
-		var TextTable1 = source1.Get<Text>();
-		var TextTable2 = source2.Get<Text>();
+		var TextTable1 = source1.Provider.GetTable<Text>();
+		var TextTable2 = source2.Provider.GetTable<Text>();
 
 		var IsEmpty1 = TextTable1.IsEmpty();
 		var IsEmpty2 = TextTable2.IsEmpty();
