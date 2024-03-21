@@ -1,9 +1,8 @@
 ﻿using OfficeOpenXml;
-using Xylia.Preview.Data.Common.DataStruct;
 using Xylia.Preview.Data.Helpers;
-using Xylia.Preview.Data.Helpers.Output;
 using Xylia.Preview.Data.Models;
 using Xylia.Preview.Data.Models.Sequence;
+using Xylia.Preview.UI.Helpers.Output;
 using static Xylia.Preview.Data.Models.Item;
 using static Xylia.Preview.Data.Models.Item.Accessory;
 
@@ -12,8 +11,8 @@ public sealed class ItemCloset : OutSet
 {
     protected override void CreateData(ExcelWorksheet sheet)
     {
-		#region Title
-		sheet.SetColumn(Column++, "物品编号", 15);
+        #region Title
+        sheet.SetColumn(Column++, "物品编号", 15);
         sheet.SetColumn(Column++, "物品别名", 40);
         sheet.SetColumn(Column++, "物品名称", 25);
         sheet.SetColumn(Column++, "装备类型", 15);
@@ -23,7 +22,7 @@ public sealed class ItemCloset : OutSet
         sheet.SetColumn(Column++, "衣柜目录", 20);
         #endregion
 
-        foreach (var item in FileCache.Data.Item)
+        foreach (var item in FileCache.Data.Provider.GetTable<Item>())
         {
             #region Check
             bool Flag = false;
@@ -42,19 +41,19 @@ public sealed class ItemCloset : OutSet
             Row++;
             int column = 1;
 
-            sheet.Cells[Row, column++].SetValue((Ref)item.Source);
+            sheet.Cells[Row, column++].SetValue(item.PrimaryKey);
             sheet.Cells[Row, column++].SetValue(item.ToString());
-			sheet.Cells[Row, column++].SetValue(item.ItemNameOnly);
-			sheet.Cells[Row, column++].SetValue(item.EquipType.GetText());
-			sheet.Cells[Row, column++].SetValue(item.EquipSex.GetText());
-			sheet.Cells[Row, column++].SetValue(item.EquipRace);
-			sheet.Cells[Row, column++].SetValue(item.ClosetGroupId);
+            sheet.Cells[Row, column++].SetValue(item.ItemNameOnly);
+            sheet.Cells[Row, column++].SetValue(item.EquipType.GetText());
+            sheet.Cells[Row, column++].SetValue(item.EquipSex.GetText());
+            sheet.Cells[Row, column++].SetValue(item.EquipRace);
+            sheet.Cells[Row, column++].SetValue(item.ClosetGroupId);
 
-			//if (item.ClosetGroupId != 0)
-   //         {
-   //             var ClosetGroup = FileCache.Data.Get<ClosetGroup>()[item.ClosetGroupId];
-   //             if (ClosetGroup != null) sheet.Cells[Row, column++].SetValue($"Name.closet-group.category.{ClosetGroup.Attributes["category"]}".GetText());
-   //         }
+            //if (item.ClosetGroupId != 0)
+            //         {
+            //             var ClosetGroup = FileCache.Data.Provider.GetTable<ClosetGroup>()[item.ClosetGroupId];
+            //             if (ClosetGroup != null) sheet.Cells[Row, column++].SetValue($"Name.closet-group.category.{ClosetGroup.Attributes["category"]}".GetText());
+            //         }
         }
     }
 }

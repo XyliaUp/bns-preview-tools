@@ -1,0 +1,63 @@
+﻿<BnsCustomWindowWidget x:Class="Xylia.Preview.UI.GameUI.Scene.Game_CharacterInfo.CharacterInfoPanel"
+	xmlns="https://github.com/xyliaup/bns-preview-tools"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:s="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	Width="1200" Height="765">
+	<BnsCustomWindowWidget.BaseImageProperty>
+		<ImageProperty BaseImageTexture="BNSR/Content/Art/UI/GameUI/Resource/GameUI_Window_R/BNSR_Window.BNSR_Window" ImageUV="7 7" ImageUVSize="49 49" EnableSkinAlpha="true" StaticPadding="-17 -17" />
+	</BnsCustomWindowWidget.BaseImageProperty>
+	<BnsCustomWindowWidget.ExpansionComponentList>
+		<ExpansionComponent bShow="true" ExpansionType="IMAGE" ExpansionName="Line" MetaData="" bPostExpansitonRender="true">
+			<ExpansionComponent.ImageProperty>
+				<ImageProperty BaseImageTexture="BNSR/Content/Art/UI/GameUI/Resource/GameUI_Window_R/BNSR_Window_Outfocus.BNSR_Window_Outfocus" ImageUV="7 7" ImageUVSize="49 49" EnableDrawImage="true" TintColor="FFFFFF" GrayWeightValue="0.15" StaticPadding="-17 -17" Opacity="1" ImageScale="1" />
+			</ExpansionComponent.ImageProperty>
+		</ExpansionComponent>
+	</BnsCustomWindowWidget.ExpansionComponentList>
+	<BnsCustomLabelButtonWidget Name="CharacterInfoPanelCloseButton" LayoutData.Anchors="1 0 1 0" LayoutData.Offsets="-12 12 30 0">
+		<BnsCustomLabelButtonWidget.NormalImageProperty>
+			<ImageProperty BaseImageTexture="BNSR/Content/Art/UI/GameUI/Resource/GameUI_Window_R/BNSR_UIElement.BNSR_UIElement" ImageUV="156 50" ImageUVSize="18 18" EnableResourceSize="true" />
+		</BnsCustomLabelButtonWidget.NormalImageProperty>
+	</BnsCustomLabelButtonWidget>
+	<BnsCustomImageWidget Name="CharacterInfoPanel_UIInfo" LayoutData.Offsets="1158 12 30 0" MetaData="tooltip=UI.Tooltip.UIInfo.CharacterInfo">
+		<BnsCustomImageWidget.BaseImageProperty>
+			<ImageProperty BaseImageTexture="BNSR/Content/Art/UI/GameUI/Resource/GameUI_Window_R/BNSR_UIElement.BNSR_UIElement" ImageUV="142 48" ImageUVSize="12 22" EnableResourceSize="true" Offset="0 -1" />
+		</BnsCustomImageWidget.BaseImageProperty>
+	</BnsCustomImageWidget>
+	<BnsWebBrowser Name="CharacterInfoPanelWeb" LayoutData.Anchors="0.5 1 0.5 1" LayoutData.Offsets="0 -15 1200 765" MetaData="width=1200;height=765">
+		<BnsWebBrowser.ExpansionComponentList>
+			<ExpansionComponent bShow="true" ExpansionType="IMAGE" ExpansionName="ErrorImage" MetaData="" bPostExpansitonRender="true">
+				<ExpansionComponent.ImageProperty>
+					<ImageProperty BaseImageTexture="BNSR/Content/Art/UI/GameUI/Resource/GameUI_Window_R/BNSR_UIElement_01.BNSR_UIElement_01" ImageUV="94 373" ImageUVSize="56 56" EnableDrawImage="true" EnableResourceSize="true" TintColor="FFFFFF" GrayWeightValue="0.15" Offset="0 -50" Opacity="1" ImageScale="1" HorizontalAlignment="HAlign_Center" VerticalAlignment="VAlign_Center" />
+				</ExpansionComponent.ImageProperty>
+			</ExpansionComponent>
+		</BnsWebBrowser.ExpansionComponentList>
+		<BnsCustomImageWidget Name="CharacterInfoPanelLoadingImage" LayoutData.Anchors="0.5 0.5 0.5 0.5" LayoutData.Offsets="0 0 128 64">
+			<BnsCustomImageWidget.BaseImageProperty>
+				<ImageProperty BaseImageTexture="/Game/Art/UI/GameUI/Resource/GameUI_HUD_Scene/WebLoadingMaterialInst_UIMat.WebLoadingMaterialInst_UIMat" EnableDrawColor="true" TintColor="000000" />
+			</BnsCustomImageWidget.BaseImageProperty>
+		</BnsCustomImageWidget>
+		<BnsCustomImageWidget Name="CharacterInfoPanelLoadingImageSmall" LayoutData.Anchors="1 1 1 1" LayoutData.Offsets="0 0 128 64">
+			<BnsCustomImageWidget.BaseImageProperty>
+				<ImageProperty BaseImageTexture="/Game/Art/UI/GameUI/Resource/GameUI_HUD_Scene/WebLoadingMaterialInst_UIMat.WebLoadingMaterialInst_UIMat" EnableDrawColor="true" TintColor="000000" />
+			</BnsCustomImageWidget.BaseImageProperty>
+		</BnsCustomImageWidget>
+		<BnsCustomLabelWidget Name="CharacterInfoPanelErrorLabel" LayoutData.Anchors="0.5 0.5 0.5 0.5" LayoutData.Offsets="0 0 406 53" MetaData="textref=UI.WebPanelErrorLabel">
+			<BnsCustomLabelWidget.String>
+				<StringProperty fontset="/Game/Art/UI/GameUI/Resource/GameUI_FontSet/UI/Normal_12.Normal_12" LabelText="## 웹 서버와 연결이 원활치 않습니다." SpaceBetweenLines="3" HorizontalAlignment="HAlign_Center" VerticalAlignment="VAlign_Center" />
+			</BnsCustomLabelWidget.String>
+		</BnsCustomLabelWidget>
+	</BnsWebBrowser>
+	<BnsCustomCaptionWidget Name="CharacterInfoPanel_TitleBar" LayoutData.Anchors="0 0 1 0" LayoutData.Offsets="0 0 0 50" MetaData="textref=UI.CharacterInfo.Title">
+		<BnsCustomCaptionWidget.String>
+			<StringProperty fontset="BNSR/Content/Art/UI/GameUI_BNSR/Resource/GameUI_FontSet_R/UI/Normal_16.Normal_16" LabelText="정보 보기##" VerticalAlignment="VAlign_Center" ClippingBound="70 0" />
+		</BnsCustomCaptionWidget.String>
+		<BnsCustomCaptionWidget.BaseImageProperty>
+			<ImageProperty BaseImageTexture="BNSR/Content/Art/UI/GameUI/Resource/GameUI_Window_R/BNSR_PictogramIcon.BNSR_PictogramIcon" ImageUV="896 64" ImageUVSize="64 64" EnableResourceSize="true" />
+		</BnsCustomCaptionWidget.BaseImageProperty>
+	</BnsCustomCaptionWidget>
+	<BnsCustomImageWidget Name="CharacterInfoPanel_Background" LayoutData.Anchors="0 0 1 1" LayoutData.Offsets="0 50 0 0">
+		<BnsCustomImageWidget.BaseImageProperty>
+			<ImageProperty BaseImageTexture="BNSR/Content/Art/UI/GameUI/Resource/GameUI_Window_R/BNSR_UIElement.BNSR_UIElement" ImageUV="0 125" ImageUVSize="18 10" EnableDrawColor="true" TintColor="000000" Opacity="0.3" />
+		</BnsCustomImageWidget.BaseImageProperty>
+	</BnsCustomImageWidget>
+</BnsCustomWindowWidget>

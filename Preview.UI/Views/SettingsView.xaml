@@ -3,7 +3,9 @@
 		xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 		xmlns:converters="clr-namespace:Xylia.Preview.UI.Common.Converters"
 		xmlns:hc="https://handyorg.github.io/handycontrol"
-		Title="{DynamicResource Settings_Name}" Icon="{x:Null}" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" SizeToContent="Height"
+		xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d"
+		Background="{DynamicResource RegionBrush}" Icon="{x:Null}" Title="{DynamicResource Settings_Name}" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" SizeToContent="Height"
 		MinHeight="{Binding Source={x:Static SystemParameters.MaximizedPrimaryScreenHeight}, Converter={converters:RatioConverter}, ConverterParameter='0.10'}"
 		Width="{Binding Source={x:Static SystemParameters.MaximizedPrimaryScreenWidth}, Converter={converters:RatioConverter}, ConverterParameter='0.35'}">
 	<Window.Resources>
@@ -96,7 +98,7 @@
 								<Path Fill="AntiqueWhite" Data="M17,13c-2.21,0-4,1.79-4,4c0,2.21,1.79,4,4,4s4-1.79,4-4C21,14.79,19.21,13,17,13z M17,14.38c0.62,0,1.12,0.51,1.12,1.12 s-0.51,1.12-1.12,1.12s-1.12-0.51-1.12-1.12S16.38,14.38,17,14.38z M17,19.75c-0.93,0-1.74-0.46-2.24-1.17 c0.05-0.72,1.51-1.08,2.24-1.08s2.19,0.36,2.24,1.08C18.74,19.29,17.93,19.75,17,19.75z" />
 							</Canvas>
 						</Viewbox>
-						<TextBlock Text="{DynamicResource Name_General}" VerticalAlignment="Center" />
+						<TextBlock d:Text="General" Text="{DynamicResource Name_General}" VerticalAlignment="Center" />
 					</StackPanel>
 				</TabItem.Header>
 				<TabItem.Resources>
@@ -123,38 +125,31 @@
 
 				<hc:UniformSpacingPanel Orientation="Vertical" Spacing="5" Grid.IsSharedSizeScope="True" >
 					<!-- Path -->
-					<hc:Divider Grid.ColumnSpan="10" Margin="0 5" Content="Path" />
+					<hc:Divider Grid.ColumnSpan="10" Margin="0 5" d:Content="Path" Content="Path" />
 					<ItemsControl>
 						<TextBlock>
-							<Run Text="{DynamicResource GameDirectory}" /> *
+							<Run d:Text="Game Directory" Text="{DynamicResource Settings_GameDirectory}" /> *
 						</TextBlock>
 						<TextBox Grid.Column="1" Text="{Binding GameFolder}" Margin="0 0 3 0" />
 						<Button Grid.Column="2" Content="..." HorizontalAlignment="Right" Click="OnBrowseDirectories" />
 					</ItemsControl>
 					<ItemsControl>
 						<TextBlock>
-							<Run Text="{DynamicResource OutputDirectory}" /> *
+							<Run d:Text="Output Directory" Text="{DynamicResource Settings_OutputDirectory}" /> *
 						</TextBlock>
 						<TextBox Grid.Column="1" Text="{Binding OutputFolder}" Margin="0 0 3 0" />
 						<Button Grid.Column="2" Content="..." HorizontalAlignment="Right" Click="OnBrowseDirectories2" />
 					</ItemsControl>
 					<ItemsControl>
-						<TextBlock Grid.Column="0" Text="{DynamicResource OutputDirectory_Resource}" />
+						<TextBlock d:Text="Resource Output Directory" Grid.Column="0" Text="{DynamicResource Settings_OutputDirectory2}" />
 						<TextBox Grid.Column="1" Text="{Binding OutputFolderResource}" Margin="0 0 3 0" />
 						<Button Grid.Column="2" Content="..." HorizontalAlignment="Right" Click="OnBrowseDirectories3" />
 					</ItemsControl>
 
-					<!-- Data Options -->
-					<hc:Divider Grid.ColumnSpan="10" Margin="0 5" Content="Data Options" />
-					<ItemsControl>
-						<TextBlock Text="{DynamicResource Settings_UseUserDefinition}" ToolTip="{DynamicResource Settings_UseUserDefinition_Tooltip}" />
-						<CheckBox Grid.Column="1" IsChecked="{Binding UseUserDefinition}" ToolTip="{DynamicResource Settings_UseUserDefinition_Tooltip}" />
-					</ItemsControl>
-
 					<!-- Preview Options -->
-					<hc:Divider Grid.ColumnSpan="10" Margin="0 5" Content="Preview Options" />
+					<hc:Divider Grid.ColumnSpan="10" Margin="0 5" d:Content="Preview Options" Content="Preview Options" />
 					<ItemsControl>
-						<TextBlock Text="{DynamicResource Settings_Language}" />
+						<TextBlock d:Text="Language" Text="{DynamicResource Settings_Language}" />
 						<ComboBox Grid.Column="1" ItemsSource="{Binding Languages,Mode=OneTime}" SelectedItem="{Binding Language}">
 							<ComboBox.ItemTemplate>
 								<DataTemplate>
@@ -163,8 +158,16 @@
 							</ComboBox.ItemTemplate>
 						</ComboBox>
 					</ItemsControl>
+					<ItemsControl x:Name="NightMode">
+						<TextBlock d:Text="Night Mode" Text="{DynamicResource Settings_NightMode}" />
+						<ComboBox Grid.Column="1" SelectedIndex="{Binding NightMode,Converter={converters:Bool2EnumConverter}}">
+							<ComboBoxItem Content="{DynamicResource Settings_NightMode_Auto}" />
+							<ComboBoxItem Content="{DynamicResource Settings_NightMode_Day}" />
+							<ComboBoxItem Content="{DynamicResource Settings_NightMode_Night}" />
+						</ComboBox>
+					</ItemsControl>
 					<ItemsControl>
-						<TextBlock Text="{DynamicResource Settings_CopyMode}" />
+						<TextBlock d:Text="Text Copy Mode" Text="{DynamicResource Settings_CopyMode}" />
 						<ComboBox Grid.Column="1" SelectedIndex="{Binding CopyMode, Converter={converters:EnumConverter}}">
 							<ComboBoxItem Content="{DynamicResource Settings_CopyMode_None}" />
 							<ComboBoxItem Content="{DynamicResource Settings_CopyMode_Trimmed}" />
@@ -172,9 +175,17 @@
 							<ComboBoxItem Content="{DynamicResource Settings_CopyMode_Source}" />
 						</ComboBox>
 					</ItemsControl>
+
+
+					<!-- Data Options -->
+					<hc:Divider Grid.ColumnSpan="10" Margin="0 5" d:Content="Data Options" Content="Data Options" />
 					<ItemsControl>
-						<TextBlock Text="{DynamicResource Settings_UsePerformanceMonitor}" />
+						<TextBlock d:Text="Use Performance Monitor" Text="{DynamicResource Settings_UsePerformanceMonitor}" />
 						<CheckBox Grid.Column="1" IsChecked="{Binding UsePerformanceMonitor}" />
+					</ItemsControl>
+					<ItemsControl>
+						<TextBlock d:Text="Use User Definition" Text="{DynamicResource Settings_UseUserDefinition}" ToolTip="{DynamicResource Settings_UseUserDefinition_Tooltip}" />
+						<CheckBox Grid.Column="1" IsChecked="{Binding UseUserDefinition}" ToolTip="{DynamicResource Settings_UseUserDefinition_Tooltip}" />
 					</ItemsControl>
 				</hc:UniformSpacingPanel>
 			</TabItem>
@@ -282,7 +293,7 @@
 				</Grid.ColumnDefinitions>
 
 				<Button Grid.Column="1" MinWidth="78" Margin="0 0 12 0" IsDefault="True" IsCancel="False"
-					HorizontalAlignment="Right" VerticalAlignment="Bottom" Content="{DynamicResource Text_Ok}" Click="OnClosing" />
+					HorizontalAlignment="Right" VerticalAlignment="Bottom" d:Content="Ok" Content="{DynamicResource Text_Ok}" Click="OnClosing" />
 			</Grid>
 		</Border>
 	</Grid>

@@ -5,4 +5,9 @@
 public struct Time32(int Ticks)
 {
 	public int Ticks = Ticks;
+
+	public static Time32 Parse(string input)
+	{
+		throw new NotImplementedException();
+	}
 }

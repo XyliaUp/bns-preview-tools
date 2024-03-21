@@ -17,7 +17,7 @@ data element
 
 | Metadata | Describe |
 | :----:  | :----: |
-| XmlNodeType  |  |
+| ElementType  |  |
 | SubclassType |  |
 | DataSize |  |
 | Ref          | Primary key  |

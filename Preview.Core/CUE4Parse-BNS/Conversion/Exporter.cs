@@ -14,15 +14,8 @@ using Newtonsoft.Json;
 using Xylia.Preview.Common.Extension;
 
 namespace CUE4Parse.BNS.Conversion;
-public class Exporter
+public class Exporter(string Folder)
 {
-	public string Folder = null;
-
-	public Exporter(string OutputFolder)
-	{
-		Folder = OutputFolder;
-	}
-
 	public static string FixPath(string saveFolder, string path)
 	{
 		var fullPath = Path.Combine(saveFolder, path.SubstringBeforeLast('.'));

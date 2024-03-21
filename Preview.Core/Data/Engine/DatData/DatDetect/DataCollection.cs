@@ -7,10 +7,10 @@ public class DataCollection
 	public DataCollection(string Folder) => Init(Folder);
 	#endregion
 
-	#region Functions
+	#region Methods
 	private void Init(string Folder)
 	{
-		List<FileInfo> files = new();
+		List<FileInfo> files = [];
 
 		var DirInfo = new DirectoryInfo(Folder);
 		files.AddRange(DirInfo.GetFiles("*.dat", SearchOption.AllDirectories));
@@ -25,19 +25,19 @@ public class DataCollection
 				case "datafile":
 				case "xml64":
 				case "datafile64":
-					datType = DatType.xml;
+					datType = DatType.Xml;
 					break;
 
 				case "config":
 				case "config64":
-					datType = DatType.config;
+					datType = DatType.Config;
 					break;
 
 				case "local":
 				case "localfile":
 				case "local64":
 				case "localfile64":
-					datType = DatType.local;
+					datType = DatType.Local;
 					break;
 
 				default: continue;
@@ -55,9 +55,9 @@ public class DataCollection
 	public List<FileInfo> GetFiles(DatType type, ResultMode mode)
 	{
 		var result = new List<FileInfo>();
-		if (type == DatType.xml && DataPathMenu.TryGetValue(DatType.xml, out var fs)) result.AddRange(fs);
-		else if (type == DatType.local && DataPathMenu.TryGetValue(DatType.local, out fs)) result.AddRange(fs);
-		else if (type == DatType.config && DataPathMenu.TryGetValue(DatType.config, out fs)) result.AddRange(fs);
+		if (type == DatType.Xml && DataPathMenu.TryGetValue(DatType.Xml, out var fs)) result.AddRange(fs);
+		else if (type == DatType.Local && DataPathMenu.TryGetValue(DatType.Local, out fs)) result.AddRange(fs);
+		else if (type == DatType.Config && DataPathMenu.TryGetValue(DatType.Config, out fs)) result.AddRange(fs);
 
 		// *
 		if (mode == ResultMode.SelectBin) return result.Where(r => r.Extension == ".bin").ToList();
@@ -69,15 +69,11 @@ public class DataCollection
 }
 
 
-[Flags]
 public enum DatType
 {
-	bit32 = 0x00000000,
-	bit64 = 0x00000001,
-
-	local = 0x10000000,
-	xml = 0x20000000,
-	config = 0x30000000,
+	Local,
+	Xml,
+	Config,
 }
 
 public enum ResultMode

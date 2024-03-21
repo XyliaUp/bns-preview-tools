@@ -1,0 +1,7 @@
+﻿<BnsCustomUISceneWidget x:Class="Xylia.Preview.UI.GameUI.Scene.Game_ChallengeToday.Game_ChallengeTodayScene"
+	xmlns="https://github.com/xyliaup/bns-preview-tools"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:l="clr-namespace:Xylia.Preview.UI.GameUI.Scene.Game_ChallengeToday">
+	
+	<l:ChallengeTodayPanel x:Name="ChallengeTodayPanel_C" />
+</BnsCustomUISceneWidget>

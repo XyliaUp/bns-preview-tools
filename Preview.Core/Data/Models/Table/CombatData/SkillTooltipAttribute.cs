@@ -1,7 +1,9 @@
 ﻿namespace Xylia.Preview.Data.Models;
 public class SkillTooltipAttribute : ModelElement
 {
+	#region Attributes
 	public ArgTypeSeq[] ArgType { get; set; }
+
 	public enum ArgTypeSeq
 	{
 		None,
@@ -61,6 +63,7 @@ public class SkillTooltipAttribute : ModelElement
 	public string Icon { get; set; }
 
 	public ModifyType SkillModifyType { get; set; }
+
 	public enum ModifyType
 	{
 		None,
@@ -75,4 +78,11 @@ public class SkillTooltipAttribute : ModelElement
 
 		HealPercent,
 	}
+	#endregion
+
+	#region Methods
+	public string ToString(string[] arguments) => Text.GetText([.. arguments]);
+
+	public override string ToString() => Text.GetText();
+	#endregion
 }

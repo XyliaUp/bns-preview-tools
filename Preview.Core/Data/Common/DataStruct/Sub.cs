@@ -1,4 +1,6 @@
-﻿namespace Xylia.Preview.Data.Common.DataStruct;
+﻿using Xylia.Preview.Data.Engine.BinData.Helpers;
+
+namespace Xylia.Preview.Data.Common.DataStruct;
 public readonly struct Sub
 {
 	public readonly short Subclass;

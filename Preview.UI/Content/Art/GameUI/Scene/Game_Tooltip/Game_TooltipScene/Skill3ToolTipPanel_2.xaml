@@ -1,6 +1,338 @@
 ﻿<BnsCustomWindowWidget x:Class="Xylia.Preview.UI.GameUI.Scene.Game_Tooltip.Skill3ToolTipPanel_2"
 	xmlns="https://github.com/xyliaup/bns-preview-tools"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-
-	<BnsCustomLabelWidget x:Name="Skill3ToolTipPanel_1_SkillSkinDescription_Title" />
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:s="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+	<BnsCustomWindowWidget.BaseImageProperty>
+		<ImageProperty BaseImageTexture="BNSR/Content/Art/UI/GameUI/Resource/GameUI_Window_R/BNSR_Window.BNSR_Window" ImageUV="7 7" ImageUVSize="49 49" EnableSkinAlpha="true" StaticPadding="-17 -17" />
+	</BnsCustomWindowWidget.BaseImageProperty>
+	<BnsCustomWindowWidget.ExpansionComponentList>
+		<ExpansionComponent bShow="true" ExpansionType="IMAGE" ExpansionName="Line" MetaData="" bPostExpansitonRender="true">
+			<ExpansionComponent.ImageProperty>
+				<ImageProperty BaseImageTexture="BNSR/Content/Art/UI/GameUI/Resource/GameUI_Window_R/BNSR_Window_Outfocus.BNSR_Window_Outfocus" ImageUV="7 7" ImageUVSize="49 49" EnableBrushOnly="true" EnableDrawImage="true" TintColor="FFFFFF" GrayWeightValue="0.15" StaticPadding="-13 -13" Opacity="1" ImageScale="1" />
+			</ExpansionComponent.ImageProperty>
+		</ExpansionComponent>
+	</BnsCustomWindowWidget.ExpansionComponentList>
+	<BnsCustomLabelWidget Name="Skill3ToolTipPanel_2_ItemProbability" LayoutData.Anchors="1 0 1 0" LayoutData.Offsets="-15 15 162.00049 27.000977">
+		<BnsCustomLabelWidget.String>
+			<StringProperty fontset="/Game/Art/UI/GameUI/Resource/GameUI_FontSet/UI/Normal_12.Normal_12" LabelText="아이템 확률 증가&lt;br/&gt;999%" SpaceBetweenLines="3" HorizontalAlignment="HAlign_Right" />
+		</BnsCustomLabelWidget.String>
+	</BnsCustomLabelWidget>
+	<BnsCustomImageWidget Name="Skill3ToolTipPanel_2_DamageInfoHolder" LayoutData.Anchors="0.5 0 0.5 0" LayoutData.Offsets="0 198.00854 346 75">
+		<BnsCustomImageWidget.BaseImageProperty>
+			<ImageProperty />
+		</BnsCustomImageWidget.BaseImageProperty>
+		<BnsCustomImageWidget Name="Skill3ToolTipPanel_2_DamageInfo_PvPInfo" LayoutData.Offsets="175 26.000977 170 48">
+			<BnsCustomImageWidget.BaseImageProperty>
+				<ImageProperty BaseImageTexture="BNSR/Content/Art/UI/GameUI/Resource/GameUI_Window2/GameUI_New_Scene_22.GameUI_New_Scene_22" ImageUV="731 252" ImageUVSize="9 48" Opacity="1.5" />
+			</BnsCustomImageWidget.BaseImageProperty>
+			<BnsCustomImageWidget.ExpansionComponentList>
+				<ExpansionComponent bShow="true" ExpansionType="STRING" ExpansionName="Info" MetaData="" bPostExpansitonRender="true">
+					<ExpansionComponent.ImageProperty>
+						<ImageProperty ImageUVSize="1 1" EnableDrawImage="true" TintColor="FFFFFF" GrayWeightValue="0.15" Opacity="1" ImageScale="1" HorizontalAlignment="HAlign_Center" VerticalAlignment="VAlign_Center" />
+					</ExpansionComponent.ImageProperty>
+					<ExpansionComponent.StringProperty>
+						<StringProperty fontset="BNSR/Content/Art/UI/GameUI_BNSR/Resource/GameUI_FontSet_R/UI/Normal_14.Normal_14" LabelText="&lt;image enablescale='true' imagesetpath='00009076.CharInfo_PcAttackPower' scalerate='1.2'/&gt; x 00.99" SpaceBetweenLines="3" HorizontalAlignment="HAlign_Center" VerticalAlignment="VAlign_Center" ClippingBound="-40 0" Opacity="1" TextScale="1" AnimScale="1" />
+					</ExpansionComponent.StringProperty>
+				</ExpansionComponent>
+				<ExpansionComponent bShow="true" ExpansionType="IMAGE" ExpansionName="Icon" MetaData="" bPostExpansitonRender="true">
+					<ExpansionComponent.ImageProperty>
+						<ImageProperty ImageSet="BNSR/Content/Art/UI/GameUI/Resource/GameUI_Window2/DamageInfo_Down.DamageInfo_Down" EnableImageSet="true" EnableDrawImage="true" EnableResourceSize="true" TintColor="FFFFFF" GrayWeightValue="0.15" Offset="50 0" Opacity="1" ImageScale="1" HorizontalAlignment="HAlign_Center" VerticalAlignment="VAlign_Center" />
+					</ExpansionComponent.ImageProperty>
+				</ExpansionComponent>
+			</BnsCustomImageWidget.ExpansionComponentList>
+		</BnsCustomImageWidget>
+		<BnsCustomLabelWidget Name="Skill3ToolTipPanel_2_DamageInfo_PvP" LayoutData.Offsets="175 0 170 24.000977" MetaData="textref=UI.ToolTip.DamageInfo.PvP">
+			<BnsCustomLabelWidget.String>
+				<StringProperty fontset="BNSR/Content/Art/UI/GameUI_BNSR/Resource/GameUI_FontSet_R/UI/Normal_12.Normal_12" LabelText="대인#" SpaceBetweenLines="3" HorizontalAlignment="HAlign_Center" VerticalAlignment="VAlign_Center" />
+			</BnsCustomLabelWidget.String>
+			<BnsCustomLabelWidget.ExpansionComponentList>
+				<ExpansionComponent bShow="true" ExpansionType="IMAGE" ExpansionName="BackgroundFrameImage" MetaData="">
+					<ExpansionComponent.ImageProperty>
+						<ImageProperty BaseImageTexture="BNSR/Content/Art/UI/GameUI/Resource/GameUI_Window/GameUI_New_Scene_00.GameUI_New_Scene_00" ImageUV="1 35" ImageUVSize="31 31" EnableDrawImage="true" TintColor="FFFFFF" GrayWeightValue="0.15" Opacity="1" ImageScale="1" />
+					</ExpansionComponent.ImageProperty>
+				</ExpansionComponent>
+			</BnsCustomLabelWidget.ExpansionComponentList>
+		</BnsCustomLabelWidget>
+		<BnsCustomImageWidget Name="Skill3ToolTipPanel_2_DamageInfo_PvEInfo" LayoutData.Offsets="0 26.000977 170 48">
+			<BnsCustomImageWidget.BaseImageProperty>
+				<ImageProperty BaseImageTexture="BNSR/Content/Art/UI/GameUI/Resource/GameUI_Window2/GameUI_New_Scene_22.GameUI_New_Scene_22" ImageUV="731 252" ImageUVSize="9 48" Opacity="1.5" />
+			</BnsCustomImageWidget.BaseImageProperty>
+			<BnsCustomImageWidget.ExpansionComponentList>
+				<ExpansionComponent bShow="true" ExpansionType="STRING" ExpansionName="Info" MetaData="" bPostExpansitonRender="true">
+					<ExpansionComponent.ImageProperty>
+						<ImageProperty ImageUVSize="1 1" EnableDrawImage="true" TintColor="FFFFFF" GrayWeightValue="0.15" Opacity="1" ImageScale="1" HorizontalAlignment="HAlign_Center" VerticalAlignment="VAlign_Center" />
+					</ExpansionComponent.ImageProperty>
+					<ExpansionComponent.StringProperty>
+						<StringProperty fontset="BNSR/Content/Art/UI/GameUI_BNSR/Resource/GameUI_FontSet_R/UI/Normal_14.Normal_14" LabelText="&lt;image enablescale='true' imagesetpath='00009076.CharInfo_AttackPower' scalerate='1.2'/&gt; x 00.99" SpaceBetweenLines="3" HorizontalAlignment="HAlign_Center" VerticalAlignment="VAlign_Center" ClippingBound="-40 0" Opacity="1" TextScale="1" AnimScale="1" />
+					</ExpansionComponent.StringProperty>
+				</ExpansionComponent>
+				<ExpansionComponent bShow="true" ExpansionType="IMAGE" ExpansionName="Icon" MetaData="" bPostExpansitonRender="true">
+					<ExpansionComponent.ImageProperty>
+						<ImageProperty ImageSet="BNSR/Content/Art/UI/GameUI/Resource/GameUI_Window2/DamageInfo_Up.DamageInfo_Up" EnableImageSet="true" EnableDrawImage="true" EnableResourceSize="true" TintColor="FFFFFF" GrayWeightValue="0.15" Offset="50 0" Opacity="1" ImageScale="1" HorizontalAlignment="HAlign_Center" VerticalAlignment="VAlign_Center" />
+					</ExpansionComponent.ImageProperty>
+				</ExpansionComponent>
+			</BnsCustomImageWidget.ExpansionComponentList>
+		</BnsCustomImageWidget>
+		<BnsCustomLabelWidget Name="Skill3ToolTipPanel_2_DamageInfo_PvE" LayoutData.Offsets="0 0 170 24.000977" MetaData="textref=UI.ToolTip.DamageInfo.PvE">
+			<BnsCustomLabelWidget.String>
+				<StringProperty fontset="BNSR/Content/Art/UI/GameUI_BNSR/Resource/GameUI_FontSet_R/UI/Normal_12.Normal_12" LabelText="표준#" SpaceBetweenLines="3" HorizontalAlignment="HAlign_Center" VerticalAlignment="VAlign_Center" />
+			</BnsCustomLabelWidget.String>
+			<BnsCustomLabelWidget.ExpansionComponentList>
+				<ExpansionComponent bShow="true" ExpansionType="IMAGE" ExpansionName="BackgroundFrameImage" MetaData="">
+					<ExpansionComponent.ImageProperty>
+						<ImageProperty BaseImageTexture="BNSR/Content/Art/UI/GameUI/Resource/GameUI_Window/GameUI_New_Scene_00.GameUI_New_Scene_00" ImageUV="1 35" ImageUVSize="31 31" EnableDrawImage="true" TintColor="FFFFFF" GrayWeightValue="0.15" Opacity="1" ImageScale="1" />
+					</ExpansionComponent.ImageProperty>
+				</ExpansionComponent>
+			</BnsCustomLabelWidget.ExpansionComponentList>
+		</BnsCustomLabelWidget>
+	</BnsCustomImageWidget>
+	<BnsCustomImageWidget Name="Skill3ToolTipPanel_2_Dummy" LayoutData.Offsets="0 0 200 5">
+		<BnsCustomImageWidget.BaseImageProperty>
+			<ImageProperty />
+		</BnsCustomImageWidget.BaseImageProperty>
+	</BnsCustomImageWidget>
+	<BnsCustomLabelWidget Name="Skill3ToolTipPanel_2_SkillReinforceDescription" LayoutData.Anchors="0 0 1 0" LayoutData.Offsets="15 36.000977 15 12.003418">
+		<BnsCustomLabelWidget.String>
+			<StringProperty fontset="BNSR/Content/Art/UI/GameUI_BNSR/Resource/GameUI_FontSet_R/UI/Normal_12.Normal_12" LabelText="Skill.Reinforce.Description" SpaceBetweenLines="3" />
+		</BnsCustomLabelWidget.String>
+	</BnsCustomLabelWidget>
+	<BnsCustomLabelWidget Name="Skill3ToolTipPanel_2_SkillReinforce" LayoutData.Anchors="0 0 1 0" LayoutData.Offsets="15 15 15 16.000977">
+		<BnsCustomLabelWidget.String>
+			<StringProperty fontset="BNSR/Content/Art/UI/GameUI_BNSR/Resource/GameUI_FontSet_R/UI/Label_LightYellow_16.Label_LightYellow_16" LabelText="무공강화(00/00)" SpaceBetweenLines="3" />
+		</BnsCustomLabelWidget.String>
+	</BnsCustomLabelWidget>
+	<BnsCustomLabelWidget Name="Skill3ToolTipPanel_2_AttackAttribute" LayoutData.Offsets="228.00195 63.004395 31.001587 18" MetaData="Name.Skill.ConsumeValue">
+		<BnsCustomLabelWidget.String>
+			<StringProperty fontset="BNSR/Content/Art/UI/GameUI_BNSR/Resource/GameUI_FontSet_R/UI/Normal_12.Normal_12" LabelText="ATTR" SpaceBetweenLines="3" VerticalAlignment="VAlign_Center" />
+		</BnsCustomLabelWidget.String>
+	</BnsCustomLabelWidget>
+	<BnsCustomLabelWidget Name="Skill3ToolTipPanel_2_MatrixName" LayoutData.Offsets="99.00098 63.004395 126.00098 18" MetaData="Name.Skill.ConsumeValue">
+		<BnsCustomLabelWidget.String>
+			<StringProperty fontset="BNSR/Content/Art/UI/GameUI_BNSR/Resource/GameUI_FontSet_R/UI/Normal_12.Normal_12" LabelText="0급 0초식 -&gt; 0급 1초식" SpaceBetweenLines="3" VerticalAlignment="VAlign_Center" />
+		</BnsCustomLabelWidget.String>
+	</BnsCustomLabelWidget>
+	<BnsCustomLabelWidget Name="Skill3ToolTipPanel_2_ConsumeInfo" LayoutData.Anchors="1 0 1 0" LayoutData.Offsets="-15 63.004395 162.00098 16.000977" MetaData="Name.Skill.ConsumeValue">
+		<BnsCustomLabelWidget.String>
+			<StringProperty fontset="BNSR/Content/Art/UI/GameUI_BNSR/Resource/GameUI_FontSet_R/UI/Normal_12.Normal_12" LabelText="Consume Information" SpaceBetweenLines="3" HorizontalAlignment="HAlign_Right" />
+		</BnsCustomLabelWidget.String>
+	</BnsCustomLabelWidget>
+	<BnsCustomLabelWidget Name="Skill3ToolTipPanel_2_Name" LayoutData.Offsets="15 63.004395 79.00098 16.001587" MetaData="textref=Name.Skill.Name">
+		<BnsCustomLabelWidget.String>
+			<StringProperty fontset="BNSR/Content/Art/UI/GameUI_BNSR/Resource/GameUI_FontSet_R/UI/Over_16.Over_16" LabelText="Sklll Name" SpaceBetweenLines="3" />
+		</BnsCustomLabelWidget.String>
+	</BnsCustomLabelWidget>
+	<BnsCustomWindowWidget Name="Skill3ToolTipPanel_2_Main_Holder" LayoutData.Offsets="15 94.00598 340 72.00098">
+		<BnsCustomWindowWidget.BaseImageProperty>
+			<ImageProperty />
+		</BnsCustomWindowWidget.BaseImageProperty>
+		<BnsCustomImageWidget Name="Skill3ToolTipPanel_2_Main_Icon" LayoutData.Offsets="3 3 64 64">
+			<BnsCustomImageWidget.BaseImageProperty>
+				<ImageProperty BaseImageTexture="BNSR/Content/Art/UI/GameUI/Resource/GameUI_Window_R/BNSR_UIElement.BNSR_UIElement" ImageUV="0 66" ImageUVSize="48 48" Opacity="0.5" />
+			</BnsCustomImageWidget.BaseImageProperty>
+			<BnsCustomImageWidget.ExpansionComponentList>
+				<ExpansionComponent bShow="true" ExpansionType="IMAGE" ExpansionName="IconImage" MetaData="" bPostExpansitonRender="true">
+					<ExpansionComponent.ImageProperty>
+						<ImageProperty EnableDrawImage="true" EnableMultiImage="true" TintColor="FFFFFF" GrayWeightValue="0.15" Opacity="1" ImageScale="1" />
+					</ExpansionComponent.ImageProperty>
+				</ExpansionComponent>
+				<ExpansionComponent bShow="true" ExpansionType="STRING" ExpansionName="KEYCOMMAND" MetaData="" bPostExpansitonRender="true">
+					<ExpansionComponent.ImageProperty>
+						<ImageProperty ImageUVSize="1 1" EnableDrawImage="true" TintColor="FFFFFF" GrayWeightValue="0.15" Opacity="1" ImageScale="1" HorizontalAlignment="HAlign_Center" VerticalAlignment="VAlign_Center" />
+					</ExpansionComponent.ImageProperty>
+					<ExpansionComponent.StringProperty>
+						<StringProperty fontset="BNSR/Content/Art/UI/GameUI_BNSR/Resource/GameUI_FontSet_R/UI/Normal_14.Normal_14" LabelText="Key" SpaceBetweenLines="3" ClippingBound="4 4" Opacity="1" TextScale="1" AnimScale="1" />
+					</ExpansionComponent.StringProperty>
+				</ExpansionComponent>
+				<ExpansionComponent bShow="true" ExpansionType="IMAGE" ExpansionName="Slot" MetaData="" bPostExpansitonRender="true">
+					<ExpansionComponent.ImageProperty>
+						<ImageProperty BaseImageTexture="BNSR/Content/Art/UI/GameUI/Resource/GameUI_Window/GameUI_New_Scene_00.GameUI_New_Scene_00" ImageUV="533 776" ImageUVSize="70 70" EnableResourceSize="true" TintColor="FFFFFF" GrayWeightValue="0.15" Opacity="1" ImageScale="1" HorizontalAlignment="HAlign_Center" VerticalAlignment="VAlign_Center" />
+					</ExpansionComponent.ImageProperty>
+				</ExpansionComponent>
+				<ExpansionComponent bShow="true" ExpansionType="IMAGE" ExpansionName="SkillSkin" MetaData="" bPostExpansitonRender="true">
+					<ExpansionComponent.ImageProperty>
+						<ImageProperty BaseImageTexture="BNSR/Content/Art/UI/GameUI/Resource/GameUI_SkillBookImage/SkillMovie_Apply.SkillMovie_Apply" ImageUVSize="32 32" EnableDrawImage="true" EnableResourceSize="true" TintColor="FFFFFF" GrayWeightValue="0.15" Offset="8 5" Opacity="1" ImageScale="1" HorizontalAlignment="HAlign_Right" VerticalAlignment="VAlign_Bottom" />
+					</ExpansionComponent.ImageProperty>
+				</ExpansionComponent>
+			</BnsCustomImageWidget.ExpansionComponentList>
+		</BnsCustomImageWidget>
+		<BnsCustomLabelWidget Name="Skill3ToolTipPanel_2_Main_Description" LayoutData.Offsets="82 3 258 64.00403">
+			<BnsCustomLabelWidget.String>
+				<StringProperty fontset="BNSR/Content/Art/UI/GameUI_BNSR/Resource/GameUI_FontSet_R/UI/Normal_12.Normal_12" LabelText="skill.main-info1&lt;br/&gt;skill.main-info2" SpaceBetweenLines="3" />
+			</BnsCustomLabelWidget.String>
+		</BnsCustomLabelWidget>
+	</BnsCustomWindowWidget>
+	<BnsCustomLabelWidget Name="Skill3ToolTipPanel_2_Sub_Description" LayoutData.Anchors="0 0 1 0" LayoutData.Offsets="15 176.00696 15 12.001587">
+		<BnsCustomLabelWidget.String>
+			<StringProperty fontset="BNSR/Content/Art/UI/GameUI_BNSR/Resource/GameUI_FontSet_R/UI/Normal_12.Normal_12" LabelText="skill.sub-info" SpaceBetweenLines="3" />
+		</BnsCustomLabelWidget.String>
+	</BnsCustomLabelWidget>
+	<BnsCustomImageWidget Name="Skill3ToolTipPanel_2_Sub_Holder" LayoutData.Anchors="0.5 0 0.5 0" LayoutData.Offsets="0 293.00854 346 113">
+		<BnsCustomImageWidget.BaseImageProperty>
+			<ImageProperty />
+		</BnsCustomImageWidget.BaseImageProperty>
+		<BnsCustomLabelWidget Name="Skill3ToolTipPanel_2_RecycleTimeLabel" LayoutData.Offsets="264 0 82 33.000977" MetaData="textref=UI.Tooltip.Reuse">
+			<BnsCustomLabelWidget.String>
+				<StringProperty fontset="BNSR/Content/Art/UI/GameUI_BNSR/Resource/GameUI_FontSet_R/UI/Normal_12.Normal_12" LabelText="재사용*" SpaceBetweenLines="3" HorizontalAlignment="HAlign_Center" VerticalAlignment="VAlign_Center" />
+			</BnsCustomLabelWidget.String>
+			<BnsCustomLabelWidget.ExpansionComponentList>
+				<ExpansionComponent bShow="true" ExpansionType="IMAGE" ExpansionName="BackgroundFrameImage" MetaData="">
+					<ExpansionComponent.ImageProperty>
+						<ImageProperty BaseImageTexture="BNSR/Content/Art/UI/GameUI/Resource/GameUI_Window/GameUI_New_Scene_00.GameUI_New_Scene_00" ImageUV="1 35" ImageUVSize="31 31" EnableDrawImage="true" TintColor="FFFFFF" GrayWeightValue="0.15" Opacity="1" ImageScale="1" />
+					</ExpansionComponent.ImageProperty>
+				</ExpansionComponent>
+			</BnsCustomLabelWidget.ExpansionComponentList>
+		</BnsCustomLabelWidget>
+		<BnsCustomLabelWidget Name="Skill3ToolTipPanel_2_CastingTimeLabel" LayoutData.Offsets="176 0 82 33.000977" MetaData="textref=UI.Tooltip.Casting">
+			<BnsCustomLabelWidget.String>
+				<StringProperty fontset="BNSR/Content/Art/UI/GameUI_BNSR/Resource/GameUI_FontSet_R/UI/Normal_12.Normal_12" LabelText="시전*" SpaceBetweenLines="3" HorizontalAlignment="HAlign_Center" VerticalAlignment="VAlign_Center" />
+			</BnsCustomLabelWidget.String>
+			<BnsCustomLabelWidget.ExpansionComponentList>
+				<ExpansionComponent bShow="true" ExpansionType="IMAGE" ExpansionName="BackgroundFrameImage" MetaData="">
+					<ExpansionComponent.ImageProperty>
+						<ImageProperty BaseImageTexture="BNSR/Content/Art/UI/GameUI/Resource/GameUI_Window/GameUI_New_Scene_00.GameUI_New_Scene_00" ImageUV="1 35" ImageUVSize="31 31" EnableDrawImage="true" TintColor="FFFFFF" GrayWeightValue="0.15" Opacity="1" ImageScale="1" />
+					</ExpansionComponent.ImageProperty>
+				</ExpansionComponent>
+			</BnsCustomLabelWidget.ExpansionComponentList>
+		</BnsCustomLabelWidget>
+		<BnsCustomLabelWidget Name="Skill3ToolTipPanel_2_ScaleTypeLabel" LayoutData.Offsets="88 0 82 33.000977" MetaData="textref=UI.Tooltip.Scale">
+			<BnsCustomLabelWidget.String>
+				<StringProperty fontset="BNSR/Content/Art/UI/GameUI_BNSR/Resource/GameUI_FontSet_R/UI/Normal_12.Normal_12" LabelText="범위*" SpaceBetweenLines="3" HorizontalAlignment="HAlign_Center" VerticalAlignment="VAlign_Center" />
+			</BnsCustomLabelWidget.String>
+			<BnsCustomLabelWidget.ExpansionComponentList>
+				<ExpansionComponent bShow="true" ExpansionType="IMAGE" ExpansionName="BackgroundFrameImage" MetaData="">
+					<ExpansionComponent.ImageProperty>
+						<ImageProperty BaseImageTexture="BNSR/Content/Art/UI/GameUI/Resource/GameUI_Window/GameUI_New_Scene_00.GameUI_New_Scene_00" ImageUV="1 35" ImageUVSize="31 31" EnableDrawImage="true" TintColor="FFFFFF" GrayWeightValue="0.15" Opacity="1" ImageScale="1" />
+					</ExpansionComponent.ImageProperty>
+				</ExpansionComponent>
+			</BnsCustomLabelWidget.ExpansionComponentList>
+		</BnsCustomLabelWidget>
+		<BnsCustomLabelWidget Name="Skill3ToolTipPanel_2_CastingRangeLabel" LayoutData.Offsets="0 0 82 33.000977" MetaData="textref=UI.CreateCharacter.Distance">
+			<BnsCustomLabelWidget.String>
+				<StringProperty fontset="BNSR/Content/Art/UI/GameUI_BNSR/Resource/GameUI_FontSet_R/UI/Normal_12.Normal_12" LabelText="거리*" SpaceBetweenLines="3" HorizontalAlignment="HAlign_Center" VerticalAlignment="VAlign_Center" />
+			</BnsCustomLabelWidget.String>
+			<BnsCustomLabelWidget.ExpansionComponentList>
+				<ExpansionComponent bShow="true" ExpansionType="IMAGE" ExpansionName="BackgroundFrameImage" MetaData="">
+					<ExpansionComponent.ImageProperty>
+						<ImageProperty BaseImageTexture="BNSR/Content/Art/UI/GameUI/Resource/GameUI_Window/GameUI_New_Scene_00.GameUI_New_Scene_00" ImageUV="1 35" ImageUVSize="31 31" EnableDrawImage="true" TintColor="FFFFFF" GrayWeightValue="0.15" Opacity="1" ImageScale="1" />
+					</ExpansionComponent.ImageProperty>
+				</ExpansionComponent>
+			</BnsCustomLabelWidget.ExpansionComponentList>
+		</BnsCustomLabelWidget>
+		<BnsCustomImageWidget Name="Skill3ToolTipPanel_2_Sub_ResizeDummy" LayoutData.Offsets="-10 0 0 64">
+			<BnsCustomImageWidget.BaseImageProperty>
+				<ImageProperty />
+			</BnsCustomImageWidget.BaseImageProperty>
+		</BnsCustomImageWidget>
+		<BnsCustomLabelWidget Name="Skill3ToolTipPanel_2_CastingRange" LayoutData.Anchors="0 1 0 1" LayoutData.Offsets="0 0 82 78.00195">
+			<BnsCustomLabelWidget.String>
+				<StringProperty fontset="BNSR/Content/Art/UI/GameUI_BNSR/Resource/GameUI_FontSet_R/UI/Normal_12.Normal_12" LabelText="99 ~ 99m" SpaceBetweenLines="3" HorizontalAlignment="HAlign_Center" VerticalAlignment="VAlign_Center" />
+			</BnsCustomLabelWidget.String>
+			<BnsCustomLabelWidget.ExpansionComponentList>
+				<ExpansionComponent bShow="true" ExpansionType="IMAGE" ExpansionName="BackgroundFrameImage" MetaData="">
+					<ExpansionComponent.ImageProperty>
+						<ImageProperty BaseImageTexture="BNSR/Content/Art/UI/GameUI/Resource/GameUI_Window/GameUI_New_Scene_00.GameUI_New_Scene_00" ImageUV="1 35" ImageUVSize="31 31" EnableDrawImage="true" TintColor="FFFFFF" GrayWeightValue="0.15" Opacity="1" ImageScale="1" />
+					</ExpansionComponent.ImageProperty>
+				</ExpansionComponent>
+			</BnsCustomLabelWidget.ExpansionComponentList>
+		</BnsCustomLabelWidget>
+		<BnsCustomLabelWidget Name="Skill3ToolTipPanel_2_ScaleType" LayoutData.Anchors="0 1 0 1" LayoutData.Offsets="88 0 82 78.00195">
+			<BnsCustomLabelWidget.String>
+				<StringProperty fontset="BNSR/Content/Art/UI/GameUI_BNSR/Resource/GameUI_FontSet_R/UI/Normal_12.Normal_12" LabelText="99m" SpaceBetweenLines="3" HorizontalAlignment="HAlign_Center" VerticalAlignment="VAlign_Center" />
+			</BnsCustomLabelWidget.String>
+			<BnsCustomLabelWidget.ExpansionComponentList>
+				<ExpansionComponent bShow="true" ExpansionType="IMAGE" ExpansionName="BackgroundFrameImage" MetaData="">
+					<ExpansionComponent.ImageProperty>
+						<ImageProperty BaseImageTexture="BNSR/Content/Art/UI/GameUI/Resource/GameUI_Window/GameUI_New_Scene_00.GameUI_New_Scene_00" ImageUV="1 35" ImageUVSize="31 31" EnableDrawImage="true" TintColor="FFFFFF" GrayWeightValue="0.15" Opacity="1" ImageScale="1" />
+					</ExpansionComponent.ImageProperty>
+				</ExpansionComponent>
+				<ExpansionComponent bShow="true" ExpansionType="IMAGE" ExpansionName="TypeImage" MetaData="">
+					<ExpansionComponent.ImageProperty>
+						<ImageProperty BaseImageTexture="BNSR/Content/Art/UI/GameUI/Resource/GameUI_Window/HUD_Icon_Menu_Test_nocomp.HUD_Icon_Menu_Test_nocomp" ImageUV="139 777" ImageUVSize="33 33" EnableDrawImage="true" EnableResourceSize="true" TintColor="FFFFFF" GrayWeightValue="0.15" Opacity="1" ImageScale="1" HorizontalAlignment="HAlign_Center" VerticalAlignment="VAlign_Center" />
+					</ExpansionComponent.ImageProperty>
+				</ExpansionComponent>
+				<ExpansionComponent bShow="true" ExpansionType="IMAGE" ExpansionName="TypeImage_Diff_Before" MetaData="">
+					<ExpansionComponent.ImageProperty>
+						<ImageProperty BaseImageTexture="BNSR/Content/Art/UI/GameUI/Resource/GameUI_Window/HUD_Icon_Menu_Test_nocomp.HUD_Icon_Menu_Test_nocomp" ImageUV="48 774" ImageUVSize="50 29" EnableDrawImage="true" EnableResourceSize="true" TintColor="FFFFFF" GrayWeightValue="0.15" Offset="0 -20" Opacity="1" ImageScale="0.7" HorizontalAlignment="HAlign_Center" VerticalAlignment="VAlign_Center" />
+					</ExpansionComponent.ImageProperty>
+				</ExpansionComponent>
+				<ExpansionComponent bShow="true" ExpansionType="IMAGE" ExpansionName="TypeImage_Diff_Next" MetaData="">
+					<ExpansionComponent.ImageProperty>
+						<ImageProperty BaseImageTexture="BNSR/Content/Art/UI/GameUI/Resource/GameUI_Window/HUD_Icon_Menu_Test_nocomp.HUD_Icon_Menu_Test_nocomp" ImageUV="0 774" ImageUVSize="46 32" EnableDrawImage="true" EnableResourceSize="true" TintColor="FFFFFF" GrayWeightValue="0.15" Offset="0 20" Opacity="1" ImageScale="0.7" HorizontalAlignment="HAlign_Center" VerticalAlignment="VAlign_Center" />
+					</ExpansionComponent.ImageProperty>
+				</ExpansionComponent>
+				<ExpansionComponent bShow="true" ExpansionType="STRING" ExpansionName="Multi" MetaData="">
+					<ExpansionComponent.ImageProperty>
+						<ImageProperty ImageUVSize="1 1" EnableDrawImage="true" TintColor="FFFFFF" GrayWeightValue="0.15" Opacity="1" ImageScale="1" HorizontalAlignment="HAlign_Center" VerticalAlignment="VAlign_Center" />
+					</ExpansionComponent.ImageProperty>
+					<ExpansionComponent.StringProperty>
+						<StringProperty fontset="BNSR/Content/Art/UI/GameUI_BNSR/Resource/GameUI_FontSet_R/UI/Normal_12.Normal_12" LabelText="x9" SpaceBetweenLines="3" HorizontalAlignment="HAlign_Right" VerticalAlignment="VAlign_Bottom" Padding="5 5" Opacity="1" TextScale="1" AnimScale="1" />
+					</ExpansionComponent.StringProperty>
+				</ExpansionComponent>
+			</BnsCustomLabelWidget.ExpansionComponentList>
+		</BnsCustomLabelWidget>
+		<BnsCustomLabelWidget Name="Skill3ToolTipPanel_2_CastingTime" LayoutData.Anchors="0 1 0 1" LayoutData.Offsets="176 0 82 78.00195">
+			<BnsCustomLabelWidget.String>
+				<StringProperty fontset="BNSR/Content/Art/UI/GameUI_BNSR/Resource/GameUI_FontSet_R/UI/Normal_12.Normal_12" LabelText="1.0초" SpaceBetweenLines="3" HorizontalAlignment="HAlign_Center" VerticalAlignment="VAlign_Center" />
+			</BnsCustomLabelWidget.String>
+			<BnsCustomLabelWidget.ExpansionComponentList>
+				<ExpansionComponent bShow="true" ExpansionType="IMAGE" ExpansionName="BackgroundFrameImage" MetaData="">
+					<ExpansionComponent.ImageProperty>
+						<ImageProperty BaseImageTexture="BNSR/Content/Art/UI/GameUI/Resource/GameUI_Window/GameUI_New_Scene_00.GameUI_New_Scene_00" ImageUV="1 35" ImageUVSize="31 31" EnableDrawImage="true" TintColor="FFFFFF" GrayWeightValue="0.15" Opacity="1" ImageScale="1" />
+					</ExpansionComponent.ImageProperty>
+				</ExpansionComponent>
+			</BnsCustomLabelWidget.ExpansionComponentList>
+		</BnsCustomLabelWidget>
+		<BnsCustomLabelWidget Name="Skill3ToolTipPanel_2_RecycleTime" LayoutData.Anchors="0 1 0 1" LayoutData.Offsets="264 0 82 78.00195" MetaData="Name.Skill.CastTime">
+			<BnsCustomLabelWidget.String>
+				<StringProperty fontset="BNSR/Content/Art/UI/GameUI_BNSR/Resource/GameUI_FontSet_R/UI/Normal_12.Normal_12" LabelText="1.0초" SpaceBetweenLines="3" HorizontalAlignment="HAlign_Center" VerticalAlignment="VAlign_Center" />
+			</BnsCustomLabelWidget.String>
+			<BnsCustomLabelWidget.ExpansionComponentList>
+				<ExpansionComponent bShow="true" ExpansionType="IMAGE" ExpansionName="BackgroundFrameImage" MetaData="">
+					<ExpansionComponent.ImageProperty>
+						<ImageProperty BaseImageTexture="BNSR/Content/Art/UI/GameUI/Resource/GameUI_Window/GameUI_New_Scene_00.GameUI_New_Scene_00" ImageUV="1 35" ImageUVSize="31 31" EnableDrawImage="true" TintColor="FFFFFF" GrayWeightValue="0.15" Opacity="1" ImageScale="1" />
+					</ExpansionComponent.ImageProperty>
+				</ExpansionComponent>
+			</BnsCustomLabelWidget.ExpansionComponentList>
+		</BnsCustomLabelWidget>
+	</BnsCustomImageWidget>
+	<BnsCustomLabelWidget Name="Skill3ToolTipPanel_2_ConditionTitle" LayoutData.Anchors="0 0 1 0" LayoutData.Offsets="10 421.00854 10 14.001465" MetaData="textref=UI.SkillBook.Condition">
+		<BnsCustomLabelWidget.String>
+			<StringProperty fontset="BNSR/Content/Art/UI/GameUI_BNSR/Resource/GameUI_FontSet_R/UI/Label_LightYellow_12.Label_LightYellow_12" LabelText="#상태" SpaceBetweenLines="3" />
+		</BnsCustomLabelWidget.String>
+	</BnsCustomLabelWidget>
+	<BnsCustomLabelWidget Name="Skill3ToolTipPanel_2_ConditionText" LayoutData.Anchors="0 0 1 0" LayoutData.Offsets="10 435.01 0 12.005859">
+		<BnsCustomLabelWidget.String>
+			<StringProperty fontset="BNSR/Content/Art/UI/GameUI_BNSR/Resource/GameUI_FontSet_R/UI/Normal_12.Normal_12" LabelText="다운 중인 적에게 사용" SpaceBetweenLines="3" />
+		</BnsCustomLabelWidget.String>
+	</BnsCustomLabelWidget>
+	<BnsCustomLabelWidget Name="Skill3ToolTipPanel_2_StanceTitle" LayoutData.Anchors="0 0 1 0" LayoutData.Offsets="10 462.01587 10 14.001465" MetaData="textref=UI.SkillBook.PositionArray">
+		<BnsCustomLabelWidget.String>
+			<StringProperty fontset="BNSR/Content/Art/UI/GameUI_BNSR/Resource/GameUI_FontSet_R/UI/Label_LightYellow_12.Label_LightYellow_12" LabelText="#자세" SpaceBetweenLines="3" />
+		</BnsCustomLabelWidget.String>
+	</BnsCustomLabelWidget>
+	<BnsCustomLabelWidget Name="Skill3ToolTipPanel_2_StanceText" LayoutData.Anchors="0 0 1 0" LayoutData.Offsets="10 476.01733 0 12.005859">
+		<BnsCustomLabelWidget.String>
+			<StringProperty fontset="BNSR/Content/Art/UI/GameUI_BNSR/Resource/GameUI_FontSet_R/UI/Normal_12.Normal_12" LabelText="발도술" SpaceBetweenLines="3" />
+		</BnsCustomLabelWidget.String>
+	</BnsCustomLabelWidget>
+	<BnsCustomLabelWidget Name="Skill3ToolTipPanel_2_ItemTitle" LayoutData.Anchors="0 0 1 0" LayoutData.Offsets="10 503.0232 10 14.001587">
+		<BnsCustomLabelWidget.String>
+			<StringProperty fontset="BNSR/Content/Art/UI/GameUI_BNSR/Resource/GameUI_FontSet_R/UI/Label_LightYellow_12.Label_LightYellow_12" LabelText="무공변경 조건" SpaceBetweenLines="3" />
+		</BnsCustomLabelWidget.String>
+	</BnsCustomLabelWidget>
+	<BnsCustomLabelWidget Name="Skill3ToolTipPanel_2_ItemName" LayoutData.Anchors="0 0 1 0" LayoutData.Offsets="10 517.0248 0 12.005859">
+		<BnsCustomLabelWidget.String>
+			<StringProperty fontset="BNSR/Content/Art/UI/GameUI_BNSR/Resource/GameUI_FontSet_R/UI/Normal_12.Normal_12" LabelText="아이템이름" SpaceBetweenLines="3" />
+		</BnsCustomLabelWidget.String>
+	</BnsCustomLabelWidget>
+	<BnsCustomLabelWidget Name="Skill3ToolTipPanel_2_SkillSkinDescription_Title" LayoutData.Anchors="0 0 1 0" LayoutData.Offsets="10 544.03064 10 12.500977">
+		<BnsCustomLabelWidget.String>
+			<StringProperty fontset="BNSR/Content/Art/UI/GameUI_BNSR/Resource/GameUI_FontSet_R/UI/Tooltip_ItemView.Tooltip_ItemView" LabelText="SkillSkinDescription_Title" SpaceBetweenLines="3" />
+		</BnsCustomLabelWidget.String>
+	</BnsCustomLabelWidget>
+	<BnsCustomLabelWidget Name="Skill3ToolTipPanel_2_SkillSkinDescription" LayoutData.Anchors="0 0 1 0" LayoutData.Offsets="10 558.5316 10 12.500977">
+		<BnsCustomLabelWidget.String>
+			<StringProperty fontset="BNSR/Content/Art/UI/GameUI_BNSR/Resource/GameUI_FontSet_R/UI/Normal_12.Normal_12" LabelText="SkillSkinDescription" SpaceBetweenLines="3" />
+		</BnsCustomLabelWidget.String>
+	</BnsCustomLabelWidget>
 </BnsCustomWindowWidget>

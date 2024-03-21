@@ -3,16 +3,16 @@
 namespace Xylia.Preview.Data.Models.Sequence;
 public enum SexSeq
 {
-    [Name("sex-none")]
+    [Text("sex-none")]
     SexNone,
 
-	[Name("Name.sex.neuter")]
+	[Text("Name.sex.neuter")]
 	남,
 
-	[Name("Name.sex.male")]
+	[Text("Name.sex.male")]
 	여,
 
-	[Name("Name.sex.female")]
+	[Text("Name.sex.female")]
 	중,
 
 	COUNT

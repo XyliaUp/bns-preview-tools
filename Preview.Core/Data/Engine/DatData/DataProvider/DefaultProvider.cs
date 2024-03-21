@@ -1,6 +1,8 @@
 ﻿using System.ComponentModel;
+using System.Diagnostics;
 using CUE4Parse.Utils;
 using Serilog;
+using Xylia.Preview.Common.Extension;
 using Xylia.Preview.Data.Engine.BinData.Helpers;
 using Xylia.Preview.Data.Engine.BinData.Models;
 using Xylia.Preview.Data.Engine.BinData.Serialization;
@@ -10,26 +12,32 @@ namespace Xylia.Preview.Data.Engine.DatData;
 public class DefaultProvider : Datafile, IDataProvider
 {
 	#region Fields
-	public BNSDat XmlData;
-	public BNSDat LocalData;
-	public BNSDat ConfigData;
-	public ITableParseType Detect;
-
-	public virtual string Name { get; protected set; }
-	public Locale Locale { get; protected set; }
+	public BNSDat XmlData { get; set; }
+	public BNSDat LocalData { get; set; }
+	public BNSDat ConfigData { get; set; }
+	public ITableParseType Detect { get; protected set; }
 	#endregion
 
+	#region Methods		
+	public virtual string Name { get; protected set; }
 
-	#region Methods
-	public virtual Stream[] GetFiles(string pattern) => this.XmlData.EnumerateFiles(pattern).Select(x => new MemoryStream(x.Data)).ToArray();
+	public Locale Locale { get; protected set; }
+
+	public virtual Stream[] GetFiles(string pattern)
+	{
+		return (XmlData.SearchFiles(pattern) ?? []).Concat(
+			ConfigData?.SearchFiles(pattern) ?? []).Concat(
+			LocalData?.SearchFiles(pattern) ?? []).Select(x =>
+			new MemoryStream(x.Data)).ToArray();
+	}
 
 	public virtual void LoadData(DatafileDefinition definitions)
 	{
 		#region Tables
 		this.Tables = [];
 
-		ReadFrom(XmlData.EnumerateFiles(PATH.Datafile(Is64Bit)).FirstOrDefault()?.Data, Is64Bit);
-		ReadFrom(LocalData.EnumerateFiles(PATH.Localfile(Is64Bit)).FirstOrDefault()?.Data, Is64Bit);
+		ReadFrom(XmlData.SearchFiles(PATH.Datafile(Is64Bit)).FirstOrDefault()?.Data, Is64Bit);
+		ReadFrom(LocalData?.SearchFiles(PATH.Localfile(Is64Bit)).FirstOrDefault()?.Data, Is64Bit);
 
 		Tables.Add(new() { Name = "quest", SearchPattern = @"quest\questdata*.xml" });
 		Tables.Add(new() { Name = "contextscript", SearchPattern = @"skill3_contextscriptdata*.xml" });
@@ -76,7 +84,7 @@ public class DefaultProvider : Datafile, IDataProvider
 					var alias = record.Attributes.Get<string>("alias");
 					if (alias == null) continue;
 
-					AliasTable.Add(record, AliasTable.MakeKey(tableDefName, alias));
+					AliasTable.Add(record.PrimaryKey, AliasTable.MakeKey(tableDefName, alias));
 				}
 			}
 
@@ -143,34 +151,50 @@ public class DefaultProvider : Datafile, IDataProvider
 	#endregion
 
 
-	#region Static Methods
-	public static DefaultProvider Load(string FolderPath, ResultMode mode = ResultMode.SelectDat)
+	#region Constructors
+	public DefaultProvider()
 	{
-		if (string.IsNullOrWhiteSpace(FolderPath) || !Directory.Exists(FolderPath))
-			throw new WarningException("invalid game folder, please to set.");
 
-		//get all
-		var datas = new DataCollection(FolderPath);
-		var xmls = datas.GetFiles(DatType.xml, mode);
-		var locals = datas.GetFiles(DatType.local, mode);
-		var configs = datas.GetFiles(DatType.config, mode);
+	}
 
-		//get target
+	public DefaultProvider(BNSDat xml, BNSDat local, BNSDat config = null)
+	{
+		this.XmlData = xml;
+		this.LocalData = local;
+		this.ConfigData = config;
+	}
+
+	public static DefaultProvider Load(string GameFolder, IDatSelect selector = default, ResultMode mode = ResultMode.SelectDat)
+	{
+		if (string.IsNullOrWhiteSpace(GameFolder) || !Directory.Exists(GameFolder))
+			throw new WarningException("invalid game folder, need to set.");
+
+		// get all
+		var datas = new DataCollection(GameFolder);
+		var xmls = datas.GetFiles(DatType.Xml, mode);
+		var locals = datas.GetFiles(DatType.Local, mode);
+		var configs = datas.GetFiles(DatType.Config, mode);
+
+		Debug.Assert(selector != null || xmls.Count <= 1, "please set a dat selector.");
+
+		// get target
 		DefaultProvider provider;
-		if (xmls.Count == 0) throw new WarningException("invalid game data, possible specified directory incorrect");
-		if (xmls.Count == 1 && locals.Count <= 1)
-		{
-			provider = new DefaultProvider() { XmlData = xmls.FirstOrDefault(), LocalData = locals.FirstOrDefault() };
-		}
-		else provider = IDatSelect.Default.Show(xmls, locals);
+		if (xmls.Count == 0) throw new WarningException("invalid game data, maybe specified incorrect directory.");
+		else if (selector is null || (xmls.Count == 1 && locals.Count <= 1)) provider = new DefaultProvider(xmls.FirstOrDefault(), locals.FirstOrDefault());
+		else provider = selector.Show(xmls, locals);
 
-		// set info
-		provider.Name = FolderPath.SubstringAfterLast('\\');
+		// return information
+		provider.Name = GameFolder.SubstringAfterLast('\\');
 		provider.Is64Bit = provider.XmlData.Bit64;
-		provider.Locale = new Locale(new DirectoryInfo(FolderPath));
+		provider.Locale = new Locale(new DirectoryInfo(GameFolder));
 		provider.ConfigData = configs.FirstOrDefault();
 
 		return provider;
 	}
 	#endregion
+}
+
+public interface IDatSelect
+{
+	DefaultProvider Show(IEnumerable<FileInfo> Xml, IEnumerable<FileInfo> Local);
 }

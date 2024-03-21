@@ -4,21 +4,18 @@
 		<RootNamespace>Xylia.Preview.UI</RootNamespace>
 		<Nullable>enable</Nullable>
 		<UseWPF>true</UseWPF>
-		<PlatformTarget>x64</PlatformTarget>
 		<SignAssembly>True</SignAssembly>
+		<DelaySign>True</DelaySign>
 	</PropertyGroup>
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
 		<DebugType>none</DebugType>
 	</PropertyGroup>
 	<ItemGroup>
-		<PackageReference Include="HtmlAgilityPack" Version="1.11.55" />
-		<PackageReference Include="Microsoft.Web.WebView2" Version="1.0.2210.55" />
-		<PackageReference Include="SkiaSharp.Views.WPF" Version="2.88.6" />
+		<PackageReference Include="HtmlAgilityPack" Version="1.11.59" />
+		<PackageReference Include="Microsoft.Web.WebView2" Version="1.0.2365.46" />
+		<PackageReference Include="SkiaSharp.Views.WPF" Version="2.88.7" />
 	</ItemGroup>
 	<ItemGroup>
-	  <ProjectReference Include="..\Preview.Core\Preview.Core.csproj" />
-	</ItemGroup>
-	<ItemGroup>
-		<Resource Include="Resources\a.png" />
+		<ProjectReference Include="..\Preview.Core\Preview.Core.csproj" />
 	</ItemGroup>
 </Project>

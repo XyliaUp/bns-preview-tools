@@ -1,6 +1,4 @@
-﻿using CUE4Parse.UE4.Writers;
-
-namespace CUE4Parse.UE4.Objects.UObject;
+﻿namespace CUE4Parse.UE4.Objects.UObject;
 public static class FString
 {
 	public static bool IsUnicode(this string String) => String.Any(c => c > 255);

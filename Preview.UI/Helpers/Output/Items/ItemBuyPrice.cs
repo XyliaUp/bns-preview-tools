@@ -1,19 +1,18 @@
 ﻿using OfficeOpenXml;
-
 using Xylia.Preview.Data.Helpers;
-using Xylia.Preview.Data.Helpers.Output;
 using Xylia.Preview.Data.Models;
+using Xylia.Preview.UI.Helpers.Output;
 
 namespace Xylia.Preview.UI.Helpers.Output.Items;
 public sealed class ItemBuyPriceOut : OutSet
 {
     protected override void CreateData(ExcelWorksheet sheet)
     {
-		var ItemBuyPriceTable = FileCache.Data.Get<ItemBuyPrice>();
-		var ItemBrandTooltiptTable = FileCache.Data.Get<ItemBrandTooltip>();
+        var ItemBuyPriceTable = FileCache.Data.Provider.GetTable<ItemBuyPrice>();
+        var ItemBrandTooltiptTable = FileCache.Data.Provider.GetTable<ItemBrandTooltip>();
 
-		#region Title
-		sheet.SetColumn(Column++, "alias", 70);
+        #region Title
+        sheet.SetColumn(Column++, "alias", 70);
         sheet.SetColumn(Column++, "钱币", 15);
         sheet.SetColumn(Column++, "物品组", 20);
         sheet.SetColumn(Column++, "物品1", 25);
@@ -36,7 +35,7 @@ public sealed class ItemBuyPriceOut : OutSet
         sheet.SetColumn(Column++, "限购设置");
         #endregion
 
-		foreach (var record in ItemBuyPriceTable)
+        foreach (var record in ItemBuyPriceTable)
         {
             Row++;
             int column = 1;
@@ -45,10 +44,10 @@ public sealed class ItemBuyPriceOut : OutSet
             sheet.Cells[Row, column++].SetValue(record.Alias);
             sheet.Cells[Row, column++].SetValue(record.money);
 
-			#region brand & item
-			ItemBrandTooltip ItemBrandTooltip = null;
-			var ItemBrand = record.RequiredItembrand.Instance;
-			if (ItemBrand != null) ItemBrandTooltip = ItemBrandTooltiptTable.FirstOrDefault(x => x.BrandId == ItemBrand.Id && x.ItemConditionType == record.RequiredItembrandConditionType);
+            #region brand & item
+            ItemBrandTooltip ItemBrandTooltip = null;
+            var ItemBrand = record.RequiredItembrand.Instance;
+            if (ItemBrand != null) ItemBrandTooltip = ItemBrandTooltiptTable.FirstOrDefault(x => x.BrandId == ItemBrand.Id && x.ItemConditionType == record.RequiredItembrandConditionType);
             sheet.Cells[Row, column++].SetValue(ItemBrandTooltip?.Name2.GetText() ?? ItemBrand?.ToString());
 
             for (int i = 0; i < 4; i++)
@@ -64,24 +63,24 @@ public sealed class ItemBuyPriceOut : OutSet
 
             sheet.Cells[Row, column++].SetValue(record.RequiredFactionScore);
             sheet.Cells[Row, column++].SetValue(record.RequiredDuelPoint);
-			sheet.Cells[Row, column++].SetValue(record.RequiredPartyBattlePoint);
-			sheet.Cells[Row, column++].SetValue(record.RequiredFieldPlayPoint);
-			sheet.Cells[Row, column++].SetValue(record.RequiredLifeContentsPoint);
-			sheet.Cells[Row, column++].SetValue(record.RequiredAchievementScore);
+            sheet.Cells[Row, column++].SetValue(record.RequiredPartyBattlePoint);
+            sheet.Cells[Row, column++].SetValue(record.RequiredFieldPlayPoint);
+            sheet.Cells[Row, column++].SetValue(record.RequiredLifeContentsPoint);
+            sheet.Cells[Row, column++].SetValue(record.RequiredAchievementScore);
 
-			#region achievemen
-			string AchievementName = record.RequiredAchievementId == 0 ? null :
-                FileCache.Data.Get<Achievement>().FirstOrDefault(o => o.Id == record.RequiredAchievementId && o.Step == record.RequiredAchievementStepMin)?.Text;
+            #region achievemen
+            string AchievementName = record.RequiredAchievementId == 0 ? null :
+                FileCache.Data.Provider.GetTable<Achievement>().FirstOrDefault(o => o.Id == record.RequiredAchievementId && o.Step == record.RequiredAchievementStepMin)?.Text;
             sheet.Cells[Row, column++].SetValue(AchievementName);
             #endregion
 
             sheet.Cells[Row, column++].SetValue(record.FactionLevel);
             sheet.Cells[Row, column++].SetValue(record.CheckSoloDuelGrade);
-			sheet.Cells[Row, column++].SetValue(record.CheckTeamDuelGrade);
-			sheet.Cells[Row, column++].SetValue(record.CheckBattleFieldGradeOccupationWar);
-			sheet.Cells[Row, column++].SetValue(record.CheckBattleFieldGradeCaptureTheFlag);
-			sheet.Cells[Row, column++].SetValue(record.CheckBattleFieldGradeLeadTheBall);
-			sheet.Cells[Row, column++].SetValue(record.CheckContentQuota.Instance);
-		}
+            sheet.Cells[Row, column++].SetValue(record.CheckTeamDuelGrade);
+            sheet.Cells[Row, column++].SetValue(record.CheckBattleFieldGradeOccupationWar);
+            sheet.Cells[Row, column++].SetValue(record.CheckBattleFieldGradeCaptureTheFlag);
+            sheet.Cells[Row, column++].SetValue(record.CheckBattleFieldGradeLeadTheBall);
+            sheet.Cells[Row, column++].SetValue(record.CheckContentQuota.Instance);
+        }
     }
 }

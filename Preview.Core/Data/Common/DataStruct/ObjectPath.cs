@@ -1,16 +1,9 @@
 ﻿namespace Xylia.Preview.Data.Common.DataStruct;
-public struct ObjectPath
+public readonly struct ObjectPath(string path)
 {
-	public readonly string Path;
+	public readonly string Path = path;
 
-	public ObjectPath(string path)
-	{
-		Path = path;
-	}
+	public override string ToString() => this.Path;
 
-
-	public readonly override string ToString() => this.Path;
-
-	public static implicit operator ObjectPath(string path) => new(path);
 	public static implicit operator string(ObjectPath obj) => obj.Path;
 }

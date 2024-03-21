@@ -1,5 +1,4 @@
 ﻿using Xylia.Preview.Common.Attributes;
-using Xylia.Preview.Common.Extension;
 using Xylia.Preview.Data.Models.Sequence;
 
 namespace Xylia.Preview.Data.Models;
@@ -18,7 +17,7 @@ public class SkillModifyInfoGroup : ModelElement
 	{
 		var objs = SkillModifyInfo.Select(o => o.Instance?.ToString()).Where(o => o is not null);
 		if (!objs.Any()) return null;
-		return $"<font name=\"00008130.UI.Label_Green03_12\">{objs.Aggregate("<br/>")}</font>";
+		return $"<font name=\"00008130.UI.Label_Green03_12\">{string.Join("<br/>", objs)}</font>";
 	}
 	#endregion
 }

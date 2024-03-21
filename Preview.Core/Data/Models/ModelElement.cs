@@ -3,33 +3,44 @@ using System.Reflection;
 using System.Runtime.Serialization;
 using Xylia.Preview.Common.Attributes;
 using Xylia.Preview.Common.Extension;
-using Xylia.Preview.Data.Client;
+using Xylia.Preview.Data.Common.Abstractions;
+using Xylia.Preview.Data.Common.DataStruct;
+using Xylia.Preview.Data.Engine.Definitions;
 using Xylia.Preview.Data.Helpers;
+using Xylia.Preview.Properties;
 
 namespace Xylia.Preview.Data.Models;
-public abstract class ModelElement
+public abstract class ModelElement : IElement
 {
-	[IgnoreDataMember]
+	#region IElement
 	public Record Source { get; private set; }
 
-	public AttributeCollection Attributes => Source?.Attributes;
+	public ElementType ElementType => Source.ElementType;
 
+	public Ref PrimaryKey => Source.PrimaryKey;
+
+	public AttributeCollection Attributes => Source.Attributes;
+	#endregion
+
+
+	#region Override Methods
 	public override string ToString() => Source.ToString();
 
-	public override bool Equals(object obj)
+	public override int GetHashCode() => Source?.GetHashCode() ?? base.GetHashCode();
+
+	public bool Equals(ModelElement other)
 	{
-		return obj is ModelElement other && this.Source == other.Source;
+		return other != null && this.Source == other.Source;
 	}
+	#endregion
 
-	public override int GetHashCode() => Source.GetHashCode();
-
+	#region Methods
 	protected internal virtual void LoadHiddenField()
 	{
 
 	}
 
 
-	#region Helper
 	/// <summary>
 	/// Convert original record to ModelRecord
 	/// </summary>
@@ -71,26 +82,26 @@ public abstract class ModelElement
 	/// </summary>
 	/// <param name="element"></param>
 	/// <param name="name"></param>
-	/// <param name="toType"></param>
+	/// <param name="type"></param>
 	/// <param name="repeat"></param>
 	/// <returns></returns>
 	/// <exception cref="Exception"></exception>
-	private static object Convert(ModelElement element, string name, Type toType)
+	private static object Convert(ModelElement element, string name, Type type)
 	{
 		var record = element.Source;
 		var attribute = record.Definition.GetAttribute(name);
 
-		if (toType.IsGenericType && toType.GetGenericTypeDefinition() == typeof(List<>))
+		if (type.IsGenericType && type.GetGenericTypeDefinition() == typeof(List<>))
 		{
 			// valid
-			var recordType = toType.GetGenericArguments()[0];
+			var recordType = type.GetGenericArguments()[0];
 			if (!record.Children.TryGetValue(name, out var children)) throw new InvalidDataException($"No `{name}` child element in definition");
 			if (!typeof(ModelElement).IsAssignableFrom(recordType)) throw new InvalidCastException($"{recordType} unable cast to {typeof(ModelElement)}");
 
 			// create instance
-			var records = Activator.CreateInstance(toType);
+			var records = Activator.CreateInstance(type);
 			var add = records.GetType().GetMethod("Add", BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.Public);
-			children.ForEach(child => add.Invoke(records, new object[] { child.As<ModelElement>(recordType) }));
+			children.ForEach(child => add.Invoke(records, [child.As<ModelElement>(recordType)]));
 
 			return records;
 		}
@@ -98,18 +109,19 @@ public abstract class ModelElement
 		// load attribute
 		if (attribute is null || attribute.Repeat == 1)
 		{
-			return AttributeConverter.Convert(record.Attributes[name], toType);
+			return AttributeConverter.Convert(record.Attributes[name], type);
+		}
+		else if (!type.IsArray)
+		{
+			throw new Exception($"Repeatable object must to use array type: {element.GetType()} -> {name}");
 		}
 		else
 		{
-			if (!toType.IsArray)
-				throw new Exception($"Repeatable object must to use array type: {record.GetType()} -> {name}");
-
-			toType = toType.GetElementType();
-			var value = Array.CreateInstance(toType, attribute.Repeat);
+			type = type.GetElementType();
+			var value = Array.CreateInstance(type, attribute.Repeat);
 
 			for (int i = 0; i < attribute.Repeat; i++)
-				value.SetValue(AttributeConverter.Convert(record.Attributes[$"{name}-{i + 1}"], toType), i);
+				value.SetValue(AttributeConverter.Convert(record.Attributes[$"{name}-{i + 1}"], type), i);
 
 			return value;
 		}
@@ -120,24 +132,37 @@ public abstract class ModelElement
 
 public struct Ref<TElement> where TElement : ModelElement
 {
+	#region Constructors
 	public Ref(Record value)
 	{
 		source = value;
 	}
 
-	public Ref(string value, BnsDatabase database = null)
+	public Ref(TElement value)
 	{
-		// prevent designer request to load data
-		if (database is null && 
-			FileCache.IsEmpty) return;
+		_instance = value;
+		source = value.Source;
+	}
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <remarks>Not recommended to use the constructor</remarks>
+	public Ref(string value)
+	{
+		// Prevent designer request to load data
+		if (!Settings.Default.PreviewLoadData && !FileCache.Data.IsInitialized) return;
 
 		// get available package
-		var provider = (database ?? FileCache.Data).Provider;
+		var provider = FileCache.Data.Provider;
 
 		// get source
 		if (value.Contains(':')) source = provider.Tables.GetRecord(value);
 		else source = provider.Tables.GetRecord(typeof(TElement).Name, value);
+
+		if (source is null) Serilog.Log.Warning("invalid ref: " + value);
 	}
+	#endregion
 
 
 	#region	Instance
@@ -149,9 +174,18 @@ public struct Ref<TElement> where TElement : ModelElement
 
 	public static implicit operator TElement(Ref<TElement> value) => value.Instance;
 
-	public static implicit operator Ref<TElement>(TElement value) => new() { _instance = value };
+	public static implicit operator Ref<TElement>(TElement value) => new(value);
 
 	public static implicit operator Ref<TElement>(Record value) => new(value);
+
+
+	public override readonly int GetHashCode() => source?.GetHashCode() ?? 0;
+
+	public override readonly bool Equals(object obj) => obj is Ref<TElement> other && this.source == other.source;
+
+	public static bool operator ==(Ref<TElement> left, Ref<TElement> right) => left.Equals(right);
+
+	public static bool operator !=(Ref<TElement> left, Ref<TElement> right) => !(left == right);
 	#endregion
 }
 
@@ -170,7 +204,7 @@ internal class ModelTypeHelper
 				subs.GetSubType(baseType);
 			}
 
-			// convert real type
+			// Convert to real type
 			if (baseType == typeof(ModelElement))
 			{
 				Debug.Assert(name != null);
@@ -186,7 +220,7 @@ internal class ModelTypeHelper
 
 	#region Methods
 	private Type BaseType;
-	private Dictionary<string, Type> _subs = new(StringComparer.OrdinalIgnoreCase);
+	private readonly Dictionary<string, Type> _subs = new(TableNameComparer.Instance);
 
 	private void GetSubType(Type baseType)
 	{

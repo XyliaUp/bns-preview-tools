@@ -1,5 +1,6 @@
 ﻿using System.Diagnostics;
 using System.Text.RegularExpressions;
+using Serilog;
 
 namespace Xylia.Preview.Data.Engine.Definitions;
 public abstract class ElementBaseDefinition
@@ -20,8 +21,8 @@ public abstract class ElementBaseDefinition
 
 
 	#region Helper
-	private Dictionary<string, AttributeDefinition> _attributesDictionary = new();
-	private Dictionary<string, AttributeDefinition> _expandedAttributesDictionary = new();
+	private Dictionary<string, AttributeDefinition> _attributesDictionary = [];
+	private Dictionary<string, AttributeDefinition> _expandedAttributesDictionary = [];
 
 	internal void CreateAttributeMap()
 	{
@@ -48,28 +49,29 @@ public class ElementDefinition : ElementBaseDefinition
 
 
 	#region Helper
-	private Dictionary<string, ElementSubDefinition> _subtablesDictionary = new();
+	private Dictionary<string, ElementSubDefinition> _subtablesDictionary = [];
 
 	public void CreateSubtableMap() => _subtablesDictionary = Subtables.ToDictionary(x => x.Name);
 
 	public ElementBaseDefinition SubtableByName(string name)
 	{
+		// There are some special of Step
+		// HACK: we will directly return to the main table now
+		if (Name == "step") return this;
+
 		bool IsEmpty = string.IsNullOrEmpty(name);
 		if (Subtables.Count == 0)
 		{
 			Debug.Assert(IsEmpty);
 			return this;
 		}
+		else if (!IsEmpty && _subtablesDictionary.TryGetValue(name, out var definition)) return definition;
 		else
 		{
-			if (!IsEmpty && _subtablesDictionary.TryGetValue(name, out var definition)) return definition;
-			else
-			{
-				Serilog.Log.Warning($"Invalid attribute: 'type', table: {this.Name}, value: {name}");
-				//throw new ArgumentOutOfRangeException(nameof(name));
+			Log.Warning($"Invalid attribute: type, table: {this.Name}, value: {name}");
+			// throw new ArgumentOutOfRangeException(nameof(name));
 
-				return Subtables.First();
-			}
+			return Subtables.First();
 		}
 	}
 

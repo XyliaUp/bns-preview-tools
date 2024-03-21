@@ -1,12 +1,12 @@
 ﻿using Xylia.Preview.Common.Extension;
+using Xylia.Preview.Data.Common.DataStruct;
 using Xylia.Preview.Data.Helpers;
 using Xylia.Preview.Data.Models.Sequence;
-using static Xylia.Preview.Data.Models.ItemGraph;
-using static Xylia.Preview.Data.Models.ItemGraph.Edge;
 
 namespace Xylia.Preview.Data.Models;
 public class ItemGraph : ModelElement
 {
+	#region Sequence
 	public enum SeedItemSubGroupSeq
 	{
 		SubGroup1,
@@ -20,7 +20,33 @@ public class ItemGraph : ModelElement
 		AttributeGroup2,
 	}
 
+	public enum EdgeTypeSeq
+	{
+		Growth,
 
+		Awaken,
+
+		Transform,
+
+		JumpTransform,
+
+		Purification,
+	}
+
+	public enum OrientationSeq
+	{
+		Horizontal,
+		Vertical,
+	}
+
+	public enum SuccessProbabilitySeq
+	{
+		Definite,
+		Stochastic,
+	}
+	#endregion
+
+	#region Sub
 	public sealed class Seed : ItemGraph
 	{
 		public Ref<Item>[] SeedItem { get; set; }
@@ -33,7 +59,7 @@ public class ItemGraph : ModelElement
 		public short Row { get; set; }
 		public short Column { get; set; }
 		public bool UseImprove { get; set; }
-
+		public Ref<Item> ImproveSuccessionSeed { get; set; }
 
 		public enum NodeTypeSeq
 		{
@@ -44,23 +70,62 @@ public class ItemGraph : ModelElement
 		public enum GrowthCategorySeq
 		{
 			None,
-
 			Dungeon,
-
 			Raid,
-
 			Pvp,
-
 			Attribute,
-
 			Etc1,
-
 			Etc2,
+		}
+
+		public void CreateEdgeHelper(GameDataTable<ItemGraph> table)
+		{
+			if (this.UseImprove)
+			{
+				var item = this.SeedItem.FirstOrDefault().Instance;
+				if (item is null) return;
+
+				var Improve = FileCache.Data.Provider.GetTable<ItemImprove>().FirstOrDefault(x => x.Id == item.ImproveId && x.Level == item.ImproveLevel);
+				if (Improve != null)
+				{
+					var NextItem = item.Attributes.Get<Record>("improve-next-item");
+					foreach (var recipe in Improve.CreateRecipe())
+					{
+						table.Elements.Add(new ItemGraph.Edge()
+						{
+							StartItem = item,
+							EndItem = NextItem,
+							SuccessProbability = recipe.SuccessProbability == 1000 ? SuccessProbabilitySeq.Definite : SuccessProbabilitySeq.Stochastic,
+
+							Recipe = recipe
+						});
+					}
+				}
+
+				var Succession = ItemImproveSuccession.FindByFeed(item, ImproveSuccessionSeed);
+				if (Succession != null)
+				{
+					foreach (var recipe in Succession.CreateRecipe(ImproveSuccessionSeed, out var NextItem))
+					{
+						table.Elements.Add(new ItemGraph.Edge()
+						{
+							StartItem = item,
+							EndItem = NextItem,
+							SuccessProbability = SuccessProbabilitySeq.Definite,
+							StartOrientation = OrientationSeq.Horizontal,
+							EndOrientation = OrientationSeq.Horizontal,
+
+							Recipe = recipe
+						});
+					}
+				}
+			}
 		}
 	}
 
 	public sealed class Edge : ItemGraph
 	{
+		#region Attributes
 		public EdgeTypeSeq EdgeType { get; set; }
 		public AttributeGroupSeq AttributeGroup { get; set; }
 		public SeedItemSubGroupSeq SeedItemSubGroup { get; set; }
@@ -72,131 +137,26 @@ public class ItemGraph : ModelElement
 		public OrientationSeq EndOrientation { get; set; } = OrientationSeq.Vertical;
 		public SuccessProbabilitySeq SuccessProbability { get; set; }
 		public bool HasArrow { get; set; }
+		#endregion
 
-		internal ItemRecipeHelper Recipe;
-
-
-		public enum EdgeTypeSeq
+		#region Helper
+		public void CreateRecipeHelper()
 		{
-			Growth,
-
-			Awaken,
-
-			Transform,
-
-			JumpTransform,
-
-			Purification,
+			Recipe = FeedRecipe.Instance?.CreateRecipe();
 		}
 
-		public enum OrientationSeq
-		{
-			Horizontal,
-			Vertical,
-		}
+		public ItemRecipeHelper Recipe { get; internal set; }
 
-		public enum SuccessProbabilitySeq
-		{
-			Definite,
-			Stochastic,
-		}
+		public string Title => $"{StartItem.Instance?.ItemName} ➠ {EndItem.Instance?.ItemName}";
+		#endregion
 	}
+	#endregion
 }
 
 
-public class ItemGraphRouteHelper
-{
-	public Edge[] Edges;
-
-	public ItemGraphRouteHelper(Edge[] route)
-	{
-		Edges = route;
-	}
-
-
-	public override string ToString() => Edges.Aggregate("", (a, n) => n.StartItem.Instance.ItemNameOnly + " -> " + a);
-
-
-
-	public IReadOnlyDictionary<Item, int> Ingredients
-	{
-		get
-		{
-			var items = new Dictionary<Item, int>();
-			void AddItem(Item item, int count)
-			{
-				if (item is null) return;
-
-				items.TryAdd(item, 0);
-				items[item] += count;
-			}
-
-
-			foreach (var edge in Edges)
-			{
-				var recipe = edge.FeedRecipe.Instance;
-				if (recipe != null)
-				{
-					recipe.FixedIngredient.ForEach(x => x.Instance, (item, i) => AddItem(item, recipe.FixedIngredientStackCount[i]));
-
-					recipe.SubIngredient.ForEach(x => x.Instance, (ingredient, i) =>
-					{
-						if (ingredient is Item item) AddItem(item, recipe.SubIngredientStackCount[i]);
-					});
-				}
-
-				var recipe2 = edge.Recipe;
-				if (recipe2 != null)
-				{
-					recipe2.SubItem?.ForEach(x => x, (x, i) => AddItem(x, recipe2.SubItemCount[i]));
-				}
-			}
-
-			return items;
-		}
-	}
-
-
-	public static void CreateEdge(Item item, GameDataTable<ItemGraph> table)
-	{
-		var Improve = FileCache.Data.Get<ItemImprove>().FirstOrDefault(x => x.Id == item.ImproveId && x.Level == item.ImproveLevel);
-		var ImproveSuccession = FileCache.Data.Get<ItemImproveSuccession>().FirstOrDefault(x => x.FeedMainImproveId == item.ImproveId && x.FeedMainImproveLevel == item.ImproveLevel);
-
-		if (Improve != null)
-		{
-			var NextItem = item.Attributes.Get<Record>("improve-next-item");
-			foreach (var recipe in Improve.CreateRecipe())
-			{
-				table.Elements.Add(new ItemGraph.Edge()
-				{
-					StartItem = item,
-					EndItem = NextItem,
-					SuccessProbability = recipe.SuccessProbability == 1000 ? SuccessProbabilitySeq.Definite : SuccessProbabilitySeq.Stochastic,
-
-					Recipe = recipe
-				});
-			}
-		}
-
-		if (ImproveSuccession != null)
-		{
-			foreach (var recipe in ImproveSuccession.CreateRecipe(out var NextItem))
-			{
-				table.Elements.Add(new ItemGraph.Edge()
-				{
-					StartItem = item,
-					EndItem = NextItem,
-					SuccessProbability = SuccessProbabilitySeq.Definite,
-					StartOrientation = OrientationSeq.Horizontal,
-					EndOrientation = OrientationSeq.Horizontal,
-
-					Recipe = recipe
-				});
-			}
-		}
-	}
-}
-
+/// <summary>
+/// Provide statistical growth recipe information
+/// </summary>
 public class ItemRecipeHelper
 {
 	public Item MainItem { get; set; }
@@ -209,5 +169,22 @@ public class ItemRecipeHelper
 
 	public int Money { get; set; }
 
+	/// <summary>
+	/// range 0 - 1000
+	/// the client does not display probability information in CN
+	/// </summary>
 	public short SuccessProbability { get; set; }
+
+
+	#region Properies
+	public static float DiscountRate = 0.2F;
+
+	public Tuple<Item, short>[] SubItemList => LinqExtensions.Combine(SubItem, SubItemCount);
+
+	public string Price => new Integer(Money).Money;
+
+	public string DiscountPrice => new Integer(Money * (1 - DiscountRate)).Money;
+
+	public string Guide { get; internal set; }
+	#endregion
 }

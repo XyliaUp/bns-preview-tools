@@ -13,7 +13,7 @@ using Xylia.Preview.UI.ViewModels;
 namespace Xylia.Preview.UI.Views;
 public partial class ShowObjectPlayer
 {
-	#region Ctor
+	#region Constructors
 	ShowObjectPlayerViewModel _viewModel;
 	AudioPlayer audioPlayer;
 

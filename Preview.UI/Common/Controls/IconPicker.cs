@@ -3,12 +3,9 @@ using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Input;
-
 using HandyControl.Controls;
 using HandyControl.Tools.Helper;
-
 using SkiaSharp.Views.WPF;
-
 using Xylia.Preview.Data.Helpers;
 using Xylia.Preview.Data.Models;
 
@@ -27,10 +24,10 @@ public partial class IconPicker : AutoCompleteTextBox
 	private CropImage _image;
 	#endregion
 
-	#region Ctor
+	#region Constructors
 	public IconPicker()
 	{
-		this.FilterItem = Filter;
+		// this.FilterItem = Filter;
 
 		_image = new CropImage();
 		_image.PreviewMouseRightButtonDown += DropDownButton_Click;
@@ -136,17 +133,17 @@ public partial class IconPicker : AutoCompleteTextBox
 		}
 	}
 
-	
+
 
 	private void SetData()
 	{
 		string Text = this.Text?.Split(',').First();
 
-		var record = FileCache.Data.IconTexture[Text];
+		var record = FileCache.Data.Provider.GetTable<IconTexture>()[Text];
 		if (record is null) return;
 
 		_image.CellSize = new Size(record.IconWidth, record.IconHeight);
-		_image.Source = record.GetIcon(0)?.ToWriteableBitmap();
+		_image.Source = record!.GetIcon(0).Image?.ToWriteableBitmap();
 	}
 
 	private bool Filter(object item)

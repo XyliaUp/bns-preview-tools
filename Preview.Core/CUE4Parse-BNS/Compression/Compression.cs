@@ -1,12 +1,12 @@
 ﻿using CUE4Parse.UE4.Exceptions;
-using CUE4Parse.UE4.Readers;
 
 using Ionic.Zlib;
+using K4os.Compression.LZ4;
 
 namespace CUE4Parse.Compression;
 public static partial class Compression2
 {
-	public static byte[] Compress(byte[] uncompressed, int uncompressedSize, CompressionMethod method, int compressionLevel, FArchive reader = null)
+	public static byte[] Compress(byte[] uncompressed, int uncompressedSize, CompressionMethod method, int compressionLevel)
 	{
 		switch (method)
 		{
@@ -24,37 +24,29 @@ public static partial class Compression2
 				return srcStream.ToArray();
 			}
 
-			//case CompressionMethod.Gzip:
-			//{
-			//	var gzip = new GZipStream(srcStream, CompressionMode.Compress);
-			//	var compressed = new byte[compressedSize];
+			case CompressionMethod.Gzip:
+			{
+				var srcStream = new MemoryStream();
+				var gzip = new GZipStream(srcStream, CompressionMode.Compress);
+				gzip.Write(uncompressed, 0, uncompressedSize);
+				gzip.Flush();
+				gzip.Dispose();
 
-			//	gzip.Read(compressed, compressedOffset, compressedSize);
-			//	gzip.Dispose();
-			//	return compressed;
-			//}
+				return srcStream.ToArray();
+			}
 
 			case CompressionMethod.Oodle:
-				return OodleCompress.Compress(uncompressed, uncompressedSize, OodleFormat.Kraken, OodleCompressionLevel.Fast);
+				return OodleCompress.Compress(uncompressed, uncompressedSize, OodleFormat.Kraken, (OodleCompressionLevel)compressionLevel);
 
+			case CompressionMethod.LZ4:
+			{
+				var compressedBuffer = new byte[0];
 
-			//case CompressionMethod.LZ4:
-			//{
-			//	var compressed = new byte[compressedSize];
-			//	var compressedBuffer = new byte[compressedSize + 4];
+				LZ4Codec.Encode(uncompressed, compressedBuffer, (LZ4Level)compressionLevel);
+				return compressedBuffer;
+			}
 
-			//	var result = LZ4Codec.Encode(uncompressed, uncompressedOffset, uncompressedSize, compressedBuffer, 0, compressedBuffer.Length);
-			//	Buffer.BlockCopy(compressedBuffer, 0, compressed, compressedOffset, compressedSize);
-			//	if (result != compressedSize) throw new FileLoadException($"Failed to decompress LZ4 data (Expected: {compressedSize}, Result: {result})");
-			//	//var lz4 = LZ4Stream.Decode(srcStream);
-			//	//lz4.Read(compressed, compressedOffset, compressedSize);
-			//	//lz4.Dispose();
-			//	return compressed;
-			//}
-
-			default:
-				if (reader != null) throw new UnknownCompressionMethodException(reader, $"Compression method \"{method}\" is unknown");
-				else throw new UnknownCompressionMethodException($"未知的压缩模式：\"{method}\"");
+			default: throw new UnknownCompressionMethodException($"Compression method \"{method}\" is unknown");
 		}
 	}
 }

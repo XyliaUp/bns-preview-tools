@@ -6,6 +6,8 @@ using System.Windows.Markup;
 namespace Xylia.Preview.UI.Common.Converters;
 public class RatioTimeConverter : MarkupExtension, IMultiValueConverter
 {
+	public override object ProvideValue(IServiceProvider serviceProvider) => this;
+
 	public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
 	{
 		if (values.Length < 2) return null;
@@ -20,6 +22,4 @@ public class RatioTimeConverter : MarkupExtension, IMultiValueConverter
 	{
 		throw new NotImplementedException();
 	}
-
-	public override object ProvideValue(IServiceProvider serviceProvider) => this;
 }

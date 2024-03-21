@@ -1,19 +1,18 @@
 ﻿using HandyControl.Controls;
-
-using Xylia.Preview.Data.Engine.DatData;
 using Xylia.Preview.UI.ViewModels;
-using Xylia.Preview.UI.Views.Selector;
 
 namespace Xylia.Preview.UI.Services;
-internal static class RegisterService
+/// <summary>
+/// Initialize process
+/// </summary>
+internal class RegisterService : IService
 {
-	public static void Create()
+	bool IService.Register()
 	{
-		IDatSelect.Default = new DatSelectDialog();
-
-		// default effects 
-		UserSettings.Default.CopyMode = UserSettings.Default.CopyMode;
+		// effects 
 		UserSettings.Default.UsePerformanceMonitor = UserSettings.Default.UsePerformanceMonitor;
+		UserSettings.Default.CopyMode = UserSettings.Default.CopyMode;
+		UserSettings.Default.SkinType = UserSettings.Default.SkinType;
 
 		// ask
 		if (UserSettings.Default.UseUserDefinition)
@@ -24,5 +23,7 @@ internal static class RegisterService
 				return true;
 			});
 		}
+
+		return true;
 	}
 }

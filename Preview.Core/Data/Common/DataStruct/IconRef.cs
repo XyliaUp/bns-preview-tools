@@ -7,21 +7,18 @@ namespace Xylia.Preview.Data.Common.DataStruct;
 [StructLayout(LayoutKind.Sequential)]
 public struct IconRef
 {
-	public int IconTextureRecordId;
-	public int IconTextureVariantId;
-	public int IconTextureIndex;
+	public readonly Ref IconTextureRef;
+	public readonly int IconTextureIndex;
 
 	public IconRef(int iconTextureRecordId, int iconTextureVariantId = 0, ushort iconTextureVariantIndex = 1)
 	{
-		IconTextureRecordId = iconTextureRecordId;
-		IconTextureVariantId = iconTextureVariantId;
+		IconTextureRef = new Ref(iconTextureRecordId, iconTextureVariantId);
 		IconTextureIndex = iconTextureVariantIndex;
 	}
 
 	public IconRef(Ref @ref, int iconTextureVariantIndex = 1)
 	{
-		IconTextureRecordId = @ref.Id;
-		IconTextureVariantId = @ref.Variant;
+		IconTextureRef = @ref;
 		IconTextureIndex = iconTextureVariantIndex;
 	}
 
@@ -29,8 +26,7 @@ public struct IconRef
 	{
 		if (record is null) return;
 
-		IconTextureRecordId = record.RecordId;
-		IconTextureVariantId = record.RecordVariationId;
+		IconTextureRef = record.PrimaryKey;
 		IconTextureIndex = index;
 	}
 
@@ -38,14 +34,13 @@ public struct IconRef
 
 	public override string ToString()
 	{
-		return $"(Id: {IconTextureRecordId}, Variant: {IconTextureVariantId}, Index.: {IconTextureIndex})";
+		return $"(Ref: {IconTextureRef}, Index.: {IconTextureIndex})";
 	}
 
 	public static bool operator ==(IconRef a, IconRef b)
 	{
 		return
-			a.IconTextureRecordId == b.IconTextureRecordId &&
-			a.IconTextureVariantId == b.IconTextureVariantId &&
+			a.IconTextureRef == b.IconTextureRef &&
 			a.IconTextureIndex == b.IconTextureIndex;
 	}
 
@@ -56,8 +51,7 @@ public struct IconRef
 
 	public bool Equals(IconRef other)
 	{
-		return IconTextureRecordId == other.IconTextureRecordId && 
-			IconTextureVariantId == other.IconTextureVariantId && 
+		return IconTextureRef == other.IconTextureRef && 
 			IconTextureIndex == other.IconTextureIndex;
 	}
 
@@ -68,6 +62,6 @@ public struct IconRef
 
 	public override int GetHashCode()
 	{
-		return HashCode.Combine(IconTextureRecordId, IconTextureVariantId, IconTextureIndex);
+		return HashCode.Combine(IconTextureRef, IconTextureIndex);
 	}
 }

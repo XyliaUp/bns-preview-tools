@@ -1,5 +1,4 @@
 ﻿using Xylia.Preview.Common.Attributes;
-using Xylia.Preview.Data.Common.DataStruct;
 
 namespace Xylia.Preview.Data.Models;
 [Side(ReleaseSide.Client)]

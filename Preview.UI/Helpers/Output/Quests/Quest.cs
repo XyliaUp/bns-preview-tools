@@ -1,7 +1,7 @@
 ﻿using OfficeOpenXml;
 using Xylia.Preview.Data.Helpers;
-using Xylia.Preview.Data.Helpers.Output;
 using Xylia.Preview.Data.Models;
+using Xylia.Preview.UI.Helpers.Output;
 
 namespace Xylia.Preview.UI.Helpers.Output.Quests;
 public sealed class QuestOut : OutSet
@@ -21,20 +21,20 @@ public sealed class QuestOut : OutSet
         #endregion
 
 
-        foreach (var Quest in FileCache.Data.Get<Quest>().OrderBy(o => o.Source.RecordId))
+        foreach (var Quest in FileCache.Data.Provider.GetTable<Quest>().OrderBy(x => x.PrimaryKey))
         {
             Row++;
             int column = 1;
 
-            sheet.Cells[Row, column++].SetValue(Quest.Source.RecordId);
+            sheet.Cells[Row, column++].SetValue(Quest.PrimaryKey);
             sheet.Cells[Row, column++].SetValue(Quest.Attributes["alias"]);
             sheet.Cells[Row, column++].SetValue(Quest.Text);
             sheet.Cells[Row, column++].SetValue(Quest.Title);
             sheet.Cells[Row, column++].SetValue(Quest.Attributes["category"]);
             sheet.Cells[Row, column++].SetValue(Quest.Attributes["content-type"]);
-			sheet.Cells[Row, column++].SetValue(Quest.Attributes["reset-type"]);
-			sheet.Cells[Row, column++].SetValue(Quest.Attributes["retired"]);
-			sheet.Cells[Row, column++].SetValue(Quest.Attributes["tutorial"]);
-		}
+            sheet.Cells[Row, column++].SetValue(Quest.Attributes["reset-type"]);
+            sheet.Cells[Row, column++].SetValue(Quest.Attributes["retired"]);
+            sheet.Cells[Row, column++].SetValue(Quest.Attributes["tutorial"]);
+        }
     }
 }

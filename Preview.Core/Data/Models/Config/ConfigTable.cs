@@ -1,9 +1,10 @@
-﻿using System.Text;
+﻿using System.Diagnostics.CodeAnalysis;
 using System.Xml.Serialization;
 
 namespace Xylia.Preview.Data.Models.Config;
 public abstract class ConfigTable : Group
 {
+	#region Attributes
 	[XmlAttribute("major-version")]
 	public ushort MajorVersion;
 
@@ -18,17 +19,16 @@ public abstract class ConfigTable : Group
 
 	[XmlAttribute("release-side")]
 	public string ReleaseSide;
+	#endregion
 
 
-
-	public static T LoadFrom<T>(FileInfo file) where T : ConfigTable => LoadFrom<T>(File.ReadAllText(file.FullName));
-
-	public static T LoadFrom<T>(byte[] data) where T : ConfigTable
+	public static T LoadFrom<T>(Stream stream) where T : ConfigTable
 	{
-		if (data is null) return null;
-		return LoadFrom<T>(Encoding.UTF8.GetString(data));
+		if (stream is null) return null;
+		return LoadFrom<T>(new StreamReader(stream).ReadToEnd());
 	}
 
+	[RequiresUnreferencedCode("This functionality is not compatible with trimming. Use 'MethodFriendlyToTrimming' instead")]
 	public static T LoadFrom<T>(string xml) where T : ConfigTable
 	{
 		var serializer = new XmlSerializer(typeof(T), new XmlRootAttribute("config"));
@@ -52,11 +52,10 @@ public class Group
 	public string name;
 
 	[XmlElement]
-	public List<Option> option { get; set; } = new();
+	public List<Option> option { get; set; } = [];
 
 	[XmlElement]
-	public List<Group> group { get; set; } = new();
-
+	public List<Group> group { get; set; } = [];
 
 
 

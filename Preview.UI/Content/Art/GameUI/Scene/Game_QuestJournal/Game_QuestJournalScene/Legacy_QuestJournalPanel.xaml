@@ -1,0 +1,151 @@
+<GameWindow x:Class="Xylia.Preview.UI.GameUI.Scene.Game_QuestJournal.Legacy_QuestJournalPanel"
+	xmlns="https://github.com/xyliaup/bns-preview-tools"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:s="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:i="clr-namespace:Xylia.Preview.UI.Common.Interactivity"
+	xmlns:data="clr-namespace:Xylia.Preview.Data.Models;assembly=Preview.Core"
+	Height="790" Width="800">
+	<GameWindow.Resources>
+		<s:ContextMenu x:Key="ItemMenu">
+			<s:MenuItem Header="{s:DynamicResource PreviewRaw}" Command="{i:PreviewRaw}" CommandParameter="{Binding Path=.}"/>
+		</s:ContextMenu>
+		<s:ContextMenu x:Key="ExtractMenu">
+			<s:MenuItem Click="Extract_QuestList_Click" Header="导出任务列表"/>
+			<s:MenuItem Click="Extract_EpicQuestList_Click" Header="导出主线任务列表"/>
+		</s:ContextMenu>
+	</GameWindow.Resources>
+
+	<s:TabControl x:Name="QuestJournal_Tab" >
+		<s:TabItem x:Name="QuestJournal_Tab_RadioButton_1" Header="正在进行">
+			<s:Grid x:Name="QuestJournal_ProgressQuest" Background="{s:DynamicResource RegionBrush}">
+				<s:Grid.ColumnDefinitions>
+					<s:ColumnDefinition Width="270" />
+					<s:ColumnDefinition Width="*" />
+				</s:Grid.ColumnDefinitions>
+
+				<s:Border BorderThickness="1" BorderBrush="{s:DynamicResource BorderBrush}">
+					<s:Grid>
+						<s:Grid.RowDefinitions>
+							<s:RowDefinition Height="Auto" />
+							<s:RowDefinition Height="*" />
+						</s:Grid.RowDefinitions>
+
+						<s:TextBox x:Name="SearcherRule" TextChanged="SearcherRule_TextChanged" />
+						<s:TreeView x:Name="QuestJournal_ProgressQuestList" s:Grid.Row="1" BorderThickness="0" 
+						 s:ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+						 s:VirtualizingStackPanel.IsVirtualizing="True" s:VirtualizingStackPanel.VirtualizationMode="Recycling">
+							<s:TreeView.ItemTemplate>
+								<s:DataTemplate DataType="{x:Type data:Quest}">
+									<s:Grid>
+										<s:Grid.ColumnDefinitions>
+											<s:ColumnDefinition Width="Auto" />
+											<s:ColumnDefinition Width="Auto" />
+											<s:ColumnDefinition />
+										</s:Grid.ColumnDefinitions>
+
+										<BnsCustomLabelWidget s:Grid.Column="0" Text="{Binding Path=Attributes[id]}" FontSize="12" Margin="-20 0 3 0" />
+										<BnsCustomImageWidget s:Grid.Column="1" BaseImageProperty="{Binding Path=FrontIcon}" Width="20" Height="20" VerticalAlignment="Top" />
+										<BnsCustomLabelWidget s:Grid.Column="2" Text="{Binding Path=Text}" FontSize="14">
+											<BnsCustomLabelWidget.Style>
+												<s:Style TargetType="BnsCustomLabelWidget">
+													<s:Style.Triggers>
+														<s:DataTrigger Binding="{Binding Path=Attributes[retired]}" Value="True">
+															<s:Setter Property="Foreground" Value="Red" />
+														</s:DataTrigger>
+													</s:Style.Triggers>
+												</s:Style>
+											</BnsCustomLabelWidget.Style>
+										</BnsCustomLabelWidget>
+									</s:Grid>
+								</s:DataTemplate>
+							</s:TreeView.ItemTemplate>
+						</s:TreeView>
+					</s:Grid>
+				</s:Border>
+
+				<!-- QuestInfo -->
+				<s:ScrollViewer s:Grid.Column="2">
+					<VerticalBox x:Name="QuestJournal_CurrentQuest_Info" Margin="10 0 0 0"
+						 Background="Transparent" ContextMenu="{s:StaticResource ItemMenu}"
+						 DataContext="{Binding Path=SelectedItem, ElementName=QuestJournal_ProgressQuestList}">
+						<BnsCustomLabelWidget Text="{Binding Title ,FallbackValue=Quest Information Title}" FontSize="17" Foreground= "Gray" />
+						<HorizontalBox>
+							<BnsCustomImageWidget BaseImageProperty="{Binding FrontIcon}" Width="20" Height="20" Margin="0 0 3 0"/>
+							<BnsCustomLabelWidget Text="{Binding Text}" FontSize="15" />
+						</HorizontalBox>
+
+						<BnsCustomLabelWidget x:Name="QuestJournal_Content" MetaData="textref=UI.QuestJournal.Info.Content">
+							<BnsCustomLabelWidget.Arguments>
+								<ArgumentBinding>
+									<Binding />
+									<Binding />
+								</ArgumentBinding>
+							</BnsCustomLabelWidget.Arguments>
+						</BnsCustomLabelWidget>
+						<BnsCustomLabelWidget x:Name="QuestJournal_Mission" MetaData="textref=UI.QuestJournal.Info.Mission" />
+
+						<s:ItemsControl ItemsSource="{Binding MissionStep}">
+							<s:ItemsControl.ItemTemplate>
+								<s:DataTemplate>
+									<VerticalBox>
+										<BnsCustomLabelWidget MetaData="textref=UI.QuestJournal.Info.Step">
+											<BnsCustomLabelWidget.Arguments>
+												<ArgumentBinding>
+													<Binding />
+													<Binding />
+													<Binding />
+												</ArgumentBinding>
+											</BnsCustomLabelWidget.Arguments>
+										</BnsCustomLabelWidget>
+
+										<s:ItemsControl ItemsSource="{Binding Mission}">
+											<s:ItemsControl.ItemTemplate>
+												<s:DataTemplate>
+													<VerticalBox>
+														<BnsCustomLabelWidget MetaData="textref=UI.QuestJournal.Info.ProgressMission.Register">
+															<BnsCustomLabelWidget.Arguments>
+																<ArgumentBinding>
+																	<Binding />
+																	<Binding />
+																</ArgumentBinding>
+															</BnsCustomLabelWidget.Arguments>
+														</BnsCustomLabelWidget>
+													</VerticalBox>
+												</s:DataTemplate>
+											</s:ItemsControl.ItemTemplate>
+										</s:ItemsControl>
+									</VerticalBox>
+								</s:DataTemplate>
+							</s:ItemsControl.ItemTemplate>
+						</s:ItemsControl>
+					</VerticalBox>
+				</s:ScrollViewer>
+			</s:Grid>
+		</s:TabItem>
+
+		<s:TabItem x:Name="QuestJournal_Tab_RadioButton_4" Header="入手书信" />
+
+		<s:TabItem x:Name="QuestJournal_Tab_RadioButton_2" Header="红尘往事" >
+			<s:Grid>
+				<s:Grid.ColumnDefinitions>
+					<s:ColumnDefinition Width="260" />
+					<s:ColumnDefinition Width="*" />
+				</s:Grid.ColumnDefinitions>
+
+				<s:TreeView x:Name="TreeView2" s:Grid.Column="0" ContextMenu="{s:StaticResource ExtractMenu}" SelectedItemChanged="CompletedTab_SelectedItemChanged">
+					<s:TreeView.Resources>
+						<s:DataTemplate DataType="{x:Type data:Quest}">
+							<BnsCustomLabelWidget Text="{Binding Text}" />
+						</s:DataTemplate>
+					</s:TreeView.Resources>
+				</s:TreeView>
+
+				<s:ScrollViewer s:Grid.Column="1" Margin="10">
+					<BnsCustomLabelWidget x:Name="TextBlock2" FontSize="15" />
+				</s:ScrollViewer>
+			</s:Grid>
+		</s:TabItem>
+
+		<s:TabItem x:Name="QuestJournal_Tab_RadioButton_3" Header="完成任务" Visibility="Hidden" />
+	</s:TabControl>
+</GameWindow>

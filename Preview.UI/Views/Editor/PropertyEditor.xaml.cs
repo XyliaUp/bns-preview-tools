@@ -1,10 +1,10 @@
 ﻿using System.Windows;
 using Xylia.Preview.Common.Extension;
 using Xylia.Preview.Data.Models;
-using Xylia.Preview.UI.Interactivity;
+using Xylia.Preview.UI.Common.Interactivity;
 
 namespace Xylia.Preview.UI.Views.Editor;
-public partial class PropertyEditor 
+public partial class PropertyEditor
 {
 	public PropertyEditor()
 	{
@@ -20,7 +20,7 @@ public partial class PropertyEditor
 
 	private void ViewSource_Click(object sender, RoutedEventArgs e)
 	{
-		if(Source.HasChildren) new PreviewRaw().Execute(Source, true);
+		if (Source.HasChildren) new PreviewRaw().Execute(Source, true);
 		else Clipboard.SetText(Source.Data.ToHex());
 	}
 	#endregion

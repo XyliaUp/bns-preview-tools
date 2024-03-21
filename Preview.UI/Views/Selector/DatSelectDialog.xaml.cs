@@ -3,22 +3,29 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Threading;
-
 using Xylia.Preview.Data.Engine.DatData;
 
 namespace Xylia.Preview.UI.Views.Selector;
 public partial class DatSelectDialog : Window, IDatSelect
 {
 	#region Constructor
-	private IEnumerable<FileInfo> list_xml;
-	private IEnumerable<FileInfo> list_local;
+	private IEnumerable<FileInfo>? list_xml;
+	private IEnumerable<FileInfo>? list_local;
 
-	public string XML_Select;
-	public string Local_Select;
+	public string? XML_Select;
+	public string? Local_Select;
 
 	public DatSelectDialog()
 	{
 		InitializeComponent();
+
+		CountDown = new DispatcherTimer();
+		CountDown.Interval = new TimeSpan(0, 0, 1);
+		CountDown.Tick += CountDown_Tick;
+
+		NoResponse = new DispatcherTimer();
+		NoResponse.Interval = new TimeSpan(0, 0, 1);
+		NoResponse.Tick += NoResponse_Tick;
 	}
 	#endregion
 
@@ -32,22 +39,10 @@ public partial class DatSelectDialog : Window, IDatSelect
 	private void Window_Loaded(object sender, RoutedEventArgs e)
 	{
 		RefreshList();
-
-		CountDown = new DispatcherTimer();
-		CountDown.Interval = new TimeSpan(0, 0, 1);
-		CountDown.Tick += Timer_Tick;
-		CountDown.IsEnabled = true;
-
-		NoResponse = new DispatcherTimer();
-		NoResponse.Interval = new TimeSpan(0, 0, 1);
-		NoResponse.Tick += NoResponse_Tick;
-		NoResponse.IsEnabled = true;
-
-
-
 		StartCountDown();
+
 		LastActTime = DateTime.Now;
-		this.NoResponse.IsEnabled = true;
+		NoResponse.IsEnabled = true;
 	}
 
 
@@ -94,36 +89,20 @@ public partial class DatSelectDialog : Window, IDatSelect
 	#endregion
 
 	#region CountDown
-	private DispatcherTimer CountDown;
-	private DispatcherTimer NoResponse;
+	private readonly DispatcherTimer CountDown;
+	private readonly DispatcherTimer NoResponse;
 
-
-	/// <summary>
-	/// 最后活动时间
-	/// </summary>
+	DateTime StartTime = DateTime.Now;
 	DateTime LastActTime = DateTime.Now;
 
-	/// <summary>
-	/// 倒计时启动时间
-	/// </summary>
-	DateTime dt = DateTime.Now;
-
-	/// <summary>
-	/// 倒计时总秒数
-	/// </summary>
 	const int CountDownSec = 10;
-
-	/// <summary>
-	/// 无响应上限时长
-	/// </summary>
 	const int NoResponseSec = 15;
-
 
 	private void StartCountDown()
 	{
 		TimeInfo.Text = null;
+		StartTime = DateTime.Now;
 
-		dt = DateTime.Now;
 		this.CountDown.IsEnabled = true;
 		this.TimeInfo.Visibility = Visibility.Visible;
 	}
@@ -134,22 +113,22 @@ public partial class DatSelectDialog : Window, IDatSelect
 		this.TimeInfo.Visibility = Visibility.Hidden;
 	}
 
-	private void NoResponse_Tick(object sender, EventArgs e)
+	private void CountDown_Tick(object? sender, EventArgs e)
 	{
-		int CurNoResponseSec = (int)DateTime.Now.Subtract(LastActTime).TotalSeconds;
+		var RemainSec = CountDownSec - (int)DateTime.Now.Subtract(StartTime).TotalSeconds;
+		TimeInfo.Text = StringHelper.Get("DatSelector_CountDown", RemainSec);
+
+		if (RemainSec <= 0) Btn_Confirm_Click(null, null);
+	}
+
+	private void NoResponse_Tick(object? sender, EventArgs e)
+	{
+		var CurNoResponseSec = (int)DateTime.Now.Subtract(LastActTime).TotalSeconds;
 		if (CurNoResponseSec >= NoResponseSec)
 		{
 			StartCountDown();
 			LastActTime = DateTime.Now;
 		}
-	}
-
-	private void Timer_Tick(object sender, EventArgs e)
-	{
-		int RemainSec = CountDownSec - (int)DateTime.Now.Subtract(dt).TotalSeconds;
-		TimeInfo.Text = StringHelper.Get("DatSelector_CountDown", RemainSec);
-
-		if (RemainSec <= 0) Btn_Confirm_Click(null, null);
 	}
 	#endregion
 
@@ -166,11 +145,7 @@ public partial class DatSelectDialog : Window, IDatSelect
 			};
 			if (dialog.ShowDialog() != true) throw new OperationCanceledException();
 
-			return new DefaultProvider()
-			{
-				XmlData = new FileInfo(dialog.XML_Select),
-				LocalData = new FileInfo(dialog.Local_Select),
-			};
+			return new DefaultProvider(new FileInfo(dialog.XML_Select), new FileInfo(dialog.Local_Select));
 		});
 	}
 	#endregion

@@ -27,7 +27,7 @@ public class FAssetRegistryState
 		PreallocatedAssetDataBuffers = Ar.ReadArray(() =>
 		{
 			var asset = new Objects.FAssetData(Ar);
-			ObjectRef[asset.ObjectPath2] = asset.ObjectPath.Text;
+			ObjectRef[asset.ObjectPath2] = asset.ObjectPath;
 
 			return asset;
 		});

@@ -38,30 +38,18 @@ public class AttributeConverter
 			case AttributeType.TProp_seq:
 			{
 				var idx = record.Get<sbyte>(attribute.Offset);
-				if (idx >= 0 && idx < attribute.Sequence.Count)
-				{
-					return attribute.Sequence[idx];
-				}
-				else
-				{
-					if (!_noValidate) throw new Exception("Invalid sequence index");
-					return idx.ToString();
-				}
+				if (idx >= 0 && attribute.Sequence != null && idx < attribute.Sequence.Count) return attribute.Sequence[idx];
+				else if (!_noValidate) throw new Exception("Invalid sequence index");
+				else return idx.ToString();
 			}
 
 			case AttributeType.TSeq16:
 			case AttributeType.TProp_field:
 			{
 				var idx = record.Get<short>(attribute.Offset);
-				if (idx >= 0 && idx < attribute.Sequence.Count)
-				{
-					return attribute.Sequence[idx];
-				}
-				else
-				{
-					if (!_noValidate) throw new Exception("Invalid sequence index");
-					return idx.ToString();
-				}
+				if (idx >= 0 && attribute.Sequence != null && idx < attribute.Sequence.Count) return attribute.Sequence[idx];
+				else if (!_noValidate) throw new Exception("Invalid sequence index");
+				else return idx.ToString();
 			}
 
 			case AttributeType.TRef: return provider.Tables.GetRef(attribute.ReferedTable, record.Get<Ref>(attribute.Offset));
@@ -122,15 +110,15 @@ public class AttributeConverter
 		AttributeType.TSeq => value,
 		AttributeType.TSeq16 => value,
 		AttributeType.TRef => provider.Tables.GetRecord(attribute.ReferedTableName, value),
-		AttributeType.TTRef => provider.Tables.GetRecord(value),
+		AttributeType.TTRef => value,
 		AttributeType.TSub => value,
 		AttributeType.TSu => value,
 		AttributeType.TVector16 => Vector16.Parse(value),
 		AttributeType.TVector32 => Vector32.Parse(value),
 		AttributeType.TIColor => IColor.Parse(value),
-		//case AttributeType.TFColor: return FColor.Parse(value);
+		AttributeType.TFColor => FColor.Parse(value),
 		AttributeType.TBox => Box.Parse(value),
-		//case AttributeType.TAngle: return Angle.Parse(value);
+		AttributeType.TAngle => Angle.Parse(value),
 		AttributeType.TMsec => (Msec)int.Parse(value),
 		AttributeType.TDistance => (Distance)short.Parse(value),
 		AttributeType.TVelocity => (Velocity)ushort.Parse(value),
@@ -140,9 +128,9 @@ public class AttributeConverter
 		AttributeType.TNative => value,
 		AttributeType.TVersion => new Version(value),
 		AttributeType.TIcon => value,
-		//AttributeType.TTime32 => value,
+		AttributeType.TTime32 => Time32.Parse(value),
 		AttributeType.TTime64 => Time64.Parse(value),
-		AttributeType.TXUnknown1 => Time64.Parse(value),     //	((DateTime)value).Truncate();
+		AttributeType.TXUnknown1 => Time64.Parse(value),
 		AttributeType.TXUnknown2 => new ObjectPath(value),
 		_ => throw new Exception($"Unhandled type name: '{attribute.Type}'"),
 	};
@@ -167,12 +155,13 @@ public class AttributeConverter
 		[typeof(Vector16)] = AttributeType.TVector16,
 		[typeof(Vector32)] = AttributeType.TVector32,
 		[typeof(IColor)] = AttributeType.TIColor,
-		//[typeof(FColor)] = AttributeType.TFColor,
+		[typeof(FColor)] = AttributeType.TFColor,
 		[typeof(Box)] = AttributeType.TBox,
+		[typeof(Angle)] = AttributeType.TAngle,
 		[typeof(Msec)] = AttributeType.TMsec,
 		[typeof(Distance)] = AttributeType.TDistance,
-		[typeof(Velocity)] = AttributeType.TVelocity,
 		[typeof(Distance)] = AttributeType.TDistance,
+		[typeof(Velocity)] = AttributeType.TVelocity,
 
 		[typeof(Script_obj)] = AttributeType.TScript_obj,
 		[typeof(BnsVersion)] = AttributeType.TVersion,
@@ -193,6 +182,7 @@ public class AttributeConverter
 		else if (type == typeof(bool))
 		{
 			if (value is BnsBoolean b) return (bool)b;
+			if (value is string s) return s.ToBool();
 		}
 		else if (type == typeof(string)) return value.ToString();
 		else if (type.IsEnum) return value.ToString().TryParseToEnum(type, out var seq) ? seq : default;

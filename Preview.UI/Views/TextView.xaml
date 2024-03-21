@@ -1,19 +1,22 @@
 ﻿<Window x:Class="Xylia.Preview.UI.Views.TextView"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+		xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+		xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d"
 		xmlns:avalonEdit="http://icsharpcode.net/sharpdevelop/avalonedit"
 		xmlns:hc="https://handyorg.github.io/handycontrol"
 	    xmlns:UI="https://github.com/xyliaup/bns-preview-tools"
 		xmlns:VM="clr-namespace:Xylia.Preview.UI.ViewModels"
-        Title="{DynamicResource TextView}" Icon="{x:Null}" Height="450" Width="800" 
-		Loaded="Window_Loaded">
+        Title="{DynamicResource TextView_Name}" Icon="{x:Null}" Background="{DynamicResource RegionBrush}" 
+		Height="450" Width="800" Loaded="Window_Loaded">
 	<Window.Resources>
+		<!-- SearchPanel -->
 		<Style TargetType="avalonEdit:SearchPanel">
 			<Setter Property="Template">
 				<Setter.Value>
 					<ControlTemplate TargetType="{x:Type avalonEdit:SearchPanel}">
-						<Border Background="{DynamicResource {x:Static SystemColors.WindowBrushKey}}" BorderBrush="{DynamicResource {x:Static SystemColors.WindowTextBrushKey}}" BorderThickness="0.6" 
-									HorizontalAlignment="Right" VerticalAlignment="Top" Cursor="Arrow" Height="Auto">
+						<Border Background="{DynamicResource SecondaryRegionBrush}" BorderBrush="{DynamicResource BorderBrush}" 
+								BorderThickness="1" HorizontalAlignment="Right" VerticalAlignment="Top" Cursor="Arrow" Height="Auto">
 							<Border.Resources>
 								<Style TargetType="Button" BasedOn="{StaticResource TransparentButton}">
 									<Setter Property="FontFamily" Value="{DynamicResource SegoeAssets}" />
@@ -31,7 +34,17 @@
 								</Style>
 							</Border.Resources>
 
-							<StackPanel>
+							<Grid>
+								<Grid.RowDefinitions>
+									<RowDefinition Height="Auto" />
+									<RowDefinition Height="Auto" />
+									<RowDefinition Height="Auto" />
+								</Grid.RowDefinitions>
+								<Grid.ColumnDefinitions>
+									<ColumnDefinition Width="Auto" />
+								</Grid.ColumnDefinitions>
+
+								<!-- Searcher -->
 								<StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
 									<ToggleButton Style="{StaticResource TransparentToggleButton}" Visibility="Collapsed" >
 										<Path Data="{StaticResource RightGeometry}" Fill="{DynamicResource PrimaryBrush}" Width="20" Height="20" Stretch="Uniform"/>
@@ -61,24 +74,23 @@
 										</Grid>
 									</Border>
 
-
 									<Button Content="&#xF0AD;" Command="avalonEdit:SearchCommands.FindPrevious" ToolTip="{Binding Localization.FindPreviousText, RelativeSource={RelativeSource TemplatedParent}}"/>
 									<Button Content="&#xF0AE;" Command="avalonEdit:SearchCommands.FindNext" ToolTip="{Binding Localization.FindNextText, RelativeSource={RelativeSource TemplatedParent}}"/>
 									<Button Content="&#xEDAE;" Command="avalonEdit:SearchCommands.CloseSearchPanel" ToolTip="Close" Focusable="False"/>
 								</StackPanel>
 
-								<StackPanel Grid.Row="2" Margin="5">
-									<UI:BnsCustomLabelWidget Text="{Binding Tag.alias ,Mode=OneWay}" FontWeight="Bold" Margin="0 0 0 5"/>
+								<!-- Preview -->
+								<StackPanel Grid.Row="1" Margin="5">
+									<UI:BnsCustomLabelWidget Text="{Binding Tag.alias,Mode=OneWay}" FontWeight="Bold" Margin="0 0 0 5"/>
 									<UI:BnsCustomLabelWidget Text="{Binding Tag.text ,Mode=OneWay}" />
 								</StackPanel>
-							</StackPanel>
+							</Grid>
 						</Border>
 					</ControlTemplate>
 				</Setter.Value>
 			</Setter>
 		</Style>
 	</Window.Resources>
-	
 
 	<Grid>
 		<Grid.RowDefinitions>
@@ -93,53 +105,59 @@
 		</Grid.ColumnDefinitions>
 
 		<!-- Menu -->
-		<Menu Background="#20808080" FontSize="14" Grid.ColumnSpan="2" Visibility="Visible">
-			<MenuItem Header="{DynamicResource Text_File}">
+		<Menu Background="{DynamicResource BorderBrush}" FontSize="14" Grid.ColumnSpan="2" Visibility="Visible">
+			<MenuItem d:Header="File" Header="{DynamicResource Text_File}">
 				<MenuItem Header="{DynamicResource Text_Left}"  Click="OpenLeftFileMenuItem_Click" />
 				<MenuItem Header="{DynamicResource Text_Right}" Click="OpenRightFileMenuItem_Click" />
 				<MenuItem Header="{DynamicResource TextView_LoadLastOnStartup}" IsCheckable="True" IsChecked="{Binding Text_LoadPrevious, Source={x:Static VM:UserSettings.Default}}"/>
 				<Separator />
-				<MenuItem Header="{DynamicResource Text_SaveAs}" Command="ApplicationCommands.SaveAs" />
+				<MenuItem Header="{DynamicResource Text_SaveAs}" Command="ApplicationCommands.SaveAs" d:Header="SaveAs" />
 			</MenuItem>
-			<MenuItem Header="{DynamicResource Text_Edit}">
+
+			<MenuItem d:Header="Edit" Header="{DynamicResource Text_Edit}">
 				<MenuItem Header="{DynamicResource Text_Search}" Command="ApplicationCommands.Find" />
 				<Separator />
 				<MenuItem Header="{DynamicResource Text_ReplaceInFiles}" Command="ApplicationCommands.Replace" />
 				<MenuItem Header="{DynamicResource Text_Save}" Command="ApplicationCommands.Save" />
 			</MenuItem>
 
-			<MenuItem Header="Mode" Visibility="Collapsed">
-				<MenuItem Header="Inline Mode" Click="InlineModeToggle_Click" />
-				<MenuItem Header="SideBySide Mode" Click="SideBySideModeToggle_Click" />
-				<MenuItem Header="Collapse Unchanged" Click="CollapseUnchangedSectionsToggle_Click" />
+			<MenuItem d:Header="Options" Header="{DynamicResource Text_Options}">
+				<!-- load data when preview -->
+				<MenuItem Header="{DynamicResource TextView_LoadData}" ToolTip="{DynamicResource TextView_LoadData_Tooltip}" 
+					IsCheckable="True" IsChecked="{Binding PreviewLoadData, Source={x:Static VM:UserSettings.Default}}"/>
+
+				<MenuItem Header="Mode" Visibility="Collapsed">
+					<MenuItem Header="Inline Mode" Click="InlineModeToggle_Click" />
+					<MenuItem Header="SideBySide Mode" Click="SideBySideModeToggle_Click" />
+					<MenuItem Header="Collapse Unchanged" Click="CollapseUnchangedSectionsToggle_Click" />
+				</MenuItem>
 			</MenuItem>
 		</Menu>
 
 		<!-- Content -->
-		<TextBlock x:Name="InlineHeaderText" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1" Grid.ColumnSpan="2" Text="HeaderText" Margin="2"/>
+		<TextBlock x:Name="InlineHeaderText" Foreground="{DynamicResource SecondaryTextBrush}" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1" Grid.ColumnSpan="2" Text="HeaderText" Margin="2" />
 		<avalonEdit:TextEditor Name="Editor" Margin="7 0 0 0" Grid.ColumnSpan="2" Grid.Row="2"
-			FontFamily="Consolas" FontSize="14" SyntaxHighlighting="XML"
-			ShowLineNumbers="True" LineNumbersForeground="#FF2B91AF" 
-			WordWrap="False" IsReadOnly="{Binding Path=IsChecked,ElementName=ReadStatus,Converter={StaticResource Boolean2BooleanReConverter}}" Cursor="">
+			FontFamily="Consolas" FontSize="14" SyntaxHighlighting="XML" 
+			ShowLineNumbers="True" LineNumbersForeground="#FF2B91AF" WordWrap="False"  
+			IsReadOnly="{Binding Path=IsChecked,ElementName=ReadStatus,Converter={StaticResource Boolean2BooleanReConverter}}" Cursor="">
 			<avalonEdit:TextEditor.Options>
 				<avalonEdit:TextEditorOptions HighlightCurrentLine="True" />
 			</avalonEdit:TextEditor.Options>
 		</avalonEdit:TextEditor>
 		<StackPanel HorizontalAlignment="Right" Grid.Row="2" Grid.ColumnSpan="2" Panel.ZIndex="99" Margin="0 -20 0 0" hc:Growl.Token="TextView" />
 
-		
+
 		<!-- Status -->
-		<Border Grid.Row="3" Grid.ColumnSpan="2" BorderBrush="{DynamicResource {x:Static SystemColors.MenuBrushKey}}" BorderThickness="1.5">
+		<Border Grid.Row="3" Grid.ColumnSpan="2" BorderBrush="{DynamicResource BorderBrush}" BorderThickness="1.5">
 			<Grid Background="{DynamicResource RegionBrush}">
 				<Grid.Resources>
 					<Style TargetType="ToggleButton" BasedOn="{StaticResource TransparentToggleButton}">
 						<Setter Property="FontSize" Value="13" />
 					</Style>
 				</Grid.Resources>
-				
 
 				<hc:UniformSpacingPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center" Spacing="15" Margin="0 0 10 0" >
-					<ToggleButton>
+					<ToggleButton Foreground="{DynamicResource PrimaryTextBrush}" >
 						<TextBlock >
 							<Run Text="{DynamicResource Text_LineNumber}" />
 							<Run Name="LineNumber" Text="1" />
@@ -147,7 +165,7 @@
 							<Run Name="ColumnNumber" Text="1" />
 						</TextBlock>
 					</ToggleButton>
-					<ToggleButton x:Name="ReadStatus" Command="hc:ControlCommands.Switch" ToolTip="{DynamicResource TextView_ReadStatus}"
+					<ToggleButton x:Name="ReadStatus" Foreground="{DynamicResource PrimaryTextBrush}" Command="hc:ControlCommands.Switch" ToolTip="{DynamicResource TextView_ReadStatus}"
 						ToolTipService.Placement="Top" ToolTipService.ShowOnDisabled="True" ToolTipService.HorizontalOffset="-120">
 						<StackPanel>
 							<TextBlock Text="{DynamicResource TextView_ReadWrite}" Visibility="{Binding IsChecked,ElementName=ReadStatus,Converter={StaticResource Boolean2VisibilityConverter}}"/>

@@ -1,8 +1,7 @@
-﻿using Xylia.Preview.Common.Attributes;
-
-namespace Xylia.Preview.Data.Models;
+﻿namespace Xylia.Preview.Data.Models;
 public class UnlocatedStore : ModelElement
 {
+	#region Attributes
 	public Ref<Store2> Store2 { get; set; }
 
 	public bool NoMoreUse { get; set; }
@@ -21,4 +20,5 @@ public class UnlocatedStore : ModelElement
 		SoulBoostStore5,
 		SoulBoostStore6,
 	}
+	#endregion
 }

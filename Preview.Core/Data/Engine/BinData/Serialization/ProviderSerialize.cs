@@ -2,9 +2,8 @@
 using System.Text.RegularExpressions;
 using System.Xml;
 using CUE4Parse.Utils;
-
 using K4os.Hash.xxHash;
-
+using Serilog;
 using Xylia.Preview.Common.Extension;
 using Xylia.Preview.Data.Engine.BinData.Models;
 using Xylia.Preview.Data.Engine.DatData;
@@ -27,10 +26,18 @@ public class ProviderSerialize(IDataProvider Provider)
 
 		Parallel.ForEach(tables, table =>
 		{
-			var hash = table.WriteXml(folder);
-			hash.ForEach(x => hashes.Add(x));
+			try
+			{
+				var hash = table.WriteXml(folder);
+				hash.ForEach(x => hashes.Add(x));
 
-			progress(++current, tables.Length);
+				progress(++current, tables.Length);
+			}
+			catch(Exception ex)
+			{
+				++current;
+				Log.Error($"output failed, table: `{table.Name}` error: {ex.Message}");
+			}
 		});
 
 		// save hashes

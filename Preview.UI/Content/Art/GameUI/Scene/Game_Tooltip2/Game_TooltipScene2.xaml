@@ -1,8 +1,35 @@
 ﻿<BnsCustomUISceneWidget
 	xmlns="https://github.com/xyliaup/bns-preview-tools"
-	xmlns:s="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 	xmlns:l="clr-namespace:Xylia.Preview.UI.GameUI.Scene.Game_Tooltip2"
 	x:Class="Xylia.Preview.UI.GameUI.Scene.Game_Tooltip2.Game_TooltipScene2">
 
+	<l:ItemGraphReceipeTooltipPanel x:Name="ItemGraphReceipeTooltipPanel_C" />
+	<l:ItemGraphVariationToolTipPanel x:Name="ItemGraphVariationToolTipPanel_C" />
+	<BnsCustomWindowWidget x:Name="DamageMeterToolTipPanel_C" />
+	<BnsCustomWindowWidget x:Name="DamageMeterRiposteToolTipPanel_C" />
+	<BnsCustomWindowWidget x:Name="ItemGrowthAwakenTooltipPanel_C" />
+	<BnsCustomWindowWidget x:Name="ItemTransformResultTooltipPanel_C" />
+	<BnsCustomWindowWidget x:Name="GuildBankInfoTooltipPanel_C" />
+	<BnsCustomWindowWidget x:Name="RewardInfoTooltipPanel_C" />
+	<BnsCustomWindowWidget x:Name="MetarialDiscountListToolTipPanel_C" />
+	<BnsCustomWindowWidget x:Name="HugeBossToolTipPanel_C" />
+	<BnsCustomWindowWidget x:Name="HugeBossContributionTooltipPanel_C" />
+	<BnsCustomWindowWidget x:Name="SimpleControlTooltipPanel_C" />
+	<BnsCustomWindowWidget x:Name="SkillSkinApplyConditionTooltipPanel_C" />
+	<BnsCustomWindowWidget x:Name="SimpleControlInfoTooltipPanel_C" />
+	<BnsCustomWindowWidget x:Name="DuelChampionshipTooltipPanel_C" />
+	<BnsCustomWindowWidget x:Name="ExtremRankingPartyTooltipPanel_C" />
+	<BnsCustomWindowWidget x:Name="SkillBookDescriptionToolTipPanel_C" />
+	<BnsCustomWindowWidget x:Name="Weapone_ImproveToolTipPanel_C" />
+	<BnsCustomWindowWidget x:Name="AdditionalRewardTooltipPanel_C" />
+	<BnsCustomWindowWidget x:Name="AdditionalRewardItemToolTipPanel_C" />
+	<BnsCustomWindowWidget x:Name="MuseumCardTooltipPanel_C" />
+	<BnsCustomWindowWidget x:Name="GlyphInventoryTooltipPanel_C" />
+	<BnsCustomWindowWidget x:Name="GlyphSlotOpenTooltipPanel_C" />
+	<BnsCustomWindowWidget x:Name="SealedDungeonExpToolTipPanel_C" />
+	<BnsCustomWindowWidget x:Name="SoulBoostTooltipPanel_C" />
+	<BnsCustomWindowWidget x:Name="RelicsTooltipPanel_C" />
+	<BnsCustomWindowWidget x:Name="RelicsLimitTooltipPanel_C" />
+	<BnsCustomWindowWidget x:Name="RelicsUnlockTooltipPanel_C" />
 </BnsCustomUISceneWidget>

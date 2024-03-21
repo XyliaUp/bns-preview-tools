@@ -7,7 +7,7 @@ public class TableDefinition : TableHeader
 	/// <summary>
 	/// element definitions
 	/// </summary>
-	public List<ElementDefinition> Els { get; internal set; } = new();
+	public List<ElementDefinition> Els { get; internal set; } = [];
 
 	/// <summary>
 	/// root element

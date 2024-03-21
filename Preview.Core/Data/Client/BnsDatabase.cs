@@ -1,5 +1,4 @@
 ﻿using CUE4Parse.UE4.Pak;
-using Xylia.Preview.Data.Engine.BinData.Models;
 using Xylia.Preview.Data.Engine.DatData;
 using Xylia.Preview.Data.Engine.Definitions;
 using Xylia.Preview.Data.Models;
@@ -8,74 +7,50 @@ using Xylia.Preview.Properties;
 namespace Xylia.Preview.Data.Client;
 public class BnsDatabase : IEngine, IDisposable
 {
-	#region Ctor
-	public IDataProvider Provider { get; protected set; }
-
-	/// <summary>
-	/// starts database
-	/// </summary>
+	#region Constructorss
 	public BnsDatabase(IDataProvider provider = null)
 	{
-		Provider = provider ?? DefaultProvider.Load(Settings.Default.GameFolder);
-		ArgumentNullException.ThrowIfNull(Provider);
-
-		#region Definition
-		IPlatformFilePak.DoSignatureCheck();
-
-		var definitions = TableDefinitionHelper.LoadDefinition();
-		Provider.LoadData(definitions);
-		definitions.CreateMap();
-
-		// Bind definitions to tables
-		foreach (var table in Provider.Tables)
-		{
-			table.Owner = Provider;
-
-			if (table.Type == 0)
-			{
-				// represents from xml
-				ArgumentException.ThrowIfNullOrEmpty(table.Name);
-				table.Definition = definitions[table.Name];
-				table.Type = table.Definition.Type;
-			}
-			else
-			{
-				table.Definition = definitions[table.Type];
-			}
-		}
-		#endregion
+		_provider = provider ?? DefaultProvider.Load(Settings.Default.GameFolder);
+		ArgumentNullException.ThrowIfNull(_provider);
 	}
 	#endregion
 
-
-	#region Model Collections
-	readonly Dictionary<Table, object> _tables = new();
-
-	public GameDataTable<T> Get<T>(string name = null, bool reload = false) where T : ModelElement => Get<T>(Provider.Tables[name ?? typeof(T).Name], reload);
-
-	public GameDataTable<T> Get<T>(Table table, bool reload) where T : ModelElement
+	#region Database
+	public void Initialize()
 	{
-		if (table is null) return null;
-
-		lock (_tables)
+		lock (this)
 		{
-			if (reload || !_tables.TryGetValue(table, out var Models))
-				_tables[table] = Models = new GameDataTable<T>(table);
+			if (IsInitialized) return;
 
-			return Models as GameDataTable<T>;
+			IPlatformFilePak.DoSignatureCheck();
+
+			var definitions = TableDefinitionHelper.LoadDefinition();
+			_provider.LoadData(definitions);
+			definitions.CreateMap();
+
+			// Bind definitions to tables
+			foreach (var table in _provider.Tables)
+			{
+				table.Owner = _provider;
+
+				if (table.Type == 0)
+				{
+					// represents from xml
+					ArgumentException.ThrowIfNullOrEmpty(table.Name);
+					table.Definition = definitions[table.Name];
+					table.Type = table.Definition.Type;
+				}
+				else
+				{
+					table.Definition = definitions[table.Type];
+				}
+			}
+
+			IsInitialized = true;
 		}
 	}
 
 
-	public GameDataTable<IconTexture> IconTexture => Get<IconTexture>();
-	public GameDataTable<Item> Item => Get<Item>();
-	public GameDataTable<Text> Text => Get<Text>();
-	#endregion
-
-	#region Execute
-	/// <summary>
-	/// Execute SQL commands and return as data reader
-	/// </summary>
 	public IDataReader Execute(string command, AttributeDocument parameters = null)
 	{
 		ArgumentNullException.ThrowIfNull(command);
@@ -87,9 +62,6 @@ public class BnsDatabase : IEngine, IDisposable
 		return reader;
 	}
 
-	/// <summary>
-	/// Execute SQL commands and return as data reader
-	/// </summary>
 	public IDataReader Execute(string command, params AttributeValue[] args)
 	{
 		var p = new AttributeDocument();
@@ -103,8 +75,6 @@ public class BnsDatabase : IEngine, IDisposable
 
 		return this.Execute(command, p);
 	}
-
-
 
 	public bool Commit()
 	{
@@ -172,12 +142,30 @@ public class BnsDatabase : IEngine, IDisposable
 	#endregion
 
 
+	#region Interface
 	public void Dispose()
 	{
-		Provider.Dispose();
-		Provider = null;
+		_provider.Dispose();
+		_provider = null;
 
 		GC.SuppressFinalize(this);
 		GC.Collect();
 	}
+	#endregion
+
+	#region Data
+	public bool IsInitialized { get; private set; }
+
+	private IDataProvider _provider;
+
+	public IDataProvider Provider
+	{
+		protected set => _provider = value;
+		get
+		{
+			Initialize();
+			return _provider;
+		}
+	}
+	#endregion
 }

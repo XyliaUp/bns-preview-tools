@@ -30,8 +30,13 @@ public class DatafileDefinition : Collection<TableDefinition>
 	#endregion
 }
 
+/// <summary>
+/// Defines methods to support the comparison of camel hump naming convention
+/// </summary>
 internal sealed class TableNameComparer : IEqualityComparer<string>
 {
+	public static TableNameComparer Instance => new();
+
 	public bool Equals(string x, string y)
 	{
 		return string.Equals(

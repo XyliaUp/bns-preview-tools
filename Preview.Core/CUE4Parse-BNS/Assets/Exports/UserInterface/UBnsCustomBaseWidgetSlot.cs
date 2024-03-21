@@ -1,4 +1,5 @@
-﻿using CUE4Parse.UE4.Assets.Exports;
+﻿using CUE4Parse.UE4;
+using CUE4Parse.UE4.Assets.Exports;
 using CUE4Parse.UE4.Assets.Utils;
 using CUE4Parse.UE4.Objects.Core.Math;
 using CUE4Parse.UE4.Objects.UObject;
@@ -16,20 +17,19 @@ public class UBnsCustomBaseWidgetSlot : USerializeObject
 	public FPackageIndex Content;
 }
 
-
 [StructFallback]
-public struct FLayoutData
+public struct FLayoutData : IUStruct
 {
 	[UPROPERTY]
 	public Offset Offsets;
 	[UPROPERTY]
 	public Anchor Anchors;
 	[UPROPERTY]
-	public Alignment Alignments;
+	public FVector2D Alignments;
 
 
 	[StructFallback]
-	public struct Offset
+	public struct Offset : IUStruct
 	{
 		public float Left;
 		public float Top;
@@ -40,20 +40,11 @@ public struct FLayoutData
 	}
 
 	[StructFallback]
-	public struct Anchor
+	public struct Anchor : IUStruct
 	{
 		public FVector2D Minimum;
 		public FVector2D Maximum;
 
 		public override string ToString() => $"{Minimum.X} {Minimum.Y} {Maximum.X} {Maximum.Y}";
-	}
-
-	[StructFallback]
-	public struct Alignment
-	{
-		public float X;
-		public float Y;
-
-		public override string ToString() => $"{X} {Y}";
 	}
 }

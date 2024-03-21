@@ -2,11 +2,12 @@
 using HandyControl.Properties.Langs;
 using Xylia.Preview.Data.Engine.Definitions;
 using Xylia.Preview.UI.Common.Controls.AttributeGrid.Editor;
+using Xylia.Preview.UI.Services;
 
 namespace Xylia.Preview.UI.Controls;
-public class AttributeResolver
+internal class AttributeResolver
 {
-	public string ResolveCategory(AttributeDefinition attribute)
+	public virtual string ResolveCategory(AttributeDefinition attribute)
 	{
 		//var categoryAttribute = propertyDescriptor.Attributes.OfType<CategoryAttribute>().FirstOrDefault();
 
@@ -19,15 +20,17 @@ public class AttributeResolver
 		return Lang.Miscellaneous;
 	}
 
-	public string ResolveDisplayName(AttributeDefinition attribute) => attribute.Name;
+	public virtual bool ResolveIsBrowsable(AttributeDefinition attribute) => !attribute.IsDeprecated && attribute.CanInput;  // should use IsHidden
 
-	public string ResolveDescription(AttributeDefinition attribute) => $"{attribute.Type}";
+	public virtual bool ResolveIsReadOnly(AttributeDefinition attribute) => UserService.Instance.Role < UserRole.Advanced;
 
-	public bool ResolveIsBrowsable(AttributeDefinition attribute) => !attribute.IsDeprecated && attribute.CanInput;  // should use IsHidden
+	public virtual object ResolveDefaultValue(AttributeDefinition attribute) => attribute.DefaultValue;
 
-	public object ResolveDefaultValue(AttributeDefinition attribute) => attribute.DefaultValue;
+	public virtual string ResolveDisplayName(AttributeDefinition attribute) => attribute.Name;
 
-	public PropertyEditorBase ResolveEditor(AttributeDefinition attribute) => attribute.Type switch
+	public virtual string ResolveDescription(AttributeDefinition attribute) => $"{attribute.Type}";
+
+	public virtual PropertyEditorBase ResolveEditor(AttributeDefinition attribute) => attribute.Type switch
 	{
 		AttributeType.TInt8 => new NumberAttributeEditor(attribute),
 		AttributeType.TInt16 => new NumberAttributeEditor(attribute),

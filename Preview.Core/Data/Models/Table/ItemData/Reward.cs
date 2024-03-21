@@ -12,7 +12,6 @@ public sealed class Reward : ModelElement
 	public Ref<Item>[] RandomItem { get; set; }
 	#endregion
 
-
 	#region Methods
 	protected internal override void LoadHiddenField()
 	{

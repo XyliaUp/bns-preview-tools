@@ -117,7 +117,7 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AbilityPage" xml:space="preserve">
+  <data name="Page_AbilityPage" xml:space="preserve">
     <value>キャラクターアビリティ</value>
   </data>
   <data name="AbilityPage_Level" xml:space="preserve">
@@ -186,13 +186,10 @@
   <data name="DatabaseStudio_ViewTable" xml:space="preserve">
     <value>確認</value>
   </data>
-  <data name="GameDirectory" xml:space="preserve">
-    <value>ゲームカタログ</value>
-  </data>
-  <data name="GameResourcePage" xml:space="preserve">
+  <data name="Page_GameResourcePage" xml:space="preserve">
     <value>リソース</value>
   </data>
-  <data name="Game_QuestJournalScene" xml:space="preserve">
+  <data name="Page_QuestJournalPanel" xml:space="preserve">
     <value>クエスト</value>
   </data>
   <data name="IconOut_CreateList" xml:space="preserve">
@@ -261,7 +258,7 @@
   <data name="ItemList_TaskCompleted2" xml:space="preserve">
     <value>タスクが完了しました。合計{1}秒かかります。</value>
   </data>
-  <data name="ItemPage" xml:space="preserve">
+  <data name="Page_ItemPage" xml:space="preserve">
     <value>物品</value>
   </data>
   <data name="MergeIcon_BackgroundMode" xml:space="preserve">
@@ -305,12 +302,6 @@
   </data>
   <data name="Name_General" xml:space="preserve">
     <value>汎用</value>
-  </data>
-  <data name="OutputDirectory" xml:space="preserve">
-    <value>出力フォルダ</value>
-  </data>
-  <data name="OutputDirectory_Resource" xml:space="preserve">
-    <value>出力ディレクトリ（リソース） </value>
   </data>
   <data name="PreviewModel" xml:space="preserve">
     <value>モデルを見る</value>
@@ -364,7 +355,7 @@
     <value>カスタム構成の有効化</value>
   </data>
   <data name="Settings_UseUserDefinition_Ask" xml:space="preserve">
-    <value>カスタム設定を有効にしてもよろしいですか？これにより、読み取り例外が発生する可能性があります。!</value>
+    <value>カスタム設定を有効にしてもよろしいですか？これにより、読み取り例外が発生する可能性があります。</value>
   </data>
   <data name="Settings_UseUserDefinition_Tooltip" xml:space="preserve">
     <value>目的がわからない場合はダニしないでください！ </value>
@@ -378,7 +369,7 @@
   <data name="TextEditor_Name" xml:space="preserve">
     <value>テキストエディター</value>
   </data>
-  <data name="TextView" xml:space="preserve">
+  <data name="TextView_Name" xml:space="preserve">
     <value>テキストビュー</value>
   </data>
   <data name="TextView_LoadLastOnStartup" xml:space="preserve">
@@ -440,5 +431,252 @@
   </data>
   <data name="Version_Tip2" xml:space="preserve">
     <value>{0}の最新バージョンは{1}です。今すぐ更新しますか？</value>
+  </data>
+  <data name="DatabaseStudio_SqlSave" xml:space="preserve">
+    <value>保存</value>
+  </data>
+  <data name="Text_Export" xml:space="preserve">
+    <value>出力</value>
+  </data>
+  <data name="Version_Tip3" xml:space="preserve">
+    <value>アップデートの確認に失敗しました。しばらくしてからもう一度お試しください</value>
+  </data>
+  <data name="TextView_ReadWrite" xml:space="preserve">
+    <value>編集可能</value>
+  </data>
+  <data name="Text_ColumnNumber" xml:space="preserve">
+    <value>コラム</value>
+  </data>
+  <data name="Text_LineNumber" xml:space="preserve">
+    <value>いいぜ</value>
+  </data>
+  <data name="TextView_ReadStatus" xml:space="preserve">
+    <value>個々のファイルを表示するときに編集を有効にすることができます
+ノードの順序を変更しないように注意してください</value>
+  </data>
+  <data name="Asset_Repack" xml:space="preserve">
+    <value>パック</value>
+  </data>
+  <data name="Text_Add" xml:space="preserve">
+    <value>増加する</value>
+  </data>
+  <data name="Text_Remove" xml:space="preserve">
+    <value>追放</value>
+  </data>
+  <data name="Text_Update" xml:space="preserve">
+    <value>更新</value>
+  </data>
+  <data name="TextView_NotExist_x16" xml:space="preserve">
+    <value>選択したフォルダには x16ファイルがありません。</value>
+  </data>
+  <data name="TextView_ReplaceCompleted" xml:space="preserve">
+    <value>交換に成功しました！ </value>
+  </data>
+  <data name="TextView_SaveCompleted" xml:space="preserve">
+    <value>保存成功</value>
+  </data>
+  <data name="PreviewTooltip" xml:space="preserve">
+    <value>詳細はこちら</value>
+  </data>
+  <data name="Application_CrashMessage" xml:space="preserve">
+    <value>回復不能な例外が発生し、アプリケーションが終了しようとしています。{0}</value>
+  </data>
+  <data name="AbilityName.AbnormalAttackBasePercent" xml:space="preserve">
+    <value>異常なダメージ率</value>
+  </data>
+  <data name="AbilityName.AbnormalDefendBasePercent" xml:space="preserve">
+    <value>異常なダメージ防御率</value>
+  </data>
+  <data name="AbilityName.AoeDefendBasePercent" xml:space="preserve">
+    <value>エリアダメージ防御率</value>
+  </data>
+  <data name="AbilityName.AttackAbnormalHitBasePercent" xml:space="preserve">
+    <value>異常な状態ヒット率</value>
+  </data>
+  <data name="AbilityName.AttackAttributeBasePercent" xml:space="preserve">
+    <value>パワー</value>
+  </data>
+  <data name="AbilityName.AttackCriticalBasePercent" xml:space="preserve">
+    <value>会心率</value>
+  </data>
+  <data name="AbilityName.AttackCriticalDamagePercent" xml:space="preserve">
+    <value>クリティカルダメージ率</value>
+  </data>
+  <data name="AbilityName.AttackHitBasePercent" xml:space="preserve">
+    <value>ヒット率</value>
+  </data>
+  <data name="AbilityName.AttackParryPiercePercent" xml:space="preserve">
+    <value />
+  </data>
+  <data name="AbilityName.AttackPierceBasePercent" xml:space="preserve">
+    <value>貫通率</value>
+  </data>
+  <data name="AbilityName.CounterEnhance" xml:space="preserve">
+    <value />
+  </data>
+  <data name="AbilityName.DefendAbnormalDodgeBasePercent" xml:space="preserve">
+    <value />
+  </data>
+  <data name="AbilityName.DefendBouncePercent" xml:space="preserve">
+    <value>反撃率</value>
+  </data>
+  <data name="AbilityName.DefendCounterReducePercent" xml:space="preserve">
+    <value />
+  </data>
+  <data name="AbilityName.DefendCriticalBasePercent" xml:space="preserve">
+    <value>クリティカル防御率</value>
+  </data>
+  <data name="AbilityName.DefendCriticalDamagePercent" xml:space="preserve">
+    <value>クリティカルダメージ防御率</value>
+  </data>
+  <data name="AbilityName.DefendDodgeBasePercent" xml:space="preserve">
+    <value>よける率</value>
+  </data>
+  <data name="AbilityName.DefendImmuneBasePercent" xml:space="preserve">
+    <value>レジスタンス</value>
+  </data>
+  <data name="AbilityName.DefendMissBasePercent" xml:space="preserve">
+    <value />
+  </data>
+  <data name="AbilityName.DefendParryBasePercent" xml:space="preserve">
+    <value>ガードチャンス</value>
+  </data>
+  <data name="AbilityName.DefendParryReducePercent" xml:space="preserve">
+    <value>完璧な防御貫通率</value>
+  </data>
+  <data name="AbilityName.DefendPerfectParryBasePercent" xml:space="preserve">
+    <value>完璧なブロック率</value>
+  </data>
+  <data name="AbilityName.DefendPerfectParryReducePercent" xml:space="preserve">
+    <value />
+  </data>
+  <data name="AbilityName.HateBasePercent" xml:space="preserve">
+    <value>憎悪率</value>
+  </data>
+  <data name="AbilityName.HealPowerBasePercent" xml:space="preserve">
+    <value>回復率</value>
+  </data>
+  <data name="AbilityName.SupportPowerBasePercent" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Text_Refresh" xml:space="preserve">
+    <value>リフレッシュ</value>
+  </data>
+  <data name="Text_Run" xml:space="preserve">
+    <value>実行</value>
+  </data>
+  <data name="DatabaseStudio_ViewDefinition" xml:space="preserve">
+    <value>定義を表示</value>
+  </data>
+  <data name="DatabaseStudio_ViewDefinitions" xml:space="preserve">
+    <value>すべての定義を見る</value>
+  </data>
+  <data name="DatabaseStudio_Connect" xml:space="preserve">
+    <value>リンク</value>
+  </data>
+  <data name="DatabaseStudio_Disconnect" xml:space="preserve">
+    <value>0：遮断</value>
+  </data>
+  <data name="DatabaseStudio_Grid" xml:space="preserve">
+    <value>用紙</value>
+  </data>
+  <data name="DatabaseStudio_SqlLoad" xml:space="preserve">
+    <value>ロード</value>
+  </data>
+  <data name="DatabaseStudio_Text" xml:space="preserve">
+    <value>テキストファイル</value>
+  </data>
+  <data name="Text_Import" xml:space="preserve">
+    <value>インプット</value>
+  </data>
+  <data name="ItemPage_SearchItemRule_Placeholder" xml:space="preserve">
+    <value>アイテム情報（番号/エイリアス/名前）を入力してください</value>
+  </data>
+  <data name="ItemPage_SearchItemRule_Title" xml:space="preserve">
+    <value>アイテムを検索</value>
+  </data>
+  <data name="ItemPage_DataClear" xml:space="preserve">
+    <value>キャッシュのクリーンアップ</value>
+  </data>
+  <data name="ItemPage_DataGUI" xml:space="preserve">
+    <value>データエディター</value>
+  </data>
+  <data name="Text_Options" xml:space="preserve">
+    <value>設定</value>
+  </data>
+  <data name="TextView_LoadData" xml:space="preserve">
+    <value>プレビュー中にデータを読み込みます</value>
+  </data>
+  <data name="TextView_LoadData_Tooltip" xml:space="preserve">
+    <value>非テキストデータの読み込みには時間がかかります</value>
+  </data>
+  <data name="FileMode_ExcelFile" xml:space="preserve">
+    <value>フォームファイル</value>
+  </data>
+  <data name="FileMode_TextFile" xml:space="preserve">
+    <value>テキストファイル</value>
+  </data>
+  <data name="DatabaseStudio_ConnectionManager" xml:space="preserve">
+    <value>接続マネージャー</value>
+  </data>
+  <data name="DatabaseStudio_Mode_Folder" xml:space="preserve">
+    <value>目次</value>
+  </data>
+  <data name="DatabaseStudio_Mode_Game" xml:space="preserve">
+    <value>ゲーム</value>
+  </data>
+  <data name="DatabaseStudio_Paramters" xml:space="preserve">
+    <value>パラメータ</value>
+  </data>
+  <data name="DatabaseStudio_Provider" xml:space="preserve">
+    <value>「データソース」</value>
+  </data>
+  <data name="DatabaseStudio_Mode_Global" xml:space="preserve">
+    <value>グローバル（デフォルト） </value>
+  </data>
+  <data name="DatabaseStudio_ConnectMessage1" xml:space="preserve">
+    <value>使用されていません</value>
+  </data>
+  <data name="DatabaseStudio_ConnectMessage2" xml:space="preserve">
+    <value>現在グローバルデータソースです。接続を解除してもよろしいですか？ </value>
+  </data>
+  <data name="DatabaseStudio_OutputExcel" xml:space="preserve">
+    <value>テーブルとして保存</value>
+  </data>
+  <data name="Settings_NightMode_Day" xml:space="preserve">
+    <value>昼</value>
+  </data>
+  <data name="Settings_NightMode_Night" xml:space="preserve">
+    <value>おやすみ</value>
+  </data>
+  <data name="Settings_NightMode" xml:space="preserve">
+    <value>ナイトモード</value>
+  </data>
+  <data name="Settings_NightMode_Auto" xml:space="preserve">
+    <value>自動</value>
+  </data>
+  <data name="Settings_NightMode_Ask" xml:space="preserve">
+    <value>現在の設定は自動切り替えに設定されています。変更してもよろしいですか？ </value>
+  </data>
+  <data name="ItemList_Empty" xml:space="preserve">
+    <value>アイテムが追加されていません</value>
+  </data>
+  <data name="ItemList_Path_Invalid" xml:space="preserve">
+    <value>有効なキャッシュファイルを選択する必要があります</value>
+  </data>
+  <data name="Settings_GameDirectory" xml:space="preserve">
+    <value>ゲームカタログ</value>
+  </data>
+  <data name="Settings_GameDirectory_Invalid" xml:space="preserve">
+    <value>まずはゲームカタログを設定してください</value>
+  </data>
+  <data name="Settings_OutputDirectory" xml:space="preserve">
+    <value>出力フォルダ</value>
+  </data>
+  <data name="Settings_OutputDirectory2" xml:space="preserve">
+    <value>出力ディレクトリ（リソース） </value>
+  </data>
+  <data name="Settings_OutputDirectory_Invalid" xml:space="preserve">
+    <value>最初に出力ディレクトリを設定してください</value>
   </data>
 </root>

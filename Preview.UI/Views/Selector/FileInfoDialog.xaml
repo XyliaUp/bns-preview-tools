@@ -3,9 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 		xmlns:hc="https://handyorg.github.io/handycontrol"
 		xmlns:valid="clr-namespace:Xylia.Preview.UI.Common.Validation"
-		CornerRadius="10"
-        Height="230" Width="500"
-		Background="{DynamicResource RegionBrush}">
+		CornerRadius="10" Height="230" Width="500" Background="{DynamicResource RegionBrush}">
 	<Grid>
 		<Grid Margin="5 0" VerticalAlignment="Center">
 			<Grid.ColumnDefinitions>

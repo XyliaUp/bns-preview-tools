@@ -1,10 +1,11 @@
 <Window x:Class="Xylia.Preview.UI.Views.AudioPlayer"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+		xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+		xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d"
 		xmlns:converters="clr-namespace:Xylia.Preview.UI.Common.Converters"
 		xmlns:hc="https://handyorg.github.io/handycontrol"
-        Closing="OnClosing" 
-		Title="{DynamicResource AudioPlayer_Name}" WindowStartupLocation="CenterScreen"
+        Closing="OnClosing" WindowStartupLocation="CenterScreen" Title="{DynamicResource AudioPlayer_Name}" d:Title="AudioPlayer" 
         Height="{Binding Source={x:Static SystemParameters.MaximizedPrimaryScreenHeight}, Converter={converters:RatioConverter}, ConverterParameter='0.50'}"
         Width="{Binding Source={x:Static SystemParameters.MaximizedPrimaryScreenWidth}, Converter={converters:RatioConverter}, ConverterParameter='0.48'}">
 	<Grid Margin="5">

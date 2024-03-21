@@ -151,7 +151,7 @@ public class AttributeValue : IComparable<AttributeValue>, IEquatable<AttributeV
 	public float AsFloat => Convert.ToSingle(this.RawValue);
 
 	[DebuggerBrowsable(DebuggerBrowsableState.Never)]
-	public decimal AsDecimal => Convert.ToDecimal(this.RawValue);
+	internal decimal AsDecimal => Convert.ToDecimal(this.RawValue);
 
 	[DebuggerBrowsable(DebuggerBrowsableState.Never)]
 	public DateTime AsDateTime => (DateTime)this.RawValue;
@@ -217,7 +217,7 @@ public class AttributeValue : IComparable<AttributeValue>, IEquatable<AttributeV
 	public bool IsDateTime => this.Type == AttributeType.TXUnknown1;
 	#endregion
 
-	#region Implicit Ctor
+	#region Implicit Constructors
 	// Int32
 	public static implicit operator Int32(AttributeValue value) => (Int32)value.RawValue;
 	public static implicit operator AttributeValue(Int32 value) => new AttributeValue(value);
@@ -264,10 +264,9 @@ public class AttributeValue : IComparable<AttributeValue>, IEquatable<AttributeV
 		var result = left.AsDecimal + right.AsDecimal;
 		var type = (AttributeType)Math.Max((int)left.Type, (int)right.Type);
 
-		return
-			type == AttributeType.TInt64 ? new AttributeValue((Int64)result) :
-			type == AttributeType.TFloat32 ? new AttributeValue((Single)result) :
-			new AttributeValue(result);
+		return type == AttributeType.TFloat32 ?
+			new AttributeValue((float)result) :
+			new AttributeValue((long)result);
 	}
 
 	// -
@@ -283,10 +282,9 @@ public class AttributeValue : IComparable<AttributeValue>, IEquatable<AttributeV
 		var result = left.AsDecimal - right.AsDecimal;
 		var type = (AttributeType)Math.Max((int)left.Type, (int)right.Type);
 
-		return
-			type == AttributeType.TInt64 ? new AttributeValue((Int64)result) :
-			type == AttributeType.TFloat32 ? new AttributeValue((Single)result) :
-			new AttributeValue(result);
+		return type == AttributeType.TFloat32 ?
+			new AttributeValue((float)result) :
+			new AttributeValue((long)result);
 	}
 
 	// *
@@ -302,10 +300,9 @@ public class AttributeValue : IComparable<AttributeValue>, IEquatable<AttributeV
 		var result = left.AsDecimal * right.AsDecimal;
 		var type = (AttributeType)Math.Max((int)left.Type, (int)right.Type);
 
-		return
-			type == AttributeType.TInt64 ? new AttributeValue((Int64)result) :
-			type == AttributeType.TFloat32 ? new AttributeValue((Single)result) :
-			new AttributeValue(result);
+		return type == AttributeType.TFloat32 ?
+			new AttributeValue((float)result) :
+			new AttributeValue((long)result);
 	}
 
 	// /

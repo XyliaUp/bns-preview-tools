@@ -3,7 +3,6 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Input;
-
 using HandyControl.Controls;
 using HandyControl.Data;
 using HandyControl.Interactivity;
@@ -13,26 +12,25 @@ using Xylia.Preview.Data.Models;
 
 namespace Xylia.Preview.UI.Controls;
 
-[TemplatePart(Name = ElementItemsControl, Type = typeof(PropertyItemsControl))]
-[TemplatePart(Name = ElementSearchBar, Type = typeof(SearchBar))]
+[TemplatePart(Name = "PART_ItemsControl", Type = typeof(PropertyItemsControl))]
+[TemplatePart(Name = "PART_SearchBar", Type = typeof(SearchBar))]
 public class AttributeGrid : Control
 {
-	private const string ElementItemsControl = "PART_ItemsControl";
-	private const string ElementSearchBar = "PART_SearchBar";
-	private PropertyItemsControl _itemsControl;
-	private ICollectionView _dataView;
-	private SearchBar _searchBar;
-
-	private string _searchKey;
+	private PropertyItemsControl? _itemsControl;
+	private ICollectionView? _dataView;
+	private SearchBar? _searchBar;
+	private string? _searchKey;
 
 	public AttributeGrid()
 	{
+		PropertyResolver = new();
+
 		// register sort mode
 		CommandBindings.Add(new CommandBinding(ControlCommands.SortByCategory, SortByOffset));
 		CommandBindings.Add(new CommandBinding(ControlCommands.SortByName, SortByName));
 	}
 
-	public virtual AttributeResolver PropertyResolver { get; } = new();
+	private AttributeResolver PropertyResolver { get; }
 
 	public static readonly DependencyProperty SelectedObjectProperty = DependencyProperty.Register(
 		nameof(SelectedObject), typeof(Record), typeof(AttributeGrid), new PropertyMetadata(default, OnSelectedObjectChanged));
@@ -82,8 +80,8 @@ public class AttributeGrid : Control
 
 		base.OnApplyTemplate();
 
-		_itemsControl = GetTemplateChild(ElementItemsControl) as PropertyItemsControl;
-		_searchBar = GetTemplateChild(ElementSearchBar) as SearchBar;
+		_itemsControl = GetTemplateChild("PART_ItemsControl") as PropertyItemsControl;
+		_searchBar = GetTemplateChild("PART_SearchBar") as SearchBar;
 
 		if (_searchBar != null)
 		{
@@ -134,7 +132,7 @@ public class AttributeGrid : Control
 		}
 	}
 
-	private void SearchBar_SearchStarted(object sender, FunctionEventArgs<string> e)
+	private void SearchBar_SearchStarted(object? sender, FunctionEventArgs<string> e)
 	{
 		if (_dataView == null) return;
 
@@ -158,14 +156,13 @@ public class AttributeGrid : Control
 	protected virtual PropertyItem CreatePropertyItem(AttributeDefinition attribute) => new()
 	{
 		Category = PropertyResolver.ResolveCategory(attribute),
+		PropertyName = $"[{attribute.Name}]",
+		Value = SelectedObject.Attributes,
 		DisplayName = PropertyResolver.ResolveDisplayName(attribute),
 		Description = PropertyResolver.ResolveDescription(attribute),
 		DefaultValue = PropertyResolver.ResolveDefaultValue(attribute),
 		Editor = PropertyResolver.ResolveEditor(attribute),
-		Value = SelectedObject.Attributes,
-		PropertyName = $"[{attribute.Name}]",
-
-		IsReadOnly = false,
+		IsReadOnly = PropertyResolver.ResolveIsReadOnly(attribute),
 		Tag = attribute.Offset,
 	};
 

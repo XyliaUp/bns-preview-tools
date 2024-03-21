@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.ComponentModel;
 using System.Globalization;
 using System.Reflection;
 using System.Resources;
@@ -13,47 +14,42 @@ namespace Xylia.Preview.UI;
 /// <summary>
 /// Text Controller
 /// </summary>
-public sealed class StringHelper : ResourceDictionary
+public partial class StringHelper : ResourceDictionary
 {
 	#region Constructor
+	public static StringHelper? Current { get; private set; }
+
 	public StringHelper()
 	{
-		Instance = this;
+		Current = this;
 		Language = UserSettings.Default.Language;
 	}
 	#endregion
 
 	#region CultureInfo
-	private CultureInfo _cultureInfo;
+	private CultureInfo CultureInfo = CultureInfo.CurrentCulture;
+
+	protected virtual string BasePath => "Xylia.Preview.UI.Resources.Strings.Strings";
 
 	public ELanguage Language
 	{
-		get => EnumerateLanguages().FirstOrDefault(x => x.GetAttribute<NameAttribute>().Name == _cultureInfo.Name);
+		get => EnumerateLanguages().FirstOrDefault(x => x.GetAttribute<NameAttribute>().Name == CultureInfo.Name);
 		set
 		{
 			// culture
 			if (value != ELanguage.None)
 			{
 				var name = value.GetAttribute<NameAttribute>()?.Name;
-				if (name != null) _cultureInfo = new CultureInfo(name);
+				if (name != null) CultureInfo = new CultureInfo(name);
 			}
-
-			if (_cultureInfo is null)
-			{
-				_cultureInfo ??= CultureInfo.CurrentCulture;
-				UserSettings.Default.Language = Language;
-			}
-
 
 			// resource
-			//this.Clear();
-
-			ConfigHelper.Instance.SetLang(_cultureInfo.Name);
-			var manager = new ResourceManager("Xylia.Preview.UI.Resources.Strings.Strings", Assembly.GetExecutingAssembly());
-			foreach (DictionaryEntry entry in manager.GetResourceSet(_cultureInfo, true, true))
+			ConfigHelper.Instance.SetLang(CultureInfo.Name);
+			var manager = new ResourceManager(BasePath, Assembly.GetEntryAssembly());
+			foreach (DictionaryEntry entry in manager.GetResourceSet(CultureInfo, true, true)!)
 			{
-				string resourceKey = entry.Key.ToString();
-				object resource = entry.Value;
+				var resourceKey = entry.Key.ToString()!;
+				var resource = entry.Value;
 
 				this[resourceKey] = resource;
 			}
@@ -62,23 +58,25 @@ public sealed class StringHelper : ResourceDictionary
 	#endregion
 
 
-	#region Methods
+	#region Static Methods
 	internal static IEnumerable<ELanguage> EnumerateLanguages() => Enum.GetValues<ELanguage>().Where(x => x.GetAttribute<NameAttribute>() != null);
 
-
-	public static StringHelper Instance { get; private set; }
-
+	/// <summary>
+	/// Gets text and replaces the format item in a specified string with the string representation of a corresponding object in a specified array.
+	/// </summary>
+	/// <param name="key">Target text resource key</param>
+	/// <param name="args">An object array that contains zero or more objects to format.</param>
+	/// <returns></returns>
 	public static string Get(string key, params object[] args)
 	{
-		if (Instance[key] is string s)
+		ArgumentNullException.ThrowIfNull(Current);
+
+		if (Current![key] is string s)
 		{
 			return string.Format(s, args);
 		}
 
 		return key;
 	}
-
-
-	// add bns text help?
 	#endregion
 }

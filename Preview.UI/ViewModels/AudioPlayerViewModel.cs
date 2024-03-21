@@ -2,14 +2,12 @@
 using System.Windows;
 using System.Windows.Data;
 using System.Windows.Input;
-
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-
 using Xylia.Preview.UI.Audio;
 
 namespace Xylia.Preview.UI.ViewModels;
-public partial class AudioPlayerViewModel : ObservableObject, IDisposable
+internal partial class AudioPlayerViewModel : ObservableObject, IDisposable
 {
 	#region Fields
 	private PlaybackService playbackService;
@@ -49,12 +47,12 @@ public partial class AudioPlayerViewModel : ObservableObject, IDisposable
 	public AudioDevice SelectedAudioDevice
 	{
 		get => this.playbackService.audioDevice;
-		set
+	    set
 		{
 			// Due to two-way binding, this can be null when the list is being filled.
 			if (value != null)
 			{
-				this.playbackService.SwitchAudioDeviceAsync(value);
+			 this.playbackService.SwitchAudioDevice(value);
 			}
 
 			OnPropertyChanged();
@@ -72,8 +70,7 @@ public partial class AudioPlayerViewModel : ObservableObject, IDisposable
 	#endregion
 
 
-
-	#region Ctors
+	#region Constructorss
 	public AudioPlayerViewModel()
 	{
 		this.playbackService = new();
@@ -214,8 +211,6 @@ public partial class AudioPlayerViewModel : ObservableObject, IDisposable
 		//	FLogger.Append(ELog.Error, () => FLogger.Text($"Could not save '{fileToSave.FileName}'", Constants.WHITE, true));
 		//}
 	}
-
-
 
 
 	public void Dispose()

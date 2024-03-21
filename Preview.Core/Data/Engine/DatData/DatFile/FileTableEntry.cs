@@ -1,4 +1,5 @@
 ﻿using System.Text;
+using CUE4Parse.Compression;
 
 namespace Xylia.Preview.Data.Engine.DatData;
 public class FileTableEntry
@@ -44,7 +45,7 @@ public class FileTableEntry
 		Owner = owner;
 
 		FilePath = path;
-		IsCompressed = true;
+		IsCompressed = owner.IsCompressed != CompressionMethod.None;
 		IsEncrypted = true;
 		Unknown_001 = 2;
 		Unknown_002 = 0;
@@ -69,9 +70,10 @@ public class FileTableEntry
 		{
 			if (DataArchive != null)
 			{
-				var buffer = BNSDat.Unpack(DataArchive.CreateStream().ToArray(), FileDataSizeStored, FileDataSizeSheared, FileDataSizeUnpacked, IsEncrypted, IsCompressed, Owner.Params.AES_KEY);
+				var buffer = BNSDat.Unpack(DataArchive.CreateStream().ToArray(), FileDataSizeStored, FileDataSizeSheared, FileDataSizeUnpacked, IsEncrypted, Owner.IsCompressed, Owner.Params);
 
-				if (FilePath.EndsWith(".xml") || FilePath.EndsWith(".x16"))
+				if (Owner.Params.BinaryXmlVersion > 0 &&
+					(FilePath.EndsWith(".xml") || FilePath.EndsWith(".x16")))
 				{
 					var Xml = new BXML_CONTENT(Owner.Params.XOR_KEY);
 					Xml.Read(buffer);
@@ -87,21 +89,21 @@ public class FileTableEntry
 	#endregion
 
 
-
-	public void WriteHeader(BinaryWriter writer, bool Is64bit, CompressionLevel level, ref long FileDataOffset)
+	internal void WriteHeader(DataArchiveWriter writer, bool Is64bit, int level, ref long FileDataOffset)
 	{
 		if (DataArchive is null)
 		{
 			var data = _data;
-			if (FilePath.EndsWith(".xml") || FilePath.EndsWith(".x16"))
+			if (Owner.Params.BinaryXmlVersion > 0 &&
+				(FilePath.EndsWith(".xml") || FilePath.EndsWith(".x16")))
 			{
 				var bns_xml = new BXML_CONTENT(Owner.Params.XOR_KEY);
-				bns_xml.ConvertFrom(data);
+				bns_xml.ConvertFrom(data, Owner.Params.BinaryXmlVersion);
 				data = bns_xml.Write();
 			}
 
 			FileDataSizeUnpacked = data.Length;
-			DataArchive = new DataArchive(BNSDat.Pack(data, FileDataSizeUnpacked, out FileDataSizeSheared, out FileDataSizeStored, IsEncrypted, IsCompressed, level, Owner.Params.AES_KEY), Is64bit);
+			DataArchive = new DataArchive(BNSDat.Pack(data, FileDataSizeUnpacked, out FileDataSizeSheared, out FileDataSizeStored, IsEncrypted, IsCompressed, level, Owner.Params), Is64bit);
 		}
 
 		byte[] _filePath = Encoding.Unicode.GetBytes(FilePath);
@@ -113,23 +115,12 @@ public class FileTableEntry
 		writer.Write(IsCompressed);
 		writer.Write(IsEncrypted);
 		writer.Write(Unknown_002);
-
-		if (Is64bit)
-		{
-			writer.Write((long)FileDataSizeUnpacked);
-			writer.Write((long)FileDataSizeSheared);
-			writer.Write((long)FileDataSizeStored);
-			writer.Write((long)FileDataOffset);
-		}
-		else
-		{
-			writer.Write((int)FileDataSizeUnpacked);
-			writer.Write((int)FileDataSizeSheared);
-			writer.Write((int)FileDataSizeStored);
-			writer.Write((int)FileDataOffset);
-		}
-
+		writer.WriteLongInt(FileDataSizeUnpacked);
+		writer.WriteLongInt(FileDataSizeSheared);
+		writer.WriteLongInt(FileDataSizeStored);
+		writer.WriteLongInt(FileDataOffset);
 		writer.Write(Padding);
+
 		FileDataOffset += FileDataSizeStored;
 	}
 }

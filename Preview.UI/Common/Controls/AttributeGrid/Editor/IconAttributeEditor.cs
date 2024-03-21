@@ -1,9 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
-
 using HandyControl.Controls;
-
 using Xylia.Preview.UI.Controls;
 
 namespace Xylia.Preview.UI.Common.Controls.AttributeGrid.Editor;

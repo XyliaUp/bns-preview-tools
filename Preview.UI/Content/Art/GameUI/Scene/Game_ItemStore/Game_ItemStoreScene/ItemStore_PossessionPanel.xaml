@@ -1,12 +1,208 @@
-﻿<UserControl x:Class="Xylia.Preview.UI.GameUI.Scene.Game_ItemStore.ItemStore_PossessionPanel"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:Xylia.Preview.UI.GameUI.Scene.Game_ItemStore"
-             mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-            
-    </Grid>
-</UserControl>
+﻿<BnsCustomWindowWidget x:Class="Xylia.Preview.UI.GameUI.Scene.Game_ItemStore.ItemStore_PossessionPanel"
+	xmlns="https://github.com/xyliaup/bns-preview-tools"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:s="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	MetaData="textref=UI.ItemStore.StoreByItem.Possession">
+	<BnsCustomWindowWidget.BaseImageProperty>
+		<ImageProperty BaseImageTexture="BNSR/Content/Art/UI/GameUI/Resource/GameUI_Window_R/BNSR_Window.BNSR_Window" ImageUV="7 7" ImageUVSize="49 49" EnableSkinAlpha="true" StaticPadding="-17 -17" />
+	</BnsCustomWindowWidget.BaseImageProperty>
+	<BnsCustomWindowWidget.ExpansionComponentList>
+		<ExpansionComponent bShow="true" ExpansionType="IMAGE" ExpansionName="Line" MetaData="" bPostExpansitonRender="true">
+			<ExpansionComponent.ImageProperty>
+				<ImageProperty BaseImageTexture="BNSR/Content/Art/UI/GameUI/Resource/GameUI_Window_R/BNSR_Window_Outfocus.BNSR_Window_Outfocus" ImageUV="7 7" ImageUVSize="49 49" EnableBrushOnly="true" EnableDrawImage="true" TintColor="FFFFFF" GrayWeightValue="0.15" StaticPadding="-13 -13" Opacity="1" ImageScale="1" />
+			</ExpansionComponent.ImageProperty>
+		</ExpansionComponent>
+	</BnsCustomWindowWidget.ExpansionComponentList>
+	<BnsCustomImageWidget Name="ItemStore_PossessionPanel_LifeContentsPoint" LayoutData.Anchors="0 0.5 0 0.5" LayoutData.Offsets="-28 0 85 39" MetaData="tooltip=UI.MyToolTip.LifeContentsPoint:widget_face_bottom">
+		<BnsCustomImageWidget.BaseImageProperty>
+			<ImageProperty />
+		</BnsCustomImageWidget.BaseImageProperty>
+		<BnsCustomImageWidget.ExpansionComponentList>
+			<ExpansionComponent bShow="true" ExpansionType="STRING" ExpansionName="Label" MetaData="" bPostExpansitonRender="true">
+				<ExpansionComponent.ImageProperty>
+					<ImageProperty ImageUVSize="1 1" EnableDrawImage="true" TintColor="FFFFFF" GrayWeightValue="0.15" Opacity="1" ImageScale="1" HorizontalAlignment="HAlign_Center" VerticalAlignment="VAlign_Center" />
+				</ExpansionComponent.ImageProperty>
+				<ExpansionComponent.StringProperty>
+					<StringProperty fontset="BNSR/Content/Art/UI/GameUI_BNSR/Resource/GameUI_FontSet_R/UI/Normal_14.Normal_14" LabelText="#선두" SpaceBetweenLines="3" VerticalAlignment="VAlign_Center" ClippingBound="10 0" Opacity="1" TextScale="1" AnimScale="1" />
+				</ExpansionComponent.StringProperty>
+			</ExpansionComponent>
+			<ExpansionComponent bShow="true" ExpansionType="STRING" ExpansionName="Count" MetaData="" bPostExpansitonRender="true">
+				<ExpansionComponent.ImageProperty>
+					<ImageProperty ImageUVSize="1 1" EnableDrawImage="true" TintColor="FFFFFF" GrayWeightValue="0.15" Opacity="1" ImageScale="1" HorizontalAlignment="HAlign_Center" VerticalAlignment="VAlign_Center" />
+				</ExpansionComponent.ImageProperty>
+				<ExpansionComponent.StringProperty>
+					<StringProperty fontset="BNSR/Content/Art/UI/GameUI_BNSR/Resource/GameUI_FontSet_R/UI/Normal_14.Normal_14" LabelText="999999" SpaceBetweenLines="3" HorizontalAlignment="HAlign_Right" VerticalAlignment="VAlign_Center" ClippingBound="17 0" Padding="0 -10" Opacity="1" TextScale="1" AnimScale="1" />
+				</ExpansionComponent.StringProperty>
+			</ExpansionComponent>
+		</BnsCustomImageWidget.ExpansionComponentList>
+		<BnsCustomImageWidget Name="ItemStore_PossessionPanel_LifeContentsPoint_Icon" LayoutData.Anchors="1 0.5 1 0.5" LayoutData.Offsets="0 0 16 16" MetaData="tooltip=UI.ArenaLobbyDuel.DuelSummaryPoint:mouse">
+			<BnsCustomImageWidget.BaseImageProperty>
+				<ImageProperty BaseImageTexture="BNSR/Content/Art/UI/GameUI/Resource/GameUI_Window/GameUI_New_Scene_00.GameUI_New_Scene_00" ImageUV="90 10" ImageUVSize="14 14" EnableSkinColor="true" Offset="1 1" Opacity="1.5" />
+			</BnsCustomImageWidget.BaseImageProperty>
+			<BnsCustomImageWidget.ExpansionComponentList>
+				<ExpansionComponent bShow="true" ExpansionType="IMAGE" ExpansionName="IconImage" MetaData="" bPostExpansitonRender="true">
+					<ExpansionComponent.ImageProperty>
+						<ImageProperty ImageSet="BNSR/Content/Art/UI/GameUI/Resource/GameUI_Window/GuildBank_Coin_LivingCoin.GuildBank_Coin_LivingCoin" ImageUV="514 473" ImageUVSize="21 21" EnableImageSet="true" EnableDrawImage="true" TintColor="FFFFFF" GrayWeightValue="0.15" Opacity="1" ImageScale="1" HorizontalAlignment="HAlign_Center" VerticalAlignment="VAlign_Center" />
+					</ExpansionComponent.ImageProperty>
+				</ExpansionComponent>
+			</BnsCustomImageWidget.ExpansionComponentList>
+		</BnsCustomImageWidget>
+	</BnsCustomImageWidget>
+	<BnsCustomImageWidget Name="ItemStore_PossessionPanel_Dummy" LayoutData.Anchors="1 0 1 0" LayoutData.Offsets="0 0 15 40">
+		<BnsCustomImageWidget.BaseImageProperty>
+			<ImageProperty />
+		</BnsCustomImageWidget.BaseImageProperty>
+	</BnsCustomImageWidget>
+	<BnsCustomImageWidget Name="ItemStore_PossessionPanel_DuelPoint" LayoutData.Anchors="0 0.5 0 0.5" LayoutData.Offsets="312 0 85 39" MetaData="tooltip=UI.MyToolTip.DuelPoint:widget_face_bottom">
+		<BnsCustomImageWidget.BaseImageProperty>
+			<ImageProperty />
+		</BnsCustomImageWidget.BaseImageProperty>
+		<BnsCustomImageWidget.ExpansionComponentList>
+			<ExpansionComponent bShow="true" ExpansionType="STRING" ExpansionName="Label" MetaData="" bPostExpansitonRender="true">
+				<ExpansionComponent.ImageProperty>
+					<ImageProperty ImageUVSize="1 1" EnableDrawImage="true" TintColor="FFFFFF" GrayWeightValue="0.15" Opacity="1" ImageScale="1" HorizontalAlignment="HAlign_Center" VerticalAlignment="VAlign_Center" />
+				</ExpansionComponent.ImageProperty>
+				<ExpansionComponent.StringProperty>
+					<StringProperty fontset="BNSR/Content/Art/UI/GameUI_BNSR/Resource/GameUI_FontSet_R/UI/Normal_14.Normal_14" LabelText="#선두" SpaceBetweenLines="3" VerticalAlignment="VAlign_Center" ClippingBound="10 0" Opacity="1" TextScale="1" AnimScale="1" />
+				</ExpansionComponent.StringProperty>
+			</ExpansionComponent>
+			<ExpansionComponent bShow="true" ExpansionType="STRING" ExpansionName="Count" MetaData="" bPostExpansitonRender="true">
+				<ExpansionComponent.ImageProperty>
+					<ImageProperty ImageUVSize="1 1" EnableDrawImage="true" TintColor="FFFFFF" GrayWeightValue="0.15" Opacity="1" ImageScale="1" HorizontalAlignment="HAlign_Center" VerticalAlignment="VAlign_Center" />
+				</ExpansionComponent.ImageProperty>
+				<ExpansionComponent.StringProperty>
+					<StringProperty fontset="BNSR/Content/Art/UI/GameUI_BNSR/Resource/GameUI_FontSet_R/UI/Normal_14.Normal_14" LabelText="999999" SpaceBetweenLines="3" HorizontalAlignment="HAlign_Right" VerticalAlignment="VAlign_Center" ClippingBound="17 0" Padding="0 -10" Opacity="1" TextScale="1" AnimScale="1" />
+				</ExpansionComponent.StringProperty>
+			</ExpansionComponent>
+		</BnsCustomImageWidget.ExpansionComponentList>
+		<BnsCustomImageWidget Name="ItemStore_PossessionPanel_DuelPoint_Icon" LayoutData.Anchors="1 0.5 1 0.5" LayoutData.Offsets="0 0 16 16" MetaData="tooltip=UI.ArenaLobbyDuel.DuelSummaryPoint:mouse">
+			<BnsCustomImageWidget.BaseImageProperty>
+				<ImageProperty BaseImageTexture="BNSR/Content/Art/UI/GameUI/Resource/GameUI_Window/GameUI_New_Scene_00.GameUI_New_Scene_00" ImageUV="90 10" ImageUVSize="14 14" EnableSkinColor="true" Offset="1 1" Opacity="1.5" />
+			</BnsCustomImageWidget.BaseImageProperty>
+			<BnsCustomImageWidget.ExpansionComponentList>
+				<ExpansionComponent bShow="true" ExpansionType="IMAGE" ExpansionName="IconImage" MetaData="" bPostExpansitonRender="true">
+					<ExpansionComponent.ImageProperty>
+						<ImageProperty BaseImageTexture="BNSR/Content/Art/UI/GameUI/Resource/GameUI_Window/HUD_Icon_Menu_Test_nocomp.HUD_Icon_Menu_Test_nocomp" ImageUV="514 473" ImageUVSize="21 21" EnableDrawImage="true" TintColor="FFFFFF" GrayWeightValue="0.15" Opacity="1" ImageScale="1" HorizontalAlignment="HAlign_Center" VerticalAlignment="VAlign_Center" />
+					</ExpansionComponent.ImageProperty>
+				</ExpansionComponent>
+			</BnsCustomImageWidget.ExpansionComponentList>
+		</BnsCustomImageWidget>
+	</BnsCustomImageWidget>
+	<BnsCustomImageWidget Name="ItemStore_PossessionPanel_FactionScore" LayoutData.Anchors="0 0.5 0 0.5" LayoutData.Offsets="227 0 85 39" MetaData="tooltip=UI.MyToolTip.FactionScore:widget_face_bottom">
+		<BnsCustomImageWidget.BaseImageProperty>
+			<ImageProperty />
+		</BnsCustomImageWidget.BaseImageProperty>
+		<BnsCustomImageWidget.ExpansionComponentList>
+			<ExpansionComponent bShow="true" ExpansionType="STRING" ExpansionName="Label" MetaData="" bPostExpansitonRender="true">
+				<ExpansionComponent.ImageProperty>
+					<ImageProperty ImageUVSize="1 1" EnableDrawImage="true" TintColor="FFFFFF" GrayWeightValue="0.15" Opacity="1" ImageScale="1" HorizontalAlignment="HAlign_Center" VerticalAlignment="VAlign_Center" />
+				</ExpansionComponent.ImageProperty>
+				<ExpansionComponent.StringProperty>
+					<StringProperty fontset="BNSR/Content/Art/UI/GameUI_BNSR/Resource/GameUI_FontSet_R/UI/Normal_14.Normal_14" LabelText="#영기" SpaceBetweenLines="3" VerticalAlignment="VAlign_Center" ClippingBound="10 0" Opacity="1" TextScale="1" AnimScale="1" />
+				</ExpansionComponent.StringProperty>
+			</ExpansionComponent>
+			<ExpansionComponent bShow="true" ExpansionType="STRING" ExpansionName="Count" MetaData="" bPostExpansitonRender="true">
+				<ExpansionComponent.ImageProperty>
+					<ImageProperty ImageUVSize="1 1" EnableDrawImage="true" TintColor="FFFFFF" GrayWeightValue="0.15" Opacity="1" ImageScale="1" HorizontalAlignment="HAlign_Center" VerticalAlignment="VAlign_Center" />
+				</ExpansionComponent.ImageProperty>
+				<ExpansionComponent.StringProperty>
+					<StringProperty fontset="BNSR/Content/Art/UI/GameUI_BNSR/Resource/GameUI_FontSet_R/UI/Normal_14.Normal_14" LabelText="999999" SpaceBetweenLines="3" HorizontalAlignment="HAlign_Right" VerticalAlignment="VAlign_Center" ClippingBound="17 0" Padding="0 -10" Opacity="1" TextScale="1" AnimScale="1" />
+				</ExpansionComponent.StringProperty>
+			</ExpansionComponent>
+		</BnsCustomImageWidget.ExpansionComponentList>
+		<BnsCustomImageWidget Name="ItemStore_PossessionPanel_FactionScore_Icon" LayoutData.Anchors="1 0.5 1 0.5" LayoutData.Offsets="0 0 16 16" MetaData="tooltip=UI.ExchangeFactionCoin.HowManyFactionCoin:mouse">
+			<BnsCustomImageWidget.BaseImageProperty>
+				<ImageProperty BaseImageTexture="BNSR/Content/Art/UI/GameUI/Resource/GameUI_Window/GameUI_New_Scene_00.GameUI_New_Scene_00" ImageUV="90 10" ImageUVSize="14 14" EnableSkinColor="true" Offset="1 1" Opacity="1.5" />
+			</BnsCustomImageWidget.BaseImageProperty>
+			<BnsCustomImageWidget.ExpansionComponentList>
+				<ExpansionComponent bShow="true" ExpansionType="IMAGE" ExpansionName="IconImage" MetaData="" bPostExpansitonRender="true">
+					<ExpansionComponent.ImageProperty>
+						<ImageProperty BaseImageTexture="BNSR/Content/Art/UI/GameUI/Resource/GameUI_NamePlate/Coin_Grade_3_Zero.Coin_Grade_3_Zero" ImageUVSize="64 64" EnableDrawImage="true" EnableMultiImage="true" TintColor="FFFFFF" GrayWeightValue="0.15" Opacity="1" ImageScale="1.6" HorizontalAlignment="HAlign_Center" VerticalAlignment="VAlign_Center" />
+					</ExpansionComponent.ImageProperty>
+				</ExpansionComponent>
+			</BnsCustomImageWidget.ExpansionComponentList>
+		</BnsCustomImageWidget>
+	</BnsCustomImageWidget>
+	<BnsCustomImageWidget Name="ItemStore_PossessionPanel_PartyBattlePoint" LayoutData.Anchors="0 0.5 0 0.5" LayoutData.Offsets="57 0 85 39" MetaData="tooltip=UI.MyToolTip.PartyBattlePoint:widget_face_bottom">
+		<BnsCustomImageWidget.BaseImageProperty>
+			<ImageProperty />
+		</BnsCustomImageWidget.BaseImageProperty>
+		<BnsCustomImageWidget.ExpansionComponentList>
+			<ExpansionComponent bShow="true" ExpansionType="STRING" ExpansionName="Label" MetaData="" bPostExpansitonRender="true">
+				<ExpansionComponent.ImageProperty>
+					<ImageProperty ImageUVSize="1 1" EnableDrawImage="true" TintColor="FFFFFF" GrayWeightValue="0.15" Opacity="1" ImageScale="1" HorizontalAlignment="HAlign_Center" VerticalAlignment="VAlign_Center" />
+				</ExpansionComponent.ImageProperty>
+				<ExpansionComponent.StringProperty>
+					<StringProperty fontset="BNSR/Content/Art/UI/GameUI_BNSR/Resource/GameUI_FontSet_R/UI/Normal_14.Normal_14" LabelText="#선두" SpaceBetweenLines="3" VerticalAlignment="VAlign_Center" ClippingBound="10 0" Opacity="1" TextScale="1" AnimScale="1" />
+				</ExpansionComponent.StringProperty>
+			</ExpansionComponent>
+			<ExpansionComponent bShow="true" ExpansionType="STRING" ExpansionName="Count" MetaData="" bPostExpansitonRender="true">
+				<ExpansionComponent.ImageProperty>
+					<ImageProperty ImageUVSize="1 1" EnableDrawImage="true" TintColor="FFFFFF" GrayWeightValue="0.15" Opacity="1" ImageScale="1" HorizontalAlignment="HAlign_Center" VerticalAlignment="VAlign_Center" />
+				</ExpansionComponent.ImageProperty>
+				<ExpansionComponent.StringProperty>
+					<StringProperty fontset="BNSR/Content/Art/UI/GameUI_BNSR/Resource/GameUI_FontSet_R/UI/Normal_14.Normal_14" LabelText="999999" SpaceBetweenLines="3" HorizontalAlignment="HAlign_Right" VerticalAlignment="VAlign_Center" ClippingBound="17 0" Padding="0 -10" Opacity="1" TextScale="1" AnimScale="1" />
+				</ExpansionComponent.StringProperty>
+			</ExpansionComponent>
+		</BnsCustomImageWidget.ExpansionComponentList>
+		<BnsCustomImageWidget Name="ItemStore_PossessionPanel_PartyBattlePoint_Icon" LayoutData.Anchors="1 0.5 1 0.5" LayoutData.Offsets="0 0 16 16" MetaData="tooltip=UI.InterDungeon.PartyBattlePointName:mouse">
+			<BnsCustomImageWidget.BaseImageProperty>
+				<ImageProperty BaseImageTexture="BNSR/Content/Art/UI/GameUI/Resource/GameUI_Window/GameUI_New_Scene_00.GameUI_New_Scene_00" ImageUV="90 10" ImageUVSize="14 14" EnableSkinColor="true" Offset="1 1" Opacity="1.5" />
+			</BnsCustomImageWidget.BaseImageProperty>
+			<BnsCustomImageWidget.ExpansionComponentList>
+				<ExpansionComponent bShow="true" ExpansionType="IMAGE" ExpansionName="IconImage" MetaData="" bPostExpansitonRender="true">
+					<ExpansionComponent.ImageProperty>
+						<ImageProperty BaseImageTexture="BNSR/Content/Art/UI/GameUI/Resource/GameUI_Window/HUD_Icon_Menu_Test_nocomp.HUD_Icon_Menu_Test_nocomp" ImageUV="488 471" ImageUVSize="23 30" EnableDrawImage="true" EnableResourceSize="true" TintColor="FFFFFF" GrayWeightValue="0.15" Opacity="1" ImageScale="0.6" HorizontalAlignment="HAlign_Center" VerticalAlignment="VAlign_Center" />
+					</ExpansionComponent.ImageProperty>
+				</ExpansionComponent>
+			</BnsCustomImageWidget.ExpansionComponentList>
+		</BnsCustomImageWidget>
+	</BnsCustomImageWidget>
+	<BnsCustomImageWidget Name="ItemStore_PossessionPanel_FieldPlayPoint" LayoutData.Anchors="0 0.5 0 0.5" LayoutData.Offsets="142 0 85 39" MetaData="tooltip=UI.MyToolTip.FieldPlayPoint:widget_face_bottom">
+		<BnsCustomImageWidget.BaseImageProperty>
+			<ImageProperty />
+		</BnsCustomImageWidget.BaseImageProperty>
+		<BnsCustomImageWidget.ExpansionComponentList>
+			<ExpansionComponent bShow="true" ExpansionType="STRING" ExpansionName="Label" MetaData="" bPostExpansitonRender="true">
+				<ExpansionComponent.ImageProperty>
+					<ImageProperty ImageUVSize="1 1" EnableDrawImage="true" TintColor="FFFFFF" GrayWeightValue="0.15" Opacity="1" ImageScale="1" HorizontalAlignment="HAlign_Center" VerticalAlignment="VAlign_Center" />
+				</ExpansionComponent.ImageProperty>
+				<ExpansionComponent.StringProperty>
+					<StringProperty fontset="BNSR/Content/Art/UI/GameUI_BNSR/Resource/GameUI_FontSet_R/UI/Normal_14.Normal_14" LabelText="#선두" SpaceBetweenLines="3" VerticalAlignment="VAlign_Center" ClippingBound="10 0" Opacity="1" TextScale="1" AnimScale="1" />
+				</ExpansionComponent.StringProperty>
+			</ExpansionComponent>
+			<ExpansionComponent bShow="true" ExpansionType="STRING" ExpansionName="Count" MetaData="" bPostExpansitonRender="true">
+				<ExpansionComponent.ImageProperty>
+					<ImageProperty ImageUVSize="1 1" EnableDrawImage="true" TintColor="FFFFFF" GrayWeightValue="0.15" Opacity="1" ImageScale="1" HorizontalAlignment="HAlign_Center" VerticalAlignment="VAlign_Center" />
+				</ExpansionComponent.ImageProperty>
+				<ExpansionComponent.StringProperty>
+					<StringProperty fontset="BNSR/Content/Art/UI/GameUI_BNSR/Resource/GameUI_FontSet_R/UI/Normal_14.Normal_14" LabelText="999999" SpaceBetweenLines="3" HorizontalAlignment="HAlign_Right" VerticalAlignment="VAlign_Center" ClippingBound="17 0" Padding="0 -10" Opacity="1" TextScale="1" AnimScale="1" />
+				</ExpansionComponent.StringProperty>
+			</ExpansionComponent>
+		</BnsCustomImageWidget.ExpansionComponentList>
+		<BnsCustomImageWidget Name="ItemStore_PossessionPanel_FieldPlayPoint_Icon" LayoutData.Anchors="1 0.5 1 0.5" LayoutData.Offsets="0 0 16 16" MetaData="tooltip=UI.TendencyField.FieldPlayPoint:mouse">
+			<BnsCustomImageWidget.BaseImageProperty>
+				<ImageProperty BaseImageTexture="BNSR/Content/Art/UI/GameUI/Resource/GameUI_Window/GameUI_New_Scene_00.GameUI_New_Scene_00" ImageUV="90 10" ImageUVSize="14 14" EnableSkinColor="true" Offset="1 1" Opacity="1.5" />
+			</BnsCustomImageWidget.BaseImageProperty>
+			<BnsCustomImageWidget.ExpansionComponentList>
+				<ExpansionComponent bShow="true" ExpansionType="IMAGE" ExpansionName="IconImage" MetaData="" bPostExpansitonRender="true">
+					<ExpansionComponent.ImageProperty>
+						<ImageProperty BaseImageTexture="BNSR/Content/Art/UI/GameUI/Resource/GameUI_Window/HUD_Icon_Menu_Test_nocomp.HUD_Icon_Menu_Test_nocomp" ImageUV="512 495" ImageUVSize="23 25" EnableDrawImage="true" EnableResourceSize="true" TintColor="FFFFFF" GrayWeightValue="0.15" Opacity="1" ImageScale="0.65" HorizontalAlignment="HAlign_Center" VerticalAlignment="VAlign_Center" />
+					</ExpansionComponent.ImageProperty>
+				</ExpansionComponent>
+			</BnsCustomImageWidget.ExpansionComponentList>
+		</BnsCustomImageWidget>
+	</BnsCustomImageWidget>
+	<BnsCustomLabelWidget Name="ItemStore_PossessionPanel_Title" LayoutData.Anchors="0 0.5 0 0.5" LayoutData.Offsets="10 0 125.99988 39" MetaData="textref=UI.ItemStore.StoreByItem.Possession">
+		<BnsCustomLabelWidget.String>
+			<StringProperty fontset="BNSR/Content/Art/UI/GameUI_BNSR/Resource/GameUI_FontSet_R/UI/Normal_14.Normal_14" LabelText="교환물품보유현황#" SpaceBetweenLines="3" VerticalAlignment="VAlign_Center" ClippingBound="10 0" Padding="0 -10" />
+		</BnsCustomLabelWidget.String>
+		<BnsCustomLabelWidget.ExpansionComponentList>
+			<ExpansionComponent bShow="true" ExpansionType="IMAGE" ExpansionName="back" MetaData="">
+				<ExpansionComponent.ImageProperty>
+					<ImageProperty BaseImageTexture="BNSR/Content/Art/UI/GameUI/Resource/GameUI_Window/GameUI_New_Scene_00.GameUI_New_Scene_00" ImageUV="268 49" ImageUVSize="27 27" EnableSkinColor="true" TintColor="FFFFFF" GrayWeightValue="0.15" Opacity="1" ImageScale="1" />
+				</ExpansionComponent.ImageProperty>
+			</ExpansionComponent>
+		</BnsCustomLabelWidget.ExpansionComponentList>
+	</BnsCustomLabelWidget>
+</BnsCustomWindowWidget>

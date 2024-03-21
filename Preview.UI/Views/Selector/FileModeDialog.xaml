@@ -1,10 +1,10 @@
 ﻿<Border x:Class="Xylia.Preview.UI.Views.Selector.FileModeDialog"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+		xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+		xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d"
 		xmlns:hc="https://handyorg.github.io/handycontrol"
-		CornerRadius="10"
-        Height="230" Width="400"
-		Background="{DynamicResource RegionBrush}">
+		CornerRadius="10" Height="230" Width="400" Background="{DynamicResource RegionBrush}">
 	<Grid>
 		<Grid.ColumnDefinitions>
 			<ColumnDefinition Width="*"/>
@@ -17,8 +17,8 @@
 
 		<Image Grid.Column="0" Grid.Row="0" Source="pack://application:,,,/Resources/Images/icon-file.png" MouseLeftButtonDown="TextFile_MouseLeftButtonDown" Cursor="Hand"/>
 		<Image Grid.Column="1" Grid.Row="0" Source="pack://application:,,,/Resources/Images/icon-excel.png" MouseLeftButtonDown="ExcelFile_MouseLeftButtonDown" Cursor="Hand"/>
-		<TextBlock Grid.Column="0" Grid.Row="1" Text="Text File" HorizontalAlignment="Center" FontSize="17 "/>
-		<TextBlock Grid.Column="1" Grid.Row="1" Text="Excel File" HorizontalAlignment="Center" FontSize="17 "/>
+		<TextBlock Grid.Column="0" Grid.Row="1" d:Text="Text File" Text="{DynamicResource FileMode_TextFile}" HorizontalAlignment="Center" FontSize="17 "/>
+		<TextBlock Grid.Column="1" Grid.Row="1" d:Text="Excel File" Text="{DynamicResource FileMode_ExcelFile}" HorizontalAlignment="Center" FontSize="17 "/>
 
 		<Button Width="30" Height="30" Command="hc:ControlCommands.Close" Style="{StaticResource ButtonIcon}" Foreground="{DynamicResource PrimaryBrush}" hc:IconElement.Geometry="{StaticResource ErrorGeometry}" Padding="0" HorizontalAlignment="Right" VerticalAlignment="Top" Grid.ColumnSpan="2" />
 	</Grid>

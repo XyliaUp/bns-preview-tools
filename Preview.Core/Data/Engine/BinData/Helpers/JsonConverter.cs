@@ -6,6 +6,7 @@ using Xylia.Preview.Data.Engine.Definitions;
 using Xylia.Preview.Data.Models;
 
 namespace Xylia.Preview.Data.Engine.BinData.Helpers;
+
 public class TableConverter : JsonConverter<Table>
 {
 	public override void WriteJson(JsonWriter writer, Table value, JsonSerializer serializer)
@@ -43,10 +44,10 @@ public class RecordConverter : JsonConverter<Record>
 		writer.WriteStartObject();
 
 		writer.WritePropertyName("id");
-		serializer.Serialize(writer, value.RecordId);
+		serializer.Serialize(writer, value.PrimaryKey.Id);
 
 		writer.WritePropertyName("variation");
-		serializer.Serialize(writer, value.RecordVariationId);
+		serializer.Serialize(writer, value.PrimaryKey.Variant);
 
 		if (value.SubclassType != -1)
 		{
@@ -112,8 +113,6 @@ public class StringLookupConverter : JsonConverter<StringLookup>
 		throw new NotImplementedException();
 	}
 }
-
-
 
 public class AttributeValueConverter : JsonConverter<AttributeValue>
 {

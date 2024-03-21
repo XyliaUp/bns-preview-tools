@@ -1,7 +1,4 @@
-﻿using System.ComponentModel;
-
-namespace Xylia.Preview.UI.GameUI.Scene.Game_ItemStore;
-[DesignTimeVisible(false)]
+﻿namespace Xylia.Preview.UI.GameUI.Scene.Game_ItemStore;
 public partial class ItemStorePanel
 {
 	public ItemStorePanel()

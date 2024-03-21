@@ -1,17 +1,16 @@
 ﻿using System;
+using System.Windows;
 using HtmlAgilityPack;
 using Xylia.Preview.Data.Common.DataStruct;
-using static Xylia.Preview.Data.Common.DataStruct.MsecFormat;
 
 namespace Xylia.Preview.UI.Documents;
-public class Timer : Element
+public class Timer : BaseElement
 {
 	#region Fields
-	public int Id;
+	public int Id { get; set; }
 
-	public MsecFormatType Type;
+	public MsecFormat.MsecFormatType Type { get; set; }
 	#endregion
-
 
 	#region Properties
 	public Time64 Value { get; set; }
@@ -20,15 +19,25 @@ public class Timer : Element
 	#endregion
 
 
-	#region Methods
+	#region 0verride Methods
 	protected internal override void Load(HtmlNode node)
 	{
 		Id = node.GetAttributeValue("id", 0);
-		Type = node.GetAttributeValue("type", (MsecFormatType)default);
+		Type = node.GetAttributeValue("type", (MsecFormat.MsecFormatType)default);
+
+	   // Value = 
 	}
 
-	public override string ToString() => Span.ToString(Type);
+	protected override Size MeasureCore(Size availableSize)
+	{
+		// HACK: 
+		this.Children = [new Run() { Text = Span.ToString(Type) }];
 
+		return base.MeasureCore(availableSize);
+	}
+	#endregion
+
+	#region Methods
 	public static bool Valid(DayOfWeek DayOfWeek, int ResetTime, out Time64 Time)
 	{
 		var now = DateTime.Now;

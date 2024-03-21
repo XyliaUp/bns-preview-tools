@@ -39,11 +39,14 @@ public partial class AttributeDefinition
 
 	public static AttributeDefinition LoadFrom(XmlElement node, ElementBaseDefinition table, Func<SequenceDefinition> seqfun)
 	{
-		if ((node.Attributes["deprecated"]?.Value).ToBool())
-			return null;
+		var Name = node.GetAttribute("name").Trim();
+		var Deprecated = node.GetAttribute("deprecated").ToBool();
+		var Key = node.GetAttribute("key").ToBool();
+		var Required = node.GetAttribute("required").ToBool();
+		var Hidden = node.GetAttribute("hidden").ToBool();
 
-		var Name = node.Attributes["name"]?.Value?.Trim();
-		ArgumentNullException.ThrowIfNull(Name);
+		ArgumentException.ThrowIfNullOrEmpty(Name);
+		if (Deprecated) return null;
 
 		#region Type & Ref
 		var TypeName = node.Attributes["type"]?.Value;
@@ -68,6 +71,7 @@ public partial class AttributeDefinition
 		double MaxValue = (node.Attributes["max"]?.Value).ToDouble();
 		double MinValue = (node.Attributes["min"]?.Value).ToDouble();
 		string DefaultValue = node.Attributes["default"]?.Value?.Trim();
+
 		if (string.IsNullOrEmpty(DefaultValue)) DefaultValue = null;
 
 		switch (Type)
@@ -132,10 +136,14 @@ public partial class AttributeDefinition
 			case AttributeType.TProp_seq:
 			case AttributeType.TProp_field:
 			{
-				if (Name.Contains("forwarding-types"))
-					seq.Default = seq.FirstOrDefault();
+				if (DefaultValue is null && seq != null)
+				{
+					DefaultValue = seq.Default;
 
-				DefaultValue ??= seq?.Default;
+					// Ignore unnecessary attribute output
+					if (Required || Hidden) DefaultValue ??= seq.FirstOrDefault();
+				}
+
 				break;
 			}
 
@@ -170,10 +178,10 @@ public partial class AttributeDefinition
 		{
 			Name = Name,
 
-			IsDeprecated = (node.Attributes["deprecated"]?.Value).ToBool(),
-			IsKey = (node.Attributes["key"]?.Value).ToBool(),
-			IsRequired = (node.Attributes["required"]?.Value).ToBool(),
-			IsHidden = (node.Attributes["hidden"]?.Value).ToBool(),
+			IsDeprecated = Deprecated,
+			IsKey = Key,
+			IsRequired = Required,
+			IsHidden = Hidden,
 
 			Type = Type,
 			Offset = (ushort)(node.Attributes["offset"]?.Value).ToInt16(),
@@ -224,8 +232,6 @@ public partial class AttributeDefinition
 		};
 	}
 	#endregion
-
-
 
 	#region Static Methods
 	public static string ToString(AttributeDefinition attribute, object value)

@@ -9,7 +9,7 @@ public class AliasTableArchiveEntry
 
 	public bool IsLeaf => (Begin & 1) == 0;
 
-	public Ref ToRef() => Ref.From((Begin | (ulong)End << 32) >> 1);
+	public Ref ToRef() => (Begin | (long)End << 32) >> 1;
 
 	public override string ToString() => $"{Begin >> 1}-{End} IsLeaf:{IsLeaf}";
 }

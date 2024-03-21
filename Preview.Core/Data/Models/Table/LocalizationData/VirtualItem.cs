@@ -2,4 +2,7 @@
 
 namespace Xylia.Preview.Data.Models;
 [Side(ReleaseSide.Client)]
-public sealed class VirtualItem : ModelElement { }
+public sealed class VirtualItem : ModelElement 
+{
+
+}

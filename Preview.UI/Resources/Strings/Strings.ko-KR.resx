@@ -120,7 +120,7 @@
   <data name="PreviewModel" xml:space="preserve">
     <value>보기 모델</value>
   </data>
-  <data name="AbilityPage" xml:space="preserve">
+  <data name="Page_AbilityPage" xml:space="preserve">
     <value>역할 능력</value>
   </data>
   <data name="AbilityPage_Level" xml:space="preserve">
@@ -133,7 +133,7 @@
     <value>수치</value>
   </data>
   <data name="Application_ExitMessage" xml:space="preserve">
-    <value>정말로 애플리케이션을 닫으시겠습니까?!</value>
+    <value>정말로 애플리케이션을 닫으시겠습니까?</value>
   </data>
   <data name="Asset_Extract" xml:space="preserve">
     <value>추출</value>
@@ -189,13 +189,10 @@
   <data name="DatabaseStudio_ViewTable" xml:space="preserve">
     <value>시청하기</value>
   </data>
-  <data name="GameDirectory" xml:space="preserve">
-    <value>디렉터리</value>
-  </data>
-  <data name="GameResourcePage" xml:space="preserve">
+  <data name="Page_GameResourcePage" xml:space="preserve">
     <value>엔진</value>
   </data>
-  <data name="Game_QuestJournalScene" xml:space="preserve">
+  <data name="Page_QuestJournalPanel" xml:space="preserve">
     <value>퀘스트</value>
   </data>
   <data name="IconOut_CreateList" xml:space="preserve">
@@ -232,10 +229,10 @@
     <value>아이콘</value>
   </data>
   <data name="IconOut_NameFormat" xml:space="preserve">
-    <value>출력 이름 형식!</value>
+    <value>출력 이름 형식</value>
   </data>
   <data name="IconOut_TaskCancel" xml:space="preserve">
-    <value>이미 실행 중인 작업이 있습니다. 취소하시겠습니까?!</value>
+    <value>이미 실행 중인 작업이 있습니다. 취소하시겠습니까?</value>
   </data>
   <data name="IconOut_TaskCompleted" xml:space="preserve">
     <value>작업 완료, {0:hh} 시간 {0:mm} 분 {0:ss} 초 소요.</value>
@@ -244,7 +241,7 @@
     <value>{0} 때문에 작업이 예기치 않게 종료되었습니다</value>
   </data>
   <data name="IconOut_UseBackground" xml:space="preserve">
-    <value>학년 배경!</value>
+    <value>학년 배경</value>
   </data>
   <data name="ItemList_Name" xml:space="preserve">
     <value>상품 목록</value>
@@ -264,7 +261,7 @@
   <data name="ItemList_TaskCompleted2" xml:space="preserve">
     <value>작업이 완료되었으며 {1} 초가 걸렸습니다.</value>
   </data>
-  <data name="ItemPage" xml:space="preserve">
+  <data name="Page_ItemPage" xml:space="preserve">
     <value>아이템</value>
   </data>
   <data name="MergeIcon_BackgroundMode" xml:space="preserve">
@@ -308,12 +305,6 @@
   </data>
   <data name="Name_General" xml:space="preserve">
     <value>일반</value>
-  </data>
-  <data name="OutputDirectory" xml:space="preserve">
-    <value>출력 디렉토리</value>
-  </data>
-  <data name="OutputDirectory_Resource" xml:space="preserve">
-    <value>출력 디렉토리 (리소스)</value>
   </data>
   <data name="PreviewRaw" xml:space="preserve">
     <value>보기 원시</value>
@@ -367,7 +358,7 @@
     <value>사용자 정의를 활성화하시겠습니까? 이로 인해 읽기 예외가 발생할 수 있습니다.</value>
   </data>
   <data name="Settings_UseUserDefinition_Tooltip" xml:space="preserve">
-    <value>사용법을 모른다면 확인하지 마세요!!</value>
+    <value>사용법을 모른다면 확인하지 마세요!</value>
   </data>
   <data name="ShowObjectPlayer_Name" xml:space="preserve">
     <value>오브젝트 플레이어 표시</value>
@@ -378,7 +369,7 @@
   <data name="TextEditor_Name" xml:space="preserve">
     <value>텍스트 편집기</value>
   </data>
-  <data name="TextView" xml:space="preserve">
+  <data name="TextView_Name" xml:space="preserve">
     <value>뷰어</value>
   </data>
   <data name="TextView_LoadLastOnStartup" xml:space="preserve">
@@ -439,6 +430,256 @@
     <value>미리보기 버전입니다. 일부 기능이 작동하지 않을 수 있습니다.</value>
   </data>
   <data name="Version_Tip2" xml:space="preserve">
-    <value>{0} 의 최신 버전은 {1} 입니다. 지금 애플리케이션을 업데이트하시겠습니까?!</value>
+    <value>{0} 의 최신 버전은 {1} 입니다. 지금 애플리케이션을 업데이트하시겠습니까?</value>
+  </data>
+  <data name="DatabaseStudio_SqlSave" xml:space="preserve">
+    <value>살리자</value>
+  </data>
+  <data name="Text_Export" xml:space="preserve">
+    <value>출력</value>
+  </data>
+  <data name="Version_Tip3" xml:space="preserve">
+    <value>업데이트를 확인하지 못했습니다. 나중에 다시 시도하십시오</value>
+  </data>
+  <data name="TextView_ReadWrite" xml:space="preserve">
+    <value>수정 가능</value>
+  </data>
+  <data name="Text_ColumnNumber" xml:space="preserve">
+    <value>기둥</value>
+  </data>
+  <data name="Text_LineNumber" xml:space="preserve">
+    <value>그래 좋아.</value>
+  </data>
+  <data name="TextView_ReadStatus" xml:space="preserve">
+    <value>개별 파일을 볼 때 편집을 활성화할 수 있습니다
+노드 순서를 수정하지 않도록 주의하십시오</value>
+  </data>
+  <data name="Asset_Repack" xml:space="preserve">
+    <value>팩</value>
+  </data>
+  <data name="Text_Add" xml:space="preserve">
+    <value>증가</value>
+  </data>
+  <data name="Text_Remove" xml:space="preserve">
+    <value>제거</value>
+  </data>
+  <data name="Text_Update" xml:space="preserve">
+    <value>새로고침</value>
+  </data>
+  <data name="TextView_NotExist_x16" xml:space="preserve">
+    <value>선택한 폴더에 x16 파일이 없습니다.</value>
+  </data>
+  <data name="TextView_ReplaceCompleted" xml:space="preserve">
+    <value>교체 성공!</value>
+  </data>
+  <data name="TextView_SaveCompleted" xml:space="preserve">
+    <value>보존 성공</value>
+  </data>
+  <data name="PreviewTooltip" xml:space="preserve">
+    <value>자세한 내용을 확인하세요</value>
+  </data>
+  <data name="Application_CrashMessage" xml:space="preserve">
+    <value>복구할 수 없는 예외가 발생하여 응용 프로그램이 종료됩니다. {0}</value>
+  </data>
+  <data name="AbilityName.AbnormalAttackBasePercent" xml:space="preserve">
+    <value>대미지 확률 이상</value>
+  </data>
+  <data name="AbilityName.AbnormalDefendBasePercent" xml:space="preserve">
+    <value>대미지 방어율 이상</value>
+  </data>
+  <data name="AbilityName.AoeDefendBasePercent" xml:space="preserve">
+    <value>지역 대미지 방어율</value>
+  </data>
+  <data name="AbilityName.AttackAbnormalHitBasePercent" xml:space="preserve">
+    <value>상태 적중률 이상</value>
+  </data>
+  <data name="AbilityName.AttackAttributeBasePercent" xml:space="preserve">
+    <value>파워</value>
+  </data>
+  <data name="AbilityName.AttackCriticalBasePercent" xml:space="preserve">
+    <value>치명타 확률</value>
+  </data>
+  <data name="AbilityName.AttackCriticalDamagePercent" xml:space="preserve">
+    <value>치명타 대미지 확률</value>
+  </data>
+  <data name="AbilityName.AttackHitBasePercent" xml:space="preserve">
+    <value>적중률</value>
+  </data>
+  <data name="AbilityName.AttackParryPiercePercent" xml:space="preserve">
+    <value>공격 패리 관통 퍼센트</value>
+  </data>
+  <data name="AbilityName.AttackPierceBasePercent" xml:space="preserve">
+    <value>관통률</value>
+  </data>
+  <data name="AbilityName.CounterEnhance" xml:space="preserve">
+    <value>반격 강화</value>
+  </data>
+  <data name="AbilityName.DefenceParryDamageReduce" xml:space="preserve">
+    <value>방어 무술을 강화하세요</value>
+  </data>
+  <data name="AbilityName.DefendAbnormalDodgeBasePercent" xml:space="preserve">
+    <value />
+  </data>
+  <data name="AbilityName.DefendBouncePercent" xml:space="preserve">
+    <value>반격률</value>
+  </data>
+  <data name="AbilityName.DefendCounterReducePercent" xml:space="preserve">
+    <value />
+  </data>
+  <data name="AbilityName.DefendCriticalBasePercent" xml:space="preserve">
+    <value>치명타 방어율</value>
+  </data>
+  <data name="AbilityName.DefendCriticalDamagePercent" xml:space="preserve">
+    <value>치명타 피해 방어율</value>
+  </data>
+  <data name="AbilityName.DefendDodgeBasePercent" xml:space="preserve">
+    <value>회피율</value>
+  </data>
+  <data name="AbilityName.DefendImmuneBasePercent" xml:space="preserve">
+    <value>저항</value>
+  </data>
+  <data name="AbilityName.DefendMissBasePercent" xml:space="preserve">
+    <value />
+  </data>
+  <data name="AbilityName.DefendParryBasePercent" xml:space="preserve">
+    <value>블로킹 찬스</value>
+  </data>
+  <data name="AbilityName.DefendParryReducePercent" xml:space="preserve">
+    <value>완벽한 블록 관통율</value>
+  </data>
+  <data name="AbilityName.DefendPerfectParryBasePercent" xml:space="preserve">
+    <value>완벽한 블록 속도</value>
+  </data>
+  <data name="AbilityName.DefendPerfectParryReducePercent" xml:space="preserve">
+    <value />
+  </data>
+  <data name="AbilityName.HateBasePercent" xml:space="preserve">
+    <value>증오 지수</value>
+  </data>
+  <data name="AbilityName.HealPowerBasePercent" xml:space="preserve">
+    <value>치유율</value>
+  </data>
+  <data name="AbilityName.SupportPowerBasePercent" xml:space="preserve">
+    <value>파워베이스 퍼센트 지원</value>
+  </data>
+  <data name="Text_Refresh" xml:space="preserve">
+    <value>갱신</value>
+  </data>
+  <data name="Text_Run" xml:space="preserve">
+    <value>도망쳐라</value>
+  </data>
+  <data name="DatabaseStudio_ViewDefinition" xml:space="preserve">
+    <value>정의 보기</value>
+  </data>
+  <data name="DatabaseStudio_ViewDefinitions" xml:space="preserve">
+    <value>모든 정의 보기</value>
+  </data>
+  <data name="DatabaseStudio_Connect" xml:space="preserve">
+    <value>연결</value>
+  </data>
+  <data name="DatabaseStudio_Disconnect" xml:space="preserve">
+    <value>연결 해제</value>
+  </data>
+  <data name="DatabaseStudio_Grid" xml:space="preserve">
+    <value>용지</value>
+  </data>
+  <data name="DatabaseStudio_SqlLoad" xml:space="preserve">
+    <value>로딩중</value>
+  </data>
+  <data name="DatabaseStudio_Text" xml:space="preserve">
+    <value>텍스트</value>
+  </data>
+  <data name="Text_Import" xml:space="preserve">
+    <value>입력</value>
+  </data>
+  <data name="ItemPage_SearchItemRule_Placeholder" xml:space="preserve">
+    <value>아이템 정보 (번호/별칭/이름) 를 입력하세요</value>
+  </data>
+  <data name="ItemPage_SearchItemRule_Title" xml:space="preserve">
+    <value>아이템을 검색하세요</value>
+  </data>
+  <data name="ItemPage_DataClear" xml:space="preserve">
+    <value>캐시 정리</value>
+  </data>
+  <data name="ItemPage_DataGUI" xml:space="preserve">
+    <value>데이터 편집기</value>
+  </data>
+  <data name="Text_Options" xml:space="preserve">
+    <value>환경설정</value>
+  </data>
+  <data name="TextView_LoadData" xml:space="preserve">
+    <value>미리보기 중에 데이터 로드</value>
+  </data>
+  <data name="TextView_LoadData_Tooltip" xml:space="preserve">
+    <value>텍스트가 아닌 데이터를 로드하는 데 시간이 오래 걸립니다</value>
+  </data>
+  <data name="FileMode_ExcelFile" xml:space="preserve">
+    <value>양식 파일</value>
+  </data>
+  <data name="FileMode_TextFile" xml:space="preserve">
+    <value>텍스트 파일</value>
+  </data>
+  <data name="DatabaseStudio_ConnectionManager" xml:space="preserve">
+    <value>연결 관리자</value>
+  </data>
+  <data name="DatabaseStudio_Mode_Folder" xml:space="preserve">
+    <value>차례</value>
+  </data>
+  <data name="DatabaseStudio_Mode_Game" xml:space="preserve">
+    <value>놀이</value>
+  </data>
+  <data name="DatabaseStudio_Paramters" xml:space="preserve">
+    <value>매개변수</value>
+  </data>
+  <data name="DatabaseStudio_Provider" xml:space="preserve">
+    <value>데이터 소스</value>
+  </data>
+  <data name="DatabaseStudio_Mode_Global" xml:space="preserve">
+    <value>전역 (기본값)</value>
+  </data>
+  <data name="DatabaseStudio_ConnectMessage1" xml:space="preserve">
+    <value>사용하지 않음</value>
+  </data>
+  <data name="DatabaseStudio_ConnectMessage2" xml:space="preserve">
+    <value>현재 전역 데이터 소스입니다. 연결을 해제하시겠습니까?</value>
+  </data>
+  <data name="DatabaseStudio_OutputExcel" xml:space="preserve">
+    <value>테이블로 저장</value>
+  </data>
+  <data name="Settings_NightMode_Day" xml:space="preserve">
+    <value>아기청룡</value>
+  </data>
+  <data name="Settings_NightMode_Night" xml:space="preserve">
+    <value>밤</value>
+  </data>
+  <data name="Settings_NightMode" xml:space="preserve">
+    <value>야간 모드</value>
+  </data>
+  <data name="Settings_NightMode_Auto" xml:space="preserve">
+    <value>자동</value>
+  </data>
+  <data name="Settings_NightMode_Ask" xml:space="preserve">
+    <value>현재 설정이 자동 전환으로 설정되어 있습니다. 정말 변경하시겠습니까?</value>
+  </data>
+  <data name="ItemList_Empty" xml:space="preserve">
+    <value>추가된 아이템이 없습니다</value>
+  </data>
+  <data name="ItemList_Path_Invalid" xml:space="preserve">
+    <value>유효한 캐시 파일을 선택해야 합니다</value>
+  </data>
+  <data name="Settings_GameDirectory" xml:space="preserve">
+    <value>게임 카탈로그</value>
+  </data>
+  <data name="Settings_GameDirectory_Invalid" xml:space="preserve">
+    <value>먼저 게임 카탈로그를 설정하십시오</value>
+  </data>
+  <data name="Settings_OutputDirectory" xml:space="preserve">
+    <value>출력 디렉터리</value>
+  </data>
+  <data name="Settings_OutputDirectory2" xml:space="preserve">
+    <value>출력 디렉터리 (리소스)</value>
+  </data>
+  <data name="Settings_OutputDirectory_Invalid" xml:space="preserve">
+    <value>먼저 출력 디렉토리를 설정하십시오</value>
   </data>
 </root>

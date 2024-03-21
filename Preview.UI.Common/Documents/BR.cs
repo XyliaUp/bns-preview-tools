@@ -2,7 +2,7 @@
 using HtmlAgilityPack;
 
 namespace Xylia.Preview.UI.Documents;
-public class BR : Element
+public class BR : BaseElement
 {
 	protected internal override void Load(HtmlNode node)
 	{

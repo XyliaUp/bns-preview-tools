@@ -1,8 +1,9 @@
-<ResourceDictionary
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+	
 	<ResourceDictionary.MergedDictionaries>
-		<ResourceDictionary Source="/Preview.UI.Common;component/GameScene.xaml"/>
-		<ResourceDictionary Source="/Preview.UI.Common;component/Controls/BnsCustomCaptionWidget.xaml"/>
+		<ResourceDictionary Source="/Preview.UI.Common;component/Themes/Styles.xaml"/>
+		<ResourceDictionary Source="/Preview.UI.Common;component/Controls/Extends/GameWindow.xaml"/>
+		<ResourceDictionary Source="/Preview.UI.Common;component/Controls/Extends/TreeViewImageItem.xaml"/>
 	</ResourceDictionary.MergedDictionaries>
+	
 </ResourceDictionary>

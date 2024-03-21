@@ -1,26 +1,27 @@
-﻿using System.Diagnostics.CodeAnalysis;
+﻿using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
+using System.Globalization;
 using System.Runtime.CompilerServices;
 
 namespace Xylia.Preview.Data.Common.DataStruct;
 /// <summary>
-/// Marshal.SizeOf(System.Boolean) is 4 size,
-/// we need fix it 
+/// Marshal.SizeOf(System.Boolean) is 4 size, we need fix it 
 /// </summary>
-public readonly struct BnsBoolean : IComparable, IComparable<bool>, IEquatable<bool>
+[TypeConverter(typeof(BooleanConvert))]
+public readonly struct BnsBoolean(bool value) : IComparable, IComparable<bool>, IEquatable<bool>
 {
 	// Member Variables
-	private readonly byte m_value;
+	private readonly byte m_value = value ? (byte)1 : (byte)0;
 
 	// The internal string representation
 	internal const string TrueLiteral = "y";
 	internal const string FalseLiteral = "n";
 
-	public BnsBoolean(bool value)
-	{
-		m_value = value ? (byte)1 : (byte)0;
-	}
+	internal const string TrueLiteral2 = "True";
+	internal const string FalseLiteral2 = "False";
 
 
+	#region Methods
 	public override string ToString() => m_value != 0 ? TrueLiteral : FalseLiteral;
 
 	public override int GetHashCode() => m_value;
@@ -85,12 +86,12 @@ public readonly struct BnsBoolean : IComparable, IComparable<bool>, IEquatable<b
 	//
 	internal static bool IsTrueStringIgnoreCase(ReadOnlySpan<char> value)
 	{
-		return value.Equals(TrueLiteral, StringComparison.OrdinalIgnoreCase);
+		return value.Equals(TrueLiteral, StringComparison.OrdinalIgnoreCase) || value.Equals(TrueLiteral2, StringComparison.OrdinalIgnoreCase);
 	}
 
 	internal static bool IsFalseStringIgnoreCase(ReadOnlySpan<char> value)
 	{
-		return value.Equals(FalseLiteral, StringComparison.OrdinalIgnoreCase);
+		return value.Equals(FalseLiteral, StringComparison.OrdinalIgnoreCase) || value.Equals(FalseLiteral2, StringComparison.OrdinalIgnoreCase);
 	}
 
 
@@ -104,7 +105,7 @@ public readonly struct BnsBoolean : IComparable, IComparable<bool>, IEquatable<b
 
 	public static BnsBoolean Parse(ReadOnlySpan<char> value)
 	{
-		if (!TryParse(value, out bool result)) return false;	 
+		if (!TryParse(value, out bool result)) return false;
 		return result;
 	}
 
@@ -186,10 +187,36 @@ public readonly struct BnsBoolean : IComparable, IComparable<bool>, IEquatable<b
 
 		return value.Slice(start, end - start + 1);
 	}
+	#endregion
 
-
-
+	#region Operator
 	public static implicit operator BnsBoolean(bool value) => new(value);
 
 	public static implicit operator bool(BnsBoolean value) => value.m_value != 0;
+	public static bool operator ==(BnsBoolean left, BnsBoolean right)
+	{
+		return left.Equals(right);
+	}
+	public static bool operator !=(BnsBoolean left, BnsBoolean right)
+	{
+		return !(left == right);
+	}
+	#endregion
+}
+
+internal class BooleanConvert : TypeConverter
+{
+	public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
+	{
+		if (sourceType == typeof(string)) return true;
+
+		return base.CanConvertFrom(context, sourceType);
+	}
+
+	public override object ConvertFrom(ITypeDescriptorContext context, CultureInfo culture, object value)
+	{
+		if (value is string s) return BnsBoolean.Parse(s);
+
+		return base.ConvertFrom(context, culture, value);
+	}
 }

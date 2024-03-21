@@ -1,126 +1,136 @@
-﻿using System.ComponentModel;
-using System.Text;
-using System.Windows;
+﻿using System.Windows;
+using System.Windows.Controls;
 using Xylia.Preview.Common.Extension;
 using Xylia.Preview.Data.Models;
 using Xylia.Preview.Data.Models.Sequence;
-using Xylia.Preview.UI.Documents;
+using Xylia.Preview.UI.Controls;
 
 namespace Xylia.Preview.UI.GameUI.Scene.Game_Tooltip;
-public partial class ItemTooltipPanel : INotifyPropertyChanged
+public partial class ItemTooltipPanel
 {
-	public event PropertyChangedEventHandler PropertyChanged;
-
+	#region Constructors
 	public ItemTooltipPanel()
 	{
 		InitializeComponent();
-		this.Loaded += OnLoaded;
 	}
-
-	private void OnLoaded(object sender, RoutedEventArgs e)
-	{
-		PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Test)));
-	}
-
-
-
-	public string Test
-	{
-		get
-		{
-			if (DataContext is not Item record) return null;
-
-			var pages = DecomposePage.LoadFrom(record.DecomposeInfo);
-			if (pages.Count > 0)
-			{
-				var page = pages[0];
-				return page.GetDescription();
-			}
-
-			return null;
-		}
-	}
-}
-
-internal sealed class DecomposePage
-{
-	#region Fields
-	public JobSeq Job;
-
-	public Reward DecomposeReward { get; private set; }
-
-	public Tuple<Item, short> OpenItem { get; private set; }
 	#endregion
 
 	#region Methods
-	public static List<DecomposePage> LoadFrom(ItemDecomposeInfo info)
+	protected override void OnLoaded(RoutedEventArgs e)
 	{
-		var pages = new List<DecomposePage>();
+		if (DataContext is not Item record) return;
 
-		#region reward
-		for (int index = 0; index < info.DecomposeReward.Length; index++)
+		#region Decompose 
+		var pages = DecomposePage.LoadFrom(record.DecomposeInfo);
+		if (pages.Count > 0)
 		{
-			var reward = info.DecomposeReward[index];
-			var item2 = info.Decompose_By_Item2[index];
-			if (reward is null) continue;
-
-			pages.Add(new DecomposePage() { DecomposeReward = reward, OpenItem = item2 });
+			var page = pages[0];
+			page.Update(DecomposeDescription.Children);
 		}
 		#endregion
 
-		#region job reward
-		var group_job = info.DecomposeJobRewards
-			.Where(x => x.Value is not null)
-			.Select(x => new DecomposePage() { Job = x.Key, DecomposeReward = x.Value, });
+		ItemIcon.ExpansionComponentList["BackgroundImage"]?.SetValue(record.BackIcon);
+		ItemIcon.ExpansionComponentList["IconImage"]?.SetValue(record.FrontIcon);
+		ItemIcon.ExpansionComponentList["UnusableImage"]?.SetValue(null);
+		ItemIcon.ExpansionComponentList["Grade_Image"]?.SetValue(null);
+		ItemIcon.ExpansionComponentList["CanSaleItem"]?.SetValue(record.CanSaleItemImage);
+		ItemIcon.InvalidateVisual();
 
-		if (group_job.Any())
-		{
-			// combine data according to cell num
-			//int num = group_job.Sum(group => group.Preview.Count);
-			//if (num >= 30) pages.AddRange(group_job);
-			//else pages.Add(new DecomposePage()
-			//{
-			//	Job = JobSeq.JobNone,
-			//	DecomposeReward = group_job.FirstOrDefault().DecomposeReward,
-			//	OpenItem = info.Job_Decompose_By_Item2.FirstOrDefault(),
-			//	Preview = group_job.SelectMany(group => group.Preview).ToList(),
-			//});
-		}
-		#endregion
-
-		return pages;
+#if DEBUG
+		this.ItemDescription7.Text += string.Join("<br/>", record.ItemCombat.SelectNotNull(x => x.Instance));
+#endif
 	}
+	#endregion
 
-	public string GetDescription()
+
+	#region Helpers
+	internal sealed class DecomposePage
 	{
-		var builder = new StringBuilder();
+		#region Fields
+		public JobSeq Job;
 
-		DecomposeReward.FixedItem.ForEach(x => x.Instance, (item, i) =>
+		public Reward? DecomposeReward { get; private set; }
+
+		public Tuple<Item, short>? OpenItem { get; private set; }
+		#endregion
+
+		#region Methods
+		public static List<DecomposePage> LoadFrom(ItemDecomposeInfo info)
 		{
-			var min = DecomposeReward.FixedItemMin[i];
-			var max = DecomposeReward.FixedItemMax[i];
-			var param = new DataParams { [2] = item, [3] = min, [4] = max };
+			var pages = new List<DecomposePage>();
 
-			builder.AppendLine(ArgExtension.Handle(param, (min == max ? min == 1 ?
-			"UI.ItemTooltip.RandomboxPreview.Fixed" :
-			"UI.ItemTooltip.RandomboxPreview.Fixed.Min" :
-			"UI.ItemTooltip.RandomboxPreview.Fixed.MinMax").GetText()));
-		});
+			#region reward
+			for (int index = 0; index < info.DecomposeReward.Length; index++)
+			{
+				var reward = info.DecomposeReward[index];
+				var item2 = info.Decompose_By_Item2[index];
+				if (reward is null) continue;
 
-		DecomposeReward.SelectedItem.ForEach(x => x.Instance, (item, i) =>
+				pages.Add(new DecomposePage() { DecomposeReward = reward, OpenItem = item2 });
+			}
+			#endregion
+
+			#region job reward
+			var group_job = info.DecomposeJobRewards
+				.Where(x => x.Value is not null)
+				.Select(x => new DecomposePage() { Job = x.Key, DecomposeReward = x.Value, });
+
+			if (group_job.Any())
+			{
+				// combine data according to cell num
+				//int num = group_job.Sum(group => group.Preview.Count);
+				//if (num >= 30) pages.AddRange(group_job);
+				//else pages.Add(new DecomposePage()
+				//{
+				//	Job = JobSeq.JobNone,
+				//	DecomposeReward = group_job.FirstOrDefault().DecomposeReward,
+				//	OpenItem = info.Job_Decompose_By_Item2.FirstOrDefault(),
+				//	Preview = group_job.SelectMany(group => group.Preview).ToList(),
+				//});
+			}
+			#endregion
+
+			return pages;
+		}
+
+		public void Update(UIElementCollection collection)
 		{
-			var count = DecomposeReward.SelectedItemCount[i];
-			var param = new DataParams { [2] = item, [3] = count };
-			builder.AppendLine(ArgExtension.Handle(param, "UI.ItemTooltip.RandomboxPreview.Selected".GetText()));
-		});
+			ArgumentNullException.ThrowIfNull(DecomposeReward);
+			collection.Clear();
 
-		DecomposeReward.RandomItem.ForEach(x => x.Instance, (item, i) =>
-		{
-			var param = new DataParams { [2] = item };
-			builder.AppendLine(ArgExtension.Handle(param, "UI.ItemTooltip.RandomboxPreview.Random".GetText()));
-		});
+			DecomposeReward.FixedItem.ForEach(x => x.Instance, (item, i) =>
+			{
+				var min = DecomposeReward.FixedItemMin[i];
+				var max = DecomposeReward.FixedItemMax[i];
 
-		return builder.ToString().TrimEnd('\n');
+				collection.Add(new BnsCustomLabelWidget()
+				{
+					Arguments = new TextArguments { [2] = item, [3] = min, [4] = max },
+					Text = (min == max ? min == 1 ?
+						"UI.ItemTooltip.RandomboxPreview.Fixed" :
+						"UI.ItemTooltip.RandomboxPreview.Fixed.Min" :
+						"UI.ItemTooltip.RandomboxPreview.Fixed.MinMax").GetText(),
+				});
+			});
+			DecomposeReward.SelectedItem.ForEach(x => x.Instance, (item, i) =>
+			{
+				var count = DecomposeReward.SelectedItemCount[i];
+				collection.Add(new BnsCustomLabelWidget()
+				{
+					Text = "UI.ItemTooltip.RandomboxPreview.Selected".GetText(),
+					Arguments = new TextArguments { [2] = item, [3] = count }
+				});
+			});
+			DecomposeReward.RandomItem.ForEach(x => x.Instance, (item, i) =>
+			{
+				collection.Add(new BnsCustomLabelWidget()
+				{
+					Text = "UI.ItemTooltip.RandomboxPreview.Random".GetText(),
+					Arguments = new TextArguments { [2] = item }
+				});
+			});
+		}
+		#endregion
 	}
 	#endregion
 }

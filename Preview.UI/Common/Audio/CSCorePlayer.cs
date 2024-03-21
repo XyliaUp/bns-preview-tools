@@ -15,7 +15,7 @@ public class CSCorePlayer : IDisposable
 	private static CSCorePlayer instance;
 
 	// ISPectrumPlayer
-	private List<EventHandler<SingleBlockReadEventArgs>> inputStreamList = new List<EventHandler<SingleBlockReadEventArgs>>();
+	private List<EventHandler<SingleBlockReadEventArgs>> inputStreamList = [];
 
 	// IPlayer
 	private bool canPlay;
@@ -61,10 +61,7 @@ public class CSCorePlayer : IDisposable
 	{
 		get
 		{
-			if (instance == null)
-			{
-				instance = new CSCorePlayer();
-			}
+			instance ??= new CSCorePlayer();
 			return instance;
 		}
 	}
@@ -643,15 +640,11 @@ public class CSCorePlayer : IDisposable
 	{
 		this.mmDevices = new List<MMDevice>();
 
-		using (var mmdeviceEnumerator = new MMDeviceEnumerator())
+		using var mmdeviceEnumerator = new MMDeviceEnumerator();
+		using var mmdeviceCollection = mmdeviceEnumerator.EnumAudioEndpoints(DataFlow.Render, DeviceState.Active);
+		foreach (var device in mmdeviceCollection)
 		{
-			using (MMDeviceCollection mmdeviceCollection = mmdeviceEnumerator.EnumAudioEndpoints(DataFlow.Render, DeviceState.Active))
-			{
-				foreach (var device in mmdeviceCollection)
-				{
-					this.mmDevices.Add(device);
-				}
-			}
+			this.mmDevices.Add(device);
 		}
 	}
 

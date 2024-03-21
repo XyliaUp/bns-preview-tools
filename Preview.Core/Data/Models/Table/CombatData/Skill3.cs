@@ -1,14 +1,16 @@
-﻿using Xylia.Preview.Common.Attributes;
+﻿using CUE4Parse.BNS.Assets.Exports;
+using Xylia.Preview.Common.Attributes;
 using Xylia.Preview.Data.Common.DataStruct;
+using Xylia.Preview.Data.Helpers;
 using Xylia.Preview.Data.Models.Sequence;
 
 namespace Xylia.Preview.Data.Models;
-public partial class Skill3 : ModelElement
+public abstract class Skill3 : ModelElement
 {
-	#region Fields
+	#region Attributes
 	public sbyte VariationId { get; set; }
 
-	public short[] RevisedEffectEquipProbabilityInExec { get; set; }
+	public short[] RevisedEventProbabilityInExec { get; set; }
 
 	public short DamageRatePvp { get; set; }
 
@@ -24,24 +26,15 @@ public partial class Skill3 : ModelElement
 
 	public KeyCommandSeq ShortCutKeySimpleContext { get; set; }
 
-	public Ref<SkillTooltip>[] MainTooltip1 { get; set; }
-	public Ref<SkillTooltip>[] MainTooltip2 { get; set; }
+	[Name("main-tooltip-1")] public Ref<SkillTooltip>[] MainTooltip1 { get; set; }
+	[Name("main-tooltip-2")] public Ref<SkillTooltip>[] MainTooltip2 { get; set; }
 	public Ref<SkillTooltip>[] SubTooltip { get; set; }
 	public Ref<SkillTooltip>[] StanceTooltip { get; set; }
 	public Ref<SkillTooltip>[] ConditionTooltip { get; set; }
 
-
 	public string IconTexture { get; set; }
-
 	public short IconIndex { get; set; }
 	#endregion
-
-	#region Properties
-	public KeyCommand CurrentShortCutKey => KeyCommand.Cast(this.ShortCutKey);
-
-	//public SKBitmap Icon => IconTexture.GetIcon(IconIndex);
-	#endregion
-
 
 	#region Sub
 	public sealed class ActiveSkill : Skill3
@@ -88,37 +81,6 @@ public partial class Skill3 : ModelElement
 		public sbyte BoundRecycleGroupId { get; set; }
 
 
-		public enum ConsumeType
-		{
-			Point,
-
-			PointBelow,
-
-			PointAbove,
-
-			BaseMaxPercent,
-
-			TotalMaxPercent,
-
-			CurrentPercent,
-		}
-
-		public short ConsumeHpValue { get; set; }
-
-		public ConsumeType ConsumeHpType { get; set; }
-
-		[Repeat(2)]
-		public short[] ConsumeSpValue { get; set; }
-
-		[Repeat(2)]
-		public ConsumeType[] ConsumeSpType { get; set; }
-
-
-		public short ConsumeSummonedHpValue { get; set; }
-
-		public ConsumeType ConsumeSummonedHpType { get; set; }
-
-
 		public sbyte FlowRepeat { get; set; }
 
 		public sbyte ExpandedFlowRepeatCount { get; set; }
@@ -138,5 +100,12 @@ public partial class Skill3 : ModelElement
 	{
 
 	}
+	#endregion
+
+
+	#region Properties
+	public ImageProperty Icon => FileCache.Data.Provider.GetTable<IconTexture>()[IconTexture]?.GetIcon(IconIndex);
+
+	public KeyCommand CurrentShortCutKey => KeyCommand.Cast(this.ShortCutKey);
 	#endregion
 }

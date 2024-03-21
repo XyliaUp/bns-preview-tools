@@ -1,9 +1,8 @@
 using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
-
 using CUE4Parse.BNS.Assets.Exports;
-
+using CUE4Parse.UE4.Objects.UObject;
 using Xylia.Preview.Common.Extension;
 using Xylia.Preview.Data.Common.Abstractions;
 using Xylia.Preview.Data.Helpers;
@@ -13,54 +12,48 @@ using Xylia.Preview.UI.Controls;
 namespace Xylia.Preview.UI.GameUI.Scene.Game_Map;
 public partial class Game_MapScene
 {
-	#region Ctor
+	#region Constructors
 	public Game_MapScene()
 	{
 		InitializeComponent();
-		TreeView.ItemsSource = FileCache.Data.Get<MapInfo>();
+		TreeView.ItemsSource = FileCache.Data.Provider.GetTable<MapInfo>();
 	}
 
 	private void TreeView_SelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
 	{
 		if (e.OldValue == e.NewValue) return;
 
-		LoadData(e.NewValue as MapInfo);
+		LoadData((MapInfo)e.NewValue);
 	}
 	#endregion
 
 	#region Map
-	private MapUnit.MapDepthSeq depth;
-
 	public void LoadData(MapInfo MapInfo)
 	{
 		// get current map depth
 		if (MapInfo is null) return;
-		depth = MapInfo.GetMapDepth(MapInfo);
 
-		// layout
-		MapPanel.Children.Clear();
-		MapPanel.Children.Add(MapSource);
-
-		this.MapSource.Image = FileCache.Provider.LoadObject<UImageSet>(MapInfo.Imageset)?.GetImage();
+		this.MapDepth = MapInfo.GetMapDepth(MapInfo);
+		this.MapPanel.BaseImageProperty = new ImageProperty() { ImageSet = new MyFPackageIndex(MapInfo.Imageset) };
 		this.LoadMapUint(MapInfo);
 	}
 
-	private void LoadMapUint(MapInfo MapInfo, List<MapInfo> MapTree = null)
+	private void LoadMapUint(MapInfo MapInfo, List<MapInfo>? MapTree = null)
 	{
-		MapTree ??= new();
+		MapTree ??= [];
 		MapTree.Add(MapInfo);
 
 		this.GetMapUnit(MapInfo, MapTree);
 
 		if (MapInfo.Alias == "World") return;
-		FileCache.Data.Get<MapInfo>()
+		FileCache.Data.Provider.GetTable<MapInfo>()
 			.Where(x => x.ParentMapinfo.Instance == MapInfo)
 			.ForEach(x => this.LoadMapUint(x, new(MapTree)));
 	}
 
 	private void GetMapUnit(MapInfo MapInfo, List<MapInfo> MapTree)
 	{
-		var MapUnits = FileCache.Data.Get<MapUnit>().Where(o => o.Mapid == MapInfo.Id && o.MapDepth <= depth);
+		var MapUnits = FileCache.Data.Provider.GetTable<MapUnit>().Where(o => o.Mapid == MapInfo.Id && o.MapDepth <= this.MapDepth);
 		foreach (var mapunit in MapUnits)
 		{
 			#region init
@@ -72,11 +65,11 @@ public partial class Game_MapScene
 
 			var temp = new BnsCustomImageWidget()
 			{
-				Tag = mapunit,
-				Image = res,
+				//Tag = mapunit,
+				//BaseImageProperty = res,
 
-				Width = mapunit.SizeX,
-				Height = mapunit.SizeY,
+				//Width = mapunit.SizeX,
+				//Height = mapunit.SizeY,
 			};
 			#endregion
 
@@ -84,7 +77,7 @@ public partial class Game_MapScene
 			string tooltip = mapunit.Name2.GetText();
 			if (mapunit is MapUnit.Attraction)
 			{
-				var obj = new Ref<ModelElement>(mapunit.Attributes["attraction"]?.ToString()).Instance;
+				var obj = mapunit.Attributes.Get<Record>("attraction")?.As<ModelElement>();
 				if (obj is IAttraction attraction)
 				{
 					tooltip = attraction.Text + "\n" + attraction.Describe;
@@ -96,14 +89,14 @@ public partial class Game_MapScene
 			}
 			else if (mapunit is MapUnit.Npc or MapUnit.Boss)
 			{
-				var Npc = FileCache.Data.Get<Npc>()[mapunit.Attributes["npc"]?.ToString()];
+				var Npc = FileCache.Data.Provider.GetTable<Npc>()[mapunit.Attributes["npc"]?.ToString()];
 				if (Npc != null) tooltip = Npc.Text;
 			}
 			else if (mapunit is MapUnit.Link)
 			{
 				temp.MouseLeftButtonDown += new((o, e) =>
 				{
-					var map = FileCache.Data.Get<MapInfo>()[mapunit.Attributes["link-mapid"]?.ToString()];
+					var map = FileCache.Data.Provider.GetTable<MapInfo>()[mapunit.Attributes["link-mapid"]?.ToString()];
 					LoadData(map);
 				});
 			}
@@ -135,5 +128,10 @@ public partial class Game_MapScene
 			#endregion
 		}
 	}
+	#endregion
+
+
+	#region Private Fields
+	private MapUnit.MapDepthSeq MapDepth;
 	#endregion
 }

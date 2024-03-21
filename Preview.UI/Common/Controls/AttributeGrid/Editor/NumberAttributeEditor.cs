@@ -1,26 +1,19 @@
 ﻿using System.Globalization;
 using System.Windows;
 using System.Windows.Data;
-
 using HandyControl.Controls;
 using Xylia.Preview.Data.Engine.Definitions;
 
 namespace Xylia.Preview.UI.Controls;
-internal class NumberAttributeEditor : PropertyEditorBase
+internal class NumberAttributeEditor(AttributeDefinition attribute) : PropertyEditorBase, IValueConverter
 {
-	public NumberAttributeEditor(AttributeDefinition attribute)
-	{
-		Attribute = attribute;
-		Minimum = attribute.Min;
-		Maximum = attribute.Max;
-	}
+	#region Properties
+	public double Minimum { get; set; } = attribute.Min;
 
-	private AttributeDefinition Attribute { get; set; }
+	public double Maximum { get; set; } = attribute.Max;
+	#endregion
 
-	public double Minimum { get; set; }
-
-	public double Maximum { get; set; }
-
+	#region Methods
 	public override FrameworkElement CreateElement(PropertyItem propertyItem) => new NumericUpDown
 	{
 		IsReadOnly = propertyItem.IsReadOnly,
@@ -30,14 +23,7 @@ internal class NumberAttributeEditor : PropertyEditorBase
 
 	public override DependencyProperty GetDependencyProperty() => NumericUpDown.ValueProperty;
 
-	protected override IValueConverter GetConverter(PropertyItem propertyItem) => new NumberValueConverter(Attribute.Type);
-}
-
-internal class NumberValueConverter : IValueConverter
-{
-	private readonly AttributeType Type;
-
-	public NumberValueConverter(AttributeType type)	=> Type = type;
+	protected override IValueConverter GetConverter(PropertyItem propertyItem) => this;
 
 	public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
 	{
@@ -57,13 +43,17 @@ internal class NumberValueConverter : IValueConverter
 		// Therefore, we can only use AttributeType
 		if (value is double Value)
 		{
-			if (Type == AttributeType.TInt8) return (sbyte)Value;
-			if (Type == AttributeType.TInt16) return (short)Value;
-			if (Type == AttributeType.TInt32) return (int)Value;
-			if (Type == AttributeType.TInt64) return (long)Value;
-			if (Type == AttributeType.TFloat32) return (float)Value;
+			switch (attribute.Type)
+			{
+				case AttributeType.TInt8: return (sbyte)Value;
+				case AttributeType.TInt16: return (short)Value;
+				case AttributeType.TInt32: return (int)Value;
+				case AttributeType.TInt64: return (long)Value;
+				case AttributeType.TFloat32: return (float)Value;
+			}
 		}
 
 		throw new NotImplementedException();
 	}
+	#endregion
 }

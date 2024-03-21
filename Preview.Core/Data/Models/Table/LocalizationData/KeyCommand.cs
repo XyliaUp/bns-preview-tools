@@ -1,16 +1,13 @@
-﻿using SkiaSharp;
-
-using Xylia.Preview.Common.Attributes;
+﻿using CUE4Parse.BNS.Assets.Exports;
 using Xylia.Preview.Data.Helpers;
 using Xylia.Preview.Data.Models.Sequence;
 
 namespace Xylia.Preview.Data.Models;
 public sealed class KeyCommand : ModelElement
 {
-	#region Field
+	#region Attributes
 	public KeyCommandSeq Command { get; set; }
 
-	[Name("default-keycap")]
 	public string DefaultKeycap { get; set; }
 	#endregion
 
@@ -50,8 +47,8 @@ public sealed class KeyCommand : ModelElement
 
 	public string GetImage() => this.Key1?.Image;
 
-	public SKBitmap GetIcon() => this.Key1?.Icon;
+	public ImageProperty GetIcon() => this.Key1?.Icon;
 
-	public static KeyCommand Cast(KeyCommandSeq KeyCommand) => FileCache.Data.Get<KeyCommand>().FirstOrDefault(o => o.Command == KeyCommand);
+	public static KeyCommand Cast(KeyCommandSeq KeyCommand) => FileCache.Data.Provider.GetTable<KeyCommand>().FirstOrDefault(o => o.Command == KeyCommand);
 	#endregion
 }

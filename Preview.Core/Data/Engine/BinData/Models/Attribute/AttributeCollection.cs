@@ -27,7 +27,7 @@ public class AttributeCollection : IReadOnlyDictionary<AttributeDefinition, obje
 	protected readonly Dictionary<string, object> attributes = [];
 	#endregion
 
-	#region Ctor
+	#region Constructors
 	internal void BuildData(ElementBaseDefinition definition, bool OnlyKey = false)
 	{
 		void SetData(AttributeDefinition attribute) =>
@@ -115,6 +115,7 @@ public class AttributeCollection : IReadOnlyDictionary<AttributeDefinition, obje
 		return result != null || record.Definition?[name] != null;
 	}
 
+	// TODO: Value convert
 	public T Get<T>(string name) => (T)Get(name);
 
 	public object Get(string name)
@@ -122,7 +123,6 @@ public class AttributeCollection : IReadOnlyDictionary<AttributeDefinition, obje
 		var definition = record.Definition;
 		var attribute = definition[name];
 
-		// from prev
 		if (attributes.Count != 0)
 		{
 			var value = attributes.GetValueOrDefault(name, attribute?.DefaultValue);
@@ -131,7 +131,7 @@ public class AttributeCollection : IReadOnlyDictionary<AttributeDefinition, obje
 			return value;
 		}
 
-		// from definition
+		// from binary 
 		return AttributeConverter.ConvertTo(record, attribute, record.Owner.Owner);
 	}
 	#endregion
@@ -184,12 +184,13 @@ public class AttributeCollection : IReadOnlyDictionary<AttributeDefinition, obje
 			case AttributeType.TRef:
 			{
 				var record = value as Record;
-				value = (Ref?)record ?? new Ref();
+				value = record.PrimaryKey;
 				break;
 			}
 			case AttributeType.TTRef:
 			{
-				var record = value as Record;
+				var provider = this.record.Owner.Owner;
+				var record = provider.Tables.GetRecord((string)value);
 				value = new TRef(record);
 				break;
 			}
@@ -259,8 +260,6 @@ public class AttributeCollection : IReadOnlyDictionary<AttributeDefinition, obje
 		}
 	}
 
-	public int Count => this.Count();
-
 	public IEnumerable<AttributeDefinition> Keys => this.Select(x => x.Key);
 
 	public IEnumerable<object> Values => this.Select(x => x.Value);
@@ -271,9 +270,9 @@ public class AttributeCollection : IReadOnlyDictionary<AttributeDefinition, obje
 	{
 		throw new NotImplementedException();
 	}
-	#endregion
 
-	#region Interface
+	public int Count => this.Keys.Count();
+
 	public override string ToString() => this.Aggregate("<record ", (sum, now) => sum + $"{now.Key.Name}=\"{now.Value}\" ", result => result + "/>");
 	#endregion
 }

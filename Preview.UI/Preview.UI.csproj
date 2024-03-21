@@ -25,109 +25,109 @@
 		<DebugType>none</DebugType>
 		<IsPublishable>True</IsPublishable>
 	</PropertyGroup>
+
 	<!-- Temp Asset -->
 	<ItemGroup>
-		<EmbeddedResource Include="FModel\Resources\Json.xshd" />
-		<EmbeddedResource Include="FModel\Resources\Ini.xshd" />
-		<EmbeddedResource Include="FModel\Resources\Verse.xshd" />
-		<EmbeddedResource Include="FModel\Resources\Xml.xshd" />
-		<EmbeddedResource Include="FModel\Resources\Cpp.xshd" />
-		<EmbeddedResource Include="FModel\Resources\Changelog.xshd" />
-		<EmbeddedResource Include="FModel\Resources\default.frag" />
-		<EmbeddedResource Include="FModel\Resources\default.vert" />
-		<EmbeddedResource Include="FModel\Resources\grid.frag" />
-		<EmbeddedResource Include="FModel\Resources\grid.vert" />
-		<EmbeddedResource Include="FModel\Resources\skybox.frag" />
-		<EmbeddedResource Include="FModel\Resources\skybox.vert" />
-		<EmbeddedResource Include="FModel\Resources\framebuffer.frag" />
-		<EmbeddedResource Include="FModel\Resources\framebuffer.vert" />
-		<EmbeddedResource Include="FModel\Resources\outline.frag" />
-		<EmbeddedResource Include="FModel\Resources\outline.vert" />
-		<EmbeddedResource Include="FModel\Resources\picking.frag" />
-		<EmbeddedResource Include="FModel\Resources\picking.vert" />
-		<EmbeddedResource Include="FModel\Resources\light.frag" />
-		<EmbeddedResource Include="FModel\Resources\light.vert" />
-		<EmbeddedResource Include="FModel\Resources\bone.frag" />
-		<EmbeddedResource Include="FModel\Resources\bone.vert" />
+		<EmbeddedResource Include="Views\FModel\Resources\Json.xshd" />
+		<EmbeddedResource Include="Views\FModel\Resources\Ini.xshd" />
+		<EmbeddedResource Include="Views\FModel\Resources\Verse.xshd" />
+		<EmbeddedResource Include="Views\FModel\Resources\Xml.xshd" />
+		<EmbeddedResource Include="Views\FModel\Resources\Cpp.xshd" />
+		<EmbeddedResource Include="Views\FModel\Resources\Changelog.xshd" />
+		<EmbeddedResource Include="Views\FModel\Resources\default.frag" />
+		<EmbeddedResource Include="Views\FModel\Resources\default.vert" />
+		<EmbeddedResource Include="Views\FModel\Resources\grid.frag" />
+		<EmbeddedResource Include="Views\FModel\Resources\grid.vert" />
+		<EmbeddedResource Include="Views\FModel\Resources\skybox.frag" />
+		<EmbeddedResource Include="Views\FModel\Resources\skybox.vert" />
+		<EmbeddedResource Include="Views\FModel\Resources\framebuffer.frag" />
+		<EmbeddedResource Include="Views\FModel\Resources\framebuffer.vert" />
+		<EmbeddedResource Include="Views\FModel\Resources\outline.frag" />
+		<EmbeddedResource Include="Views\FModel\Resources\outline.vert" />
+		<EmbeddedResource Include="Views\FModel\Resources\picking.frag" />
+		<EmbeddedResource Include="Views\FModel\Resources\picking.vert" />
+		<EmbeddedResource Include="Views\FModel\Resources\light.frag" />
+		<EmbeddedResource Include="Views\FModel\Resources\light.vert" />
+		<EmbeddedResource Include="Views\FModel\Resources\bone.frag" />
+		<EmbeddedResource Include="Views\FModel\Resources\bone.vert" />
 	</ItemGroup>
 	<ItemGroup>
-		<Resource Include="FModel\Resources\android.png" />
-		<Resource Include="FModel\Resources\apple.png" />
-		<Resource Include="FModel\Resources\battlebreakers.png" />
-		<Resource Include="FModel\Resources\blueprint.png" />
-		<Resource Include="FModel\Resources\borderlands.png" />
-		<Resource Include="FModel\Resources\fallenorder.png" />
-		<Resource Include="FModel\Resources\FModel.ico" />
-		<Resource Include="FModel\Resources\folder.png" />
-		<Resource Include="FModel\Resources\label.png" />
-		<Resource Include="FModel\Resources\fortnite.png" />
-		<Resource Include="FModel\Resources\fortnitebr.png" />
-		<Resource Include="FModel\Resources\empty_folder.png" />
-		<Resource Include="FModel\Resources\engine.png" />
-		<Resource Include="FModel\Resources\gear.png" />
-		<Resource Include="FModel\Resources\localization.png" />
-		<Resource Include="FModel\Resources\materialicon.png" />
-		<Resource Include="FModel\Resources\pc.png" />
-		<Resource Include="FModel\Resources\puzzle.png" />
-		<Resource Include="FModel\Resources\roguecompany.png" />
-		<Resource Include="FModel\Resources\spellbreak.png" />
-		<Resource Include="FModel\Resources\sound.png" />
-		<Resource Include="FModel\Resources\creative.png" />
-		<Resource Include="FModel\Resources\texture.png" />
-		<Resource Include="FModel\Resources\thecycle.png" />
-		<Resource Include="FModel\Resources\valorant.png" />
-		<Resource Include="FModel\Resources\ui.png" />
-		<Resource Include="FModel\Resources\weapon.png" />
-		<Resource Include="FModel\Resources\windows.png" />
-		<Resource Include="FModel\Resources\cinematics.png" />
-		<Resource Include="FModel\Resources\archive.png" />
-		<Resource Include="FModel\Resources\archive_enabled.png" />
-		<Resource Include="FModel\Resources\archive_disabled.png" />
-		<Resource Include="FModel\Resources\unknown_asset.png" />
-		<Resource Include="FModel\Resources\asset.png" />
-		<Resource Include="FModel\Resources\asset_ini.png" />
-		<Resource Include="FModel\Resources\asset_psd.png" />
-		<Resource Include="FModel\Resources\asset_png.png" />
-		<Resource Include="FModel\Resources\athena.png" />
-		<Resource Include="FModel\Resources\unix.png" />
-		<Resource Include="FModel\Resources\linux.png" />
-		<Resource Include="FModel\Resources\stateofdecay2.png" />
-		<Resource Include="FModel\Resources\T_Placeholder_Item_Image.png" />
-		<Resource Include="FModel\Resources\checker.png" />
-		<Resource Include="FModel\Resources\T_ClipSize_Weapon_Stats.png" />
-		<Resource Include="FModel\Resources\T_DamagePerBullet_Weapon_Stats.png" />
-		<Resource Include="FModel\Resources\T_ReloadTime_Weapon_Stats.png" />
-		<Resource Include="FModel\Resources\T-Icon-Pets-64.png" />
-		<Resource Include="FModel\Resources\T-Icon-Quests-64.png" />
-		<Resource Include="FModel\Resources\Default.png" />
-		<Resource Include="FModel\Resources\NoBackground.png" />
-		<Resource Include="FModel\Resources\NoText.png" />
-		<Resource Include="FModel\Resources\Flat.png" />
-		<Resource Include="FModel\Resources\Cataba.png" />
-		<Resource Include="FModel\Resources\add_directory.png" />
-		<Resource Include="FModel\Resources\delete.png" />
-		<Resource Include="FModel\Resources\edit.png" />
-		<Resource Include="FModel\Resources\go_to_directory.png" />
-		<Resource Include="FModel\Resources\npcleftside.png" />
-		<Resource Include="FModel\Resources\nx.png" />
-		<Resource Include="FModel\Resources\ny.png" />
-		<Resource Include="FModel\Resources\nz.png" />
-		<Resource Include="FModel\Resources\px.png" />
-		<Resource Include="FModel\Resources\py.png" />
-		<Resource Include="FModel\Resources\pz.png" />
-		<Resource Include="FModel\Resources\pointlight.png" />
-		<Resource Include="FModel\Resources\spotlight.png" />
-		<Resource Include="FModel\Resources\link_on.png" />
-		<Resource Include="FModel\Resources\link_off.png" />
-		<Resource Include="FModel\Resources\link_has.png" />
-		<Resource Include="FModel\Resources\tl_play.png" />
-		<Resource Include="FModel\Resources\tl_pause.png" />
-		<Resource Include="FModel\Resources\tl_rewind.png" />
-		<Resource Include="FModel\Resources\tl_forward.png" />
-		<Resource Include="FModel\Resources\tl_previous.png" />
-		<Resource Include="FModel\Resources\tl_next.png" />
+		<Resource Include="Views\FModel\Resources\android.png" />
+		<Resource Include="Views\FModel\Resources\apple.png" />
+		<Resource Include="Views\FModel\Resources\battlebreakers.png" />
+		<Resource Include="Views\FModel\Resources\blueprint.png" />
+		<Resource Include="Views\FModel\Resources\borderlands.png" />
+		<Resource Include="Views\FModel\Resources\fallenorder.png" />
+		<Resource Include="Views\FModel\Resources\FModel.ico" />
+		<Resource Include="Views\FModel\Resources\folder.png" />
+		<Resource Include="Views\FModel\Resources\label.png" />
+		<Resource Include="Views\FModel\Resources\fortnite.png" />
+		<Resource Include="Views\FModel\Resources\fortnitebr.png" />
+		<Resource Include="Views\FModel\Resources\empty_folder.png" />
+		<Resource Include="Views\FModel\Resources\engine.png" />
+		<Resource Include="Views\FModel\Resources\gear.png" />
+		<Resource Include="Views\FModel\Resources\localization.png" />
+		<Resource Include="Views\FModel\Resources\materialicon.png" />
+		<Resource Include="Views\FModel\Resources\pc.png" />
+		<Resource Include="Views\FModel\Resources\puzzle.png" />
+		<Resource Include="Views\FModel\Resources\roguecompany.png" />
+		<Resource Include="Views\FModel\Resources\spellbreak.png" />
+		<Resource Include="Views\FModel\Resources\sound.png" />
+		<Resource Include="Views\FModel\Resources\creative.png" />
+		<Resource Include="Views\FModel\Resources\texture.png" />
+		<Resource Include="Views\FModel\Resources\thecycle.png" />
+		<Resource Include="Views\FModel\Resources\valorant.png" />
+		<Resource Include="Views\FModel\Resources\ui.png" />
+		<Resource Include="Views\FModel\Resources\weapon.png" />
+		<Resource Include="Views\FModel\Resources\windows.png" />
+		<Resource Include="Views\FModel\Resources\cinematics.png" />
+		<Resource Include="Views\FModel\Resources\archive.png" />
+		<Resource Include="Views\FModel\Resources\archive_enabled.png" />
+		<Resource Include="Views\FModel\Resources\archive_disabled.png" />
+		<Resource Include="Views\FModel\Resources\unknown_asset.png" />
+		<Resource Include="Views\FModel\Resources\asset.png" />
+		<Resource Include="Views\FModel\Resources\asset_ini.png" />
+		<Resource Include="Views\FModel\Resources\asset_psd.png" />
+		<Resource Include="Views\FModel\Resources\asset_png.png" />
+		<Resource Include="Views\FModel\Resources\athena.png" />
+		<Resource Include="Views\FModel\Resources\unix.png" />
+		<Resource Include="Views\FModel\Resources\linux.png" />
+		<Resource Include="Views\FModel\Resources\stateofdecay2.png" />
+		<Resource Include="Views\FModel\Resources\T_Placeholder_Item_Image.png" />
+		<Resource Include="Views\FModel\Resources\checker.png" />
+		<Resource Include="Views\FModel\Resources\T_ClipSize_Weapon_Stats.png" />
+		<Resource Include="Views\FModel\Resources\T_DamagePerBullet_Weapon_Stats.png" />
+		<Resource Include="Views\FModel\Resources\T_ReloadTime_Weapon_Stats.png" />
+		<Resource Include="Views\FModel\Resources\T-Icon-Pets-64.png" />
+		<Resource Include="Views\FModel\Resources\T-Icon-Quests-64.png" />
+		<Resource Include="Views\FModel\Resources\Default.png" />
+		<Resource Include="Views\FModel\Resources\NoBackground.png" />
+		<Resource Include="Views\FModel\Resources\NoText.png" />
+		<Resource Include="Views\FModel\Resources\Flat.png" />
+		<Resource Include="Views\FModel\Resources\Cataba.png" />
+		<Resource Include="Views\FModel\Resources\add_directory.png" />
+		<Resource Include="Views\FModel\Resources\delete.png" />
+		<Resource Include="Views\FModel\Resources\edit.png" />
+		<Resource Include="Views\FModel\Resources\go_to_directory.png" />
+		<Resource Include="Views\FModel\Resources\npcleftside.png" />
+		<Resource Include="Views\FModel\Resources\nx.png" />
+		<Resource Include="Views\FModel\Resources\ny.png" />
+		<Resource Include="Views\FModel\Resources\nz.png" />
+		<Resource Include="Views\FModel\Resources\px.png" />
+		<Resource Include="Views\FModel\Resources\py.png" />
+		<Resource Include="Views\FModel\Resources\pz.png" />
+		<Resource Include="Views\FModel\Resources\pointlight.png" />
+		<Resource Include="Views\FModel\Resources\spotlight.png" />
+		<Resource Include="Views\FModel\Resources\link_on.png" />
+		<Resource Include="Views\FModel\Resources\link_off.png" />
+		<Resource Include="Views\FModel\Resources\link_has.png" />
+		<Resource Include="Views\FModel\Resources\tl_play.png" />
+		<Resource Include="Views\FModel\Resources\tl_pause.png" />
+		<Resource Include="Views\FModel\Resources\tl_rewind.png" />
+		<Resource Include="Views\FModel\Resources\tl_forward.png" />
+		<Resource Include="Views\FModel\Resources\tl_previous.png" />
+		<Resource Include="Views\FModel\Resources\tl_next.png" />
 	</ItemGroup>
-
 
 	<!-- Project -->
 	<ItemGroup>
@@ -135,14 +135,15 @@
 		<ProjectReference Include="..\Preview.UI.Common\Preview.UI.Common.csproj" />
 	</ItemGroup>
 	<ItemGroup>
-		<PackageReference Include="Autoupdater.NET.Official" Version="1.8.4" />
+		<PackageReference Include="Autoupdater.NET.Official" Version="1.8.5" />
 		<PackageReference Include="AvalonEdit" Version="6.3.0.90" />
 		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
 		<PackageReference Include="CSCore" Version="1.2.1.2" />
-		<PackageReference Include="EPPlus" Version="7.0.3" />
+		<PackageReference Include="EPPlus" Version="7.0.10" />
+		<PackageReference Include="HandyControl" Version="3.5.1" />
 		<PackageReference Include="ImGui.NET" Version="1.89.9.3" />
 		<PackageReference Include="LiveCharts.Wpf" Version="0.9.7" />
-		<PackageReference Include="Microsoft.Web.WebView2" Version="1.0.2210.55" />
+		<PackageReference Include="Microsoft.Web.WebView2" Version="1.0.2365.46" />
 		<PackageReference Include="NAudio.Vorbis" Version="1.5.0" />
 		<PackageReference Include="Ookii.Dialogs.Wpf" Version="5.0.1" />
 		<PackageReference Include="OpenTK" Version="4.8.2" />
@@ -154,33 +155,13 @@
 		<PackageReference Include="Vanara.PInvoke.User32" Version="3.4.17" />
 	</ItemGroup>
 	<ItemGroup>
-		<Content Include="Properties\Query.ico" />
-		<ApplicationDefinition Update="App.xaml" SubType="Designer" />
-		<EmbeddedResource Update="Resources\Strings\Strings.resx" />
-		<EmbeddedResource Update="Resources\Strings\Strings.zh-Hans.resx" />
-
-		<Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
-		<None Update="Properties\AssemblyVersion.tt" Generator="TextTemplatingFileGenerator" LastGenOutput="AssemblyVersion.cs" />
-		<Compile Update="Content\Art\GameUI\Scene\Game_ItemMap\BnsCustomGraphMapWidget.xaml.cs">
-		  <SubType>Code</SubType>
-		</Compile>
-		<Compile Update="Properties\AssemblyVersion.cs" AutoGen="True" DesignTime="True" DependentUpon="AssemblyVersion.tt" />
-	</ItemGroup>
-
-
-	<ItemGroup>
 		<Resource Include="Resources\Images\*" />
 		<Resource Include="Resources\Images\*\*" />
-		<Resource Include="Resources\Fonts\segmdl2.ttf" />
+		<Resource Include="Resources\Fonts\*" />
 		<Resource Include="Resources\Xshd\*.xshd" />
 		<Resource Include="Content\Art\GameUI\Resource\*\*" />
-	</ItemGroup>
-
-
-
-	<ItemGroup>
-	  <Reference Include="HandyControl">
-	    <HintPath>..\..\..\..\..\HandyControl\HandyControl\src\Net_GE45\HandyControl_Net_GE45\bin\Debug\net7.0-windows\HandyControl.dll</HintPath>
-	  </Reference>
+		<Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
+		<None Update="Properties\AssemblyVersion.tt" Generator="TextTemplatingFileGenerator" LastGenOutput="AssemblyVersion.cs" />
+		<Compile Update="Properties\AssemblyVersion.cs" AutoGen="True" DesignTime="True" DependentUpon="AssemblyVersion.tt" />
 	</ItemGroup>
 </Project>

@@ -79,8 +79,6 @@ public struct Msec : IFormattable
 	#endregion
 }
 
-
-
 public static class MsecFormat
 {
 	public enum MsecFormatType

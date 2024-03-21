@@ -5,9 +5,10 @@ using Xylia.Preview.Data.Engine.BinData.Models;
 namespace Xylia.Preview.Data.Engine.BinData.Serialization;
 internal class AliasTableArchive : AliasTable
 {
+	#region Data
 	private Dictionary<string, Ref> _table;
 
-    public override Dictionary<string, Ref> Table
+	internal override Dictionary<string, Ref> Table
     {
         get
         {
@@ -23,6 +24,7 @@ internal class AliasTableArchive : AliasTable
             return _table;
         }
     }
+	#endregion
 
 	#region Read
 	private static readonly Encoding KoreanEncoding = CodePagesEncodingProvider.Instance.GetEncoding(949);

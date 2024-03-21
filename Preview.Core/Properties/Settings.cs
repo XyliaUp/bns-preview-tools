@@ -7,9 +7,10 @@ using Xylia.Preview.Common.Extension;
 namespace Xylia.Preview.Properties;
 public class Settings : INotifyPropertyChanged
 {
-	internal static Settings Default { get; } = new();
-
+	#region Constructors
 	public static string ApplicationData => Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Xylia");
+
+	protected internal static Settings Default { get; protected set; } = new();
 
 	protected Settings()
 	{
@@ -21,7 +22,7 @@ public class Settings : INotifyPropertyChanged
 			new FileIniDataParser().ReadFile(ConfigPath) : 
 			new IniData();
 	}
-
+	#endregion
 
 	#region PropertyChange	 
 	protected string ConfigPath;
@@ -48,7 +49,8 @@ public class Settings : INotifyPropertyChanged
 			name = split[1];
 		}
 
-		return Configuration[section][name];
+		var value =  Configuration[section][name];
+		return string.IsNullOrEmpty(value) ? null : value;
 	}
 
 	protected void SetValue(object value, string section = "Common", [CallerMemberName] string name = null)
@@ -66,7 +68,6 @@ public class Settings : INotifyPropertyChanged
 		PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
 	}
 	#endregion
-
 
 	#region Common
 	public string GameFolder
@@ -95,5 +96,7 @@ public class Settings : INotifyPropertyChanged
 	public string OutputFolderResource { get => GetValue(); set => SetValue(value); }
 
 	public bool UseUserDefinition { get => GetValue().ToBool(); set => SetValue(value); }
+
+	public bool PreviewLoadData { get => GetValue().ToBool(); set => SetValue(value); }
 	#endregion
 }

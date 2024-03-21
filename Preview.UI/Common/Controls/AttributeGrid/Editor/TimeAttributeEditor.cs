@@ -1,14 +1,13 @@
 ﻿using System.Globalization;
 using System.Windows;
 using System.Windows.Data;
-
 using HandyControl.Controls;
-
 using Xylia.Preview.Data.Common.DataStruct;
 
 namespace Xylia.Preview.UI.Controls;
 internal class TimeAttributeEditor : PropertyEditorBase, IValueConverter
 {
+	#region Methods
 	public override FrameworkElement CreateElement(PropertyItem propertyItem) => new DateTimePicker
 	{
 		IsEnabled = !propertyItem.IsReadOnly
@@ -31,4 +30,5 @@ internal class TimeAttributeEditor : PropertyEditorBase, IValueConverter
 
 		throw new NotImplementedException();
 	}
+	#endregion
 }

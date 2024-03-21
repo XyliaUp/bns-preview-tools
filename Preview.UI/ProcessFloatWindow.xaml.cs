@@ -52,7 +52,7 @@ public partial class ProcessFloatWindow
 			var value = (process.TotalProcessorTime - prevCpuTime).TotalMilliseconds / Interval / Environment.ProcessorCount;
 			prevCpuTime = process.TotalProcessorTime;
 
-			Application.Current.Dispatcher.Invoke(() =>
+			Dispatcher.Invoke(() =>
 			{
 				UsedCPU.Text = value.ToString("P0");
 				UsedMemory.Text = BinaryExtension.GetReadableSize(size);
@@ -70,6 +70,18 @@ public partial class ProcessFloatWindow
 			timer.Enabled = false;
 			timer = null;
 		}
+	}
+	#endregion
+
+
+	#region Helpers
+	public static void ClearMemory()
+	{
+		GC.Collect();
+		GC.WaitForPendingFinalizers();
+
+		if (Environment.OSVersion.Platform == PlatformID.Win32NT)
+			Kernel32.SetProcessWorkingSetSize(Process.GetCurrentProcess().Handle, SizeT.MinValue, SizeT.MinValue);
 	}
 	#endregion
 }

@@ -13,7 +13,7 @@
 		<TreeView Grid.Column="0" x:Name="TreeView" BorderThickness="0" Margin="0 10 0 0" ItemsSource="{Binding Source}" SelectedItemChanged="TreeView_SelectedItemChanged" >
 			<TreeView.ItemTemplate>
 				<DataTemplate>
-					<TextBlock Grid.Column="0" Text="{Binding Text}" FontSize="12" />
+					<TextBlock Grid.Column="0" Text="{UI:DynamicBinding Prefix=AbilityName.}" FontSize="12" />
 				</DataTemplate>
 			</TreeView.ItemTemplate>
 		</TreeView>
@@ -47,13 +47,13 @@
 
 			<StackPanel Grid.Row="4">
 				<UI:BnsCustomLabelWidget Text="{DynamicResource AbilityPage_Result}">
-					<UI:BnsCustomLabelWidget.Params>
-						<UI:ParamsBinding>
+					<UI:BnsCustomLabelWidget.Arguments>
+						<UI:ArgumentBinding>
 							<Binding Path="Level" />
-							<Binding Path="Selected.Text" />
+							<Binding Path="Selected" />
 							<Binding Path="Percent" />
-						</UI:ParamsBinding>
-					</UI:BnsCustomLabelWidget.Params>
+						</UI:ArgumentBinding>
+					</UI:BnsCustomLabelWidget.Arguments>
 				</UI:BnsCustomLabelWidget>
 				<TextBlock Text="{Binding Percent,StringFormat=P3}" />
 			</StackPanel>

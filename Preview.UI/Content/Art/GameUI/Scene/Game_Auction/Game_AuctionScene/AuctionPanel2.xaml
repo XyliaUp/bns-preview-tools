@@ -1,0 +1,62 @@
+﻿<BnsCustomWindowWidget x:Class="Xylia.Preview.UI.GameUI.Scene.Game_Auction.AuctionPanel2"
+	xmlns="https://github.com/xyliaup/bns-preview-tools"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:s="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+	<BnsCustomWindowWidget.BaseImageProperty>
+		<ImageProperty BaseImageTexture="BNSR/Content/Art/UI/GameUI/Resource/GameUI_Window_R/BNSR_Window.BNSR_Window" ImageUV="7 7" ImageUVSize="49 49" EnableSkinAlpha="true" StaticPadding="-17 -17" />
+	</BnsCustomWindowWidget.BaseImageProperty>
+	<BnsCustomWindowWidget.ExpansionComponentList>
+		<ExpansionComponent bShow="true" ExpansionType="IMAGE" ExpansionName="Line" MetaData="" bPostExpansitonRender="true">
+			<ExpansionComponent.ImageProperty>
+				<ImageProperty BaseImageTexture="BNSR/Content/Art/UI/GameUI/Resource/GameUI_Window_R/BNSR_Window_Outfocus.BNSR_Window_Outfocus" ImageUV="7 7" ImageUVSize="49 49" EnableDrawImage="true" TintColor="FFFFFF" GrayWeightValue="0.15" StaticPadding="-17 -17" Opacity="1" ImageScale="1" />
+			</ExpansionComponent.ImageProperty>
+		</ExpansionComponent>
+	</BnsCustomWindowWidget.ExpansionComponentList>
+	<BnsCustomImageWidget Name="AuctionPanel2_UIInfo" LayoutData.Offsets="728 12 30 0" MetaData="tooltip=UI.Tooltip.UIInfo.Auction">
+		<BnsCustomImageWidget.BaseImageProperty>
+			<ImageProperty BaseImageTexture="BNSR/Content/Art/UI/GameUI/Resource/GameUI_Window_R/BNSR_UIElement.BNSR_UIElement" ImageUV="142 48" ImageUVSize="12 22" EnableResourceSize="true" Offset="0 -1" />
+		</BnsCustomImageWidget.BaseImageProperty>
+	</BnsCustomImageWidget>
+	<BnsCustomLabelButtonWidget Name="AuctionPanel2CloseButton" LayoutData.Anchors="1 0 1 0" LayoutData.Offsets="-12 12 30 0">
+		<BnsCustomLabelButtonWidget.NormalImageProperty>
+			<ImageProperty BaseImageTexture="BNSR/Content/Art/UI/GameUI/Resource/GameUI_Window_R/BNSR_UIElement.BNSR_UIElement" ImageUV="156 50" ImageUVSize="18 18" EnableResourceSize="true" />
+		</BnsCustomLabelButtonWidget.NormalImageProperty>
+	</BnsCustomLabelButtonWidget>
+	<BnsWebBrowser Name="AuctionPanel2Web" LayoutData.Anchors="0.5 1 0.5 1" LayoutData.Offsets="0 0 800.00006 748" MetaData="width=800;height=748">
+		<BnsWebBrowser.ExpansionComponentList>
+			<ExpansionComponent bShow="true" ExpansionType="IMAGE" ExpansionName="ErrorImage" MetaData="" bPostExpansitonRender="true">
+				<ExpansionComponent.ImageProperty>
+					<ImageProperty BaseImageTexture="BNSR/Content/Art/UI/GameUI/Resource/GameUI_Window_R/BNSR_UIElement_01.BNSR_UIElement_01" ImageUV="94 373" ImageUVSize="56 56" EnableDrawImage="true" EnableResourceSize="true" TintColor="FFFFFF" GrayWeightValue="0.15" Offset="0 -70" Opacity="1" ImageScale="1" HorizontalAlignment="HAlign_Center" VerticalAlignment="VAlign_Center" />
+				</ExpansionComponent.ImageProperty>
+			</ExpansionComponent>
+		</BnsWebBrowser.ExpansionComponentList>
+		<BnsCustomImageWidget Name="AuctionPanel2LoadingImage" LayoutData.Anchors="0.5 0.5 0.5 0.5" LayoutData.Offsets="0 0 128 64">
+			<BnsCustomImageWidget.BaseImageProperty>
+				<ImageProperty BaseImageTexture="/Game/Art/UI/GameUI/Resource/GameUI_HUD_Scene/WebLoadingMaterialInst_UIMat.WebLoadingMaterialInst_UIMat" EnableDrawColor="true" TintColor="000000" />
+			</BnsCustomImageWidget.BaseImageProperty>
+		</BnsCustomImageWidget>
+		<BnsCustomImageWidget Name="AuctionPanel2LoadingImageSmall" LayoutData.Anchors="1 1 1 1" LayoutData.Offsets="0 0 128.0003 64">
+			<BnsCustomImageWidget.BaseImageProperty>
+				<ImageProperty BaseImageTexture="/Game/Art/UI/GameUI/Resource/GameUI_HUD_Scene/WebLoadingMaterialInst_UIMat.WebLoadingMaterialInst_UIMat" EnableDrawColor="true" TintColor="000000" />
+			</BnsCustomImageWidget.BaseImageProperty>
+		</BnsCustomImageWidget>
+		<BnsCustomLabelWidget Name="AuctionPanel2ErrorLabel" LayoutData.Anchors="0.5 0.5 0.5 0.5" LayoutData.Offsets="0 0 366.00003 44.999878" MetaData="textref=UI.WebPanelErrorLabel">
+			<BnsCustomLabelWidget.String>
+				<StringProperty fontset="BNSR/Content/Art/UI/GameUI_BNSR/Resource/GameUI_FontSet_R/UI/Normal_12.Normal_12" LabelText="## 웹 서버와 연결이 원활치 않습니다." SpaceBetweenLines="3" HorizontalAlignment="HAlign_Center" VerticalAlignment="VAlign_Center" />
+			</BnsCustomLabelWidget.String>
+		</BnsCustomLabelWidget>
+	</BnsWebBrowser>
+	<BnsCustomCaptionWidget Name="AuctionPanel2_TitleBar" LayoutData.Anchors="0 0 1 0" LayoutData.Offsets="0 0 0 50" MetaData="textref=UI.HUD.Auction">
+		<BnsCustomCaptionWidget.String>
+			<StringProperty fontset="BNSR/Content/Art/UI/GameUI_BNSR/Resource/GameUI_FontSet_R/UI/Normal_16.Normal_16" LabelText="시장" VerticalAlignment="VAlign_Center" ClippingBound="70 0" />
+		</BnsCustomCaptionWidget.String>
+		<BnsCustomCaptionWidget.BaseImageProperty>
+			<ImageProperty BaseImageTexture="BNSR/Content/Art/UI/GameUI/Resource/GameUI_Window_R/BNSR_PictogramIcon.BNSR_PictogramIcon" ImageUV="448 128" ImageUVSize="64 64" EnableResourceSize="true" />
+		</BnsCustomCaptionWidget.BaseImageProperty>
+	</BnsCustomCaptionWidget>
+	<BnsCustomImageWidget Name="AuctionPanel2_Background" LayoutData.Anchors="0 0 1 1" LayoutData.Offsets="0 78 0 0">
+		<BnsCustomImageWidget.BaseImageProperty>
+			<ImageProperty BaseImageTexture="BNSR/Content/Art/UI/GameUI/Resource/GameUI_Window_R/BNSR_UIElement.BNSR_UIElement" ImageUV="0 125" ImageUVSize="18 10" EnableDrawColor="true" TintColor="000000" Opacity="0.3" />
+		</BnsCustomImageWidget.BaseImageProperty>
+	</BnsCustomImageWidget>
+</BnsCustomWindowWidget>

@@ -3,17 +3,10 @@
 namespace Xylia.Preview.Data.Common.DataStruct;
 
 [StructLayout(LayoutKind.Sequential)]
-public struct Box
+public struct Box(Vector16 l, Vector16 u)
 {
-	public Vector16 L;
-	public Vector16 U;
-
-	public Box(Vector16 l, Vector16 u)
-	{
-		this.L = l;
-		this.U = u;
-	}
-
+	public Vector16 L = l;
+	public Vector16 U = u;
 
 	public static Box Parse(string input)
 	{

@@ -175,7 +175,7 @@
 
 	<record name="weapon-gem-type">
 		<case name="none" default="y" />
-		<case name="ruby" desc="红玉" />
+		<case name="ruby" desc="红玉" /> 
 		<case name="topaz" desc="黄玉" />
 		<case name="sapphire" desc="青玉" />
 		<case name="jade" desc="翡翠" />

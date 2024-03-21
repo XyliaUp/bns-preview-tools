@@ -1,12 +1,14 @@
-﻿using System.Collections.Concurrent;
+﻿using System.Collections;
+using System.Collections.Concurrent;
 using System.Data;
-using System.Diagnostics;
 using System.Xml;
 using K4os.Hash.xxHash;
 using Newtonsoft.Json;
 using Serilog;
 using Xylia.Preview.Common.Extension;
+using Xylia.Preview.Data.Common.Abstractions;
 using Xylia.Preview.Data.Common.DataStruct;
+using Xylia.Preview.Data.Engine.BinData.Definitions;
 using Xylia.Preview.Data.Engine.BinData.Helpers;
 using Xylia.Preview.Data.Engine.BinData.Serialization;
 using Xylia.Preview.Data.Engine.DatData;
@@ -19,7 +21,7 @@ namespace Xylia.Preview.Data.Engine.BinData.Models;
 /// bns data table
 /// </summary>
 [JsonConverter(typeof(TableConverter))]
-public class Table : TableHeader, IDisposable
+public class Table : TableHeader, IDisposable, IEnumerable<Record>
 {
 	#region Constructor
 	private TableDefinition definition;
@@ -83,7 +85,7 @@ public class Table : TableHeader, IDisposable
 	}
 
 
-	private Dictionary<Ref, Record> ByRef = new();
+	private Dictionary<Ref, Record> ByRef = [];
 
 	private AliasTable AliasTable;
 	#endregion
@@ -107,7 +109,7 @@ public class Table : TableHeader, IDisposable
 		Archive = null;
 
 		foreach (var record in _records)
-			ByRef[record] = record;
+			ByRef[record.PrimaryKey] = record;
 	}
 
 	/// <summary>
@@ -117,6 +119,7 @@ public class Table : TableHeader, IDisposable
 	public List<Action> LoadXml(params Stream[] streams)
 	{
 		this.Clear();
+		_records = [];
 
 		var actions = new List<Action>();
 		foreach (var stream in streams)
@@ -132,9 +135,10 @@ public class Table : TableHeader, IDisposable
 			CheckVersion(ParseVersion(version));
 
 			// ignore step data
+			// TutorialSkillSequenceLoader ?
 			if (type != null && string.Compare(type, Name, true) != 0)
 			{
-				Log.Error($"[game-data-loader], load error. invalid type, fileName:{0}, type:{type}");
+				Log.Error($"[game-data-loader], load error. invalid type, fileName:{Name}, type:{type}");
 			}
 
 			LoadElement(documentElement, actions);
@@ -156,7 +160,7 @@ public class Table : TableHeader, IDisposable
 		var elements = parent.SelectNodes($"./" + Definition.ElRecord.Name).OfType<XmlElement>().ToArray();
 
 		// load data
-		ConcurrentBag<Tuple<int, Record>> records = new();
+		ConcurrentBag<Tuple<int, Record>> records = [];
 		Parallel.For(0, elements.Length, index =>
 		{
 			var element = elements[index];
@@ -168,7 +172,7 @@ public class Table : TableHeader, IDisposable
 				Owner = this,
 				Data = new byte[definition.Size],
 				DataSize = definition.Size,
-				XmlNodeType = 1,
+				ElementType = ElementType.Element,
 				SubclassType = definition.SubclassType,
 				StringLookup = IsCompressed ? new StringLookup() : GlobalString,
 			};
@@ -185,7 +189,7 @@ public class Table : TableHeader, IDisposable
 		// insert element
 		foreach (var record in records.OrderBy(x => x.Item1).Select(x => x.Item2))
 		{
-			_records.Add(ByRef[record] = record);
+			_records.Add(ByRef[record.PrimaryKey] = record);
 
 			// The ref is not determined at this time
 			actions?.Add(new Action(() => record.Attributes.BuildData(record.Definition)));
@@ -196,7 +200,7 @@ public class Table : TableHeader, IDisposable
 
 
 	#region Get Methods
-	public Record this[Ref Ref, bool message = true]
+	public Record this[Ref Ref]
 	{
 		get
 		{
@@ -204,9 +208,14 @@ public class Table : TableHeader, IDisposable
 			if (_records == null) LoadAsync().Wait();
 
 			if (ByRef.TryGetValue(Ref, out var item)) return item;
-			else if (_records.Count != 0 && message)
-				Debug.WriteLine($"[{Name}] get failed, id: {Ref.Id} variation: {Ref.Variant}");
 
+#if DEVELOP
+			// get failed
+			if (_records.Count != 0)
+			{
+				System.Diagnostics.Debug.WriteLine($"[{Name}] get failed, id: {Ref.Id} variation: {Ref.Variant}");
+			}
+#endif
 			return null;
 		}
 	}
@@ -216,6 +225,7 @@ public class Table : TableHeader, IDisposable
 		get
 		{
 			if (_records == null) LoadAsync().Wait();
+			if (Ref.TryPrase(alias, out var key)) return this[key];
 
 			lock (this)
 			{
@@ -259,7 +269,7 @@ public class Table : TableHeader, IDisposable
 
 		writer.WriteStartDocument();
 		writer.WriteStartElement(Definition.ElRoot.Name);
-		writer.WriteAttributeString("release-module", Definition.Module.ToString());
+		writer.WriteAttributeString("release-module", TableModule.LocalizationData.ToString());
 		writer.WriteAttributeString("release-side", settings.ReleaseSide.ToString().ToLower());
 		writer.WriteAttributeString("type", Definition.Name);
 		writer.WriteAttributeString("version", MajorVersion + "." + MinorVersion);
@@ -279,6 +289,16 @@ public class Table : TableHeader, IDisposable
 
 
 	#region Interface
+	IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
+
+	public IEnumerator<Record> GetEnumerator()
+	{
+		foreach (var record in this.Records)
+			yield return record;
+
+		yield break;
+	}
+
 	public virtual void Clear()
 	{
 		// prevent reload

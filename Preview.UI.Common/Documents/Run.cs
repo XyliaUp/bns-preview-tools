@@ -3,31 +3,42 @@ using System.Net;
 using System.Windows;
 using System.Windows.Markup;
 using System.Windows.Media;
-
 using HtmlAgilityPack;
 
 namespace Xylia.Preview.UI.Documents;
 
+/// <summary>
+/// A terminal element in text flow hierarchy - contains a uniformatted run of unicode characters
+/// </summary>
 [ContentProperty("Text")]
-public class Run : Element
+public class Run : BaseElement
 {
-	#region Constructor
+	#region Constructors
+	/// <summary>
+	/// Initializes an instance of Run class.
+	/// </summary>
 	public Run()
 	{
 
 	}
 
+	/// <summary>
+	/// Initializes an instance of Run class specifying its text content.
+	/// </summary>
+	/// <param name="text">
+	/// Text content assigned to the Run.
+	/// </param>
 	public Run(string text)
 	{
 		this.Text = text;
 	}
 	#endregion
 
+
 	#region Properties
-	public static readonly DependencyProperty TextProperty =
-		DependencyProperty.Register("Text", typeof(string), typeof(Run),
-			 new FrameworkPropertyMetadata(string.Empty,
-				 FrameworkPropertyMetadataOptions.AffectsMeasure | FrameworkPropertyMetadataOptions.AffectsRender));
+	public static readonly DependencyProperty TextProperty = DependencyProperty.Register("Text",
+		typeof(string), typeof(Run), new FrameworkPropertyMetadata(string.Empty,
+			FrameworkPropertyMetadataOptions.AffectsMeasure | FrameworkPropertyMetadataOptions.AffectsRender));
 
 	public string Text
 	{
@@ -42,25 +53,29 @@ public class Run : Element
 		Text = WebUtility.HtmlDecode(node.OuterHtml);
 	}
 
-	private Typeface typeface => new(FontFamily, FontStyle, FontWeight, FontStretch);
-
 	protected override Size MeasureCore(Size availableSize)
 	{
-		var format = new FormattedText(Text, CultureInfo.CurrentCulture, FlowDirection.LeftToRight, typeface, FontSize, Foreground, 96);
-		format.MaxTextWidth = double.IsInfinity(availableSize.Width) ? 0 : availableSize.Width;
-		format.TextAlignment = TextAlignment.Center;
+		_format = new FormattedText(Text, CultureInfo.CurrentCulture, FlowDirection.LeftToRight,
+			new(FontFamily, FontStyle, FontWeight, FontStretch), FontSize, Foreground, 96);
 
-		return new Size(format.WidthIncludingTrailingWhitespace, format.Height);
+		//_format.SetTextDecorations();
+		_format.MaxTextWidth = double.IsInfinity(availableSize.Width) ? 0 : availableSize.Width;
+		_format.TextAlignment = this.TextAlignment;  //EnsureTextContainer().StringProperty.HorizontalAlignment
+
+		return new Size(_format.WidthIncludingTrailingWhitespace, _format.Height);
 	}
 
-	internal override void Render(DrawingContext ctx)
+	protected internal override void OnRender(DrawingContext ctx)
 	{
-		var format = new FormattedText(Text, CultureInfo.CurrentCulture, FlowDirection.LeftToRight, typeface, FontSize, Foreground, 96);
-		format.MaxTextWidth = DesiredSize.Width;
-		format.TextAlignment = this.TextAlignment;
-
 		// Draw the formatted text string to the DrawingContext of the control.
-		ctx.DrawText(format, new Point(this.FinalRect.X, this.FinalRect.Y));
+		if (_format != null)
+		{
+			ctx.DrawText(_format, this.FinalRect.TopLeft);
+		}
 	}
+	#endregion
+
+	#region Private Fields
+	private FormattedText? _format;
 	#endregion
 }

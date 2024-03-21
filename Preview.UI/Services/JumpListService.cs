@@ -2,8 +2,14 @@
 using System.Windows.Shell;
 
 namespace Xylia.Preview.UI.Services;
-internal class JumpListService
+internal class JumpListService : IService
 {
+	public bool Register()
+	{
+		CreateAsync();
+		return true;
+	}
+
 	public static async void CreateAsync()
 	{
 		// Create a jump-list and assign it to the current application

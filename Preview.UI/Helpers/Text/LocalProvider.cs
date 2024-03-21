@@ -11,7 +11,7 @@ public class LocalProvider(string Source) : DefaultProvider
 {
 	public override string Name => Path.GetFileName(Source);
 
-	public override Stream[] GetFiles(string pattern) => new Stream[] { File.OpenRead(pattern) };
+	public override Stream[] GetFiles(string pattern) => [File.OpenRead(pattern)];
 
 	public override void LoadData(DatafileDefinition definitions)
 	{
@@ -34,7 +34,7 @@ public class LocalProvider(string Source) : DefaultProvider
 
 				LocalData = new FileInfo(Source);
 				Is64Bit = LocalData.Bit64;
-				ReadFrom(LocalData.EnumerateFiles(Is64Bit ? "localfile64.bin" : "localfile.bin").FirstOrDefault()?.Data, Is64Bit);
+				ReadFrom(LocalData.SearchFiles(Is64Bit ? "localfile64.bin" : "localfile.bin").FirstOrDefault()?.Data, Is64Bit);
 
 				// detect text table type
 				if (definitions.HasHeader) Detect = new DatafileDirect(definitions.Header);
@@ -49,7 +49,7 @@ public class LocalProvider(string Source) : DefaultProvider
 	/// <summary>
 	/// Check source is dat file
 	/// </summary>
-	public bool CanSave { get; set; }
+	public bool CanSave { get; protected set; }
 
 	public Table TextTable => this.Tables["text"];
 
@@ -96,7 +96,6 @@ public class LocalProvider(string Source) : DefaultProvider
 
 		WriteData(Source, new PublishSettings() { Is64bit = Is64Bit, Mode = Mode.Package });
 	}
-
 
 	public override void WriteData(string folder, PublishSettings settings)
 	{

@@ -21,7 +21,7 @@
 				</Grid.RowDefinitions>
 
 
-				<hc:SearchBar Grid.Row="0" hc:InfoElement.Title="{DynamicResource OutputDirectory}" Style="{StaticResource SearchBarExtend}" 
+				<hc:SearchBar Grid.Row="0" hc:InfoElement.Title="{DynamicResource Settings_OutputDirectory}" Style="{StaticResource SearchBarExtend}" 
 					Text="{Binding OutputFolderResource, Source={x:Static VM:UserSettings.Default}, Mode=OneWay}" Command="{Binding OpenSettingsCommand}"/>
 				<hc:ComboBox Grid.Row="1" x:Name="Selector" hc:InfoElement.Title="{DynamicResource Asset_FilterPah}" IsEditable="True" IsTextSearchEnabled="True" >
 					<ComboBoxItem Content="Game/Art/UI/GameUI/Resource/GameUI_Icon" />
@@ -98,10 +98,10 @@
 				</Grid.RowDefinitions>
 
 				<hc:SearchBar Grid.Row="0"
-					Style="{StaticResource SearchBarExtend}" hc:InfoElement.Title="{DynamicResource GameDirectory}" hc:InfoElement.Necessary="True"
+					Style="{StaticResource SearchBarExtend}" hc:InfoElement.Title="{DynamicResource Settings_GameDirectory}" hc:InfoElement.Necessary="True"
 					Text="{Binding GameFolder, Source={x:Static VM:UserSettings.Default}, Mode=OneWay}" Command="{Binding OpenSettingsCommand}" />
 				<hc:SearchBar Grid.Row="1"
-					Style="{StaticResource SearchBarExtend}" hc:InfoElement.Title="{DynamicResource OutputDirectory}" hc:InfoElement.Necessary="True"
+					Style="{StaticResource SearchBarExtend}" hc:InfoElement.Title="{DynamicResource Settings_OutputDirectory}" hc:InfoElement.Necessary="True"
 					Text="{Binding Icon_OutputFolder}" Command="{Binding Icon_BrowerOutputFolderCommand}" />
 				<hc:SearchBar Grid.Row="2"
 					Style="{StaticResource SearchBarExtend}" hc:InfoElement.Title="{DynamicResource IconOut_ItemList}"
@@ -115,7 +115,7 @@
 				<StackPanel Grid.Row="5" Grid.ColumnSpan="2">
 					<hc:UniformSpacingPanel Margin="0 15 0 0" Spacing="10">
 						<CheckBox x:Name="FilterMode" Content="{DynamicResource IconOut_FilterMode}" ToolTip="{DynamicResource IconOut_FilterMode_Tooltip}" />
-						<CheckBox x:Name="UseBackground" Content="{DynamicResource IconOut_UseBackground}" ToolTip="{DynamicResource IconOut_UseBackground_Tooltip}" />
+						<CheckBox x:Name="UseBackground" Content="{DynamicResource IconOut_UseBackground}" ToolTip="{DynamicResource IconOut_UseBackground_Tooltip}" IsChecked="True"/>
 					</hc:UniformSpacingPanel>
 
 					<hc:Divider />

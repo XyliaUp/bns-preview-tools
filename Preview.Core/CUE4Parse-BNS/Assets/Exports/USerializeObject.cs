@@ -24,18 +24,25 @@ public abstract class USerializeObject : UObject
 	{
 		public override void Map(IPropertyHolder src, object dst)
 		{
-			var prop = src.Properties
+			var props = src.Properties
 				.ToLookup(property => property.Name.Text)
-				.ToDictionary(property => property.Key, x => x.First());
+				.ToDictionary(property => property.Key, x => x.First(), StringComparer.OrdinalIgnoreCase);
 
-			foreach (FieldInfo item in dst.GetType().GetFields(BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.Public))
+			foreach (var member in dst.GetType().GetMembers(BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.Public))
 			{
-				if (src is UObject && item.GetCustomAttribute<UPROPERTY>() is null) continue;
-				if (!prop.TryGetValue(item.Name, out var property)) continue;
+				if (src is UObject && member.GetCustomAttribute<UPROPERTY>() is null) continue;
+				if (!props.TryGetValue(member.Name, out var property)) continue;
 
-				//Debug.WriteLine(item.FieldType);
-				object obj = property.Tag?.GetValue(item.FieldType);
-				item.SetValue(dst, obj);
+				if (member is FieldInfo item)
+				{
+					object obj = property.Tag?.GetValue(item.FieldType);
+					item.SetValue(dst, obj);
+				}
+				else if (member is PropertyInfo prop && prop.CanWrite)
+				{
+					object obj = property.Tag?.GetValue(prop.PropertyType);
+					prop.SetValue(dst, obj);
+				}
 			}
 		}
 	}

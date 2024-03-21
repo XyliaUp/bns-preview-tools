@@ -6,7 +6,7 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using CUE4Parse.BNS.Assets.Exports;
 
 namespace Xylia.Preview.UI.ViewModels;
-public class ShowObjectPlayerViewModel : ObservableObject
+internal class ShowObjectPlayerViewModel : ObservableObject
 {
 	#region Properties 
 	UShowObject _showObject;
